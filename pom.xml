@@ -17,19 +17,16 @@
     <!-- Used by the javadoc plugin to generate the comments at the bottom. -->
     <inceptionYear>2012</inceptionYear>
 
-
     <!-- Used to define a minimum Maven version. Used in conjunction with plugin
         management to lock in a more current version of the various plugins. -->
     <prerequisites>
         <maven>3.1.0</maven>
     </prerequisites>
 
-
     <organization>
         <name>Microsoft</name>
         <url>http://www.microsoft.com/</url>
     </organization>
-
 
     <properties>
         <!-- Eliminates the file encoding warning. Of course, all of your files
@@ -37,7 +34,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javaLanguage.version>1.7</javaLanguage.version>
     </properties>
-
 
     <dependencies>
         <dependency>
@@ -55,7 +51,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
 
         <dependency>
             <groupId>commons-logging</groupId>
@@ -80,13 +75,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -101,13 +89,11 @@
                     <version>3.3</version>
                 </plugin>
             </plugins>
-
         </pluginManagement>
     </build>
 
     <reporting>
         <plugins>
-
             <!-- Basic report generation. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -133,8 +119,6 @@
                 </reportSets>
             </plugin>
 
-
-
             <!-- Generates the Javadoc for the report. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -152,21 +136,6 @@
                 <version>2.3</version>
             </plugin>
 
-            <!-- Generates a list of the code marked "todo", for example //TODO. Will
-                automatically link to the maven-jxr-plugin source code. -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>taglist-maven-plugin</artifactId>
-                <version>2.4</version>
-            </plugin>
-
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>javancss-maven-plugin</artifactId>
-                <version>2.0</version>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
@@ -179,7 +148,6 @@
                     </reportSet>
                 </reportSets>
             </plugin>
-
         </plugins>
     </reporting>
 </project>
