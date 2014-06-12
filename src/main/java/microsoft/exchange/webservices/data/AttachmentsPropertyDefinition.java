@@ -34,7 +34,7 @@ public final class AttachmentsPropertyDefinition extends
 
 	}
 
-	/***
+	/**
 	 * Determines whether the specified flag is set.
 	 * 
 	 * @param flag

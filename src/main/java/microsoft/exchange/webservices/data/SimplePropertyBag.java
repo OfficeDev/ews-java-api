@@ -34,7 +34,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 	private List<TKey> modifiedItems = new ArrayList<TKey>();
 
 	/**
-	 * * Add item to change list.
+	 * Add item to change list.
 	 * 
 	 * @param key
 	 *            the key
@@ -47,7 +47,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 		}
 	}
 	
-	/***
+	/**
 	 * Triggers dispatch of the change event.
 	 */
 	private void changed() {
@@ -59,7 +59,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 	}
 
 	/**
-	 * * Remove item.
+	 * Remove item.
 	 * 
 	 * @param key
 	 *            the key
@@ -75,7 +75,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 	
 
 	/**
-	 * * Gets the added items. <value>The added items.</value>
+	 * Gets the added items. <value>The added items.</value>
 	 * 
 	 * @return the added items
 	 */
@@ -84,7 +84,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 	}
 
 	/**
-	 * * Gets the removed items. <value>The removed items.</value>
+	 * Gets the removed items. <value>The removed items.</value>
 	 * 
 	 * @return the removed items
 	 */
@@ -93,7 +93,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 	}
 
 	/**
-	 * * Gets the modified items. <value>The modified items.</value>
+	 * Gets the modified items. <value>The modified items.</value>
 	 * 
 	 * @return the modified items
 	 */
@@ -102,12 +102,12 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 	}
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 */
 	public SimplePropertyBag() {
 	}
 
-	/***
+	/**
 	 * Clears the change log.
 	 */
 	public void clearChangeLog() {
@@ -117,7 +117,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 	}
 
 	/**
-	 * * Determines whether the specified key is in the property bag.
+	 * Determines whether the specified key is in the property bag.
 	 * 
 	 * @param key
 	 *            the key
@@ -128,7 +128,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 	}
 
 	/**
-	 * * Tries to get value.
+	 * Tries to get value.
 	 * 
 	 * @param key
 	 *            the key
@@ -195,13 +195,13 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 		}
 	}
 
-	/***
+	/**
 	 * Occurs when Changed.
 	 */
 	private List<IPropertyBagChangedDelegate> onChange = 
 		new ArrayList<IPropertyBagChangedDelegate>();
 
-	/***
+	/**
 	 * Set event to happen when property changed.
 	 * 
 	 * @param change
@@ -211,7 +211,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 		onChange.add(change);
 	}
 
-	/***
+	/**
 	 * Remove the event from happening when property changed.
 	 * 
 	 * @param change

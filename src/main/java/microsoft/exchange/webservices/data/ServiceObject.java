@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="ServiceObject.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/***
+/**
  * Represents the base abstract class for all item and folder types.
  * 
  */
@@ -366,7 +366,7 @@ public abstract class ServiceObject {
 	}
 
 	/**
-	 * * Gets the value of specified property in this instance.
+	 * Gets the value of specified property in this instance.
 	 * 
 	 * @param propertyDefinition
 	 *            Definition of the property to get.

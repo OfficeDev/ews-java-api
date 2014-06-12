@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
 
-/***
+/**
  * Represents the definition for the meeting time zone property.
  */
 class MeetingTimeZonePropertyDefinition extends PropertyDefinition {

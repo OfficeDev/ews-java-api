@@ -7,14 +7,12 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * * Represents the base response class for synchronuization operations.
- * <typeparam name="TServiceObject">ServiceObject type.</typeparam> <typeparam
- * name="TChange">Change type.</typeparam>
- * 
+ * Represents the base response class for synchronuization operations.
+ *
  * @param <TServiceObject>
- *            the generic type
+ *            ServiceObject type.
  * @param <TChange>
- *            the generic type
+ *            Change type.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public abstract class SyncResponse<TServiceObject extends ServiceObject, 
@@ -28,7 +26,7 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
 	private PropertySet propertySet;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param propertySet
 	 *            the property set
@@ -40,14 +38,14 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
 				"PropertySet should not be null");
 	}
 
-	/***
+	/**
 	 * Gets the name of the includes last in range XML element.
 	 * 
 	 * @return XML element name.
 	 */
 	protected abstract String getIncludesLastInRangeXmlElementName();
 
-	/***
+	/**
 	 * Creates the change instance.
 	 * 
 	 * @return TChange instance
@@ -55,7 +53,7 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
 	protected abstract TChange createChangeInstance();
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -153,7 +151,7 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
 	}
 
 	/**
-	 * * Gets a list of changes that occurred on the synchronized folder.
+	 * Gets a list of changes that occurred on the synchronized folder.
 	 * 
 	 * @return the changes
 	 */
@@ -162,7 +160,7 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
 	}
 
 	/**
-	 * * Gets a value indicating whether this request returns full or summary
+	 * Gets a value indicating whether this request returns full or summary
 	 * properties.
 	 * 
 	 * @return the summary properties only

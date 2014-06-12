@@ -7,7 +7,7 @@
 
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents an error that occurs when an operation on a property fails.
  * 
  * 
@@ -17,7 +17,7 @@ public class ServiceObjectPropertyException extends PropertyException {
 	/** The property definition. */
 	private PropertyDefinitionBase propertyDefinition;
 
-	/***
+	/**
 	 * ServiceObjectPropertyException constructor.
 	 * 
 	 * @param propertyDefinition
@@ -30,7 +30,7 @@ public class ServiceObjectPropertyException extends PropertyException {
 		this.propertyDefinition = propertyDefinition;
 	}
 
-	/***
+	/**
 	 * ServiceObjectPropertyException constructor.
 	 * 
 	 * @param message
@@ -46,7 +46,7 @@ public class ServiceObjectPropertyException extends PropertyException {
 	}
 
 	/**
-	 * * ServiceObjectPropertyException constructor.
+	 * ServiceObjectPropertyException constructor.
 	 * 
 	 * @param message
 	 *            Error message text.
@@ -63,7 +63,7 @@ public class ServiceObjectPropertyException extends PropertyException {
 		this.propertyDefinition = propertyDefinition;
 	}
 
-	/***
+	/**
 	 * The definition of the property that is at the origin of the exception.
 	 * 
 	 * @return The definition of the property.

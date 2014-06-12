@@ -12,7 +12,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-/***
+/**
  * Represents a file attachment.
  */
 public final class FileAttachment extends Attachment {
@@ -33,7 +33,7 @@ public final class FileAttachment extends Attachment {
 	private boolean isContactPhoto;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param owner
 	 *            the owner
@@ -42,7 +42,7 @@ public final class FileAttachment extends Attachment {
 		super(owner);
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name
@@ -52,7 +52,7 @@ public final class FileAttachment extends Attachment {
 	}
 
 	/**
-	 * * Validates this instance.
+	 * Validates this instance.
 	 * 
 	 * @param attachmentIndex
 	 *            the attachment index
@@ -74,7 +74,7 @@ public final class FileAttachment extends Attachment {
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -135,7 +135,7 @@ public final class FileAttachment extends Attachment {
 
     
 	/**
-	 * * Writes elements and content to XML.
+	 * Writes elements and content to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -181,7 +181,7 @@ public final class FileAttachment extends Attachment {
 	}
 
 	/**
-	 * * Loads the content of the file attachment into the specified stream.
+	 * Loads the content of the file attachment into the specified stream.
 	 * Calling this method results in a call to EWS.
 	 * 
 	 * @param stream
@@ -200,7 +200,7 @@ public final class FileAttachment extends Attachment {
 	}
 
 	/**
-	 * * Loads the content of the file attachment into the specified file.
+	 * Loads the content of the file attachment into the specified file.
 	 * Calling this method results in a call to EWS.
 	 * 
 	 * @param fileName
@@ -225,7 +225,7 @@ public final class FileAttachment extends Attachment {
 	}
 
 	/**
-	 * * Gets the name of the file the attachment is linked to.
+	 * Gets the name of the file the attachment is linked to.
 	 * 
 	 * @return the file name
 	 */
@@ -247,7 +247,7 @@ public final class FileAttachment extends Attachment {
 		this.contentStream = null;
 	}
 
-	/***
+	/**
 	 * Gets  the content stream.Gets the name of the file the attachment
 	 * is linked to.
 	 * 
@@ -272,7 +272,7 @@ public final class FileAttachment extends Attachment {
 	}
 
 	/**
-	 * * Gets the content of the attachment into memory. Content is set only
+	 * Gets the content of the attachment into memory. Content is set only
 	 * when Load() is called.
 	 * 
 	 * @return the content

@@ -7,11 +7,10 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an abstract delegate management request. <typeparam
- * name="TResponse">The type of the response.</typeparam>
+ * Represents an abstract delegate management request.
  * 
  * @param <TResponse>
- *            the generic type
+ *            The type of the response.
  */
 abstract class DelegateManagementRequestBase
 		<TResponse extends DelegateManagementResponse>

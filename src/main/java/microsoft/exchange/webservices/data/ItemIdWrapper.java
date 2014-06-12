@@ -11,13 +11,13 @@ package microsoft.exchange.webservices.data;
  */
 class ItemIdWrapper extends AbstractItemIdWrapper {
 
-	/***
+	/**
 	 *The ItemId object providing the Id.
 	 */
 	private ItemId itemId;
 
 	/**
-	 * * Initializes a new instance of ItemIdWrapper.
+	 * Initializes a new instance of ItemIdWrapper.
 	 * 
 	 * @param itemId
 	 *            the item id
@@ -29,7 +29,7 @@ class ItemIdWrapper extends AbstractItemIdWrapper {
 	}
 
 	/**
-	 * * Writes the Id encapsulated in the wrapper to XML.
+	 * Writes the Id encapsulated in the wrapper to XML.
 	 * 
 	 * @param writer
 	 *            the writer

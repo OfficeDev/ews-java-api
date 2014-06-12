@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
 
-/***
+/**
  * 
  * Represents an item's attachment collection.
  */
@@ -24,7 +24,7 @@ public final class AttachmentCollection extends
 	/** The owner. */
 	private Item owner;
 
-	/***
+	/**
 	 * Initializes a new instance of AttachmentCollection.
 	 */
 	protected AttachmentCollection() {
@@ -56,7 +56,7 @@ public final class AttachmentCollection extends
 	}
 
 	/**
-	 * * Adds a file attachment to the collection.
+	 * Adds a file attachment to the collection.
 	 * 
 	 * @param fileName
 	 *            the file name
@@ -67,7 +67,7 @@ public final class AttachmentCollection extends
 	}
 
 	/**
-	 * * Adds a file attachment to the collection.
+	 * Adds a file attachment to the collection.
 	 * 
 	 * @param name
 	 *            accepts String display name of the new attachment.
@@ -87,7 +87,7 @@ public final class AttachmentCollection extends
 	}
 
 	/**
-	 * * Adds a file attachment to the collection.
+	 * Adds a file attachment to the collection.
 	 * 
 	 * @param name
 	 *            accepts String display name of the new attachment.
@@ -108,7 +108,7 @@ public final class AttachmentCollection extends
 	}
 
 	/**
-	 * * Adds a file attachment to the collection.
+	 * Adds a file attachment to the collection.
 	 * 
 	 * @param name
 	 *            the name
@@ -128,7 +128,7 @@ public final class AttachmentCollection extends
 	}
 
 	/**
-	 * * Adds an item attachment to the collection.
+	 * Adds an item attachment to the collection.
 	 * 
 	 * @param <TItem>
 	 *            the generic type
@@ -157,7 +157,7 @@ public final class AttachmentCollection extends
 		return itemAttachment;
 	}
 
-	/***
+	/**
 	 * Removes all attachments from this collection.
 	 */
 	public void clear() {

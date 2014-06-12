@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a SyncFolderItems request.
  */
 class SyncFolderItemsRequest extends
@@ -31,7 +31,7 @@ class SyncFolderItemsRequest extends
 	private int maxChangesReturned = 100;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -43,7 +43,7 @@ class SyncFolderItemsRequest extends
 	}
 
 	/**
-	 * * Creates service response.
+	 * Creates service response.
 	 * 
 	 * @param service
 	 *            the service
@@ -57,7 +57,7 @@ class SyncFolderItemsRequest extends
 		return new SyncFolderItemsResponse(this.getPropertySet());
 	}
 
-	/***
+	/**
 	 * Gets the expected response message count.
 	 * 
 	 * @return Number of expected response messages.
@@ -67,7 +67,7 @@ class SyncFolderItemsRequest extends
 		return 1;
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name
@@ -77,7 +77,7 @@ class SyncFolderItemsRequest extends
 		return XmlElementNames.SyncFolderItems;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response XML element.
 	 * 
 	 * @return XML element name
@@ -87,7 +87,7 @@ class SyncFolderItemsRequest extends
 		return XmlElementNames.SyncFolderItemsResponse;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response message XML element.
 	 * 
 	 * @return XML element name
@@ -98,7 +98,7 @@ class SyncFolderItemsRequest extends
 	}
 
 	/**
-	 * * Validates request.
+	 * Validates request.
 	 * 
 	 * @throws Exception
 	 *             the exception
@@ -128,7 +128,7 @@ class SyncFolderItemsRequest extends
 	}
 
 	/**
-	 * * Writes XML elements.
+	 * Writes XML elements.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -162,7 +162,7 @@ class SyncFolderItemsRequest extends
 		}
 	}
 
-	/***
+	/**
 	 * Gets the request version.
 	 * 
 	 * @return Earliest Exchange version in which this request is supported.
@@ -173,7 +173,7 @@ class SyncFolderItemsRequest extends
 	}
 
 	/**
-	 * * Gets or sets the property set. <value>The property set.</value>
+	 * Gets or sets the property set. <value>The property set.</value>
 	 * 
 	 * @return the property set
 	 */
@@ -192,7 +192,7 @@ class SyncFolderItemsRequest extends
 	}
 
 	/**
-	 * * Gets the sync folder id. <value>The sync folder id.</value>
+	 * Gets the sync folder id. <value>The sync folder id.</value>
 	 * 
 	 * @return the sync folder id
 	 */
@@ -211,7 +211,7 @@ class SyncFolderItemsRequest extends
 	}
 
 	/**
-	 * * Gets the scope of the sync. <value>The scope of the
+	 * Gets the scope of the sync. <value>The scope of the
 	 * sync.</value>
 	 * 
 	 * @return the sync scope
@@ -231,7 +231,7 @@ class SyncFolderItemsRequest extends
 	}
 
 	/**
-	 * * Gets the state of the sync. <value>The state of the
+	 * Gets the state of the sync. <value>The state of the
 	 * sync.</value>
 	 * 
 	 * @return the sync state
@@ -251,7 +251,7 @@ class SyncFolderItemsRequest extends
 	}
 
 	/**
-	 * * Gets the list of ignored item ids. <value>The ignored item ids.</value>
+	 * Gets the list of ignored item ids. <value>The ignored item ids.</value>
 	 * 
 	 * @return the ignored item ids
 	 */
@@ -260,7 +260,7 @@ class SyncFolderItemsRequest extends
 	}
 
 	/**
-	 * * Gets the maximum number of changes returned by SyncFolderItems.
+	 * Gets the maximum number of changes returned by SyncFolderItems.
 	 * Values must be between 1 and 512. Default is 100.
 	 * 
 	 * @return the max changes returned

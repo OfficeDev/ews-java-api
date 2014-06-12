@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
 
-/***
+/**
  * Represents a meeting cancellation message.
  */
 class CancelMeetingMessageSchema extends ServiceObjectSchema {
@@ -26,11 +26,11 @@ class CancelMeetingMessageSchema extends ServiceObjectSchema {
 				};
 			});
 
-	/** * This must be declared after the property definitions. */
+	/** This must be declared after the property definitions. */
 	static final CancelMeetingMessageSchema Instance = 
 		new CancelMeetingMessageSchema();
 
-	/***
+	/**
 	 * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
 	 * SCHEMA ORDER (i.e. the same order as they are defined in types.xsd)
 	 */

@@ -159,13 +159,13 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 
 	}
 	
-	/***
+	/**
 	 * Disconnect events Occur when the hanging request is disconnected.
 	 */
 	private List<IHangingRequestDisconnectHandler> onDisconnectList = 
 		new ArrayList<IHangingRequestDisconnectHandler>();
 
-	/***
+	/**
 	 * Set event to happen when property disconnect.
 	 * 
 	 * @param disconnect
@@ -176,7 +176,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 		onDisconnectList.add(disconnect);
 	}
 
-	/***
+	/**
 	 * Remove the event from happening when property disconnect.
 	 * 
 	 * @param disconnect
@@ -188,13 +188,13 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 	}
 
 	/**
-	 * * Clears disconnect events list.
+	 * Clears disconnect events list.
 	 */
 	protected void clearDisconnectEvents() {
 		onDisconnectList.clear();
 	}
 
-	/***
+	/**
 	 * Initializes a new instance of the HangingServiceRequestBase class.
 	 * 
 	 * @param service
@@ -212,7 +212,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 		this.heartbeatFrequencyMilliseconds = heartbeatFrequency;
 	}
 
-	/***
+	/**
 	 * Exectures the request.
 	 */
 	protected void internalExecute() throws ServiceLocalException, Exception {
@@ -224,7 +224,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 		}
 	}
 
-	/***
+	/**
 	 * Parses the responses.
 	 * @param state
 	 * 			 The state.
@@ -335,7 +335,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 
 	private boolean isConnected;
 
-	/***
+	/**
 	 * Gets a value indicating whether this instance is connected.
 	 * 
 	 * @return true, if this instance is connected; otherwise, false
@@ -348,7 +348,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 		this.isConnected = value;
 	}
 
-	/***
+	/**
 	 * Disconnects the request.
 	 */
 	protected void disconnect() {
@@ -359,7 +359,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 		}
 	}
 
-	/***
+	/**
 	 * Disconnects the request with the specified reason and exception.
 	 * @param reason
 	 * 			  The reason.
@@ -374,7 +374,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 		}
 	}
 
-	/***
+	/**
 	 * Perform any bookkeeping needed when we connect
 	 */
 	private void internalOnConnect() throws XMLStreamException, 
@@ -410,7 +410,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 		}
 	}
 
-	/***
+	/**
 	 * Perform any bookkeeping needed when we disconnect (cleanly or forcefully)
 	 * @param reason
 	 * 			  The reason.
@@ -428,7 +428,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 		}
 	}
 
-	/***
+	/**
 	 * Reads any preamble data not part of the core response.
 	 * @param ewsXmlReader
 	 * 			  The EwsServiceXmlReader.

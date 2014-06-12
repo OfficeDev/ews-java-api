@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.Collection;
 
-/***
+/**
  * Represents an abstract CreateItem request.
  * 
  * 
@@ -28,7 +28,7 @@ TResponse extends ServiceResponse>
 	private SendInvitationsMode sendInvitationsMode = null;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param service
 	 *            The service.

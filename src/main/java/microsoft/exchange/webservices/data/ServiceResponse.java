@@ -37,13 +37,13 @@ public class ServiceResponse {
 		new ArrayList<PropertyDefinitionBase>();
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected ServiceResponse() {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param soapFaultDetails
 	 *            The SOAP fault details.
@@ -56,7 +56,7 @@ public class ServiceResponse {
 	}
 
 	/**
-	 * * Loads response from XML.
+	 * Loads response from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -132,7 +132,7 @@ public class ServiceResponse {
 	}
 
 	/**
-	 * * Parses the message XML.
+	 * Parses the message XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -179,13 +179,13 @@ public class ServiceResponse {
 
 
 
-	/***
+	/**
 	 * Called when the response has been loaded from XML.
 	 */
 	protected void loaded() {
 	}
 
-	/***
+	/**
 	 * Called after the response has been loaded from XML in order to map error
 	 * codes to "better" error messages.
 	 */
@@ -198,7 +198,7 @@ public class ServiceResponse {
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -244,7 +244,7 @@ public class ServiceResponse {
 		}
 	}
 	/**
-	 * * Throws a ServiceResponseException if this response has its Result
+	 * Throws a ServiceResponseException if this response has its Result
 	 * property set to Error.
 	 * 
 	 * @throws ServiceResponseException
@@ -255,7 +255,7 @@ public class ServiceResponse {
 	}
 
 	/**
-	 * * Internal method that throws a ServiceResponseException if this response
+	 * Internal method that throws a ServiceResponseException if this response
 	 * has its Result property set to Error.
 	 * 
 	 * @throws ServiceResponseException
@@ -267,7 +267,7 @@ public class ServiceResponse {
 		}
 	}
 
-	/***
+	/**
 	 * Gets a value indicating whether a batch request stopped processing before
 	 * the end.
 	 * 
@@ -279,7 +279,7 @@ public class ServiceResponse {
 		&& (this.errorCode == ServiceError.ErrorBatchProcessingStopped);
 	}
 
-	/***
+	/**
 	 * Gets the result associated with this response.
 	 * 
 	 * @return The result associated with this response.
@@ -288,7 +288,7 @@ public class ServiceResponse {
 		return result;
 	}
 
-	/***
+	/**
 	 * Gets the error code associated with this response.
 	 * 
 	 * @return The error code associated with this response.
@@ -298,7 +298,7 @@ public class ServiceResponse {
 	}
 
 	/**
-	 * * Gets a detailed error message associated with the response. If Result
+	 * Gets a detailed error message associated with the response. If Result
 	 * is set to Success, ErrorMessage returns null. ErrorMessage is localized
 	 * according to the PreferredCulture property of the ExchangeService object
 	 * that was used to call the method that generated the response.
@@ -309,7 +309,7 @@ public class ServiceResponse {
 		return errorMessage;
 	}
 
-	/***
+	/**
 	 * Sets a detailed error message associated with the response.
 	 * 
 	 * @param errorMessage
@@ -319,7 +319,7 @@ public class ServiceResponse {
 		this.errorMessage = errorMessage;
 	}
 
-	/***
+	/**
 	 * Gets error details associated with the response. If Result is set to
 	 * Success, ErrorDetailsDictionary returns null. Error details will only
 	 * available for some error codes. For example, when error code is
@@ -333,7 +333,7 @@ public class ServiceResponse {
 	}
 
 	/**
-	 * * Gets information about property errors associated with the response. If
+	 * Gets information about property errors associated with the response. If
 	 * Result is set to Success, ErrorProperties returns null. ErrorProperties
 	 * is only available for some error codes. For example, when the error code
 	 * is ErrorInvalidPropertyForOperation, ErrorProperties will contain the

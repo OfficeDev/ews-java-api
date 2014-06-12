@@ -59,7 +59,7 @@ DictionaryEntryProperty<ImAddressKey> {
 	}
 
 	/**
-	 * * Reads the text value from XML.
+	 * Reads the text value from XML.
 	 * 
 	 * @param reader
 	 *            accepts EwsServiceXmlReader

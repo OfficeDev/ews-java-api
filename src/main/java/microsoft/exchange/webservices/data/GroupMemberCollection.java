@@ -11,13 +11,13 @@ import java.util.List;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents a collection of members of GroupMember type.
  */
 public final class GroupMemberCollection extends
 ComplexPropertyCollection<GroupMember> implements
 ICustomXmlUpdateSerializer {
-	/***
+	/**
 	 * If the collection is cleared, then store PDL members collection is
 	 * updated with "SetItemField". If the collection is not cleared, then store
 	 * PDL members collection is updated with "AppendToItemField".
@@ -25,14 +25,14 @@ ICustomXmlUpdateSerializer {
 	private boolean collectionIsCleared = false;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	public GroupMemberCollection() {
 		super();
 	}
 
 	/**
-	 * * Retrieves the XML element name corresponding to the provided
+	 * Retrieves the XML element name corresponding to the provided
 	 * GroupMember object.
 	 * 
 	 * @param member
@@ -67,7 +67,7 @@ ICustomXmlUpdateSerializer {
 		return null;
 	}
 
-	/***
+	/**
 	 *Clears the collection.
 	 */
 	public void clear() {
@@ -77,7 +77,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a member to the collection.
+	 * Adds a member to the collection.
 	 * 
 	 * @param member
 	 *            the member
@@ -96,7 +96,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds multiple members to the collection.
+	 * Adds multiple members to the collection.
 	 * 
 	 * @param members
 	 *            the members
@@ -112,7 +112,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a member linked to a Contact Group.
+	 * Adds a member linked to a Contact Group.
 	 * 
 	 * @param contactGroupId
 	 *            the contact group id
@@ -124,7 +124,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a member linked to a specific contact?s e-mail address.
+	 * Adds a member linked to a specific contact?s e-mail address.
 	 * 
 	 * @param contactId
 	 *            the contact id
@@ -139,7 +139,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a member linked to a contact?s first available e-mail address.
+	 * Adds a member linked to a contact?s first available e-mail address.
 	 * 
 	 * @param contactId
 	 *            the contact id
@@ -151,7 +151,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a member linked to an Active Directory user.
+	 * Adds a member linked to an Active Directory user.
 	 * 
 	 * @param smtpAddress
 	 *            the smtp address
@@ -167,7 +167,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a member linked to an Active Directory user.
+	 * Adds a member linked to an Active Directory user.
 	 * 
 	 * @param address
 	 *            the address
@@ -184,7 +184,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a member linked to an Active Directory contact.
+	 * Adds a member linked to an Active Directory contact.
 	 * 
 	 * @param smtpAddress
 	 *            the smtp address
@@ -200,7 +200,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a member linked to an Active Directory contact.
+	 * Adds a member linked to an Active Directory contact.
 	 * 
 	 * @param address
 	 *            the address
@@ -217,7 +217,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a member linked to a Public Group.
+	 * Adds a member linked to a Public Group.
 	 * 
 	 * @param smtpAddress
 	 *            the smtp address
@@ -233,7 +233,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a member linked to a mail-enabled Public Folder.
+	 * Adds a member linked to a mail-enabled Public Folder.
 	 * 
 	 * @param smtpAddress
 	 *            the smtp address
@@ -249,7 +249,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a one-off member.
+	 * Adds a one-off member.
 	 * 
 	 * @param displayName
 	 *            the display name
@@ -267,7 +267,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a one-off member.
+	 * Adds a one-off member.
 	 * 
 	 * @param displayName
 	 *            the display name
@@ -283,7 +283,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Adds a member that is linked to a specific e-mail address of a contact.
+	 * Adds a member that is linked to a specific e-mail address of a contact.
 	 * 
 	 * @param contact
 	 *            the contact
@@ -298,7 +298,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Removes a member at the specified index.
+	 * Removes a member at the specified index.
 	 * 
 	 * @param index
 	 *            the index
@@ -314,7 +314,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Removes a member from the collection.
+	 * Removes a member from the collection.
 	 * 
 	 * @param member
 	 *            the member
@@ -326,7 +326,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Writes the update to XML.
+	 * Writes the update to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -373,7 +373,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Writes the deletion update to XML.
+	 * Writes the deletion update to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -387,7 +387,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Creates a GroupMember object from an XML element name.
+	 * Creates a GroupMember object from an XML element name.
 	 * 
 	 * @param xmlElementName
 	 *            the xml element name
@@ -397,7 +397,7 @@ ICustomXmlUpdateSerializer {
 		return new GroupMember();
 	}
 
-	/***
+	/**
 	 *Clears the change log.
 	 */
 	protected void clearChangeLog() {
@@ -406,7 +406,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Delete the whole members collection.
+	 * Delete the whole members collection.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -424,7 +424,7 @@ ICustomXmlUpdateSerializer {
 	}
 
 	/**
-	 * * Generate XML to delete individual members.
+	 * Generate XML to delete individual members.
 	 * 
 	 * @param writer
 	 *            the writer

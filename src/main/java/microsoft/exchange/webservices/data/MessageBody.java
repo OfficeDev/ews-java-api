@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents the body of a message.
  * 
  */
@@ -21,14 +21,14 @@ public final class MessageBody extends ComplexProperty {
 	private String text;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	public MessageBody() {
 
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param bodyType
 	 *            The type of the message body's text.
@@ -42,7 +42,7 @@ public final class MessageBody extends ComplexProperty {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param text
 	 *            The text of the message body, assumed to be HTML.
@@ -51,7 +51,7 @@ public final class MessageBody extends ComplexProperty {
 		this(BodyType.HTML, text);
 	}
 
-	/***
+	/**
 	 * Defines an implicit conversation between a string and MessageBody.
 	 * 
 	 * @param textBody
@@ -63,7 +63,7 @@ public final class MessageBody extends ComplexProperty {
 	}
 
 	/**
-	 * * Defines an implicit conversion of MessageBody into a string.
+	 * Defines an implicit conversion of MessageBody into a string.
 	 * 
 	 * @param messageBody
 	 *            The MessageBody to convert to a string.
@@ -78,7 +78,7 @@ public final class MessageBody extends ComplexProperty {
 	}
 
 	/**
-	 * * Reads attributes from XML.
+	 * Reads attributes from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -92,7 +92,7 @@ public final class MessageBody extends ComplexProperty {
 	}
 
 	/**
-	 * * Reads text value from XML.
+	 * Reads text value from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -108,7 +108,7 @@ public final class MessageBody extends ComplexProperty {
 	}
 
 	/**
-	 * * Writes attributes to XML.
+	 * Writes attributes to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -123,7 +123,7 @@ public final class MessageBody extends ComplexProperty {
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -138,7 +138,7 @@ public final class MessageBody extends ComplexProperty {
 		}
 	}
 
-	/***
+	/**
 	 * Gets the type of the message body's text.
 	 * 
 	 * @return BodyType enum
@@ -147,7 +147,7 @@ public final class MessageBody extends ComplexProperty {
 		return this.bodyType;
 	}
 
-	/***
+	/**
 	 * Sets the type of the message body's text.
 	 * 
 	 * @param bodyType
@@ -160,7 +160,7 @@ public final class MessageBody extends ComplexProperty {
 		}
 	}
 
-	/***
+	/**
 	 * Gets the text of the message body.
 	 * 
 	 * @return message body text
@@ -169,7 +169,7 @@ public final class MessageBody extends ComplexProperty {
 		return this.text;
 	}
 
-	/***
+	/**
 	 * Sets the text of the message body.
 	 * 
 	 * @param text

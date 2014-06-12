@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents an extended property.
  * 
  */
@@ -29,7 +29,7 @@ public final class ExtendedProperty extends ComplexProperty {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param propertyDefinition
 	 *            The definition of the extended property.
@@ -44,7 +44,7 @@ public final class ExtendedProperty extends ComplexProperty {
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -120,7 +120,7 @@ public final class ExtendedProperty extends ComplexProperty {
 		}
 	}
 
-	/***
+	/**
 	 * Gets the definition of the extended property.
 	 * 
 	 * @return The definition of the extended property.
@@ -130,7 +130,7 @@ public final class ExtendedProperty extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets the value of the extended property.
+	 * Gets the value of the extended property.
 	 * 
 	 * @return the value
 	 */
@@ -139,7 +139,7 @@ public final class ExtendedProperty extends ComplexProperty {
 	}
 
 	/**
-	 * * Sets the value of the extended property.
+	 * Sets the value of the extended property.
 	 * 
 	 * @param val
 	 *            value of the extended property

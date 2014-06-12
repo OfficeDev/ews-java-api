@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/***
+/**
  * Represents the response to a delegate managent-related operation.
  */
 class DelegateManagementResponse extends ServiceResponse {
@@ -25,7 +25,7 @@ class DelegateManagementResponse extends ServiceResponse {
 	private Collection<DelegateUserResponse> delegateUserResponses;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param readDelegateUsers
 	 *            the read delegate users
@@ -40,7 +40,7 @@ class DelegateManagementResponse extends ServiceResponse {
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -88,7 +88,7 @@ class DelegateManagementResponse extends ServiceResponse {
 	}
 
 	/**
-	 * * Gets a collection of responses for each of the delegate users concerned
+	 * Gets a collection of responses for each of the delegate users concerned
 	 * by the operation.
 	 * 
 	 * @return the delegate user responses

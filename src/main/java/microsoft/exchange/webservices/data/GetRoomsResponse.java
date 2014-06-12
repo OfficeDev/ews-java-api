@@ -9,7 +9,7 @@ package microsoft.exchange.webservices.data;
 import java.util.ArrayList;
 import java.util.Collection;
 
-/***
+/**
  * Represents the response to a GetRooms operation.
  */
 final class GetRoomsResponse extends ServiceResponse {
@@ -18,14 +18,14 @@ final class GetRoomsResponse extends ServiceResponse {
 	private Collection<EmailAddress> rooms = new ArrayList<EmailAddress>();
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 */
 	protected GetRoomsResponse() {
 		super();
 	}
 
 	/**
-	 * * Gets collection for all rooms returned.
+	 * Gets collection for all rooms returned.
 	 * 
 	 * @return the rooms
 	 */
@@ -34,7 +34,7 @@ final class GetRoomsResponse extends ServiceResponse {
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            the reader

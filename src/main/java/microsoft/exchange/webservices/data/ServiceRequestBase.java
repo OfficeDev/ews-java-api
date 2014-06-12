@@ -44,21 +44,21 @@ abstract class ServiceRequestBase {
 
 	// Methods for subclasses to override
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name
 	 */
 	protected abstract String getXmlElementName();
 
-	/***
+	/**
 	 * Gets the name of the response XML element.
 	 * 
 	 * @return XML element name
 	 */
 	protected abstract String getResponseXmlElementName();
 
-	/***
+	/**
 	 * Gets the minimum server version required to process this request.
 	 * 
 	 * @return Exchange server version.
@@ -66,7 +66,7 @@ abstract class ServiceRequestBase {
 	protected abstract ExchangeVersion getMinimumRequiredServerVersion();
 
 	/**
-	 * * Writes XML elements.
+	 * Writes XML elements.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -91,7 +91,7 @@ abstract class ServiceRequestBase {
 			IllegalAccessException, ServiceValidationException, Exception;
 
 	/**
-	 * * Parses the response.
+	 * Parses the response.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -120,7 +120,7 @@ abstract class ServiceRequestBase {
 			IndexOutOfBoundsException, Exception;
 
 	/**
-	 * * Validate request.
+	 * Validate request.
 	 * 
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -132,7 +132,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Writes XML body.
+	 * Writes XML body.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -150,7 +150,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Writes XML attributes. Subclass will override if it has XML attributes.
+	 * Writes XML attributes. Subclass will override if it has XML attributes.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -162,7 +162,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param service
 	 *            The service.
@@ -175,7 +175,7 @@ abstract class ServiceRequestBase {
 		this.throwIfNotSupportedByRequestedServerVersion();
 	}
 
-	/***
+	/**
 	 * Gets the service.
 	 * 
 	 * @return The service.
@@ -185,7 +185,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Throw exception if request is not supported in requested server
+	 * Throw exception if request is not supported in requested server
 	 * version.
 	 * 
 	 * @throws ServiceVersionException
@@ -205,7 +205,7 @@ abstract class ServiceRequestBase {
 	// HttpWebRequest-based implementation
 
 	/**
-	 * * Writes XML.
+	 * Writes XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -300,7 +300,7 @@ abstract class ServiceRequestBase {
 		writer.flush();
 	}
 
-	/***
+	/**
 	 * Gets st ring representation of requested server version. In order to
 	 * support E12 RTM servers, ExchangeService has another flag indicating that
 	 * we should use "Exchange2007" as the server version string rather than
@@ -317,7 +317,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Send request and get response.
+	 * Send request and get response.
 	 * 
 	 * @return HttpWebRequest object from which response stream can be read.
 	 * @throws Exception
@@ -386,7 +386,7 @@ abstract class ServiceRequestBase {
 	 *            The request
 	 * @throws java.util.concurrent.ExecutionException
 	 * @throws InterruptedException
-	 *@returns The Request stream
+	 * @return The Request stream
 	 */
 	private ByteArrayOutputStream getWebRequestStream(Future request)
 			throws EWSHttpException, InterruptedException, ExecutionException {
@@ -412,7 +412,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Gets the response stream (may be wrapped with GZip/Deflate stream to
+	 * Gets the response stream (may be wrapped with GZip/Deflate stream to
 	 * decompress content).
 	 * 
 	 * @param request
@@ -444,7 +444,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Traces the response.
+	 * Traces the response.
 	 * 
 	 * @param request
 	 *            The response.
@@ -508,7 +508,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Reads the response.
+	 * Reads the response.
 	 * 
 	 * @param ewsXmlReader
 	 *            The XML reader.
@@ -542,7 +542,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Reads any preamble data not part of the core response.
+	 * Reads any preamble data not part of the core response.
 	 * 
 	 * @param ewsXmlReader
 	 *            The EwsServiceXmlReader.
@@ -554,7 +554,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Read SOAP header and extract server version.
+	 * Read SOAP header and extract server version.
 	 * 
 	 * @param reader
 	 *            EwsServiceXmlReader
@@ -586,7 +586,7 @@ abstract class ServiceRequestBase {
 	 *            The specified HttpWebRequest
 	 * @param asyncResult
 	 *            An IAsyncResult that references the asynchronous request.
-	 * @returns An HttpWebResponse instance
+	 * @return An HttpWebResponse instance
 	 */
 	protected HttpWebRequest endGetEwsHttpWebResponse(
 			OutParam<HttpWebRequest> request, AsyncRequestResult asyncResult)
@@ -625,7 +625,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Processes the web exception.
+	 * Processes the web exception.
 	 * 
 	 * @param webException
 	 *            The web exception.
@@ -728,7 +728,7 @@ abstract class ServiceRequestBase {
 
 	}
 
-	/***
+	/**
 	 * Reads the SOAP fault.
 	 * 
 	 * @param reader
@@ -810,7 +810,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Validates request parameters, and emits the request to the server.
+	 * Validates request parameters, and emits the request to the server.
 	 * 
 	 * @param request
 	 *            The request.
@@ -829,7 +829,7 @@ abstract class ServiceRequestBase {
 	 * <summary> Builds the HttpWebRequest object for current service request
 	 * with exception handling.
 	 * 
-	 * @returns An IEwsHttpWebRequest instance
+	 * @return An IEwsHttpWebRequest instance
 	 */
 	protected OutParam<HttpWebRequest> buildEwsHttpWebRequest()
 			throws Exception {
@@ -916,9 +916,8 @@ abstract class ServiceRequestBase {
 	 * Gets the IEwsHttpWebRequest object from the specifiedHttpWebRequest
 	 * object with exception handling
 	 * 
-	 *@param request
-	 *            The specified HttpWebRequest
-	 *@returns An HttpWebResponse instance
+	 * @param outparam The specified HttpWebRequest
+	 * @return An HttpWebResponse instance
 	 */
 	protected HttpWebRequest getEwsHttpWebResponse(
 			OutParam<HttpWebRequest> outparam) throws Exception {
@@ -949,7 +948,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Checks whether input string is null or empty.
+	 * Checks whether input string is null or empty.
 	 * 
 	 * @param str
 	 *            The input string.
@@ -960,7 +959,7 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * * Try to read the XML declaration. If it's not there, the server didn't
+	 * Try to read the XML declaration. If it's not there, the server didn't
 	 * return XML.
 	 * 
 	 * @param reader

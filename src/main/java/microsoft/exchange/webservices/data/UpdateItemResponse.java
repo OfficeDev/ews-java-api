@@ -14,7 +14,7 @@ import javax.xml.stream.XMLStreamException;
 public final class UpdateItemResponse extends ServiceResponse implements
 		IGetObjectInstanceDelegate {
 
-	/***
+	/**
 	 * Represents the response to an individual item update operation.
 	 */
 	private Item item;
@@ -26,7 +26,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
 	private int conflictCount;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param item
 	 *            the item
@@ -39,7 +39,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -113,7 +113,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
 		return this.getObjectInstance(service, xmlElementName);
 	}
 
-	/***
+	/**
 	 * Clears the change log of the created folder if the creation succeeded.
 	 */
 	@Override
@@ -124,7 +124,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
 	}
 
 	/**
-	 * * Gets Item instance.
+	 * Gets Item instance.
 	 * 
 	 * @param service
 	 *            the service
@@ -142,7 +142,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
 	}
 
 	/**
-	 * * Gets the item that was returned by the update operation. ReturnedItem
+	 * Gets the item that was returned by the update operation. ReturnedItem
 	 * is set only when a recurring Task is marked as complete or when its
 	 * recurrence pattern changes.
 	 * 
@@ -153,7 +153,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
 	}
 
 	/**
-	 * * Gets the number of property conflicts that were resolved during the
+	 * Gets the number of property conflicts that were resolved during the
 	 * update operation.
 	 * 
 	 * @return the conflict count

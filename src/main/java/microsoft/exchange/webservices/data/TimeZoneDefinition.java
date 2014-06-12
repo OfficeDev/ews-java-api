@@ -391,7 +391,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
 		return this.transitionGroups;
 	}
 
-	/***
+	/**
 	 * Writes to XML.
 	 * 
 	 * @param writer

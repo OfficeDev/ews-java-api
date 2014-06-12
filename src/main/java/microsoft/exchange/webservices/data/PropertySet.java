@@ -28,7 +28,7 @@ public final class PropertySet implements ISelfValidate,
 	public static final PropertySet IdOnly = PropertySet.
 			createReadonlyPropertySet(BasePropertySet.IdOnly);
 
-	/***
+	/**
 	 * Returns a predefined property set that only includes the Id property.
 	 * 
 	 * @return Returns a predefined property set that only includes the Id
@@ -42,7 +42,7 @@ public final class PropertySet implements ISelfValidate,
 	public static final PropertySet FirstClassProperties = PropertySet.
 			createReadonlyPropertySet(BasePropertySet.FirstClassProperties);
 
-	/***
+	/**
 	 * Returns a predefined property set that includes the first class
 	 * properties of an item or folder.
 	 * 
@@ -53,7 +53,7 @@ public final class PropertySet implements ISelfValidate,
 		return FirstClassProperties;
 	}
 
-	/***
+	/**
 	 * Maps BasePropertySet values to EWS's BaseShape values.
 	 */
 	private static LazyMember<Map<BasePropertySet, String>> defaultPropertySetMap = 
@@ -71,24 +71,24 @@ public final class PropertySet implements ISelfValidate,
 					return result;
 				}
 			});
-	/***
+	/**
 	 * The base property set this property set is based upon.
 	 */
 	private BasePropertySet basePropertySet;
 
-	/***
+	/**
 	 * The list of additional properties included in this property set.
 	 */
 	private List<PropertyDefinitionBase> additionalProperties = new 
 			ArrayList<PropertyDefinitionBase>();
 
-	/***
+	/**
 	 * The requested body type for get and find operations. If null, the
 	 * "best body" is returned.
 	 */
 	private BodyType requestedBodyType;
 
-	/***
+	/**
 	 * Value indicating whether or not the server should filter HTML content.
 	 */
 	private Boolean filterHtml;
@@ -99,12 +99,12 @@ public final class PropertySet implements ISelfValidate,
 	 */
 	private Boolean convertHtmlCodePageToUTF8;
 	
-	/***
+	/**
 	 * Value indicating whether or not this PropertySet can be modified.
 	 */
 	private boolean isReadOnly;
 
-	/***
+	/**
 	 * Initializes a new instance of PropertySet.
 	 * 
 	 * @param basePropertySet
@@ -125,7 +125,7 @@ public final class PropertySet implements ISelfValidate,
 		}
 	}
 
-	/***
+	/**
 	 * Initializes a new instance of PropertySet.
 	 * 
 	 * @param basePropertySet
@@ -146,7 +146,7 @@ public final class PropertySet implements ISelfValidate,
 		}
 	}
 
-	/***
+	/**
 	 * Initializes a new instance of PropertySet based upon
 	 * BasePropertySet.IdOnly.
 	 */
@@ -154,7 +154,7 @@ public final class PropertySet implements ISelfValidate,
 		this.basePropertySet = BasePropertySet.IdOnly;
 	}
 
-	/***
+	/**
 	 * Initializes a new instance of PropertySet.
 	 * 
 	 * @param basePropertySet
@@ -164,7 +164,7 @@ public final class PropertySet implements ISelfValidate,
 		this.basePropertySet = basePropertySet;
 	}
 
-	/***
+	/**
 	 * Initializes a new instance of PropertySet based upon
 	 * BasePropertySet.IdOnly.
 	 * 
@@ -178,7 +178,7 @@ public final class PropertySet implements ISelfValidate,
 		this(BasePropertySet.IdOnly, additionalProperties);
 	}
 
-	/***
+	/**
 	 * Initializes a new instance of PropertySet based upon
 	 * BasePropertySet.IdOnly.
 	 * 
@@ -192,7 +192,7 @@ public final class PropertySet implements ISelfValidate,
 		this(BasePropertySet.IdOnly, additionalProperties);
 	}
 
-	/***
+	/**
 	 * Implements an implicit conversion between 
 	 * PropertySet and BasePropertySet.	
 	 * @param basePropertySet The BasePropertySet value to convert from.
@@ -205,7 +205,7 @@ public final class PropertySet implements ISelfValidate,
 
     
 	/**
-	 * * Adds the specified property to the property set.
+	 * Adds the specified property to the property set.
 	 * 
 	 * @param property
 	 *            The property to add.
@@ -222,7 +222,7 @@ public final class PropertySet implements ISelfValidate,
 	}
 
 	/**
-	 * * Adds the specified properties to the property set.
+	 * Adds the specified properties to the property set.
 	 * 
 	 * @param properties
 	 *            The properties to add.
@@ -241,7 +241,7 @@ public final class PropertySet implements ISelfValidate,
 		}
 	}
 
-	/***
+	/**
 	 * Remove all explicitly added properties from the property set.
 	 */
 	public void clear() {
@@ -249,7 +249,7 @@ public final class PropertySet implements ISelfValidate,
 		this.additionalProperties.clear();
 	}
 
-	/***
+	/**
 	 * Creates a read-only PropertySet.
 	 * 
 	 * @param basePropertySet
@@ -263,7 +263,7 @@ public final class PropertySet implements ISelfValidate,
 		return propertySet;
 	}
 
-	/***
+	/**
 	 * Throws if readonly property set.
 	 */
 	private void throwIfReadonly() {
@@ -273,7 +273,7 @@ public final class PropertySet implements ISelfValidate,
 		}
 	}
 
-	/***
+	/**
 	 * Determines whether the specified property has been explicitly added to
 	 * this property set using the Add or AddRange methods.
 	 * 
@@ -286,7 +286,7 @@ public final class PropertySet implements ISelfValidate,
 		return this.additionalProperties.contains(property);
 	}
 
-	/***
+	/**
 	 * Removes the specified property from the set.
 	 * 
 	 * @param property
@@ -299,7 +299,7 @@ public final class PropertySet implements ISelfValidate,
 	}
 
 	/**
-	 * * Gets the base property set, the property set is based upon.
+	 * Gets the base property set, the property set is based upon.
 	 * 
 	 * @return the base property set
 	 */
@@ -308,7 +308,7 @@ public final class PropertySet implements ISelfValidate,
 	}
 
 	/**
-	 * *Maps BasePropertySet values to EWS's BaseShape values.
+	 *Maps BasePropertySet values to EWS's BaseShape values.
 	 * 
 	 * @return the base property set
 	 */
@@ -316,7 +316,7 @@ public final class PropertySet implements ISelfValidate,
 	 return PropertySet.defaultPropertySetMap;
 	
 	}
-	/***
+	/**
 	 * Sets the base property set, the property set is based upon.
 	 * 
 	 * @param basePropertySet
@@ -328,7 +328,7 @@ public final class PropertySet implements ISelfValidate,
 	}
 
 	/**
-	 * * Gets type of body that should be loaded on items. If RequestedBodyType
+	 * Gets type of body that should be loaded on items. If RequestedBodyType
 	 * is null, body is returned as HTML if available, plain text otherwise.
 	 * 
 	 * @return the requested body type
@@ -337,7 +337,7 @@ public final class PropertySet implements ISelfValidate,
 		return this.requestedBodyType;
 	}
 
-	/***
+	/**
 	 * Sets type of body that should be loaded on items. If RequestedBodyType is
 	 * null, body is returned as HTML if available, plain text otherwise.
 	 * 
@@ -350,7 +350,7 @@ public final class PropertySet implements ISelfValidate,
 	}
 
 	/**
-	 * * Gets the number of explicitly added properties in this set.
+	 * Gets the number of explicitly added properties in this set.
 	 * 
 	 * @return the count
 	 */
@@ -359,7 +359,7 @@ public final class PropertySet implements ISelfValidate,
 	}
 
 	/**
-	 * * Gets value indicating whether or not to filter potentially unsafe HTML
+	 * Gets value indicating whether or not to filter potentially unsafe HTML
 	 * content from message bodies.
 	 * 
 	 * @return the filter html content
@@ -368,7 +368,7 @@ public final class PropertySet implements ISelfValidate,
 		return this.filterHtml;
 	}
 
-	/***
+	/**
 	 * Sets value indicating whether or not to filter potentially unsafe HTML
 	 * content from message bodies.
 	 * 
@@ -404,7 +404,7 @@ public final class PropertySet implements ISelfValidate,
 	
 	
 	/**
-	 * * Gets the PropertyDefinitionBase at the specified index.
+	 * Gets the PropertyDefinitionBase at the specified index.
 	 * 
 	 * @param index
 	 *            Index.
@@ -427,7 +427,7 @@ public final class PropertySet implements ISelfValidate,
 	}
 
 	/**
-	 * * Writes additonal properties to XML.
+	 * Writes additonal properties to XML.
 	 * 
 	 * @param writer
 	 *            The writer to write to.
@@ -455,7 +455,7 @@ public final class PropertySet implements ISelfValidate,
 	}
 
 	/**
-	 * * Validates this property set.
+	 * Validates this property set.
 	 * 
 	 * @throws ServiceValidationException
 	 *             the service validation exception
@@ -470,7 +470,7 @@ public final class PropertySet implements ISelfValidate,
 	}
 
 	/**
-	 * * Validates this property set instance for request to ensure that: 1.
+	 * Validates this property set instance for request to ensure that: 1.
 	 * Properties are valid for the request server version 2. If only summary
 	 * properties are legal for this request (e.g. FindItem) then only summary
 	 * properties were specified.
@@ -537,7 +537,7 @@ public final class PropertySet implements ISelfValidate,
 	}
 	
 	/**
-	 * * Writes the property set to XML.
+	 * Writes the property set to XML.
 	 * 
 	 * @param writer
 	 *            The writer to write to.

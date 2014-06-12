@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="ContactSource.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 

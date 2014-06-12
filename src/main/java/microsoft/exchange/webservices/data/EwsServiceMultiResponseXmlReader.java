@@ -14,7 +14,7 @@ import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents an xml reader used by the ExchangeService to parse multi-response streams, 
  * such as GetStreamingEvents.  
  * 

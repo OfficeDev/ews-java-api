@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="ComplexPropertyDefinitionBase.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 
@@ -15,7 +15,7 @@ import java.util.EnumSet;
 abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -30,7 +30,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -45,7 +45,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -61,7 +61,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
 		super(xmlElementName, uri, flags, version);
 	}
 
-	/***
+	/**
 	 * Creates the property instance.
 	 * 
 	 * @param owner
@@ -72,7 +72,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
 			ServiceObject owner);
 
 	/**
-	 * * Internals the load from XML.
+	 * Internals the load from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -136,7 +136,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
     
     }
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -159,7 +159,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
 	}
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            The writer.

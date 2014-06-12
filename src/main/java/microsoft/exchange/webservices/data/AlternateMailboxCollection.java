@@ -9,7 +9,7 @@ package microsoft.exchange.webservices.data;
 import java.util.ArrayList;
 import java.util.List;
 
-/***
+/**
  * Represents a user setting that is a collection of alternate mailboxes.
  * 
  */

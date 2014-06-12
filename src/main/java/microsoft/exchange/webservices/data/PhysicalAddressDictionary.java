@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a dictionary of physical addresses.
  * 
  */
@@ -14,7 +14,7 @@ package microsoft.exchange.webservices.data;
 public final class PhysicalAddressDictionary extends
 		DictionaryProperty<PhysicalAddressKey, PhysicalAddressEntry> {
 
-	/***
+	/**
 	 * Creates instance of dictionary entry.
 	 * 
 	 * @return New instance.
@@ -25,7 +25,7 @@ public final class PhysicalAddressDictionary extends
 	}
 
 	/**
-	 * * Gets  the physical address at the specified key.
+	 * Gets  the physical address at the specified key.
 	 * 
 	 * @param key
 	 *            the key
@@ -54,7 +54,7 @@ public final class PhysicalAddressDictionary extends
 	}
 
 	/**
-	 * * Tries to get the physical address associated with the specified key.
+	 * Tries to get the physical address associated with the specified key.
 	 * 
 	 * @param key
 	 *            the key

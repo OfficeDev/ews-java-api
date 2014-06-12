@@ -7,21 +7,21 @@
 
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a collection of deleted occurrence objects.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class DeletedOccurrenceInfoCollection extends
 		ComplexPropertyCollection<DeletedOccurrenceInfo> {
 
-	/***
+	/**
 	 * Initializes a new instance of the OccurrenceInfoCollection class.
 	 */
 	protected DeletedOccurrenceInfoCollection() {
 	}
 
 	/**
-	 * * Creates the complex property.
+	 * Creates the complex property.
 	 * 
 	 * @param xmlElementName
 	 *            the xml element name
@@ -38,7 +38,7 @@ public final class DeletedOccurrenceInfoCollection extends
 	}
 
 	/**
-	 * * Gets the name of the collection item XML element.
+	 * Gets the name of the collection item XML element.
 	 * 
 	 * @param complexProperty
 	 *            the complex property

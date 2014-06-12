@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
 
-/***
+/**
  * Represents effective rights property definition.
  */
 final class EffectiveRightsPropertyDefinition extends PropertyDefinition {

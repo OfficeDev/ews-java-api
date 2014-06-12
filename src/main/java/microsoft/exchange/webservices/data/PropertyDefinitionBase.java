@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="PropertyDefinitionBase.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 
@@ -8,20 +8,20 @@ package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents the base class for all property definitions.
  */
 public abstract class PropertyDefinitionBase {
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected PropertyDefinitionBase() {
 
 	}
 
 	/**
-	 * * Tries to load from XML.
+	 * Tries to load from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -55,7 +55,7 @@ public abstract class PropertyDefinitionBase {
 
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name.
@@ -63,7 +63,7 @@ public abstract class PropertyDefinitionBase {
 	protected abstract String getXmlElementName();
 
 	/**
-	 * * Writes the attributes to XML.
+	 * Writes the attributes to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -73,27 +73,27 @@ public abstract class PropertyDefinitionBase {
 	protected abstract void writeAttributesToXml(EwsServiceXmlWriter writer)
 			throws ServiceXmlSerializationException;
 
-	/***
+	/**
 	 * Gets the minimum Exchange version that supports this property.
 	 * 
 	 * @return The version.
 	 */
 	public abstract ExchangeVersion getVersion();
 
-	/***
+	/**
 	 * Gets the property definition's printable name.
 	 * 
 	 * @return The property definition's printable name.
 	 */
 	protected abstract String getPrintableName();
 	
-	/***
+	/**
 	 * Gets the type of the property.
 	 */
 	public abstract Class getType();
 	
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -115,7 +115,7 @@ public abstract class PropertyDefinitionBase {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	/***
+	/**
 	 * Returns a string that represents the current object.
 	 * @return A string that represents the current object. 
 	 */

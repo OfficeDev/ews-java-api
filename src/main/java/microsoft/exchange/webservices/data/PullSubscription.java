@@ -12,7 +12,6 @@ package microsoft.exchange.webservices.data;
  * 
  */
 public final class PullSubscription extends SubscriptionBase {
-
 	/** The more events available. */
 	private boolean moreEventsAvailable;
 
@@ -54,7 +53,7 @@ public final class PullSubscription extends SubscriptionBase {
 	 * @param state 
 	 * 				An object that contains state information for this request
 	 * @throws Exception 
-	 * @returns An IAsyncResult that references the asynchronous request
+	 * @return An IAsyncResult that references the asynchronous request
 	 */
   public IAsyncResult beginGetEvents(AsyncCallback callback, Object state) throws Exception
     {
@@ -63,13 +62,12 @@ public final class PullSubscription extends SubscriptionBase {
 
     /**
 	 * Ends an asynchronous request to obtain a collection of events that occurred on the subscribed
-	 * folders since the point in time defined by the Watermark property.When EndGetEvents succeeds, Watermark is updated.
-	 * @param asyncResult
-	 * 					 An IAsyncResult that references the asynchronous request.
-	 * @param state 
-	 * 				An object that contains state information for this request
-     * @throws Exception 
-	 * @returns Returns a collection of events that occurred since the last watermark.
+	 * folders since the point in time defined by the Watermark property. When EndGetEvents succeeds,
+     * Watermark is updated.
+	 *
+     * @param asyncResult An IAsyncResult that references the asynchronous request.
+     * @return Returns a collection of events that occurred since the last watermark.
+     * @throws Exception
 	 */
     public GetEventsResults endGetEvents(IAsyncResult asyncResult) throws Exception
     {
@@ -91,7 +89,6 @@ public final class PullSubscription extends SubscriptionBase {
 		getService().unsubscribe(getId());
 	}
 
-	
 	 /**
 	 * Begins an asynchronous request to unsubscribe from the pull subscription. 
 	 * @param callback
@@ -99,7 +96,7 @@ public final class PullSubscription extends SubscriptionBase {
 	 * @param state 
 	 * 				An object that contains state information for this request
 	 * @throws Exception 
-	 * @returns An IAsyncResult that references the asynchronous request
+	 * @return An IAsyncResult that references the asynchronous request
 	 */
     public IAsyncResult beginUnsubscribe(AsyncCallback callback, Object state) throws Exception
     {
@@ -107,10 +104,11 @@ public final class PullSubscription extends SubscriptionBase {
     }
 
     /**
-    * Ends an asynchronous request to unsubscribe from the pull subscription. 
-    *@param asyncResult An IAsyncResult that references the asynchronous request.
+     * Ends an asynchronous request to unsubscribe from the pull subscription.
+     *
+     * @param asyncResult An IAsyncResult that references the asynchronous request.
      * @throws Exception 
-    */
+     */
     public void endUnsubscribe(IAsyncResult asyncResult) throws Exception
     {
         this.getService().endUnsubscribe(asyncResult);
@@ -125,5 +123,4 @@ public final class PullSubscription extends SubscriptionBase {
 	public boolean isMoreEventsAvailable() {
 		return moreEventsAvailable;
 	}
-
 }

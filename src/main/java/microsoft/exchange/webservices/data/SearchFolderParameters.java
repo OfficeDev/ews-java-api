@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents the parameters associated with a search folder.
  * 
  */
@@ -22,7 +22,7 @@ public final class SearchFolderParameters extends ComplexProperty implements
 	/** The search filter. */
 	private SearchFilter searchFilter;
 
-	/***
+	/**
 	 * Initializes a new instance of the SearchFolderParameters class.
 	 */
 	protected SearchFolderParameters() {
@@ -42,7 +42,7 @@ public final class SearchFolderParameters extends ComplexProperty implements
 	}
 
 	/**
-	 * * Property changed.
+	 * Property changed.
 	 * 
 	 * @param complexProperty
 	 *            the complex property
@@ -52,7 +52,7 @@ public final class SearchFolderParameters extends ComplexProperty implements
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -79,7 +79,7 @@ public final class SearchFolderParameters extends ComplexProperty implements
 	}
 
 	/**
-	 * * Reads the attributes from XML.
+	 * Reads the attributes from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -94,7 +94,7 @@ public final class SearchFolderParameters extends ComplexProperty implements
 	}
 
 	/**
-	 * * Writes the attributes to XML.
+	 * Writes the attributes to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -108,7 +108,7 @@ public final class SearchFolderParameters extends ComplexProperty implements
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -129,7 +129,7 @@ public final class SearchFolderParameters extends ComplexProperty implements
 	}
 
 	/**
-	 * * Validates this instance.
+	 * Validates this instance.
 	 * @throws Exception 
 	 */
 	public void validate() throws Exception {
@@ -146,7 +146,7 @@ public final class SearchFolderParameters extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets the traversal mode for the search folder.
+	 * Gets the traversal mode for the search folder.
 	 * 
 	 * @return the traversal
 	 */

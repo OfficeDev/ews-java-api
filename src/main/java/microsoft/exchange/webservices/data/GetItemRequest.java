@@ -6,13 +6,13 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents an abstract GetItem request.
  */
 final class GetItemRequest extends GetItemRequestBase<GetItemResponse> {
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -27,7 +27,7 @@ final class GetItemRequest extends GetItemRequestBase<GetItemResponse> {
 	}
 
 	/**
-	 * * Creates the service response.
+	 * Creates the service response.
 	 * 
 	 * @param service
 	 *            the service

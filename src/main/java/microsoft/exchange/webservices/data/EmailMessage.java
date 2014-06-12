@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
 
-/***
+/**
  * Represents an e-mail message. Properties available on e-mail messages are
  * defined in the EmailMessageSchema class.
  * 
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class EmailMessage extends Item {
 
 	/**
-	 * * Initializes an unsaved local instance of EmailMessage. To bind to an
+	 * Initializes an unsaved local instance of EmailMessage. To bind to an
 	 * existing e-mail message, use EmailMessage.Bind() instead.
 	 * 
 	 * @param service
@@ -45,7 +45,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Binds to an existing e-mail message and loads the specified set of
+	 * Binds to an existing e-mail message and loads the specified set of
 	 * properties.Calling this method results in a call to EWS.
 	 * 
 	 * @param service
@@ -66,7 +66,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Binds to an existing e-mail message and loads its first class
+	 * Binds to an existing e-mail message and loads its first class
 	 * properties.Calling this method results in a call to EWS.
 	 * 
 	 * @param service
@@ -84,7 +84,7 @@ public class EmailMessage extends Item {
 				.getFirstClassProperties());
 	}
 
-	/***
+	/**
 	 * Method to return the schema associated with this type of object.
 	 * 
 	 * @return The schema associated with this type of object.
@@ -94,7 +94,7 @@ public class EmailMessage extends Item {
 		return EmailMessageSchema.Instance;
 	}
 
-	/***
+	/**
 	 * Gets the minimum required server version.
 	 * 
 	 * @return Earliest Exchange version in which this service object type is
@@ -106,7 +106,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Send message.
+	 * Send message.
 	 * 
 	 * @param parentFolderId
 	 *            The parent folder id.
@@ -153,7 +153,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Creates a reply response to the message.
+	 * Creates a reply response to the message.
 	 * 
 	 * @param replyAll
 	 *            the reply all
@@ -171,7 +171,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Creates a forward response to the message.
+	 * Creates a forward response to the message.
 	 * 
 	 * @return A ResponseMessage representing the forward response that can
 	 *         subsequently be modified and sent.
@@ -184,7 +184,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Replies to the message. Calling this method results in a call to EWS.
+	 * Replies to the message. Calling this method results in a call to EWS.
 	 * 
 	 * @param bodyPrefix
 	 *            the body prefix
@@ -201,7 +201,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Forwards the message. Calling this method results in a call to EWS.
+	 * Forwards the message. Calling this method results in a call to EWS.
 	 * 
 	 * @param bodyPrefix
 	 *            the body prefix
@@ -222,7 +222,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Forwards the message. Calling this method results in a call to EWS.
+	 * Forwards the message. Calling this method results in a call to EWS.
 	 * 
 	 * @param bodyPrefix
 	 *            the body prefix
@@ -242,7 +242,7 @@ public class EmailMessage extends Item {
 		responseMessage.sendAndSaveCopy();
 	}
 
-	/***
+	/**
 	 * Sends this e-mail message. Calling this method results in at least one
 	 * call to EWS.
 	 * 
@@ -254,7 +254,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Sends this e-mail message and saves a copy of it in the specified
+	 * Sends this e-mail message and saves a copy of it in the specified
 	 * folder. SendAndSaveCopy does not work if the message has unsaved
 	 * attachments. In that case, the message must first be saved and then sent.
 	 * Calling this method results in a call to EWS.
@@ -271,7 +271,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Sends this e-mail message and saves a copy of it in the specified
+	 * Sends this e-mail message and saves a copy of it in the specified
 	 * folder. SendAndSaveCopy does not work if the message has unsaved
 	 * attachments. In that case, the message must first be saved and then sent.
 	 * Calling this method results in a call to EWS.
@@ -288,7 +288,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Sends this e-mail message and saves a copy of it in the Sent Items
+	 * Sends this e-mail message and saves a copy of it in the Sent Items
 	 * folder. SendAndSaveCopy does not work if the message has unsaved
 	 * attachments. In that case, the message must first be saved and then sent.
 	 * Calling this method results in a call to EWS.
@@ -302,7 +302,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Suppresses the read receipt on the message. Calling this method results
+	 * Suppresses the read receipt on the message. Calling this method results
 	 * in a call to EWS.
 	 * 
 	 * @throws Exception
@@ -313,7 +313,7 @@ public class EmailMessage extends Item {
 		new SuppressReadReceipt(this).internalCreate(null, null);
 	}
 
-	/***
+	/**
 	 * Gets the list of To recipients for the e-mail message.
 	 * 
 	 * @return The list of To recipients for the e-mail message.
@@ -328,7 +328,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets the list of Bcc recipients for the e-mail message.
+	 * Gets the list of Bcc recipients for the e-mail message.
 	 * 
 	 * @return the bcc recipients
 	 * @throws ServiceLocalException
@@ -342,7 +342,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets the list of Cc recipients for the e-mail message.
+	 * Gets the list of Cc recipients for the e-mail message.
 	 * 
 	 * @return the cc recipients
 	 * @throws ServiceLocalException
@@ -356,7 +356,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets the conversation topic of the e-mail message.
+	 * Gets the conversation topic of the e-mail message.
 	 * 
 	 * @return the conversation topic
 	 * @throws ServiceLocalException
@@ -368,7 +368,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets the conversation index of the e-mail message.
+	 * Gets the conversation index of the e-mail message.
 	 * 
 	 * @return the conversation index
 	 * @throws ServiceLocalException
@@ -380,7 +380,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets  the "on behalf" sender of the e-mail message.
+	 * Gets  the "on behalf" sender of the e-mail message.
 	 * 
 	 * @return the from
 	 * @throws ServiceLocalException
@@ -405,7 +405,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets  a value indicating whether this is an associated message.
+	 * Gets  a value indicating whether this is an associated message.
 	 * 
 	 * @return the checks if is associated
 	 * @throws ServiceLocalException
@@ -436,7 +436,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets a value indicating whether a read receipt is requested for
+	 * Gets a value indicating whether a read receipt is requested for
 	 * the e-mail message.
 	 * 
 	 * @return the checks if is delivery receipt requested
@@ -463,7 +463,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets  a value indicating whether the e-mail message is read.
+	 * Gets  a value indicating whether the e-mail message is read.
 	 * 
 	 * @return the checks if is read
 	 * @throws ServiceLocalException
@@ -488,7 +488,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets a value indicating whether a read receipt is requested for
+	 * Gets a value indicating whether a read receipt is requested for
 	 * the e-mail message.
 	 * 
 	 * @return the checks if is read receipt requested
@@ -514,7 +514,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets  a value indicating whether a response is requested for the
+	 * Gets  a value indicating whether a response is requested for the
 	 * e-mail message.
 	 * 
 	 * @return the checks if is response requested
@@ -540,7 +540,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets the Internat Message Id of the e-mail message.
+	 * Gets the Internat Message Id of the e-mail message.
 	 * 
 	 * @return the internet message id
 	 * @throws ServiceLocalException
@@ -552,7 +552,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets  the references of the e-mail message.
+	 * Gets  the references of the e-mail message.
 	 * 
 	 * @return the references
 	 * @throws ServiceLocalException
@@ -577,7 +577,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets a list of e-mail addresses to which replies should be addressed.
+	 * Gets a list of e-mail addresses to which replies should be addressed.
 	 * 
 	 * @return the reply to
 	 * @throws ServiceLocalException
@@ -589,7 +589,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets  the sender of the e-mail message.
+	 * Gets  the sender of the e-mail message.
 	 * 
 	 * @return the sender
 	 * @throws ServiceLocalException
@@ -614,7 +614,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets the ReceivedBy property of the e-mail message.
+	 * Gets the ReceivedBy property of the e-mail message.
 	 * 
 	 * @return the received by
 	 * @throws ServiceLocalException
@@ -626,7 +626,7 @@ public class EmailMessage extends Item {
 	}
 
 	/**
-	 * * Gets the ReceivedRepresenting property of the e-mail message.
+	 * Gets the ReceivedRepresenting property of the e-mail message.
 	 * 
 	 * @return the received representing
 	 * @throws ServiceLocalException

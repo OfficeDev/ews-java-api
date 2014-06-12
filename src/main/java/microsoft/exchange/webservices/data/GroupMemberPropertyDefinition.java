@@ -24,7 +24,7 @@ ServiceObjectPropertyDefinition {
 	private String key;
 
 	/**
-	 * * Initializes a new instance of the GroupMemberPropertyDefinition class.
+	 * Initializes a new instance of the GroupMemberPropertyDefinition class.
 	 * 
 	 * @param key
 	 *            the key
@@ -34,7 +34,7 @@ ServiceObjectPropertyDefinition {
 		this.key = key;
 	}
 
-	/***
+	/**
 	 * Initializes a new instance of the GroupMemberPropertyDefinition class
 	 * without key.
 	 * 
@@ -62,7 +62,7 @@ ServiceObjectPropertyDefinition {
 		this.key = key;
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name.
@@ -72,7 +72,7 @@ ServiceObjectPropertyDefinition {
 	}
 
 	/**
-	 * * Writes the attributes to XML.
+	 * Writes the attributes to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -85,7 +85,7 @@ ServiceObjectPropertyDefinition {
 		writer.writeAttributeValue(XmlAttributeNames.FieldIndex, this.key);
 	}
 
-	/***
+	/**
 	 * Gets the property definition's printable name.
 	 * 
 	 * @return The property definition's printable name.

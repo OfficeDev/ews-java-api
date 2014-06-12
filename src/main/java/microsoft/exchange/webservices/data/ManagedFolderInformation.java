@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents information for a managed folder.
  * 
  */
@@ -42,7 +42,7 @@ public final class ManagedFolderInformation extends ComplexProperty {
 	/** The home page. */
 	private String homePage;
 
-	/***
+	/**
 	 * Initializes a new instance of the ManagedFolderInformation class.
 	 */
 	protected ManagedFolderInformation() {
@@ -50,7 +50,7 @@ public final class ManagedFolderInformation extends ComplexProperty {
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -110,7 +110,7 @@ public final class ManagedFolderInformation extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets a value indicating whether the user can delete objects in the
+	 * Gets a value indicating whether the user can delete objects in the
 	 * folder.
 	 * 
 	 * @return the can delete

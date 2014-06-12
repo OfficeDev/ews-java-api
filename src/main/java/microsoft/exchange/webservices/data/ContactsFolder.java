@@ -13,7 +13,7 @@ package microsoft.exchange.webservices.data;
 public class ContactsFolder extends Folder {
 
 	/**
-	 * * Initializes an unsaved local instance of the class.To bind to an
+	 * Initializes an unsaved local instance of the class.To bind to an
 	 * existing contacts folder, use ContactsFolder.Bind() instead.
 	 * 
 	 * @param service
@@ -26,7 +26,7 @@ public class ContactsFolder extends Folder {
 	}
 
 	/**
-	 * * Binds to an existing contacts folder and loads the specified set of
+	 * Binds to an existing contacts folder and loads the specified set of
 	 * properties.
 	 * 
 	 * @param service
@@ -46,7 +46,7 @@ public class ContactsFolder extends Folder {
 	}
 
 	/**
-	 * * Binds to an existing contacts folder and loads its first class
+	 * Binds to an existing contacts folder and loads its first class
 	 * properties.
 	 * 
 	 * @param service
@@ -65,7 +65,7 @@ public class ContactsFolder extends Folder {
 	}
 
 	/**
-	 * * Binds to an existing contacts folder and loads the specified set of
+	 * Binds to an existing contacts folder and loads the specified set of
 	 * properties.
 	 * 
 	 * @param service
@@ -86,7 +86,7 @@ public class ContactsFolder extends Folder {
 	}
 
 	/**
-	 * * Binds to an existing contacts folder and loads its first class
+	 * Binds to an existing contacts folder and loads its first class
 	 * properties.
 	 * 
 	 * @param service
@@ -105,7 +105,7 @@ public class ContactsFolder extends Folder {
 	}
 
 	/**
-	 * * Gets the minimum required server version.
+	 * Gets the minimum required server version.
 	 * 
 	 * @return Earliest Exchange version in which this service object type is
 	 *         supported.

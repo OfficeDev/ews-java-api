@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a DeleteItem request.
  */
 final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
@@ -21,7 +21,7 @@ final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
 	private SendCancellationsMode sendCancellationsMode;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service

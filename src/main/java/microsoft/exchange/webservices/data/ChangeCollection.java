@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * * Represents a collection of changes as returned by a synchronization
+ * Represents a collection of changes as returned by a synchronization
  * operation.
  * 
  * @param <TChange>
@@ -30,13 +30,13 @@ public final class ChangeCollection<TChange extends Change> implements
 	private boolean moreChangesAvailable;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 */
 	protected ChangeCollection() {
 	}
 
 	/**
-	 * * Adds the specified change.
+	 * Adds the specified change.
 	 * 
 	 * @param change
 	 *            the change
@@ -48,7 +48,7 @@ public final class ChangeCollection<TChange extends Change> implements
 	}
 
 	/**
-	 * * Gets the number of changes in the collection.
+	 * Gets the number of changes in the collection.
 	 * 
 	 * @return the count
 	 */
@@ -57,7 +57,7 @@ public final class ChangeCollection<TChange extends Change> implements
 	}
 
 	/**
-	 * * Gets an individual change from the change collection.
+	 * Gets an individual change from the change collection.
 	 * 
 	 * @param index
 	 *            the index
@@ -71,7 +71,7 @@ public final class ChangeCollection<TChange extends Change> implements
 	}
 
 	/**
-	 * * Gets the SyncState blob returned by a synchronization operation.
+	 * Gets the SyncState blob returned by a synchronization operation.
 	 * 
 	 * @return the sync state
 	 */
@@ -90,7 +90,7 @@ public final class ChangeCollection<TChange extends Change> implements
 	}
 
 	/**
-	 * * Gets the SyncState blob returned by a synchronization operation.
+	 * Gets the SyncState blob returned by a synchronization operation.
 	 * 
 	 * @return the more changes available
 	 */

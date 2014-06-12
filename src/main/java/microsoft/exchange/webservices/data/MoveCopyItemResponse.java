@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.List;
 
-/***
+/**
  * Represents a response to a Move or Copy operation.
  */
 public final class MoveCopyItemResponse extends ServiceResponse implements
@@ -17,7 +17,7 @@ public final class MoveCopyItemResponse extends ServiceResponse implements
 	/** The item. */
 	private Item item;
 
-	/***
+	/**
 	 * Represents a response to a Move or Copy operation.
 	 */
 	protected MoveCopyItemResponse() {
@@ -25,7 +25,7 @@ public final class MoveCopyItemResponse extends ServiceResponse implements
 	}
 
 	/**
-	 * * Gets Item instance.
+	 * Gets Item instance.
 	 * 
 	 * @param service
 	 *            the service
@@ -42,7 +42,7 @@ public final class MoveCopyItemResponse extends ServiceResponse implements
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -87,7 +87,7 @@ public final class MoveCopyItemResponse extends ServiceResponse implements
 	}
 
 	/**
-	 * * Gets the copied or moved item. Item is null if the copy or move
+	 * Gets the copied or moved item. Item is null if the copy or move
 	 * operation was between two mailboxes or between a mailbox and a public
 	 * folder.
 	 * 

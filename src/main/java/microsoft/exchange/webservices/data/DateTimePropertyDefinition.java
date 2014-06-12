@@ -19,7 +19,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
 	private boolean isNullable;
 
 	/**
-	 * * Initializes a new instance of the DateTimePropertyDefinition class.
+	 * Initializes a new instance of the DateTimePropertyDefinition class.
 	 * 
 	 * @param xmlElementName
 	 *            the xml element name
@@ -34,7 +34,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
 	}
 
 	/**
-	 * * Initializes a new instance of the DateTimePropertyDefinition class.
+	 * Initializes a new instance of the DateTimePropertyDefinition class.
 	 * 
 	 * @param xmlElementName
 	 *            the xml element name
@@ -51,7 +51,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
 	}
 
 	/**
-	 * * Initializes a new instance of the DateTimePropertyDefinition class.
+	 * Initializes a new instance of the DateTimePropertyDefinition class.
 	 * 
 	 * @param xmlElementName
 	 *            the xml element name
@@ -72,7 +72,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
 	}
 
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -90,7 +90,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
 	}
 
 
-	/***
+	/**
 	 * Writes the property value to XML.
 	 * 
 	 * @param writer
@@ -120,7 +120,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
 	}
 
 	/**
-	 * * Gets a value indicating whether this property definition is for a
+	 * Gets a value indicating whether this property definition is for a
 	 * nullable type (ref, int?, bool?...).
 	 * 
 	 * @return true, if is nullable

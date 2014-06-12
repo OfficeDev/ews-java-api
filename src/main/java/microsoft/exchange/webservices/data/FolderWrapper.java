@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  *Represents a folder Id provided by a Folder object.
  */
 class FolderWrapper extends AbstractFolderIdWrapper {

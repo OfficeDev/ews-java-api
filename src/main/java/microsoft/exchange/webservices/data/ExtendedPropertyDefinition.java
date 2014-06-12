@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.UUID;
 
-/***
+/**
  * Represents the definition of an extended property.
  * 
  */
@@ -54,7 +54,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	private static final String MapiTypeFieldName = "MapiType";
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected ExtendedPropertyDefinition() {
 		super();
@@ -62,7 +62,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param mapiType
 	 *            The MAPI type of the extended property.
@@ -73,7 +73,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param tag
 	 *            The tag of the extended property.
@@ -90,7 +90,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param propertySet
 	 *            The extended property set of the extended property.
@@ -111,7 +111,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param propertySet
 	 *            The property set of the extended property.
@@ -128,7 +128,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param propertySetId
 	 *            The property set Id of the extended property.
@@ -149,7 +149,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param propertySetId
 	 *            The property set Id of the extended property.
@@ -210,7 +210,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 						.equals(extPropDef2.propertySetId))));
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name.
@@ -220,7 +220,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 		return XmlElementNames.ExtendedFieldURI;
 	}
 
-	/***
+	/**
 	 * Gets the minimum Exchange version that supports this extended property.
 	 * 
 	 * @return The version.
@@ -231,7 +231,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	}
 
 	/**
-	 * * Writes the attributes to XML.
+	 * Writes the attributes to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -265,7 +265,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	}
 
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -360,7 +360,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	}
 
 	/**
-	 * * Formats the field.
+	 * Formats the field.
 	 * 
 	 * @param <T>
 	 *            Type of the field.
@@ -375,7 +375,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 				fieldValue.toString()) : "";
 	}
 
-	/***
+	/**
 	 * Gets the property set of the extended property.
 	 * 
 	 * @return property set of the extended property.
@@ -384,7 +384,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 		return this.propertySet;
 	}
 
-	/***
+	/**
 	 * Gets the property set Id or the extended property.
 	 * 
 	 * @return property set Id or the extended property.
@@ -393,7 +393,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 		return this.propertySetId;
 	}
 
-	/***
+	/**
 	 * Gets the extended property's tag.
 	 * 
 	 * @return The extended property's tag.
@@ -402,7 +402,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 		return this.tag;
 	}
 
-	/***
+	/**
 	 * Gets the name of the extended property.
 	 * 
 	 * @return The name of the extended property.
@@ -411,7 +411,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 		return this.name;
 	}
 
-	/***
+	/**
 	 * Gets the Id of the extended property.
 	 * 
 	 * @return The Id of the extended property.
@@ -420,7 +420,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 		return this.id;
 	}
 
-	/***
+	/**
 	 * Gets the MAPI type of the extended property.
 	 * 
 	 * @return The MAPI type of the extended property.

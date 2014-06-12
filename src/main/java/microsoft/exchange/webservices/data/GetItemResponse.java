@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="GetItemResponse.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 
@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.List;
 
-/***
+/**
  * Represents a response to an individual item retrieval operation.
  */
 public final class GetItemResponse extends ServiceResponse implements
@@ -21,7 +21,7 @@ public final class GetItemResponse extends ServiceResponse implements
 	private PropertySet propertySet;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param item
 	 *            the item
@@ -37,7 +37,7 @@ public final class GetItemResponse extends ServiceResponse implements
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -63,7 +63,7 @@ public final class GetItemResponse extends ServiceResponse implements
 	}
 
 	/**
-	 * * Gets Item instance.
+	 * Gets Item instance.
 	 * 
 	 * @param service
 	 *            the service

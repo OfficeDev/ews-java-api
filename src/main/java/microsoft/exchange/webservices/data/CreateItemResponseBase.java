@@ -9,7 +9,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.List;
 
-/***
+/**
  * Represents the base response class for item creation operations.
  * 
  * 
@@ -22,7 +22,7 @@ abstract class CreateItemResponseBase extends ServiceResponse implements
 	private List<Item> items;
 
 	/**
-	 * * Gets Item instance.
+	 * Gets Item instance.
 	 * 
 	 * @param service
 	 *            The service.
@@ -57,14 +57,14 @@ abstract class CreateItemResponseBase extends ServiceResponse implements
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected CreateItemResponseBase() {
 		super();
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -81,7 +81,7 @@ abstract class CreateItemResponseBase extends ServiceResponse implements
 				false); /* summaryPropertiesOnly */
 	}
 
-	/***
+	/**
 	 * Gets the items.
 	 * 
 	 * @return List of items.

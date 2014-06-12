@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Defines base property sets that are used as the base for custom property
  * sets.
  */

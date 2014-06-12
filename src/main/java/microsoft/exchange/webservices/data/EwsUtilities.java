@@ -291,7 +291,7 @@ class EwsUtilities {
 	 */
     protected static final String DomainRegex = "^[-a-zA-Z0-9_.]+$";
 
-	/***
+	/**
 	 * Asserts that the specified condition if true.
 	 * 
 	 * @param condition
@@ -471,14 +471,6 @@ class EwsUtilities {
 		}
 	}
 	
-	/**  
-   * Gets the expected item type based on the local name.
-    /// </summary>
-    /// <param name="xmlElementName">The element name.</param>
-    /// <returns>The item type.</returns>
-     * 
-     */
-	
 	/**
 	 * 
 	 */
@@ -491,11 +483,10 @@ class EwsUtilities {
 
 	/**
 	 * Finds the first item of type TItem (not a descendant type) in the
-	 * specified collection. <typeparam name="TItem">The type of the item to
-	 * find.</typeparam>
+	 * specified collection.
 	 * 
 	 * @param <TItem>
-	 *            the generic type
+	 *            TItem is the type of the item to find.
 	 * @param cls
 	 *            the cls
 	 * @param items
@@ -505,8 +496,6 @@ class EwsUtilities {
 
 	static <TItem extends Item> TItem findFirstItemOfType(Class<TItem> cls,
 			Iterable<Item> items) {
-		// Type itemType = typeof(TItem);
-
 		for (Item item : items) {
 			// We're looking for an exact class match here.
 			if (item.getClass().equals(cls)) {
@@ -546,7 +535,7 @@ class EwsUtilities {
     }
 	
 	/**
-	 * *.
+	 *.
 	 * 
 	 * @param entryKind
 	 *            the entry kind
@@ -880,7 +869,7 @@ class EwsUtilities {
 	
     
 	/**
-	 * * Convert DateTime to XML Schema date.
+	 * Convert DateTime to XML Schema date.
 	 * 
 	 * @param date
 	 *            the date
@@ -893,7 +882,7 @@ class EwsUtilities {
 	}
 
 	/**
-	 * * Dates the DateTime into an XML schema date time.
+	 * Dates the DateTime into an XML schema date time.
 	 * 
 	 * @param date
 	 *            the date
@@ -1601,7 +1590,7 @@ class EwsUtilities {
 	}
 
 	/**
-	 * * Gets the enumerated object count.
+	 * Gets the enumerated object count.
 	 * 
 	 * @param <T>
 	 *            the generic type

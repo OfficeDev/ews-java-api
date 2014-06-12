@@ -20,7 +20,7 @@ public final class OofReply {
 	private String message;
 
 	/**
-	 * * Writes an empty OofReply to XML.
+	 * Writes an empty OofReply to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -36,13 +36,13 @@ public final class OofReply {
 	}
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 */
 	public OofReply() {
 	}
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param message
 	 *            the message
@@ -52,7 +52,7 @@ public final class OofReply {
 	}
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param message
 	 *            the message
@@ -78,7 +78,7 @@ public final class OofReply {
 	}
 
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -104,7 +104,7 @@ public final class OofReply {
 	}
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -139,7 +139,7 @@ public final class OofReply {
 	}
 
 	/**
-	 * * Gets the culture of the reply.
+	 * Gets the culture of the reply.
 	 * 
 	 * @return the culture
 	 */
@@ -159,7 +159,7 @@ public final class OofReply {
 	}
 
 	/**
-	 * * Gets  the the reply message.
+	 * Gets  the the reply message.
 	 * 
 	 * @return the message
 	 */

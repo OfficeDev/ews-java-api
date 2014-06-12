@@ -23,7 +23,7 @@ public final class FolderPermissionCollection extends
 	private Collection<String> unknownEntries = new ArrayList<String>();
 
 	/**
-	 * * Initializes a new instance of the FolderPermissionCollection class.
+	 * Initializes a new instance of the FolderPermissionCollection class.
 	 * 
 	 * @param owner
 	 *            the owner
@@ -34,7 +34,7 @@ public final class FolderPermissionCollection extends
 	}
 
 	/**
-	 * * Gets the name of the inner collection XML element.
+	 * Gets the name of the inner collection XML element.
 	 * 
 	 * @return the inner collection xml element name
 	 */
@@ -44,7 +44,7 @@ public final class FolderPermissionCollection extends
 	}
 
 	/**
-	 * * Gets the name of the collection item XML element.
+	 * Gets the name of the collection item XML element.
 	 * 
 	 * @return the collection item xml element name
 	 */
@@ -54,7 +54,7 @@ public final class FolderPermissionCollection extends
 	}
 
 	/**
-	 * * Gets the name of the collection item XML element.
+	 * Gets the name of the collection item XML element.
 	 * 
 	 * @param complexProperty
 	 *            the complex property
@@ -67,7 +67,7 @@ public final class FolderPermissionCollection extends
 	}
 
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -104,7 +104,7 @@ public final class FolderPermissionCollection extends
 		}
 	}
 
-	/***
+	/**
 	 * Validates this instance.
 	 */
 	public void validate() {
@@ -121,7 +121,7 @@ public final class FolderPermissionCollection extends
 	}
 
 	/**
-	 * * Writes the elements to XML.
+	 * Writes the elements to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -142,7 +142,7 @@ public final class FolderPermissionCollection extends
 	}
 
 	/**
-	 * * Creates the complex property.
+	 * Creates the complex property.
 	 * 
 	 * @param xmlElementName
 	 *            the xml element name
@@ -154,7 +154,7 @@ public final class FolderPermissionCollection extends
 	}
 
 	/**
-	 * * Adds a permission to the collection.
+	 * Adds a permission to the collection.
 	 * 
 	 * @param permission
 	 *            the permission
@@ -164,7 +164,7 @@ public final class FolderPermissionCollection extends
 	}
 
 	/**
-	 * * Adds the specified permissions to the collection.
+	 * Adds the specified permissions to the collection.
 	 * 
 	 * @param permissions
 	 *            the permissions
@@ -182,7 +182,7 @@ public final class FolderPermissionCollection extends
 		}
 	}
 
-	/***
+	/**
 	 * Clears this collection.
 	 */
 	public void clear() {
@@ -190,7 +190,7 @@ public final class FolderPermissionCollection extends
 	}
 
 	/**
-	 * * Removes a permission from the collection.
+	 * Removes a permission from the collection.
 	 * 
 	 * @param permission
 	 *            the permission
@@ -202,7 +202,7 @@ public final class FolderPermissionCollection extends
 	}
 
 	/**
-	 * * Removes a permission from the collection.
+	 * Removes a permission from the collection.
 	 * 
 	 * @param index
 	 *            the index
@@ -212,7 +212,7 @@ public final class FolderPermissionCollection extends
 	}
 
 	/**
-	 * * Gets a list of unknown user Ids in the collection.
+	 * Gets a list of unknown user Ids in the collection.
 	 * 
 	 * @return the unknown entries
 	 */

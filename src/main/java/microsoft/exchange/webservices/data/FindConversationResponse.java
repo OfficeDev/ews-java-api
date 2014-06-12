@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="FindConversationResponse.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 
@@ -10,20 +10,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/***
+/**
  * Represents the response to a Conversation search operation.
  */
  final class FindConversationResponse extends ServiceResponse {
 	List<Conversation> conversations = new ArrayList<Conversation>();
 
-	/***
+	/**
 	 * Initializes a new instance of the FindConversationResponse class.
 	 */       
 	protected FindConversationResponse() {
 		super();
 	}
 
-	/***
+	/**
 	 * Gets the results of the operation.
 	 */       
 	protected Collection<Conversation> getConversations() {
@@ -32,7 +32,7 @@ import java.util.List;
 
 	}
 
-	/***
+	/**
 	 * Read Conversations from XML.
 	 * @param reader The reader.
 	 * @throws Exception 

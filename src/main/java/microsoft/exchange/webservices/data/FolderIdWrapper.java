@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="FolderIdWrapper.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 
@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a folder Id provided by a FolderId object.
  */
 class FolderIdWrapper extends AbstractFolderIdWrapper {

@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * EwsX509TrustManager is used for SSL handshake.
  * 
  */

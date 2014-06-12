@@ -11,14 +11,14 @@ package microsoft.exchange.webservices.data;
  */
 public final class ResponseMessage extends ResponseObject<EmailMessage> {
 
-	/***
+	/**
 	 * Represents the base class for e-mail related responses (Reply, Reply all
 	 * and Forward).
 	 */
 	private ResponseMessageType responseType;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param referenceItem
 	 *            the reference item
@@ -33,7 +33,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
 		this.responseType = responseType;
 	}
 
-	/***
+	/**
 	 * Internal method to return the schema associated with this type of object.
 	 * 
 	 * @return The schema associated with this type of object.
@@ -43,7 +43,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
 		return ResponseMessageSchema.Instance;
 	}
 
-	/***
+	/**
 	 * Gets the minimum required server version.
 	 * 
 	 * @return Earliest Exchange version in which this service object type is
@@ -54,7 +54,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
 		return ExchangeVersion.Exchange2007_SP1;
 	}
 
-	/***
+	/**
 	 * This methods lets subclasses of ServiceObject override the default
 	 * mechanism by which the XML element name associated with their type is
 	 * retrieved.
@@ -83,7 +83,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
 	}
 
 	/**
-	 * * Gets a value indicating the type of response this object represents.
+	 * Gets a value indicating the type of response this object represents.
 	 * 
 	 * @return the response type
 	 */
@@ -92,7 +92,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
 	}
 
 	/**
-	 * * Gets  the body of the response.
+	 * Gets  the body of the response.
 	 * 
 	 * @return the body
 	 * @throws Exception
@@ -117,7 +117,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
 	}
 
 	/**
-	 * * Gets a list of recipients the response will be sent to.
+	 * Gets a list of recipients the response will be sent to.
 	 * 
 	 * @return the to recipients
 	 * @throws Exception
@@ -130,7 +130,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
 	}
 
 	/**
-	 * * Gets a list of recipients the response will be sent to as Cc.
+	 * Gets a list of recipients the response will be sent to as Cc.
 	 * 
 	 * @return the cc recipients
 	 * @throws Exception
@@ -143,7 +143,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
 	}
 
 	/**
-	 * * Gets a list of recipients the response will be sent to as Cc.
+	 * Gets a list of recipients the response will be sent to as Cc.
 	 * 
 	 * @return the bcc recipients
 	 * @throws Exception
@@ -156,7 +156,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
 	}
 
 	/**
-	 * * Gets  the subject of this response.
+	 * Gets  the subject of this response.
 	 * 
 	 * @return the subject
 	 * @throws Exception
@@ -181,7 +181,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
 	}
 
 	/**
-	 * * Gets the body prefix of this response. The body prefix will be
+	 * Gets the body prefix of this response. The body prefix will be
 	 * prepended to the original message's body when the response is created.
 	 * 
 	 * @return the body prefix

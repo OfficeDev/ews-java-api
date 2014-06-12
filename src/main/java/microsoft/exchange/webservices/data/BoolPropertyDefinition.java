@@ -9,12 +9,12 @@ package microsoft.exchange.webservices.data;
 import java.util.EnumSet;
 
 /**
- * * Represents Boolean property definition.
+ * Represents Boolean property definition.
  */
 final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -29,7 +29,7 @@ final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -46,7 +46,7 @@ final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -66,7 +66,7 @@ final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
 		super(Boolean.class,xmlElementName, uri, flags, version, isNullable);
 	}
 	
-	/***
+	/**
 	 * Convert instance to string.
 	 * 
 	 * @param value
@@ -77,7 +77,7 @@ final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
 	/**
 	 * Convert instance to string.
 	 * @param value The value.
-	 * @returns String representation of Boolean property.
+	 * @return String representation of Boolean property.
 	 */
 	protected String toString(Object value) {
 		return EwsUtilities.boolToXSBool((Boolean)value);

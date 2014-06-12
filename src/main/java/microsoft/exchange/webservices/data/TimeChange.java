@@ -163,7 +163,7 @@ final class TimeChange extends ComplexProperty {
 		}
 	}
 
-	/***
+	/**
 	 * Tries to read element from XML.
 	 * 
 	 * @param reader
@@ -203,7 +203,7 @@ final class TimeChange extends ComplexProperty {
 		}
 	}
 
-	/***
+	/**
 	 * Reads the attributes from XML.
 	 * 
 	 * @param reader
@@ -218,7 +218,7 @@ final class TimeChange extends ComplexProperty {
 				.readAttributeValue(XmlAttributeNames.TimeZoneName);
 	}
 
-	/***
+	/**
 	 * Writes the attributes to XML.
 	 * 
 	 * @param writer
@@ -234,7 +234,7 @@ final class TimeChange extends ComplexProperty {
 		}
 	}
 
-	/***
+	/**
 	 * Writes elements to XML.
 	 * 
 	 * @param writer

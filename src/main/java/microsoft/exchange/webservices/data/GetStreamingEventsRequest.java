@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Defines the GetStreamingEventsRequest class. 
  */
 class GetStreamingEventsRequest extends HangingServiceRequestBase {

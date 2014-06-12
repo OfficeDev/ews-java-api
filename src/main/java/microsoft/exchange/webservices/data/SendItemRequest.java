@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a SendItem request.
  */
 final class SendItemRequest extends
@@ -19,7 +19,7 @@ final class SendItemRequest extends
 	private FolderId savedCopyDestinationFolderId;
 
 	/**
-	 * * Asserts the valid.
+	 * Asserts the valid.
 	 * 
 	 * @throws Exception
 	 *             the exception
@@ -36,7 +36,7 @@ final class SendItemRequest extends
 	}
 
 	/**
-	 * * Creates the service response.
+	 * Creates the service response.
 	 * 
 	 * @param service
 	 *            the service
@@ -50,7 +50,7 @@ final class SendItemRequest extends
 		return new ServiceResponse();
 	}
 
-	/***
+	/**
 	 * Gets the expected response message count.
 	 * 
 	 * @return Number of expected response messages.
@@ -60,7 +60,7 @@ final class SendItemRequest extends
 		return EwsUtilities.getEnumeratedObjectCount(this.items.iterator());
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name
@@ -70,7 +70,7 @@ final class SendItemRequest extends
 		return XmlElementNames.SendItem;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response XML element.
 	 * 
 	 * @return XML element name
@@ -80,7 +80,7 @@ final class SendItemRequest extends
 		return XmlElementNames.SendItemResponse;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response message XML element.
 	 * 
 	 * @return XML element name
@@ -91,7 +91,7 @@ final class SendItemRequest extends
 	}
 
 	/**
-	 * * Writes the attributes to XML.
+	 * Writes the attributes to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -108,7 +108,7 @@ final class SendItemRequest extends
 	}
 
 	/**
-	 * * Writes the elements to XML.
+	 * Writes the elements to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -139,7 +139,7 @@ final class SendItemRequest extends
 	}
 
 	/**
-	 * * Gets the request version.
+	 * Gets the request version.
 	 * 
 	 * @return Earliest Exchange version in which this request is supported.
 	 */
@@ -149,7 +149,7 @@ final class SendItemRequest extends
 	}
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -164,7 +164,7 @@ final class SendItemRequest extends
 	}
 
 	/**
-	 * * Gets the items. <value>The items.</value>
+	 * Gets the items. <value>The items.</value>
 	 * 
 	 * @return the items
 	 */
@@ -183,7 +183,7 @@ final class SendItemRequest extends
 	}
 
 	/**
-	 * * Gets the saved copy destination folder id. <value>The saved
+	 * Gets the saved copy destination folder id. <value>The saved
 	 * copy destination folder id.</value>
 	 * 
 	 * @return the saved copy destination folder id

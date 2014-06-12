@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="ServiceRequestException.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 

@@ -10,7 +10,7 @@ import javax.xml.stream.XMLStreamException;
 
 import org.w3c.dom.Node;
 
-/***
+/**
  * Defines the ExecuteDiagnosticMethodRequest class. 
  */
 final class ExecuteDiagnosticMethodRequest extends 
@@ -75,7 +75,7 @@ MultiResponseServiceRequest<ExecuteDiagnosticMethodResponse> {
           * If it were marked for 2010_SP1, test cases 
           * would have to create new ExchangeService instances 
           * when using this method for tests running under older versions.
-          * */
+          */
 		return ExchangeVersion.Exchange2007_SP1;
 	}
 	

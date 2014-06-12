@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.Collection;
 
-/***
+/**
  * Represents an abstract Create request.
  * 
  * @param <TServiceObject>
@@ -27,7 +27,7 @@ TResponse extends ServiceResponse>
 	private Collection<TServiceObject> objects;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param service
 	 *            The service.
@@ -66,14 +66,14 @@ TResponse extends ServiceResponse>
 		return EwsUtilities.getEnumeratedObjectCount(this.objects.iterator());
 	}
 
-	/***
+	/**
 	 * Gets the name of the parent folder XML element.
 	 * 
 	 * @return The name of the parent folder XML element.
 	 */
 	protected abstract String getParentFolderXmlElementName();
 
-	/***
+	/**
 	 * Gets the name of the object collection XML element.
 	 * 
 	 * @return The name of the object collection XML element.
@@ -109,7 +109,7 @@ TResponse extends ServiceResponse>
 	}
 
 	/**
-	 * * Gets the service objects.
+	 * Gets the service objects.
 	 * 
 	 * @return Iterator
 	 */
@@ -117,7 +117,7 @@ TResponse extends ServiceResponse>
 		return this.objects;
 	}
 
-	/***
+	/**
 	 * Sets the service objects.
 	 * 
 	 * @param value
@@ -127,7 +127,7 @@ TResponse extends ServiceResponse>
 		this.objects = value;
 	}
 
-	/***
+	/**
 	 * Gets the parent folder id.
 	 * 
 	 * @return FolderId.
@@ -136,7 +136,7 @@ TResponse extends ServiceResponse>
 		return this.parentFolderId;
 	}
 
-	/***
+	/**
 	 * Sets the parent folder id.
 	 * 
 	 * @param value

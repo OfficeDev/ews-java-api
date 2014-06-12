@@ -6,18 +6,18 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents the response to a UpdateInboxRulesResponse operation.
  * @param <RuleOperationErrorCollection>
  */
 final class UpdateInboxRulesResponse extends ServiceResponse{
 	
-	/***
+	/**
 	 * Rule operation error collection.
 	 */	
 	private RuleOperationErrorCollection errors;
 
-	/***
+	/**
 	 * Initializes a new instance of the UpdateInboxRulesResponse class.
 	 */     
 	protected UpdateInboxRulesResponse() {
@@ -25,7 +25,7 @@ final class UpdateInboxRulesResponse extends ServiceResponse{
 		this.errors = new RuleOperationErrorCollection();
 	}
 
-	/***
+	/**
 	 * Loads extra error details from XML
 	 * @param reader The reader.
 	 * @param xmlElementName The current element name of the extra error details.
@@ -49,7 +49,7 @@ final class UpdateInboxRulesResponse extends ServiceResponse{
 		}
 	}
 
-	/***
+	/**
 	 * Gets the rule operation errors in the response.
 	 */     
 	protected RuleOperationErrorCollection getErrors() {

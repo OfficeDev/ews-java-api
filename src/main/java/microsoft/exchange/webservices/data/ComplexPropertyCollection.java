@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/***
+/**
  * Represents a collection of properties that can be sent to and retrieved from
  * EWS.
  * 
@@ -39,7 +39,7 @@ public abstract class ComplexPropertyCollection
 	private List<TComplexProperty> removedItems = 
 		new ArrayList<TComplexProperty>();
 
-	/***
+	/**
 	 * Creates the complex property.
 	 * 
 	 * @param xmlElementName
@@ -49,7 +49,7 @@ public abstract class ComplexPropertyCollection
 	protected abstract TComplexProperty createComplexProperty(
 			String xmlElementName);
 
-	/***
+	/**
 	 * Gets the name of the collection item XML element.
 	 * 
 	 * @param complexProperty
@@ -66,7 +66,7 @@ public abstract class ComplexPropertyCollection
 		super();
 	}
 
-	/***
+	/**
 	 * Item changed.
 	 * 
 	 * @param complexProperty
@@ -204,7 +204,7 @@ public abstract class ComplexPropertyCollection
 	}
 	
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -220,7 +220,7 @@ public abstract class ComplexPropertyCollection
 		}
 	}
 
-	/***
+	/**
 	 * Clears the change log.
 	 */
 	@Override
@@ -230,7 +230,7 @@ public abstract class ComplexPropertyCollection
 		this.modifiedItems.clear();
 	}
 
-	/***
+	/**
 	 * Removes from change log.
 	 * 
 	 * @param complexProperty
@@ -242,7 +242,7 @@ public abstract class ComplexPropertyCollection
 		this.addedItems.remove(complexProperty);
 	}
 
-	/***
+	/**
 	 * Gets the items.
 	 * 
 	 * @return The items.
@@ -251,7 +251,7 @@ public abstract class ComplexPropertyCollection
 		return this.items;
 	}
 
-	/***
+	/**
 	 * Gets the added items.
 	 * 
 	 * @return The added items.
@@ -260,7 +260,7 @@ public abstract class ComplexPropertyCollection
 		return this.addedItems;
 	}
 
-	/***
+	/**
 	 * Gets the modified items.
 	 * 
 	 * @return The modified items.
@@ -269,7 +269,7 @@ public abstract class ComplexPropertyCollection
 		return this.modifiedItems;
 	}
 
-	/***
+	/**
 	 * Gets the removed items.
 	 * 
 	 * @return The removed items.
@@ -278,7 +278,7 @@ public abstract class ComplexPropertyCollection
 		return this.removedItems;
 	}
 
-	/***
+	/**
 	 * Add complex property.
 	 * 
 	 * @param complexProperty
@@ -288,7 +288,7 @@ public abstract class ComplexPropertyCollection
 		this.internalAdd(complexProperty, false);
 	}
 
-	/***
+	/**
 	 * Add complex property.
 	 * 
 	 * @param complexProperty
@@ -324,7 +324,7 @@ public abstract class ComplexPropertyCollection
 		this.itemChanged(complexProperty);
 	}
 
-	/***
+	/**
 	 * Clear collection.
 	 */
 	protected void internalClear() {
@@ -333,7 +333,7 @@ public abstract class ComplexPropertyCollection
 		}
 	}
 
-	/***
+	/**
 	 * Remote entry at index.
 	 * 
 	 * @param index
@@ -347,7 +347,7 @@ public abstract class ComplexPropertyCollection
 		this.internalRemove(this.items.get(index));
 	}
 
-	/***
+	/**
 	 * Remove specified complex property.
 	 * 
 	 * @param complexProperty
@@ -375,7 +375,7 @@ public abstract class ComplexPropertyCollection
 		}
 	}
 
-	/***
+	/**
 	 * Determines whether a specific property is in the collection.
 	 * 
 	 * @param complexProperty
@@ -387,7 +387,7 @@ public abstract class ComplexPropertyCollection
 		return this.items.contains(complexProperty);
 	}
 
-	/***
+	/**
 	 * Searches for a specific property and return its zero-based index within
 	 * the collection.
 	 * 
@@ -400,7 +400,7 @@ public abstract class ComplexPropertyCollection
 	}
 
 	/**
-	 * * Gets the total number of properties in the collection.
+	 * Gets the total number of properties in the collection.
 	 * 
 	 * @return the count
 	 */
@@ -409,7 +409,7 @@ public abstract class ComplexPropertyCollection
 	}
 
 	/**
-	 * * Gets the property at the specified index.
+	 * Gets the property at the specified index.
 	 * 
 	 * @param index
 	 *            the index
@@ -426,7 +426,7 @@ public abstract class ComplexPropertyCollection
 		return this.items.get(index);
 	}
 
-	/***
+	/**
 	 * Gets an enumerator that iterates through the elements of the collection.
 	 * 
 	 * @return An Iterator for the collection.
@@ -468,7 +468,7 @@ public abstract class ComplexPropertyCollection
 	}
 
 	/**
-	 * * Writes the deletion update to XML.
+	 * Writes the deletion update to XML.
 	 * 
 	 * @param writer
 	 *            The writer.

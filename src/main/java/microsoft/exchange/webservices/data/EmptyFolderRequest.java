@@ -5,7 +5,7 @@
  * Defines the EmptyFolderRequest class.
  **************************************************************************/
 package microsoft.exchange.webservices.data;
-/***
+/**
  * 
  * Represents an EmptyFolder request.
  * 
@@ -15,7 +15,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 	private FolderIdWrapperList folderIds = new FolderIdWrapperList();
 	private boolean deleteSubFolders;
 	
-	/***
+	/**
 	 * Initializes a new instance of the EmptyFolderRequest class.		
 	 * @param service The service.		           
 	 * @param errorHandlingMode Indicates how errors should be handled.		  
@@ -27,7 +27,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 		super(service, errorHandlingMode);     
 	}
 
-	/***
+	/**
 	 * Validates request.	 
 	 * @throws Exception 
 	 * @throws ServiceLocalException 
@@ -40,7 +40,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 				getRequestedServerVersion());
 	}
 
-	/***
+	/**
 	 * Gets the expected response message count.	 
 	 * @return Number of expected response messages.</returns>
 	 */
@@ -49,7 +49,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 		return this.getFolderIds().getCount();
 	}
 
-	/***
+	/**
 	 * Creates the service response.
 	 * 
 	 * @param service
@@ -66,7 +66,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 		return new ServiceResponse();
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.	
 	 *  @return XML element name.
 	 */
@@ -75,7 +75,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 		return XmlElementNames.EmptyFolder;
 	}
 	
-	/***
+	/**
 	 * Gets the name of the response XML element.	 
 	 * @return XML element name.
 	 */
@@ -84,7 +84,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 		return XmlElementNames.EmptyFolderResponse;
 	}
 	
-	/***
+	/**
 	 * Gets the name of the response message XML element.	
 	 *  @return XML element name.
 	 */
@@ -93,7 +93,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 		return XmlElementNames.EmptyFolderResponseMessage;
 	}
 	
-	/***
+	/**
 	 * Writes XML elements.	 
 	 * @param writer The writer.
 	 * @throws Exception 
@@ -107,7 +107,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 				XmlElementNames.FolderIds);
 	}
 	
-	/***
+	/**
 	 * Writes XML attributes.
 	 * 
 	 * @param writer
@@ -122,7 +122,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 				this.deleteSubFolders);
 	}
 	
-	/***
+	/**
 	 * Gets the request version.	
 	 * @return Earliest Exchange version 
 	 * in which this request is supported.	     
@@ -132,7 +132,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 		return ExchangeVersion.Exchange2010_SP1;
 	}
 	
-	/***
+	/**
 	 * Gets the folder ids.	
 	 * @return The folder ids.	 
 	 */
@@ -140,7 +140,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 		return this.folderIds; 
 	}
 	
-	/***
+	/**
 	 * Gets a value indicating whether empty
 	 *  folder should also delete sub folders.
 	 * 
@@ -152,7 +152,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse>{
 		return deleteSubFolders;
 	}
 	
-	/***
+	/**
 	 * Sets a value indicating whether empty 
 	 * folder should also delete sub folders.	 
 	 * @value true if empty folder should also 

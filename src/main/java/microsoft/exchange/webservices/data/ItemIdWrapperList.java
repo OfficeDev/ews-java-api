@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/***
+/**
  * Represents a list a abstracted item Ids.
  */
 class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
@@ -20,13 +20,13 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
 		new ArrayList<AbstractItemIdWrapper>();
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 */
 	protected ItemIdWrapperList() {
 	}
 
 	/**
-	 * * Adds the specified item.
+	 * Adds the specified item.
 	 * 
 	 * @param item
 	 *            the item
@@ -39,7 +39,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
 	}
 
 	/**
-	 * * Adds the specified item.
+	 * Adds the specified item.
 	 * 
 	 * @param items
 	 *            the items
@@ -54,7 +54,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
 	}
 
 	/**
-	 * * Adds the range.
+	 * Adds the range.
 	 * 
 	 * @param itemIds
 	 *            the item ids
@@ -66,7 +66,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
 	}
 
 	/**
-	 * * Adds the specified item id.
+	 * Adds the specified item id.
 	 * 
 	 * @param itemId
 	 *            the item id
@@ -77,7 +77,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
 	}
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -102,7 +102,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
 	}
 
 	/**
-	 * * Gets the count.
+	 * Gets the count.
 	 * 
 	 * @return the count
 	 */
@@ -111,7 +111,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
 	}
 
 	/**
-	 * * Gets the item at the specified index.
+	 * Gets the item at the specified index.
 	 * 
 	 * @param i
 	 *            the i
@@ -121,7 +121,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
 		return this.itemIds.get(i).getItem();
 	}
 
-	/***
+	/**
 	 *Gets an Iterator that iterates through the elements of the collection.
 	 * 
 	 * @return An IEnumerator for the collection

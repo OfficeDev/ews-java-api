@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents the response to a GetRoomLists operation.
  */
 final class GetRoomListsResponse extends ServiceResponse {
@@ -14,7 +14,7 @@ final class GetRoomListsResponse extends ServiceResponse {
 	/** The room lists. */
 	private EmailAddressCollection roomLists = new EmailAddressCollection();
 
-	/***
+	/**
 	 * Represents the response to a GetRoomLists operation.
 	 */
 	protected GetRoomListsResponse() {
@@ -22,7 +22,7 @@ final class GetRoomListsResponse extends ServiceResponse {
 	}
 
 	/**
-	 * * Gets all room list returned.
+	 * Gets all room list returned.
 	 * 
 	 * @return the room lists
 	 */
@@ -31,7 +31,7 @@ final class GetRoomListsResponse extends ServiceResponse {
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            the reader

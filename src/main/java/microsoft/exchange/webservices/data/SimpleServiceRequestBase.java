@@ -21,7 +21,7 @@ import org.apache.commons.httpclient.HttpClientError;
 import org.apache.commons.httpclient.HttpException;
 
 
-/***
+/**
  * Defines the SimpleServiceRequestBase class. 
  */
 abstract class SimpleServiceRequestBase extends ServiceRequestBase {
@@ -77,7 +77,7 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
      * Ends executing this async request.
      * 
      * @param asyncResult The async result 
-     * @returns Service response object.
+     *  @return Service response object.
      */ 
     protected Object endInternalExecute(IAsyncResult asyncResult)throws Exception
     {
@@ -101,7 +101,7 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
      * 
      *@param callback The AsyncCallback delegate. 
      *@param state An object that contains state information for this request. 
-     *@returns An IAsyncResult that references the asynchronous request.
+     * @return An IAsyncResult that references the asynchronous request.
      */ 
     protected AsyncRequestResult beginExecute(AsyncCallback callback, Object state) throws Exception
     {

@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="PropertyDefinitionFlags.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 

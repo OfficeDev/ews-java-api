@@ -9,7 +9,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.concurrent.FutureTask;
 
-/***
+/**
  * Represents a service request that can have multiple responses.
  * 
  * @param <TResponse>
@@ -22,7 +22,7 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
 	private ServiceErrorHandling errorHandlingMode;
 
 	/**
-	 * * Parses the response.
+	 * Parses the response.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -88,7 +88,7 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
 	}
 
 	/**
-	 * * Creates the service response.
+	 * Creates the service response.
 	 * 
 	 * @param service
 	 *            The service.
@@ -101,14 +101,14 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
 	protected abstract TResponse createServiceResponse(ExchangeService service,
 			int responseIndex) throws Exception;
 
-	/***
+	/**
 	 * Gets the name of the response message XML element.
 	 * 
 	 * @return XML element name
 	 */
 	protected abstract String getResponseMessageXmlElementName();
 
-	/***
+	/**
 	 * Gets the expected response message count.
 	 * 
 	 * @return Number of expected response messages.
@@ -116,7 +116,7 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
 	protected abstract int getExpectedResponseMessageCount();
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param service
 	 *            The service.
@@ -132,7 +132,7 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
 	}
 
 	/**
-	 * * Executes this request.
+	 * Executes this request.
 	 * 
 	 * @return Service response collection.
 	 * @throws Exception
@@ -155,13 +155,12 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
 		return serviceResponses;
 	}
 	
-	
-    /** 
-    * Ends executing this async request.
-    * 
-    * @param asyncResultThe async result 
-    * @returns Service response collection.
-    */
+    /**
+     * Ends executing this async request.
+     *
+     * @param asyncResult The async result
+     * @return Service response collection.
+     */
     @SuppressWarnings("unchecked")
 	protected ServiceResponseCollection<TResponse> endExecute(IAsyncResult asyncResult) throws Exception
     {
@@ -180,8 +179,7 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
         return serviceResponses;
     }
 
-
-	/***
+	/**
 	 * Gets a value indicating how errors should be handled.
 	 * 
 	 * @return A value indicating how errors should be handled.

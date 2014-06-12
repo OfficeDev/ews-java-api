@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.Iterator;
 
-/***
+/**
  * Represents a collection of e-mail addresses.
  * 
  */
@@ -19,13 +19,13 @@ ComplexPropertyCollection<EmailAddress> {
 	private String collectionItemXmlElementName;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected EmailAddressCollection() {
 		this(XmlElementNames.Mailbox);
 	}
 
-	/***
+	/**
 	 * Initializes a new instance of the EmailAddressCollection class.	  
 	 * @param collectionItemXmlElementName Name of the collection item XML element.	 
 	 */
@@ -34,7 +34,7 @@ ComplexPropertyCollection<EmailAddress> {
 		this.collectionItemXmlElementName = collectionItemXmlElementName;
 	}
 
-	/***
+	/**
 	 * Adds an e-mail address to the collection.
 	 * 
 	 * @param emailAddress
@@ -44,7 +44,7 @@ ComplexPropertyCollection<EmailAddress> {
 		this.internalAdd(emailAddress);
 	}
 
-	/***
+	/**
 	 * Adds multiple e-mail addresses to the collection.
 	 * 
 	 * @param emailAddresses
@@ -58,7 +58,7 @@ ComplexPropertyCollection<EmailAddress> {
 		}
 	}
 
-	/***
+	/**
 	 * Adds an e-mail address to the collection.
 	 * 
 	 * @param smtpAddress
@@ -72,7 +72,7 @@ ComplexPropertyCollection<EmailAddress> {
 		return emailAddress;
 	}
 
-	/***
+	/**
 	 * Adds multiple e-mail addresses to the collection.
 	 * 
 	 * @param smtpAddresses
@@ -86,7 +86,7 @@ ComplexPropertyCollection<EmailAddress> {
 		}
 	}
 
-	/***
+	/**
 	 * Adds an e-mail address to the collection.
 	 * 
 	 * @param name
@@ -102,14 +102,14 @@ ComplexPropertyCollection<EmailAddress> {
 		return emailAddress;
 	}
 
-	/***
+	/**
 	 * Clears the collection.
 	 */
 	public void clear() {
 		this.internalClear();
 	}
 
-	/***
+	/**
 	 * Removes an e-mail address from the collection.
 	 * 
 	 * @param index
@@ -125,7 +125,7 @@ ComplexPropertyCollection<EmailAddress> {
 	}
 
 	/**
-	 * * Removes an e-mail address from the collection.
+	 * Removes an e-mail address from the collection.
 	 * 
 	 * @param emailAddress
 	 *            The e-mail address to remove.
@@ -139,7 +139,7 @@ ComplexPropertyCollection<EmailAddress> {
 		return this.internalRemove(emailAddress);
 	}
 
-	/***
+	/**
 	 * Creates an EmailAddress object from an XML element name.
 	 * 
 	 * @param xmlElementName
@@ -155,7 +155,7 @@ ComplexPropertyCollection<EmailAddress> {
 		}
 	}
 
-	/***
+	/**
 	 * Retrieves the XML element name corresponding to the provided EmailAddress
 	 * object.
 	 * 
@@ -171,7 +171,7 @@ ComplexPropertyCollection<EmailAddress> {
 		return this.collectionItemXmlElementName;
 	}
 
-	/***
+	/**
 	 * Determine whether we should write collection to XML or not.	
 	 * @return Always true, even if the collection is empty.
 	 */

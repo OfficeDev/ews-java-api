@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/***
+/**
  *Represents a collection of notification events.
  */
 public final class GetEventsResults {

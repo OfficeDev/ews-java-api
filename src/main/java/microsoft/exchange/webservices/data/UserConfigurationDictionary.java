@@ -197,7 +197,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
 		this.isDirty = value;
 	}
 
-	/***
+	/**
 	 * Instance was changed.
 	 */
 	@Override
@@ -207,7 +207,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            accepts EwsServiceXmlWriter

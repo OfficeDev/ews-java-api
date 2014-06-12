@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents an operation to update an existing rule.
  */
 public class SetRuleOperation extends RuleOperation {

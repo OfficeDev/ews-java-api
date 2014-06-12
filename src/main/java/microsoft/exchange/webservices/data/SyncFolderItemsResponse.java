@@ -6,14 +6,14 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents the response to a folder items synchronization operation.
  */
 public final class SyncFolderItemsResponse extends
 		SyncResponse<Item, ItemChange> {
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param propertySet
 	 *            the property set
@@ -22,7 +22,7 @@ public final class SyncFolderItemsResponse extends
 		super(propertySet);
 	}
 
-	/***
+	/**
 	 * Gets the name of the includes last in range XML element.
 	 * 
 	 * @return XML element name.
@@ -32,7 +32,7 @@ public final class SyncFolderItemsResponse extends
 		return XmlElementNames.IncludesLastItemInRange;
 	}
 
-	/***
+	/**
 	 * Creates an item change instance.
 	 * 
 	 * @return ItemChange instance
@@ -43,7 +43,7 @@ public final class SyncFolderItemsResponse extends
 	}
 
 	/**
-	 * * Gets a value indicating whether this request returns full or summary
+	 * Gets a value indicating whether this request returns full or summary
 	 * properties. <value> <c>true</c> if summary properties only; otherwise,
 	 * <c>false</c>. </value>
 	 * 

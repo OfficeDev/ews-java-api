@@ -6,13 +6,13 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a CopyItem request.
  */
 public class CopyItemRequest extends MoveCopyItemRequest<MoveCopyItemResponse> {
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -27,7 +27,7 @@ public class CopyItemRequest extends MoveCopyItemRequest<MoveCopyItemResponse> {
 	}
 
 	/**
-	 * * Creates the service response.
+	 * Creates the service response.
 	 * 
 	 * @param service
 	 *            the service
@@ -41,7 +41,7 @@ public class CopyItemRequest extends MoveCopyItemRequest<MoveCopyItemResponse> {
 		return new MoveCopyItemResponse();
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name.
@@ -51,7 +51,7 @@ public class CopyItemRequest extends MoveCopyItemRequest<MoveCopyItemResponse> {
 		return XmlElementNames.CopyItem;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response XML element.
 	 * 
 	 * @return XML element name.
@@ -61,7 +61,7 @@ public class CopyItemRequest extends MoveCopyItemRequest<MoveCopyItemResponse> {
 		return XmlElementNames.CopyItemResponse;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response message XML element.
 	 * 
 	 * @return XML element name.
@@ -70,7 +70,7 @@ public class CopyItemRequest extends MoveCopyItemRequest<MoveCopyItemResponse> {
 		return XmlElementNames.CopyItemResponseMessage;
 	}
 
-	/***
+	/**
 	 * Gets the request version.
 	 * 
 	 * @return Earliest Exchange version in which this request is supported.

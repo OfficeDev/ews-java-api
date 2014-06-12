@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a DeleteAttachment request.
  */
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ final class DeleteAttachmentRequest extends
 	private List<Attachment> attachments = new ArrayList<Attachment>();
 
 	/**
-	 * * Initializes a new instance of the DeleteAttachmentRequest class.
+	 * Initializes a new instance of the DeleteAttachmentRequest class.
 	 * 
 	 * @param service
 	 *            the service
@@ -36,7 +36,7 @@ final class DeleteAttachmentRequest extends
 		super(service, errorHandlingMode);
 	}
 
-	/***
+	/**
 	 * Validate request.
 	 */
 	@Override
@@ -57,7 +57,7 @@ final class DeleteAttachmentRequest extends
 	}
 
 	/**
-	 * * Creates the service response.
+	 * Creates the service response.
 	 * 
 	 * @param service
 	 *            the service
@@ -72,7 +72,7 @@ final class DeleteAttachmentRequest extends
 				this.attachments.get(responseIndex));
 	}
 
-	/***
+	/**
 	 * Gets the expected response message count.
 	 * 
 	 * @return Number of expected response messages.
@@ -82,7 +82,7 @@ final class DeleteAttachmentRequest extends
 		return this.attachments.size();
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name.
@@ -92,7 +92,7 @@ final class DeleteAttachmentRequest extends
 		return XmlElementNames.DeleteAttachment;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response XML element.
 	 * 
 	 * @return XML element name.
@@ -102,7 +102,7 @@ final class DeleteAttachmentRequest extends
 		return XmlElementNames.DeleteAttachmentResponse;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response message XML element.
 	 * 
 	 * @return XML element name.
@@ -113,7 +113,7 @@ final class DeleteAttachmentRequest extends
 	}
 
 	/**
-	 * * Writes XML elements.
+	 * Writes XML elements.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -139,7 +139,7 @@ final class DeleteAttachmentRequest extends
 		writer.writeEndElement();
 	}
 
-	/***
+	/**
 	 * Gets the request version.
 	 * 
 	 * @return Earliest Exchange version in which this request is supported.
@@ -150,7 +150,7 @@ final class DeleteAttachmentRequest extends
 	}
 
 	/**
-	 * * Gets the attachments.
+	 * Gets the attachments.
 	 * 
 	 * @return the attachments
 	 */

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/***
+/**
  * Represents the results of a GetDelegates operation.
  */
 public final class DelegateInformation {
@@ -22,7 +22,7 @@ public final class DelegateInformation {
 	private MeetingRequestsDeliveryScope meetingReqestsDeliveryScope;
 
 	/**
-	 * * Initializes a DelegateInformation object.
+	 * Initializes a DelegateInformation object.
 	 * 
 	 * @param delegateUserResponses
 	 *            the delegate user responses

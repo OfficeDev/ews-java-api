@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * WebProxy is used for setting proxy details for proxy authentication schemes such as
  * basic, digest, NTLM, and Kerberos authentication.
  * 
@@ -20,7 +20,7 @@ public class WebProxy {
 	/** proxy post. */
 	private int port;
 
-	/***
+	/**
 	 * Initializes a new instance to use specified proxy details.
 	 * 
 	 * @param host
@@ -33,7 +33,7 @@ public class WebProxy {
 		this.port = port;
 	}
 	
-	/***
+	/**
 	 * Initializes a new instance to use specified proxy with default port 80.
 	 * 
 	 * @param host
@@ -67,7 +67,7 @@ public class WebProxy {
 		return this.port;
 	}
 
-	/***
+	/**
 	 * This method is used to set proxy credentials to a Web Request before
 	 * the request is made.
 	 * 

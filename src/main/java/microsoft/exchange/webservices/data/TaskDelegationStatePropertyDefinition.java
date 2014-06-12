@@ -60,7 +60,7 @@ GenericPropertyDefinition<TaskDelegationState> {
 		Accepted;
 	}
 
-	/***
+	/**
 	 * Parses the specified value.
 	 * 
 	 * @param value
@@ -89,7 +89,7 @@ GenericPropertyDefinition<TaskDelegationState> {
 		}
 	}
 
-	/***
+	/**
 	 * Convert instance to string.
 	 * 
 	 * @param value

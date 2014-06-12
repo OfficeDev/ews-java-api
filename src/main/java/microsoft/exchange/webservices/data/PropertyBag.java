@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-/***
+/**
  * Represents a property bag keyed on PropertyDefinition objects.
  */
 class PropertyBag implements IComplexPropertyChanged,
@@ -54,7 +54,7 @@ class PropertyBag implements IComplexPropertyChanged,
 	/** The requested property set. */
 	private PropertySet requestedPropertySet;
 
-	/***
+	/**
 	 * Initializes a new instance of PropertyBag.
 	 * 
 	 * @param owner
@@ -67,7 +67,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		this.owner = owner;
 	}
 
-	/***
+	/**
 	 * Gets a Map holding the bag's properties.
 	 * 
 	 * @return A Map holding the bag's properties.
@@ -76,7 +76,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		return this.properties;
 	}
 
-	/***
+	/**
 	 * Gets the owner of this bag.
 	 * 
 	 * @return The owner of this bag.
@@ -85,7 +85,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		return this.owner;
 	}
 
-	/***
+	/**
 	 * Indicates if a bag has pending changes.
 	 * 
 	 * @return True if the bag has pending changes, false otherwise.
@@ -96,7 +96,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		return changes > 0 || this.isDirty;
 	}
 
-	/***
+	/**
 	 * Adds the specified property to the specified change list if it is not
 	 * already present.
 	 * 
@@ -162,7 +162,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		}
 	}
 
-	/***
+	/**
 	 * Determines whether the specified property has been updated.
 	 * 
 	 * @param propertyDefinition
@@ -175,7 +175,7 @@ class PropertyBag implements IComplexPropertyChanged,
 				 this.addedProperties.contains(propertyDefinition);
 	}
 
-	/***
+	/**
 	 * Tries to get a property value based on a property definition.
 	 * 
 	 * @param propertyDefinition
@@ -193,7 +193,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		return serviceExceptionOutParam.getParam() == null;
 	}
 
-	/***
+	/**
 	 * Tries to get a property value based on a property definition.
 	 * 
 	 * @param <T>
@@ -232,7 +232,7 @@ class PropertyBag implements IComplexPropertyChanged,
     }
 	
 	
-	/***
+	/**
 	 * Gets the property value.
 	 * 
 	 * @param propertyDefinition
@@ -318,7 +318,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		}
 	}
 
-	/***
+	/**
 	 * Sets the isDirty flag to true and triggers dispatch of the change event
 	 * to the owner of the property bag. Changed must be called whenever an
 	 * operation that changes the state of this property bag is performed (e.g.
@@ -329,7 +329,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		this.getOwner().changed();
 	}
 
-	/***
+	/**
 	 * Determines whether the property bag contains a specific property.
 	 * 
 	 * @param propertyDefinition
@@ -342,7 +342,7 @@ class PropertyBag implements IComplexPropertyChanged,
 
 	
 
-	/***
+	/**
 	 * Tries to retrieve the value of the specified property.
 	 * 
 	 * @param propertyDefinition
@@ -363,7 +363,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		}
 	}
 
-	/***
+	/**
 	 * Handles a change event for the specified property.
 	 * 
 	 * @param complexProperty
@@ -384,7 +384,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		}
 	}
 
-	/***
+	/**
 	 * Deletes the property from the bag.
 	 * 
 	 * @param propertyDefinition
@@ -410,7 +410,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		}
 	}
 
-	/***
+	/**
 	 * Clears the bag.
 	 */
 	protected void clear() {
@@ -420,7 +420,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		this.requestedPropertySet = null;
 	}
 
-	/***
+	/**
 	 * Clears the bag's change log.
 	 */
 	protected void clearChangeLog() {
@@ -443,7 +443,7 @@ class PropertyBag implements IComplexPropertyChanged,
 	}
 
 	/**
-	 * * Loads properties from XML and inserts them in the bag.
+	 * Loads properties from XML and inserts them in the bag.
 	 * 
 	 * @param reader
 	 *            The reader from which to read the properties.
@@ -502,7 +502,7 @@ class PropertyBag implements IComplexPropertyChanged,
 	}
 
 	/**
-	 * * Writes the bag's properties to XML.
+	 * Writes the bag's properties to XML.
 	 * 
 	 * @param writer
 	 *            The writer to write the properties to.
@@ -533,7 +533,7 @@ class PropertyBag implements IComplexPropertyChanged,
 	}
 
 	/**
-	 * * Writes the EWS update operations corresponding to the changes that
+	 * Writes the EWS update operations corresponding to the changes that
 	 * occurred in the bag to XML.
 	 * 
 	 * @param writer
@@ -570,7 +570,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		writer.writeEndElement();
 	}
 
-	/***
+	/**
 	 * Determines whether an EWS UpdateItem/UpdateFolder call is necessary to
 	 * save the changes that occurred in the bag.
 	 * 
@@ -591,7 +591,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		return false;
 	}
 
-	/***
+	/**
 	 * Initializes a ComplexProperty instance. When a property is inserted into
 	 * the bag, it needs to be initialized in order for changes that occur on
 	 * that property to be properly detected and dispatched.
@@ -610,7 +610,7 @@ class PropertyBag implements IComplexPropertyChanged,
 	}
 
 	/**
-	 * * Writes an EWS SetUpdate opeartion for the specified property.
+	 * Writes an EWS SetUpdate opeartion for the specified property.
 	 * 
 	 * @param writer
 	 *            The writer to write the update to.
@@ -658,7 +658,7 @@ class PropertyBag implements IComplexPropertyChanged,
 	}
 
 	/**
-	 * * Writes an EWS DeleteUpdate opeartion for the specified property.
+	 * Writes an EWS DeleteUpdate opeartion for the specified property.
 	 * 
 	 * @param writer
 	 *            The writer to write the update to.
@@ -697,7 +697,7 @@ class PropertyBag implements IComplexPropertyChanged,
 	}
 
 	/**
-	 * * Validate property bag instance.
+	 * Validate property bag instance.
 	 * 
 	 * @throws Exception
 	 *             the exception
@@ -713,7 +713,7 @@ class PropertyBag implements IComplexPropertyChanged,
 	}
 
 	/**
-	 * * Validates the property value.
+	 * Validates the property value.
 	 * 
 	 * @param propertyDefinition
 	 *            The property definition.
@@ -733,7 +733,7 @@ class PropertyBag implements IComplexPropertyChanged,
 		}
 	}
 
-	/***
+	/**
 	 * Gets the value of a property.
 	 * 
 	 * @param propertyDefinition
@@ -764,7 +764,7 @@ class PropertyBag implements IComplexPropertyChanged,
 	}
 
 	/**
-	 * * Gets the value of a property.
+	 * Gets the value of a property.
 	 * 
 	 * @param propertyDefinition
 	 *            The property to get or set.

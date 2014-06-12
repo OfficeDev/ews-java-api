@@ -9,7 +9,7 @@ package microsoft.exchange.webservices.data;
 import java.util.ArrayList;
 import java.util.List;
 
-/***
+/**
  * Represents an AddDelegate request.
  */
 class AddDelegateRequest extends
@@ -22,7 +22,7 @@ class AddDelegateRequest extends
 	private MeetingRequestsDeliveryScope meetingRequestsDeliveryScope;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -34,7 +34,7 @@ class AddDelegateRequest extends
 	}
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @throws Exception
 	 *             the exception
@@ -56,7 +56,7 @@ class AddDelegateRequest extends
 	}
 
 	/**
-	 * * Writes the elements to XML.
+	 * Writes the elements to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -84,7 +84,7 @@ class AddDelegateRequest extends
 		}
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name.
@@ -94,7 +94,7 @@ class AddDelegateRequest extends
 		return XmlElementNames.AddDelegate;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response XML element.
 	 * 
 	 * @return XML element name.
@@ -104,7 +104,7 @@ class AddDelegateRequest extends
 		return XmlElementNames.AddDelegateResponse;
 	}
 
-	/***
+	/**
 	 * Creates the response.
 	 * 
 	 * @return Service response.
@@ -114,7 +114,7 @@ class AddDelegateRequest extends
 		return new DelegateManagementResponse(true, this.delegateUsers);
 	}
 
-	/***
+	/**
 	 * Gets the request version.
 	 * 
 	 * @return Earliest Exchange version in which this request is supported.
@@ -125,7 +125,7 @@ class AddDelegateRequest extends
 	}
 
 	/**
-	 * * Gets the meeting requests delivery scope. <value>The meeting
+	 * Gets the meeting requests delivery scope. <value>The meeting
 	 * requests delivery scope.</value>
 	 * 
 	 * @return the meeting requests delivery scope
@@ -146,7 +146,7 @@ class AddDelegateRequest extends
 	}
 
 	/**
-	 * * Gets the delegate users. <value>The delegate users.</value>
+	 * Gets the delegate users. <value>The delegate users.</value>
 	 * 
 	 * @return the delegate users
 	 */

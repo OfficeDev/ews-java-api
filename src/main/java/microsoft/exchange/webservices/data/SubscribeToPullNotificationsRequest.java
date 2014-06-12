@@ -52,7 +52,7 @@ class SubscribeToPullNotificationsRequest extends
 	}
 
 	/**
-	 * * Validate request.
+	 * Validate request.
 	 * 
 	 * @throws Exception
 	 *             the exception
@@ -66,7 +66,7 @@ class SubscribeToPullNotificationsRequest extends
 	}
 
 	/**
-	 * * Creates the service response.
+	 * Creates the service response.
 	 * 
 	 * @param service
 	 *            The service.
@@ -104,7 +104,7 @@ class SubscribeToPullNotificationsRequest extends
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param writer
 	 *            the writer

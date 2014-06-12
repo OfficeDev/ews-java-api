@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
 
-/***
+/**
  * Represenrs recurrence property definition.
  */
 public class RecurrencePropertyDefinition extends PropertyDefinition {

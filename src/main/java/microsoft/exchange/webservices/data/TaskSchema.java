@@ -89,7 +89,7 @@ public class TaskSchema extends ItemSchema {
 		public final static String TotalWork = "task:TotalWork";
 	}
 
-	/***
+	/**
 	 * Defines the ActualWork property.
 	 */
 	public static final PropertyDefinition ActualWork =
@@ -103,7 +103,7 @@ public class TaskSchema extends ItemSchema {
 
 			true); // isNullable
 
-	/***
+	/**
 	 * Defines the AssignedTime property.
 	 */
 	public static final PropertyDefinition AssignedTime =
@@ -112,7 +112,7 @@ public class TaskSchema extends ItemSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1, true);
 
-	/***
+	/**
 	 * Defines the BillingInformation property.
 	 */
 	public static final PropertyDefinition BillingInformation = 
@@ -124,7 +124,7 @@ public class TaskSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the ChangeCount property.
 	 */
 	public static final PropertyDefinition ChangeCount = 
@@ -133,7 +133,7 @@ public class TaskSchema extends ItemSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Companies property.
 	 */
 	public static final PropertyDefinition Companies = 
@@ -152,7 +152,7 @@ public class TaskSchema extends ItemSchema {
 				};
 			});
 
-	/***
+	/**
 	 * Defines the CompleteDate property.
 	 */
 	public static final PropertyDefinition CompleteDate = 
@@ -164,7 +164,7 @@ public class TaskSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1, true); // isNullable
 
-	/***
+	/**
 	 * Defines the Contacts property.
 	 */
 	public static final PropertyDefinition Contacts = 
@@ -183,7 +183,7 @@ public class TaskSchema extends ItemSchema {
 				};
 			});
 
-	/***
+	/**
 	 * Defines the DelegationState property.
 	 */
 	public static final PropertyDefinition DelegationState =
@@ -192,7 +192,7 @@ public class TaskSchema extends ItemSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Delegator property.
 	 */
 	public static final PropertyDefinition Delegator = 
@@ -201,7 +201,7 @@ public class TaskSchema extends ItemSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the DueDate property.
 	 */
 	public static final PropertyDefinition DueDate = 
@@ -213,7 +213,7 @@ public class TaskSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1, true); // isNullable
 
-	/***
+	/**
 	 * Defines the Mode property.
 	 */
 	public static final PropertyDefinition Mode = 
@@ -224,7 +224,7 @@ public class TaskSchema extends ItemSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the IsComplete property.
 	 */
 	public static final PropertyDefinition IsComplete = 
@@ -233,7 +233,7 @@ public class TaskSchema extends ItemSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the IsRecurring property.
 	 */
 	public static final PropertyDefinition IsRecurring = 
@@ -242,7 +242,7 @@ public class TaskSchema extends ItemSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the IsTeamTask property.
 	 */
 	public static final PropertyDefinition IsTeamTask = 
@@ -251,7 +251,7 @@ public class TaskSchema extends ItemSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Mileage property.
 	 */
 	public static final PropertyDefinition Mileage = 
@@ -263,7 +263,7 @@ public class TaskSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Owner property.
 	 */
 	public static final PropertyDefinition Owner = new StringPropertyDefinition(
@@ -271,7 +271,7 @@ public class TaskSchema extends ItemSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the PercentComplete property.
 	 */
 	public static final PropertyDefinition PercentComplete = 
@@ -282,7 +282,7 @@ public class TaskSchema extends ItemSchema {
 							PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Recurrence property.
 	 */
 	public static final PropertyDefinition Recurrence = 
@@ -293,7 +293,7 @@ public class TaskSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanDelete),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the StartDate property.
 	 */
 	public static final PropertyDefinition StartDate =
@@ -305,7 +305,7 @@ public class TaskSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1, true); // isNullable
 
-	/***
+	/**
 	 * Defines the Status property.
 	 */
 	public static final PropertyDefinition Status = 
@@ -317,7 +317,7 @@ public class TaskSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the StatusDescription property.
 	 */
 	public static final PropertyDefinition StatusDescription = 
@@ -326,7 +326,7 @@ public class TaskSchema extends ItemSchema {
 			EnumSet.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the TotalWork property.
 	 */
 	public static final PropertyDefinition TotalWork = 
@@ -338,11 +338,11 @@ public class TaskSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1, true); // isNullable
 
-	/** * This must be declared after the property definitions. */
+	/** This must be declared after the property definitions. */
 	protected static final TaskSchema Instance = new TaskSchema();
 
 	/**
-	 * * This must be declared after the property definitions.
+	 * This must be declared after the property definitions.
 	 */
 	@Override
 	protected void registerProperties() {
@@ -372,7 +372,7 @@ public class TaskSchema extends ItemSchema {
 		this.registerProperty(TotalWork);
 	}
 
-	/***
+	/**
 	 * Initializes a new instance of the class.
 	 */
 	TaskSchema() {

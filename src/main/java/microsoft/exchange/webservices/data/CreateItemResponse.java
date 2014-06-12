@@ -7,7 +7,7 @@
 
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents the response to an individual item creation operation.
  * 
  * 
@@ -18,7 +18,7 @@ final class CreateItemResponse extends CreateItemResponseBase {
 	private Item item;
 
 	/**
-	 * * Gets Item instance.
+	 * Gets Item instance.
 	 * 
 	 * @param service
 	 *            The service.
@@ -33,7 +33,7 @@ final class CreateItemResponse extends CreateItemResponseBase {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param item
 	 *            The item.
@@ -43,7 +43,7 @@ final class CreateItemResponse extends CreateItemResponseBase {
 		this.item = item;
 	}
 
-	/***
+	/**
 	 * Clears the change log of the created folder if the creation succeeded.
 	 */
 	@Override

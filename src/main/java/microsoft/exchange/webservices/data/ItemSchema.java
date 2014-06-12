@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
 
-/***
+/**
  * Represents the schema for generic items.
  */
 @Schema
@@ -135,7 +135,7 @@ public class ItemSchema extends ServiceObjectSchema {
 		String StoreEntryId = "item:StoreEntryId";
 	}
 
-	/***
+	/**
 	 * Defines the Id property.
 	 */
 	public static final PropertyDefinition Id = new 
@@ -150,7 +150,7 @@ public class ItemSchema extends ServiceObjectSchema {
 				};
 			});
 
-	/***
+	/**
 	 * Defines the Body property.
 	 */
 	public static final PropertyDefinition Body = new 
@@ -167,7 +167,7 @@ public class ItemSchema extends ServiceObjectSchema {
 				};
 			});
 
-	/***
+	/**
 	 * Defines the ItemClass property.
 	 */
 	public static final PropertyDefinition ItemClass = new 
@@ -178,7 +178,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Subject property.
 	 */
 	public static final PropertyDefinition Subject = new 
@@ -190,7 +190,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the MimeContent property.
 	 */
 	public static final PropertyDefinition MimeContent = 
@@ -207,7 +207,7 @@ public class ItemSchema extends ServiceObjectSchema {
 				};
 			});
 
-	/***
+	/**
 	 * Defines the ParentFolderId property.
 	 */
 	public static final PropertyDefinition ParentFolderId = 
@@ -221,7 +221,7 @@ public class ItemSchema extends ServiceObjectSchema {
 				};
 			});
 
-	/***
+	/**
 	 * Defines the Sensitivity property.
 	 */
 	public static final PropertyDefinition Sensitivity =
@@ -233,12 +233,12 @@ public class ItemSchema extends ServiceObjectSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Attachments property.
 	 */
 	public static final PropertyDefinition Attachments = new AttachmentsPropertyDefinition();
 
-	/***
+	/**
 	 * Defines the DateTimeReceived property.
 	 */
 	public static final PropertyDefinition DateTimeReceived = 
@@ -247,7 +247,7 @@ public class ItemSchema extends ServiceObjectSchema {
 			EnumSet.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Size property.
 	 */
 	public static final PropertyDefinition Size = new IntPropertyDefinition(
@@ -255,7 +255,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Categories property.
 	 */
 	public static final PropertyDefinition Categories =
@@ -274,7 +274,7 @@ public class ItemSchema extends ServiceObjectSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the Importance property.
 	 */
 	public static final PropertyDefinition Importance = 
@@ -286,7 +286,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the InReplyTo property.
 	 */
 	public static final PropertyDefinition InReplyTo =
@@ -298,7 +298,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the IsSubmitted property.
 	 */
 	public static final PropertyDefinition IsSubmitted =
@@ -307,7 +307,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the IsAssociated property.
 	 */
 	public static final PropertyDefinition IsAssociated = 
@@ -317,7 +317,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2010);
 
-	/***
+	/**
 	 * Defines the IsDraft property.
 	 */
 	public static final PropertyDefinition IsDraft = new BoolPropertyDefinition(
@@ -325,7 +325,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the IsFromMe property.
 	 */
 	public static final PropertyDefinition IsFromMe =
@@ -334,7 +334,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the IsResend property.
 	 */
 	public static final PropertyDefinition IsResend =
@@ -343,7 +343,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the IsUnmodified property.
 	 */
 	public static final PropertyDefinition IsUnmodified = 
@@ -352,7 +352,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the InternetMessageHeaders property.
 	 */
 	public static final PropertyDefinition InternetMessageHeaders = 
@@ -369,7 +369,7 @@ public class ItemSchema extends ServiceObjectSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the DateTimeSent property.
 	 */
 	public static final PropertyDefinition DateTimeSent =
@@ -378,7 +378,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the DateTimeCreated property.
 	 */
 	public static final PropertyDefinition DateTimeCreated = 
@@ -387,7 +387,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the AllowedResponseActions property.
 	 */
 	public static final PropertyDefinition AllowedResponseActions = 
@@ -395,7 +395,7 @@ public class ItemSchema extends ServiceObjectSchema {
 			XmlElementNames.ResponseObjects, FieldUris.ResponseObjects,
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the ReminderDueBy property.
 	 */
 	
@@ -407,7 +407,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 			
-	/***
+	/**
 	 * Defines the IsReminderSet property.
 	 */
 	public static final PropertyDefinition IsReminderSet = 
@@ -419,7 +419,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the ReminderMinutesBeforeStart property.
 	 */
 	public static final PropertyDefinition ReminderMinutesBeforeStart = 
@@ -431,7 +431,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the DisplayCc property.
 	 */
 	public static final PropertyDefinition DisplayCc = 
@@ -440,7 +440,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the DisplayTo property.
 	 */
 	public static final PropertyDefinition DisplayTo = 
@@ -449,7 +449,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the HasAttachments property.
 	 */
 	public static final PropertyDefinition HasAttachments = 
@@ -458,7 +458,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Culture property.
 	 */
 	public static final PropertyDefinition Culture =
@@ -470,7 +470,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the EffectiveRights property.
 	 */
 	public static final PropertyDefinition EffectiveRights =
@@ -479,7 +479,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the LastModifiedName property.
 	 */
 	public static final PropertyDefinition LastModifiedName = 
@@ -488,7 +488,7 @@ public class ItemSchema extends ServiceObjectSchema {
 			EnumSet.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the LastModifiedTime property.
 	 */
 	public static final PropertyDefinition LastModifiedTime = 
@@ -497,7 +497,7 @@ public class ItemSchema extends ServiceObjectSchema {
 			EnumSet.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the WebClientReadFormQueryString property.
 	 */
 	public static final PropertyDefinition WebClientReadFormQueryString =
@@ -507,7 +507,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2010);
 
-	/***
+	/**
 	 * Defines the WebClientEditFormQueryString property.
 	 */
 	public static final PropertyDefinition WebClientEditFormQueryString = 
@@ -517,7 +517,7 @@ public class ItemSchema extends ServiceObjectSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2010);
 
-	/***
+	/**
 	 * Defines the ConversationId property.
 	 */
 	public static final PropertyDefinition ConversationId = 
@@ -532,7 +532,7 @@ public class ItemSchema extends ServiceObjectSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the UniqueBody property.
 	 */
 	public static final PropertyDefinition UniqueBody = 
@@ -625,7 +625,7 @@ public class ItemSchema extends ServiceObjectSchema {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected ItemSchema() {
 		super();

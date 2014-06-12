@@ -92,7 +92,7 @@ public class Folder extends ServiceObject {
 	}
 
 	/**
-	 * * Binds to an existing folder, whatever its actual type is, and loads the
+	 * Binds to an existing folder, whatever its actual type is, and loads the
 	 * specified set of properties. Calling this method results in a call to
 	 * EWS.
 	 * 

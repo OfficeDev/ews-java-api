@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents the body part of an item that is unique to the conversation the
  * item is part of.
  * 
@@ -22,13 +22,13 @@ public final class UniqueBody extends ComplexProperty {
 	private String text;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected UniqueBody() {
 	}
 
 	/**
-	 * * Defines an implicit conversion of UniqueBody into a string.
+	 * Defines an implicit conversion of UniqueBody into a string.
 	 * 
 	 * @param messageBody
 	 *            the message body
@@ -43,7 +43,7 @@ public final class UniqueBody extends ComplexProperty {
 	}
 
 	/**
-	 * * Reads attributes from XML.
+	 * Reads attributes from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -57,7 +57,7 @@ public final class UniqueBody extends ComplexProperty {
 	}
 
 	/**
-	 * * Reads attributes from XML.
+	 * Reads attributes from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -72,7 +72,7 @@ public final class UniqueBody extends ComplexProperty {
 	}
 
 	/**
-	 * * Reads attributes from XML.
+	 * Reads attributes from XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -85,7 +85,7 @@ public final class UniqueBody extends ComplexProperty {
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -99,7 +99,7 @@ public final class UniqueBody extends ComplexProperty {
 		}
 	}
 
-	/***
+	/**
 	 * Gets the type of the unique body's text.
 	 * 
 	 * @return bodytype
@@ -108,7 +108,7 @@ public final class UniqueBody extends ComplexProperty {
 		return this.bodyType;
 	}
 
-	/***
+	/**
 	 * Gets the text of the unique body.
 	 * 
 	 * @return text

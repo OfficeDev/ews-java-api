@@ -11,7 +11,7 @@ import java.util.TimeZone;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents a property definition for properties of type TimeZoneInfo.
  * 
  * 
@@ -19,7 +19,7 @@ import javax.xml.stream.XMLStreamException;
 class TimeZonePropertyDefinition extends PropertyDefinition {
 
 	/**
-	 * * Initializes a new instance of the TimeZonePropertyDefinition class.
+	 * Initializes a new instance of the TimeZonePropertyDefinition class.
 	 * 
 	 * @param xmlElementName
 	 *            the xml element name
@@ -36,7 +36,7 @@ class TimeZonePropertyDefinition extends PropertyDefinition {
 	}
 
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -53,7 +53,7 @@ class TimeZonePropertyDefinition extends PropertyDefinition {
 	}
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            the writer

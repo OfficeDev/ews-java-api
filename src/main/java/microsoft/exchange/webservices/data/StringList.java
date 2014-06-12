@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="StringList.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 
@@ -50,7 +50,7 @@ public class StringList extends ComplexProperty implements Iterable<String> {
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            accepts EwsServiceXmlReader
@@ -79,7 +79,7 @@ public class StringList extends ComplexProperty implements Iterable<String> {
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            accepts EwsServiceXmlWriter

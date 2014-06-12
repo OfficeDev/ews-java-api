@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a CreateItem request.
  * 
  * 
@@ -15,7 +15,7 @@ final class CreateItemRequest extends
 		CreateItemRequestBase<Item, ServiceResponse> {
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param service
 	 *            The service.
@@ -30,7 +30,7 @@ final class CreateItemRequest extends
 	}
 
 	/**
-	 * * Creates the service response.
+	 * Creates the service response.
 	 * 
 	 * @param service
 	 *            the service
@@ -46,7 +46,7 @@ final class CreateItemRequest extends
 	}
 
 	/**
-	 * * Validate request..
+	 * Validate request..
 	 * 
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -64,7 +64,7 @@ final class CreateItemRequest extends
 	}
 
 	/**
-	 * * Gets the request version. Returns earliest Exchange version in which
+	 * Gets the request version. Returns earliest Exchange version in which
 	 * this request is supported.
 	 * 
 	 * @return the minimum required server version

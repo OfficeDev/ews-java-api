@@ -22,7 +22,7 @@ class SyncFolderHierarchyRequest extends
 	private String syncState;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -34,7 +34,7 @@ class SyncFolderHierarchyRequest extends
 	}
 
 	/**
-	 * * Creates the service response.
+	 * Creates the service response.
 	 * 
 	 * @param service
 	 *            the service
@@ -48,7 +48,7 @@ class SyncFolderHierarchyRequest extends
 		return new SyncFolderHierarchyResponse(this.getPropertySet());
 	}
 
-	/***
+	/**
 	 * Gets the expected response message count.
 	 * 
 	 * @return Number of expected responses
@@ -58,7 +58,7 @@ class SyncFolderHierarchyRequest extends
 		return 1;
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name
@@ -68,7 +68,7 @@ class SyncFolderHierarchyRequest extends
 		return XmlElementNames.SyncFolderHierarchy;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response XML element.
 	 * 
 	 * @return XML element name
@@ -78,7 +78,7 @@ class SyncFolderHierarchyRequest extends
 		return XmlElementNames.SyncFolderHierarchyResponse;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response message XML element.
 	 * 
 	 * @return XML element name
@@ -89,7 +89,7 @@ class SyncFolderHierarchyRequest extends
 	}
 
 	/**
-	 * * Validates request.
+	 * Validates request.
 	 * 
 	 * @throws Exception
 	 *             the exception
@@ -108,7 +108,7 @@ class SyncFolderHierarchyRequest extends
 	}
 
 	/**
-	 * * Writes XML elements.
+	 * Writes XML elements.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -131,7 +131,7 @@ class SyncFolderHierarchyRequest extends
 				XmlElementNames.SyncState, this.getSyncState());
 	}
 
-	/***
+	/**
 	 * Gets the request version.
 	 * 
 	 * @return Earliest Exchange version in which this request is supported.
@@ -142,7 +142,7 @@ class SyncFolderHierarchyRequest extends
 	}
 
 	/**
-	 * * Gets or sets the property set. <value>The property set.</value>
+	 * Gets or sets the property set. <value>The property set.</value>
 	 * 
 	 * @return the property set
 	 */
@@ -161,7 +161,7 @@ class SyncFolderHierarchyRequest extends
 	}
 
 	/**
-	 * * Gets or sets the property set. <value>The property set.</value>
+	 * Gets or sets the property set. <value>The property set.</value>
 	 * 
 	 * @return the sync folder id
 	 */
@@ -180,7 +180,7 @@ class SyncFolderHierarchyRequest extends
 	}
 
 	/**
-	 * * Gets or sets the state of the sync. <value>The state of the
+	 * Gets or sets the state of the sync. <value>The state of the
 	 * sync.</value>
 	 * 
 	 * @return the sync state

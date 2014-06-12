@@ -5,20 +5,20 @@
  * Defines the RuleErrorCollection.java.
  **************************************************************************/
 package microsoft.exchange.webservices.data;
-/***
+/**
  * Represents a collection of rule validation errors.
  */
 public final class RuleErrorCollection extends 
 ComplexPropertyCollection<RuleError>{
 
-	/***
+	/**
 	 * Initializes a new instance of the RuleErrorCollection class.	
 	 */
 	protected RuleErrorCollection(){
 		super();
 	}
 	
-	/***
+	/**
 	 * Creates an RuleError object from an XML element name.
 	 * 
 	 * @param xmlElementName
@@ -36,7 +36,7 @@ ComplexPropertyCollection<RuleError>{
 		}
 	}
 	
-	/***
+	/**
 	 * Retrieves the XML element name corresponding 
 	 * to the provided RuleError object.
 	 * 

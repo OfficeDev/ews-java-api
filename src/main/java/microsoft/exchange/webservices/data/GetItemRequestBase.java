@@ -7,7 +7,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * * Represents an abstract GetItem request.
+ * Represents an abstract GetItem request.
  * 
  * @param <TResponse>
  *            the generic type
@@ -19,7 +19,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
 	private ItemIdWrapperList itemIds = new ItemIdWrapperList();
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -34,7 +34,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
 	}
 
 	/**
-	 * * Validate request.
+	 * Validate request.
 	 * 
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -47,7 +47,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
 				"ItemIds");
 	}
 
-	/***
+	/**
 	 *Gets the expected response message count.
 	 * 
 	 * @return Number of expected response messages
@@ -56,7 +56,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
 		return this.itemIds.getCount();
 	}
 
-	/***
+	/**
 	 *Gets the type of the service object this request applies to.
 	 * 
 	 * @return The type of service object the request applies to
@@ -66,7 +66,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
 	}
 
 	/**
-	 * * Writes XML elements.
+	 * Writes XML elements.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -81,7 +81,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
 				XmlElementNames.ItemIds);
 	}
 
-	/***
+	/**
 	 *Gets the name of the XML element.
 	 * 
 	 * @return XML element name
@@ -90,7 +90,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
 		return XmlElementNames.GetItem;
 	}
 
-	/***
+	/**
 	 *Gets the name of the XML element.
 	 * 
 	 * @return XML element name
@@ -99,7 +99,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
 		return XmlElementNames.GetItemResponse;
 	}
 
-	/***
+	/**
 	 *Gets the name of the XML element.
 	 * 
 	 * @return XML element name
@@ -108,7 +108,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
 		return XmlElementNames.GetItemResponseMessage;
 	}
 
-	/***
+	/**
 	 *Gets the request version.
 	 * 
 	 * @return Earliest Exchange version in which this request is supported
@@ -118,7 +118,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
 	}
 
 	/**
-	 * * Gets the item ids.
+	 * Gets the item ids.
 	 * 
 	 * @return the item ids
 	 */

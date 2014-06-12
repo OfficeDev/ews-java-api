@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a meeting cancellation message.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.CancelCalendarItem, returnedByServer = false)
@@ -14,7 +14,7 @@ public final class CancelMeetingMessage extends
 		CalendarResponseMessageBase<MeetingCancellation> {
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param referenceItem
 	 *            the reference item
@@ -25,7 +25,7 @@ public final class CancelMeetingMessage extends
 		super(referenceItem);
 	}
 
-	/***
+	/**
 	 * Gets the minimum required server version.
 	 * 
 	 * @return Earliest Exchange version in which this service object type is
@@ -36,7 +36,7 @@ public final class CancelMeetingMessage extends
 		return ExchangeVersion.Exchange2007_SP1;
 	}
 
-	/***
+	/**
 	 * Gets the minimum required server version.
 	 * 
 	 * @return Earliest Exchange version in which this service object type is
@@ -48,7 +48,7 @@ public final class CancelMeetingMessage extends
 	}
 
 	/**
-	 * * Gets the body of the response.
+	 * Gets the body of the response.
 	 * 
 	 * @return the body
 	 * @throws ServiceLocalException

@@ -7,7 +7,7 @@
 
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents an indexed property definition.
  * 
  * 
@@ -19,7 +19,7 @@ ServiceObjectPropertyDefinition {
 	/** The index. */
 	private String index;
 
-	/***
+	/**
 	 * Initializes a new instance of the IndexedPropertyDefinition class.
 	 * 
 	 * @param uri
@@ -32,7 +32,7 @@ ServiceObjectPropertyDefinition {
 		this.index = index;
 	}
 
-	/***
+	/**
 	 * Determines whether two specified instances of IndexedPropertyDefinition
 	 * are equal.
 	 * 
@@ -52,7 +52,7 @@ ServiceObjectPropertyDefinition {
 						.equalsIgnoreCase(idxPropDef2.index));
 	}
 
-	/***
+	/**
 	 * Gets the index of the property.
 	 * 
 	 * @return The index string of the property.
@@ -62,7 +62,7 @@ ServiceObjectPropertyDefinition {
 	}
 
 	/**
-	 * * Writes the attributes to XML.
+	 * Writes the attributes to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -77,7 +77,7 @@ ServiceObjectPropertyDefinition {
 				.getIndex());
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name.
@@ -87,7 +87,7 @@ ServiceObjectPropertyDefinition {
 		return XmlElementNames.IndexedFieldURI;
 	}
 
-	/***
+	/**
 	 * Gets the property definition's printable name.
 	 * 
 	 * @return The property definition's printable name.
@@ -98,7 +98,7 @@ ServiceObjectPropertyDefinition {
 	}
 
 
-	/***
+	/**
 	 * Determines whether a given indexed property definition is equal to this
 	 * indexed property definition.
 	 * 
@@ -120,7 +120,7 @@ ServiceObjectPropertyDefinition {
 		}
 	}
 
-	/***
+	/**
 	 * Serves as a hash function for a particular type.
 	 * 
 	 * @return A hash code for the current System.Object

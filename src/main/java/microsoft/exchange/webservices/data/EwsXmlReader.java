@@ -25,7 +25,7 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-/***
+/**
  * Defines the EwsXmlReader class.
  * 
  * 
@@ -202,7 +202,7 @@ class EwsXmlReader {
 	}
 
 	/**
-	 * * Read attribute value from QName.
+	 * Read attribute value from QName.
 	 * 
 	 * @param qName
 	 *            QName of the attribute

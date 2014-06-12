@@ -45,7 +45,7 @@ import org.apache.commons.httpclient.Cookie;
 import org.apache.commons.httpclient.HttpConnectionManager;
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
 
-/***
+/**
  * Represents an abstract binding to an Exchange Service.
  */
 public abstract class ExchangeServiceBase {
@@ -165,7 +165,7 @@ public abstract class ExchangeServiceBase {
 		this.acceptGzipEncoding = service.getAcceptGzipEncoding();
 	}*/
 	
-	/***
+	/**
 	 * Initializes a new instance from existing one.
 	 * 
 	 * @param service
@@ -193,7 +193,7 @@ public abstract class ExchangeServiceBase {
 
 	// Event handlers
 
-	/***
+	/**
 	 * Calls the custom SOAP header serialisation event handlers, if defined.
 	 * 
 	 * @param writer
@@ -214,7 +214,7 @@ public abstract class ExchangeServiceBase {
 	// Utilities
 
 	/**
-	 * * Creates an HttpWebRequest instance and initialises it with the
+	 * Creates an HttpWebRequest instance and initialises it with the
 	 * appropriate parameters, based on the configuration of this service
 	 * object.
 	 * 
@@ -370,7 +370,7 @@ public abstract class ExchangeServiceBase {
 			HttpWebRequest httpWebResponse, Exception webException)
 			throws Exception;
 
-	/***
+	/**
 	 * Determines whether tracing is enabled for specified trace flag(s).
 	 * 
 	 * @param traceFlags
@@ -382,7 +382,7 @@ public abstract class ExchangeServiceBase {
 	}
 
 	/**
-	 * * Logs the specified string to the TraceListener if tracing is enabled.
+	 * Logs the specified string to the TraceListener if tracing is enabled.
 	 * 
 	 * @param traceType
 	 *            Kind of trace entry.
@@ -403,7 +403,7 @@ public abstract class ExchangeServiceBase {
 		}
 	}
 
-	/***
+	/**
 	 * Logs the specified XML to the TraceListener if tracing is enabled.
 	 * 
 	 * @param traceType
@@ -421,7 +421,7 @@ public abstract class ExchangeServiceBase {
 		}
 	}
 	
-	/***
+	/**
 	 * Traces the HTTP request headers.
 	 * 
 	 * @param traceType
@@ -446,7 +446,7 @@ public abstract class ExchangeServiceBase {
     }
 
 	/**
-	 * * Traces the HTTP response headers.
+	 * Traces the HTTP response headers.
 	 * 
 	 * @param traceType
 	 *            Kind of trace entry.
@@ -471,7 +471,7 @@ public abstract class ExchangeServiceBase {
 		}
 	}
 
-	/***
+	/**
 	 * Converts the universal date time string to local date time.
 	 * 
 	 * @param dateString
@@ -618,7 +618,7 @@ public abstract class ExchangeServiceBase {
 	// Constructors
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param requestedServerVersion
 	 *            The requested server version.
@@ -635,7 +635,7 @@ public abstract class ExchangeServiceBase {
 	// Abstract methods
 
 	/**
-	 * * Validates this instance.
+	 * Validates this instance.
 	 * 
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -679,16 +679,9 @@ public abstract class ExchangeServiceBase {
 	}*/
 	
 	/**
+	 * Sets the cookie container.
 	 * 
-	 */
-	/**
-	 * Gets the cookie container. <value>The cookie container.</value>
-	 * 
-	 * @param url
-	 *            the url
-	 * @param value
-	 *            the value	
-	 * @throws ServiceLocalException
+	 * @param rcookies the cookies.
 	 * @throws microsoft.exchange.webservices.data.EWSHttpException
 	 */
 	public void setCookie(Cookie[] rcookies) throws EWSHttpException {
@@ -698,7 +691,7 @@ public abstract class ExchangeServiceBase {
 
 	}
 
-	/**
+	/*
 	 * Gets the cookie.
 	 * 
 	 * @param url
@@ -708,8 +701,7 @@ public abstract class ExchangeServiceBase {
 	 *             Signals that an I/O exception has occurred.
 	 * @throws java.net.URISyntaxException
 	 *             the uRI syntax exception
-	 */
-	/*public String getCookie(URL url) throws IOException, URISyntaxException {
+	public String getCookie(URL url) throws IOException, URISyntaxException {
 		String cookieValue = null;
 
 		CookieHandler handler = CookieHandler.getDefault();
@@ -729,13 +721,11 @@ public abstract class ExchangeServiceBase {
 		return cookieValue;
 	}*/
 	
-	
-	
-	public Cookie[] getCookies() {
+    public Cookie[] getCookies() {
 		return this.cookies;
 	}
 
-	/***
+	/**
 	 * Gets a value indicating whether tracing is enabled.
 	 * 
 	 * @return True is tracing is enabled
@@ -744,7 +734,7 @@ public abstract class ExchangeServiceBase {
 		return this.traceEnabled;
 	}
 
-	/***
+	/**
 	 * Sets a value indicating whether tracing is enabled.
 	 * 
 	 * @param traceEnabled
@@ -757,7 +747,7 @@ public abstract class ExchangeServiceBase {
 		}
 	}
 
-	/***
+	/**
 	 * Gets the trace flags.
 	 * 
 	 * @return Set of trace flags.
@@ -766,7 +756,7 @@ public abstract class ExchangeServiceBase {
 		return traceFlags;
 	}
 
-	/***
+	/**
 	 * Sets the trace flags.
 	 * 
 	 * @param traceFlags
@@ -776,7 +766,7 @@ public abstract class ExchangeServiceBase {
 		this.traceFlags = traceFlags;
 	}
 
-	/***
+	/**
 	 * Gets the trace listener.
 	 * 
 	 * @return The trace listener.
@@ -785,7 +775,7 @@ public abstract class ExchangeServiceBase {
 		return traceListener;
 	}
 
-	/***
+	/**
 	 * Sets the trace listener.
 	 * 
 	 * @param traceListener
@@ -796,7 +786,7 @@ public abstract class ExchangeServiceBase {
 		this.traceEnabled = (traceListener != null);
 	}
 
-	/***
+	/**
 	 * Gets the credentials used to authenticate with the Exchange Web Services.
 	 * 
 	 * @return credentials
@@ -805,7 +795,7 @@ public abstract class ExchangeServiceBase {
 		return this.credentials;
 	}
 
-	/***
+	/**
 	 * Sets the credentials used to authenticate with the Exchange Web Services.
 	 * Setting the Credentials property automatically sets the
 	 * UseDefaultCredentials to false.
@@ -819,7 +809,7 @@ public abstract class ExchangeServiceBase {
 		CookieHandler.setDefault(new CookieManager());
 	}
 
-	/***
+	/**
 	 * Gets a value indicating whether the credentials of the user currently
 	 * logged into Windows should be used to authenticate with the Exchange Web
 	 * Services.
@@ -831,7 +821,7 @@ public abstract class ExchangeServiceBase {
 	}
 
 	/**
-	 * * Sets a value indicating whether the credentials of the user currently
+	 * Sets a value indicating whether the credentials of the user currently
 	 * logged into Windows should be used to authenticate with the Exchange Web
 	 * Services. Setting UseDefaultCredentials to true automatically sets the
 	 * Credentials property to null.
@@ -847,7 +837,7 @@ public abstract class ExchangeServiceBase {
 		}
 	}
 
-	/***
+	/**
 	 * Gets the timeout used when sending HTTP requests and when receiving HTTP
 	 * responses, in milliseconds.
 	 * 
@@ -857,7 +847,7 @@ public abstract class ExchangeServiceBase {
 		return timeout;
 	}
 
-	/***
+	/**
 	 * Sets the timeout used when sending HTTP requests and when receiving HTTP
 	 * respones, in milliseconds. Defaults to 100000.
 	 * 
@@ -872,7 +862,7 @@ public abstract class ExchangeServiceBase {
 		this.timeout = timeout;
 	}
 
-	/***
+	/**
 	 * Gets a value that indicates whether HTTP pre-authentication should be
 	 * performed.
 	 * 
@@ -882,7 +872,7 @@ public abstract class ExchangeServiceBase {
 		return preAuthenticate;
 	}
 
-	/***
+	/**
 	 * Sets a value that indicates whether HTTP pre-authentication should be
 	 * performed.
 	 * 
@@ -893,7 +883,7 @@ public abstract class ExchangeServiceBase {
 		this.preAuthenticate = preAuthenticate;
 	}
 
-	/***
+	/**
 	 * Gets a value indicating whether GZip compression encoding should be
 	 * accepted. This value will tell the server that the client is able to
 	 * handle GZip compression encoding. The server will only send Gzip
@@ -905,7 +895,7 @@ public abstract class ExchangeServiceBase {
 		return acceptGzipEncoding;
 	}
 
-	/***
+	/**
 	 * Gets a value indicating whether GZip compression encoding should
 	 * be accepted. This value will tell the server that the client is able to
 	 * handle GZip compression encoding. The server will only send Gzip
@@ -918,7 +908,7 @@ public abstract class ExchangeServiceBase {
 		this.acceptGzipEncoding = acceptGzipEncoding;
 	}
 
-	/***
+	/**
 	 * Gets the requested server version.
 	 * 
 	 * @return The requested server version.
@@ -927,7 +917,7 @@ public abstract class ExchangeServiceBase {
 		return this.requestedServerVersion;
 	}
 
-	/***
+	/**
 	 * Gets the user agent.
 	 * 
 	 * @return The user agent.
@@ -936,7 +926,7 @@ public abstract class ExchangeServiceBase {
 		return this.userAgent;
 	}
 
-	/***
+	/**
 	 * Sets the user agent.
 	 * 
 	 * @param userAgent
@@ -948,7 +938,7 @@ public abstract class ExchangeServiceBase {
 	}
 
 	/**
-	 * * Gets information associated with the server that processed the last
+	 * Gets information associated with the server that processed the last
 	 * request. Will be null if no requests have been processed.
 	 * 
 	 * @return the server info
@@ -957,7 +947,7 @@ public abstract class ExchangeServiceBase {
 		return serverInfo;
 	}
 
-	/***
+	/**
 	 * Sets information associated with the server that processed the last
 	 * request.
 	 * 
@@ -968,7 +958,7 @@ public abstract class ExchangeServiceBase {
 		this.serverInfo = serverInfo;
 	}
 
-	/***
+	/**
 	 * Gets the web proxy that should be used when sending requests to EWS.
 	 * 
 	 * @return Proxy
@@ -978,7 +968,7 @@ public abstract class ExchangeServiceBase {
         return this.webProxy;
     }
     
-    /***
+    /**
 	 * Sets the web proxy that should be used when sending requests to EWS.
      * Set this property to null to use the default web proxy.
 	 * 
@@ -989,7 +979,7 @@ public abstract class ExchangeServiceBase {
         this.webProxy = value; 
     }
 	
-	/***
+	/**
 	 * Gets a collection of HTTP headers that will be sent with each request to
 	 * EWS.
 	 * @return httpHeaders
@@ -1000,7 +990,7 @@ public abstract class ExchangeServiceBase {
 
 	// Events
 
-	/***
+	/**
 	 * Provides an event that applications can implement to emit custom SOAP
 	 * headers in requests that are sent to Exchange.
 	 */
@@ -1030,10 +1020,10 @@ public abstract class ExchangeServiceBase {
 	
 	/**
 	 * Traces the HTTP response headers.
-	 * @param tracetype 
+	 * @param traceType
 	 * 			kind of trace entry
-	 * @param response
-	 * 			The response
+	 * @param request
+	 * 			The request
 	 * @throws microsoft.exchange.webservices.data.EWSHttpException
 	 * @throws java.io.IOException
 	 * @throws javax.xml.stream.XMLStreamException
@@ -1045,10 +1035,11 @@ public abstract class ExchangeServiceBase {
         this.saveHttpResponseHeaders(request.getResponseHeaders());
     }
     
-  /** Save the HTTP response headers.
-   * @summary
-   *@param name="headers">The response headers
-   **/
+   /**
+    * Save the HTTP response headers.
+    * @summary
+    * @param headers The response headers
+    */
 	private void saveHttpResponseHeaders(Map<String, String> headers) {
 		EwsUtilities.EwsAssert(this.httpResponseHeaders.size() == 0,
 				"ExchangeServiceBase.SaveHttpResponseHeaders",
@@ -1078,7 +1069,6 @@ public abstract class ExchangeServiceBase {
     /**
      * Gets the session key.
      */
-    
     protected static byte[] getSessionKey()
     {
             // this has to be computed only once.

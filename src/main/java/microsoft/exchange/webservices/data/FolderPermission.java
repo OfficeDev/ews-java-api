@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-/***
+/**
  * Represents a permission on a folder.
  */
 public final class FolderPermission extends ComplexProperty implements
@@ -181,7 +181,7 @@ public final class FolderPermission extends ComplexProperty implements
 			});
 	//End Region
 
-	/***
+	/**
 	 * Variants of pre-defined permission levels that Outlook also displays with
 	 * the same levels.
 	 */
@@ -261,7 +261,7 @@ public final class FolderPermission extends ComplexProperty implements
 	private FolderPermissionLevel permissionLevel = FolderPermissionLevel.None;
 
 	/**
-	 * * Determines whether the specified folder permission is the same as this
+	 * Determines whether the specified folder permission is the same as this
 	 * one. The comparison does not take UserId and PermissionLevel into
 	 * consideration.
 	 * 
@@ -283,7 +283,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Create a copy of this FolderPermission instance.
+	 * Create a copy of this FolderPermission instance.
 	 * 
 	 * @return Clone of this instance.
 	 */
@@ -292,7 +292,7 @@ public final class FolderPermission extends ComplexProperty implements
 	 * return (FolderPermission)this.clone(); }
 	 */
 
-	/***
+	/**
 	 * Determines the permission level of this folder permission based on its
 	 * individual settings, and sets the PermissionLevel property accordingly.
 	 */
@@ -308,7 +308,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Copies the values of the individual permissions of the specified folder
+	 * Copies the values of the individual permissions of the specified folder
 	 * permission to this folder permissions.
 	 * 
 	 * @param permission
@@ -325,7 +325,7 @@ public final class FolderPermission extends ComplexProperty implements
 		this.readItems = permission.readItems;
 	}
 
-	/***
+	/**
 	 * Initializes a new instance of the FolderPermission class.
 	 */
 	public FolderPermission() {
@@ -334,7 +334,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Initializes a new instance of the FolderPermission class.
+	 * Initializes a new instance of the FolderPermission class.
 	 * 
 	 * @param userId
 	 *            the user id
@@ -353,7 +353,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Initializes a new instance of the FolderPermission class.
+	 * Initializes a new instance of the FolderPermission class.
 	 * 
 	 * @param primarySmtpAddress
 	 *            the primary smtp address
@@ -367,7 +367,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Initializes a new instance of the FolderPermission class.
+	 * Initializes a new instance of the FolderPermission class.
 	 * 
 	 * @param standardUser
 	 *            the standard user
@@ -381,7 +381,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Validates this instance.
+	 * Validates this instance.
 	 * 
 	 * @param isCalendarFolder
 	 *            the is calendar folder
@@ -423,7 +423,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets the Id of the user the permission applies to.
+	 * Gets the Id of the user the permission applies to.
 	 * 
 	 * @return the user id
 	 */
@@ -465,7 +465,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Property was changed.
+	 * Property was changed.
 	 * 
 	 * @param complexProperty
 	 *            the complex property
@@ -475,7 +475,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets  a value indicating whether the user can create new items.
+	 * Gets  a value indicating whether the user can create new items.
 	 * 
 	 * @return the can create items
 	 */
@@ -498,7 +498,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets  a value indicating whether the user can create
+	 * Gets  a value indicating whether the user can create
 	 * sub-folders.
 	 * 
 	 * @return the can create sub folders
@@ -522,7 +522,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets a value indicating whether the user owns the folder.
+	 * Gets a value indicating whether the user owns the folder.
 	 * 
 	 * @return the checks if is folder owner
 	 */
@@ -545,7 +545,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets a value indicating whether the folder is visible to the
+	 * Gets a value indicating whether the folder is visible to the
 	 * user.
 	 * 
 	 * @return the checks if is folder visible
@@ -569,7 +569,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets  a value indicating whether the user is a contact for the
+	 * Gets  a value indicating whether the user is a contact for the
 	 * folder.
 	 * 
 	 * @return the checks if is folder contact
@@ -593,7 +593,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets  a value indicating if/how the user can edit existing
+	 * Gets  a value indicating if/how the user can edit existing
 	 * items.
 	 * 
 	 * @return the edits the items
@@ -617,7 +617,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets  a value indicating if/how the user can delete existing
+	 * Gets  a value indicating if/how the user can delete existing
 	 * items.
 	 * 
 	 * @return the delete items
@@ -641,7 +641,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets  the read items access permission.
+	 * Gets  the read items access permission.
 	 * 
 	 * @return the read items
 	 */
@@ -664,7 +664,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets  the permission level.
+	 * Gets  the permission level.
 	 * 
 	 * @return the permission level
 	 */
@@ -698,7 +698,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets the permission level that Outlook would display for this folder
+	 * Gets the permission level that Outlook would display for this folder
 	 * permission.
 	 * 
 	 * @return the display permission level
@@ -719,7 +719,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -777,7 +777,7 @@ public final class FolderPermission extends ComplexProperty implements
 		}
 	}
 
-	/***
+	/**
 	 * Loads from XML.
 	 * 
 	 * @param reader
@@ -797,7 +797,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -849,7 +849,7 @@ public final class FolderPermission extends ComplexProperty implements
 	}
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            the writer

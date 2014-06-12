@@ -58,13 +58,13 @@ public final class StreamingSubscriptionConnection implements Closeable,
 		void notificationEventDelegate(Object sender, NotificationEventArgs args);
 	}
 
-	/***
+	/**
 	 * Notification events Occurs when notifications are received from the
 	 * server.
 	 */
 	private List<INotificationEventDelegate> onNotificationEvent = new ArrayList<INotificationEventDelegate>();
 
-	/***
+	/**
 	 * Set event to happen when property Notify.
 	 * 
 	 * @param notificationEvent
@@ -75,7 +75,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
 		onNotificationEvent.add(notificationEvent);
 	}
 
-	/***
+	/**
 	 * Remove the event from happening when property Notify.
 	 * 
 	 * @param notificationEvent
@@ -87,7 +87,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
 	}
 
 	/**
-	 * * Clears notification events list.
+	 * Clears notification events list.
 	 */
 	public void clearNotificationEvent() {
 		onNotificationEvent.clear();
@@ -109,12 +109,12 @@ public final class StreamingSubscriptionConnection implements Closeable,
                                        SubscriptionErrorEventArgs args);
 	}
 
-	/***
+	/**
 	 * Subscription events Occur when a subscription encounters an error.
 	 */
 	private List<ISubscriptionErrorDelegate> onSubscriptionError = new ArrayList<ISubscriptionErrorDelegate>();
 
-	/***
+	/**
 	 * Set event to happen when property subscriptionError.
 	 * 
 	 * @param subscriptionError
@@ -125,7 +125,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
 		onSubscriptionError.add(subscriptionError);
 	}
 
-	/***
+	/**
 	 * Remove the event from happening when property subscription.
 	 * 
 	 * @param subscriptionError
@@ -137,19 +137,19 @@ public final class StreamingSubscriptionConnection implements Closeable,
 	}
 
 	/**
-	 * * Clears subscription events list.
+	 * Clears subscription events list.
 	 */
 	public void clearSubscriptionError() {
 		onSubscriptionError.clear();
 	}
 
-	/***
+	/**
 	 * Disconnect events Occurs when a streaming subscription connection is
 	 * disconnected from the server.
 	 */
 	private List<ISubscriptionErrorDelegate> onDisconnect = new ArrayList<ISubscriptionErrorDelegate>();
 
-	/***
+	/**
 	 * Set event to happen when property disconnect.
 	 * 
 	 * @param disconnect
@@ -159,7 +159,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
 		onDisconnect.add(disconnect);
 	}
 
-	/***
+	/**
 	 * Remove the event from happening when property disconnect.
 	 * 
 	 * @param disconnect
@@ -170,7 +170,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
 	}
 
 	/**
-	 * * Clears disconnect events list.
+	 * Clears disconnect events list.
 	 */
 	public void clearDisconnect() {
 		onDisconnect.clear();

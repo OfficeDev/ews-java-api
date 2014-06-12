@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * 
  * Represents a collection of attendees.
  */
@@ -14,7 +14,7 @@ package microsoft.exchange.webservices.data;
 public final class AttendeeCollection extends
 		ComplexPropertyCollection<Attendee> {
 
-	/***
+	/**
 	 * Initializes a new instance of the AttendeeCollection class.
 	 */
 	protected AttendeeCollection() {
@@ -22,7 +22,7 @@ public final class AttendeeCollection extends
 	}
 
 	/**
-	 * * Adds an attendee to the collection.
+	 * Adds an attendee to the collection.
 	 * 
 	 * @param attendee
 	 *            the attendee
@@ -32,7 +32,7 @@ public final class AttendeeCollection extends
 	}
 
 	/**
-	 * * Adds an attendee to the collection.
+	 * Adds an attendee to the collection.
 	 * 
 	 * @param smtpAddress
 	 *            the smtp address
@@ -49,7 +49,7 @@ public final class AttendeeCollection extends
 	}
 
 	/**
-	 * * Adds an attendee to the collection.
+	 * Adds an attendee to the collection.
 	 * 
 	 * @param name
 	 *            the name
@@ -66,7 +66,7 @@ public final class AttendeeCollection extends
 		return result;
 	}
 
-	/***
+	/**
 	 * Clears the collection.
 	 */
 	public void clear() {
@@ -74,7 +74,7 @@ public final class AttendeeCollection extends
 	}
 
 	/**
-	 * * Removes an attendee from the collection.
+	 * Removes an attendee from the collection.
 	 * 
 	 * @param index
 	 *            the index
@@ -89,7 +89,7 @@ public final class AttendeeCollection extends
 	}
 
 	/**
-	 * * Removes an attendee from the collection.
+	 * Removes an attendee from the collection.
 	 * 
 	 * @param attendee
 	 *            the attendee
@@ -105,7 +105,7 @@ public final class AttendeeCollection extends
 	}
 
 	/**
-	 * * Creates an Attendee object from an XML element name.
+	 * Creates an Attendee object from an XML element name.
 	 * 
 	 * @param xmlElementName
 	 *            the xml element name
@@ -121,7 +121,7 @@ public final class AttendeeCollection extends
 	}
 
 	/**
-	 * * Retrieves the XML element name corresponding to the provided Attendee
+	 * Retrieves the XML element name corresponding to the provided Attendee
 	 * object.
 	 * 
 	 * @param attendee

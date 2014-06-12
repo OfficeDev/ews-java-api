@@ -26,7 +26,7 @@ public abstract class ServiceObjectSchema implements
 	/** The lock object. */
 	private static Object lockObject = new Object();
 
-	/***
+	/**
 	 * List of all schema types. If you add a new ServiceObject subclass that
 	 * has an associated schema, add the schema type to the list below.
 	 */
@@ -72,7 +72,7 @@ public abstract class ServiceObjectSchema implements
 				};
 			});
 
-	/***
+	/**
 	 * Dictionary of all property definitions.
 	 */
 	private static LazyMember<Map<String, PropertyDefinitionBase>>
@@ -91,7 +91,7 @@ public abstract class ServiceObjectSchema implements
 				};
 			});
 
-	/***
+	/**
 	 * Adds schema properties to dictionary.
 	 * 
 	 * @param type
@@ -169,7 +169,7 @@ public abstract class ServiceObjectSchema implements
 		}
 	}
 
-	/***
+	/**
 	 * Adds the schema property names to dictionary.
 	 * 
 	 * @param type
@@ -207,13 +207,13 @@ public abstract class ServiceObjectSchema implements
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected ServiceObjectSchema() {
 		this.registerProperties();
 	}
 
-	/***
+	/**
 	 * Finds the property definition.
 	 * 
 	 * @param uri
@@ -224,7 +224,7 @@ public abstract class ServiceObjectSchema implements
 		return ServiceObjectSchema.allSchemaProperties.getMember().get(uri);
 	}
 
-	/***
+	/**
 	 * Initialize schema property names.
 	 */
 	protected static void initializeSchemaPropertyNames() {
@@ -258,7 +258,7 @@ public abstract class ServiceObjectSchema implements
 		}
 	}
 
-	/***
+	/**
 	 * Defines the ExtendedProperties property.
 	 */
 	public static final PropertyDefinition extendedProperties = 
@@ -296,7 +296,7 @@ public abstract class ServiceObjectSchema implements
     private List<IndexedPropertyDefinition> indexedProperties =
     	new ArrayList<IndexedPropertyDefinition>();
 
-	/***
+	/**
 	 * Registers a schema property.
 	 * 
 	 * @param property
@@ -326,7 +326,7 @@ public abstract class ServiceObjectSchema implements
 		}
 	}
 
-	/***
+	/**
 	 * Registers a schema property that will be visible to developers.
 	 * 
 	 * @param property
@@ -336,7 +336,7 @@ public abstract class ServiceObjectSchema implements
 		this.registerProperty(property, false);
 	}
 
-	/***
+	/**
 	 * Registers an internal schema property.
 	 * 
 	 * @param property
@@ -346,7 +346,7 @@ public abstract class ServiceObjectSchema implements
 		this.registerProperty(property, true);
 	}
 
-	/***
+	/**
 	 * Registers an indexed property.
 	 * 
 	 * @param indexedProperty
@@ -358,14 +358,14 @@ public abstract class ServiceObjectSchema implements
     }
 
     
-	/***
+	/**
 	 * Registers properties.
 	 */
 	protected void registerProperties() {
 	}
 
 	/**
-	 * * Gets the list of first class properties for this service object type.
+	 * Gets the list of first class properties for this service object type.
 	 * 
 	 * @return the first class properties
 	 */
@@ -374,7 +374,7 @@ public abstract class ServiceObjectSchema implements
 	}
 
 	/**
-	 * * Gets the list of first class summary properties for this service object
+	 * Gets the list of first class summary properties for this service object
 	 * type.
 	 * 
 	 * @return the first class summary properties
@@ -383,7 +383,7 @@ public abstract class ServiceObjectSchema implements
 		return this.firstClassSummaryProperties;
 	}
 
-	/***
+	/**
 	 * Tries to get property definition.
 	 * 
 	 * @param xmlElementName

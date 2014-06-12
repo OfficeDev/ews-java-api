@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-/***
+/**
  * Represents a property that can be sent to or retrieved from EWS.
  * 
  * 
@@ -23,13 +23,13 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	private XmlNamespace xmlNamespace = XmlNamespace.Types;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected ComplexProperty() {
 
 	}
 
-	/***
+	/**
 	 * Gets the namespace.
 	 * 
 	 * @return the namespace.
@@ -38,7 +38,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 		return xmlNamespace;
 	}
 
-	/***
+	/**
 	 * Sets the namespace.
 	 * 
 	 * @param xmlNamespace
@@ -48,7 +48,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 		this.xmlNamespace = xmlNamespace;
 	}
 
-	/***
+	/**
 	 * Instance was changed.
 	 */
 	protected void changed() {
@@ -60,7 +60,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	}
 
 	/**
-	 * * Sets value of field.
+	 * Sets value of field.
 	 * 
 	 * @param <T>
 	 *            Field type.
@@ -89,14 +89,14 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 		return applyChange;
 	}
 
-	/***
+	/**
 	 * Clears the change log.
 	 */
 	protected void clearChangeLog() {
 	}
 
 	/**
-	 * * Reads the attributes from XML.
+	 * Reads the attributes from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -108,7 +108,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	}
 
 	/**
-	 * * Reads the text value from XML.
+	 * Reads the text value from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -120,7 +120,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -139,7 +139,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
      * @param reader The reader. 
      *  True if element was read.
      * 
-     * */
+     */
      
     protected boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception
     {
@@ -147,7 +147,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
     }
 	
 	/**
-	 * * Writes the attributes to XML.
+	 * Writes the attributes to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -159,7 +159,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -171,7 +171,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	}
 
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -234,7 +234,6 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
       *@param reader The reader. 
       *@param xmlNamespace The XML namespace. 
       *@param xmlElementName Name of the XML element. 
-	 * @param complexFunctionDelegate 
       */
     protected  void updateFromXml(
         EwsServiceXmlReader reader,
@@ -246,12 +245,11 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	}
 
     /**
-     * 
-     *  Loads from XML
-     *@param reader The Reader.
-     *@param xmlNamespace The Xml NameSpace.
-     *@param xmlElementName  The Xml ElementName
-     *@param readAction   The Reade Action.
+     * Loads from XML
+     * @param reader          The Reader.
+     * @param xmlNamespace    The Xml NameSpace.
+     * @param xmlElementName  The Xml ElementName
+     * @param readValue       The read value.
      */
     private void internalLoadFromXml(
         EwsServiceXmlReader reader,
@@ -284,18 +282,13 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 			reader.isEndElement(xmlNamespace, xmlElementName);
 		}
 	} 
-        
-        
-    
-    
-    
-    
+
     private void internalupdateLoadFromXml(
             EwsServiceXmlReader reader,
             XmlNamespace xmlNamespace,
             String xmlElementName,          
             boolean readValue)throws Exception
- {
+    {
 		reader.ensureCurrentNodeIsStartElement(xmlNamespace, xmlElementName);
 
 		this.readAttributesFromXml(reader);
@@ -320,7 +313,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
    
     
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -336,7 +329,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	}
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -356,7 +349,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	}
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -370,13 +363,13 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 		this.writeToXml(writer, this.getNamespace(), xmlElementName);
 	}
 
-	/***
+	/**
 	 * Change events occur when property changed.
 	 */
 	private List<IComplexPropertyChangedDelegate> onChangeList = 
 		new ArrayList<IComplexPropertyChangedDelegate>();
 
-	/***
+	/**
 	 * Set event to happen when property changed.
 	 * 
 	 * @param change
@@ -387,7 +380,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 		onChangeList.add(change);
 	}
 
-	/***
+	/**
 	 * Remove the event from happening when property changed.
 	 * 
 	 * @param change
@@ -399,14 +392,14 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	}
 
 	/**
-	 * * Clears change events list.
+	 * Clears change events list.
 	 */
 	protected void clearChangeEvents() {
 		onChangeList.clear();
 	}
 
 	/**
-	 * * Implements ISelfValidate.validate. Validates this instance.
+	 * Implements ISelfValidate.validate. Validates this instance.
 	 * 
 	 * @throws ServiceValidationException
 	 *             the service validation exception
@@ -419,7 +412,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	}
 
 	/**
-	 * * Validates this instance.
+	 * Validates this instance.
 	 * 
 	 * @throws ServiceValidationException
 	 *             the service validation exception
@@ -428,8 +421,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	protected void internalValidate() 
 	throws ServiceValidationException, Exception {
 	}
-	
-	
+
 	public Boolean func(EwsServiceXmlReader reader)
 	 throws Exception {
 		if (!this.tryReadElementFromXml(reader)) 
@@ -437,5 +429,5 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 		else return false;
 	
 	}
-		
+
 }

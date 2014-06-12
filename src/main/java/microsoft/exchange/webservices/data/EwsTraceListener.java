@@ -9,7 +9,7 @@ package microsoft.exchange.webservices.data;
 import java.io.PrintStream;
 
 /**
- * * EwsTraceListener logs request/responses to a text writer.
+ * EwsTraceListener logs request/responses to a text writer.
  * 
  * @see EwsTraceEvent
  */

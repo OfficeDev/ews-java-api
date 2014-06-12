@@ -27,7 +27,7 @@ class GetUserConfigurationRequest extends
 	private UserConfiguration userConfiguration;
 
 	/**
-	 * * Validate request.
+	 * Validate request.
 	 * 
 	 * @throws microsoft.exchange.webservices.data.ServiceLocalException
 	 *             the service local exception
@@ -45,7 +45,7 @@ class GetUserConfigurationRequest extends
 	}
 
 	/**
-	 * * Creates the service response.
+	 * Creates the service response.
 	 * 
 	 * @param service
 	 *            the service
@@ -70,7 +70,7 @@ class GetUserConfigurationRequest extends
 		return new GetUserConfigurationResponse(this.userConfiguration);
 	}
 
-	/***
+	/**
 	 * Gets the request version.
 	 * 
 	 * @return Earliest Exchange version in which this request is supported.
@@ -80,7 +80,7 @@ class GetUserConfigurationRequest extends
 		return ExchangeVersion.Exchange2010;
 	}
 
-	/***
+	/**
 	 * Gets the expected response message count.
 	 * 
 	 * @return Number of expected response messages.
@@ -90,7 +90,7 @@ class GetUserConfigurationRequest extends
 		return 1;
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name
@@ -100,7 +100,7 @@ class GetUserConfigurationRequest extends
 		return XmlElementNames.GetUserConfiguration;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response XML element.
 	 * 
 	 * @return XML element name
@@ -110,7 +110,7 @@ class GetUserConfigurationRequest extends
 		return XmlElementNames.GetUserConfigurationResponse;
 	}
 
-	/***
+	/**
 	 * Gets the name of the response message XML element.
 	 * 
 	 * @return XML element name
@@ -121,7 +121,7 @@ class GetUserConfigurationRequest extends
 	}
 
 	/**
-	 * * Writes XML elements.
+	 * Writes XML elements.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -145,7 +145,7 @@ class GetUserConfigurationRequest extends
 	}
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -157,7 +157,7 @@ class GetUserConfigurationRequest extends
 	}
 
 	/**
-	 * * Gets  the name. <value>The name.</value>
+	 * Gets  the name. <value>The name.</value>
 	 * 
 	 * @return the name
 	 */
@@ -176,7 +176,7 @@ class GetUserConfigurationRequest extends
 	}
 
 	/**
-	 * * Gets  the parent folder Id. <value>The parent folder Id.</value>
+	 * Gets  the parent folder Id. <value>The parent folder Id.</value>
 	 * 
 	 * @return the parent folder id
 	 */
@@ -195,7 +195,7 @@ class GetUserConfigurationRequest extends
 	}
 
 	/**
-	 * * Gets  the user configuration. <value>The user
+	 * Gets  the user configuration. <value>The user
 	 * configuration.</value>
 	 * 
 	 * @return the user configuration

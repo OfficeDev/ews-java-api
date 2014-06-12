@@ -12,7 +12,7 @@ package microsoft.exchange.webservices.data;
  * 
  */
 public interface ISearchStringProvider {
-	/***
+	/**
 	 * Get a string representation for using this instance in a search filter.
 	 * 
 	 * @return String representation of instance.

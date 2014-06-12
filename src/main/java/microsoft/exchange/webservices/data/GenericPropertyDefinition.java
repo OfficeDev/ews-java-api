@@ -91,7 +91,7 @@ TypedPropertyDefinition {
 	 * @throws IllegalAccessException 
 	 * @throws InstantiationException 
 	 * @Param value The value
-	 * @returns Double value from parsed value.
+	 * @return Double value from parsed value.
 	 */	
 	@Override
 	protected Object parse(String value) throws InstantiationException, 

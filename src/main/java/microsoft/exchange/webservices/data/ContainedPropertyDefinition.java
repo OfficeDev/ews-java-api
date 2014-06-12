@@ -9,7 +9,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
 
-/***
+/**
  * Represents contained property definition.
  * 
  * 
@@ -54,7 +54,7 @@ class ContainedPropertyDefinition<TComplexProperty extends ComplexProperty>
 	}
 
 	/**
-	 * * Load from XML.
+	 * Load from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -75,7 +75,7 @@ class ContainedPropertyDefinition<TComplexProperty extends ComplexProperty>
 	}
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            the writer

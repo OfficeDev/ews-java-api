@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/***
+/**
  * ServiceObjectInfo contains metadata on how to map from an element name to a
  * ServiceObject type as well as how to map from a ServiceObject type to
  * appropriate constructors.
@@ -30,7 +30,7 @@ class ServiceObjectInfo {
 	private Map<String, Class<?>> xmlElementNameToServiceObjectClassMap;
 
 	/**
-	 * * Default constructor.
+	 * Default constructor.
 	 */
 	protected ServiceObjectInfo() {
 		this.xmlElementNameToServiceObjectClassMap =
@@ -43,7 +43,7 @@ class ServiceObjectInfo {
 		this.initializeServiceObjectClassMap();
 	}
 
-	/***
+	/**
 	 * Initializes the service object class map. If you add a new ServiceObject
 	 * subclass that can be returned by the Server, add the type to the class
 	 * map as well as associated delegate(s) to call the constructor(s).
@@ -277,7 +277,7 @@ class ServiceObjectInfo {
 	}
 
 	/**
-	 * * Adds specified type of service object to map.
+	 * Adds specified type of service object to map.
 	 * 
 	 * @param xmlElementName
 	 *            the xml element name
@@ -303,7 +303,7 @@ class ServiceObjectInfo {
 	}
 
 	/**
-	 * * Return Dictionary that maps from element name to ServiceObject Type.
+	 * Return Dictionary that maps from element name to ServiceObject Type.
 	 * 
 	 * @return the xml element name to service object class map
 	 */
@@ -312,7 +312,7 @@ class ServiceObjectInfo {
 	}
 
 	/**
-	 * * Return Dictionary that maps from ServiceObject Type to
+	 * Return Dictionary that maps from ServiceObject Type to
 	 * CreateServiceObjectWithServiceParam delegate with ExchangeService
 	 * parameter.
 	 * 
@@ -324,7 +324,7 @@ class ServiceObjectInfo {
 	}
 
 	/**
-	 * * Return Dictionary that maps from ServiceObject Type to
+	 * Return Dictionary that maps from ServiceObject Type to
 	 * CreateServiceObjectWithAttachmentParam delegate with ItemAttachment
 	 * parameter.
 	 * 
@@ -335,7 +335,7 @@ class ServiceObjectInfo {
 		return this.serviceObjectConstructorsWithAttachmentParam;
 	}
 
-	/***
+	/**
 	 * Set event to happen when property changed.
 	 * 
 	 * @param change
@@ -346,7 +346,7 @@ class ServiceObjectInfo {
 		onChangeList.add(change);
 	}
 
-	/***
+	/**
 	 * Remove the event from happening when property changed.
 	 * 
 	 * @param change
@@ -365,7 +365,7 @@ class ServiceObjectInfo {
 	private List<ICreateServiceObjectWithServiceParam> onChangeList1 = 
 		new ArrayList<ICreateServiceObjectWithServiceParam>();
 
-	/***
+	/**
 	 * Set event to happen when property changed.
 	 * 
 	 * @param change
@@ -376,7 +376,7 @@ class ServiceObjectInfo {
 		onChangeList1.add(change);
 	}
 
-	/***
+	/**
 	 * Remove the event from happening when property changed.
 	 * 
 	 * @param change

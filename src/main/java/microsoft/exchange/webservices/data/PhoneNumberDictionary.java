@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a dictionary of phone numbers.
  * 
  */
@@ -14,7 +14,7 @@ package microsoft.exchange.webservices.data;
 public final class PhoneNumberDictionary extends
 		DictionaryProperty<PhoneNumberKey, PhoneNumberEntry> {
 
-	/***
+	/**
 	 * Gets the field URI.
 	 * 
 	 * @return Field URI.
@@ -24,7 +24,7 @@ public final class PhoneNumberDictionary extends
 		return "contacts:PhoneNumber";
 	}
 
-	/***
+	/**
 	 * Creates instance of dictionary entry.
 	 * 
 	 * @return New instance.
@@ -35,7 +35,7 @@ public final class PhoneNumberDictionary extends
 	}
 
 	/**
-	 * * Gets  the phone number at the specified key.
+	 * Gets  the phone number at the specified key.
 	 * 
 	 * @param key
 	 *            the key
@@ -72,7 +72,7 @@ public final class PhoneNumberDictionary extends
 	}
 
 	/**
-	 * * Tries to get the phone number associated with the specified key.
+	 * Tries to get the phone number associated with the specified key.
 	 * 
 	 * @param key
 	 *            the key

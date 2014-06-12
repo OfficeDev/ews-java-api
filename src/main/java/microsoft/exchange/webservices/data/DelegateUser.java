@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a delegate user.
  */
 public final class DelegateUser extends ComplexProperty {

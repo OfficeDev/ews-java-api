@@ -13,12 +13,12 @@ import javax.xml.stream.XMLStreamException;
  */
 final class GetInboxRulesRequest extends SimpleServiceRequestBase{
 
-	/***
+	/**
 	 * The smtp address of the mailbox from which to get the inbox rules.
 	 */
 	private String mailboxSmtpAddress;
 
-	/***
+	/**
 	 * Initializes a new instance of the GetInboxRulesRequest class.
 	 * @param service The service.
 	 * @throws Exception 
@@ -27,7 +27,7 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase{
 		super(service);
 	}
 
-	/***
+	/**
 	 * Gets or sets the address of the mailbox
 	 *  from which to get the inbox rules.
 	 * @return the mailboxSmtpAddress
@@ -36,14 +36,14 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase{
 		return this.mailboxSmtpAddress;
 	}
 
-	/***
+	/**
 	 *  sets the address of the mailbox from which to get the inbox rules.
 	 */
 	protected void setmailboxSmtpAddress(String value) {
 		this.mailboxSmtpAddress = value; 
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * @return XML element name.
 	 */
@@ -52,7 +52,7 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase{
 		return XmlElementNames.GetInboxRules;
 	}
 
-	/***
+	/**
 	 * Writes XML elements.
 	 * @param writer The writer.
 	 * @throws javax.xml.stream.XMLStreamException
@@ -70,7 +70,7 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase{
 		}
 	}
 
-	/***
+	/**
 	 * Gets the name of the response XML element.
 	 * @return XML element name.
 	 */
@@ -79,7 +79,7 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase{
 		return XmlElementNames.GetInboxRulesResponse;
 	}
 
-	/***
+	/**
 	 * Parses the response.
 	 * @param reader The reader.
 	 * @return Response object.
@@ -93,7 +93,7 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase{
 		return response;
 	}
 
-	/***
+	/**
 	 * Gets the request version.
 	 * @return Earliest Exchange version in which this request is supported.
 	 */
@@ -102,7 +102,7 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase{
 		return ExchangeVersion.Exchange2010_SP1;
 	}
 
-	/***
+	/**
 	 * Executes this request.
 	 * @return Service response.
 	 * @throws Exception 

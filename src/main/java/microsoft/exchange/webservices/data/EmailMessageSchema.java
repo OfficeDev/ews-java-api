@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="EmailMessageSchema.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 
@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
 
-/***
+/**
  * Represents the schema for e-mail messages.
  * 
  */
@@ -70,7 +70,7 @@ public class EmailMessageSchema extends ItemSchema {
 		String ReceivedRepresenting = "message:ReceivedRepresenting";
 	}
 
-	/***
+	/**
 	 * Defines the ToRecipients property.
 	 */
 	public static final PropertyDefinition ToRecipients = 
@@ -91,7 +91,7 @@ public class EmailMessageSchema extends ItemSchema {
 				};
 			});
 
-	/***
+	/**
 	 * Defines the BccRecipients property.
 	 */
 	public static final PropertyDefinition BccRecipients = 
@@ -112,7 +112,7 @@ public class EmailMessageSchema extends ItemSchema {
 				};
 			});
 
-	/***
+	/**
 	 * Defines the CcRecipients property.
 	 */
 	public static final PropertyDefinition CcRecipients = 
@@ -133,7 +133,7 @@ public class EmailMessageSchema extends ItemSchema {
 				};
 			});
 
-	/***
+	/**
 	 * Defines the ConversationIndex property.
 	 */
 	public static final PropertyDefinition ConversationIndex = 
@@ -142,7 +142,7 @@ public class EmailMessageSchema extends ItemSchema {
 			EnumSet.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the ConversationTopic property.
 	 */
 	public static final PropertyDefinition ConversationTopic = 
@@ -151,7 +151,7 @@ public class EmailMessageSchema extends ItemSchema {
 			EnumSet.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the From property.
 	 */
 	public static final PropertyDefinition From =
@@ -170,7 +170,7 @@ public class EmailMessageSchema extends ItemSchema {
 				};
 			});
 
-	/***
+	/**
 	 * Defines the IsDeliveryReceiptRequested property.
 	 */
 	public static final PropertyDefinition IsDeliveryReceiptRequested = 
@@ -183,7 +183,7 @@ public class EmailMessageSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the IsRead property.
 	 */
 	public static final PropertyDefinition IsRead = new BoolPropertyDefinition(
@@ -193,7 +193,7 @@ public class EmailMessageSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the IsReadReceiptRequested property.
 	 */
 	public static final PropertyDefinition IsReadReceiptRequested = 
@@ -206,7 +206,7 @@ public class EmailMessageSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the IsResponseRequested property.
 	 */
 	public static final PropertyDefinition IsResponseRequested = 
@@ -218,7 +218,7 @@ public class EmailMessageSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1, true); // isNullable
 
-	/***
+	/**
 	 * Defines the InternetMessageId property.
 	 */
 	public static final PropertyDefinition InternetMessageId = 
@@ -227,7 +227,7 @@ public class EmailMessageSchema extends ItemSchema {
 			EnumSet.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the References property.
 	 */
 	public static final PropertyDefinition References = 
@@ -239,7 +239,7 @@ public class EmailMessageSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the ReplyTo property.
 	 */
 	public static final PropertyDefinition ReplyTo = 
@@ -260,7 +260,7 @@ public class EmailMessageSchema extends ItemSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the Sender property.
 	 */
 	public static final PropertyDefinition Sender = 
@@ -277,7 +277,7 @@ public class EmailMessageSchema extends ItemSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the ReceivedBy property.
 	 */
 	public static final PropertyDefinition ReceivedBy =
@@ -294,7 +294,7 @@ public class EmailMessageSchema extends ItemSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the ReceivedRepresenting property.
 	 */
 	public static final PropertyDefinition ReceivedRepresenting = 
@@ -324,7 +324,7 @@ public class EmailMessageSchema extends ItemSchema {
 		return Instance;
 	}
 
-	/***
+	/**
 	 * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
 	 * SCHEMA ORDER (i.e. the same order as they are defined in types.xsd)
 	 */
@@ -350,7 +350,7 @@ public class EmailMessageSchema extends ItemSchema {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected EmailMessageSchema() {
 		super();

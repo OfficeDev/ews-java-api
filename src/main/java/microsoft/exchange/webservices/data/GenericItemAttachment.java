@@ -16,7 +16,7 @@ public final class GenericItemAttachment<TItem extends Item> extends
 		ItemAttachment {
 
 	/**
-	 * * Initializes a new instance of the GenericItemAttachment class.
+	 * Initializes a new instance of the GenericItemAttachment class.
 	 * 
 	 * @param owner
 	 *            the owner
@@ -26,7 +26,7 @@ public final class GenericItemAttachment<TItem extends Item> extends
 	}
 
 	/**
-	 * * Gets the item associated with the attachment.
+	 * Gets the item associated with the attachment.
 	 * 
 	 * @return the t item
 	 */

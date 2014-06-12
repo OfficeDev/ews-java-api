@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="Conflict.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 

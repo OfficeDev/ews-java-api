@@ -16,7 +16,7 @@ public  final class GetPasswordExpirationDateRequest extends SimpleServiceReques
 		// TODO Auto-generated method stub
 		return ExchangeVersion.Exchange2010_SP1;
 	}
-	
+
 	/**
 	 * Initializes a new instance of the GetPasswordExpirationDateRequest class 
 	 * @param service
@@ -30,19 +30,14 @@ public  final class GetPasswordExpirationDateRequest extends SimpleServiceReques
 		return XmlElementNames.GetPasswordExpirationDateResponse;
 	}
 	
-	/***
+	/**
 	 * Gets the name of the XML Element.
 	 * returns XML element name
 	 */
-
-	
 	protected String getXmlElementName(){
 		return XmlElementNames.GetPasswordExpirationDateRequest;
 	}
-	
-	 
 
-	 
 	@Override
 	protected void writeElementsToXml(EwsServiceXmlWriter writer)
 			throws XMLStreamException, ServiceXmlSerializationException,
@@ -51,14 +46,13 @@ public  final class GetPasswordExpirationDateRequest extends SimpleServiceReques
 		 writer.writeElementValue(XmlNamespace.Messages,
 				 XmlElementNames.MailboxSmtpAddress,
 				 this.getMailboxSmtpAddress());
-		 
 	}
-   /***
+
+   /**
     * Parses the response
     * @param reader
     * @return GEtPasswordExpirationDateResponse
     */
-	
 	protected Object parseResponse(EwsServiceXmlReader reader)throws Exception{
 		GetPasswordExpirationDateResponse response = new GetPasswordExpirationDateResponse();
 		response.loadFromXml(reader,XmlElementNames.GetPasswordExpirationDateResponse);
@@ -66,7 +60,7 @@ public  final class GetPasswordExpirationDateRequest extends SimpleServiceReques
 		
 	}
 	
-	/***
+	/**
 	 * Gets the request version
 	 * @return Earliest Exchange version in which this request is supported.
 	 *//*
@@ -74,34 +68,27 @@ public  final class GetPasswordExpirationDateRequest extends SimpleServiceReques
 		return ExchangeVersion.Exchange2010_SP1;
 	}*/
 	
-	/***
+	/**
 	 * Executes this request.
 	 * @return Service response.
 	 */
-	
 	protected GetPasswordExpirationDateResponse execute()throws Exception{
 		GetPasswordExpirationDateResponse serviceResponse = (GetPasswordExpirationDateResponse)this.internalExecute();
 		serviceResponse.throwIfNecessary();
 		return serviceResponse;
 	}
 	
-	/***
-	 *  Gets  room list to retrice rooms from.
-	 * @return
+	/**
+	 * Gets mailbox smtp address.
+	 * @return The mailbox smtp address.
 	 */
 	protected String getMailboxSmtpAddress(){
 		return this.mailboxSmtpAddress;
 	}
-	
-	
-	/***
-	 * 
-	 */
-	
+
 	protected void setMailboxSmtpAddress(String mailboxSmtpAddress){
 		this. mailboxSmtpAddress =  mailboxSmtpAddress;
 	}
 	
 	private String mailboxSmtpAddress;
-	
 }

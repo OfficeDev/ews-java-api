@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a dictionary of Instant Messaging addresses.
  * 
  */
@@ -14,7 +14,7 @@ package microsoft.exchange.webservices.data;
 public final class ImAddressDictionary extends
 		DictionaryProperty<ImAddressKey, ImAddressEntry> {
 
-	/***
+	/**
 	 * Gets the field URI.
 	 * 
 	 * @return Field URI.
@@ -24,7 +24,7 @@ public final class ImAddressDictionary extends
 		return "contacts:ImAddress";
 	}
 
-	/***
+	/**
 	 * Creates instance of dictionary entry.
 	 * 
 	 * @return New instance.
@@ -35,7 +35,7 @@ public final class ImAddressDictionary extends
 	}
 
 	/**
-	 * * Gets  the Instant Messaging address at the specified key.
+	 * Gets  the Instant Messaging address at the specified key.
 	 * 
 	 * @param key
 	 *            the key
@@ -71,7 +71,7 @@ public final class ImAddressDictionary extends
 	}
 
 	/**
-	 * * Tries to get the IM address associated with the specified key.
+	 * Tries to get the IM address associated with the specified key.
 	 * 
 	 * @param key
 	 *            the key

@@ -6,19 +6,19 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents the abstraction of an item Id.
  */
 abstract class AbstractItemIdWrapper {
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 */
 	protected AbstractItemIdWrapper() {
 	}
 
-	/***
-	 *Obtains the ItemBase object associated with the wrapper.
+	/**
+	 * Obtains the ItemBase object associated with the wrapper.
 	 * 
 	 * @return The ItemBase object associated with the wrapper
 	 */
@@ -27,7 +27,7 @@ abstract class AbstractItemIdWrapper {
 	}
 
 	/**
-	 * * Writes the Id encapsulated in the wrapper to XML.
+	 * Writes the Id encapsulated in the wrapper to XML.
 	 * 
 	 * @param writer
 	 *            the writer

@@ -11,7 +11,7 @@ import java.util.Map;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents the permissions of a delegate user.
  */
 public final class DelegatePermissions extends ComplexProperty {
@@ -19,7 +19,7 @@ public final class DelegatePermissions extends ComplexProperty {
 	private Map<String, DelegateFolderPermission> delegateFolderPermissions;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 */
 
 	protected DelegatePermissions() {
@@ -48,7 +48,7 @@ public final class DelegatePermissions extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets the delegate user's permission on the principal's calendar.
+	 * Gets the delegate user's permission on the principal's calendar.
 	 * 
 	 * @return the calendar folder permission level
 	 */
@@ -59,7 +59,7 @@ public final class DelegatePermissions extends ComplexProperty {
 	}
 
 	/**
-	 * * sets the delegate user's permission on the principal's calendar.
+	 * sets the delegate user's permission on the principal's calendar.
 	 * 
 	 * @param value
 	 *            the new calendar folder permission level
@@ -71,7 +71,7 @@ public final class DelegatePermissions extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets  the delegate user's permission on the principal's tasks
+	 * Gets  the delegate user's permission on the principal's tasks
 	 * folder.
 	 * 
 	 * @return the tasks folder permission level
@@ -96,7 +96,7 @@ public final class DelegatePermissions extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets the delegate user's permission on the principal's inbox.
+	 * Gets the delegate user's permission on the principal's inbox.
 	 * 
 	 * @return the inbox folder permission level
 	 */
@@ -120,7 +120,7 @@ public final class DelegatePermissions extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets  the delegate user's permission on the principal's contacts
+	 * Gets  the delegate user's permission on the principal's contacts
 	 * folder.
 	 * 
 	 * @return the contacts folder permission level
@@ -145,7 +145,7 @@ public final class DelegatePermissions extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets the delegate user's permission on the principal's notes
+	 * Gets the delegate user's permission on the principal's notes
 	 * folder.
 	 * 
 	 * @return the notes folder permission level
@@ -170,7 +170,7 @@ public final class DelegatePermissions extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets  the delegate user's permission on the principal's journal
+	 * Gets  the delegate user's permission on the principal's journal
 	 * folder.
 	 * 
 	 * @return the journal folder permission level
@@ -205,7 +205,7 @@ public final class DelegatePermissions extends ComplexProperty {
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -229,7 +229,7 @@ public final class DelegatePermissions extends ComplexProperty {
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            the writer

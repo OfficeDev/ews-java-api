@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
 
-/***
+/**
  * Represents base complex property type.
  * 
  * 
@@ -24,7 +24,7 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
 	<TComplexProperty> propertyCreationDelegate;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -52,7 +52,7 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -138,7 +138,7 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
 		this.propertyCreationDelegate = propertyCreationDelegate;
 	}
 
-	/***
+	/**
 	 * Creates the property instance.
 	 * 
 	 * @param owner

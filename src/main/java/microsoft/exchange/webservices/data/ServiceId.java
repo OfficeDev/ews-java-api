@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents the Id of an Exchange object.
  * 
  */
@@ -19,14 +19,14 @@ public abstract class ServiceId extends ComplexProperty {
 	private String uniqueId;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected ServiceId() {
 		super();
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param uniqueId
 	 *            The unique id.
@@ -40,7 +40,7 @@ public abstract class ServiceId extends ComplexProperty {
 	}
 
 	/**
-	 * * Read attributes from XML.
+	 * Read attributes from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -56,7 +56,7 @@ public abstract class ServiceId extends ComplexProperty {
 	}
 
 	/**
-	 * * Writes attributes to XML.
+	 * Writes attributes to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -71,7 +71,7 @@ public abstract class ServiceId extends ComplexProperty {
 				.getChangeKey());
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name.
@@ -79,7 +79,7 @@ public abstract class ServiceId extends ComplexProperty {
 	protected abstract String getXmlElementName();
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -90,7 +90,7 @@ public abstract class ServiceId extends ComplexProperty {
 		this.writeToXml(writer, this.getXmlElementName());
 	}
 
-	/***
+	/**
 	 * Assigns from existing id.
 	 * 
 	 * @param source
@@ -101,7 +101,7 @@ public abstract class ServiceId extends ComplexProperty {
 		this.changeKey = source.getChangeKey();
 	}
 
-	/***
+	/**
 	 * True if this instance is valid, false otherthise.
 	 * 
 	 * @return true if this instance is valid; otherwise,false
@@ -110,7 +110,7 @@ public abstract class ServiceId extends ComplexProperty {
 		return (null != this.uniqueId && !this.uniqueId.isEmpty());
 	}
 
-	/***
+	/**
 	 * Gets the unique Id of the Exchange object.
 	 * 
 	 * @return unique Id of the Exchange object.
@@ -119,7 +119,7 @@ public abstract class ServiceId extends ComplexProperty {
 		return uniqueId;
 	}
 
-	/***
+	/**
 	 * Sets the unique Id of the Exchange object.
 	 * 
 	 * @param uniqueId
@@ -129,7 +129,7 @@ public abstract class ServiceId extends ComplexProperty {
 		this.uniqueId = uniqueId;
 	}
 
-	/***
+	/**
 	 * Gets the change key associated with the Exchange object. The change key
 	 * represents the version of the associated item or folder.
 	 * 
@@ -139,7 +139,7 @@ public abstract class ServiceId extends ComplexProperty {
 		return changeKey;
 	}
 
-	/***
+	/**
 	 * Sets the change key associated with the Exchange object. The change key
 	 * represents the version of the associated item or folder.
 	 * 
@@ -151,7 +151,7 @@ public abstract class ServiceId extends ComplexProperty {
 	}
 
 	/**
-	 * * Determines whether two ServiceId instances are equal (including
+	 * Determines whether two ServiceId instances are equal (including
 	 * ChangeKeys).
 	 * 
 	 * @param other
@@ -168,7 +168,7 @@ public abstract class ServiceId extends ComplexProperty {
 		}
 	}
 
-	/***
+	/**
 	 * Determines whether the specified instance is equal to the current
 	 * instance. We do not consider the ChangeKey for ServiceId.Equals.
 	 * 
@@ -195,7 +195,7 @@ public abstract class ServiceId extends ComplexProperty {
 		}
 	}
 
-	/***
+	/**
 	 * Serves as a hash function for a particular type. We do not consider the
 	 * change key in the hash code computation.
 	 * 
@@ -208,7 +208,7 @@ public abstract class ServiceId extends ComplexProperty {
 	}
 
 	/**
-	 * * Returns a string that represents the current instance.
+	 * Returns a string that represents the current instance.
 	 * 
 	 * @return A string that represents the current instance.
 	 */

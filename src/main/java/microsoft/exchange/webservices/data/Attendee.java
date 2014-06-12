@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.Date;
 
-/***
+/**
  * Represents an attendee to a meeting.
  * 
  * 
@@ -22,7 +22,7 @@ public final class Attendee extends EmailAddress {
 	/** The last response time. */
 	private Date lastResponseTime;
 
-	/***
+	/**
 	 * Initializes a new instance of the Attendee class.
 	 */
 	public Attendee() {
@@ -30,7 +30,7 @@ public final class Attendee extends EmailAddress {
 	}
 
 	/**
-	 * * Initializes a new instance of the Attendee class.
+	 * Initializes a new instance of the Attendee class.
 	 * 
 	 * @param smtpAddress
 	 *            the smtp address
@@ -43,7 +43,7 @@ public final class Attendee extends EmailAddress {
 	}
 
 	/**
-	 * * Initializes a new instance of the Attendee class.
+	 * Initializes a new instance of the Attendee class.
 	 * 
 	 * @param name
 	 *            the name
@@ -55,7 +55,7 @@ public final class Attendee extends EmailAddress {
 	}
 
 	/**
-	 * * Initializes a new instance of the Attendee class.
+	 * Initializes a new instance of the Attendee class.
 	 * 
 	 * @param name
 	 *            the name
@@ -69,7 +69,7 @@ public final class Attendee extends EmailAddress {
 	}
 
 	/**
-	 * * Initializes a new instance of the Attendee class.
+	 * Initializes a new instance of the Attendee class.
 	 * 
 	 * @param mailbox
 	 *            the mailbox
@@ -81,7 +81,7 @@ public final class Attendee extends EmailAddress {
 	}
 
 	/**
-	 * * Gets the type of response the attendee gave to the meeting invitation
+	 * Gets the type of response the attendee gave to the meeting invitation
 	 * it received.
 	 * 
 	 * @return the response type
@@ -100,7 +100,7 @@ public final class Attendee extends EmailAddress {
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -128,7 +128,7 @@ public final class Attendee extends EmailAddress {
 	}
 
 	/**
-	 * * Writes the elements to XML.
+	 * Writes the elements to XML.
 	 * 
 	 * @param writer
 	 *            the writer

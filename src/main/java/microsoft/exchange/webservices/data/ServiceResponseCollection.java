@@ -11,7 +11,7 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Vector;
 
-/***
+/**
  * Represents a strongly typed list of service responses.
  * 
  * @param <TResponse>
@@ -27,13 +27,13 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
 	private ServiceResult overallResult = ServiceResult.Success;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected ServiceResponseCollection() {
 
 	}
 
-	/***
+	/**
 	 * Adds specified response.
 	 * 
 	 * @param response
@@ -49,7 +49,7 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
 		this.responses.add(response);
 	}
 
-	/***
+	/**
 	 * Gets the total number of responses in the list.
 	 * 
 	 * @return total number of responses in the list.
@@ -59,7 +59,7 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
 	}
 
 	/**
-	 * * Gets the response at the specified index.
+	 * Gets the response at the specified index.
 	 * 
 	 * @param index
 	 *            The zero-based index of the response to get.
@@ -76,7 +76,7 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
 	}
 
 	/**
-	 * * Gets a value indicating the overall result of the request that
+	 * Gets a value indicating the overall result of the request that
 	 * generated this response collection. If all of the responses have their
 	 * Result property set to Success, OverallResult returns Success. If at
 	 * least one response has its Result property set to Warning and all other

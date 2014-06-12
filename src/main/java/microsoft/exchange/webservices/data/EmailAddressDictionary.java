@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a dictionary of e-mail addresses.
  * 
  * 
@@ -15,7 +15,7 @@ package microsoft.exchange.webservices.data;
 public final class EmailAddressDictionary extends
 		DictionaryProperty<EmailAddressKey, EmailAddressEntry> {
 
-	/***
+	/**
 	 * Gets the field URI.
 	 * 
 	 * @return Field URI.
@@ -25,7 +25,7 @@ public final class EmailAddressDictionary extends
 		return "contacts:EmailAddress";
 	}
 
-	/***
+	/**
 	 * Creates instance of dictionary entry.
 	 * 
 	 * @return New instance.
@@ -36,7 +36,7 @@ public final class EmailAddressDictionary extends
 	}
 
 	/**
-	 * * Gets the e-mail address at the specified key.
+	 * Gets the e-mail address at the specified key.
 	 * 
 	 * @param key
 	 *            the key
@@ -73,7 +73,7 @@ public final class EmailAddressDictionary extends
 	}
 
 	/**
-	 * * Tries to get the e-mail address associated with the specified key.
+	 * Tries to get the e-mail address associated with the specified key.
 	 * 
 	 * @param key
 	 *            the key

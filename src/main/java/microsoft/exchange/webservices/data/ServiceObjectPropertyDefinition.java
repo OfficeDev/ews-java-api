@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a property definition for a service object.
  * 
  * 
@@ -17,7 +17,7 @@ public abstract class ServiceObjectPropertyDefinition extends
 	/** The uri. */
 	private String uri;
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return the name of the XML element.
@@ -27,7 +27,7 @@ public abstract class ServiceObjectPropertyDefinition extends
 		return XmlElementNames.FieldURI;
 	}
 
-	/***
+	/**
 	 * Gets the minimum Exchange version that supports this property.
 	 * 
 	 * @return The minimum Exchange version that supports this property.
@@ -38,7 +38,7 @@ public abstract class ServiceObjectPropertyDefinition extends
 	}
 
 	/**
-	 * * Writes the attributes to XML.
+	 * Writes the attributes to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -51,14 +51,14 @@ public abstract class ServiceObjectPropertyDefinition extends
 		writer.writeAttributeValue(XmlAttributeNames.FieldURI, this.getUri());
 	}
 
-	/***
+	/**
 	 * Initializes a new instance.
 	 */
 	protected ServiceObjectPropertyDefinition() {
 
 	}
 
-	/***
+	/**
 	 * Initializes a new instance.
 	 * 
 	 * @param uri
@@ -71,7 +71,7 @@ public abstract class ServiceObjectPropertyDefinition extends
 		this.uri = uri;
 	}
 
-	/***
+	/**
 	 * Gets the URI of the property definition.
 	 * 
 	 * @return The URI of the property definition.

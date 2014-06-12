@@ -7,24 +7,18 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * * Represents an abstract Move/Copy Item request. <typeparam
- * name="TResponse">The type of the response.</typeparam>
- * 
+ * Represents an abstract Move/Copy Item request.
+ *
  * @param <TResponse>
- *            the generic type
+ *            The type of the response.
  */
 public abstract class MoveCopyItemRequest<TResponse extends ServiceResponse>
-extends MoveCopyRequest<Item, TResponse> {
-
-	/***
-	 * Represents an abstract Move/Copy Item request. <typeparam
-	 * name="TResponse">The type of the response.</typeparam>
-	 */
+    extends MoveCopyRequest<Item, TResponse> {
 	private ItemIdWrapperList itemIds = new ItemIdWrapperList();
 	private Boolean newItemIds;
 
 	/**
-	 * * Validates request.
+	 * Validates request.
 	 * 
 	 * @throws Exception
 	 *             the exception
@@ -36,7 +30,7 @@ extends MoveCopyRequest<Item, TResponse> {
 	}
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -51,7 +45,7 @@ extends MoveCopyRequest<Item, TResponse> {
 	}
 
 	/**
-	 * * Writes the ids as XML.
+	 * Writes the ids as XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -70,7 +64,7 @@ extends MoveCopyRequest<Item, TResponse> {
         }
 	}
 
-	/***
+	/**
 	 * Gets the expected response message count.
 	 * 
 	 * @return Number of expected response messages.
@@ -81,7 +75,7 @@ extends MoveCopyRequest<Item, TResponse> {
 	}
 
 	/**
-	 * * Gets the item ids. <value>The item ids.</value>
+	 * Gets the item ids. <value>The item ids.</value>
 	 * 
 	 * @return the item ids
 	 */

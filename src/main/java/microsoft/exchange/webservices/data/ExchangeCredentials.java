@@ -20,7 +20,7 @@ import javax.xml.stream.XMLStreamWriter;
  */
 public abstract class ExchangeCredentials {
 
-	/***
+	/**
 	 * Performs an implicit conversion from <see
 	 * cref="System.Net.NetworkCredential"/> to <see
 	 * cref="Microsoft.Exchange.WebServices.Data.ExchangeCredentials"/>. This
@@ -47,7 +47,7 @@ public abstract class ExchangeCredentials {
      *Return the url without wssecruity address.
      * 
      *@param url The url 
-     *@returns The absolute uri base. 
+     *@return The absolute uri base.
      */
     protected static String getUriWithoutWSSecurity(URI url)
     {
@@ -64,7 +64,7 @@ public abstract class ExchangeCredentials {
         }
     }
 	
-	/***
+	/**
 	 * This method is called to pre-authenticate credentials before a service
 	 * request is made.
 	 */
@@ -73,7 +73,7 @@ public abstract class ExchangeCredentials {
 	}
 
 	/**
-	 * * This method is called to apply credentials to a service request before
+	 * This method is called to apply credentials to a service request before
 	 * the request is made.
 	 * 
 	 * @param client
@@ -87,7 +87,7 @@ public abstract class ExchangeCredentials {
 	}
 
 	/**
-	 * * Emit any extra necessary namespace aliases for the SOAP:header block.
+	 * Emit any extra necessary namespace aliases for the SOAP:header block.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -100,7 +100,7 @@ public abstract class ExchangeCredentials {
 	}
 
 	/**
-	 * * Serialize any extra necessary SOAP headers. This is used for
+	 * Serialize any extra necessary SOAP headers. This is used for
 	 * authentication schemes that rely on WS-Security, or for endpoints
 	 * requiring WS-Addressing.
 	 * 
@@ -120,7 +120,7 @@ public abstract class ExchangeCredentials {
      * Adjusts the URL endpoint based on the credentials.
      * 
      * @param url The URL. 
-     * @returns Adjust URL.
+     * @return Adjust URL.
      */ 
     protected  URI adjustUrl(URI url)throws URISyntaxException
     {
@@ -148,7 +148,7 @@ public abstract class ExchangeCredentials {
     
 
 	/**
-	 * * Serialize SOAP headers used for authentication schemes that rely on
+	 * Serialize SOAP headers used for authentication schemes that rely on
 	 * WS-Security.
 	 * 
 	 * @param writer

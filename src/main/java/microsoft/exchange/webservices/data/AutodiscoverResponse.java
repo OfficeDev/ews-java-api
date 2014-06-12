@@ -25,14 +25,14 @@ public abstract class AutodiscoverResponse {
 	private URI redirectionUrl;
 
 	/**
-	 * * Initializes a new instance of the AutodiscoverResponse class.
+	 * Initializes a new instance of the AutodiscoverResponse class.
 	 */
 	AutodiscoverResponse() {
 		this.errorCode = AutodiscoverErrorCode.NoError;
 	}
 
 	/**
-	 * * Initializes a new instance of the AutodiscoverResponse class.
+	 * Initializes a new instance of the AutodiscoverResponse class.
 	 * 
 	 * @param reader
 	 *            the reader

@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents the response to an individual delegate user manipulation (add,
  * remove, update) operation.
  */
@@ -19,7 +19,7 @@ public final class DelegateUserResponse extends ServiceResponse {
 	private DelegateUser delegateUser;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param readDelegateUser
 	 *            the read delegate user
@@ -34,7 +34,7 @@ public final class DelegateUserResponse extends ServiceResponse {
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -57,7 +57,7 @@ public final class DelegateUserResponse extends ServiceResponse {
 	}
 
 	/**
-	 * * The delegate user that was involved in the operation.
+	 * The delegate user that was involved in the operation.
 	 * 
 	 * @return the delegate user
 	 */

@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="GetItemRequestForLoad.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 
@@ -6,13 +6,13 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents a GetItem request specialized to return ServiceResponse.
  */
 final class GetItemRequestForLoad extends GetItemRequestBase<ServiceResponse> {
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -27,7 +27,7 @@ final class GetItemRequestForLoad extends GetItemRequestBase<ServiceResponse> {
 	}
 
 	/**
-	 * * Creates the service response.
+	 * Creates the service response.
 	 * 
 	 * @param service
 	 *            the service

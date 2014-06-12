@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/***
+/**
  * Represents a list a abstracted folder Ids.
  */
 class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {

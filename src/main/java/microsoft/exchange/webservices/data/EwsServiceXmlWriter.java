@@ -28,7 +28,7 @@ import org.w3c.dom.ProcessingInstruction;
 import org.w3c.dom.Text;
 
 /**
- * * Stax based XML Writer implementation.
+ * Stax based XML Writer implementation.
  */
 class EwsServiceXmlWriter implements IDisposable {
 
@@ -52,7 +52,7 @@ class EwsServiceXmlWriter implements IDisposable {
 	protected boolean requireWSSecurityUtilityNamespace;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param service
 	 *            The service.
@@ -70,7 +70,7 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * * Try to convert object to a string.
+	 * Try to convert object to a string.
 	 * 
 	 * @param value
 	 *            The value.
@@ -110,7 +110,7 @@ class EwsServiceXmlWriter implements IDisposable {
 		return converted;
 	}
 
-	/***
+	/**
 	 * Performs application-defined tasks associated with freeing, releasing, or
 	 * resetting unmanaged resources.
 	 */
@@ -127,7 +127,7 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * * Flushes this instance.
+	 * Flushes this instance.
 	 * 
 	 * @throws javax.xml.stream.XMLStreamException
 	 *             the xML stream exception
@@ -137,7 +137,7 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * * Writes the start element.
+	 * Writes the start element.
 	 * 
 	 * @param xmlNamespace
 	 *            The XML namespace.
@@ -154,7 +154,7 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * * Writes the end element.
+	 * Writes the end element.
 	 * 
 	 * @throws javax.xml.stream.XMLStreamException
 	 *             the xML stream exception
@@ -164,7 +164,7 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * * Writes the attribute value.
+	 * Writes the attribute value.
 	 * 
 	 * @param localName
 	 *            The local name of the attribute.
@@ -204,7 +204,7 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * * Writes the attribute value.
+	 * Writes the attribute value.
 	 * 
 	 * @param namespacePrefix
 	 *            The namespace prefix.
@@ -232,7 +232,7 @@ class EwsServiceXmlWriter implements IDisposable {
 		}
 	}
 
-	/***
+	/**
 	 * Writes the attribute value.
 	 * 
 	 * @param localName
@@ -254,7 +254,7 @@ class EwsServiceXmlWriter implements IDisposable {
 		}
 	}
 
-	/***
+	/**
 	 * Writes the attribute value.
 	 * 
 	 * @param namespacePrefix
@@ -280,7 +280,7 @@ class EwsServiceXmlWriter implements IDisposable {
 		}
 	}
 
-	/***
+	/**
 	 * Writes string value.
 	 * 
 	 * @param value
@@ -303,7 +303,7 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * * Writes the element value.
+	 * Writes the element value.
 	 * 
 	 * @param xmlNamespace
 	 *            The XML namespace.
@@ -478,7 +478,7 @@ class EwsServiceXmlWriter implements IDisposable {
 
 
 	/**
-	 * * Writes the element value.
+	 * Writes the element value.
 	 * 
 	 * @param xmlNamespace
 	 *            The XML namespace.
@@ -498,7 +498,7 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * * Writes the base64-encoded element value.
+	 * Writes the base64-encoded element value.
 	 * 
 	 * @param buffer
 	 *            The buffer.
@@ -513,7 +513,7 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * * Writes the base64-encoded element value.
+	 * Writes the base64-encoded element value.
 	 * 
 	 * @param stream
 	 *            The stream.
@@ -541,7 +541,7 @@ class EwsServiceXmlWriter implements IDisposable {
 		this.xmlWriter.writeCharacters(strValue);
 
 	}
-	/***
+	/**
 	 * Gets the internal XML writer.
 	 * 
 	 * @return the internal writer
@@ -550,7 +550,7 @@ class EwsServiceXmlWriter implements IDisposable {
 		return xmlWriter;
 	}
 
-	/***
+	/**
 	 * Gets the service.
 	 * 
 	 * @return The service.
@@ -559,7 +559,7 @@ class EwsServiceXmlWriter implements IDisposable {
 		return service;
 	}
 
-	/***
+	/**
 	 *  Gets a value indicating whether the SOAP message need WSSecurity Utility namespace.
 	 * 
 	 *  
@@ -568,7 +568,7 @@ class EwsServiceXmlWriter implements IDisposable {
 		return requireWSSecurityUtilityNamespace;
 	}
 
-	/***
+	/**
 	 *   Sets a value indicating whether the SOAP message need WSSecurity Utility namespace.
 	 * 
 	 * @param requireWSSecurityUtilityNamespace
@@ -578,7 +578,7 @@ class EwsServiceXmlWriter implements IDisposable {
 		this.requireWSSecurityUtilityNamespace = requireWSSecurityUtilityNamespace;
 	}
 	
-	/***
+	/**
 	 * Gets a value indicating whether the time zone SOAP header was emitted
 	 * through this writer.
 	 * 
@@ -588,7 +588,7 @@ class EwsServiceXmlWriter implements IDisposable {
 		return isTimeZoneHeaderEmitted;
 	}
 
-	/***
+	/**
 	 * Sets a value indicating whether the time zone SOAP header was emitted
 	 * through this writer.
 	 * 

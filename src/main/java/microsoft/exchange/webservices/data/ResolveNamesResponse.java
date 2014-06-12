@@ -6,7 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents the response to a name resolution operation.
  */
 final class ResolveNamesResponse extends ServiceResponse {
@@ -15,7 +15,7 @@ final class ResolveNamesResponse extends ServiceResponse {
 	private NameResolutionCollection resolutions;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -29,7 +29,7 @@ final class ResolveNamesResponse extends ServiceResponse {
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -44,7 +44,7 @@ final class ResolveNamesResponse extends ServiceResponse {
 	}
 
 	/**
-	 * * Override base implementation so that API does not throw when name
+	 * Override base implementation so that API does not throw when name
 	 * resolution fails to find a match. EWS returns an error in this case but
 	 * the API will just return an empty NameResolutionCollection.
 	 * 
@@ -59,7 +59,7 @@ final class ResolveNamesResponse extends ServiceResponse {
 	}
 
 	/**
-	 * * Gets a list of name resolution suggestions.
+	 * Gets a list of name resolution suggestions.
 	 * 
 	 * @return the resolutions
 	 */

@@ -76,7 +76,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets the request version.
+	 * Gets the request version.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -98,7 +98,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
 		}
 	}
 
-	/***
+	/**
 	 * Builds string representation of the collection.
 	 * 
 	 * @return A comma-delimited string representing the collection.

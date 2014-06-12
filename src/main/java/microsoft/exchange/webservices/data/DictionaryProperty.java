@@ -40,7 +40,7 @@ public abstract class DictionaryProperty
 	private List<TKey> modifiedEntries = new ArrayList<TKey>();
 
 	/**
-	 * * Entry was changed.
+	 * Entry was changed.
 	 * 
 	 * @param complexProperty
 	 *            the complex property
@@ -55,7 +55,7 @@ public abstract class DictionaryProperty
 	}
 
 	/**
-	 * * Writes the URI to XML.
+	 * Writes the URI to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -76,7 +76,7 @@ public abstract class DictionaryProperty
 	}
 
 	/**
-	 * * Gets the index of the field.
+	 * Gets the index of the field.
 	 * 
 	 * @param key
 	 *            the key
@@ -86,7 +86,7 @@ public abstract class DictionaryProperty
 		return key.toString();
 	}
 
-	/***
+	/**
 	 * Gets the field URI.
 	 * 
 	 * @return Field URI.
@@ -96,7 +96,7 @@ public abstract class DictionaryProperty
 	}
 
 	/**
-	 * * Creates the entry.
+	 * Creates the entry.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -110,7 +110,7 @@ public abstract class DictionaryProperty
 		}
 	}
 
-	/***
+	/**
 	 * Creates instance of dictionary entry.
 	 * 
 	 * @return New instance.
@@ -118,7 +118,7 @@ public abstract class DictionaryProperty
 	protected abstract TEntry createEntryInstance();
 
 	/**
-	 * * Gets the name of the entry XML element.
+	 * Gets the name of the entry XML element.
 	 * 
 	 * @param entry
 	 *            the entry
@@ -128,7 +128,7 @@ public abstract class DictionaryProperty
 		return XmlElementNames.Entry;
 	}
 
-	/***
+	/**
 	 * Clears the change log.
 	 */
 	protected void clearChangeLog() {
@@ -142,7 +142,7 @@ public abstract class DictionaryProperty
 	}
 
 	/**
-	 * * Add entry.
+	 * Add entry.
 	 * 
 	 * @param entry
 	 *            the entry
@@ -169,7 +169,7 @@ public abstract class DictionaryProperty
 	}
 
 	/**
-	 * * Add or replace entry.
+	 * Add or replace entry.
 	 * 
 	 * @param entry
 	 *            the entry
@@ -195,7 +195,7 @@ public abstract class DictionaryProperty
 	}
 
 	/**
-	 * * Remove entry based on key.
+	 * Remove entry based on key.
 	 * 
 	 * @param key
 	 *            the key
@@ -216,7 +216,7 @@ public abstract class DictionaryProperty
 	}
 
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -271,7 +271,7 @@ public abstract class DictionaryProperty
             }
         }
 	
-	/***
+	/**
 	 * Writes elements to XML.
 	 * 
 	 * @param writer
@@ -287,7 +287,7 @@ public abstract class DictionaryProperty
 		}
 	}
 
-	/***
+	/**
 	 * Gets the entries.
 	 * 
 	 * @return The entries.
@@ -297,7 +297,7 @@ public abstract class DictionaryProperty
 	}
 
 	/**
-	 * * Determines whether this instance contains the specified key.
+	 * Determines whether this instance contains the specified key.
 	 * 
 	 * @param key
 	 *            the key
@@ -309,7 +309,7 @@ public abstract class DictionaryProperty
 	}
 
 	/**
-	 * * Writes updates to XML.
+	 * Writes updates to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -365,7 +365,7 @@ public abstract class DictionaryProperty
 	}
 
 	/**
-	 * * Writes deletion update to XML.
+	 * Writes deletion update to XML.
 	 * 
 	 * @param writer
 	 *            the writer

@@ -2040,7 +2040,7 @@ IAutodiscoverRedirectionUrl, IFunctionDelegate {
      *@param targetTenantDomain The target domain or user email address. 
      *@param partnerAccessCredentials The partner access credentials. 
      *@param targetTenantAutodiscoverUrl The autodiscover url for the given tenant. 
-     *@returns True if the partner access information was retrieved, false otherwise.
+     *@return True if the partner access information was retrieved, false otherwise.
      */
 	
 	/** commented as the code belongs to Partener Token credentials. */

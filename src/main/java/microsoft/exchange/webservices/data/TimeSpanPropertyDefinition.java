@@ -31,7 +31,7 @@ class TimeSpanPropertyDefinition extends GenericPropertyDefinition<TimeSpan> {
 		super(TimeSpan.class, xmlElementName, uri, flags, version);
 	}
 
-	/***
+	/**
 	 * Parses the specified value.
 	 * 
 	 * @param value
@@ -45,7 +45,7 @@ class TimeSpanPropertyDefinition extends GenericPropertyDefinition<TimeSpan> {
 		 
 	}
 
-	/***
+	/**
 	 * Convert instance to string.
 	 * 
 	 * @param value

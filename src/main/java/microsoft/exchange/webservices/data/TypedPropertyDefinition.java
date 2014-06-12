@@ -11,7 +11,7 @@ import java.util.EnumSet;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents typed property definition.
  * 
  * 
@@ -22,7 +22,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
 	private boolean isNullable;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -38,7 +38,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -55,7 +55,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -76,7 +76,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
 		this.isNullable = isNullable;
 	}
 
-	/***
+	/**
 	 * Parses the specified value.
 	 * 
 	 * @param value
@@ -90,7 +90,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
 			IllegalAccessException, ParseException;
 
 	/**
-	 * * Gets a value indicating whether this property definition is for a
+	 * Gets a value indicating whether this property definition is for a
 	 * nullable type.
 	 * 
 	 * @return always true
@@ -100,7 +100,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
 		return this.isNullable;
 	}
 
-	/***
+	/**
 	 * Convert instance to string.
 	 * 
 	 * @param value
@@ -112,7 +112,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
 	}
 
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -134,7 +134,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
 	}
 
 	/**
-	 * * Writes the property value to XML.
+	 * Writes the property value to XML.
 	 * 
 	 * @param writer
 	 *            The writer.

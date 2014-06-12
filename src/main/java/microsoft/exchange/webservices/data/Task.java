@@ -19,7 +19,7 @@ import java.util.Date;
 public class Task extends Item {
 
 	/**
-	 * * Initializes an unsaved local instance of Task.To bind to an existing
+	 * Initializes an unsaved local instance of Task.To bind to an existing
 	 * task, use Task.Bind() instead.
 	 * 
 	 * @param service
@@ -32,7 +32,7 @@ public class Task extends Item {
 	}
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param parentAttachment
 	 *            the parent attachment
@@ -44,7 +44,7 @@ public class Task extends Item {
 	}
 
 	/**
-	 * * Binds to an existing task and loads the specified set of properties.
+	 * Binds to an existing task and loads the specified set of properties.
 	 * Calling this method results in a call to EWS.
 	 * 
 	 * @param service
@@ -64,7 +64,7 @@ public class Task extends Item {
 	}
 
 	/**
-	 * * Binds to an existing task and loads its first class properties. Calling
+	 * Binds to an existing task and loads its first class properties. Calling
 	 * this method results in a call to EWS.
 	 * 
 	 * @param service
@@ -81,7 +81,7 @@ public class Task extends Item {
 		return Task.bind(service, id, PropertySet.getFirstClassProperties());
 	}
 
-	/***
+	/**
 	 * Internal method to return the schema associated with this type of object.
 	 * 
 	 * @return The schema associated with this type of object.
@@ -91,7 +91,7 @@ public class Task extends Item {
 		return TaskSchema.Instance;
 	}
 
-	/***
+	/**
 	 * Gets the minimum required server version.
 	 * 
 	 * @return Earliest Exchange version in which this service object type is
@@ -103,7 +103,7 @@ public class Task extends Item {
 	}
 
 	/**
-	 * * Gets a value indicating whether a time zone SOAP header should be
+	 * Gets a value indicating whether a time zone SOAP header should be
 	 * emitted in a CreateItem or UpdateItem request so this item can be
 	 * property saved or updated.
 	 * 
@@ -117,7 +117,7 @@ public class Task extends Item {
 	}
 
 	/**
-	 * * Deletes the current occurrence of a recurring task. After the current
+	 * Deletes the current occurrence of a recurring task. After the current
 	 * occurrence isdeleted, the task represents the next occurrence. Developers
 	 * should call Load to retrieve the new property values of the task. Calling
 	 * this method results in a call to EWS.
@@ -136,7 +136,7 @@ public class Task extends Item {
 	}
 
 	/**
-	 * * Applies the local changes that have been made to this task. Calling
+	 * Applies the local changes that have been made to this task. Calling
 	 * this method results in at least one call to EWS. Mutliple calls to EWS
 	 * might be made if attachments have been added or removed.
 	 * 

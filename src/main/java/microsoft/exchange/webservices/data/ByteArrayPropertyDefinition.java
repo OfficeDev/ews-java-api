@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
 
-/***
+/**
  * Represents byte array property definition.
  * 
  * 
@@ -16,7 +16,7 @@ import java.util.EnumSet;
 final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.

@@ -35,7 +35,7 @@ public final class OrderByCollection implements
 	}
 
 	/**
-	 * * Adds the specified property definition / sort direction pair to the
+	 * Adds the specified property definition / sort direction pair to the
 	 * collection.
 	 * 
 	 * @param propertyDefinition
@@ -59,7 +59,7 @@ public final class OrderByCollection implements
 		this.propDefSortOrderPairList.add(propertyDefinitionSortDirectionPair);
 	}
 
-	/***
+	/**
 	 * Removes all elements from the collection.
 	 */
 	public void clear() {
@@ -67,7 +67,7 @@ public final class OrderByCollection implements
 	}
 
 	/**
-	 * * Determines whether the collection contains the specified property
+	 * Determines whether the collection contains the specified property
 	 * definition.
 	 * 
 	 * @param propertyDefinition
@@ -83,7 +83,7 @@ public final class OrderByCollection implements
 	}
 
 	/**
-	 * * Gets the number of elements contained in the collection.
+	 * Gets the number of elements contained in the collection.
 	 * 
 	 * @return the int
 	 */
@@ -92,7 +92,7 @@ public final class OrderByCollection implements
 	}
 
 	/**
-	 * * Removes the specified property definition from the collection.
+	 * Removes the specified property definition from the collection.
 	 * 
 	 * @param propertyDefinition
 	 *            the property definition
@@ -112,7 +112,7 @@ public final class OrderByCollection implements
 	}
 
 	/**
-	 * * Removes the element at the specified index from the collection.
+	 * Removes the element at the specified index from the collection.
 	 * 
 	 * @param index
 	 *            the index
@@ -122,7 +122,7 @@ public final class OrderByCollection implements
 	}
 
 	/**
-	 * * Tries to get the value for a property definition in the collection.
+	 * Tries to get the value for a property definition in the collection.
 	 * 
 	 * @param propertyDefinition
 	 *            the property definition
@@ -146,7 +146,7 @@ public final class OrderByCollection implements
 	}
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -188,7 +188,7 @@ public final class OrderByCollection implements
 	}
 
 	/**
-	 * * Gets the element at the specified index from the collection.
+	 * Gets the element at the specified index from the collection.
 	 * 
 	 * @param index
 	 *            the index
@@ -200,7 +200,7 @@ public final class OrderByCollection implements
 		return this.propDefSortOrderPairList.get(index);
 	}
 
-	/***
+	/**
 	 * Returns an enumerator that iterates through the collection.
 	 * 
 	 * @return A Iterator that can be used to iterate through the collection.

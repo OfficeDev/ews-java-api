@@ -7,7 +7,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * * Represents an abstract Get request.
+ * Represents an abstract Get request.
  * 
  * @param <TServiceObject>
  *            the generic type
@@ -22,7 +22,7 @@ abstract class GetRequest<TServiceObject extends ServiceObject,
 	private PropertySet propertySet;
 
 	/**
-	 * * Initializes a new instance of the class.
+	 * Initializes a new instance of the class.
 	 * 
 	 * @param service
 	 *            the service
@@ -37,7 +37,7 @@ abstract class GetRequest<TServiceObject extends ServiceObject,
 	}
 
 	/**
-	 * * Validate request.
+	 * Validate request.
 	 * 
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -51,7 +51,7 @@ abstract class GetRequest<TServiceObject extends ServiceObject,
 				.validateForRequest(this, false /* summaryPropertiesOnly */);
 	}
 
-	/***
+	/**
 	 * Gets the type of the service object this request applies to.
 	 * 
 	 * @return The type of service object the request applies to
@@ -59,7 +59,7 @@ abstract class GetRequest<TServiceObject extends ServiceObject,
 	protected abstract ServiceObjectType getServiceObjectType();
 
 	/**
-	 * * Gets the type of the service object this request applies to.
+	 * Gets the type of the service object this request applies to.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -73,7 +73,7 @@ abstract class GetRequest<TServiceObject extends ServiceObject,
 	}
 
 	/**
-	 * * Gets  the property set.
+	 * Gets  the property set.
 	 * 
 	 * @return the property set
 	 */

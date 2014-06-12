@@ -35,7 +35,7 @@ final class SubscribeResponse<TSubscription extends SubscriptionBase> extends
 	}
 
 	/**
-	 * * Reads response elements from XML.
+	 * Reads response elements from XML.
 	 * 
 	 * @param reader
 	 *            The reader.

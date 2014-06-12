@@ -5,7 +5,7 @@
  * Implements a RuleOperationErrorCollection collection.
  **************************************************************************/
 package microsoft.exchange.webservices.data;
-/***
+/**
  * Represents a collection of rule operation errors.
  * 
  * 
@@ -13,7 +13,7 @@ package microsoft.exchange.webservices.data;
 public final class RuleOperationErrorCollection extends 
 ComplexPropertyCollection<RuleOperationError>{
 
-	/***
+	/**
 	 * 
 	 * Initializes a new instance of the
 	 *  <see cref="RuleOperationErrorCollection"/> class.
@@ -23,7 +23,7 @@ ComplexPropertyCollection<RuleOperationError>{
 		super();      
 	}
 
-	/***
+	/**
 	 * Creates an RuleOperationError object from an XML element name.
 	 * 
 	 * @param xmlElementName
@@ -41,7 +41,7 @@ ComplexPropertyCollection<RuleOperationError>{
 		}
 	}
 	
-	/***
+	/**
 	 * Retrieves the XML element name corresponding
 	 *  to the provided RuleOperationError object.
 	 * 

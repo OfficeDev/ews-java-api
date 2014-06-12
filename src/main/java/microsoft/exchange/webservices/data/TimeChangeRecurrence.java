@@ -23,7 +23,7 @@ final class TimeChangeRecurrence extends ComplexProperty {
 	/** The month. */
 	private Month month;
 
-	/***
+	/**
 	 * Initializes a new instance of the TimeChangeRecurrence class.
 	 */
 	public TimeChangeRecurrence() {
@@ -31,7 +31,7 @@ final class TimeChangeRecurrence extends ComplexProperty {
 	}
 
 	/**
-	 * * Initializes a new instance of the TimeChangeRecurrence class.
+	 * Initializes a new instance of the TimeChangeRecurrence class.
 	 * 
 	 * @param dayOfTheWeekIndex
 	 *            the day of the week index
@@ -116,7 +116,7 @@ final class TimeChangeRecurrence extends ComplexProperty {
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -144,7 +144,7 @@ final class TimeChangeRecurrence extends ComplexProperty {
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            the reader

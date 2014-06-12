@@ -30,7 +30,7 @@ abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
 	private String watermark;
 
 	/**
-	 * * Validate request.
+	 * Validate request.
 	 * 
 	 * @throws Exception
 	 *             the exception
@@ -71,7 +71,7 @@ abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
 	 */
 	protected abstract String getSubscriptionXmlElementName();
 
-	/***
+	/**
 	 * Gets the expected response message count.
 	 * 
 	 * @return Number of expected response messages.

@@ -19,7 +19,7 @@ import java.util.zip.InflaterInputStream;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents the base class for all requested made to the Autodiscover service.
  * 
  */
@@ -31,7 +31,7 @@ abstract class AutodiscoverRequest {
 	/** The url. */
 	private URI url;
 
-	/***
+	/**
 	 * Initializes a new instance of the AutodiscoverResponse class.
 	 * 
 	 * @param service
@@ -46,7 +46,7 @@ abstract class AutodiscoverRequest {
 	}
     
     /**
-	 * * Determines whether response is a redirection.
+	 * Determines whether response is a redirection.
 	 * 
 	 * @param request
 	 *            the request
@@ -63,7 +63,7 @@ abstract class AutodiscoverRequest {
 	}
 	
 	/**
-	 * * Validates the request.
+	 * Validates the request.
 	 * 
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -75,7 +75,7 @@ abstract class AutodiscoverRequest {
 	}
 
 	/**
-	 * * Executes this instance.
+	 * Executes this instance.
 	 * 
 	 * @return the autodiscover response
 	 * @throws ServiceLocalException
@@ -241,7 +241,7 @@ abstract class AutodiscoverRequest {
 
 	}
 
-	/***
+	/**
 	 * Processes the web exception.
 	 * 
 	 * @param exception
@@ -305,7 +305,7 @@ abstract class AutodiscoverRequest {
 	}
 
 	/**
-	 * * Create a redirection response.
+	 * Create a redirection response.
 	 * 
 	 * @param httpWebResponse
 	 *            The HTTP web response.
@@ -367,7 +367,7 @@ abstract class AutodiscoverRequest {
 		return null;
 	}
 
-	/***
+	/**
 	 * Reads the SOAP fault.
 	 * 
 	 * @param reader
@@ -442,7 +442,7 @@ abstract class AutodiscoverRequest {
 	}
 
 	/**
-	 * * Writes the autodiscover SOAP request.
+	 * Writes the autodiscover SOAP request.
 	 * 
 	 * @param requestUrl
 	 *            Request URL.
@@ -534,7 +534,7 @@ abstract class AutodiscoverRequest {
 
 
 	/**
-	 * * Writes XML body.
+	 * Writes XML body.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -558,7 +558,7 @@ abstract class AutodiscoverRequest {
 	}
 
 	/**
-	 * * Gets the response stream (may be wrapped with GZip/Deflate stream to
+	 * Gets the response stream (may be wrapped with GZip/Deflate stream to
 	 * decompress content).
 	 * 
 	 * @param request
@@ -590,7 +590,7 @@ abstract class AutodiscoverRequest {
 	}
 
 	/**
-	 * * Read SOAP header.
+	 * Read SOAP header.
 	 * 
 	 * @param reader
 	 *            EwsXmlReader.
@@ -624,7 +624,7 @@ abstract class AutodiscoverRequest {
 	}
 
 	/**
-	 * * Read ServerVersionInfo SOAP header.
+	 * Read ServerVersionInfo SOAP header.
 	 * 
 	 * @param reader
 	 *            EwsXmlReader.
@@ -666,7 +666,7 @@ abstract class AutodiscoverRequest {
 	}
 
 	/**
-	 * * Read SOAP body.
+	 * Read SOAP body.
 	 * 
 	 * @param reader
 	 *            EwsXmlReader.
@@ -692,7 +692,7 @@ abstract class AutodiscoverRequest {
 	}
 
 	/**
-	 * * Loads responses from XML.
+	 * Loads responses from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -716,7 +716,7 @@ abstract class AutodiscoverRequest {
 		return response;
 	}
 
-	/***
+	/**
 	 * Gets the name of the request XML element.
 	 * 
 	 * @return RequestXmlElementName gets XmlElementName.
@@ -724,7 +724,7 @@ abstract class AutodiscoverRequest {
 	 */
 	protected abstract String getRequestXmlElementName();
 
-	/***
+	/**
 	 * Gets the name of the response XML element.
 	 * 
 	 * @return ResponseXmlElementName gets XmlElementName.
@@ -732,7 +732,7 @@ abstract class AutodiscoverRequest {
 	 */
 	protected abstract String getResponseXmlElementName();
 
-	/***
+	/**
 	 * Gets the WS-Addressing action name.
 	 * 
 	 * @return WsAddressingActionName gets WsAddressingActionName.
@@ -740,7 +740,7 @@ abstract class AutodiscoverRequest {
 	 */
 	protected abstract String getWsAddressingActionName();
 
-	/***
+	/**
 	 * Creates the service response.
 	 * 
 	 * @return AutodiscoverResponse AutodiscoverResponse object.
@@ -749,7 +749,7 @@ abstract class AutodiscoverRequest {
 	protected abstract AutodiscoverResponse createServiceResponse();
 
 	/**
-	 * * Writes attributes to request XML.
+	 * Writes attributes to request XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -760,7 +760,7 @@ abstract class AutodiscoverRequest {
 			throws ServiceXmlSerializationException;
 
 	/**
-	 * * Writes elements to request XML.
+	 * Writes elements to request XML.
 	 * 
 	 * @param writer
 	 *            The writer.

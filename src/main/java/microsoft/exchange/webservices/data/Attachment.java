@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.Date;
 
-/***
+/**
  * Represents an attachment to an item.
  * 
  * 
@@ -43,7 +43,7 @@ public abstract class Attachment extends ComplexProperty {
 	private boolean isInline;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param owner
 	 *            The owner.
@@ -52,7 +52,7 @@ public abstract class Attachment extends ComplexProperty {
 		this.owner = owner;
 	}
 
-	/***
+	/**
 	 * Throws exception if this is not a new service object.
 	 */
 	protected void throwIfThisIsNotNew() {

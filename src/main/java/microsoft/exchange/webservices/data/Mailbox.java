@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents a mailbox reference.
  * 
  */
@@ -22,7 +22,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 	/** The address. */
 	private String address;
 
-	/***
+	/**
 	 * Initializes a new instance of the Mailbox class.
 	 */
 	public Mailbox() {
@@ -30,7 +30,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 	}
 
 	/**
-	 * * Initializes a new instance of the Mailbox class.
+	 * Initializes a new instance of the Mailbox class.
 	 * 
 	 * @param smtpAddress
 	 *            the smtp address
@@ -41,7 +41,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 	}
 
 	/**
-	 * * Initializes a new instance of the Mailbox class.
+	 * Initializes a new instance of the Mailbox class.
 	 * 
 	 * @param address
 	 *            the address
@@ -72,7 +72,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 		this.address = address;
 	}
 
-	/***
+	/**
 	 * True if this instance is valid, false otherthise.
 	 * 
 	 * @return true if this instance is valid; otherwise false
@@ -102,7 +102,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 	}
 
 	/**
-	 * * Defines an implicit conversion between a string representing an SMTP
+	 * Defines an implicit conversion between a string representing an SMTP
 	 * address and Mailbox.
 	 * 
 	 * @param smtpAddress
@@ -114,7 +114,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -138,7 +138,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            the writer
@@ -155,7 +155,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 				XmlElementNames.RoutingType, this.routingType);
 	}
 
-	/***
+	/**
 	 * Get a string representation for using this instance in a search filter.
 	 * 
 	 * @return String representation of instance.
@@ -182,7 +182,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 
 
 	/**
-	 * * Determines whether the specified Object is equal to the current Object.
+	 * Determines whether the specified Object is equal to the current Object.
 	 * 
 	 * @param obj
 	 *            the obj
@@ -212,7 +212,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 		}
 	}
 
-	/***
+	/**
 	 * Serves as a hash function for a particular type.
 	 * 
 	 * @return A hash code for the current object
@@ -232,7 +232,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 		}
 	}
 
-	/***
+	/**
 	 * Returns a String that represents the current Object.
 	 * 
 	 * @return A String that represents the current Object.

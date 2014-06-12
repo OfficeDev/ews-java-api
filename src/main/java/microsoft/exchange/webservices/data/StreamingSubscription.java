@@ -10,17 +10,15 @@ package microsoft.exchange.webservices.data;
  * Represents a streaming subscription.
  */
 public final class StreamingSubscription extends SubscriptionBase{
-
 	/**
 	 * Initializes a new instance of the 
 	 * <see cref="StreamingSubscription"/> class.
 	 * @param service The service.
 	 */
 	private ExchangeService service;
-	protected StreamingSubscription(ExchangeService service)
-	throws Exception {  
-		super(service);
 
+	protected StreamingSubscription(ExchangeService service) throws Exception {
+		super(service);
 	}
 
 	/**
@@ -31,7 +29,7 @@ public final class StreamingSubscription extends SubscriptionBase{
 	}
 
 	/**
-	 *  Begins an asynchronous request to unsubscribe from the streaming subscription. 
+	 * Begins an asynchronous request to unsubscribe from the streaming subscription.
 	 * @param callback The AsyncCallback delegate.
 	 * @param state An object that contains state information for this request.
 	 * @return An IAsyncResult that references the asynchronous request.
@@ -44,13 +42,13 @@ public final class StreamingSubscription extends SubscriptionBase{
 
     /**
      * Ends an asynchronous request to unsubscribe from the streaming subscription.
-     * @param asyncresult An IAsyncResult that references the asynchronous request.
-     * @throws Exception 
+     * @param asyncResult An IAsyncResult that references the asynchronous request.
      */
     public void endUnsubscribe(IAsyncResult asyncResult) throws Exception
     {
         this.getService().endUnsubscribe(asyncResult);
     }
+
 	/**
 	 * Gets the service used to create this subscription.
 	 */
@@ -66,6 +64,4 @@ public final class StreamingSubscription extends SubscriptionBase{
 	protected  boolean getUsesWatermark() {
 		return false;
 	}
-
 }
-

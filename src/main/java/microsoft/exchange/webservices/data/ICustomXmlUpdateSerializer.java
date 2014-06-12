@@ -8,14 +8,14 @@ package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Interface defined for properties that produce their own update serialization.
  * 
  */
 interface ICustomXmlUpdateSerializer {
 
 	/**
-	 * * Writes the update to XML.
+	 * Writes the update to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -44,7 +44,7 @@ interface ICustomXmlUpdateSerializer {
 			ServiceValidationException, Exception;
 
 	/**
-	 * * Writes the deletion update to XML.
+	 * Writes the deletion update to XML.
 	 * 
 	 * @param writer
 	 *            The writer.

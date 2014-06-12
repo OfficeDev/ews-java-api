@@ -16,7 +16,7 @@ public class UpdateUserConfigurationRequest extends
 	protected UserConfiguration userConfiguration;
 
 	/**
-	 * * Validate request.
+	 * Validate request.
 	 * 
 	 * @throws microsoft.exchange.webservices.data.ServiceLocalException
 	 *             the service local exception

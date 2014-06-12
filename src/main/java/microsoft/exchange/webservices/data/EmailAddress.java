@@ -37,14 +37,14 @@ public class EmailAddress extends ComplexProperty implements
 	private ItemId id;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	public EmailAddress() {
 		super();
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param smtpAddress
 	 *            The SMTP address used to initialize the EmailAddress.
@@ -55,7 +55,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param name
 	 *            The name used to initialize the EmailAddress.
@@ -68,7 +68,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param name
 	 *            The name used to initialize the EmailAddress.
@@ -83,7 +83,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param name
 	 *            The name used to initialize the EmailAddress.
@@ -101,7 +101,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param name
 	 *            The name used to initialize the EmailAddress.
@@ -122,7 +122,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Initializes a new instance from another EmailAddress instance.
+	 * Initializes a new instance from another EmailAddress instance.
 	 * 
 	 * @param mailbox
 	 *            EMailAddress instance to copy.
@@ -141,7 +141,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets the name associated with the e-mail address.
+	 * Gets the name associated with the e-mail address.
 	 * 
 	 * @return the name
 	 */
@@ -150,7 +150,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Sets the name associated with the e-mail address.
+	 * Sets the name associated with the e-mail address.
 	 * 
 	 * @param name
 	 *            the new name
@@ -162,7 +162,7 @@ public class EmailAddress extends ComplexProperty implements
 		}
 	}
 
-	/***
+	/**
 	 * Gets the actual address associated with the e-mail address.
 	 * 
 	 * @return address associated with the e-mail address.
@@ -171,7 +171,7 @@ public class EmailAddress extends ComplexProperty implements
 		return address;
 	}
 
-	/***
+	/**
 	 * Sets the actual address associated with the e-mail address. The type of
 	 * the Address property must match the specified routing type. If
 	 * RoutingType is not set, Address is assumed to be an SMTP address.
@@ -189,7 +189,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets the routing type associated with the e-mail address.
+	 * Gets the routing type associated with the e-mail address.
 	 * 
 	 * @return the routing type
 	 */
@@ -197,7 +197,7 @@ public class EmailAddress extends ComplexProperty implements
 		return routingType;
 	}
 
-	/***
+	/**
 	 * Sets the routing type associated with the e-mail address. If RoutingType
 	 * is not set, Address is assumed to be an SMTP address.
 	 * 
@@ -211,7 +211,7 @@ public class EmailAddress extends ComplexProperty implements
 		}
 	}
 
-	/***
+	/**
 	 * Gets the type of the e-mail address.
 	 * 
 	 * @return type of the e-mail address.
@@ -221,7 +221,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Sets the type of the e-mail address.
+	 * Sets the type of the e-mail address.
 	 * 
 	 * @param mailboxType
 	 *            the new mailbox type
@@ -234,7 +234,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets the Id of the contact the e-mail address represents.
+	 * Gets the Id of the contact the e-mail address represents.
 	 * 
 	 * @return the id
 	 */
@@ -243,7 +243,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Sets the Id of the contact the e-mail address represents. When Id is
+	 * Sets the Id of the contact the e-mail address represents. When Id is
 	 * specified, Address should be set to null.
 	 * 
 	 * @param id
@@ -257,7 +257,7 @@ public class EmailAddress extends ComplexProperty implements
 		}
 	}
 
-	/***
+	/**
 	 * Defines an implicit conversion between a string representing an SMTP
 	 * address and EmailAddress.
 	 * 
@@ -310,7 +310,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -335,7 +335,7 @@ public class EmailAddress extends ComplexProperty implements
 
 	}
 
-	/***
+	/**
 	 * Get a string representation for using this instance in a search filter.
 	 * 
 	 * @return String representation of instance.
@@ -345,7 +345,7 @@ public class EmailAddress extends ComplexProperty implements
 		return this.getAddress();
 	}
 
-	/***
+	/**
 	 * Returns string that represents the current instance.
 	 * 
 	 * @return String representation of instance.
@@ -372,7 +372,7 @@ public class EmailAddress extends ComplexProperty implements
 	}
 
 	/**
-	 * * Gets the routing type.
+	 * Gets the routing type.
 	 * 
 	 * @return SMTP Routing type
 	 */

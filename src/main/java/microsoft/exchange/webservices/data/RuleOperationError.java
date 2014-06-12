@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.Iterator;
 
-/***
+/**
  * Defines the RuleOperationError class. 
  */
 public final class RuleOperationError extends 
@@ -99,7 +99,7 @@ ComplexProperty implements Iterable<RuleError> {
 		this.operation = operations.next();
 	}
 	
-	/***
+	/**
 	 * Gets an iterator that iterates through the elements of the collection.
 	 * 
 	 * @return An Iterator for the collection.

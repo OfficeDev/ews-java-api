@@ -39,7 +39,7 @@ public final class ExchangeServerInfo {
 	}
 
 	/**
-	 * * Parse current element to extract server information.
+	 * Parse current element to extract server information.
 	 * 
 	 * @param reader
 	 *            EwsServiceXmlReader

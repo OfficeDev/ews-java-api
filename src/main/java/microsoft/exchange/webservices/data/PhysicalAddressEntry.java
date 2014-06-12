@@ -31,7 +31,7 @@ public final class PhysicalAddressEntry extends
 	}
 
 	/**
-	 * * Property was changed.
+	 * Property was changed.
 	 * 
 	 * @param simplePropertyBag
 	 *            the simple property bag

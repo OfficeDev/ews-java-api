@@ -33,7 +33,7 @@ class StringPropertyDefinition extends TypedPropertyDefinition {
 		super(xmlElementName, uri, flags, version);
 	}
 
-	/***
+	/**
 	 * Parses the specified value.
 	 * 
 	 * @param value

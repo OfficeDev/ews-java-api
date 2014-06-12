@@ -6,21 +6,21 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents the Id of an Exchange item.
  * 
  */
 public class ItemId extends ServiceId {
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	protected ItemId() {
 		super();
 	}
 
 	/**
-	 * * Defines an implicit conversion between string and ItemId.
+	 * Defines an implicit conversion between string and ItemId.
 	 * 
 	 * @param uniqueId
 	 *            The unique Id to convert to ItemId.
@@ -33,7 +33,7 @@ public class ItemId extends ServiceId {
 	}
 
 	/**
-	 * * Initializes a new instance of ItemId.
+	 * Initializes a new instance of ItemId.
 	 * 
 	 * @param uniqueId
 	 *            The unique Id used to initialize the ItemId.
@@ -44,7 +44,7 @@ public class ItemId extends ServiceId {
 		super(uniqueId);
 	}
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return XML element name.

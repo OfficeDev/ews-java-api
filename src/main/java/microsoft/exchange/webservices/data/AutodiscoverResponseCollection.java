@@ -24,14 +24,14 @@ public abstract class AutodiscoverResponseCollection
 	private List<TResponse> responses;
 
 	/**
-	 * * Initializes a new instance of the AutodiscoverResponseCollection class.
+	 * Initializes a new instance of the AutodiscoverResponseCollection class.
 	 */
 	protected AutodiscoverResponseCollection() {
 		this.responses = new ArrayList<TResponse>();
 	}
 
 	/**
-	 * * Gets the number of responses in the collection.
+	 * Gets the number of responses in the collection.
 	 * 
 	 * @return the count
 	 */
@@ -40,7 +40,7 @@ public abstract class AutodiscoverResponseCollection
 	}
 
 	/**
-	 * * Gets the response at the specified index.
+	 * Gets the response at the specified index.
 	 * 
 	 * @param index
 	 *            the index
@@ -60,7 +60,7 @@ public abstract class AutodiscoverResponseCollection
 	}
 
 	/**
-	 * * Loads response from XML.
+	 * Loads response from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -87,7 +87,7 @@ public abstract class AutodiscoverResponseCollection
 	}
 
 	/**
-	 * * Loads response from XML.
+	 * Loads response from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -114,28 +114,28 @@ public abstract class AutodiscoverResponseCollection
 		}
 	}
 
-	/***
+	/**
 	 * Gets the name of the response collection XML element.
 	 * 
 	 * @return Response collection XMl element name.
 	 */
 	protected abstract String getResponseCollectionXmlElementName();
 
-	/***
+	/**
 	 * Gets the name of the response instance XML element.
 	 * 
 	 * @return Response collection XMl element name.
 	 */
 	protected abstract String getResponseInstanceXmlElementName();
 
-	/***
+	/**
 	 * Create a response instance.
 	 * 
 	 * @return TResponse.
 	 */
 	protected abstract TResponse createResponseInstance();
 
-	/***
+	/**
 	 * Gets an Iterator that iterates through the elements of the collection.
 	 * 
 	 * @return An Iterator for the collection.

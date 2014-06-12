@@ -8,13 +8,13 @@ package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
 
-/***
+/**
  * Represents the schema for contacts.
  */
 @Schema
 public class ContactSchema extends ItemSchema {
 
-	/***
+	/**
 	 * FieldURIs for contacts.
 	 */
 	private static interface FieldUris {
@@ -183,7 +183,7 @@ public class ContactSchema extends ItemSchema {
 		String DirectReports = "contacts:DirectReports";
 	}
 
-	/***
+	/**
 	 * Defines the FileAs property.
 	 */
 	public static final PropertyDefinition FileAs = 
@@ -195,7 +195,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the FileAsMapping property.
 	 */
 	public static final PropertyDefinition FileAsMapping = 
@@ -208,7 +208,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the DisplayName property.
 	 */
 	public static final PropertyDefinition DisplayName = 
@@ -220,7 +220,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the GivenName property.
 	 */
 	public static final PropertyDefinition GivenName = 
@@ -232,7 +232,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Initials property.
 	 */
 	public static final PropertyDefinition Initials = 
@@ -244,7 +244,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the MiddleName property.
 	 */
 	public static final PropertyDefinition MiddleName =
@@ -256,7 +256,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the NickName property.
 	 */
 	public static final PropertyDefinition NickName = 
@@ -268,7 +268,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the CompleteName property.
 	 */
 	public static final PropertyDefinition CompleteName =
@@ -284,7 +284,7 @@ public class ContactSchema extends ItemSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the CompanyName property.
 	 */
 	public static final PropertyDefinition CompanyName = 
@@ -296,7 +296,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the EmailAddresses property.
 	 */
 	public static final PropertyDefinition EmailAddresses = 
@@ -316,7 +316,7 @@ public class ContactSchema extends ItemSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the PhysicalAddresses property.
 	 */
 	public static final PropertyDefinition PhysicalAddresses = 
@@ -336,7 +336,7 @@ public class ContactSchema extends ItemSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the PhoneNumbers property.
 	 */
 	public static final PropertyDefinition PhoneNumbers = 
@@ -356,7 +356,7 @@ public class ContactSchema extends ItemSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the AssistantName property.
 	 */
 	public static final PropertyDefinition AssistantName = 
@@ -368,7 +368,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Birthday property.
 	 */
 	public static final PropertyDefinition Birthday =
@@ -380,7 +380,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the BusinessHomePage property.
 	 * 
 	 * Defined as anyURI in the EWS schema. String is fine here.
@@ -394,7 +394,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Children property.
 	 */
 	public static final PropertyDefinition Children = 
@@ -414,7 +414,7 @@ public class ContactSchema extends ItemSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the Companies property.
 	 */
 	public static final PropertyDefinition Companies = 
@@ -434,7 +434,7 @@ public class ContactSchema extends ItemSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the ContactSource property.
 	 */
 	public static final PropertyDefinition ContactSource = 
@@ -444,7 +444,7 @@ public class ContactSchema extends ItemSchema {
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Department property.
 	 */
 	public static final PropertyDefinition Department = 
@@ -456,7 +456,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Generation property.
 	 */
 	public static final PropertyDefinition Generation = 
@@ -468,7 +468,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the ImAddresses property.
 	 */
 	public static final PropertyDefinition ImAddresses = 
@@ -486,7 +486,7 @@ public class ContactSchema extends ItemSchema {
 				}
 			});
 
-	/***
+	/**
 	 * Defines the JobTitle property.
 	 */
 	public static final PropertyDefinition JobTitle = 
@@ -498,7 +498,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Manager property.
 	 */
 	public static final PropertyDefinition Manager = 
@@ -510,7 +510,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Mileage property.
 	 */
 	public static final PropertyDefinition Mileage =
@@ -522,7 +522,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the OfficeLocation property.
 	 */
 	public static final PropertyDefinition OfficeLocation = 
@@ -534,7 +534,7 @@ public class ContactSchema extends ItemSchema {
 							PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the PostalAddressIndex property.
 	 */
 	public static final PropertyDefinition PostalAddressIndex =
@@ -547,7 +547,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Profession property.
 	 */
 	public static final PropertyDefinition Profession = 
@@ -559,7 +559,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the SpouseName property.
 	 */
 	public static final PropertyDefinition SpouseName = 
@@ -571,7 +571,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the Surname property.
 	 */
 	public static final PropertyDefinition Surname = 
@@ -583,7 +583,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the WeddingAnniversary property.
 	 */
 	public static final PropertyDefinition WeddingAnniversary = 
@@ -595,7 +595,7 @@ public class ContactSchema extends ItemSchema {
 					PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2007_SP1);
 
-	/***
+	/**
 	 * Defines the HasPicture property.
 	 */
 	public static final PropertyDefinition HasPicture =
@@ -603,7 +603,7 @@ public class ContactSchema extends ItemSchema {
 			XmlElementNames.HasPicture, FieldUris.HasPicture, EnumSet
 					.of(PropertyDefinitionFlags.CanFind),
 			ExchangeVersion.Exchange2010);
-	/*** Defines PhoeniticFullName property ***/
+	/** Defines PhoeniticFullName property ***/
 	
 	public static final PropertyDefinition PhoneticFullName = 
 		new StringPropertyDefinition(
@@ -735,203 +735,203 @@ public class ContactSchema extends ItemSchema {
 				
 
 
-	/***
+	/**
 	 * Defines the EmailAddress1 property.
 	 */
 	public static final IndexedPropertyDefinition EmailAddress1 =
 			new IndexedPropertyDefinition(
 			FieldUris.EmailAddress, "EmailAddress1");
 
-	/***
+	/**
 	 * Defines the EmailAddress2 property.
 	 */
 	public static final IndexedPropertyDefinition EmailAddress2 =
 			new IndexedPropertyDefinition(
 			FieldUris.EmailAddress, "EmailAddress2");
 
-	/***
+	/**
 	 * Defines the EmailAddress3 property.
 	 */
 	public static final IndexedPropertyDefinition EmailAddress3 =
 			new IndexedPropertyDefinition(
 			FieldUris.EmailAddress, "EmailAddress3");
 
-	/***
+	/**
 	 * Defines the ImAddress1 property.
 	 */
 	public static final IndexedPropertyDefinition ImAddress1 = 
 			new IndexedPropertyDefinition(
 			FieldUris.ImAddress, "ImAddress1");
 
-	/***
+	/**
 	 * Defines the ImAddress2 property.
 	 */
 	public static final IndexedPropertyDefinition ImAddress2 =
 			new IndexedPropertyDefinition(
 			FieldUris.ImAddress, "ImAddress2");
 
-	/***
+	/**
 	 * Defines the ImAddress3 property.
 	 */
 	public static final IndexedPropertyDefinition ImAddress3 = 
 			new IndexedPropertyDefinition(
 			FieldUris.ImAddress, "ImAddress3");
 
-	/***
+	/**
 	 * Defines the AssistentPhone property.
 	 */
 	public static final IndexedPropertyDefinition AssistantPhone =
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "AssistantPhone");
 
-	/***
+	/**
 	 * Defines the BusinessFax property.
 	 */
 	public static final IndexedPropertyDefinition BusinessFax = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "BusinessFax");
 
-	/***
+	/**
 	 * Defines the BusinessPhone property.
 	 */
 	public static final IndexedPropertyDefinition BusinessPhone = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "BusinessPhone");
 
-	/***
+	/**
 	 * Defines the BusinessPhone2 property.
 	 */
 	public static final IndexedPropertyDefinition BusinessPhone2 =
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "BusinessPhone2");
 
-	/***
+	/**
 	 * Defines the Callback property.
 	 */
 	public static final IndexedPropertyDefinition Callback = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "Callback");
 
-	/***
+	/**
 	 * Defines the CarPhone property.
 	 */
 	public static final IndexedPropertyDefinition CarPhone =
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "CarPhone");
 
-	/***
+	/**
 	 * Defines the CompanyMainPhone property.
 	 */
 	public static final IndexedPropertyDefinition CompanyMainPhone = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "CompanyMainPhone");
 
-	/***
+	/**
 	 * Defines the HomeFax property.
 	 */
 	public static final IndexedPropertyDefinition HomeFax = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "HomeFax");
 
-	/***
+	/**
 	 * Defines the HomePhone property.
 	 */
 	public static final IndexedPropertyDefinition HomePhone = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "HomePhone");
 
-	/***
+	/**
 	 * Defines the HomePhone2 property.
 	 */
 	public static final IndexedPropertyDefinition HomePhone2 =
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "HomePhone2");
 
-	/***
+	/**
 	 * Defines the Isdn property.
 	 */
 	public static final IndexedPropertyDefinition Isdn = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "Isdn");
 
-	/***
+	/**
 	 * Defines the MobilePhone property.
 	 */
 	public static final IndexedPropertyDefinition MobilePhone = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "MobilePhone");
 
-	/***
+	/**
 	 * Defines the OtherFax property.
 	 */
 	public static final IndexedPropertyDefinition OtherFax = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "OtherFax");
 
-	/***
+	/**
 	 * Defines the OtherTelephone property.
 	 */
 	public static final IndexedPropertyDefinition OtherTelephone =
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "OtherTelephone");
 
-	/***
+	/**
 	 * Defines the Pager property.
 	 */
 	public static final IndexedPropertyDefinition Pager = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "Pager");
 
-	/***
+	/**
 	 * Defines the PrimaryPhone property.
 	 */
 	public static final IndexedPropertyDefinition PrimaryPhone = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "PrimaryPhone");
 
-	/***
+	/**
 	 * Defines the RadioPhone property.
 	 */
 	public static final IndexedPropertyDefinition RadioPhone = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "RadioPhone");
 
-	/***
+	/**
 	 * Defines the Telex property.
 	 */
 	public static final IndexedPropertyDefinition Telex = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "Telex");
 
-	/***
+	/**
 	 * Defines the TtyTddPhone property.
 	 */
 	public static final IndexedPropertyDefinition TtyTddPhone = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhoneNumber, "TtyTddPhone");
 
-	/***
+	/**
 	 * Defines the BusinessAddressStreet property.
 	 */
 	public static final IndexedPropertyDefinition BusinessAddressStreet = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressStreet, "Business");
 
-	/***
+	/**
 	 * Defines the BusinessAddressCity property.
 	 */
 	public static final IndexedPropertyDefinition BusinessAddressCity = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressCity, "Business");
 
-	/***
+	/**
 	 * Defines the BusinessAddressState property.
 	 */
 	public static final IndexedPropertyDefinition BusinessAddressState =
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressState, "Business");
 
-	/***
+	/**
 	 * Defines the BusinessAddressCountryOrRegion property.
 	 */
 	public static final IndexedPropertyDefinition 
@@ -939,77 +939,77 @@ public class ContactSchema extends ItemSchema {
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressCountryOrRegion, "Business");
 
-	/***
+	/**
 	 * Defines the BusinessAddressPostalCode property.
 	 */
 	public static final IndexedPropertyDefinition BusinessAddressPostalCode = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressPostalCode, "Business");
 
-	/***
+	/**
 	 * Defines the HomeAddressStreet property.
 	 */
 	public static final IndexedPropertyDefinition HomeAddressStreet = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressStreet, "Home");
 
-	/***
+	/**
 	 * Defines the HomeAddressCity property.
 	 */
 	public static final IndexedPropertyDefinition HomeAddressCity =
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressCity, "Home");
 
-	/***
+	/**
 	 * Defines the HomeAddressState property.
 	 */
 	public static final IndexedPropertyDefinition HomeAddressState = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressState, "Home");
 
-	/***
+	/**
 	 * Defines the HomeAddressCountryOrRegion property.
 	 */
 	public static final IndexedPropertyDefinition HomeAddressCountryOrRegion = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressCountryOrRegion, "Home");
 
-	/***
+	/**
 	 * Defines the HomeAddressPostalCode property.
 	 */
 	public static final IndexedPropertyDefinition HomeAddressPostalCode =
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressPostalCode, "Home");
 
-	/***
+	/**
 	 * Defines the OtherAddressStreet property.
 	 */
 	public static final IndexedPropertyDefinition OtherAddressStreet = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressStreet, "Other");
 
-	/***
+	/**
 	 * Defines the OtherAddressCity property.
 	 */
 	public static final IndexedPropertyDefinition OtherAddressCity =
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressCity, "Other");
 
-	/***
+	/**
 	 * Defines the OtherAddressState property.
 	 */
 	public static final IndexedPropertyDefinition OtherAddressState =
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressState, "Other");
 
-	/***
+	/**
 	 * Defines the OtherAddressCountryOrRegion property.
 	 */
 	public static final IndexedPropertyDefinition OtherAddressCountryOrRegion = 
 			new IndexedPropertyDefinition(
 			FieldUris.PhysicalAddressCountryOrRegion, "Other");
 
-	/***
+	/**
 	 * Defines the OtherAddressPostalCode property.
 	 */
 	public static final IndexedPropertyDefinition OtherAddressPostalCode = 
@@ -1020,7 +1020,7 @@ public class ContactSchema extends ItemSchema {
 	/** The Constant Instance. */
 	protected static final ContactSchema Instance = new ContactSchema();
 
-	/***
+	/**
 	 * Registers properties.
 	 * 
 	 * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the

@@ -42,7 +42,7 @@ final class MeetingTimeZone extends ComplexProperty {
 
 	/**
 	 * Initializes a new instance of the MeetingTimeZone class.
-	 * */
+	 */
 	public MeetingTimeZone() {
 		super();
 	}

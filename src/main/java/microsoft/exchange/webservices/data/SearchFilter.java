@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents the base search filter class. Use descendant search filter classes
  * such as SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
  * SearchFilter.SearchFilterCollection to define search filters.
@@ -19,7 +19,7 @@ import javax.xml.stream.XMLStreamException;
  */
 public abstract class SearchFilter extends ComplexProperty {
 
-	/***
+	/**
 	 * Initializes a new instance of the SearchFilter class.
 	 */
 	protected SearchFilter() {
@@ -35,7 +35,7 @@ public abstract class SearchFilter extends ComplexProperty {
 	//static SearchFilter search;
 
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -95,14 +95,14 @@ public abstract class SearchFilter extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets the name of the XML element.
+	 * Gets the name of the XML element.
 	 * 
 	 * @return the xml element name
 	 */
 	protected abstract String getXmlElementName();
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            the writer

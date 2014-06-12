@@ -1,4 +1,4 @@
-/**************************************************************************
+/*************************************************************************
  * copyright file="FolderIdCollection.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 
@@ -20,7 +20,7 @@ public final class FolderIdCollection extends
 		super();
 	}
 
-	/***
+	/**
 	 * Creates the complex property.
 	 * 
 	 * @param xmlElementName

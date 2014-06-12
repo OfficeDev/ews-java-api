@@ -36,7 +36,7 @@ public final class WorkingHours extends ComplexProperty {
 		super();
 	}
 
-	/***
+	/**
 	 * Tries to read element from XML.
 	 * 
 	 * @param reader

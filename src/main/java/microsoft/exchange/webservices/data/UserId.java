@@ -8,7 +8,7 @@ package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents the Id of a user.
  * 
  */
@@ -27,14 +27,14 @@ public class UserId extends ComplexProperty {
 	private StandardUser standardUser;
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 */
 	public UserId() {
 		super();
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param primarySmtpAddress
 	 *            the primary smtp address
@@ -45,7 +45,7 @@ public class UserId extends ComplexProperty {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param standardUser
 	 *            the standard user
@@ -55,7 +55,7 @@ public class UserId extends ComplexProperty {
 		this.standardUser = standardUser;
 	}
 
-	/***
+	/**
 	 * Determines whether this instance is valid.
 	 * 
 	 * @return true, if this instance is valid. Else, false
@@ -68,7 +68,7 @@ public class UserId extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets the SID of the user.
+	 * Gets the SID of the user.
 	 * 
 	 * @return the sID
 	 */
@@ -90,7 +90,7 @@ public class UserId extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets the primary SMTP address or the user.
+	 * Gets the primary SMTP address or the user.
 	 * 
 	 * @return the primary smtp address
 	 */
@@ -113,7 +113,7 @@ public class UserId extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets the display name of the user.
+	 * Gets the display name of the user.
 	 * 
 	 * @return the display name
 	 */
@@ -135,7 +135,7 @@ public class UserId extends ComplexProperty {
 	}
 
 	/**
-	 * * Gets  a value indicating which standard user the user
+	 * Gets  a value indicating which standard user the user
 	 * represents.
 	 * 
 	 * @return the standard user
@@ -158,7 +158,7 @@ public class UserId extends ComplexProperty {
 	}
 
 	/**
-	 * * Implements an implicit conversion between a string representing a
+	 * Implements an implicit conversion between a string representing a
 	 * primary SMTP address and UserId.
 	 * 
 	 * @param primarySmtpAddress
@@ -170,7 +170,7 @@ public class UserId extends ComplexProperty {
 	}
 
 	/**
-	 * * Implements an implicit conversion between StandardUser and UserId.
+	 * Implements an implicit conversion between StandardUser and UserId.
 	 * 
 	 * @param standardUser
 	 *            the standard user
@@ -181,7 +181,7 @@ public class UserId extends ComplexProperty {
 	}
 
 	/**
-	 * * Tries to read element from XML.
+	 * Tries to read element from XML.
 	 * 
 	 * @param reader
 	 *            the reader
@@ -211,7 +211,7 @@ public class UserId extends ComplexProperty {
 	}
 
 	/**
-	 * * Writes elements to XML.
+	 * Writes elements to XML.
 	 * 
 	 * @param writer
 	 *            the writer

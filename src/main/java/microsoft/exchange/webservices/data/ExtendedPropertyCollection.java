@@ -11,7 +11,7 @@ import java.util.List;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents a collection of extended properties.
  * 
  */
@@ -20,7 +20,7 @@ public final class ExtendedPropertyCollection extends
 		ComplexPropertyCollection<ExtendedProperty> implements
 		ICustomXmlUpdateSerializer {
 
-	/***
+	/**
 	 * Creates the complex property.
 	 * 
 	 * @param xmlElementName
@@ -33,7 +33,7 @@ public final class ExtendedPropertyCollection extends
 		return null;
 	}
 
-	/***
+	/**
 	 * Gets the name of the collection item XML element.
 	 * 
 	 * @param complexProperty
@@ -48,7 +48,7 @@ public final class ExtendedPropertyCollection extends
 	}
 
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -66,7 +66,7 @@ public final class ExtendedPropertyCollection extends
 	}
 
 	/**
-	 * * Writes to XML.
+	 * Writes to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -85,7 +85,7 @@ public final class ExtendedPropertyCollection extends
 	}
 
 	/**
-	 * * Gets existing or adds new extended property.
+	 * Gets existing or adds new extended property.
 	 * 
 	 * @param propertyDefinition
 	 *            The property definition.
@@ -108,7 +108,7 @@ public final class ExtendedPropertyCollection extends
 	}
 
 	/**
-	 * * Sets an extended property.
+	 * Sets an extended property.
 	 * 
 	 * @param propertyDefinition
 	 *            The property definition.
@@ -126,7 +126,7 @@ public final class ExtendedPropertyCollection extends
 	}
 
 	/**
-	 * * Removes a specific extended property definition from the collection.
+	 * Removes a specific extended property definition from the collection.
 	 * 
 	 * @param propertyDefinition
 	 *            The definition of the extended property to remove.
@@ -150,7 +150,7 @@ public final class ExtendedPropertyCollection extends
 		}
 	}
 
-	/***
+	/**
 	 * Tries to get property.
 	 * 
 	 * @param propertyDefinition
@@ -174,7 +174,7 @@ public final class ExtendedPropertyCollection extends
 		return found;
 	}
 
-	/***
+	/**
 	 * Tries to get property value.
 	 * 
 	 * @param propertyDefinition
@@ -209,7 +209,7 @@ public final class ExtendedPropertyCollection extends
 	
 		
 	/**
-	 * * Writes the update to XML.
+	 * Writes the update to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -256,7 +256,7 @@ public final class ExtendedPropertyCollection extends
 	}
 
 	/**
-	 * * Writes the deletion update to XML.
+	 * Writes the deletion update to XML.
 	 * 
 	 * @param writer
 	 *            The writer.

@@ -12,7 +12,7 @@ import java.util.List;
 
 import javax.xml.stream.XMLStreamException;
 
-/***
+/**
  * Represents the definition of a folder or item property.
  * 
  * 
@@ -32,7 +32,7 @@ ServiceObjectPropertyDefinition {
 	/** The version. */
 	private ExchangeVersion version;
 
-	/***
+	/**
 	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
@@ -50,7 +50,7 @@ ServiceObjectPropertyDefinition {
 		this.version = version;
 	}
 
-	/***
+	/**
 	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
@@ -69,7 +69,7 @@ ServiceObjectPropertyDefinition {
 	}
 
 	/**
-	 * * Initializes a new instance.
+	 * Initializes a new instance.
 	 * 
 	 * @param xmlElementName
 	 *            Name of the XML element.
@@ -86,7 +86,7 @@ ServiceObjectPropertyDefinition {
 		this.flags = flags;
 	}
 
-	/***
+	/**
 	 * Determines whether the specified flag is set.
 	 * 
 	 * @param flag
@@ -97,7 +97,7 @@ ServiceObjectPropertyDefinition {
         return this.hasFlag(flag, null);
     }
 	
-	/***
+	/**
 	 * Determines whether the specified flag is set.
 	 * 
 	 * @param flag
@@ -109,7 +109,7 @@ ServiceObjectPropertyDefinition {
 		return this.flags.contains(flag);
 	}
 
-	/***
+	/**
 	 * Registers associated internal properties.
 	 * 
 	 * @param properties
@@ -119,7 +119,7 @@ ServiceObjectPropertyDefinition {
 			List<PropertyDefinition> properties) {
 	}
 
-	/***
+	/**
 	 * Gets a list of associated internal properties.
 	 * 
 	 * @return A list of PropertyDefinition objects. This is a hack. It is here
@@ -133,7 +133,7 @@ ServiceObjectPropertyDefinition {
 		return properties;
 	}
 
-	/***
+	/**
 	 * Gets the minimum Exchange version that supports this property.
 	 * 
 	 * @return The version.
@@ -143,7 +143,7 @@ ServiceObjectPropertyDefinition {
 	}
 
 	/**
-	 * * Gets a value indicating whether this property definition is for a
+	 * Gets a value indicating whether this property definition is for a
 	 * nullable type.
 	 * 
 	 * @return always true
@@ -153,7 +153,7 @@ ServiceObjectPropertyDefinition {
 	}
 
 	/**
-	 * * Loads from XML.
+	 * Loads from XML.
 	 * 
 	 * @param reader
 	 *            The reader.
@@ -181,7 +181,7 @@ ServiceObjectPropertyDefinition {
 			ServiceObjectPropertyException, ServiceVersionException, Exception;
 
 	/**
-	 * * Writes the property value to XML.
+	 * Writes the property value to XML.
 	 * 
 	 * @param writer
 	 *            The writer.
@@ -210,7 +210,7 @@ ServiceObjectPropertyDefinition {
 			ServiceLocalException, InstantiationException,
 			IllegalAccessException, ServiceValidationException, Exception;
 
-	/***
+	/**
 	 * Gets the name of the XML element.
 	 * 
 	 * @return The name of the XML element.
@@ -219,7 +219,7 @@ ServiceObjectPropertyDefinition {
 		return this.xmlElementName;
 	}
 
-	/***
+	/**
 	 * Gets the name of the property.
 	 * 
 	 * @return Name of the property.
@@ -232,7 +232,7 @@ ServiceObjectPropertyDefinition {
 		return name;
 	}
 
-	/***
+	/**
 	 * Sets the name of the property.
 	 * 
 	 * @param name
@@ -242,7 +242,7 @@ ServiceObjectPropertyDefinition {
 		this.name = name;
 	}
 
-	/***
+	/**
 	 * Gets the property definition's printable name.
 	 * 
 	 * @return The property definition's printable name.

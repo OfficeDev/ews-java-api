@@ -6,18 +6,18 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-/***
+/**
  * Represents an item Id provided by a ItemBase object.
  */
 class ItemWrapper extends AbstractItemIdWrapper {
 
-	/***
+	/**
 	 *The ItemBase object providing the Id.
 	 */
 	private Item item;
 
 	/**
-	 * * Initializes a new instance of ItemWrapper.
+	 * Initializes a new instance of ItemWrapper.
 	 * 
 	 * @param item
 	 *            the item
@@ -32,7 +32,7 @@ class ItemWrapper extends AbstractItemIdWrapper {
 		this.item = item;
 	}
 
-	/***
+	/**
 	 *Obtains the ItemBase object associated with the wrapper.
 	 * 
 	 * @return The ItemBase object associated with the wrapper
@@ -42,7 +42,7 @@ class ItemWrapper extends AbstractItemIdWrapper {
 	}
 
 	/**
-	 * * Writes the Id encapsulated in the wrapper to XML.
+	 * Writes the Id encapsulated in the wrapper to XML.
 	 * 
 	 * @param writer
 	 *            the writer
