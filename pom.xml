@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.microsoft.office</groupId>
-    <artifactId>ews-client</artifactId>
+    <artifactId>exchange-ews-java-api</artifactId>
     <version>1.3-SNAPSHOT</version>
 
-    <name>EWS Java API</name>
-    <description>The Exchange Web Services (EWS) Java API</description>
+    <name>Exchange Web Services Java API</name>
+    <description>Exchange Web Services (EWS) Java API</description>
 
     <!-- Required by the site command for certain relative URL configuration. -->
     <url>http://www.microsoft.com/</url>
