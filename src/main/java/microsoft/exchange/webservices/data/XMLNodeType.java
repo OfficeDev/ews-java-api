@@ -17,13 +17,12 @@ class XMLNodeType implements XMLStreamConstants {
 	int nodeType;
 
 	/**
-	 * Instantiates a new xML node type.
+	 * Instantiates a new XML node type.
 	 * 
-	 * @param nodeTyp
-	 *            the node typ
+	 * @param nodeType  The node type.
 	 */
-	XMLNodeType(int nodeTyp) {
-		this.nodeType = nodeTyp;
+	XMLNodeType(int nodeType) {
+		this.nodeType = nodeType;
 	}
 
 	/**
