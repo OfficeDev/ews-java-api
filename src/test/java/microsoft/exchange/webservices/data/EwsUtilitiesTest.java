@@ -1,3 +1,10 @@
+/**************************************************************************
+ * copyright file="EwsUtilitiesTest.java" company="Microsoft"
+ *     Copyright (c) Microsoft Corporation.  All rights reserved.
+ *
+ * Defines the EwsUtilitiesTest.java.
+ **************************************************************************/
+
 package microsoft.exchange.webservices.data;
 
 import org.junit.Assert;
