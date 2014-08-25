@@ -1,4 +1,4 @@
-EWS Java Client API
+Exchange Web Services Java API
 
 Copyright (c) Microsoft Corporation
 All rights reserved. 
