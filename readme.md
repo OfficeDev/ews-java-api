@@ -249,7 +249,8 @@ public void findChildFolders()
 
 	for (Folder folder : findResults.getFolders())
 	{
-    	System.out.println("Count======"+folder.getChildFolderCount());                                         			System.out.println("Name======="+folder.getDisplayName());
+		System.out.println("Count======" + folder.getChildFolderCount());
+		System.out.println("Name=======" + folder.getDisplayName());
 	}
 }
 ```
@@ -404,7 +405,7 @@ The following is an example that shows how to subscribe to pull notifications an
 // Subscribe to pull notifications in the Inbox folder, and get notified when a new mail is received, when an item or folder is created, or when an item or folder is deleted.
 
 List  folder = new ArrayList();
-folder.add(new FolderId().                                         getFolderIdFromWellKnownFolderName(WellKnownFolderName.Inbox));
+folder.add(new FolderId().getFolderIdFromWellKnownFolderName(WellKnownFolderName.Inbox));
 
 PullSubscription subscription = service.subscribeToPullNotifications(folder,5
 /* timeOut: the subscription will end if the server is not polled within 5 minutes. */, null /* watermark: null to start a new subscription. */, EventType.NewMail, EventType.Created, EventType.Deleted);
@@ -787,7 +788,8 @@ folder.add(folderId);
 
 StreamingSubscription subscription = service.subscribeToStreamingNotifications(folder, EventType.NewMail);
 
-StreamingSubscriptionConnection conn = new StreamingSubscriptionConnection(service, 30);		conn.addSubscription(subscription);
+StreamingSubscriptionConnection conn = new StreamingSubscriptionConnection(service, 30);
+conn.addSubscription(subscription);
 conn.addOnNotificationEvent(this);
 conn.addOnDisconnect(this);
 conn.open();
