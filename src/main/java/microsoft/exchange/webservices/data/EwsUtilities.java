@@ -782,6 +782,7 @@ class EwsUtilities {
 		} else if (cls.isInstance(new Date())) {
 			Object o = null;
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            df.setTimeZone(TimeZone.getTimeZone("UTC"));
 			return (T) df.parse(value);
 		} else if (cls.isInstance(Boolean.valueOf(false)))
 		// else if( cls.isInstance(new Boolean(false)))
@@ -878,6 +879,7 @@ class EwsUtilities {
 	static String dateTimeToXSDate(Date date) {
 		String format = "yyyy-MM-dd'Z'";
 		DateFormat utcFormatter = new SimpleDateFormat(format);
+		utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return utcFormatter.format(date);
 	}
 
@@ -891,6 +893,7 @@ class EwsUtilities {
 	protected static String dateTimeToXSDateTime(Date date) {
 		String format = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 		DateFormat utcFormatter = new SimpleDateFormat(format);
+		utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return utcFormatter.format(date);
 	}
 	
