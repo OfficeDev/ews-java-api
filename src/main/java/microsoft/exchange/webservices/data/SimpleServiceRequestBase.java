@@ -44,9 +44,10 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 	 * @throws microsoft.exchange.webservices.data.ServiceLocalException
 	 */
 	protected Object internalExecute() throws ServiceLocalException, Exception {
-		HttpWebRequest response = this.validateAndEmitRequest();
+		HttpWebRequest response = null;
 
 		try {
+			response = this.validateAndEmitRequest();
 			return this.readResponse(response);
 		} catch (IOException ex) {
 			// Wrap exception.
@@ -61,7 +62,9 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
 		} finally {
 			try {
-				response.close();
+				if (response != null) {
+					response.close();
+				}
 			} catch (Exception e2) {
 				response = null;
 			}
