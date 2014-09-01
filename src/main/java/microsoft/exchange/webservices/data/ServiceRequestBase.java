@@ -10,19 +10,13 @@
 
 package microsoft.exchange.webservices.data;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import javax.xml.stream.XMLStreamException;
+import java.io.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
-
-import javax.xml.stream.XMLStreamException;
-import javax.xml.ws.http.HTTPException;
 
 /**
  * Represents an abstract service request.
@@ -770,13 +764,6 @@ abstract class ServiceRequestBase {
 			}
 
 			return request;
-		} catch (HTTPException e) {
-			if (e.getStatusCode() == WebExceptionStatus.ProtocolError.ordinal() && e.getCause() != null) {
-				this.processWebException(e, request);
-			}
-
-			// Wrap exception if the above code block didn't throw
-			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
 		} catch (IOException e) {
 			// Wrap exception.
 			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
