@@ -217,9 +217,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 	 */
 	protected void internalExecute() throws ServiceLocalException, Exception {
 		synchronized (this) {
-			OutParam<HttpWebRequest> outParam = new OutParam<HttpWebRequest>();
-			this.response = this.validateAndEmitRequest(outParam);
-			this.request = outParam.getParam();
+			this.response = this.validateAndEmitRequest();
 			this.internalOnConnect();
 		}
 	}

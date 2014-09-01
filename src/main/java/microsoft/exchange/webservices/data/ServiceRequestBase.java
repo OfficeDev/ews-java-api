@@ -702,12 +702,10 @@ abstract class ServiceRequestBase {
 	 *            The request.
 	 * @return The response returned by the server.
 	 */
-	protected HttpWebRequest validateAndEmitRequest(
-			OutParam<HttpWebRequest> request) throws ServiceLocalException,
-			Exception {
+	protected HttpWebRequest validateAndEmitRequest() throws ServiceLocalException, Exception {
 		this.validate();
 
-		request = this.buildEwsHttpWebRequest();
+		HttpWebRequest request = this.buildEwsHttpWebRequest();
 		return this.getEwsHttpWebResponse(request);
 	}
 
@@ -715,23 +713,20 @@ abstract class ServiceRequestBase {
 	 * <summary> Builds the HttpWebRequest object for current service request
 	 * with exception handling.
 	 * 
-	 * @return An IEwsHttpWebRequest instance
+	 * @return An HttpWebRequest instance
 	 */
-	protected OutParam<HttpWebRequest> buildEwsHttpWebRequest()
-			throws Exception {
-		OutParam<HttpWebRequest> outparam = new OutParam<HttpWebRequest>();
-		try {
+	protected HttpWebRequest buildEwsHttpWebRequest() throws Exception {
+		HttpWebRequest request = null;
 
-			outparam.setParam(this.getService().prepareHttpWebRequest());
+		try {
+			request = this.getService().prepareHttpWebRequest();
 			AsyncExecutor ae = new AsyncExecutor();
 
 			// ExecutorService es = CallableSingleTon.getExecutor();
-			Callable getStream = new GetStream(outparam.getParam(),
-					"getOutputStream");
+			Callable getStream = new GetStream(request, "getOutputStream");
 			Future task = ae.submit(getStream, null);
 			ae.shutdown();
-			this.getService().traceHttpRequestHeaders(
-					TraceFlags.EwsRequestHttpHeaders, outparam.getParam());
+			this.getService().traceHttpRequestHeaders(TraceFlags.EwsRequestHttpHeaders, request);
 
 			boolean needSignature = this.getService().getCredentials() != null
 					&& this.getService().getCredentials().isNeedSignature();
@@ -762,15 +757,9 @@ abstract class ServiceRequestBase {
 							memoryStream);
 				}
 
-				ByteArrayOutputStream serviceRequestStream = (ByteArrayOutputStream) this
-						.getWebRequestStream(task);
-				{
-					EwsUtilities.copyStream(memoryStream, serviceRequestStream);
-				}
-				
-			}
-
-			else {
+				ByteArrayOutputStream serviceRequestStream = this.getWebRequestStream(task);
+				EwsUtilities.copyStream(memoryStream, serviceRequestStream);
+			} else {
 				ByteArrayOutputStream requestStream = this
 						.getWebRequestStream(task);
 
@@ -778,23 +767,19 @@ abstract class ServiceRequestBase {
 						.getService(), requestStream);
 
 				this.writeToXml(writer1);
-
 			}
 
-			return outparam;
+			return request;
 		} catch (HTTPException e) {
-			if (e.getStatusCode() == WebExceptionStatus.ProtocolError.ordinal()
-					&& e.getCause() != null) {
-				this.processWebException(e, outparam.getParam());
+			if (e.getStatusCode() == WebExceptionStatus.ProtocolError.ordinal() && e.getCause() != null) {
+				this.processWebException(e, request);
 			}
 
 			// Wrap exception if the above code block didn't throw
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, e.getMessage()), e);
+			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
 		} catch (IOException e) {
 			// Wrap exception.
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, e.getMessage()), e);
+			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
 		}
 	}
 
@@ -802,12 +787,10 @@ abstract class ServiceRequestBase {
 	 * Gets the IEwsHttpWebRequest object from the specifiedHttpWebRequest
 	 * object with exception handling
 	 * 
-	 * @param outparam The specified HttpWebRequest
+	 * @param request The specified HttpWebRequest
 	 * @return An HttpWebResponse instance
 	 */
-	protected HttpWebRequest getEwsHttpWebResponse(
-			OutParam<HttpWebRequest> outparam) throws Exception {
-		HttpWebRequest request = outparam.getParam();
+	protected HttpWebRequest getEwsHttpWebResponse(HttpWebRequest request) throws Exception {
 		int code;
 
 		try {
