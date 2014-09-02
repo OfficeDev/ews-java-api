@@ -361,14 +361,13 @@ class EwsServiceXmlWriter implements IDisposable {
 		if (xmlNode instanceof Element) {
 			addElement((Element) xmlNode, xmlStreamWriter);
 		} else if (xmlNode instanceof Text) {
-			xmlStreamWriter.writeCharacters(((Text) xmlNode).getNodeValue());
+			xmlStreamWriter.writeCharacters(xmlNode.getNodeValue());
 		} else if (xmlNode instanceof CDATASection) {
 			xmlStreamWriter.writeCData(((CDATASection) xmlNode).getData());
 		} else if (xmlNode instanceof Comment) {
 			xmlStreamWriter.writeComment(((Comment) xmlNode).getData());
 		} else if (xmlNode instanceof EntityReference) {
-			xmlStreamWriter.writeEntityRef(((EntityReference) xmlNode)
-					.getNodeValue());
+			xmlStreamWriter.writeEntityRef(xmlNode.getNodeValue());
 		} else if (xmlNode instanceof ProcessingInstruction) {
 			ProcessingInstruction procInst = (ProcessingInstruction) xmlNode;
 			xmlStreamWriter.writeProcessingInstruction(procInst.getTarget(),

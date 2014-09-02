@@ -351,7 +351,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
 				} else if (dictionaryObject.getClass().equals(Byte.TYPE)) {
 					dictionaryObjectType = 
 						UserConfigurationDictionaryObjectType.Byte;
-					valueAsString = ((Byte) dictionaryObject).toString();
+					valueAsString = dictionaryObject.toString();
 				} else if (dictionaryObject.getClass().equals(Date.class)) {
 					dictionaryObjectType = 
 						UserConfigurationDictionaryObjectType.DateTime;
@@ -361,11 +361,11 @@ public final class UserConfigurationDictionary extends ComplexProperty
 				} else if (dictionaryObject.getClass().equals(Integer.TYPE)) {
 					dictionaryObjectType = 
 						UserConfigurationDictionaryObjectType.Integer32;
-					valueAsString = ((Integer) dictionaryObject).toString();
+					valueAsString = dictionaryObject.toString();
 				} else if (dictionaryObject.getClass().equals(Long.TYPE)) {
 					dictionaryObjectType = 
 						UserConfigurationDictionaryObjectType.Integer64;
-					valueAsString = ((Long) dictionaryObject).toString();
+					valueAsString = dictionaryObject.toString();
 				} else if (dictionaryObject.getClass().equals(String.class)) {
 					dictionaryObjectType = 
 						UserConfigurationDictionaryObjectType.String;
@@ -373,11 +373,11 @@ public final class UserConfigurationDictionary extends ComplexProperty
 				} else if (dictionaryObject.getClass().equals(Integer.TYPE)) {
 					dictionaryObjectType = 
 						UserConfigurationDictionaryObjectType.UnsignedInteger32;
-					valueAsString = ((Integer) dictionaryObject).toString();
+					valueAsString = dictionaryObject.toString();
 				} else if (dictionaryObject.getClass().equals(Long.TYPE)) {
 					dictionaryObjectType = 
 						UserConfigurationDictionaryObjectType.UnsignedInteger64;
-					valueAsString = ((Long) dictionaryObject).toString();
+					valueAsString = dictionaryObject.toString();
 				} else {
 					EwsUtilities
 							.EwsAssert(

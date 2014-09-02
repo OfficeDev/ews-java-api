@@ -133,7 +133,7 @@ public final class PostReply extends ServiceObject{
 	 *             the exception
 	 */
 	public PostItem save() throws Exception {
-		return (PostItem) this.internalCreate(null, null);
+		return this.internalCreate(null, null);
 	}
 
 	/**
@@ -148,7 +148,7 @@ public final class PostReply extends ServiceObject{
 	 */
 	public PostItem save(FolderId destinationFolderId) throws Exception {
 		EwsUtilities.validateParam(destinationFolderId, "destinationFolderId");
-		return (PostItem) this.internalCreate(destinationFolderId, null);
+		return this.internalCreate(destinationFolderId, null);
 	}
 
 	/**
@@ -163,8 +163,7 @@ public final class PostReply extends ServiceObject{
 	 */
 	public PostItem save(WellKnownFolderName destinationFolderName)
 			throws Exception {
-		return (PostItem) this.internalCreate(new FolderId(
-				destinationFolderName), null);
+		return this.internalCreate(new FolderId(destinationFolderName), null);
 	}
 
 	/**

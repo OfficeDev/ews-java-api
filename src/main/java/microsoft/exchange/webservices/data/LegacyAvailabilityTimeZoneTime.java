@@ -138,8 +138,7 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
 		writer.writeElementValue(XmlNamespace.Types, XmlElementNames.DayOrder,
 				this.dayOrder);
 
-		writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Month,
-				(int) this.month);
+		writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Month, this.month);
 
 		// Only write DayOfWeek if this is a recurring time change
 		if (this.getYear() == 0) {

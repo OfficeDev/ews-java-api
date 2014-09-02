@@ -24,7 +24,7 @@ public class GetPasswordExpirationDateResponse extends ServiceResponse {
 	 */
 	protected void readElementsFromXml(EwsServiceXmlReader reader)throws Exception{
 		super.readElementsFromXml(reader);
-		this.passwordExpirationDate = (Date)reader.readElementValueAsDateTime(
+		this.passwordExpirationDate = reader.readElementValueAsDateTime(
 				XmlNamespace.NotSpecified,
 				XmlElementNames.PasswordExpirationDate);
 		

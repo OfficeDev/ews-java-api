@@ -80,7 +80,7 @@ public final class PhoneNumberEntry extends
 	 */
 	public void setPhoneNumber(Object value) {
 		//this.canSetFieldValue((String) this.phoneNumber, value);
-		if( this.canSetFieldValue((String) this.phoneNumber, value) ) {
+		if( this.canSetFieldValue(this.phoneNumber, value) ) {
 			this.phoneNumber = (String)value;
 		}
 	}

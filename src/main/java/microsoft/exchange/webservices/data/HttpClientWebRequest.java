@@ -70,7 +70,7 @@ class HttpClientWebRequest extends HttpWebRequest {
 	 */
 	@Override
 	public void close() {
-		ExecutorService es =(ExecutorService) CallableSingleTon.getExecutor();
+		ExecutorService es = CallableSingleTon.getExecutor();
 		es.shutdown();
 		if (null != httpMethod) {
 			httpMethod.releaseConnection();
@@ -112,7 +112,7 @@ class HttpClientWebRequest extends HttpWebRequest {
 			}
 		}
 		if(getUserName() != null) {
-		client.getState().setCredentials(AuthScope.ANY, new NTCredentials(getUserName(),getPassword(),"",getDomain()));
+		client.getState().setCredentials(AuthScope.ANY, new NTCredentials(getUserName(), getPassword(), "", getDomain()));
 		}
 		
 		client.getHttpConnectionManager().getParams().setSoTimeout(getTimeout());

@@ -45,8 +45,8 @@ ServiceObjectPropertyDefinition {
 	protected static boolean isEqualTo(IndexedPropertyDefinition idxPropDef1,
 			IndexedPropertyDefinition idxPropDef2) {
 		return (idxPropDef1 == idxPropDef2) ||
-		 ((Object)idxPropDef1 != null &&
-				 (Object)idxPropDef2 != null &&
+		 (idxPropDef1 != null &&
+				 idxPropDef2 != null &&
 				 idxPropDef1.getUri().equalsIgnoreCase(
 						idxPropDef2.getUri()) && idxPropDef1.index
 						.equalsIgnoreCase(idxPropDef2.index));
