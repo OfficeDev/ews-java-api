@@ -112,7 +112,8 @@ class HttpClientWebRequest extends HttpWebRequest {
 			}
 		}
 		if(getUserName() != null) {
-		client.getState().setCredentials(AuthScope.ANY, new NTCredentials(getUserName(), getPassword(), "", getDomain()));
+			client.getState().setCredentials(AuthScope.ANY, new NTCredentials(getUserName(),getPassword(), "", getDomain()));
+			client.getParams().setAuthenticationPreemptive(true);
 		}
 		
 		client.getHttpConnectionManager().getParams().setSoTimeout(getTimeout());
