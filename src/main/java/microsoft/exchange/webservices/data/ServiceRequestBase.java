@@ -317,69 +317,6 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * Send request and get response.
-	 * 
-	 * @return HttpWebRequest object from which response stream can be read.
-	 * @throws Exception
-	 *             the exception
-	 */
-	protected HttpWebRequest emit(OutParam<HttpWebRequest> request)
-			throws Exception {
-		request.setParam(this.getService().prepareHttpWebRequest());
-		this.getService().traceHttpRequestHeaders(
-				TraceFlags.EwsRequestHttpHeaders, request.getParam());
-
-		// If tracing is enabled, we generate the request in-memory so that we
-		// can pass it along to the ITraceListener. Then we copy the stream to
-		// the request stream.
-		if (this.service.isTraceEnabledFor(TraceFlags.EwsRequest)) {
-			ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
-			EwsServiceXmlWriter writer = new EwsServiceXmlWriter(this.service,
-					memoryStream);
-			this.writeToXml(writer);
-			this.service.traceXml(TraceFlags.EwsRequest, memoryStream);
-			OutputStream urlOutStream = request.getParam().getOutputStream();
-			// request.getParam().write(memoryStream);
-			// System.out.println("Actual XML : "+new
-			// String(memoryStream.toByteArray())+": end of XML");
-
-			memoryStream.writeTo(urlOutStream);
-			urlOutStream.flush();
-			urlOutStream.close();
-			writer.dispose();
-			memoryStream.close();
-		} else {
-			// ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			// ObjectOutputStream urlOutStream = new ObjectOutputStream(bos);
-			OutputStream urlOutStream = request.getParam().getOutputStream();
-			EwsServiceXmlWriter writer = new EwsServiceXmlWriter(this.service,
-					urlOutStream);
-			this.writeToXml(writer);
-			// request.getParam().write(bos);
-			urlOutStream.flush();
-			urlOutStream.close();
-			writer.dispose();
-		}
-		// Closing and flushing stream does not ensure xml data is posted. Hence
-		// try to get response code. This will force the xml data to be posted.
-		request.getParam().executeRequest();
-
-		if (request.getParam().getResponseCode() >= 400) {
-			throw new HttpErrorException(
-					"The remote server returned an error: ("
-							+ request.getParam().getResponseCode() + ")"
-							+ request.getParam().getResponseText(), request
-							.getParam().getResponseCode());
-			// throw new
-			// Exception("The remote server returned an error: ("+request.getParam().getResponseCode()+")"+request.getParam().getResponseText());
-
-		}
-
-		return request.getParam();
-
-	}
-
-	/**
 	 * Get the request stream
 	 * 
 	 *@param request
@@ -576,52 +513,6 @@ abstract class ServiceRequestBase {
 			// Ignore anything else inside the SOAP header
 		} while (!reader.isEndElement(XmlNamespace.Soap,
 				XmlElementNames.SOAPHeaderElementName));
-	}
-
-	/**
-	 * Ends getting the specified async HttpWebRequest object from the specified
-	 * IEwsHttpWebRequest object with exception handling.
-	 * 
-	 * @param request
-	 *            The specified HttpWebRequest
-	 * @param asyncResult
-	 *            An IAsyncResult that references the asynchronous request.
-	 * @return An HttpWebResponse instance
-	 */
-	protected HttpWebRequest endGetEwsHttpWebResponse(
-			OutParam<HttpWebRequest> request, AsyncRequestResult asyncResult)
-			throws Exception {
-
-		try {
-			// Note that this call may throw ArgumentException if the
-			// HttpWebRequest instance is not the original one,
-			// and we just let it out
-			request.getParam().executeRequest();
-			if (request.getParam().getResponseCode() >= 400) {
-				throw new HttpErrorException(
-						"The remote server returned an error: ("
-								+ request.getParam().getResponseCode() + ")"
-								+ request.getParam().getResponseText(), request
-								.getParam().getResponseCode());
-				// throw new
-				// Exception("The remote server returned an error: ("+request.getParam().getResponseCode()+")"+request.getParam().getResponseText());
-
-			}
-			return request.getParam();
-		} catch (HttpErrorException ex) {
-			if (ex.getHttpErrorCode() == WebExceptionStatus.ProtocolError
-					.ordinal()) {
-				this.processWebException(ex, request.getParam());
-			}
-
-			// Wrap exception if the above code block didn't throw
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, ex.getMessage()), ex);
-		} catch (IOException e) {
-			// Wrap exception.
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, e.getMessage()), e);
-		}
 	}
 
 	/**
