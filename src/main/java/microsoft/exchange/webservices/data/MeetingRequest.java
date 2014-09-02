@@ -567,13 +567,13 @@ public class MeetingRequest extends MeetingMessage implements
 	/**
 	 * Gets the sequence number of this appointment.
 	 *
-	 * @return the appoijntment sequence number
+	 * @return the appointment sequence number
 	 * @throws NumberFormatException
 	 *             the number format exception
 	 * @throws ServiceLocalException
 	 *             the service local exception
 	 */
-	public int getAppoijntmentSequenceNumber() throws NumberFormatException,
+	public int getAppointmentSequenceNumber() throws NumberFormatException,
 			ServiceLocalException {
 		return (Integer
 				.parseInt(this.getPropertyBag()
