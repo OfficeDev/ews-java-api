@@ -27,6 +27,11 @@ public class AlternateId extends AlternateIdBase {
 	private String mailbox;
 
 	/**
+	 * Type (primary or archive) mailbox to which the Id belongs
+	 */
+	private boolean isArchive;
+
+	/**
 	 * Initializes a new instance of the class.
 	 */
 	public AlternateId() {
@@ -106,10 +111,7 @@ public class AlternateId extends AlternateIdBase {
 
 	/**
 	 * Gets the type (primary or archive) mailbox to which the Id belongs.
-	 * 
-	 * @return the isArchive
 	 */
-	private boolean isArchive;
 	public boolean getIsArchive() {
 		return this.isArchive;
 	}

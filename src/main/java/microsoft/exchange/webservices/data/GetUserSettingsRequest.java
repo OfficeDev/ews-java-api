@@ -194,15 +194,14 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
 				EwsUtilities.AutodiscoverSoapNamespacePrefix,
 				EwsUtilities.AutodiscoverSoapNamespace);
 	}
-/**
- * @throws javax.xml.stream.XMLStreamException
- * @throws  
- * 
- */
+
+	/**
+	 * @throws XMLStreamException
+	 * @throws ServiceXmlSerializationException
+	 */
 	@Override
 	protected void writeExtraCustomSoapHeadersToXml(EwsServiceXmlWriter writer) throws XMLStreamException,
-	ServiceXmlSerializationException
- {
+	ServiceXmlSerializationException {
 		if (this.expectPartnerToken) {
 			writer
 					.writeElementValue(XmlNamespace.Autodiscover,
@@ -211,7 +210,7 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
 											.getSessionKey()));
 		}
 	}
-	 
+
 	/**
 	 * Writes request to XML.
 	 * 

@@ -181,28 +181,18 @@ class HttpClientWebRequest extends HttpWebRequest {
 	}
 	
 	/**
-	 * Method for getting the cookie vlaues.
-	 * 
-	 * @throws microsoft.exchange.webservices.data.EWSHttpException
-	 *             throws EWSHttpException
+	 * Method for getting the cookie values.
 	 */
 	public Cookie[] getCookies()   {
-		
 		return this.client.getState().getCookies();
-
 	}
-	
+
 	/**
 	 * Method for setting the cookie values.
-	 * 
-	 * @throws microsoft.exchange.webservices.data.EWSHttpException
-	 *             throws EWSHttpException
 	 */
 	public void setUserCookie(Cookie[] rcookies) {
-
 		if (rcookies != null && rcookies.length > 0)
 			this.cookies = rcookies.clone();
-
 	}
 	
 	
@@ -421,13 +411,8 @@ class HttpClientWebRequest extends HttpWebRequest {
 	 * 			the Trust Manager
 	 * @throws microsoft.exchange.webservices.data.EWSHttpException
 	 *             the eWS http exception
-	 * @throws java.security.KeyManagementException
-	 *             the KeyManagementException
-	 * @throws java.security.NoSuchAlgorithmException
-	 *             the NoSuchAlgorithmException
 	 */
 	public void setClientCertificates(TrustManager certs) throws EWSHttpException {
 		trustManger = certs;
-		
 	}
 }

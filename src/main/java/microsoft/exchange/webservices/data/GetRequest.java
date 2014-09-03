@@ -63,9 +63,7 @@ abstract class GetRequest<TServiceObject extends ServiceObject,
 	 * 
 	 * @param writer
 	 *            the writer
-	 * @return The type of service object the request applies to
 	 * @throws Exception
-	 *             the exception
 	 */
 	protected void writeElementsToXml(EwsServiceXmlWriter writer)
 			throws Exception {

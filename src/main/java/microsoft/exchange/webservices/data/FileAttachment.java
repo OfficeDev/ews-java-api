@@ -58,7 +58,6 @@ public final class FileAttachment extends Attachment {
 	 *            the attachment index
 	 * @throws ServiceValidationException
 	 *             the service validation exception
-	 * @Index of this attachment
 	 */
 	void validate(int attachmentIndex) throws ServiceValidationException {
 		try {

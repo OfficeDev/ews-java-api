@@ -12,9 +12,7 @@ import java.util.EnumSet;
 /**
  * Represents generic property definition.
  * 
- * @param <T>
- *            the generic type
- * @Param T Property type.
+ * @param <TPropertyValue> Property type.
  */
 class GenericPropertyDefinition<TPropertyValue> extends 
 TypedPropertyDefinition {
@@ -81,17 +79,13 @@ TypedPropertyDefinition {
 	/**
 	 * Parses the specified value.
 	 * 
-	 * @param value
-	 *            the value
-	 * @return the object
-	 * @throws java.text.ParseException
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 * @throws java.text.ParseException
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 * @Param value The value
+	 * @param value The value
+	 *
 	 * @return Double value from parsed value.
+	 *
+	 * @throws java.text.ParseException
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException
 	 */	
 	@Override
 	protected Object parse(String value) throws InstantiationException, 

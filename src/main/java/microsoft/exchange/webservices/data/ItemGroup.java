@@ -69,8 +69,6 @@ public final class ItemGroup<TItem extends Item> {
 
 	/**
 	 * Sets a collection of the items in this group.
-	 * 
-	 * @return the items
 	 */	
 	private void setItems(Collection<TItem> value) {
 		this.items = value;

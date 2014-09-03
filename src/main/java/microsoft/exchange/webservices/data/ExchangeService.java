@@ -2271,9 +2271,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
 	 * @param eventTypes
 	 *            The event types to subscribe to.
 	 * @return An IAsyncResult that references the asynchronous request.
-	 * @throws Exception 
 	 * @throws Exception
-	 *             the exception
 	 */
 	public IAsyncResult beginSubscribeToPushNotifications(
 			AsyncCallback callback, Object state, Iterable<FolderId> folderIds,

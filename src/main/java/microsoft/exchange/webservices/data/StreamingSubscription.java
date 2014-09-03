@@ -10,11 +10,7 @@ package microsoft.exchange.webservices.data;
  * Represents a streaming subscription.
  */
 public final class StreamingSubscription extends SubscriptionBase{
-	/**
-	 * Initializes a new instance of the 
-	 * <see cref="StreamingSubscription"/> class.
-	 * @param service The service.
-	 */
+
 	private ExchangeService service;
 
 	protected StreamingSubscription(ExchangeService service) throws Exception {

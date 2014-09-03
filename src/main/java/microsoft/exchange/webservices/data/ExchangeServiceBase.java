@@ -1037,7 +1037,6 @@ public abstract class ExchangeServiceBase {
     
    /**
     * Save the HTTP response headers.
-    * @summary
     * @param headers The response headers
     */
 	private void saveHttpResponseHeaders(Map<String, String> headers) {

@@ -200,11 +200,10 @@ class PropertyBag implements IComplexPropertyChanged,
 	 *            The types of the property.
 	 * @param propertyDefinition
 	 *            The property definition.
-	 * @param propertyValueOutParam
+	 * @param propertyValue
 	 *            The property value.
 	 * @return True if property was retrieved.
-	 * @throws ArgumentException 
-	 * @throws ArgumentException 
+	 * @throws ArgumentException
 	 */	
 	protected <T> boolean tryGetPropertyType(Class<T> cls, 
 			PropertyDefinition propertyDefinition,
