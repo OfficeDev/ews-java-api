@@ -18,8 +18,7 @@ public  final class GetPasswordExpirationDateRequest extends SimpleServiceReques
 	}
 
 	/**
-	 * Initializes a new instance of the GetPasswordExpirationDateRequest class 
-	 * @param service
+	 * Initializes a new instance of the GetPasswordExpirationDateRequest class
 	 * @throws Exception 
 	 */
 	protected GetPasswordExpirationDateRequest(ExchangeService service) throws Exception{
@@ -50,7 +49,6 @@ public  final class GetPasswordExpirationDateRequest extends SimpleServiceReques
 
    /**
     * Parses the response
-    * @param reader
     * @return GEtPasswordExpirationDateResponse
     */
 	protected Object parseResponse(EwsServiceXmlReader reader)throws Exception{

@@ -56,7 +56,6 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
 	 *            Autodiscover service associated with this request
 	 * @param url
 	 *            URL of Autodiscover service.
-	 * @param   expectPartnerToken    
 	 * @throws ServiceValidationException 
 	 * 			
 	 */

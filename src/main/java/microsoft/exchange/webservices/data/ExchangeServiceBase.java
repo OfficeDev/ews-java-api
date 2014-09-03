@@ -122,11 +122,6 @@ public abstract class ExchangeServiceBase {
 	private static String defaultUserAgent = "ExchangeServicesClient/" + 
 	EwsUtilities.getBuildVersion();
 
-	/**
-	 * 
-	 * @param service
-	 * @param requestedServerVersion
-	 */
 	protected ExchangeServiceBase(ExchangeServiceBase service,
 			ExchangeVersion requestedServerVersion) {
 		this(requestedServerVersion);
@@ -301,10 +296,7 @@ public abstract class ExchangeServiceBase {
 	 * This method doesn't handle 500 ISE errors. This is handled by the caller since
      * 500 ISE typically indicates that a SOAP fault has occurred and the handling of
      * a SOAP fault is currently service specific.
-	 * @param httpWebResponse
-	 * @param webException
-	 * @param responseHeadersTraceFlag
-	 * @param responseTraceFlag
+	 *
 	 * @throws Exception
 	 */
 	protected void internalProcessHttpErrorResponse(
@@ -347,8 +339,6 @@ public abstract class ExchangeServiceBase {
 	}
 
 	/**
-	 * 
-	 * @param location
 	 * @return false if location is null,true if this abstract pathname is
 	 *         absolute,
 	 */
@@ -361,9 +351,6 @@ public abstract class ExchangeServiceBase {
 	  }
 
 	/**
-	 * 
-	 * @param httpWebResponse
-	 * @param webException
 	 * @throws Exception
 	 */
 	protected abstract void processHttpErrorResponse(

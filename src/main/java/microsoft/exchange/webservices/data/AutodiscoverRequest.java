@@ -446,7 +446,6 @@ abstract class AutodiscoverRequest {
 	 * 
 	 * @param requestUrl
 	 *            Request URL.
-	 * @param writer
 	 *
 	 * @throws javax.xml.stream.XMLStreamException
 	 *             the xML stream exception
