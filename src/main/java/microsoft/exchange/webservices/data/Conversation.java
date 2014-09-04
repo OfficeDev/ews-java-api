@@ -383,8 +383,7 @@ public class Conversation extends ServiceObject {
 	/**
 	 * Gets the Id of this Conversation.
 	 * @return Id
-	 * @throws ServiceLocalException 
-	 * @throws Exception 
+	 * @throws ServiceLocalException
 	 */
 	public ConversationId getId() throws ServiceLocalException {		
 		return (ConversationId)this.getPropertyBag().

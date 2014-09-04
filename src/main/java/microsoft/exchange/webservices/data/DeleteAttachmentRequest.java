@@ -117,7 +117,7 @@ final class DeleteAttachmentRequest extends
 	 * 
 	 * @param writer
 	 *            the writer
-	 * @return The writer.
+	 *
 	 * @throws Exception
 	 *             the exception
 	 */

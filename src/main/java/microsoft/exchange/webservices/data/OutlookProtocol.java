@@ -536,7 +536,7 @@ final class OutlookProtocol {
 	 * 
 	 * @param reader
 	 *            The reader.
-	 * @return An Outlook protocol.
+	 *
 	 * @throws Exception
 	 *             the exception
 	 */

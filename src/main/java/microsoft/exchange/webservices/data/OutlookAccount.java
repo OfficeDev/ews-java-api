@@ -49,7 +49,7 @@ final class OutlookAccount {
 	 * 
 	 * @param reader
 	 *            The reader.
-	 * @return An Outlook account.
+	 *
 	 * @throws Exception
 	 *             the exception
 	 */
@@ -106,8 +106,6 @@ final class OutlookAccount {
 
 	/**
 	 * Gets the type of the account.
-	 * 
-	 * @return the account type
 	 */
 	protected void convertToUserSettings(List<UserSettingName> requestedSettings, 
 			GetUserSettingsResponse response) {
@@ -132,11 +130,9 @@ final class OutlookAccount {
 	
 	/**
 	 * Gets the type of the account.
-	 * 
-	 * @return the account type
 	 */
 	protected void setAccountType(String value) {
-		this.accountType=value;		
+		this.accountType=value;
 	}
 
 	/**

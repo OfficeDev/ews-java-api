@@ -16,8 +16,7 @@ final class FindConversationRequest extends SimpleServiceRequestBase {
 	private SearchFilter.IsEqualTo searchFilter;
 	private FolderIdWrapper folderId;
 
-	/**	  
-	 * @param service
+	/**
 	 * @throws Exception 
 	 */
 	protected FindConversationRequest(ExchangeService service) 

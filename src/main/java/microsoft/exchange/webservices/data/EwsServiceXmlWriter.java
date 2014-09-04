@@ -351,9 +351,6 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * 
-	 * @param xmlNode
-	 * @param xmlStreamWriter
 	 * @throws javax.xml.stream.XMLStreamException
 	 */
 	public static void writeNode(Node xmlNode, XMLStreamWriter xmlStreamWriter)
@@ -378,9 +375,6 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * 
-	 * @param document
-	 * @param xmlStreamWriter
 	 * @throws javax.xml.stream.XMLStreamException
 	 */
 	public static void writeToDocument(Document document,
@@ -393,9 +387,6 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 * 
-	 * @param element
-	 * @param writer
 	 * @throws javax.xml.stream.XMLStreamException
 	 */
 	public static void addElement(Element element, XMLStreamWriter writer)
@@ -568,10 +559,7 @@ class EwsServiceXmlWriter implements IDisposable {
 	}
 
 	/**
-	 *   Sets a value indicating whether the SOAP message need WSSecurity Utility namespace.
-	 * 
-	 * @param requireWSSecurityUtilityNamespace
-	 *            
+	 * Sets a value indicating whether the SOAP message need WSSecurity Utility namespace.
 	 */
 	public void setRequireWSSecurityUtilityNamespace(boolean requireWSSecurityUtilityNamespace) {
 		this.requireWSSecurityUtilityNamespace = requireWSSecurityUtilityNamespace;

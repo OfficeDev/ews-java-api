@@ -46,7 +46,7 @@ class FolderWrapper extends AbstractFolderIdWrapper {
 	 * 
 	 * @param writer
 	 *            the writer
-	 * @return The Folder object associated with the wrapper
+	 *
 	 * @throws Exception
 	 *             the exception
 	 */

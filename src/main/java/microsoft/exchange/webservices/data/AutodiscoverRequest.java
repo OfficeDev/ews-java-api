@@ -446,9 +446,7 @@ abstract class AutodiscoverRequest {
 	 * 
 	 * @param requestUrl
 	 *            Request URL.
-	 * @param memoryStream
-	 *            the memory stream
-	 * @return stream The stream.
+	 *
 	 * @throws javax.xml.stream.XMLStreamException
 	 *             the xML stream exception
 	 * @throws ServiceXmlSerializationException

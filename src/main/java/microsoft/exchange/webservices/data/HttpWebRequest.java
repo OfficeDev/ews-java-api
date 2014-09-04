@@ -543,10 +543,6 @@ import org.apache.commons.httpclient.HttpException;
 	 * 			the X509TrustManager
 	 * @throws EWSHttpException
 	 *             the eWS http exception
-	 * @throws java.security.KeyManagementException
-	 *             the KeyManagementException
-	 * @throws java.security.NoSuchAlgorithmException
-	 *             the NoSuchAlgorithmException
 	 */
 	public abstract void setClientCertificates(TrustManager trustManager) 
 	throws EWSHttpException;

@@ -19,11 +19,9 @@ public class AccountIsLockedException extends ServiceRemoteException {
 
 	/**
 	 * Initializes a new instance of the AccountIsLockedException class.
-	 * @param message 
-	 * Error message text.
-	 * @param accountUnlockUrl
-	 * URL for client to visit to unlock account.
-	 * @param innerException
+	 *
+	 * @param message           Error message text.
+	 * @param accountUnlockUrl  URL for client to visit to unlock account.
 	 */
     public AccountIsLockedException(String message, URI accountUnlockUrl, 
     		Exception innerException) {

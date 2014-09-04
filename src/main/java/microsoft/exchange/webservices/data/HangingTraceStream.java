@@ -86,8 +86,7 @@ class HangingTraceStream extends InputStream{
 	 * This can be less than the number of bytes requested if that 
 	 * many bytes are not currently available, or zero (0) 
 	 * if the end of the stream has been reached.
-	 * @exception The sum of offset and count is larger than the buffer length. 
-	 * @exception 
+	 * @throws IOException The sum of offset and count is larger than the buffer length.
 	 */
 	@Override
 	public int read(byte[] buffer, int offset, int count) throws IOException {

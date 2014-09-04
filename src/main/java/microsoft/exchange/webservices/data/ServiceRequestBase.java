@@ -632,7 +632,6 @@ abstract class ServiceRequestBase {
 	 * @param req
 	 *            http Request object used to send the http request.
 	 * @throws Exception
-	 * @throws Exception
 	 */
 	protected void processWebException(Exception webException, HttpWebRequest req)
 			throws Exception {

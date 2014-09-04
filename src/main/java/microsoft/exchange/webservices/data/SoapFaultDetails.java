@@ -104,8 +104,6 @@ class SoapFaultDetails {
 	 *             the xML stream exception
 	 * @throws Exception
 	 *             the exception
-	 * @throws Exception
-	 *             the exception
 	 */
 	private void parseDetailNode(EwsXmlReader reader)
 			throws ServiceXmlDeserializationException, XMLStreamException,
@@ -191,8 +189,6 @@ class SoapFaultDetails {
 	 *             the exception
 	 * @throws ServiceXmlDeserializationException
 	 *             the service xml deserialization exception
-	 * @throws Exception
-	 *             the exception
 	 */
 	private void parseMessageXml(EwsXmlReader reader) throws Exception,
 			ServiceXmlDeserializationException, Exception {

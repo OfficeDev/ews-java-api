@@ -62,8 +62,6 @@ final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
 
 
 	/**
-	 * 
-	 * @param xmlEventReader
 	 * @return document
 	 * @throws javax.xml.parsers.ParserConfigurationException
 	 */

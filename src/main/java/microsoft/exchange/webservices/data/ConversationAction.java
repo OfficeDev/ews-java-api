@@ -30,7 +30,7 @@ class ConversationAction {
 	private Date conversationLastSyncTime;
 
 	/**
-	 * Gets or sets conversation action
+	 * Gets conversation action
 	 * @return action
 	 */
 	protected ConversationActionType getAction() {
@@ -38,14 +38,14 @@ class ConversationAction {
 	}
 
 	/**
-	 * Sets or sets conversation action
+	 * Sets conversation action
 	 */
 	protected void setAction(ConversationActionType value ) {
 		this.action = value;
 	}
 
 	/**
-	 * Gets or sets conversation id
+	 * Gets conversation id
 	 * @return conversationId
 	 */
 	protected ConversationId getConversationId() {
@@ -53,14 +53,14 @@ class ConversationAction {
 	}
 
 	/**
-	 * Sets or sets conversation id
+	 * Sets conversation id
 	 */
 	protected void setConversationId(ConversationId value) {
 		this.conversationId = value;
 	}
 
 	/**
-	 * Gets or sets ProcessRightAway
+	 * Gets ProcessRightAway
 	 * @return processRightAway
 	 */
 	protected boolean getProcessRightAway() {
@@ -68,8 +68,7 @@ class ConversationAction {
 	}
 
 	/**
-	 * Sets or sets ProcessRightAway
-	 * @return processRightAway
+	 * Sets ProcessRightAway
 	 */
 	protected void setProcessRightAway(boolean value) {
 		this.processRightAway = value;
@@ -77,7 +76,7 @@ class ConversationAction {
 
 
 	/**
-	 * Gets or set conversation categories for Always Categorize action
+	 * Gets conversation categories for Always Categorize action
 	 * @return categories
 	 */
 	protected StringList getCategories() {
@@ -85,14 +84,14 @@ class ConversationAction {
 	}
 
 	/**
-	 * Sets or set conversation categories for Always Categorize actions
+	 * Sets conversation categories for Always Categorize actions
 	 */
 	protected void setCategories(StringList value) {
 		this.categories = value;
 	}
 
 	/**
-	 * Gets or sets Enable Always Delete value for Always Delete action
+	 * Gets Enable Always Delete value for Always Delete action
 	 * @return enableAlwaysDelete
 	 */
 	protected boolean getEnableAlwaysDelete() {
@@ -100,7 +99,7 @@ class ConversationAction {
 	}
 
 	/**
-	 * Sets or sets Enable Always Delete value for Always Delete action
+	 * Sets Enable Always Delete value for Always Delete action
 	 */
 	protected void setEnableAlwaysDelete(boolean value) {
 		this.enableAlwaysDelete = value;
@@ -156,7 +155,7 @@ class ConversationAction {
 	}
 
 	/**
-	 * Gets or sets folder id ContextFolder
+	 * Gets folder id ContextFolder
 	 * @return contextFolderId
 	 */
 	protected FolderIdWrapper getContextFolderId() {
@@ -164,14 +163,14 @@ class ConversationAction {
 	}
 
 	/**
-	 * Sets or sets folder id ContextFolder
+	 * Sets folder id ContextFolder
 	 */
 	protected void setContextFolderId(FolderIdWrapper value) {
 		this.contextFolderId = value;
 	}
 
 	/**
-	 * Gets or sets folder id for Move action
+	 * Gets folder id for Move action
 	 * @return moveFolderId
 	 */
 	protected FolderIdWrapper getDestinationFolderId() {
@@ -179,7 +178,7 @@ class ConversationAction {
 	}
 
 	/**
-	 * Sets or sets folder id for Move action
+	 * Sets folder id for Move action
 	 */
 	protected void setDestinationFolderId(FolderIdWrapper value) {
 		this.moveFolderId = value;
