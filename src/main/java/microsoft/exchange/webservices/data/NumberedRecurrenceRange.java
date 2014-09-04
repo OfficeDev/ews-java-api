@@ -58,7 +58,7 @@ final class NumberedRecurrenceRange extends RecurrenceRange {
 	 */
 	protected void setupRecurrence(Recurrence recurrence) throws Exception {
 		super.setupRecurrence(recurrence);
-		this.numberOfOccurrences = recurrence.getNumberOfOccurrences();
+		recurrence.setNumberOfOccurrences(this.numberOfOccurrences);
 	}
 
 	/**
