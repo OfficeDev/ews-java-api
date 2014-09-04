@@ -27,6 +27,8 @@ import javax.xml.stream.XMLStreamWriter;
 import org.apache.commons.httpclient.Cookie;
 import org.apache.commons.httpclient.HttpConnectionManager;
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 /**
  * Represents an abstract binding to an Exchange Service.
@@ -561,13 +563,14 @@ public abstract class ExchangeServiceBase {
 	 *            The string value to parse.
 	 * @return The parsed DateTime value.
 	 */
-    protected Date convertStartDateToUnspecifiedDateTime(String value) 
+    protected Date convertStartDateToUnspecifiedDateTime(String value)
 			throws ParseException {
         if (value == null || value.isEmpty()) {
             return null;
         } else {
-        	DateFormat df = new SimpleDateFormat("yyyy-MM-dd'Z'");
-			return df.parse(value);
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-ddZ");
+            final Date joda = formatter.parseDateTime(value).toDate();
+            return joda;
         }
     }
     
