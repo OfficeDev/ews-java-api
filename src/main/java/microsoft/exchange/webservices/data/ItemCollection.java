@@ -51,7 +51,7 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
 				reader.read();
 
 				if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
-					TItem item = (TItem)EwsUtilities
+					TItem item = EwsUtilities
 							.createEwsObjectFromXmlElementName(Item.class,
 									reader.getService(), reader.getLocalName());
 

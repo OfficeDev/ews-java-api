@@ -55,7 +55,7 @@ DictionaryEntryProperty<ImAddressKey> {
 	 */
 	public void setImAddress(Object value) {
 
-		this.canSetFieldValue((String)this.imAddress, value);
+		this.canSetFieldValue(this.imAddress, value);
 	}
 
 	/**

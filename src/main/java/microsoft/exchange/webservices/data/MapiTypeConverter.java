@@ -83,8 +83,7 @@ class MapiTypeConverter {
 							.setConvertToString(new IFunction<Object, 
 									String>() {
 								public String func(Object o) {
-									return ((Boolean)o).toString()
-											.toLowerCase();
+									return o.toString().toLowerCase();
 								}
 							});
 					map.put(MapiPropertyType.Boolean, mapitype);
@@ -99,7 +98,7 @@ class MapiTypeConverter {
 							.setConvertToString(new IFunction<Object,
 									String>() {
 								public String func(Object o) {
-									return ((UUID)o).toString();
+									return o.toString();
 								}
 							});
 					map.put(MapiPropertyType.CLSID, mapitype);
@@ -114,7 +113,7 @@ class MapiTypeConverter {
 							.setConvertToString(new IFunction<Object,
 									String>() {
 								public String func(Object o) {
-									return ((UUID)o).toString();
+									return o.toString();
 								}
 							});
 					mapitype.setIsArray(true);

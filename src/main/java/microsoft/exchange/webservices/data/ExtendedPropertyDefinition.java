@@ -192,8 +192,8 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	protected static boolean isEqualTo(ExtendedPropertyDefinition extPropDef1,
 			ExtendedPropertyDefinition extPropDef2) {
 		return (extPropDef1 == extPropDef2)
-				|| ((Object) extPropDef1 != null
-						&& (Object) extPropDef2 != null
+				|| (extPropDef1 != null
+						&& extPropDef2 != null
 						&& ((extPropDef1.getId() == extPropDef2.getId()) || (extPropDef1
 								.getId() != null && extPropDef1.getId().equals(
 								extPropDef2.getId())))

@@ -34,7 +34,7 @@ class MapiTypeConverterMapEntry {
 		            map.put(Boolean.class, false);
 		            map.put(Byte[].class, null);
 		            map.put(Short.class, new Short((short)0));
-		            map.put(Integer.class, (Integer)0);
+		            map.put(Integer.class, 0);
 		            map.put(Long.class, new Long(0));
 		            map.put(Float.class, new Float(0.0));
 		            map.put(Double.class, new Double(0.0));

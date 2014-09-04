@@ -345,7 +345,7 @@ IAutodiscoverRedirectionUrl, IFunctionDelegate {
 			OutParam<URI> outParam = new OutParam<URI>();
 			if (this.tryGetRedirectionResponse(request, outParam))
 			{
-				redirectUrl = (URI) outParam.getParam();
+				redirectUrl = outParam.getParam();
 				return redirectUrl;
 			}
 		}
@@ -1027,7 +1027,7 @@ IAutodiscoverRedirectionUrl, IFunctionDelegate {
 		EwsUtilities.validateParam(smtpAddresses, "smtpAddresses");
 		EwsUtilities.validateParam(settings, "settings");
 
-		return (GetUserSettingsResponseCollection) this.getSettings(
+		return this.getSettings(
 				GetUserSettingsResponseCollection.class, UserSettingName.class,
 				smtpAddresses, settings, null, this, 
 				new IFuncDelegate<String>() {
@@ -1272,7 +1272,7 @@ IAutodiscoverRedirectionUrl, IFunctionDelegate {
 		EwsUtilities.validateParam(domains, "domains");
 		EwsUtilities.validateParam(settings, "settings");
 
-		return (GetDomainSettingsResponseCollection) this.getSettings(
+		return this.getSettings(
 				GetDomainSettingsResponseCollection.class,
 				DomainSettingName.class, domains, settings, 
 				requestedVersion, this,

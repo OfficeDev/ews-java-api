@@ -237,7 +237,7 @@ public final class PropertySet implements ISelfValidate,
 
 		for (Iterator<PropertyDefinitionBase> it = properties.iterator(); it
 				.hasNext();) {
-			this.add((PropertyDefinitionBase)it.next());
+			this.add(it.next());
 		}
 	}
 

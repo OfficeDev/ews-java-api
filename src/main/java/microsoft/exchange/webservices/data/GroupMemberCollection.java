@@ -106,7 +106,7 @@ ICustomXmlUpdateSerializer {
 	public void addRange(Iterator<GroupMember> members) throws Exception {
 		EwsUtilities.validateParam(members, "members");
 		while (members.hasNext()) {
-			this.add((GroupMember)members.next());
+			this.add(members.next());
 
 		}
 	}

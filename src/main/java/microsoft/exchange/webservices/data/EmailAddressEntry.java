@@ -53,12 +53,12 @@ public final class EmailAddressEntry extends
 			throws Exception {
 		super.readAttributesFromXml(reader);
 		this.getEmailAddress().setName(
-				reader.readAttributeValue((String)XmlAttributeNames.Name));
+				reader.readAttributeValue(XmlAttributeNames.Name));
 		this
 				.getEmailAddress()
 				.setRoutingType(
 						reader
-								.readAttributeValue((String)XmlAttributeNames.
+								.readAttributeValue(XmlAttributeNames.
 										RoutingType));
 		String mailboxTypeString = reader
 				.readAttributeValue(XmlAttributeNames.MailboxType);
@@ -144,7 +144,7 @@ public final class EmailAddressEntry extends
 	 */
 	public void setEmailAddress(Object value) {
 		//this.canSetFieldValue((EmailAddress) this.emailAddress, value);
-		if( this.canSetFieldValue((EmailAddress) this.emailAddress, value) ) {
+		if( this.canSetFieldValue(this.emailAddress, value) ) {
 			this.emailAddress = (EmailAddress)value;
 		}
 	}

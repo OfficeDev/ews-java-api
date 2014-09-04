@@ -25,7 +25,7 @@ class GetStream implements Callable {
 			HttpErrorException {
 
 		if (this.mName.equalsIgnoreCase("getOutputStream"))
-			return (Object) this.getOutputStream();
+			return this.getOutputStream();
 		return null;
 	}
 
