@@ -101,7 +101,7 @@ final class EndDateRecurrenceRange extends RecurrenceRange {
 		} else {
 			if (reader.getLocalName().equals(XmlElementNames.EndDate)) {			
 			
-				Date temp = reader.readElementValueAsDateTime();
+				Date temp = reader.readElementValueAsUnspecifiedDate();
 
 				if(temp!=null) {
 					this.endDate = temp;
