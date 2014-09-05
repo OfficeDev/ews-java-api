@@ -14,12 +14,8 @@ import java.net.CookieManager;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -27,6 +23,7 @@ import javax.xml.stream.XMLStreamWriter;
 import org.apache.commons.httpclient.Cookie;
 import org.apache.commons.httpclient.HttpConnectionManager;
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
+import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -464,94 +461,12 @@ public abstract class ExchangeServiceBase {
 	 * @return DateTime Returned date is always in UTC date.
 	 */
 	protected Date convertUniversalDateTimeStringToDate(String dateString) {
-		String localTimeRegex = "^(.*)([+-]{1}\\d\\d:\\d\\d)$";
-		Pattern localTimePattern = Pattern.compile(localTimeRegex);
-		String utcPattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-		String utcPattern1 = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'";
-		String localPattern = "yyyy-MM-dd'T'HH:mm:ssz";
-		String localPattern1 = "yyyy-MM-dd'Z'";
-		String pattern = "yyyy-MM-ddz";
-		String localPattern2 = "yyyy-MM-dd'T'HH:mm:ss";
-		DateFormat utcFormatter = null;
-		Date dt = null;
-		String errMsg = String.format(
-				"Date String %s not in valid UTC/local format", dateString);
-		if (dateString == null || dateString.isEmpty()) {
-			return null;
-		} else {
-			if (dateString.endsWith("Z")) {
-				// String in UTC format yyyy-MM-ddTHH:mm:ssZ
-				utcFormatter = new SimpleDateFormat(utcPattern);
-				try {
-					dt = utcFormatter.parse(dateString);
-				} catch (ParseException e) {
-					utcFormatter = new SimpleDateFormat(pattern);
-					//	dateString = dateString.substring(0, 10)+"T12:00:00Z";
-					try {
-						dt = utcFormatter.parse(dateString);
-					} catch (ParseException e1) {
-						utcFormatter = new SimpleDateFormat(localPattern1);
-
-						try {
-							dt = utcFormatter.parse(dateString);
-						}catch(ParseException ex){
-							
-							utcFormatter = new SimpleDateFormat(utcPattern1);
-						}
-							try{
-							dt = utcFormatter.parse(dateString);
-						}
-						catch (ParseException e2)	{
-							throw new IllegalArgumentException(errMsg, e);
-						}
-
-					}
-					// throw new IllegalArgumentException(errMsg,e);
-				}
-			} else if (dateString.endsWith("z")) {
-				// String in UTC format yyyy-MM-ddTHH:mm:ssZ
-				utcFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'z'");
-				try {
-					dt = utcFormatter.parse(dateString);
-				} catch (ParseException e) {
-					throw new IllegalArgumentException(e);
-				}
-			} else {
-				// dateString is not ending with Z.
-				// Check for yyyy-MM-ddTHH:mm:ss+/-HH:mm pattern
-				Matcher localTimeMatcher = localTimePattern.matcher(dateString);
-				if (localTimeMatcher.find()) {
-					System.out.println("Pattern matched");
-					String date = localTimeMatcher.group(1);
-					String zone = localTimeMatcher.group(2);
-					// Add the string GMT between DateTime and TimeZone
-					// since 'z' in yyyy-MM-dd'T'HH:mm:ssz matches
-					// either format GMT+/-HH:mm or +/-HHmm
-					dateString = String.format("%sGMT%s", date, zone);
-					try {
-						utcFormatter = new SimpleDateFormat(localPattern);
-						dt = utcFormatter.parse(dateString);
-					} catch (ParseException e) {
-						try {
-							utcFormatter = new SimpleDateFormat(pattern);
-							dt = utcFormatter.parse(dateString);
-						} catch (ParseException ex) {
-							throw new IllegalArgumentException(ex);
-						}
-					}
-				} else {
-					// Invalid format
-					utcFormatter = new SimpleDateFormat(localPattern2);
-					try {
-						dt = utcFormatter.parse(dateString);
-					} catch (ParseException e) {						
-						e.printStackTrace();
-						throw new IllegalArgumentException(errMsg);
-					}
-				}
-			}
-			return dt;
-		}
+	    if (dateString == null || dateString.isEmpty()) {
+            return null;
+        } else {
+            final Date joda = DateTime.parse(dateString).toDate();
+            return joda;
+        }        
 	}
 
 	/**
@@ -582,11 +497,9 @@ public abstract class ExchangeServiceBase {
 	 * @return String representation of DateTime in yyyy-MM-ddTHH:mm:ssZ format.
 	 */
 	protected String convertDateTimeToUniversalDateTimeString(Date dt) {
-
-		DateFormat utcFormatter = null;
+	    DateTime jodaDt = new DateTime(dt.getTime());
 		String utcPattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-		utcFormatter = new SimpleDateFormat(utcPattern);
-		return utcFormatter.format(dt);
+		return jodaDt.toString(DateTimeFormat.forPattern(utcPattern)).toString();
 	}
 
 	/**
