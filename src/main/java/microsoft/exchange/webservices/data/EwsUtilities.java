@@ -6,6 +6,11 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -877,8 +882,9 @@ class EwsUtilities {
 	 */
 	static String dateTimeToXSDate(Date date) {
 		String format = "yyyy-MM-dd'Z'";
-		DateFormat utcFormatter = new SimpleDateFormat(format);
-		return utcFormatter.format(date);
+		DateTimeFormatter utcFormatter = DateTimeFormat.forPattern(format);
+		String formatted = utcFormatter.print(new DateTime(date.getTime(), DateTimeZone.UTC));
+		return formatted;
 	}
 
 	/**
@@ -890,8 +896,9 @@ class EwsUtilities {
 	 */
 	protected static String dateTimeToXSDateTime(Date date) {
 		String format = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-		DateFormat utcFormatter = new SimpleDateFormat(format);
-		return utcFormatter.format(date);
+		DateTimeFormatter utcFormatter = DateTimeFormat.forPattern(format);
+		String formatted = utcFormatter.print(new DateTime(date.getTime(), DateTimeZone.UTC));
+        return formatted;
 	}
 	
 	/**
