@@ -1363,7 +1363,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
 	 * @throws ServiceLocalException
 	 *             the service local exception
 	 */
-	public Date gaetICalDateTimeStmp() throws ServiceLocalException {
+	public Date getICalDateTimeStamp() throws ServiceLocalException {
 		return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
 				AppointmentSchema.ICalDateTimeStamp);
 	}
