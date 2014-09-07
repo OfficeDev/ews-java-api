@@ -110,6 +110,15 @@ public class MeetingMessageSchema extends EmailMessageSchema {
 		new MeetingMessageSchema();
 
 	/**
+     * Gets the single instance of MeetingMessageSchema.
+     *
+     * @return single instance of MeetingMessageSchema
+     */
+    public static MeetingMessageSchema getInstance() {
+        return Instance;
+    }
+
+	/**
 	 * Registers properties.
 	 * 
 	 * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
