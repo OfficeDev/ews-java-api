@@ -108,6 +108,15 @@ public class MeetingMessageSchema extends EmailMessageSchema {
 	/** This must be after the declaration of property definitions. */
 	protected static final MeetingMessageSchema Instance = 
 		new MeetingMessageSchema();
+	
+	/**
+         * Gets the single instance of MeetingMessageSchema.
+         * 
+         * @return single instance of MeetingMessageSchema
+         */
+         public static MeetingMessageSchema getInstance() {
+                return Instance;
+         }
 
 	/**
 	 * Registers properties.
