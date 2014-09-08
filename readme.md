@@ -1,12 +1,12 @@
 # Getting Started with the EWS JAVA API
 
-## Using the EWS JAVA API For https
+## Using the EWS JAVA API for https
 
 To make an environment secure, you must be sure that any communication is with "trusted" sites whose identity you can be sure of.  SSL uses certificates for authentication — these are digitally signed documents which bind the public key to the identity of the private key owner.
 
 For testing the application with https, no additional code is required to be added as the code is inbuilt with the API.
 
-## Accessing EWS by Using the EWS JAVA API
+## Accessing EWS by using the EWS JAVA API
 To access EWS by using the EWS JAVA API, all you need is an instance of the ExchangeService class, as shown in the following example.
 ```
 ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2010_SP2);
@@ -17,30 +17,30 @@ service.setCredentials(credentials);
 ## Setting the URL of the Service
 You can set the URL of the service in one of two ways:
 - Manually, if you know the URL of Exchange Web Services or if you have previously determined it via the Auto discover service.
-- By using the Auto discover service.
+- By using the Autodiscover service.
 
 To set the URL manually, use the following:
 
 ```
 service.Url = new Uri("<ews_url>");
 ```
-To set the URL by using Auto discover, use the following:
+To set the URL by using Autodiscover, use the following:
 
 ```
 service.autodiscoverUrl("<your_email_address>");
 ```
 
-We recommend that you use the Auto discover service, for the following reasons:
+We recommend that you use the Autodiscover service, for the following reasons:
 
-- Auto discover determines the best endpoint for a given user (the endpoint that is closest to the user’s Mailbox server).
+- Autodiscover determines the best endpoint for a given user (the endpoint that is closest to the user’s Mailbox server).
 - The EWS URL might change as your administrators deploy new Client Access servers.
 
-You can safely cache the URL that is returned by the Auto discover service and reuse it. Auto discover should be called periodically, or when EWS connectivity to a given URL is lost.
+You can safely cache the URL that is returned by the Autodiscover service and reuse it. Autodiscover should be called periodically, or when EWS connectivity to a given URL is lost.
 Note that you should either set the URL manually or call AutodiscoverUrl, but you should not do both.
 
 ## Items
 
-The EWS JAVA API defines a class hierarchy of items. Each class in the hierarchy maps to a given item type in Exchange. For example, the `EmailMessage` class represents e-mail messages and the `Appointment` class represents calendar events and meetings.
+The EWS JAVA API defines a class hierarchy of items. Each class in the hierarchy maps to a given item type in Exchange. For example, the `EmailMessage` class represents email messages and the `Appointment` class represents calendar events and meetings.
 
 The following figure shows the EWS JAVA API item class hierarchy.
 
@@ -60,7 +60,7 @@ Items and folders in Exchange are uniquely identified. In the EWS JAVA API, item
 
 ## Binding to an Existing Item
 
-If you know the unique identifier of an e-mail message and want to retrieve its details from Exchange, you have to write the following:
+If you know the unique identifier of an email message and want to retrieve its details from Exchange, you have to write the following:
 
 ```
 // Bind to an existing message using its unique identifier.
@@ -119,8 +119,8 @@ msg.send();
 
 ## Creating a Recurring Appointment
 
-(Monthly staff meeting; a meeting every Wednesday night for six weeks, etc.). To schedule a recurring appointment, create an appointment for the first meeting time, click on 'Recurrence.' Outlook will use your initial appointment as a start date. Set the end date by specifying a date for the recurring appointments to end or a number of occurrences for this recurring appointment. You can also specify no end date. If the meeting will occur on more than one day of the week, click on the days the meeting/appointment will occur.
-You can use the Microsoft Exchange Web Services (EWS) JAVA API to create a recurring appointment .The code is given below.
+(Monthly staff meeting; a meeting every Wednesday night for six weeks, etc.). To schedule a recurring appointment, create an appointment for the first meeting time, choose 'Recurrence.' Outlook will use your initial appointment as a start date. Set the end date by specifying a date for the recurring appointments to end or a number of occurrences for this recurring appointment. You can also specify no end date. If the meeting will occur on more than one day of the week, click on the days the meeting/appointment will occur.
+You can use the Exchange Web Services (EWS) JAVA API to create a recurring appointment. The code is given below.
 
 ```
 Appointment appointment = new Appointment(service);
@@ -173,7 +173,7 @@ folder.save(WellKnownFolderName.Inbox);
 
 ### List the first ten items in the Inbox
 
-We can use Exchange Web Services to search functionality-List of the first ten items in the user's mailbox. The following code shows how to search list of first ten items in the inbox by using the EWS JAVA API.
+We can use Exchange Web Services to search functionality-List of the first ten items in the user's mailbox. The following code shows how to search list of first ten items in the Inbox by using the EWS JAVA API.
 
 ```
 public void listFirstTenItems()
@@ -212,7 +212,7 @@ public void pageThroughEntireInbox()
 }
 ```
 
-### Find the first 10 messages in the Inbox that have a subject that contains the words "EWS" or "API", order by date received, and only return the Subject and DateTimeReceived properties
+### Find the first 10 messages in the Inbox that have a subject that contains the words "EWS" or "API", order by date received, and only return the Subject and DateTimeReceived properties.
 
 ```
 public void findItems()
@@ -295,10 +295,10 @@ for (NameResolution nameResolution : nameResolutions)
 
 Items in the EWS JAVA  API expose strongly typed, first-class properties that provide easy access to the most commonly used properties (for example, `Item.Subject`, `Item.Body`, `EmailMessage.ToRecipients`, `Appointment.Start` and `Contact.Birthday`). Exchange allows for additional properties to be added to items. Exchange Web Services calls these Extended Properties.
 
-To stamp an e-mail message with a custom extended property, do the following:
+To stamp an email message with a custom extended property, do the following:
 
 ```
-// Create a new e-mail message.
+// Create a new email message.
 EmailMessage message = new EmailMessage(service);
 message.setSubject("Message with custom extended property");
 
@@ -594,11 +594,11 @@ c.update(ConflictResolutionMode.AlwaysOverwrite);
 
 ## Contact
 
-You can use Exchange Web Services to create contact items in a mailbox.
+You can use EWS to create contact items in a mailbox.
 
 ### Contact Creation
 
-You can use Exchange Web Services to create contact items in a mailbox.
+You can use EWS to create contact items in a mailbox.
 To create a Contact object, bind to the object that will contain the object, create a Contact object, set its properties and save the object to the directory store.
 
 ```
@@ -622,7 +622,7 @@ contact.save();
 
 ### Contact Updates
 
-You can use Exchange Web Services to update a contact item in the Exchange store.
+You can use EWS to update a contact item in the Exchange store.
 Bind to an existing contact saves the changes made to a Contact item by updating its entry in the Contact collection.
 
 ```
@@ -634,7 +634,7 @@ contact.update(ConflictResolutionMode.AlwaysOverwrite);
 
 ## Email Message Attachment Support
 
-Gets the attachment collection used to store data attached to this e-mail message.
+Gets the attachment collection used to store data attached to this email message.
 Use the collection returned by the Attachments property to add an attachment, such as a file or the contents of a Stream, to this `MailMessage`.
 
 Create an Attachment that contains or references the data to be attached, and then add the Attachment to the collection returned by Attachments.
@@ -652,7 +652,7 @@ message.send();
 
 ## Appointment Creation
 
-You can use Exchange Web Services to create appointments in a user's mailbox. Appointments are blocks of time that appear in the Outlook calendar.
+You can use EWS to create appointments in a user's mailbox. Appointments are blocks of time that appear in the Outlook calendar.
 
 They can have beginning and ending times, can repeat, can have a location, as shown in the following example.
 
@@ -669,7 +669,7 @@ appointment.save();
 ```
 
 ## Update an Appointment
-You can use the Microsoft Exchange Web Services (EWS) JAVA API to update appointments, as shown in the following example.
+You can use the EWS JAVA API to update appointments, as shown in the following example.
 
 ```
 Appointment appointment= Appointment.bind(service, new  (uniqueId));
