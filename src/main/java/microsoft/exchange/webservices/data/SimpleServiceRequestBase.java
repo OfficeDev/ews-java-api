@@ -6,10 +6,7 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Date;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -19,13 +16,17 @@ import java.util.concurrent.FutureTask;
 
 import org.apache.commons.httpclient.HttpClientError;
 import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 
 /**
  * Defines the SimpleServiceRequestBase class. 
  */
 abstract class SimpleServiceRequestBase extends ServiceRequestBase {
-	
+
+	private static final Log log = LogFactory.getLog(SimpleServiceRequestBase.class);
+
 	/**
 	 * Initializes a new instance of the SimpleServiceRequestBase class.
 	 */
@@ -136,6 +137,12 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 	 */
 	private Object readResponse(HttpWebRequest response) throws Exception {
 		Object serviceResponse;
+
+		if (!response.getResponseContentType().startsWith("text/xml")) {
+			String line = new BufferedReader(new InputStreamReader(ServiceRequestBase.getResponseStream(response))).readLine();
+			log.error("Response content type not XML; first line: '" + line + "'");
+			throw new ServiceRequestException(Strings.ServiceResponseDoesNotContainXml);
+		}
 		
 		/**
 		 * If tracing is enabled, we read the entire response into a
