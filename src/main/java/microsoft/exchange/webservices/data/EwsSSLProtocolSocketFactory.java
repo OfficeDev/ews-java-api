@@ -21,6 +21,8 @@ import org.apache.commons.httpclient.ConnectTimeoutException;
 import org.apache.commons.httpclient.HttpClientError;
 import org.apache.commons.httpclient.params.HttpConnectionParams;
 import org.apache.commons.httpclient.protocol.SecureProtocolSocketFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * <p>
@@ -69,7 +71,9 @@ import org.apache.commons.httpclient.protocol.SecureProtocolSocketFactory;
 
 class EwsSSLProtocolSocketFactory implements SecureProtocolSocketFactory {
 
-	/** The SSL Context. */
+    private static final Log log = LogFactory.getLog(EwsSSLProtocolSocketFactory.class);
+
+    /** The SSL Context. */
     private SSLContext sslcontext = null;
     
     /** The X509 TrustManager. */
@@ -91,7 +95,7 @@ class EwsSSLProtocolSocketFactory implements SecureProtocolSocketFactory {
               null);
             return context;
         } catch (Exception e) {
-            System.out.println(e.getMessage()+e);
+            log.error(e.getMessage(), e);
             throw new HttpClientError(e.toString());
         }
     }
@@ -201,5 +205,4 @@ class EwsSSLProtocolSocketFactory implements SecureProtocolSocketFactory {
     public int hashCode() {
         return EwsSSLProtocolSocketFactory.class.hashCode();
     }
-
 }

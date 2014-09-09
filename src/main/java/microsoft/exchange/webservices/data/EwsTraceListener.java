@@ -6,49 +6,27 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-import java.io.PrintStream;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
- * EwsTraceListener logs request/responses to a text writer.
- * 
- * @see EwsTraceEvent
+ * EwsTraceListener logs request/responses.
  */
 class EwsTraceListener implements ITraceListener {
 
-	/** The writer. */
-	private PrintStream writer;
+	private Log log = LogFactory.getLog(EwsTraceListener.class);
 
-	/**
-	 * Initializes a new instance of the class. Uses System.Out as output.
-	 */
-	protected EwsTraceListener() {
-		this(System.out);
-	}
 
-	/**
-	 * Initializes a new instance of the class.
-	 * 
-	 * @param writer
-	 *            the writer
-	 */
-	protected EwsTraceListener(PrintStream writer) {
-		this.writer = writer;
-	}
+	protected EwsTraceListener() {}
 
 	/**
 	 * Handles a trace message.
 	 * 
-	 * @param traceType
-	 *            the trace type
-	 * @param traceMessage
-	 *            the trace message
+	 * @param traceType     The trace type
+	 * @param traceMessage  The trace message
 	 */
 	@Override
 	public void trace(String traceType, String traceMessage) {
-		// this.writer.println(String.format("%s : %s", traceType,
-		// traceMessage));
-		this.writer.println(traceMessage);
-		this.writer.flush();
+		log.trace(traceType + " - " + traceMessage);
 	}
-
 }
