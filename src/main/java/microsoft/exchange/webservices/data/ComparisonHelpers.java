@@ -15,7 +15,7 @@ class ComparisonHelpers {
 
 	/**
 	 * Case insensitive check if the collection contains the string.
-	 * @param collectionThe collection of objects, only strings are checked
+	 * @param collection The collection of objects, only strings are checked
 	 * @param match String to match
 	 * @return true, if match contained in the collection
 	 */

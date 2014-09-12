@@ -8,7 +8,6 @@ package microsoft.exchange.webservices.data;
 
 /**
  * Represents the response to a UpdateInboxRulesResponse operation.
- * @param <RuleOperationErrorCollection>
  */
 final class UpdateInboxRulesResponse extends ServiceResponse{
 	

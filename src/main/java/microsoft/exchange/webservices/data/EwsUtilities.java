@@ -133,10 +133,10 @@ class EwsUtilities {
 	
 
     /** 
-     *Copies source stream to target.
+     * Copies source stream to target.
      * 
-     *@param source The source. 
-     *@param name target The target.
+     * @param source The source stream.
+     * @param target The target stream.
      **/ 
     protected static void copyStream(ByteArrayOutputStream source, ByteArrayOutputStream target)throws Exception
     {
@@ -158,12 +158,12 @@ class EwsUtilities {
     	pw1.println(pw.toString());*/
 
 
-    	
-    	 
-    	 
-    	
 
-    	
+
+
+
+
+
         ByteArrayOutputStream memContentStream = source;
         if (memContentStream != null)
         {
@@ -1368,7 +1368,7 @@ class EwsUtilities {
 	/**
 	 * Validates string parameter to be 
 	 * non-empty string (null value not allowed).
-	 * @param paramThe string parameter.	
+	 * @param param The string parameter.
 	 * @param paramName Name of the parameter.	 
 	 * @throws ArgumentNullException 
 	 * @throws ArgumentException 
@@ -1659,13 +1659,10 @@ class EwsUtilities {
 	 * Determines whether every element in the collection 
 	 * matches the conditions defined by the specified predicate.
 	 *
-	 * @param typeparam T 
-	 *				Entry type.
-	 * @param collection
-	 * 				The collection.
-	 * @param predicate
-	 * 				Predicate that defines the conditions 
-	 * to check against the elements.
+	 * @param <T>           Entry type.
+	 * @param collection    The collection.
+	 * @param predicate     Predicate that defines the conditions to check against the elements.
+	 *
 	 * @return  True if every element in the collection matches 
 	 * the conditions defined by the specified predicate; otherwise, false.
      * @throws ServiceLocalException 
@@ -1686,12 +1683,9 @@ class EwsUtilities {
     /**
 	 * Call an action for each member of a collection.
 	 *
-	 * @param typeparam T 
-	 *				Collection element type.
-	 * @param collection
-	 * 				The collection.
-	 * @param action
-	 * 				The action to apply.
+	 * @param <T>           Collection element type.
+	 * @param collection    The collection.
+	 * @param action        The action to apply.
 	 */
     protected static <T> void forEach(Iterable<T> collection, IAction<T> action)
     {
