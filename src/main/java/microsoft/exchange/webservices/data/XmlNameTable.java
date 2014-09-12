@@ -25,8 +25,7 @@ public abstract class XmlNameTable {
 	 * @param array
 	 *            : The name to add.
 	 * @return The new atomized String or the existing one if it already exists.
-	 * @throws System.ArgumentNullException
-	 *             : array is null.
+	 * @throws ArgumentNullException array is null.
 	 */
 	public abstract String Add(String array);
 
@@ -42,11 +41,11 @@ public abstract class XmlNameTable {
 	 *            The number of characters in the name.
 	 * @return The new atomized String or the existing one if it already exists.
 	 *         If length is zero, String.Empty is returned
-	 * @throws System.IndexOutOfRangeException
+	 * @throws ArgumentOutOfRangeException
 	 *             0 > offset -or- offset >= array.Length -or- length >
 	 *             array.Length The above conditions do not cause an exception
 	 *             to be thrown if length =0.
-	 * @throws System.ArgumentOutOfRangeException
+	 * @throws ArgumentOutOfRangeException
 	 *             length < 0.
 	 */
 	public abstract String Add(char[] array, int offset, int length);
@@ -59,7 +58,7 @@ public abstract class XmlNameTable {
 	 *            The name to look up.
 	 * @return The atomized String or null if the String has not already been
 	 *         atomized.
-	 * @throws System.ArgumentNullException
+	 * @throws ArgumentNullException
 	 *             : array is null.
 	 */
 	public abstract String Get(String array);
@@ -78,11 +77,11 @@ public abstract class XmlNameTable {
 	 *            The number of characters in the name.
 	 * @return The atomized String or null if the String has not already been
 	 *         atomized. If length is zero, String.Empty is returned
-	 * @throws System.IndexOutOfRangeException
+	 * @throws ArgumentOutOfRangeException
 	 *             0 > offset -or- offset >= array.Length -or- length >
 	 *             array.Length The above conditions do not cause an exception
 	 *             to be thrown if length =0.
-	 * @throws System.ArgumentOutOfRangeException
+	 * @throws ArgumentOutOfRangeException
 	 *             length < 0.
 	 */
 	public abstract String Get(char[] array, int offset, int length);

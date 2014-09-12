@@ -398,8 +398,7 @@ import org.apache.commons.httpclient.HttpException;
 	/**
 	 * Sets the Headers.
 	 * 
-	 * @param contentType
-	 *            the new content type
+	 * @param headers The headers
 	 */
 	public void setHeaders(Map<String,String> headers) {
 		this.headers = headers;
@@ -408,10 +407,9 @@ import org.apache.commons.httpclient.HttpException;
 	/**
 	 * Sets the credentials.
 	 * 
-	 * @param emailAddress
-	 *            the email-id
-	 * @param pwd
-	 *            the password
+	 * @param domain user domain
+	 * @param user   user name
+	 * @param pwd    password
 	 */
 	public void setCredentials(String domain, String user, String pwd) {
 		this.domain = domain;

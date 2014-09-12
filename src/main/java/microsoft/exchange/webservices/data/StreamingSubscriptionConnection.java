@@ -232,9 +232,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
 	 * 
 	 * @param subscription
 	 *            The subscription to add.
-	 * @throws Exception
-	 * @exception Thrown
-	 *                when AddSubscription is called while connected.
+	 * @throws Exception Thrown when AddSubscription is called while connected.
 	 */
 	public void addSubscription(StreamingSubscription subscription)
 			throws Exception {
@@ -256,9 +254,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
 	 * 
 	 * @param subscription
 	 *            The subscription to remove.
-	 * @throws Exception
-	 * @exception Thrown
-	 *                when RemoveSubscription is called while connected.
+	 * @throws Exception Thrown when RemoveSubscription is called while connected.
 	 */
 	public void removeSubscription(StreamingSubscription subscription)
 			throws Exception {
@@ -279,9 +275,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
 	 * results in a long-standing call to EWS.
 	 * 
 	 * @throws Exception
-	 * @throws microsoft.exchange.webservices.data.ServiceLocalException
-	 * @exception Thrown
-	 *                when Open is called while connected.
+	 * @throws ServiceLocalException Thrown when Open is called while connected.
 	 */
 	public void open() throws ServiceLocalException, Exception {
 		synchronized (this) {
@@ -323,9 +317,6 @@ public final class StreamingSubscriptionConnection implements Closeable,
 	/**
 	 * Closes this connection so it stops receiving events from the server.This
 	 * terminates a long-standing call to EWS.
-	 * 
-	 * @exception Thrown
-	 *                when Close is called while not connected.
 	 */
 	public void close() {
 		synchronized (this) {
