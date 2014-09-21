@@ -253,11 +253,11 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 
 			while (this.isConnected()) {
 				Object responseObject = null;
-				if(traceEWSResponse){
+				if(traceEWSResponse) {
 					/*try{*/
 						EwsServiceMultiResponseXmlReader	ewsXmlReader = EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
 						responseObject = this.readResponse(ewsXmlReader);
-						//this.responseHandler.handleResponseObject(responseObject);
+						this.responseHandler.handleResponseObject(responseObject);
 				/*	}catch(Exception ex){
 						this.disconnect(HangingRequestDisconnectReason.Exception, ex);
 						return;
@@ -274,16 +274,11 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 					responseCopy = new ByteArrayOutputStream();
 					 tracingStream.setResponseCopy(responseCopy);
 					
-				}
-				else {
+				} else {
 					EwsServiceMultiResponseXmlReader	ewsXmlReader = EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
 					responseObject = this.readResponse(ewsXmlReader);
 					this.responseHandler.handleResponseObject(responseObject);
 				}
-				
-
-				this.responseHandler.handleResponseObject(responseObject);
-				
 			}
 		}
 	
