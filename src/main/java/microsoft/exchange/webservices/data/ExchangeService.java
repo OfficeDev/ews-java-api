@@ -1428,14 +1428,13 @@ public final class ExchangeService extends ExchangeServiceBase implements
 	protected <TItem extends Item> TItem bindToItem(Class<TItem> c,
 			ItemId itemId, PropertySet propertySet) throws Exception {
 		Item result = this.bindToItem(itemId, propertySet);
-		if (result instanceof Item) {
+		if (c.isAssignableFrom(result.getClass())) {
 			return (TItem) result;
 		} else {
 			throw new ServiceLocalException(String.format(
 					Strings.ItemTypeNotCompatible, result.getClass().getName(),
 					c.getName()));
 		}
-		// return (TItem)result;
 	}
 
 	/**
