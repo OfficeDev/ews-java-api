@@ -30,8 +30,6 @@ import java.util.List;
 	 */
 	RemoveFromCalendar(Item referenceItem) throws Exception {
 		super(referenceItem.getService());
-		EwsUtilities.EwsAssert(referenceItem != null,
-				"RemoveFromCalendar.ctor", "referenceItem is null");
 
 		referenceItem.throwIfThisIsNew();
 
