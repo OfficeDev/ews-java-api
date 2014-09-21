@@ -25,8 +25,6 @@ package microsoft.exchange.webservices.data;
 	 */
 	protected SuppressReadReceipt(Item referenceItem) throws Exception {
 		super(referenceItem.getService());
-		EwsUtilities.EwsAssert(referenceItem != null,
-				"SuppressReadReceipt.ctor", "referenceItem is null");
 
 		referenceItem.throwIfThisIsNew();
 		this.referenceItem = referenceItem;
