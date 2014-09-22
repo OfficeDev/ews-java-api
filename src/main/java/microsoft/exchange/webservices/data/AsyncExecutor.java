@@ -14,25 +14,13 @@ import java.util.concurrent.RunnableFuture;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
- class AsyncExecutor extends ThreadPoolExecutor implements ExecutorService{
-	
-	int poolSize = 1;
-	 
-    int maxPoolSize = 1;
- 
-    long keepAliveTime = 10;
- 
-    final static ArrayBlockingQueue<Runnable> queue = 
-    	new ArrayBlockingQueue<Runnable>(
-            1);
-	
+class AsyncExecutor extends ThreadPoolExecutor implements ExecutorService {
+    final static ArrayBlockingQueue<Runnable> queue = new ArrayBlockingQueue<Runnable>(1);
+
 	AsyncExecutor(){
 		super(1,5,10,TimeUnit.SECONDS, queue);
 	}
-	
-	
-	
-	
+
 	 public <T> Future<T> submit(Callable<T> task,AsyncCallback callback) {
 	        if (task == null) throw new NullPointerException();
 	        RunnableFuture<T> ftask = newTaskFor(task);
@@ -42,5 +30,4 @@ import java.util.concurrent.TimeUnit;
 	        new Thread(callback).start();
 	        return ftask;
 	    }
-
 }
