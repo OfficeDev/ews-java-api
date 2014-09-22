@@ -70,7 +70,7 @@ class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
 		if (value != null) {
 			if (writer.getService().getRequestedServerVersion() == ExchangeVersion.Exchange2007_SP1) {
 				ExchangeService service = (ExchangeService)writer.getService();
-                if (service != null && service.getExchange2007CompatibilityMode() == false)
+                if (service != null && !service.getExchange2007CompatibilityMode())
                 {
 				MeetingTimeZone meetingTimeZone = new MeetingTimeZone(
 						(TimeZoneDefinition)value);
