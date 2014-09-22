@@ -73,29 +73,17 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
         }
         
     }
-		
-	/** 
-     * Ends executing this async request.
-     * 
-     * @param asyncResult The async result 
-     *  @return Service response object.
-     */ 
-    protected Object endInternalExecute(IAsyncResult asyncResult)throws Exception
-    {
-		// We have done enough validation before
-		// AsyncRequestResult asyncRequestResult =
-		// (AsyncRequestResult)asyncResult;
-		/*
-		 * HttpWebRequest request =((AsyncRequestResult)
-		 * asyncResult).getHttpWebRequest(); OutParam<HttpWebRequest> outparam =
-		 * new OutParam<HttpWebRequest>(); outparam.setParam(request);
-		 */
-		FutureTask task = ((AsyncRequestResult) asyncResult).getTask();
-		// HttpWebRequest response = this.endGetEwsHttpWebResponse(outparam,
-		// (AsyncRequestResult) asyncRequestResult.getWebAsyncResult());*/
+
+	/**
+	 * Ends executing this async request.
+	 *
+	 * @param asyncResult The async result
+	 * @return Service response object.
+	 */
+	protected Object endInternalExecute(IAsyncResult asyncResult) throws Exception {
 		HttpWebRequest response = (HttpWebRequest) asyncResult.get();
 		return this.readResponse(response);
-    }
+	}
 
     /** 
      * Begins executing this async request.
