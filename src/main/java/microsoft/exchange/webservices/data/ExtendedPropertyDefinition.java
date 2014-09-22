@@ -194,15 +194,15 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 		return (extPropDef1 == extPropDef2)
 				|| (extPropDef1 != null
 						&& extPropDef2 != null
-						&& ((extPropDef1.getId() == extPropDef2.getId()) || (extPropDef1
+						&& (extPropDef1.getId().equals(extPropDef2.getId()) || (extPropDef1
 								.getId() != null && extPropDef1.getId().equals(
 								extPropDef2.getId())))
 						&& extPropDef1.getMapiType() == extPropDef2
 								.getMapiType()
-						&& ((extPropDef1.getTag() == extPropDef2.getTag()) || (extPropDef1
+						&& (extPropDef1.getTag().equals(extPropDef2.getTag()) || (extPropDef1
 								.getTag() != null && extPropDef1.getTag()
 								.equals(extPropDef2.getTag())))
-						&& ((extPropDef1.getName() == extPropDef2.getName()) || (extPropDef1
+						&& (extPropDef1.getName().equals(extPropDef2.getName()) || (extPropDef1
 								.getName() != null && extPropDef1.getName()
 								.equals(extPropDef2.getName())))
 						&& extPropDef1.getPropertySet() == extPropDef2
