@@ -100,9 +100,7 @@ class AutodiscoverDnsClient {
 			dnsSrvRecordList = DnsClient.dnsQuery(DnsSrvRecord.class, domain,
 					this.service.getDnsServerAddress());
 		} catch (DnsException ex) {
-			String dnsExcMessage = String.format("DnsQuery returned error " +
-					"error '%s' error code 0x{1:X8}.",
-					ex.getMessage(), ex.getError());
+			String dnsExcMessage = String.format("DnsQuery returned error '%s'.", ex.getMessage());
 			this.service
 					.traceMessage(
 							TraceFlags.AutodiscoverConfiguration,
@@ -110,7 +108,7 @@ class AutodiscoverDnsClient {
 			return null;
 		} catch (SecurityException ex) {
 			// In restricted environments, we may not be allowed to call
-			// unmanaged code.
+			// un-managed code.
 			this.service.traceMessage(TraceFlags.AutodiscoverConfiguration,
 					String.format(
 							"DnsQuery cannot be called. Security error: %s.",
