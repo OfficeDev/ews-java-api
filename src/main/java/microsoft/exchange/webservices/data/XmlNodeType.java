@@ -1,27 +1,27 @@
 /**************************************************************************
- * copyright file="XMLNodeType.java" company="Microsoft"
+ * copyright file="XmlNodeType.java" company="Microsoft"
  *     Copyright (c) Microsoft Corporation.  All rights reserved.
  * 
- * Defines the XMLNodeType.java.
+ * Defines the XmlNodeType.java.
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamConstants;
 
 /**
- * The Class XMLNodeType.
+ * The Class XmlNodeType.
  */
-class XMLNodeType implements XMLStreamConstants {
+class XmlNodeType implements XMLStreamConstants {
 
 	/** The node type. */
 	int nodeType;
 
 	/**
-	 * Instantiates a new XML node type.
+	 * Instantiates a new Xml node type.
 	 * 
 	 * @param nodeType  The node type.
 	 */
-	XMLNodeType(int nodeType) {
+	XmlNodeType(int nodeType) {
 		this.nodeType = nodeType;
 	}
 
@@ -166,8 +166,8 @@ class XMLNodeType implements XMLStreamConstants {
 		if (this == obj) {
 			return true;
 		}
-		if (obj instanceof XMLNodeType) {
-			XMLNodeType other = (XMLNodeType)obj;
+		if (obj instanceof XmlNodeType) {
+			XmlNodeType other = (XmlNodeType)obj;
 			return this.nodeType == other.nodeType;
 		} else {
 			return super.equals(obj);

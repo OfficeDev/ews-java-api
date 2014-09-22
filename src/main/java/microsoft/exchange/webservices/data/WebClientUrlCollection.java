@@ -41,7 +41,7 @@ public final class WebClientUrlCollection {
 		do {
 			reader.read();
 
-			if ((reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) &&
+			if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
 					 (reader.getLocalName()
 							.equals(XmlElementNames.WebClientUrl))) {
 				instance.getUrls().add(WebClientUrl.loadFromXml(reader));

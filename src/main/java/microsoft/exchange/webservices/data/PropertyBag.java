@@ -475,7 +475,7 @@ class PropertyBag implements IComplexPropertyChanged,
 			do {
 				reader.read();
 
-				if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+				if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 					OutParam<PropertyDefinition> propertyDefinitionOut = 
 						new OutParam<PropertyDefinition>();
 					PropertyDefinition propertyDefinition;

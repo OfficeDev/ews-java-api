@@ -102,7 +102,7 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
 		do {
 			reader.read();
 
-			if (reader.getNodeType().nodeType == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().nodeType == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName()
 						.equals(XmlElementNames.RedirectTarget)) {
 					this.redirectTarget = reader.readElementValue();
@@ -139,7 +139,7 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
 			do {
 				reader.read();
 
-				if ((reader.getNodeType().nodeType == XMLNodeType.START_ELEMENT) &&
+				if ((reader.getNodeType().nodeType == XmlNodeType.START_ELEMENT) &&
 						 (reader.getLocalName()
 								.equals(XmlElementNames.DomainSetting))) {
 					String settingClass = reader.readAttributeValue(
@@ -187,7 +187,7 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
 		do {
 			reader.read();
 
-			if (reader.getNodeType().nodeType == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().nodeType == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName().equals(
 						XmlElementNames.DomainStringSetting)) {
 					name = reader.readElementValue(DomainSettingName.class);
@@ -219,7 +219,7 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
 			do {
 				reader.read();
 
-				if ((reader.getNodeType().nodeType == XMLNodeType.START_ELEMENT) &&
+				if ((reader.getNodeType().nodeType == XmlNodeType.START_ELEMENT) &&
 						 (reader.getLocalName()
 								.equals(XmlElementNames.DomainSettingError))) {
 					DomainSettingError error = new DomainSettingError();

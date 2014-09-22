@@ -144,7 +144,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
 		do {
 			reader.read();
 
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName()
 						.equals(XmlElementNames.RedirectTarget)) {
 
@@ -177,7 +177,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
 			do {
 				reader.read();
 
-				if ((reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) &&
+				if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
 						(reader.getLocalName()
 								.equals(XmlElementNames.UserSetting))) {
 					String settingClass = reader.readAttributeValue(
@@ -224,7 +224,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
 		do {
 			reader.read();
 
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName().equals(XmlElementNames.Name)) {
 					name = reader.readElementValue(UserSettingName.class);
 				} else if (reader.getLocalName().equals(XmlElementNames.Value)) {
@@ -265,7 +265,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
 			do {
 				reader.read();
 
-				if ((reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) &&
+				if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
 						(reader.getLocalName()
 								.equals(XmlElementNames.UserSettingError))) {
 					UserSettingError error = new UserSettingError();

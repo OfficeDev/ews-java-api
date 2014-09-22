@@ -51,7 +51,7 @@ import java.util.List;
 			do {
 				reader.read();
 
-				if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+				if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 					Conversation item = EwsUtilities.
 					createEwsObjectFromXmlElementName(Conversation.class,
 							reader.getService(),reader.getLocalName());

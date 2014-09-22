@@ -40,7 +40,7 @@ public final class AlternateMailboxCollection {
 		do {
 			reader.read();
 
-			if ((reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) &&
+			if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
 					(reader.getLocalName()
 							.equals(XmlElementNames.AlternateMailbox))) {
 				instance.getEntries().add(

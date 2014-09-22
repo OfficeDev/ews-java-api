@@ -42,7 +42,7 @@ public final class ProtocolConnectionCollection {
 		do {
 			reader.read();
 
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName().equals(
 						XmlElementNames.ProtocolConnection)) {
 					connection = ProtocolConnection.loadFromXml(reader);

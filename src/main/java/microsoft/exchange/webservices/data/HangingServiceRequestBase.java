@@ -439,7 +439,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 	throws Exception {
 		// Do nothing.
 		try {
-			ewsXmlReader.read(new XMLNodeType(XMLNodeType.START_DOCUMENT));
+			ewsXmlReader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
 		}
 		catch (XmlException ex){
 			throw new ServiceRequestException(Strings.

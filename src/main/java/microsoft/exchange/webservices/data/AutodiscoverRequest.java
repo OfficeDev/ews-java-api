@@ -168,10 +168,10 @@ abstract class AutodiscoverRequest {
 
 			// WCF may not generate an XML declaration.
 			ewsXmlReader.read();
-			if (ewsXmlReader.getNodeType().getNodeType() == XMLNodeType.START_DOCUMENT) {
+			if (ewsXmlReader.getNodeType().getNodeType() == XmlNodeType.START_DOCUMENT) {
 				ewsXmlReader.readStartElement(XmlNamespace.Soap,
 						XmlElementNames.SOAPEnvelopeElementName);
-			} else if ((ewsXmlReader.getNodeType().getNodeType() != XMLNodeType.START_ELEMENT)
+			} else if ((ewsXmlReader.getNodeType().getNodeType() != XmlNodeType.START_ELEMENT)
 					|| (!ewsXmlReader.getLocalName().equals(
 							XmlElementNames.SOAPEnvelopeElementName))
 					|| (!ewsXmlReader.getNamespaceUri().equals(
@@ -381,7 +381,7 @@ abstract class AutodiscoverRequest {
 		try {
 
 			reader.read();
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_DOCUMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_DOCUMENT) {
 				reader.read();
 			}
 			if (!reader.isStartElement()

@@ -49,7 +49,7 @@ public class RecurrencePropertyDefinition extends PropertyDefinition {
 
 		Recurrence recurrence = null;
 
-		reader.read(new XMLNodeType(XMLNodeType.START_ELEMENT)); // This is the
+		reader.read(new XmlNodeType(XmlNodeType.START_ELEMENT)); // This is the
 		// pattern
 		// element
 
@@ -101,7 +101,7 @@ public class RecurrencePropertyDefinition extends PropertyDefinition {
 
 		recurrence.loadFromXml(reader, reader.getLocalName());
 
-		reader.read(new XMLNodeType(XMLNodeType.START_ELEMENT)); // This is the
+		reader.read(new XmlNodeType(XmlNodeType.START_ELEMENT)); // This is the
 		// range
 		// element
 

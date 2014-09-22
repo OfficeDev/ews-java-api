@@ -59,7 +59,7 @@ final class OutlookAccount {
 		do {
 			reader.read();
 
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName().equals(XmlElementNames.AccountType)) {
 					this.setAccountType(reader.readElementValue());
 				} else if (reader.getLocalName().equals(XmlElementNames.Action)) {

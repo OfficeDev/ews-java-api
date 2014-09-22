@@ -56,7 +56,7 @@ public final class UserSettingError {
 		do {
 			reader.read();
 
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName().equals(XmlElementNames.ErrorCode)) {
 					this.setErrorCode(reader
 							.readElementValue(AutodiscoverErrorCode.class));

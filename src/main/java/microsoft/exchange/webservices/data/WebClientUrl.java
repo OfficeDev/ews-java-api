@@ -53,7 +53,7 @@ public final class WebClientUrl {
 		do {
 			reader.read();
 
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName().equals(
 						XmlElementNames.AuthenticationMethods)) {
 					webClientUrl.setAuthenticationMethods(reader

@@ -150,7 +150,7 @@ public final class FindItemResponse
 			do {
 				reader.read();
 
-				if (reader.getNodeType().nodeType == XMLNodeType.START_ELEMENT) {
+				if (reader.getNodeType().nodeType == XmlNodeType.START_ELEMENT) {
 					Item item = EwsUtilities.createEwsObjectFromXmlElementName(
 							Item.class, reader.getService(), reader
 									.getLocalName());

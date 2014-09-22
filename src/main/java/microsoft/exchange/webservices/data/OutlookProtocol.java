@@ -544,7 +544,7 @@ final class OutlookProtocol {
 	throws Exception {
 		do {
 			reader.read();
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName().equals(XmlElementNames.Type)) {
 					this.setProtocolType(OutlookProtocol.
 					protocolNameToType(reader.readElementValue()));				
@@ -655,7 +655,7 @@ final class OutlookProtocol {
 		do {
 			reader.read();
 
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if(reader.getLocalName().equals(XmlElementNames.OWAUrl)) {
 					String authMethod = reader.readAttributeValue(
 							XmlAttributeNames.AuthenticationMethod);

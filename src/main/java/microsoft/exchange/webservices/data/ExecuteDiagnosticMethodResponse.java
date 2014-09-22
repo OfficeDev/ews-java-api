@@ -77,7 +77,7 @@ final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
 		while (xmlEventReader.hasNext()) {
 			XMLEvent xmleve = (XMLEvent) xmlEventReader.next();
 
-			if (xmleve.getEventType() == XMLNodeType.END_ELEMENT) {
+			if (xmleve.getEventType() == XmlNodeType.END_ELEMENT) {
 				Node node = currentElement.getParentNode();
 				if (node instanceof Document) {
 					currentElement = ((Document) node).getDocumentElement();
@@ -86,7 +86,7 @@ final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
 				}
 			}
 
-			if (xmleve.getEventType() == XMLNodeType.START_ELEMENT) {
+			if (xmleve.getEventType() == XmlNodeType.START_ELEMENT) {
 				// startElement((StartElement) xmleve,doc);
 				StartElement ele = (StartElement) xmleve;
 				Element element = null;

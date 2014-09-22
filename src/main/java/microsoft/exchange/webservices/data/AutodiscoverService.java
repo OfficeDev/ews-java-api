@@ -236,12 +236,12 @@ IAutodiscoverRedirectionUrl, IFunctionDelegate {
 			ByteArrayInputStream memoryStreamIn = new ByteArrayInputStream(
 					memoryStream.toByteArray());
 			EwsXmlReader reader = new EwsXmlReader(memoryStreamIn);
-			reader.read(new XMLNodeType(XMLNodeType.START_DOCUMENT));
+			reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
 			settings.loadFromXml(reader);
 
 		} else {
 			EwsXmlReader reader = new EwsXmlReader(serviceResponseStream);
-			reader.read(new XMLNodeType(XMLNodeType.START_DOCUMENT));
+			reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
 			settings.loadFromXml(reader);
 		}
 
