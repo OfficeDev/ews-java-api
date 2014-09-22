@@ -134,7 +134,7 @@ public class ConversationSchema extends ServiceObjectSchema {
 			new ICreateComplexPropertyDelegate<ConversationId>() {
 				public ConversationId createComplexProperty() {
 					return new ConversationId();
-				};
+				}
 			});
             
             /**
@@ -161,7 +161,7 @@ public class ConversationSchema extends ServiceObjectSchema {
         			new ICreateComplexPropertyDelegate<StringList>() {
         				public StringList createComplexProperty() {
         					return new StringList();
-        				};
+        				}
         			});
 
         			
@@ -179,7 +179,7 @@ public class ConversationSchema extends ServiceObjectSchema {
         	                new ICreateComplexPropertyDelegate<StringList>() {
                 				public StringList createComplexProperty() {
                 					return new StringList();
-                				};
+                				}
                 			});
         	        
         	        /**
@@ -196,7 +196,7 @@ public class ConversationSchema extends ServiceObjectSchema {
         	                new ICreateComplexPropertyDelegate<StringList>() {
                 				public StringList createComplexProperty() {
                 					return new StringList();
-                				};
+                				}
                 					});
         	        
         	        /**
@@ -213,7 +213,7 @@ public class ConversationSchema extends ServiceObjectSchema {
         	                new ICreateComplexPropertyDelegate<StringList>() {
                 				public StringList createComplexProperty() {
                 					return new StringList();
-                				};
+                				}
                 				});
         	        
         	        /**
@@ -230,7 +230,7 @@ public class ConversationSchema extends ServiceObjectSchema {
         	                new ICreateComplexPropertyDelegate<StringList>() {
                 				public StringList createComplexProperty() {
                 					return new StringList();
-                				};
+                				}
                 				});
         	        
         	        /**
@@ -247,7 +247,7 @@ public class ConversationSchema extends ServiceObjectSchema {
         	                new ICreateComplexPropertyDelegate<StringList>() {
                 				public StringList createComplexProperty() {
                 					return new StringList();
-                				};
+                				}
                 				});
         	        
         	        /**
@@ -286,7 +286,7 @@ public class ConversationSchema extends ServiceObjectSchema {
         	                new ICreateComplexPropertyDelegate<StringList>() {
                 				public StringList createComplexProperty() {
                 					return new StringList();
-                				};
+                				}
                 				});
         	        
         	        /**
@@ -303,7 +303,7 @@ public class ConversationSchema extends ServiceObjectSchema {
         	                new ICreateComplexPropertyDelegate<StringList>() {
                 				public StringList createComplexProperty() {
                 					return new StringList();
-                				};
+                				}
                 				});
         	        
         	        /**
@@ -433,7 +433,7 @@ public class ConversationSchema extends ServiceObjectSchema {
                 				public StringList createComplexProperty() {
                 					return new StringList(XmlElementNames.
                 							ItemClass);
-                				};
+                				}
                 				});
         	        
         	        /**
@@ -451,7 +451,7 @@ public class ConversationSchema extends ServiceObjectSchema {
                 				public StringList createComplexProperty() {
                 					return new StringList(XmlElementNames.
                 							ItemClass);
-                				};
+                				}
                 				});
         	        
         	        /**
@@ -492,7 +492,7 @@ public class ConversationSchema extends ServiceObjectSchema {
         	                new ICreateComplexPropertyDelegate<ItemIdCollection>() {
                 				public ItemIdCollection createComplexProperty() {
                 					return new ItemIdCollection(); 
-                				};
+                				}
                 				});
         	        
         	        /**
@@ -509,7 +509,7 @@ public class ConversationSchema extends ServiceObjectSchema {
         	                new ICreateComplexPropertyDelegate<ItemIdCollection>() {
                 				public ItemIdCollection createComplexProperty() {
                 					return new  ItemIdCollection(); 
-                				};
+                				}
                 				});
         	        
         	        /**

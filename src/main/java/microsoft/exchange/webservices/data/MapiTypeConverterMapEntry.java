@@ -86,6 +86,7 @@ class MapiTypeConverterMapEntry {
 				return String.valueOf(o);
 			}
 		};
+
 		this.parse = new IFunction<String, Object>() {
 			public Object func(String o) {
 				return o;

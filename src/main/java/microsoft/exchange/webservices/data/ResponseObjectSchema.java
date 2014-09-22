@@ -24,7 +24,7 @@ class ResponseObjectSchema extends ServiceObjectSchema {
 			new ICreateComplexPropertyDelegate<ItemId>() {
 				public ItemId createComplexProperty() {
 					return new ItemId();
-				};
+				}
 			});
 
 	/** The Body prefix. */
@@ -37,7 +37,7 @@ class ResponseObjectSchema extends ServiceObjectSchema {
 			new ICreateComplexPropertyDelegate<MessageBody>() {
 				public MessageBody createComplexProperty() {
 					return new MessageBody();
-				};
+				}
 			});
 
 	/** This must be declared after the property definitions. */

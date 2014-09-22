@@ -16,7 +16,7 @@ public abstract class XmlNameTable {
 	 * Initializes a new instance of the XmlNameTable class.
 	 */
 	protected XmlNameTable() {
-	};
+	}
 
 	/**
 	 * When overridden in a derived class, atomizes the specified String and

@@ -23,7 +23,7 @@ class CancelMeetingMessageSchema extends ServiceObjectSchema {
 			new ICreateComplexPropertyDelegate<MessageBody>() {
 				public MessageBody createComplexProperty() {
 					return new MessageBody();
-				};
+				}
 			});
 
 	/** This must be declared after the property definitions. */

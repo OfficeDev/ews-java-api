@@ -88,7 +88,7 @@ public class EmailMessageSchema extends ItemSchema {
 				@Override
 				public EmailAddressCollection createComplexProperty() {
 					return new EmailAddressCollection();
-				};
+				}
 			});
 
 	/**
@@ -109,7 +109,7 @@ public class EmailMessageSchema extends ItemSchema {
 				@Override
 				public EmailAddressCollection createComplexProperty() {
 					return new EmailAddressCollection();
-				};
+				}
 			});
 
 	/**
@@ -130,7 +130,7 @@ public class EmailMessageSchema extends ItemSchema {
 				@Override
 				public EmailAddressCollection createComplexProperty() {
 					return new EmailAddressCollection();
-				};
+				}
 			});
 
 	/**
@@ -167,7 +167,7 @@ public class EmailMessageSchema extends ItemSchema {
 				@Override
 				public EmailAddress createComplexProperty() {
 					return new EmailAddress();
-				};
+				}
 			});
 
 	/**

@@ -49,7 +49,7 @@ public class MeetingMessageSchema extends EmailMessageSchema {
 				@Override
 				public ItemId createComplexProperty() {
 					return new ItemId();
-				};
+				}
 			});
 
 	/**

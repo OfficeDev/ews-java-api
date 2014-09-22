@@ -79,7 +79,7 @@ public abstract class Attachment extends ComplexProperty {
 	protected <T> boolean canSetFieldValue(T field, T value) {
 		this.throwIfThisIsNotNew();
 		return super.canSetFieldValue(field, value);
-	};
+	}
 
 	/**
 	 * Gets the Id of the attachment.

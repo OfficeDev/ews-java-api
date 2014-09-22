@@ -34,7 +34,7 @@ import java.util.Vector;
 			return '+';
 		}
 		return '/';
-	};
+	}
 
 	/**
 	 * Checks if is base64.
@@ -56,17 +56,17 @@ import java.util.Vector;
 		if (c == '+') {
 			return true;
 		}
-		;
+
 		if (c == '/') {
 			return true;
 		}
-		;
+
 		if (c == '=') {
 			return true;
 		}
-		;
+
 		return false;
-	};
+	}
 
 	/**
 	 * Decode.
@@ -88,9 +88,9 @@ import java.util.Vector;
 		if (c == '+') {
 			return 62;
 		}
-		;
+
 		return 63;
-	};
+	}
 
 	/**
 	 * Encode.
@@ -106,7 +106,7 @@ import java.util.Vector;
 		if (vby.length == 0) {
 			return retValString;
 		}
-		;
+
 		for (int i = 0; i < vby.length; i += 3) {
 
 			byte by1 = 0;
@@ -116,7 +116,7 @@ import java.util.Vector;
 			if (i + 1 < vby.length) {
 				by2 = vby[i + 1];
 			}
-			;
+
 			if (i + 2 < vby.length) {
 				by3 = vby[i + 2];
 			}
@@ -135,21 +135,21 @@ import java.util.Vector;
 			} else {
 				retval.append("=");
 			}
-			;
+
 			if (i + 2 < vby.length) {
 				retval.append(encode(by7));
 			} else {
 				retval.append("=");
 			}
-			;
+
 			if (i % (76 / 4 * 3) == 0) {
 				retval.append("\r\n");
 			}
 		}
-		;
+
 		retValString = retval.toString();
 		return retValString;
-	};
+	}
 
 	/**
 	 * Decode.
@@ -175,37 +175,36 @@ import java.util.Vector;
 			if (i + 1 < str.length()) {
 				c2 = str.charAt(i + 1);
 			}
-			;
+
 			if (i + 2 < str.length()) {
 				c3 = str.charAt(i + 2);
 			}
-			;
+
 			if (i + 3 < str.length()) {
 				c4 = str.charAt(i + 3);
 			}
-			;
+
 			byte by1 = 0, by2 = 0, by3 = 0, by4 = 0;
 			by1 = decode(c1);
 			by2 = decode(c2);
 			by3 = decode(c3);
 			by4 = decode(c4);
-			retval.add(Byte
-					.valueOf((byte)((byte)(by1 << 2) | (byte)(by2 >> 4))));
+			retval.add(Byte.valueOf((byte)((byte)(by1 << 2) | (byte)(by2 >> 4))));
+
 			if (c3 != '=') {
-				retval.add(Byte
-						.valueOf((byte)(((by2 & 0xf) << 4) | (by3 >> 2))));
+				retval.add(Byte.valueOf((byte)(((by2 & 0xf) << 4) | (by3 >> 2))));
 			}
+
 			if (c4 != '=') {
 				retval.add(Byte.valueOf((byte)(((by3 & 0x3) << 6) | by4)));
 			}
-			;
 		}
-		;
+
 		byte[] byteArry = new byte[retval.size()];
 		for (int i = 0; i < retval.size(); i++) {
 			byteArry[i] = retval.get(i);
 		}
-		return byteArry;
-	};
 
+		return byteArry;
+	}
 }

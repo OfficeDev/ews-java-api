@@ -149,7 +149,7 @@ public class TaskSchema extends ItemSchema {
 			new ICreateComplexPropertyDelegate<StringList>() {
 				public StringList createComplexProperty() {
 					return new StringList();
-				};
+				}
 			});
 
 	/**
@@ -180,7 +180,7 @@ public class TaskSchema extends ItemSchema {
 			new ICreateComplexPropertyDelegate<StringList>() {
 				public StringList createComplexProperty() {
 					return new StringList();
-				};
+				}
 			});
 
 	/**

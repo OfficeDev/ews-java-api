@@ -69,7 +69,7 @@ public abstract class ServiceObjectSchema implements
 					 * ); }
 					 */
 					return typeList;
-				};
+				}
 			});
 
 	/**
@@ -88,7 +88,7 @@ public abstract class ServiceObjectSchema implements
 								propDefDictionary);
 					}
 					return propDefDictionary;
-				};
+				}
 			});
 
 	/**
@@ -274,7 +274,7 @@ public abstract class ServiceObjectSchema implements
 			<ExtendedPropertyCollection>() {
 				public ExtendedPropertyCollection createComplexProperty() {
 					return new ExtendedPropertyCollection();
-				};
+				}
 			});
 
 	/** The properties. */

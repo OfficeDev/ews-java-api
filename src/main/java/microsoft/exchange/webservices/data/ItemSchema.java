@@ -147,7 +147,7 @@ public class ItemSchema extends ServiceObjectSchema {
 			new ICreateComplexPropertyDelegate<ItemId>() {
 				public ItemId createComplexProperty() {
 					return new ItemId();
-				};
+				}
 			});
 
 	/**
@@ -164,7 +164,7 @@ public class ItemSchema extends ServiceObjectSchema {
 			new ICreateComplexPropertyDelegate<MessageBody>() {
 				public MessageBody createComplexProperty() {
 					return new MessageBody();
-				};
+				}
 			});
 
 	/**
@@ -204,7 +204,7 @@ public class ItemSchema extends ServiceObjectSchema {
 			new ICreateComplexPropertyDelegate<MimeContent>() {
 				public MimeContent createComplexProperty() {
 					return new MimeContent();
-				};
+				}
 			});
 
 	/**
@@ -218,7 +218,7 @@ public class ItemSchema extends ServiceObjectSchema {
 			new ICreateComplexPropertyDelegate<FolderId>() {
 				public FolderId createComplexProperty() {
 					return new FolderId();
-				};
+				}
 			});
 
 	/**
