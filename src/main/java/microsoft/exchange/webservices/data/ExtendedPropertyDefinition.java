@@ -166,48 +166,54 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	}
 	
 	/**
-	 * Determines whether two specified instances of ExtendedPropertyDefinition
-	 * are equal.
+	 * Determines whether two specified instances of ExtendedPropertyDefinition are equal.
 	 * 
-	 * @param extPropDef1
-	 *            First extended property definition.
-	 * @param extPropDef2
-	 *            Second extended property definition.
+	 * @param extPropDef1   First extended property definition.
+	 * @param extPropDef2   Second extended property definition.
 	 * @return True if extended property definitions are equal.
 	 */
-/*	protected static boolean isEqualTo(ExtendedPropertyDefinition extPropDef1,
-			ExtendedPropertyDefinition extPropDef2) {
-		return (extPropDef1 == extPropDef2) ||
-		 ((Object)extPropDef1 != null &&
-				 (Object)extPropDef2 != null &&
-				 extPropDef1.getId() == extPropDef2.getId() &&
-				 extPropDef1.getMapiType() == extPropDef2.getMapiType() &&
-				 extPropDef1.getTag().intValue() == extPropDef2.getTag().intValue() &&
-				 extPropDef1.getName().equals(extPropDef2.getName()) &&
-				 extPropDef1.getPropertySet() == extPropDef2.getPropertySet() &&
-				  extPropDef1.propertySetId
-				.equals(extPropDef2.propertySetId));
-	}*/
-	
-	protected static boolean isEqualTo(ExtendedPropertyDefinition extPropDef1,
-			ExtendedPropertyDefinition extPropDef2) {
-		return (extPropDef1 == extPropDef2)
-				|| (extPropDef1 != null
-						&& extPropDef2 != null
-						&& ((extPropDef1.getId() == extPropDef2.getId()) || (extPropDef1
-								.getId() != null && extPropDef1.getId().equals(
-								extPropDef2.getId())))
-						&& extPropDef1.getMapiType() == extPropDef2
-								.getMapiType()
-						&& ((extPropDef1.getTag() == extPropDef2.getTag()) || (extPropDef1
-								.getTag() != null && extPropDef1.getTag()
-								.equals(extPropDef2.getTag())))
-						&& ((extPropDef1.getName() == extPropDef2.getName()) || (extPropDef1
-								.getName() != null && extPropDef1.getName()
-								.equals(extPropDef2.getName())))
-						&& extPropDef1.getPropertySet() == extPropDef2
-								.getPropertySet() && ((extPropDef1.propertySetId == extPropDef2.propertySetId) || (extPropDef1.propertySetId != null && extPropDef1.propertySetId
-						.equals(extPropDef2.propertySetId))));
+	protected static boolean isEqualTo(ExtendedPropertyDefinition extPropDef1, ExtendedPropertyDefinition extPropDef2) {
+        if (extPropDef1 == extPropDef2) {
+            return true;
+        }
+
+        if (extPropDef1 == null || extPropDef2 == null) {
+            return false;
+        }
+
+        if (extPropDef1.getId() != null) {
+            if (!extPropDef1.getId().equals(extPropDef2.getId())) {
+                return false;
+            }
+        } else if (extPropDef2.getId() != null) {
+            return false;
+        }
+
+        if (extPropDef1.getMapiType() != extPropDef2.getMapiType()) {
+            return false;
+        }
+
+        if (extPropDef1.getName() != null) {
+            if (!extPropDef1.getName().equals(extPropDef2.getName())) {
+                return false;
+            }
+        } else if (extPropDef2.getName() != null) {
+            return false;
+        }
+
+        if (extPropDef1.getPropertySet() != extPropDef2.getPropertySet()) {
+            return false;
+        }
+
+        if (extPropDef1.propertySetId != null) {
+            if (!extPropDef1.propertySetId.equals(extPropDef2.propertySetId)) {
+                return false;
+            }
+        } else if (extPropDef2.propertySetId != null) {
+            return false;
+        }
+
+        return true;
 	}
 
 	/**
