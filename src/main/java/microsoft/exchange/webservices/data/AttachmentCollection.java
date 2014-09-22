@@ -387,8 +387,7 @@ public final class AttachmentCollection extends
 								.ordinal()) {
 					FileAttachment fileAttachment = (FileAttachment) attachment;
 
-					if (fileAttachment != null
-							&& fileAttachment.isContactPhoto()) {
+					if (fileAttachment.isContactPhoto()) {
 						if (contactPhotoFound) {
 							throw new ServiceValidationException(
 									Strings.MultipleContactPhotosInAttachment);
