@@ -51,7 +51,7 @@ MultiResponseServiceRequest<ResolveNamesResponse> {
 	private ResolveNameSearchLocation searchLocation;
 	
 	/** The Contact PropertySet.   **/
-	private PropertySet contactDataPropertySet ;
+	private PropertySet contactDataPropertySet;
 
 	/** The parent folder ids. */
 	private FolderIdWrapperList parentFolderIds = new FolderIdWrapperList();

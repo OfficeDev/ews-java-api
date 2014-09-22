@@ -313,12 +313,12 @@ public final class DelegatePermissions extends ComplexProperty {
 	private static class DelegateFolderPermission {
 
 		/**
-		 * Intializes this DelegateFolderPermission.
+		 * Initializes this DelegateFolderPermission.
 		 * @param permissionLevel The DelegateFolderPermissionLevel
 		 */
 		protected void initialize(
 			DelegateFolderPermissionLevel permissionLevel) {
-			this.setPermissionLevel(permissionLevel) ;
+			this.setPermissionLevel(permissionLevel);
 			this.setIsExistingPermissionLevelCustom(permissionLevel==
 				DelegateFolderPermissionLevel.Custom);
 		}
