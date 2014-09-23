@@ -74,7 +74,7 @@ public abstract class AutodiscoverResponseCollection
 		do {
 			reader.read();
 
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName().equals(
 						this.getResponseCollectionXmlElementName())) {
 					this.loadResponseCollectionFromXml(reader);
@@ -99,7 +99,7 @@ public abstract class AutodiscoverResponseCollection
 		if (!reader.isEmptyElement()) {
 			do {
 				reader.read();
-				if ((reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) &&
+				if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
 						 (reader.getLocalName().equals(this
 								.getResponseInstanceXmlElementName()))) {
 					TResponse response = this.createResponseInstance();

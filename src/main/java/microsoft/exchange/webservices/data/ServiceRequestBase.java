@@ -11,19 +11,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Date;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
 
 import javax.xml.stream.XMLStreamException;
-import javax.xml.ws.WebServiceException;
 import javax.xml.ws.http.HTTPException;
-
-import org.apache.commons.httpclient.HttpException;
 
 //import org.eclipse.ecf.core.util.AsyncResult;
 
@@ -859,7 +854,7 @@ abstract class ServiceRequestBase {
 	private void readXmlDeclaration(EwsServiceXmlReader reader)
 			throws Exception {
 		try {
-			reader.read(new XMLNodeType(XMLNodeType.START_DOCUMENT));
+			reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
 		} catch (XmlException ex) {
 			throw new ServiceRequestException(
 					Strings.ServiceResponseDoesNotContainXml, ex);

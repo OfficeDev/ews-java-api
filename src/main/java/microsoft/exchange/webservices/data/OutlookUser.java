@@ -80,7 +80,7 @@ final class OutlookUser {
 		do {
 			reader.read();
 
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName().equals(XmlElementNames.DisplayName)) {
 					this.displayName = reader.readElementValue();
 				} else if (reader.getLocalName().equals(

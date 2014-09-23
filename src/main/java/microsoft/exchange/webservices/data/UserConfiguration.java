@@ -595,7 +595,7 @@ public class UserConfiguration {
 		reader.read(); // Position at first property element
 
 		do {
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName().equals(
 						XmlElementNames.UserConfigurationName)) {
 					String responseName = reader

@@ -6,7 +6,6 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -193,12 +192,12 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 				reader.read();
 
 				switch (reader.getNodeType().nodeType) {
-				case XMLNodeType.START_ELEMENT:
+				case XmlNodeType.START_ELEMENT:
 					if (!this.tryReadElementFromXml(reader)) {
 						reader.skipCurrentElement();
 					}
 					break;
-				case XMLNodeType.CHARACTERS:
+				case XmlNodeType.CHARACTERS:
 					this.readTextValueFromXml(reader);
 					break;
 				}
@@ -266,12 +265,12 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 				reader.read();
 
 				switch (reader.getNodeType().nodeType) {
-				case XMLNodeType.START_ELEMENT:
+				case XmlNodeType.START_ELEMENT:
 					if (!this.tryReadElementFromXml(reader)) {
 						reader.skipCurrentElement();
 					}
 					break;
-				case XMLNodeType.CHARACTERS:
+				case XmlNodeType.CHARACTERS:
 					this.readTextValueFromXml(reader);
 					break;
 				}
@@ -298,12 +297,12 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 				reader.read();
 
 				switch (reader.getNodeType().nodeType) {
-				case XMLNodeType.START_ELEMENT:
+				case XmlNodeType.START_ELEMENT:
 					if (!this.tryReadElementFromXmlToPatch(reader)) {
 						reader.skipCurrentElement();
 					}
 					break;
-				case XMLNodeType.CHARACTERS:
+				case XmlNodeType.CHARACTERS:
 					this.readTextValueFromXml(reader);
 					break;
 				}

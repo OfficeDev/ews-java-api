@@ -50,7 +50,7 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
 			do {
 				reader.read();
 
-				if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+				if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 					TItem item = EwsUtilities
 							.createEwsObjectFromXmlElementName(Item.class,
 									reader.getService(), reader.getLocalName());

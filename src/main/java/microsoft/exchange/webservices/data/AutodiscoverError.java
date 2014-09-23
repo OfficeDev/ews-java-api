@@ -53,7 +53,7 @@ public final class AutodiscoverError {
 		do {
 			reader.read();
 
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_ELEMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
 				if (reader.getLocalName().equalsIgnoreCase(
 						XmlElementNames.ErrorCode)) {
 					error.errorCode = reader.readElementValue(Integer.class);

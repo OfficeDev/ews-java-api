@@ -46,7 +46,7 @@ final class FindFolderResponse extends ServiceResponse {
 			do {
 				reader.read();
 
-				if (reader.getNodeType().nodeType == XMLNodeType.START_ELEMENT) {
+				if (reader.getNodeType().nodeType == XmlNodeType.START_ELEMENT) {
 					Folder folder = EwsUtilities
 							.createEwsObjectFromXmlElementName(Folder.class,
 									reader.getService(), reader.getLocalName());

@@ -70,7 +70,7 @@ class SoapFaultDetails {
 		do {
 			reader.read();
 			if (reader.getNodeType().equals(
-					new XMLNodeType(XMLNodeType.START_ELEMENT))) {
+					new XmlNodeType(XmlNodeType.START_ELEMENT))) {
 				String localName = reader.getLocalName();
 				if (localName.equals(XmlElementNames.SOAPFaultCodeElementName)) {
 					soapFaultDetails.setFaultCode(reader.readElementValue());
@@ -111,7 +111,7 @@ class SoapFaultDetails {
 		do {
 			reader.read();
 			if (reader.getNodeType().equals(
-					new XMLNodeType(XMLNodeType.START_ELEMENT))) {
+					new XmlNodeType(XmlNodeType.START_ELEMENT))) {
 				String localName = reader.getLocalName();
 				if (localName
 						.equals(XmlElementNames.EwsResponseCodeElementName)) {

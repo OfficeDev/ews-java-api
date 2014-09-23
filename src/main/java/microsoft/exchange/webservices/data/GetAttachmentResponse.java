@@ -45,7 +45,7 @@ final class GetAttachmentResponse extends ServiceResponse {
 		reader.readStartElement(XmlNamespace.Messages,
 				XmlElementNames.Attachments);
 		if (!reader.isEmptyElement()) {
-			XMLNodeType x = new XMLNodeType(XMLNodeType.START_ELEMENT);
+			XmlNodeType x = new XmlNodeType(XmlNodeType.START_ELEMENT);
 			reader.read(x);
 
 			this.attachment.loadFromXml(reader, reader.getLocalName());
