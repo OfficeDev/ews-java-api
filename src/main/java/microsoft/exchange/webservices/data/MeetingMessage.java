@@ -6,6 +6,8 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
+import java.util.Date;
+
 /**
  * Represents a meeting-related message. Properties available on meeting
  * messages are defined in the MeetingMessageSchema class.
@@ -98,5 +100,107 @@ public class MeetingMessage extends EmailMessage {
 	protected ExchangeVersion getMinimumRequiredServerVersion() {
 		return ExchangeVersion.Exchange2007_SP1;
 	}
+	
+    /**
+     * Gets the associated appointment ID.
+     *
+     * @return the associated appointment ID.
+     * @throws ServiceLocalException
+     *             the service local exception
+     */
+    public ItemId getAssociatedAppointmentId()
+            throws ServiceLocalException {
+        return (ItemId) this.getPropertyBag()
+                .getObjectFromPropertyDefinition(
+                        MeetingMessageSchema.AssociatedAppointmentId);
+    }
+
+    /**
+     * Gets whether the meeting message has been processed.
+     *
+     * @return whether the meeting message has been processed.
+     * @throws ServiceLocalException
+     *             the service local exception
+     */
+    public Boolean getHasBeenProcessed()
+            throws ServiceLocalException {
+        return (Boolean) this.getPropertyBag()
+                .getObjectFromPropertyDefinition(
+                        MeetingMessageSchema.HasBeenProcessed);
+    }
+
+    /**
+     * Gets the response type indicated by this meeting message.
+     *
+     * @return the response type indicated by this meeting message.
+     * @throws ServiceLocalException
+     *             the service local exception
+     */
+    public MeetingResponseType getResponseType()
+            throws ServiceLocalException {
+        return (MeetingResponseType) this.getPropertyBag()
+                .getObjectFromPropertyDefinition(
+                        MeetingMessageSchema.ResponseType);
+    }
+
+    /**
+     * Gets the ICalendar Uid.
+     *
+     * @return the ical uid
+     * @throws ServiceLocalException
+     *             the service local exception
+     */
+    public String getICalUid() throws ServiceLocalException {
+        return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+                MeetingMessageSchema.ICalUid);
+    }
+
+    /**
+     * Gets the ICalendar RecurrenceId.
+     *
+     * @return the ical recurrence id
+     * @throws ServiceLocalException
+     *             the service local exception
+     */
+    public Date getICalRecurrenceId() throws ServiceLocalException {
+        return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+                MeetingMessageSchema.ICalRecurrenceId);
+    }
+
+    /**
+     * Gets the ICalendar DateTimeStamp.
+     *
+     * @return the ical date time stamp
+     * @throws ServiceLocalException
+     *             the service local exception
+     */
+    public Date getICalDateTimeStamp() throws ServiceLocalException {
+        return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+                MeetingMessageSchema.ICalDateTimeStamp);
+    }
+    
+    /**
+     * Gets the IsDelegated property.
+     * 
+     * @return True if delegated; false otherwise.
+     * @throws ServiceLocalException
+     *             the service local exception
+     */
+    public Boolean getIsDelegated() throws ServiceLocalException {
+        return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+                MeetingMessageSchema.IsDelegated);
+    }
+    
+    /**
+     * Gets the IsOutOfDate property.
+     * 
+     * @return True if out of date; false otherwise.
+     * @throws ServiceLocalException
+     *             the service local exception
+     */
+    public Boolean getIsOutOfDate() throws ServiceLocalException {
+        return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+                MeetingMessageSchema.IsOutOfDate);
+    }
 
 }
