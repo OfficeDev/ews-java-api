@@ -76,11 +76,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 		} else {
 			if (field instanceof Comparable<?>) {
 				Comparable<T> c = (Comparable<T>)field;
-				if(value != null){
-				applyChange = c.compareTo(value) != 0;
-				} else {
-					applyChange = false;
-				}
+				applyChange = value != null && c.compareTo(value) != 0;
 			} else {
 				applyChange = true;
 			}
@@ -139,7 +135,6 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
      *  True if element was read.
      * 
      */
-     
     protected boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception
     {
         return false;
@@ -208,39 +203,32 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 			reader.isEndElement(xmlNamespace, xmlElementName);
 		} */
 		
-		this.internalLoadFromXml(reader, xmlNamespace, xmlElementName, false);
-                   
-        		
+		this.internalLoadFromXml(reader, xmlNamespace, xmlElementName);
 	}
 	
-	 /**  
-      * Loads from XML to update this property.
-      * 
-      *@param reader The reader. 
-      *@param xmlElementName Name of the XML element. 
-	 * @throws Exception 
-      */
-	
-	protected  void updateFromXml(EwsServiceXmlReader reader, String xmlElementName) throws Exception
- {
+	/**
+	 * Loads from XML to update this property.
+	 *
+	 * @param reader The reader.
+	 * @param xmlElementName Name of the XML element.
+	 * @throws Exception
+	 */
+	protected  void updateFromXml(EwsServiceXmlReader reader, String xmlElementName) throws Exception {
 		this.updateFromXml(reader, this.getNamespace(), xmlElementName);
-
 	}
-	
-	 /** 
-      * Loads from XML to update itself.
-      * 
-      *@param reader The reader. 
-      *@param xmlNamespace The XML namespace. 
-      *@param xmlElementName Name of the XML element. 
-      */
+
+	/**
+	 * Loads from XML to update itself.
+	 *
+	 * @param reader The reader.
+	 * @param xmlNamespace The XML namespace.
+	 * @param xmlElementName Name of the XML element.
+	 */
     protected  void updateFromXml(
         EwsServiceXmlReader reader,
         XmlNamespace xmlNamespace,
-        String xmlElementName) throws Exception
- {
-		this.internalupdateLoadFromXml(reader, xmlNamespace, xmlElementName,
-				false);
+        String xmlElementName) throws Exception {
+		this.internalupdateLoadFromXml(reader, xmlNamespace, xmlElementName);
 	}
 
     /**
@@ -248,13 +236,11 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
      * @param reader          The Reader.
      * @param xmlNamespace    The Xml NameSpace.
      * @param xmlElementName  The Xml ElementName
-     * @param readValue       The read value.
      */
     private void internalLoadFromXml(
         EwsServiceXmlReader reader,
         XmlNamespace xmlNamespace,
-        String xmlElementName,          
-        boolean readValue)throws Exception
+        String xmlElementName) throws Exception
  {
 		reader.ensureCurrentNodeIsStartElement(xmlNamespace, xmlElementName);
 
@@ -285,8 +271,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
     private void internalupdateLoadFromXml(
             EwsServiceXmlReader reader,
             XmlNamespace xmlNamespace,
-            String xmlElementName,          
-            boolean readValue)throws Exception
+            String xmlElementName) throws Exception
     {
 		reader.ensureCurrentNodeIsStartElement(xmlNamespace, xmlElementName);
 
@@ -309,8 +294,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 			} while (!reader.isEndElement(xmlNamespace, xmlElementName));
 		}
 	}
-   
-    
+
 	/**
 	 * Loads from XML.
 	 * 
@@ -407,7 +391,6 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	 */
 	public void validate() throws ServiceValidationException, Exception {
 		this.internalValidate();
-
 	}
 
 	/**
@@ -417,16 +400,10 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	 *             the service validation exception
 	 * @throws Exception 
 	 */
-	protected void internalValidate() 
-	throws ServiceValidationException, Exception {
+	protected void internalValidate() throws ServiceValidationException, Exception {
 	}
 
-	public Boolean func(EwsServiceXmlReader reader)
-	 throws Exception {
-		if (!this.tryReadElementFromXml(reader)) 
-			return true;
-		else return false;
-	
+	public Boolean func(EwsServiceXmlReader reader) throws Exception {
+		return !this.tryReadElementFromXml(reader);
 	}
-
 }
