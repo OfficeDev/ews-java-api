@@ -29,17 +29,17 @@ enum AutodiscoverEndpoints {
     /** The WS-Security/X509Cert endpoint.*/
     WSSecurityX509Cert(16);
 	
-	/** The autodis endpts. */
+	/** The autodiscover end points. */
 	@SuppressWarnings("unused")
-	private final int autodisEndpts;
+	private final int autodiscoverEndPoints;
 
 	/**
 	 * Instantiates a new autodiscover endpoints.
 	 * 
-	 * @param autodisEndpts
-	 *            the autodis endpts
+	 * @param autodiscoverEndPoints
+	 *            the autodiscover end points
 	 */
-	AutodiscoverEndpoints(int autodisEndpts) {
-		this.autodisEndpts = autodisEndpts;
+	AutodiscoverEndpoints(int autodiscoverEndPoints) {
+		this.autodiscoverEndPoints = autodiscoverEndPoints;
 	}
 }
