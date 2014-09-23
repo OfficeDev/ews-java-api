@@ -66,11 +66,10 @@ package microsoft.exchange.webservices.data;
 		int prev = 0; // previous byte
 		int presLength = 0; // Current length of bytes decoded
 		int max = length + startIndex;		
-		int x = 0;
 		int resIndex = 0;
 
 		for (int i = startIndex; i < max; i++) {
-			x = byteArry[i];
+			int x = byteArry[i];
 			switch (++curState) {
 			case 1:
 				resArry[resIndex++] = dataArry[(x >> 2) & 0x3f];
@@ -97,13 +96,14 @@ package microsoft.exchange.webservices.data;
 		case 1:
 			resArry[resIndex++] = dataArry[(prev << 4) & 0x30];
 			resArry[resIndex++] = (byte)'=';
-			resArry[resIndex++] = (byte)'=';
+			resArry[resIndex] = (byte)'=';
 			break;
 		case 2:
 			resArry[resIndex++] = dataArry[(prev << 2) & 0x3c];
-			resArry[resIndex++] = (byte)'=';
+			resArry[resIndex] = (byte)'=';
 			break;
 		}
+
 		return new String(resArry);
 	}
 
