@@ -21,10 +21,8 @@ import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents the base class for all requested made to the Autodiscover service.
- * 
  */
 abstract class AutodiscoverRequest {
-
 	/** The service. */
 	private AutodiscoverService service;
 
@@ -233,12 +231,13 @@ abstract class AutodiscoverRequest {
 					Strings.ServiceRequestFailed, ex.getMessage()), ex);
 		} finally {
 			try {
-				request.close();
-			} catch (Exception e2) {
-				request = null;
+				if (request != null) {
+					request.close();
+				}
+			} catch (Exception e) {
+				// do nothing
 			}
 		}
-
 	}
 
 	/**
@@ -248,10 +247,8 @@ abstract class AutodiscoverRequest {
 	 *            WebException
 	 * @param req
 	 *            HttpWebRequest
-	 * 
 	 */
 	private void processWebException(Exception exception, HttpWebRequest req) {
-		SoapFaultDetails soapFaultDetails = null;
 		if (null != req) {
 			try {
 				if (500 == req.getResponseCode()) {
@@ -277,7 +274,6 @@ abstract class AutodiscoverRequest {
 							new ByteArrayInputStream(
 								memoryStream.toByteArray());
 						EwsXmlReader reader = new EwsXmlReader(memoryStreamIn);
-						//soapFaultDetails = this.readSoapFault(reader);
 						this.readSoapFault(reader);
 						memoryStream.close();
 					} else {
@@ -285,7 +281,7 @@ abstract class AutodiscoverRequest {
 								.getResponseStream(req);
 						EwsXmlReader reader = new EwsXmlReader(
 								serviceResponseStream);
-						soapFaultDetails = this.readSoapFault(reader);
+						SoapFaultDetails soapFaultDetails = this.readSoapFault(reader);
 						serviceResponseStream.close();
 
 						if (soapFaultDetails != null) {
@@ -295,10 +291,8 @@ abstract class AutodiscoverRequest {
 					}
 				} else {
 					this.service.processHttpErrorResponse(req, exception);
-	                
 				}
 			} catch (Exception e) {
-				// do nothing
 				e.printStackTrace();
 			}
 		}
@@ -387,7 +381,7 @@ abstract class AutodiscoverRequest {
 			if (!reader.isStartElement()
 					|| (!reader.getLocalName().equals(
 							XmlElementNames.SOAPEnvelopeElementName))) {
-				return soapFaultDetails;
+				return null;
 			}
 
 			// Get the namespace URI from the envelope element and use it for
@@ -396,7 +390,7 @@ abstract class AutodiscoverRequest {
 			XmlNamespace soapNamespace = EwsUtilities
 					.getNamespaceFromUri(reader.getNamespaceUri());
 			if (soapNamespace == XmlNamespace.NotSpecified) {
-				return soapFaultDetails;
+				return null;
 			}
 
 			reader.read();
@@ -518,12 +512,12 @@ abstract class AutodiscoverRequest {
 	}
 	
 	/**
-    * Write extra headers. 
-    *
-    *@param writer The writer
-	 * @throws ServiceXmlSerializationException 
+	 * Write extra headers.
+	 *
+	 * @param writer The writer
+	 * @throws ServiceXmlSerializationException
 	 * @throws javax.xml.stream.XMLStreamException
-    **/ 
+	 */
     protected void writeExtraCustomSoapHeadersToXml(EwsServiceXmlWriter writer) throws XMLStreamException, ServiceXmlSerializationException
     {
         // do nothing here. 
