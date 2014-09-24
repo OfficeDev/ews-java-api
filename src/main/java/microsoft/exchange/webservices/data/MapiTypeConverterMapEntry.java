@@ -6,10 +6,10 @@
  **************************************************************************/
 package microsoft.exchange.webservices.data;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -190,29 +190,27 @@ class MapiTypeConverterMapEntry {
 	 * @throws microsoft.exchange.webservices.data.ArgumentException
 	 *             the argument exception
 	 */
-	private void validateValueAsArray(Object value) throws ArgumentException {
+    private void validateValueAsArray(Object value) throws ArgumentException
+    {
+           ArrayList array = null;
+           if (value instanceof ArrayList)
+           {
+                  array = (ArrayList) value;
+           }
+           if (array == null)
+           {
+                  throw new ArgumentException(String.format(Strings.IncompatibleTypeForArray, value.getClass(), this.getType()));
+           }
+           else if (array.isEmpty())
+           {
+                  throw new ArgumentException(Strings.ArrayMustHaveAtLeastOneElement);
+           }
+           else if (array.get(0).getClass() != this.getType())
+           {
+                  throw new ArgumentException(String.format(Strings.IncompatibleTypeForArray, value.getClass(), this.getType()));
+           }
+    }
 
-		Array array = null;
-		if(value instanceof Array)
-		{
-			array = (Array) value;
-		}
-		
-		if (array == null) {
-			throw new ArgumentException(String.format(
-					Strings.IncompatibleTypeForArray, value.getClass(), this
-							.getType()));
-
-		} else if (getDim(array) != 1) {
-			throw new ArgumentException(Strings.ArrayMustHaveSingleDimension);
-		} else if (Array.getLength(array) == 0) {
-			throw new ArgumentException(Strings.ArrayMustHaveAtLeastOneElement);
-		} else if (array.getClass().getComponentType() != this.getType()) {
-			throw new ArgumentException(String.format(
-					Strings.IncompatibleTypeForArray, value.getClass(), this
-							.getType()));
-		}
-	}
 
 	/**
 	 * Gets the dim. If `array' is an array object returns its dimensions;
