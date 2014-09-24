@@ -682,12 +682,11 @@ public class UserConfiguration {
 	 */
 	private void validatePropertyAccess(UserConfigurationProperties property)
 			throws PropertyException {
-		if (this.propertiesAvailableForAccess.contains(property)) {
+		if (!this.propertiesAvailableForAccess.contains(property)) {
 			throw new PropertyException(
 					Strings.MustLoadOrAssignPropertyBeforeAccess, property
 							.toString());
 		}
-
 	}
 
 	/**
