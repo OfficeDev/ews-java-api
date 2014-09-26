@@ -177,7 +177,7 @@ class MapiTypeConverterMapEntry {
 	
 	/**
 	 * Converts a string to value consistent with type (or uses the default value if the string is null or empty).
-	 * @param String to convert to a value.
+	 * @param stringValue to convert to a value.
 	 * @return Value.
 	 * @throws microsoft.exchange.webservices.data.FormatException
 	 * @throws ServiceXmlDeserializationException 
