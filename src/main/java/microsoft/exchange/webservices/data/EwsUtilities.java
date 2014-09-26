@@ -200,6 +200,17 @@ class EwsUtilities {
 		return "0.0.0.0";
 	}
 
+	/**
+	 * A null-safe case sensitive comparison of two specified strings.
+	 *
+	 * @param first    The first string, can be null.
+	 * @param second   The second string, can be null.
+	 * @return true: equals, false: otherwise.
+	 */
+	public static boolean stringEquals(String first, String second) {
+		return (first == null && second == null) || (first != null && first.equals(second));
+	}
+
 	/** The enum version dictionaries. */
 	private static LazyMember<Map<Class<?>, Map<String, ExchangeVersion>>> 
 	enumVersionDictionaries = 

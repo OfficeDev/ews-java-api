@@ -712,19 +712,15 @@ class EwsXmlReader {
 	/**
 	 * Determines whether current element is a start element.
 	 * 
-	 * @param xmlNamespace
-	 *            the xml namespace
-	 * @param localName
-	 *            the local name
-	 * @return boolean
+	 * @param xmlNamespace  the xml namespace
+	 * @param localName     the local name
+	 * @return true for matching start element; false otherwise.
 	 */
 	public boolean isStartElement(XmlNamespace xmlNamespace, String localName) {
-		return (this.isStartElement())
-		&& (this.getLocalName().equals(localName))
-		&& ((this.getNamespacePrefix() == EwsUtilities
-				.getNamespacePrefix(xmlNamespace)) || (this
-						.getNamespaceUri() == EwsUtilities
-						.getNamespaceUri(xmlNamespace)));
+		return this.isStartElement()
+		&& EwsUtilities.stringEquals(this.getLocalName(), localName)
+		&& (EwsUtilities.stringEquals(this.getNamespacePrefix(), EwsUtilities.getNamespacePrefix(xmlNamespace)) ||
+			EwsUtilities.stringEquals(this.getNamespaceUri(), EwsUtilities.getNamespaceUri(xmlNamespace)));
 	}
 
 	/**
