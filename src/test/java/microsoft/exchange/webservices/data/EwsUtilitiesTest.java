@@ -18,4 +18,14 @@ public class EwsUtilitiesTest {
     public void testGetBuildVersion() {
         Assert.assertEquals("Build version must be 0s", "0.0.0.0", EwsUtilities.getBuildVersion());
     }
+
+	@Test
+	public void testStringEquals() {
+		Assert.assertTrue(EwsUtilities.stringEquals(null, null));
+		Assert.assertTrue(EwsUtilities.stringEquals("x", "x"));
+
+		Assert.assertFalse(EwsUtilities.stringEquals(null, "x"));
+		Assert.assertFalse(EwsUtilities.stringEquals("x", null));
+		Assert.assertFalse(EwsUtilities.stringEquals("x", "X"));
+	}
 }
