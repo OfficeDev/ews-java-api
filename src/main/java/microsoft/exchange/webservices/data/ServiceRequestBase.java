@@ -715,10 +715,8 @@ abstract class ServiceRequestBase {
 	 * @return An HttpWebRequest instance
 	 */
 	protected HttpWebRequest buildEwsHttpWebRequest() throws Exception {
-		HttpWebRequest request = null;
-
 		try {
-			request = this.getService().prepareHttpWebRequest();
+			HttpWebRequest request = this.getService().prepareHttpWebRequest();
 			AsyncExecutor ae = new AsyncExecutor();
 
 			// ExecutorService es = CallableSingleTon.getExecutor();
