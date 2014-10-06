@@ -217,9 +217,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 	 */
 	protected void internalExecute() throws ServiceLocalException, Exception {
 		synchronized (this) {
-			OutParam<HttpWebRequest> outParam = new OutParam<HttpWebRequest>();
-			this.response = this.validateAndEmitRequest(outParam);
-			this.request = outParam.getParam();
+			this.response = this.validateAndEmitRequest();
 			this.internalOnConnect();
 		}
 	}
@@ -253,11 +251,11 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 
 			while (this.isConnected()) {
 				Object responseObject = null;
-				if(traceEWSResponse){
+				if(traceEWSResponse) {
 					/*try{*/
 						EwsServiceMultiResponseXmlReader	ewsXmlReader = EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
 						responseObject = this.readResponse(ewsXmlReader);
-						//this.responseHandler.handleResponseObject(responseObject);
+						this.responseHandler.handleResponseObject(responseObject);
 				/*	}catch(Exception ex){
 						this.disconnect(HangingRequestDisconnectReason.Exception, ex);
 						return;
@@ -274,16 +272,11 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 					responseCopy = new ByteArrayOutputStream();
 					 tracingStream.setResponseCopy(responseCopy);
 					
-				}
-				else {
+				} else {
 					EwsServiceMultiResponseXmlReader	ewsXmlReader = EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
 					responseObject = this.readResponse(ewsXmlReader);
 					this.responseHandler.handleResponseObject(responseObject);
 				}
-				
-
-				this.responseHandler.handleResponseObject(responseObject);
-				
 			}
 		}
 	
@@ -439,7 +432,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 	throws Exception {
 		// Do nothing.
 		try {
-			ewsXmlReader.read(new XMLNodeType(XMLNodeType.START_DOCUMENT));
+			ewsXmlReader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
 		}
 		catch (XmlException ex){
 			throw new ServiceRequestException(Strings.

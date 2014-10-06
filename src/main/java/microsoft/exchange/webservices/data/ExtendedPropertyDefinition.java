@@ -1,9 +1,13 @@
 /**************************************************************************
- * copyright file="ExtendedPropertyDefinition.java" company="Microsoft"
- *     Copyright (c) Microsoft Corporation.  All rights reserved.
- * 
- * Defines the ExtendedPropertyDefinition.java.
+ Exchange Web Services Java API
+ Copyright (c) Microsoft Corporation
+ All rights reserved.
+ MIT License
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **************************************************************************/
+
 package microsoft.exchange.webservices.data;
 
 import java.util.UUID;
@@ -166,48 +170,54 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 	}
 	
 	/**
-	 * Determines whether two specified instances of ExtendedPropertyDefinition
-	 * are equal.
+	 * Determines whether two specified instances of ExtendedPropertyDefinition are equal.
 	 * 
-	 * @param extPropDef1
-	 *            First extended property definition.
-	 * @param extPropDef2
-	 *            Second extended property definition.
+	 * @param extPropDef1   First extended property definition.
+	 * @param extPropDef2   Second extended property definition.
 	 * @return True if extended property definitions are equal.
 	 */
-/*	protected static boolean isEqualTo(ExtendedPropertyDefinition extPropDef1,
-			ExtendedPropertyDefinition extPropDef2) {
-		return (extPropDef1 == extPropDef2) ||
-		 ((Object)extPropDef1 != null &&
-				 (Object)extPropDef2 != null &&
-				 extPropDef1.getId() == extPropDef2.getId() &&
-				 extPropDef1.getMapiType() == extPropDef2.getMapiType() &&
-				 extPropDef1.getTag().intValue() == extPropDef2.getTag().intValue() &&
-				 extPropDef1.getName().equals(extPropDef2.getName()) &&
-				 extPropDef1.getPropertySet() == extPropDef2.getPropertySet() &&
-				  extPropDef1.propertySetId
-				.equals(extPropDef2.propertySetId));
-	}*/
-	
-	protected static boolean isEqualTo(ExtendedPropertyDefinition extPropDef1,
-			ExtendedPropertyDefinition extPropDef2) {
-		return (extPropDef1 == extPropDef2)
-				|| (extPropDef1 != null
-						&& extPropDef2 != null
-						&& ((extPropDef1.getId() == extPropDef2.getId()) || (extPropDef1
-								.getId() != null && extPropDef1.getId().equals(
-								extPropDef2.getId())))
-						&& extPropDef1.getMapiType() == extPropDef2
-								.getMapiType()
-						&& ((extPropDef1.getTag() == extPropDef2.getTag()) || (extPropDef1
-								.getTag() != null && extPropDef1.getTag()
-								.equals(extPropDef2.getTag())))
-						&& ((extPropDef1.getName() == extPropDef2.getName()) || (extPropDef1
-								.getName() != null && extPropDef1.getName()
-								.equals(extPropDef2.getName())))
-						&& extPropDef1.getPropertySet() == extPropDef2
-								.getPropertySet() && ((extPropDef1.propertySetId == extPropDef2.propertySetId) || (extPropDef1.propertySetId != null && extPropDef1.propertySetId
-						.equals(extPropDef2.propertySetId))));
+	protected static boolean isEqualTo(ExtendedPropertyDefinition extPropDef1, ExtendedPropertyDefinition extPropDef2) {
+        if (extPropDef1 == extPropDef2) {
+            return true;
+        }
+
+        if (extPropDef1 == null || extPropDef2 == null) {
+            return false;
+        }
+
+        if (extPropDef1.getId() != null) {
+            if (!extPropDef1.getId().equals(extPropDef2.getId())) {
+                return false;
+            }
+        } else if (extPropDef2.getId() != null) {
+            return false;
+        }
+
+        if (extPropDef1.getMapiType() != extPropDef2.getMapiType()) {
+            return false;
+        }
+
+        if (extPropDef1.getName() != null) {
+            if (!extPropDef1.getName().equals(extPropDef2.getName())) {
+                return false;
+            }
+        } else if (extPropDef2.getName() != null) {
+            return false;
+        }
+
+        if (extPropDef1.getPropertySet() != extPropDef2.getPropertySet()) {
+            return false;
+        }
+
+        if (extPropDef1.propertySetId != null) {
+            if (!extPropDef1.propertySetId.equals(extPropDef2.propertySetId)) {
+                return false;
+            }
+        } else if (extPropDef2.propertySetId != null) {
+            return false;
+        }
+
+        return true;
 	}
 
 	/**

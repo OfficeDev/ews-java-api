@@ -1,9 +1,13 @@
 /**************************************************************************
- * copyright file="EwsUtilities.java" company="Microsoft"
- *     Copyright (c) Microsoft Corporation.  All rights reserved.
- * 
- * Defines the EwsUtilities.java.
+ Exchange Web Services Java API
+ Copyright (c) Microsoft Corporation
+ All rights reserved.
+ MIT License
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **************************************************************************/
+
 package microsoft.exchange.webservices.data;
 
 import java.io.ByteArrayInputStream;
@@ -133,10 +137,10 @@ class EwsUtilities {
 	
 
     /** 
-     *Copies source stream to target.
+     * Copies source stream to target.
      * 
-     *@param source The source. 
-     *@param name target The target.
+     * @param source The source stream.
+     * @param target The target stream.
      **/ 
     protected static void copyStream(ByteArrayOutputStream source, ByteArrayOutputStream target)throws Exception
     {
@@ -158,12 +162,12 @@ class EwsUtilities {
     	pw1.println(pw.toString());*/
 
 
-    	
-    	 
-    	 
-    	
 
-    	
+
+
+
+
+
         ByteArrayOutputStream memContentStream = source;
         if (memContentStream != null)
         {
@@ -194,6 +198,17 @@ class EwsUtilities {
 	 */
 	public static String getBuildVersion() {
 		return "0.0.0.0";
+	}
+
+	/**
+	 * A null-safe case sensitive comparison of two specified strings.
+	 *
+	 * @param first    The first string, can be null.
+	 * @param second   The second string, can be null.
+	 * @return true: equals, false: otherwise.
+	 */
+	public static boolean stringEquals(String first, String second) {
+		return (first == null && second == null) || (first != null && first.equals(second));
 	}
 
 	/** The enum version dictionaries. */
@@ -782,6 +797,7 @@ class EwsUtilities {
 		} else if (cls.isInstance(new Date())) {
 			Object o = null;
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            df.setTimeZone(TimeZone.getTimeZone("UTC"));
 			return (T) df.parse(value);
 		} else if (cls.isInstance(Boolean.valueOf(false)))
 		// else if( cls.isInstance(new Boolean(false)))
@@ -878,6 +894,7 @@ class EwsUtilities {
 	static String dateTimeToXSDate(Date date) {
 		String format = "yyyy-MM-dd'Z'";
 		DateFormat utcFormatter = new SimpleDateFormat(format);
+		utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return utcFormatter.format(date);
 	}
 
@@ -891,6 +908,7 @@ class EwsUtilities {
 	protected static String dateTimeToXSDateTime(Date date) {
 		String format = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 		DateFormat utcFormatter = new SimpleDateFormat(format);
+		utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return utcFormatter.format(date);
 	}
 	
@@ -1368,7 +1386,7 @@ class EwsUtilities {
 	/**
 	 * Validates string parameter to be 
 	 * non-empty string (null value not allowed).
-	 * @param paramThe string parameter.	
+	 * @param param The string parameter.
 	 * @param paramName Name of the parameter.	 
 	 * @throws ArgumentNullException 
 	 * @throws ArgumentException 
@@ -1659,13 +1677,10 @@ class EwsUtilities {
 	 * Determines whether every element in the collection 
 	 * matches the conditions defined by the specified predicate.
 	 *
-	 * @param typeparam T 
-	 *				Entry type.
-	 * @param collection
-	 * 				The collection.
-	 * @param predicate
-	 * 				Predicate that defines the conditions 
-	 * to check against the elements.
+	 * @param <T>           Entry type.
+	 * @param collection    The collection.
+	 * @param predicate     Predicate that defines the conditions to check against the elements.
+	 *
 	 * @return  True if every element in the collection matches 
 	 * the conditions defined by the specified predicate; otherwise, false.
      * @throws ServiceLocalException 
@@ -1686,12 +1701,9 @@ class EwsUtilities {
     /**
 	 * Call an action for each member of a collection.
 	 *
-	 * @param typeparam T 
-	 *				Collection element type.
-	 * @param collection
-	 * 				The collection.
-	 * @param action
-	 * 				The action to apply.
+	 * @param <T>           Collection element type.
+	 * @param collection    The collection.
+	 * @param action        The action to apply.
 	 */
     protected static <T> void forEach(Iterable<T> collection, IAction<T> action)
     {

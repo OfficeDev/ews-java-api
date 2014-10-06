@@ -1,35 +1,25 @@
 /**************************************************************************
- * copyright file="ServiceRequestBase.java" company="Microsoft"
- *     Copyright (c) Microsoft Corporation.  All rights reserved.
- * 
- * Defines the ServiceRequestBase.java.
+ Exchange Web Services Java API
+ Copyright (c) Microsoft Corporation
+ All rights reserved.
+ MIT License
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **************************************************************************/
+
 package microsoft.exchange.webservices.data;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Date;
+import javax.xml.stream.XMLStreamException;
+import java.io.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
 
-import javax.xml.stream.XMLStreamException;
-import javax.xml.ws.WebServiceException;
-import javax.xml.ws.http.HTTPException;
-
-import org.apache.commons.httpclient.HttpException;
-
-//import org.eclipse.ecf.core.util.AsyncResult;
-
 /**
  * Represents an abstract service request.
- * 
  */
 abstract class ServiceRequestBase {
 
@@ -317,69 +307,6 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * Send request and get response.
-	 * 
-	 * @return HttpWebRequest object from which response stream can be read.
-	 * @throws Exception
-	 *             the exception
-	 */
-	protected HttpWebRequest emit(OutParam<HttpWebRequest> request)
-			throws Exception {
-		request.setParam(this.getService().prepareHttpWebRequest());
-		this.getService().traceHttpRequestHeaders(
-				TraceFlags.EwsRequestHttpHeaders, request.getParam());
-
-		// If tracing is enabled, we generate the request in-memory so that we
-		// can pass it along to the ITraceListener. Then we copy the stream to
-		// the request stream.
-		if (this.service.isTraceEnabledFor(TraceFlags.EwsRequest)) {
-			ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
-			EwsServiceXmlWriter writer = new EwsServiceXmlWriter(this.service,
-					memoryStream);
-			this.writeToXml(writer);
-			this.service.traceXml(TraceFlags.EwsRequest, memoryStream);
-			OutputStream urlOutStream = request.getParam().getOutputStream();
-			// request.getParam().write(memoryStream);
-			// System.out.println("Actual XML : "+new
-			// String(memoryStream.toByteArray())+": end of XML");
-
-			memoryStream.writeTo(urlOutStream);
-			urlOutStream.flush();
-			urlOutStream.close();
-			writer.dispose();
-			memoryStream.close();
-		} else {
-			// ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			// ObjectOutputStream urlOutStream = new ObjectOutputStream(bos);
-			OutputStream urlOutStream = request.getParam().getOutputStream();
-			EwsServiceXmlWriter writer = new EwsServiceXmlWriter(this.service,
-					urlOutStream);
-			this.writeToXml(writer);
-			// request.getParam().write(bos);
-			urlOutStream.flush();
-			urlOutStream.close();
-			writer.dispose();
-		}
-		// Closing and flushing stream does not ensure xml data is posted. Hence
-		// try to get response code. This will force the xml data to be posted.
-		request.getParam().executeRequest();
-
-		if (request.getParam().getResponseCode() >= 400) {
-			throw new HttpErrorException(
-					"The remote server returned an error: ("
-							+ request.getParam().getResponseCode() + ")"
-							+ request.getParam().getResponseText(), request
-							.getParam().getResponseCode());
-			// throw new
-			// Exception("The remote server returned an error: ("+request.getParam().getResponseCode()+")"+request.getParam().getResponseText());
-
-		}
-
-		return request.getParam();
-
-	}
-
-	/**
 	 * Get the request stream
 	 * 
 	 *@param request
@@ -579,52 +506,6 @@ abstract class ServiceRequestBase {
 	}
 
 	/**
-	 * Ends getting the specified async HttpWebRequest object from the specified
-	 * IEwsHttpWebRequest object with exception handling.
-	 * 
-	 * @param request
-	 *            The specified HttpWebRequest
-	 * @param asyncResult
-	 *            An IAsyncResult that references the asynchronous request.
-	 * @return An HttpWebResponse instance
-	 */
-	protected HttpWebRequest endGetEwsHttpWebResponse(
-			OutParam<HttpWebRequest> request, AsyncRequestResult asyncResult)
-			throws Exception {
-
-		try {
-			// Note that this call may throw ArgumentException if the
-			// HttpWebRequest instance is not the original one,
-			// and we just let it out
-			request.getParam().executeRequest();
-			if (request.getParam().getResponseCode() >= 400) {
-				throw new HttpErrorException(
-						"The remote server returned an error: ("
-								+ request.getParam().getResponseCode() + ")"
-								+ request.getParam().getResponseText(), request
-								.getParam().getResponseCode());
-				// throw new
-				// Exception("The remote server returned an error: ("+request.getParam().getResponseCode()+")"+request.getParam().getResponseText());
-
-			}
-			return request.getParam();
-		} catch (HttpErrorException ex) {
-			if (ex.getHttpErrorCode() == WebExceptionStatus.ProtocolError
-					.ordinal()) {
-				this.processWebException(ex, request.getParam());
-			}
-
-			// Wrap exception if the above code block didn't throw
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, ex.getMessage()), ex);
-		} catch (IOException e) {
-			// Wrap exception.
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, e.getMessage()), e);
-		}
-	}
-
-	/**
 	 * Processes the web exception.
 	 * 
 	 * @param webException
@@ -810,41 +691,39 @@ abstract class ServiceRequestBase {
 
 	/**
 	 * Validates request parameters, and emits the request to the server.
-	 * 
-	 * @param request
-	 *            The request.
+	 *
 	 * @return The response returned by the server.
 	 */
-	protected HttpWebRequest validateAndEmitRequest(
-			OutParam<HttpWebRequest> request) throws ServiceLocalException,
-			Exception {
+	protected HttpWebRequest validateAndEmitRequest() throws ServiceLocalException, Exception {
 		this.validate();
 
-		request = this.buildEwsHttpWebRequest();
-		return this.getEwsHttpWebResponse(request);
+		HttpWebRequest request = this.buildEwsHttpWebRequest();
+		try {
+			return this.getEwsHttpWebResponse(request);
+		} catch (HttpErrorException e) {
+			processWebException(e, request);
+
+			// Wrap exception if the above code block didn't throw
+			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+		}
 	}
 
 	/**
 	 * <summary> Builds the HttpWebRequest object for current service request
 	 * with exception handling.
 	 * 
-	 * @return An IEwsHttpWebRequest instance
+	 * @return An HttpWebRequest instance
 	 */
-	protected OutParam<HttpWebRequest> buildEwsHttpWebRequest()
-			throws Exception {
-		OutParam<HttpWebRequest> outparam = new OutParam<HttpWebRequest>();
+	protected HttpWebRequest buildEwsHttpWebRequest() throws Exception {
 		try {
-
-			outparam.setParam(this.getService().prepareHttpWebRequest());
+			HttpWebRequest request = this.getService().prepareHttpWebRequest();
 			AsyncExecutor ae = new AsyncExecutor();
 
 			// ExecutorService es = CallableSingleTon.getExecutor();
-			Callable getStream = new GetStream(outparam.getParam(),
-					"getOutputStream");
+			Callable getStream = new GetStream(request, "getOutputStream");
 			Future task = ae.submit(getStream, null);
 			ae.shutdown();
-			this.getService().traceHttpRequestHeaders(
-					TraceFlags.EwsRequestHttpHeaders, outparam.getParam());
+			this.getService().traceHttpRequestHeaders(TraceFlags.EwsRequestHttpHeaders, request);
 
 			boolean needSignature = this.getService().getCredentials() != null
 					&& this.getService().getCredentials().isNeedSignature();
@@ -875,15 +754,9 @@ abstract class ServiceRequestBase {
 							memoryStream);
 				}
 
-				ByteArrayOutputStream serviceRequestStream = (ByteArrayOutputStream) this
-						.getWebRequestStream(task);
-				{
-					EwsUtilities.copyStream(memoryStream, serviceRequestStream);
-				}
-				
-			}
-
-			else {
+				ByteArrayOutputStream serviceRequestStream = this.getWebRequestStream(task);
+				EwsUtilities.copyStream(memoryStream, serviceRequestStream);
+			} else {
 				ByteArrayOutputStream requestStream = this
 						.getWebRequestStream(task);
 
@@ -891,23 +764,12 @@ abstract class ServiceRequestBase {
 						.getService(), requestStream);
 
 				this.writeToXml(writer1);
-
 			}
 
-			return outparam;
-		} catch (HTTPException e) {
-			if (e.getStatusCode() == WebExceptionStatus.ProtocolError.ordinal()
-					&& e.getCause() != null) {
-				this.processWebException(e, outparam.getParam());
-			}
-
-			// Wrap exception if the above code block didn't throw
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, e.getMessage()), e);
+			return request;
 		} catch (IOException e) {
 			// Wrap exception.
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, e.getMessage()), e);
+			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
 		}
 	}
 
@@ -915,32 +777,21 @@ abstract class ServiceRequestBase {
 	 * Gets the IEwsHttpWebRequest object from the specifiedHttpWebRequest
 	 * object with exception handling
 	 * 
-	 * @param outparam The specified HttpWebRequest
+	 * @param request The specified HttpWebRequest
 	 * @return An HttpWebResponse instance
 	 */
-	protected HttpWebRequest getEwsHttpWebResponse(
-			OutParam<HttpWebRequest> outparam) throws Exception {
-		HttpWebRequest request = outparam.getParam();
-		int code;
-
+	protected HttpWebRequest getEwsHttpWebResponse(HttpWebRequest request) throws Exception {
 		try {
+			request.executeRequest();
 
-			code = request.executeRequest();
-
-		} catch (HttpErrorException ex) {
-			if (ex.getHttpErrorCode() == WebExceptionStatus.ProtocolError
-					.ordinal()
-					&& ex.getMessage() != null) {
-				this.processWebException(ex, request);
+			if (request.getResponseCode() >= 400) {
+				throw new HttpErrorException(
+						"The remote server returned an error: (" + request.getResponseCode() + ")" +
+								request.getResponseText(), request.getResponseCode());
 			}
-
-			// Wrap exception if the above code block didn't throw
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, ex.getMessage()), ex);
 		} catch (IOException e) {
 			// Wrap exception.
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, e.getMessage()), e);
+			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
 		}
 
 		return request;
@@ -968,7 +819,7 @@ abstract class ServiceRequestBase {
 	private void readXmlDeclaration(EwsServiceXmlReader reader)
 			throws Exception {
 		try {
-			reader.read(new XMLNodeType(XMLNodeType.START_DOCUMENT));
+			reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
 		} catch (XmlException ex) {
 			throw new ServiceRequestException(
 					Strings.ServiceResponseDoesNotContainXml, ex);

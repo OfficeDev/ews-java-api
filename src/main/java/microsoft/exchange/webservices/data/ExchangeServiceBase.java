@@ -1,9 +1,13 @@
 /**************************************************************************
- * copyright file="ExchangeServiceBase.java" company="Microsoft"
- *     Copyright (c) Microsoft Corporation.  All rights reserved.
- * 
- * Defines the ExchangeServiceBase.java.
+ Exchange Web Services Java API
+ Copyright (c) Microsoft Corporation
+ All rights reserved.
+ MIT License
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **************************************************************************/
+
 package microsoft.exchange.webservices.data;
 
 import java.io.ByteArrayOutputStream;
@@ -486,21 +490,25 @@ public abstract class ExchangeServiceBase {
 			if (dateString.endsWith("Z")) {
 				// String in UTC format yyyy-MM-ddTHH:mm:ssZ
 				utcFormatter = new SimpleDateFormat(utcPattern);
+				utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 				try {
 					dt = utcFormatter.parse(dateString);
 				} catch (ParseException e) {
 					utcFormatter = new SimpleDateFormat(pattern);
+					utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 					//	dateString = dateString.substring(0, 10)+"T12:00:00Z";
 					try {
 						dt = utcFormatter.parse(dateString);
 					} catch (ParseException e1) {
 						utcFormatter = new SimpleDateFormat(localPattern1);
+						utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 
 						try {
 							dt = utcFormatter.parse(dateString);
-						}catch(ParseException ex){
+						} catch (ParseException ex){
 							
 							utcFormatter = new SimpleDateFormat(utcPattern1);
+							utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 						}
 							try{
 							dt = utcFormatter.parse(dateString);
@@ -515,6 +523,7 @@ public abstract class ExchangeServiceBase {
 			} else if (dateString.endsWith("z")) {
 				// String in UTC format yyyy-MM-ddTHH:mm:ssZ
 				utcFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'z'");
+				utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 				try {
 					dt = utcFormatter.parse(dateString);
 				} catch (ParseException e) {
@@ -534,10 +543,12 @@ public abstract class ExchangeServiceBase {
 					dateString = String.format("%sGMT%s", date, zone);
 					try {
 						utcFormatter = new SimpleDateFormat(localPattern);
+						utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 						dt = utcFormatter.parse(dateString);
 					} catch (ParseException e) {
 						try {
 							utcFormatter = new SimpleDateFormat(pattern);
+							utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 							dt = utcFormatter.parse(dateString);
 						} catch (ParseException ex) {
 							throw new IllegalArgumentException(ex);
@@ -546,9 +557,10 @@ public abstract class ExchangeServiceBase {
 				} else {
 					// Invalid format
 					utcFormatter = new SimpleDateFormat(localPattern2);
+					utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 					try {
 						dt = utcFormatter.parse(dateString);
-					} catch (ParseException e) {						
+					} catch (ParseException e) {
 						e.printStackTrace();
 						throw new IllegalArgumentException(errMsg);
 					}
@@ -567,16 +579,16 @@ public abstract class ExchangeServiceBase {
 	 *            The string value to parse.
 	 * @return The parsed DateTime value.
 	 */
-    protected Date convertStartDateToUnspecifiedDateTime(String value) 
+	protected Date convertStartDateToUnspecifiedDateTime(String value)
 			throws ParseException {
-        if (value == null || value.isEmpty()) {
-            return null;
-        } else {
-        	DateFormat df = new SimpleDateFormat("yyyy-MM-dd'Z'");
+		if (value == null || value.isEmpty()) {
+			return null;
+		} else {
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd'Z'");
 			return df.parse(value);
-        }
-    }
-    
+		}
+	}
+
 	/**
 	 * Converts the date time to universal date time string.
 	 * 
@@ -585,10 +597,9 @@ public abstract class ExchangeServiceBase {
 	 * @return String representation of DateTime in yyyy-MM-ddTHH:mm:ssZ format.
 	 */
 	protected String convertDateTimeToUniversalDateTimeString(Date dt) {
-
-		DateFormat utcFormatter = null;
 		String utcPattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-		utcFormatter = new SimpleDateFormat(utcPattern);
+		DateFormat utcFormatter = new SimpleDateFormat(utcPattern);
+		utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return utcFormatter.format(dt);
 	}
 
