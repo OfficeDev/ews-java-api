@@ -17,6 +17,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.concurrent.FutureTask;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -1550,13 +1552,10 @@ public final class ExchangeService extends ExchangeServiceBase implements
 		}
 		request.setBodyType(bodyType);
 
-		if (additionalProperties != null)
-		{
 		List propsArray = new ArrayList();
-			for (PropertyDefinitionBase propertyDefinitionBase : additionalProperties)
-			{
-				propsArray.add(propertyDefinitionBase);
-			}
+		propsArray.add(additionalProperties);
+
+		if (additionalProperties != null) {
 			request.getAdditionalProperties().addAll(propsArray);
 		}
 
@@ -4461,4 +4460,3 @@ public final class ExchangeService extends ExchangeServiceBase implements
 	}
 
 }
-
