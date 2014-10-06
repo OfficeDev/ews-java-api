@@ -11,7 +11,6 @@
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
-
 import javax.xml.stream.XMLStreamException;
 
 /**
@@ -109,7 +108,7 @@ public final class ExtendedProperty extends ComplexProperty {
 			writer
 					.writeStartElement(XmlNamespace.Types,
 							XmlElementNames.Values);
-			for (int index = 0; index <= array.size(); index++) {
+			for (int index = 0; index < array.size(); index++) {
 				writer.writeElementValue(XmlNamespace.Types,
 						XmlElementNames.Value, MapiTypeConverter
 								.convertToString(this.getPropertyDefinition()
@@ -174,7 +173,7 @@ public final class ExtendedProperty extends ComplexProperty {
 			} else {
 				StringBuilder sb = new StringBuilder();
 				sb.append("[");
-				for (int index = 0; index <= array.size(); index++) {
+				for (int index = 0; index < array.size(); index++) {
 					sb.append(MapiTypeConverter.convertToString(this
 							.getPropertyDefinition().getMapiType(), array
 							.get(index)));
