@@ -151,6 +151,7 @@ public abstract class Strings {
     public static String CannotSaveNotNewUserConfiguration = "Calling Save isn't allowed because this user configuration isn't new. To apply local changes to this user configuration, call Update instead.";
     public static String ArrayMustHaveAtLeastOneElement = "The Array value must have at least one element.";
     public static String ArrayMustHaveSingleDimension = "The array value must have a single dimension.";
+    public static String ArrayIsNull = "The array value cannot be null.";
     public static String IncompatibleTypeForArray = "Type %s can't be used as an array of type %s.";
     public static String ValueCannotBeConverted = "The value '%s' couldn't be converted to type %s.";
     public static String ValueOfTypeCannotBeConverted = "The value '%s' of type %s can't be converted to a value of type %s.";
