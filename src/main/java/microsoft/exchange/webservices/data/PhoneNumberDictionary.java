@@ -41,12 +41,16 @@ public final class PhoneNumberDictionary extends
 	/**
 	 * Gets  the phone number at the specified key.
 	 * 
-	 * @param key
-	 *            the key
-	 * @return The phone number at the specified key.
+	 * @param key The phone number key.
+	 * @return The phone number at the specified key if found; otherwise null.
 	 */
 	public String getPhoneNumber(PhoneNumberKey key) {
-		return this.getEntries().get(key).getPhoneNumber();
+		PhoneNumberEntry phoneNumberEntry = this.getEntries().get(key);
+		if (phoneNumberEntry == null) {
+			return null;
+		}
+
+		return phoneNumberEntry.getPhoneNumber();
 	}
 
 	/**
@@ -86,15 +90,12 @@ public final class PhoneNumberDictionary extends
 	 *         the specified key; otherwise, false.
 	 */
 	public boolean tryGetValue(PhoneNumberKey key, OutParam<String> outparam) {
-		PhoneNumberEntry entry = null;
-
-		if (this.getEntries().containsKey(key)) {
-			entry = this.getEntries().get(key);
-			outparam.setParam(entry.getPhoneNumber());
-			return true;
-		} else {
-			outparam = null;
+		String phoneNumber = this.getPhoneNumber(key);
+		if (phoneNumber == null) {
 			return false;
 		}
+
+		outparam.setParam(phoneNumber);
+		return true;
 	}
 }
