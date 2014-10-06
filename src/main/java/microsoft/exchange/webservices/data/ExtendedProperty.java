@@ -11,7 +11,6 @@
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
-
 import javax.xml.stream.XMLStreamException;
 
 /**
