@@ -12,7 +12,7 @@ For testing the application with https, you don't have to add any additional cod
 To access Exchange Web Services (EWS) by using the EWS JAVA API, all you need is an instance of the ExchangeService class, as shown in the following example.
 ```
 ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2010_SP2);
-ExchangeCredentials credentials = new WebCredentials("emailAddress", " password");
+ExchangeCredentials credentials = new WebCredentials("emailAddress", "password");
 service.setCredentials(credentials);
 ```
 
