@@ -24,7 +24,7 @@ You can set the URL of the service in one of two ways:
 To set the URL manually, use the following:
 
 ```
-service.Url = new Uri("<ews_url>");
+service.setUrl(new Uri("<ews_url>"));
 ```
 To set the URL by using Autodiscover, use the following:
 
