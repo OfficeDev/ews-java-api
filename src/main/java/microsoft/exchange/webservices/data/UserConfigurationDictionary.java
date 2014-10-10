@@ -10,17 +10,11 @@
 
 package microsoft.exchange.webservices.data;
 
+import javax.xml.stream.XMLStreamException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-
-import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a user configuration's Dictionary property.
