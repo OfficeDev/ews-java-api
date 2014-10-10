@@ -674,7 +674,7 @@ appointment.save();
 You can use the EWS JAVA API to update appointments, as shown in the following example.
 
 ```
-Appointment appointment= Appointment.bind(service, new  (uniqueId));
+Appointment appointment= Appointment.bind(service, new ItemId(uniqueId));
 SimpleDateFormat formatter = new  SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 Date startDate = formatter.parse("2012-06-19 13:00:00");
 Date endDate = formatter.parse("2012-06-19 14:00:00");
