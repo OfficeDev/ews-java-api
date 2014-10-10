@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/OfficeDev/ews-java-api.svg)](https://travis-ci.org/OfficeDev/ews-java-api)
 
+__guyb__
 # Getting Started with the EWS JAVA API
 
 ## Using the EWS JAVA API for https
