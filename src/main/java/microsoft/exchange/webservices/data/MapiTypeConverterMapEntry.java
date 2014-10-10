@@ -10,10 +10,10 @@
 
 package microsoft.exchange.webservices.data;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -190,32 +190,30 @@ class MapiTypeConverterMapEntry {
 	/**
 	 * Validates array value.
 	 * 
-	 * @param value
-	 *            the value
-	 * @throws microsoft.exchange.webservices.data.ArgumentException
-	 *             the argument exception
+	 * @param value the value
+	 * @throws microsoft.exchange.webservices.data.ArgumentException the argument exception
+	 * @throws microsoft.exchange.webservices.data.ArgumentNullException the argument exception
 	 */
-	private void validateValueAsArray(Object value) throws ArgumentException {
-
-		Array array = null;
-		if(value instanceof Array)
+	private void validateValueAsArray(Object value) throws ArgumentException, ArgumentNullException
+	{
+		if (value == null)
 		{
-			array = (Array) value;
+			throw new ArgumentNullException("value");
 		}
-		
-		if (array == null) {
-			throw new ArgumentException(String.format(
-					Strings.IncompatibleTypeForArray, value.getClass(), this
-							.getType()));
 
-		} else if (getDim(array) != 1) {
-			throw new ArgumentException(Strings.ArrayMustHaveSingleDimension);
-		} else if (Array.getLength(array) == 0) {
-			throw new ArgumentException(Strings.ArrayMustHaveAtLeastOneElement);
-		} else if (array.getClass().getComponentType() != this.getType()) {
-			throw new ArgumentException(String.format(
-					Strings.IncompatibleTypeForArray, value.getClass(), this
-							.getType()));
+		if (value instanceof ArrayList)
+		{
+			ArrayList arrayList = (ArrayList) value;
+			if (arrayList.isEmpty())
+			{
+				throw new ArgumentException(Strings.ArrayMustHaveAtLeastOneElement);
+			}
+
+			if (arrayList.get(0).getClass() != this.getType())
+			{
+				throw new ArgumentException(String.format(Strings.IncompatibleTypeForArray, value.getClass(),
+						this.getType()));
+			}
 		}
 	}
 
