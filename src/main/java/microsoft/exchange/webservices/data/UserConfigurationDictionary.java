@@ -281,123 +281,83 @@ public final class UserConfigurationDictionary extends ComplexProperty
 		writer.writeEndElement();
 	}
 
-	/**
-	 * Writes a dictionary Object's value to Xml.
-	 * 
-	 * @param writer
-	 *            The writer.
-	 * @param dictionaryObject
-	 *            The dictionary object to write.
-	 * @throws javax.xml.stream.XMLStreamException
-	 *             the xML stream exception
-	 * @throws ServiceXmlSerializationException
-	 *             the service xml serialization exception
-	 */
-	private void writeObjectValueToXml(EwsServiceXmlWriter writer,
-			Object dictionaryObject) throws XMLStreamException,
-			ServiceXmlSerializationException {
-		EwsUtilities.EwsAssert(writer != null,
-				"UserConfigurationDictionary.WriteObjectValueToXml",
-				"writer is null");
-		EwsUtilities.EwsAssert(dictionaryObject != null,
-				"UserConfigurationDictionary.WriteObjectValueToXml",
-				"dictionaryObject is null");
+    /**
+     * Writes a dictionary Object's value to Xml.
+     *
+     * @param writer
+     *            The writer.
+     * @param dictionaryObject
+     *            The dictionary object to write. <br />
+     *            Object values are either: an array of strings or a single
+     *            value <br />
+     *            Single values can be: <br />
+     *            - base64 string (from a byte array), datetime, boolean, byte,
+     *            int, long, string
+     * @throws javax.xml.stream.XMLStreamException
+     *             the xML stream exception
+     * @throws ServiceXmlSerializationException
+     *             the service xml serialization exception
+     */
+    private void writeObjectValueToXml(final EwsServiceXmlWriter writer,
+                                       final Object dictionaryObject) throws XMLStreamException,
+            ServiceXmlSerializationException {
+        // Preconditions
+        if (dictionaryObject == null) {
+            throw new NullPointerException("DictionaryObject must not be null");
+        } else if (writer == null) {
+            throw new NullPointerException(
+                    "EwsServiceXmlWriter must not be null");
+        }
 
-		// This logic is based on
-		// Microsoft.Exchange.Services.Core.GetUserConfiguration.
-		// ConstructDictionaryObject().
-		//
-		// Object values are either:
-		// . an array of strings
-		// . a single value
-		//
-		// Single values can be:
-		// . base64 string (from a byte array)
-		// . datetime, boolean, byte, short, int, long, string, ushort, unint,
-		// ulong
-		//
-		// First check for a string array
-		String[] dictionaryObjectAsStringArray = null;
-		byte[] dictionaryObjectAsByteArray = null;
-		if (dictionaryObject != null) {
-			dictionaryObjectAsStringArray = (String[]) dictionaryObject;
-			dictionaryObjectAsByteArray = (byte[]) dictionaryObject;
-		}
-		if (dictionaryObjectAsStringArray != null) {
-			this.writeEntryTypeToXml(writer,
-					UserConfigurationDictionaryObjectType.StringArray);
+        // Processing
+        UserConfigurationDictionaryObjectType dictionaryObjectType = UserConfigurationDictionaryObjectType.StringArray;
+        if (dictionaryObject instanceof String[]) {
+            this.writeEntryTypeToXml(writer, dictionaryObjectType);
 
-			for (String arrayElement : dictionaryObjectAsStringArray) {
-				this.writeEntryValueToXml(writer, arrayElement);
-			}
-		} else {
-			// if not a string array, all other object values are returned as a
-			// single element
-			UserConfigurationDictionaryObjectType dictionaryObjectType = 
-				UserConfigurationDictionaryObjectType.String;
-			String valueAsString = null;
+            for (String arrayElement : (String[]) dictionaryObject) {
+                this.writeEntryValueToXml(writer, arrayElement);
+            }
+        } else {
+            String valueAsString = null;
+            if (dictionaryObject instanceof String) {
+                dictionaryObjectType = UserConfigurationDictionaryObjectType.String;
+                valueAsString = String.valueOf(dictionaryObject);
+            } else if (dictionaryObject instanceof Boolean) {
+                dictionaryObjectType = UserConfigurationDictionaryObjectType.Boolean;
+                valueAsString = EwsUtilities
+                        .boolToXSBool((Boolean) dictionaryObject);
+            } else if (dictionaryObject instanceof Byte) {
+                dictionaryObjectType = UserConfigurationDictionaryObjectType.Byte;
+                valueAsString = String.valueOf(dictionaryObject);
+            } else if (dictionaryObject instanceof Date) {
+                dictionaryObjectType = UserConfigurationDictionaryObjectType.DateTime;
+                valueAsString = writer.getService()
+                        .convertDateTimeToUniversalDateTimeString(
+                                (Date) dictionaryObject);
+            } else if (dictionaryObject instanceof Integer) {
+                // removed unsigned integer because in Java, all types are
+                // signed, there are no unsigned versions
+                dictionaryObjectType = UserConfigurationDictionaryObjectType.Integer32;
+                valueAsString = String.valueOf(dictionaryObject);
+            } else if (dictionaryObject instanceof Long) {
+                // removed unsigned integer because in Java, all types are
+                // signed, there are no unsigned versions
+                dictionaryObjectType = UserConfigurationDictionaryObjectType.Integer64;
+                valueAsString = String.valueOf(dictionaryObject);
+            } else if (dictionaryObject instanceof Byte[]) {
+                dictionaryObjectType = UserConfigurationDictionaryObjectType.ByteArray;
+                valueAsString = Base64EncoderStream
+                        .encode((byte[]) dictionaryObject);
+            } else {
+                throw new IllegalArgumentException(String.format(
+                        "Unsupported type: %s", dictionaryObject.getClass()
+                                .toString()));
+            }
+            this.writeEntryTypeToXml(writer, dictionaryObjectType);
+            this.writeEntryValueToXml(writer, valueAsString);
+        }
+    }
 
-			if (dictionaryObjectAsByteArray != null) {
-				// Convert byte array to base64 string
-				dictionaryObjectType = UserConfigurationDictionaryObjectType.
-				ByteArray;
-				valueAsString = Base64EncoderStream
-						.encode(dictionaryObjectAsByteArray);
-
-			} else {
-				// Handle all other types by TypeCode
-				if (dictionaryObject.getClass().equals(Boolean.TYPE)) {
-					dictionaryObjectType = 
-						UserConfigurationDictionaryObjectType.Boolean;
-					valueAsString = EwsUtilities
-							.boolToXSBool((Boolean) dictionaryObject);
-
-				} else if (dictionaryObject.getClass().equals(Byte.TYPE)) {
-					dictionaryObjectType = 
-						UserConfigurationDictionaryObjectType.Byte;
-					valueAsString = dictionaryObject.toString();
-				} else if (dictionaryObject.getClass().equals(Date.class)) {
-					dictionaryObjectType = 
-						UserConfigurationDictionaryObjectType.DateTime;
-					valueAsString = writer.getService()
-							.convertDateTimeToUniversalDateTimeString(
-									(Date) dictionaryObject);
-				} else if (dictionaryObject.getClass().equals(Integer.TYPE)) {
-					dictionaryObjectType = 
-						UserConfigurationDictionaryObjectType.Integer32;
-					valueAsString = dictionaryObject.toString();
-				} else if (dictionaryObject.getClass().equals(Long.TYPE)) {
-					dictionaryObjectType = 
-						UserConfigurationDictionaryObjectType.Integer64;
-					valueAsString = dictionaryObject.toString();
-				} else if (dictionaryObject.getClass().equals(String.class)) {
-					dictionaryObjectType = 
-						UserConfigurationDictionaryObjectType.String;
-					valueAsString = (String) dictionaryObject;
-				} else if (dictionaryObject.getClass().equals(Integer.TYPE)) {
-					dictionaryObjectType = 
-						UserConfigurationDictionaryObjectType.UnsignedInteger32;
-					valueAsString = dictionaryObject.toString();
-				} else if (dictionaryObject.getClass().equals(Long.TYPE)) {
-					dictionaryObjectType = 
-						UserConfigurationDictionaryObjectType.UnsignedInteger64;
-					valueAsString = dictionaryObject.toString();
-				} else {
-					EwsUtilities
-							.EwsAssert(
-									false,
-									"UserConfigurationDictionary." +
-									"WriteObjectValueToXml",
-									"Unsupported type: "
-											+ dictionaryObject.getClass()
-													.toString());
-				}
-			}
-
-			this.writeEntryTypeToXml(writer, dictionaryObjectType);
-			this.writeEntryValueToXml(writer, valueAsString);
-		}
-	}
 
 	/**
 	 * Writes a dictionary entry type to Xml.
