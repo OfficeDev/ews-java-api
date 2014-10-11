@@ -282,11 +282,10 @@ public final class UserConfigurationDictionary extends ComplexProperty
      *            The writer.
      * @param dictionaryObject
      *            The dictionary object to write. <br />
-     *            Object values are either: an array of strings or a single
-     *            value <br />
-     *            Single values can be: <br />
-     *            - base64 string (from a byte array), datetime, boolean, byte,
-     *            int, long, string
+     *            Object values are either:  <br />
+     *            an array of strings, an array of bytes (which will be encoded into base64) <br />
+     *            or a single value. Single values can be: <br />
+     *            - datetime, boolean, byte, int, long, string
      * @throws javax.xml.stream.XMLStreamException
      *             the xML stream exception
      * @throws ServiceXmlSerializationException
