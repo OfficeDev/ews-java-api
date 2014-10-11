@@ -91,37 +91,37 @@ public class UserConfigurationDictionaryTest {
 
         this.userConfigurationDictionary.addElement("someLong", testLong);
         Assert.assertTrue(this.userConfigurationDictionary.containsKey("someLong"));
-        Assert.assertEquals(testString, this.userConfigurationDictionary.getElements("someLong"));
+        Assert.assertEquals(testLong, this.userConfigurationDictionary.getElements("someLong"));
         Assert.assertTrue(this.userConfigurationDictionary.getElements("someLong") instanceof Long);
 
         this.userConfigurationDictionary.addElement("someInteger", testInt);
         Assert.assertTrue(this.userConfigurationDictionary.containsKey("someInteger"));
-        Assert.assertEquals(testString, this.userConfigurationDictionary.getElements("someInteger"));
+        Assert.assertEquals(testInt, this.userConfigurationDictionary.getElements("someInteger"));
         Assert.assertTrue(this.userConfigurationDictionary.getElements("someInteger") instanceof Integer);
 
         this.userConfigurationDictionary.addElement("someString[]", testStringArray);
         Assert.assertTrue(this.userConfigurationDictionary.containsKey("someString[]"));
-        Assert.assertEquals(testString, this.userConfigurationDictionary.getElements("someString[]"));
+        Assert.assertEquals(testStringArray, this.userConfigurationDictionary.getElements("someString[]"));
         Assert.assertTrue(this.userConfigurationDictionary.getElements("someString[]") instanceof String[]);
 
         this.userConfigurationDictionary.addElement("someDate", testDate);
         Assert.assertTrue(this.userConfigurationDictionary.containsKey("someDate"));
-        Assert.assertEquals(testString, this.userConfigurationDictionary.getElements("someDate"));
+        Assert.assertEquals(testDate, this.userConfigurationDictionary.getElements("someDate"));
         Assert.assertTrue(this.userConfigurationDictionary.getElements("someDate") instanceof Date);
 
         this.userConfigurationDictionary.addElement("someBoolean", testBoolean);
         Assert.assertTrue(this.userConfigurationDictionary.containsKey("someBoolean"));
-        Assert.assertEquals(testString, this.userConfigurationDictionary.getElements("someBoolean"));
+        Assert.assertEquals(testBoolean, this.userConfigurationDictionary.getElements("someBoolean"));
         Assert.assertTrue(this.userConfigurationDictionary.getElements("someBoolean") instanceof Boolean);
 
         this.userConfigurationDictionary.addElement("someByte", testByte);
         Assert.assertTrue(this.userConfigurationDictionary.containsKey("someByte"));
-        Assert.assertEquals(testString, this.userConfigurationDictionary.getElements("someByte"));
+        Assert.assertEquals(testByte, this.userConfigurationDictionary.getElements("someByte"));
         Assert.assertTrue(this.userConfigurationDictionary.getElements("someByte") instanceof Byte);
 
         this.userConfigurationDictionary.addElement("someByte[]", testByteArray);
         Assert.assertTrue(this.userConfigurationDictionary.containsKey("someByte[]"));
-        Assert.assertEquals(testString, this.userConfigurationDictionary.getElements("someByte[]"));
+        Assert.assertEquals(testByteArray, this.userConfigurationDictionary.getElements("someByte[]"));
         Assert.assertTrue(this.userConfigurationDictionary.getElements("someByte[]") instanceof byte[]);
     }
 
