@@ -298,7 +298,8 @@ public final class UserConfigurationDictionary extends ComplexProperty
         // Preconditions
         if (dictionaryObject == null) {
             throw new NullPointerException("DictionaryObject must not be null");
-        } else if (writer == null) {
+        }
+        if (writer == null) {
             throw new NullPointerException(
                     "EwsServiceXmlWriter must not be null");
         }
