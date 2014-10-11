@@ -10,6 +10,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import javax.management.Query;
 import javax.xml.stream.XMLStreamException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
@@ -338,6 +339,10 @@ public final class UserConfigurationDictionary extends ComplexProperty
                 // signed, there are no unsigned versions
                 dictionaryObjectType = UserConfigurationDictionaryObjectType.Integer64;
                 valueAsString = String.valueOf(dictionaryObject);
+            } else if (dictionaryObject instanceof byte[]) {
+                dictionaryObjectType = UserConfigurationDictionaryObjectType.ByteArray;
+                valueAsString = Base64EncoderStream
+                        .encode((byte[]) dictionaryObject);
             } else if (dictionaryObject instanceof Byte[]) {
                 dictionaryObjectType = UserConfigurationDictionaryObjectType.ByteArray;
                 valueAsString = Base64EncoderStream
@@ -687,7 +692,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
 				this.validateArrayObject(newArray);
 			}			
 			else{
-				this.validateObjectType(dictionaryObject.getClass());
+				this.validateObjectType(dictionaryObject);
 				
 			}
 
@@ -736,24 +741,30 @@ public final class UserConfigurationDictionary extends ComplexProperty
 	/**
 	 * Validates the dictionary object type.
 	 * 
-	 * @param type
-	 *            Type to validate.
+	 * @param theObject
+	 *            Object to validate.
 	 * @throws microsoft.exchange.webservices.data.ServiceLocalException
 	 *             the service local exception
 	 */
-	private void validateObjectType(Type type) throws ServiceLocalException {
+	private void validateObjectType(Object theObject) throws ServiceLocalException {
 		// This logic is based on
 		// Microsoft.Exchange.Data.Storage.ConfigurationDictionary.
 		// CheckElementSupportedType().
 		boolean isValidType = false;
-		if (type.equals(Boolean.TYPE) || type.equals(Byte.TYPE)
-				|| type.equals(Date.class) || type.equals(Integer.TYPE)
-				|| type.equals(Long.TYPE) || type.equals(String.class)
-				|| type.equals(Integer.TYPE) || type.equals(Long.TYPE)) {
-			isValidType = true;
-		}
+        if (theObject != null){
+            if (theObject instanceof String ||
+                    theObject instanceof Boolean ||
+                    theObject instanceof Byte ||
+                    theObject instanceof Long ||
+                    theObject instanceof Date ||
+                    theObject instanceof Integer)
+            isValidType = true;
+        }
+
 		if (!isValidType) {
-			throw new ServiceLocalException(String.format(Strings.ObjectTypeNotSupported, type));
+			throw new ServiceLocalException(
+                    String.format(Strings.ObjectTypeNotSupported, (theObject != null ?
+                            theObject.getClass().toString() : "null")));
 		}
 	}
 
