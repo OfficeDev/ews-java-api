@@ -81,6 +81,10 @@ public class UserConfigurationDictionaryTest {
         final boolean testBoolean = true;
         final byte testByte = Byte.decode("0x10");
         final byte[] testByteArray = testString.getBytes();
+        final Byte[] testByteArray2 = new Byte[testByteArray.length];
+        for (int currentIndex = 0; currentIndex < testByteArray.length; currentIndex++) {
+            testByteArray2[currentIndex] = testByteArray[currentIndex];
+        }
 
         Assert.assertNotNull(this.userConfigurationDictionary);
 
@@ -123,6 +127,11 @@ public class UserConfigurationDictionaryTest {
         Assert.assertTrue(this.userConfigurationDictionary.containsKey("someByte[]"));
         Assert.assertEquals(testByteArray, this.userConfigurationDictionary.getElements("someByte[]"));
         Assert.assertTrue(this.userConfigurationDictionary.getElements("someByte[]") instanceof byte[]);
+
+        this.userConfigurationDictionary.addElement("someByte2[]", testByteArray2);
+        Assert.assertTrue(this.userConfigurationDictionary.containsKey("someByte2[]"));
+        Assert.assertEquals(testByteArray2, this.userConfigurationDictionary.getElements("someByte2[]"));
+        Assert.assertTrue(this.userConfigurationDictionary.getElements("someByte2[]") instanceof Byte[]);
     }
 
     /**

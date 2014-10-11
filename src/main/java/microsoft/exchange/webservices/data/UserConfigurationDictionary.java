@@ -342,12 +342,18 @@ public final class UserConfigurationDictionary extends ComplexProperty
                 valueAsString = String.valueOf(dictionaryObject);
             } else if (dictionaryObject instanceof byte[]) {
                 dictionaryObjectType = UserConfigurationDictionaryObjectType.ByteArray;
-                valueAsString = Base64EncoderStream
-                        .encode((byte[]) dictionaryObject);
+                valueAsString = Base64EncoderStream.encode((byte[]) dictionaryObject);
             } else if (dictionaryObject instanceof Byte[]) {
                 dictionaryObjectType = UserConfigurationDictionaryObjectType.ByteArray;
-                valueAsString = Base64EncoderStream
-                        .encode((byte[]) dictionaryObject);
+
+                // cast Byte[] to byte[]
+                Byte[] from = (Byte[]) dictionaryObject;
+                byte[] to = new byte[from.length];
+                for (int currentIndex = 0; currentIndex < from.length; currentIndex++) {
+                    to[currentIndex] = (byte) from[currentIndex];
+                }
+
+                valueAsString = Base64EncoderStream.encode(to);
             } else {
                 throw new IllegalArgumentException(String.format(
                         "Unsupported type: %s", dictionaryObject.getClass()
