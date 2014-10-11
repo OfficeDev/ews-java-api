@@ -753,8 +753,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
 			isValidType = true;
 		}
 		if (!isValidType) {
-			throw new ServiceLocalException(String.format("%s,%s",
-					Strings.ObjectTypeNotSupported, type));
+			throw new ServiceLocalException(String.format(Strings.ObjectTypeNotSupported, type));
 		}
 	}
 
