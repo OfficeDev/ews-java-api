@@ -303,15 +303,16 @@ public final class UserConfigurationDictionary extends ComplexProperty
         }
 
         // Processing
-        UserConfigurationDictionaryObjectType dictionaryObjectType = UserConfigurationDictionaryObjectType.StringArray;
+        final UserConfigurationDictionaryObjectType dictionaryObjectType;
         if (dictionaryObject instanceof String[]) {
+            dictionaryObjectType = UserConfigurationDictionaryObjectType.StringArray;
             this.writeEntryTypeToXml(writer, dictionaryObjectType);
 
             for (String arrayElement : (String[]) dictionaryObject) {
                 this.writeEntryValueToXml(writer, arrayElement);
             }
         } else {
-            String valueAsString = null;
+            final String valueAsString;
             if (dictionaryObject instanceof String) {
                 dictionaryObjectType = UserConfigurationDictionaryObjectType.String;
                 valueAsString = String.valueOf(dictionaryObject);
