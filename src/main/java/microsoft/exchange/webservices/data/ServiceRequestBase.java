@@ -13,7 +13,6 @@ package microsoft.exchange.webservices.data;
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
@@ -304,38 +303,6 @@ abstract class ServiceRequestBase {
 		} else {
 			return this.service.getRequestedServerVersion().toString();
 		}
-	}
-
-	/**
-	 * Get the request stream
-	 * 
-	 *@param request
-	 *            The request
-	 * @throws java.util.concurrent.ExecutionException
-	 * @throws InterruptedException
-	 * @return The Request stream
-	 */
-	private ByteArrayOutputStream getWebRequestStream(Future request)
-			throws EWSHttpException, InterruptedException, ExecutionException {
-		// In the async case, although we can use async callback to make the
-		// entire worflow completely async,
-		// there is little perf gain with this approach because of EWS's message
-		// nature.
-		// The overall latency of BeginGetRequestStream() is same as
-		// GetRequestStream() in this case.
-		// The overhead to implement a two-step async operation includes wait
-		// handle synchronization, exception handling and wrapping.
-		// Therefore, we only leverage BeginGetResponse() and EndGetReponse() to
-		// provide the async functionality.
-		// Reference:
-		// http://www.wintellect.com/CS/blogs/jeffreyr/archive/2009/02/08/httpwebrequest-its-request-stream-and-sending-data-in-chunks.aspx
-		// return
-		// request.endGetRequestStream(request.beginGetRequestStream(request,
-		// null));
-
-		return (ByteArrayOutputStream) request.get();
-		// return ( ByteArrayOutputStream)request.getOutputStream();
-
 	}
 
 	/**
@@ -716,55 +683,26 @@ abstract class ServiceRequestBase {
 	 */
 	protected HttpWebRequest buildEwsHttpWebRequest() throws Exception {
 		try {
-			HttpWebRequest request = this.getService().prepareHttpWebRequest();
-			AsyncExecutor ae = new AsyncExecutor();
+			HttpWebRequest request = service.prepareHttpWebRequest();
 
-			// ExecutorService es = CallableSingleTon.getExecutor();
-			Callable getStream = new GetStream(request, "getOutputStream");
-			Future task = ae.submit(getStream, null);
-			ae.shutdown();
-			this.getService().traceHttpRequestHeaders(TraceFlags.EwsRequestHttpHeaders, request);
+			service.traceHttpRequestHeaders(TraceFlags.EwsRequestHttpHeaders, request);
 
-			boolean needSignature = this.getService().getCredentials() != null
-					&& this.getService().getCredentials().isNeedSignature();
-			boolean needTrace = this.getService().isTraceEnabledFor(
-					TraceFlags.EwsRequest);
+			ByteArrayOutputStream requestStream = (ByteArrayOutputStream) request.getOutputStream();
 
-			/*
-			 * If tracing is enabled, we generate the request in-memory so that
-			 * we can pass it along to the ITraceListener. Then we copy the
-			 * stream to the request stream.
-			 */
+			EwsServiceXmlWriter writer = new EwsServiceXmlWriter(service, requestStream);
 
-			ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
-
-			EwsServiceXmlWriter writer = new EwsServiceXmlWriter(this
-					.getService(), memoryStream);
-
+			boolean needSignature = service.getCredentials() != null && service.getCredentials().isNeedSignature();
 			writer.setRequireWSSecurityUtilityNamespace(needSignature);
-			this.writeToXml(writer);
 
-			if (needSignature || needTrace) {
-				if (needSignature) {
-					this.service.getCredentials().sign(memoryStream);
-				}
+			writeToXml(writer);
 
-				if (needTrace) {
-					this.getService().traceXml(TraceFlags.EwsRequest,
-							memoryStream);
-				}
+			if (needSignature) {
+				service.getCredentials().sign(requestStream);
+	 	 	}
 
-				ByteArrayOutputStream serviceRequestStream = this.getWebRequestStream(task);
-				EwsUtilities.copyStream(memoryStream, serviceRequestStream);
-			} else {
-				ByteArrayOutputStream requestStream = this
-						.getWebRequestStream(task);
-
-				EwsServiceXmlWriter writer1 = new EwsServiceXmlWriter(this
-						.getService(), requestStream);
-
-				this.writeToXml(writer1);
-			}
+	 	 	if (service.isTraceEnabledFor(TraceFlags.EwsRequest)) {
+	 	 		service.traceXml(TraceFlags.EwsRequest, requestStream);
+	 	 	}
 
 			return request;
 		} catch (IOException e) {
