@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * XML reader.
@@ -104,13 +105,13 @@ class EwsServiceXmlReader extends EwsXmlReader {
 		try {
 			DateFormat formatter = 
 				new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-			//formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+			formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 			tempDate = formatter.parse(date);
 		} catch (Exception e) {
 			//e.printStackTrace();
 			DateFormat formatter = new SimpleDateFormat(
 					"yyyy-MM-dd'T'HH:mm:ss.SSS");
-			//formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+			formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 			tempDate = formatter.parse(date);
 		}
 
