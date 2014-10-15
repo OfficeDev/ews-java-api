@@ -7,6 +7,7 @@
     <groupId>com.microsoft.office</groupId>
     <artifactId>ews-java-api</artifactId>
     <version>1.3-SNAPSHOT</version>
+    <packaging>bundle</packaging>
 
     <name>Exchange Web Services Java API</name>
     <description>Exchange Web Services (EWS) Java API</description>
@@ -76,6 +77,14 @@
     </dependencies>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.4.0</version>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
         <!-- Used to bump all of the various core plugins up to Maven current.
             Use this in conjunction with the versions-maven-plugin to keep your Maven
             plugins up to date. -->
