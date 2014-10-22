@@ -460,14 +460,20 @@ public class Task extends Item {
 	}
 
 	/**
-	 * Sets the percent complete.
+	 * Sets the percent complete. PercentComplete must
+     * be between 0.0 and 100.0 .
 	 * 
 	 * @param value
 	 *            the new percent complete
 	 * @throws Exception
 	 *             the exception
 	 */
-	public void setPercentComplete(String value) throws Exception {
+	public void setPercentComplete(Double value) throws Exception {
+        if (value == null || Double.isNaN(value) || value < 0.0 || value > 100.0){
+            throw new IllegalArgumentException(
+                    String.format(Strings.InvalidPropertyValueNotInRange,
+                            ((value != null)? value : "null"), 0.0, 100));
+        }
 		this.getPropertyBag().setObjectFromPropertyDefinition(
 				TaskSchema.PercentComplete, value);
 	}
