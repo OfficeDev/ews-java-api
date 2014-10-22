@@ -1,3 +1,9 @@
+/**************************************************************************
+ * copyright file="EwsUtilitiesTest.java" company="Microsoft"
+ *     Copyright (c) Microsoft Corporation.  All rights reserved.
+ *
+ * Defines the TaskTest.java.
+ **************************************************************************/
 package microsoft.exchange.webservices.data;
 
 import org.hamcrest.core.IsEqual;
@@ -13,8 +19,6 @@ import static org.junit.Assert.assertThat;
 
 /**
  * Testclass for methods of Task
- *
- * @author serious6
  */
 @RunWith(JUnit4.class)
 public class TaskTest extends BaseTest {
@@ -86,13 +90,24 @@ public class TaskTest extends BaseTest {
     }
 
     /**
-     * Test for adding Double.NEGATIVE_INFINITY as percentCompleted
+     * Test for adding -0.1 as percentCompleted
      *
      * @throws Exception
      */
     @Test(expected = IllegalArgumentException.class)
-    public void testAddMinDoublePercent() throws Exception {
-        final Double targetValue = Double.NEGATIVE_INFINITY;
+    public void testAddInvalidPercent() throws Exception {
+        final Double targetValue = -0.1;
+        taskMock.setPercentComplete(targetValue);
+    }
+
+    /**
+     * Test for adding +100.1 as percentCompleted
+     *
+     * @throws Exception
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddInvalidPercent2() throws Exception {
+        final Double targetValue = +100.1;
         taskMock.setPercentComplete(targetValue);
     }
 
@@ -122,7 +137,7 @@ public class TaskTest extends BaseTest {
         assertThat(taskMock.getPercentComplete(), IsInstanceOf.instanceOf(Double.class));
         assertThat(taskMock.getPercentComplete(), IsEqual.equalTo(targetValue));
 
-        final Double invalidValue = Double.NEGATIVE_INFINITY;
+        final Double invalidValue = -0.1;
         try {
             taskMock.setPercentComplete(invalidValue);
         } catch (IllegalArgumentException ex) {

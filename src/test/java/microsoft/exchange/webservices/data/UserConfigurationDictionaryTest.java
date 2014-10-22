@@ -1,3 +1,9 @@
+/**************************************************************************
+ * copyright file="EwsUtilitiesTest.java" company="Microsoft"
+ *     Copyright (c) Microsoft Corporation.  All rights reserved.
+ *
+ * Defines the UserConfigurationDictionaryTest.java.
+ **************************************************************************/
 package microsoft.exchange.webservices.data;
 
 import org.junit.Assert;
@@ -13,7 +19,6 @@ import java.util.Date;
 /**
  * Testclass for methods of UserConfigurationDictionary
  *
- * @author serious6
  */
 @RunWith(JUnit4.class)
 public class UserConfigurationDictionaryTest extends BaseTest {

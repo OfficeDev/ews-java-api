@@ -1,3 +1,9 @@
+/**************************************************************************
+ * copyright file="EwsUtilitiesTest.java" company="Microsoft"
+ *     Copyright (c) Microsoft Corporation.  All rights reserved.
+ *
+ * Defines the BaseTest.java.
+ **************************************************************************/
 package microsoft.exchange.webservices.data;
 
 import org.junit.BeforeClass;
@@ -5,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 /**
- * Created by Init on 22.10.2014.
+ * A base class with "Common-Services"
  */
 @RunWith(JUnit4.class)
 public abstract class BaseTest {
