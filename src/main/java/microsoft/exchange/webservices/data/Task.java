@@ -460,6 +460,23 @@ public class Task extends Item {
 				TaskSchema.PercentComplete);
 	}
 
+    /**
+     * Sets the completion percentage of the task.
+     * PercentComplete must be between
+     * 0.0 and 100.0 .
+     *
+     * @param value
+     *            the new percent complete
+     * @deprecated
+     *            use Double parameter instead
+     * @throws Exception
+     *             the exception
+     */
+    @Deprecated
+    public void setPercentComplete(String value) throws Exception {
+        setPercentComplete(Double.valueOf(value));
+    }
+
 	/**
 	 * Sets the completion percentage of the task.
      * PercentComplete must be between
