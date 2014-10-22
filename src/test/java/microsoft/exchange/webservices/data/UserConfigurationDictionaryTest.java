@@ -16,34 +16,17 @@ import java.util.Date;
  * @author serious6
  */
 @RunWith(JUnit4.class)
-public class UserConfigurationDictionaryTest {
+public class UserConfigurationDictionaryTest extends BaseTest {
 
     /**
      * Mock for the UserConfigurationDictionary
      */
-    private UserConfigurationDictionary userConfigurationDictionary;
-    /**
-     * Mock for the ExchangeServiceBase
-     */
-    private ExchangeServiceBase exchangeServiceMock;
+    protected UserConfigurationDictionary userConfigurationDictionary;
 
-    /**
-     * Setup Mocks and the UserConfigurationDictionary Object
-     *
-     * @throws Exception
-     */
     @Before
     public void setup() throws Exception {
         // Initialise a UserConfigurationDictionary Testobject
         this.userConfigurationDictionary = new UserConfigurationDictionary();
-
-        // Mock up ExchangeServiceBase
-        this.exchangeServiceMock = new ExchangeServiceBase() {
-            @Override
-            protected void processHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException) throws Exception {
-                throw webException;
-            }
-        };
     }
 
     /**
@@ -142,7 +125,7 @@ public class UserConfigurationDictionaryTest {
     public void testWriteElementsToXml() throws Exception {
         // Mock up needed Classes
         OutputStream output = new ByteArrayOutputStream();
-        EwsServiceXmlWriter testWriter = new EwsServiceXmlWriter(exchangeServiceMock, output);
+        EwsServiceXmlWriter testWriter = new EwsServiceXmlWriter(exchangeServiceBaseMock, output);
 
         // Adding Test Values to the Object
         fillDictionaryWithValidEntries();
