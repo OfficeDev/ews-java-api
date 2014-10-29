@@ -1,3 +1,12 @@
+/**************************************************************************
+ Exchange Web Services Java API
+ Copyright (c) Microsoft Corporation
+ All rights reserved.
+ MIT License
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ **************************************************************************/
 package microsoft.exchange.webservices.data;
 
 import org.junit.Assert;
@@ -13,37 +22,19 @@ import java.util.Date;
 /**
  * Testclass for methods of UserConfigurationDictionary
  *
- * @author serious6
  */
 @RunWith(JUnit4.class)
-public class UserConfigurationDictionaryTest {
+public class UserConfigurationDictionaryTest extends BaseTest {
 
     /**
      * Mock for the UserConfigurationDictionary
      */
-    private UserConfigurationDictionary userConfigurationDictionary;
-    /**
-     * Mock for the ExchangeServiceBase
-     */
-    private ExchangeServiceBase exchangeServiceMock;
+    protected UserConfigurationDictionary userConfigurationDictionary;
 
-    /**
-     * Setup Mocks and the UserConfigurationDictionary Object
-     *
-     * @throws Exception
-     */
     @Before
     public void setup() throws Exception {
         // Initialise a UserConfigurationDictionary Testobject
         this.userConfigurationDictionary = new UserConfigurationDictionary();
-
-        // Mock up ExchangeServiceBase
-        this.exchangeServiceMock = new ExchangeServiceBase() {
-            @Override
-            protected void processHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException) throws Exception {
-                throw webException;
-            }
-        };
     }
 
     /**
@@ -142,7 +133,7 @@ public class UserConfigurationDictionaryTest {
     public void testWriteElementsToXml() throws Exception {
         // Mock up needed Classes
         OutputStream output = new ByteArrayOutputStream();
-        EwsServiceXmlWriter testWriter = new EwsServiceXmlWriter(exchangeServiceMock, output);
+        EwsServiceXmlWriter testWriter = new EwsServiceXmlWriter(exchangeServiceBaseMock, output);
 
         // Adding Test Values to the Object
         fillDictionaryWithValidEntries();

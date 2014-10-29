@@ -23,7 +23,7 @@ public class Task extends Item {
 	/**
 	 * Initializes an unsaved local instance of Task.To bind to an existing
 	 * task, use Task.Bind() instead.
-	 * 
+	 *
 	 * @param service
 	 *            the service
 	 * @throws Exception
@@ -35,7 +35,7 @@ public class Task extends Item {
 
 	/**
 	 * Initializes a new instance of the class.
-	 * 
+	 *
 	 * @param parentAttachment
 	 *            the parent attachment
 	 * @throws Exception
@@ -48,7 +48,7 @@ public class Task extends Item {
 	/**
 	 * Binds to an existing task and loads the specified set of properties.
 	 * Calling this method results in a call to EWS.
-	 * 
+	 *
 	 * @param service
 	 *            the service
 	 * @param id
@@ -68,7 +68,7 @@ public class Task extends Item {
 	/**
 	 * Binds to an existing task and loads its first class properties. Calling
 	 * this method results in a call to EWS.
-	 * 
+	 *
 	 * @param service
 	 *            the service
 	 * @param id
@@ -85,7 +85,7 @@ public class Task extends Item {
 
 	/**
 	 * Internal method to return the schema associated with this type of object.
-	 * 
+	 *
 	 * @return The schema associated with this type of object.
 	 */
 	@Override
@@ -95,7 +95,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the minimum required server version.
-	 * 
+	 *
 	 * @return Earliest Exchange version in which this service object type is
 	 *         supported.
 	 */
@@ -108,7 +108,7 @@ public class Task extends Item {
 	 * Gets a value indicating whether a time zone SOAP header should be
 	 * emitted in a CreateItem or UpdateItem request so this item can be
 	 * property saved or updated.
-	 * 
+	 *
 	 * @param isUpdateOperation
 	 *            the is update operation
 	 * @return if a time zone SOAP header should be emitted; otherwise, .
@@ -123,7 +123,7 @@ public class Task extends Item {
 	 * occurrence isdeleted, the task represents the next occurrence. Developers
 	 * should call Load to retrieve the new property values of the task. Calling
 	 * this method results in a call to EWS.
-	 * 
+	 *
 	 * @param deleteMode
 	 *            the delete mode
 	 * @throws ServiceLocalException
@@ -141,7 +141,7 @@ public class Task extends Item {
 	 * Applies the local changes that have been made to this task. Calling
 	 * this method results in at least one call to EWS. Mutliple calls to EWS
 	 * might be made if attachments have been added or removed.
-	 * 
+	 *
 	 * @param conflictResolutionMode
 	 *            the conflict resolution mode
 	 * @return A Task object representing the completed occurrence if the task
@@ -164,7 +164,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the actual amount of time that is spent on the task.
-	 * 
+	 *
 	 * @return the actual work
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -176,7 +176,7 @@ public class Task extends Item {
 
 	/**
 	 * Sets the checks if is read.
-	 * 
+	 *
 	 * @param value
 	 *            the new checks if is read
 	 * @throws Exception
@@ -189,7 +189,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the date and time the task was assigned.
-	 * 
+	 *
 	 * @return the assigned time
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -201,7 +201,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the billing information of the task.
-	 * 
+	 *
 	 * @return the billing information
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -213,7 +213,7 @@ public class Task extends Item {
 
 	/**
 	 * Sets the billing information.
-	 * 
+	 *
 	 * @param value
 	 *            the new billing information
 	 * @throws Exception
@@ -226,7 +226,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the number of times the task has changed since it was created.
-	 * 
+	 *
 	 * @return the change count
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -238,7 +238,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets a list of companies associated with the task.
-	 * 
+	 *
 	 * @return the companies
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -250,7 +250,7 @@ public class Task extends Item {
 
 	/**
 	 * Sets the companies.
-	 * 
+	 *
 	 * @param value
 	 *            the new companies
 	 * @throws Exception
@@ -263,7 +263,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the date and time on which the task was completed.
-	 * 
+	 *
 	 * @return the complete date
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -275,7 +275,7 @@ public class Task extends Item {
 
 	/**
 	 * Sets the complete date.
-	 * 
+	 *
 	 * @param value
 	 *            the new complete date
 	 * @throws Exception
@@ -288,7 +288,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets a list of contacts associated with the task.
-	 * 
+	 *
 	 * @return the contacts
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -300,7 +300,7 @@ public class Task extends Item {
 
 	/**
 	 * Sets the contacts.
-	 * 
+	 *
 	 * @param value
 	 *            the new contacts
 	 * @throws Exception
@@ -313,7 +313,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the current delegation state of the task.
-	 * 
+	 *
 	 * @return the delegation state
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -326,7 +326,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the name of the delegator of this task.
-	 * 
+	 *
 	 * @return the delegator
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -338,7 +338,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets a list of contacts associated with the task.
-	 * 
+	 *
 	 * @return the due date
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -350,7 +350,7 @@ public class Task extends Item {
 
 	/**
 	 * Sets the due date.
-	 * 
+	 *
 	 * @param value
 	 *            the new due date
 	 * @throws Exception
@@ -363,7 +363,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets a value indicating the mode of the task.
-	 * 
+	 *
 	 * @return the mode
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -375,7 +375,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets a value indicating whether the task is complete.
-	 * 
+	 *
 	 * @return the checks if is complete
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -387,7 +387,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets a value indicating whether the task is recurring.
-	 * 
+	 *
 	 * @return the checks if is recurring
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -399,7 +399,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets a value indicating whether the task is a team task.
-	 * 
+	 *
 	 * @return the checks if is team task
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -411,7 +411,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the mileage of the task.
-	 * 
+	 *
 	 * @return the mileage
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -423,7 +423,7 @@ public class Task extends Item {
 
 	/**
 	 * Sets the mileage.
-	 * 
+	 *
 	 * @param value
 	 *            the new mileage
 	 * @throws Exception
@@ -436,7 +436,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the name of the owner of the task.
-	 * 
+	 *
 	 * @return the owner
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -447,9 +447,10 @@ public class Task extends Item {
 	}
 
 	/**
-	 * Gets the completeion percentage of the task. PercentComplete must
-	 * be between 0 and 100.
-	 * 
+	 * Gets the completion percentage of the task.
+     * PercentComplete must be between
+     * 0 and 100.
+	 *
 	 * @return the percent complete
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -459,15 +460,39 @@ public class Task extends Item {
 				TaskSchema.PercentComplete);
 	}
 
+    /**
+     * Sets the completion percentage of the task.
+     * PercentComplete must be between
+     * 0.0 and 100.0 .
+     *
+     * @param value
+     *            the new percent complete
+     * @deprecated
+     *            use Double parameter instead
+     * @throws Exception
+     *             the exception
+     */
+    @Deprecated
+    public void setPercentComplete(String value) throws Exception {
+        setPercentComplete(Double.valueOf(value));
+    }
+
 	/**
-	 * Sets the percent complete.
-	 * 
+	 * Sets the completion percentage of the task.
+     * PercentComplete must be between
+     * 0.0 and 100.0 .
+	 *
 	 * @param value
 	 *            the new percent complete
 	 * @throws Exception
 	 *             the exception
 	 */
-	public void setPercentComplete(String value) throws Exception {
+	public void setPercentComplete(Double value) throws Exception {
+        if (value == null || Double.isNaN(value) || value < 0.0 || value > 100.0){
+            throw new IllegalArgumentException(
+                    String.format(Strings.InvalidPropertyValueNotInRange,
+                            ((value != null)? value : "null"), 0.0, 100));
+        }
 		this.getPropertyBag().setObjectFromPropertyDefinition(
 				TaskSchema.PercentComplete, value);
 	}
@@ -476,7 +501,7 @@ public class Task extends Item {
 	 * Gets the recurrence pattern for this task. Available recurrence
 	 * pattern classes include Recurrence.DailyPattern,
 	 * Recurrence.MonthlyPattern and Recurrence.YearlyPattern.
-	 * 
+	 *
 	 * @return the recurrence
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -488,7 +513,7 @@ public class Task extends Item {
 
 	/**
 	 * Sets the recurrence.
-	 * 
+	 *
 	 * @param value
 	 *            the new recurrence
 	 * @throws Exception
@@ -501,7 +526,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the date and time on which the task starts.
-	 * 
+	 *
 	 * @return the start date
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -513,7 +538,7 @@ public class Task extends Item {
 
 	/**
 	 * Sets the start date.
-	 * 
+	 *
 	 * @param value
 	 *            the new start date
 	 * @throws Exception
@@ -526,7 +551,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the status of the task.
-	 * 
+	 *
 	 * @return the status
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -538,7 +563,7 @@ public class Task extends Item {
 
 	/**
 	 * Sets the status.
-	 * 
+	 *
 	 * @param value
 	 *            the new status
 	 * @throws Exception
@@ -553,7 +578,7 @@ public class Task extends Item {
 	 * Gets a string representing the status of the task, localized according to
 	 * the PreferredCulture property of the ExchangeService object the task is
 	 * bound to.
-	 * 
+	 *
 	 * @return the status description
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -565,7 +590,7 @@ public class Task extends Item {
 
 	/**
 	 * Gets the total amount of work spent on the task.
-	 * 
+	 *
 	 * @return the total work
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -577,7 +602,7 @@ public class Task extends Item {
 
 	/**
 	 * Sets the total work.
-	 * 
+	 *
 	 * @param value
 	 *            the new total work
 	 * @throws Exception
@@ -592,7 +617,7 @@ public class Task extends Item {
 	 * Gets the default setting for how to treat affected task occurrences on
 	 * Delete. <value>AffectedTaskOccurrence.AllOccurrences: All affected Task
 	 * occurrences will be deleted.</value>
-	 * 
+	 *
 	 * @return the default affected task occurrences
 	 */
 	@Override

@@ -7,28 +7,42 @@
  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **************************************************************************/
-
 package microsoft.exchange.webservices.data;
 
-import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.junit.Test;
 
+/**
+ * A base class with "Common-Services"
+ */
 @RunWith(JUnit4.class)
-public class EwsUtilitiesTest {
-    @Test
-    public void testGetBuildVersion() {
-        Assert.assertEquals("Build version must be 0s", "0.0.0.0", EwsUtilities.getBuildVersion());
+public abstract class BaseTest {
+
+    /**
+     * Mock for the ExchangeServiceBase
+     */
+    protected static ExchangeServiceBase exchangeServiceBaseMock;
+
+    /**
+     * Mock for the ExchangeService
+     */
+    protected static ExchangeService exchangeServiceMock;
+
+    /**
+     * Setup Mocks
+     *
+     * @throws Exception
+     */
+    @BeforeClass
+    public static final void setUpBaseClass() throws Exception {
+        // Mock up ExchangeServiceBase
+        exchangeServiceBaseMock = new ExchangeServiceBase() {
+            @Override
+            protected void processHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException) throws Exception {
+                throw webException;
+            }
+        };
+        exchangeServiceMock = new ExchangeService();
     }
-
-	@Test
-	public void testStringEquals() {
-		Assert.assertTrue(EwsUtilities.stringEquals(null, null));
-		Assert.assertTrue(EwsUtilities.stringEquals("x", "x"));
-
-		Assert.assertFalse(EwsUtilities.stringEquals(null, "x"));
-		Assert.assertFalse(EwsUtilities.stringEquals("x", null));
-		Assert.assertFalse(EwsUtilities.stringEquals("x", "X"));
-	}
 }
