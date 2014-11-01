@@ -164,34 +164,18 @@ public class ItemAttachment extends Attachment implements
 		}
 	}
 
-	/**
-	 * Validates this instance.
-	 * 
-	 * @param attachmentIndex
-	 *            the attachment index
-	 * @throws Exception
-	 *             the exception
-	 */
+    /**
+     * {@inheritDoc}
+     */
 	@Override
 	protected void validate(int attachmentIndex) throws Exception {
-		// String s = "null";
-
 		if (this.getName() == null || this.getName().isEmpty()) {
-			try {
-				throw new ServiceValidationException(String.format(
-						Strings.ItemAttachmentMustBeNamed, attachmentIndex));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			throw new ServiceValidationException(String.format(
+					Strings.ItemAttachmentMustBeNamed, attachmentIndex));
 		}
 
 		// Recurse through any items attached to item attachment.
-		try {
-			this.validate();
-		} catch (ServiceValidationException sve) {
-			sve.printStackTrace();
-
-		}
+		this.validate();
 	}
 
 	/**

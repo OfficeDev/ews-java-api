@@ -396,9 +396,7 @@ public abstract class Attachment extends ComplexProperty {
 	 * @throws Exception
 	 *             the exception
 	 */
-	void validate(int attachmentIndex) throws ServiceValidationException,
-			Exception {
-	}
+    abstract void validate(int attachmentIndex) throws Exception;
 
 	/**
 	 * Loads the attachment. Calling this method results in a call to EWS.

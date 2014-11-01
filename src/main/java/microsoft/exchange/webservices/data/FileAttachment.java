@@ -55,24 +55,16 @@ public final class FileAttachment extends Attachment {
 		return XmlElementNames.FileAttachment;
 	}
 
-	/**
-	 * Validates this instance.
-	 * 
-	 * @param attachmentIndex
-	 *            the attachment index
-	 * @throws ServiceValidationException
-	 *             the service validation exception
-	 */
-	void validate(int attachmentIndex) throws ServiceValidationException {
-		try {
-			if ((this.fileName == null || this.fileName.isEmpty())
-					&& (this.content == null) && (this.contentStream == null)) {
-				throw new ServiceValidationException(String.format(
-						Strings.FileAttachmentContentIsNotSet, 
-						attachmentIndex));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+	protected void validate(int attachmentIndex) throws ServiceValidationException {
+		if ((this.fileName == null || this.fileName.isEmpty())
+				&& (this.content == null) && (this.contentStream == null)) {
+			throw new ServiceValidationException(String.format(
+					Strings.FileAttachmentContentIsNotSet,
+					attachmentIndex));
 		}
 	}
 
