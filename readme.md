@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/OfficeDev/ews-java-api.svg)](https://travis-ci.org/OfficeDev/ews-java-api) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/OfficeDev/ews-java-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 # Getting Started with the EWS JAVA API
 
 ## Using the EWS JAVA API for https
@@ -10,7 +12,7 @@ For testing the application with https, you don't have to add any additional cod
 To access Exchange Web Services (EWS) by using the EWS JAVA API, all you need is an instance of the ExchangeService class, as shown in the following example.
 ```
 ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2010_SP2);
-ExchangeCredentials credentials = new WebCredentials("emailAddress", " password");
+ExchangeCredentials credentials = new WebCredentials("emailAddress", "password");
 service.setCredentials(credentials);
 ```
 
@@ -22,7 +24,7 @@ You can set the URL of the service in one of two ways:
 To set the URL manually, use the following:
 
 ```
-service.Url = new Uri("<ews_url>");
+service.setUrl(new Uri("<ews_url>"));
 ```
 To set the URL by using Autodiscover, use the following:
 

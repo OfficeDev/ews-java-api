@@ -1,9 +1,13 @@
 /**************************************************************************
- * copyright file="SimpleServiceRequestBase.java" company="Microsoft"
- *     Copyright (c) Microsoft Corporation.  All rights reserved.
- * 
- * Defines the SimpleServiceRequestBase.java.
+ Exchange Web Services Java API
+ Copyright (c) Microsoft Corporation
+ All rights reserved.
+ MIT License
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **************************************************************************/
+
 package microsoft.exchange.webservices.data;
 
 import java.io.*;
@@ -18,7 +22,6 @@ import org.apache.commons.httpclient.HttpClientError;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 
 /**
  * Defines the SimpleServiceRequestBase class. 
@@ -40,76 +43,56 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 	 * @throws Exception 
 	 * @throws microsoft.exchange.webservices.data.ServiceLocalException
 	 */
-	protected Object internalExecute() 
-	throws ServiceLocalException, Exception {		
-		OutParam<HttpWebRequest> outParam = 
-			new OutParam<HttpWebRequest>();
-		HttpWebRequest response = this.validateAndEmitRequest(outParam);
-		
-        try {        	
-			return this.readResponse(response);
-        }
-        catch (IOException ex) {
-            // Wrap exception.
-            throw new ServiceRequestException(String.
-            		format(Strings.ServiceRequestFailed, ex.getMessage(), ex));
-        }
-        catch (Exception e) {
-            if (response != null) {
-                this.getService().processHttpResponseHeaders(TraceFlags.
-                		EwsResponseHttpHeaders, response);
-            }
+	protected Object internalExecute() throws ServiceLocalException, Exception {
+		HttpWebRequest response = null;
 
-            throw new ServiceRequestException(String.format(Strings.
-            		ServiceRequestFailed, e.getMessage()), e);
-        }
-        finally
-        {
-        	try {
-        		response.close(); 
+		try {
+			response = this.validateAndEmitRequest();
+			return this.readResponse(response);
+		} catch (IOException ex) {
+			// Wrap exception.
+			throw new ServiceRequestException(String.
+					format(Strings.ServiceRequestFailed, ex.getMessage(), ex));
+		} catch (Exception e) {
+			if (response != null) {
+				this.getService().processHttpResponseHeaders(TraceFlags.
+						EwsResponseHttpHeaders, response);
+			}
+
+			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+		} finally {
+			try {
+				if (response != null) {
+					response.close();
+				}
 			} catch (Exception e2) {
 				response = null;
-			}       	
-        }
-        
-    }
-		
-	/** 
-     * Ends executing this async request.
-     * 
-     * @param asyncResult The async result 
-     *  @return Service response object.
-     */ 
-    protected Object endInternalExecute(IAsyncResult asyncResult)throws Exception
-    {
-		// We have done enough validation before
-		// AsyncRequestResult asyncRequestResult =
-		// (AsyncRequestResult)asyncResult;
-		/*
-		 * HttpWebRequest request =((AsyncRequestResult)
-		 * asyncResult).getHttpWebRequest(); OutParam<HttpWebRequest> outparam =
-		 * new OutParam<HttpWebRequest>(); outparam.setParam(request);
-		 */
-		FutureTask task = ((AsyncRequestResult) asyncResult).getTask();
-		// HttpWebRequest response = this.endGetEwsHttpWebResponse(outparam,
-		// (AsyncRequestResult) asyncRequestResult.getWebAsyncResult());*/
+			}
+		}
+	}
+
+	/**
+	 * Ends executing this async request.
+	 *
+	 * @param asyncResult The async result
+	 * @return Service response object.
+	 */
+	protected Object endInternalExecute(IAsyncResult asyncResult) throws Exception {
 		HttpWebRequest response = (HttpWebRequest) asyncResult.get();
 		return this.readResponse(response);
-    }
+	}
 
-    /** 
-     * Begins executing this async request.
-     * 
-     *@param callback The AsyncCallback delegate. 
-     *@param state An object that contains state information for this request. 
-     * @return An IAsyncResult that references the asynchronous request.
-     */ 
-    protected AsyncRequestResult beginExecute(AsyncCallback callback, Object state) throws Exception
-    {
+	/**
+	 * Begins executing this async request.
+	 *
+	 * @param callback The AsyncCallback delegate.
+	 * @param state An object that contains state information for this request.
+	 * @return An IAsyncResult that references the asynchronous request.
+	 */
+	protected AsyncRequestResult beginExecute(AsyncCallback callback, Object state) throws Exception {
 		this.validate();
 
-		HttpWebRequest request = (HttpWebRequest) this.buildEwsHttpWebRequest()
-				.getParam();
+		HttpWebRequest request = this.buildEwsHttpWebRequest();
 
 		WebAsyncCallStateAnchor wrappedState = new WebAsyncCallStateAnchor(
 				this, request, callback /* user callback */, state /*user state*/);
@@ -118,8 +101,7 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 		Callable cl = new CallableMethod(request);
 		Future task = es.submit(cl, callback);
 		es.shutdown();
-		AsyncRequestResult ft = new AsyncRequestResult(this, request, task,
-				null);
+		AsyncRequestResult ft = new AsyncRequestResult(this, request, task, null);
 
 		// ct.setAsyncRequest();
 		// webAsyncResult =
@@ -128,9 +110,9 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 		return ft;
 		// return new AsyncRequestResult(this, request, webAsyncResult, state /*
 		// user state */);
-    }
+	}
 
-    /**
+	/**
 	 * Reads the response.
 	 * @return serviceResponse	
 	 * @throws Exception 

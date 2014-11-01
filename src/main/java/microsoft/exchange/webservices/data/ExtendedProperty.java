@@ -1,9 +1,13 @@
 /**************************************************************************
- * copyright file="ExtendedProperty.java" company="Microsoft"
- *     Copyright (c) Microsoft Corporation.  All rights reserved.
- * 
- * Defines the ExtendedProperty.java.
+ Exchange Web Services Java API
+ Copyright (c) Microsoft Corporation
+ All rights reserved.
+ MIT License
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **************************************************************************/
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -105,7 +109,7 @@ public final class ExtendedProperty extends ComplexProperty {
 			writer
 					.writeStartElement(XmlNamespace.Types,
 							XmlElementNames.Values);
-			for (int index = 0; index <= array.size(); index++) {
+			for (int index = 0; index < array.size(); index++) {
 				writer.writeElementValue(XmlNamespace.Types,
 						XmlElementNames.Value, MapiTypeConverter
 								.convertToString(this.getPropertyDefinition()
@@ -170,7 +174,7 @@ public final class ExtendedProperty extends ComplexProperty {
 			} else {
 				StringBuilder sb = new StringBuilder();
 				sb.append("[");
-				for (int index = 0; index <= array.size(); index++) {
+				for (int index = 0; index < array.size(); index++) {
 					sb.append(MapiTypeConverter.convertToString(this
 							.getPropertyDefinition().getMapiType(), array
 							.get(index)));

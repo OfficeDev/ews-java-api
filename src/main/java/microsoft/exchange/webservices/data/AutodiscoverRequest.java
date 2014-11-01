@@ -1,9 +1,13 @@
 /**************************************************************************
- * copyright file="AutodiscoverRequest.java" company="Microsoft"
- *     Copyright (c) Microsoft Corporation.  All rights reserved.
- * 
- * Defines the AutodiscoverRequest.java.
+ Exchange Web Services Java API
+ Copyright (c) Microsoft Corporation
+ All rights reserved.
+ MIT License
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **************************************************************************/
+
 package microsoft.exchange.webservices.data;
 
 import java.io.ByteArrayInputStream;
@@ -21,10 +25,8 @@ import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents the base class for all requested made to the Autodiscover service.
- * 
  */
 abstract class AutodiscoverRequest {
-
 	/** The service. */
 	private AutodiscoverService service;
 
@@ -168,10 +170,10 @@ abstract class AutodiscoverRequest {
 
 			// WCF may not generate an XML declaration.
 			ewsXmlReader.read();
-			if (ewsXmlReader.getNodeType().getNodeType() == XMLNodeType.START_DOCUMENT) {
+			if (ewsXmlReader.getNodeType().getNodeType() == XmlNodeType.START_DOCUMENT) {
 				ewsXmlReader.readStartElement(XmlNamespace.Soap,
 						XmlElementNames.SOAPEnvelopeElementName);
-			} else if ((ewsXmlReader.getNodeType().getNodeType() != XMLNodeType.START_ELEMENT)
+			} else if ((ewsXmlReader.getNodeType().getNodeType() != XmlNodeType.START_ELEMENT)
 					|| (!ewsXmlReader.getLocalName().equals(
 							XmlElementNames.SOAPEnvelopeElementName))
 					|| (!ewsXmlReader.getNamespaceUri().equals(
@@ -233,12 +235,13 @@ abstract class AutodiscoverRequest {
 					Strings.ServiceRequestFailed, ex.getMessage()), ex);
 		} finally {
 			try {
-				request.close();
-			} catch (Exception e2) {
-				request = null;
+				if (request != null) {
+					request.close();
+				}
+			} catch (Exception e) {
+				// do nothing
 			}
 		}
-
 	}
 
 	/**
@@ -248,10 +251,8 @@ abstract class AutodiscoverRequest {
 	 *            WebException
 	 * @param req
 	 *            HttpWebRequest
-	 * 
 	 */
 	private void processWebException(Exception exception, HttpWebRequest req) {
-		SoapFaultDetails soapFaultDetails = null;
 		if (null != req) {
 			try {
 				if (500 == req.getResponseCode()) {
@@ -277,7 +278,6 @@ abstract class AutodiscoverRequest {
 							new ByteArrayInputStream(
 								memoryStream.toByteArray());
 						EwsXmlReader reader = new EwsXmlReader(memoryStreamIn);
-						//soapFaultDetails = this.readSoapFault(reader);
 						this.readSoapFault(reader);
 						memoryStream.close();
 					} else {
@@ -285,7 +285,7 @@ abstract class AutodiscoverRequest {
 								.getResponseStream(req);
 						EwsXmlReader reader = new EwsXmlReader(
 								serviceResponseStream);
-						soapFaultDetails = this.readSoapFault(reader);
+						SoapFaultDetails soapFaultDetails = this.readSoapFault(reader);
 						serviceResponseStream.close();
 
 						if (soapFaultDetails != null) {
@@ -295,10 +295,8 @@ abstract class AutodiscoverRequest {
 					}
 				} else {
 					this.service.processHttpErrorResponse(req, exception);
-	                
 				}
 			} catch (Exception e) {
-				// do nothing
 				e.printStackTrace();
 			}
 		}
@@ -381,13 +379,13 @@ abstract class AutodiscoverRequest {
 		try {
 
 			reader.read();
-			if (reader.getNodeType().getNodeType() == XMLNodeType.START_DOCUMENT) {
+			if (reader.getNodeType().getNodeType() == XmlNodeType.START_DOCUMENT) {
 				reader.read();
 			}
 			if (!reader.isStartElement()
 					|| (!reader.getLocalName().equals(
 							XmlElementNames.SOAPEnvelopeElementName))) {
-				return soapFaultDetails;
+				return null;
 			}
 
 			// Get the namespace URI from the envelope element and use it for
@@ -396,7 +394,7 @@ abstract class AutodiscoverRequest {
 			XmlNamespace soapNamespace = EwsUtilities
 					.getNamespaceFromUri(reader.getNamespaceUri());
 			if (soapNamespace == XmlNamespace.NotSpecified) {
-				return soapFaultDetails;
+				return null;
 			}
 
 			reader.read();
@@ -518,12 +516,12 @@ abstract class AutodiscoverRequest {
 	}
 	
 	/**
-    * Write extra headers. 
-    *
-    *@param writer The writer
-	 * @throws ServiceXmlSerializationException 
+	 * Write extra headers.
+	 *
+	 * @param writer The writer
+	 * @throws ServiceXmlSerializationException
 	 * @throws javax.xml.stream.XMLStreamException
-    **/ 
+	 */
     protected void writeExtraCustomSoapHeadersToXml(EwsServiceXmlWriter writer) throws XMLStreamException, ServiceXmlSerializationException
     {
         // do nothing here. 

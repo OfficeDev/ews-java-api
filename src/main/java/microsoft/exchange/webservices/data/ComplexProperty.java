@@ -1,12 +1,15 @@
 /**************************************************************************
- * copyright file="ComplexProperty.java" company="Microsoft"
- *     Copyright (c) Microsoft Corporation.  All rights reserved.
- * 
- * Defines the ComplexProperty.java.
+ Exchange Web Services Java API
+ Copyright (c) Microsoft Corporation
+ All rights reserved.
+ MIT License
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **************************************************************************/
+
 package microsoft.exchange.webservices.data;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,11 +80,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 		} else {
 			if (field instanceof Comparable<?>) {
 				Comparable<T> c = (Comparable<T>)field;
-				if(value != null){
-				applyChange = c.compareTo(value) != 0;
-				} else {
-					applyChange = false;
-				}
+				applyChange = value != null && c.compareTo(value) != 0;
 			} else {
 				applyChange = true;
 			}
@@ -140,7 +139,6 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
      *  True if element was read.
      * 
      */
-     
     protected boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception
     {
         return false;
@@ -193,12 +191,12 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 				reader.read();
 
 				switch (reader.getNodeType().nodeType) {
-				case XMLNodeType.START_ELEMENT:
+				case XmlNodeType.START_ELEMENT:
 					if (!this.tryReadElementFromXml(reader)) {
 						reader.skipCurrentElement();
 					}
 					break;
-				case XMLNodeType.CHARACTERS:
+				case XmlNodeType.CHARACTERS:
 					this.readTextValueFromXml(reader);
 					break;
 				}
@@ -209,39 +207,32 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 			reader.isEndElement(xmlNamespace, xmlElementName);
 		} */
 		
-		this.internalLoadFromXml(reader, xmlNamespace, xmlElementName, false);
-                   
-        		
+		this.internalLoadFromXml(reader, xmlNamespace, xmlElementName);
 	}
 	
-	 /**  
-      * Loads from XML to update this property.
-      * 
-      *@param reader The reader. 
-      *@param xmlElementName Name of the XML element. 
-	 * @throws Exception 
-      */
-	
-	protected  void updateFromXml(EwsServiceXmlReader reader, String xmlElementName) throws Exception
- {
+	/**
+	 * Loads from XML to update this property.
+	 *
+	 * @param reader The reader.
+	 * @param xmlElementName Name of the XML element.
+	 * @throws Exception
+	 */
+	protected  void updateFromXml(EwsServiceXmlReader reader, String xmlElementName) throws Exception {
 		this.updateFromXml(reader, this.getNamespace(), xmlElementName);
-
 	}
-	
-	 /** 
-      * Loads from XML to update itself.
-      * 
-      *@param reader The reader. 
-      *@param xmlNamespace The XML namespace. 
-      *@param xmlElementName Name of the XML element. 
-      */
+
+	/**
+	 * Loads from XML to update itself.
+	 *
+	 * @param reader The reader.
+	 * @param xmlNamespace The XML namespace.
+	 * @param xmlElementName Name of the XML element.
+	 */
     protected  void updateFromXml(
         EwsServiceXmlReader reader,
         XmlNamespace xmlNamespace,
-        String xmlElementName) throws Exception
- {
-		this.internalupdateLoadFromXml(reader, xmlNamespace, xmlElementName,
-				false);
+        String xmlElementName) throws Exception {
+		this.internalupdateLoadFromXml(reader, xmlNamespace, xmlElementName);
 	}
 
     /**
@@ -249,13 +240,11 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
      * @param reader          The Reader.
      * @param xmlNamespace    The Xml NameSpace.
      * @param xmlElementName  The Xml ElementName
-     * @param readValue       The read value.
      */
     private void internalLoadFromXml(
         EwsServiceXmlReader reader,
         XmlNamespace xmlNamespace,
-        String xmlElementName,          
-        boolean readValue)throws Exception
+        String xmlElementName) throws Exception
  {
 		reader.ensureCurrentNodeIsStartElement(xmlNamespace, xmlElementName);
 
@@ -266,12 +255,12 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 				reader.read();
 
 				switch (reader.getNodeType().nodeType) {
-				case XMLNodeType.START_ELEMENT:
+				case XmlNodeType.START_ELEMENT:
 					if (!this.tryReadElementFromXml(reader)) {
 						reader.skipCurrentElement();
 					}
 					break;
-				case XMLNodeType.CHARACTERS:
+				case XmlNodeType.CHARACTERS:
 					this.readTextValueFromXml(reader);
 					break;
 				}
@@ -286,8 +275,7 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
     private void internalupdateLoadFromXml(
             EwsServiceXmlReader reader,
             XmlNamespace xmlNamespace,
-            String xmlElementName,          
-            boolean readValue)throws Exception
+            String xmlElementName) throws Exception
     {
 		reader.ensureCurrentNodeIsStartElement(xmlNamespace, xmlElementName);
 
@@ -298,20 +286,19 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 				reader.read();
 
 				switch (reader.getNodeType().nodeType) {
-				case XMLNodeType.START_ELEMENT:
+				case XmlNodeType.START_ELEMENT:
 					if (!this.tryReadElementFromXmlToPatch(reader)) {
 						reader.skipCurrentElement();
 					}
 					break;
-				case XMLNodeType.CHARACTERS:
+				case XmlNodeType.CHARACTERS:
 					this.readTextValueFromXml(reader);
 					break;
 				}
 			} while (!reader.isEndElement(xmlNamespace, xmlElementName));
 		}
 	}
-   
-    
+
 	/**
 	 * Loads from XML.
 	 * 
@@ -408,7 +395,6 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	 */
 	public void validate() throws ServiceValidationException, Exception {
 		this.internalValidate();
-
 	}
 
 	/**
@@ -418,16 +404,10 @@ public abstract class ComplexProperty implements ISelfValidate,ComplexFunctionDe
 	 *             the service validation exception
 	 * @throws Exception 
 	 */
-	protected void internalValidate() 
-	throws ServiceValidationException, Exception {
+	protected void internalValidate() throws ServiceValidationException, Exception {
 	}
 
-	public Boolean func(EwsServiceXmlReader reader)
-	 throws Exception {
-		if (!this.tryReadElementFromXml(reader)) 
-			return true;
-		else return false;
-	
+	public Boolean func(EwsServiceXmlReader reader) throws Exception {
+		return !this.tryReadElementFromXml(reader);
 	}
-
 }
