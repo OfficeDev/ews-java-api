@@ -61,7 +61,7 @@ public final class FileAttachment extends Attachment {
     @Override
 	protected void validate(int attachmentIndex) throws ServiceValidationException {
 		if ((this.fileName == null || this.fileName.isEmpty())
-				&& (this.content == null) && (this.contentStream == null)) {
+				&& this.content == null && this.contentStream == null) {
 			throw new ServiceValidationException(String.format(
 					Strings.FileAttachmentContentIsNotSet,
 					attachmentIndex));
