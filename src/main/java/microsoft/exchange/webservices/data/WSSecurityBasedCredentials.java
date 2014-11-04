@@ -13,9 +13,7 @@ package microsoft.exchange.webservices.data;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Calendar;
-import java.util.Date;
 
-import javax.swing.text.DateFormatter;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 

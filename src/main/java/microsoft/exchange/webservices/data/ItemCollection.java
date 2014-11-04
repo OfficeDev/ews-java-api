@@ -44,7 +44,6 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
 	 * @throws Exception
 	 *             the exception
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	protected void loadFromXml(EwsServiceXmlReader reader,
 			String localElementName) throws Exception {

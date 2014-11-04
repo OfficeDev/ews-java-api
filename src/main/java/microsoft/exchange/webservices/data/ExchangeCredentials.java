@@ -13,7 +13,6 @@ package microsoft.exchange.webservices.data;
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;

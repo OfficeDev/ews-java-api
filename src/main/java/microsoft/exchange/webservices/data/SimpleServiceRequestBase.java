@@ -10,16 +10,17 @@
 
 package microsoft.exchange.webservices.data;
 
-import java.io.*;
-import java.util.Date;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 
+import javax.xml.ws.http.HTTPException;
 
-import org.apache.commons.httpclient.HttpClientError;
-import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -51,8 +52,7 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 			return this.readResponse(response);
 		} catch (IOException ex) {
 			// Wrap exception.
-			throw new ServiceRequestException(String.
-					format(Strings.ServiceRequestFailed, ex.getMessage(), ex));
+			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, ex.getMessage(), ex));
 		} catch (Exception e) {
 			if (response != null) {
 				this.getService().processHttpResponseHeaders(TraceFlags.
@@ -133,8 +133,7 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 		 */
 
 		try {
-			this.getService().processHttpResponseHeaders(
-					TraceFlags.EwsResponseHttpHeaders, response);
+			this.getService().processHttpResponseHeaders(TraceFlags.EwsResponseHttpHeaders, response);
 
 			if (this.getService().isTraceEnabledFor(TraceFlags.EwsResponse)) {
 				ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
@@ -150,33 +149,26 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 				}
 
 				this.traceResponse(response, memoryStream);
-				ByteArrayInputStream memoryStreamIn = new ByteArrayInputStream(
-						memoryStream.toByteArray());
-				EwsServiceXmlReader ewsXmlReader = new EwsServiceXmlReader(
-						memoryStreamIn, this.getService());
+				ByteArrayInputStream memoryStreamIn = new ByteArrayInputStream(	memoryStream.toByteArray());
+				EwsServiceXmlReader ewsXmlReader = new EwsServiceXmlReader(memoryStreamIn, this.getService());
 				serviceResponse = this.readResponse(ewsXmlReader);
 				serviceResponseStream.close();
 				memoryStream.flush();
 			} else {
-				InputStream responseStream = ServiceRequestBase
-						.getResponseStream(response);
-				EwsServiceXmlReader ewsXmlReader = new EwsServiceXmlReader(
-						responseStream, this.getService());
+				InputStream responseStream = ServiceRequestBase.getResponseStream(response);
+				EwsServiceXmlReader ewsXmlReader = new EwsServiceXmlReader(responseStream, this.getService());
 				serviceResponse = this.readResponse(ewsXmlReader);
 
 			}
-		} catch (HttpException e) {
+		} catch (HTTPException e) {
 			if (e.getMessage() != null) {
-				this.getService().processHttpResponseHeaders(
-						TraceFlags.EwsResponseHttpHeaders, response);
+				this.getService().processHttpResponseHeaders(TraceFlags.EwsResponseHttpHeaders, response);
 			}
 
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, e.getMessage()), e);
+			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
 		} catch (IOException e) {
 			// Wrap exception.
-			throw new ServiceRequestException(String.format(
-					Strings.ServiceRequestFailed, e.getMessage()), e);
+			throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
 		} finally {
 			if (response != null) {
 				response.close();

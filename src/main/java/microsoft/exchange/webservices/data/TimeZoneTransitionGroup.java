@@ -314,8 +314,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
 	 * @throws microsoft.exchange.webservices.data.ServiceLocalException
 	 *             the service local exception
 	 */
-	private TimeZoneTransition getTransitionToDaylight()
-			throws ServiceLocalException {
+	private TimeZoneTransition getTransitionToDaylight() throws ServiceLocalException {
 		this.initializeTransitions();
 		return this.transitionToDaylight;
 	}
@@ -327,8 +326,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
 	 * @throws microsoft.exchange.webservices.data.ServiceLocalException
 	 *             the service local exception
 	 */
-	private TimeZoneTransition getTransitionToStandard()
-			throws ServiceLocalException {
+	private TimeZoneTransition getTransitionToStandard() throws ServiceLocalException {
 		this.initializeTransitions();
 		return this.transitionToStandard;
 	}

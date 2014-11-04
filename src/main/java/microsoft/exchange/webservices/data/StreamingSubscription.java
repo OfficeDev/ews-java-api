@@ -15,7 +15,7 @@ package microsoft.exchange.webservices.data;
  */
 public final class StreamingSubscription extends SubscriptionBase{
 
-	private ExchangeService service;
+	//private ExchangeService service;
 
 	protected StreamingSubscription(ExchangeService service) throws Exception {
 		super(service);

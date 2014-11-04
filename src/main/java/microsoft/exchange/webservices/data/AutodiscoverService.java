@@ -19,7 +19,11 @@ import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.List;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -71,9 +75,7 @@ IAutodiscoverRedirectionUrl, IFunctionDelegate {
 		"https://%s/autodiscover/autodiscover.svc";
 	// Autodiscover SOAP WS-Security HTTPS Url
 	/** The Constant AutodiscoverSoapWsSecurityHttpsUrl. */
-	private static final String AutodiscoverSoapWsSecurityHttpsUrl = 
-		AutodiscoverSoapHttpsUrl +
-		"/wssecurity";
+	private static final String AutodiscoverSoapWsSecurityHttpsUrl = AutodiscoverSoapHttpsUrl + "/wssecurity";
 	
 	 /** 
 	  * Autodiscover SOAP WS-Security symmetrickey HTTPS Url
@@ -88,21 +90,17 @@ IAutodiscoverRedirectionUrl, IFunctionDelegate {
 	
 	// Autodiscover request namespace
 	/** The Constant AutodiscoverRequestNamespace. */
-	private static final String AutodiscoverRequestNamespace =
-		"http://schemas.microsoft.com/exchange/autodiscover/" +
-		"outlook/requestschema/2006";
+	private static final String AutodiscoverRequestNamespace = "http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006";
 	// Maximum number of Url (or address) redirections that will be followed by
 	// an Autodiscover call
 	/** The Constant AutodiscoverMaxRedirections. */
 	protected static final int AutodiscoverMaxRedirections = 10;
 	// HTTP header indicating that SOAP Autodiscover service is enabled.
 	/** The Constant AutodiscoverSoapEnabledHeaderName. */
-	private static final String AutodiscoverSoapEnabledHeaderName = 
-		"X-SOAP-Enabled";
+	private static final String AutodiscoverSoapEnabledHeaderName = "X-SOAP-Enabled";
 	// HTTP header indicating that WS-Security Autodiscover service is enabled.
 	/** The Constant AutodiscoverWsSecurityEnabledHeaderName. */
-	private static final String AutodiscoverWsSecurityEnabledHeaderName = 
-		"X-WSSecurity-Enabled";
+	private static final String AutodiscoverWsSecurityEnabledHeaderName = "X-WSSecurity-Enabled";
 	
 	
     /** HTTP header indicating that WS-Security/SymmetricKey Autodiscover service is enabled. */
@@ -202,7 +200,7 @@ IAutodiscoverRedirectionUrl, IFunctionDelegate {
 			/* Flush End */
 		}
 		request.executeRequest();
-		request.getResponseCode();
+		//request.getResponseCode(); USELESS ?
 		URI redirectUrl;
 		OutParam<URI> outParam = new OutParam<URI>();
 		if (this.tryGetRedirectionResponse(request, outParam)) {
@@ -301,11 +299,9 @@ IAutodiscoverRedirectionUrl, IFunctionDelegate {
 	private URI getRedirectUrl(String domainName) throws EWSHttpException,
 	XMLStreamException, IOException, ServiceLocalException,
 	URISyntaxException {
-		String url = String.format(AutodiscoverLegacyHttpUrl, "autodiscover."
-				+ domainName);
+		String url = String.format(AutodiscoverLegacyHttpUrl, "autodiscover."+ domainName);
 
-		this.traceMessage(TraceFlags.AutodiscoverConfiguration, String.format(
-				"Trying to get Autodiscover redirection URL from %s.", url));
+		this.traceMessage(TraceFlags.AutodiscoverConfiguration, String.format("Trying to get Autodiscover redirection URL from %s.", url));
 
 		HttpWebRequest request = new HttpClientWebRequest(this.getSimpleHttpConnectionManager());
 		try {

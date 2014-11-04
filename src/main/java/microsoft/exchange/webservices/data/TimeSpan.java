@@ -64,7 +64,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
 	 * 
 	 */
 	public TimeSpan(int units, long value) {
-		this.time = this.toMilliseconds(units, value);
+		this.time = toMilliseconds(units, value);
 	}
 
 	/*
@@ -162,23 +162,23 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
 			millis = -millis;
 		}
 
-		long day = millis / this.DAYS;
+		long day = millis / DAYS;
 
 		if (day != 0) {
 			sb.append(day);
 			sb.append("d.");
-			millis = millis % this.DAYS;
+			millis = millis % DAYS;
 		}
 
-		sb.append(millis / this.HOURS);
-		millis = millis % this.HOURS;
+		sb.append(millis / HOURS);
+		millis = millis % HOURS;
 		sb.append("h:");
-		sb.append(millis / this.MINUTES);
-		millis = millis % this.MINUTES;
+		sb.append(millis / MINUTES);
+		millis = millis % MINUTES;
 		sb.append("m:");
-		sb.append(millis / this.SECONDS);
+		sb.append(millis / SECONDS);
 		sb.append("s");
-		millis = millis % this.SECONDS;
+		millis = millis % SECONDS;
 		if (millis != 0) {
 			sb.append(".");
 			sb.append(millis);
@@ -237,7 +237,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
 	 * @return the number of milliseconds.
 	 */
 	public long getMilliseconds() {
-		return (((this.time % this.HOURS) % this.MINUTES) % this.MILLISECONDS) / this.MILLISECONDS;
+		return (((this.time % HOURS) % MINUTES) % MILLISECONDS) / MILLISECONDS;
 	}
 
 	/**
@@ -256,7 +256,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
 	 */
 	public long getSeconds() {
 
-		return ((this.time % this.HOURS) % this.MINUTES) / this.SECONDS;
+		return ((this.time % HOURS) % MINUTES) / SECONDS;
 	}
 
 	/**
@@ -274,7 +274,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
 	 * @return the number of minutes.
 	 */
 	public long getMinutes() {
-		return (this.time % this.HOURS) / this.MINUTES;// (this.time/1000)/60;
+		return (this.time % HOURS) / MINUTES;// (this.time/1000)/60;
 	}
 
 	/**
@@ -329,7 +329,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
 	 *            the TimeSpan to add to this TimeSpan.
 	 */
 	public void add(TimeSpan timespan) {
-		add(this.MILLISECONDS, timespan.time);
+		add(MILLISECONDS, timespan.time);
 	}
 
 	/**
@@ -341,7 +341,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
 	 *            the number of units to add to this TimeSpan.
 	 */
 	public void add(int units, long value) {
-		this.time += this.toMilliseconds(units, value);
+		this.time += toMilliseconds(units, value);
 	}
 
 	/**
@@ -392,7 +392,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
 	 *            the TimeSpan to subtract from this TimeSpan.
 	 */
 	public void subtract(TimeSpan timespan) {
-		subtract(this.MILLISECONDS, timespan.time);
+		subtract(MILLISECONDS, timespan.time);
 	}
 
 	/**

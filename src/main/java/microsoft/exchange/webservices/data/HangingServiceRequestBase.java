@@ -8,7 +8,6 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownServiceException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -112,7 +111,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 	    void handleResponseObject(Object response) throws ArgumentException;
 	}
 	
-	private static final int BufferSize = 4096;
+	//private static final int BufferSize = 4096;
 
 	/**
 	 * Test switch to log all bytes that come across the wire.
@@ -133,12 +132,12 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 	/**
 	 * Request to the server.
 	 */
-	private HttpWebRequest request;
+	//private HttpWebRequest request;
 
 	/**
 	 * Xml reader used to parse the response.
 	 */
-	private EwsServiceMultiResponseXmlReader ewsXmlReader;
+	//private EwsServiceMultiResponseXmlReader ewsXmlReader;
 
 	/**
 	 * Expected minimum frequency in responses, in milliseconds.
@@ -228,7 +227,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 	 * 			 The state.
 	 */
 	private void parseResponses(Object state) {
-		UUID traceId = UUID.fromString("00000000-0000-0000-0000-000000000000");
+		//UUID traceId = UUID.fromString("00000000-0000-0000-0000-000000000000");
 		HangingTraceStream tracingStream = null;
 		ByteArrayOutputStream responseCopy = null;
 		
@@ -337,9 +336,9 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 		return this.isConnected;
 	}
 
-	private void setIsConnected(boolean value) {
+	/*private void setIsConnected(boolean value) {
 		this.isConnected = value;
-	}
+	}*/
 
 	/**
 	 * Disconnects the request.

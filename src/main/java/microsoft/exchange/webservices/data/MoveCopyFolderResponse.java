@@ -56,7 +56,6 @@ public final class MoveCopyFolderResponse extends ServiceResponse implements
 	 * @throws Exception
 	 *             the exception
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	protected void readElementsFromXml(EwsServiceXmlReader reader)
 			throws Exception {

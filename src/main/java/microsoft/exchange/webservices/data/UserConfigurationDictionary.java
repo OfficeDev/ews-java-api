@@ -10,12 +10,16 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.management.Query;
-import javax.xml.stream.XMLStreamException;
 import java.lang.reflect.Array;
-import java.lang.reflect.Type;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a user configuration's Dictionary property.
@@ -164,10 +168,6 @@ public final class UserConfigurationDictionary extends ComplexProperty
 	/**
 	 * Gets the enumerator.
 	 * 
-	 * @return the enumerator
-	 */
-	@SuppressWarnings("unchecked")
-	/**
 	 * Returns an enumerator that iterates through 
 	 * the user configuration dictionary.
 	 * @return An IEnumerator that can be used 
@@ -683,7 +683,6 @@ public final class UserConfigurationDictionary extends ComplexProperty
 	 * @throws Exception
 	 *             the exception
 	 */
-	@SuppressWarnings("unchecked")
 	private void validateObject(Object dictionaryObject) throws Exception {
 		// Keys may not be null but we rely on the internal dictionary to throw
 		// if the key is null.
