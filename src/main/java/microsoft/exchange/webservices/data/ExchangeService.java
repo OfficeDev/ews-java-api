@@ -363,15 +363,13 @@ public final class ExchangeService extends ExchangeServiceBase implements	IAutod
 	 */
 	protected <TFolder extends Folder> TFolder bindToFolder(Class<TFolder> cls,
 			FolderId folderId, PropertySet propertySet) throws Exception {
-
 		Folder result = this.bindToFolder(folderId, propertySet);
 
-		if (result instanceof Folder) {
+		if (cls.isAssignableFrom(result.getClass())) {
 			return (TFolder) result;
 		} else {
-			throw new ServiceLocalException(String.format("%s,%s,%s",
-					Strings.FolderTypeNotCompatible, result.getClass()
-							.getName(), cls.getName()));
+			throw new ServiceLocalException(String.format(Strings.FolderTypeNotCompatible,
+					result.getClass().getName(), cls.getName()));
 		}
 	}
 
