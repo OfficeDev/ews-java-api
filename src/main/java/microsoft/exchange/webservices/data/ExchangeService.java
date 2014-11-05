@@ -4155,7 +4155,6 @@ public final class ExchangeService extends ExchangeServiceBase implements	IAutod
 	 */
 	public ExchangeService() {
 		super();
-		System.out.println("coucou");
 	}
 
 	/**
