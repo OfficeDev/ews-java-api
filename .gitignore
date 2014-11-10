@@ -23,7 +23,3 @@
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
-
-# Maven
-.idea/libraries
-ews-java-api.iml
