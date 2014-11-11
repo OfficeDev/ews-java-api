@@ -192,9 +192,9 @@ ComplexPropertyCollection<EmailAddress> {
 	 * otherwise.
 	 */
 	public boolean contains(String address) {
-		if (address != null && !address.isEmpty()) {
+		if (address != null && !address.trim().isEmpty()) {
 			for (EmailAddress emailAddress : this) {
-				if (address.equals(emailAddress.getAddress())) {
+				if (emailAddress.equals(address)) {
 					return true;
 				}
 			}
