@@ -384,4 +384,18 @@ public class EmailAddress extends ComplexProperty implements
 		return SmtpRoutingType;
 	}
 
+	/**
+	 * Determines whether a specific email address equals current SMTP address.
+	 *
+	 * @param address The email address to compare.
+	 * @return True if the address was not empty and equal to current SMTP address, false
+	 * otherwise.
+	 */
+	public boolean equals(String address) {
+		if (address != null && this.address != null) {
+			address = address.trim().toLowerCase();
+			return !address.isEmpty() && address.equals(this.address.trim().toLowerCase());
+		}
+		return false;
+	}
 }
