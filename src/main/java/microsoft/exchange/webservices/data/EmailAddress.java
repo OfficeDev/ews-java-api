@@ -393,8 +393,8 @@ public class EmailAddress extends ComplexProperty implements
 	 */
 	public boolean equals(String address) {
 		if (address != null && this.address != null) {
-			address = address.trim().toLowerCase();
-			return !address.isEmpty() && address.equals(this.address.trim().toLowerCase());
+			address = address.trim();
+			return !address.isEmpty() && address.equalsIgnoreCase(this.address.trim());
 		}
 		return false;
 	}
