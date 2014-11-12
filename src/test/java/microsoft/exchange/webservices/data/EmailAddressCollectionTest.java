@@ -1,7 +1,9 @@
 package microsoft.exchange.webservices.data;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 public class EmailAddressCollectionTest {
 
@@ -16,11 +18,10 @@ public class EmailAddressCollectionTest {
 		emailAddresses.add(new EmailAddress("xxx@yyy.zzz"));
 		emailAddresses.add(new EmailAddress("xxx@yyy.zzz"));
 
-
-		Assert.assertFalse(emailAddresses.contains(""));
-		Assert.assertFalse(emailAddresses.contains("999@yyy.zzz"));
-		Assert.assertTrue(emailAddresses.contains("1@yyy.zzz"));
-		Assert.assertTrue(emailAddresses.contains("  \t  xxx@YYY.zZz  \n "));
+		assertThat(emailAddresses.contains(""), is(false));
+		assertThat(emailAddresses.contains("999@yyy.zzz"), is(false));
+		assertThat(emailAddresses.contains("1@yyy.zzz"), is(true));
+		assertThat(emailAddresses.contains("  \t  xxx@YYY.zZz  \n "), is(true));
 	}
 
 }

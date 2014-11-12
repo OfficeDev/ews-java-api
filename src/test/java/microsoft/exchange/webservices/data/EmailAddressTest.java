@@ -1,7 +1,9 @@
 package microsoft.exchange.webservices.data;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 public class EmailAddressTest {
 
@@ -10,41 +12,41 @@ public class EmailAddressTest {
 		{
 			EmailAddress emailAddress = new EmailAddress();
 
-			Assert.assertFalse(emailAddress.equals(null));
-			Assert.assertFalse(emailAddress.equals(""));
-			Assert.assertFalse(emailAddress.equals("wrong@address"));
-			Assert.assertFalse(emailAddress.equals("correct@address"));
-			Assert.assertFalse(emailAddress.equals("correct@address"));
+			assertThat(emailAddress.equals(null), is(false));
+			assertThat(emailAddress.equals(""), is(false));
+			assertThat(emailAddress.equals("wrong@address"), is(false));
+			assertThat(emailAddress.equals("correct@address"), is(false));
+			assertThat(emailAddress.equals(" correct@address "), is(false));
 		}
 
 		{
 			EmailAddress emailAddress = new EmailAddress("");
 
-			Assert.assertFalse(emailAddress.equals(null));
-			Assert.assertFalse(emailAddress.equals(""));
-			Assert.assertFalse(emailAddress.equals("wrong@address"));
-			Assert.assertFalse(emailAddress.equals("correct@address"));
-			Assert.assertFalse(emailAddress.equals("correct@address"));
+			assertThat(emailAddress.equals(null), is(false));
+			assertThat(emailAddress.equals(""), is(false));
+			assertThat(emailAddress.equals("wrong@address"), is(false));
+			assertThat(emailAddress.equals("correct@address"), is(false));
+			assertThat(emailAddress.equals(" correct@address "), is(false));
 		}
 
 		{
 			EmailAddress emailAddress = new EmailAddress("   \ncoRRect@aDDress \t  ");
 
-			Assert.assertFalse(emailAddress.equals(null));
-			Assert.assertFalse(emailAddress.equals(""));
-			Assert.assertFalse(emailAddress.equals("wrong@address"));
-			Assert.assertTrue(emailAddress.equals("correct@address"));
-			Assert.assertTrue(emailAddress.equals("CORRECT@address   \n "));
+			assertThat(emailAddress.equals(null), is(false));
+			assertThat(emailAddress.equals(""), is(false));
+			assertThat(emailAddress.equals("wrong@address"), is(false));
+			assertThat(emailAddress.equals("correct@address"), is(true));
+			assertThat(emailAddress.equals("CORRECT@address   \n "), is(true));
 		}
 
 		{
 			EmailAddress emailAddress = new EmailAddress("correct@address");
 
-			Assert.assertFalse(emailAddress.equals(null));
-			Assert.assertFalse(emailAddress.equals(""));
-			Assert.assertFalse(emailAddress.equals("wrong@address"));
-			Assert.assertTrue(emailAddress.equals("correct@address"));
-			Assert.assertTrue(emailAddress.equals("CORRECT@address   \n "));
+			assertThat(emailAddress.equals(null), is(false));
+			assertThat(emailAddress.equals(""), is(false));
+			assertThat(emailAddress.equals("wrong@address"), is(false));
+			assertThat(emailAddress.equals("correct@address"), is(true));
+			assertThat(emailAddress.equals("CORRECT@address   \n "), is(true));
 		}
 	}
 
