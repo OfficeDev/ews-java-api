@@ -124,7 +124,7 @@ import java.util.Date;
 
 		reader.read();
 
-		if (reader.getLocalName() == XmlElementNames.FolderId) {
+		if (reader.getLocalName().equals(XmlElementNames.FolderId)) {
 			notificationEvent = new FolderEvent(eventType, timestamp);
 		}
 		else {

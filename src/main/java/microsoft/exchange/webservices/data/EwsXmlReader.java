@@ -115,8 +115,8 @@ class EwsXmlReader {
 			this.read(nodeType);
 
 			if ((!this.getLocalName().equals(localName)) ||
-					(this.getNamespaceUri() != EwsUtilities
-							.getNamespaceUri(xmlNamespace))) {
+					(!this.getNamespaceUri().equals(EwsUtilities
+							.getNamespaceUri(xmlNamespace)))) {
 				throw new ServiceXmlDeserializationException(
 						String
 						.format(

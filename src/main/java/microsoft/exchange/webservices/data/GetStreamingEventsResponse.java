@@ -60,10 +60,10 @@ final class GetStreamingEventsResponse extends ServiceResponse {
 
     	reader.read();
 
-    	if(reader.getLocalName() == XmlElementNames.Notifications) {
+    	if(reader.getLocalName().equals(XmlElementNames.Notifications)) {
     		this.results.loadFromXml(reader);
     	}
-    	else if(reader.getLocalName() == XmlElementNames.ConnectionStatus) {
+    	else if(reader.getLocalName().equals(XmlElementNames.ConnectionStatus)) {
     		String connectionStatus = reader.readElementValue(XmlNamespace. 
     				Messages,XmlElementNames.ConnectionStatus);
 
@@ -89,7 +89,7 @@ final class GetStreamingEventsResponse extends ServiceResponse {
     			reader.read();
 
     			if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT &&
-    					reader.getLocalName() == XmlElementNames.SubscriptionId) {
+                        reader.getLocalName().equals(XmlElementNames.SubscriptionId)) {
     				this.getErrorSubscriptionIds().add(
     						reader.readElementValue(XmlNamespace.Messages,
     								XmlElementNames.SubscriptionId));
