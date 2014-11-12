@@ -183,4 +183,22 @@ ComplexPropertyCollection<EmailAddress> {
 	protected boolean shouldWriteToXml() {
 		return true;
 	}
+
+	/**
+	 * Determines whether a specific email address is in the collection.
+	 *
+	 * @param address The email address to locate in the collection.
+	 * @return True if the property was found in the collection, false
+	 * otherwise.
+	 */
+	public boolean contains(String address) {
+		if (address != null && !address.trim().isEmpty()) {
+			for (EmailAddress emailAddress : this) {
+				if (emailAddress.equals(address)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
