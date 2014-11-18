@@ -97,8 +97,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
 	 *            the time zone period
 	 * @return A TimeZoneTransitionGroup.
 	 */
-	private TimeZoneTransitionGroup createTransitionGroupToPeriod(
-			TimeZonePeriod timeZonePeriod) {
+	private TimeZoneTransitionGroup createTransitionGroupToPeriod(TimeZonePeriod timeZonePeriod) {
 		TimeZoneTransition transitionToPeriod = new TimeZoneTransition(this,
 				timeZonePeriod);
 

@@ -14,3 +14,6 @@
 # IDEA project files
 *.iml
 .idea
+/bin/
+/build.xml
+/MANIFEST.MF

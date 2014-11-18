@@ -12,14 +12,15 @@ package microsoft.exchange.webservices.data;
 
 import java.io.IOException;
 
-import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.NTCredentials;
 import org.apache.commons.httpclient.auth.AuthChallengeParser;
-import org.apache.commons.httpclient.auth.AuthScheme;
-import org.apache.commons.httpclient.auth.AuthenticationException;
-import org.apache.commons.httpclient.auth.InvalidCredentialsException;
-import org.apache.commons.httpclient.auth.MalformedChallengeException;
+import org.apache.http.auth.AuthScheme;
+import org.apache.http.auth.AuthenticationException;
+import org.apache.http.auth.Credentials;
+import org.apache.http.auth.InvalidCredentialsException;
+import org.apache.http.auth.MalformedChallengeException;
+import org.apache.http.auth.NTCredentials;
+import org.apache.http.impl.auth.AuthSchemeBase;
 
 
 /**
@@ -63,9 +64,7 @@ public class EwsJCIFSNTLMScheme implements AuthScheme {
 		}
 	}
 
-	public String authenticate(Credentials credentials, HttpMethod method)
-	throws AuthenticationException {
-
+	/*public String authenticate(Credentials credentials, HttpMethod method) throws AuthenticationException {
 		if (this.state == UNINITIATED) {
 			throw new IllegalStateException(
 			"NTLM authentication process has not been initiated");
@@ -75,30 +74,25 @@ public class EwsJCIFSNTLMScheme implements AuthScheme {
 		try {
 			ntcredentials = (NTCredentials) credentials;
 		} catch (ClassCastException e) {
-			throw new InvalidCredentialsException(
-					"Credentials cannot be used for NTLM authentication: "
-					+ credentials.getClass().getName());
+			throw new InvalidCredentialsException("Credentials cannot be used for NTLM authentication: " + credentials.getClass().getName());
 		}
 
 		NTLM ntlm = new NTLM();
 		ntlm.setCredentialCharset(method.getParams().getCredentialCharset());
 		String response = null;
 		if (this.state == INITIATED || this.state == FAILED) {
-			response = ntlm.generateType1Msg(ntcredentials.getHost(),
-					ntcredentials.getDomain());
+			response = ntlm.generateType1Msg(ntcredentials.getWorkstation(), ntcredentials.getDomain());
 			this.state = TYPE1_MSG_GENERATED;
 		} else {
-			response = ntlm.generateType3Msg(ntcredentials.getUserName(),
-					ntcredentials.getPassword(), ntcredentials.getHost(),
+			response = ntlm.generateType3Msg(ntcredentials.getUserName(), ntcredentials.getPassword(), ntcredentials.getWorkstation(),
 					ntcredentials.getDomain(), this.ntlmchallenge);
 			this.state = TYPE3_MSG_GENERATED;
 		}
 
 		return "NTLM " + response;
-	}
+	}*/
 
-	public String authenticate(Credentials credentials, String method,
-			String uri) throws AuthenticationException {
+	public String authenticate(Credentials credentials, String method, String uri) throws AuthenticationException {
 		throw new RuntimeException(
 		"Not implemented as it is deprecated anyway in Httpclient 3.x");
 	}
@@ -181,8 +175,8 @@ public class EwsJCIFSNTLMScheme implements AuthScheme {
 	 *
 	 * @since 3.0
 	 */
-	public void processChallenge(final String challenge)
-	throws MalformedChallengeException {
+	public void processChallenge(final String challenge) throws MalformedChallengeException {
+		
 		String s = AuthChallengeParser.extractScheme(challenge);
 		if (!s.equalsIgnoreCase(getSchemeName())) {
 			throw new MalformedChallengeException("Invalid NTLM challenge: "

@@ -168,11 +168,11 @@ public class UserConfiguration {
 			throws Exception {
 		EwsUtilities.validateParam(service, "service");
 
-		if (service.getRequestedServerVersion().ordinal() < this.ObjectVersion.ordinal())
+		if (service.getRequestedServerVersion().ordinal() < ObjectVersion.ordinal())
 		 {
 			throw new ServiceVersionException(String.format(
 					Strings.ObjectTypeIncompatibleWithRequestVersion, this
-							.getClass().getName(), this.ObjectVersion));
+							.getClass().getName(), ObjectVersion));
 		}
 
 		this.service = service;

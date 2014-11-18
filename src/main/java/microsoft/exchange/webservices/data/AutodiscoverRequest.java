@@ -85,27 +85,22 @@ abstract class AutodiscoverRequest {
 	 * @throws Exception
 	 *             the exception
 	 */
-	protected AutodiscoverResponse internalExecute()
-			throws ServiceLocalException, Exception {
+	protected AutodiscoverResponse internalExecute() throws ServiceLocalException, Exception {
 		this.validate();
 		HttpWebRequest request = null;
 		try {
 			request = this.service.prepareHttpWebRequestForUrl(this.url);
-			this.service.traceHttpRequestHeaders(
-					TraceFlags.AutodiscoverRequestHttpHeaders, request);
+			this.service.traceHttpRequestHeaders(TraceFlags.AutodiscoverRequestHttpHeaders, request);
 
-			boolean needSignature = this.getService().getCredentials() != null
-					&& this.getService().getCredentials().isNeedSignature();
-			boolean needTrace = this.getService().isTraceEnabledFor(
-					TraceFlags.AutodiscoverRequest);
+			boolean needSignature = this.getService().getCredentials() != null	&& this.getService().getCredentials().isNeedSignature();
+			boolean needTrace = this.getService().isTraceEnabledFor(TraceFlags.AutodiscoverRequest);
 
 			OutputStream urlOutStream = request.getOutputStream();
 			// OutputStreamWriter out = new OutputStreamWriter(request
 			// .getOutputStream());
 
 			ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
-			EwsServiceXmlWriter writer = new EwsServiceXmlWriter(this
-					.getService(), memoryStream);
+			EwsServiceXmlWriter writer = new EwsServiceXmlWriter(this.getService(), memoryStream);
 			writer.setRequireWSSecurityUtilityNamespace(needSignature);
 			this.writeSoapRequest(this.url, writer);
 
@@ -115,8 +110,7 @@ abstract class AutodiscoverRequest {
 
 			if (needTrace) {
 				memoryStream.flush();
-				this.service.traceXml(TraceFlags.AutodiscoverRequest,
-						memoryStream);
+				this.service.traceXml(TraceFlags.AutodiscoverRequest,memoryStream);
 			}
 			memoryStream.writeTo(urlOutStream);
 			urlOutStream.flush();
@@ -127,13 +121,11 @@ abstract class AutodiscoverRequest {
 			request.executeRequest();
 			request.getResponseCode();
 			if (AutodiscoverRequest.isRedirectionResponse(request)) {
-				AutodiscoverResponse response = this
-						.createRedirectionResponse(request);
+				AutodiscoverResponse response = this.createRedirectionResponse(request);
 				if (response != null) {
 					return response;
 				} else {
-					throw new ServiceRemoteException(
-							Strings.InvalidRedirectionResponseReturned);
+					throw new ServiceRemoteException(Strings.InvalidRedirectionResponseReturned);
 				}
 			}
 
@@ -192,8 +184,7 @@ abstract class AutodiscoverRequest {
 			if (response.getErrorCode() == AutodiscoverErrorCode.NoError) {
 				return response;
 			} else {
-				throw new AutodiscoverResponseException(
-						response.getErrorCode(), response.getErrorMessage());
+				throw new AutodiscoverResponseException(response.getErrorCode(), response.getErrorMessage());
 			}
 
 		} catch (XMLStreamException ex) {

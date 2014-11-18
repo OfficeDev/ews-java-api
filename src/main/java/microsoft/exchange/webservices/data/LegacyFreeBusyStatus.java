@@ -36,7 +36,6 @@ public enum LegacyFreeBusyStatus {
 	NoData(4);
 
 	/** The busy status. */
-	@SuppressWarnings("unused")
 	private final int busyStatus;
 
 	/**

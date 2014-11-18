@@ -12,12 +12,7 @@ package microsoft.exchange.webservices.data;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.net.URISyntaxException;

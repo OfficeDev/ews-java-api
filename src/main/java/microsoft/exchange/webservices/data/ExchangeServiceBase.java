@@ -15,39 +15,34 @@ import java.io.File;
 import java.io.IOException;
 import java.net.CookieHandler;
 import java.net.CookieManager;
-import java.net.CookiePolicy;
-import java.net.CookieStore;
-import java.net.HttpCookie;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-import java.util.Dictionary;
 import java.util.EnumSet;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.TimeZone;
-import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
-import org.apache.commons.httpclient.Cookie;
-import org.apache.commons.httpclient.HttpConnectionManager;
-import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
+import org.apache.http.client.CookieStore;
+import org.apache.http.config.Registry;
+import org.apache.http.config.RegistryBuilder;
+import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.conn.socket.ConnectionSocketFactory;
+import org.apache.http.conn.socket.PlainConnectionSocketFactory;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
 /**
  * Represents an abstract binding to an Exchange Service.
@@ -106,11 +101,13 @@ public abstract class ExchangeServiceBase {
 
 	private WebProxy webProxy;
 	
-	private HttpConnectionManager simpleHttpConnectionManager = new MultiThreadedHttpConnectionManager(); 
+	//private HttpClientConnectionManager simpleHttpConnectionManager = new PoolingHttpClientConnectionManager();
+	private HttpClientConnectionManager httpConnectionManager;
 	
 	HttpClientWebRequest request = null;
 	
-	private Cookie[] cookies = null;
+	//private Cookie[] cookies = null;
+	private CookieStore cookieStore;
 
 	// protected static HttpStatusCode AccountIsLocked = (HttpStatusCode)456;
 
@@ -118,16 +115,52 @@ public abstract class ExchangeServiceBase {
 	 * Static members
 	 */
 
-	protected HttpConnectionManager getSimpleHttpConnectionManager() {
-		return simpleHttpConnectionManager;
+	protected HttpClientConnectionManager getSimpleHttpConnectionManager() {
+		return httpConnectionManager;
 	}
 
 	/** Default UserAgent. */
-	private static String defaultUserAgent = "ExchangeServicesClient/" + 
-	EwsUtilities.getBuildVersion();
+	private static String defaultUserAgent = "ExchangeServicesClient/" + EwsUtilities.getBuildVersion();
 
-	protected ExchangeServiceBase(ExchangeServiceBase service,
-			ExchangeVersion requestedServerVersion) {
+	
+	/**
+	 * Initializes a new instance.
+	 * 
+	 * @param requestedServerVersion
+	 *            The requested server version.
+	 */
+	protected ExchangeServiceBase() {
+		//real init -- ONLY WAY TO BUILD AN OBJECT => each constructor must call this() to build properly the httpConnectionManager
+		this.timeZone = TimeZone.getDefault();
+		this.setUseDefaultCredentials(true);
+		
+		try {
+			EwsSSLProtocolSocketFactory factory = EwsSSLProtocolSocketFactory.build(null);
+			Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
+					.register("http", new PlainConnectionSocketFactory())
+					.register("https", factory)
+	                .build();
+			this.httpConnectionManager = new PoolingHttpClientConnectionManager(registry);
+		}
+		catch (Exception err) {
+			err.printStackTrace();
+		}
+	}
+	
+	
+	protected ExchangeServiceBase(ExchangeVersion requestedServerVersion) {
+		// Removed because TimeZone class in Java doesn't maintaining the 
+		//history of time change rules for a given time zone
+		//this(requestedServerVersion, TimeZone.getDefault());
+		this();
+		this.requestedServerVersion = requestedServerVersion;
+	}
+	
+	protected ExchangeServiceBase(ExchangeServiceBase service)  {
+		this(service, service.getRequestedServerVersion());
+    }
+	
+	protected ExchangeServiceBase(ExchangeServiceBase service, ExchangeVersion requestedServerVersion) {
 		this(requestedServerVersion);
 		this.useDefaultCredentials = service.getUseDefaultCredentials();
 		this.credentials = service.getCredentials();
@@ -141,55 +174,16 @@ public abstract class ExchangeServiceBase {
 		this.timeZone = service.getTimeZone();
 		this.httpHeaders = service.getHttpHeaders();
 	}
-
-	/**
-	 * @return TimeZone
-	 */
-	private TimeZone getTimeZone() {
-		return this.timeZone;
-	}
-
-	/*
-	protected ExchangeServiceBase(ExchangeServiceBase service) {
-
-		this(service.getRequestedServerVersion());
-		this.useDefaultCredentials = service.getUseDefaultCredentials();
-		this.credentials = service.getCredentials();
-		this.traceEnabled = service.isTraceEnabled();
-		this.traceListener = service.getTraceListener();
-		this.traceFlags = service.getTraceFlags();
-		this.timeout = service.getTimeout();
-		this.preAuthenticate = service.isPreAuthenticate();
-		this.userAgent = service.getUserAgent();
-		this.acceptGzipEncoding = service.getAcceptGzipEncoding();
-	}*/
 	
-	/**
-	 * Initializes a new instance from existing one.
-	 * 
-	 * @param service
-	 *            The other service.
-	 * @see microsoft.exchange.webservices.data.ExchangeServiceBase
-	 */
-	protected ExchangeServiceBase(ExchangeServiceBase service) {
-		   this(service, service.getRequestedServerVersion());
-    }
-    
-	protected ExchangeServiceBase() {
-		this(TimeZone.getDefault());
+	
+	protected ExchangeServiceBase(ExchangeVersion requestedServerVersion, TimeZone timezone) {
+		this(requestedServerVersion);
+		this.timeZone = timezone;
 	}
 
-	protected ExchangeServiceBase(ExchangeVersion requestedServerVersion, 
-			TimeZone timeZone) {
-		this(timeZone);
-		this.requestedServerVersion = requestedServerVersion;
-	}
+	
 
-	protected ExchangeServiceBase(TimeZone timeZone){
-		this.timeZone = timeZone;
-		this.setUseDefaultCredentials(true);
-	}
-
+	
 	// Event handlers
 
 	/**
@@ -199,11 +193,8 @@ public abstract class ExchangeServiceBase {
 	 *            The XmlWriter to which to write the custom SOAP headers.
 	 */
 	protected void doOnSerializeCustomSoapHeaders(XMLStreamWriter writer) {
-		EwsUtilities.EwsAssert(writer != null,
-				"ExchangeService.DoOnSerializeCustomSoapHeaders",
-		"writer is null");
-		if (null != getOnSerializeCustomSoapHeaders() &&
-				!getOnSerializeCustomSoapHeaders().isEmpty()) {
+		EwsUtilities.EwsAssert(writer != null,	"ExchangeService.DoOnSerializeCustomSoapHeaders","writer is null");
+		if (null != getOnSerializeCustomSoapHeaders() && !getOnSerializeCustomSoapHeaders().isEmpty()) {
 			for (ICustomXmlSerialization customSerialization : getOnSerializeCustomSoapHeaders()) {
 				customSerialization.CustomXmlSerialization(writer);
 			}
@@ -229,18 +220,15 @@ public abstract class ExchangeServiceBase {
 	 * @throws java.net.URISyntaxException
 	 *             the uRI syntax exception
 	 */
-	protected HttpWebRequest prepareHttpWebRequestForUrl(URI url,
-			boolean acceptGzipEncoding, boolean allowAutoRedirect)
+	protected HttpWebRequest prepareHttpWebRequestForUrl(URI url, boolean acceptGzipEncoding, boolean allowAutoRedirect)
 	throws ServiceLocalException, URISyntaxException {
 		// Verify that the protocol is something that we can handle
-		if (!url.getScheme().equalsIgnoreCase("HTTP")
-				&& !url.getScheme().equalsIgnoreCase("HTTPS")) {
-			String strErr = String.format(Strings.UnsupportedWebProtocol, url.
-					getScheme());
+		if (!url.getScheme().equalsIgnoreCase("HTTP") && !url.getScheme().equalsIgnoreCase("HTTPS")) {
+			String strErr = String.format(Strings.UnsupportedWebProtocol, url.getScheme());
 			throw new ServiceLocalException(strErr);
 		}
 
-		 request = new HttpClientWebRequest(this.simpleHttpConnectionManager);
+		request = new HttpClientWebRequest(this.httpConnectionManager);
 		try {
 			request.setUrl(url.toURL());
 		} catch (MalformedURLException e) {
@@ -274,16 +262,18 @@ public abstract class ExchangeServiceBase {
 				throw new ServiceLocalException(Strings.CredentialsRequired);
 			}
 			
-			if(this.cookies != null && this.cookies.length > 0){
+			/*if(this.cookies != null && this.cookies.length > 0){
 				request.setUserCookie(this.cookies);
-			}
+			}*/
+			if (cookieStore!=null) request.setUserCookie(cookieStore.getCookies());
+			
 			// Make sure that credentials have been authenticated if required
 			serviceCredentials.preAuthenticate();
 
 			// Apply credentials to the request
 			serviceCredentials.prepareWebRequest(request);
-			
 		}
+		
 		try {
 			request.prepareConnection();
 		} catch (Exception e) {
@@ -309,36 +299,27 @@ public abstract class ExchangeServiceBase {
 			TraceFlags responseHeadersTraceFlag,
 			TraceFlags responseTraceFlag) throws Exception
 	{
-		EwsUtilities.EwsAssert(
-				500 != httpWebResponse.getResponseCode(),
-				"ExchangeServiceBase.InternalProcessHttpErrorResponse",
-		"InternalProcessHttpErrorResponse does not handle 500 ISE errors," +
-		" the caller is supposed to handle this.");
+		EwsUtilities.EwsAssert(500 != httpWebResponse.getResponseCode(), "ExchangeServiceBase.InternalProcessHttpErrorResponse",
+		"InternalProcessHttpErrorResponse does not handle 500 ISE errors, the caller is supposed to handle this.");
 
-		this.processHttpResponseHeaders( responseHeadersTraceFlag, 
-				httpWebResponse);
+		this.processHttpResponseHeaders( responseHeadersTraceFlag, httpWebResponse);
 
 		// E14:321785 -- Deal with new HTTP 
 		// error code indicating that account is locked.
 		// The "unlock" URL is returned as 
 		// the status description in the response.
-		if (httpWebResponse.getResponseCode() == 456)
-		{
+		if (httpWebResponse.getResponseCode() == 456) {
 			String location = httpWebResponse.getResponseContentType();
 
 			URI accountUnlockUrl = null;
-			if (checkURIPath(location))
-			{
+			if (checkURIPath(location)) {
 				accountUnlockUrl = new URI(location);
 			}
 
-			this.traceMessage(responseTraceFlag, String.format("Account is locked." +
-					" Unlock URL is {0}", accountUnlockUrl));
+			this.traceMessage(responseTraceFlag, String.format("Account is locked. Unlock URL is {0}", accountUnlockUrl));
 
-			throw new AccountIsLockedException(
-					String.format(Strings.AccountIsLocked, accountUnlockUrl),
-					accountUnlockUrl,
-					webException);
+			throw new AccountIsLockedException(	String.format(Strings.AccountIsLocked, accountUnlockUrl),
+					accountUnlockUrl, webException);
 		}
 	}
 
@@ -456,8 +437,7 @@ public abstract class ExchangeServiceBase {
 		if (this.isTraceEnabledFor(traceType)) {
 			String traceTypeStr = traceType.toString();
 			String headersAsString = EwsUtilities.formatHttpResponseHeaders(request);
-			String logMessage = EwsUtilities.formatLogMessage(traceTypeStr,
-					headersAsString);
+			String logMessage = EwsUtilities.formatLogMessage(traceTypeStr,headersAsString);
 			this.traceListener.trace(traceTypeStr, logMessage);
 		}
 	}
@@ -472,8 +452,8 @@ public abstract class ExchangeServiceBase {
 	protected Date convertUniversalDateTimeStringToDate(String dateString) {
 		String localTimeRegex = "^(.*)([+-]{1}\\d\\d:\\d\\d)$";
 		Pattern localTimePattern = Pattern.compile(localTimeRegex);
-		String timeRegex = "[0-9]{2,4}-[0-9]{1,2}-[0-9]{1,2}T[0-9]{2}:[0-9]{1,2}:[0-9]{1,2}.[0-9]{1,7}";		
-		Pattern timePattern = Pattern.compile(timeRegex);
+		//String timeRegex = "[0-9]{2,4}-[0-9]{1,2}-[0-9]{1,2}T[0-9]{2}:[0-9]{1,2}:[0-9]{1,2}.[0-9]{1,7}";		
+		//Pattern timePattern = Pattern.compile(timeRegex);
 		String utcPattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 		String utcPattern1 = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'";
 		String localPattern = "yyyy-MM-dd'T'HH:mm:ssz";
@@ -613,22 +593,7 @@ public abstract class ExchangeServiceBase {
 		this.userAgent = userAgent;
 	}
 
-	// Constructors
-
-	/**
-	 * Initializes a new instance.
-	 * 
-	 * @param requestedServerVersion
-	 *            The requested server version.
-	 */
-	protected ExchangeServiceBase(ExchangeVersion requestedServerVersion) {
-		// Removed because TimeZone class in Java doesn't maintaining the 
-		//history of time change rules for a given time zone
-		//this(requestedServerVersion, TimeZone.getDefault());
-		this.requestedServerVersion = requestedServerVersion;
-	}
-
-	
+		
 
 	// Abstract methods
 
@@ -644,8 +609,7 @@ public abstract class ExchangeServiceBase {
 		//headers with 'X-' prefix but no others.
 		for (Map.Entry<String, String> key : this.httpHeaders.entrySet()) {
 			if (!key.getKey().startsWith(ExtendedHeaderPrefix))	{
-				throw new ServiceValidationException(String.format(Strings.
-						CannotAddRequestHeader, key));
+				throw new ServiceValidationException(String.format(Strings.CannotAddRequestHeader, key));
 			}
 		}
 	}
@@ -682,12 +646,12 @@ public abstract class ExchangeServiceBase {
 	 * @param rcookies the cookies.
 	 * @throws microsoft.exchange.webservices.data.EWSHttpException
 	 */
-	public void setCookie(Cookie[] rcookies) throws EWSHttpException {
+	/*public void setCookie(Cookie[] rcookies) throws EWSHttpException {
 
 		if (rcookies != null && rcookies.length > 0)
 			this.cookies = rcookies.clone();
 
-	}
+	}*/
 
 	/*
 	 * Gets the cookie.
@@ -719,9 +683,9 @@ public abstract class ExchangeServiceBase {
 		return cookieValue;
 	}*/
 	
-    public Cookie[] getCookies() {
+    /*public Cookie[] getCookies() {
 		return this.cookies;
-	}
+	}*/
 
 	/**
 	 * Gets a value indicating whether tracing is enabled.
@@ -854,8 +818,7 @@ public abstract class ExchangeServiceBase {
 	 */
 	public void setTimeout(int timeout) {
 		if (timeout < 1) {
-			throw new IllegalArgumentException(
-					Strings.TimeoutMustBeGreaterThanZero);
+			throw new IllegalArgumentException(Strings.TimeoutMustBeGreaterThanZero);
 		}
 		this.timeout = timeout;
 	}
@@ -931,8 +894,7 @@ public abstract class ExchangeServiceBase {
 	 *            The user agent
 	 */
 	public void setUserAgent(String userAgent) {
-		this.userAgent = userAgent + " ("
-		+ ExchangeServiceBase.defaultUserAgent + ")";
+		this.userAgent = userAgent + " ("+ ExchangeServiceBase.defaultUserAgent + ")";
 	}
 
 	/**
@@ -994,6 +956,15 @@ public abstract class ExchangeServiceBase {
 	 */
 	private List<ICustomXmlSerialization> OnSerializeCustomSoapHeaders;
 
+
+	/**
+	 * @return TimeZone
+	 */
+	private TimeZone getTimeZone() {
+		return this.timeZone;
+	}
+
+	
 	/**
 	 * Gets the on serialize custom soap headers.
 	 * 
@@ -1050,7 +1021,12 @@ public abstract class ExchangeServiceBase {
 
 		// Save the cookies for subsequent requests
 		if (this.request.getCookies() != null) {
-			this.cookies = this.request.getCookies().clone();
+			//this.cookies = this.request.getCookies().clone();
+			if (cookieStore==null) cookieStore = new BasicCookieStore();
+			cookieStore.clear();
+			for (Cookie c : this.request.getCookies())  {
+				cookieStore.addCookie(c);	
+			}
 		}
 		
 	}

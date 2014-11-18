@@ -10,12 +10,14 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
-import java.io.*;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents an abstract service request.

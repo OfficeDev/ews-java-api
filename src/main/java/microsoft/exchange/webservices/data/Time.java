@@ -10,6 +10,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -44,8 +45,7 @@ final class Time {
 	protected Time(int minutes) throws ArgumentException {
 		this();
 		if (minutes < 0 || minutes >= 1440) {
-			throw new ArgumentException(String.format("%s,%s",
-					Strings.MinutesMustBeBetween0And1439, "minutes"));
+			throw new ArgumentException(String.format("%s,%s", Strings.MinutesMustBeBetween0And1439, "minutes"));
 		}
 
 		this.hours = minutes / 60;
@@ -62,9 +62,14 @@ final class Time {
 	 *             the argument exception
 	 */
 	protected Time(Date dateTime) throws ArgumentException {
-		this.setHours(dateTime.getHours());
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(dateTime);
+		this.setHours(cal.get(Calendar.HOUR_OF_DAY));
+		this.setMinutes(cal.get(Calendar.MINUTE));
+		this.setSeconds(cal.get(Calendar.SECOND));
+		/*this.setHours(dateTime.getHours());
 		this.setMinutes(dateTime.getMinutes());
-		this.setSeconds(dateTime.getSeconds());
+		this.setSeconds(dateTime.getSeconds());*/
 	}
 
 	/**
@@ -91,9 +96,7 @@ final class Time {
 	 */
 
 	protected String toXSTime() {
-		return String.format("%s,%s,%s,%s","{0:00}:{1:00}:{2:00}",
-				this.getHours(), this
-				.getMinutes(), this.getSeconds());
+		return String.format("%s,%s,%s,%s","{0:00}:{1:00}:{2:00}", this.getHours(), this.getMinutes(), this.getSeconds());
 	}
 
 	/**
@@ -181,4 +184,5 @@ final class Time {
 			throw new ArgumentException(Strings.SecondMustBeBetween0And59);
 		}
 	}
+	
 }

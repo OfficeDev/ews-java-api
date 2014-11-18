@@ -18,6 +18,8 @@ import java.net.URI;
  */
 public class AccountIsLockedException extends ServiceRemoteException {
 	
+	
+	
 	private URI accountUnlockUrl;
 
 
