@@ -10,16 +10,17 @@
 
 package microsoft.exchange.webservices.data;
 
-import java.io.*;
-import java.util.Date;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 
+import javax.xml.ws.http.HTTPException;
 
-import org.apache.commons.httpclient.HttpClientError;
-import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -165,7 +166,7 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 				serviceResponse = this.readResponse(ewsXmlReader);
 
 			}
-		} catch (HttpException e) {
+		} catch (HTTPException e) {
 			if (e.getMessage() != null) {
 				this.getService().processHttpResponseHeaders(
 						TraceFlags.EwsResponseHttpHeaders, response);

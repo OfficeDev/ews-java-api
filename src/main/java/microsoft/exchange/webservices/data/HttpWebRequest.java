@@ -16,13 +16,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
-import javax.net.ssl.TrustManager;
-
-import org.apache.commons.httpclient.HttpException;
+import org.apache.http.HttpException;
 
 /**
  * The Class HttpWebRequest.
@@ -538,17 +534,6 @@ import org.apache.commons.httpclient.HttpException;
 	public abstract Map<String, String> getRequestProperty()
 	throws EWSHttpException;
 	
-	/**
-	 * Sets the Client Certificates.
-	 * 
-	 * @param trustManager
-	 * 			the X509TrustManager
-	 * @throws EWSHttpException
-	 *             the eWS http exception
-	 */
-	public abstract void setClientCertificates(TrustManager trustManager) 
-	throws EWSHttpException;
-
 	/**
 	 * Executes Request by sending request xml data to server.
 	 * 
