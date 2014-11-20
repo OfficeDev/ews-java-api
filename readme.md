@@ -61,7 +61,9 @@ static class RedirectionUrlCallback implements IAutodiscoverRedirectionUrl {
 Now 
 ```
 service.autodiscoverUrl("<your_email_address>", RedirectionUrlCallback);
-``` can be called to deal with the redirection in a safe manner.
+```
+can be called to deal with the redirection in a safe manner.
+
 ## Items
 
 The EWS JAVA API defines a class hierarchy of items. Each class in the hierarchy maps to a given item type in Exchange. For example, the `EmailMessage` class represents email messages and the `Appointment` class represents calendar events and meetings.
