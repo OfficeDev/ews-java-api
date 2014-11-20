@@ -60,7 +60,7 @@ static class RedirectionUrlCallback implements IAutodiscoverRedirectionUrl {
 
 Now 
 ```
-service.autodiscoverUrl("<your_email_address>", RedirectionUrlCallback);
+service.autodiscoverUrl("<your_email_address>", new RedirectionUrlCallback());
 ```
 can be called to deal with the redirection in a safe manner.
 
