@@ -15,8 +15,8 @@ import java.util.ArrayList;
 /**
  * Represents an e-mail message. Properties available on e-mail messages are
  * defined in the EmailMessageSchema class.
- *
- *
+ * 
+ * 
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Message)
@@ -25,7 +25,7 @@ public class EmailMessage extends Item {
 	/**
 	 * Initializes an unsaved local instance of EmailMessage. To bind to an
 	 * existing e-mail message, use EmailMessage.Bind() instead.
-	 *
+	 * 
 	 * @param service
 	 *            The ExchangeService object to which the e-mail message will be
 	 *            bound.
@@ -38,7 +38,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Initializes a new instance of the "EmailMessage" class.
-	 *
+	 * 
 	 * @param parentAttachment
 	 *            The parent attachment.
 	 * @throws Exception
@@ -51,7 +51,7 @@ public class EmailMessage extends Item {
 	/**
 	 * Binds to an existing e-mail message and loads the specified set of
 	 * properties.Calling this method results in a call to EWS.
-	 *
+	 * 
 	 * @param service
 	 *            the service
 	 * @param id
@@ -72,7 +72,7 @@ public class EmailMessage extends Item {
 	/**
 	 * Binds to an existing e-mail message and loads its first class
 	 * properties.Calling this method results in a call to EWS.
-	 *
+	 * 
 	 * @param service
 	 *            the service
 	 * @param id
@@ -90,7 +90,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Method to return the schema associated with this type of object.
-	 *
+	 * 
 	 * @return The schema associated with this type of object.
 	 */
 	@Override
@@ -100,7 +100,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Gets the minimum required server version.
-	 *
+	 * 
 	 * @return Earliest Exchange version in which this service object type is
 	 *         supported.
 	 */
@@ -111,7 +111,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Send message.
-	 *
+	 * 
 	 * @param parentFolderId
 	 *            The parent folder id.
 	 * @param messageDisposition
@@ -158,7 +158,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Creates a reply response to the message.
-	 *
+	 * 
 	 * @param replyAll
 	 *            the reply all
 	 * @return A ResponseMessage representing the reply response that can
@@ -170,13 +170,13 @@ public class EmailMessage extends Item {
 		this.throwIfThisIsNew();
 
 		return new ResponseMessage(this,
-				replyAll ? ResponseMessageType.ReplyAll :
+				replyAll ? ResponseMessageType.ReplyAll : 
 					ResponseMessageType.Reply);
 	}
 
 	/**
 	 * Creates a forward response to the message.
-	 *
+	 * 
 	 * @return A ResponseMessage representing the forward response that can
 	 *         subsequently be modified and sent.
 	 * @throws Exception
@@ -189,7 +189,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Replies to the message. Calling this method results in a call to EWS.
-	 *
+	 * 
 	 * @param bodyPrefix
 	 *            the body prefix
 	 * @param replyAll
@@ -206,7 +206,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Forwards the message. Calling this method results in a call to EWS.
-	 *
+	 * 
 	 * @param bodyPrefix
 	 *            the body prefix
 	 * @param toRecipients
@@ -227,7 +227,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Forwards the message. Calling this method results in a call to EWS.
-	 *
+	 * 
 	 * @param bodyPrefix
 	 *            the body prefix
 	 * @param toRecipients
@@ -249,7 +249,7 @@ public class EmailMessage extends Item {
 	/**
 	 * Sends this e-mail message. Calling this method results in at least one
 	 * call to EWS.
-	 *
+	 * 
 	 * @throws Exception
 	 *             the exception
 	 */
@@ -262,7 +262,7 @@ public class EmailMessage extends Item {
 	 * folder. SendAndSaveCopy does not work if the message has unsaved
 	 * attachments. In that case, the message must first be saved and then sent.
 	 * Calling this method results in a call to EWS.
-	 *
+	 * 
 	 * @param destinationFolderId
 	 *            the destination folder id
 	 * @throws Exception
@@ -279,7 +279,7 @@ public class EmailMessage extends Item {
 	 * folder. SendAndSaveCopy does not work if the message has unsaved
 	 * attachments. In that case, the message must first be saved and then sent.
 	 * Calling this method results in a call to EWS.
-	 *
+	 * 
 	 * @param destinationFolderName
 	 *            the destination folder name
 	 * @throws Exception
@@ -296,7 +296,7 @@ public class EmailMessage extends Item {
 	 * folder. SendAndSaveCopy does not work if the message has unsaved
 	 * attachments. In that case, the message must first be saved and then sent.
 	 * Calling this method results in a call to EWS.
-	 *
+	 * 
 	 * @throws Exception
 	 *             the exception
 	 */
@@ -308,7 +308,7 @@ public class EmailMessage extends Item {
 	/**
 	 * Suppresses the read receipt on the message. Calling this method results
 	 * in a call to EWS.
-	 *
+	 * 
 	 * @throws Exception
 	 *             the exception
 	 */
@@ -319,7 +319,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Gets the list of To recipients for the e-mail message.
-	 *
+	 * 
 	 * @return The list of To recipients for the e-mail message.
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -328,12 +328,12 @@ public class EmailMessage extends Item {
 			throws ServiceLocalException {
 		return (EmailAddressCollection) this.getPropertyBag()
 				.getObjectFromPropertyDefinition(
-                        EmailMessageSchema.ToRecipients);
+						EmailMessageSchema.ToRecipients);
 	}
 
 	/**
 	 * Gets the list of Bcc recipients for the e-mail message.
-	 *
+	 * 
 	 * @return the bcc recipients
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -342,12 +342,12 @@ public class EmailMessage extends Item {
 			throws ServiceLocalException {
 		return (EmailAddressCollection) this.getPropertyBag()
 				.getObjectFromPropertyDefinition(
-                        EmailMessageSchema.BccRecipients);
+						EmailMessageSchema.BccRecipients);
 	}
 
 	/**
 	 * Gets the list of Cc recipients for the e-mail message.
-	 *
+	 * 
 	 * @return the cc recipients
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -356,12 +356,12 @@ public class EmailMessage extends Item {
 			throws ServiceLocalException {
 		return (EmailAddressCollection) this.getPropertyBag()
 				.getObjectFromPropertyDefinition(
-                        EmailMessageSchema.CcRecipients);
+						EmailMessageSchema.CcRecipients);
 	}
 
 	/**
 	 * Gets the conversation topic of the e-mail message.
-	 *
+	 * 
 	 * @return the conversation topic
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -373,7 +373,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Gets the conversation index of the e-mail message.
-	 *
+	 * 
 	 * @return the conversation index
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -385,7 +385,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Gets  the "on behalf" sender of the e-mail message.
-	 *
+	 * 
 	 * @return the from
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -397,7 +397,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Sets the from.
-	 *
+	 * 
 	 * @param value
 	 *            the new from
 	 * @throws Exception
@@ -410,7 +410,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Gets  a value indicating whether this is an associated message.
-	 *
+	 * 
 	 * @return the checks if is associated
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -428,7 +428,7 @@ public class EmailMessage extends Item {
 	// associated messages.
 	/**
 	 * Sets the checks if is associated.
-	 *
+	 * 
 	 * @param value
 	 *            the new checks if is associated
 	 * @throws Exception
@@ -442,7 +442,7 @@ public class EmailMessage extends Item {
 	/**
 	 * Gets a value indicating whether a read receipt is requested for
 	 * the e-mail message.
-	 *
+	 * 
 	 * @return the checks if is delivery receipt requested
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -455,7 +455,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Sets the checks if is delivery receipt requested.
-	 *
+	 * 
 	 * @param value
 	 *            the new checks if is delivery receipt requested
 	 * @throws Exception
@@ -468,7 +468,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Gets  a value indicating whether the e-mail message is read.
-	 *
+	 * 
 	 * @return the checks if is read
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -480,7 +480,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Sets the checks if is read.
-	 *
+	 * 
 	 * @param value
 	 *            the new checks if is read
 	 * @throws Exception
@@ -494,7 +494,7 @@ public class EmailMessage extends Item {
 	/**
 	 * Gets a value indicating whether a read receipt is requested for
 	 * the e-mail message.
-	 *
+	 * 
 	 * @return the checks if is read receipt requested
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -506,7 +506,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Sets the checks if is read receipt requested.
-	 *
+	 * 
 	 * @param value
 	 *            the new checks if is read receipt requested
 	 * @throws Exception
@@ -520,7 +520,7 @@ public class EmailMessage extends Item {
 	/**
 	 * Gets  a value indicating whether a response is requested for the
 	 * e-mail message.
-	 *
+	 * 
 	 * @return the checks if is response requested
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -532,7 +532,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Sets the checks if is response requested.
-	 *
+	 * 
 	 * @param value
 	 *            the new checks if is response requested
 	 * @throws Exception
@@ -545,7 +545,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Gets the Internat Message Id of the e-mail message.
-	 *
+	 * 
 	 * @return the internet message id
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -557,7 +557,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Gets  the references of the e-mail message.
-	 *
+	 * 
 	 * @return the references
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -569,7 +569,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Sets the references.
-	 *
+	 * 
 	 * @param value
 	 *            the new references
 	 * @throws Exception
@@ -582,7 +582,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Gets a list of e-mail addresses to which replies should be addressed.
-	 *
+	 * 
 	 * @return the reply to
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -592,22 +592,16 @@ public class EmailMessage extends Item {
 				EmailMessageSchema.ReplyTo);
 	}
 
-    /**
-     * Sets an e-mail address to receive replies.
-     *
-     * @param replyTo The requested receiver of replies
-     * @throws Exception the exception
-     */
-    public void setReplyTo(EmailAddress replyTo) throws Exception {
-        EmailAddressCollection emailAddresses = new EmailAddressCollection();
-        emailAddresses.add(replyTo);
-        this.getPropertyBag().setObjectFromPropertyDefinition(
-                EmailMessageSchema.ReplyTo, emailAddresses);
-    }
+	public void setReplyTo(EmailAddress replyTo) throws Exception {
+		EmailAddressCollection emailAddresses = new EmailAddressCollection();
+		emailAddresses.add(replyTo);
+		this.getPropertyBag().setObjectFromPropertyDefinition(
+				EmailMessageSchema.ReplyTo, emailAddresses);
+	}
 
 	/**
 	 * Gets  the sender of the e-mail message.
-	 *
+	 * 
 	 * @return the sender
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -619,7 +613,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Sets the sender.
-	 *
+	 * 
 	 * @param value
 	 *            the new sender
 	 * @throws Exception
@@ -632,7 +626,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Gets the ReceivedBy property of the e-mail message.
-	 *
+	 * 
 	 * @return the received by
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -644,7 +638,7 @@ public class EmailMessage extends Item {
 
 	/**
 	 * Gets the ReceivedRepresenting property of the e-mail message.
-	 *
+	 * 
 	 * @return the received representing
 	 * @throws ServiceLocalException
 	 *             the service local exception
@@ -652,6 +646,6 @@ public class EmailMessage extends Item {
 	public EmailAddress getReceivedRepresenting() throws ServiceLocalException {
 		return (EmailAddress) this.getPropertyBag()
 				.getObjectFromPropertyDefinition(
-                        EmailMessageSchema.ReceivedRepresenting);
+						EmailMessageSchema.ReceivedRepresenting);
 	}
 }
