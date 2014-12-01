@@ -592,6 +592,13 @@ public class EmailMessage extends Item {
 				EmailMessageSchema.ReplyTo);
 	}
 
+	public void setReplyTo(EmailAddress replyTo) throws Exception {
+		EmailAddressCollection emailAddresses = new EmailAddressCollection();
+		emailAddresses.add(replyTo);
+		this.getPropertyBag().setObjectFromPropertyDefinition(
+				EmailMessageSchema.ReplyTo, emailAddresses);
+	}
+
 	/**
 	 * Gets  the sender of the e-mail message.
 	 * 
