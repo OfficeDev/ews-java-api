@@ -592,6 +592,12 @@ public class EmailMessage extends Item {
 				EmailMessageSchema.ReplyTo);
 	}
 
+    /**
+     * Sets an e-mail address to receive replies.
+     *
+     * @param replyTo The requested receiver of replies
+     * @throws Exception the exception
+     */
 	public void setReplyTo(EmailAddress replyTo) throws Exception {
 		EmailAddressCollection emailAddresses = new EmailAddressCollection();
 		emailAddresses.add(replyTo);
