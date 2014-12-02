@@ -21,7 +21,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
-import java.util.concurrent.FutureTask;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -1539,29 +1538,29 @@ public final class ExchangeService extends ExchangeServiceBase implements
 	 * @throws Exception
 	 *             the exception
 	 */
-	private ServiceResponseCollection<GetAttachmentResponse> internalGetAttachments(
-			Iterable<Attachment> attachments, BodyType bodyType,
-			Iterable<PropertyDefinitionBase> additionalProperties,
-			ServiceErrorHandling errorHandling) throws Exception {
-		GetAttachmentRequest request = new GetAttachmentRequest(this,
-				errorHandling);
+  private ServiceResponseCollection<GetAttachmentResponse> internalGetAttachments(
+      Iterable<Attachment> attachments, BodyType bodyType,
+      Iterable<PropertyDefinitionBase> additionalProperties, ServiceErrorHandling errorHandling)
+      throws Exception {
+    GetAttachmentRequest request = new GetAttachmentRequest(this, errorHandling);
 
-		Iterator it = attachments.iterator();
-		while (it.hasNext()) {
-			((ArrayList) request.getAttachments()).add(it.next());
+    Iterator it = attachments.iterator();
+    while (it.hasNext()) {
+      ((ArrayList) request.getAttachments()).add(it.next());
 
-		}
-		request.setBodyType(bodyType);
+    }
+    request.setBodyType(bodyType);
 
-		List propsArray = new ArrayList();
-		propsArray.add(additionalProperties);
+    if (additionalProperties != null) {
+      List propsArray = new ArrayList();
+      for (PropertyDefinitionBase propertyDefinitionBase : additionalProperties) {
+        propsArray.add(propertyDefinitionBase);
+      }
+      request.getAdditionalProperties().addAll(propsArray);
+    }
 
-		if (additionalProperties != null) {
-			request.getAdditionalProperties().addAll(propsArray);
-		}
-
-		return request.execute();
-	}
+    return request.execute();
+  }
 
 	/**
 	 * Gets attachments.
