@@ -42,7 +42,7 @@ Note that you should either set the URL manually or call AutodiscoverUrl, but yo
 
 ## Responding to Autodiscover Redirecting
 
-If the domain the the user inputs as their email address contains a CNAME that redirects the user this Exception is thrown:
+If the domain that the user inputs as their email address contains a CNAME that redirects the user this Exception is thrown:
 
 > microsoft.exchange.webservices.data.AutodiscoverLocalException: Autodiscover blocked a
 potentially insecure redirection to **URL**. To allow Autodiscover to follow the redirection, use the AutodiscoverUrl(string, AutodiscoverRedirectionUrlValidationCallback) overload.<
