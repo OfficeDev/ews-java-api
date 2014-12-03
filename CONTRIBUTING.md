@@ -17,8 +17,15 @@ Before submitting a feature or substantial code contribution please discuss it w
 * [Don't "Push" Your Pull Requests](http://www.igvita.com/2011/12/19/dont-push-your-pull-requests/) by Ilya Grigorik.
 
 ### Coding Conventions
+The project is using the _google-styleguide for Java_. Documentation of this style can be found here: [Google Java Style](https://google-styleguide.googlecode.com/svn-history/r130/trunk/javaguide.html)
+
 #### Using IntelliJ
-`Settings` -> `Code Style` -> `Scheme` -> _Choose_ `Project` 
+`Settings` -> `Code Style` -> `Scheme` -> _Choose_ `Project`
+#### Using Eclipse
+* Open *google-styleguide for Java* by clicking on: [google-styleguide](https://google-styleguide.googlecode.com/svn-history/r122/trunk/eclipse-java-google-style.xml)
+* Download the file with: “Right click and save as”
+* Import the new formatter:
+    `Window` -> `Preferences` -> `Java` -> `Code Style` -> `Formatter` -> _Choose_ `Import` and `select` the _eclipse-java-google-style.xml_
 
 ### Pull Requests
 If you don't know what a pull request is read the "[Using pull requests](https://help.github.com/articles/using-pull-requests)" article.
