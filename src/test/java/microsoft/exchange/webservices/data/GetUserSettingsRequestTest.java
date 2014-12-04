@@ -12,6 +12,8 @@ package microsoft.exchange.webservices.data;
 
 
 import org.apache.commons.codec.binary.*;
+import org.apache.commons.codec.binary.Base64;
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsNot;
 import org.hamcrest.core.IsNull;
@@ -23,6 +25,7 @@ import org.junit.runners.Parameterized;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.util.*;
 
@@ -126,7 +129,8 @@ public class GetUserSettingsRequestTest extends BaseTest {
      * @throws ServiceXmlSerializationException
      */
     @Test
-    public void testWriteExtraCustomSoapHeadersToXmlWithPartnertoken() throws ServiceValidationException, XMLStreamException, ServiceXmlSerializationException {
+    public void testWriteExtraCustomSoapHeadersToXmlWithPartnertoken()
+        throws ServiceValidationException, XMLStreamException, ServiceXmlSerializationException, IOException {
         GetUserSettingsRequest getUserSettingsRequest = new GetUserSettingsRequest(autodiscoverService, uriMockHttps, Boolean.TRUE);
 
         // Test without expected Partnertoken
@@ -136,7 +140,16 @@ public class GetUserSettingsRequestTest extends BaseTest {
         // data should be added the same way as mentioned
         Assert.assertThat(byteArrayOutputStream.toByteArray(), IsNot.not(new ByteArrayOutputStream().toByteArray()));
 
-        //TODO Test if the output is really correct
+      // data should be added the same way as mentioned
+      ByteArrayOutputStream byteArrayOutputStream1 = new ByteArrayOutputStream();
+      byteArrayOutputStream1.write(Base64.encodeBase64(ExchangeServiceBase.getSessionKey()));
+      byteArrayOutputStream1.flush();
+
+      byte[] resultData = byteArrayOutputStream.toByteArray();
+      byte[] expectedData = byteArrayOutputStream1.toByteArray();
+
+      Assert.assertThat(resultData, IsNot.not(new ByteArrayOutputStream().toByteArray()));
+      Assert.assertThat(Arrays.asList(resultData), CoreMatchers.hasItems(expectedData));
     }
 
     /**
