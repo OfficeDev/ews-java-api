@@ -15,24 +15,34 @@ package microsoft.exchange.webservices.data;
  */
 public enum TaskStatus {
 
-	// The execution of the task is not started.
-	/** The Not started. */
-	NotStarted,
+  // The execution of the task is not started.
+  /**
+   * The Not started.
+   */
+  NotStarted,
 
-	// The execution of the task is in progress.
-	/** The In progress. */
-	InProgress,
+  // The execution of the task is in progress.
+  /**
+   * The In progress.
+   */
+  InProgress,
 
-	// The execution of the task is completed.
-	/** The Completed. */
-	Completed,
+  // The execution of the task is completed.
+  /**
+   * The Completed.
+   */
+  Completed,
 
-	// The execution of the task is waiting on others.
-	/** The Waiting on others. */
-	WaitingOnOthers,
+  // The execution of the task is waiting on others.
+  /**
+   * The Waiting on others.
+   */
+  WaitingOnOthers,
 
-	// The execution of the task is deferred.
-	/** The Deferred. */
-	Deferred
+  // The execution of the task is deferred.
+  /**
+   * The Deferred.
+   */
+  Deferred
 
 }

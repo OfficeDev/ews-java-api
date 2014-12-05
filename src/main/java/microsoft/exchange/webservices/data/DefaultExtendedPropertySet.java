@@ -15,40 +15,58 @@ package microsoft.exchange.webservices.data;
  */
 public enum DefaultExtendedPropertySet {
 
-	// The Meeting extended property set.
-	/** The Meeting. */
-	Meeting,
+  // The Meeting extended property set.
+  /**
+   * The Meeting.
+   */
+  Meeting,
 
-	// The Appointment extended property set.
-	/** The Appointment. */
-	Appointment,
+  // The Appointment extended property set.
+  /**
+   * The Appointment.
+   */
+  Appointment,
 
-	// The Common extended property set.
-	/** The Common. */
-	Common,
+  // The Common extended property set.
+  /**
+   * The Common.
+   */
+  Common,
 
-	// The PublicStrings extended property set.
-	/** The Public strings. */
-	PublicStrings,
+  // The PublicStrings extended property set.
+  /**
+   * The Public strings.
+   */
+  PublicStrings,
 
-	// The Address extended property set.
-	/** The Address. */
-	Address,
+  // The Address extended property set.
+  /**
+   * The Address.
+   */
+  Address,
 
-	// The InternetHeaders extended property set.
-	/** The Internet headers. */
-	InternetHeaders,
+  // The InternetHeaders extended property set.
+  /**
+   * The Internet headers.
+   */
+  InternetHeaders,
 
-	// The CalendarAssistants extended property set.
-	/** The Calendar assistant. */
-	CalendarAssistant,
+  // The CalendarAssistants extended property set.
+  /**
+   * The Calendar assistant.
+   */
+  CalendarAssistant,
 
-	// The UnifiedMessaging extended property set.
-	/** The Unified messaging. */
-	UnifiedMessaging,
+  // The UnifiedMessaging extended property set.
+  /**
+   * The Unified messaging.
+   */
+  UnifiedMessaging,
 
-	// The Task extended property set.
-	/** The Task. */
-	Task
+  // The Task extended property set.
+  /**
+   * The Task.
+   */
+  Task
 
 }

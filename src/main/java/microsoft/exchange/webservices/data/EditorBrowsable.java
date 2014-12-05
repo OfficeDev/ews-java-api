@@ -18,14 +18,13 @@ import java.lang.annotation.Target;
 /**
  * The Interface EditorBrowsable.
  */
-@Target( { ElementType.TYPE, ElementType.FIELD, ElementType.METHOD })
-@Retention(RetentionPolicy.RUNTIME)
-@interface EditorBrowsable {
+@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME) @interface EditorBrowsable {
 
-	/**
-	 * State.
-	 * 
-	 * @return the editor browsable state
-	 */
-	EditorBrowsableState state();
+  /**
+   * State.
+   *
+   * @return the editor browsable state
+   */
+  EditorBrowsableState state();
 }

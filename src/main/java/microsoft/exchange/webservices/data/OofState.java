@@ -15,15 +15,21 @@ package microsoft.exchange.webservices.data;
  */
 public enum OofState {
 
-	// The assistant is diabled.
-	/** The Disabled. */
-	Disabled,
+  // The assistant is diabled.
+  /**
+   * The Disabled.
+   */
+  Disabled,
 
-	// The assistant is enabled.
-	/** The Enabled. */
-	Enabled,
+  // The assistant is enabled.
+  /**
+   * The Enabled.
+   */
+  Enabled,
 
-	// The assistant is scheduled.
-	/** The Scheduled. */
-	Scheduled
+  // The assistant is scheduled.
+  /**
+   * The Scheduled.
+   */
+  Scheduled
 }

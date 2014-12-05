@@ -17,74 +17,63 @@ import java.util.EnumSet;
  */
 class MeetingTimeZonePropertyDefinition extends PropertyDefinition {
 
-	/**
-	 * Initializes a new instance of the MeetingTimeZonePropertyDefinition
-	 * class.
-	 * 
-	 * @param xmlElementName
-	 *            the xml element name
-	 * @param uri
-	 *            the uri
-	 * @param flags
-	 *            the flags
-	 * @param version
-	 *            the version
-	 */
-	protected MeetingTimeZonePropertyDefinition(String xmlElementName,
-			String uri, EnumSet<PropertyDefinitionFlags> flags,
-			ExchangeVersion version) {
-		super(xmlElementName, uri, flags, version);
+  /**
+   * Initializes a new instance of the MeetingTimeZonePropertyDefinition
+   * class.
+   *
+   * @param xmlElementName the xml element name
+   * @param uri            the uri
+   * @param flags          the flags
+   * @param version        the version
+   */
+  protected MeetingTimeZonePropertyDefinition(String xmlElementName,
+      String uri, EnumSet<PropertyDefinitionFlags> flags,
+      ExchangeVersion version) {
+    super(xmlElementName, uri, flags, version);
 
-	}
+  }
 
-	/**
-	 * Loads from XML.
-	 * 
-	 * @param reader
-	 *            the reader
-	 * @param propertyBag
-	 *            the property bag
-	 * @throws Exception
-	 *             the exception
-	 */
-	protected final void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-			PropertyBag propertyBag) throws Exception {
-		MeetingTimeZone meetingTimeZone = new MeetingTimeZone();
-		meetingTimeZone.loadFromXml(reader, this.getXmlElement());
+  /**
+   * Loads from XML.
+   *
+   * @param reader      the reader
+   * @param propertyBag the property bag
+   * @throws Exception the exception
+   */
+  protected final void loadPropertyValueFromXml(EwsServiceXmlReader reader,
+      PropertyBag propertyBag) throws Exception {
+    MeetingTimeZone meetingTimeZone = new MeetingTimeZone();
+    meetingTimeZone.loadFromXml(reader, this.getXmlElement());
 
-		propertyBag.setObjectFromPropertyDefinition(
-				AppointmentSchema.StartTimeZone, meetingTimeZone
-						.toTimeZoneInfo());
-	}
+    propertyBag.setObjectFromPropertyDefinition(
+        AppointmentSchema.StartTimeZone, meetingTimeZone
+            .toTimeZoneInfo());
+  }
 
-	/**
-	 * Writes to XML.
-	 * 
-	 * @param writer
-	 *            the writer
-	 * @param propertyBag
-	 *            the property bag
-	 * @param isUpdateOperation
-	 *            the is update operation
-	 * @throws Exception
-	 *             the exception
-	 */
-	protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-			PropertyBag propertyBag, boolean isUpdateOperation)
-			throws Exception {
-		MeetingTimeZone value = (MeetingTimeZone)propertyBag
-				.getObjectFromPropertyDefinition(this);
+  /**
+   * Writes to XML.
+   *
+   * @param writer            the writer
+   * @param propertyBag       the property bag
+   * @param isUpdateOperation the is update operation
+   * @throws Exception the exception
+   */
+  protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
+      PropertyBag propertyBag, boolean isUpdateOperation)
+      throws Exception {
+    MeetingTimeZone value = (MeetingTimeZone) propertyBag
+        .getObjectFromPropertyDefinition(this);
 
-		if (value != null) {
-			value.writeToXml(writer, this.getXmlElement());
-		}
-	}
-	
-	/**
-	 * Gets the property type.
-	 */
-	@Override
-    public Class getType() {
-         return MeetingTimeZone.class; 
+    if (value != null) {
+      value.writeToXml(writer, this.getXmlElement());
     }
+  }
+
+  /**
+   * Gets the property type.
+   */
+  @Override
+  public Class getType() {
+    return MeetingTimeZone.class;
+  }
 }

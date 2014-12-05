@@ -15,15 +15,21 @@ package microsoft.exchange.webservices.data;
  * have to be ordered from lowest to highest severity.
  */
 public enum ServiceResult {
-	// The call was successful
-	/** The Success. */
-	Success,
+  // The call was successful
+  /**
+   * The Success.
+   */
+  Success,
 
-	// The call triggered at least one warning
-	/** The Warning. */
-	Warning,
+  // The call triggered at least one warning
+  /**
+   * The Warning.
+   */
+  Warning,
 
-	// The call triggered at least one error
-	/** The Error. */
-	Error
+  // The call triggered at least one error
+  /**
+   * The Error.
+   */
+  Error
 }

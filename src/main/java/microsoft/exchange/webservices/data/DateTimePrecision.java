@@ -15,14 +15,14 @@ package microsoft.exchange.webservices.data;
  */
 public enum DateTimePrecision {
 
-	// Default value. No SOAP header emitted.
-	Default,
-	
-	// Seconds
-	
-	Seconds,
+  // Default value. No SOAP header emitted.
+  Default,
 
-	// Milliseconds
+  // Seconds
 
-	Milliseconds
+  Seconds,
+
+  // Milliseconds
+
+  Milliseconds
 }

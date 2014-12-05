@@ -15,44 +15,64 @@ package microsoft.exchange.webservices.data;
  */
 public enum UserConfigurationDictionaryObjectType {
 
-	// DateTime type.
-	/** The Date time. */
-	DateTime,
+  // DateTime type.
+  /**
+   * The Date time.
+   */
+  DateTime,
 
-	// Boolean type.
-	/** The Boolean. */
-	Boolean,
+  // Boolean type.
+  /**
+   * The Boolean.
+   */
+  Boolean,
 
-	// Byte type.
-	/** The Byte. */
-	Byte,
+  // Byte type.
+  /**
+   * The Byte.
+   */
+  Byte,
 
-	// String type.
-	/** The String. */
-	String,
+  // String type.
+  /**
+   * The String.
+   */
+  String,
 
-	// 32-bit integer type.
-	/** The Integer32. */
-	Integer32,
+  // 32-bit integer type.
+  /**
+   * The Integer32.
+   */
+  Integer32,
 
-	// 32-bit unsigned integer type.
-	/** The Unsigned integer32. */
-	UnsignedInteger32,
+  // 32-bit unsigned integer type.
+  /**
+   * The Unsigned integer32.
+   */
+  UnsignedInteger32,
 
-	// 64-bit integer type.
-	/** The Integer64. */
-	Integer64,
+  // 64-bit integer type.
+  /**
+   * The Integer64.
+   */
+  Integer64,
 
-	// 64-bit unsigned integer type.
-	/** The Unsigned integer64. */
-	UnsignedInteger64,
+  // 64-bit unsigned integer type.
+  /**
+   * The Unsigned integer64.
+   */
+  UnsignedInteger64,
 
-	// String array type.
-	/** The String array. */
-	StringArray,
+  // String array type.
+  /**
+   * The String array.
+   */
+  StringArray,
 
-	// Byte array type
-	/** The Byte array. */
-	ByteArray,
+  // Byte array type
+  /**
+   * The Byte array.
+   */
+  ByteArray,
 
 }

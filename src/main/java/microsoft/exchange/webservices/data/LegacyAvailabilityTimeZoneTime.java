@@ -16,42 +16,54 @@ import javax.xml.stream.XMLStreamException;
  * Represents a custom time zone time change.
  */
 final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
-	
-	/** The delta. */
-	private TimeSpan delta;
-	
-	/** The year. */
-	private int year;
-	
-	/** The month. */
-	private int month;
-	
-	/** The day order. */
-	private int dayOrder;
-	
-	/** The day of the week. */
-	private DayOfTheWeek dayOfTheWeek;
-	
-	/** The time of day. */
-	private TimeSpan timeOfDay;
 
-	/**
-	 * Initializes a new instance of the LegacyAvailabilityTimeZoneTime class.
-	 */
-	protected LegacyAvailabilityTimeZoneTime() {
-		super();
-	}
+  /**
+   * The delta.
+   */
+  private TimeSpan delta;
 
-	/**
-	 * initializes a new instance of the LegacyAvailabilityTimeZoneTime class.
-	 * 
-	 * @param reader
-	 *            the reader
-	 * @return true, if successful
-	 * @throws Exception
-	 *             the exception
-	 */
-	/*
+  /**
+   * The year.
+   */
+  private int year;
+
+  /**
+   * The month.
+   */
+  private int month;
+
+  /**
+   * The day order.
+   */
+  private int dayOrder;
+
+  /**
+   * The day of the week.
+   */
+  private DayOfTheWeek dayOfTheWeek;
+
+  /**
+   * The time of day.
+   */
+  private TimeSpan timeOfDay;
+
+  /**
+   * Initializes a new instance of the LegacyAvailabilityTimeZoneTime class.
+   */
+  protected LegacyAvailabilityTimeZoneTime() {
+    super();
+  }
+
+  /**
+   * initializes a new instance of the LegacyAvailabilityTimeZoneTime class.
+   *
+   * @param reader
+   *            the reader
+   * @return true, if successful
+   * @throws Exception
+   *             the exception
+   */
+        /*
 	 * protected LegacyAvailabilityTimeZoneTime(TimeZone.TransitionTime
 	 * transitionTime, TimeSpan delta) { this(); this.delta = delta;
 	 * 
@@ -68,11 +80,11 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
 	 * transitionTime.TimeOfDay.TimeOfDay; } }
 	 */
 
-	/**
-	 * Converts this instance to TimeZoneInfo.TransitionTime. returns
-	 * TimeZoneInfo.TransitionTime
-	 * 
-	 */
+  /**
+   * Converts this instance to TimeZoneInfo.TransitionTime. returns
+   * TimeZoneInfo.TransitionTime
+   *
+   */
 	/*
 	 * protected TimeZone.TransitionTime toTransitionTime() { if (this.year ==
 	 * 0) { return TimeZone.TransitionTime.createFloatingDateRule( new Date(
@@ -84,205 +96,194 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
 	 * Date(this.timeOfDay.Ticks), this.month, this.dayOrder); } }
 	 */
 
-	/**
-	 * Tries to read element from XML.
-	 * 
-	 * @param reader
-	 *            accepts EwsServiceXmlReader
-	 * @return True if element was read.
-	 * @throws Exception
-	 *             throws Exception
-	 */
-	@Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
-			throws Exception {
-		if (reader.getLocalName().equals(XmlElementNames.Bias)) {
-			this.delta = new TimeSpan((long)
-					reader.readElementValue(Integer.class) * 60 * 1000);
-			return true;
-		} else if (reader.getLocalName().equals(XmlElementNames.Time)) {
-			this.timeOfDay = TimeSpan.parse(reader.readElementValue());
-			return true;
-		} else if (reader.getLocalName().equals(XmlElementNames.DayOrder)) {
-			this.dayOrder = reader.readElementValue(Integer.class);
-			return true;
-		} else if (reader.getLocalName().equals(XmlElementNames.DayOfWeek)) {
-			this.dayOfTheWeek = reader.readElementValue(DayOfTheWeek.class);
-			return true;
-		} else if (reader.getLocalName().equals(XmlElementNames.Month)) {
-			this.month = reader.readElementValue(Integer.class);
-			return true;
-		} else if (reader.getLocalName().equals(XmlElementNames.Year)) {
-			this.year = reader.readElementValue(Integer.class);
-			return true;
-		} else {
-			return false;
-		}
-	}
+  /**
+   * Tries to read element from XML.
+   *
+   * @param reader accepts EwsServiceXmlReader
+   * @return True if element was read.
+   * @throws Exception throws Exception
+   */
+  @Override
+  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+      throws Exception {
+    if (reader.getLocalName().equals(XmlElementNames.Bias)) {
+      this.delta = new TimeSpan((long)
+          reader.readElementValue(Integer.class) * 60 * 1000);
+      return true;
+    } else if (reader.getLocalName().equals(XmlElementNames.Time)) {
+      this.timeOfDay = TimeSpan.parse(reader.readElementValue());
+      return true;
+    } else if (reader.getLocalName().equals(XmlElementNames.DayOrder)) {
+      this.dayOrder = reader.readElementValue(Integer.class);
+      return true;
+    } else if (reader.getLocalName().equals(XmlElementNames.DayOfWeek)) {
+      this.dayOfTheWeek = reader.readElementValue(DayOfTheWeek.class);
+      return true;
+    } else if (reader.getLocalName().equals(XmlElementNames.Month)) {
+      this.month = reader.readElementValue(Integer.class);
+      return true;
+    } else if (reader.getLocalName().equals(XmlElementNames.Year)) {
+      this.year = reader.readElementValue(Integer.class);
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-	/**
-	 * Writes the elements to XML.
-	 * 
-	 * @param writer
-	 *            the writer
-	 * @throws ServiceXmlSerializationException
-	 *             the service xml serialization exception
-	 * @throws javax.xml.stream.XMLStreamException
-	 *             the xML stream exception
-	 */
-	@Override
-	protected void writeElementsToXml(EwsServiceXmlWriter writer)
-			throws ServiceXmlSerializationException, XMLStreamException {
-		writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Bias,
-				(int) this.delta.getMinutes());
+  /**
+   * Writes the elements to XML.
+   *
+   * @param writer the writer
+   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   */
+  @Override
+  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+      throws ServiceXmlSerializationException, XMLStreamException {
+    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Bias,
+        (int) this.delta.getMinutes());
 
-		writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Time,
-				EwsUtilities.timeSpanToXSTime(this.timeOfDay));
+    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Time,
+        EwsUtilities.timeSpanToXSTime(this.timeOfDay));
 
-		writer.writeElementValue(XmlNamespace.Types, XmlElementNames.DayOrder,
-				this.dayOrder);
+    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.DayOrder,
+        this.dayOrder);
 
-		writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Month, this.month);
+    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Month, this.month);
 
-		// Only write DayOfWeek if this is a recurring time change
-		if (this.getYear() == 0) {
-			writer.writeElementValue(XmlNamespace.Types,
-					XmlElementNames.DayOfWeek, this.dayOfTheWeek);
-		}
-
-		// Only emit year if it's non zero, otherwise AS returns
-		// "Request is invalid"
-		if (this.getYear() != 0) {
-			writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Year,
-					this.getYear());
-		}
-	}
-
-	/**
-	 * Gets if current time presents DST transition time
-	 * @return month
-	 */
-    protected boolean getHasTransitionTime()
-    {
-        return this.month >= 1 && this.month <= 12; 
+    // Only write DayOfWeek if this is a recurring time change
+    if (this.getYear() == 0) {
+      writer.writeElementValue(XmlNamespace.Types,
+          XmlElementNames.DayOfWeek, this.dayOfTheWeek);
     }
 
-    
-	/**
-	 * Gets  the delta.
-	 *
-	 * @return the delta
-	 */
-	protected TimeSpan getDelta() {
-		return this.delta;
-	}
+    // Only emit year if it's non zero, otherwise AS returns
+    // "Request is invalid"
+    if (this.getYear() != 0) {
+      writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Year,
+          this.getYear());
+    }
+  }
 
-	/**
-	 * Sets the delta.
-	 * 
-	 * @param delta
-	 *            the new delta
-	 */
-	protected void setDelta(TimeSpan delta) {
-		this.delta = delta;
-	}
+  /**
+   * Gets if current time presents DST transition time
+   *
+   * @return month
+   */
+  protected boolean getHasTransitionTime() {
+    return this.month >= 1 && this.month <= 12;
+  }
 
-	/**
-	 * Gets  the time of day.
-	 *
-	 * @return the time of day
-	 */
-	protected TimeSpan getTimeOfDay() {
-		return this.timeOfDay;
-	}
 
-	/**
-	 * Sets the time of day.
-	 * 
-	 * @param timeOfDay
-	 *            the new time of day
-	 */
-	protected void setTimeOfDay(TimeSpan timeOfDay) {
-		this.timeOfDay = timeOfDay;
-	}
+  /**
+   * Gets  the delta.
+   *
+   * @return the delta
+   */
+  protected TimeSpan getDelta() {
+    return this.delta;
+  }
 
-	/**
-	 * Gets  a value that represents: - The day of the month when Year is
-	 * non zero, - The index of the week in the month if Year is equal to zero.
-	 *
-	 * @return the day order
-	 */
-	protected int getDayOrder() {
-		return this.dayOrder;
-	}
+  /**
+   * Sets the delta.
+   *
+   * @param delta the new delta
+   */
+  protected void setDelta(TimeSpan delta) {
+    this.delta = delta;
+  }
 
-	/**
-	 * Sets the day order.
-	 * 
-	 * @param dayOrder
-	 *            the new day order
-	 */
-	protected void setDayOrder(int dayOrder) {
-		this.dayOrder = dayOrder;
-	}
+  /**
+   * Gets  the time of day.
+   *
+   * @return the time of day
+   */
+  protected TimeSpan getTimeOfDay() {
+    return this.timeOfDay;
+  }
 
-	/**
-	 * Gets  the month.
-	 *
-	 * @return the month
-	 */
-	protected int getMonth() {
-		return this.month;
-	}
+  /**
+   * Sets the time of day.
+   *
+   * @param timeOfDay the new time of day
+   */
+  protected void setTimeOfDay(TimeSpan timeOfDay) {
+    this.timeOfDay = timeOfDay;
+  }
 
-	/**
-	 * Sets the month.
-	 * 
-	 * @param month
-	 *            the new month
-	 */
-	protected void setMonth(int month) {
-		this.month = month;
-	}
+  /**
+   * Gets  a value that represents: - The day of the month when Year is
+   * non zero, - The index of the week in the month if Year is equal to zero.
+   *
+   * @return the day order
+   */
+  protected int getDayOrder() {
+    return this.dayOrder;
+  }
 
-	/**
-	 * Gets  the day of the week.
-	 *
-	 * @return the day of the week
-	 */
-	protected DayOfTheWeek getDayOfTheWeek() {
-		return this.dayOfTheWeek;
-	}
+  /**
+   * Sets the day order.
+   *
+   * @param dayOrder the new day order
+   */
+  protected void setDayOrder(int dayOrder) {
+    this.dayOrder = dayOrder;
+  }
 
-	/**
-	 * Sets the day of the week.
-	 * 
-	 * @param dayOfTheWeek
-	 *            the new day of the week
-	 */
-	protected void setDayOfTheWeek(DayOfTheWeek dayOfTheWeek) {
-		this.dayOfTheWeek = dayOfTheWeek;
-	}
+  /**
+   * Gets  the month.
+   *
+   * @return the month
+   */
+  protected int getMonth() {
+    return this.month;
+  }
 
-	/**
-	 * Gets  the year. If Year is 0, the time change occurs every year
-	 * according to a recurring pattern; otherwise, the time change occurs at
-	 * the date specified by Day, Month, Year.
-	 *
-	 * @return the year
-	 */
-	protected int getYear() {
-		return this.year;
-	}
+  /**
+   * Sets the month.
+   *
+   * @param month the new month
+   */
+  protected void setMonth(int month) {
+    this.month = month;
+  }
 
-	/**
-	 * Sets the year.
-	 * 
-	 * @param year
-	 *            the new year
-	 */
-	protected void setYear(int year) {
-		this.year = year;
-	}
+  /**
+   * Gets  the day of the week.
+   *
+   * @return the day of the week
+   */
+  protected DayOfTheWeek getDayOfTheWeek() {
+    return this.dayOfTheWeek;
+  }
+
+  /**
+   * Sets the day of the week.
+   *
+   * @param dayOfTheWeek the new day of the week
+   */
+  protected void setDayOfTheWeek(DayOfTheWeek dayOfTheWeek) {
+    this.dayOfTheWeek = dayOfTheWeek;
+  }
+
+  /**
+   * Gets  the year. If Year is 0, the time change occurs every year
+   * according to a recurring pattern; otherwise, the time change occurs at
+   * the date specified by Day, Month, Year.
+   *
+   * @return the year
+   */
+  protected int getYear() {
+    return this.year;
+  }
+
+  /**
+   * Sets the year.
+   *
+   * @param year the new year
+   */
+  protected void setYear(int year) {
+    this.year = year;
+  }
 
 }

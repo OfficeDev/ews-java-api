@@ -15,19 +15,27 @@ package microsoft.exchange.webservices.data;
  */
 public enum ChangeType {
 
-	// An item or folder was created.
-	/** The Create. */
-	Create,
+  // An item or folder was created.
+  /**
+   * The Create.
+   */
+  Create,
 
-	// An item or folder was modified.
-	/** The Update. */
-	Update,
+  // An item or folder was modified.
+  /**
+   * The Update.
+   */
+  Update,
 
-	// An item or folder was deleted.
-	/** The Delete. */
-	Delete,
+  // An item or folder was deleted.
+  /**
+   * The Delete.
+   */
+  Delete,
 
-	// An item's IsRead flag was changed.
-	/** The Read flag change. */
-	ReadFlagChange,
+  // An item's IsRead flag was changed.
+  /**
+   * The Read flag change.
+   */
+  ReadFlagChange,
 }

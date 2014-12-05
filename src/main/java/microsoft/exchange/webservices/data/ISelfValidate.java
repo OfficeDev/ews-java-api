@@ -15,13 +15,11 @@ package microsoft.exchange.webservices.data;
  */
 interface ISelfValidate {
 
-	/**
-	 * Validate.
-	 * 
-	 * @throws ServiceValidationException
-	 *             the service validation exception
-	 * @throws Exception
-	 *             the exception
-	 */
-	void validate() throws ServiceValidationException, Exception;
+  /**
+   * Validate.
+   *
+   * @throws ServiceValidationException the service validation exception
+   * @throws Exception                  the exception
+   */
+  void validate() throws ServiceValidationException, Exception;
 }

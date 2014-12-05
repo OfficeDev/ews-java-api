@@ -14,42 +14,42 @@ package microsoft.exchange.webservices.data;
  * Represents a collection of responses to GetDomainSettings.
  */
 public final class GetDomainSettingsResponseCollection extends
-		AutodiscoverResponseCollection<GetDomainSettingsResponse> {
+    AutodiscoverResponseCollection<GetDomainSettingsResponse> {
 
-	/**
-	 * Initializes a new instance of the AutodiscoverResponseCollection class.
-	 */
-	protected GetDomainSettingsResponseCollection() {
-	}
+  /**
+   * Initializes a new instance of the AutodiscoverResponseCollection class.
+   */
+  protected GetDomainSettingsResponseCollection() {
+  }
 
-	/**
-	 * Create a response instance.
-	 * 
-	 * @return GetDomainSettingsResponse.
-	 */
-	@Override
-	protected GetDomainSettingsResponse createResponseInstance() {
-		return new GetDomainSettingsResponse();
-	}
+  /**
+   * Create a response instance.
+   *
+   * @return GetDomainSettingsResponse.
+   */
+  @Override
+  protected GetDomainSettingsResponse createResponseInstance() {
+    return new GetDomainSettingsResponse();
+  }
 
-	/**
-	 * Gets the name of the response collection XML element.
-	 * 
-	 * @return Response collection XMl element name.
-	 */
-	@Override
-	protected String getResponseCollectionXmlElementName() {
-		return XmlElementNames.DomainResponses;
-	}
+  /**
+   * Gets the name of the response collection XML element.
+   *
+   * @return Response collection XMl element name.
+   */
+  @Override
+  protected String getResponseCollectionXmlElementName() {
+    return XmlElementNames.DomainResponses;
+  }
 
-	/**
-	 * Gets the name of the response instance XML element.
-	 * 
-	 * @return Response instance XMl element name.
-	 */
-	@Override
-	protected String getResponseInstanceXmlElementName() {
-		return XmlElementNames.DomainResponse;
-	}
+  /**
+   * Gets the name of the response instance XML element.
+   *
+   * @return Response instance XMl element name.
+   */
+  @Override
+  protected String getResponseInstanceXmlElementName() {
+    return XmlElementNames.DomainResponse;
+  }
 
 }

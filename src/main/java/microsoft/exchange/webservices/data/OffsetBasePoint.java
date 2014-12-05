@@ -15,12 +15,16 @@ package microsoft.exchange.webservices.data;
  */
 public enum OffsetBasePoint {
 
-	// The offset is from the beginning of the view.
-	/** The Beginning. */
-	Beginning,
+  // The offset is from the beginning of the view.
+  /**
+   * The Beginning.
+   */
+  Beginning,
 
-	// The offset is from the end of the view.
-	/** The End. */
-	End
+  // The offset is from the end of the view.
+  /**
+   * The End.
+   */
+  End
 
 }

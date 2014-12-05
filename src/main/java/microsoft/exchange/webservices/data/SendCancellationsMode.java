@@ -16,17 +16,23 @@ package microsoft.exchange.webservices.data;
  */
 public enum SendCancellationsMode {
 
-	// No meeting cancellation is sent.
-	/** The Send to none. */
-	SendToNone,
+  // No meeting cancellation is sent.
+  /**
+   * The Send to none.
+   */
+  SendToNone,
 
-	// Meeting cancellations are sent to all attendees.
-	/** The Send only to all. */
-	SendOnlyToAll,
+  // Meeting cancellations are sent to all attendees.
+  /**
+   * The Send only to all.
+   */
+  SendOnlyToAll,
 
-	// Meeting cancellations are sent to all attendees and a copy of the meeting
-	// is saved in the organizer's Sent Items folder.
-	/** The Send to all and save copy. */
-	SendToAllAndSaveCopy,
+  // Meeting cancellations are sent to all attendees and a copy of the meeting
+  // is saved in the organizer's Sent Items folder.
+  /**
+   * The Send to all and save copy.
+   */
+  SendToAllAndSaveCopy,
 
 }

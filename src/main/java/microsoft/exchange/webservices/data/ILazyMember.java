@@ -12,16 +12,15 @@ package microsoft.exchange.webservices.data;
 
 /**
  * The Interface ILazyMember.
- * 
- * @param <T>
- *            the generic type
+ *
+ * @param <T> the generic type
  */
- abstract interface ILazyMember<T> {
+abstract interface ILazyMember<T> {
 
-	/**
-	 * Creates the instance.
-	 * 
-	 * @return the t
-	 */
-    T createInstance();
+  /**
+   * Creates the instance.
+   *
+   * @return the t
+   */
+  T createInstance();
 }

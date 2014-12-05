@@ -15,31 +15,29 @@ package microsoft.exchange.webservices.data;
  */
 public class AutodiscoverResponseException extends ServiceRemoteException {
 
-	/**
-	 * Error code when Autodiscover service operation failed remotely.
-	 */
-	private AutodiscoverErrorCode errorCode;
+  /**
+   * Error code when Autodiscover service operation failed remotely.
+   */
+  private AutodiscoverErrorCode errorCode;
 
-	/**
-	 * Initializes a new instance of the class.
-	 * 
-	 * @param errorCode
-	 *            the error code
-	 * @param message
-	 *            the message
-	 */
-	protected AutodiscoverResponseException(AutodiscoverErrorCode errorCode,
-			String message) {
-		super(message);
-		this.errorCode = errorCode;
-	}
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param errorCode the error code
+   * @param message   the message
+   */
+  protected AutodiscoverResponseException(AutodiscoverErrorCode errorCode,
+      String message) {
+    super(message);
+    this.errorCode = errorCode;
+  }
 
-	/**
-	 * Gets the ErrorCode for the exception.
-	 * 
-	 * @return the error code
-	 */
-	public AutodiscoverErrorCode getErrorCode() {
-		return this.errorCode;
-	}
+  /**
+   * Gets the ErrorCode for the exception.
+   *
+   * @return the error code
+   */
+  public AutodiscoverErrorCode getErrorCode() {
+    return this.errorCode;
+  }
 }

@@ -14,139 +14,144 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- *Represents the availability of an individual attendee.
+ * Represents the availability of an individual attendee.
  */
 public final class AttendeeAvailability extends ServiceResponse {
 
-	/** The calendar events. */
-	private Collection<CalendarEvent> calendarEvents = 
-		new ArrayList<CalendarEvent>();
+  /**
+   * The calendar events.
+   */
+  private Collection<CalendarEvent> calendarEvents =
+      new ArrayList<CalendarEvent>();
 
-	/** The merged free busy status. */
-	private Collection<LegacyFreeBusyStatus> mergedFreeBusyStatus = 
-		new ArrayList<LegacyFreeBusyStatus>();
+  /**
+   * The merged free busy status.
+   */
+  private Collection<LegacyFreeBusyStatus> mergedFreeBusyStatus =
+      new ArrayList<LegacyFreeBusyStatus>();
 
-	/** The view type. */
-	private FreeBusyViewType viewType;
+  /**
+   * The view type.
+   */
+  private FreeBusyViewType viewType;
 
-	/** The working hours. */
-	private WorkingHours workingHours;
+  /**
+   * The working hours.
+   */
+  private WorkingHours workingHours;
 
-	/**
-	 * Initializes a new instance of the AttendeeAvailability class.
-	 */
-	protected AttendeeAvailability() {
-		super();
-	}
+  /**
+   * Initializes a new instance of the AttendeeAvailability class.
+   */
+  protected AttendeeAvailability() {
+    super();
+  }
 
-	/**
-	 * Loads the free busy view from XML.
-	 * 
-	 * @param reader
-	 *            the reader
-	 * @param viewType
-	 *            the view type
-	 * @throws Exception
-	 *             the exception
-	 */
-	protected void loadFreeBusyViewFromXml(EwsServiceXmlReader reader,
-			FreeBusyViewType viewType) throws Exception {
-		reader.readStartElement(XmlNamespace.Messages,
-				XmlElementNames.FreeBusyView);
+  /**
+   * Loads the free busy view from XML.
+   *
+   * @param reader   the reader
+   * @param viewType the view type
+   * @throws Exception the exception
+   */
+  protected void loadFreeBusyViewFromXml(EwsServiceXmlReader reader,
+      FreeBusyViewType viewType) throws Exception {
+    reader.readStartElement(XmlNamespace.Messages,
+        XmlElementNames.FreeBusyView);
 
-		String viewTypeString = reader.readElementValue(XmlNamespace.Types,
-				XmlElementNames.FreeBusyViewType);
+    String viewTypeString = reader.readElementValue(XmlNamespace.Types,
+        XmlElementNames.FreeBusyViewType);
 
-		for (Object o : FreeBusyViewType.class.getEnumConstants()) {
-			if (o.toString().equals(viewTypeString)) {
-				this.viewType = (FreeBusyViewType)o;
-				break;
-			}
-		}
-		do {
-			reader.read();
+    for (Object o : FreeBusyViewType.class.getEnumConstants()) {
+      if (o.toString().equals(viewTypeString)) {
+        this.viewType = (FreeBusyViewType) o;
+        break;
+      }
+    }
+    do {
+      reader.read();
 
-			if (reader.isStartElement()) {
-				if (reader.getLocalName()
-						.equals(XmlElementNames.MergedFreeBusy)) {
-					String mergedFreeBusy = reader.readElementValue();
+      if (reader.isStartElement()) {
+        if (reader.getLocalName()
+            .equals(XmlElementNames.MergedFreeBusy)) {
+          String mergedFreeBusy = reader.readElementValue();
 
-					for (int i = 0; i < mergedFreeBusy.length(); i++) {
-					
-						Byte b = Byte.parseByte(mergedFreeBusy.charAt(i)+"");
-						for (LegacyFreeBusyStatus legacyStatus : LegacyFreeBusyStatus.values()) {
-							if(b == legacyStatus.getBusyStatus()) {
-								this.mergedFreeBusyStatus.add(legacyStatus);
-								break;
-							}
-						}
-					
-					}
+          for (int i = 0; i < mergedFreeBusy.length(); i++) {
 
-				} else if (reader.getLocalName().equals(
-						XmlElementNames.CalendarEventArray)) {
-					do {
-						reader.read();
+            Byte b = Byte.parseByte(mergedFreeBusy.charAt(i) + "");
+            for (LegacyFreeBusyStatus legacyStatus : LegacyFreeBusyStatus.values()) {
+              if (b == legacyStatus.getBusyStatus()) {
+                this.mergedFreeBusyStatus.add(legacyStatus);
+                break;
+              }
+            }
 
-						if (reader.isStartElement(XmlNamespace.Types,
-								XmlElementNames.CalendarEvent)) {
-							CalendarEvent calendarEvent = new CalendarEvent();
+          }
 
-							calendarEvent.loadFromXml(reader,
-									XmlElementNames.CalendarEvent);
+        } else if (reader.getLocalName().equals(
+            XmlElementNames.CalendarEventArray)) {
+          do {
+            reader.read();
 
-							this.calendarEvents.add(calendarEvent);
-						}
-					} while (!reader.isEndElement(XmlNamespace.Types,
-							XmlElementNames.CalendarEventArray));
+            if (reader.isStartElement(XmlNamespace.Types,
+                XmlElementNames.CalendarEvent)) {
+              CalendarEvent calendarEvent = new CalendarEvent();
 
-				} else if (reader.getLocalName().equals(
-						XmlElementNames.WorkingHours)) {
-					this.workingHours = new WorkingHours();
-					this.workingHours
-							.loadFromXml(reader, reader.getLocalName());
+              calendarEvent.loadFromXml(reader,
+                  XmlElementNames.CalendarEvent);
 
-					break;
-				}
-			}
-		} while (!reader.isEndElement(XmlNamespace.Messages,
-				XmlElementNames.FreeBusyView));
-	}
+              this.calendarEvents.add(calendarEvent);
+            }
+          } while (!reader.isEndElement(XmlNamespace.Types,
+              XmlElementNames.CalendarEventArray));
 
-	/**
-	 * Gets a collection of calendar events for the attendee.
-	 * 
-	 * @return the calendar events
-	 */
-	public Collection<CalendarEvent> getCalendarEvents() {
-		return this.calendarEvents;
-	}
+        } else if (reader.getLocalName().equals(
+            XmlElementNames.WorkingHours)) {
+          this.workingHours = new WorkingHours();
+          this.workingHours
+              .loadFromXml(reader, reader.getLocalName());
 
-	/**
-	 * Gets a collection of merged free/busy status for the attendee.
-	 * 
-	 * @return the merged free busy status
-	 */
-	public Collection<LegacyFreeBusyStatus> getMergedFreeBusyStatus() {
-		return mergedFreeBusyStatus;
-	}
+          break;
+        }
+      }
+    } while (!reader.isEndElement(XmlNamespace.Messages,
+        XmlElementNames.FreeBusyView));
+  }
 
-	/**
-	 * Gets the free/busy view type that wes retrieved for the attendee.
-	 * 
-	 * @return the view type
-	 */
-	public FreeBusyViewType getViewType() {
-		return viewType;
-	}
+  /**
+   * Gets a collection of calendar events for the attendee.
+   *
+   * @return the calendar events
+   */
+  public Collection<CalendarEvent> getCalendarEvents() {
+    return this.calendarEvents;
+  }
 
-	/**
-	 * Gets the working hours of the attendee.
-	 * 
-	 * @return the working hours
-	 */
-	public WorkingHours getWorkingHours() {
-		return workingHours;
-	}
+  /**
+   * Gets a collection of merged free/busy status for the attendee.
+   *
+   * @return the merged free busy status
+   */
+  public Collection<LegacyFreeBusyStatus> getMergedFreeBusyStatus() {
+    return mergedFreeBusyStatus;
+  }
+
+  /**
+   * Gets the free/busy view type that wes retrieved for the attendee.
+   *
+   * @return the view type
+   */
+  public FreeBusyViewType getViewType() {
+    return viewType;
+  }
+
+  /**
+   * Gets the working hours of the attendee.
+   *
+   * @return the working hours
+   */
+  public WorkingHours getWorkingHours() {
+    return workingHours;
+  }
 
 }

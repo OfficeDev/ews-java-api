@@ -15,16 +15,22 @@ package microsoft.exchange.webservices.data;
  */
 public enum PermissionScope {
 
-	// The user does not have the associated permission.
-	/** The None. */
-	None,
+  // The user does not have the associated permission.
+  /**
+   * The None.
+   */
+  None,
 
-	// The user has the associated permission on items that it owns.
-	/** The Owned. */
-	Owned,
+  // The user has the associated permission on items that it owns.
+  /**
+   * The Owned.
+   */
+  Owned,
 
-	// The user has the associated permission on all items.
-	/** The All. */
-	All
+  // The user has the associated permission on all items.
+  /**
+   * The All.
+   */
+  All
 
 }

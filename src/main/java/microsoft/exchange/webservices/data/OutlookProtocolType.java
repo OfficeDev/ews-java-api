@@ -15,20 +15,28 @@ package microsoft.exchange.webservices.data;
  */
 enum OutlookProtocolType {
 
-	// The Remote Procedure Call (RPC) protocol.
-	/** The Rpc. */
-	Rpc,
+  // The Remote Procedure Call (RPC) protocol.
+  /**
+   * The Rpc.
+   */
+  Rpc,
 
-	// The Remote Procedure Call (RPC) over HTTP protocol.
-	/** The Rpc over http. */
-	RpcOverHttp,
+  // The Remote Procedure Call (RPC) over HTTP protocol.
+  /**
+   * The Rpc over http.
+   */
+  RpcOverHttp,
 
-	// The Web protocol.
-	/** The Web. */
-	Web,
+  // The Web protocol.
+  /**
+   * The Web.
+   */
+  Web,
 
-	// The protocol is unknown.
-	/** The Unknown. */
-	Unknown
+  // The protocol is unknown.
+  /**
+   * The Unknown.
+   */
+  Unknown
 
 }

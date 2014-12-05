@@ -15,36 +15,33 @@ package microsoft.exchange.webservices.data;
  * deserialized.
  */
 public final class ServiceXmlDeserializationException extends
-		ServiceLocalException {
+    ServiceLocalException {
 
-	/**
-	 * ServiceXmlDeserializationException Constructor.
-	 */
-	public ServiceXmlDeserializationException() {
-		super();
-	}
+  /**
+   * ServiceXmlDeserializationException Constructor.
+   */
+  public ServiceXmlDeserializationException() {
+    super();
+  }
 
-	/**
-	 * ServiceXmlDeserializationException Constructor.
-	 * 
-	 * @param message
-	 *            the message
-	 */
-	public ServiceXmlDeserializationException(String message) {
-		super(message);
-	}
+  /**
+   * ServiceXmlDeserializationException Constructor.
+   *
+   * @param message the message
+   */
+  public ServiceXmlDeserializationException(String message) {
+    super(message);
+  }
 
-	/**
-	 * ServiceXmlDeserializationException Constructor.
-	 * 
-	 * @param message
-	 *            the message
-	 * @param innerException
-	 *            the inner exception
-	 */
-	public ServiceXmlDeserializationException(String message,
-			Exception innerException) {
-		super(message, innerException);
-	}
+  /**
+   * ServiceXmlDeserializationException Constructor.
+   *
+   * @param message        the message
+   * @param innerException the inner exception
+   */
+  public ServiceXmlDeserializationException(String message,
+      Exception innerException) {
+    super(message, innerException);
+  }
 
 }

@@ -15,11 +15,15 @@ package microsoft.exchange.webservices.data;
  */
 public enum AggregateType {
 
-	// The maximum value is calculated.
-	/** The Minimum. */
-	Minimum,
+  // The maximum value is calculated.
+  /**
+   * The Minimum.
+   */
+  Minimum,
 
-	// The minimum value is calculated.
-	/** The Maximum. */
-	Maximum
+  // The minimum value is calculated.
+  /**
+   * The Maximum.
+   */
+  Maximum
 }

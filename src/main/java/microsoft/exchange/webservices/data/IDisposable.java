@@ -15,8 +15,8 @@ package microsoft.exchange.webservices.data;
  */
 interface IDisposable {
 
-	/**
-	 * Dispose.
-	 */
-	void dispose();
+  /**
+   * Dispose.
+   */
+  void dispose();
 }

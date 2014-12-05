@@ -16,34 +16,31 @@ package microsoft.exchange.webservices.data;
  */
 public class TimeZoneConversionException extends ServiceLocalException {
 
-	/**
-	 * ServiceLocalException Constructor.
-	 */
-	public TimeZoneConversionException() {
-		super();
-	}
+  /**
+   * ServiceLocalException Constructor.
+   */
+  public TimeZoneConversionException() {
+    super();
+  }
 
-	/**
-	 * ServiceLocalException Constructor.
-	 * 
-	 * @param message
-	 *            the message
-	 */
-	public TimeZoneConversionException(String message) {
-		super(message);
-	}
+  /**
+   * ServiceLocalException Constructor.
+   *
+   * @param message the message
+   */
+  public TimeZoneConversionException(String message) {
+    super(message);
+  }
 
-	/**
-	 * ServiceLocalException Constructor.
-	 * 
-	 * @param message
-	 *            the message
-	 * @param innerException
-	 *            the inner exception
-	 */
-	public TimeZoneConversionException(String message,
-			Exception innerException) {
-		super(message, innerException);
-	}
+  /**
+   * ServiceLocalException Constructor.
+   *
+   * @param message        the message
+   * @param innerException the inner exception
+   */
+  public TimeZoneConversionException(String message,
+      Exception innerException) {
+    super(message, innerException);
+  }
 
 }

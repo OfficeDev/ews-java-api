@@ -13,131 +13,130 @@ package microsoft.exchange.webservices.data;
 /**
  * Defines the error codes identifying why a rule failed validation.
  */
- public enum RuleErrorCode
- {
-     
-	 /**
-	  * Active Directory operation failed.
-	  */
-     ADOperationFailure,
+public enum RuleErrorCode {
 
-     /**
-	  * The e-mail account specified in the
-	  *  FromConnectedAccounts predicate was not found.
-	  */
-     ConnectedAccountNotFound,
+  /**
+   * Active Directory operation failed.
+   */
+  ADOperationFailure,
 
-     /**
-	  * The Rule object in a CreateInboxRuleOperation has an Id. The Ids of new
-	  * rules are generated server side and 
-	  * should not be provided by the client.
-	  */
-     CreateWithRuleId,
+  /**
+   * The e-mail account specified in the
+   * FromConnectedAccounts predicate was not found.
+   */
+  ConnectedAccountNotFound,
 
-     /**
-	  * The value is empty. An empty value is not allowed for the property.
-	  */
-     EmptyValueFound,
+  /**
+   * The Rule object in a CreateInboxRuleOperation has an Id. The Ids of new
+   * rules are generated server side and
+   * should not be provided by the client.
+   */
+  CreateWithRuleId,
 
-     /**
-	  * There already is a rule with the same priority. 
-	  */
-     DuplicatedPriority,
+  /**
+   * The value is empty. An empty value is not allowed for the property.
+   */
+  EmptyValueFound,
 
-     /**
-	  * There are multiple operations against the same rule. 
-	  * Only one operation per rule is allowed.
-	  */
-     DuplicatedOperationOnTheSameRule,
+  /**
+   * There already is a rule with the same priority.
+   */
+  DuplicatedPriority,
 
-     /**
-	  * The folder does not exist in the user's mailbox.
-	  */
-     FolderDoesNotExist,
+  /**
+   * There are multiple operations against the same rule.
+   * Only one operation per rule is allowed.
+   */
+  DuplicatedOperationOnTheSameRule,
 
-     /**
-	  * The e-mail address is invalid.
-	  */
-     InvalidAddress,
+  /**
+   * The folder does not exist in the user's mailbox.
+   */
+  FolderDoesNotExist,
 
-     /**
-	  * The date range is invalid.
-	  */
-     InvalidDateRange,
+  /**
+   * The e-mail address is invalid.
+   */
+  InvalidAddress,
 
-     /**
-	  * The folder Id is invalid.
-	  */
-     InvalidFolderId,
+  /**
+   * The date range is invalid.
+   */
+  InvalidDateRange,
 
-     /**
-	  * The size range is invalid.
-	  */
-     InvalidSizeRange,
+  /**
+   * The folder Id is invalid.
+   */
+  InvalidFolderId,
 
-     /**
-	  * The value is invalid.
-	  */
-     InvalidValue,
+  /**
+   * The size range is invalid.
+   */
+  InvalidSizeRange,
 
-     /**
-	  * The message classification was not found.
-	  */
-     MessageClassificationNotFound,
+  /**
+   * The value is invalid.
+   */
+  InvalidValue,
 
-     /**
-	  * No action was specified. At least one action must be specified.
-	  */
-     MissingAction,
+  /**
+   * The message classification was not found.
+   */
+  MessageClassificationNotFound,
 
-     /**
-	  * The required parameter is missing.
-	  */
-     MissingParameter,
+  /**
+   * No action was specified. At least one action must be specified.
+   */
+  MissingAction,
 
-     /**
-	  * The range value is missing.
-	  */
-     MissingRangeValue,
+  /**
+   * The required parameter is missing.
+   */
+  MissingParameter,
 
-     /**
-	  * The property cannot be modified.
-	  */
-     NotSettable,
+  /**
+   * The range value is missing.
+   */
+  MissingRangeValue,
 
-     /**
-	  * The recipient does not exist.
-	  */
-     RecipientDoesNotExist,
+  /**
+   * The property cannot be modified.
+   */
+  NotSettable,
 
-     /**
-	  * The rule was not found.
-	  */
-     RuleNotFound,
+  /**
+   * The recipient does not exist.
+   */
+  RecipientDoesNotExist,
 
-     /**
-	  * The size is less than zero.
-	  */
-     SizeLessThanZero,
+  /**
+   * The rule was not found.
+   */
+  RuleNotFound,
 
-     /**
-	  * The string value is too big.
-	  */
-     StringValueTooBig,
+  /**
+   * The size is less than zero.
+   */
+  SizeLessThanZero,
 
-     /**
-	  * The address is unsupported.
-	  */
-     UnsupportedAddress,
+  /**
+   * The string value is too big.
+   */
+  StringValueTooBig,
 
-     /**
-	  * An unexpected error occured.
-	  */
-     UnexpectedError,
+  /**
+   * The address is unsupported.
+   */
+  UnsupportedAddress,
 
-     /**
-	  * The rule is not supported.
-	  */
-     UnsupportedRule
- }
+  /**
+   * An unexpected error occured.
+   */
+  UnexpectedError,
+
+  /**
+   * The rule is not supported.
+   */
+  UnsupportedRule
+}
 

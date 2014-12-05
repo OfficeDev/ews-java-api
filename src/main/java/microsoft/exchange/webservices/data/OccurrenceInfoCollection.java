@@ -15,42 +15,40 @@ package microsoft.exchange.webservices.data;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class OccurrenceInfoCollection extends
-		ComplexPropertyCollection<OccurrenceInfo> {
+    ComplexPropertyCollection<OccurrenceInfo> {
 
-	/**
-	 * Initializes a new instance of the <see cref="OccurrenceInfoCollection"/>
-	 * class.
-	 */
-	protected OccurrenceInfoCollection() {
-	}
+  /**
+   * Initializes a new instance of the <see cref="OccurrenceInfoCollection"/>
+   * class.
+   */
+  protected OccurrenceInfoCollection() {
+  }
 
-	/**
-	 * Creates the complex property.
-	 * 
-	 * @param xmlElementName
-	 *            Name of the XML element
-	 * @return OccuranceInfo instance
-	 */
-	@Override
-	protected OccurrenceInfo createComplexProperty(String xmlElementName) {
-		if (xmlElementName.equals(XmlElementNames.Occurrence)) {
-			return new OccurrenceInfo();
-		} else {
-			return null;
-		}
-	}
+  /**
+   * Creates the complex property.
+   *
+   * @param xmlElementName Name of the XML element
+   * @return OccuranceInfo instance
+   */
+  @Override
+  protected OccurrenceInfo createComplexProperty(String xmlElementName) {
+    if (xmlElementName.equals(XmlElementNames.Occurrence)) {
+      return new OccurrenceInfo();
+    } else {
+      return null;
+    }
+  }
 
-	/**
-	 * Gets the name of the collection item XML element.
-	 * 
-	 * @param complexProperty
-	 *            The complex property.
-	 * @return XML element name.
-	 */
-	@Override
-	protected String getCollectionItemXmlElementName(
-			OccurrenceInfo complexProperty) {
-		return XmlElementNames.Occurrence;
-	}
+  /**
+   * Gets the name of the collection item XML element.
+   *
+   * @param complexProperty The complex property.
+   * @return XML element name.
+   */
+  @Override
+  protected String getCollectionItemXmlElementName(
+      OccurrenceInfo complexProperty) {
+    return XmlElementNames.Occurrence;
+  }
 
 }

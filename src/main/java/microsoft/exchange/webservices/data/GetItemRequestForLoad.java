@@ -15,35 +15,31 @@ package microsoft.exchange.webservices.data;
  */
 final class GetItemRequestForLoad extends GetItemRequestBase<ServiceResponse> {
 
-	/**
-	 * Initializes a new instance of the class.
-	 * 
-	 * @param service
-	 *            the service
-	 * @param errorHandlingMode
-	 *            the error handling mode
-	 * @throws Exception 
-	 */
-	protected GetItemRequestForLoad(ExchangeService service,
-			ServiceErrorHandling errorHandlingMode)
-			throws Exception {
-		super(service, errorHandlingMode);
-	}
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param service           the service
+   * @param errorHandlingMode the error handling mode
+   * @throws Exception
+   */
+  protected GetItemRequestForLoad(ExchangeService service,
+      ServiceErrorHandling errorHandlingMode)
+      throws Exception {
+    super(service, errorHandlingMode);
+  }
 
-	/**
-	 * Creates the service response.
-	 * 
-	 * @param service
-	 *            the service
-	 * @param responseIndex
-	 *            the response index
-	 * @return Service response.
-	 */
-	@Override
-	protected ServiceResponse createServiceResponse(ExchangeService service,
-			int responseIndex) {
-		return new GetItemResponse(this.getItemIds().getItemIdWrapperList(
-				responseIndex), this.getPropertySet());
+  /**
+   * Creates the service response.
+   *
+   * @param service       the service
+   * @param responseIndex the response index
+   * @return Service response.
+   */
+  @Override
+  protected ServiceResponse createServiceResponse(ExchangeService service,
+      int responseIndex) {
+    return new GetItemResponse(this.getItemIds().getItemIdWrapperList(
+        responseIndex), this.getPropertySet());
 
-	}
+  }
 }

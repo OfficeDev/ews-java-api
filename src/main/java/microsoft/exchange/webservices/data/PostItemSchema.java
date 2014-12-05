@@ -14,96 +14,100 @@ import java.util.EnumSet;
 
 /**
  * Represents the schema for post items.
- * 
  */
 @Schema
 public final class PostItemSchema extends ItemSchema {
 
-	/**
-	 * Field URIs for PostItem.
-	 */
-	private static interface FieldUris {
+  /**
+   * Field URIs for PostItem.
+   */
+  private static interface FieldUris {
 
-		/** The Posted time. */
-		String PostedTime = "postitem:PostedTime";
-	}
+    /**
+     * The Posted time.
+     */
+    String PostedTime = "postitem:PostedTime";
+  }
 
-	/**
-	 * Defines the ConversationIndex property.
-	 */
-	public static final PropertyDefinition ConversationIndex = 
-		EmailMessageSchema.ConversationIndex;
 
-	/**
-	 * Defines the ConversationTopic property.
-	 */
-	public static final PropertyDefinition ConversationTopic =
-		EmailMessageSchema.ConversationTopic;
+  /**
+   * Defines the ConversationIndex property.
+   */
+  public static final PropertyDefinition ConversationIndex =
+      EmailMessageSchema.ConversationIndex;
 
-	/**
-	 * Defines the From property.
-	 */
-	public static final PropertyDefinition From = EmailMessageSchema.From;
+  /**
+   * Defines the ConversationTopic property.
+   */
+  public static final PropertyDefinition ConversationTopic =
+      EmailMessageSchema.ConversationTopic;
 
-	/**
-	 * Defines the InternetMessageId property.
-	 */
-	public static final PropertyDefinition InternetMessageId = 
-		EmailMessageSchema.InternetMessageId;
+  /**
+   * Defines the From property.
+   */
+  public static final PropertyDefinition From = EmailMessageSchema.From;
 
-	/**
-	 * Defines the IsRead property.
-	 */
-	public static final PropertyDefinition IsRead = EmailMessageSchema.IsRead;
+  /**
+   * Defines the InternetMessageId property.
+   */
+  public static final PropertyDefinition InternetMessageId =
+      EmailMessageSchema.InternetMessageId;
 
-	/**
-	 * Defines the PostedTime property.
-	 */
-	public static final PropertyDefinition PostedTime = 
-		new DateTimePropertyDefinition(
-			XmlElementNames.PostedTime, FieldUris.PostedTime, EnumSet
-					.of(PropertyDefinitionFlags.CanFind),
-			ExchangeVersion.Exchange2007_SP1);
+  /**
+   * Defines the IsRead property.
+   */
+  public static final PropertyDefinition IsRead = EmailMessageSchema.IsRead;
 
-	/**
-	 * Defines the References property.
-	 */
-	public static final PropertyDefinition References = 
-		EmailMessageSchema.References;
+  /**
+   * Defines the PostedTime property.
+   */
+  public static final PropertyDefinition PostedTime =
+      new DateTimePropertyDefinition(
+          XmlElementNames.PostedTime, FieldUris.PostedTime, EnumSet
+          .of(PropertyDefinitionFlags.CanFind),
+          ExchangeVersion.Exchange2007_SP1);
 
-	/**
-	 * Defines the Sender property.
-	 */
-	public static final PropertyDefinition Sender = EmailMessageSchema.Sender;
+  /**
+   * Defines the References property.
+   */
+  public static final PropertyDefinition References =
+      EmailMessageSchema.References;
 
-	// This must be after the declaration of property definitions
-	/** The Constant Instance. */
-	protected static final PostItemSchema Instance = new PostItemSchema();
+  /**
+   * Defines the Sender property.
+   */
+  public static final PropertyDefinition Sender = EmailMessageSchema.Sender;
 
-	/**
-	 * Registers properties.
-	 * 
-	 * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
-	 * same order as they are defined in types.xsd)
-	 */
-	@Override
-	protected void registerProperties() {
-		super.registerProperties();
+  // This must be after the declaration of property definitions
+  /**
+   * The Constant Instance.
+   */
+  protected static final PostItemSchema Instance = new PostItemSchema();
 
-		this.registerProperty(ConversationIndex);
-		this.registerProperty(ConversationTopic);
-		this.registerProperty(From);
-		this.registerProperty(InternetMessageId);
-		this.registerProperty(IsRead);
-		this.registerProperty(PostedTime);
-		this.registerProperty(References);
-		this.registerProperty(Sender);
-	}
+  /**
+   * Registers properties.
+   * <p/>
+   * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
+   * same order as they are defined in types.xsd)
+   */
+  @Override
+  protected void registerProperties() {
+    super.registerProperties();
 
-	/**
-	 * Initializes a new instance of the PostItemSchema class.
-	 */
-	protected PostItemSchema() {
-		super();
-	}
+    this.registerProperty(ConversationIndex);
+    this.registerProperty(ConversationTopic);
+    this.registerProperty(From);
+    this.registerProperty(InternetMessageId);
+    this.registerProperty(IsRead);
+    this.registerProperty(PostedTime);
+    this.registerProperty(References);
+    this.registerProperty(Sender);
+  }
+
+  /**
+   * Initializes a new instance of the PostItemSchema class.
+   */
+  protected PostItemSchema() {
+    super();
+  }
 }

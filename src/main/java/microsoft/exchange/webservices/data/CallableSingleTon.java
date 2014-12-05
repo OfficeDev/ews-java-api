@@ -9,13 +9,15 @@
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
-import java.util.concurrent.*;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class CallableSingleTon {
-	static ExecutorService es;
+  static ExecutorService es;
 
-	static ExecutorService  getExecutor(){
-		es = Executors.newFixedThreadPool(3);
-		return es;
-	}
+  static ExecutorService getExecutor() {
+    es = Executors.newFixedThreadPool(3);
+    return es;
+  }
 }

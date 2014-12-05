@@ -15,36 +15,52 @@ package microsoft.exchange.webservices.data;
  */
 public enum PhoneCallState {
 
-	// Idle
-	/** The Idle. */
-	Idle,
+  // Idle
+  /**
+   * The Idle.
+   */
+  Idle,
 
-	// Connecting
-	/** The Connecting. */
-	Connecting,
+  // Connecting
+  /**
+   * The Connecting.
+   */
+  Connecting,
 
-	// Alerted
-	/** The Alerted. */
-	Alerted,
+  // Alerted
+  /**
+   * The Alerted.
+   */
+  Alerted,
 
-	// Connected
-	/** The Connected. */
-	Connected,
+  // Connected
+  /**
+   * The Connected.
+   */
+  Connected,
 
-	// Disconnected
-	/** The Disconnected. */
-	Disconnected,
+  // Disconnected
+  /**
+   * The Disconnected.
+   */
+  Disconnected,
 
-	// Incoming
-	/** The Incoming. */
-	Incoming,
+  // Incoming
+  /**
+   * The Incoming.
+   */
+  Incoming,
 
-	// Transferring
-	/** The Transferring. */
-	Transferring,
+  // Transferring
+  /**
+   * The Transferring.
+   */
+  Transferring,
 
-	// Forwarding
-	/** The Forwarding. */
-	Forwarding
+  // Forwarding
+  /**
+   * The Forwarding.
+   */
+  Forwarding
 
 }
