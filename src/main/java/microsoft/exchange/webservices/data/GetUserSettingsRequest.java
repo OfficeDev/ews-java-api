@@ -10,6 +10,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import org.apache.commons.codec.binary.*;
+
 import java.net.URI;
 import java.util.List;
 
@@ -208,9 +210,9 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
 		if (this.expectPartnerToken) {
 			writer
 					.writeElementValue(XmlNamespace.Autodiscover,
-							XmlElementNames.BinarySecret, Convert
-									.ToBase64String(ExchangeServiceBase
-											.getSessionKey()));
+							XmlElementNames.BinarySecret,
+							new String(org.apache.commons.codec.binary.Base64.
+									encodeBase64(ExchangeServiceBase.getSessionKey())));
 		}
 	}
 
