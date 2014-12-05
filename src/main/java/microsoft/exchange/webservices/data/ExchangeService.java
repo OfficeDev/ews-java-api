@@ -21,7 +21,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
-import java.util.concurrent.FutureTask;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -29,8 +28,7 @@ import org.w3c.dom.Node;
 /**
  * Represents a binding to the Exchange Web Services.
  */
-public final class ExchangeService extends ExchangeServiceBase implements
-		IAutodiscoverRedirectionUrl {
+public final class ExchangeService extends ExchangeServiceBase implements	IAutodiscoverRedirectionUrl {
 
 	/** The url. */
 	private URI url;
@@ -69,19 +67,15 @@ public final class ExchangeService extends ExchangeServiceBase implements
 	 * @throws Exception
 	 *             the exception
 	 */
-	protected List<Item> internalCreateResponseObject(
-			ServiceObject responseObject, FolderId parentFolderId,
-			MessageDisposition messageDisposition) throws Exception {
-		CreateResponseObjectRequest request = new CreateResponseObjectRequest(
-				this, ServiceErrorHandling.ThrowOnError);
-		Collection<ServiceObject> serviceList = new ArrayList();
+	protected List<Item> internalCreateResponseObject(ServiceObject responseObject, FolderId parentFolderId, MessageDisposition messageDisposition) throws Exception {
+		CreateResponseObjectRequest request = new CreateResponseObjectRequest(this, ServiceErrorHandling.ThrowOnError);
+		Collection<ServiceObject> serviceList = new ArrayList<ServiceObject>();
 		serviceList.add(responseObject);
 		request.setParentFolderId(parentFolderId);
 		request.setItems(serviceList);
 		request.setMessageDisposition(messageDisposition);
 
-		ServiceResponseCollection<CreateResponseObjectResponse> responses = request
-				.execute();
+		ServiceResponseCollection<CreateResponseObjectResponse> responses = request.execute();
 
 		return responses.getResponseAtIndex(0).getItems();
 	}
@@ -339,20 +333,15 @@ public final class ExchangeService extends ExchangeServiceBase implements
 	 * @throws Exception
 	 *             the exception
 	 */
-	protected Folder bindToFolder(FolderId folderId, PropertySet propertySet)
-			throws Exception {
+	protected Folder bindToFolder(FolderId folderId, PropertySet propertySet) throws Exception {
 		EwsUtilities.validateParam(folderId, "folderId");
 		EwsUtilities.validateParam(propertySet, "propertySet");
 
-		GetFolderRequest request = new GetFolderRequest(this,
-				ServiceErrorHandling.ThrowOnError);
-
+		GetFolderRequest request = new GetFolderRequest(this,ServiceErrorHandling.ThrowOnError);
 		request.getFolderIds().add(folderId);
 		request.setPropertySet(propertySet);
 
-		ServiceResponseCollection<GetFolderResponse> responses = request
-				.execute();
-
+		ServiceResponseCollection<GetFolderResponse> responses = request.execute();
 		return responses.getResponseAtIndex(0).getFolder();
 
 	}
@@ -4062,8 +4051,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
 
 		switch (response.getErrorCode()) {
 		case NoError:
-			return this.getEwsUrlFromResponse(response, autodiscoverService
-					.isExternal().TRUE);
+			return this.getEwsUrlFromResponse(response, Boolean.TRUE);
 
 		case InvalidUser:
 			throw new ServiceRemoteException(String.format(Strings.InvalidUser,
@@ -4191,8 +4179,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
 	 * @param timeZone
 	 *            The time zone to which the service is scoped.
 	 */
-	public ExchangeService(ExchangeVersion requestedServerVersion,
-			TimeZone timeZone) {
+	public ExchangeService(ExchangeVersion requestedServerVersion,	TimeZone timeZone) {
 		super(requestedServerVersion, timeZone);
 	}
 
@@ -4214,8 +4201,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return this.prepareHttpWebRequestForUrl(url, this
-				.getAcceptGzipEncoding(), true);
+		return this.prepareHttpWebRequestForUrl(url, this.getAcceptGzipEncoding(), true);
 	}
 
 	/**

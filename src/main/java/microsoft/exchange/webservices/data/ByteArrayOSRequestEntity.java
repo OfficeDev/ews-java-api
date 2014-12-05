@@ -14,9 +14,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.apache.commons.httpclient.methods.RequestEntity;
+import org.apache.http.Header;
+import org.apache.http.entity.BasicHttpEntity;
+import org.apache.http.message.BasicHeader;
 
-class ByteArrayOSRequestEntity implements RequestEntity{
+class ByteArrayOSRequestEntity extends BasicHttpEntity {
 
 	private ByteArrayOutputStream os = null;
 	
@@ -34,8 +36,8 @@ class ByteArrayOSRequestEntity implements RequestEntity{
 	}
 
 	@Override
-	public String getContentType() {
-		return "text/xml; charset=utf-8";
+	public Header getContentType() {
+		return new BasicHeader("Content-Type", "text/xml; charset=utf-8");
 	}
 
 	@Override
@@ -44,8 +46,12 @@ class ByteArrayOSRequestEntity implements RequestEntity{
 	}
 
 	@Override
-	public void writeRequest(OutputStream out) throws IOException {
+	public void writeTo(OutputStream out) throws IOException {
 		os.writeTo(out);		
 	}
 
+	@Override
+	public boolean isStreaming() {
+		return false;
+	}
 }
