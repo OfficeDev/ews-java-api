@@ -40,6 +40,30 @@ We recommend that you use the Autodiscover service, for the following reasons:
 You can safely cache the URL that is returned by the Autodiscover service and reuse it. Autodiscover should be called periodically, or when EWS connectivity to a given URL is lost.
 Note that you should either set the URL manually or call AutodiscoverUrl, but you should not do both.
 
+## Responding to Autodiscover Redirecting
+
+If the domain that the user inputs as their email address contains a CNAME that redirects the user this Exception is thrown:
+
+> microsoft.exchange.webservices.data.AutodiscoverLocalException: Autodiscover blocked a
+potentially insecure redirection to **URL**. To allow Autodiscover to follow the redirection, use the AutodiscoverUrl(string, AutodiscoverRedirectionUrlValidationCallback) overload.<
+
+When this happens, instead of failing, the user can be prompted to accept the redirection or
+not. That functionality needs to be implemented inside the autodiscoverRedirectionUrlValidationCallback method. In the example below, it only checks to see that the redirection url starts with "https://". To accomplish this
+```Java
+static class RedirectionUrlCallback implements IAutodiscoverRedirectionUrl {
+        public boolean autodiscoverRedirectionUrlValidationCallback(
+                String redirectionUrl) {
+            return redirectionUrl.toLowerCase().startsWith("https://");
+        }
+    }
+```
+
+Now 
+```
+service.autodiscoverUrl("<your_email_address>", new RedirectionUrlCallback());
+```
+can be called to deal with the redirection in a safe manner.
+
 ## Items
 
 The EWS JAVA API defines a class hierarchy of items. Each class in the hierarchy maps to a given item type in Exchange. For example, the `EmailMessage` class represents email messages and the `Appointment` class represents calendar events and meetings.
