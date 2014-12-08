@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -127,8 +141,8 @@ public abstract class ServiceId extends ComplexProperty {
   }
 
   /**
-   * Gets the change key associated with the Exchange object. The change key
-   * represents the version of the associated item or folder.
+   * Gets the change key associated with the Exchange object. The change key represents the version of the
+   * associated item or folder.
    *
    * @return change key associated with the Exchange object.
    */
@@ -137,8 +151,8 @@ public abstract class ServiceId extends ComplexProperty {
   }
 
   /**
-   * Sets the change key associated with the Exchange object. The change key
-   * represents the version of the associated item or folder.
+   * Sets the change key associated with the Exchange object. The change key represents the version of the
+   * associated item or folder.
    *
    * @param changeKey change key associated with the Exchange object.
    */
@@ -147,8 +161,7 @@ public abstract class ServiceId extends ComplexProperty {
   }
 
   /**
-   * Determines whether two ServiceId instances are equal (including
-   * ChangeKeys).
+   * Determines whether two ServiceId instances are equal (including ChangeKeys).
    *
    * @param other The ServiceId to compare with the current ServiceId.
    * @return true if equal otherwise false.
@@ -164,12 +177,11 @@ public abstract class ServiceId extends ComplexProperty {
   }
 
   /**
-   * Determines whether the specified instance is equal to the current
-   * instance. We do not consider the ChangeKey for ServiceId.Equals.
+   * Determines whether the specified instance is equal to the current instance. We do not consider the
+   * ChangeKey for ServiceId.Equals.
    *
    * @param obj The object to compare with the current instance
-   * @return true if the specified object is equal to the current instance,
-   * otherwise, false.
+   * @return true if the specified object is equal to the current instance, otherwise, false.
    */
   @Override
   public boolean equals(Object obj) {
@@ -190,8 +202,8 @@ public abstract class ServiceId extends ComplexProperty {
   }
 
   /**
-   * Serves as a hash function for a particular type. We do not consider the
-   * change key in the hash code computation.
+   * Serves as a hash function for a particular type. We do not consider the change key in the hash code
+   * computation.
    *
    * @return A hash code for the current
    */

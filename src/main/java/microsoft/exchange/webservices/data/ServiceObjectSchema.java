@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -27,8 +41,8 @@ public abstract class ServiceObjectSchema implements
   private static Object lockObject = new Object();
 
   /**
-   * List of all schema types. If you add a new ServiceObject subclass that
-   * has an associated schema, add the schema type to the list below.
+   * List of all schema types. If you add a new ServiceObject subclass that has an associated schema, add the
+   * schema type to the list below.
    */
   private static LazyMember<List<Class<?>>> allSchemaTypes = new
       LazyMember<List<Class<?>>>(new
@@ -37,7 +51,7 @@ public abstract class ServiceObjectSchema implements
                                          List<Class<?>> typeList = new ArrayList<Class<?>>();
                                          // typeList.add()
                                         /*
-					 * typeList.add(AppointmentSchema.class);
+                                         * typeList.add(AppointmentSchema.class);
 					 * typeList.add(CalendarResponseObjectSchema.class);
 					 * typeList.add(CancelMeetingMessageSchema.class);
 					 * typeList.add(ContactGroupSchema.class);
@@ -57,8 +71,8 @@ public abstract class ServiceObjectSchema implements
 					 */
                                          // Verify that all Schema types in the Managed API assembly
                                          // have been included.
-					/*
-					 * var missingTypes = from type in
+                                        /*
+                                         * var missingTypes = from type in
 					 * Assembly.GetExecutingAssembly().GetTypes() where
 					 * type.IsSubclassOf(typeof(ServiceObjectSchema)) &&
 					 * !typeList.Contains(type) select type; if
@@ -303,8 +317,7 @@ public abstract class ServiceObjectSchema implements
    * Registers a schema property.
    *
    * @param property   The property to register.
-   * @param isInternal Indicates whether the property is internal or should be
-   *                   visible to developers.
+   * @param isInternal Indicates whether the property is internal or should be visible to developers.
    */
   private void registerProperty(PropertyDefinition property,
       boolean isInternal) {
@@ -372,8 +385,7 @@ public abstract class ServiceObjectSchema implements
   }
 
   /**
-   * Gets the list of first class summary properties for this service object
-   * type.
+   * Gets the list of first class summary properties for this service object type.
    *
    * @return the first class summary properties
    */

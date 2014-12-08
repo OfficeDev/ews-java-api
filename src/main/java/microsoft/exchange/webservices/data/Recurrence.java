@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -155,8 +169,7 @@ public abstract class Recurrence extends ComplexProperty {
   }
 
   /**
-   * Gets a value indicating whether the pattern has a fixed number of
-   * occurrences or an end date.
+   * Gets a value indicating whether the pattern has a fixed number of occurrences or an end date.
    *
    * @return boolean
    */
@@ -166,8 +179,8 @@ public abstract class Recurrence extends ComplexProperty {
   }
 
   /**
-   * Sets up this recurrence so that it never ends. Calling NeverEnds is
-   * equivalent to setting both NumberOfOccurrences and EndDate to null.
+   * Sets up this recurrence so that it never ends. Calling NeverEnds is equivalent to setting both
+   * NumberOfOccurrences and EndDate to null.
    */
   public void neverEnds() {
     this.numberOfOccurrences = null;
@@ -191,8 +204,8 @@ public abstract class Recurrence extends ComplexProperty {
   }
 
   /**
-   * Gets the number of occurrences after which the recurrence ends.
-   * Setting NumberOfOccurrences resets EndDate.
+   * Gets the number of occurrences after which the recurrence ends. Setting NumberOfOccurrences resets
+   * EndDate.
    *
    * @return the number of occurrences
    */
@@ -202,8 +215,8 @@ public abstract class Recurrence extends ComplexProperty {
   }
 
   /**
-   * Gets the number of occurrences after which the recurrence ends.
-   * Setting NumberOfOccurrences resets EndDate.
+   * Gets the number of occurrences after which the recurrence ends. Setting NumberOfOccurrences resets
+   * EndDate.
    *
    * @param value the new number of occurrences
    * @throws ArgumentException the argument exception
@@ -224,8 +237,7 @@ public abstract class Recurrence extends ComplexProperty {
   }
 
   /**
-   * Gets the date after which the recurrence ends. Setting EndDate resets
-   * NumberOfOccurrences.
+   * Gets the date after which the recurrence ends. Setting EndDate resets NumberOfOccurrences.
    *
    * @return the end date
    */
@@ -235,8 +247,7 @@ public abstract class Recurrence extends ComplexProperty {
   }
 
   /**
-   * sets the date after which the recurrence ends. Setting EndDate resets
-   * NumberOfOccurrences.
+   * sets the date after which the recurrence ends. Setting EndDate resets NumberOfOccurrences.
    *
    * @param value the new end date
    */
@@ -252,8 +263,8 @@ public abstract class Recurrence extends ComplexProperty {
   }
 
   /**
-   * Represents a recurrence pattern where each occurrence happens a specific
-   * number of days after the previous one.
+   * Represents a recurrence pattern where each occurrence happens a specific number of days after the
+   * previous one.
    */
   public final static class DailyPattern extends IntervalPattern {
 
@@ -291,9 +302,8 @@ public abstract class Recurrence extends ComplexProperty {
 
 
   /**
-   * Represents a regeneration pattern, as used with recurring tasks, where
-   * each occurrence happens a specified number of days after the previous one
-   * is completed.
+   * Represents a regeneration pattern, as used with recurring tasks, where each occurrence happens a
+   * specified number of days after the previous one is completed.
    */
 
   public final static class DailyRegenerationPattern extends IntervalPattern {
@@ -328,8 +338,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets a value indicating whether this instance is a regeneration
-     * pattern.
+     * Gets a value indicating whether this instance is a regeneration pattern.
      *
      * @return true, if is regeneration pattern
      */
@@ -341,9 +350,8 @@ public abstract class Recurrence extends ComplexProperty {
 
 
   /**
-   * Represents a recurrence pattern where each occurrence happens at a
-   * specific interval after the previous one.
-   * [EditorBrowsable(EditorBrowsableState.Never)]
+   * Represents a recurrence pattern where each occurrence happens at a specific interval after the previous
+   * one. [EditorBrowsable(EditorBrowsableState.Never)]
    */
   @EditorBrowsable(state = EditorBrowsableState.Never)
   public abstract static class IntervalPattern extends Recurrence {
@@ -454,8 +462,8 @@ public abstract class Recurrence extends ComplexProperty {
 
 
   /**
-   * Represents a recurrence pattern where each occurrence happens on a
-   * specific day a specific number of months after the previous one.
+   * Represents a recurrence pattern where each occurrence happens on a specific day a specific number of
+   * months after the previous one.
    */
 
   public final static class MonthlyPattern extends IntervalPattern {
@@ -586,9 +594,8 @@ public abstract class Recurrence extends ComplexProperty {
 
 
   /**
-   * Represents a regeneration pattern, as used with recurring tasks, where
-   * each occurrence happens a specified number of months after the previous
-   * one is completed.
+   * Represents a regeneration pattern, as used with recurring tasks, where each occurrence happens a
+   * specified number of months after the previous one is completed.
    */
   public final static class MonthlyRegenerationPattern extends
       IntervalPattern {
@@ -615,8 +622,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element. <value>The name of the XML element.</value>
      *
      * @return the xml element name
      */
@@ -626,9 +632,8 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets a value indicating whether this instance is regeneration
-     * pattern. <value> <c>true</c> if this instance is regeneration
-     * pattern; otherwise, <c>false</c>. </value>
+     * Gets a value indicating whether this instance is regeneration pattern. <value> <c>true</c> if this
+     * instance is regeneration pattern; otherwise, <c>false</c>. </value>
      *
      * @return true, if is regeneration pattern
      */
@@ -639,8 +644,8 @@ public abstract class Recurrence extends ComplexProperty {
 
 
   /**
-   * Represents a recurrence pattern where each occurrence happens on a
-   * relative day a specific number of months after the previous one.
+   * Represents a recurrence pattern where each occurrence happens on a relative day a specific number of
+   * months after the previous one.
    */
   public final static class RelativeMonthlyPattern extends IntervalPattern {
 
@@ -837,8 +842,7 @@ public abstract class Recurrence extends ComplexProperty {
     private Month month;
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element. <value>The name of the XML element.</value>
      *
      * @return the xml element name
      */
@@ -955,8 +959,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets the relative position of the day specified in DayOfTheWeek
-     * within the month.
+     * Gets the relative position of the day specified in DayOfTheWeek within the month.
      *
      * @return the day of the week index
      * @throws ServiceValidationException the service validation exception
@@ -969,8 +972,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Sets the relative position of the day specified in DayOfTheWeek
-     * within the month.
+     * Sets the relative position of the day specified in DayOfTheWeek within the month.
      *
      * @param value the new day of the week index
      */
@@ -1037,8 +1039,8 @@ public abstract class Recurrence extends ComplexProperty {
 
 
   /**
-   * Represents a recurrence pattern where each occurrence happens on specific
-   * days a specific number of weeks after the previous one.
+   * Represents a recurrence pattern where each occurrence happens on specific days a specific number of weeks
+   * after the previous one.
    */
   public final static class WeeklyPattern extends IntervalPattern implements
       IComplexPropertyChangedDelegate {
@@ -1052,8 +1054,8 @@ public abstract class Recurrence extends ComplexProperty {
     private Calendar firstDayOfWeek;
 
     /**
-     * Initializes a new instance of the WeeklyPattern class. specific days
-     * a specific number of weeks after the previous one.
+     * Initializes a new instance of the WeeklyPattern class. specific days a specific number of weeks after
+     * the previous one.
      */
     public WeeklyPattern() {
       super();
@@ -1090,8 +1092,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element. <value>The name of the XML element.</value>
      *
      * @return the xml element name
      */
@@ -1213,9 +1214,8 @@ public abstract class Recurrence extends ComplexProperty {
 
 
   /**
-   * Represents a regeneration pattern, as used with recurring tasks, where
-   * each occurrence happens a specified number of weeks after the previous
-   * one is completed.
+   * Represents a regeneration pattern, as used with recurring tasks, where each occurrence happens a
+   * specified number of weeks after the previous one is completed.
    */
   public final static class WeeklyRegenerationPattern extends
       IntervalPattern {
@@ -1242,8 +1242,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element. <value>The name of the XML element.</value>
      *
      * @return the xml element name
      */
@@ -1253,9 +1252,8 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets a value indicating whether this instance is regeneration
-     * pattern. <value> <c>true</c> if this instance is regeneration
-     * pattern; otherwise, <c>false</c>. </value>
+     * Gets a value indicating whether this instance is regeneration pattern. <value> <c>true</c> if this
+     * instance is regeneration pattern; otherwise, <c>false</c>. </value>
      *
      * @return true, if is regeneration pattern
      */
@@ -1266,8 +1264,7 @@ public abstract class Recurrence extends ComplexProperty {
 
 
   /**
-   * Represents a recurrence pattern where each occurrence happens on a
-   * specific day every year.
+   * Represents a recurrence pattern where each occurrence happens on a specific day every year.
    */
   public final static class YearlyPattern extends Recurrence {
 
@@ -1304,8 +1301,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element. <value>The name of the XML element.</value>
      *
      * @return the xml element name
      */
@@ -1405,8 +1401,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets the day of the month when each occurrence happens. DayOfMonth
-     * must be between 1 and 31.
+     * Gets the day of the month when each occurrence happens. DayOfMonth must be between 1 and 31.
      *
      * @return the day of month
      * @throws ServiceValidationException the service validation exception
@@ -1419,8 +1414,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Sets the day of the month when each occurrence happens. DayOfMonth
-     * must be between 1 and 31.
+     * Sets the day of the month when each occurrence happens. DayOfMonth must be between 1 and 31.
      *
      * @param value the new day of month
      * @throws ArgumentOutOfRangeException the argument out of range exception
@@ -1442,16 +1436,14 @@ public abstract class Recurrence extends ComplexProperty {
 
 
   /**
-   * Represents a regeneration pattern, as used with recurring tasks, where
-   * each occurrence happens a specified number of years after the previous
-   * one is completed.
+   * Represents a regeneration pattern, as used with recurring tasks, where each occurrence happens a
+   * specified number of years after the previous one is completed.
    */
   public final static class YearlyRegenerationPattern extends
       IntervalPattern {
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element. <value>The name of the XML element.</value>
      *
      * @return the xml element name
      */
@@ -1461,8 +1453,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets a value indicating whether this instance is regeneration
-     * pattern.
+     * Gets a value indicating whether this instance is regeneration pattern.
      *
      * @return true, if is regeneration pattern
      */

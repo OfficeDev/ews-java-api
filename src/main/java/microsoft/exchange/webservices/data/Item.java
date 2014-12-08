@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -16,8 +30,7 @@ import java.util.EnumSet;
 import java.util.ListIterator;
 
 /**
- * Represents a generic item. Properties available on items are defined in the
- * ItemSchema class.
+ * Represents a generic item. Properties available on items are defined in the ItemSchema class.
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Item)
@@ -29,8 +42,8 @@ public class Item extends ServiceObject {
   private ItemAttachment parentAttachment;
 
   /**
-   * Initializes an unsaved local instance of <see cref="Item"/>. To bind to
-   * an existing item, use Item.Bind() instead.
+   * Initializes an unsaved local instance of <see cref="Item"/>. To bind to an existing item, use Item.Bind()
+   * instead.
    *
    * @param service the service
    * @throws Exception the exception
@@ -54,15 +67,13 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Binds to an existing item, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
-   * EWS.
+   * Binds to an existing item, whatever its actual type is, and loads the specified set of properties.
+   * Calling this method results in a call to EWS.
    *
    * @param service     The service to use to bind to the item.
    * @param id          The Id of the item to bind to.
    * @param propertySet The set of properties to load.
-   * @return An Item instance representing the item corresponding to the
-   * specified Id.
+   * @return An Item instance representing the item corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Item bind(ExchangeService service, ItemId id,
@@ -71,14 +82,12 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Binds to an existing item, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
-   * EWS.
+   * Binds to an existing item, whatever its actual type is, and loads the specified set of properties.
+   * Calling this method results in a call to EWS.
    *
    * @param service The service to use to bind to the item.
    * @param id      The Id of the item to bind to.
-   * @return An Item instance representing the item corresponding to the
-   * specified Id.
+   * @return An Item instance representing the item corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Item bind(ExchangeService service, ItemId id)
@@ -99,8 +108,7 @@ public class Item extends ServiceObject {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -253,8 +261,7 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating whether this instance has unprocessed attachment
-   * collection changes.
+   * Gets a value indicating whether this instance has unprocessed attachment collection changes.
    *
    * @throws ServiceLocalException
    */
@@ -301,9 +308,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Saves this item in a specific folder. Calling this method results in at
-   * least one call to EWS. Mutliple calls to EWS might be made if attachments
-   * have been added.
+   * Saves this item in a specific folder. Calling this method results in at least one call to EWS. Mutliple
+   * calls to EWS might be made if attachments have been added.
    *
    * @param parentFolderId the parent folder id
    * @throws Exception the exception
@@ -314,9 +320,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Saves this item in a specific folder. Calling this method results in at
-   * least one call to EWS. Mutliple calls to EWS might be made if attachments
-   * have been added.
+   * Saves this item in a specific folder. Calling this method results in at least one call to EWS. Mutliple
+   * calls to EWS might be made if attachments have been added.
    *
    * @param parentFolderName the parent folder name
    * @throws Exception the exception
@@ -327,10 +332,9 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Saves this item in the default folder based on the item's type (for
-   * example, an e-mail message is saved to the Drafts folder). Calling this
-   * method results in at least one call to EWS. Mutliple calls to EWS might
-   * be made if attachments have been added.
+   * Saves this item in the default folder based on the item's type (for example, an e-mail message is saved
+   * to the Drafts folder). Calling this method results in at least one call to EWS. Mutliple calls to EWS
+   * might be made if attachments have been added.
    *
    * @throws Exception the exception
    */
@@ -339,9 +343,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Applies the local changes that have been made to this item. Calling this
-   * method results in at least one call to EWS. Mutliple calls to EWS might
-   * be made if attachments have been added or removed.
+   * Applies the local changes that have been made to this item. Calling this method results in at least one
+   * call to EWS. Mutliple calls to EWS might be made if attachments have been added or removed.
    *
    * @param conflictResolutionMode the conflict resolution mode
    * @throws ServiceResponseException the service response exception
@@ -354,9 +357,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Creates a copy of this item in the specified folder. Calling this method
-   * results in a call to EWS. Copy returns null if the copy operation is
-   * across two mailboxes or between a mailbox and a public folder.
+   * Creates a copy of this item in the specified folder. Calling this method results in a call to EWS. Copy
+   * returns null if the copy operation is across two mailboxes or between a mailbox and a public folder.
    *
    * @param destinationFolderId the destination folder id
    * @return The copy of this item.
@@ -373,9 +375,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Creates a copy of this item in the specified folder. Calling this method
-   * results in a call to EWS. Copy returns null if the copy operation is
-   * across two mailboxes or between a mailbox and a public folder.
+   * Creates a copy of this item in the specified folder. Calling this method results in a call to EWS. Copy
+   * returns null if the copy operation is across two mailboxes or between a mailbox and a public folder.
    *
    * @param destinationFolderName the destination folder name
    * @return The copy of this item.
@@ -387,9 +388,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Moves this item to a the specified folder. Calling this method results in
-   * a call to EWS. Move returns null if the move operation is across two
-   * mailboxes or between a mailbox and a public folder.
+   * Moves this item to a the specified folder. Calling this method results in a call to EWS. Move returns
+   * null if the move operation is across two mailboxes or between a mailbox and a public folder.
    *
    * @param destinationFolderId the destination folder id
    * @return The moved copy of this item.
@@ -405,9 +405,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Moves this item to a the specified folder. Calling this method results in
-   * a call to EWS. Move returns null if the move operation is across two
-   * mailboxes or between a mailbox and a public folder.
+   * Moves this item to a the specified folder. Calling this method results in a call to EWS. Move returns
+   * null if the move operation is across two mailboxes or between a mailbox and a public folder.
    *
    * @param destinationFolderName the destination folder name
    * @return The moved copy of this item.
@@ -458,14 +457,11 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating whether a time zone SOAP header should be emitted
-   * in a CreateItem or UpdateItem request so this item can be property saved
-   * or updated.
+   * Gets a value indicating whether a time zone SOAP header should be emitted in a CreateItem or UpdateItem
+   * request so this item can be property saved or updated.
    *
-   * @param isUpdateOperation Indicates whether the operation being petrformed is an update
-   *                          operation.
-   * @return true if a time zone SOAP header should be emitted;
-   * otherwise,false
+   * @param isUpdateOperation Indicates whether the operation being petrformed is an update operation.
+   * @return true if a time zone SOAP header should be emitted; otherwise,false
    */
   protected boolean getIsTimeZoneHeaderRequired(boolean isUpdateOperation)
       throws Exception {
@@ -518,8 +514,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating whether this object is a real store item, or if
-   * it's a local object that has yet to be saved.
+   * Gets a value indicating whether this object is a real store item, or if it's a local object that has yet
+   * to be saved.
    *
    * @return the checks if is new
    * @throws ServiceLocalException the service local exception
@@ -723,8 +719,7 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating whether the message has been submitted to be
-   * sent.
+   * Gets a value indicating whether the message has been submitted to be sent.
    *
    * @return the checks if is submitted
    * @throws ServiceLocalException the service local exception
@@ -736,8 +731,7 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating whether the message has been submitted to be
-   * sent.
+   * Gets a value indicating whether the message has been submitted to be sent.
    *
    * @return the checks if is associated
    * @throws ServiceLocalException the service local exception
@@ -749,8 +743,7 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating whether the message has been submitted to be
-   * sent.
+   * Gets a value indicating whether the message has been submitted to be sent.
    *
    * @return the checks if is draft
    * @throws ServiceLocalException the service local exception
@@ -762,8 +755,7 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating whether the item has been sent by the current
-   * authenticated user.
+   * Gets a value indicating whether the item has been sent by the current authenticated user.
    *
    * @return the checks if is from me
    * @throws ServiceLocalException the service local exception
@@ -787,8 +779,7 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating whether the item has been modified since it was
-   * created.
+   * Gets a value indicating whether the item has been modified since it was created.
    *
    * @return the checks if is unmodified
    * @throws ServiceLocalException the service local exception
@@ -836,8 +827,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating which response actions are allowed on this item.
-   * Examples of response actions are Reply and Forward.
+   * Gets a value indicating which response actions are allowed on this item. Examples of response actions are
+   * Reply and Forward.
    *
    * @return the allowed response actions
    * @throws ServiceLocalException the service local exception
@@ -895,8 +886,7 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets the number of minutes before the start of this item when the
-   * reminder should be triggered.
+   * Gets the number of minutes before the start of this item when the reminder should be triggered.
    *
    * @return the reminder minutes before start
    * @throws ServiceLocalException the service local exception
@@ -1029,8 +1019,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets the query string that should be appended to the Exchange Web client
-   * URL to open this item using the appropriate read form in a web browser.
+   * Gets the query string that should be appended to the Exchange Web client URL to open this item using the
+   * appropriate read form in a web browser.
    *
    * @return the web client read form query string
    * @throws ServiceLocalException the service local exception
@@ -1042,8 +1032,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets the query string that should be appended to the Exchange Web client
-   * URL to open this item using the appropriate read form in a web browser.
+   * Gets the query string that should be appended to the Exchange Web client URL to open this item using the
+   * appropriate read form in a web browser.
    *
    * @return the web client edit form query string
    * @throws ServiceLocalException the service local exception
@@ -1069,8 +1059,7 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating the effective rights the current authenticated
-   * user has on this item.
+   * Gets a value indicating the effective rights the current authenticated user has on this item.
    *
    * @return the effective rights
    * @throws ServiceLocalException the service local exception
@@ -1115,8 +1104,7 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets the body part that is unique to the conversation this item is part
-   * of.
+   * Gets the body part that is unique to the conversation this item is part of.
    *
    * @return the unique body
    * @throws ServiceLocalException the service local exception
@@ -1127,8 +1115,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets the default setting for how to treat affected task occurrences on
-   * Delete. Subclasses will override this for different default behavior.
+   * Gets the default setting for how to treat affected task occurrences on Delete. Subclasses will override
+   * this for different default behavior.
    *
    * @return the default affected task occurrences
    */
@@ -1137,8 +1125,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets the default setting for sending cancellations on Delete. Subclasses
-   * will override this for different default behavior.
+   * Gets the default setting for sending cancellations on Delete. Subclasses will override this for different
+   * default behavior.
    *
    * @return the default send cancellations mode
    */
@@ -1147,8 +1135,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets the default settings for sending invitations on Save. Subclasses
-   * will override this for different default behavior.
+   * Gets the default settings for sending invitations on Save. Subclasses will override this for different
+   * default behavior.
    *
    * @return the default send invitations mode
    */
@@ -1157,8 +1145,8 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets the default settings for sending invitations or cancellations on
-   * Update. Subclasses will override this for different default behavior.
+   * Gets the default settings for sending invitations or cancellations on Update. Subclasses will override
+   * this for different default behavior.
    *
    * @return the default send invitations or cancellations mode
    */

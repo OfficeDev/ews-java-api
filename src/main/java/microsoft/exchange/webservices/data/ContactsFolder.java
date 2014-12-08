@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -17,8 +31,8 @@ package microsoft.exchange.webservices.data;
 public class ContactsFolder extends Folder {
 
   /**
-   * Initializes an unsaved local instance of the class.To bind to an
-   * existing contacts folder, use ContactsFolder.Bind() instead.
+   * Initializes an unsaved local instance of the class.To bind to an existing contacts folder, use
+   * ContactsFolder.Bind() instead.
    *
    * @param service the service
    * @throws Exception the exception
@@ -28,14 +42,12 @@ public class ContactsFolder extends Folder {
   }
 
   /**
-   * Binds to an existing contacts folder and loads the specified set of
-   * properties.
+   * Binds to an existing contacts folder and loads the specified set of properties.
    *
    * @param service     the service
    * @param id          the id
    * @param propertySet the property set
-   * @return A ContactsFolder instance representing the contacts folder
-   * corresponding to the specified Id.
+   * @return A ContactsFolder instance representing the contacts folder corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static ContactsFolder bind(ExchangeService service, FolderId id,
@@ -44,13 +56,11 @@ public class ContactsFolder extends Folder {
   }
 
   /**
-   * Binds to an existing contacts folder and loads its first class
-   * properties.
+   * Binds to an existing contacts folder and loads its first class properties.
    *
    * @param service the service
    * @param id      the id
-   * @return A ContactsFolder instance representing the contacts folder
-   * corresponding to the specified Id.
+   * @return A ContactsFolder instance representing the contacts folder corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static ContactsFolder bind(ExchangeService service, FolderId id)
@@ -60,14 +70,12 @@ public class ContactsFolder extends Folder {
   }
 
   /**
-   * Binds to an existing contacts folder and loads the specified set of
-   * properties.
+   * Binds to an existing contacts folder and loads the specified set of properties.
    *
    * @param service     the service
    * @param name        the name
    * @param propertySet the property set
-   * @return A ContactsFolder instance representing the contacts folder
-   * corresponding to the specified name.
+   * @return A ContactsFolder instance representing the contacts folder corresponding to the specified name.
    * @throws Exception the exception
    */
   public static ContactsFolder bind(ExchangeService service,
@@ -77,13 +85,11 @@ public class ContactsFolder extends Folder {
   }
 
   /**
-   * Binds to an existing contacts folder and loads its first class
-   * properties.
+   * Binds to an existing contacts folder and loads its first class properties.
    *
    * @param service the service
    * @param name    the name
-   * @return A ContactsFolder instance representing the contacts folder
-   * corresponding to the specified name.
+   * @return A ContactsFolder instance representing the contacts folder corresponding to the specified name.
    * @throws Exception the exception
    */
   public static ContactsFolder bind(ExchangeService service,
@@ -95,8 +101,7 @@ public class ContactsFolder extends Folder {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {

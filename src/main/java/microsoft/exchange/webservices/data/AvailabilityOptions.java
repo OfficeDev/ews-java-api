@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -163,9 +177,8 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets the time difference between two successive slots in a
-   * FreeBusyMerged view. MergedFreeBusyInterval must be between 5 and 1440.
-   * The default value is 30.
+   * Gets the time difference between two successive slots in a FreeBusyMerged view. MergedFreeBusyInterval
+   * must be between 5 and 1440. The default value is 30.
    *
    * @return the merged free busy interval
    */
@@ -189,8 +202,7 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets  the requested type of free/busy view. The default value is
-   * FreeBusyViewType.Detailed.
+   * Gets  the requested type of free/busy view. The default value is FreeBusyViewType.Detailed.
    *
    * @return the requested free busy view
    */
@@ -208,10 +220,8 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets  the percentage of attendees that must have the time period
-   * open for the time period to qualify as a good suggested meeting time.
-   * GoodSuggestionThreshold must be between 1 and 49. The default value is
-   * 25.
+   * Gets  the percentage of attendees that must have the time period open for the time period to qualify as a
+   * good suggested meeting time. GoodSuggestionThreshold must be between 1 and 49. The default value is 25.
    *
    * @return the good suggestion threshold
    */
@@ -235,9 +245,8 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets the number of suggested meeting times that should be
-   * returned per day. MaximumSuggestionsPerDay must be between 0 and 48. The
-   * default value is 10.
+   * Gets the number of suggested meeting times that should be returned per day. MaximumSuggestionsPerDay must
+   * be between 0 and 48. The default value is 10.
    *
    * @return the maximum suggestions per day
    */
@@ -261,9 +270,8 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets the number of suggested meeting times outside regular
-   * working hours per day. MaximumNonWorkHoursSuggestionsPerDay must be
-   * between 0 and 48. The default value is 0.
+   * Gets the number of suggested meeting times outside regular working hours per day.
+   * MaximumNonWorkHoursSuggestionsPerDay must be between 0 and 48. The default value is 0.
    *
    * @return the maximum non work hours suggestions per day
    */
@@ -287,9 +295,8 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets  the duration, in minutes, of the meeting for which to obtain
-   * suggestions. MeetingDuration must be between 30 and 1440. The default
-   * value is 60.
+   * Gets  the duration, in minutes, of the meeting for which to obtain suggestions. MeetingDuration must be
+   * between 30 and 1440. The default value is 60.
    *
    * @return the meeting duration
    */
@@ -313,8 +320,7 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets the minimum quality of suggestions that should be returned.
-   * The default is SuggestionQuality.Fair.
+   * Gets the minimum quality of suggestions that should be returned. The default is SuggestionQuality.Fair.
    *
    * @return the minimum suggestion quality
    */
@@ -332,8 +338,7 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets the time window for which detailed information about
-   * suggested meeting times should be returned.
+   * Gets the time window for which detailed information about suggested meeting times should be returned.
    *
    * @return the detailed suggestions window
    */
@@ -351,8 +356,7 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets the start time of a meeting that you want to update with the
-   * suggested meeting times.
+   * Gets the start time of a meeting that you want to update with the suggested meeting times.
    *
    * @return the current meeting time
    */
@@ -370,8 +374,8 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets the global object Id of a meeting that will be modified
-   * based on the data returned by GetUserAvailability.
+   * Gets the global object Id of a meeting that will be modified based on the data returned by
+   * GetUserAvailability.
    *
    * @return the global object id
    */

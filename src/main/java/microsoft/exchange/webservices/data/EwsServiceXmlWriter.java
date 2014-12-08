@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -77,8 +91,8 @@ class EwsServiceXmlWriter implements IDisposable {
    *
    * @param value The value.
    * @param str   the str
-   * @return True if object was converted, false otherwise. A null object will
-   * be "successfully" converted to a null string.
+   * @return True if object was converted, false otherwise. A null object will be "successfully" converted to
+   * a null string.
    */
   protected boolean tryConvertObjectToString(Object value,
       OutParam<String> str) {
@@ -112,8 +126,7 @@ class EwsServiceXmlWriter implements IDisposable {
   }
 
   /**
-   * Performs application-defined tasks associated with freeing, releasing, or
-   * resetting unmanaged resources.
+   * Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
    */
   @Override
   public void dispose() {
@@ -287,8 +300,8 @@ class EwsServiceXmlWriter implements IDisposable {
    *
    * @param xmlNamespace The XML namespace.
    * @param localName    The local name of the element.
-   * @param displayName  The name that should appear in the exception message when the
-   *                     value can not be serialized.
+   * @param displayName  The name that should appear in the exception message when the value can not be
+   *                     serialized.
    * @param value        The value.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
@@ -434,7 +447,6 @@ class EwsServiceXmlWriter implements IDisposable {
       writeNode(n, writer);
     }
 
-
     writer.writeEndElement();
 
   }
@@ -529,8 +541,7 @@ class EwsServiceXmlWriter implements IDisposable {
   }
 
   /**
-   * Gets a value indicating whether the time zone SOAP header was emitted
-   * through this writer.
+   * Gets a value indicating whether the time zone SOAP header was emitted through this writer.
    *
    * @return true if the time zone SOAP header was emitted; otherwise false.
    */
@@ -539,11 +550,9 @@ class EwsServiceXmlWriter implements IDisposable {
   }
 
   /**
-   * Sets a value indicating whether the time zone SOAP header was emitted
-   * through this writer.
+   * Sets a value indicating whether the time zone SOAP header was emitted through this writer.
    *
-   * @param isTimeZoneHeaderEmitted true if the time zone SOAP header was emitted; otherwise
-   *                                false.
+   * @param isTimeZoneHeaderEmitted true if the time zone SOAP header was emitted; otherwise false.
    */
   public void setTimeZoneHeaderEmitted(boolean isTimeZoneHeaderEmitted) {
     this.isTimeZoneHeaderEmitted = isTimeZoneHeaderEmitted;

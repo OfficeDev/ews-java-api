@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -64,8 +78,7 @@ public final class EmailAddressCollection extends
    * Adds an e-mail address to the collection.
    *
    * @param smtpAddress The SMTP address used to initialize the e-mail address.
-   * @return An EmailAddress object initialized with the provided SMTP
-   * address.
+   * @return An EmailAddress object initialized with the provided SMTP address.
    */
   public EmailAddress add(String smtpAddress) {
     EmailAddress emailAddress = new EmailAddress(smtpAddress);
@@ -91,8 +104,7 @@ public final class EmailAddressCollection extends
    *
    * @param name        The name used to initialize the e-mail address.
    * @param smtpAddress The SMTP address used to initialize the e-mail address.
-   * @return An EmailAddress object initialized with the provided SMTP
-   * address.
+   * @return An EmailAddress object initialized with the provided SMTP address.
    */
   public EmailAddress add(String name, String smtpAddress) {
     EmailAddress emailAddress = new EmailAddress(name, smtpAddress);
@@ -125,8 +137,7 @@ public final class EmailAddressCollection extends
    * Removes an e-mail address from the collection.
    *
    * @param emailAddress The e-mail address to remove.
-   * @return True if the email address was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the email address was successfully removed from the collection, false otherwise.
    * @throws Exception the exception
    */
   public boolean remove(EmailAddress emailAddress) throws Exception {
@@ -150,13 +161,10 @@ public final class EmailAddressCollection extends
   }
 
   /**
-   * Retrieves the XML element name corresponding to the provided EmailAddress
-   * object.
+   * Retrieves the XML element name corresponding to the provided EmailAddress object.
    *
-   * @param complexProperty The EmailAddress object from which to determine the XML
-   *                        element name.
-   * @return The XML element name corresponding to the provided EmailAddress
-   * object.
+   * @param complexProperty The EmailAddress object from which to determine the XML element name.
+   * @return The XML element name corresponding to the provided EmailAddress object.
    */
   @Override
   protected String getCollectionItemXmlElementName(

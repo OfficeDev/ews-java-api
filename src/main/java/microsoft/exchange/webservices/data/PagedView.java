@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -50,11 +64,9 @@ public abstract class PagedView extends ViewBase {
   }
 
   /**
-   * Gets the maximum number of items or folders the search operation should
-   * return.
+   * Gets the maximum number of items or folders the search operation should return.
    *
-   * @return The maximum number of items or folders that should be returned by
-   * the search operation.
+   * @return The maximum number of items or folders that should be returned by the search operation.
    */
   @Override
   protected Integer getMaxEntriesReturned() {
@@ -107,8 +119,7 @@ public abstract class PagedView extends ViewBase {
   /**
    * Initializes a new instance of the "PagedView" class.
    *
-   * @param pageSize The maximum number of elements the search operation should
-   *                 return.
+   * @param pageSize The maximum number of elements the search operation should return.
    */
   protected PagedView(int pageSize) {
     super();
@@ -118,8 +129,7 @@ public abstract class PagedView extends ViewBase {
   /**
    * Initializes a new instance of the "PagedView" class.
    *
-   * @param pageSize The maximum number of elements the search operation should
-   *                 return.
+   * @param pageSize The maximum number of elements the search operation should return.
    * @param offset   The offset of the view from the base point.
    */
   protected PagedView(int pageSize, int offset) {
@@ -130,8 +140,7 @@ public abstract class PagedView extends ViewBase {
   /**
    * Initializes a new instance of the "PagedView" class.
    *
-   * @param pageSize        The maximum number of elements the search operation should
-   *                        return.
+   * @param pageSize        The maximum number of elements the search operation should return.
    * @param offset          The offset of the view from the base point.
    * @param offsetBasePoint The base point of the offset.
    */
@@ -142,8 +151,7 @@ public abstract class PagedView extends ViewBase {
   }
 
   /**
-   * Gets the maximum number of items or folders the search operation should
-   * return.
+   * Gets the maximum number of items or folders the search operation should return.
    *
    * @return the page size
    */
@@ -152,8 +160,7 @@ public abstract class PagedView extends ViewBase {
   }
 
   /**
-   * Sets the maximum number of items or folders the search operation should
-   * return.
+   * Sets the maximum number of items or folders the search operation should return.
    *
    * @param pageSize the new page size
    */

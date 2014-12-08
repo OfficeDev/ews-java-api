@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -14,6 +28,7 @@ package microsoft.exchange.webservices.data;
  * Represents a pull subscription.
  */
 public final class PullSubscription extends SubscriptionBase {
+
   /**
    * The more events available.
    */
@@ -30,12 +45,10 @@ public final class PullSubscription extends SubscriptionBase {
   }
 
   /**
-   * Obtains a collection of events that occurred on the subscribed folders
-   * since the point in time defined by the Watermark property. When GetEvents
-   * succeeds, Watermark is updated.
+   * Obtains a collection of events that occurred on the subscribed folders since the point in time defined by
+   * the Watermark property. When GetEvents succeeds, Watermark is updated.
    *
-   * @return Returns a collection of events that occurred since the last
-   * watermark
+   * @return Returns a collection of events that occurred since the last watermark
    * @throws Exception the exception
    */
   public GetEventsResults getEvents() throws Exception {
@@ -47,8 +60,8 @@ public final class PullSubscription extends SubscriptionBase {
   }
 
   /**
-   * Begins an asynchronous request to obtain a collection of events that occurred on the subscribed
-   * folders since the point in time defined by the Watermark property
+   * Begins an asynchronous request to obtain a collection of events that occurred on the subscribed folders
+   * since the point in time defined by the Watermark property
    *
    * @param callback The AsyncCallback delegate
    * @param state    An object that contains state information for this request
@@ -60,9 +73,9 @@ public final class PullSubscription extends SubscriptionBase {
   }
 
   /**
-   * Ends an asynchronous request to obtain a collection of events that occurred on the subscribed
-   * folders since the point in time defined by the Watermark property. When EndGetEvents succeeds,
-   * Watermark is updated.
+   * Ends an asynchronous request to obtain a collection of events that occurred on the subscribed folders
+   * since the point in time defined by the Watermark property. When EndGetEvents succeeds, Watermark is
+   * updated.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
    * @return Returns a collection of events that occurred since the last watermark.
@@ -109,8 +122,8 @@ public final class PullSubscription extends SubscriptionBase {
   }
 
   /**
-   * Gets a value indicating whether more events are available on the server.
-   * MoreEventsAvailable is undefined (null) until GetEvents is called.
+   * Gets a value indicating whether more events are available on the server. MoreEventsAvailable is undefined
+   * (null) until GetEvents is called.
    *
    * @return true, if is more events available
    */

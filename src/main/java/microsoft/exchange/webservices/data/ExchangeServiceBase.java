@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -220,9 +234,8 @@ public abstract class ExchangeServiceBase {
   // Utilities
 
   /**
-   * Creates an HttpWebRequest instance and initialises it with the
-   * appropriate parameters, based on the configuration of this service
-   * object.
+   * Creates an HttpWebRequest instance and initialises it with the appropriate parameters, based on the
+   * configuration of this service object.
    *
    * @param url                The URL that the HttpWebRequest should target.
    * @param acceptGzipEncoding If true, ask server for GZip compressed content.
@@ -300,9 +313,8 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * This method doesn't handle 500 ISE errors. This is handled by the caller since
-   * 500 ISE typically indicates that a SOAP fault has occurred and the handling of
-   * a SOAP fault is currently service specific.
+   * This method doesn't handle 500 ISE errors. This is handled by the caller since 500 ISE typically
+   * indicates that a SOAP fault has occurred and the handling of a SOAP fault is currently service specific.
    *
    * @throws Exception
    */
@@ -343,8 +355,7 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * @return false if location is null,true if this abstract pathname is
-   * absolute,
+   * @return false if location is null,true if this abstract pathname is absolute,
    */
   public static boolean checkURIPath(String location) {
     if (location == null) {
@@ -556,9 +567,8 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Converts xs:dateTime string with either "Z", "-00:00" bias, or ""
-   * suffixes to unspecified StartDate value ignoring the suffix.Needs to fix
-   * E14:232996.
+   * Converts xs:dateTime string with either "Z", "-00:00" bias, or "" suffixes to unspecified StartDate value
+   * ignoring the suffix.Needs to fix E14:232996.
    *
    * @param value The string value to parse.
    * @return The parsed DateTime value.
@@ -595,7 +605,6 @@ public abstract class ExchangeServiceBase {
     this.userAgent = userAgent;
   }
 
-
   // Abstract methods
 
   /**
@@ -628,7 +637,7 @@ public abstract class ExchangeServiceBase {
    *             the uRI syntax exception
    */
         /*public void setCookie(URL url, String value) throws IOException,
-	URISyntaxException {
+        URISyntaxException {
 		CookieHandler handler =CookieHandler.getDefault();
 		if (handler != null) {
 			Map<String, List<String>> headers =
@@ -642,7 +651,7 @@ public abstract class ExchangeServiceBase {
 	}*/
 
 	/*
-	 * Gets the cookie.
+         * Gets the cookie.
 	 * 
 	 * @param url
 	 *            the url
@@ -739,9 +748,8 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Sets the credentials used to authenticate with the Exchange Web Services.
-   * Setting the Credentials property automatically sets the
-   * UseDefaultCredentials to false.
+   * Sets the credentials used to authenticate with the Exchange Web Services. Setting the Credentials
+   * property automatically sets the UseDefaultCredentials to false.
    *
    * @param credentials Exchange credentials.
    */
@@ -752,9 +760,8 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Gets a value indicating whether the credentials of the user currently
-   * logged into Windows should be used to authenticate with the Exchange Web
-   * Services.
+   * Gets a value indicating whether the credentials of the user currently logged into Windows should be used
+   * to authenticate with the Exchange Web Services.
    *
    * @return true if credentials of the user currently logged in are used
    */
@@ -763,10 +770,9 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Sets a value indicating whether the credentials of the user currently
-   * logged into Windows should be used to authenticate with the Exchange Web
-   * Services. Setting UseDefaultCredentials to true automatically sets the
-   * Credentials property to null.
+   * Sets a value indicating whether the credentials of the user currently logged into Windows should be used
+   * to authenticate with the Exchange Web Services. Setting UseDefaultCredentials to true automatically sets
+   * the Credentials property to null.
    *
    * @param value the new use default credentials
    */
@@ -779,8 +785,7 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Gets the timeout used when sending HTTP requests and when receiving HTTP
-   * responses, in milliseconds.
+   * Gets the timeout used when sending HTTP requests and when receiving HTTP responses, in milliseconds.
    *
    * @return timeout in milliseconds
    */
@@ -789,8 +794,8 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Sets the timeout used when sending HTTP requests and when receiving HTTP
-   * respones, in milliseconds. Defaults to 100000.
+   * Sets the timeout used when sending HTTP requests and when receiving HTTP respones, in milliseconds.
+   * Defaults to 100000.
    *
    * @param timeout timeout in milliseconds
    */
@@ -803,8 +808,7 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Gets a value that indicates whether HTTP pre-authentication should be
-   * performed.
+   * Gets a value that indicates whether HTTP pre-authentication should be performed.
    *
    * @return true indicates pre-authentication is set
    */
@@ -813,8 +817,7 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Sets a value that indicates whether HTTP pre-authentication should be
-   * performed.
+   * Sets a value that indicates whether HTTP pre-authentication should be performed.
    *
    * @param preAuthenticate true to enable pre-authentication
    */
@@ -823,9 +826,8 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Gets a value indicating whether GZip compression encoding should be
-   * accepted. This value will tell the server that the client is able to
-   * handle GZip compression encoding. The server will only send Gzip
+   * Gets a value indicating whether GZip compression encoding should be accepted. This value will tell the
+   * server that the client is able to handle GZip compression encoding. The server will only send Gzip
    * compressed content if it has been configured to do so.
    *
    * @return true if compression is used
@@ -835,9 +837,8 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Gets a value indicating whether GZip compression encoding should
-   * be accepted. This value will tell the server that the client is able to
-   * handle GZip compression encoding. The server will only send Gzip
+   * Gets a value indicating whether GZip compression encoding should be accepted. This value will tell the
+   * server that the client is able to handle GZip compression encoding. The server will only send Gzip
    * compressed content if it has been configured to do so.
    *
    * @param acceptGzipEncoding true to enable compression
@@ -875,8 +876,8 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Gets information associated with the server that processed the last
-   * request. Will be null if no requests have been processed.
+   * Gets information associated with the server that processed the last request. Will be null if no requests
+   * have been processed.
    *
    * @return the server info
    */
@@ -885,8 +886,7 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Sets information associated with the server that processed the last
-   * request.
+   * Sets information associated with the server that processed the last request.
    *
    * @param serverInfo Server Information
    */
@@ -897,16 +897,15 @@ public abstract class ExchangeServiceBase {
   /**
    * Gets the web proxy that should be used when sending requests to EWS.
    *
-   * @return Proxy
-   * the Proxy Information
+   * @return Proxy the Proxy Information
    */
   public WebProxy getWebProxy() {
     return this.webProxy;
   }
 
   /**
-   * Sets the web proxy that should be used when sending requests to EWS.
-   * Set this property to null to use the default web proxy.
+   * Sets the web proxy that should be used when sending requests to EWS. Set this property to null to use the
+   * default web proxy.
    *
    * @param value the Proxy Information
    */
@@ -915,8 +914,7 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Gets a collection of HTTP headers that will be sent with each request to
-   * EWS.
+   * Gets a collection of HTTP headers that will be sent with each request to EWS.
    *
    * @return httpHeaders
    */
@@ -927,8 +925,8 @@ public abstract class ExchangeServiceBase {
   // Events
 
   /**
-   * Provides an event that applications can implement to emit custom SOAP
-   * headers in requests that are sent to Exchange.
+   * Provides an event that applications can implement to emit custom SOAP headers in requests that are sent
+   * to Exchange.
    */
   private List<ICustomXmlSerialization> OnSerializeCustomSoapHeaders;
 

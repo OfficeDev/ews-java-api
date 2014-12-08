@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -54,8 +68,7 @@ class EwsServiceXmlReader extends EwsXmlReader {
   }
 
   /**
-   * Converts the specified string into a
-   * unspecified Date object, ignoring offset.
+   * Converts the specified string into a unspecified Date object, ignoring offset.
    *
    * @param dateTimeString The date time string to convert.
    * @return A DateTime representing the converted string.
@@ -87,8 +100,8 @@ class EwsServiceXmlReader extends EwsXmlReader {
   }
 
   /**
-   * Reads the element value as date time, assuming it is unbiased (e.g.
-   * 2009/01/01T08:00) and scoped to service's time zone.
+   * Reads the element value as date time, assuming it is unbiased (e.g. 2009/01/01T08:00) and scoped to
+   * service's time zone.
    *
    * @return Date
    * @throws Exception the exception
@@ -124,12 +137,12 @@ class EwsServiceXmlReader extends EwsXmlReader {
     // {
 
 		/*
-		 * calen.setTimeInMillis(calen.getTimeInMillis() -
+                 * calen.setTimeInMillis(calen.getTimeInMillis() -
 		 * tz.getOffset(tempDate.getTime()));
 		 */
     return tempDate;
-		/*
-		 * } else if (EwsUtilities.isLocalTimeZone(this.service.getTimeZone()))
+                /*
+                 * } else if (EwsUtilities.isLocalTimeZone(this.service.getTimeZone()))
 		 * { calen.setTimeInMillis(calen.getTimeInMillis() +
 		 * tz.getOffset(tempDate.getTime())); return calen.getTime(); } else {
 		 * return tempDate; }

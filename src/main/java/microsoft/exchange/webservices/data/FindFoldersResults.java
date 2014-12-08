@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -46,8 +60,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets the total number of folders matching the search criteria available
-   * in the searched folder.
+   * Gets the total number of folders matching the search criteria available in the searched folder.
    *
    * @return the total count
    */
@@ -65,8 +78,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets the offset that should be used with FolderView to retrieve the next
-   * page of folders in a FindFolders operation.
+   * Gets the offset that should be used with FolderView to retrieve the next page of folders in a FindFolders
+   * operation.
    *
    * @return the next page offset
    */
@@ -75,8 +88,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Sets the offset that should be used with FolderView to retrieve the next
-   * page of folders in a FindFolders operation.
+   * Sets the offset that should be used with FolderView to retrieve the next page of folders in a FindFolders
+   * operation.
    *
    * @param nextPageOffset the new next page offset
    */
@@ -85,8 +98,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets a value indicating whether more folders matching the search
-   * criteria. are available in the searched folder.
+   * Gets a value indicating whether more folders matching the search criteria. are available in the searched
+   * folder.
    *
    * @return true, if is more available
    */
@@ -95,8 +108,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Sets a value indicating whether more folders matching the search
-   * criteria. are available in the searched folder.
+   * Sets a value indicating whether more folders matching the search criteria. are available in the searched
+   * folder.
    *
    * @param moreAvailable the new more available
    */
@@ -105,8 +118,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets a collection containing the folders that were found by the search
-   * operation.
+   * Gets a collection containing the folders that were found by the search operation.
    *
    * @return the folders
    */

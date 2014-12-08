@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -14,8 +28,7 @@ import javax.xml.stream.XMLStreamException;
 import java.util.*;
 
 /**
- * Represents an ordered collection of property definitions qualified with a
- * sort direction.
+ * Represents an ordered collection of property definitions qualified with a sort direction.
  */
 public final class OrderByCollection implements
     Iterable<Map<PropertyDefinitionBase, SortDirection>> {
@@ -35,8 +48,7 @@ public final class OrderByCollection implements
   }
 
   /**
-   * Adds the specified property definition / sort direction pair to the
-   * collection.
+   * Adds the specified property definition / sort direction pair to the collection.
    *
    * @param propertyDefinition the property definition
    * @param sortDirection      the sort direction
@@ -64,12 +76,10 @@ public final class OrderByCollection implements
   }
 
   /**
-   * Determines whether the collection contains the specified property
-   * definition.
+   * Determines whether the collection contains the specified property definition.
    *
    * @param propertyDefinition the property definition
-   * @return True if the collection contains the specified property
-   * definition; otherwise, false.
+   * @return True if the collection contains the specified property definition; otherwise, false.
    */
   protected boolean contains(PropertyDefinitionBase propertyDefinition) {
     for (Map propDefSortOrderPair : propDefSortOrderPairList) {
@@ -91,8 +101,7 @@ public final class OrderByCollection implements
    * Removes the specified property definition from the collection.
    *
    * @param propertyDefinition the property definition
-   * @return True if the property definition is successfully removed;
-   * otherwise, false
+   * @return True if the property definition is successfully removed; otherwise, false
    */
   public boolean remove(PropertyDefinitionBase propertyDefinition) {
     List<Map<PropertyDefinitionBase, SortDirection>> removeList = new

@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -64,8 +78,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @param responseObject     the response object
    * @param parentFolderId     the parent folder id
    * @param messageDisposition the message disposition
-   * @return The list of items created or modified as a result of the
-   * "creation" of the response object.
+   * @return The list of items created or modified as a result of the "creation" of the response object.
    * @throws Exception the exception
    */
   protected List<Item> internalCreateResponseObject(
@@ -191,13 +204,11 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of the specified
-   * folder.
+   * Obtains a list of folders by searching the sub-folders of the specified folder.
    *
    * @param parentFolderId The Id of the folder in which to search for folders.
-   * @param searchFilter   The search filter. Available search filter classes include
-   *                       SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
-   *                       SearchFilter.SearchFilterCollection
+   * @param searchFilter   The search filter. Available search filter classes include SearchFilter.IsEqualTo,
+   *                       SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection
    * @param view           The view controlling the number of folders returned.
    * @return An object representing the results of the search operation.
    * @throws Exception the exception
@@ -218,8 +229,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of the specified
-   * folder.
+   * Obtains a list of folders by searching the sub-folders of the specified folder.
    *
    * @param parentFolderId The Id of the folder in which to search for folders.
    * @param view           The view controlling the number of folders returned.
@@ -242,8 +252,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of the specified
-   * folder.
+   * Obtains a list of folders by searching the sub-folders of the specified folder.
    *
    * @param parentFolderName The name of the folder in which to search for folders.
    * @param searchFilter     The search filter. Available search filter classes include
@@ -260,8 +269,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of the specified
-   * folder.
+   * Obtains a list of folders by searching the sub-folders of the specified folder.
    *
    * @param parentFolderName the parent folder name
    * @param view             the view
@@ -367,8 +375,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param folderId         The folder id
    * @param deleteMode       The delete mode
-   * @param deleteSubFolders if set to <c>true</c> empty folder should also delete sub
-   *                         folders.
+   * @param deleteSubFolders if set to <c>true</c> empty folder should also delete sub folders.
    * @throws Exception the exception
    */
   protected void emptyFolder(FolderId folderId, DeleteMode deleteMode,
@@ -385,17 +392,15 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Creates multiple items in a single EWS call. Supported item classes are
-   * EmailMessage, Appointment, Contact, PostItem, Task and Item. CreateItems
-   * does not support items that have unsaved attachments.
+   * Creates multiple items in a single EWS call. Supported item classes are EmailMessage, Appointment,
+   * Contact, PostItem, Task and Item. CreateItems does not support items that have unsaved attachments.
    *
    * @param items               the items
    * @param parentFolderId      the parent folder id
    * @param messageDisposition  the message disposition
    * @param sendInvitationsMode the send invitations mode
    * @param errorHandling       the error handling
-   * @return A ServiceResponseCollection providing creation results for each
-   * of the specified items.
+   * @return A ServiceResponseCollection providing creation results for each of the specified items.
    * @throws Exception the exception
    */
   private ServiceResponseCollection<ServiceResponse> internalCreateItems(
@@ -412,16 +417,14 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Creates multiple items in a single EWS call. Supported item classes are
-   * EmailMessage, Appointment, Contact, PostItem, Task and Item. CreateItems
-   * does not support items that have unsaved attachments.
+   * Creates multiple items in a single EWS call. Supported item classes are EmailMessage, Appointment,
+   * Contact, PostItem, Task and Item. CreateItems does not support items that have unsaved attachments.
    *
    * @param items               the items
    * @param parentFolderId      the parent folder id
    * @param messageDisposition  the message disposition
    * @param sendInvitationsMode the send invitations mode
-   * @return A ServiceResponseCollection providing creation results for each
-   * of the specified items.
+   * @return A ServiceResponseCollection providing creation results for each of the specified items.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<ServiceResponse> createItems(
@@ -474,8 +477,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Updates multiple items in a single EWS call. UpdateItems does not
-   * support items that have unsaved attachments.
+   * Updates multiple items in a single EWS call. UpdateItems does not support items that have unsaved
+   * attachments.
    *
    * @param items                              the items
    * @param savedItemsDestinationFolderId      the saved items destination folder id
@@ -483,8 +486,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @param messageDisposition                 the message disposition
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
    * @param errorHandling                      the error handling
-   * @return A ServiceResponseCollection providing update results for each of
-   * the specified items.
+   * @return A ServiceResponseCollection providing update results for each of the specified items.
    * @throws Exception the exception
    */
   private ServiceResponseCollection<UpdateItemResponse> internalUpdateItems(
@@ -507,16 +509,15 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Updates multiple items in a single EWS call. UpdateItems does not
-   * support items that have unsaved attachments.
+   * Updates multiple items in a single EWS call. UpdateItems does not support items that have unsaved
+   * attachments.
    *
    * @param items                              the items
    * @param savedItemsDestinationFolderId      the saved items destination folder id
    * @param conflictResolution                 the conflict resolution
    * @param messageDisposition                 the message disposition
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
-   * @return A ServiceResponseCollection providing update results for each of
-   * the specified items.
+   * @return A ServiceResponseCollection providing update results for each of the specified items.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<UpdateItemResponse> updateItems(
@@ -564,8 +565,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @param conflictResolution                 the conflict resolution
    * @param messageDisposition                 the message disposition
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
-   * @return A ServiceResponseCollection providing deletion results for each
-   * of the specified item Ids.
+   * @return A ServiceResponseCollection providing deletion results for each of the specified item Ids.
    * @throws Exception the exception
    */
   protected Item updateItem(
@@ -613,11 +613,9 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param itemIds             the item ids
    * @param destinationFolderId the destination folder id
-   * @param returnNewItemIds    Flag indicating whether service should return new ItemIds or
-   *                            not.
+   * @param returnNewItemIds    Flag indicating whether service should return new ItemIds or not.
    * @param errorHandling       the error handling
-   * @return A ServiceResponseCollection providing copy results for each of
-   * the specified item Ids.
+   * @return A ServiceResponseCollection providing copy results for each of the specified item Ids.
    * @throws Exception the exception
    */
   private ServiceResponseCollection<MoveCopyItemResponse> internalCopyItems(
@@ -637,8 +635,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param itemIds             the item ids
    * @param destinationFolderId the destination folder id
-   * @return A ServiceResponseCollection providing copy results for each of
-   * the specified item Ids.
+   * @return A ServiceResponseCollection providing copy results for each of the specified item Ids.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<MoveCopyItemResponse> copyItems(
@@ -653,10 +650,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param itemIds             The Ids of the items to copy.
    * @param destinationFolderId The Id of the folder to copy the items to.
-   * @param returnNewItemIds    Flag indicating whether service should return new ItemIds or
-   *                            not.
-   * @return A ServiceResponseCollection providing copy results for each of
-   * the specified item Ids.
+   * @param returnNewItemIds    Flag indicating whether service should return new ItemIds or not.
+   * @return A ServiceResponseCollection providing copy results for each of the specified item Ids.
    * @throws Exception
    */
   public ServiceResponseCollection<MoveCopyItemResponse> copyItems(
@@ -673,9 +668,9 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * Copies an item. Calling this method results in a call to EWS.
    *
    * @param itemId              The Id of the item to copy.
-   * @param destinationFolderId The folder in which to save sent messages, meeting invitations
-   *                            or cancellations. If null, the message, meeting invitation or
-   *                            cancellation is saved in the Sent Items folder
+   * @param destinationFolderId The folder in which to save sent messages, meeting invitations or
+   *                            cancellations. If null, the message, meeting invitation or cancellation is
+   *                            saved in the Sent Items folder
    * @return The copy of the item.
    * @throws Exception the exception
    */
@@ -694,11 +689,9 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param itemIds             the item ids
    * @param destinationFolderId the destination folder id
-   * @param returnNewItemIds    Flag indicating whether service should return new ItemIds or
-   *                            not.
+   * @param returnNewItemIds    Flag indicating whether service should return new ItemIds or not.
    * @param errorHandling       the error handling
-   * @return A ServiceResponseCollection providing copy results for each of
-   * the specified item Ids.
+   * @return A ServiceResponseCollection providing copy results for each of the specified item Ids.
    * @throws Exception the exception
    */
   private ServiceResponseCollection<MoveCopyItemResponse> internalMoveItems(
@@ -718,8 +711,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param itemIds             the item ids
    * @param destinationFolderId the destination folder id
-   * @return A ServiceResponseCollection providing copy results for each of
-   * the specified item Ids.
+   * @return A ServiceResponseCollection providing copy results for each of the specified item Ids.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<MoveCopyItemResponse> moveItems(
@@ -734,10 +726,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param itemIds             The Ids of the items to move.
    * @param destinationFolderId The Id of the folder to move the items to.
-   * @param returnNewItemIds    Flag indicating whether service should return new ItemIds or
-   *                            not.
-   * @return A ServiceResponseCollection providing copy results for each of
-   * the specified item Ids.
+   * @param returnNewItemIds    Flag indicating whether service should return new ItemIds or not.
+   * @return A ServiceResponseCollection providing copy results for each of the specified item Ids.
    * @throws Exception
    */
   public ServiceResponseCollection<MoveCopyItemResponse> moveItems(
@@ -755,8 +745,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param itemId              the item id
    * @param destinationFolderId the destination folder id
-   * @return A ServiceResponseCollection providing copy results for each of
-   * the specified item Ids.
+   * @return A ServiceResponseCollection providing copy results for each of the specified item Ids.
    * @throws Exception the exception
    */
   protected Item moveItem(ItemId itemId, FolderId destinationFolderId)
@@ -808,8 +797,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a list of items by searching the contents of a specific folder. Calling this method results in a
+   * call to EWS.
    *
    * @param parentFolderId the parent folder id
    * @param queryString    the query string
@@ -834,8 +823,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a list of items by searching the contents of a specific folder. Calling this method results in a
+   * call to EWS.
    *
    * @param parentFolderId the parent folder id
    * @param searchFilter   the search filter
@@ -858,8 +847,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a list of items by searching the contents of a specific folder. Calling this method results in a
+   * call to EWS.
    *
    * @param parentFolderId the parent folder id
    * @param view           the view
@@ -881,8 +870,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a list of items by searching the contents of a specific folder. Calling this method results in a
+   * call to EWS.
    *
    * @param parentFolderName the parent folder name
    * @param queryString      the query string
@@ -898,8 +887,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a list of items by searching the contents of a specific folder. Calling this method results in a
+   * call to EWS.
    *
    * @param parentFolderName the parent folder name
    * @param searchFilter     the search filter
@@ -915,8 +904,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a list of items by searching the contents of a specific folder. Calling this method results in a
+   * call to EWS.
    *
    * @param parentFolderName the parent folder name
    * @param view             the view
@@ -931,8 +920,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
-   * folder. Calling this method results in a call to EWS.
+   * Obtains a grouped list of items by searching the contents of a specific folder. Calling this method
+   * results in a call to EWS.
    *
    * @param parentFolderId the parent folder id
    * @param queryString    the query string
@@ -958,8 +947,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
-   * folder. Calling this method results in a call to EWS.
+   * Obtains a grouped list of items by searching the contents of a specific folder. Calling this method
+   * results in a call to EWS.
    *
    * @param parentFolderId the parent folder id
    * @param searchFilter   the search filter
@@ -985,8 +974,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
-   * folder. Calling this method results in a call to EWS.
+   * Obtains a grouped list of items by searching the contents of a specific folder. Calling this method
+   * results in a call to EWS.
    *
    * @param parentFolderId the parent folder id
    * @param view           the view
@@ -1010,8 +999,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
-   * folder. Calling this method results in a call to EWS.
+   * Obtains a grouped list of items by searching the contents of a specific folder. Calling this method
+   * results in a call to EWS.
    *
    * @param <TItem>        the generic type
    * @param cls            the cls
@@ -1034,15 +1023,14 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
-   * folder. Calling this method results in a call to EWS.
+   * Obtains a grouped list of items by searching the contents of a specific folder. Calling this method
+   * results in a call to EWS.
    *
    * @param parentFolderName the parent folder name
    * @param queryString      the query string
    * @param view             the view
    * @param groupBy          the group by
-   * @return A collection of grouped items containing the contents of the
-   * specified.
+   * @return A collection of grouped items containing the contents of the specified.
    * @throws Exception the exception
    */
   public GroupedFindItemsResults<Item> findItems(
@@ -1054,15 +1042,14 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
-   * folder. Calling this method results in a call to EWS.
+   * Obtains a grouped list of items by searching the contents of a specific folder. Calling this method
+   * results in a call to EWS.
    *
    * @param parentFolderName the parent folder name
    * @param searchFilter     the search filter
    * @param view             the view
    * @param groupBy          the group by
-   * @return A collection of grouped items containing the contents of the
-   * specified.
+   * @return A collection of grouped items containing the contents of the specified.
    * @throws Exception the exception
    */
   public GroupedFindItemsResults<Item> findItems(
@@ -1073,13 +1060,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of appointments by searching the contents of a specific
-   * folder. Calling this method results in a call to EWS.
+   * Obtains a list of appointments by searching the contents of a specific folder. Calling this method
+   * results in a call to EWS.
    *
    * @param parentFolderId the parent folder id
    * @param calendarView   the calendar view
-   * @return A collection of appointments representing the contents of the
-   * specified folder.
+   * @return A collection of appointments representing the contents of the specified folder.
    * @throws Exception the exception
    */
   public FindItemsResults<Appointment> findAppointments(
@@ -1097,13 +1083,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Obtains a list of appointments by searching the contents of a specific
-   * folder. Calling this method results in a call to EWS.
+   * Obtains a list of appointments by searching the contents of a specific folder. Calling this method
+   * results in a call to EWS.
    *
    * @param parentFolderName the parent folder name
    * @param calendarView     the calendar view
-   * @return A collection of appointments representing the contents of the
-   * specified folder.
+   * @return A collection of appointments representing the contents of the specified folder.
    * @throws Exception the exception
    */
   public FindItemsResults<Appointment> findAppointments(
@@ -1118,8 +1103,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param items       the items
    * @param propertySet the property set
-   * @return A ServiceResponseCollection providing results for each of the
-   * specified items.
+   * @return A ServiceResponseCollection providing results for each of the specified items.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<ServiceResponse> loadPropertiesForItems(
@@ -1137,8 +1121,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @param items         the items
    * @param propertySet   the property set
    * @param errorHandling the error handling
-   * @return A ServiceResponseCollection providing results for each of the
-   * specified items.
+   * @return A ServiceResponseCollection providing results for each of the specified items.
    * @throws Exception the exception
    */
   ServiceResponseCollection<ServiceResponse> internalLoadPropertiesForItems(
@@ -1160,8 +1143,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @param itemIds       the item ids
    * @param propertySet   the property set
    * @param errorHandling the error handling
-   * @return A ServiceResponseCollection providing results for each of the
-   * specified item Ids.
+   * @return A ServiceResponseCollection providing results for each of the specified item Ids.
    * @throws Exception the exception
    */
   private ServiceResponseCollection<GetItemResponse> internalBindToItems(
@@ -1178,8 +1160,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param itemIds     the item ids
    * @param propertySet the property set
-   * @return A ServiceResponseCollection providing results for each of the
-   * specified item Ids.
+   * @return A ServiceResponseCollection providing results for each of the specified item Ids.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<GetItemResponse> bindToItems(
@@ -1196,8 +1177,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param itemId      the item id
    * @param propertySet the property set
-   * @return A ServiceResponseCollection providing results for each of the
-   * specified item Ids.
+   * @return A ServiceResponseCollection providing results for each of the specified item Ids.
    * @throws Exception the exception
    */
   protected Item bindToItem(ItemId itemId, PropertySet propertySet)
@@ -1243,8 +1223,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @param sendCancellationsMode   the send cancellations mode
    * @param affectedTaskOccurrences the affected task occurrences
    * @param errorHandling           the error handling
-   * @return A ServiceResponseCollection providing deletion results for each
-   * of the specified item Ids.
+   * @return A ServiceResponseCollection providing deletion results for each of the specified item Ids.
    * @throws Exception the exception
    */
   private ServiceResponseCollection<ServiceResponse> internalDeleteItems(
@@ -1269,8 +1248,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @param deleteMode              the delete mode
    * @param sendCancellationsMode   the send cancellations mode
    * @param affectedTaskOccurrences the affected task occurrences
-   * @return A ServiceResponseCollection providing deletion results for each
-   * of the specified item Ids.
+   * @return A ServiceResponseCollection providing deletion results for each of the specified item Ids.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<ServiceResponse> deleteItems(
@@ -1396,7 +1374,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
 
     request.setParentItemId(parentItemId);
                 /*
-		 * if (null != attachments) { while (attachments.hasNext()) {
+                 * if (null != attachments) { while (attachments.hasNext()) {
 		 * request.getAttachments().add(attachments.next()); } }
 		 */
     request.getAttachments().addAll(
@@ -1426,13 +1404,11 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Finds contacts in the user's Contacts folder and the Global Address
-   * List (in that order) that have names that match the one passed as a
-   * parameter. Calling this method results in a call to EWS.
+   * Finds contacts in the user's Contacts folder and the Global Address List (in that order) that have names
+   * that match the one passed as a parameter. Calling this method results in a call to EWS.
    *
    * @param nameToResolve the name to resolve
-   * @return A collection of name resolutions whose names match the one passed
-   * as a parameter.
+   * @return A collection of name resolutions whose names match the one passed as a parameter.
    * @throws Exception the exception
    */
   public NameResolutionCollection resolveName(String nameToResolve)
@@ -1442,16 +1418,14 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Finds contacts in the user's Contacts folder and the Global Address
-   * List (in that order) that have names that match the one passed as a
-   * parameter. Calling this method results in a call to EWS.
+   * Finds contacts in the user's Contacts folder and the Global Address List (in that order) that have names
+   * that match the one passed as a parameter. Calling this method results in a call to EWS.
    *
    * @param nameToResolve        the name to resolve
    * @param parentFolderIds      the parent folder ids
    * @param searchScope          the search scope
    * @param returnContactDetails the return contact details
-   * @return A collection of name resolutions whose names match the one passed
-   * as a parameter.
+   * @return A collection of name resolutions whose names match the one passed as a parameter.
    * @throws Exception the exception
    */
   public NameResolutionCollection resolveName(String nameToResolve,
@@ -1464,19 +1438,16 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Finds contacts in the Global Address List and/or in specific contact
-   * folders that have names that match the one passed as a parameter. Calling
-   * this method results in a call to EWS.
+   * Finds contacts in the Global Address List and/or in specific contact folders that have names that match
+   * the one passed as a parameter. Calling this method results in a call to EWS.
    *
    * @param nameToResolve          The name to resolve.
-   * @param parentFolderIds        The Ids of the contact folders in which to look for matching
-   *                               contacts.
+   * @param parentFolderIds        The Ids of the contact folders in which to look for matching contacts.
    * @param searchScope            The scope of the search.
-   * @param returnContactDetails   Indicates whether full contact information should be returned
-   *                               for each of the found contacts.
+   * @param returnContactDetails   Indicates whether full contact information should be returned for each of
+   *                               the found contacts.
    * @param contactDataPropertySet The property set for the contact details
-   * @return A collection of name resolutions whose names match the one
-   * passed as a parameter.
+   * @return A collection of name resolutions whose names match the one passed as a parameter.
    * @throws Exception
    */
   public NameResolutionCollection resolveName(String nameToResolve,
@@ -1507,16 +1478,15 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Finds contacts in the Global Address List that have names that match the
-   * one passed as a parameter. Calling this method results in a call to EWS.
+   * Finds contacts in the Global Address List that have names that match the one passed as a parameter.
+   * Calling this method results in a call to EWS.
    *
    * @param nameToResolve          The name to resolve.
    * @param searchScope            The scope of the search.
-   * @param returnContactDetails   Indicates whether full contact information should be returned
-   *                               for each of the found contacts.
+   * @param returnContactDetails   Indicates whether full contact information should be returned for each of
+   *                               the found contacts.
    * @param contactDataPropertySet The property set for the contact details
-   * @return A collection of name resolutions whose names match the one
-   * passed as a parameter.
+   * @return A collection of name resolutions whose names match the one passed as a parameter.
    * @throws Exception
    */
   public NameResolutionCollection resolveName(String nameToResolve,
@@ -1528,15 +1498,13 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Finds contacts in the user's Contacts folder and the Global Address
-   * List (in that order) that have names that match the one passed as a
-   * parameter. Calling this method results in a call to EWS.
+   * Finds contacts in the user's Contacts folder and the Global Address List (in that order) that have names
+   * that match the one passed as a parameter. Calling this method results in a call to EWS.
    *
    * @param nameToResolve        the name to resolve
    * @param searchScope          the search scope
    * @param returnContactDetails the return contact details
-   * @return A collection of name resolutions whose names match the one passed
-   * as a parameter.
+   * @return A collection of name resolutions whose names match the one passed as a parameter.
    * @throws Exception the exception
    */
   public NameResolutionCollection resolveName(String nameToResolve,
@@ -1547,8 +1515,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Expands a group by retrieving a list of its members. Calling this
-   * method results in a call to EWS.
+   * Expands a group by retrieving a list of its members. Calling this method results in a call to EWS.
    *
    * @param emailAddress the email address
    * @return URL of the Exchange Web Services.
@@ -1563,8 +1530,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Expands a group by retrieving a list of its members. Calling this
-   * method results in a call to EWS.
+   * Expands a group by retrieving a list of its members. Calling this method results in a call to EWS.
    *
    * @param groupId the group id
    * @return An ExpandGroupResults containing the members of the group.
@@ -1578,8 +1544,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Expands a group by retrieving a list of its members. Calling this
-   * method results in a call to EWS.
+   * Expands a group by retrieving a list of its members. Calling this method results in a call to EWS.
    *
    * @param smtpAddress the smtp address
    * @return An ExpandGroupResults containing the members of the group.
@@ -1591,8 +1556,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Expands a group by retrieving a list of its members. Calling this
-   * method results in a call to EWS.
+   * Expands a group by retrieving a list of its members. Calling this method results in a call to EWS.
    *
    * @param address     the address
    * @param routingType the routing type
@@ -1626,14 +1590,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Subscribes to pull notifications. Calling this method results in a call
-   * to EWS.
+   * Subscribes to pull notifications. Calling this method results in a call to EWS.
    *
    * @param folderIds  The Ids of the folder to subscribe to
-   * @param timeout    The timeout, in minutes, after which the subscription expires.
-   *                   Timeout must be between 1 and 1440.
-   * @param watermark  An optional watermark representing a previously opened
-   *                   subscription.
+   * @param timeout    The timeout, in minutes, after which the subscription expires. Timeout must be between
+   *                   1 and 1440.
+   * @param watermark  An optional watermark representing a previously opened subscription.
    * @param eventTypes The event types to subscribe to.
    * @return A PullSubscription representing the new subscription.
    * @throws Exception
@@ -1649,16 +1611,15 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Begins an asynchronous request to subscribes to pull notifications.
-   * Calling this method results in a call to EWS.
+   * Begins an asynchronous request to subscribes to pull notifications. Calling this method results in a call
+   * to EWS.
    *
    * @param callback   The AsyncCallback delegate.
    * @param state      An object that contains state information for this request.
    * @param folderIds  The Ids of the folder to subscribe to.
-   * @param timeout    The timeout, in minutes, after which the subscription expires.
-   *                   Timeout must be between 1 and 1440.
-   * @param watermark  An optional watermark representing a previously opened
-   *                   subscription.
+   * @param timeout    The timeout, in minutes, after which the subscription expires. Timeout must be between
+   *                   1 and 1440.
+   * @param watermark  An optional watermark representing a previously opened subscription.
    * @param eventTypes The event types to subscribe to.
    * @return An IAsyncResult that references the asynchronous request.
    * @throws Exception
@@ -1674,8 +1635,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Subscribes to pull notifications on all folders in the authenticated
-   * user's mailbox. Calling this method results in a call to EWS.
+   * Subscribes to pull notifications on all folders in the authenticated user's mailbox. Calling this method
+   * results in a call to EWS.
    *
    * @param timeout    the timeout
    * @param watermark  the watermark
@@ -1695,16 +1656,14 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Begins an asynchronous request to subscribe to pull notifications on all
-   * folders in the authenticated user's mailbox. Calling this method results
-   * in a call to EWS.
+   * Begins an asynchronous request to subscribe to pull notifications on all folders in the authenticated
+   * user's mailbox. Calling this method results in a call to EWS.
    *
    * @param callback   The AsyncCallback delegate.
    * @param state      An object that contains state information for this request.
-   * @param timeout    The timeout, in minutes, after which the subscription expires.
-   *                   Timeout must be between 1 and 1440.
-   * @param watermark  An optional watermark representing a previously opened
-   *                   subscription.
+   * @param timeout    The timeout, in minutes, after which the subscription expires. Timeout must be between
+   *                   1 and 1440.
+   * @param watermark  An optional watermark representing a previously opened subscription.
    * @param eventTypes The event types to subscribe to.
    * @return An IAsyncResult that references the asynchronous request.
    * @throws Exception
@@ -1720,8 +1679,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Ends an asynchronous request to subscribe to pull notifications in the
-   * authenticated user's mailbox.
+   * Ends an asynchronous request to subscribe to pull notifications in the authenticated user's mailbox.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
    * @return A PullSubscription representing the new subscription.
@@ -1737,17 +1695,14 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Builds a request to subscribe to pull notifications in the
-   * authenticated user's mailbox.
+   * Builds a request to subscribe to pull notifications in the authenticated user's mailbox.
    *
    * @param folderIds  The Ids of the folder to subscribe to.
-   * @param timeout    The timeout, in minutes, after which the subscription expires.
-   *                   Timeout must be between 1 and 1440
-   * @param watermark  An optional watermark representing a previously opened
-   *                   subscription
+   * @param timeout    The timeout, in minutes, after which the subscription expires. Timeout must be between
+   *                   1 and 1440
+   * @param watermark  An optional watermark representing a previously opened subscription
    * @param eventTypes The event types to subscribe to
-   * @return A request to subscribe to pull notifications in the authenticated
-   * user's mailbox
+   * @return A request to subscribe to pull notifications in the authenticated user's mailbox
    * @throws Exception the exception
    */
   private SubscribeToPullNotificationsRequest buildSubscribeToPullNotificationsRequest(
@@ -1779,8 +1734,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Unsubscribes from a pull subscription. Calling this method results in a
-   * call to EWS.
+   * Unsubscribes from a pull subscription. Calling this method results in a call to EWS.
    *
    * @param subscriptionId the subscription id
    * @throws Exception the exception
@@ -1791,8 +1745,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Begins an asynchronous request to unsubscribe from a subscription.
-   * Calling this method results in a call to EWS.
+   * Begins an asynchronous request to unsubscribe from a subscription. Calling this method results in a call
+   * to EWS.
    *
    * @param callback       The AsyncCallback delegate.
    * @param state          An object that contains state information for this request.
@@ -1837,13 +1791,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Retrieves the latests events associated with a pull subscription.
-   * Calling this method results in a call to EWS.
+   * Retrieves the latests events associated with a pull subscription. Calling this method results in a call
+   * to EWS.
    *
    * @param subscriptionId the subscription id
    * @param waterMark      the water mark
-   * @return A GetEventsResults containing a list of events associated with
-   * the subscription.
+   * @return A GetEventsResults containing a list of events associated with the subscription.
    * @throws Exception the exception
    */
   protected GetEventsResults getEvents(String subscriptionId, String waterMark)
@@ -1854,14 +1807,13 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Begins an asynchronous request to retrieve the latest events associated
-   * with a pull subscription. Calling this method results in a call to EWS.
+   * Begins an asynchronous request to retrieve the latest events associated with a pull subscription. Calling
+   * this method results in a call to EWS.
    *
    * @param callback       The AsyncCallback delegate.
    * @param state          An object that contains state information for this request.
    * @param subscriptionId The id of the pull subscription for which to get the events
-   * @param watermark      The watermark representing the point in time where to start
-   *                       receiving events
+   * @param watermark      The watermark representing the point in time where to start receiving events
    * @return An IAsynResult that references the asynchronous request
    * @throws Exception
    */
@@ -1872,12 +1824,10 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Ends an asynchronous request to retrieve the latest events associated
-   * with a pull subscription.
+   * Ends an asynchronous request to retrieve the latest events associated with a pull subscription.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
-   * @return A GetEventsResults containing a list of events associated with
-   * the subscription.
+   * @return A GetEventsResults containing a list of events associated with the subscription.
    * @throws Exception
    */
   protected GetEventsResults endGetEvents(IAsyncResult asyncResult) throws Exception {
@@ -1887,14 +1837,11 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Builds a request to retrieve the letest events associated with a pull
-   * subscription
+   * Builds a request to retrieve the letest events associated with a pull subscription
    *
    * @param subscriptionId The Id of the pull subscription for which to get the events
-   * @param watermark      The watermark representing the point in time where to start
-   *                       receiving events
-   * @return An request to retrieve the latest events associated with a pull
-   * subscription
+   * @param watermark      The watermark representing the point in time where to start receiving events
+   * @return An request to retrieve the latest events associated with a pull subscription
    * @throws Exception
    */
   private GetEventsRequest buildGetEventsRequest(String subscriptionId,
@@ -1911,8 +1858,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Subscribes to push notifications. Calling this method results in a call
-   * to EWS.
+   * Subscribes to push notifications. Calling this method results in a call to EWS.
    *
    * @param folderIds  the folder ids
    * @param url        the url
@@ -1933,18 +1879,16 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Begins an asynchronous request to subscribe to push notifications.
-   * Calling this method results in a call to EWS.
+   * Begins an asynchronous request to subscribe to push notifications. Calling this method results in a call
+   * to EWS.
    *
    * @param callback   The asynccallback delegate
    * @param state      An object that contains state information for this request
    * @param folderIds  The ids of the folder to subscribe
    * @param url        the url of web service endpoint the exchange server should
-   * @param frequency  the frequency,in minutes at which the exchange server should
-   *                   contact the web Service endpoint. Frequency must be between 1
-   *                   and 1440.
-   * @param watermark  An optional watermark representing a previously opened
-   *                   subscription
+   * @param frequency  the frequency,in minutes at which the exchange server should contact the web Service
+   *                   endpoint. Frequency must be between 1 and 1440.
+   * @param watermark  An optional watermark representing a previously opened subscription
    * @param eventTypes The event types to subscribe to.
    * @return An IAsyncResult that references the asynchronous request.
    * @throws Exception
@@ -1960,8 +1904,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Subscribes to push notifications on all folders in the authenticated
-   * user's mailbox. Calling this method results in a call to EWS.
+   * Subscribes to push notifications on all folders in the authenticated user's mailbox. Calling this method
+   * results in a call to EWS.
    *
    * @param url        the url
    * @param frequency  the frequency
@@ -1982,18 +1926,15 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Begins an asynchronous request to subscribe to push notifications on all
-   * folders in the authenticated user's mailbox. Calling this method results
-   * in a call to EWS.
+   * Begins an asynchronous request to subscribe to push notifications on all folders in the authenticated
+   * user's mailbox. Calling this method results in a call to EWS.
    *
    * @param callback   The asynccallback delegate
    * @param state      An object that contains state inforamtion for this request
    * @param url        the url
-   * @param frequency  the frequency,in minutes at which the exchange server should
-   *                   contact the web Service endpoint. Frequency must be between 1
-   *                   and 1440.
-   * @param watermark  An optional watermark representing a previously opened
-   *                   subscription
+   * @param frequency  the frequency,in minutes at which the exchange server should contact the web Service
+   *                   endpoint. Frequency must be between 1 and 1440.
+   * @param watermark  An optional watermark representing a previously opened subscription
    * @param eventTypes The event types to subscribe to.
    * @return An IAsyncResult that references the asynchronous request.
    * @throws Exception
@@ -2010,8 +1951,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
 
 
   /**
-   * Ends an asynchronous request to subscribe to push notifications in the
-   * authenticated user's mailbox.
+   * Ends an asynchronous request to subscribe to push notifications in the authenticated user's mailbox.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
    * @return A PushSubscription representing the new subscription
@@ -2027,16 +1967,14 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Builds an request to request to subscribe to push notifications in the
-   * authenticated user's mailbox.
+   * Builds an request to request to subscribe to push notifications in the authenticated user's mailbox.
    *
    * @param folderIds  the folder ids
    * @param url        the url
    * @param frequency  the frequency
    * @param watermark  the watermark
    * @param eventTypes the event types
-   * @return A request to request to subscribe to push notifications in the
-   * authenticated user's mailbox.
+   * @return A request to request to subscribe to push notifications in the authenticated user's mailbox.
    * @throws Exception the exception
    */
   private SubscribeToPushNotificationsRequest buildSubscribeToPushNotificationsRequest(
@@ -2069,8 +2007,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Subscribes to streaming notifications. Calling this method results in a
-   * call to EWS.
+   * Subscribes to streaming notifications. Calling this method results in a call to EWS.
    *
    * @param folderIds  The Ids of the folder to subscribe to.
    * @param eventTypes The event types to subscribe to.
@@ -2091,8 +2028,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Subscribes to streaming notifications on all folders in the authenticated
-   * user's mailbox. Calling this method results in a call to EWS.
+   * Subscribes to streaming notifications on all folders in the authenticated user's mailbox. Calling this
+   * method results in a call to EWS.
    *
    * @param eventTypes The event types to subscribe to.
    * @return A StreamingSubscription representing the new subscription.
@@ -2109,7 +2046,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
 	/*
-	 * Subscribes to streaming notifications. Calling this method results in a
+         * Subscribes to streaming notifications. Calling this method results in a
 	 * call to EWS.
 	 * 
 	 * @param folderIds
@@ -2132,8 +2069,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
 	}*/
 
   /**
-   * Begins an asynchronous request to subscribe to streaming notifications.
-   * Calling this method results in a call to EWS.
+   * Begins an asynchronous request to subscribe to streaming notifications. Calling this method results in a
+   * call to EWS.
    *
    * @param callback   The AsyncCallback delegate
    * @param state      An object that contains state information for this request.
@@ -2165,8 +2102,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @throws Exception
    * @throws Exception
    **/
-	/*public StreamingSubscription SubscribeToStreamingNotificationsOnAllFolders(
-			EventType... eventTypes) throws Exception, Exception {
+        /*public StreamingSubscription SubscribeToStreamingNotificationsOnAllFolders(
+                        EventType... eventTypes) throws Exception, Exception {
 		EwsUtilities.validateMethodVersion(this,
 				ExchangeVersion.Exchange2010_SP1,
 				"SubscribeToStreamingNotificationsOnAllFolders");
@@ -2176,9 +2113,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
 	}*/
 
   /**
-   * Begins an asynchronous request to subscribe to streaming notifications on
-   * all folders in the authenticated user's mailbox. Calling this method
-   * results in a call to EWS.
+   * Begins an asynchronous request to subscribe to streaming notifications on all folders in the
+   * authenticated user's mailbox. Calling this method results in a call to EWS.
    *
    * @param callback The AsyncCallback delegate
    * @param state    An object that contains state information for this request.
@@ -2196,8 +2132,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Ends an asynchronous request to subscribe to push notifications in the
-   * authenticated user's mailbox.
+   * Ends an asynchronous request to subscribe to push notifications in the authenticated user's mailbox.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
    * @return A streamingSubscription representing the new subscription
@@ -2218,13 +2153,11 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Builds request to subscribe to streaming notifications in the
-   * authenticated user's mailbox.
+   * Builds request to subscribe to streaming notifications in the authenticated user's mailbox.
    *
    * @param folderIds  The Ids of the folder to subscribe to.
    * @param eventTypes The event types to subscribe to.
-   * @return A request to subscribe to streaming notifications in the
-   * authenticated user's mailbox
+   * @return A request to subscribe to streaming notifications in the authenticated user's mailbox
    * @throws Exception
    */
   private SubscribeToStreamingNotificationsRequest buildSubscribeToStreamingNotificationsRequest(
@@ -2248,19 +2181,16 @@ public final class ExchangeService extends ExchangeServiceBase implements
 
 
   /**
-   * Synchronizes the items of a specific folder. Calling this method
-   * results in a call to EWS.
+   * Synchronizes the items of a specific folder. Calling this method results in a call to EWS.
    *
    * @param syncFolderId       The Id of the folder containing the items to synchronize with.
    * @param propertySet        The set of properties to retrieve for synchronized items.
    * @param ignoredItemIds     The optional list of item Ids that should be ignored.
    * @param maxChangesReturned The maximum number of changes that should be returned.
-   * @param syncScope          The sync scope identifying items to include in the
-   *                           ChangeCollection.
-   * @param syncState          The optional sync state representing the point in time when to
-   *                           start the synchronization.
-   * @return A ChangeCollection containing a list of changes that occurred in
-   * the specified folder.
+   * @param syncScope          The sync scope identifying items to include in the ChangeCollection.
+   * @param syncState          The optional sync state representing the point in time when to start the
+   *                           synchronization.
+   * @return A ChangeCollection containing a list of changes that occurred in the specified folder.
    * @throws Exception the exception
    */
   public ChangeCollection<ItemChange> syncFolderItems(FolderId syncFolderId,
@@ -2273,8 +2203,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Begins an asynchronous request to synchronize the items of a specific
-   * folder. Calling this method results in a call to EWS.
+   * Begins an asynchronous request to synchronize the items of a specific folder. Calling this method results
+   * in a call to EWS.
    *
    * @param callback           The AsyncCallback delegate
    * @param state              An object that contains state information for this request
@@ -2282,10 +2212,9 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @param propertySet        The set of properties to retrieve for synchronized items.
    * @param ignoredItemIds     The optional list of item Ids that should be ignored.
    * @param maxChangesReturned The maximum number of changes that should be returned.
-   * @param syncScope          The sync scope identifying items to include in the
-   *                           ChangeCollection
-   * @param syncState          The optional sync state representing the point in time when to
-   *                           start the synchronization
+   * @param syncScope          The sync scope identifying items to include in the ChangeCollection
+   * @param syncState          The optional sync state representing the point in time when to start the
+   *                           synchronization
    * @return An IAsyncResult that references the asynchronous request.
    * @throws Exception
    */
@@ -2299,12 +2228,10 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Ends an asynchronous request to synchronize the items of a specific
-   * folder.
+   * Ends an asynchronous request to synchronize the items of a specific folder.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
-   * @return A ChangeCollection containing a list of changes that occurred in
-   * the specified folder.
+   * @return A ChangeCollection containing a list of changes that occurred in the specified folder.
    * @throws Exception
    */
   public ChangeCollection<ItemChange> endSyncFolderItems(IAsyncResult asyncResult) throws Exception {
@@ -2320,10 +2247,9 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @param propertySet        The set of properties to retrieve for synchronized items.
    * @param ignoredItemIds     The optional list of item Ids that should be ignored
    * @param maxChangesReturned The maximum number of changes that should be returned.
-   * @param syncScope          The sync scope identifying items to include in the
-   *                           ChangeCollection.
-   * @param syncState          The optional sync state representing the point in time when to
-   *                           start the synchronization.
+   * @param syncScope          The sync scope identifying items to include in the ChangeCollection.
+   * @param syncState          The optional sync state representing the point in time when to start the
+   *                           synchronization.
    * @return A request to synchronize the items of a specific folder.
    * @throws Exception
    */
@@ -2349,14 +2275,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Synchronizes the sub-folders of a specific folder. Calling this method
-   * results in a call to EWS.
+   * Synchronizes the sub-folders of a specific folder. Calling this method results in a call to EWS.
    *
    * @param syncFolderId the sync folder id
    * @param propertySet  the property set
    * @param syncState    the sync state
-   * @return A ChangeCollection containing a list of changes that occurred in
-   * the specified folder.
+   * @return A ChangeCollection containing a list of changes that occurred in the specified folder.
    * @throws Exception the exception
    */
   public ChangeCollection<FolderChange> syncFolderHierarchy(
@@ -2367,16 +2291,16 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Begins an asynchronous request to synchronize the sub-folders of a
-   * specific folder. Calling this method results in a call to EWS.
+   * Begins an asynchronous request to synchronize the sub-folders of a specific folder. Calling this method
+   * results in a call to EWS.
    *
    * @param callback     The AsyncCallback delegate
    * @param state        An object that contains state information for this request.
-   * @param syncFolderId The Id of the folder containing the items to synchronize with.
-   *                     A null value indicates the root folder of the mailbox.
+   * @param syncFolderId The Id of the folder containing the items to synchronize with. A null value indicates
+   *                     the root folder of the mailbox.
    * @param propertySet  The set of properties to retrieve for synchronized items.
-   * @param syncState    The optional sync state representing the point in time when to
-   *                     start the synchronization.
+   * @param syncState    The optional sync state representing the point in time when to start the
+   *                     synchronization.
    * @return An IAsyncResult that references the asynchronous request
    * @throws Exception
    */
@@ -2388,14 +2312,13 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Synchronizes the entire folder hierarchy of the mailbox this Service is
-   * connected to. Calling this method results in a call to EWS.
+   * Synchronizes the entire folder hierarchy of the mailbox this Service is connected to. Calling this method
+   * results in a call to EWS.
    *
    * @param propertySet The set of properties to retrieve for synchronized items.
-   * @param syncState   The optional sync state representing the point in time when to
-   *                    start the synchronization.
-   * @return A ChangeCollection containing a list of changes that occurred in
-   * the specified folder.
+   * @param syncState   The optional sync state representing the point in time when to start the
+   *                    synchronization.
+   * @return A ChangeCollection containing a list of changes that occurred in the specified folder.
    * @throws Exception
    */
   public ChangeCollection<FolderChange> syncFolderHierarchy(
@@ -2426,12 +2349,11 @@ public final class ExchangeService extends ExchangeServiceBase implements
 	}*/
 
   /**
-   * Ends an asynchronous request to synchronize the specified folder
-   * hierarchy of the mailbox this Service is connected to.
+   * Ends an asynchronous request to synchronize the specified folder hierarchy of the mailbox this Service is
+   * connected to.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
-   * @return A ChangeCollection containing a list of changes that occurred in
-   * the specified folder.
+   * @return A ChangeCollection containing a list of changes that occurred in the specified folder.
    * @throws Exception
    */
   public ChangeCollection<FolderChange> endSyncFolderHierarchy(IAsyncResult asyncResult) throws Exception {
@@ -2441,16 +2363,16 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Builds a request to synchronize the specified folder hierarchy of the
-   * mailbox this Service is connected to.
+   * Builds a request to synchronize the specified folder hierarchy of the mailbox this Service is connected
+   * to.
    *
-   * @param syncFolderId The Id of the folder containing the items to synchronize with.
-   *                     A null value indicates the root folder of the mailbox.
+   * @param syncFolderId The Id of the folder containing the items to synchronize with. A null value indicates
+   *                     the root folder of the mailbox.
    * @param propertySet  The set of properties to retrieve for synchronized items.
-   * @param syncState    The optional sync state representing the point in time when to
-   *                     start the synchronization.
-   * @return A request to synchronize the specified folder hierarchy of the
-   * mailbox this Service is connected to
+   * @param syncState    The optional sync state representing the point in time when to start the
+   *                     synchronization.
+   * @return A request to synchronize the specified folder hierarchy of the mailbox this Service is connected
+   * to
    * @throws Exception
    */
   private SyncFolderHierarchyRequest buildSyncFolderHierarchyRequest(
@@ -2475,12 +2397,10 @@ public final class ExchangeService extends ExchangeServiceBase implements
   // Availability operations
 
   /**
-   * Gets Out of Office (OOF) settings for a specific user. Calling this
-   * method results in a call to EWS.
+   * Gets Out of Office (OOF) settings for a specific user. Calling this method results in a call to EWS.
    *
    * @param smtpAddress the smtp address
-   * @return An OofSettings instance containing OOF information for the
-   * specified user.
+   * @return An OofSettings instance containing OOF information for the specified user.
    * @throws Exception the exception
    */
   public OofSettings getUserOofSettings(String smtpAddress) throws Exception {
@@ -2492,8 +2412,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Sets Out of Office (OOF) settings for a specific user. Calling this
-   * method results in a call to EWS.
+   * Sets Out of Office (OOF) settings for a specific user. Calling this method results in a call to EWS.
    *
    * @param smtpAddress the smtp address
    * @param oofSettings the oof settings
@@ -2513,17 +2432,15 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Gets detailed information about the availability of a set of users,
-   * rooms, and resources within a specified time window.
+   * Gets detailed information about the availability of a set of users, rooms, and resources within a
+   * specified time window.
    *
    * @param attendees     the attendees
    * @param timeWindow    the time window
    * @param requestedData the requested data
    * @param options       the options
-   * @return The availability information for each user appears in a unique
-   * FreeBusyResponse object. The order of users in the request
-   * determines the order of availability data for each user in the
-   * response.
+   * @return The availability information for each user appears in a unique FreeBusyResponse object. The order
+   * of users in the request determines the order of availability data for each user in the response.
    * @throws Exception the exception
    */
   public GetUserAvailabilityResults getUserAvailability(
@@ -2546,16 +2463,14 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Gets detailed information about the availability of a set of users,
-   * rooms, and resources within a specified time window.
+   * Gets detailed information about the availability of a set of users, rooms, and resources within a
+   * specified time window.
    *
    * @param attendees     the attendees
    * @param timeWindow    the time window
    * @param requestedData the requested data
-   * @return The availability information for each user appears in a unique
-   * FreeBusyResponse object. The order of users in the request
-   * determines the order of availability data for each user in the
-   * response.
+   * @return The availability information for each user appears in a unique FreeBusyResponse object. The order
+   * of users in the request determines the order of availability data for each user in the response.
    * @throws Exception the exception
    */
   public GetUserAvailabilityResults getUserAvailability(
@@ -2568,8 +2483,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   /**
    * Retrieves a collection of all room lists in the organization.
    *
-   * @return An EmailAddressCollection containing all the room lists in the
-   * organization
+   * @return An EmailAddressCollection containing all the room lists in the organization
    * @throws Exception the exception
    */
   public EmailAddressCollection getRoomLists() throws Exception {
@@ -2578,12 +2492,10 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Retrieves a collection of all room lists in the specified room list in
-   * the organization.
+   * Retrieves a collection of all room lists in the specified room list in the organization.
    *
    * @param emailAddress the email address
-   * @return A collection of EmailAddress objects representing all the rooms
-   * within the specifed room list.
+   * @return A collection of EmailAddress objects representing all the rooms within the specifed room list.
    * @throws Exception the exception
    */
   public Collection<EmailAddress> getRooms(EmailAddress emailAddress)
@@ -2601,8 +2513,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * Retrieves a collection of all Conversations in the specified Folder.
    *
    * @param view     The view controlling the number of conversations returned.
-   * @param filter   The search filter. Only search filter class supported
-   *                 SearchFilter.IsEqualTo
+   * @param filter   The search filter. Only search filter class supported SearchFilter.IsEqualTo
    * @param folderId The Id of the folder in which to search for conversations.
    * @throws Exception
    */
@@ -2641,17 +2552,15 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param actionType          ConversationAction
    * @param conversationIds     The conversation ids.
-   * @param processRightAway    True to process at once . This is blocking and false to let
-   *                            the Assitant process it in the back ground
+   * @param processRightAway    True to process at once . This is blocking and false to let the Assitant
+   *                            process it in the back ground
    * @param categories          Catgories that need to be stamped can be null or empty
-   * @param enableAlwaysDelete  True moves every current and future messages in the
-   *                            conversation to deleted items folder. False stops the alwasy
-   *                            delete action. This is applicable only if the action is
-   *                            AlwaysDelete
-   * @param destinationFolderId Applicable if the action is AlwaysMove. This moves every
-   *                            current message and future message in the conversation to the
-   *                            specified folder. Can be null if tis is then it stops the
-   *                            always move action
+   * @param enableAlwaysDelete  True moves every current and future messages in the conversation to deleted
+   *                            items folder. False stops the alwasy delete action. This is applicable only if
+   *                            the action is AlwaysDelete
+   * @param destinationFolderId Applicable if the action is AlwaysMove. This moves every current message and
+   *                            future message in the conversation to the specified folder. Can be null if tis
+   *                            is then it stops the always move action
    * @param errorHandlingMode   The error handling mode.
    * @throws Exception
    */
@@ -2692,8 +2601,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Applies one time conversation action on items in specified folder inside
-   * the conversation.
+   * Applies one time conversation action on items in specified folder inside the conversation.
    *
    * @param actionType          The action
    * @param idTimePairs         The id time pairs.
@@ -2749,16 +2657,14 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Sets up a conversation so that any item received within that conversation
-   * is always categorized. Calling this method results in a call to EWS.
+   * Sets up a conversation so that any item received within that conversation is always categorized. Calling
+   * this method results in a call to EWS.
    *
    * @param conversationId       The id of the conversation.
-   * @param categories           The categories that should be stamped on items in the
-   *                             conversation.
-   * @param processSynchronously Indicates whether the method should return only once enabling
-   *                             this rule and stamping existing items in the conversation is
-   *                             completely done. If processSynchronously is false, the method
-   *                             returns immediately.
+   * @param categories           The categories that should be stamped on items in the conversation.
+   * @param processSynchronously Indicates whether the method should return only once enabling this rule and
+   *                             stamping existing items in the conversation is completely done. If
+   *                             processSynchronously is false, the method returns immediately.
    * @throws Exception
    */
   public ServiceResponseCollection<ServiceResponse> enableAlwaysCategorizeItemsInConversations(
@@ -2774,14 +2680,13 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Sets up a conversation so that any item received within that conversation
-   * is no longer categorized. Calling this method results in a call to EWS.
+   * Sets up a conversation so that any item received within that conversation is no longer categorized.
+   * Calling this method results in a call to EWS.
    *
    * @param conversationId       The id of the conversation.
-   * @param processSynchronously Indicates whether the method should return only once enabling
-   *                             this rule and stamping existing items in the conversation is
-   *                             completely done. If processSynchronously is false, the method
-   *                             returns immediately.
+   * @param processSynchronously Indicates whether the method should return only once enabling this rule and
+   *                             stamping existing items in the conversation is completely done. If
+   *                             processSynchronously is false, the method returns immediately.
    * @throws Exception
    */
   public ServiceResponseCollection<ServiceResponse> disableAlwaysCategorizeItemsInConversations(
@@ -2794,15 +2699,13 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Sets up a conversation so that any item received within that conversation
-   * is always moved to Deleted Items folder. Calling this method results in a
-   * call to EWS.
+   * Sets up a conversation so that any item received within that conversation is always moved to Deleted
+   * Items folder. Calling this method results in a call to EWS.
    *
    * @param conversationId       The id of the conversation.
-   * @param processSynchronously Indicates whether the method should return only once enabling
-   *                             this rule and stamping existing items in the conversation is
-   *                             completely done. If processSynchronously is false, the method
-   *                             returns immediately.
+   * @param processSynchronously Indicates whether the method should return only once enabling this rule and
+   *                             stamping existing items in the conversation is completely done. If
+   *                             processSynchronously is false, the method returns immediately.
    * @throws Exception
    */
   public ServiceResponseCollection<ServiceResponse> enableAlwaysDeleteItemsInConversations(
@@ -2815,15 +2718,13 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Sets up a conversation so that any item received within that conversation
-   * is no longer moved to Deleted Items folder. Calling this method results
-   * in a call to EWS.
+   * Sets up a conversation so that any item received within that conversation is no longer moved to Deleted
+   * Items folder. Calling this method results in a call to EWS.
    *
    * @param conversationId       The id of the conversation.
-   * @param processSynchronously Indicates whether the method should return only once enabling
-   *                             this rule and stamping existing items in the conversation is
-   *                             completely done. If processSynchronously is false, the method
-   *                             returns immediately.
+   * @param processSynchronously Indicates whether the method should return only once enabling this rule and
+   *                             stamping existing items in the conversation is completely done. If
+   *                             processSynchronously is false, the method returns immediately.
    * @throws Exception
    */
   public ServiceResponseCollection<ServiceResponse> disableAlwaysDeleteItemsInConversations(
@@ -2836,17 +2737,14 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Sets up a conversation so that any item received within that conversation
-   * is always moved to a specific folder. Calling this method results in a
-   * call to EWS.
+   * Sets up a conversation so that any item received within that conversation is always moved to a specific
+   * folder. Calling this method results in a call to EWS.
    *
-   * @param conversationId       The Id of the folder to which conversation items should be
-   *                             moved.
+   * @param conversationId       The Id of the folder to which conversation items should be moved.
    * @param destinationFolderId  The Id of the destination folder.
-   * @param processSynchronously Indicates whether the method should return only once enabling
-   *                             this rule and stamping existing items in the conversation is
-   *                             completely done. If processSynchronously is false, the method
-   *                             returns immediately.
+   * @param processSynchronously Indicates whether the method should return only once enabling this rule and
+   *                             stamping existing items in the conversation is completely done. If
+   *                             processSynchronously is false, the method returns immediately.
    * @throws Exception
    */
   public ServiceResponseCollection<ServiceResponse> enableAlwaysMoveItemsInConversations(
@@ -2860,14 +2758,13 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Sets up a conversation so that any item received within that conversation
-   * is no longer moved to a specific folder. Calling this method results in a
-   * call to EWS.
+   * Sets up a conversation so that any item received within that conversation is no longer moved to a
+   * specific folder. Calling this method results in a call to EWS.
    *
    * @param conversationIds      The conversation ids.
-   * @param processSynchronously Indicates whether the method should return only once disabling
-   *                             this rule is completely done. If processSynchronously is
-   *                             false, the method returns immediately.
+   * @param processSynchronously Indicates whether the method should return only once disabling this rule is
+   *                             completely done. If processSynchronously is false, the method returns
+   *                             immediately.
    * @throws Exception
    */
   public ServiceResponseCollection<ServiceResponse> disableAlwaysMoveItemsInConversations(
@@ -2879,12 +2776,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Moves the items in the specified conversation to the specified
-   * destination folder. Calling this method results in a call to EWS.
+   * Moves the items in the specified conversation to the specified destination folder. Calling this method
+   * results in a call to EWS.
    *
-   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should be moved
-   *                            and the dateTime conversation was last synced (Items received
-   *                            after that dateTime will not be moved).
+   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should be moved and the dateTime
+   *                            conversation was last synced (Items received after that dateTime will not be
+   *                            moved).
    * @param contextFolderId     The Id of the folder that contains the conversation.
    * @param destinationFolderId The Id of the destination folder.
    * @throws Exception
@@ -2900,12 +2797,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Copies the items in the specified conversation to the specified
-   * destination folder. Calling this method results in a call to EWS.
+   * Copies the items in the specified conversation to the specified destination folder. Calling this method
+   * results in a call to EWS.
    *
-   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should be copied
-   *                            and the dateTime conversation was last synced (Items received
-   *                            after that dateTime will not be copied).
+   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should be copied and the dateTime
+   *                            conversation was last synced (Items received after that dateTime will not be
+   *                            copied).
    * @param contextFolderId     The context folder id.
    * @param destinationFolderId The destination folder id.
    * @throws Exception
@@ -2921,14 +2818,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Deletes the items in the specified conversation. Calling this method
-   * results in a call to EWS.
+   * Deletes the items in the specified conversation. Calling this method results in a call to EWS.
    *
-   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should be deleted
-   *                            and the date and time conversation was last synced (Items
-   *                            received after that date will not be deleted). conversation
-   *                            was last synced (Items received after that dateTime will not
-   *                            be copied).
+   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should be deleted and the date and
+   *                            time conversation was last synced (Items received after that date will not be
+   *                            deleted). conversation was last synced (Items received after that dateTime
+   *                            will not be copied).
    * @param contextFolderId     The Id of the folder that contains the conversation.
    * @param deleteMode          The deletion mode
    * @throws Exception
@@ -2943,18 +2838,16 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Sets the read state for items in conversation. Calling this mehtod would
-   * result in call to EWS.
+   * Sets the read state for items in conversation. Calling this mehtod would result in call to EWS.
    *
-   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should read state
-   *                            set and the date and time conversation was last synced (Items
-   *                            received after that date will not have their read state set).
-   *                            was last synced (Items received after that date will not be
-   *                            deleted). conversation was last synced (Items received after
-   *                            that dateTime will not be copied).
+   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should read state set and the date
+   *                            and time conversation was last synced (Items received after that date will not
+   *                            have their read state set). was last synced (Items received after that date
+   *                            will not be deleted). conversation was last synced (Items received after that
+   *                            dateTime will not be copied).
    * @param contextFolderId     The Id of the folder that contains the conversation.
-   * @param isRead              if set to <c>true</c>, conversation items are marked as read;
-   *                            otherwise they are marked as unread.
+   * @param isRead              if set to <c>true</c>, conversation items are marked as read; otherwise they
+   *                            are marked as unread.
    * @throws Exception
    */
   public ServiceResponseCollection<ServiceResponse> setReadStateForItemsInConversations(
@@ -2969,14 +2862,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   // Id conversion operations
 
   /**
-   * Converts multiple Ids from one format to another in a single call to
-   * EWS.
+   * Converts multiple Ids from one format to another in a single call to EWS.
    *
    * @param ids               the ids
    * @param destinationFormat the destination format
    * @param errorHandling     the error handling
-   * @return A ServiceResponseCollection providing conversion results for each
-   * specified Ids.
+   * @return A ServiceResponseCollection providing conversion results for each specified Ids.
    * @throws Exception the exception
    */
   private ServiceResponseCollection<ConvertIdResponse> internalConvertIds(
@@ -2993,13 +2884,11 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Converts multiple Ids from one format to another in a single call to
-   * EWS.
+   * Converts multiple Ids from one format to another in a single call to EWS.
    *
    * @param ids               the ids
    * @param destinationFormat the destination format
-   * @return A ServiceResponseCollection providing conversion results for each
-   * specified Ids.
+   * @return A ServiceResponseCollection providing conversion results for each specified Ids.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<ConvertIdResponse> convertIds(
@@ -3034,14 +2923,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Adds delegates to a specific mailbox. Calling this method results in a
-   * call to EWS.
+   * Adds delegates to a specific mailbox. Calling this method results in a call to EWS.
    *
    * @param mailbox                      the mailbox
    * @param meetingRequestsDeliveryScope the meeting requests delivery scope
    * @param delegateUsers                the delegate users
-   * @return A collection of DelegateUserResponse objects providing the
-   * results of the operation.
+   * @return A collection of DelegateUserResponse objects providing the results of the operation.
    * @throws Exception the exception
    */
   public Collection<DelegateUserResponse> addDelegates(Mailbox mailbox,
@@ -3057,14 +2944,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Adds delegates to a specific mailbox. Calling this method results in a
-   * call to EWS.
+   * Adds delegates to a specific mailbox. Calling this method results in a call to EWS.
    *
    * @param mailbox                      the mailbox
    * @param meetingRequestsDeliveryScope the meeting requests delivery scope
    * @param delegateUsers                the delegate users
-   * @return A collection of DelegateUserResponse objects providing the
-   * results of the operation.
+   * @return A collection of DelegateUserResponse objects providing the results of the operation.
    * @throws Exception the exception
    */
   public Collection<DelegateUserResponse> addDelegates(Mailbox mailbox,
@@ -3088,14 +2973,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Updates delegates on a specific mailbox. Calling this method results in
-   * a call to EWS.
+   * Updates delegates on a specific mailbox. Calling this method results in a call to EWS.
    *
    * @param mailbox                      the mailbox
    * @param meetingRequestsDeliveryScope the meeting requests delivery scope
    * @param delegateUsers                the delegate users
-   * @return A collection of DelegateUserResponse objects providing the
-   * results of the operation.
+   * @return A collection of DelegateUserResponse objects providing the results of the operation.
    * @throws Exception the exception
    */
   public Collection<DelegateUserResponse> updateDelegates(Mailbox mailbox,
@@ -3111,14 +2994,12 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Updates delegates on a specific mailbox. Calling this method results in
-   * a call to EWS.
+   * Updates delegates on a specific mailbox. Calling this method results in a call to EWS.
    *
    * @param mailbox                      the mailbox
    * @param meetingRequestsDeliveryScope the meeting requests delivery scope
    * @param delegateUsers                the delegate users
-   * @return A collection of DelegateUserResponse objects providing the
-   * results of the operation.
+   * @return A collection of DelegateUserResponse objects providing the results of the operation.
    * @throws Exception the exception
    */
   public Collection<DelegateUserResponse> updateDelegates(Mailbox mailbox,
@@ -3144,13 +3025,11 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Removes delegates on a specific mailbox. Calling this method results in
-   * a call to EWS.
+   * Removes delegates on a specific mailbox. Calling this method results in a call to EWS.
    *
    * @param mailbox the mailbox
    * @param userIds the user ids
-   * @return A collection of DelegateUserResponse objects providing the
-   * results of the operation.
+   * @return A collection of DelegateUserResponse objects providing the results of the operation.
    * @throws Exception the exception
    */
   public Collection<DelegateUserResponse> removeDelegates(Mailbox mailbox,
@@ -3163,13 +3042,11 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Removes delegates on a specific mailbox. Calling this method results in
-   * a call to EWS.
+   * Removes delegates on a specific mailbox. Calling this method results in a call to EWS.
    *
    * @param mailbox the mailbox
    * @param userIds the user ids
-   * @return A collection of DelegateUserResponse objects providing the
-   * results of the operation.
+   * @return A collection of DelegateUserResponse objects providing the results of the operation.
    * @throws Exception the exception
    */
   public Collection<DelegateUserResponse> removeDelegates(Mailbox mailbox,
@@ -3191,8 +3068,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Retrieves the delegates of a specific mailbox. Calling this method
-   * results in a call to EWS.
+   * Retrieves the delegates of a specific mailbox. Calling this method results in a call to EWS.
    *
    * @param mailbox            the mailbox
    * @param includePermissions the include permissions
@@ -3210,8 +3086,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Retrieves the delegates of a specific mailbox. Calling this method
-   * results in a call to EWS.
+   * Retrieves the delegates of a specific mailbox. Calling this method results in a call to EWS.
    *
    * @param mailbox            the mailbox
    * @param includePermissions the include permissions
@@ -3352,8 +3227,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   /**
    * Retrieves inbox rules of the authenticated user.
    *
-   * @return A RuleCollection object containing the authenticated users inbox
-   * rules.
+   * @return A RuleCollection object containing the authenticated users inbox rules.
    * @throws Exception
    */
   public RuleCollection getInboxRules() throws Exception {
@@ -3364,10 +3238,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   /**
    * Retrieves the inbox rules of the specified user.
    *
-   * @param mailboxSmtpAddress The SMTP address of the user whose inbox rules should be
-   *                           retrieved
-   * @return A RuleCollection object containing the inbox rules of the
-   * specified user.
+   * @param mailboxSmtpAddress The SMTP address of the user whose inbox rules should be retrieved
+   * @return A RuleCollection object containing the inbox rules of the specified user.
    * @throws Exception
    */
   public RuleCollection getInboxRules(String mailboxSmtpAddress)
@@ -3380,11 +3252,9 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Updates the authenticated user's inbox rules by applying the specified
-   * operations.
+   * Updates the authenticated user's inbox rules by applying the specified operations.
    *
-   * @param operations            The operations that should be applied to the user's inbox
-   *                              rules.
+   * @param operations            The operations that should be applied to the user's inbox rules.
    * @param removeOutlookRuleBlob Indicate whether or not to remove Outlook Rule Blob.
    * @throws Exception
    */
@@ -3397,14 +3267,11 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Updates the authenticated user's inbox rules by applying the specified
-   * operations.
+   * Updates the authenticated user's inbox rules by applying the specified operations.
    *
-   * @param operations            The operations that should be applied to the user's inbox
-   *                              rules.
+   * @param operations            The operations that should be applied to the user's inbox rules.
    * @param removeOutlookRuleBlob Indicate whether or not to remove Outlook Rule Blob.
-   * @param mailboxSmtpAddress    The SMTP address of the user whose inbox rules should be
-   *                              retrieved
+   * @param mailboxSmtpAddress    The SMTP address of the user whose inbox rules should be retrieved
    * @throws Exception
    */
   public void updateInboxRules(Iterable<RuleOperation> operations,
@@ -3418,8 +3285,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Default implementation of AutodiscoverRedirectionUrlValidationCallback.
-   * Always returns true indicating that the URL can be used.
+   * Default implementation of AutodiscoverRedirectionUrlValidationCallback. Always returns true indicating
+   * that the URL can be used.
    *
    * @param redirectionUrl the redirection url
    * @return Returns true.
@@ -3432,8 +3299,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Initializes the Url property to the Exchange Web Services URL for the
-   * specified e-mail address by calling the Autodiscover service.
+   * Initializes the Url property to the Exchange Web Services URL for the specified e-mail address by calling
+   * the Autodiscover service.
    *
    * @param emailAddress the email address
    * @throws Exception the exception
@@ -3443,8 +3310,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Initializes the Url property to the Exchange Web Services URL for the
-   * specified e-mail address by calling the Autodiscover service.
+   * Initializes the Url property to the Exchange Web Services URL for the specified e-mail address by calling
+   * the Autodiscover service.
    *
    * @param emailAddress                   the email address to use.
    * @param validateRedirectionUrlCallback The callback used to validate redirection URL
@@ -3497,9 +3364,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Autodiscover will always return the "plain" EWS endpoint URL but if the
-   * client is using WindowsLive credentials, ExchangeService needs to use the
-   * WS-Security endpoint.
+   * Autodiscover will always return the "plain" EWS endpoint URL but if the client is using WindowsLive
+   * credentials, ExchangeService needs to use the WS-Security endpoint.
    *
    * @param uri the uri
    * @return Adjusted URL.
@@ -3633,18 +3499,16 @@ public final class ExchangeService extends ExchangeServiceBase implements
   // region Constructors
 
   /**
-   * Initializes a new instance of the <see cref="ExchangeService"/> class,
-   * targeting the specified version of EWS and scoped to the to the system's
-   * current time zone.
+   * Initializes a new instance of the <see cref="ExchangeService"/> class, targeting the specified version of
+   * EWS and scoped to the to the system's current time zone.
    */
   public ExchangeService() {
     super();
   }
 
   /**
-   * Initializes a new instance of the <see cref="ExchangeService"/> class,
-   * targeting the specified version of EWS and scoped to the system's current
-   * time zone.
+   * Initializes a new instance of the <see cref="ExchangeService"/> class, targeting the specified version of
+   * EWS and scoped to the system's current time zone.
    *
    * @param requestedServerVersion the requested server version
    */
@@ -3653,9 +3517,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Initializes a new instance of the <see cref="ExchangeService"/> class,
-   * targeting the specified version of EWS and scoped to the to the specified
-   * time zone.
+   * Initializes a new instance of the <see cref="ExchangeService"/> class, targeting the specified version of
+   * EWS and scoped to the to the specified time zone.
    *
    * @param requestedServerVersion The version of EWS that the service targets.
    * @param timeZone               The time zone to which the service is scoped.
@@ -3756,8 +3619,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Gets the DateTime precision for DateTime values returned from Exchange
-   * Web Services.
+   * Gets the DateTime precision for DateTime values returned from Exchange Web Services.
    *
    * @return the DateTimePrecision
    */
@@ -3766,16 +3628,14 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Sets the DateTime precision for DateTime values
-   * Web Services.
+   * Sets the DateTime precision for DateTime values Web Services.
    */
   public void setDateTimePrecision(DateTimePrecision d) {
     this.dateTimePrecision = d;
   }
 
   /**
-   * Sets the DateTime precision for DateTime values returned from Exchange
-   * Web Services.
+   * Sets the DateTime precision for DateTime values returned from Exchange Web Services.
    *
    * @param dateTimePrecision the new DateTimePrecision
    */
@@ -3824,9 +3684,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Gets or sets a value indicating whether the AutodiscoverUrl method should
-   * perform SCP (Service Connection Point) record lookup when determining the
-   * Autodiscover service URL.
+   * Gets or sets a value indicating whether the AutodiscoverUrl method should perform SCP (Service Connection
+   * Point) record lookup when determining the Autodiscover service URL.
    *
    * @return enable scp lookup flag.
    */
@@ -3839,11 +3698,9 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   /**
-   * Gets or sets a value indicating whether Exchange2007 compatibility mode
-   * is enabled. <remarks> In order to support E12 servers, the
-   * Exchange2007CompatibilityMode property can be used to indicate that we
-   * should use "Exchange2007" as the server version String rather than
-   * Exchange2007_SP1. </remarks>
+   * Gets or sets a value indicating whether Exchange2007 compatibility mode is enabled. <remarks> In order to
+   * support E12 servers, the Exchange2007CompatibilityMode property can be used to indicate that we should
+   * use "Exchange2007" as the server version String rather than Exchange2007_SP1. </remarks>
    */
   protected boolean getExchange2007CompatibilityMode() {
     return this.exchange2007CompatibilityMode;
@@ -3857,8 +3714,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * Retrieves the definitions of the specified server-side time zones.
    *
    * @param timeZoneIds the time zone ids
-   * @return A Collection containing the definitions of the specified time
-   * zones.
+   * @return A Collection containing the definitions of the specified time zones.
    */
   public Collection<TimeZoneDefinition> getServerTimeZones(
       Iterable<String> timeZoneIds) {
@@ -3889,8 +3745,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   /**
    * Retrieves the definitions of all server-side time zones.
    *
-   * @return A Collection containing the definitions of the specified time
-   * zones.
+   * @return A Collection containing the definitions of the specified time zones.
    */
   public Collection<TimeZoneDefinition> getServerTimeZones() {
     Date today = new Date();

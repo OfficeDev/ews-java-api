@@ -1,3 +1,27 @@
+/**************************************************************************
+ Exchange Web Services Java API
+ Copyright (c) Microsoft Corporation
+ All rights reserved.
+ MIT License
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ **************************************************************************/
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -42,15 +66,13 @@ enum HangingRequestDisconnectReason {
 
 
 /**
- * Represents a collection of arguments for the
- * HangingServiceRequestBase.HangingRequestDisconnectHandler
+ * Represents a collection of arguments for the HangingServiceRequestBase.HangingRequestDisconnectHandler
  * delegate method.
  */
 class HangingRequestDisconnectEventArgs {
 
   /**
-   * Initializes a new instance of the
-   * HangingRequestDisconnectEventArgs class.
+   * Initializes a new instance of the HangingRequestDisconnectEventArgs class.
    *
    * @param reason    The reason.
    * @param exception The exception.
@@ -124,8 +146,8 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
   private static final int BufferSize = 4096;
 
   /**
-   * Test switch to log all bytes that come across the wire.
-   * Helpful when parsing fails before certain bytes hit the trace logs.
+   * Test switch to log all bytes that come across the wire. Helpful when parsing fails before certain bytes
+   * hit the trace logs.
    */
   protected static boolean LogAllWireBytes = false;
 
@@ -237,7 +259,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
     HangingTraceStream tracingStream = null;
     ByteArrayOutputStream responseCopy = null;
 
-
     try {
       boolean traceEWSResponse = this.getService().isTraceEnabledFor(TraceFlags.EwsResponse);
       InputStream responseStream = this.response.getInputStream();
@@ -252,8 +273,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 
       //EwsServiceMultiResponseXmlReader ewsXmlReader = EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
 
-
-
       while (this.isConnected()) {
         Object responseObject = null;
         if (traceEWSResponse) {
@@ -262,8 +281,8 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
               EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
           responseObject = this.readResponse(ewsXmlReader);
           this.responseHandler.handleResponseObject(responseObject);
-				/*	}catch(Exception ex){
-						this.disconnect(HangingRequestDisconnectReason.Exception, ex);
+                                /*	}catch(Exception ex){
+                                                this.disconnect(HangingRequestDisconnectReason.Exception, ex);
 						return;
 						
 					}

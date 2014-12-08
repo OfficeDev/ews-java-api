@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -66,8 +80,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Adds an element with the provided key and value to the user configuration
-   * dictionary.
+   * Adds an element with the provided key and value to the user configuration dictionary.
    *
    * @param key   The object to use as the key of the element to add.
    * @param value The object to use as the value of the element to add.
@@ -80,20 +93,17 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Determines whether the user configuration dictionary contains an element
-   * with the specified key.
+   * Determines whether the user configuration dictionary contains an element with the specified key.
    *
    * @param key The key to locate in the user configuration dictionary.
-   * @return true if the user configuration dictionary contains an element
-   * with the key; otherwise false.
+   * @return true if the user configuration dictionary contains an element with the key; otherwise false.
    */
   public boolean containsKey(Object key) {
     return this.dictionary.containsKey(key);
   }
 
   /**
-   * Removes the element with the specified key from the user configuration
-   * dictionary.
+   * Removes the element with the specified key from the user configuration dictionary.
    *
    * @param key The key of the element to remove.
    * @return true if the element is successfully removed; otherwise false.
@@ -116,10 +126,9 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * Gets the value associated with the specified key.
    *
    * @param key   The key whose value to get.
-   * @param value When this method returns, the value associated with the
-   *              specified key, if the key is found; otherwise, null.
-   * @return true if the user configuration dictionary contains the key;
-   * otherwise false.
+   * @param value When this method returns, the value associated with the specified key, if the key is found;
+   *              otherwise, null.
+   * @return true if the user configuration dictionary contains the key; otherwise false.
    */
   public boolean tryGetValue(Object key, OutParam<Object> value) {
     if (this.dictionary.containsKey(key)) {
@@ -262,11 +271,10 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * Writes a dictionary Object's value to Xml.
    *
    * @param writer           The writer.
-   * @param dictionaryObject The dictionary object to write. <br />
-   *                         Object values are either:  <br />
-   *                         an array of strings, an array of bytes (which will be encoded into base64) <br />
-   *                         or a single value. Single values can be: <br />
-   *                         - datetime, boolean, byte, int, long, string
+   * @param dictionaryObject The dictionary object to write. <br /> Object values are either:  <br /> an array
+   *                         of strings, an array of bytes (which will be encoded into base64) <br /> or a
+   *                         single value. Single values can be: <br /> - datetime, boolean, byte, int, long,
+   *                         string
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
@@ -427,8 +435,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Loads an entry, consisting of a key value pair, into this dictionary from
-   * the specified reader.
+   * Loads an entry, consisting of a key value pair, into this dictionary from the specified reader.
    *
    * @param reader The reader.
    * @throws Exception the exception
@@ -461,8 +468,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Extracts a dictionary object (key or entry value) from the specified
-   * reader.
+   * Extracts a dictionary object (key or entry value) from the specified reader.
    *
    * @param reader The reader.
    * @return Dictionary object.
@@ -478,8 +484,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Extracts a dictionary object (key or entry value) as a string list from
-   * the specified reader.
+   * Extracts a dictionary object (key or entry value) as a string list from the specified reader.
    *
    * @param reader The reader.
    * @param type   The object type.
@@ -529,8 +534,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Extracts the dictionary object (key or entry value) type from the
-   * specified reader.
+   * Extracts the dictionary object (key or entry value) type from the specified reader.
    *
    * @param reader The reader.
    * @return Dictionary object type.
@@ -548,8 +552,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Constructs a dictionary object (key or entry value) from the specified
-   * type and string list.
+   * Constructs a dictionary object (key or entry value) from the specified type and string list.
    *
    * @param type   Object type to construct.
    * @param value  Value of the dictionary object as a string list

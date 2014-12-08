@@ -21,6 +21,9 @@ The project is using the _google-styleguide for Java_. Documentation of this sty
 
 #### Using IntelliJ
 `Settings` -> `Code Style` -> `Scheme` -> _Choose_ `Project`
+#### Suggested plugins
+* [CheckStyle-IDEA-Plugin](https://plugins.jetbrains.com/plugin/1065) -- [HowTo](https://github.com/jshiell/checkstyle-idea/blob/master/README)
+
 #### Using Eclipse
 * Open *google-styleguide for Java* by clicking on: [google-styleguide](https://google-styleguide.googlecode.com/svn-history/r122/trunk/eclipse-java-google-style.xml)
 * Download the file with: “Right click and save as”

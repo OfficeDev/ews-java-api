@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -64,7 +78,7 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
    *             the exception
    */
         /*
-	 * protected LegacyAvailabilityTimeZoneTime(TimeZone.TransitionTime
+         * protected LegacyAvailabilityTimeZoneTime(TimeZone.TransitionTime
 	 * transitionTime, TimeSpan delta) { this(); this.delta = delta;
 	 * 
 	 * if (transitionTime.IsFixedDateRule) { // TimeZoneInfo doesn't support an
@@ -85,8 +99,8 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
    * TimeZoneInfo.TransitionTime
    *
    */
-	/*
-	 * protected TimeZone.TransitionTime toTransitionTime() { if (this.year ==
+        /*
+         * protected TimeZone.TransitionTime toTransitionTime() { if (this.year ==
 	 * 0) { return TimeZone.TransitionTime.createFloatingDateRule( new Date(
 	 * Date.MinValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day,
 	 * this.timeOfDay.Hours, this.timeOfDay.Minutes, this.timeOfDay.Seconds),
@@ -212,8 +226,8 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
   }
 
   /**
-   * Gets  a value that represents: - The day of the month when Year is
-   * non zero, - The index of the week in the month if Year is equal to zero.
+   * Gets  a value that represents: - The day of the month when Year is non zero, - The index of the week in
+   * the month if Year is equal to zero.
    *
    * @return the day order
    */
@@ -267,9 +281,8 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
   }
 
   /**
-   * Gets  the year. If Year is 0, the time change occurs every year
-   * according to a recurring pattern; otherwise, the time change occurs at
-   * the date specified by Day, Month, Year.
+   * Gets  the year. If Year is 0, the time change occurs every year according to a recurring pattern;
+   * otherwise, the time change occurs at the date specified by Day, Month, Year.
    *
    * @return the year
    */

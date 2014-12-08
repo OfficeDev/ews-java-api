@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -14,9 +28,9 @@ import javax.xml.stream.XMLStreamException;
 import java.util.*;
 
 /**
- * Represents a set of item or folder properties. Property sets are used to
- * indicate what properties of an item or folder should be loaded when binding
- * to an existing item or folder or when loading an item or folder's properties.
+ * Represents a set of item or folder properties. Property sets are used to indicate what properties of an
+ * item or folder should be loaded when binding to an existing item or folder or when loading an item or
+ * folder's properties.
  */
 public final class PropertySet implements ISelfValidate,
     Iterable<PropertyDefinitionBase> {
@@ -30,8 +44,7 @@ public final class PropertySet implements ISelfValidate,
   /**
    * Returns a predefined property set that only includes the Id property.
    *
-   * @return Returns a predefined property set that only includes the Id
-   * property.
+   * @return Returns a predefined property set that only includes the Id property.
    */
   private static PropertySet getIdOnly() {
     return IdOnly;
@@ -44,11 +57,9 @@ public final class PropertySet implements ISelfValidate,
       createReadonlyPropertySet(BasePropertySet.FirstClassProperties);
 
   /**
-   * Returns a predefined property set that includes the first class
-   * properties of an item or folder.
+   * Returns a predefined property set that includes the first class properties of an item or folder.
    *
-   * @return A predefined property set that includes the first class
-   * properties of an item or folder.
+   * @return A predefined property set that includes the first class properties of an item or folder.
    */
   public static PropertySet getFirstClassProperties() {
     return FirstClassProperties;
@@ -85,8 +96,7 @@ public final class PropertySet implements ISelfValidate,
       ArrayList<PropertyDefinitionBase>();
 
   /**
-   * The requested body type for get and find operations. If null, the
-   * "best body" is returned.
+   * The requested body type for get and find operations. If null, the "best body" is returned.
    */
   private BodyType requestedBodyType;
 
@@ -96,8 +106,7 @@ public final class PropertySet implements ISelfValidate,
   private Boolean filterHtml;
 
   /**
-   * Value indicating whether or not the server
-   * should convert HTML code page to UTF8.
+   * Value indicating whether or not the server should convert HTML code page to UTF8.
    */
   private Boolean convertHtmlCodePageToUTF8;
 
@@ -110,10 +119,10 @@ public final class PropertySet implements ISelfValidate,
    * Initializes a new instance of PropertySet.
    *
    * @param basePropertySet      The base property set to base the property set upon.
-   * @param additionalProperties Additional properties to include in the property set. Property
-   *                             definitions are available as static members from schema
-   *                             classes (for example, EmailMessageSchema.Subject,
-   *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
+   * @param additionalProperties Additional properties to include in the property set. Property definitions
+   *                             are available as static members from schema classes (for example,
+   *                             EmailMessageSchema.Subject, AppointmentSchema.Start, ContactSchema.GivenName,
+   *                             etc.)
    */
   public PropertySet(BasePropertySet basePropertySet,
       PropertyDefinitionBase... additionalProperties) {
@@ -129,10 +138,10 @@ public final class PropertySet implements ISelfValidate,
    * Initializes a new instance of PropertySet.
    *
    * @param basePropertySet      The base property set to base the property set upon.
-   * @param additionalProperties Additional properties to include in the property set. Property
-   *                             definitions are available as static members from schema
-   *                             classes (for example, EmailMessageSchema.Subject,
-   *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
+   * @param additionalProperties Additional properties to include in the property set. Property definitions
+   *                             are available as static members from schema classes (for example,
+   *                             EmailMessageSchema.Subject, AppointmentSchema.Start, ContactSchema.GivenName,
+   *                             etc.)
    */
   public PropertySet(BasePropertySet basePropertySet,
       Iterator<PropertyDefinitionBase> additionalProperties) {
@@ -145,8 +154,7 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Initializes a new instance of PropertySet based upon
-   * BasePropertySet.IdOnly.
+   * Initializes a new instance of PropertySet based upon BasePropertySet.IdOnly.
    */
   public PropertySet() {
     this.basePropertySet = BasePropertySet.IdOnly;
@@ -162,34 +170,31 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Initializes a new instance of PropertySet based upon
-   * BasePropertySet.IdOnly.
+   * Initializes a new instance of PropertySet based upon BasePropertySet.IdOnly.
    *
-   * @param additionalProperties Additional properties to include in the property set. Property
-   *                             definitions are available as static members from schema
-   *                             classes (for example, EmailMessageSchema.Subject,
-   *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
+   * @param additionalProperties Additional properties to include in the property set. Property definitions
+   *                             are available as static members from schema classes (for example,
+   *                             EmailMessageSchema.Subject, AppointmentSchema.Start, ContactSchema.GivenName,
+   *                             etc.)
    */
   public PropertySet(PropertyDefinitionBase... additionalProperties) {
     this(BasePropertySet.IdOnly, additionalProperties);
   }
 
   /**
-   * Initializes a new instance of PropertySet based upon
-   * BasePropertySet.IdOnly.
+   * Initializes a new instance of PropertySet based upon BasePropertySet.IdOnly.
    *
-   * @param additionalProperties Additional properties to include in the property set. Property
-   *                             definitions are available as static members from schema
-   *                             classes (for example, EmailMessageSchema.Subject,
-   *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
+   * @param additionalProperties Additional properties to include in the property set. Property definitions
+   *                             are available as static members from schema classes (for example,
+   *                             EmailMessageSchema.Subject, AppointmentSchema.Start, ContactSchema.GivenName,
+   *                             etc.)
    */
   public PropertySet(Iterator<PropertyDefinitionBase> additionalProperties) {
     this(BasePropertySet.IdOnly, additionalProperties);
   }
 
   /**
-   * Implements an implicit conversion between
-   * PropertySet and BasePropertySet.
+   * Implements an implicit conversion between PropertySet and BasePropertySet.
    *
    * @param basePropertySet The BasePropertySet value to convert from.
    * @return A PropertySet instance based on the specified base property set.
@@ -265,12 +270,11 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Determines whether the specified property has been explicitly added to
-   * this property set using the Add or AddRange methods.
+   * Determines whether the specified property has been explicitly added to this property set using the Add or
+   * AddRange methods.
    *
    * @param property The property.
-   * @return true if this property set contains the specified property
-   * otherwise, false
+   * @return true if this property set contains the specified property otherwise, false
    */
   public boolean contains(PropertyDefinitionBase property) {
     return this.additionalProperties.contains(property);
@@ -317,8 +321,8 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Gets type of body that should be loaded on items. If RequestedBodyType
-   * is null, body is returned as HTML if available, plain text otherwise.
+   * Gets type of body that should be loaded on items. If RequestedBodyType is null, body is returned as HTML
+   * if available, plain text otherwise.
    *
    * @return the requested body type
    */
@@ -327,8 +331,8 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Sets type of body that should be loaded on items. If RequestedBodyType is
-   * null, body is returned as HTML if available, plain text otherwise.
+   * Sets type of body that should be loaded on items. If RequestedBodyType is null, body is returned as HTML
+   * if available, plain text otherwise.
    *
    * @param requestedBodyType Type of body that should be loaded on items.
    */
@@ -347,8 +351,7 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Gets value indicating whether or not to filter potentially unsafe HTML
-   * content from message bodies.
+   * Gets value indicating whether or not to filter potentially unsafe HTML content from message bodies.
    *
    * @return the filter html content
    */
@@ -357,8 +360,7 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Sets value indicating whether or not to filter potentially unsafe HTML
-   * content from message bodies.
+   * Sets value indicating whether or not to filter potentially unsafe HTML content from message bodies.
    *
    * @param filterHtml true to filter otherwise false.
    */
@@ -370,8 +372,7 @@ public final class PropertySet implements ISelfValidate,
 
 
   /**
-   * Gets value indicating whether or not to convert
-   * HTML code page to UTF8 encoding.
+   * Gets value indicating whether or not to convert HTML code page to UTF8 encoding.
    */
   public Boolean getConvertHtmlCodePageToUTF8() {
     return this.convertHtmlCodePageToUTF8;
@@ -379,8 +380,7 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Sets value indicating whether or not to
-   * convert HTML code page to UTF8 encoding.
+   * Sets value indicating whether or not to convert HTML code page to UTF8 encoding.
    */
   public void setConvertHtmlCodePageToUTF8(Boolean value) {
     this.throwIfReadonly();
@@ -449,9 +449,8 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Validates this property set instance for request to ensure that: 1.
-   * Properties are valid for the request server version 2. If only summary
-   * properties are legal for this request (e.g. FindItem) then only summary
+   * Validates this property set instance for request to ensure that: 1. Properties are valid for the request
+   * server version 2. If only summary properties are legal for this request (e.g. FindItem) then only summary
    * properties were specified.
    *
    * @param request               The request.

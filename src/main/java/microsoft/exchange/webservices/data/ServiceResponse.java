@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -193,8 +207,8 @@ public class ServiceResponse {
   }
 
   /**
-   * Called after the response has been loaded from XML in order to map error
-   * codes to "better" error messages.
+   * Called after the response has been loaded from XML in order to map error codes to "better" error
+   * messages.
    */
   protected void mapErrorCodeToErrorMessage() {
     // Bug E14:69560 -- Use a better error message when an item cannot be
@@ -226,8 +240,8 @@ public class ServiceResponse {
    *
    * @param reader         The reader.
    * @param xmlElementName The current element name of the extra error details.
-   * @return True if the expected extra details is loaded;
-   * False if the element name does not match the expected element.
+   * @return True if the expected extra details is loaded; False if the element name does not match the
+   * expected element.
    */
   protected boolean loadExtraErrorDetailsFromXml(EwsServiceXmlReader reader,
       String xmlElementName) throws Exception {
@@ -242,8 +256,7 @@ public class ServiceResponse {
   }
 
   /**
-   * Throws a ServiceResponseException if this response has its Result
-   * property set to Error.
+   * Throws a ServiceResponseException if this response has its Result property set to Error.
    *
    * @throws ServiceResponseException the service response exception
    */
@@ -252,8 +265,8 @@ public class ServiceResponse {
   }
 
   /**
-   * Internal method that throws a ServiceResponseException if this response
-   * has its Result property set to Error.
+   * Internal method that throws a ServiceResponseException if this response has its Result property set to
+   * Error.
    *
    * @throws ServiceResponseException the service response exception
    */
@@ -264,11 +277,9 @@ public class ServiceResponse {
   }
 
   /**
-   * Gets a value indicating whether a batch request stopped processing before
-   * the end.
+   * Gets a value indicating whether a batch request stopped processing before the end.
    *
-   * @return A value indicating whether a batch request stopped processing
-   * before the end.
+   * @return A value indicating whether a batch request stopped processing before the end.
    */
   protected boolean getBatchProcessingStopped() {
     return (this.result == ServiceResult.Warning)
@@ -294,10 +305,9 @@ public class ServiceResponse {
   }
 
   /**
-   * Gets a detailed error message associated with the response. If Result
-   * is set to Success, ErrorMessage returns null. ErrorMessage is localized
-   * according to the PreferredCulture property of the ExchangeService object
-   * that was used to call the method that generated the response.
+   * Gets a detailed error message associated with the response. If Result is set to Success, ErrorMessage
+   * returns null. ErrorMessage is localized according to the PreferredCulture property of the ExchangeService
+   * object that was used to call the method that generated the response.
    *
    * @return the error message
    */
@@ -315,11 +325,10 @@ public class ServiceResponse {
   }
 
   /**
-   * Gets error details associated with the response. If Result is set to
-   * Success, ErrorDetailsDictionary returns null. Error details will only
-   * available for some error codes. For example, when error code is
-   * ErrorRecurrenceHasNoOccurrence, the ErrorDetailsDictionary will contain
-   * keys for EffectiveStartDate and EffectiveEndDate.
+   * Gets error details associated with the response. If Result is set to Success, ErrorDetailsDictionary
+   * returns null. Error details will only available for some error codes. For example, when error code is
+   * ErrorRecurrenceHasNoOccurrence, the ErrorDetailsDictionary will contain keys for EffectiveStartDate and
+   * EffectiveEndDate.
    *
    * @return The error details dictionary.
    */
@@ -328,11 +337,10 @@ public class ServiceResponse {
   }
 
   /**
-   * Gets information about property errors associated with the response. If
-   * Result is set to Success, ErrorProperties returns null. ErrorProperties
-   * is only available for some error codes. For example, when the error code
-   * is ErrorInvalidPropertyForOperation, ErrorProperties will contain the
-   * definition of the property that was invalid for the request.
+   * Gets information about property errors associated with the response. If Result is set to Success,
+   * ErrorProperties returns null. ErrorProperties is only available for some error codes. For example, when
+   * the error code is ErrorInvalidPropertyForOperation, ErrorProperties will contain the definition of the
+   * property that was invalid for the request.
    *
    * @return the error properties
    */

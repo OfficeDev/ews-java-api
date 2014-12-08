@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -379,9 +393,8 @@ class EwsXmlReader {
   }
 
   /**
-   * Reads the value. Should return content element or text node as string
-   * Present event must be START ELEMENT. After executing this function
-   * Present event will be set on END ELEMENT
+   * Reads the value. Should return content element or text node as string Present event must be START
+   * ELEMENT. After executing this function Present event will be set on END ELEMENT
    *
    * @return String
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
@@ -422,7 +435,7 @@ class EwsXmlReader {
     } else if (this.presentEvent.getEventType() == XmlNodeType.CHARACTERS
         && this.presentEvent.isCharacters()) {
                         /*
-			 * if(this.presentEvent.asCharacters().getData().equals("<")) {
+                         * if(this.presentEvent.asCharacters().getData().equals("<")) {
 			 */
       StringBuffer data = new StringBuffer(this.presentEvent
           .asCharacters().getData());
@@ -439,8 +452,8 @@ class EwsXmlReader {
         }
       } while (!this.presentEvent.isEndElement());
       return data.toString();// this.presentEvent. = new XMLEvent();
-			/*
-			 * } else { Characters chars = this.presentEvent.asCharacters();
+                        /*
+                         * } else { Characters chars = this.presentEvent.asCharacters();
 			 * String elementValue = chars.getData(); // Advance to next event
 			 * post Characters (ideally it will be End // Element) this.read();
 			 * return elementValue; }
@@ -674,7 +687,7 @@ class EwsXmlReader {
   public boolean isEndElement(XmlNamespace xmlNamespace, String localName) {
 
     boolean isEndElement = false;
-		/*
+                /*
 		 * if(localName.equals("Body")) { return true; } else
 		 */
     if (this.presentEvent.isEndElement()) {
@@ -926,8 +939,7 @@ class EwsXmlReader {
   }
 
   /**
-   * Reads to the next descendant element with the specified local name and
-   * namespace.
+   * Reads to the next descendant element with the specified local name and namespace.
    *
    * @param xmlNamespace The namespace of the element you with to move to.
    * @param localName    The local name of the element you wish to move to.

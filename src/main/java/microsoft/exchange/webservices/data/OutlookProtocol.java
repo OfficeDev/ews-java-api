@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -17,8 +31,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Represents a supported Outlook protocol in an Outlook configurations settings
- * account.
+ * Represents a supported Outlook protocol in an Outlook configurations settings account.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 final class OutlookProtocol {
@@ -39,8 +52,7 @@ final class OutlookProtocol {
   private final static String WEB = "WEB";
 
   /**
-   * Converters to translate common Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
+   * Converters to translate common Outlook protocol settings. Each entry maps to a lambda expression used to
    * get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
@@ -94,9 +106,8 @@ final class OutlookProtocol {
 
 
   /**
-   * Converters to translate internal (EXCH) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Converters to translate internal (EXCH) Outlook protocol settings. Each entry maps to a lambda expression
+   * used to get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
       internalProtocolSettings =
@@ -209,9 +220,8 @@ final class OutlookProtocol {
           });
 
   /**
-   * Converters to translate external (EXPR) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Converters to translate external (EXPR) Outlook protocol settings. Each entry maps to a lambda expression
+   * used to get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
       externalProtocolSettings =
@@ -315,10 +325,8 @@ final class OutlookProtocol {
 
 
   /**
-   * Merged converter dictionary for translating
-   * internal (EXCH) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Merged converter dictionary for translating internal (EXCH) Outlook protocol settings. Each entry maps to
+   * a lambda expression used to get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
       internalProtocolConverterDictionary =
@@ -342,10 +350,8 @@ final class OutlookProtocol {
 
 
   /**
-   * Merged converter dictionary for translating
-   * external (EXPR) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Merged converter dictionary for translating external (EXPR) Outlook protocol settings. Each entry maps to
+   * a lambda expression used to get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
       externalProtocolConverterDictionary =
@@ -369,9 +375,8 @@ final class OutlookProtocol {
 
 
   /**
-   * Converters to translate Web (WEB) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Converters to translate Web (WEB) Outlook protocol settings. Each entry maps to a lambda expression used
+   * to get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
       webProtocolConverterDictionary =
@@ -399,8 +404,8 @@ final class OutlookProtocol {
           });
 
   /**
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Each entry maps to a lambda expression used to get the matching property from the OutlookProtocol
+   * instance.
    */
   private static LazyMember<List<UserSettingName>>
       availableUserSettings =
@@ -544,8 +549,7 @@ final class OutlookProtocol {
 
 
   /**
-   * Parses the XML using the specified reader and creates an Outlook
-   * protocol.
+   * Parses the XML using the specified reader and creates an Outlook protocol.
    *
    * @param reader The reader.
    * @throws Exception the exception

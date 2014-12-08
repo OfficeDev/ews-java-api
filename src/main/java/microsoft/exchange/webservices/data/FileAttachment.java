@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -176,8 +190,8 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Loads the content of the file attachment into the specified stream.
-   * Calling this method results in a call to EWS.
+   * Loads the content of the file attachment into the specified stream. Calling this method results in a call
+   * to EWS.
    *
    * @param stream the stream
    * @throws Exception the exception
@@ -193,8 +207,8 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Loads the content of the file attachment into the specified file.
-   * Calling this method results in a call to EWS.
+   * Loads the content of the file attachment into the specified file. Calling this method results in a call
+   * to EWS.
    *
    * @param fileName the file name
    * @throws Exception the exception
@@ -238,8 +252,7 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Gets  the content stream.Gets the name of the file the attachment
-   * is linked to.
+   * Gets  the content stream.Gets the name of the file the attachment is linked to.
    *
    * @return The content stream
    */
@@ -261,8 +274,7 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Gets the content of the attachment into memory. Content is set only
-   * when Load() is called.
+   * Gets the content of the attachment into memory. Content is set only when Load() is called.
    *
    * @return the content
    */
@@ -284,8 +296,7 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Gets  a value indicating whether this attachment is a contact
-   * photo.
+   * Gets  a value indicating whether this attachment is a contact photo.
    *
    * @return true, if is contact photo
    * @throws ServiceVersionException the service version exception

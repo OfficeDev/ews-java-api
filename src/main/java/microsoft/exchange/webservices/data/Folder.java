@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -30,15 +44,13 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
-   * EWS.
+   * Binds to an existing folder, whatever its actual type is, and loads the specified set of properties.
+   * Calling this method results in a call to EWS.
    *
    * @param service     The service to use to bind to the folder.
    * @param id          The Id of the folder to bind to.
    * @param propertySet The set of properties to load.
-   * @return A Folder instance representing the folder corresponding to the
-   * specified Id.
+   * @return A Folder instance representing the folder corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Folder bind(ExchangeService service, FolderId id,
@@ -47,14 +59,12 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
-   * EWS.
+   * Binds to an existing folder, whatever its actual type is, and loads the specified set of properties.
+   * Calling this method results in a call to EWS.
    *
    * @param service , The service to use to bind to the folder.
    * @param id      , The Id of the folder to bind to.
-   * @return A Folder instance representing the folder corresponding to the
-   * specified Id.
+   * @return A Folder instance representing the folder corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Folder bind(ExchangeService service, FolderId id)
@@ -63,15 +73,13 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
-   * EWS.
+   * Binds to an existing folder, whatever its actual type is, and loads the specified set of properties.
+   * Calling this method results in a call to EWS.
    *
    * @param service     The service to use to bind to the folder.
    * @param name        The name of the folder to bind to.
    * @param propertySet The set of properties to load.
-   * @return A Folder instance representing the folder corresponding to the
-   * specified Id.
+   * @return A Folder instance representing the folder corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Folder bind(ExchangeService service,
@@ -81,9 +89,8 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
-   * EWS.
+   * Binds to an existing folder, whatever its actual type is, and loads the specified set of properties.
+   * Calling this method results in a call to EWS.
    *
    * @param service The service to use to bind to the folder.
    * @param name    The name of the folder to bind to.
@@ -128,8 +135,7 @@ public class Folder extends ServiceObject {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -183,10 +189,8 @@ public class Folder extends ServiceObject {
    * Deletes the object.
    *
    * @param deleteMode              the delete mode
-   * @param sendCancellationsMode   Indicates whether meeting cancellation messages should be
-   *                                sent.
-   * @param affectedTaskOccurrences Indicate which occurrence of a recurring task should be
-   *                                deleted.
+   * @param sendCancellationsMode   Indicates whether meeting cancellation messages should be sent.
+   * @param affectedTaskOccurrences Indicate which occurrence of a recurring task should be deleted.
    * @throws Exception the exception
    */
   @Override
@@ -227,8 +231,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Saves this folder in a specific folder. Calling this method results in a
-   * call to EWS.
+   * Saves this folder in a specific folder. Calling this method results in a call to EWS.
    *
    * @param parentFolderId The Id of the folder in which to save this folder.
    * @throws Exception the exception
@@ -244,8 +247,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Saves this folder in a specific folder. Calling this method results in a
-   * call to EWS.
+   * Saves this folder in a specific folder. Calling this method results in a call to EWS.
    *
    * @param parentFolderName The name of the folder in which to save this folder.
    * @throws Exception the exception
@@ -255,8 +257,8 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Applies the local changes that have been made to this folder. Calling
-   * this method results in a call to EWS.
+   * Applies the local changes that have been made to this folder. Calling this method results in a call to
+   * EWS.
    *
    * @throws Exception the exception
    */
@@ -269,8 +271,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Copies this folder into a specific folder. Calling this method results in
-   * a call to EWS.
+   * Copies this folder into a specific folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderId The Id of the folder in which to copy this folder.
    * @return A Folder representing the copy of this folder.
@@ -285,8 +286,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Copies this folder into the specified folder. Calling this method results
-   * in a call to EWS.
+   * Copies this folder into the specified folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderName The name of the folder in which to copy this folder.
    * @return A Folder representing the copy of this folder.
@@ -298,12 +298,11 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Moves this folder to a specific folder. Calling this method results in a
-   * call to EWS.
+   * Moves this folder to a specific folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderId The Id of the folder in which to move this folder.
-   * @return A new folder representing this folder in its new location. After
-   * Move completes, this folder does not exist anymore.
+   * @return A new folder representing this folder in its new location. After Move completes, this folder does
+   * not exist anymore.
    * @throws Exception the exception
    */
   public Folder move(FolderId destinationFolderId) throws Exception {
@@ -315,12 +314,11 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Moves this folder to a specific folder. Calling this method results in a
-   * call to EWS.
+   * Moves this folder to a specific folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderName The name of the folder in which to move this folder.
-   * @return A new folder representing this folder in its new location. After
-   * Move completes, this folder does not exist anymore.
+   * @return A new folder representing this folder in its new location. After Move completes, this folder does
+   * not exist anymore.
    * @throws Exception the exception
    */
   public Folder move(WellKnownFolderName destinationFolderName)
@@ -356,9 +354,8 @@ public class Folder extends ServiceObject {
    * Find items.
    *
    * @param <TItem>      The type of the item.
-   * @param searchFilter The search filter. Available search filter classes include
-   *                     SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
-   *                     SearchFilter.SearchFilterCollection
+   * @param searchFilter The search filter. Available search filter classes include SearchFilter.IsEqualTo,
+   *                     SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection
    * @param view         The view controlling the number of items returned.
    * @param groupBy      The group by.
    * @return FindItems response collection.
@@ -380,9 +377,8 @@ public class Folder extends ServiceObject {
   /**
    * Find items.
    *
-   * @param searchFilter The search filter. Available search filter classes include
-   *                     SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
-   *                     SearchFilter.SearchFilterCollection
+   * @param searchFilter The search filter. Available search filter classes include SearchFilter.IsEqualTo,
+   *                     SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection
    * @param view         The view controlling the number of items returned.
    * @return FindItems results collection.
    * @throws Exception the exception
@@ -433,13 +429,11 @@ public class Folder extends ServiceObject {
   /**
    * Find items.
    *
-   * @param searchFilter The search filter. Available search filter classes include
-   *                     SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
-   *                     SearchFilter.SearchFilterCollection
+   * @param searchFilter The search filter. Available search filter classes include SearchFilter.IsEqualTo,
+   *                     SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection
    * @param view         The view controlling the number of items returned.
    * @param groupBy      The group by.
-   * @return A collection of grouped items representing the contents of this
-   * folder.
+   * @return A collection of grouped items representing the contents of this folder.
    * @throws Exception the exception
    */
   public GroupedFindItemsResults<Item> findItems(SearchFilter searchFilter,
@@ -459,8 +453,7 @@ public class Folder extends ServiceObject {
    * @param queryString query string to be used for indexed search
    * @param view        The view controlling the number of items returned.
    * @param groupBy     The group by.
-   * @return A collection of grouped items representing the contents of this
-   * folder.
+   * @return A collection of grouped items representing the contents of this folder.
    * @throws Exception the exception
    */
   public GroupedFindItemsResults<Item> findItems(String queryString,
@@ -474,8 +467,8 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of this folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a list of folders by searching the sub-folders of this folder. Calling this method results in a
+   * call to EWS.
    *
    * @param view The view controlling the number of folders returned.
    * @return An object representing the results of the search operation.
@@ -488,12 +481,11 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of this folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a list of folders by searching the sub-folders of this folder. Calling this method results in a
+   * call to EWS.
    *
-   * @param searchFilter The search filter. Available search filter classes include
-   *                     SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
-   *                     SearchFilter.SearchFilterCollection
+   * @param searchFilter The search filter. Available search filter classes include SearchFilter.IsEqualTo,
+   *                     SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection
    * @param view         The view controlling the number of folders returned.
    * @return An object representing the results of the search operation.
    * @throws Exception the exception
@@ -506,13 +498,12 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of this folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a grouped list of items by searching the contents of this folder. Calling this method results in
+   * a call to EWS.
    *
    * @param view    The view controlling the number of folders returned.
    * @param groupBy The grouping criteria.
-   * @return A collection of grouped items representing the contents of this
-   * folder.
+   * @return A collection of grouped items representing the contents of this folder.
    * @throws Exception the exception
    */
   public GroupedFindItemsResults<Item> findItems(ItemView view,
@@ -687,8 +678,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Gets the Email Lifecycle Management (ELC) information associated with the
-   * folder.
+   * Gets the Email Lifecycle Management (ELC) information associated with the folder.
    *
    * @return the managed folder information
    * @throws ServiceLocalException the service local exception
@@ -701,8 +691,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating the effective rights the current authenticated
-   * user has on the folder.
+   * Gets a value indicating the effective rights the current authenticated user has on the folder.
    *
    * @return the effective rights
    * @throws ServiceLocalException the service local exception

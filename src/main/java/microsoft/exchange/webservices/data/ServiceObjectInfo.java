@@ -3,9 +3,23 @@
  Copyright (c) Microsoft Corporation
  All rights reserved.
  MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
  **************************************************************************/
 
 package microsoft.exchange.webservices.data;
@@ -16,9 +30,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ServiceObjectInfo contains metadata on how to map from an element name to a
- * ServiceObject type as well as how to map from a ServiceObject type to
- * appropriate constructors.
+ * ServiceObjectInfo contains metadata on how to map from an element name to a ServiceObject type as well as
+ * how to map from a ServiceObject type to appropriate constructors.
  */
 class ServiceObjectInfo {
 
@@ -54,9 +67,8 @@ class ServiceObjectInfo {
   }
 
   /**
-   * Initializes the service object class map. If you add a new ServiceObject
-   * subclass that can be returned by the Server, add the type to the class
-   * map as well as associated delegate(s) to call the constructor(s).
+   * Initializes the service object class map. If you add a new ServiceObject subclass that can be returned by
+   * the Server, add the type to the class map as well as associated delegate(s) to call the constructor(s).
    */
   private void initializeServiceObjectClassMap() {
     // Appointment
@@ -318,9 +330,8 @@ class ServiceObjectInfo {
   }
 
   /**
-   * Return Dictionary that maps from ServiceObject Type to
-   * CreateServiceObjectWithServiceParam delegate with ExchangeService
-   * parameter.
+   * Return Dictionary that maps from ServiceObject Type to CreateServiceObjectWithServiceParam delegate with
+   * ExchangeService parameter.
    *
    * @return the service object constructors with service param
    */
@@ -330,9 +341,8 @@ class ServiceObjectInfo {
   }
 
   /**
-   * Return Dictionary that maps from ServiceObject Type to
-   * CreateServiceObjectWithAttachmentParam delegate with ItemAttachment
-   * parameter.
+   * Return Dictionary that maps from ServiceObject Type to CreateServiceObjectWithAttachmentParam delegate
+   * with ItemAttachment parameter.
    *
    * @return the service object constructors with attachment param
    */
