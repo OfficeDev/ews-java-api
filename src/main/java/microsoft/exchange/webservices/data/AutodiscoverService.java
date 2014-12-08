@@ -913,7 +913,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       String emailAddress,
       List<UserSettingName> requestedSettings) throws Exception {
     // Cannot call legacy Autodiscover service with WindowsLive credentials
-    	    	   	
+
         /*if ((this.getCredentials() != null) && (this.getCredentials() instanceof WindowsLiveCredentials)) {
             throw new AutodiscoverLocalException(
 					Strings.WLIDCredentialsCannotBeUsedWithLegacyAutodiscover);

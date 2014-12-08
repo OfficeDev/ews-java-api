@@ -687,7 +687,7 @@ class EwsXmlReader {
   public boolean isEndElement(XmlNamespace xmlNamespace, String localName) {
 
     boolean isEndElement = false;
-		/*
+                /*
 		 * if(localName.equals("Body")) { return true; } else
 		 */
     if (this.presentEvent.isEndElement()) {

@@ -2103,7 +2103,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @throws Exception
    **/
         /*public StreamingSubscription SubscribeToStreamingNotificationsOnAllFolders(
-			EventType... eventTypes) throws Exception, Exception {
+                        EventType... eventTypes) throws Exception, Exception {
 		EwsUtilities.validateMethodVersion(this,
 				ExchangeVersion.Exchange2010_SP1,
 				"SubscribeToStreamingNotificationsOnAllFolders");

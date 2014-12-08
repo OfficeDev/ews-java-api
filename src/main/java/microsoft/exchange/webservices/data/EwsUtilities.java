@@ -907,7 +907,7 @@ class EwsUtilities {
   protected static String getTimeSpanToXSDuration(TimeSpan timeOffset) {
 
 		/*
-		 * SimpleDateFormat dateformatter = new SimpleDateFormat("dd:HH:mm:ss");
+                 * SimpleDateFormat dateformatter = new SimpleDateFormat("dd:HH:mm:ss");
 		 * return dateformatter.format(timeOffset.toString());
 		 */
     // Optional '-' offset

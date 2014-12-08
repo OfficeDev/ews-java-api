@@ -42,7 +42,7 @@ class EWSConstants {
    * The Constant DOMAIN.
    */
   public static final String DOMAIN = "domain";
-	/*
+        /*
 	 * Represents the domain server IP address
 	 */
   /**

@@ -42,7 +42,7 @@ public enum MessageDisposition {
    * The Send and save copy.
    */
   SendAndSaveCopy,
-	/*
+        /*
 	 * Messages are sent but no copy is saved.
 	 */
   /**

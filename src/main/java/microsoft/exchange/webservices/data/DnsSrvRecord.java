@@ -47,7 +47,7 @@ class DnsSrvRecord extends DnsRecord {
    */
   private int priority;
         /*
-	 * weight of the target host
+         * weight of the target host
 	 */
   /**
    * The weight.
