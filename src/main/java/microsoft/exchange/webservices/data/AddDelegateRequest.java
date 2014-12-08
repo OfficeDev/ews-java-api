@@ -143,8 +143,7 @@ class AddDelegateRequest extends
   }
 
   /**
-   * Gets the meeting requests delivery scope. <value>The meeting
-   * requests delivery scope.</value>
+   * Gets the meeting requests delivery scope. <value>The meeting requests delivery scope.</value>
    *
    * @return the meeting requests delivery scope
    */

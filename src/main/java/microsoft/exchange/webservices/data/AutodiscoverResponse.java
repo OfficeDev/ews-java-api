@@ -27,8 +27,7 @@ package microsoft.exchange.webservices.data;
 import java.net.URI;
 
 /**
- * Represents the base class for all responses returned by the Autodiscover
- * service.
+ * Represents the base class for all responses returned by the Autodiscover service.
  */
 public abstract class AutodiscoverResponse {
 

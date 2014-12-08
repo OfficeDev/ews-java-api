@@ -30,9 +30,9 @@ package microsoft.exchange.webservices.data;
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class InternetMessageHeaderCollection extends
     ComplexPropertyCollection<InternetMessageHeader> {
+
   /**
-   * Initializes a new instance of the "InternetMessageHeaderCollection"
-   * class.
+   * Initializes a new instance of the "InternetMessageHeaderCollection" class.
    */
   protected InternetMessageHeaderCollection() {
     super();
@@ -66,9 +66,8 @@ public final class InternetMessageHeaderCollection extends
    * Find a specific header in the collection.
    *
    * @param name The name of the header to locate.
-   * @return An InternetMessageHeader representing the header with the
-   * specified name; null if no header with the specified name was
-   * found.
+   * @return An InternetMessageHeader representing the header with the specified name; null if no header with
+   * the specified name was found.
    */
   public InternetMessageHeader find(String name) {
     for (InternetMessageHeader internetMessageHeader : this) {

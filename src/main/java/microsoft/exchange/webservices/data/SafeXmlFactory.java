@@ -31,6 +31,7 @@ import java.io.InputStream;
 import java.io.Reader;
 
 public class SafeXmlFactory {
+
   public static XMLInputFactory factory = XMLInputFactory.newInstance();
 
 

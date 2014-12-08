@@ -28,8 +28,7 @@ import javax.xml.stream.XMLStreamException;
 import java.util.EnumSet;
 
 /**
- * Represents an object that can be used to store user-defined configuration
- * settings.
+ * Represents an object that can be used to store user-defined configuration settings.
  */
 public class UserConfiguration {
 
@@ -304,8 +303,7 @@ public class UserConfiguration {
   }
 
   /**
-   * Gets a value indicating whether this user configuration has been
-   * modified.
+   * Gets a value indicating whether this user configuration has been modified.
    *
    * @return the checks if is dirty
    */
@@ -315,8 +313,8 @@ public class UserConfiguration {
   }
 
   /**
-   * Binds to an existing user configuration and loads the specified
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing user configuration and loads the specified properties. Calling this method results
+   * in a call to EWS.
    *
    * @param service        The service to which the user configuration is bound.
    * @param name           The name of the user configuration.
@@ -337,8 +335,7 @@ public class UserConfiguration {
   }
 
   /**
-   * Binds to an existing user configuration and loads the specified
-   * properties.
+   * Binds to an existing user configuration and loads the specified properties.
    *
    * @param service          The service to which the user configuration is bound.
    * @param name             The name of the user configuration.
@@ -357,8 +354,7 @@ public class UserConfiguration {
   }
 
   /**
-   * Saves the user configuration. Calling this method results in a call to
-   * EWS.
+   * Saves the user configuration. Calling this method results in a call to EWS.
    *
    * @param name           The name of the user configuration.
    * @param parentFolderId The Id of the folder in which to save the user configuration.
@@ -386,12 +382,10 @@ public class UserConfiguration {
   }
 
   /**
-   * Saves the user configuration. Calling this method results in a call to
-   * EWS.
+   * Saves the user configuration. Calling this method results in a call to EWS.
    *
    * @param name             The name of the user configuration.
-   * @param parentFolderName The name of the folder in which to save the user
-   *                         configuration.
+   * @param parentFolderName The name of the folder in which to save the user configuration.
    * @throws Exception the exception
    */
   public void save(String name, WellKnownFolderName parentFolderName)
@@ -400,8 +394,8 @@ public class UserConfiguration {
   }
 
   /**
-   * Updates the user configuration by applying local changes to the Exchange
-   * server. Calling this method results in a call to EWS
+   * Updates the user configuration by applying local changes to the Exchange server. Calling this method
+   * results in a call to EWS
    *
    * @throws Exception the exception
    */
@@ -426,8 +420,7 @@ public class UserConfiguration {
   }
 
   /**
-   * Deletes the user configuration. Calling this method results in a call to
-   * EWS.
+   * Deletes the user configuration. Calling this method results in a call to EWS.
    *
    * @throws Exception the exception
    */
@@ -442,8 +435,7 @@ public class UserConfiguration {
   }
 
   /**
-   * Loads the specified properties on the user configuration. Calling this
-   * method results in a call to EWS.
+   * Loads the specified properties on the user configuration. Calling this method results in a call to EWS.
    *
    * @param properties The properties to load.
    * @throws Exception the exception

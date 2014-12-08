@@ -93,12 +93,10 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
   }
 
   /**
-   * Gets a value indicating the overall result of the request that
-   * generated this response collection. If all of the responses have their
-   * Result property set to Success, OverallResult returns Success. If at
-   * least one response has its Result property set to Warning and all other
-   * responses have their Result property set to Success, OverallResult
-   * returns Warning. If at least one response has a its Result set to Error,
+   * Gets a value indicating the overall result of the request that generated this response collection. If all
+   * of the responses have their Result property set to Success, OverallResult returns Success. If at least
+   * one response has its Result property set to Warning and all other responses have their Result property
+   * set to Success, OverallResult returns Warning. If at least one response has a its Result set to Error,
    * OverallResult returns Error.
    *
    * @return the overall result

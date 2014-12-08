@@ -43,7 +43,6 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
   private List<String> smtpAddresses;
   private List<UserSettingName> settings;
 
-
   // Expect this request to return the partner token.
 
   private boolean expectPartnerToken = false;
@@ -51,8 +50,7 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
   private String partnerToken;
 
   /**
-   * Initializes a new instance of the <see cref="GetUserSettingsRequest"/>
-   * class.
+   * Initializes a new instance of the <see cref="GetUserSettingsRequest"/> class.
    *
    * @param service the service
    * @param url     the url
@@ -63,8 +61,7 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
   }
 
   /**
-   * Initializes a new instance of the <see cref="GetUserSettingsRequest"/>
-   * class.
+   * Initializes a new instance of the <see cref="GetUserSettingsRequest"/> class.
    *
    * @param service Autodiscover service associated with this request
    * @param url     URL of Autodiscover service.
@@ -328,8 +325,7 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
   }
 
   /**
-   * <summary>
-   * Gets the partner token reference.
+   * <summary> Gets the partner token reference.
    */
   protected String getPartnerTokenReference() {
     return partnerTokenReference;

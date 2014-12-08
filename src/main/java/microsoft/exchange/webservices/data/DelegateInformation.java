@@ -58,8 +58,7 @@ public final class DelegateInformation {
   }
 
   /**
-   * Gets a list of responses for each of the delegate users concerned by the
-   * operation.
+   * Gets a list of responses for each of the delegate users concerned by the operation.
    *
    * @return the delegate user responses
    */
@@ -68,8 +67,7 @@ public final class DelegateInformation {
   }
 
   /**
-   * Gets a value indicating if and how meeting requests are delivered to
-   * delegates.
+   * Gets a value indicating if and how meeting requests are delivered to delegates.
    *
    * @return the meeting reqests delivery scope
    */

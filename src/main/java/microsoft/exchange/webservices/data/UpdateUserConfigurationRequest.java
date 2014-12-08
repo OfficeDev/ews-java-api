@@ -136,8 +136,7 @@ public class UpdateUserConfigurationRequest extends
   }
 
   /**
-   * Gets the user configuration. <value>The user
-   * configuration.</value>
+   * Gets the user configuration. <value>The user configuration.</value>
    *
    * @return the user configuration
    */

@@ -29,9 +29,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Represents the base search filter class. Use descendant search filter classes
- * such as SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
- * SearchFilter.SearchFilterCollection to define search filters.
+ * Represents the base search filter class. Use descendant search filter classes such as
+ * SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection to define
+ * search filters.
  */
 public abstract class SearchFilter extends ComplexProperty {
 
@@ -126,10 +126,9 @@ public abstract class SearchFilter extends ComplexProperty {
   }
 
   /**
-   * Represents a search filter that checks for the presence of a substring
-   * inside a text property. Applications can use ContainsSubstring to define
-   * conditions such as "Field CONTAINS Value" or
-   * "Field IS PREFIXED WITH Value".
+   * Represents a search filter that checks for the presence of a substring inside a text property.
+   * Applications can use ContainsSubstring to define conditions such as "Field CONTAINS Value" or "Field IS
+   * PREFIXED WITH Value".
    */
   public static final class ContainsSubstring extends PropertyBasedFilter {
 
@@ -349,9 +348,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a bitmask exclusion search filter. Applications can use
-   * ExcludesBitExcludesBitmaskFilter to define conditions such as
-   * "(OrdinalField and 0x0010) != 0x0010"
+   * Represents a bitmask exclusion search filter. Applications can use ExcludesBitExcludesBitmaskFilter to
+   * define conditions such as "(OrdinalField and 0x0010) != 0x0010"
    */
   public static class ExcludesBitmask extends PropertyBasedFilter {
 
@@ -452,8 +450,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter checking if a field is set. Applications can
-   * use ExistsFilter to define conditions such as "Field IS SET".
+   * Represents a search filter checking if a field is set. Applications can use ExistsFilter to define
+   * conditions such as "Field IS SET".
    */
   public static final class Exists extends PropertyBasedFilter {
 
@@ -486,8 +484,7 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is equal to a given
-   * value or other property.
+   * Represents a search filter that checks if a property is equal to a given value or other property.
    */
   public static class IsEqualTo extends RelationalFilter {
 
@@ -534,8 +531,7 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is greater than a
-   * given value or other property.
+   * Represents a search filter that checks if a property is greater than a given value or other property.
    */
   public static class IsGreaterThan extends RelationalFilter {
 
@@ -581,8 +577,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is greater than or
-   * equal to a given value or other property.
+   * Represents a search filter that checks if a property is greater than or equal to a given value or other
+   * property.
    */
   public static class IsGreaterThanOrEqualTo extends RelationalFilter {
 
@@ -630,8 +626,7 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is less than a given
-   * value or other property.
+   * Represents a search filter that checks if a property is less than a given value or other property.
    */
   public static class IsLessThan extends RelationalFilter {
 
@@ -678,8 +673,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is less than or
-   * equal to a given value or other property.
+   * Represents a search filter that checks if a property is less than or equal to a given value or other
+   * property.
    */
   public static class IsLessThanOrEqualTo extends RelationalFilter {
 
@@ -726,8 +721,7 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is not equal to a
-   * given value or other property.
+   * Represents a search filter that checks if a property is not equal to a given value or other property.
    */
   public static class IsNotEqualTo extends RelationalFilter {
 
@@ -774,8 +768,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that negates another. Applications can use
-   * NotFilter to define conditions such as "NOT(other filter)".
+   * Represents a search filter that negates another. Applications can use NotFilter to define conditions such
+   * as "NOT(other filter)".
    */
   public static class Not extends SearchFilter implements
       IComplexPropertyChangedDelegate {
@@ -861,10 +855,8 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Gets  the search filter to negate. Available search filter
-     * classes include SearchFilter.IsEqualTo,
-     * SearchFilter.ContainsSubstring and
-     * SearchFilter.SearchFilterCollection.
+     * Gets  the search filter to negate. Available search filter classes include SearchFilter.IsEqualTo,
+     * SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection.
      *
      * @return SearchFilter
      */
@@ -873,9 +865,8 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Sets the search filter to negate. Available search filter classes
-     * include SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
-     * SearchFilter.SearchFilterCollection.
+     * Sets the search filter to negate. Available search filter classes include SearchFilter.IsEqualTo,
+     * SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection.
      *
      * @param searchFilter the new search filter
      */
@@ -984,8 +975,7 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Gets the definition of the property that is involved in the search
-     * filter.
+     * Gets the definition of the property that is involved in the search filter.
      *
      * @return propertyDefinition
      */
@@ -994,8 +984,7 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Sets the definition of the property that is involved in the search
-     * filter.
+     * Sets the definition of the property that is involved in the search filter.
      *
      * @param propertyDefinition the new property definition
      */
@@ -1007,8 +996,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents the base class for relational filters (for example, IsEqualTo,
-   * IsGreaterThan or IsLessThanOrEqualTo).
+   * Represents the base class for relational filters (for example, IsEqualTo, IsGreaterThan or
+   * IsLessThanOrEqualTo).
    */
   @EditorBrowsable(state = EditorBrowsableState.Never)
   public abstract static class RelationalFilter extends PropertyBasedFilter {
@@ -1204,9 +1193,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a collection of search filters linked by a logical operator.
-   * Applications can use SearchFilterCollection to define complex search
-   * filters such as "Condition1 AND Condition2".
+   * Represents a collection of search filters linked by a logical operator. Applications can use
+   * SearchFilterCollection to define complex search filters such as "Condition1 AND Condition2".
    */
   public static class SearchFilterCollection extends SearchFilter implements
       Iterable<SearchFilter>, IComplexPropertyChangedDelegate {
@@ -1358,9 +1346,8 @@ public abstract class SearchFilter extends ComplexProperty {
     /**
      * Adds a search filter of any type to the collection.
      *
-     * @param searchFilter >The search filter to add. Available search filter classes
-     *                     include SearchFilter.IsEqualTo,
-     *                     SearchFilter.ContainsSubstring and
+     * @param searchFilter >The search filter to add. Available search filter classes include
+     *                     SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
      *                     SearchFilter.SearchFilterCollection.
      */
     public void add(SearchFilter searchFilter) {
@@ -1375,9 +1362,8 @@ public abstract class SearchFilter extends ComplexProperty {
     /**
      * Adds multiple search filters to the collection.
      *
-     * @param searchFilters The search filters to add. Available search filter classes
-     *                      include SearchFilter.IsEqualTo,
-     *                      SearchFilter.ContainsSubstring and
+     * @param searchFilters The search filters to add. Available search filter classes include
+     *                      SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
      *                      SearchFilter.SearchFilterCollection
      */
     public void addRange(Iterable<SearchFilter> searchFilters) {
@@ -1409,8 +1395,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * Determines whether a specific search filter is in the collection.
      *
      * @param searchFilter The search filter to locate in the collection.
-     * @return True is the search filter was found in the collection, false
-     * otherwise.
+     * @return True is the search filter was found in the collection, false otherwise.
      */
     public boolean contains(SearchFilter searchFilter) {
       return this.searchFilters.contains(searchFilter);
@@ -1488,8 +1473,7 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Gets the logical operator that links the serach filters in this
-     * collection.
+     * Gets the logical operator that links the serach filters in this collection.
      *
      * @return LogicalOperator
      */
@@ -1498,8 +1482,7 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Sets the logical operator that links the serach filters in this
-     * collection.
+     * Sets the logical operator that links the serach filters in this collection.
      *
      * @param logicalOperator the new logical operator
      */

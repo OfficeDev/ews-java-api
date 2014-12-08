@@ -48,8 +48,8 @@ import java.util.concurrent.ExecutorService;
 
 
 /**
- * HttpClientWebRequest is used for making request to the server through
- * NTLM Authentication by using Apache HttpClient 3.1 and JCIFS Library.
+ * HttpClientWebRequest is used for making request to the server through NTLM Authentication by using Apache
+ * HttpClient 3.1 and JCIFS Library.
  */
 class HttpClientWebRequest extends HttpWebRequest {
 

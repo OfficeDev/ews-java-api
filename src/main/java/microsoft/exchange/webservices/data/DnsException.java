@@ -28,6 +28,7 @@ package microsoft.exchange.webservices.data;
  * Defines DnsException class.
  */
 class DnsException extends Exception {
+
   /**
    * The Constant serialVersionUID.
    */

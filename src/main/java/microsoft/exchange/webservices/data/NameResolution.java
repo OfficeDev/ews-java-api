@@ -92,9 +92,8 @@ public final class NameResolution {
   }
 
   /**
-   * Gets the contact information of the suggested resolved name. This
-   * property is only available when ResolveName is called with
-   * returnContactDetails = true.
+   * Gets the contact information of the suggested resolved name. This property is only available when
+   * ResolveName is called with returnContactDetails = true.
    *
    * @return the contact
    */

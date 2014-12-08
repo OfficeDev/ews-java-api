@@ -66,15 +66,13 @@ enum HangingRequestDisconnectReason {
 
 
 /**
- * Represents a collection of arguments for the
- * HangingServiceRequestBase.HangingRequestDisconnectHandler
+ * Represents a collection of arguments for the HangingServiceRequestBase.HangingRequestDisconnectHandler
  * delegate method.
  */
 class HangingRequestDisconnectEventArgs {
 
   /**
-   * Initializes a new instance of the
-   * HangingRequestDisconnectEventArgs class.
+   * Initializes a new instance of the HangingRequestDisconnectEventArgs class.
    *
    * @param reason    The reason.
    * @param exception The exception.
@@ -148,8 +146,8 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
   private static final int BufferSize = 4096;
 
   /**
-   * Test switch to log all bytes that come across the wire.
-   * Helpful when parsing fails before certain bytes hit the trace logs.
+   * Test switch to log all bytes that come across the wire. Helpful when parsing fails before certain bytes
+   * hit the trace logs.
    */
   protected static boolean LogAllWireBytes = false;
 
@@ -261,7 +259,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
     HangingTraceStream tracingStream = null;
     ByteArrayOutputStream responseCopy = null;
 
-
     try {
       boolean traceEWSResponse = this.getService().isTraceEnabledFor(TraceFlags.EwsResponse);
       InputStream responseStream = this.response.getInputStream();
@@ -276,8 +273,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 
       //EwsServiceMultiResponseXmlReader ewsXmlReader = EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
 
-
-
       while (this.isConnected()) {
         Object responseObject = null;
         if (traceEWSResponse) {
@@ -286,8 +281,8 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
               EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
           responseObject = this.readResponse(ewsXmlReader);
           this.responseHandler.handleResponseObject(responseObject);
-				/*	}catch(Exception ex){
-						this.disconnect(HangingRequestDisconnectReason.Exception, ex);
+                                /*	}catch(Exception ex){
+                                                this.disconnect(HangingRequestDisconnectReason.Exception, ex);
 						return;
 						
 					}

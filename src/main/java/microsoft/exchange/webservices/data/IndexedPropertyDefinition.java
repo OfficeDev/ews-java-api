@@ -48,8 +48,7 @@ public final class IndexedPropertyDefinition extends
   }
 
   /**
-   * Determines whether two specified instances of IndexedPropertyDefinition
-   * are equal.
+   * Determines whether two specified instances of IndexedPropertyDefinition are equal.
    *
    * @param idxPropDef1 First indexed property definition.
    * @param idxPropDef2 Second indexed property definition.
@@ -110,13 +109,10 @@ public final class IndexedPropertyDefinition extends
 
 
   /**
-   * Determines whether a given indexed property definition is equal to this
-   * indexed property definition.
+   * Determines whether a given indexed property definition is equal to this indexed property definition.
    *
-   * @param obj The
-   *            object to check for equality.
-   * @return True if the properties definitions define the same indexed
-   * property.
+   * @param obj The object to check for equality.
+   * @return True if the properties definitions define the same indexed property.
    */
   @Override
   public boolean equals(Object obj) {

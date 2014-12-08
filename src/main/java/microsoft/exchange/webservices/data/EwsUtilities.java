@@ -201,7 +201,7 @@ class EwsUtilities {
 
     	
    /* 	InputStream inputStream = new FileInputStream ("D:\\EWS ManagedAPI sp2\\Rp\\xml\\useravailrequest.xml");
-    	
+
     	 byte buf[]=new byte[1024];
     	 int len;
     	 while((len=inputStream.read(buf))>0)
@@ -209,12 +209,10 @@ class EwsUtilities {
     	  target.write(buf,0, len);
     	 }
     	*/
-    	
+
     	/*PrintWriter pw = new PrintWriter(source,true);
-    	PrintWriter pw1 = new PrintWriter(target,true);
+            PrintWriter pw1 = new PrintWriter(target,true);
     	pw1.println(pw.toString());*/
-
-
 
     ByteArrayOutputStream memContentStream = source;
     if (memContentStream != null) {
@@ -525,8 +523,7 @@ class EwsUtilities {
   }
 
   /**
-   * Finds the first item of type TItem (not a descendant type) in the
-   * specified collection.
+   * Finds the first item of type TItem (not a descendant type) in the specified collection.
    *
    * @param <TItem> TItem is the type of the item to find.
    * @param cls     the cls
@@ -720,8 +717,7 @@ class EwsUtilities {
   }
 
   /**
-   * Converts an enum to a string, using the mapping dictionaries if
-   * appropriate.
+   * Converts an enum to a string, using the mapping dictionaries if appropriate.
    *
    * @param value The enum value to be serialized
    * @return String representation of enum to be used in the protocol
@@ -901,9 +897,8 @@ class EwsUtilities {
   }
 
   /**
-   * Takes a System.TimeSpan structure and converts it into an xs:duration
-   * string as defined by the W3 Consortiums Recommendation
-   * "XML Schema Part 2: Datatypes Second Edition",
+   * Takes a System.TimeSpan structure and converts it into an xs:duration string as defined by the W3
+   * Consortiums Recommendation "XML Schema Part 2: Datatypes Second Edition",
    * http://www.w3.org/TR/xmlschema-2/#duration
    *
    * @param timeOffset structure to convert
@@ -930,12 +925,10 @@ class EwsUtilities {
   }
 
   /**
-   * Takes an xs:duration string as defined by the W3 Consortiums
-   * Recommendation "XML Schema Part 2: Datatypes Second Edition",
-   * http://www.w3.org/TR/xmlschema-2/#duration, and converts it into a
-   * System.TimeSpan structure This method uses the following approximations:
-   * 1 year = 365 days 1 month = 30 days Additionally, it only allows for four
-   * decimal points of seconds precision.
+   * Takes an xs:duration string as defined by the W3 Consortiums Recommendation "XML Schema Part 2: Datatypes
+   * Second Edition", http://www.w3.org/TR/xmlschema-2/#duration, and converts it into a System.TimeSpan
+   * structure This method uses the following approximations: 1 year = 365 days 1 month = 30 days
+   * Additionally, it only allows for four decimal points of seconds precision.
    *
    * @param xsDuration xs:duration string to convert
    * @return System.TimeSpan structure
@@ -1034,12 +1027,10 @@ class EwsUtilities {
   }
 
   /**
-   * Takes an xs:duration string as defined by the W3 Consortiums
-   * Recommendation "XML Schema Part 2: Datatypes Second Edition",
-   * http://www.w3.org/TR/xmlschema-2/#duration, and converts it into a
-   * System.TimeSpan structure This method uses the following approximations:
-   * 1 year = 365 days 1 month = 30 days Additionally, it only allows for four
-   * decimal points of seconds precision.
+   * Takes an xs:duration string as defined by the W3 Consortiums Recommendation "XML Schema Part 2: Datatypes
+   * Second Edition", http://www.w3.org/TR/xmlschema-2/#duration, and converts it into a System.TimeSpan
+   * structure This method uses the following approximations: 1 year = 365 days 1 month = 30 days
+   * Additionally, it only allows for four decimal points of seconds precision.
    *
    * @param xsDuration xs:duration string to convert
    * @return System.TimeSpan structure
@@ -1116,7 +1107,6 @@ class EwsUtilities {
     //		if (m.find())
     //			seconds = Integer.parseInt(m.group().substring(0,
     //					m.group().indexOf(".")));
-
 
     int milliseconds = 0;
     m = Pattern.compile("(\\d+)S").matcher(xsDuration);
@@ -1366,8 +1356,7 @@ class EwsUtilities {
 
 
   /**
-   * Validates string parameter to be
-   * non-empty string (null value not allowed).
+   * Validates string parameter to be non-empty string (null value not allowed).
    *
    * @param param     The string parameter.
    * @param paramName Name of the parameter.
@@ -1414,8 +1403,7 @@ class EwsUtilities {
    *
    * @param serviceObject  The service object.
    * @param requestVersion The request version.
-   * @throws ServiceVersionException Raised if this service object type requires a later version
-   *                                 of Exchange.
+   * @throws ServiceVersionException Raised if this service object type requires a later version of Exchange.
    */
   protected static void validateServiceObjectVersion(
       ServiceObject serviceObject, ExchangeVersion requestVersion)
@@ -1623,14 +1611,14 @@ class EwsUtilities {
   }
 
   /**
-   * Determines whether every element in the collection
-   * matches the conditions defined by the specified predicate.
+   * Determines whether every element in the collection matches the conditions defined by the specified
+   * predicate.
    *
    * @param <T>        Entry type.
    * @param collection The collection.
    * @param predicate  Predicate that defines the conditions to check against the elements.
-   * @return True if every element in the collection matches
-   * the conditions defined by the specified predicate; otherwise, false.
+   * @return True if every element in the collection matches the conditions defined by the specified
+   * predicate; otherwise, false.
    * @throws ServiceLocalException
    */
   protected static <T> boolean trueForAll(Iterable<T> collection,

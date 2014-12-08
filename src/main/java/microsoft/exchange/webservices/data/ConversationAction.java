@@ -27,11 +27,8 @@ package microsoft.exchange.webservices.data;
 import java.util.Date;
 
 /**
- * ConversationAction class that represents
- * ConversationActionType in the request XML.
- * This class really is meant for representing
- * single ConversationAction that needs to
- * be taken on a conversation.
+ * ConversationAction class that represents ConversationActionType in the request XML. This class really is
+ * meant for representing single ConversationAction that needs to be taken on a conversation.
  */
 class ConversationAction {
 
@@ -161,9 +158,7 @@ class ConversationAction {
   }
 
   /**
-   * ConversationLastSyncTime is used in one
-   * time action to determine the items
-   * on which to take the action.
+   * ConversationLastSyncTime is used in one time action to determine the items on which to take the action.
    *
    * @return conversationLastSyncTime
    */
@@ -172,9 +167,7 @@ class ConversationAction {
   }
 
   /**
-   * ConversationLastSyncTime is used in
-   * one time action to determine the items
-   * on which to take the action.
+   * ConversationLastSyncTime is used in one time action to determine the items on which to take the action.
    */
   protected void setConversationLastSyncTime(Date value) {
     this.conversationLastSyncTime = value;

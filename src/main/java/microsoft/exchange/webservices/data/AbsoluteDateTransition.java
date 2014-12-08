@@ -30,8 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Represents a time zone period transition that occurs on a fixed (absolute)
- * date.
+ * Represents a time zone period transition that occurs on a fixed (absolute) date.
  */
 class AbsoluteDateTransition extends TimeZoneTransition {
 

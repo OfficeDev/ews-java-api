@@ -108,8 +108,7 @@ class DelegateManagementResponse extends ServiceResponse {
   }
 
   /**
-   * Gets a collection of responses for each of the delegate users concerned
-   * by the operation.
+   * Gets a collection of responses for each of the delegate users concerned by the operation.
    *
    * @return the delegate user responses
    */

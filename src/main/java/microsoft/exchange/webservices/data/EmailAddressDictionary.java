@@ -90,8 +90,8 @@ public final class EmailAddressDictionary extends
    *
    * @param key      the key
    * @param outparam the outparam
-   * @return true if the Dictionary contains an e-mail address associated with
-   * the specified key; otherwise, false.
+   * @return true if the Dictionary contains an e-mail address associated with the specified key; otherwise,
+   * false.
    */
   public boolean tryGetValue(EmailAddressKey key,
       OutParam<EmailAddress> outparam) {

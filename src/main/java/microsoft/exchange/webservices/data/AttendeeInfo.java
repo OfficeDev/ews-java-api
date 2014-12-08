@@ -25,8 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents information about an attendee for which to request availability
- * information.
+ * Represents information about an attendee for which to request availability information.
  */
 public final class AttendeeInfo implements ISelfValidate {
 
@@ -77,8 +76,7 @@ public final class AttendeeInfo implements ISelfValidate {
   }
 
   /**
-   * Defines an implicit conversion between a string representing an SMTP
-   * address and AttendeeInfo.
+   * Defines an implicit conversion between a string representing an SMTP address and AttendeeInfo.
    *
    * @param smtpAddress the smtp address
    * @return An AttendeeInfo initialized with the specified SMTP address.
@@ -148,8 +146,7 @@ public final class AttendeeInfo implements ISelfValidate {
   }
 
   /**
-   * Gets a value indicating whether times when this attendee is not
-   * available should be returned.
+   * Gets a value indicating whether times when this attendee is not available should be returned.
    *
    * @return true, if is exclude conflicts
    */

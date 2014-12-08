@@ -31,6 +31,7 @@ import java.util.EnumSet;
  */
 final class TaskDelegationStatePropertyDefinition extends
     GenericPropertyDefinition<TaskDelegationState> {
+
   /**
    * The No match.
    */
@@ -52,8 +53,7 @@ final class TaskDelegationStatePropertyDefinition extends
   private static final String Accepted = "Accepted";
 
   /**
-   * Initializes a new instance of the "TaskDelegationStatePropertyDefinition"
-   * class.
+   * Initializes a new instance of the "TaskDelegationStatePropertyDefinition" class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.

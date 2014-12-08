@@ -161,8 +161,7 @@ class DeleteUserConfigurationRequest extends
   }
 
   /**
-   * Gets  the parent folThe parent folder Id. <value>The parent folder
-   * Id.</value>
+   * Gets  the parent folThe parent folder Id. <value>The parent folder Id.</value>
    *
    * @return the parent folder id
    */

@@ -29,14 +29,14 @@ package microsoft.exchange.webservices.data;
  */
 abstract class DnsRecord {
         /*
-	 * Name field of this DNS Record
+         * Name field of this DNS Record
 	 */
   /**
    * The name.
    */
   private String name;
-	/*
-	 * The suggested time for this dnsRecord to be valid
+        /*
+         * The suggested time for this dnsRecord to be valid
 	 */
   /**
    * The time to live.

@@ -31,6 +31,7 @@ package microsoft.exchange.webservices.data;
  */
 
 interface IPropertyBagChangedDelegate<TKey> {
+
   /**
    * Property bag changed.
    *

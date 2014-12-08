@@ -67,8 +67,7 @@ public final class AttendeeCollection extends
    *
    * @param name        the name
    * @param smtpAddress the smtp address
-   * @return An Attendee instance initialized with the provided name and SMTP
-   * address.
+   * @return An Attendee instance initialized with the provided name and SMTP address.
    */
   public Attendee add(String name, String smtpAddress) {
     Attendee result = new Attendee(name, smtpAddress);
@@ -103,8 +102,7 @@ public final class AttendeeCollection extends
    * Removes an attendee from the collection.
    *
    * @param attendee the attendee
-   * @return True if the attendee was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the attendee was successfully removed from the collection, false otherwise.
    * @throws Exception the exception
    */
   public boolean remove(Attendee attendee) throws Exception {
@@ -129,12 +127,10 @@ public final class AttendeeCollection extends
   }
 
   /**
-   * Retrieves the XML element name corresponding to the provided Attendee
-   * object.
+   * Retrieves the XML element name corresponding to the provided Attendee object.
    *
    * @param attendee the attendee
-   * @return The XML element name corresponding to the provided Attendee
-   * object.
+   * @return The XML element name corresponding to the provided Attendee object.
    */
   @Override
   protected String getCollectionItemXmlElementName(Attendee attendee) {

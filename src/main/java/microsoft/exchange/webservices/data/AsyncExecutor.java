@@ -27,6 +27,7 @@ package microsoft.exchange.webservices.data;
 import java.util.concurrent.*;
 
 class AsyncExecutor extends ThreadPoolExecutor implements ExecutorService {
+
   final static ArrayBlockingQueue<Runnable> queue = new ArrayBlockingQueue<Runnable>(1);
 
   AsyncExecutor() {

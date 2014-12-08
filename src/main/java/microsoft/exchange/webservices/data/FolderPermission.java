@@ -200,8 +200,7 @@ public final class FolderPermission extends ComplexProperty implements
   //End Region
 
   /**
-   * Variants of pre-defined permission levels that Outlook also displays with
-   * the same levels.
+   * Variants of pre-defined permission levels that Outlook also displays with the same levels.
    */
   private static LazyMember<List<FolderPermission>> levelVariants =
       new LazyMember<List<FolderPermission>>(
@@ -299,13 +298,11 @@ public final class FolderPermission extends ComplexProperty implements
   private FolderPermissionLevel permissionLevel = FolderPermissionLevel.None;
 
   /**
-   * Determines whether the specified folder permission is the same as this
-   * one. The comparison does not take UserId and PermissionLevel into
-   * consideration.
+   * Determines whether the specified folder permission is the same as this one. The comparison does not take
+   * UserId and PermissionLevel into consideration.
    *
    * @param permission the permission
-   * @return True is the specified folder permission is equal to this one,
-   * false otherwise.
+   * @return True is the specified folder permission is equal to this one, false otherwise.
    */
   private boolean isEqualTo(FolderPermission permission) {
 
@@ -325,13 +322,13 @@ public final class FolderPermission extends ComplexProperty implements
    * @return Clone of this instance.
    */
         /*
-	 * private FolderPermission Clone() throws CloneNotSupportedException {
+         * private FolderPermission Clone() throws CloneNotSupportedException {
 	 * return (FolderPermission)this.clone(); }
 	 */
 
   /**
-   * Determines the permission level of this folder permission based on its
-   * individual settings, and sets the PermissionLevel property accordingly.
+   * Determines the permission level of this folder permission based on its individual settings, and sets the
+   * PermissionLevel property accordingly.
    */
   private void AdjustPermissionLevel() {
     for (Entry<FolderPermissionLevel, FolderPermission> keyValuePair : defaultPermissions
@@ -345,8 +342,8 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Copies the values of the individual permissions of the specified folder
-   * permission to this folder permissions.
+   * Copies the values of the individual permissions of the specified folder permission to this folder
+   * permissions.
    *
    * @param permission the permission
    */
@@ -520,8 +517,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets  a value indicating whether the user can create
-   * sub-folders.
+   * Gets  a value indicating whether the user can create sub-folders.
    *
    * @return the can create sub folders
    */
@@ -565,8 +561,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets a value indicating whether the folder is visible to the
-   * user.
+   * Gets a value indicating whether the folder is visible to the user.
    *
    * @return the checks if is folder visible
    */
@@ -588,8 +583,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets  a value indicating whether the user is a contact for the
-   * folder.
+   * Gets  a value indicating whether the user is a contact for the folder.
    *
    * @return the checks if is folder contact
    */
@@ -611,8 +605,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets  a value indicating if/how the user can edit existing
-   * items.
+   * Gets  a value indicating if/how the user can edit existing items.
    *
    * @return the edits the items
    */
@@ -634,8 +627,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets  a value indicating if/how the user can delete existing
-   * items.
+   * Gets  a value indicating if/how the user can delete existing items.
    *
    * @return the delete items
    */
@@ -711,8 +703,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets the permission level that Outlook would display for this folder
-   * permission.
+   * Gets the permission level that Outlook would display for this folder permission.
    *
    * @return the display permission level
    */

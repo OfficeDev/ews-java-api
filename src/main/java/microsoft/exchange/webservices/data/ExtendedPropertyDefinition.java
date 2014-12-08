@@ -339,8 +339,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 
 
   /**
-   * Determines whether two specified instances of ExtendedPropertyDefinition
-   * are equal.
+   * Determines whether two specified instances of ExtendedPropertyDefinition are equal.
    *
    * @param obj the obj
    * @return True if extended property definitions are equal.

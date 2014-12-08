@@ -30,6 +30,7 @@ import javax.xml.stream.XMLStreamException;
  * Represents the minimum and maximum size of a message.
  */
 public final class RulePredicateSizeRange extends ComplexProperty {
+
   /**
    * Minimum Size.
    */
@@ -48,8 +49,7 @@ public final class RulePredicateSizeRange extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the minimum size, in kilobytes.
-   * If MinimumSize is set to null, no minimum size applies.
+   * Gets or sets the minimum size, in kilobytes. If MinimumSize is set to null, no minimum size applies.
    */
   public Integer getMinimumSize() {
 
@@ -64,8 +64,7 @@ public final class RulePredicateSizeRange extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the maximum size, in kilobytes.
-   * If MaximumSize is set to null, no maximum size applies.
+   * Gets or sets the maximum size, in kilobytes. If MaximumSize is set to null, no maximum size applies.
    */
   public Integer getMaximumSize() {
     return this.maximumSize;

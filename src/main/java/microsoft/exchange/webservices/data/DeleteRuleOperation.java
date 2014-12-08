@@ -30,22 +30,21 @@ import javax.xml.stream.XMLStreamException;
  * Represents an operation to delete an existing rule.
  */
 public final class DeleteRuleOperation extends RuleOperation {
+
   /**
    * Id of the inbox rule to delete.
    */
   private String ruleId;
 
   /**
-   * Initializes a new instance of the
-   * <see cref="DeleteRuleOperation"/> class.
+   * Initializes a new instance of the <see cref="DeleteRuleOperation"/> class.
    */
   public DeleteRuleOperation() {
     super();
   }
 
   /**
-   * Initializes a new instance of the
-   * <see cref="DeleteRuleOperation"/> class.
+   * Initializes a new instance of the <see cref="DeleteRuleOperation"/> class.
    *
    * @param ruleId The Id of the inbox rule to delete.
    */

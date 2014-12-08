@@ -49,18 +49,15 @@ public final class AcceptMeetingInvitationMessage extends
   }
 
   /**
-   * This methods lets subclasses of ServiceObject override the default
-   * mechanism by which the XML element name associated with their type is
-   * retrieved.
+   * This methods lets subclasses of ServiceObject override the default mechanism by which the XML element
+   * name associated with their type is retrieved.
    *
-   * @return The XML element name associated with this type. If this method
-   * returns null or empty, the XML element name associated with this
-   * type is determined by the EwsObjectDefinition attribute that
-   * decorates the type, if present.
+   * @return The XML element name associated with this type. If this method returns null or empty, the XML
+   * element name associated with this type is determined by the EwsObjectDefinition attribute that decorates
+   * the type, if present.
    * <p/>
-   * Item and folder classes that can be returned by EWS MUST rely on
-   * the EwsObjectDefinition attribute for XML element name
-   * determination.
+   * Item and folder classes that can be returned by EWS MUST rely on the EwsObjectDefinition attribute for
+   * XML element name determination.
    */
   @Override
   protected String getXmlElementName() {
@@ -76,8 +73,7 @@ public final class AcceptMeetingInvitationMessage extends
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -87,8 +83,7 @@ public final class AcceptMeetingInvitationMessage extends
   /**
    * Gets the tentative.
    *
-   * @return Gets a value indicating whether the associated meeting is
-   * tentatively accepted.
+   * @return Gets a value indicating whether the associated meeting is tentatively accepted.
    */
   public boolean getTentative() {
     return this.tentative;

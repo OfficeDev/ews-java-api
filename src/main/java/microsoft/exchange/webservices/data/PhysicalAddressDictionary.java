@@ -72,8 +72,8 @@ public final class PhysicalAddressDictionary extends
    *
    * @param key      the key
    * @param outparam the outparam
-   * @return true if the Dictionary contains a physical address associated
-   * with the specified key; otherwise, false.
+   * @return true if the Dictionary contains a physical address associated with the specified key; otherwise,
+   * false.
    */
   public boolean tryGetValue(PhysicalAddressKey key,
       OutParam<PhysicalAddressEntry> outparam) {

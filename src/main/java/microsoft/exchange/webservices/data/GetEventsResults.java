@@ -30,6 +30,7 @@ import java.util.*;
  * Represents a collection of notification events.
  */
 public final class GetEventsResults {
+
   /**
    * Watermark in event.
    */
@@ -57,8 +58,8 @@ public final class GetEventsResults {
       new ArrayList<NotificationEvent>();
 
   /**
-   * Map XML element name to notification event type. If you add a new
-   * notification event type, you'll need to add a new entry to the Map here.
+   * Map XML element name to notification event type. If you add a new notification event type, you'll need to
+   * add a new entry to the Map here.
    */
   private static LazyMember<Map<String, EventType>>
       xmlElementNameToEventTypeMap =
@@ -200,8 +201,7 @@ public final class GetEventsResults {
   }
 
   /**
-   * Gets a value indicating whether more events are available on the Exchange
-   * server.
+   * Gets a value indicating whether more events are available on the Exchange server.
    *
    * @return true, if is more events available
    */

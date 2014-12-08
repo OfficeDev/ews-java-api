@@ -50,8 +50,7 @@ public final class RulePredicateDateRange extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the range start date and time.
-   * If Start is set to null, no start date applies.
+   * Gets or sets the range start date and time. If Start is set to null, no start date applies.
    */
   public Date getStart() {
     return this.start;
@@ -65,8 +64,7 @@ public final class RulePredicateDateRange extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the range end date and time.
-   * If End is set to null, no end date applies.
+   * Gets or sets the range end date and time. If End is set to null, no end date applies.
    */
   public Date getEnd() {
     return this.end;

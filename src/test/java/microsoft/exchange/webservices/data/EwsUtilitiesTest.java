@@ -31,6 +31,7 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class EwsUtilitiesTest {
+
   @Test
   public void testGetBuildVersion() {
     Assert.assertEquals("Build version must be 0s", "0.0.0.0", EwsUtilities.getBuildVersion());

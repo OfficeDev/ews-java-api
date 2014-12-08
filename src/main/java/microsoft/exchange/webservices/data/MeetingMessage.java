@@ -27,8 +27,8 @@ package microsoft.exchange.webservices.data;
 import java.util.Date;
 
 /**
- * Represents a meeting-related message. Properties available on meeting
- * messages are defined in the MeetingMessageSchema class.
+ * Represents a meeting-related message. Properties available on meeting messages are defined in the
+ * MeetingMessageSchema class.
  */
 
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.MeetingMessage)
@@ -56,14 +56,13 @@ public class MeetingMessage extends EmailMessage {
   }
 
   /**
-   * Binds to an existing meeting message and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing meeting message and loads the specified set of properties. Calling this method
+   * results in a call to EWS.
    *
    * @param service     The service to use to bind to the meeting message.
    * @param id          The Id of the meeting message to bind to.
    * @param propertySet The set of properties to load.
-   * @return A MeetingMessage instance representing the meeting message
-   * corresponding to the specified Id.
+   * @return A MeetingMessage instance representing the meeting message corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static MeetingMessage bind(ExchangeService service, ItemId id,
@@ -72,13 +71,12 @@ public class MeetingMessage extends EmailMessage {
   }
 
   /**
-   * Binds to an existing meeting message and loads its first class
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing meeting message and loads its first class properties. Calling this method results in
+   * a call to EWS.
    *
    * @param service The service to use to bind to the meeting message.
    * @param id      The Id of the meeting message to bind to.
-   * @return A MeetingMessage instance representing the meeting message
-   * corresponding to the specified Id.
+   * @return A MeetingMessage instance representing the meeting message corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static MeetingMessage bind(ExchangeService service, ItemId id)
@@ -100,8 +98,7 @@ public class MeetingMessage extends EmailMessage {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {

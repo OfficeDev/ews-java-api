@@ -252,9 +252,8 @@ final class ResolveNamesRequest extends
   }
 
   /**
-   * Gets a value indicating whether to return full contact data or
-   * not. <value> <c>true</c> if should return full contact data; otherwise,
-   * <c>false</c>. </value>
+   * Gets a value indicating whether to return full contact data or not. <value> <c>true</c> if should return
+   * full contact data; otherwise, <c>false</c>. </value>
    *
    * @return the return full contact data
    */
@@ -304,7 +303,6 @@ final class ResolveNamesRequest extends
    * The PropertySet
    */
   public void setContactDataPropertySet(PropertySet propertySet) {
-
 
     this.contactDataPropertySet = propertySet;
   }

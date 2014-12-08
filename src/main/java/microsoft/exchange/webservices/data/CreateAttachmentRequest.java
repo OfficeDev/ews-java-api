@@ -128,8 +128,7 @@ final class CreateAttachmentRequest extends
   }
 
   /**
-   * Gets a value indicating whether the TimeZoneContext SOAP header should be
-   * emitted.
+   * Gets a value indicating whether the TimeZoneContext SOAP header should be emitted.
    */
   protected boolean emitTimeZoneHeader() throws ServiceLocalException, Exception {
     {

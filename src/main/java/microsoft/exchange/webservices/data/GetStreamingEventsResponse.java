@@ -54,8 +54,7 @@ final class GetStreamingEventsResponse extends ServiceResponse {
   /**
    * Initializes a new instance of the GetStreamingEventsResponse class.
    *
-   * @param request The request
-   *                Request to disconnect when we get a close message.
+   * @param request The request Request to disconnect when we get a close message.
    */
   protected GetStreamingEventsResponse(HangingServiceRequestBase request) {
     super();

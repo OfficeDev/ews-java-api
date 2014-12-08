@@ -144,8 +144,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
   /**
    * Gets the request version.
    *
-   * @return Earliest Exchange version
-   * in which this request is supported.
+   * @return Earliest Exchange version in which this request is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -162,22 +161,18 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
   }
 
   /**
-   * Gets a value indicating whether empty
-   * folder should also delete sub folders.
+   * Gets a value indicating whether empty folder should also delete sub folders.
    *
-   * @value true if empty folder should also
-   * delete sub folders, otherwise false.
+   * @value true if empty folder should also delete sub folders, otherwise false.
    */
   protected boolean getDeleteSubFolders() {
     return deleteSubFolders;
   }
 
   /**
-   * Sets a value indicating whether empty
-   * folder should also delete sub folders.
+   * Sets a value indicating whether empty folder should also delete sub folders.
    *
-   * @value true if empty folder should also
-   * delete sub folders, otherwise false.
+   * @value true if empty folder should also delete sub folders, otherwise false.
    */
   protected void setDeleteSubFolders(boolean value) {
     this.deleteSubFolders = value;

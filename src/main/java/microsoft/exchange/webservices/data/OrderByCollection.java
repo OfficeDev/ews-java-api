@@ -28,8 +28,7 @@ import javax.xml.stream.XMLStreamException;
 import java.util.*;
 
 /**
- * Represents an ordered collection of property definitions qualified with a
- * sort direction.
+ * Represents an ordered collection of property definitions qualified with a sort direction.
  */
 public final class OrderByCollection implements
     Iterable<Map<PropertyDefinitionBase, SortDirection>> {
@@ -49,8 +48,7 @@ public final class OrderByCollection implements
   }
 
   /**
-   * Adds the specified property definition / sort direction pair to the
-   * collection.
+   * Adds the specified property definition / sort direction pair to the collection.
    *
    * @param propertyDefinition the property definition
    * @param sortDirection      the sort direction
@@ -78,12 +76,10 @@ public final class OrderByCollection implements
   }
 
   /**
-   * Determines whether the collection contains the specified property
-   * definition.
+   * Determines whether the collection contains the specified property definition.
    *
    * @param propertyDefinition the property definition
-   * @return True if the collection contains the specified property
-   * definition; otherwise, false.
+   * @return True if the collection contains the specified property definition; otherwise, false.
    */
   protected boolean contains(PropertyDefinitionBase propertyDefinition) {
     for (Map propDefSortOrderPair : propDefSortOrderPairList) {
@@ -105,8 +101,7 @@ public final class OrderByCollection implements
    * Removes the specified property definition from the collection.
    *
    * @param propertyDefinition the property definition
-   * @return True if the property definition is successfully removed;
-   * otherwise, false
+   * @return True if the property definition is successfully removed; otherwise, false
    */
   public boolean remove(PropertyDefinitionBase propertyDefinition) {
     List<Map<PropertyDefinitionBase, SortDirection>> removeList = new

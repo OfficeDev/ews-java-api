@@ -75,8 +75,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
   public static final TimeSpan ZERO = new TimeSpan(0L);
 
   /**
-   * Creates a new instance of TimeSpan based on the number of milliseconds
-   * entered.
+   * Creates a new instance of TimeSpan based on the number of milliseconds entered.
    *
    * @param time the number of milliseconds for this TimeSpan.
    */
@@ -104,8 +103,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
    *
    * @param date1 Date to use as the base value.
    * @param date2 Date to subtract from the base value.
-   * @return a TimeSpan object representing the difference bewteen the two
-   * Date objects.
+   * @return a TimeSpan object representing the difference bewteen the two Date objects.
    */
   public static TimeSpan subtract(java.util.Date date1,
       java.util.Date date2) {
@@ -113,14 +111,13 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
   }
 
   /**
-   * Compares this object with the specified object for order. Returns a
-   * negative integer, zero, or a positive integer as this object is less
-   * than, equal to, or greater than the specified object. Comparison is based
+   * Compares this object with the specified object for order. Returns a negative integer, zero, or a positive
+   * integer as this object is less than, equal to, or greater than the specified object. Comparison is based
    * on the number of milliseconds in this TimeSpan.
    *
    * @param o the Object to be compared.
-   * @return a negative integer, zero, or a positive integer as this object is
-   * less than, equal to, or greater than the specified object.
+   * @return a negative integer, zero, or a positive integer as this object is less than, equal to, or greater
+   * than the specified object.
    */
   public int compareTo(Object o) {
     TimeSpan compare = (TimeSpan) o;
@@ -134,12 +131,11 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
   }
 
   /**
-   * Indicates whether some other object is "equal to" this one. Comparison is
-   * based on the number of milliseconds in this TimeSpan.
+   * Indicates whether some other object is "equal to" this one. Comparison is based on the number of
+   * milliseconds in this TimeSpan.
    *
    * @param obj the reference object with which to compare.
-   * @return if the obj argument is a TimeSpan object with the exact same
-   * number of milliseconds. otherwise.
+   * @return if the obj argument is a TimeSpan object with the exact same number of milliseconds. otherwise.
    */
   public boolean equals(Object obj) {
     if (obj instanceof TimeSpan) {
@@ -152,10 +148,9 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
   }
 
   /**
-   * Returns a hash code value for the object. This method is supported for
-   * the benefit of hashtables such as those provided by
-   * <code>java.util.Hashtable</code>. The method uses the same algorithm as
-   * found in the Long class.
+   * Returns a hash code value for the object. This method is supported for the benefit of hashtables such as
+   * those provided by <code>java.util.Hashtable</code>. The method uses the same algorithm as found in the
+   * Long class.
    *
    * @return a hash code value for this object.
    * @see Object#equals(Object)
@@ -166,10 +161,9 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
   }
 
   /**
-   * Returns a string representation of the object in the format.
-   * "[-]d.hh:mm:ss.ff" where "-" is an optional sign for negative TimeSpan
-   * values, the "d" component is days, "hh" is hours, "mm" is minutes, "ss"
-   * is seconds, and "ff" is milliseconds
+   * Returns a string representation of the object in the format. "[-]d.hh:mm:ss.ff" where "-" is an optional
+   * sign for negative TimeSpan values, the "d" component is days, "hh" is hours, "mm" is minutes, "ss" is
+   * seconds, and "ff" is milliseconds
    *
    * @return a string containing the number of milliseconds.
    */
@@ -223,8 +217,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
   /**
    * Indicates whether the value of the TimeSpan is positive.
    *
-   * @return if the value of the TimeSpan is greater than
-   * zero.  otherwise.
+   * @return if the value of the TimeSpan is greater than zero.  otherwise.
    */
   public boolean isPositive() {
     return this.compareTo(TimeSpan.ZERO) > 0 ? true : false;
@@ -233,8 +226,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
   /**
    * Indicates whether the value of the TimeSpan is negative.
    *
-   * @return if the value of the TimeSpan is less than zero.
-   * otherwise.
+   * @return if the value of the TimeSpan is less than zero. otherwise.
    */
   public boolean isNegative() {
     return this.compareTo(TimeSpan.ZERO) < 0 ? true : false;
@@ -243,8 +235,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
   /**
    * Indicates whether the value of the TimeSpan is zero.
    *
-   * @return if the value of the TimeSpan is equal to zero.
-   * otherwise.
+   * @return if the value of the TimeSpan is equal to zero. otherwise.
    */
   public boolean isZero() {
     return this.equals(TimeSpan.ZERO);
@@ -365,9 +356,8 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
    *
    * @param first  first TimeSpan to use in the compare.
    * @param second second TimeSpan to use in the compare.
-   * @return a negative integer, zero, or a positive integer as the first
-   * TimeSpan is less than, equal to, or greater than the second
-   * TimeSpan.
+   * @return a negative integer, zero, or a positive integer as the first TimeSpan is less than, equal to, or
+   * greater than the second TimeSpan.
    */
   public static int compare(TimeSpan first, TimeSpan second) {
     if (first.time == second.time) {

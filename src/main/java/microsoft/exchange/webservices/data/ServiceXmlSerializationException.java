@@ -25,8 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an error that occurs when the XML for a request cannot be
- * serialized.
+ * Represents an error that occurs when the XML for a request cannot be serialized.
  */
 public class ServiceXmlSerializationException extends ServiceLocalException {
 

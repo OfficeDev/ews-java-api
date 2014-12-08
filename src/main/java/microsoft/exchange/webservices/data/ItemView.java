@@ -149,8 +149,7 @@ public final class ItemView extends PagedView {
   }
 
   /**
-   * Gets  the search traversal mode. Defaults to
-   * ItemTraversal.Shallow.
+   * Gets  the search traversal mode. Defaults to ItemTraversal.Shallow.
    *
    * @return the traversal
    */

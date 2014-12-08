@@ -32,21 +32,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
- * Represents an xml reader used by the ExchangeService to parse multi-response streams,
- * such as GetStreamingEvents.
+ * Represents an xml reader used by the ExchangeService to parse multi-response streams, such as
+ * GetStreamingEvents.
  * <p/>
- * Necessary because the basic EwsServiceXmlReader does not
- * use normalization (see E14:60369), and in order to turn normalization off, it is
- * necessary to use an XmlTextReader, which does not allow the ConformanceLevel.Auto that
- * a multi-response stream requires.
- * If ever there comes a time we need to deal with multi-response streams with user-generated
- * content, we will need to tackle that parsing problem separately.
+ * Necessary because the basic EwsServiceXmlReader does not use normalization (see E14:60369), and in order to
+ * turn normalization off, it is necessary to use an XmlTextReader, which does not allow the
+ * ConformanceLevel.Auto that a multi-response stream requires. If ever there comes a time we need to deal
+ * with multi-response streams with user-generated content, we will need to tackle that parsing problem
+ * separately.
  */
 class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
 
   /**
-   * Initializes a new instance of the
-   * EwsServiceMultiResponseXmlReader class.
+   * Initializes a new instance of the EwsServiceMultiResponseXmlReader class.
    *
    * @param stream  The stream.
    * @param service The service.
@@ -62,8 +60,7 @@ class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
    *
    * @param stream  The stream.
    * @param service The service.
-   * @return an instance of EwsServiceMultiResponseXmlReader
-   * wrapped around the input stream.
+   * @return an instance of EwsServiceMultiResponseXmlReader wrapped around the input stream.
    * @throws Exception
    */
   protected static EwsServiceMultiResponseXmlReader create(InputStream stream,
@@ -97,8 +94,7 @@ class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
   /**
    * Initializes the XML reader.
    *
-   * @param stream The stream.
-   *               An XML reader to use.
+   * @param stream The stream. An XML reader to use.
    * @throws Exception
    */
   @Override

@@ -79,9 +79,8 @@ class SoapFaultDetails {
   private int positionWithinLine;
 
   /**
-   * Dictionary of key/value pairs from the MessageXml node in the fault.
-   * Usually empty but there are a few cases where SOAP faults may include
-   * MessageXml details (e.g. CASOverBudgetException includes BackoffTime
+   * Dictionary of key/value pairs from the MessageXml node in the fault. Usually empty but there are a few
+   * cases where SOAP faults may include MessageXml details (e.g. CASOverBudgetException includes BackoffTime
    * value).
    */
   private Map<String, String> errorDetails = new HashMap<String, String>();

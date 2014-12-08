@@ -25,6 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 public abstract class Strings {
+
   public static String AdditionalPropertyIsNull = "The additional property at index %d is null.";
   public static String AtLeastOneAttachmentCouldNotBeDeleted = "At least one attachment couldn't be deleted.";
   public static String AttachmentCreationFailed = "At least one attachment couldn't be created.";

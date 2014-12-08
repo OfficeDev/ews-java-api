@@ -25,8 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an exception that is thrown when the Autodiscover service returns
- * an error.
+ * Represents an exception that is thrown when the Autodiscover service returns an error.
  */
 public class AutodiscoverRemoteException extends ServiceRemoteException {
 

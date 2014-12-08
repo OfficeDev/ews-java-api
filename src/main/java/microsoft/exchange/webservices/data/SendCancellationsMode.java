@@ -25,8 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Defines how meeting cancellations should be sent to attendees when an
- * appointment is deleted.
+ * Defines how meeting cancellations should be sent to attendees when an appointment is deleted.
  */
 public enum SendCancellationsMode {
 

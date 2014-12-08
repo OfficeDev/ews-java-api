@@ -32,6 +32,7 @@ import java.util.List;
  * Represents the response to a Conversation search operation.
  */
 final class FindConversationResponse extends ServiceResponse {
+
   List<Conversation> conversations = new ArrayList<Conversation>();
 
   /**

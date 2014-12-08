@@ -54,8 +54,7 @@ final class GroupMemberPropertyDefinition extends
   }
 
   /**
-   * Initializes a new instance of the GroupMemberPropertyDefinition class
-   * without key.
+   * Initializes a new instance of the GroupMemberPropertyDefinition class without key.
    */
   protected GroupMemberPropertyDefinition() {
     super(FIELDURI);

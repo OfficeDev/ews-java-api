@@ -29,14 +29,14 @@ package microsoft.exchange.webservices.data;
  */
 public enum TraceFlags {
         /*
-	 * No tracing.
+         * No tracing.
 	 */
   /**
    * The None.
    */
   None,
-	/*
-	 * Trace EWS request messages.
+        /*
+         * Trace EWS request messages.
 	 */
   /**
    * The Ews request.

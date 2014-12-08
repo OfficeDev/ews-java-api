@@ -190,8 +190,8 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Loads the content of the file attachment into the specified stream.
-   * Calling this method results in a call to EWS.
+   * Loads the content of the file attachment into the specified stream. Calling this method results in a call
+   * to EWS.
    *
    * @param stream the stream
    * @throws Exception the exception
@@ -207,8 +207,8 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Loads the content of the file attachment into the specified file.
-   * Calling this method results in a call to EWS.
+   * Loads the content of the file attachment into the specified file. Calling this method results in a call
+   * to EWS.
    *
    * @param fileName the file name
    * @throws Exception the exception
@@ -252,8 +252,7 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Gets  the content stream.Gets the name of the file the attachment
-   * is linked to.
+   * Gets  the content stream.Gets the name of the file the attachment is linked to.
    *
    * @return The content stream
    */
@@ -275,8 +274,7 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Gets the content of the attachment into memory. Content is set only
-   * when Load() is called.
+   * Gets the content of the attachment into memory. Content is set only when Load() is called.
    *
    * @return the content
    */
@@ -298,8 +296,7 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Gets  a value indicating whether this attachment is a contact
-   * photo.
+   * Gets  a value indicating whether this attachment is a contact photo.
    *
    * @return true, if is contact photo
    * @throws ServiceVersionException the service version exception

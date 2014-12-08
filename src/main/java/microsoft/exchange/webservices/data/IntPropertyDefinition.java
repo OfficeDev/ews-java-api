@@ -63,8 +63,7 @@ class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
    * @param uri            The URI.
    * @param flags          The flags.
    * @param version        The version.
-   * @param isNullable     Indicates that this property definition is for a nullable
-   *                       property.
+   * @param isNullable     Indicates that this property definition is for a nullable property.
    */
   protected IntPropertyDefinition(String xmlElementName, String uri,
       EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,

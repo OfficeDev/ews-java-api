@@ -150,8 +150,7 @@ class GetServerTimeZonesRequest extends
   }
 
   /**
-   * Gets  the ids of the time zones that should be returned by the
-   * server.
+   * Gets  the ids of the time zones that should be returned by the server.
    *
    * @return the ids
    */

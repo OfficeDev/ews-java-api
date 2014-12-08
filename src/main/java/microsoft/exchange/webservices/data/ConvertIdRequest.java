@@ -153,8 +153,7 @@ final class ConvertIdRequest extends
   }
 
   /**
-   * Gets the destination format. <value>The destination
-   * format.</value>
+   * Gets the destination format. <value>The destination format.</value>
    *
    * @return the destination format
    */

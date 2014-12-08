@@ -28,6 +28,7 @@ package microsoft.exchange.webservices.data;
  * Represents a collection of item Ids.
  */
 public final class ItemIdCollection extends ComplexPropertyCollection<ItemId> {
+
   /**
    * Initializes a new instance of the <see cref="ItemIdCollection"/> class.
    */

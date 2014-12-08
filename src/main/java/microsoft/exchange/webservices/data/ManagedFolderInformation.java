@@ -145,8 +145,7 @@ public final class ManagedFolderInformation extends ComplexProperty {
   }
 
   /**
-   * Gets a value indicating whether the user can delete objects in the
-   * folder.
+   * Gets a value indicating whether the user can delete objects in the folder.
    *
    * @return the can delete
    */
@@ -155,8 +154,7 @@ public final class ManagedFolderInformation extends ComplexProperty {
   }
 
   /**
-   * Gets a value indicating whether the user can rename or move objects in
-   * the folder.
+   * Gets a value indicating whether the user can rename or move objects in the folder.
    *
    * @return the can rename or move
    */
@@ -165,8 +163,7 @@ public final class ManagedFolderInformation extends ComplexProperty {
   }
 
   /**
-   * Gets a value indicating whether the client application must display the
-   * Comment property to the user.
+   * Gets a value indicating whether the client application must display the Comment property to the user.
    *
    * @return the must display comment
    */
@@ -184,8 +181,7 @@ public final class ManagedFolderInformation extends ComplexProperty {
   }
 
   /**
-   * Gets a value indicating whether the folder is the root of the managed
-   * folder hierarchy.
+   * Gets a value indicating whether the folder is the root of the managed folder hierarchy.
    *
    * @return the checks if is managed folders root
    */

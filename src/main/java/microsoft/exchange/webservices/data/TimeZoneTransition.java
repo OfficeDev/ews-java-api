@@ -57,8 +57,7 @@ class TimeZoneTransition extends ComplexProperty {
   private TimeZoneTransitionGroup targetGroup;
 
   /**
-   * Creates a time zone period transition of the appropriate type given an
-   * XML element name.
+   * Creates a time zone period transition of the appropriate type given an XML element name.
    *
    * @param timeZoneDefinition the time zone definition
    * @param xmlElementName     the xml element name
@@ -100,8 +99,7 @@ class TimeZoneTransition extends ComplexProperty {
   /**
    * Tries to read element from XML.The reader.
    *
-   * @param reader The
-   *               reader.
+   * @param reader The reader.
    * @return True if element was read.
    * @throws Exception the exception
    */

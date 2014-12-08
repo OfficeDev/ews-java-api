@@ -99,8 +99,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
   }
 
   /**
-   * Gets  the routing type of the address used to refer to the user
-   * mailbox.
+   * Gets  the routing type of the address used to refer to the user mailbox.
    *
    * @return the routing type
    */
@@ -118,8 +117,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
   }
 
   /**
-   * Defines an implicit conversion between a string representing an SMTP
-   * address and Mailbox.
+   * Defines an implicit conversion between a string representing an SMTP address and Mailbox.
    *
    * @param smtpAddress the smtp address
    * @return A Mailbox initialized with the specified SMTP address.
@@ -196,8 +194,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
    * Determines whether the specified Object is equal to the current Object.
    *
    * @param obj the obj
-   * @return true if the specified Object is equal to the current Object
-   * otherwise, false.
+   * @return true if the specified Object is equal to the current Object otherwise, false.
    */
   @Override
   public boolean equals(Object obj) {

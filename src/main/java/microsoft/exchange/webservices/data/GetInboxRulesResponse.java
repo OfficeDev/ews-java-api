@@ -28,14 +28,14 @@ package microsoft.exchange.webservices.data;
  * Represents the response to a GetInboxRules operation.
  */
 final class GetInboxRulesResponse extends ServiceResponse {
+
   /**
    * Rule collection.
    */
   private RuleCollection ruleCollection;
 
   /**
-   * Initializes a new instance of the
-   * <see cref="GetInboxRulesResponse"/> class.
+   * Initializes a new instance of the <see cref="GetInboxRulesResponse"/> class.
    */
   protected GetInboxRulesResponse() {
     super();

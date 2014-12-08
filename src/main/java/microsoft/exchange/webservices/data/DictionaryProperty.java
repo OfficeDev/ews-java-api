@@ -31,8 +31,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Represents a generic dictionary that can be sent to or retrieved from EWS.
- * TKey The type of key. TEntry The type of entry.
+ * Represents a generic dictionary that can be sent to or retrieved from EWS. TKey The type of key. TEntry The
+ * type of entry.
  *
  * @param <TKey>   the generic type
  * @param <TEntry> the generic type
@@ -309,8 +309,7 @@ public abstract class DictionaryProperty
    * Determines whether this instance contains the specified key.
    *
    * @param key the key
-   * @return true if this instance contains the specified key; otherwise,
-   * false.
+   * @return true if this instance contains the specified key; otherwise, false.
    */
   public boolean contains(TKey key) {
     return this.entries.containsKey(key);

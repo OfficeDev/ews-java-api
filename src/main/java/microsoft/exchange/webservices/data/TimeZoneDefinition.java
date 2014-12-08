@@ -30,6 +30,7 @@ import java.util.*;
  * Represents a time zone as defined by the EWS schema.
  */
 public class TimeZoneDefinition extends ComplexProperty implements Comparator<TimeZoneTransition> {
+
   /**
    * Prefix for generated ids.
    */
@@ -88,8 +89,8 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
    *
    * @param x The first transition.
    * @param y The second transition.
-   * @return A negative number if x is less than y, 0 if x and y are equal, a
-   * positive number if x is greater than y.
+   * @return A negative number if x is less than y, 0 if x and y are equal, a positive number if x is greater
+   * than y.
    */
   @Override
   public int compare(TimeZoneTransition x, TimeZoneTransition y) {
@@ -395,8 +396,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
   }
 
   /**
-   * Gets the transition groups associated with this time zone definition,
-   * indexed by Id.
+   * Gets the transition groups associated with this time zone definition, indexed by Id.
    *
    * @return the transition groups
    */

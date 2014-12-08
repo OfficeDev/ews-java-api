@@ -54,7 +54,8 @@ public class SafeXmlSchema extends Schema {
    * Reads an XML Schema from the supplied stream.
    *
    * @param stream                 The supplied data stream.
-   * @param validationEventHandler The validation event handler that receives information about the XML Schema syntax errors
+   * @param validationEventHandler The validation event handler that receives information about the XML Schema
+   *                               syntax errors
    * @return The XmlSchema object representing the XML Schema.
    * @throws javax.xml.stream.XMLStreamException
    */
@@ -69,7 +70,8 @@ public class SafeXmlSchema extends Schema {
    * Reads an XML Schema from the supplied TextReader.
    *
    * @param reader                 The TextReader containing the XML Schema to read
-   * @param validationEventHandler The validation event handler that receives information about the XML Schema syntax errors.
+   * @param validationEventHandler The validation event handler that receives information about the XML Schema
+   *                               syntax errors.
    * @return The XmlSchema object representing the XML Schema.
    * @throws javax.xml.stream.XMLStreamException
    */

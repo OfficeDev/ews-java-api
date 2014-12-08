@@ -47,8 +47,7 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Gets or sets the address of the mailbox
-   * from which to get the inbox rules.
+   * Gets or sets the address of the mailbox from which to get the inbox rules.
    *
    * @return the mailboxSmtpAddress
    */

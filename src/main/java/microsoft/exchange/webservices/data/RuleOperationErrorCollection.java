@@ -31,8 +31,7 @@ public final class RuleOperationErrorCollection extends
     ComplexPropertyCollection<RuleOperationError> {
 
   /**
-   * Initializes a new instance of the
-   * <see cref="RuleOperationErrorCollection"/> class.
+   * Initializes a new instance of the <see cref="RuleOperationErrorCollection"/> class.
    */
   protected RuleOperationErrorCollection() {
     super();
@@ -41,8 +40,7 @@ public final class RuleOperationErrorCollection extends
   /**
    * Creates an RuleOperationError object from an XML element name.
    *
-   * @param xmlElementName The XML element name from which
-   *                       to create the RuleOperationError object.
+   * @param xmlElementName The XML element name from which to create the RuleOperationError object.
    * @return A RuleOperationError object.
    */
   @Override
@@ -55,13 +53,10 @@ public final class RuleOperationErrorCollection extends
   }
 
   /**
-   * Retrieves the XML element name corresponding
-   * to the provided RuleOperationError object.
+   * Retrieves the XML element name corresponding to the provided RuleOperationError object.
    *
-   * @param operationError The RuleOperationError object
-   *                       from which to determine the XML element name.
-   * @return The XML element name corresponding
-   * to the provided RuleOperationError object.
+   * @param operationError The RuleOperationError object from which to determine the XML element name.
+   * @return The XML element name corresponding to the provided RuleOperationError object.
    */
   @Override
   protected String getCollectionItemXmlElementName(RuleOperationError

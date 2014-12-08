@@ -68,7 +68,8 @@ class TimeZonePropertyDefinition extends PropertyDefinition {
    * @param isUpdateOperation the is update operation
    * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
    * @throws javax.xml.stream.XMLStreamException                       the xML stream exception
-   * @throws ServiceXmlSerializationException                          the service xml serialization exception
+   * @throws ServiceXmlSerializationException                          the service xml serialization
+   *                                                                   exception
    * @throws Exception                                                 the exception
    */
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,

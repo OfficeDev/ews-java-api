@@ -28,6 +28,7 @@ package microsoft.exchange.webservices.data;
  * Represents a UpdateInboxRulesRequest request.
  */
 final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
+
   /**
    * The smtp address of the mailbox from which to get the inbox rules.
    */
@@ -44,8 +45,7 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
   private Iterable<RuleOperation> inboxRuleOperations;
 
   /**
-   * Initializes a new instance of the
-   * <see cref="UpdateInboxRulesRequest"/> class.
+   * Initializes a new instance of the <see cref="UpdateInboxRulesRequest"/> class.
    *
    * @param service The service.
    */
@@ -183,16 +183,14 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Gets a value indicating whether or not to
-   * remove OutlookRuleBlob from the rule collection.
+   * Gets a value indicating whether or not to remove OutlookRuleBlob from the rule collection.
    */
   protected boolean getRemoveOutlookRuleBlob() {
     return this.removeOutlookRuleBlob;
   }
 
   /**
-   * Sets a value indicating whether or not to
-   * remove OutlookRuleBlob from the rule collection.
+   * Sets a value indicating whether or not to remove OutlookRuleBlob from the rule collection.
    */
   protected void setRemoveOutlookRuleBlob(boolean value) {
     this.removeOutlookRuleBlob = value;

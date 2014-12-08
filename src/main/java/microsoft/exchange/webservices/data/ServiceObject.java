@@ -96,9 +96,8 @@ public abstract class ServiceObject {
   // / by which the XML element name associated with their type is retrieved.
 
   /**
-   * This methods lets subclasses of ServiceObject override the default
-   * mechanism by which the XML element name associated with their type is
-   * retrieved.
+   * This methods lets subclasses of ServiceObject override the default mechanism by which the XML element
+   * name associated with their type is retrieved.
    *
    * @return String
    */
@@ -107,8 +106,8 @@ public abstract class ServiceObject {
   }
 
   /**
-   * GetXmlElementName retrieves the XmlElementName of this type based on the
-   * EwsObjectDefinition attribute that decorates it, if present.
+   * GetXmlElementName retrieves the XmlElementName of this type based on the EwsObjectDefinition attribute
+   * that decorates it, if present.
    *
    * @return The XML element name associated with this type.
    */
@@ -167,9 +166,8 @@ public abstract class ServiceObject {
   }
 
   /**
-   * Gets a value indicating whether a time zone SOAP header should be emitted
-   * in a CreateItem or UpdateItem request so this item can be property saved
-   * or updated.
+   * Gets a value indicating whether a time zone SOAP header should be emitted in a CreateItem or UpdateItem
+   * request so this item can be property saved or updated.
    *
    * @param isUpdateOperation the is update operation
    * @return boolean
@@ -182,8 +180,8 @@ public abstract class ServiceObject {
   }
 
   /**
-   * Determines whether properties defined with
-   * ScopedDateTimePropertyDefinition require custom time zone scoping.
+   * Determines whether properties defined with ScopedDateTimePropertyDefinition require custom time zone
+   * scoping.
    *
    * @return boolean
    */

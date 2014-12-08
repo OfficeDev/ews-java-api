@@ -48,8 +48,7 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
   }
 
   /**
-   * Gets the name of the XML Element.
-   * returns XML element name
+   * Gets the name of the XML Element. returns XML element name
    */
   protected String getXmlElementName() {
     return XmlElementNames.GetPasswordExpirationDateRequest;

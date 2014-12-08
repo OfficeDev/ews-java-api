@@ -31,8 +31,7 @@ class SubscribeToStreamingNotificationsRequest extends
     SubscribeRequest<StreamingSubscription> {
 
   /**
-   * Initializes a new instance of the
-   * SubscribeToStreamingNotificationsRequest class.
+   * Initializes a new instance of the SubscribeToStreamingNotificationsRequest class.
    *
    * @param service The service
    * @throws Exception

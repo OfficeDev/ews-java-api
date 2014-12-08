@@ -69,8 +69,8 @@ class ResponseObjectSchema extends ServiceObjectSchema {
       new ResponseObjectSchema();
 
   /**
-   * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
-   * SCHEMA ORDER (i.e. the same order as they are defined in types.xsd)
+   * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the same order
+   * as they are defined in types.xsd)
    */
   @Override
   protected void registerProperties() {

@@ -37,8 +37,7 @@ public final class ProtocolConnectionCollection {
   private ArrayList<ProtocolConnection> connections;
 
   /**
-   * Initializes a new instance of the <see
-   * cref="ProtocolConnectionCollection"/> class.
+   * Initializes a new instance of the <see cref="ProtocolConnectionCollection"/> class.
    */
   ProtocolConnectionCollection() {
     this.connections = new ArrayList<ProtocolConnection>();

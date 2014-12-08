@@ -29,8 +29,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Represents a collection of changes as returned by a synchronization
- * operation.
+ * Represents a collection of changes as returned by a synchronization operation.
  *
  * @param <TChange> the generic type
  */

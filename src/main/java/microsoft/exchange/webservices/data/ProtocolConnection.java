@@ -25,8 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents the email Protocol connection settings for pop/imap/smtp
- * protocols.
+ * Represents the email Protocol connection settings for pop/imap/smtp protocols.
  */
 public final class ProtocolConnection {
 

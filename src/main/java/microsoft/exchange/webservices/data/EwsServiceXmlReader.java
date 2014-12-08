@@ -68,8 +68,7 @@ class EwsServiceXmlReader extends EwsXmlReader {
   }
 
   /**
-   * Converts the specified string into a
-   * unspecified Date object, ignoring offset.
+   * Converts the specified string into a unspecified Date object, ignoring offset.
    *
    * @param dateTimeString The date time string to convert.
    * @return A DateTime representing the converted string.
@@ -101,8 +100,8 @@ class EwsServiceXmlReader extends EwsXmlReader {
   }
 
   /**
-   * Reads the element value as date time, assuming it is unbiased (e.g.
-   * 2009/01/01T08:00) and scoped to service's time zone.
+   * Reads the element value as date time, assuming it is unbiased (e.g. 2009/01/01T08:00) and scoped to
+   * service's time zone.
    *
    * @return Date
    * @throws Exception the exception
@@ -138,12 +137,12 @@ class EwsServiceXmlReader extends EwsXmlReader {
     // {
 
 		/*
-		 * calen.setTimeInMillis(calen.getTimeInMillis() -
+                 * calen.setTimeInMillis(calen.getTimeInMillis() -
 		 * tz.getOffset(tempDate.getTime()));
 		 */
     return tempDate;
-		/*
-		 * } else if (EwsUtilities.isLocalTimeZone(this.service.getTimeZone()))
+                /*
+                 * } else if (EwsUtilities.isLocalTimeZone(this.service.getTimeZone()))
 		 * { calen.setTimeInMillis(calen.getTimeInMillis() +
 		 * tz.getOffset(tempDate.getTime())); return calen.getTime(); } else {
 		 * return tempDate; }

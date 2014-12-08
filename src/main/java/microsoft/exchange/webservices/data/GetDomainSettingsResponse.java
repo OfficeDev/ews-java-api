@@ -55,8 +55,7 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
   private Collection<DomainSettingError> domainSettingErrors;
 
   /**
-   * Initializes a new instance of the <see cref="GetDomainSettingsResponse"/>
-   * class.
+   * Initializes a new instance of the <see cref="GetDomainSettingsResponse"/> class.
    */
   public GetDomainSettingsResponse() {
     super();

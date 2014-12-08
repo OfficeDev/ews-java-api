@@ -55,8 +55,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
   private Collection<UserSettingError> userSettingErrors;
 
   /**
-   * Initializes a new instance of the <see cref="GetUserSettingsResponse"/>
-   * class.
+   * Initializes a new instance of the <see cref="GetUserSettingsResponse"/> class.
    */
   public GetUserSettingsResponse() {
     super();

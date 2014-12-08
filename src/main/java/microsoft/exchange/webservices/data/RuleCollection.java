@@ -52,10 +52,9 @@ public final class RuleCollection extends
   }
 
   /**
-   * Gets a value indicating whether an Outlook rule blob exists in the user's
-   * mailbox. To update rules with EWS when the Outlook rule blob exists, call
-   * SetInboxRules passing true as the
-   * value of the removeOutlookBlob parameter.
+   * Gets a value indicating whether an Outlook rule blob exists in the user's mailbox. To update rules with
+   * EWS when the Outlook rule blob exists, call SetInboxRules passing true as the value of the
+   * removeOutlookBlob parameter.
    */
   public boolean getOutlookRuleBlobExists() {
     return this.outlookRuleBlobExists;

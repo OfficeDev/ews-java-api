@@ -31,6 +31,7 @@ import java.util.Iterator;
  */
 public final class RuleOperationError extends
     ComplexProperty implements Iterable<RuleError> {
+
   /**
    * Index of the operation mapping to the error.
    */

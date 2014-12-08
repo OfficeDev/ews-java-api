@@ -64,11 +64,9 @@ public abstract class PagedView extends ViewBase {
   }
 
   /**
-   * Gets the maximum number of items or folders the search operation should
-   * return.
+   * Gets the maximum number of items or folders the search operation should return.
    *
-   * @return The maximum number of items or folders that should be returned by
-   * the search operation.
+   * @return The maximum number of items or folders that should be returned by the search operation.
    */
   @Override
   protected Integer getMaxEntriesReturned() {
@@ -121,8 +119,7 @@ public abstract class PagedView extends ViewBase {
   /**
    * Initializes a new instance of the "PagedView" class.
    *
-   * @param pageSize The maximum number of elements the search operation should
-   *                 return.
+   * @param pageSize The maximum number of elements the search operation should return.
    */
   protected PagedView(int pageSize) {
     super();
@@ -132,8 +129,7 @@ public abstract class PagedView extends ViewBase {
   /**
    * Initializes a new instance of the "PagedView" class.
    *
-   * @param pageSize The maximum number of elements the search operation should
-   *                 return.
+   * @param pageSize The maximum number of elements the search operation should return.
    * @param offset   The offset of the view from the base point.
    */
   protected PagedView(int pageSize, int offset) {
@@ -144,8 +140,7 @@ public abstract class PagedView extends ViewBase {
   /**
    * Initializes a new instance of the "PagedView" class.
    *
-   * @param pageSize        The maximum number of elements the search operation should
-   *                        return.
+   * @param pageSize        The maximum number of elements the search operation should return.
    * @param offset          The offset of the view from the base point.
    * @param offsetBasePoint The base point of the offset.
    */
@@ -156,8 +151,7 @@ public abstract class PagedView extends ViewBase {
   }
 
   /**
-   * Gets the maximum number of items or folders the search operation should
-   * return.
+   * Gets the maximum number of items or folders the search operation should return.
    *
    * @return the page size
    */
@@ -166,8 +160,7 @@ public abstract class PagedView extends ViewBase {
   }
 
   /**
-   * Sets the maximum number of items or folders the search operation should
-   * return.
+   * Sets the maximum number of items or folders the search operation should return.
    *
    * @param pageSize the new page size
    */

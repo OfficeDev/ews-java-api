@@ -31,14 +31,13 @@ package microsoft.exchange.webservices.data;
 public class CalendarFolder extends Folder {
 
   /**
-   * Binds to an existing calendar folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing calendar folder and loads the specified set of properties. Calling this method
+   * results in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
    * @param propertySet the property set
-   * @return A CalendarFolder instance representing the calendar folder
-   * corresponding to the specified Id
+   * @return A CalendarFolder instance representing the calendar folder corresponding to the specified Id
    * @throws Exception the exception
    */
   public static CalendarFolder bind(ExchangeService service, FolderId id,
@@ -47,13 +46,12 @@ public class CalendarFolder extends Folder {
   }
 
   /**
-   * Binds to an existing calendar folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing calendar folder and loads the specified set of properties. Calling this method
+   * results in a call to EWS.
    *
    * @param service the service
    * @param id      the id
-   * @return A CalendarFolder instance representing the calendar folder
-   * corresponding to the specified Id
+   * @return A CalendarFolder instance representing the calendar folder corresponding to the specified Id
    * @throws Exception the exception
    */
   public static CalendarFolder bind(ExchangeService service, FolderId id)
@@ -63,14 +61,13 @@ public class CalendarFolder extends Folder {
   }
 
   /**
-   * Binds to an existing calendar folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing calendar folder and loads the specified set of properties. Calling this method
+   * results in a call to EWS.
    *
    * @param service     the service
    * @param name        the name
    * @param propertySet the property set
-   * @return A CalendarFolder instance representing the calendar folder with
-   * the specified name.
+   * @return A CalendarFolder instance representing the calendar folder with the specified name.
    * @throws Exception the exception
    */
   public static CalendarFolder bind(ExchangeService service,
@@ -80,13 +77,12 @@ public class CalendarFolder extends Folder {
   }
 
   /**
-   * Binds to an existing calendar folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing calendar folder and loads the specified set of properties. Calling this method
+   * results in a call to EWS.
    *
    * @param service the service
    * @param name    the name
-   * @return A CalendarFolder instance representing the calendar folder with
-   * the specified name.
+   * @return A CalendarFolder instance representing the calendar folder with the specified name.
    * @throws Exception the exception
    */
   public static CalendarFolder bind(ExchangeService service,
@@ -96,9 +92,8 @@ public class CalendarFolder extends Folder {
   }
 
   /**
-   * Initializes an unsaved local instance of "CalendarFolder". To bind to an
-   * existing calendar folder, use CalendarFolder.Bind() instead. Calling this
-   * method results in a call to EWS.
+   * Initializes an unsaved local instance of "CalendarFolder". To bind to an existing calendar folder, use
+   * CalendarFolder.Bind() instead. Calling this method results in a call to EWS.
    *
    * @param service the service
    * @throws Exception the exception
@@ -108,9 +103,8 @@ public class CalendarFolder extends Folder {
   }
 
   /**
-   * Obtains a list of appointments by searching the contents of this folder
-   * and performing recurrence expansion for recurring appointments. Calling
-   * this method results in a call to EWS.
+   * Obtains a list of appointments by searching the contents of this folder and performing recurrence
+   * expansion for recurring appointments. Calling this method results in a call to EWS.
    *
    * @param view the view
    * @return An object representing the results of the search operation.
@@ -128,11 +122,10 @@ public class CalendarFolder extends Folder {
   }
 
   /**
-   * Obtains a list of appointments by searching the contents of this folder
-   * and performing recurrence expansion.
+   * Obtains a list of appointments by searching the contents of this folder and performing recurrence
+   * expansion.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {

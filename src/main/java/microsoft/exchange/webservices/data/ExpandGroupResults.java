@@ -34,8 +34,7 @@ import java.util.Iterator;
 public final class ExpandGroupResults implements Iterable<EmailAddress> {
 
   /**
-   * True, if all members are returned. EWS always returns true on ExpandDL,
-   * i.e. all members are returned.
+   * True, if all members are returned. EWS always returns true on ExpandDL, i.e. all members are returned.
    */
   private boolean includesAllMembers;
 
@@ -51,9 +50,8 @@ public final class ExpandGroupResults implements Iterable<EmailAddress> {
   }
 
   /**
-   * Gets the number of members that were returned by the ExpandGroup
-   * operation. Count might be less than the total number of members in the
-   * group, in which case the value of the IncludesAllMembers is false.
+   * Gets the number of members that were returned by the ExpandGroup operation. Count might be less than the
+   * total number of members in the group, in which case the value of the IncludesAllMembers is false.
    *
    * @return the count
    */
@@ -62,8 +60,7 @@ public final class ExpandGroupResults implements Iterable<EmailAddress> {
   }
 
   /**
-   * Gets a value indicating whether all the members of the group have been
-   * returned by ExpandGroup.
+   * Gets a value indicating whether all the members of the group have been returned by ExpandGroup.
    *
    * @return the includes all members
    */

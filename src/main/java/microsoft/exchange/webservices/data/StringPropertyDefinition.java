@@ -56,8 +56,7 @@ class StringPropertyDefinition extends TypedPropertyDefinition {
   }
 
   /**
-   * Gets a value indicating whether this property definition is for a
-   * nullable type (ref, int?, bool?...).
+   * Gets a value indicating whether this property definition is for a nullable type (ref, int?, bool?...).
    *
    * @return True
    */

@@ -29,8 +29,7 @@ import java.io.InputStream;
 import java.util.Date;
 
 /**
- * Represents a contact. Properties available on contacts are defined in the
- * ContactSchema class.
+ * Represents a contact. Properties available on contacts are defined in the ContactSchema class.
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Contact, returnedByServer = true)
@@ -42,8 +41,8 @@ public class Contact extends Item {
   private final String ContactPictureName = "ContactPicture.jpg";
 
   /**
-   * Initializes an unsaved local instance of <see cref="Contact"/>. To bind
-   * to an existing contact, use Contact.Bind() instead.
+   * Initializes an unsaved local instance of <see cref="Contact"/>. To bind to an existing contact, use
+   * Contact.Bind() instead.
    *
    * @param service the service
    * @throws Exception the exception
@@ -63,14 +62,13 @@ public class Contact extends Item {
   }
 
   /**
-   * Binds to an existing contact and loads the specified set of properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing contact and loads the specified set of properties. Calling this method results in a
+   * call to EWS.
    *
    * @param service     the service
    * @param id          the id
    * @param propertySet the property set
-   * @return A Contact instance representing the contact corresponding to the
-   * specified Id.
+   * @return A Contact instance representing the contact corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Contact bind(ExchangeService service, ItemId id,
@@ -79,13 +77,12 @@ public class Contact extends Item {
   }
 
   /**
-   * Binds to an existing contact and loads its first class properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing contact and loads its first class properties. Calling this method results in a call
+   * to EWS.
    *
    * @param service the service
    * @param id      the id
-   * @return A Contact instance representing the contact corresponding to the
-   * specified Id.
+   * @return A Contact instance representing the contact corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Contact bind(ExchangeService service, ItemId id)
@@ -106,8 +103,7 @@ public class Contact extends Item {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -246,9 +242,8 @@ public class Contact extends Item {
   }
 
   /**
-   * Gets  the name under which this contact is filed as. FileAs can be
-   * manually set or can be automatically calculated based on the value of the
-   * FileAsMapping property.
+   * Gets  the name under which this contact is filed as. FileAs can be manually set or can be automatically
+   * calculated based on the value of the FileAsMapping property.
    *
    * @return the file as
    * @throws ServiceLocalException the service local exception
@@ -271,8 +266,7 @@ public class Contact extends Item {
   }
 
   /**
-   * Gets a value indicating how the FileAs property should be
-   * automatically calculated.
+   * Gets a value indicating how the FileAs property should be automatically calculated.
    *
    * @return the file as mapping
    * @throws ServiceLocalException the service local exception
@@ -437,9 +431,8 @@ public class Contact extends Item {
   }
 
   /**
-   * Gets an indexed list of e-mail addresses for the contact. For example, to
-   * set the first e-mail address, use the following syntax:
-   * EmailAddresses[EmailAddressKey.EmailAddress1] = "john.doe@contoso.com"
+   * Gets an indexed list of e-mail addresses for the contact. For example, to set the first e-mail address,
+   * use the following syntax: EmailAddresses[EmailAddressKey.EmailAddress1] = "john.doe@contoso.com"
    *
    * @return the email addresses
    * @throws ServiceLocalException the service local exception
@@ -451,9 +444,8 @@ public class Contact extends Item {
   }
 
   /**
-   * Gets an indexed list of physical addresses for the contact. For example,
-   * to set the first business address, use the following syntax:
-   * physical[PhysicalAddressKey.Business] = new PhysicalAddressEntry()
+   * Gets an indexed list of physical addresses for the contact. For example, to set the first business
+   * address, use the following syntax: physical[PhysicalAddressKey.Business] = new PhysicalAddressEntry()
    *
    * @return the physical addresses
    * @throws ServiceLocalException the service local exception
@@ -466,9 +458,8 @@ public class Contact extends Item {
   }
 
   /**
-   * Gets an indexed list of phone numbers for the contact. For example, to
-   * set the home phone number, use the following syntax:
-   * PhoneNumbers[PhoneNumberKey.HomePhone] = "phone number"
+   * Gets an indexed list of phone numbers for the contact. For example, to set the home phone number, use the
+   * following syntax: PhoneNumbers[PhoneNumberKey.HomePhone] = "phone number"
    *
    * @return the phone numbers
    * @throws ServiceLocalException the service local exception
@@ -649,9 +640,8 @@ public class Contact extends Item {
   }
 
   /**
-   * Gets an indexed list of Instant Messaging addresses for the contact. For
-   * example, to set the first IM address, use the following syntax:
-   * ImAddresses[ImAddressKey.ImAddress1] = "john.doe@contoso.com"
+   * Gets an indexed list of Instant Messaging addresses for the contact. For example, to set the first IM
+   * address, use the following syntax: ImAddresses[ImAddressKey.ImAddress1] = "john.doe@contoso.com"
    *
    * @return the im addresses
    * @throws ServiceLocalException the service local exception
@@ -750,9 +740,8 @@ public class Contact extends Item {
   }
 
   /**
-   * Gets the index of the contact's postal address. When set,
-   * PostalAddressIndex refers to an entry in the PhysicalAddresses indexed
-   * list.
+   * Gets the index of the contact's postal address. When set, PostalAddressIndex refers to an entry in the
+   * PhysicalAddresses indexed list.
    *
    * @return the postal address index
    * @throws ServiceLocalException the service local exception
@@ -865,8 +854,7 @@ public class Contact extends Item {
   }
 
   /**
-   * Gets a value indicating whether this contact has a picture associated
-   * with it.
+   * Gets a value indicating whether this contact has a picture associated with it.
    *
    * @return the checks for picture
    * @throws ServiceLocalException the service local exception

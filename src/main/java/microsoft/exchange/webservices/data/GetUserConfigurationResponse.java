@@ -55,7 +55,8 @@ public final class GetUserConfigurationResponse extends ServiceResponse {
    * Reads response elements from XML.
    *
    * @param reader the reader
-   * @throws ServiceXmlDeserializationException                        the service xml deserialization exception
+   * @throws ServiceXmlDeserializationException                        the service xml deserialization
+   *                                                                   exception
    * @throws javax.xml.stream.XMLStreamException                       the xML stream exception
    * @throws InstantiationException                                    the instantiation exception
    * @throws IllegalAccessException                                    the illegal access exception

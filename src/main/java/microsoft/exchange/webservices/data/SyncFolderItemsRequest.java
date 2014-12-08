@@ -233,8 +233,7 @@ class SyncFolderItemsRequest extends
   }
 
   /**
-   * Gets the scope of the sync. <value>The scope of the
-   * sync.</value>
+   * Gets the scope of the sync. <value>The scope of the sync.</value>
    *
    * @return the sync scope
    */
@@ -252,8 +251,7 @@ class SyncFolderItemsRequest extends
   }
 
   /**
-   * Gets the state of the sync. <value>The state of the
-   * sync.</value>
+   * Gets the state of the sync. <value>The state of the sync.</value>
    *
    * @return the sync state
    */
@@ -280,8 +278,8 @@ class SyncFolderItemsRequest extends
   }
 
   /**
-   * Gets the maximum number of changes returned by SyncFolderItems.
-   * Values must be between 1 and 512. Default is 100.
+   * Gets the maximum number of changes returned by SyncFolderItems. Values must be between 1 and 512. Default
+   * is 100.
    *
    * @return the max changes returned
    */

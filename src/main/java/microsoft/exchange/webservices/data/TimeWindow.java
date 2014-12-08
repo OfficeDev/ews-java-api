@@ -188,7 +188,7 @@ public class TimeWindow implements ISelfValidate {
    */
   public void validate() {
                 /*
-		 * if (this.startTime >= this.endTime) { throw new
+                 * if (this.startTime >= this.endTime) { throw new
 		 * ArgumentException(Strings
 		 * .TimeWindowStartTimeMustBeGreaterThanEndTime); }
 		 */

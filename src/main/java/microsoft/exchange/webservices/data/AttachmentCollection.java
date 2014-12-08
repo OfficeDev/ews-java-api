@@ -87,8 +87,7 @@ public final class AttachmentCollection extends
    * Adds a file attachment to the collection.
    *
    * @param name     accepts String display name of the new attachment.
-   * @param fileName accepts String name of the file representing the content of
-   *                 the attachment.
+   * @param fileName accepts String name of the file representing the content of the attachment.
    * @return A FileAttachment instance.
    */
   public FileAttachment addFileAttachment(String name, String fileName) {
@@ -105,8 +104,7 @@ public final class AttachmentCollection extends
    * Adds a file attachment to the collection.
    *
    * @param name          accepts String display name of the new attachment.
-   * @param contentStream accepts InputStream stream from which to read the content of
-   *                      the attachment.
+   * @param contentStream accepts InputStream stream from which to read the content of the attachment.
    * @return A FileAttachment instance.
    */
   public FileAttachment addFileAttachment(String name,
@@ -124,8 +122,7 @@ public final class AttachmentCollection extends
    * Adds a file attachment to the collection.
    *
    * @param name    the name
-   * @param content accepts byte byte arrays representing the content of the
-   *                attachment.
+   * @param content accepts byte byte arrays representing the content of the attachment.
    * @return FileAttachment
    */
   public FileAttachment addFileAttachment(String name, byte[] content) {
@@ -190,8 +187,7 @@ public final class AttachmentCollection extends
    * Removes the specified attachment.
    *
    * @param attachment The attachment to remove.
-   * @return True if the attachment was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the attachment was successfully removed from the collection, false otherwise.
    * @throws Exception the exception
    */
   public boolean remove(Attachment attachment) throws Exception {
@@ -201,11 +197,9 @@ public final class AttachmentCollection extends
   }
 
   /**
-   * Instantiate the appropriate attachment type depending on the current XML
-   * element name.
+   * Instantiate the appropriate attachment type depending on the current XML element name.
    *
-   * @param xmlElementName The XML element name from which to determine the type of
-   *                       attachment to create.
+   * @param xmlElementName The XML element name from which to determine the type of attachment to create.
    * @return An Attachment instance.
    */
   @Override
@@ -220,13 +214,10 @@ public final class AttachmentCollection extends
   }
 
   /**
-   * Determines the name of the XML element associated with the
-   * complexProperty parameter.
+   * Determines the name of the XML element associated with the complexProperty parameter.
    *
-   * @param complexProperty The attachment object for which to determine the XML element
-   *                        name with.
-   * @return The XML element name associated with the complexProperty
-   * parameter.
+   * @param complexProperty The attachment object for which to determine the XML element name with.
+   * @return The XML element name associated with the complexProperty parameter.
    */
   @Override
   protected String getCollectionItemXmlElementName(Attachment
@@ -239,8 +230,7 @@ public final class AttachmentCollection extends
   }
 
   /**
-   * Saves this collection by creating new attachment and deleting removed
-   * ones.
+   * Saves this collection by creating new attachment and deleting removed ones.
    *
    * @throws Exception the exception
    */
@@ -279,7 +269,6 @@ public final class AttachmentCollection extends
             this.owner.getId().getUniqueId(), attachments);
       }
     }
-
 
     // Process all of the item attachments in this collection.
     for (Attachment attachment : this) {
@@ -324,7 +313,6 @@ public final class AttachmentCollection extends
       }
     }
 
-
     Collection<ItemAttachment> itemAttachments =
         new ArrayList<ItemAttachment>();
     for (Object event : this.getItems()) {
@@ -347,8 +335,8 @@ public final class AttachmentCollection extends
   }
 
   /**
-   * Disables the change log clearing mechanism. Attachment collections are
-   * saved separately from the items they belong to.
+   * Disables the change log clearing mechanism. Attachment collections are saved separately from the items
+   * they belong to.
    */
   @Override
   protected void clearChangeLog() {

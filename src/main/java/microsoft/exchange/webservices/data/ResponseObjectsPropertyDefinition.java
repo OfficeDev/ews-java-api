@@ -32,8 +32,7 @@ import java.util.EnumSet;
 public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
 
   /**
-   * Initializes a new instance of the ResponseObjectsPropertyDefinition
-   * class.
+   * Initializes a new instance of the ResponseObjectsPropertyDefinition class.
    *
    * @param xmlElementName the xml element name
    * @param uri            the uri
@@ -131,8 +130,7 @@ public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
   }
 
   /**
-   * Gets a value indicating whether this property
-   * definition is for a nullable type (ref, int?, bool?...).
+   * Gets a value indicating whether this property definition is for a nullable type (ref, int?, bool?...).
    */
   @Override
   protected boolean isNullable() {

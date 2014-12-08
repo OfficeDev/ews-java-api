@@ -204,8 +204,7 @@ public final class FolderPermissionCollection extends
    * Removes a permission from the collection.
    *
    * @param permission the permission
-   * @return True if the folder permission was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the folder permission was successfully removed from the collection, false otherwise.
    */
   public boolean remove(FolderPermission permission) {
     return this.internalRemove(permission);

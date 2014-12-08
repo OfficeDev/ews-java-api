@@ -186,9 +186,8 @@ public final class FindItemResponse
   }
 
   /**
-   * Gets a grouped list of items matching the specified search criteria that
-   * were found in Exchange. ItemGroups is null if the search operation did
-   * not specify grouping options.
+   * Gets a grouped list of items matching the specified search criteria that were found in Exchange.
+   * ItemGroups is null if the search operation did not specify grouping options.
    *
    * @return the grouped find results
    */

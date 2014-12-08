@@ -32,8 +32,7 @@ public final class OccurrenceInfoCollection extends
     ComplexPropertyCollection<OccurrenceInfo> {
 
   /**
-   * Initializes a new instance of the <see cref="OccurrenceInfoCollection"/>
-   * class.
+   * Initializes a new instance of the <see cref="OccurrenceInfoCollection"/> class.
    */
   protected OccurrenceInfoCollection() {
   }

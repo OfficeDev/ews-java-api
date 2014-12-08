@@ -27,19 +27,18 @@ package microsoft.exchange.webservices.data;
 import java.util.ArrayList;
 
 /**
- * Represents an e-mail message. Properties available on e-mail messages are
- * defined in the EmailMessageSchema class.
+ * Represents an e-mail message. Properties available on e-mail messages are defined in the EmailMessageSchema
+ * class.
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Message)
 public class EmailMessage extends Item {
 
   /**
-   * Initializes an unsaved local instance of EmailMessage. To bind to an
-   * existing e-mail message, use EmailMessage.Bind() instead.
+   * Initializes an unsaved local instance of EmailMessage. To bind to an existing e-mail message, use
+   * EmailMessage.Bind() instead.
    *
-   * @param service The ExchangeService object to which the e-mail message will be
-   *                bound.
+   * @param service The ExchangeService object to which the e-mail message will be bound.
    * @throws Exception the exception
    */
   public EmailMessage(ExchangeService service) throws Exception {
@@ -57,14 +56,13 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Binds to an existing e-mail message and loads the specified set of
-   * properties.Calling this method results in a call to EWS.
+   * Binds to an existing e-mail message and loads the specified set of properties.Calling this method results
+   * in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
    * @param propertySet the property set
-   * @return An EmailMessage instance representing the e-mail message
-   * corresponding to the specified Id
+   * @return An EmailMessage instance representing the e-mail message corresponding to the specified Id
    * @throws Exception the exception
    */
   public static EmailMessage bind(ExchangeService service, ItemId id,
@@ -74,13 +72,12 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Binds to an existing e-mail message and loads its first class
-   * properties.Calling this method results in a call to EWS.
+   * Binds to an existing e-mail message and loads its first class properties.Calling this method results in a
+   * call to EWS.
    *
    * @param service the service
    * @param id      the id
-   * @return An EmailMessage instance representing the e-mail message
-   * corresponding to the specified Id
+   * @return An EmailMessage instance representing the e-mail message corresponding to the specified Id
    * @throws Exception the exception
    */
   public static EmailMessage bind(ExchangeService service, ItemId id)
@@ -102,8 +99,7 @@ public class EmailMessage extends Item {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -158,8 +154,7 @@ public class EmailMessage extends Item {
    * Creates a reply response to the message.
    *
    * @param replyAll the reply all
-   * @return A ResponseMessage representing the reply response that can
-   * subsequently be modified and sent.
+   * @return A ResponseMessage representing the reply response that can subsequently be modified and sent.
    * @throws Exception the exception
    */
   public ResponseMessage createReply(boolean replyAll) throws Exception {
@@ -173,8 +168,7 @@ public class EmailMessage extends Item {
   /**
    * Creates a forward response to the message.
    *
-   * @return A ResponseMessage representing the forward response that can
-   * subsequently be modified and sent.
+   * @return A ResponseMessage representing the forward response that can subsequently be modified and sent.
    * @throws Exception the exception
    */
   public ResponseMessage createForward() throws Exception {
@@ -233,8 +227,7 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Sends this e-mail message. Calling this method results in at least one
-   * call to EWS.
+   * Sends this e-mail message. Calling this method results in at least one call to EWS.
    *
    * @throws Exception the exception
    */
@@ -243,9 +236,8 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Sends this e-mail message and saves a copy of it in the specified
-   * folder. SendAndSaveCopy does not work if the message has unsaved
-   * attachments. In that case, the message must first be saved and then sent.
+   * Sends this e-mail message and saves a copy of it in the specified folder. SendAndSaveCopy does not work
+   * if the message has unsaved attachments. In that case, the message must first be saved and then sent.
    * Calling this method results in a call to EWS.
    *
    * @param destinationFolderId the destination folder id
@@ -258,9 +250,8 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Sends this e-mail message and saves a copy of it in the specified
-   * folder. SendAndSaveCopy does not work if the message has unsaved
-   * attachments. In that case, the message must first be saved and then sent.
+   * Sends this e-mail message and saves a copy of it in the specified folder. SendAndSaveCopy does not work
+   * if the message has unsaved attachments. In that case, the message must first be saved and then sent.
    * Calling this method results in a call to EWS.
    *
    * @param destinationFolderName the destination folder name
@@ -273,9 +264,8 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Sends this e-mail message and saves a copy of it in the Sent Items
-   * folder. SendAndSaveCopy does not work if the message has unsaved
-   * attachments. In that case, the message must first be saved and then sent.
+   * Sends this e-mail message and saves a copy of it in the Sent Items folder. SendAndSaveCopy does not work
+   * if the message has unsaved attachments. In that case, the message must first be saved and then sent.
    * Calling this method results in a call to EWS.
    *
    * @throws Exception the exception
@@ -286,8 +276,7 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Suppresses the read receipt on the message. Calling this method results
-   * in a call to EWS.
+   * Suppresses the read receipt on the message. Calling this method results in a call to EWS.
    *
    * @throws Exception the exception
    */
@@ -409,8 +398,7 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Gets a value indicating whether a read receipt is requested for
-   * the e-mail message.
+   * Gets a value indicating whether a read receipt is requested for the e-mail message.
    *
    * @return the checks if is delivery receipt requested
    * @throws ServiceLocalException the service local exception
@@ -455,8 +443,7 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Gets a value indicating whether a read receipt is requested for
-   * the e-mail message.
+   * Gets a value indicating whether a read receipt is requested for the e-mail message.
    *
    * @return the checks if is read receipt requested
    * @throws ServiceLocalException the service local exception
@@ -478,8 +465,7 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Gets  a value indicating whether a response is requested for the
-   * e-mail message.
+   * Gets  a value indicating whether a response is requested for the e-mail message.
    *
    * @return the checks if is response requested
    * @throws ServiceLocalException the service local exception

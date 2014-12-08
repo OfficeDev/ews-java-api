@@ -132,8 +132,8 @@ public final class ExtendedPropertyCollection extends
    * Removes a specific extended property definition from the collection.
    *
    * @param propertyDefinition The definition of the extended property to remove.
-   * @return True if the property matching the extended property definition
-   * was successfully removed from the collection, false otherwise.
+   * @return True if the property matching the extended property definition was successfully removed from the
+   * collection, false otherwise.
    * @throws Exception the exception
    */
   protected boolean removeExtendedProperty(

@@ -190,9 +190,8 @@ public final class SearchFolderParameters extends ComplexProperty implements
   }
 
   /**
-   * Gets the search filter associated with the search folder.
-   * Available search filter classes include SearchFilter.IsEqualTo,
-   * SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection.
+   * Gets the search filter associated with the search folder. Available search filter classes include
+   * SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection.
    *
    * @return the search filter
    */

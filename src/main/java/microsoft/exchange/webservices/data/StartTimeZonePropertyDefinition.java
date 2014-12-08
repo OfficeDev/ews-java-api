@@ -34,8 +34,7 @@ import java.util.List;
 class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
 
   /**
-   * Initializes a new instance of the StartTimeZonePropertyDefinition
-   * class.
+   * Initializes a new instance of the StartTimeZonePropertyDefinition class.
    *
    * @param xmlElementName the xml element name
    * @param uri            the uri
@@ -110,8 +109,7 @@ class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
    *
    * @param flag    The flag.
    * @param version Requested version.
-   * @return <c>true</c> if the specified
-   * flag is set; otherwise, <c>false</c>.
+   * @return <c>true</c> if the specified flag is set; otherwise, <c>false</c>.
    */
   @Override
   protected boolean hasFlag(PropertyDefinitionFlags flag,

@@ -103,7 +103,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
       c.loadFromXml(reader, reader.getLocalName());
     }
                 /*if (!propertyBag.tryGetValue(this, complexProperty) ||
-				 !this.hasFlag(PropertyDefinitionFlags.ReuseInstance)) {
+                                 !this.hasFlag(PropertyDefinitionFlags.ReuseInstance)) {
 			complexProperty.setParam(this.createPropertyInstance(propertyBag
 					.getOwner()));
 		}

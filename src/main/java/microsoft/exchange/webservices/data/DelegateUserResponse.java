@@ -25,8 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents the response to an individual delegate user manipulation (add,
- * remove, update) operation.
+ * Represents the response to an individual delegate user manipulation (add, remove, update) operation.
  */
 public final class DelegateUserResponse extends ServiceResponse {
 

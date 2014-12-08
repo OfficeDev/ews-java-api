@@ -58,10 +58,8 @@ public class ArgumentException extends Exception {
   }
 
   /**
-   * Initializes a new instance of the System.
-   * ArgumentException class with a specified
-   * error message and the name of the
-   * parameter that causes this exception.
+   * Initializes a new instance of the System. ArgumentException class with a specified error message and the
+   * name of the parameter that causes this exception.
    *
    * @param message   The error message that explains the reason for the exception.
    * @param paramName The name of the parameter that caused the current exception.

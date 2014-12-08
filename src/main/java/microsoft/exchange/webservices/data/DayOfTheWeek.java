@@ -27,11 +27,10 @@ package microsoft.exchange.webservices.data;
 import java.util.Calendar;
 
 /**
- * Specifies the day of the week. For the standard days of the week (Sunday,
- * Monday...) the DayOfTheWeek enum value is the same as the System.DayOfWeek
- * enum type. These values can be safely cast between the two enum types. The
- * special days of the week (Day, Weekday and WeekendDay) are used for monthly
- * and yearly recurrences and cannot be cast to System.DayOfWeek values.
+ * Specifies the day of the week. For the standard days of the week (Sunday, Monday...) the DayOfTheWeek enum
+ * value is the same as the System.DayOfWeek enum type. These values can be safely cast between the two enum
+ * types. The special days of the week (Day, Weekday and WeekendDay) are used for monthly and yearly
+ * recurrences and cannot be cast to System.DayOfWeek values.
  */
 public enum DayOfTheWeek {
 

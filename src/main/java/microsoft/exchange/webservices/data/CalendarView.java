@@ -27,8 +27,7 @@ package microsoft.exchange.webservices.data;
 import java.util.Date;
 
 /**
- * Represents a date range view of appointments in calendar folder search
- * operations.
+ * Represents a date range view of appointments in calendar folder search operations.
  */
 public final class CalendarView extends ViewBase {
 
@@ -158,8 +157,7 @@ public final class CalendarView extends ViewBase {
   }
 
   /**
-   * Gets the maximum number of items or folders the search operation should
-   * return.
+   * Gets the maximum number of items or folders the search operation should return.
    *
    * @return The maximum number of items the search operation should return.
    */
@@ -231,8 +229,7 @@ public final class CalendarView extends ViewBase {
   }
 
   /**
-   * Gets  the search traversal mode. Defaults to
-   * ItemTraversal.Shallow.
+   * Gets  the search traversal mode. Defaults to ItemTraversal.Shallow.
    *
    * @return the traversal
    */

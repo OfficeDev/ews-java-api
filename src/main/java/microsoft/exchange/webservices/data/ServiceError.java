@@ -90,8 +90,7 @@ public enum ServiceError {
   ErrorAffectedTaskOccurrencesRequired,
 
   /**
-   * The conversation action alwayscategorize or alwaysmove or alwaysdelete
-   * has failed.
+   * The conversation action alwayscategorize or alwaysmove or alwaysdelete has failed.
    */
   ErrorApplyConversationActionFailed,
 
@@ -676,17 +675,15 @@ public enum ServiceError {
 
   // ErrorIncorrectSchemaVersion
   /**
-   * The request is valid but does not specify the correct server version in
-   * the RequestServerVersion SOAP header. Ensure that the
-   * RequestServerVersion SOAP header is set with the correct
+   * The request is valid but does not specify the correct server version in the RequestServerVersion SOAP
+   * header. Ensure that the RequestServerVersion SOAP header is set with the correct
    * RequestServerVersionValue.
    */
   ErrorIncorrectSchemaVersion,
 
   // ErrorIncorrectUpdatePropertyCount
   /**
-   * An object within a change description must contain one and only one
-   * property to modify.
+   * An object within a change description must contain one and only one property to modify.
    */
   ErrorIncorrectUpdatePropertyCount,
 
@@ -740,8 +737,7 @@ public enum ServiceError {
 
   // ErrorInvalidAttachmentSubfilterTextFilter
   /**
-   * Attachment subfilters must have a single TextFilter on the display name
-   * only.
+   * Attachment subfilters must have a single TextFilter on the display name only.
    */
   ErrorInvalidAttachmentSubfilterTextFilter,
 
@@ -793,15 +789,14 @@ public enum ServiceError {
   ErrorInvalidDelegatePermission,
 
   /**
-   * One or more UserId parameters are invalid. Make sure that the
-   * PrimarySmtpAddress, Sid and DisplayName properties refer to the same user
-   * when specified.
+   * One or more UserId parameters are invalid. Make sure that the PrimarySmtpAddress, Sid and DisplayName
+   * properties refer to the same user when specified.
    */
   ErrorInvalidDelegateUserId,
 
   /**
-   * An ExchangeImpersonation SOAP header must contain a user principal name,
-   * user SID, or primary SMTP address.
+   * An ExchangeImpersonation SOAP header must contain a user principal name, user SID, or primary SMTP
+   * address.
    */
   ErrorInvalidExchangeImpersonationHeaderData,
 
@@ -826,8 +821,7 @@ public enum ServiceError {
   ErrorInvalidExtendedPropertyValue,
 
   /**
-   * The original sender of the message (initiator field in the sharing
-   * metadata) is not valid.
+   * The original sender of the message (initiator field in the sharing metadata) is not valid.
    */
   ErrorInvalidExternalSharingInitiator,
 
@@ -883,9 +877,8 @@ public enum ServiceError {
   ErrorInvalidIdMalformed,
 
   /**
-   * The EWS Id is in EwsLegacyId format which is not supported by the
-   * Exchange version specified by your request. Please use the ConvertId
-   * method to convert from EwsLegacyId to EwsId format.
+   * The EWS Id is in EwsLegacyId format which is not supported by the Exchange version specified by your
+   * request. Please use the ConvertId method to convert from EwsLegacyId to EwsId format.
    */
   ErrorInvalidIdMalformedEwsLegacyIdFormat,
 
@@ -1946,15 +1939,13 @@ public enum ServiceError {
 
   // ErrorSubmissionQuotaExceeded
   /**
-   * The message couldn't be sent because the sender's submission quota was
-   * exceeded. Please try again later.
+   * The message couldn't be sent because the sender's submission quota was exceeded. Please try again later.
    */
   ErrorSubmissionQuotaExceeded,
 
   // ErrorSubscriptionAccessDenied
   /**
-   * Access is denied. Only the subscription owner may access the
-   * subscription.
+   * Access is denied. Only the subscription owner may access the subscription.
    */
   ErrorSubscriptionAccessDenied,
 
@@ -1972,8 +1963,7 @@ public enum ServiceError {
 
   // ErrorSubscriptionUnsubscribed
   /**
-   * The StreamingSubscription was unsubscribed while the current connection
-   * was servicing it.
+   * The StreamingSubscription was unsubscribed while the current connection was servicing it.
    */
   ErrorSubscriptionUnsubscribed,
 
@@ -2177,17 +2167,16 @@ public enum ServiceError {
 
   // ErrorWrongServerVersion
   /**
-   * The Client Access server version doesn't match the Mailbox server version
-   * of the resource that was being accessed. To determine the correct URL to
-   * use to access the resource, use Autodiscover with the address of the
-   * resource.
+   * The Client Access server version doesn't match the Mailbox server version of the resource that was being
+   * accessed. To determine the correct URL to use to access the resource, use Autodiscover with the address
+   * of the resource.
    */
   ErrorWrongServerVersion,
 
   // ErrorWrongServerVersionDelegate
   /**
-   * The mailbox of the authenticating user and the mailbox of the resource
-   * being accessed must have the same Mailbox server version.
+   * The mailbox of the authenticating user and the mailbox of the resource being accessed must have the same
+   * Mailbox server version.
    */
   ErrorWrongServerVersionDelegate,
 

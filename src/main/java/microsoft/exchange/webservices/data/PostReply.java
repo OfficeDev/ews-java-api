@@ -65,8 +65,7 @@ public final class PostReply extends ServiceObject {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -134,8 +133,8 @@ public final class PostReply extends ServiceObject {
   }
 
   /**
-   * Saves the post reply in the same folder as the original post item.
-   * Calling this method results in a call to EWS.
+   * Saves the post reply in the same folder as the original post item. Calling this method results in a call
+   * to EWS.
    *
    * @return A PostItem representing the posted reply
    * @throws Exception the exception
@@ -145,8 +144,8 @@ public final class PostReply extends ServiceObject {
   }
 
   /**
-   * Saves the post reply in the same folder as the original post item.
-   * Calling this method results in a call to EWS.
+   * Saves the post reply in the same folder as the original post item. Calling this method results in a call
+   * to EWS.
    *
    * @param destinationFolderId the destination folder id
    * @return A PostItem representing the posted reply
@@ -158,8 +157,7 @@ public final class PostReply extends ServiceObject {
   }
 
   /**
-   * Saves the post reply in a specified folder. Calling this method results
-   * in a call to EWS.
+   * Saves the post reply in a specified folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderName the destination folder name
    * @return A PostItem representing the posted reply.
@@ -215,8 +213,7 @@ public final class PostReply extends ServiceObject {
   }
 
   /**
-   * Gets the body prefix that should be prepended to the original
-   * post item's body.
+   * Gets the body prefix that should be prepended to the original post item's body.
    *
    * @return the body prefix
    * @throws Exception the exception

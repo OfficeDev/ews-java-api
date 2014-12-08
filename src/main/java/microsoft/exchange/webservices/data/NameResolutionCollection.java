@@ -103,11 +103,9 @@ public final class NameResolutionCollection implements
   }
 
   /**
-   * Gets a value indicating whether more suggested resolutions are available.
-   * ResolveName only returns a maximum of 100 name resolutions. When
-   * IncludesAllResolutions is false, there were more than 100 matching names
-   * on the server. To narrow the search, provide a more precise name to
-   * ResolveName.
+   * Gets a value indicating whether more suggested resolutions are available. ResolveName only returns a
+   * maximum of 100 name resolutions. When IncludesAllResolutions is false, there were more than 100 matching
+   * names on the server. To narrow the search, provide a more precise name to ResolveName.
    *
    * @return the includes all resolutions
    */

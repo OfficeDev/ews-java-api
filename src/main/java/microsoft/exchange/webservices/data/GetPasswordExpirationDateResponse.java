@@ -27,6 +27,7 @@ package microsoft.exchange.webservices.data;
 import java.util.Date;
 
 public class GetPasswordExpirationDateResponse extends ServiceResponse {
+
   private Date passwordExpirationDate;
 
   /**

@@ -36,6 +36,7 @@ public class ConversationSchema extends ServiceObjectSchema {
    * Field URIs for Item.
    */
   private static class FieldUris {
+
     /**
      * The Constant ConversationId.
      */
@@ -631,8 +632,7 @@ public class ConversationSchema extends ServiceObjectSchema {
   }
 
   /**
-   * Initializes a new instance of
-   * the ConversationSchema class.
+   * Initializes a new instance of the ConversationSchema class.
    */
   protected ConversationSchema() {
     super();

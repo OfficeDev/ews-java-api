@@ -132,9 +132,8 @@ public abstract class PropertyDefinition extends
   /**
    * Gets a list of associated internal properties.
    *
-   * @return A list of PropertyDefinition objects. This is a hack. It is here
-   * (currently) solely to help the API register the MeetingTimeZone
-   * property definition that is internal.
+   * @return A list of PropertyDefinition objects. This is a hack. It is here (currently) solely to help the
+   * API register the MeetingTimeZone property definition that is internal.
    */
   protected List<PropertyDefinition> getAssociatedInternalProperties() {
     List<PropertyDefinition> properties = new
@@ -153,8 +152,7 @@ public abstract class PropertyDefinition extends
   }
 
   /**
-   * Gets a value indicating whether this property definition is for a
-   * nullable type.
+   * Gets a value indicating whether this property definition is for a nullable type.
    *
    * @return always true
    */

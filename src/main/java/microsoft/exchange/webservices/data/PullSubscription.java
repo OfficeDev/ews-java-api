@@ -28,6 +28,7 @@ package microsoft.exchange.webservices.data;
  * Represents a pull subscription.
  */
 public final class PullSubscription extends SubscriptionBase {
+
   /**
    * The more events available.
    */
@@ -44,12 +45,10 @@ public final class PullSubscription extends SubscriptionBase {
   }
 
   /**
-   * Obtains a collection of events that occurred on the subscribed folders
-   * since the point in time defined by the Watermark property. When GetEvents
-   * succeeds, Watermark is updated.
+   * Obtains a collection of events that occurred on the subscribed folders since the point in time defined by
+   * the Watermark property. When GetEvents succeeds, Watermark is updated.
    *
-   * @return Returns a collection of events that occurred since the last
-   * watermark
+   * @return Returns a collection of events that occurred since the last watermark
    * @throws Exception the exception
    */
   public GetEventsResults getEvents() throws Exception {
@@ -61,8 +60,8 @@ public final class PullSubscription extends SubscriptionBase {
   }
 
   /**
-   * Begins an asynchronous request to obtain a collection of events that occurred on the subscribed
-   * folders since the point in time defined by the Watermark property
+   * Begins an asynchronous request to obtain a collection of events that occurred on the subscribed folders
+   * since the point in time defined by the Watermark property
    *
    * @param callback The AsyncCallback delegate
    * @param state    An object that contains state information for this request
@@ -74,9 +73,9 @@ public final class PullSubscription extends SubscriptionBase {
   }
 
   /**
-   * Ends an asynchronous request to obtain a collection of events that occurred on the subscribed
-   * folders since the point in time defined by the Watermark property. When EndGetEvents succeeds,
-   * Watermark is updated.
+   * Ends an asynchronous request to obtain a collection of events that occurred on the subscribed folders
+   * since the point in time defined by the Watermark property. When EndGetEvents succeeds, Watermark is
+   * updated.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
    * @return Returns a collection of events that occurred since the last watermark.
@@ -123,8 +122,8 @@ public final class PullSubscription extends SubscriptionBase {
   }
 
   /**
-   * Gets a value indicating whether more events are available on the server.
-   * MoreEventsAvailable is undefined (null) until GetEvents is called.
+   * Gets a value indicating whether more events are available on the server. MoreEventsAvailable is undefined
+   * (null) until GetEvents is called.
    *
    * @return true, if is more events available
    */

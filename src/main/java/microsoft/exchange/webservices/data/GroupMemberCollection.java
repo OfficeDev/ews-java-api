@@ -34,10 +34,10 @@ import java.util.List;
 public final class GroupMemberCollection extends
     ComplexPropertyCollection<GroupMember> implements
     ICustomXmlUpdateSerializer {
+
   /**
-   * If the collection is cleared, then store PDL members collection is
-   * updated with "SetItemField". If the collection is not cleared, then store
-   * PDL members collection is updated with "AppendToItemField".
+   * If the collection is cleared, then store PDL members collection is updated with "SetItemField". If the
+   * collection is not cleared, then store PDL members collection is updated with "AppendToItemField".
    */
   private boolean collectionIsCleared = false;
 
@@ -49,12 +49,10 @@ public final class GroupMemberCollection extends
   }
 
   /**
-   * Retrieves the XML element name corresponding to the provided
-   * GroupMember object.
+   * Retrieves the XML element name corresponding to the provided GroupMember object.
    *
    * @param member the member
-   * @return The XML element name corresponding to the provided GroupMember
-   * object
+   * @return The XML element name corresponding to the provided GroupMember object
    */
   @Override
   protected String getCollectionItemXmlElementName(GroupMember member) {
@@ -62,8 +60,8 @@ public final class GroupMemberCollection extends
   }
 
   /**
-   * * Finds the member with the specified key in the collection.Members that
-   * have not yet been saved do not have a key.
+   * * Finds the member with the specified key in the collection.Members that have not yet been saved do not
+   * have a key.
    *
    * @param key the key
    * @return The member with the specified key
@@ -289,8 +287,7 @@ public final class GroupMemberCollection extends
    * Removes a member from the collection.
    *
    * @param member the member
-   * @return True if the group member was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the group member was successfully removed from the collection, false otherwise.
    */
   public boolean remove(GroupMember member) {
     return this.internalRemove(member);

@@ -25,8 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an error that occurs when a date and time cannot be converted from
- * one time zone to another.
+ * Represents an error that occurs when a date and time cannot be converted from one time zone to another.
  */
 public class TimeZoneConversionException extends ServiceLocalException {
 

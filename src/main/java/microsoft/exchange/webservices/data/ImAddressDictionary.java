@@ -89,8 +89,8 @@ public final class ImAddressDictionary extends
    *
    * @param key      the key
    * @param outParam the out param
-   * @return true if the Dictionary contains an IM address associated with the
-   * specified key; otherwise, false.
+   * @return true if the Dictionary contains an IM address associated with the specified key; otherwise,
+   * false.
    */
   public boolean tryGetValue(ImAddressKey key, OutParam<String> outParam) {
     ImAddressEntry entry = null;

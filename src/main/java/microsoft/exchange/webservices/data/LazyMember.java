@@ -25,15 +25,13 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Wrapper class for lazy members. Does lazy initialization of member on first
- * access.
+ * Wrapper class for lazy members. Does lazy initialization of member on first access.
  *
  * @param <T> Type of the lazy member
  *            <p/>
- *            If we find ourselves creating a whole bunch of these in our code,
- *            we need to rethink this. Each lazy member holds the actual member,
- *            a lock object, a boolean flag and a delegate. That can turn into a
- *            whole lot of overhead
+ *            If we find ourselves creating a whole bunch of these in our code, we need to rethink this. Each
+ *            lazy member holds the actual member, a lock object, a boolean flag and a delegate. That can turn
+ *            into a whole lot of overhead
  */
 class LazyMember<T> {
 
@@ -53,8 +51,7 @@ class LazyMember<T> {
   private ILazyMember<T> lazyImplementation;
 
   /**
-   * Public accessor for the lazy member. Lazy initializes the member on first
-   * access
+   * Public accessor for the lazy member. Lazy initializes the member on first access
    *
    * @return the member
    */
@@ -73,8 +70,7 @@ class LazyMember<T> {
   /**
    * Constructor.
    *
-   * @param lazyImplementation The initialization delegate to call for the item on first
-   *                           access
+   * @param lazyImplementation The initialization delegate to call for the item on first access
    */
   public LazyMember(ILazyMember<T> lazyImplementation) {
     this.lazyImplementation = lazyImplementation;

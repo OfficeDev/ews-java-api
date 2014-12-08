@@ -43,8 +43,7 @@ import java.lang.annotation.Target;
   String xmlElementName();
 
   /**
-   * True if this ServiceObject can be returned by the server as an object,
-   * false otherwise.
+   * True if this ServiceObject can be returned by the server as an object, false otherwise.
    *
    * @return true, if successful
    */

@@ -27,16 +27,14 @@ package microsoft.exchange.webservices.data;
 import java.util.Date;
 
 /**
- * Represents a Task item. Properties available on tasks are defined in the
- * TaskSchema class.
+ * Represents a Task item. Properties available on tasks are defined in the TaskSchema class.
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Task)
 public class Task extends Item {
 
   /**
-   * Initializes an unsaved local instance of Task.To bind to an existing
-   * task, use Task.Bind() instead.
+   * Initializes an unsaved local instance of Task.To bind to an existing task, use Task.Bind() instead.
    *
    * @param service the service
    * @throws Exception the exception
@@ -56,14 +54,13 @@ public class Task extends Item {
   }
 
   /**
-   * Binds to an existing task and loads the specified set of properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing task and loads the specified set of properties. Calling this method results in a
+   * call to EWS.
    *
    * @param service     the service
    * @param id          the id
    * @param propertySet the property set
-   * @return A Task instance representing the task corresponding to the
-   * specified Id.
+   * @return A Task instance representing the task corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Task bind(ExchangeService service, ItemId id,
@@ -72,13 +69,12 @@ public class Task extends Item {
   }
 
   /**
-   * Binds to an existing task and loads its first class properties. Calling
-   * this method results in a call to EWS.
+   * Binds to an existing task and loads its first class properties. Calling this method results in a call to
+   * EWS.
    *
    * @param service the service
    * @param id      the id
-   * @return A Task instance representing the task corresponding to the
-   * specified Id.
+   * @return A Task instance representing the task corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Task bind(ExchangeService service, ItemId id)
@@ -99,8 +95,7 @@ public class Task extends Item {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -108,9 +103,8 @@ public class Task extends Item {
   }
 
   /**
-   * Gets a value indicating whether a time zone SOAP header should be
-   * emitted in a CreateItem or UpdateItem request so this item can be
-   * property saved or updated.
+   * Gets a value indicating whether a time zone SOAP header should be emitted in a CreateItem or UpdateItem
+   * request so this item can be property saved or updated.
    *
    * @param isUpdateOperation the is update operation
    * @return if a time zone SOAP header should be emitted; otherwise, .
@@ -121,10 +115,9 @@ public class Task extends Item {
   }
 
   /**
-   * Deletes the current occurrence of a recurring task. After the current
-   * occurrence isdeleted, the task represents the next occurrence. Developers
-   * should call Load to retrieve the new property values of the task. Calling
-   * this method results in a call to EWS.
+   * Deletes the current occurrence of a recurring task. After the current occurrence isdeleted, the task
+   * represents the next occurrence. Developers should call Load to retrieve the new property values of the
+   * task. Calling this method results in a call to EWS.
    *
    * @param deleteMode the delete mode
    * @throws ServiceLocalException the service local exception
@@ -137,16 +130,13 @@ public class Task extends Item {
   }
 
   /**
-   * Applies the local changes that have been made to this task. Calling
-   * this method results in at least one call to EWS. Mutliple calls to EWS
-   * might be made if attachments have been added or removed.
+   * Applies the local changes that have been made to this task. Calling this method results in at least one
+   * call to EWS. Mutliple calls to EWS might be made if attachments have been added or removed.
    *
    * @param conflictResolutionMode the conflict resolution mode
-   * @return A Task object representing the completed occurrence if the task
-   * is recurring and the update marks it as completed; or a Task
-   * object representing the current occurrence if the task is
-   * recurring and the uypdate changed its recurrence pattern; or null
-   * in every other case.
+   * @return A Task object representing the completed occurrence if the task is recurring and the update marks
+   * it as completed; or a Task object representing the current occurrence if the task is recurring and the
+   * uypdate changed its recurrence pattern; or null in every other case.
    * @throws ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
@@ -413,9 +403,7 @@ public class Task extends Item {
   }
 
   /**
-   * Gets the completion percentage of the task.
-   * PercentComplete must be between
-   * 0 and 100.
+   * Gets the completion percentage of the task. PercentComplete must be between 0 and 100.
    *
    * @return the percent complete
    * @throws ServiceLocalException the service local exception
@@ -426,9 +414,7 @@ public class Task extends Item {
   }
 
   /**
-   * Sets the completion percentage of the task.
-   * PercentComplete must be between
-   * 0.0 and 100.0 .
+   * Sets the completion percentage of the task. PercentComplete must be between 0.0 and 100.0 .
    *
    * @param value the new percent complete
    * @throws Exception the exception
@@ -440,9 +426,7 @@ public class Task extends Item {
   }
 
   /**
-   * Sets the completion percentage of the task.
-   * PercentComplete must be between
-   * 0.0 and 100.0 .
+   * Sets the completion percentage of the task. PercentComplete must be between 0.0 and 100.0 .
    *
    * @param value the new percent complete
    * @throws Exception the exception
@@ -458,9 +442,8 @@ public class Task extends Item {
   }
 
   /**
-   * Gets the recurrence pattern for this task. Available recurrence
-   * pattern classes include Recurrence.DailyPattern,
-   * Recurrence.MonthlyPattern and Recurrence.YearlyPattern.
+   * Gets the recurrence pattern for this task. Available recurrence pattern classes include
+   * Recurrence.DailyPattern, Recurrence.MonthlyPattern and Recurrence.YearlyPattern.
    *
    * @return the recurrence
    * @throws ServiceLocalException the service local exception
@@ -526,9 +509,8 @@ public class Task extends Item {
   }
 
   /**
-   * Gets a string representing the status of the task, localized according to
-   * the PreferredCulture property of the ExchangeService object the task is
-   * bound to.
+   * Gets a string representing the status of the task, localized according to the PreferredCulture property
+   * of the ExchangeService object the task is bound to.
    *
    * @return the status description
    * @throws ServiceLocalException the service local exception
@@ -561,9 +543,8 @@ public class Task extends Item {
   }
 
   /**
-   * Gets the default setting for how to treat affected task occurrences on
-   * Delete. <value>AffectedTaskOccurrence.AllOccurrences: All affected Task
-   * occurrences will be deleted.</value>
+   * Gets the default setting for how to treat affected task occurrences on Delete.
+   * <value>AffectedTaskOccurrence.AllOccurrences: All affected Task occurrences will be deleted.</value>
    *
    * @return the default affected task occurrences
    */

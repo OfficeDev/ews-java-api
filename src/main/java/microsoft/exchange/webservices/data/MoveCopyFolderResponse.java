@@ -27,8 +27,7 @@ package microsoft.exchange.webservices.data;
 import java.util.List;
 
 /**
- * Represents the base response class for individual folder move and copy
- * operations.
+ * Represents the base response class for individual folder move and copy operations.
  */
 public final class MoveCopyFolderResponse extends ServiceResponse implements
     IGetObjectInstanceDelegate<ServiceObject> {

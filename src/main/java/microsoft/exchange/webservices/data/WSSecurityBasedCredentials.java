@@ -31,8 +31,7 @@ import java.net.URISyntaxException;
 import java.util.Calendar;
 
 /**
- * WSSecurityBasedCredentials is the base class for all credential classes using
- * WS-Security.
+ * WSSecurityBasedCredentials is the base class for all credential classes using WS-Security.
  */
 public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
 
@@ -63,7 +62,6 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
 
   // WS-Addressing 1.0 Namespace (and the namespace prefix we will use for
   // it).
-
 
   /** The Constant WSAddressing10NamespacePrefix. */
   //protected static final String WSAddressing10NamespacePrefix = "wsa";
@@ -134,8 +132,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
   }
 
   /**
-   * This method is called to pre-authenticate credentials before a service
-   * request is made.
+   * This method is called to pre-authenticate credentials before a service request is made.
    */
   @Override
   protected void preAuthenticate() {
@@ -178,8 +175,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
   }
 
   /**
-   * Creates the WS-Addressing headers necessary to send with an outgoing
-   * request.
+   * Creates the WS-Addressing headers necessary to send with an outgoing request.
    *
    * @param xmlWriter     The XML writer to serialize the headers to.
    * @param webMethodName The Web method being called.
@@ -205,8 +201,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
   }
 
   /**
-   * Creates the WS-Security header necessary to send with an outgoing
-   * request.
+   * Creates the WS-Security header necessary to send with an outgoing request.
    *
    * @param xmlWriter The XML writer to serialize the headers to.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception

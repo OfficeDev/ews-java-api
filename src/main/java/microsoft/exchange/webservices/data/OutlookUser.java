@@ -36,9 +36,8 @@ import java.util.Map.Entry;
 final class OutlookUser {
 
   /**
-   * Converters to translate Outlook user settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookUser instance.
+   * Converters to translate Outlook user settings. Each entry maps to a lambda expression used to get the
+   * matching property from the OutlookUser instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookUser, String>>>
       converterDictionary =

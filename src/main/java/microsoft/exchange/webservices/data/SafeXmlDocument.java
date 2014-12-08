@@ -54,8 +54,7 @@ public class SafeXmlDocument extends DocumentBuilder {
   }
 
   /**
-   * Initializes a new instance of the SafeXmlDocument class with the
-   * specified XSImplementation.
+   * Initializes a new instance of the SafeXmlDocument class with the specified XSImplementation.
    *
    * @param imp The XmlImplementation to use.
    * @throws NotSupportedException
@@ -66,8 +65,7 @@ public class SafeXmlDocument extends DocumentBuilder {
   }
 
   /**
-   * Initializes a new instance of the SafeXmlDocument class with the
-   * specified XmlNameTable.
+   * Initializes a new instance of the SafeXmlDocument class with the specified XmlNameTable.
    *
    * @param nt The XmlNameTable to use.
    */
@@ -98,8 +96,8 @@ public class SafeXmlDocument extends DocumentBuilder {
   /**
    * Loads the XML document from the specified URL.
    *
-   * @param filename URL for the file containing the XML document to load. The URL
-   *                 can be either a local file or an HTTP URL (a Web address).
+   * @param filename URL for the file containing the XML document to load. The URL can be either a local file
+   *                 or an HTTP URL (a Web address).
    */
   public void load(String filename) {
     if (inputFactory != null) {

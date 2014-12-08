@@ -99,9 +99,8 @@ public final class MoveCopyItemResponse extends ServiceResponse implements
   }
 
   /**
-   * Gets the copied or moved item. Item is null if the copy or move
-   * operation was between two mailboxes or between a mailbox and a public
-   * folder.
+   * Gets the copied or moved item. Item is null if the copy or move operation was between two mailboxes or
+   * between a mailbox and a public folder.
    *
    * @return the item
    */

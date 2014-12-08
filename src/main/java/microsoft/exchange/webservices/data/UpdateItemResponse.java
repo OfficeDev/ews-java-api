@@ -153,9 +153,8 @@ public final class UpdateItemResponse extends ServiceResponse implements
   }
 
   /**
-   * Gets the item that was returned by the update operation. ReturnedItem
-   * is set only when a recurring Task is marked as complete or when its
-   * recurrence pattern changes.
+   * Gets the item that was returned by the update operation. ReturnedItem is set only when a recurring Task
+   * is marked as complete or when its recurrence pattern changes.
    *
    * @return the returned item
    */
@@ -164,8 +163,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
   }
 
   /**
-   * Gets the number of property conflicts that were resolved during the
-   * update operation.
+   * Gets the number of property conflicts that were resolved during the update operation.
    *
    * @return the conflict count
    */

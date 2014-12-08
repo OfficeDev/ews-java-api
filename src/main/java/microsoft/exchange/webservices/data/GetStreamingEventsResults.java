@@ -37,6 +37,7 @@ final class GetStreamingEventsResults {
    * Structure to track a subscription and its associated notification events.
    */
   protected static class NotificationGroup {
+
     /**
      * Subscription Id
      */
@@ -56,8 +57,7 @@ final class GetStreamingEventsResults {
       new ArrayList<NotificationGroup>();
 
   /**
-   * Initializes a new instance of the <see cref=
-   * "GetStreamingEventsResults"/> class.
+   * Initializes a new instance of the <see cref= "GetStreamingEventsResults"/> class.
    */
   protected GetStreamingEventsResults() {
   }

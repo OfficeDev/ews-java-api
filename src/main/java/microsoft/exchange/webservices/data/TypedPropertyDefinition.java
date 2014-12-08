@@ -71,8 +71,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    * @param uri            The URI.
    * @param flags          The flags.
    * @param version        The version.
-   * @param isNullable     Indicates that this property definition is for a nullable
-   *                       property.
+   * @param isNullable     Indicates that this property definition is for a nullable property.
    */
   protected TypedPropertyDefinition(String xmlElementName, String uri,
       EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
@@ -94,8 +93,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
       IllegalAccessException, ParseException;
 
   /**
-   * Gets a value indicating whether this property definition is for a
-   * nullable type.
+   * Gets a value indicating whether this property definition is for a nullable type.
    *
    * @return always true
    */
@@ -140,7 +138,8 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    * @param propertyBag       The property bag.
    * @param isUpdateOperation Indicates whether the context is an update operation.
    * @throws javax.xml.stream.XMLStreamException                       the xML stream exception
-   * @throws ServiceXmlSerializationException                          the service xml serialization exception
+   * @throws ServiceXmlSerializationException                          the service xml serialization
+   *                                                                   exception
    * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
    */
   @Override

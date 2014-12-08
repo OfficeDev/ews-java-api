@@ -35,19 +35,11 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * <p>
- * EwsSSLProtocolSocketFactory can be used to creats SSL {@link java.net.Socket}s
- * that accept self-signed certificates.
- * </p>
- * <p>
- * This socket factory SHOULD NOT be used for productive systems
- * due to security reasons, unless it is a concious decision and
- * you are perfectly aware of security implications of accepting
- * self-signed certificates
- * </p>
- * <p/>
- * <p>
- * Example of using custom protocol socket factory for a specific host:
+ * <p> EwsSSLProtocolSocketFactory can be used to creats SSL {@link java.net.Socket}s that accept self-signed
+ * certificates. </p> <p> This socket factory SHOULD NOT be used for productive systems due to security
+ * reasons, unless it is a concious decision and you are perfectly aware of security implications of accepting
+ * self-signed certificates </p> <p/> <p> Example of using custom protocol socket factory for a specific
+ * host:
  * <pre>
  *     Protocol easyhttps = new Protocol("https", new EasySSLProtocolSocketFactory(), 443);
  *
@@ -59,9 +51,7 @@ import java.security.NoSuchAlgorithmException;
  *     HttpClient client = new HttpClient();
  *     client.executeMethod(hc, httpget);
  *     </pre>
- * </p>
- * <p>
- * Example of using custom protocol socket factory per default instead of the standard one:
+ * </p> <p> Example of using custom protocol socket factory per default instead of the standard one:
  * <pre>
  *     Protocol easyhttps = new Protocol("https", new EasySSLProtocolSocketFactory(), 443);
  *     Protocol.registerProtocol("https", easyhttps);
@@ -72,11 +62,8 @@ import java.security.NoSuchAlgorithmException;
  *     </pre>
  * </p>
  *
- * <p>
- * DISCLAIMER: HttpClient developers DO NOT actively support this component.
- * The component is provided as a reference material, which may be inappropriate
- * for use without additional customization.
- * </p>
+ * <p> DISCLAIMER: HttpClient developers DO NOT actively support this component. The component is provided as
+ * a reference material, which may be inappropriate for use without additional customization. </p>
  */
 
 class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {

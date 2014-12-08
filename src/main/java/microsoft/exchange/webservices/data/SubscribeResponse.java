@@ -40,8 +40,7 @@ final class SubscribeResponse<TSubscription extends SubscriptionBase> extends
   private TSubscription subscription;
 
   /**
-   * Initializes a new instance of the SubscribeResponse&lt;TSubscription
-   * class.
+   * Initializes a new instance of the SubscribeResponse&lt;TSubscription class.
    *
    * @param subscription The Subscription
    */

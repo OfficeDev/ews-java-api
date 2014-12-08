@@ -25,8 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Defines a delegate that is used by the AutodiscoverService to ask whether a
- * redirectionUrl can be used.
+ * Defines a delegate that is used by the AutodiscoverService to ask whether a redirectionUrl can be used.
  */
 public interface IAutodiscoverRedirectionUrl {
 

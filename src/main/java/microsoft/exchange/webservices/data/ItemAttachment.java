@@ -75,8 +75,7 @@ public class ItemAttachment extends Attachment implements
   }
 
   /**
-   * Implements the OnChange event handler for the item associated with the
-   * attachment.
+   * Implements the OnChange event handler for the item associated with the attachment.
    *
    * @param serviceObject ,The service object that triggered the OnChange event.
    */

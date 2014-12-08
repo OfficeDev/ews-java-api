@@ -166,8 +166,7 @@ abstract class ServiceRequestBase {
   }
 
   /**
-   * Throw exception if request is not supported in requested server
-   * version.
+   * Throw exception if request is not supported in requested server version.
    *
    * @throws ServiceVersionException the service version exception
    */
@@ -279,10 +278,9 @@ abstract class ServiceRequestBase {
   }
 
   /**
-   * Gets st ring representation of requested server version. In order to
-   * support E12 RTM servers, ExchangeService has another flag indicating that
-   * we should use "Exchange2007" as the server version string rather than
-   * Exchange2007_SP1.
+   * Gets st ring representation of requested server version. In order to support E12 RTM servers,
+   * ExchangeService has another flag indicating that we should use "Exchange2007" as the server version
+   * string rather than Exchange2007_SP1.
    *
    * @return String representation of requested server version.
    */
@@ -295,8 +293,7 @@ abstract class ServiceRequestBase {
   }
 
   /**
-   * Gets the response stream (may be wrapped with GZip/Deflate stream to
-   * decompress content).
+   * Gets the response stream (may be wrapped with GZip/Deflate stream to decompress content).
    *
    * @param request HttpWebRequest object from which response stream can be read.
    * @return ResponseStream
@@ -646,8 +643,7 @@ abstract class ServiceRequestBase {
   }
 
   /**
-   * <summary> Builds the HttpWebRequest object for current service request
-   * with exception handling.
+   * <summary> Builds the HttpWebRequest object for current service request with exception handling.
    *
    * @return An HttpWebRequest instance
    */
@@ -680,8 +676,7 @@ abstract class ServiceRequestBase {
   }
 
   /**
-   * Gets the IEwsHttpWebRequest object from the specifiedHttpWebRequest
-   * object with exception handling
+   * Gets the IEwsHttpWebRequest object from the specifiedHttpWebRequest object with exception handling
    *
    * @param request The specified HttpWebRequest
    * @return An HttpWebResponse instance
@@ -714,8 +709,7 @@ abstract class ServiceRequestBase {
   }
 
   /**
-   * Try to read the XML declaration. If it's not there, the server didn't
-   * return XML.
+   * Try to read the XML declaration. If it's not there, the server didn't return XML.
    *
    * @param reader The reader.
    * @throws Exception

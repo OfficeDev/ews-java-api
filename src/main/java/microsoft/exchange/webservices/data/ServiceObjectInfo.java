@@ -30,9 +30,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ServiceObjectInfo contains metadata on how to map from an element name to a
- * ServiceObject type as well as how to map from a ServiceObject type to
- * appropriate constructors.
+ * ServiceObjectInfo contains metadata on how to map from an element name to a ServiceObject type as well as
+ * how to map from a ServiceObject type to appropriate constructors.
  */
 class ServiceObjectInfo {
 
@@ -68,9 +67,8 @@ class ServiceObjectInfo {
   }
 
   /**
-   * Initializes the service object class map. If you add a new ServiceObject
-   * subclass that can be returned by the Server, add the type to the class
-   * map as well as associated delegate(s) to call the constructor(s).
+   * Initializes the service object class map. If you add a new ServiceObject subclass that can be returned by
+   * the Server, add the type to the class map as well as associated delegate(s) to call the constructor(s).
    */
   private void initializeServiceObjectClassMap() {
     // Appointment
@@ -332,9 +330,8 @@ class ServiceObjectInfo {
   }
 
   /**
-   * Return Dictionary that maps from ServiceObject Type to
-   * CreateServiceObjectWithServiceParam delegate with ExchangeService
-   * parameter.
+   * Return Dictionary that maps from ServiceObject Type to CreateServiceObjectWithServiceParam delegate with
+   * ExchangeService parameter.
    *
    * @return the service object constructors with service param
    */
@@ -344,9 +341,8 @@ class ServiceObjectInfo {
   }
 
   /**
-   * Return Dictionary that maps from ServiceObject Type to
-   * CreateServiceObjectWithAttachmentParam delegate with ItemAttachment
-   * parameter.
+   * Return Dictionary that maps from ServiceObject Type to CreateServiceObjectWithAttachmentParam delegate
+   * with ItemAttachment parameter.
    *
    * @return the service object constructors with attachment param
    */

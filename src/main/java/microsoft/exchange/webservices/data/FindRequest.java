@@ -107,8 +107,7 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
   /**
    * Gets the group by clause.
    *
-   * @return The group by clause, null if the request does not have or support
-   * grouping.
+   * @return The group by clause, null if the request does not have or support grouping.
    */
   protected Grouping getGroupBy() {
     return null;
@@ -171,10 +170,9 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
   }
 
   /**
-   * Gets the search filter. Available search filter classes include
-   * SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
-   * SearchFilter.SearchFilterCollection. If SearchFilter is null, no search
-   * filters are applied.
+   * Gets the search filter. Available search filter classes include SearchFilter.IsEqualTo,
+   * SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection. If SearchFilter is null, no
+   * search filters are applied.
    *
    * @return the search filter
    */
@@ -183,10 +181,9 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
   }
 
   /**
-   * Sets the search filter. Available search filter classes include
-   * SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
-   * SearchFilter.SearchFilterCollection. If SearchFilter is null, no search
-   * filters are applied.
+   * Sets the search filter. Available search filter classes include SearchFilter.IsEqualTo,
+   * SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection. If SearchFilter is null, no
+   * search filters are applied.
    *
    * @param searchFilter the new search filter
    */

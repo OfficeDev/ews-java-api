@@ -139,8 +139,7 @@ class GetStreamingEventsRequest extends HangingServiceRequestBase {
   }
 
   /**
-   * region Test hooks
-   * Allow test code to change heartbeat value
+   * region Test hooks Allow test code to change heartbeat value
    */
   protected static void setHeartbeatFrequency(int heartbeatFrequency) {
     GetStreamingEventsRequest.heartbeatFrequency = heartbeatFrequency;

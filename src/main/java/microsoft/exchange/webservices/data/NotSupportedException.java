@@ -25,6 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 public class NotSupportedException extends Exception {
+
   /**
    * Instantiates a new argument exception.
    */

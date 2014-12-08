@@ -110,8 +110,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   }
 
   /**
-   * Saves the response in the specified folder. Calling this method results
-   * in a call to EWS.
+   * Saves the response in the specified folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderId the destination folder id
    * @return A TMessage that represents the response.
@@ -124,8 +123,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   }
 
   /**
-   * Saves the response in the specified folder. Calling this method results
-   * in a call to EWS.
+   * Saves the response in the specified folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderName the destination folder name
    * @return A TMessage that represents the response.
@@ -139,8 +137,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   }
 
   /**
-   * Saves the response in the Drafts folder. Calling this method results in a
-   * call to EWS.
+   * Saves the response in the Drafts folder. Calling this method results in a call to EWS.
    *
    * @return A TMessage that represents the response.
    * @throws Exception the exception
@@ -151,8 +148,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   }
 
   /**
-   * Sends this response without saving a copy. Calling this method results in
-   * a call to EWS.
+   * Sends this response without saving a copy. Calling this method results in a call to EWS.
    *
    * @throws Exception the exception
    */
@@ -161,8 +157,8 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   }
 
   /**
-   * Sends this response and saves a copy in the specified folder. Calling
-   * this method results in a call to EWS.
+   * Sends this response and saves a copy in the specified folder. Calling this method results in a call to
+   * EWS.
    *
    * @param destinationFolderId the destination folder id
    * @throws Exception the exception
@@ -174,8 +170,8 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   }
 
   /**
-   * Sends this response and saves a copy in the specified folder. Calling
-   * this method results in a call to EWS.
+   * Sends this response and saves a copy in the specified folder. Calling this method results in a call to
+   * EWS.
    *
    * @param destinationFolderName the destination folder name
    * @throws Exception the exception
@@ -187,8 +183,8 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   }
 
   /**
-   * Sends this response and saves a copy in the Sent Items folder. Calling
-   * this method results in a call to EWS.
+   * Sends this response and saves a copy in the Sent Items folder. Calling this method results in a call to
+   * EWS.
    *
    * @throws Exception the exception
    */

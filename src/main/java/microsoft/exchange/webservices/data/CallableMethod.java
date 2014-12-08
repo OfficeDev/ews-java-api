@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.util.concurrent.Callable;
 
 public class CallableMethod implements Callable {
+
   HttpWebRequest request;
 
   CallableMethod(HttpWebRequest request) {

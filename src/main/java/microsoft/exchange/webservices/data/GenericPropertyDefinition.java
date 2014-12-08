@@ -38,8 +38,7 @@ class GenericPropertyDefinition<TPropertyValue> extends
   private Class<TPropertyValue> instance;
 
   /**
-   * Initializes a new instance of the "GenericPropertyDefinition&lt;T&gt;"
-   * class.
+   * Initializes a new instance of the "GenericPropertyDefinition&lt;T&gt;" class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.
@@ -53,8 +52,7 @@ class GenericPropertyDefinition<TPropertyValue> extends
   }
 
   /**
-   * Initializes a new instance of the "GenericPropertyDefinition&lt;T&gt;"
-   * class.
+   * Initializes a new instance of the "GenericPropertyDefinition&lt;T&gt;" class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.

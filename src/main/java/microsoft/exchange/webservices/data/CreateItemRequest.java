@@ -74,8 +74,7 @@ final class CreateItemRequest extends
   }
 
   /**
-   * Gets the request version. Returns earliest Exchange version in which
-   * this request is supported.
+   * Gets the request version. Returns earliest Exchange version in which this request is supported.
    *
    * @return the minimum required server version
    */

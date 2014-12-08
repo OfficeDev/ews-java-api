@@ -29,14 +29,14 @@ package microsoft.exchange.webservices.data;
  */
 class EWSConstants {
         /*
-	 * Represents SRV record.
+         * Represents SRV record.
 	 */
   /**
    * The Constant SRVRECORD.
    */
   public static final String SRVRECORD = "SRV";
-	/*
-	 * Represents the name of the domain
+        /*
+         * Represents the name of the domain
 	 */
   /**
    * The Constant DOMAIN.

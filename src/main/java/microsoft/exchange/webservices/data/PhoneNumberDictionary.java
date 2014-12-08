@@ -95,8 +95,8 @@ public final class PhoneNumberDictionary extends
    *
    * @param key      the key
    * @param outparam the outparam
-   * @return true if the Dictionary contains a phone number associated with
-   * the specified key; otherwise, false.
+   * @return true if the Dictionary contains a phone number associated with the specified key; otherwise,
+   * false.
    */
   public boolean tryGetValue(PhoneNumberKey key, OutParam<String> outparam) {
     String phoneNumber = this.getPhoneNumber(key);

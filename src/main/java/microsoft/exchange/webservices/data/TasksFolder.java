@@ -41,14 +41,13 @@ public class TasksFolder extends Folder {
   }
 
   /**
-   * Binds to an existing tasks folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing tasks folder and loads the specified set of properties. Calling this method results
+   * in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
    * @param propertySet the property set
-   * @return A TasksFolder instance representing the task folder corresponding
-   * to the specified Id.
+   * @return A TasksFolder instance representing the task folder corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static TasksFolder bind(ExchangeService service, FolderId id,
@@ -57,13 +56,12 @@ public class TasksFolder extends Folder {
   }
 
   /**
-   * Binds to an existing tasks folder and loads its first class properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing tasks folder and loads its first class properties. Calling this method results in a
+   * call to EWS.
    *
    * @param service the service
    * @param id      the id
-   * @return A TasksFolder instance representing the task folder corresponding
-   * to the specified Id.
+   * @return A TasksFolder instance representing the task folder corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static TasksFolder bind(ExchangeService service, FolderId id)
@@ -73,14 +71,13 @@ public class TasksFolder extends Folder {
   }
 
   /**
-   * Binds to an existing tasks folder and loads specified set of properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing tasks folder and loads specified set of properties. Calling this method results in a
+   * call to EWS.
    *
    * @param service     the service
    * @param name        the name
    * @param propertySet the property set
-   * @return A TasksFolder instance representing the tasks folder with the
-   * specified name.
+   * @return A TasksFolder instance representing the tasks folder with the specified name.
    * @throws Exception the exception
    */
   public static TasksFolder bind(ExchangeService service,
@@ -90,13 +87,12 @@ public class TasksFolder extends Folder {
   }
 
   /**
-   * Binds to an existing tasks folder and loads its first class properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing tasks folder and loads its first class properties. Calling this method results in a
+   * call to EWS.
    *
    * @param service the service
    * @param name    the name
-   * @return A TasksFolder instance representing the tasks folder with the
-   * specified name.
+   * @return A TasksFolder instance representing the tasks folder with the specified name.
    * @throws Exception the exception
    */
   public static TasksFolder bind(ExchangeService service,
@@ -108,8 +104,7 @@ public class TasksFolder extends Folder {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {

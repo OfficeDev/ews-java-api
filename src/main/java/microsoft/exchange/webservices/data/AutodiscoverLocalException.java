@@ -25,8 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an exception that is thrown when the Autodiscover service could
- * not be contacted.
+ * Represents an exception that is thrown when the Autodiscover service could not be contacted.
  */
 public class AutodiscoverLocalException extends ServiceLocalException {
 

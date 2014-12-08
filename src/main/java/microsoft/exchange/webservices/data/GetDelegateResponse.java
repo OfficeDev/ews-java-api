@@ -71,8 +71,7 @@ final class GetDelegateResponse extends DelegateManagementResponse {
   }
 
   /**
-   * Gets a value indicating if and how meeting requests are delivered to
-   * delegates.
+   * Gets a value indicating if and how meeting requests are delivered to delegates.
    *
    * @return the meeting requests delivery scope
    */

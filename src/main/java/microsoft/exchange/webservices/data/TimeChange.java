@@ -67,8 +67,7 @@ final class TimeChange extends ComplexProperty {
   /**
    * Initializes a new instance of the <see cref="TimeChange"/> class.
    *
-   * @param offset The offset since the beginning of the year when the change
-   *               occurs.
+   * @param offset The offset since the beginning of the year when the change occurs.
    */
   public TimeChange(TimeSpan offset) {
     this();
@@ -78,8 +77,7 @@ final class TimeChange extends ComplexProperty {
   /**
    * Initializes a new instance of the "TimeChange" class.
    *
-   * @param offset The offset since the beginning of the year when the change
-   *               occurs.
+   * @param offset The offset since the beginning of the year when the change occurs.
    * @param time   The time at which the change occurs.
    */
   public TimeChange(TimeSpan offset, Time time) {

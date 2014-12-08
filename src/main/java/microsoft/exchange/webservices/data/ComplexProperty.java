@@ -139,8 +139,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
   /**
    * Tries to read element from XML to patch this property.
    *
-   * @param reader The reader.
-   *               True if element was read.
+   * @param reader The reader. True if element was read.
    */
   protected boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception {
     return false;

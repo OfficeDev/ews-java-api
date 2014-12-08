@@ -87,8 +87,7 @@ public final class DelegatePermissions extends ComplexProperty {
   }
 
   /**
-   * Gets  the delegate user's permission on the principal's tasks
-   * folder.
+   * Gets  the delegate user's permission on the principal's tasks folder.
    *
    * @return the tasks folder permission level
    */
@@ -134,8 +133,7 @@ public final class DelegatePermissions extends ComplexProperty {
   }
 
   /**
-   * Gets  the delegate user's permission on the principal's contacts
-   * folder.
+   * Gets  the delegate user's permission on the principal's contacts folder.
    *
    * @return the contacts folder permission level
    */
@@ -158,8 +156,7 @@ public final class DelegatePermissions extends ComplexProperty {
   }
 
   /**
-   * Gets the delegate user's permission on the principal's notes
-   * folder.
+   * Gets the delegate user's permission on the principal's notes folder.
    *
    * @return the notes folder permission level
    */
@@ -182,8 +179,7 @@ public final class DelegatePermissions extends ComplexProperty {
   }
 
   /**
-   * Gets  the delegate user's permission on the principal's journal
-   * folder.
+   * Gets  the delegate user's permission on the principal's journal folder.
    *
    * @return the journal folder permission level
    */
@@ -231,7 +227,6 @@ public final class DelegatePermissions extends ComplexProperty {
       delegateFolderPermission.initialize(reader.
           readElementValue(DelegateFolderPermissionLevel.class));
     }
-
 
     return delegateFolderPermission != null;
   }

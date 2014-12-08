@@ -53,8 +53,7 @@ class GetDomainSettingsRequest extends AutodiscoverRequest {
   private ExchangeVersion requestedVersion;
 
   /**
-   * Initializes a new instance of the <see cref="GetDomainSettingsRequest"/>
-   * class.
+   * Initializes a new instance of the <see cref="GetDomainSettingsRequest"/> class.
    *
    * @param service the service
    * @param url     the url

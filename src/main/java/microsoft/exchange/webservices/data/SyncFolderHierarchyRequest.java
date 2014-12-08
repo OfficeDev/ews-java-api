@@ -196,8 +196,7 @@ class SyncFolderHierarchyRequest extends
   }
 
   /**
-   * Gets or sets the state of the sync. <value>The state of the
-   * sync.</value>
+   * Gets or sets the state of the sync. <value>The state of the sync.</value>
    *
    * @return the sync state
    */

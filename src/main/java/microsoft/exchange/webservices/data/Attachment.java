@@ -98,8 +98,8 @@ public abstract class Attachment extends ComplexProperty {
   /**
    * Sets value of field.
    * <p/>
-   * We override the base implementation. Attachments cannot be modified so
-   * any attempts the change a property on an existing attachment is an error.
+   * We override the base implementation. Attachments cannot be modified so any attempts the change a property
+   * on an existing attachment is an error.
    *
    * @param <T>   the generic type
    * @param field The field
@@ -163,9 +163,8 @@ public abstract class Attachment extends ComplexProperty {
   }
 
   /**
-   * Gets  the content Id of the attachment. ContentId can be used as a
-   * custom way to identify an attachment in order to reference it from within
-   * the body of the item the attachment belongs to.
+   * Gets  the content Id of the attachment. ContentId can be used as a custom way to identify an attachment
+   * in order to reference it from within the body of the item the attachment belongs to.
    *
    * @return the content id
    */
@@ -186,9 +185,8 @@ public abstract class Attachment extends ComplexProperty {
   }
 
   /**
-   * Gets  the content location of the attachment. ContentLocation can
-   * be used to associate an attachment with a Url defining its location on
-   * the Web.
+   * Gets  the content location of the attachment. ContentLocation can be used to associate an attachment with
+   * a Url defining its location on the Web.
    *
    * @return the content location
    */
@@ -236,8 +234,8 @@ public abstract class Attachment extends ComplexProperty {
   }
 
   /**
-   * Gets  a value indicating whether this is an inline attachment.
-   * Inline attachments are not visible to end users.
+   * Gets  a value indicating whether this is an inline attachment. Inline attachments are not visible to end
+   * users.
    *
    * @return the checks if is inline
    * @throws ServiceVersionException the service version exception

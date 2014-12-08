@@ -90,8 +90,7 @@ final class TimeChangeRecurrence extends ComplexProperty {
   }
 
   /**
-   * Gets the index of the day in the month at which the time change
-   * occurs.
+   * Gets the index of the day in the month at which the time change occurs.
    *
    * @return the day of the week index
    */

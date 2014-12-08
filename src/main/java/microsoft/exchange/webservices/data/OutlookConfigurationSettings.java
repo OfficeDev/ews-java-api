@@ -73,8 +73,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
   }
 
   /**
-   * Determines whether user setting is available in the
-   * OutlookConfiguration or not.
+   * Determines whether user setting is available in the OutlookConfiguration or not.
    *
    * @param setting The setting.
    * @return True if user setting is available, otherwise, false.
@@ -187,8 +186,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
   }
 
   /**
-   * Reports any requested user settings that aren't
-   * supported by the Outlook provider.
+   * Reports any requested user settings that aren't supported by the Outlook provider.
    *
    * @param requestedSettings The requested settings.
    * @param response          The response.
@@ -237,8 +235,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
   /**
    * Gets the redirect target.
    *
-   * @return String
-   * the redirect target.
+   * @return String the redirect target.
    */
   @Override
   protected String getRedirectTarget() {

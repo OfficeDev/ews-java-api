@@ -119,7 +119,6 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   private static final String AutodiscoverSoapWsSecurityX509CertHttpsUrl =
       AutodiscoverSoapHttpsUrl + "/wssecurity/x509cert";
 
-
   // Autodiscover request namespace
   /**
    * The Constant AutodiscoverRequestNamespace.
@@ -162,7 +161,6 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   private static final String AutodiscoverWsSecurityX509CertEnabledHeaderName =
       "X-WSSecurity-X509Cert-Enabled";
 
-
   // Minimum request version for Autodiscover SOAP service.
   /**
    * The Constant MinimumRequestVersionForAutoDiscoverSoapService.
@@ -172,8 +170,8 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       ExchangeVersion.Exchange2010;
 
   /**
-   * Default implementation of AutodiscoverRedirectionUrlValidationCallback.
-   * Always returns true indicating that the URL can be used.
+   * Default implementation of AutodiscoverRedirectionUrlValidationCallback. Always returns true indicating
+   * that the URL can be used.
    *
    * @param redirectionUrl the redirection url
    * @return Returns true.
@@ -188,15 +186,13 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   // Legacy Autodiscover
 
   /**
-   * Calls the Autodiscover service to get configuration settings at the
-   * specified URL.
+   * Calls the Autodiscover service to get configuration settings at the specified URL.
    *
    * @param <TSettings>  the generic type
    * @param cls          the cls
    * @param emailAddress the email address
    * @param url          the url
-   * @return The requested configuration settings. (TSettings The type of the
-   * settings to retrieve)
+   * @return The requested configuration settings. (TSettings The type of the settings to retrieve)
    * @throws Exception the exception
    */
   private <TSettings extends ConfigurationSettingsBase>
@@ -243,7 +239,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       writer.flush();
       urlOutStream.flush();
       urlOutStream.close();
-			/* Flush End */
+                        /* Flush End */
     }
     request.executeRequest();
     request.getResponseCode();
@@ -321,8 +317,8 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   }
 
   /**
-   * Gets a redirection URL to an SSL-enabled Autodiscover service from the
-   * standard non-SSL Autodiscover URL.
+   * Gets a redirection URL to an SSL-enabled Autodiscover service from the standard non-SSL Autodiscover
+   * URL.
    *
    * @param domainName the domain name
    * @return A valid SSL-enabled redirection URL. (May be null).
@@ -455,8 +451,8 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   protected <TSettings extends ConfigurationSettingsBase>
   TSettings getLegacyUserSettings(
       Class<TSettings> cls, String emailAddress) throws Exception {
-		/*int currentHop = 1;
-		return this.internalGetConfigurationSettings(cls, emailAddress,
+                /*int currentHop = 1;
+                return this.internalGetConfigurationSettings(cls, emailAddress,
 				currentHop);*/
 
     // If Url is specified, call service directly.
@@ -932,14 +928,11 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
         OutlookConfigurationSettings.class,
         emailAddress);
 
-
-
     return settings.convertSettings(emailAddress, requestedSettings);
   }
 
   /**
-   * Calls the SOAP Autodiscover service
-   * for user settings for a single SMTP address.
+   * Calls the SOAP Autodiscover service for user settings for a single SMTP address.
    *
    * @param smtpAddress       SMTP address.
    * @param requestedSettings The requested settings.
@@ -1633,9 +1626,8 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   }
 
   /**
-   * Creates an HttpWebRequest instance and initializes it with the
-   * appropriate parameters, based on the configuration of this service
-   * object.
+   * Creates an HttpWebRequest instance and initializes it with the appropriate parameters, based on the
+   * configuration of this service object.
    *
    * @param url The URL that the HttpWebRequest should target.
    * @return HttpWebRequest The HttpWebRequest.
@@ -1650,9 +1642,8 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   }
 
   /**
-   * Calls the redirection URL validation callback. If the redirection URL
-   * validation callback is null, use the default callback which does not
-   * allow following any redirections.
+   * Calls the redirection URL validation callback. If the redirection URL validation callback is null, use
+   * the default callback which does not allow following any redirections.
    *
    * @param redirectionUrl The redirection URL.
    * @return True if redirection should be followed.
@@ -1718,8 +1709,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   /**
    * Initializes a new instance of the "AutodiscoverService" class.
    *
-   * @param domain The domain that will be used to determine the URL of the
-   *               service.
+   * @param domain The domain that will be used to determine the URL of the service.
    * @throws microsoft.exchange.webservices.data.ArgumentException
    */
   public AutodiscoverService(String domain) throws ArgumentException {
@@ -1729,8 +1719,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   /**
    * Initializes a new instance of the "AutodiscoverService" class.
    *
-   * @param domain                 The domain that will be used to determine the URL of the
-   *                               service.
+   * @param domain                 The domain that will be used to determine the URL of the service.
    * @param requestedServerVersion The requested server version.
    * @throws microsoft.exchange.webservices.data.ArgumentException
    */
@@ -1765,8 +1754,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * Initializes a new instance of the "AutodiscoverService" class.
    *
    * @param url    The URL of the service.
-   * @param domain The domain that will be used to determine the URL of the
-   *               service.
+   * @param domain The domain that will be used to determine the URL of the service.
    * @throws microsoft.exchange.webservices.data.ArgumentException
    */
   protected AutodiscoverService(URI url, String domain)
@@ -1782,8 +1770,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * Initializes a new instance of the "AutodiscoverService" class.
    *
    * @param url                    The URL of the service.
-   * @param domain                 The domain that will be used to determine the URL of the
-   *                               service.
+   * @param domain                 The domain that will be used to determine the URL of the service.
    * @param requestedServerVersion The requested server version.
    * @throws microsoft.exchange.webservices.data.ArgumentException
    */
@@ -1823,12 +1810,11 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    *
    * @param userSmtpAddress  The SMTP addresses of the user.
    * @param userSettingNames The user setting names.
-   * @return A UserResponse object containing the requested settings for the
-   * specified user.
+   * @return A UserResponse object containing the requested settings for the specified user.
    * @throws Exception the exception
    *                   <p/>
-   *                   This method handles will run the entire Autodiscover "discovery"
-   *                   algorithm and will follow address and URL redirections.
+   *                   This method handles will run the entire Autodiscover "discovery" algorithm and will
+   *                   follow address and URL redirections.
    */
   public GetUserSettingsResponse getUserSettings(String userSmtpAddress,
       UserSettingName... userSettingNames) throws Exception {
@@ -1860,8 +1846,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    *
    * @param userSmtpAddresses the user smtp addresses
    * @param userSettingNames  The user setting names.
-   * @return A GetUserSettingsResponseCollection object containing the
-   * responses for each individual user.
+   * @return A GetUserSettingsResponseCollection object containing the responses for each individual user.
    * @throws Exception the exception
    */
   public GetUserSettingsResponseCollection getUsersSettings(
@@ -1885,8 +1870,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * @param domain             The domain.
    * @param requestedVersion   Requested version of the Exchange service.
    * @param domainSettingNames The domain setting names.
-   * @return A DomainResponse object containing the requested settings for the
-   * specified domain.
+   * @return A DomainResponse object containing the requested settings for the specified domain.
    * @throws Exception the exception
    */
   public GetDomainSettingsResponse getDomainSettings(String domain,
@@ -1908,8 +1892,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * @param domains            the domains
    * @param requestedVersion   Requested version of the Exchange service.
    * @param domainSettingNames The domain setting names.
-   * @return A GetDomainSettingsResponseCollection object containing the
-   * responses for each individual domain.
+   * @return A GetDomainSettingsResponseCollection object containing the responses for each individual domain.
    * @throws Exception the exception
    */
   public GetDomainSettingsResponseCollection getDomainSettings(
@@ -2016,8 +1999,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
 */
 
   /**
-   * Gets the domain this service is bound to. When this property is
-   * set, the domain
+   * Gets the domain this service is bound to. When this property is set, the domain
    * <p/>
    * name is used to automatically determine the Autodiscover service URL.
    *
@@ -2028,9 +2010,8 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   }
 
   /**
-   * Sets the domain this service is bound to. When this property is
-   * set, the domain
-   * name is used to automatically determine the Autodiscover service URL.
+   * Sets the domain this service is bound to. When this property is set, the domain name is used to
+   * automatically determine the Autodiscover service URL.
    *
    * @param value the new domain
    * @throws microsoft.exchange.webservices.data.ArgumentException
@@ -2116,9 +2097,8 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   }
 
   /**
-   * Gets a value indicating whether the AutodiscoverService should
-   * perform SCP (ServiceConnectionPoint) record lookup when determining
-   * the Autodiscover service URL.
+   * Gets a value indicating whether the AutodiscoverService should perform SCP (ServiceConnectionPoint)
+   * record lookup when determining the Autodiscover service URL.
    *
    * @return the enable scp lookup
    */

@@ -36,6 +36,7 @@ import java.util.zip.InflaterInputStream;
  * Represents the base class for all requested made to the Autodiscover service.
  */
 abstract class AutodiscoverRequest {
+
   /**
    * The service.
    */
@@ -543,8 +544,7 @@ abstract class AutodiscoverRequest {
   }
 
   /**
-   * Gets the response stream (may be wrapped with GZip/Deflate stream to
-   * decompress content).
+   * Gets the response stream (may be wrapped with GZip/Deflate stream to decompress content).
    *
    * @param request the request
    * @return ResponseStream

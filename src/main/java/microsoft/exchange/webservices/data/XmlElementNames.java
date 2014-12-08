@@ -4347,7 +4347,6 @@ class XmlElementNames {
    */
   public static final String HeartbeatFrequency = "HeartbeatFrequency";
 
-
   // SyncFolderItems
   /**
    * The Constant SyncFolderItems.
@@ -4777,7 +4776,6 @@ class XmlElementNames {
    */
   public static final String EwsErrorCodeElementName =
       "ErrorCode"; // Generated
-
 
   // by
   // Availability

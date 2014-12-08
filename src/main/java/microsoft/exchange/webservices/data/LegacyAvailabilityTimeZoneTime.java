@@ -78,7 +78,7 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
    *             the exception
    */
         /*
-	 * protected LegacyAvailabilityTimeZoneTime(TimeZone.TransitionTime
+         * protected LegacyAvailabilityTimeZoneTime(TimeZone.TransitionTime
 	 * transitionTime, TimeSpan delta) { this(); this.delta = delta;
 	 * 
 	 * if (transitionTime.IsFixedDateRule) { // TimeZoneInfo doesn't support an
@@ -99,8 +99,8 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
    * TimeZoneInfo.TransitionTime
    *
    */
-	/*
-	 * protected TimeZone.TransitionTime toTransitionTime() { if (this.year ==
+        /*
+         * protected TimeZone.TransitionTime toTransitionTime() { if (this.year ==
 	 * 0) { return TimeZone.TransitionTime.createFloatingDateRule( new Date(
 	 * Date.MinValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day,
 	 * this.timeOfDay.Hours, this.timeOfDay.Minutes, this.timeOfDay.Seconds),
@@ -226,8 +226,8 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
   }
 
   /**
-   * Gets  a value that represents: - The day of the month when Year is
-   * non zero, - The index of the week in the month if Year is equal to zero.
+   * Gets  a value that represents: - The day of the month when Year is non zero, - The index of the week in
+   * the month if Year is equal to zero.
    *
    * @return the day order
    */
@@ -281,9 +281,8 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
   }
 
   /**
-   * Gets  the year. If Year is 0, the time change occurs every year
-   * according to a recurring pattern; otherwise, the time change occurs at
-   * the date specified by Day, Month, Year.
+   * Gets  the year. If Year is 0, the time change occurs every year according to a recurring pattern;
+   * otherwise, the time change occurs at the date specified by Day, Month, Year.
    *
    * @return the year
    */

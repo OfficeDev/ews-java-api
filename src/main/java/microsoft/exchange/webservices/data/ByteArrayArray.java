@@ -31,6 +31,7 @@ import java.util.List;
  * Represents an array of byte arrays
  */
 public class ByteArrayArray extends ComplexProperty {
+
   final static String ItemXmlElementName = "Base64Binary";
   private List<byte[]> content = new ArrayList<byte[]>();
 

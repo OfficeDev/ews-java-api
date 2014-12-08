@@ -29,9 +29,8 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents an entry of a DictionaryProperty object.
  * <p/>
- * All descendants of DictionaryEntryProperty must implement a parameterless
- * constructor. That constructor does not have to be public. That constructor
- * does not have to be public.
+ * All descendants of DictionaryEntryProperty must implement a parameterless constructor. That constructor
+ * does not have to be public. That constructor does not have to be public.
  *
  * @param <TKey> the generic type
  */
@@ -45,16 +44,14 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
   private Class<TKey> instance;
 
   /**
-   * Initializes a new instance of the "DictionaryEntryProperty&lt;TKey&gt;"
-   * class.
+   * Initializes a new instance of the "DictionaryEntryProperty&lt;TKey&gt;" class.
    */
   protected DictionaryEntryProperty(Class<TKey> cls) {
     this.instance = cls;
   }
 
   /**
-   * Initializes a new instance of the "DictionaryEntryProperty&lt;TKey&gt;"
-   * class.
+   * Initializes a new instance of the "DictionaryEntryProperty&lt;TKey&gt;" class.
    *
    * @param key The key.
    */

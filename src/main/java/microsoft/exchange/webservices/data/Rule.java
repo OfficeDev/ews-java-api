@@ -25,10 +25,8 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents a rule that automatically handles incoming messages.
- * A rule consists of a set of conditions
- * and exceptions that determine whether or
- * not a set of actions should be executed on incoming messages.
+ * Represents a rule that automatically handles incoming messages. A rule consists of a set of conditions and
+ * exceptions that determine whether or not a set of actions should be executed on incoming messages.
  */
 public final class Rule extends ComplexProperty {
 
@@ -129,8 +127,7 @@ public final class Rule extends ComplexProperty {
 
 
   /**
-   * Gets or sets the priority of this rule,
-   * which determines its execution order.
+   * Gets or sets the priority of this rule, which determines its execution order.
    */
   public int getPriority() {
     return this.priority;
@@ -159,8 +156,8 @@ public final class Rule extends ComplexProperty {
   }
 
   /**
-   * Gets a value indicating whether this rule can be modified via EWS.
-   * If IsNotSupported is true, the rule cannot be modified via EWS.
+   * Gets a value indicating whether this rule can be modified via EWS. If IsNotSupported is true, the rule
+   * cannot be modified via EWS.
    */
   public boolean getIsNotSupported() {
     return this.isNotSupported;
@@ -168,9 +165,8 @@ public final class Rule extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether
-   * this rule has errors. A rule that is in error
-   * cannot be processed unless it is updated and the error is corrected.
+   * Gets or sets a value indicating whether this rule has errors. A rule that is in error cannot be processed
+   * unless it is updated and the error is corrected.
    */
   public boolean getIsInError() {
     return this.isInError;
@@ -184,16 +180,15 @@ public final class Rule extends ComplexProperty {
   }
 
   /**
-   * Gets the conditions that determine whether or not this rule should be
-   * executed against incoming messages.
+   * Gets the conditions that determine whether or not this rule should be executed against incoming
+   * messages.
    */
   public RulePredicates getConditions() {
     return this.conditions;
   }
 
   /**
-   * Gets the actions that should be executed against incoming messages if the
-   * conditions evaluate as true.
+   * Gets the actions that should be executed against incoming messages if the conditions evaluate as true.
    */
   public RuleActions getActions() {
     return this.actions;
@@ -201,9 +196,8 @@ public final class Rule extends ComplexProperty {
   }
 
   /**
-   * Gets the exceptions that determine
-   * if this rule should be skipped even if
-   * its conditions evaluate to true.
+   * Gets the exceptions that determine if this rule should be skipped even if its conditions evaluate to
+   * true.
    */
   public RulePredicates getExceptions() {
     return this.exceptions;

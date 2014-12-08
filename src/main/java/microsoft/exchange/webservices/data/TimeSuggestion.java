@@ -151,8 +151,7 @@ public final class TimeSuggestion extends ComplexProperty {
   }
 
   /**
-   * Gets a value indicating whether the suggested time is within working
-   * hours.
+   * Gets a value indicating whether the suggested time is within working hours.
    *
    * @return true, if is work time
    */

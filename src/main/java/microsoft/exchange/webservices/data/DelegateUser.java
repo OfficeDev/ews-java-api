@@ -98,8 +98,7 @@ public final class DelegateUser extends ComplexProperty {
   }
 
   /**
-   * Gets  a value indicating if the delegate user should receive
-   * copies of meeting requests.
+   * Gets  a value indicating if the delegate user should receive copies of meeting requests.
    *
    * @return the receive copies of meeting messages
    */
@@ -118,8 +117,7 @@ public final class DelegateUser extends ComplexProperty {
   }
 
   /**
-   * Gets  a value indicating if the delegate user should be
-   * able to view the principal's private items.
+   * Gets  a value indicating if the delegate user should be able to view the principal's private items.
    *
    * @return the view private items
    */
@@ -129,8 +127,7 @@ public final class DelegateUser extends ComplexProperty {
   }
 
   /**
-   * Gets  a value indicating if the delegate user should be able to
-   * view the principal's private items.
+   * Gets  a value indicating if the delegate user should be able to view the principal's private items.
    *
    * @param value the new view private items
    */

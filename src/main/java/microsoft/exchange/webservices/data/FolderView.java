@@ -72,8 +72,7 @@ public final class FolderView extends PagedView {
   /**
    * Initializes a new instance of the FolderView class.
    *
-   * @param pageSize The maximum number of elements the search operation should
-   *                 return.
+   * @param pageSize The maximum number of elements the search operation should return.
    */
   public FolderView(int pageSize) {
     super(pageSize);
@@ -82,8 +81,7 @@ public final class FolderView extends PagedView {
   /**
    * Initializes a new instance of the FolderView class.
    *
-   * @param pageSize The maximum number of elements the search operation should
-   *                 return.
+   * @param pageSize The maximum number of elements the search operation should return.
    * @param offset   The offset of the view from the base point.
    */
   public FolderView(int pageSize, int offset) {
@@ -93,8 +91,7 @@ public final class FolderView extends PagedView {
   /**
    * Initializes a new instance of the FolderView class.
    *
-   * @param pageSize        The maximum number of elements the search operation should
-   *                        return.
+   * @param pageSize        The maximum number of elements the search operation should return.
    * @param offset          The offset of the view from the base point.
    * @param offsetBasePoint The base point of the offset.
    */

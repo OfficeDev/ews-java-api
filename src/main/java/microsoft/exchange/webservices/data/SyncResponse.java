@@ -176,8 +176,7 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
   }
 
   /**
-   * Gets a value indicating whether this request returns full or summary
-   * properties.
+   * Gets a value indicating whether this request returns full or summary properties.
    *
    * @return the summary properties only
    */

@@ -52,8 +52,7 @@ class Base64 {
    * Encodes String.
    *
    * @param data The String to be encoded
-   * @return String
-   * encoded value of String
+   * @return String encoded value of String
    */
   public static String encode(String data) {
     return encode(data.getBytes());
@@ -63,8 +62,7 @@ class Base64 {
    * Encodes  byte array.
    *
    * @param byteArry The value
-   * @return String
-   * encoded result of byte array
+   * @return String encoded result of byte array
    */
 
   public static String encode(byte[] byteArry) {

@@ -31,6 +31,7 @@ package microsoft.exchange.webservices.data;
  */
 public abstract class MoveCopyItemRequest<TResponse extends ServiceResponse>
     extends MoveCopyRequest<Item, TResponse> {
+
   private ItemIdWrapperList itemIds = new ItemIdWrapperList();
   private Boolean newItemIds;
 

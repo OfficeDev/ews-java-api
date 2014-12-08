@@ -31,8 +31,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Represents a supported Outlook protocol in an Outlook configurations settings
- * account.
+ * Represents a supported Outlook protocol in an Outlook configurations settings account.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 final class OutlookProtocol {
@@ -53,8 +52,7 @@ final class OutlookProtocol {
   private final static String WEB = "WEB";
 
   /**
-   * Converters to translate common Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
+   * Converters to translate common Outlook protocol settings. Each entry maps to a lambda expression used to
    * get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
@@ -108,9 +106,8 @@ final class OutlookProtocol {
 
 
   /**
-   * Converters to translate internal (EXCH) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Converters to translate internal (EXCH) Outlook protocol settings. Each entry maps to a lambda expression
+   * used to get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
       internalProtocolSettings =
@@ -223,9 +220,8 @@ final class OutlookProtocol {
           });
 
   /**
-   * Converters to translate external (EXPR) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Converters to translate external (EXPR) Outlook protocol settings. Each entry maps to a lambda expression
+   * used to get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
       externalProtocolSettings =
@@ -329,10 +325,8 @@ final class OutlookProtocol {
 
 
   /**
-   * Merged converter dictionary for translating
-   * internal (EXCH) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Merged converter dictionary for translating internal (EXCH) Outlook protocol settings. Each entry maps to
+   * a lambda expression used to get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
       internalProtocolConverterDictionary =
@@ -356,10 +350,8 @@ final class OutlookProtocol {
 
 
   /**
-   * Merged converter dictionary for translating
-   * external (EXPR) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Merged converter dictionary for translating external (EXPR) Outlook protocol settings. Each entry maps to
+   * a lambda expression used to get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
       externalProtocolConverterDictionary =
@@ -383,9 +375,8 @@ final class OutlookProtocol {
 
 
   /**
-   * Converters to translate Web (WEB) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Converters to translate Web (WEB) Outlook protocol settings. Each entry maps to a lambda expression used
+   * to get the matching property from the OutlookProtocol instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
       webProtocolConverterDictionary =
@@ -413,8 +404,8 @@ final class OutlookProtocol {
           });
 
   /**
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
+   * Each entry maps to a lambda expression used to get the matching property from the OutlookProtocol
+   * instance.
    */
   private static LazyMember<List<UserSettingName>>
       availableUserSettings =
@@ -558,8 +549,7 @@ final class OutlookProtocol {
 
 
   /**
-   * Parses the XML using the specified reader and creates an Outlook
-   * protocol.
+   * Parses the XML using the specified reader and creates an Outlook protocol.
    *
    * @param reader The reader.
    * @throws Exception the exception

@@ -194,8 +194,7 @@ final class SendItemRequest extends
   }
 
   /**
-   * Gets the saved copy destination folder id. <value>The saved
-   * copy destination folder id.</value>
+   * Gets the saved copy destination folder id. <value>The saved copy destination folder id.</value>
    *
    * @return the saved copy destination folder id
    */

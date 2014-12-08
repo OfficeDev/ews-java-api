@@ -184,9 +184,8 @@ public class EmailAddress extends ComplexProperty implements
   }
 
   /**
-   * Sets the actual address associated with the e-mail address. The type of
-   * the Address property must match the specified routing type. If
-   * RoutingType is not set, Address is assumed to be an SMTP address.
+   * Sets the actual address associated with the e-mail address. The type of the Address property must match
+   * the specified routing type. If RoutingType is not set, Address is assumed to be an SMTP address.
    *
    * @param address address associated with the e-mail address.
    */
@@ -209,8 +208,8 @@ public class EmailAddress extends ComplexProperty implements
   }
 
   /**
-   * Sets the routing type associated with the e-mail address. If RoutingType
-   * is not set, Address is assumed to be an SMTP address.
+   * Sets the routing type associated with the e-mail address. If RoutingType is not set, Address is assumed
+   * to be an SMTP address.
    *
    * @param routingType routing type associated with the e-mail address.
    */
@@ -252,8 +251,8 @@ public class EmailAddress extends ComplexProperty implements
   }
 
   /**
-   * Sets the Id of the contact the e-mail address represents. When Id is
-   * specified, Address should be set to null.
+   * Sets the Id of the contact the e-mail address represents. When Id is specified, Address should be set to
+   * null.
    *
    * @param id the new id
    */
@@ -266,8 +265,7 @@ public class EmailAddress extends ComplexProperty implements
   }
 
   /**
-   * Defines an implicit conversion between a string representing an SMTP
-   * address and EmailAddress.
+   * Defines an implicit conversion between a string representing an SMTP address and EmailAddress.
    *
    * @param smtpAddress The SMTP address to convert to EmailAddress.
    * @return An EmailAddress initialized with the specified SMTP address.

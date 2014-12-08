@@ -29,8 +29,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Represents a collection of properties that can be sent to and retrieved from
- * EWS.
+ * Represents a collection of properties that can be sent to and retrieved from EWS.
  *
  * @param <TComplexProperty> ComplexProperty type.
  */
@@ -364,8 +363,7 @@ public abstract class ComplexPropertyCollection
    * Remove specified complex property.
    *
    * @param complexProperty The complex property.
-   * @return True if the complex property was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the complex property was successfully removed from the collection, false otherwise.
    */
   protected boolean internalRemove(TComplexProperty complexProperty) {
     EwsUtilities.EwsAssert(complexProperty != null,
@@ -391,16 +389,14 @@ public abstract class ComplexPropertyCollection
    * Determines whether a specific property is in the collection.
    *
    * @param complexProperty The property to locate in the collection.
-   * @return True if the property was found in the collection, false
-   * otherwise.
+   * @return True if the property was found in the collection, false otherwise.
    */
   public boolean contains(TComplexProperty complexProperty) {
     return this.items.contains(complexProperty);
   }
 
   /**
-   * Searches for a specific property and return its zero-based index within
-   * the collection.
+   * Searches for a specific property and return its zero-based index within the collection.
    *
    * @param complexProperty The property to locate in the collection.
    * @return The zero-based index of the property within the collection.

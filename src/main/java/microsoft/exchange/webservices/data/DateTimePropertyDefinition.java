@@ -120,8 +120,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
   }
 
   /**
-   * Gets a value indicating whether this property definition is for a
-   * nullable type (ref, int?, bool?...).
+   * Gets a value indicating whether this property definition is for a nullable type (ref, int?, bool?...).
    *
    * @return true, if is nullable
    */

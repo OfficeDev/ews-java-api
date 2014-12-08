@@ -155,8 +155,7 @@ public class UserId extends ComplexProperty {
   }
 
   /**
-   * Gets  a value indicating which standard user the user
-   * represents.
+   * Gets  a value indicating which standard user the user represents.
    *
    * @return the standard user
    */
@@ -177,8 +176,7 @@ public class UserId extends ComplexProperty {
   }
 
   /**
-   * Implements an implicit conversion between a string representing a
-   * primary SMTP address and UserId.
+   * Implements an implicit conversion between a string representing a primary SMTP address and UserId.
    *
    * @param primarySmtpAddress the primary smtp address
    * @return A UserId initialized with the specified primary SMTP address

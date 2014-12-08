@@ -25,8 +25,8 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * WebCredentials is used for password-based authentication schemes such as
- * basic, digest, NTLM, and Kerberos authentication.
+ * WebCredentials is used for password-based authentication schemes such as basic, digest, NTLM, and Kerberos
+ * authentication.
  */
 public final class WebCredentials extends ExchangeCredentials {
 
@@ -126,8 +126,7 @@ public final class WebCredentials extends ExchangeCredentials {
   }
 
   /**
-   * This method is called to apply credentials to a service request before
-   * the request is made.
+   * This method is called to apply credentials to a service request before the request is made.
    *
    * @param client The request.
    */

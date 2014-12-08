@@ -140,8 +140,7 @@ public class UserConfigurationDictionaryTest extends BaseTest {
   }
 
   /**
-   * Tests the Method writeElementsToXml(...)
-   * with all valid Elements
+   * Tests the Method writeElementsToXml(...) with all valid Elements
    */
   @Test
   public void testWriteElementsToXml() throws Exception {

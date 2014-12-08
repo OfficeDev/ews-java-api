@@ -25,8 +25,8 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents a meeting cancellation message. Properties available on meeting
- * messages are defined in the MeetingMessageSchema class.
+ * Represents a meeting cancellation message. Properties available on meeting messages are defined in the
+ * MeetingMessageSchema class.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.MeetingCancellation)
 public class MeetingCancellation extends MeetingMessage {
@@ -53,15 +53,14 @@ public class MeetingCancellation extends MeetingMessage {
   }
 
   /**
-   * Binds to an existing meeting cancellation message and loads the specified
-   * set of properties. Calling this method results in a call to EWS.
+   * Binds to an existing meeting cancellation message and loads the specified set of properties. Calling this
+   * method results in a call to EWS.
    *
-   * @param service     The service to use to bind to the meeting cancellation
-   *                    message.
+   * @param service     The service to use to bind to the meeting cancellation message.
    * @param id          The Id of the meeting cancellation message to bind to.
    * @param propertySet The set of properties to load.
-   * @return A MeetingCancellation instance representing the meeting
-   * cancellation message corresponding to the specified Id.
+   * @return A MeetingCancellation instance representing the meeting cancellation message corresponding to the
+   * specified Id.
    */
   public static MeetingCancellation bind(ExchangeService service, ItemId id,
       PropertySet propertySet) {
@@ -75,14 +74,13 @@ public class MeetingCancellation extends MeetingMessage {
   }
 
   /**
-   * Binds to an existing meeting cancellation message and loads the specified
-   * set of properties. Calling this method results in a call to EWS.
+   * Binds to an existing meeting cancellation message and loads the specified set of properties. Calling this
+   * method results in a call to EWS.
    *
-   * @param service The service to use to bind to the meeting cancellation
-   *                message.
+   * @param service The service to use to bind to the meeting cancellation message.
    * @param id      The Id of the meeting cancellation message to bind to.
-   * @return A MeetingCancellation instance representing the meeting
-   * cancellation message corresponding to the specified Id.
+   * @return A MeetingCancellation instance representing the meeting cancellation message corresponding to the
+   * specified Id.
    */
   public static MeetingCancellation bind(ExchangeService service, ItemId id) {
     return MeetingCancellation.bind(service, id, PropertySet
@@ -90,11 +88,10 @@ public class MeetingCancellation extends MeetingMessage {
   }
 
   /**
-   * Removes the meeting associated with the cancellation message from the
-   * user's calendar.
+   * Removes the meeting associated with the cancellation message from the user's calendar.
    *
-   * @return A CalendarActionResults object containing the various items that
-   * were created or modified as a results of this operation.
+   * @return A CalendarActionResults object containing the various items that were created or modified as a
+   * results of this operation.
    * @throws ServiceLocalException the service local exception
    * @throws Exception             the exception
    */
@@ -107,8 +104,7 @@ public class MeetingCancellation extends MeetingMessage {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {

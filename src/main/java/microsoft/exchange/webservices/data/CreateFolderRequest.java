@@ -125,8 +125,7 @@ final class CreateFolderRequest extends CreateRequest<Folder, ServiceResponse> {
   }
 
   /**
-   * Gets the request version. Earliest Exchange version in which this request
-   * is supported.
+   * Gets the request version. Earliest Exchange version in which this request is supported.
    *
    * @return the minimum required server version
    */

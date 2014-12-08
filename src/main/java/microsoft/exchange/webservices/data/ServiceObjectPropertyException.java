@@ -37,8 +37,7 @@ public class ServiceObjectPropertyException extends PropertyException {
   /**
    * ServiceObjectPropertyException constructor.
    *
-   * @param propertyDefinition The definition of the property that is at the origin of the
-   *                           exception.
+   * @param propertyDefinition The definition of the property that is at the origin of the exception.
    */
   public ServiceObjectPropertyException(
       PropertyDefinitionBase propertyDefinition) {
@@ -50,8 +49,7 @@ public class ServiceObjectPropertyException extends PropertyException {
    * ServiceObjectPropertyException constructor.
    *
    * @param message            Error message text.
-   * @param propertyDefinition The definition of the property that is at the origin of the
-   *                           exception.
+   * @param propertyDefinition The definition of the property that is at the origin of the exception.
    */
   public ServiceObjectPropertyException(String message,
       PropertyDefinitionBase propertyDefinition) {
@@ -63,8 +61,7 @@ public class ServiceObjectPropertyException extends PropertyException {
    * ServiceObjectPropertyException constructor.
    *
    * @param message            Error message text.
-   * @param propertyDefinition The definition of the property that is at the origin of the
-   *                           exception.
+   * @param propertyDefinition The definition of the property that is at the origin of the exception.
    * @param innerException     the inner exception
    */
   public ServiceObjectPropertyException(String message,

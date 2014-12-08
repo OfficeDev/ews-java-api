@@ -377,8 +377,8 @@ public class EmailMessageSchema extends ItemSchema {
   }
 
   /**
-   * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
-   * SCHEMA ORDER (i.e. the same order as they are defined in types.xsd)
+   * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the same order
+   * as they are defined in types.xsd)
    */
   @Override
   protected void registerProperties() {

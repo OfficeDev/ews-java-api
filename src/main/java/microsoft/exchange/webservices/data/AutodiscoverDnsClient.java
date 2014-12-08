@@ -188,7 +188,6 @@ class AutodiscoverDnsClient {
     this.service.traceMessage(TraceFlags.
         AutodiscoverConfiguration, traceMessage);
 
-
     return bestDnsSrvRecord;
   }
 

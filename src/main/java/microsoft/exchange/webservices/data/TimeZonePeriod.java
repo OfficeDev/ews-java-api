@@ -122,8 +122,7 @@ class TimeZonePeriod extends ComplexProperty {
   }
 
   /**
-   * Gets a value indicating whether this period represents the Standard
-   * period.
+   * Gets a value indicating whether this period represents the Standard period.
    *
    * @return true if this instance is standard period; otherwise, false
    */

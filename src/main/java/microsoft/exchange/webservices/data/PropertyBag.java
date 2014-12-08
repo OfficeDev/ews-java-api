@@ -130,8 +130,7 @@ class PropertyBag implements IComplexPropertyChanged,
   }
 
   /**
-   * Adds the specified property to the specified change list if it is not
-   * already present.
+   * Adds the specified property to the specified change list if it is not already present.
    *
    * @param propertyDefinition The property to add to the change list.
    * @param changeList         The change list to add the property to.
@@ -195,8 +194,7 @@ class PropertyBag implements IComplexPropertyChanged,
    * Determines whether the specified property has been updated.
    *
    * @param propertyDefinition The property definition.
-   * @return true if the specified property has been updated; otherwise,
-   * false.
+   * @return true if the specified property has been updated; otherwise, false.
    */
   protected boolean isPropertyUpdated(PropertyDefinition propertyDefinition) {
     return this.modifiedProperties.contains(propertyDefinition) ||
@@ -257,8 +255,8 @@ class PropertyBag implements IComplexPropertyChanged,
    * Gets the property value.
    *
    * @param propertyDefinition       The property definition.
-   * @param serviceExceptionOutParam Exception that would be raised if there's an error retrieving
-   *                                 the property.
+   * @param serviceExceptionOutParam Exception that would be raised if there's an error retrieving the
+   *                                 property.
    * @return Property value. May be null.
    */
   private Object getPropertyValueOrException(
@@ -338,10 +336,9 @@ class PropertyBag implements IComplexPropertyChanged,
   }
 
   /**
-   * Sets the isDirty flag to true and triggers dispatch of the change event
-   * to the owner of the property bag. Changed must be called whenever an
-   * operation that changes the state of this property bag is performed (e.g.
-   * adding or removing a property).
+   * Sets the isDirty flag to true and triggers dispatch of the change event to the owner of the property bag.
+   * Changed must be called whenever an operation that changes the state of this property bag is performed
+   * (e.g. adding or removing a property).
    */
   protected void changed() {
     this.isDirty = true;
@@ -460,8 +457,8 @@ class PropertyBag implements IComplexPropertyChanged,
    * Loads properties from XML and inserts them in the bag.
    *
    * @param reader                         The reader from which to read the properties.
-   * @param clear                          Indicates whether the bag should be cleared before properties
-   *                                       are loaded.
+   * @param clear                          Indicates whether the bag should be cleared before properties are
+   *                                       loaded.
    * @param requestedPropertySet           The requested property set.
    * @param onlySummaryPropertiesRequested Indicates whether summary or full properties were requested.
    * @throws Exception the exception
@@ -541,8 +538,7 @@ class PropertyBag implements IComplexPropertyChanged,
   }
 
   /**
-   * Writes the EWS update operations corresponding to the changes that
-   * occurred in the bag to XML.
+   * Writes the EWS update operations corresponding to the changes that occurred in the bag to XML.
    *
    * @param writer The writer to write the updates to.
    * @throws Exception the exception
@@ -577,11 +573,10 @@ class PropertyBag implements IComplexPropertyChanged,
   }
 
   /**
-   * Determines whether an EWS UpdateItem/UpdateFolder call is necessary to
-   * save the changes that occurred in the bag.
+   * Determines whether an EWS UpdateItem/UpdateFolder call is necessary to save the changes that occurred in
+   * the bag.
    *
-   * @return True if an UpdateItem/UpdateFolder call is necessary, false
-   * otherwise.
+   * @return True if an UpdateItem/UpdateFolder call is necessary, false otherwise.
    */
   protected boolean getIsUpdateCallNecessary() {
     List<PropertyDefinition> propertyDefinitions =
@@ -598,9 +593,8 @@ class PropertyBag implements IComplexPropertyChanged,
   }
 
   /**
-   * Initializes a ComplexProperty instance. When a property is inserted into
-   * the bag, it needs to be initialized in order for changes that occur on
-   * that property to be properly detected and dispatched.
+   * Initializes a ComplexProperty instance. When a property is inserted into the bag, it needs to be
+   * initialized in order for changes that occur on that property to be properly detected and dispatched.
    *
    * @param complexProperty The ComplexProperty instance to initialize.
    */
@@ -733,11 +727,10 @@ class PropertyBag implements IComplexPropertyChanged,
    *
    * @param propertyDefinition The property to get or set.
    * @return An object representing the value of the property.
-   * @throws ServiceLocalException ServiceVersionException will be raised if this property
-   *                               requires a later version of Exchange.
-   *                               ServiceObjectPropertyException will be raised for get if
-   *                               property hasn't been assigned or loaded, raised for set if
-   *                               property cannot be updated or deleted.
+   * @throws ServiceLocalException ServiceVersionException will be raised if this property requires a later
+   *                               version of Exchange. ServiceObjectPropertyException will be raised for get
+   *                               if property hasn't been assigned or loaded, raised for set if property
+   *                               cannot be updated or deleted.
    */
   protected Object getObjectFromPropertyDefinition(
       PropertyDefinition propertyDefinition)

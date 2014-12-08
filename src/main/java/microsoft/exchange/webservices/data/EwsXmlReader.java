@@ -393,9 +393,8 @@ class EwsXmlReader {
   }
 
   /**
-   * Reads the value. Should return content element or text node as string
-   * Present event must be START ELEMENT. After executing this function
-   * Present event will be set on END ELEMENT
+   * Reads the value. Should return content element or text node as string Present event must be START
+   * ELEMENT. After executing this function Present event will be set on END ELEMENT
    *
    * @return String
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
@@ -436,7 +435,7 @@ class EwsXmlReader {
     } else if (this.presentEvent.getEventType() == XmlNodeType.CHARACTERS
         && this.presentEvent.isCharacters()) {
                         /*
-			 * if(this.presentEvent.asCharacters().getData().equals("<")) {
+                         * if(this.presentEvent.asCharacters().getData().equals("<")) {
 			 */
       StringBuffer data = new StringBuffer(this.presentEvent
           .asCharacters().getData());
@@ -453,8 +452,8 @@ class EwsXmlReader {
         }
       } while (!this.presentEvent.isEndElement());
       return data.toString();// this.presentEvent. = new XMLEvent();
-			/*
-			 * } else { Characters chars = this.presentEvent.asCharacters();
+                        /*
+                         * } else { Characters chars = this.presentEvent.asCharacters();
 			 * String elementValue = chars.getData(); // Advance to next event
 			 * post Characters (ideally it will be End // Element) this.read();
 			 * return elementValue; }
@@ -940,8 +939,7 @@ class EwsXmlReader {
   }
 
   /**
-   * Reads to the next descendant element with the specified local name and
-   * namespace.
+   * Reads to the next descendant element with the specified local name and namespace.
    *
    * @param xmlNamespace The namespace of the element you with to move to.
    * @param localName    The local name of the element you wish to move to.

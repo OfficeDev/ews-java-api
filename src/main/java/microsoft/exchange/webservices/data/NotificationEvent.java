@@ -48,9 +48,8 @@ public abstract class NotificationEvent {
   private FolderId parentFolderId;
 
   /**
-   * Id of the old parent folder of the item or folder this event applies to.
-   * This property is only meaningful when EventType is equal to either
-   * EventType.Moved or EventType.Copied. For all other event types,
+   * Id of the old parent folder of the item or folder this event applies to. This property is only meaningful
+   * when EventType is equal to either EventType.Moved or EventType.Copied. For all other event types,
    * oldParentFolderId will be null
    */
   private FolderId oldParentFolderId;

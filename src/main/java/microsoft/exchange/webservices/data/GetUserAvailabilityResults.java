@@ -67,8 +67,8 @@ public final class GetUserAvailabilityResults {
   }
 
   /**
-   * Gets a collection of AttendeeAvailability objects representing
-   * availability information for each of the specified attendees.
+   * Gets a collection of AttendeeAvailability objects representing availability information for each of the
+   * specified attendees.
    *
    * @return the attendees availability
    */
@@ -88,8 +88,7 @@ public final class GetUserAvailabilityResults {
   }
 
   /**
-   * Gets a collection of suggested meeting times for the specified time
-   * period.
+   * Gets a collection of suggested meeting times for the specified time period.
    *
    * @return the suggestions
    * @throws microsoft.exchange.webservices.data.ServiceResponseException the service response exception

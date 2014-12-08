@@ -151,8 +151,8 @@ public class MeetingMessageSchema extends EmailMessageSchema {
   /**
    * Registers properties.
    * <p/>
-   * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
-   * same order as they are defined in types.xsd)
+   * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the same order as they are defined in
+   * types.xsd)
    */
   @Override
   protected void registerProperties() {

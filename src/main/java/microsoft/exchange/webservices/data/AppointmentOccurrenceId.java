@@ -48,8 +48,7 @@ public final class AppointmentOccurrenceId extends ItemId {
   }
 
   /**
-   * Gets  the index of the occurrence. Note that the occurrence index
-   * starts at one not zero.
+   * Gets  the index of the occurrence. Note that the occurrence index starts at one not zero.
    *
    * @return the occurrence index
    */

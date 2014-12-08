@@ -32,8 +32,7 @@ import java.util.EnumSet;
 class MeetingTimeZonePropertyDefinition extends PropertyDefinition {
 
   /**
-   * Initializes a new instance of the MeetingTimeZonePropertyDefinition
-   * class.
+   * Initializes a new instance of the MeetingTimeZonePropertyDefinition class.
    *
    * @param xmlElementName the xml element name
    * @param uri            the uri

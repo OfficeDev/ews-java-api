@@ -198,9 +198,8 @@ public final class ExtendedProperty extends ComplexProperty {
   }
 
   /**
-   * Determines whether the specified <see cref="T:System.Object"/> is equal
-   * to the current <see cref="T:System.Object"/> true if the specified <see
-   * cref="T:System.Object"/> is equal to the current <see
+   * Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see
+   * cref="T:System.Object"/> true if the specified <see cref="T:System.Object"/> is equal to the current <see
    * cref="T:System.Object"/>
    *
    * @param obj the obj

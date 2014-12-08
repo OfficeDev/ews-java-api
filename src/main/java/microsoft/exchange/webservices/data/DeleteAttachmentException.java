@@ -25,8 +25,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an error that occurs when a call to the DeleteAttachment web
- * method fails.
+ * Represents an error that occurs when a call to the DeleteAttachment web method fails.
  */
 public final class DeleteAttachmentException extends
     ServiceRemoteException {// extends

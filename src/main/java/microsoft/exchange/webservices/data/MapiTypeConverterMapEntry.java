@@ -87,12 +87,11 @@ class MapiTypeConverterMapEntry {
   /**
    * Initializes a new instance of the MapiTypeConverterMapEntry class.
    *
-   * @param type The type. y default, converting a type to string is done by
-   *             calling value.ToString. Instances can override this behavior.
+   * @param type The type. y default, converting a type to string is done by calling value.ToString. Instances
+   *             can override this behavior.
    *             <p/>
-   *             By default, converting a string to the appropriate value type
-   *             is done by calling Convert.ChangeType Instances may override
-   *             this behavior.
+   *             By default, converting a string to the appropriate value type is done by calling
+   *             Convert.ChangeType Instances may override this behavior.
    */
   protected MapiTypeConverterMapEntry(Class type) {
     EwsUtilities.EwsAssert(
@@ -117,12 +116,10 @@ class MapiTypeConverterMapEntry {
   /**
    * Change value to a value of compatible type.
    * <p/>
-   * The type of a simple value should match exactly or be convertible to the
-   * appropriate type. An array value has to be a single dimension (rank),
-   * contain at least one value and contain elements that exactly match the
-   * expected type. (We could relax this last requirement so that, for
-   * example, you could pass an array of Int32 that could be converted to an
-   * array of Double but that seems like overkill).
+   * The type of a simple value should match exactly or be convertible to the appropriate type. An array value
+   * has to be a single dimension (rank), contain at least one value and contain elements that exactly match
+   * the expected type. (We could relax this last requirement so that, for example, you could pass an array of
+   * Int32 that could be converted to an array of Double but that seems like overkill).
    *
    * @param value The value.
    * @return New value.
@@ -187,7 +184,8 @@ class MapiTypeConverterMapEntry {
   }
 
   /**
-   * Converts a string to value consistent with type (or uses the default value if the string is null or empty).
+   * Converts a string to value consistent with type (or uses the default value if the string is null or
+   * empty).
    *
    * @param stringValue to convert to a value.
    * @return Value.
@@ -227,8 +225,7 @@ class MapiTypeConverterMapEntry {
   }
 
   /**
-   * Gets the dim. If `array' is an array object returns its dimensions;
-   * otherwise returns 0
+   * Gets the dim. If `array' is an array object returns its dimensions; otherwise returns 0
    *
    * @param array the array
    * @return the dim
@@ -282,8 +279,7 @@ class MapiTypeConverterMapEntry {
   }
 
   /**
-   * Gets the string to object converter. For array types, this method is
-   * called for each array element.
+   * Gets the string to object converter. For array types, this method is called for each array element.
    *
    * @return the convert to string
    */
@@ -301,8 +297,7 @@ class MapiTypeConverterMapEntry {
   }
 
   /**
-   * Gets the string parser. For array types, this method is called for each
-   * array element.
+   * Gets the string parser. For array types, this method is called for each array element.
    *
    * @return the parses the
    */
