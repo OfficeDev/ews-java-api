@@ -487,7 +487,7 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Gets the Internat Message Id of the e-mail message.
+   * Gets the Internal Message Id of the e-mail message.
    *
    * @return the internet message id
    * @throws ServiceLocalException the service local exception
@@ -531,14 +531,18 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Sets an e-mail address to receive replies.
+   * Sets e-mail address(es) to receive replies.
    *
-   * @param replyTo The requested receiver of replies
+   * @param replyTo The requested receiver(s) of replies. If no receivers are specified, the list is cleared.
    * @throws Exception the exception
    */
-  public void setReplyTo(EmailAddress replyTo) throws Exception {
+  public void setReplyTo(EmailAddress... replyTo) throws Exception {
     EmailAddressCollection emailAddresses = new EmailAddressCollection();
-    emailAddresses.add(replyTo);
+    if (replyTo != null) {
+      for (EmailAddress emailAddress : replyTo) {
+        emailAddresses.add(emailAddress);
+      }
+    }
     this.getPropertyBag().setObjectFromPropertyDefinition(
         EmailMessageSchema.ReplyTo, emailAddresses);
   }
