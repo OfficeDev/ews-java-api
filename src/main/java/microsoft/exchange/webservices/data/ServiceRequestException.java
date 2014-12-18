@@ -15,32 +15,29 @@ package microsoft.exchange.webservices.data;
  */
 public class ServiceRequestException extends ServiceRemoteException {
 
-	/**
-	 * ServiceRequestException Constructor.
-	 */
-	public ServiceRequestException() {
-		super();
-	}
+  /**
+   * ServiceRequestException Constructor.
+   */
+  public ServiceRequestException() {
+    super();
+  }
 
-	/**
-	 * ServiceRequestException Constructor.
-	 * 
-	 * @param message
-	 *            the message
-	 */
-	public ServiceRequestException(String message) {
-		super(message);
-	}
+  /**
+   * ServiceRequestException Constructor.
+   *
+   * @param message the message
+   */
+  public ServiceRequestException(String message) {
+    super(message);
+  }
 
-	/**
-	 * ServiceRequestException Constructor.
-	 * 
-	 * @param message
-	 *            the message
-	 * @param innerException
-	 *            the inner exception
-	 */
-	public ServiceRequestException(String message, Exception innerException) {
-		super(message, innerException);
-	}
+  /**
+   * ServiceRequestException Constructor.
+   *
+   * @param message        the message
+   * @param innerException the inner exception
+   */
+  public ServiceRequestException(String message, Exception innerException) {
+    super(message, innerException);
+  }
 }

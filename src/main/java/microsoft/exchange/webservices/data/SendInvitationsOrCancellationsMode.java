@@ -16,28 +16,38 @@ package microsoft.exchange.webservices.data;
  */
 public enum SendInvitationsOrCancellationsMode {
 
-	// No meeting invitation/cancellation is sent.
-	/** The Send to none. */
-	SendToNone,
+  // No meeting invitation/cancellation is sent.
+  /**
+   * The Send to none.
+   */
+  SendToNone,
 
-	// Meeting invitations/cancellations are sent to all attendees.
-	/** The Send only to all. */
-	SendOnlyToAll,
+  // Meeting invitations/cancellations are sent to all attendees.
+  /**
+   * The Send only to all.
+   */
+  SendOnlyToAll,
 
-	// Meeting invitations/cancellations are sent only to attendees that have
-	// been added or modified.
-	/** The Send only to changed. */
-	SendOnlyToChanged,
+  // Meeting invitations/cancellations are sent only to attendees that have
+  // been added or modified.
+  /**
+   * The Send only to changed.
+   */
+  SendOnlyToChanged,
 
-	// Meeting invitations/cancellations are sent to all attendees and a copy is
-	// saved in the organizer's Sent Items folder.
-	/** The Send to all and save copy. */
-	SendToAllAndSaveCopy,
+  // Meeting invitations/cancellations are sent to all attendees and a copy is
+  // saved in the organizer's Sent Items folder.
+  /**
+   * The Send to all and save copy.
+   */
+  SendToAllAndSaveCopy,
 
-	// Meeting invitations/cancellations are sent only to attendees that have
-	// been added or modified and a copy is saved in the organizer's Sent Items
-	// folder.
-	/** The Send to changed and save copy. */
-	SendToChangedAndSaveCopy
+  // Meeting invitations/cancellations are sent only to attendees that have
+  // been added or modified and a copy is saved in the organizer's Sent Items
+  // folder.
+  /**
+   * The Send to changed and save copy.
+   */
+  SendToChangedAndSaveCopy
 
 }

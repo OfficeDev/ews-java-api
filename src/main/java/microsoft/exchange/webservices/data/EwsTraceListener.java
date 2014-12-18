@@ -18,19 +18,20 @@ import org.apache.commons.logging.LogFactory;
  */
 class EwsTraceListener implements ITraceListener {
 
-	private Log log = LogFactory.getLog(EwsTraceListener.class);
+  private Log log = LogFactory.getLog(EwsTraceListener.class);
 
 
-	protected EwsTraceListener() {}
+  protected EwsTraceListener() {
+  }
 
-	/**
-	 * Handles a trace message.
-	 * 
-	 * @param traceType     The trace type
-	 * @param traceMessage  The trace message
-	 */
-	@Override
-	public void trace(String traceType, String traceMessage) {
-		log.trace(traceType + " - " + traceMessage);
-	}
+  /**
+   * Handles a trace message.
+   *
+   * @param traceType    The trace type
+   * @param traceMessage The trace message
+   */
+  @Override
+  public void trace(String traceType, String traceMessage) {
+    log.trace(traceType + " - " + traceMessage);
+  }
 }

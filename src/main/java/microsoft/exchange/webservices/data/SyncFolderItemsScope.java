@@ -15,11 +15,15 @@ package microsoft.exchange.webservices.data;
  */
 public enum SyncFolderItemsScope {
 
-	// Include only normal items in the response.
-	/** The Normal items. */
-	NormalItems,
+  // Include only normal items in the response.
+  /**
+   * The Normal items.
+   */
+  NormalItems,
 
-	// Include normal and associated items in the response.
-	/** The Normal and associated items. */
-	NormalAndAssociatedItems
+  // Include normal and associated items in the response.
+  /**
+   * The Normal and associated items.
+   */
+  NormalAndAssociatedItems
 }

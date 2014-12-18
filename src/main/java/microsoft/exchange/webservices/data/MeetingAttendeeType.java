@@ -15,24 +15,34 @@ package microsoft.exchange.webservices.data;
  */
 public enum MeetingAttendeeType {
 
-	// The attendee is the organizer of the meeting.
-	/** The Organizer. */
-	Organizer,
+  // The attendee is the organizer of the meeting.
+  /**
+   * The Organizer.
+   */
+  Organizer,
 
-	// The attendee is required.
-	/** The Required. */
-	Required,
+  // The attendee is required.
+  /**
+   * The Required.
+   */
+  Required,
 
-	// The attendee is optional.
-	/** The Optional. */
-	Optional,
+  // The attendee is optional.
+  /**
+   * The Optional.
+   */
+  Optional,
 
-	// The attendee is a room.
-	/** The Room. */
-	Room,
+  // The attendee is a room.
+  /**
+   * The Room.
+   */
+  Room,
 
-	// The attendee is a resource.
-	/** The Resource. */
-	Resource
+  // The attendee is a resource.
+  /**
+   * The Resource.
+   */
+  Resource
 
 }

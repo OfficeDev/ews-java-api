@@ -17,65 +17,65 @@ import java.util.List;
 /**
  * Represents the response to a Conversation search operation.
  */
- final class FindConversationResponse extends ServiceResponse {
-	List<Conversation> conversations = new ArrayList<Conversation>();
+final class FindConversationResponse extends ServiceResponse {
+  List<Conversation> conversations = new ArrayList<Conversation>();
 
-	/**
-	 * Initializes a new instance of the FindConversationResponse class.
-	 */       
-	protected FindConversationResponse() {
-		super();
-	}
+  /**
+   * Initializes a new instance of the FindConversationResponse class.
+   */
+  protected FindConversationResponse() {
+    super();
+  }
 
-	/**
-	 * Gets the results of the operation.
-	 */       
-	protected Collection<Conversation> getConversations() {
+  /**
+   * Gets the results of the operation.
+   */
+  protected Collection<Conversation> getConversations() {
 
-		return this.conversations;
+    return this.conversations;
 
-	}
+  }
 
-	/**
-	 * Read Conversations from XML.
-	 * @param reader The reader.
-	 * @throws Exception 
-	 */       
-	@Override
-	protected  void readElementsFromXml(EwsServiceXmlReader reader)
-	throws Exception {
-		EwsUtilities.EwsAssert(
-				conversations != null,
-				"FindConversationResponse.ReadElementsFromXml",
-		"conversations is null.");
+  /**
+   * Read Conversations from XML.
+   *
+   * @param reader The reader.
+   * @throws Exception
+   */
+  @Override
+  protected void readElementsFromXml(EwsServiceXmlReader reader)
+      throws Exception {
+    EwsUtilities.EwsAssert(
+        conversations != null,
+        "FindConversationResponse.ReadElementsFromXml",
+        "conversations is null.");
 
-		reader.readStartElement(XmlNamespace.Messages, 
-				XmlElementNames.Conversations);
-		if (!reader.isEmptyElement()) {
-			do {
-				reader.read();
+    reader.readStartElement(XmlNamespace.Messages,
+        XmlElementNames.Conversations);
+    if (!reader.isEmptyElement()) {
+      do {
+        reader.read();
 
-				if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
-					Conversation item = EwsUtilities.
-					createEwsObjectFromXmlElementName(Conversation.class,
-							reader.getService(),reader.getLocalName());
+        if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
+          Conversation item = EwsUtilities.
+              createEwsObjectFromXmlElementName(Conversation.class,
+                  reader.getService(), reader.getLocalName());
 
-					if (item == null) {
-						reader.skipCurrentElement();
-					}
-					else {
-						item.loadFromXml(
-								reader,
-								true, /* clearPropertyBag */
-								null,
-								false  /* summaryPropertiesOnly */);
+          if (item == null) {
+            reader.skipCurrentElement();
+          } else {
+            item.loadFromXml(
+                reader,
+                true, /* clearPropertyBag */
+                null,
+                false  /* summaryPropertiesOnly */);
 
-						conversations.add(item);
-					}
-				}
-			}
-			while (!reader.isEndElement(XmlNamespace.Messages,
-					XmlElementNames.Conversations));
-		}
-	}
+            conversations.add(item);
+          }
+        }
+      }
+      while (!reader.isEndElement(XmlNamespace.Messages,
+          XmlElementNames.Conversations));
+    }
+  }
 }

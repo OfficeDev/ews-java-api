@@ -17,211 +17,206 @@ import javax.xml.stream.XMLStreamException;
  */
 class TimeZoneTransition extends ComplexProperty {
 
-	/** The Period target. */
-	private final String PeriodTarget = "Period";
-	
-	/** The Group target. */
-	private final String GroupTarget = "Group";
+  /**
+   * The Period target.
+   */
+  private final String PeriodTarget = "Period";
 
-	/** The time zone definition. */
-	private TimeZoneDefinition timeZoneDefinition;
-	
-	/** The target period. */
-	private TimeZonePeriod targetPeriod;
-	
-	/** The target group. */
-	private TimeZoneTransitionGroup targetGroup;
+  /**
+   * The Group target.
+   */
+  private final String GroupTarget = "Group";
 
-	/**
-	 * Creates a time zone period transition of the appropriate type given an
-	 * XML element name.
-	 * 
-	 * @param timeZoneDefinition
-	 *            the time zone definition
-	 * @param xmlElementName
-	 *            the xml element name
-	 * @return A TimeZonePeriodTransition instance.
-	 * @throws ServiceLocalException
-	 *             the service local exception
-	 */
-	protected static TimeZoneTransition create(
-			TimeZoneDefinition timeZoneDefinition, String xmlElementName)
-			throws ServiceLocalException {
-		if (xmlElementName.equals(XmlElementNames.AbsoluteDateTransition)) {
-			return new AbsoluteDateTransition(timeZoneDefinition);
-		} else if (xmlElementName
-				.equals(XmlElementNames.AbsoluteDateTransition)) {
-			return new AbsoluteDateTransition(timeZoneDefinition);
-		} else if (xmlElementName
-				.equals(XmlElementNames.RecurringDayTransition)) {
-			return new RelativeDayOfMonthTransition(timeZoneDefinition);
-		} else if (xmlElementName
-				.equals(XmlElementNames.RecurringDateTransition)) {
-			return new AbsoluteDayOfMonthTransition(timeZoneDefinition);
-		} else if (xmlElementName.equals(XmlElementNames.Transition)) {
-			return new TimeZoneTransition(timeZoneDefinition);
-		} else {
-			throw new ServiceLocalException(String
-					.format(Strings.UnknownTimeZonePeriodTransitionType,
-							xmlElementName));
-		}
-	}
+  /**
+   * The time zone definition.
+   */
+  private TimeZoneDefinition timeZoneDefinition;
 
-	/**
-	 * Gets the XML element name associated with the transition.
-	 *
-	 * @return The XML element name associated with the transition.
-	 */
-	protected String getXmlElementName() {
-		return XmlElementNames.Transition;
-	}	
+  /**
+   * The target period.
+   */
+  private TimeZonePeriod targetPeriod;
 
-	/**
-	 * Tries to read element from XML.The reader.
-	 * 
-	 * @param reader The
-	 *            reader.
-	 * @return True if element was read.
-	 * @throws Exception the exception
-	 */
-	@Override
-	protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
-			throws Exception {
-		if (reader.getLocalName().equals(XmlElementNames.To)) {
-			String targetKind = reader
-					.readAttributeValue(XmlAttributeNames.Kind);
-			String targetId = reader.readElementValue();
-			if (targetKind.equals(PeriodTarget)) {
-				if (!this.timeZoneDefinition.getPeriods().containsKey(targetId)) {
-					this.targetPeriod = this.timeZoneDefinition.getPeriods()
-							.get(targetId);
-					throw new ServiceLocalException(String.format(
-							Strings.PeriodNotFound, targetId));
-				}
-			} else if (targetKind.equals(GroupTarget)) {
-				if (!this.timeZoneDefinition.getTransitionGroups().containsKey(
-						targetId)) {
-					this.targetGroup = this.timeZoneDefinition
-							.getTransitionGroups().get(targetId);
-					throw new ServiceLocalException(String.format(
-							Strings.TransitionGroupNotFound, targetId));
-				}
-			} else {
-				throw new ServiceLocalException(
-						Strings.UnsupportedTimeZonePeriodTransitionTarget);
-			}
+  /**
+   * The target group.
+   */
+  private TimeZoneTransitionGroup targetGroup;
 
-			return true;
-		} else {
-			return false;
-		}
-	}
+  /**
+   * Creates a time zone period transition of the appropriate type given an
+   * XML element name.
+   *
+   * @param timeZoneDefinition the time zone definition
+   * @param xmlElementName     the xml element name
+   * @return A TimeZonePeriodTransition instance.
+   * @throws ServiceLocalException the service local exception
+   */
+  protected static TimeZoneTransition create(
+      TimeZoneDefinition timeZoneDefinition, String xmlElementName)
+      throws ServiceLocalException {
+    if (xmlElementName.equals(XmlElementNames.AbsoluteDateTransition)) {
+      return new AbsoluteDateTransition(timeZoneDefinition);
+    } else if (xmlElementName
+        .equals(XmlElementNames.AbsoluteDateTransition)) {
+      return new AbsoluteDateTransition(timeZoneDefinition);
+    } else if (xmlElementName
+        .equals(XmlElementNames.RecurringDayTransition)) {
+      return new RelativeDayOfMonthTransition(timeZoneDefinition);
+    } else if (xmlElementName
+        .equals(XmlElementNames.RecurringDateTransition)) {
+      return new AbsoluteDayOfMonthTransition(timeZoneDefinition);
+    } else if (xmlElementName.equals(XmlElementNames.Transition)) {
+      return new TimeZoneTransition(timeZoneDefinition);
+    } else {
+      throw new ServiceLocalException(String
+          .format(Strings.UnknownTimeZonePeriodTransitionType,
+              xmlElementName));
+    }
+  }
 
-	/**
-	 * Writes elements to XML.
-	 * 
-	 * @param writer
-	 *            the writer
-	 * @throws ServiceXmlSerializationException
-	 *             the service xml serialization exception
-	 * @throws javax.xml.stream.XMLStreamException
-	 *             the xML stream exception
-	 */
-	@Override
-	protected void writeElementsToXml(EwsServiceXmlWriter writer)
-			throws ServiceXmlSerializationException, XMLStreamException {
-		writer.writeStartElement(XmlNamespace.Types, XmlElementNames.To);
+  /**
+   * Gets the XML element name associated with the transition.
+   *
+   * @return The XML element name associated with the transition.
+   */
+  protected String getXmlElementName() {
+    return XmlElementNames.Transition;
+  }
 
-		if (this.targetPeriod != null) {
-			writer.writeAttributeValue(XmlAttributeNames.Kind, PeriodTarget);
-			writer.writeValue(this.targetPeriod.getId(), XmlElementNames.To);
-		} else {
-			writer.writeAttributeValue(XmlAttributeNames.Kind, GroupTarget);
-			writer.writeValue(this.targetGroup.getId(), XmlElementNames.To);
-		}
+  /**
+   * Tries to read element from XML.The reader.
+   *
+   * @param reader The
+   *               reader.
+   * @return True if element was read.
+   * @throws Exception the exception
+   */
+  @Override
+  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+      throws Exception {
+    if (reader.getLocalName().equals(XmlElementNames.To)) {
+      String targetKind = reader
+          .readAttributeValue(XmlAttributeNames.Kind);
+      String targetId = reader.readElementValue();
+      if (targetKind.equals(PeriodTarget)) {
+        if (!this.timeZoneDefinition.getPeriods().containsKey(targetId)) {
+          this.targetPeriod = this.timeZoneDefinition.getPeriods()
+              .get(targetId);
+          throw new ServiceLocalException(String.format(
+              Strings.PeriodNotFound, targetId));
+        }
+      } else if (targetKind.equals(GroupTarget)) {
+        if (!this.timeZoneDefinition.getTransitionGroups().containsKey(
+            targetId)) {
+          this.targetGroup = this.timeZoneDefinition
+              .getTransitionGroups().get(targetId);
+          throw new ServiceLocalException(String.format(
+              Strings.TransitionGroupNotFound, targetId));
+        }
+      } else {
+        throw new ServiceLocalException(
+            Strings.UnsupportedTimeZonePeriodTransitionTarget);
+      }
 
-		writer.writeEndElement(); // To
-	}
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-	/**
-	 * Loads from XML.
-	 * 
-	 * @param reader
-	 *            the reader
-	 * @throws Exception
-	 *             the exception
-	 */
-	protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
-		this.loadFromXml(reader, this.getXmlElementName());
-	}
+  /**
+   * Writes elements to XML.
+   *
+   * @param writer the writer
+   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   */
+  @Override
+  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+      throws ServiceXmlSerializationException, XMLStreamException {
+    writer.writeStartElement(XmlNamespace.Types, XmlElementNames.To);
 
-	/**
-	 * Writes to XML.
-	 * 
-	 * @param writer
-	 *            the writer
-	 * @throws Exception
-	 *             the exception
-	 */
-	protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
-		this.writeToXml(writer, this.getXmlElementName());
-	}
+    if (this.targetPeriod != null) {
+      writer.writeAttributeValue(XmlAttributeNames.Kind, PeriodTarget);
+      writer.writeValue(this.targetPeriod.getId(), XmlElementNames.To);
+    } else {
+      writer.writeAttributeValue(XmlAttributeNames.Kind, GroupTarget);
+      writer.writeValue(this.targetGroup.getId(), XmlElementNames.To);
+    }
 
-	/**
-	 * Initializes a new instance of the class.
-	 * 
-	 * @param timeZoneDefinition
-	 *            the time zone definition
-	 */
-	protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition) {
-		super();
-		this.timeZoneDefinition = timeZoneDefinition;
-	}
+    writer.writeEndElement(); // To
+  }
 
-	/**
-	 * Initializes a new instance of the class.
-	 * 
-	 * @param timeZoneDefinition
-	 *            the time zone definition
-	 * @param targetGroup
-	 *            the target group
-	 */
-	protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition,
-			TimeZoneTransitionGroup targetGroup) {
-		this(timeZoneDefinition);
-		this.targetGroup = targetGroup;
-	}
+  /**
+   * Loads from XML.
+   *
+   * @param reader the reader
+   * @throws Exception the exception
+   */
+  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+    this.loadFromXml(reader, this.getXmlElementName());
+  }
 
-	/**
-	 * Initializes a new instance of the class.
-	 * 
-	 * @param timeZoneDefinition
-	 *            the time zone definition
-	 * @param targetPeriod
-	 *            the target period
-	 */
-	protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition,
-			TimeZonePeriod targetPeriod) {
-		this(timeZoneDefinition);
-		this.targetPeriod = targetPeriod;
-	}
+  /**
+   * Writes to XML.
+   *
+   * @param writer the writer
+   * @throws Exception the exception
+   */
+  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+    this.writeToXml(writer, this.getXmlElementName());
+  }
 
-	/**
-	 * Gets the target period of the transition.
-	 *
-	 * @return the target period
-	 */
-	protected TimeZonePeriod getTargetPeriod() {
-		return this.targetPeriod;
-	}
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   */
+  protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition) {
+    super();
+    this.timeZoneDefinition = timeZoneDefinition;
+  }
 
-	/**
-	 * Gets the target transition group of the transition.
-	 *
-	 * @return the target group
-	 */
-	protected TimeZoneTransitionGroup getTargetGroup() {
-		return this.targetGroup;
-	}
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   * @param targetGroup        the target group
+   */
+  protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition,
+      TimeZoneTransitionGroup targetGroup) {
+    this(timeZoneDefinition);
+    this.targetGroup = targetGroup;
+  }
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   * @param targetPeriod       the target period
+   */
+  protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition,
+      TimeZonePeriod targetPeriod) {
+    this(timeZoneDefinition);
+    this.targetPeriod = targetPeriod;
+  }
+
+  /**
+   * Gets the target period of the transition.
+   *
+   * @return the target period
+   */
+  protected TimeZonePeriod getTargetPeriod() {
+    return this.targetPeriod;
+  }
+
+  /**
+   * Gets the target transition group of the transition.
+   *
+   * @return the target group
+   */
+  protected TimeZoneTransitionGroup getTargetGroup() {
+    return this.targetGroup;
+  }
 
 }

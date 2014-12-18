@@ -15,11 +15,10 @@ package microsoft.exchange.webservices.data;
  */
 interface IComplexPropertyChangedDelegate {
 
-	/**
-	 * Complex property changed.
-	 * 
-	 * @param complexProperty
-	 *            the complex property
-	 */
-	void complexPropertyChanged(ComplexProperty complexProperty);
+  /**
+   * Complex property changed.
+   *
+   * @param complexProperty the complex property
+   */
+  void complexPropertyChanged(ComplexProperty complexProperty);
 }

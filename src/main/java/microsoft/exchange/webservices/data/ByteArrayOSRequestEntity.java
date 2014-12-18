@@ -10,42 +10,48 @@
 
 package microsoft.exchange.webservices.data;
 
+import org.apache.http.Header;
+import org.apache.http.entity.BasicHttpEntity;
+import org.apache.http.message.BasicHeader;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.apache.commons.httpclient.methods.RequestEntity;
+class ByteArrayOSRequestEntity extends BasicHttpEntity {
 
-class ByteArrayOSRequestEntity implements RequestEntity{
+  private ByteArrayOutputStream os = null;
 
-	private ByteArrayOutputStream os = null;
-	
-	/**
-	 * Constructor for ByteArrayOSRequestEntity.
-	 */
-	ByteArrayOSRequestEntity(OutputStream os) {
-		super();
-		this.os = (ByteArrayOutputStream) os;
-	}
-	
-	@Override
-	public long getContentLength() {
-		return os.size();
-	}
+  /**
+   * Constructor for ByteArrayOSRequestEntity.
+   */
+  ByteArrayOSRequestEntity(OutputStream os) {
+    super();
+    this.os = (ByteArrayOutputStream) os;
+  }
 
-	@Override
-	public String getContentType() {
-		return "text/xml; charset=utf-8";
-	}
+  @Override
+  public long getContentLength() {
+    return os.size();
+  }
 
-	@Override
-	public boolean isRepeatable() {
-		return true;
-	}
+  @Override
+  public Header getContentType() {
+    return new BasicHeader("Content-Type", "text/xml; charset=utf-8");
+  }
 
-	@Override
-	public void writeRequest(OutputStream out) throws IOException {
-		os.writeTo(out);		
-	}
+  @Override
+  public boolean isRepeatable() {
+    return true;
+  }
 
+  @Override
+  public void writeTo(OutputStream out) throws IOException {
+    os.writeTo(out);
+  }
+
+  @Override
+  public boolean isStreaming() {
+    return false;
+  }
 }

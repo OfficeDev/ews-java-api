@@ -19,7 +19,6 @@ import java.lang.annotation.Target;
  * The Interface Flags.
  */
 @Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@interface Flags {
+@Retention(RetentionPolicy.RUNTIME) @interface Flags {
 
 }

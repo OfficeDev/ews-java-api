@@ -15,16 +15,22 @@ package microsoft.exchange.webservices.data;
  */
 public enum PhysicalAddressKey {
 
-	// The business address.
-	/** The Business. */
-	Business,
+  // The business address.
+  /**
+   * The Business.
+   */
+  Business,
 
-	// The home address.
-	/** The Home. */
-	Home,
+  // The home address.
+  /**
+   * The Home.
+   */
+  Home,
 
-	// An alternate address.
-	/** The Other. */
-	Other
+  // An alternate address.
+  /**
+   * The Other.
+   */
+  Other
 
 }

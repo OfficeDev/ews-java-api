@@ -10,6 +10,6 @@
 
 package microsoft.exchange.webservices.data;
 
-public class WindowsLiveCredentials extends WSSecurityBasedCredentials{
+public class WindowsLiveCredentials extends WSSecurityBasedCredentials {
 
 }

@@ -15,55 +15,52 @@ import java.util.List;
 
 /**
  * Represents a user setting that is a collection of alternate mailboxes.
- * 
  */
-public final class AlternateMailboxCollection {	
+public final class AlternateMailboxCollection {
 
-	private ArrayList<AlternateMailbox> entries;
+  private ArrayList<AlternateMailbox> entries;
 
-	/**
-	 * Initializes a new instance of the class
-	 */
-	protected AlternateMailboxCollection() {
-		this.setEntries(new ArrayList<AlternateMailbox>());
-	}
+  /**
+   * Initializes a new instance of the class
+   */
+  protected AlternateMailboxCollection() {
+    this.setEntries(new ArrayList<AlternateMailbox>());
+  }
 
-	/**
-	 * Loads instance of AlternateMailboxCollection from XML.
-	 * 
-	 * @param reader
-	 *            the reader
-	 * @return AlternateMailboxCollection
-	 * @throws Exception
-	 *             the exception
-	 */
-	protected static AlternateMailboxCollection loadFromXml(EwsXmlReader reader)
-	throws Exception {
-		AlternateMailboxCollection instance = new AlternateMailboxCollection();
+  /**
+   * Loads instance of AlternateMailboxCollection from XML.
+   *
+   * @param reader the reader
+   * @return AlternateMailboxCollection
+   * @throws Exception the exception
+   */
+  protected static AlternateMailboxCollection loadFromXml(EwsXmlReader reader)
+      throws Exception {
+    AlternateMailboxCollection instance = new AlternateMailboxCollection();
 
-		do {
-			reader.read();
+    do {
+      reader.read();
 
-			if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
-					(reader.getLocalName()
-							.equals(XmlElementNames.AlternateMailbox))) {
-				instance.getEntries().add(
-						AlternateMailbox.loadFromXml(reader));
-			}
-		} while (!reader.isEndElement(XmlNamespace.Autodiscover,
-				XmlElementNames.AlternateMailbox));
+      if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
+          (reader.getLocalName()
+              .equals(XmlElementNames.AlternateMailbox))) {
+        instance.getEntries().add(
+            AlternateMailbox.loadFromXml(reader));
+      }
+    } while (!reader.isEndElement(XmlNamespace.Autodiscover,
+        XmlElementNames.AlternateMailbox));
 
-		return instance;
-	}
+    return instance;
+  }
 
-	/**
-	 * Gets the collection of alternate mailboxes.
-	 */
-	public List<AlternateMailbox> getEntries() {
-		return this.entries;
-	}
+  /**
+   * Gets the collection of alternate mailboxes.
+   */
+  public List<AlternateMailbox> getEntries() {
+    return this.entries;
+  }
 
-	private void  setEntries(ArrayList<AlternateMailbox> value) {
-		this.entries = value;
-	}
+  private void setEntries(ArrayList<AlternateMailbox> value) {
+    this.entries = value;
+  }
 }

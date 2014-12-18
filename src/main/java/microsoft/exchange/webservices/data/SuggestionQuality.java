@@ -15,20 +15,28 @@ package microsoft.exchange.webservices.data;
  */
 public enum SuggestionQuality {
 
-	// The suggestion is excellent.
-	/** The Excellent. */
-	Excellent,
+  // The suggestion is excellent.
+  /**
+   * The Excellent.
+   */
+  Excellent,
 
-	// The suggestion is good.
-	/** The Good. */
-	Good,
+  // The suggestion is good.
+  /**
+   * The Good.
+   */
+  Good,
 
-	// The suggestion is fair.
-	/** The Fair. */
-	Fair,
+  // The suggestion is fair.
+  /**
+   * The Fair.
+   */
+  Fair,
 
-	// The suggestion is poor.
-	/** The Poor. */
-	Poor
+  // The suggestion is poor.
+  /**
+   * The Poor.
+   */
+  Poor
 
 }

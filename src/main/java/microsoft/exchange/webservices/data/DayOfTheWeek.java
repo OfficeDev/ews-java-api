@@ -21,64 +21,85 @@ import java.util.Calendar;
  */
 public enum DayOfTheWeek {
 
-	// Sunday
-	/** The Sunday. */
-	Sunday(Calendar.SUNDAY),
+  // Sunday
+  /**
+   * The Sunday.
+   */
+  Sunday(Calendar.SUNDAY),
 
-	// Monday
-	/** The Monday. */
-	Monday(Calendar.MONDAY),
+  // Monday
+  /**
+   * The Monday.
+   */
+  Monday(Calendar.MONDAY),
 
-	// Tuesday
-	/** The Tuesday. */
-	Tuesday(Calendar.TUESDAY),
+  // Tuesday
+  /**
+   * The Tuesday.
+   */
+  Tuesday(Calendar.TUESDAY),
 
-	// Wednesday
-	/** The Wednesday. */
-	Wednesday(Calendar.WEDNESDAY),
+  // Wednesday
+  /**
+   * The Wednesday.
+   */
+  Wednesday(Calendar.WEDNESDAY),
 
-	// Thursday
-	/** The Thursday. */
-	Thursday(Calendar.THURSDAY),
+  // Thursday
+  /**
+   * The Thursday.
+   */
+  Thursday(Calendar.THURSDAY),
 
-	// Friday
-	/** The Friday. */
-	Friday(Calendar.FRIDAY),
+  // Friday
+  /**
+   * The Friday.
+   */
+  Friday(Calendar.FRIDAY),
 
-	// Saturday
-	/** The Saturday. */
-	Saturday(Calendar.SATURDAY),
+  // Saturday
+  /**
+   * The Saturday.
+   */
+  Saturday(Calendar.SATURDAY),
 
-	// Any day of the week
-	/** The Day. */
-	Day(),
+  // Any day of the week
+  /**
+   * The Day.
+   */
+  Day(),
 
-	// Any day of the usual business week (Monday-Friday)
-	/** The Weekday. */
-	Weekday(),
+  // Any day of the usual business week (Monday-Friday)
+  /**
+   * The Weekday.
+   */
+  Weekday(),
 
-	// Any weekend day (Saturday or Sunday)
-	/** The Weekend day. */
-	WeekendDay;
+  // Any weekend day (Saturday or Sunday)
+  /**
+   * The Weekend day.
+   */
+  WeekendDay;
 
-	/** The day of week. */
-	@SuppressWarnings("unused")
-	private int dayOfWeek = 0;
+  /**
+   * The day of week.
+   */
+  @SuppressWarnings("unused")
+  private int dayOfWeek = 0;
 
-	/**
-	 * Instantiates a new day of the week.
-	 * 
-	 * @param dayOfWeek
-	 *            the day of week
-	 */
-	DayOfTheWeek(int dayOfWeek) {
-		this.dayOfWeek = dayOfWeek;
-	}
+  /**
+   * Instantiates a new day of the week.
+   *
+   * @param dayOfWeek the day of week
+   */
+  DayOfTheWeek(int dayOfWeek) {
+    this.dayOfWeek = dayOfWeek;
+  }
 
-	/**
-	 * Instantiates a new day of the week.
-	 */
-	DayOfTheWeek() {
+  /**
+   * Instantiates a new day of the week.
+   */
+  DayOfTheWeek() {
 
-	}
+  }
 }

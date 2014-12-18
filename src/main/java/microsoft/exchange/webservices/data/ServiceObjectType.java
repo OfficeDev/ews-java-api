@@ -15,15 +15,21 @@ package microsoft.exchange.webservices.data;
  */
 public enum ServiceObjectType {
 
-	// The object is a folder.
-	/** The Folder. */
-	Folder,
+  // The object is a folder.
+  /**
+   * The Folder.
+   */
+  Folder,
 
-	// The object is an item.
-	/** The Item. */
-	Item,
-	
-	/// Data represents a conversation
-	/** The Conversation. */
-    Conversation
+  // The object is an item.
+  /**
+   * The Item.
+   */
+  Item,
+
+  /// Data represents a conversation
+  /**
+   * The Conversation.
+   */
+  Conversation
 }

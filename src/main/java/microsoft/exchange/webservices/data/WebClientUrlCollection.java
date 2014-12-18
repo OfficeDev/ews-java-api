@@ -17,51 +17,51 @@ import java.util.ArrayList;
  */
 public final class WebClientUrlCollection {
 
-	/** The urls. */
-	private ArrayList<WebClientUrl> urls;
+  /**
+   * The urls.
+   */
+  private ArrayList<WebClientUrl> urls;
 
-	/**
-	 * Initializes a new instance of the <see cref="WebClientUrlCollection"/>
-	 * class.
-	 */
-	protected WebClientUrlCollection() {
-		this.urls = new ArrayList<WebClientUrl>();
-	}
+  /**
+   * Initializes a new instance of the <see cref="WebClientUrlCollection"/>
+   * class.
+   */
+  protected WebClientUrlCollection() {
+    this.urls = new ArrayList<WebClientUrl>();
+  }
 
-	/**
-	 * Loads instance of WebClientUrlCollection from XML.
-	 * 
-	 * @param reader
-	 *            The reader.
-	 * @return the web client url collection
-	 * @throws Exception
-	 *             the exception
-	 */
-	protected static WebClientUrlCollection loadFromXml(EwsXmlReader reader)
-			throws Exception {
-		WebClientUrlCollection instance = new WebClientUrlCollection();
+  /**
+   * Loads instance of WebClientUrlCollection from XML.
+   *
+   * @param reader The reader.
+   * @return the web client url collection
+   * @throws Exception the exception
+   */
+  protected static WebClientUrlCollection loadFromXml(EwsXmlReader reader)
+      throws Exception {
+    WebClientUrlCollection instance = new WebClientUrlCollection();
 
-		do {
-			reader.read();
+    do {
+      reader.read();
 
-			if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
-					 (reader.getLocalName()
-							.equals(XmlElementNames.WebClientUrl))) {
-				instance.getUrls().add(WebClientUrl.loadFromXml(reader));
-			}
-		} while (!reader.isEndElement(XmlNamespace.Autodiscover,
-				XmlElementNames.WebClientUrls));
+      if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
+          (reader.getLocalName()
+              .equals(XmlElementNames.WebClientUrl))) {
+        instance.getUrls().add(WebClientUrl.loadFromXml(reader));
+      }
+    } while (!reader.isEndElement(XmlNamespace.Autodiscover,
+        XmlElementNames.WebClientUrls));
 
-		return instance;
-	}
+    return instance;
+  }
 
-	/**
-	 * Gets the URLs.
-	 * 
-	 * @return the urls
-	 */
-	public ArrayList<WebClientUrl> getUrls() {
-		return this.urls;
+  /**
+   * Gets the URLs.
+   *
+   * @return the urls
+   */
+  public ArrayList<WebClientUrl> getUrls() {
+    return this.urls;
 
-	}
+  }
 }

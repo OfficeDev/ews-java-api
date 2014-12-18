@@ -15,14 +15,12 @@ package microsoft.exchange.webservices.data;
  */
 public interface ITraceListener {
 
-	/**
-	 * Handles a trace message.
-	 * 
-	 * @param traceType
-	 *            Type of trace message.
-	 * @param traceMessage
-	 *            The trace message.
-	 */
-	void trace(String traceType, String traceMessage);
+  /**
+   * Handles a trace message.
+   *
+   * @param traceType    Type of trace message.
+   * @param traceMessage The trace message.
+   */
+  void trace(String traceType, String traceMessage);
 
 }

@@ -11,7 +11,7 @@
     <body>
         <menu name="EWS Client">
             <item name="Introduction" href="index.html"/>
-            <item name="License" href="License.docx" />
+            <item name="License" href="License.docx"/>
         </menu>
 
         <menu ref="reports"/>

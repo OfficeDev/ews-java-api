@@ -15,12 +15,16 @@ package microsoft.exchange.webservices.data;
  */
 public enum LogicalOperator {
 
-	// The AND operator.
-	/** The And. */
-	And,
+  // The AND operator.
+  /**
+   * The And.
+   */
+  And,
 
-	// The OR operator.
-	/** The Or. */
-	Or
+  // The OR operator.
+  /**
+   * The Or.
+   */
+  Or
 
 }

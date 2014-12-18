@@ -15,23 +15,33 @@ package microsoft.exchange.webservices.data;
  */
 public enum DelegateFolderPermissionLevel {
 
-	// The delegate has no permission.
-	/** The None. */
-	None,
+  // The delegate has no permission.
+  /**
+   * The None.
+   */
+  None,
 
-	// The delegate has Editor permissions.
-	/** The Editor. */
-	Editor,
+  // The delegate has Editor permissions.
+  /**
+   * The Editor.
+   */
+  Editor,
 
-	// The delegate has Reviewer permissions.
-	/** The Reviewer. */
-	Reviewer,
+  // The delegate has Reviewer permissions.
+  /**
+   * The Reviewer.
+   */
+  Reviewer,
 
-	// The delegate has Author permissions.
-	/** The Author. */
-	Author,
+  // The delegate has Author permissions.
+  /**
+   * The Author.
+   */
+  Author,
 
-	// The delegate has custom permissions.
-	/** The Custom. */
-	Custom
+  // The delegate has custom permissions.
+  /**
+   * The Custom.
+   */
+  Custom
 }

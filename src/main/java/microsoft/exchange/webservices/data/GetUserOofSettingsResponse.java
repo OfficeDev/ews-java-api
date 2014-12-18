@@ -15,33 +15,34 @@ package microsoft.exchange.webservices.data;
  */
 public class GetUserOofSettingsResponse extends ServiceResponse {
 
-	/** The oof settings. */
-	private OofSettings oofSettings;
+  /**
+   * The oof settings.
+   */
+  private OofSettings oofSettings;
 
-	/**
-	 * Initializes a new instance of the class.
-	 */
-	protected GetUserOofSettingsResponse() {
-		super();
-	}
+  /**
+   * Initializes a new instance of the class.
+   */
+  protected GetUserOofSettingsResponse() {
+    super();
+  }
 
-	/**
-	 * Gets  the OOF settings. <value>The oof settings.</value>
-	 * 
-	 * @return the oof settings
-	 */
-	public OofSettings getOofSettings() {
-		return this.oofSettings;
-	}
+  /**
+   * Gets  the OOF settings. <value>The oof settings.</value>
+   *
+   * @return the oof settings
+   */
+  public OofSettings getOofSettings() {
+    return this.oofSettings;
+  }
 
-	/**
-	 * Sets the oof settings.
-	 * 
-	 * @param value
-	 *            the new oof settings
-	 */
-	protected void setOofSettings(OofSettings value) {
-		this.oofSettings = value;
-	}
+  /**
+   * Sets the oof settings.
+   *
+   * @param value the new oof settings
+   */
+  protected void setOofSettings(OofSettings value) {
+    this.oofSettings = value;
+  }
 
 }
