@@ -48,7 +48,7 @@ public class WebProxy {
   }
 
 	/*public WebProxy(ProxyHost httpproxy) throws UnknownHostException {
-		this.host = httpproxy.getHostName();
+                this.host = httpproxy.getHostName();
 		this.port = httpproxy.getPort();
 	}	*/
 

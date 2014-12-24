@@ -20,6 +20,7 @@ import java.util.*;
 /**
  * Represents a binding to the Exchange Autodiscover Service.
  */
+@SuppressWarnings("rawtypes")
 public final class AutodiscoverService extends ExchangeServiceBase implements
     IAutodiscoverRedirectionUrl, IFunctionDelegate {
 
@@ -229,7 +230,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       writer.flush();
       urlOutStream.flush();
       urlOutStream.close();
-			/* Flush End */
+                        /* Flush End */
     }
     request.executeRequest();
     request.getResponseCode();
@@ -441,7 +442,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   protected <TSettings extends ConfigurationSettingsBase>
   TSettings getLegacyUserSettings(
       Class<TSettings> cls, String emailAddress) throws Exception {
-		/*int currentHop = 1;
+                /*int currentHop = 1;
 		return this.internalGetConfigurationSettings(cls, emailAddress,
 				currentHop);*/
 
@@ -992,6 +993,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * @return GetUserSettingsResponseCollection Object.
    * @throws Exception the exception
    */
+  @SuppressWarnings("unchecked")
   protected GetUserSettingsResponseCollection getUserSettings(
       final List<String> smtpAddresses, List<UserSettingName> settings)
       throws Exception {
@@ -1032,7 +1034,6 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       List<TSettingName> settings,
       ExchangeVersion requestedVersion,
       IFunctionDelegate<List<String>, List<TSettingName>,
-          ExchangeVersion, URI,
           TGetSettingsResponseCollection> getSettingsMethod,
       IFuncDelegate<String> getDomainMethod) throws Exception {
     TGetSettingsResponseCollection response;
@@ -1214,6 +1215,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * @return GetDomainSettingsResponse collection.
    * @throws Exception the exception
    */
+  @SuppressWarnings("unchecked")
   protected GetDomainSettingsResponseCollection getDomainSettings(
       final List<String> domains, List<DomainSettingName> settings,
       ExchangeVersion requestedVersion)
@@ -2129,6 +2131,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * java.util.List, java.net.URI)
    */
   @Override
+  @SuppressWarnings("unchecked")
   public Object func(List arg1, List arg2, ExchangeVersion arg3, URI arg4)
       throws ServiceLocalException, Exception {
     if (arg2.get(0).getClass().equals(DomainSettingName.class)) {

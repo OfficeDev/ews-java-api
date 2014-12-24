@@ -167,6 +167,7 @@ public final class ExtendedPropertyCollection extends
    * @return True if property exists in collection.
    * @throws microsoft.exchange.webservices.data.ArgumentException
    */
+  @SuppressWarnings("unchecked")
   protected <T> boolean tryGetValue(Class<T> cls,
       ExtendedPropertyDefinition propertyDefinition,
       OutParam<T> propertyValueOut) throws ArgumentException {

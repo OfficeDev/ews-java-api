@@ -187,7 +187,7 @@ class EwsUtilities {
 
     	
    /* 	InputStream inputStream = new FileInputStream ("D:\\EWS ManagedAPI sp2\\Rp\\xml\\useravailrequest.xml");
-    	
+
     	 byte buf[]=new byte[1024];
     	 int len;
     	 while((len=inputStream.read(buf))>0)
@@ -195,7 +195,7 @@ class EwsUtilities {
     	  target.write(buf,0, len);
     	 }
     	*/
-    	
+
     	/*PrintWriter pw = new PrintWriter(source,true);
     	PrintWriter pw1 = new PrintWriter(target,true);
     	pw1.println(pw.toString());*/
@@ -419,6 +419,7 @@ class EwsUtilities {
    * @return the t service object
    * @throws Exception the exception
    */
+  @SuppressWarnings("unchecked")
   protected static <TServiceObject extends ServiceObject>
   TServiceObject createEwsObjectFromXmlElementName(
       Class<?> itemClass, ExchangeService service, String xmlElementName)
@@ -457,7 +458,7 @@ class EwsUtilities {
    * @throws Exception the exception
    */
   protected static Item createItemFromItemClass(
-      ItemAttachment itemAttachment, Class itemClass, boolean isNew)
+      ItemAttachment itemAttachment, Class<?> itemClass, boolean isNew)
       throws Exception {
     ICreateServiceObjectWithAttachmentParam creationDelegate;
     if (EwsUtilities.serviceObjectInfo.getMember()
@@ -503,11 +504,9 @@ class EwsUtilities {
   /**
    *
    */
-  protected static Class getItemTypeFromXmlElementName(String xmlElementName) {
-
+  protected static Class<?> getItemTypeFromXmlElementName(String xmlElementName) {
     return EwsUtilities.serviceObjectInfo.getMember().getXmlElementNameToServiceObjectClassMap()
         .get(xmlElementName).getClass();
-
   }
 
   /**
@@ -520,6 +519,7 @@ class EwsUtilities {
    * @return A TItem instance or null if no instance of TItem could be found.
    */
 
+  @SuppressWarnings("unchecked")
   static <TItem extends Item> TItem findFirstItemOfType(Class<TItem> cls,
       Iterable<Item> items) {
     for (Item item : items) {
@@ -679,7 +679,8 @@ class EwsUtilities {
    * @param value      the value
    * @param separators the separators
    */
-  protected static <T extends Enum> void parseEnumValueList(Class<T> c,
+  @SuppressWarnings("unchecked")
+  protected static <T extends Enum<?>> void parseEnumValueList(Class<T> c,
       List<T> list, String value, char... separators) {
     EwsUtilities.EwsAssert(c.isEnum(), "EwsUtilities.ParseEnumValueList",
         "T is not an enum type.");
@@ -739,6 +740,7 @@ class EwsUtilities {
    * @throws IllegalAccessException   the illegal access exception
    * @throws java.text.ParseException the parse exception
    */
+  @SuppressWarnings("unchecked")
   protected static <T> T parse(Class<T> cls, String value)
       throws InstantiationException, IllegalAccessException,
       ParseException {
@@ -779,7 +781,6 @@ class EwsUtilities {
       o = Integer.parseInt(value);
       return (T) o;
     } else if (cls.isInstance(new Date())) {
-      Object o = null;
       DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
       df.setTimeZone(TimeZone.getTimeZone("UTC"));
       return (T) df.parse(value);
@@ -1035,35 +1036,28 @@ class EwsUtilities {
     Pattern timeSpanParser = Pattern.compile("-P");
     Matcher m = timeSpanParser.matcher(xsDuration);
     boolean negative = false;
-    //System.out.println(m.find());
     if (m.find()) {
       negative = true;
     }
 
-    //System.out.println(m.find());
     // Year
-    m = Pattern.compile("(\\d+)Y").matcher(xsDuration);
-    //System.out.println(m.find());
-    int year = 0;
-    if (m.find()) {
-      year = Integer.parseInt(m.group().substring(0,
-          m.group().indexOf("Y")));
-    }
+    //    m = Pattern.compile("(\\d+)Y").matcher(xsDuration);
+    //    int year = 0;
+    //    if (m.find()) {
+    //      year = Integer.parseInt(m.group().substring(0,
+    //          m.group().indexOf("Y")));
+    //    }
 
     // Month
-    m = Pattern.compile("(\\d+)M").matcher(xsDuration);
-    //System.out.println(m.find());
-    int month = 0;
-    if (m.find()) {
-      month = Integer.parseInt(m.group().substring(0,
-          m.group().indexOf("M")));
-    }
+    //    m = Pattern.compile("(\\d+)M").matcher(xsDuration);
+    //    int month = 0;
+    //    if (m.find()) {
+    //      month = Integer.parseInt(m.group().substring(0,
+    //          m.group().indexOf("M")));
+    //    }
 
     // Day
     m = Pattern.compile("(\\d+)D").matcher(xsDuration);
-
-    //System.out.println(m.find());
-
     long day = 0;
     if (m.find()) {
       day = Integer.parseInt(m.group().substring(0,
@@ -1072,9 +1066,6 @@ class EwsUtilities {
 
     // Hour
     m = Pattern.compile("(\\d+)H").matcher(xsDuration);
-
-    //System.out.println(m.find());
-
     int hour = 0;
     if (m.find()) {
       hour = Integer.parseInt(m.group().substring(0,
@@ -1083,9 +1074,6 @@ class EwsUtilities {
 
     // Minute
     m = Pattern.compile("(\\d+)M").matcher(xsDuration);
-
-    //System.out.println(m.find());
-
     int minute = 0;
     if (m.find()) {
       minute = Integer.parseInt(m.group().substring(0,
@@ -1094,28 +1082,15 @@ class EwsUtilities {
 
     // Seconds
     m = Pattern.compile("(\\d+).").matcher(xsDuration);
-
-    //System.out.println(m.find());
-
     int seconds = 0;
-
-    //		if (m.find())
-    //			seconds = Integer.parseInt(m.group().substring(0,
-    //					m.group().indexOf(".")));
-
-
     int milliseconds = 0;
     m = Pattern.compile("(\\d+)S").matcher(xsDuration);
-
-    //System.out.println(m.find());
-
     if (m.find()) {
       // Only allowed 4 digits of precision
       if (m.group().length() > 5) {
         milliseconds = Integer.parseInt(m.group().substring(0, 4));
       } else {
-        seconds = Integer.parseInt(m.group().substring(0,
-            m.group().indexOf("S")));
+        seconds = Integer.parseInt(m.group().substring(0, m.group().indexOf("S")));
       }
     }
 
@@ -1126,9 +1101,9 @@ class EwsUtilities {
     //TimeSpan retval = new TimeSpan(day, hour, minute, seconds,
     // milliseconds);
 
-    long retval = ((((((((day * 24) + hour) * 60) + minute) * 60) +
-        seconds) * 1000) + milliseconds);
-    //		long retval=1010010;
+    long retval =
+        day * TimeSpan.DAYS + hour * TimeSpan.HOURS + minute * TimeSpan.MINUTES + seconds * TimeSpan.SECONDS
+            + milliseconds * TimeSpan.MILLISECONDS;
     if (negative) {
       retval = -retval;
     }
@@ -1155,7 +1130,7 @@ class EwsUtilities {
    * @param type The class.
    * @return Printable name.
    */
-  public static String getPrintableTypeName(Class type) {
+  public static String getPrintableTypeName(Class<?> type) {
     // Note: building array of generic parameters is
     //done recursively. Each parameter could be any type.
     Type[] genericArgs = type.getGenericInterfaces();
@@ -1230,7 +1205,7 @@ class EwsUtilities {
 
   public static int getDim(Object array) {
     int dim = 0;
-    Class c = array.getClass();
+    Class<?> c = array.getClass();
     while (c.isArray()) {
       c = c.getComponentType();
       dim++;

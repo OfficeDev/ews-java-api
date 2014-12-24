@@ -38,7 +38,7 @@ public class TaskTest extends BaseTest {
    */
   @Before
   public void setup() throws Exception {
-    this.taskMock = new Task(this.exchangeServiceMock);
+    this.taskMock = new Task(TaskTest.exchangeServiceMock);
   }
 
   /**

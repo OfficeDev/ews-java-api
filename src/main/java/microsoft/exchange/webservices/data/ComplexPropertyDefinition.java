@@ -145,15 +145,15 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
    * Gets the property type.
    */
   @Override
-  public Class getType() {
+  public Class<TComplexProperty> getType() {
                 /*ParameterizedType parameterizedType =
-	        (ParameterizedType) getClass().getGenericSuperclass();
+                (ParameterizedType) getClass().getGenericSuperclass();
 	     return (Class) parameterizedType.getActualTypeArguments()[0];
 
 		 instance = ((Class)((ParameterizedType)this.getClass(). 
 			       getGenericSuperclass()).getActualTypeArguments()[0]).
 			       newInstance(); */
-		/*return ((Class)((ParameterizedType)this.getClass(). 
+                /*return ((Class)((ParameterizedType)this.getClass().
 			       getGenericSuperclass()).getActualTypeArguments()[0]).
 			       newInstance();*/
     //return ComplexProperty.class;

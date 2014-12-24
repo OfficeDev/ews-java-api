@@ -422,7 +422,7 @@ class EwsXmlReader {
     } else if (this.presentEvent.getEventType() == XmlNodeType.CHARACTERS
         && this.presentEvent.isCharacters()) {
                         /*
-			 * if(this.presentEvent.asCharacters().getData().equals("<")) {
+                         * if(this.presentEvent.asCharacters().getData().equals("<")) {
 			 */
       StringBuffer data = new StringBuffer(this.presentEvent
           .asCharacters().getData());
@@ -439,7 +439,7 @@ class EwsXmlReader {
         }
       } while (!this.presentEvent.isEndElement());
       return data.toString();// this.presentEvent. = new XMLEvent();
-			/*
+                        /*
 			 * } else { Characters chars = this.presentEvent.asCharacters();
 			 * String elementValue = chars.getData(); // Advance to next event
 			 * post Characters (ideally it will be End // Element) this.read();

@@ -14,6 +14,10 @@ package microsoft.exchange.webservices.data;
  * The Class ArgumentException.
  */
 public class ArgumentException extends Exception {
+  /**
+   * The Constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Instantiates a new argument exception.

@@ -465,6 +465,7 @@ public class MeetingRequest extends MeetingMessage implements
    * @return the conflicting meetings
    * @throws ServiceLocalException the service local exception
    */
+  @SuppressWarnings("unchecked")
   public ItemCollection<Appointment> getConflictingMeetings()
       throws ServiceLocalException {
     return (ItemCollection<Appointment>) this.getPropertyBag()
@@ -479,6 +480,7 @@ public class MeetingRequest extends MeetingMessage implements
    * @return the adjacent meetings
    * @throws ServiceLocalException the service local exception
    */
+  @SuppressWarnings("unchecked")
   public ItemCollection<Appointment> getAdjacentMeetings()
       throws ServiceLocalException {
     return (ItemCollection<Appointment>) this.getPropertyBag()

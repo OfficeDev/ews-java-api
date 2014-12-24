@@ -15,13 +15,13 @@ package microsoft.exchange.webservices.data;
  */
 public enum MessageDisposition {
         /*
-	 * Messages are saved but not sent.
+         * Messages are saved but not sent.
 	 */
   /**
    * The Save only.
    */
   SaveOnly,
-	/*
+        /*
 	 * Messages are sent and a copy is saved.
 	 */
   /**

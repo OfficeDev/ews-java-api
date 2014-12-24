@@ -311,7 +311,7 @@ public final class FolderPermission extends ComplexProperty implements
    * @return Clone of this instance.
    */
         /*
-	 * private FolderPermission Clone() throws CloneNotSupportedException {
+         * private FolderPermission Clone() throws CloneNotSupportedException {
 	 * return (FolderPermission)this.clone(); }
 	 */
 

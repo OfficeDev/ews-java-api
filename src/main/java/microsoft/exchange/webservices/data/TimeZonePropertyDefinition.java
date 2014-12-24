@@ -82,7 +82,7 @@ class TimeZonePropertyDefinition extends PropertyDefinition {
    * Gets the property type.
    */
   @Override
-  public Class getType() {
+  public Class<TimeZone> getType() {
     return TimeZone.class;
   }
 }

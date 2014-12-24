@@ -60,6 +60,11 @@ public class GetUserSettingsRequestTest extends BaseTest {
   @Parameterized.Parameters
   public static List<Object[]> getAutodiscoverServices() throws ArgumentException {
     return new ArrayList<Object[]>() {
+      /**
+       * The Constant serialVersionUID.
+       */
+      private static final long serialVersionUID = 1L;
+
       {
         for (ExchangeVersion exchangeVersion : ExchangeVersion.values()) {
           add(new Object[] {exchangeVersion, new AutodiscoverService(exchangeVersion)});
@@ -157,6 +162,7 @@ public class GetUserSettingsRequestTest extends BaseTest {
    * @throws XMLStreamException
    * @throws ServiceXmlSerializationException
    */
+  @SuppressWarnings("unused")
   @Test(expected = ServiceValidationException.class)
   public void testWriteExtraCustomSoapHeadersToXmlWithPartnertoken2()
       throws ServiceValidationException, XMLStreamException, ServiceXmlSerializationException {

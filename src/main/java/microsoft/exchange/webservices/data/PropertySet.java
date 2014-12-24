@@ -33,7 +33,7 @@ public final class PropertySet implements ISelfValidate,
    * @return Returns a predefined property set that only includes the Id
    * property.
    */
-  private static PropertySet getIdOnly() {
+  public static PropertySet getIdOnly() {
     return IdOnly;
   }
 

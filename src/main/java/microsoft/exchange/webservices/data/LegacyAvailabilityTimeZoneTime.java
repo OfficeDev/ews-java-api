@@ -64,7 +64,7 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
    *             the exception
    */
         /*
-	 * protected LegacyAvailabilityTimeZoneTime(TimeZone.TransitionTime
+         * protected LegacyAvailabilityTimeZoneTime(TimeZone.TransitionTime
 	 * transitionTime, TimeSpan delta) { this(); this.delta = delta;
 	 * 
 	 * if (transitionTime.IsFixedDateRule) { // TimeZoneInfo doesn't support an
@@ -85,7 +85,7 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
    * TimeZoneInfo.TransitionTime
    *
    */
-	/*
+        /*
 	 * protected TimeZone.TransitionTime toTransitionTime() { if (this.year ==
 	 * 0) { return TimeZone.TransitionTime.createFloatingDateRule( new Date(
 	 * Date.MinValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day,

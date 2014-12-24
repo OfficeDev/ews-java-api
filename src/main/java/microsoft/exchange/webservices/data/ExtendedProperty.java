@@ -100,7 +100,7 @@ public final class ExtendedProperty extends ComplexProperty {
 
     if (MapiTypeConverter.isArrayType(this.getPropertyDefinition()
         .getMapiType())) {
-      ArrayList array = (ArrayList) this.getValue();
+      ArrayList<?> array = (ArrayList<?>) this.getValue();
       writer
           .writeStartElement(XmlNamespace.Types,
               XmlElementNames.Values);
@@ -161,7 +161,7 @@ public final class ExtendedProperty extends ComplexProperty {
   private String getStringValue() {
     if (MapiTypeConverter.isArrayType(this.getPropertyDefinition()
         .getMapiType())) {
-      ArrayList array = (ArrayList) this.getValue();
+      ArrayList<?> array = (ArrayList<?>) this.getValue();
       if (array == null) {
         return null;
       } else {

@@ -14,6 +14,10 @@ package microsoft.exchange.webservices.data;
  * Represents an exception from an autodiscover error response.
  */
 public class AutodiscoverResponseException extends ServiceRemoteException {
+  /**
+   * The Constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Error code when Autodiscover service operation failed remotely.

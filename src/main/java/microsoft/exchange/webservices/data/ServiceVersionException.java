@@ -15,6 +15,10 @@ package microsoft.exchange.webservices.data;
  * service version mismatch.
  */
 public final class ServiceVersionException extends ServiceLocalException {
+  /**
+   * The Constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * Initializes a new instance of the class.

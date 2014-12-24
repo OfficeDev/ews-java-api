@@ -15,6 +15,11 @@ package microsoft.exchange.webservices.data;
  */
 class XmlDtdException extends XmlException {
   /**
+   * The Constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Gets the xml exception message.
    */
 

@@ -79,6 +79,7 @@ public abstract class ComplexPropertyCollection
    *
    * @param complexProperty The complex property.
    */
+  @SuppressWarnings("unchecked")
   protected void itemChanged(ComplexProperty complexProperty) {
     EwsUtilities.EwsAssert(complexProperty instanceof ComplexProperty,
         "ComplexPropertyCollection.ItemChanged", String.format(
@@ -170,7 +171,7 @@ public abstract class ComplexPropertyCollection
           TComplexProperty complexProperty = this.createComplexProperty(reader.getLocalName());
           TComplexProperty actualComplexProperty = this.getPropertyAtIndex(index++);
 
-          if (complexProperty == null || !complexProperty.getClass().equals(actualComplexProperty)) {
+          if (complexProperty == null || !complexProperty.equals(actualComplexProperty)) {
             throw new ServiceLocalException(Strings.PropertyTypeIncompatibleWhenUpdatingCollection);
           }
 

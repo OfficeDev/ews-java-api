@@ -247,7 +247,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
         writer.writeStartElement(XmlNamespace.Types,
             XmlElementNames.Periods);
 
-        Iterator it = this.periods.values().iterator();
+        Iterator<TimeZonePeriod> it = this.periods.values().iterator();
         while (it.hasNext()) {
           ((TimeZonePeriod) it.next()).writeToXml(writer);
         }

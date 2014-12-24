@@ -18,7 +18,7 @@ import java.util.StringTokenizer;
  */
 class DnsSrvRecord extends DnsRecord {
         /*
-	 * The string representing the target host
+         * The string representing the target host
 	 */
   /**
    * The target.
@@ -26,7 +26,7 @@ class DnsSrvRecord extends DnsRecord {
   private String target;
 
 	/*
-	 * priority of the target host specified in the owner name.
+         * priority of the target host specified in the owner name.
 	 */
   /**
    * The priority.

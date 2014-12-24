@@ -17,6 +17,10 @@ package microsoft.exchange.webservices.data;
 public final class CreateAttachmentException extends
     ServiceRemoteException {// extends
   // BatchServiceResponseException<CreateAttachmentResponse>
+  /**
+   * The Constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * The responses.

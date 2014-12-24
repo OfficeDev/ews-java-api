@@ -17,7 +17,10 @@ package microsoft.exchange.webservices.data;
 public final class DeleteAttachmentException extends
     ServiceRemoteException {// extends
   // BatchServiceResponseException<DeleteAttachmentResponse>
-
+  /**
+   * The Constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * The responses.

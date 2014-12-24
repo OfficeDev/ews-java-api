@@ -49,7 +49,7 @@ public final class OrderByCollection implements
           Strings.PropertyAlreadyExistsInOrderByCollection,
           propertyDefinition.getPrintableName()));
     }
-    Map propertyDefinitionSortDirectionPair = new
+    Map<PropertyDefinitionBase, SortDirection> propertyDefinitionSortDirectionPair = new
         HashMap<PropertyDefinitionBase, SortDirection>();
     propertyDefinitionSortDirectionPair.put(propertyDefinition,
         sortDirection);
@@ -72,7 +72,7 @@ public final class OrderByCollection implements
    * definition; otherwise, false.
    */
   protected boolean contains(PropertyDefinitionBase propertyDefinition) {
-    for (Map propDefSortOrderPair : propDefSortOrderPairList) {
+    for (Map<PropertyDefinitionBase, SortDirection> propDefSortOrderPair : propDefSortOrderPairList) {
       return propDefSortOrderPair.containsKey(propertyDefinition);
     }
     return false;
@@ -97,7 +97,7 @@ public final class OrderByCollection implements
   public boolean remove(PropertyDefinitionBase propertyDefinition) {
     List<Map<PropertyDefinitionBase, SortDirection>> removeList = new
         ArrayList<Map<PropertyDefinitionBase, SortDirection>>();
-    for (Map propDefSortOrderPair : propDefSortOrderPairList) {
+    for (Map<PropertyDefinitionBase, SortDirection> propDefSortOrderPair : propDefSortOrderPairList) {
       if (propDefSortOrderPair.containsKey(propertyDefinition)) {
         removeList.add(propDefSortOrderPair);
       }
@@ -123,7 +123,7 @@ public final class OrderByCollection implements
    * @return True if collection contains property definition, otherwise false.
    */
   public boolean tryGetValue(PropertyDefinitionBase propertyDefinition,
-      OutParam sortDirection) {
+      OutParam<SortDirection> sortDirection) {
     for (Map<PropertyDefinitionBase, SortDirection> pair : this.propDefSortOrderPairList) {
 
       if (pair.containsKey(propertyDefinition)) {

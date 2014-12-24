@@ -122,6 +122,7 @@ public abstract class Recurrence extends ComplexProperty {
    * @return Property value
    * @throws ServiceValidationException the service validation exception
    */
+  @SuppressWarnings("unchecked")
   protected <T> T getFieldValueOrThrowIfNull(Class<T> cls, Object value,
       String name) throws ServiceValidationException {
     if (value != null) {

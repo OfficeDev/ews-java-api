@@ -10,6 +10,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -64,9 +65,13 @@ final class Time {
    * @throws ArgumentException the argument exception
    */
   protected Time(Date dateTime) throws ArgumentException {
-    this.setHours(dateTime.getHours());
-    this.setMinutes(dateTime.getMinutes());
-    this.setSeconds(dateTime.getSeconds());
+    if (dateTime != null) {
+      Calendar cal = Calendar.getInstance();
+      cal.setTime(dateTime);
+      this.setHours(cal.get(Calendar.HOUR));
+      this.setMinutes(cal.get(Calendar.MINUTE));
+      this.setSeconds(cal.get(Calendar.SECOND));
+    }
   }
 
   /**

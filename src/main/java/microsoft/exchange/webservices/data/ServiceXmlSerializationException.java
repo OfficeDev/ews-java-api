@@ -15,6 +15,10 @@ package microsoft.exchange.webservices.data;
  * serialized.
  */
 public class ServiceXmlSerializationException extends ServiceLocalException {
+  /**
+   * The Constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * ServiceXmlSerializationException Constructor.

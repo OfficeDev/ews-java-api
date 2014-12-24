@@ -14,6 +14,10 @@ package microsoft.exchange.webservices.data;
  * Represents an error that occurs when an operation on a property fails.
  */
 public class PropertyException extends ServiceLocalException {
+  /**
+   * The Constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * The name.

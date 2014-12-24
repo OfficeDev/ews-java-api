@@ -16,7 +16,7 @@ package microsoft.exchange.webservices.data;
  */
 enum XmlNamespace {
         /*
-	 * The namespace is not specified.
+         * The namespace is not specified.
 	 */
   /**
    * The Not specified.

@@ -149,7 +149,6 @@ public final class EmailAddressEntry extends
    *
    * @param complexProperty the complex property
    */
-  @SuppressWarnings("unused")
   private void emailAddressChanged(ComplexProperty complexProperty) {
     this.changed();
   }

@@ -157,14 +157,15 @@ public final class UserConfigurationDictionary extends ComplexProperty
    *
    * @return the enumerator
    */
-  @SuppressWarnings("unchecked")
+
   /**
    * Returns an enumerator that iterates through
    * the user configuration dictionary.
+   *
    * @return An IEnumerator that can be used
    * to iterate through the user configuration dictionary.
    */
-  public Iterator getEnumerator() {
+  public Iterator<Object> getEnumerator() {
     return (this.dictionary.values().iterator());
   }
 
@@ -634,14 +635,13 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * @param dictionaryObject Object to validate.
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   private void validateObject(Object dictionaryObject) throws Exception {
     // Keys may not be null but we rely on the internal dictionary to throw
     // if the key is null.
     if (dictionaryObject != null) {
       if (dictionaryObject.getClass().isArray()) {
         int length = Array.getLength(dictionaryObject);
-        Class wrapperType = Array.get(dictionaryObject, 0).getClass();
+        Class<?> wrapperType = Array.get(dictionaryObject, 0).getClass();
         Object[] newArray = (Object[]) Array.
             newInstance(wrapperType, length);
         for (int i = 0; i < length; i++) {

@@ -132,6 +132,7 @@ public final class AttachmentCollection extends
    * @return An ItemAttachment instance.
    * @throws Exception the exception
    */
+  @SuppressWarnings("unchecked")
   public <TItem extends Item> GenericItemAttachment<TItem> addItemAttachment(
       Class<TItem> cls) throws Exception {
     if (cls.getDeclaredFields().length == 0) {

@@ -119,7 +119,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    * Gets the property type.
    */
   @Override
-  public Class getType() {
+  public Class<Date> getType() {
     return Date.class;
 
   }

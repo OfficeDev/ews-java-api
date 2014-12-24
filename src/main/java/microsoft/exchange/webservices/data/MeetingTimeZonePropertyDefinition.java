@@ -73,7 +73,7 @@ class MeetingTimeZonePropertyDefinition extends PropertyDefinition {
    * Gets the property type.
    */
   @Override
-  public Class getType() {
+  public Class<MeetingTimeZone> getType() {
     return MeetingTimeZone.class;
   }
 }

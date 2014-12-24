@@ -101,7 +101,7 @@ final class GroupMemberPropertyDefinition extends
    * Gets the property type.
    */
   @Override
-  public Class getType() {
+  public Class<String> getType() {
     return String.class;
   }
 

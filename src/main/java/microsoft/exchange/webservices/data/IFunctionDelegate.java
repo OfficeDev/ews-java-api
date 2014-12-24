@@ -23,8 +23,7 @@ import java.util.List;
  * @param <T3>      the generic type
  * @param <TResult> the generic type
  */
-interface IFunctionDelegate<T1 extends List, T2 extends List,
-    T3 extends ExchangeVersion, T4 extends URI, TResult> {
+interface IFunctionDelegate<T1 extends List<?>, T2 extends List<?>, TResult> {
 
   /**
    * Func.
@@ -39,7 +38,7 @@ interface IFunctionDelegate<T1 extends List, T2 extends List,
    * @throws ServiceLocalException               the service local exception
    * @throws Exception                           the exception
    */
-  TResult func(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+  TResult func(T1 arg1, T2 arg2, ExchangeVersion arg3, URI arg4)
       throws AutodiscoverLocalException, XMLStreamException, IOException,
       ServiceLocalException, Exception;
 

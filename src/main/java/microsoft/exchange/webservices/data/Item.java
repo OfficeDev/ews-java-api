@@ -842,6 +842,7 @@ public class Item extends ServiceObject {
    * @return the allowed response actions
    * @throws ServiceLocalException the service local exception
    */
+  @SuppressWarnings("unchecked")
   public EnumSet<ResponseActions> getAllowedResponseActions()
       throws ServiceLocalException {
     return (EnumSet<ResponseActions>) this.getPropertyBag()
@@ -1075,6 +1076,7 @@ public class Item extends ServiceObject {
    * @return the effective rights
    * @throws ServiceLocalException the service local exception
    */
+  @SuppressWarnings("unchecked")
   public EnumSet<EffectiveRights> getEffectiveRights()
       throws ServiceLocalException {
     return (EnumSet<EffectiveRights>) this.getPropertyBag()

@@ -15,6 +15,10 @@ package microsoft.exchange.webservices.data;
  * validation error).
  */
 public class ServiceLocalException extends Exception {
+  /**
+   * The Constant serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * ServiceLocalException Constructor.

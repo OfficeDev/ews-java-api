@@ -73,7 +73,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
       MessageDisposition messageDisposition) throws Exception {
     CreateResponseObjectRequest request = new CreateResponseObjectRequest(
         this, ServiceErrorHandling.ThrowOnError);
-    Collection<ServiceObject> serviceList = new ArrayList();
+    Collection<ServiceObject> serviceList = new ArrayList<ServiceObject>();
     serviceList.add(responseObject);
     request.setParentFolderId(parentFolderId);
     request.setItems(serviceList);
@@ -330,6 +330,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @return Folder
    * @throws Exception the exception
    */
+  @SuppressWarnings("unchecked")
   protected <TFolder extends Folder> TFolder bindToFolder(Class<TFolder> cls,
       FolderId folderId, PropertySet propertySet) throws Exception {
     Folder result = this.bindToFolder(folderId, propertySet);
@@ -817,12 +818,11 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @return An object representing the results of the search operation.
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   public FindItemsResults<Item> findItems(FolderId parentFolderId,
       String queryString, ItemView view) throws Exception {
     EwsUtilities.validateParamAllowNull(queryString, "queryString");
 
-    List folderIdArray = new ArrayList();
+    List<FolderId> folderIdArray = new ArrayList<FolderId>();
     folderIdArray.add(parentFolderId);
 
     ServiceResponseCollection<FindItemResponse<Item>> responses = this
@@ -843,11 +843,10 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @return An object representing the results of the search operation.
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   public FindItemsResults<Item> findItems(FolderId parentFolderId,
       SearchFilter searchFilter, ItemView view) throws Exception {
     EwsUtilities.validateParamAllowNull(searchFilter, "searchFilter");
-    List folderIdArray = new ArrayList();
+    List<FolderId> folderIdArray = new ArrayList<FolderId>();
     folderIdArray.add(parentFolderId);
     ServiceResponseCollection<FindItemResponse<Item>> responses = this
         .findItems(folderIdArray, searchFilter, null, /* queryString */
@@ -866,10 +865,9 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @return An object representing the results of the search operation.
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   public FindItemsResults<Item> findItems(FolderId parentFolderId,
       ItemView view) throws Exception {
-    List folderIdArray = new ArrayList();
+    List<FolderId> folderIdArray = new ArrayList<FolderId>();
     folderIdArray.add(parentFolderId);
     ServiceResponseCollection<FindItemResponse<Item>> responses = this
         .findItems(folderIdArray, null, /* searchFilter */
@@ -1223,6 +1221,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @return the t item
    * @throws Exception the exception
    */
+  @SuppressWarnings("unchecked")
   protected <TItem extends Item> TItem bindToItem(Class<TItem> c,
       ItemId itemId, PropertySet propertySet) throws Exception {
     Item result = this.bindToItem(itemId, propertySet);
@@ -1320,15 +1319,15 @@ public final class ExchangeService extends ExchangeServiceBase implements
       throws Exception {
     GetAttachmentRequest request = new GetAttachmentRequest(this, errorHandling);
 
-    Iterator it = attachments.iterator();
+    Iterator<Attachment> it = attachments.iterator();
     while (it.hasNext()) {
-      ((ArrayList) request.getAttachments()).add(it.next());
+      ((ArrayList<Attachment>) request.getAttachments()).add(it.next());
 
     }
     request.setBodyType(bodyType);
 
     if (additionalProperties != null) {
-      List propsArray = new ArrayList();
+      List<PropertyDefinitionBase> propsArray = new ArrayList<PropertyDefinitionBase>();
       for (PropertyDefinitionBase propertyDefinitionBase : additionalProperties) {
         propsArray.add(propertyDefinitionBase);
       }
@@ -1396,7 +1395,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
 
     request.setParentItemId(parentItemId);
                 /*
-		 * if (null != attachments) { while (attachments.hasNext()) {
+                 * if (null != attachments) { while (attachments.hasNext()) {
 		 * request.getAttachments().add(attachments.next()); } }
 		 */
     request.getAttachments().addAll(
@@ -2109,7 +2108,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
 	/*
-	 * Subscribes to streaming notifications. Calling this method results in a
+         * Subscribes to streaming notifications. Calling this method results in a
 	 * call to EWS.
 	 * 
 	 * @param folderIds
@@ -3023,7 +3022,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
       IdFormat destinationFormat) throws Exception {
     EwsUtilities.validateParam(id, "id");
 
-    List alternateIdBaseArray = new ArrayList();
+    List<AlternateIdBase> alternateIdBaseArray = new ArrayList<AlternateIdBase>();
     alternateIdBaseArray.add(id);
 
     ServiceResponseCollection<ConvertIdResponse> responses = this

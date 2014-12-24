@@ -71,7 +71,7 @@ class HangingTraceStream extends InputStream {
    *@exception An I/O error occurs.
    */
         /*
-	 * @Override public void close() { // no-op }
+         * @Override public void close() { // no-op }
 	 */
 
   /**

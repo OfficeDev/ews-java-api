@@ -23,12 +23,11 @@ class MapiTypeConverterMapEntry {
   /**
    * Map CLR types used for MAPI properties to matching default values.
    */
-  private static LazyMember<Map<Class, Object>> defaultValueMap = new LazyMember<Map<Class, Object>>(
-      new ILazyMember<Map<Class, Object>>() {
-        @SuppressWarnings("deprecation")
-        public Map<Class, Object> createInstance() {
+  private static LazyMember<Map<Class<?>, Object>> defaultValueMap = new LazyMember<Map<Class<?>, Object>>(
+      new ILazyMember<Map<Class<?>, Object>>() {
+        public Map<Class<?>, Object> createInstance() {
 
-          Map<Class, Object> map = new HashMap<Class, Object>();
+          Map<Class<?>, Object> map = new HashMap<Class<?>, Object>();
 
           map.put(Boolean.class, false);
           map.put(Byte[].class, null);
@@ -58,7 +57,7 @@ class MapiTypeConverterMapEntry {
   /**
    * The type.
    */
-  Class type;
+  Class<?> type;
 
   /**
    * The convert to string.
@@ -80,7 +79,7 @@ class MapiTypeConverterMapEntry {
    *             is done by calling Convert.ChangeType Instances may override
    *             this behavior.
    */
-  protected MapiTypeConverterMapEntry(Class type) {
+  protected MapiTypeConverterMapEntry(Class<?> type) {
     EwsUtilities.EwsAssert(
         defaultValueMap.getMember().containsKey(type),
         "MapiTypeConverterMapEntry ctor",
@@ -127,7 +126,6 @@ class MapiTypeConverterMapEntry {
           o = Integer.parseInt(value + "");
           return o;
         } else if (this.getType().isInstance(new Date())) {
-          Object o = null;
           DateFormat df = new SimpleDateFormat(
               "yyyy-MM-dd'T'HH:mm:ss'Z'");
           return df.parse(value + "");
@@ -200,7 +198,7 @@ class MapiTypeConverterMapEntry {
     }
 
     if (value instanceof ArrayList) {
-      ArrayList arrayList = (ArrayList) value;
+      ArrayList<?> arrayList = (ArrayList<?>) value;
       if (arrayList.isEmpty()) {
         throw new ArgumentException(Strings.ArrayMustHaveAtLeastOneElement);
       }
@@ -221,7 +219,7 @@ class MapiTypeConverterMapEntry {
    */
   public static int getDim(Object array) {
     int dim = 0;
-    Class cls = array.getClass();
+    Class<?> cls = array.getClass();
     while (cls.isArray()) {
       dim++;
       cls = cls.getComponentType();
@@ -235,7 +233,7 @@ class MapiTypeConverterMapEntry {
    * @return the type
    */
 
-  protected Class getType() {
+  protected Class<?> getType() {
     return this.type;
   }
 
@@ -244,7 +242,7 @@ class MapiTypeConverterMapEntry {
    *
    * @param cls the new type
    */
-  protected void setType(Class cls) {
+  protected void setType(Class<?> cls) {
     type = cls;
   }
 

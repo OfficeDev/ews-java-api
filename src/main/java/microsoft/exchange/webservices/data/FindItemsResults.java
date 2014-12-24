@@ -19,7 +19,7 @@ import java.util.Iterator;
  * @param <TItem> The type of item returned by the search operation.
  */
 public final class FindItemsResults<TItem extends Item> implements
-    Iterable<Item> {
+    Iterable<TItem> {
 
   /**
    * The total count.
@@ -123,8 +123,8 @@ public final class FindItemsResults<TItem extends Item> implements
    * @return the iterator
    */
   @Override
-  public Iterator<Item> iterator() {
-    return (Iterator<Item>) this.items.iterator();
+  public Iterator<TItem> iterator() {
+    return (Iterator<TItem>) this.items.iterator();
   }
 
 }
