@@ -206,6 +206,14 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
       return false;
     }
 
+    if (extPropDef1.getTag() != null) {
+      if (!extPropDef1.getTag().equals(extPropDef2.getTag())) {
+        return false;
+      }
+    } else if (extPropDef2.getTag() != null) {
+      return false;
+    }
+
     if (extPropDef1.getName() != null) {
       if (!extPropDef1.getName().equals(extPropDef2.getName())) {
         return false;
