@@ -327,50 +327,56 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
     this.traceMessage(TraceFlags.AutodiscoverConfiguration, String.format(
         "Trying to get Autodiscover redirection URL from %s.", url));
 
-    HttpWebRequest request = new HttpClientWebRequest(this.getSimpleHttpConnectionManager());
-    try {
-      request.setUrl(URI.create(url).toURL());
-    } catch (MalformedURLException e) {
-      String strErr = String.format("Incorrect format : %s", url);
-      throw new ServiceLocalException(strErr);
-    }
+    HttpWebRequest request = null;
 
-    request.setAllowAutoRedirect(false);
-    request.setPreAuthenticate(false);
-    request.setRequestMethod("GET");
-    request.setUseDefaultCredentials(this.getUseDefaultCredentials());
-    if (!this.getUseDefaultCredentials()) {
-      ExchangeCredentials serviceCredentials = this.getCredentials();
-      if (null == serviceCredentials) {
-        throw new ServiceLocalException(Strings.CredentialsRequired);
+    try {
+      request = new HttpClientWebRequest(this.getSimpleHttpConnectionManager());
+
+      try {
+        request.setUrl(URI.create(url).toURL());
+      } catch (MalformedURLException e) {
+        String strErr = String.format("Incorrect format : %s", url);
+        throw new ServiceLocalException(strErr);
       }
-      // Make sure that credentials have been authenticated if required
-      serviceCredentials.preAuthenticate();
 
-      // Apply credentials to the request
-      serviceCredentials.prepareWebRequest(request);
-    }
-    try {
-      request.prepareAsyncConnection();
-    } catch (Exception ex) {
-      ex.getMessage();
-      request = null;
-    }
+      request.setAllowAutoRedirect(false);
+      request.setPreAuthenticate(false);
+      request.setRequestMethod("GET");
+      request.setUseDefaultCredentials(this.getUseDefaultCredentials());
+      if (!this.getUseDefaultCredentials()) {
+        ExchangeCredentials serviceCredentials = this.getCredentials();
+        if (null == serviceCredentials) {
+          throw new ServiceLocalException(Strings.CredentialsRequired);
+        }
+        // Make sure that credentials have been authenticated if required
+        serviceCredentials.preAuthenticate();
 
-    if (request != null) {
-      URI redirectUrl;
-      OutParam<URI> outParam = new OutParam<URI>();
-      if (this.tryGetRedirectionResponse(request, outParam)) {
-        redirectUrl = outParam.getParam();
-        return redirectUrl;
+        // Apply credentials to the request
+        serviceCredentials.prepareWebRequest(request);
       }
-    }
-    try {
+      try {
+        request.prepareAsyncConnection();
+      } catch (Exception ex) {
+        ex.getMessage();
+        request = null;
+      }
+
       if (request != null) {
-        request.close();
+        URI redirectUrl;
+        OutParam<URI> outParam = new OutParam<URI>();
+        if (this.tryGetRedirectionResponse(request, outParam)) {
+          redirectUrl = outParam.getParam();
+          return redirectUrl;
+        }
       }
-    } catch (Exception e2) {
-      // do nothing
+    } finally {
+      if (request != null) {
+        try {
+          request.close();
+        } catch (Exception e2) {
+          // Ignore exceptions when closing the request
+        }
+      }
     }
 
     this.traceMessage(TraceFlags.AutodiscoverConfiguration,
