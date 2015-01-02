@@ -318,14 +318,12 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * @throws ServiceLocalException                                the service local exception
    * @throws java.net.URISyntaxException                          the uRI syntax exception
    */
-  private URI getRedirectUrl(String domainName) throws EWSHttpException,
-      XMLStreamException, IOException, ServiceLocalException,
-      URISyntaxException {
-    String url = String.format(AutodiscoverLegacyHttpUrl, "autodiscover."
-        + domainName);
+  private URI getRedirectUrl(String domainName)
+      throws EWSHttpException, XMLStreamException, IOException, ServiceLocalException, URISyntaxException {
+    String url = String.format(AutodiscoverLegacyHttpUrl, "autodiscover." + domainName);
 
-    this.traceMessage(TraceFlags.AutodiscoverConfiguration, String.format(
-        "Trying to get Autodiscover redirection URL from %s.", url));
+    traceMessage(TraceFlags.AutodiscoverConfiguration,
+        String.format("Trying to get Autodiscover redirection URL from %s.", url));
 
     HttpWebRequest request = null;
 
@@ -354,34 +352,29 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
         // Apply credentials to the request
         serviceCredentials.prepareWebRequest(request);
       }
+
       try {
         request.prepareAsyncConnection();
-      } catch (Exception ex) {
-        ex.getMessage();
-        request = null;
+      } catch (Exception e) {
+        traceMessage(TraceFlags.AutodiscoverConfiguration, "No Autodiscover redirection URL was returned.");
+        return null;
       }
 
-      if (request != null) {
-        URI redirectUrl;
-        OutParam<URI> outParam = new OutParam<URI>();
-        if (this.tryGetRedirectionResponse(request, outParam)) {
-          redirectUrl = outParam.getParam();
-          return redirectUrl;
-        }
+      OutParam<URI> outParam = new OutParam<URI>();
+      if (tryGetRedirectionResponse(request, outParam)) {
+        return outParam.getParam();
       }
     } finally {
       if (request != null) {
         try {
           request.close();
-        } catch (Exception e2) {
+        } catch (Exception e) {
           // Ignore exceptions when closing the request
         }
       }
     }
 
-    this.traceMessage(TraceFlags.AutodiscoverConfiguration,
-        "No Autodiscover redirection URL was returned.");
-
+    traceMessage(TraceFlags.AutodiscoverConfiguration, "No Autodiscover redirection URL was returned.");
     return null;
   }
 
@@ -1507,30 +1500,25 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
         try {
           request.prepareAsyncConnection();
         } catch (Exception ex) {
-          ex.getMessage();
-          request = null;
+          return false;
         }
 
-        if (request != null) {
-          URI redirectUrl;
-          OutParam<URI> outParam = new OutParam<URI>();
+        URI redirectUrl;
+        OutParam<URI> outParam = new OutParam<URI>();
 
-          if (this.tryGetRedirectionResponse(request, outParam)) {
-            redirectUrl = outParam.getParam();
-            this.traceMessage(TraceFlags.AutodiscoverConfiguration,
-                String.format("Host returned redirection to host '%s'", redirectUrl.getHost()));
+        if (this.tryGetRedirectionResponse(request, outParam)) {
+          redirectUrl = outParam.getParam();
+          this.traceMessage(TraceFlags.AutodiscoverConfiguration,
+              String.format("Host returned redirection to host '%s'", redirectUrl.getHost()));
 
-            host = redirectUrl.getHost();
-          } else {
-            endpoints.setParam(this.getEndpointsFromHttpWebResponse(request));
-
-            this.traceMessage(TraceFlags.AutodiscoverConfiguration,
-                String.format("Host returned enabled endpoint flags: %s", endpoints.getParam().toString()));
-
-            return true;
-          }
+          host = redirectUrl.getHost();
         } else {
-          return false;
+          endpoints.setParam(this.getEndpointsFromHttpWebResponse(request));
+
+          this.traceMessage(TraceFlags.AutodiscoverConfiguration,
+              String.format("Host returned enabled endpoint flags: %s", endpoints.getParam().toString()));
+
+          return true;
         }
       } finally {
         if (request != null) {
