@@ -10,6 +10,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
 import java.net.MalformedURLException;
@@ -22,6 +25,8 @@ import java.util.*;
  */
 public final class AutodiscoverService extends ExchangeServiceBase implements
     IAutodiscoverRedirectionUrl, IFunctionDelegate {
+
+  private static final Log log = LogFactory.getLog(AutodiscoverService.class);
 
   // region Private members
   /**
@@ -356,6 +361,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       try {
         request.prepareAsyncConnection();
       } catch (Exception e) {
+        log.warn("Error while preparing asynchronous connection.", e);
         traceMessage(TraceFlags.AutodiscoverConfiguration, "No Autodiscover redirection URL was returned.");
         return null;
       }
@@ -1499,7 +1505,8 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
 
         try {
           request.prepareAsyncConnection();
-        } catch (Exception ex) {
+        } catch (Exception e) {
+          log.warn("Error while preparing asynchronous connection.", e);
           return false;
         }
 
