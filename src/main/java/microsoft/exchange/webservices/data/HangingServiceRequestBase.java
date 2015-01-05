@@ -260,8 +260,8 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
               EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
           responseObject = this.readResponse(ewsXmlReader);
           this.responseHandler.handleResponseObject(responseObject);
-                                /*	}catch(Exception ex){
-                                                this.disconnect(HangingRequestDisconnectReason.Exception, ex);
+				/*	}catch(Exception ex){
+						this.disconnect(HangingRequestDisconnectReason.Exception, ex);
 						return;
 						
 					}

@@ -68,7 +68,7 @@ final class LegacyAvailabilityTimeZone extends ComplexProperty {
   protected TimeZoneDefinition toTimeZoneInfo() {
 
 		/*NumberFormat formatter = new DecimalFormat("00");
-    String timeZoneId = this.bias.isNegative() ? "GMT+"+formatter.
+		String timeZoneId = this.bias.isNegative() ? "GMT+"+formatter.
 		format(this.bias.getHours())+":"+
 		formatter.format(this.bias.getMinutes()) : 
 		"GMT-"+formatter.format(this.bias.getHours())+":"+

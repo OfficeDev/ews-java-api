@@ -37,7 +37,7 @@ public abstract class ServiceObjectSchema implements
                                          List<Class<?>> typeList = new ArrayList<Class<?>>();
                                          // typeList.add()
                                         /*
-           * typeList.add(AppointmentSchema.class);
+					 * typeList.add(AppointmentSchema.class);
 					 * typeList.add(CalendarResponseObjectSchema.class);
 					 * typeList.add(CancelMeetingMessageSchema.class);
 					 * typeList.add(ContactGroupSchema.class);
@@ -57,7 +57,7 @@ public abstract class ServiceObjectSchema implements
 					 */
                                          // Verify that all Schema types in the Managed API assembly
                                          // have been included.
-            /*
+					/*
 					 * var missingTypes = from type in
 					 * Assembly.GetExecutingAssembly().GetTypes() where
 					 * type.IsSubclassOf(typeof(ServiceObjectSchema)) &&

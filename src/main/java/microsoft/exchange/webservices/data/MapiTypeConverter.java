@@ -375,7 +375,7 @@ class MapiTypeConverter {
   protected static String convertToString(MapiPropertyType mapiPropType,
       Object value) {
                 /*
-     * if(! (value instanceof FuncInterface<?,?>)){ return null; }
+		 * if(! (value instanceof FuncInterface<?,?>)){ return null; }
 		 */
     return (value == null) ? "" : getMapiTypeConverterMap().get(
         mapiPropType).getConvertToString().func(value);
