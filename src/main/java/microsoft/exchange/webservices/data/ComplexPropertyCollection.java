@@ -79,7 +79,6 @@ public abstract class ComplexPropertyCollection
    *
    * @param complexProperty The complex property.
    */
-  @SuppressWarnings("unchecked")
   protected void itemChanged(ComplexProperty complexProperty) {
     EwsUtilities.EwsAssert(complexProperty instanceof ComplexProperty,
         "ComplexPropertyCollection.ItemChanged", String.format(

@@ -84,7 +84,6 @@ public enum DayOfTheWeek {
   /**
    * The day of week.
    */
-  @SuppressWarnings("unused")
   private int dayOfWeek = 0;
 
   /**

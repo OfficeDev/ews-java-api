@@ -14,8 +14,9 @@ package microsoft.exchange.webservices.data;
  * The Class ArgumentNullException.
  */
 public class ArgumentNullException extends Exception {
+
   /**
-   * The Constant serialVersionUID.
+   * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 

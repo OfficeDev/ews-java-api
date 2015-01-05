@@ -214,7 +214,6 @@ class PropertyBag implements IComplexPropertyChanged,
    * @return True if property was retrieved.
    * @throws ArgumentException
    */
-  @SuppressWarnings("unchecked")
   protected <T> boolean tryGetPropertyType(Class<T> cls,
       PropertyDefinition propertyDefinition,
       OutParam<T> propertyValue) throws ArgumentException {

@@ -330,7 +330,6 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @return Folder
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   protected <TFolder extends Folder> TFolder bindToFolder(Class<TFolder> cls,
       FolderId folderId, PropertySet propertySet) throws Exception {
     Folder result = this.bindToFolder(folderId, propertySet);
@@ -1221,7 +1220,6 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @return the t item
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   protected <TItem extends Item> TItem bindToItem(Class<TItem> c,
       ItemId itemId, PropertySet propertySet) throws Exception {
     Item result = this.bindToItem(itemId, propertySet);
@@ -1395,7 +1393,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
 
     request.setParentItemId(parentItemId);
                 /*
-                 * if (null != attachments) { while (attachments.hasNext()) {
+		 * if (null != attachments) { while (attachments.hasNext()) {
 		 * request.getAttachments().add(attachments.next()); } }
 		 */
     request.getAttachments().addAll(
@@ -2108,7 +2106,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
 	/*
-         * Subscribes to streaming notifications. Calling this method results in a
+	 * Subscribes to streaming notifications. Calling this method results in a
 	 * call to EWS.
 	 * 
 	 * @param folderIds

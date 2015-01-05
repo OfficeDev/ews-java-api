@@ -103,7 +103,6 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
    * @return A TMessage that represents the response.
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   public TMessage save(FolderId destinationFolderId) throws Exception {
     EwsUtilities.validateParam(destinationFolderId, "destinationFolderId");
     return (TMessage) this.internalCreate(destinationFolderId,
@@ -118,7 +117,6 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
    * @return A TMessage that represents the response.
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   public TMessage save(WellKnownFolderName destinationFolderName)
       throws Exception {
     return (TMessage) this.internalCreate(
@@ -133,7 +131,6 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
    * @return A TMessage that represents the response.
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   public TMessage save() throws Exception {
     return (TMessage) this
         .internalCreate(null, MessageDisposition.SaveOnly).get(0);

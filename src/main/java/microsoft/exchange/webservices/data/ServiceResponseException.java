@@ -14,8 +14,9 @@ package microsoft.exchange.webservices.data;
  * Represents a remote service exception that has a single response.
  */
 public class ServiceResponseException extends ServiceRemoteException {
+
   /**
-   * The Constant serialVersionUID.
+   * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 

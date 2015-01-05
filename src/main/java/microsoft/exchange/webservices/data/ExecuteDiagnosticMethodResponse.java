@@ -70,7 +70,6 @@ final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
    * @return document
    * @throws javax.xml.parsers.ParserConfigurationException
    */
-  @SuppressWarnings("unchecked")
   public Document retriveDocument(XMLEventReader xmlEventReader)
       throws ParserConfigurationException {
     DocumentBuilderFactory dbfInstance = DocumentBuilderFactory

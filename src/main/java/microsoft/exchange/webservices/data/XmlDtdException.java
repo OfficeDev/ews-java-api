@@ -14,8 +14,9 @@ package microsoft.exchange.webservices.data;
  * Exception class for banned xml parsing
  */
 class XmlDtdException extends XmlException {
+
   /**
-   * The Constant serialVersionUID.
+   * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 

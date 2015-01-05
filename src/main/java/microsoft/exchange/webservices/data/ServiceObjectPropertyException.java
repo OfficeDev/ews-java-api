@@ -14,8 +14,9 @@ package microsoft.exchange.webservices.data;
  * Represents an error that occurs when an operation on a property fails.
  */
 public class ServiceObjectPropertyException extends PropertyException {
+
   /**
-   * The Constant serialVersionUID.
+   * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 

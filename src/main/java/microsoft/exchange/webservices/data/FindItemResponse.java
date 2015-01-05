@@ -135,7 +135,6 @@ public final class FindItemResponse
    * @throws ServiceXmlDeserializationException  the service xml deserialization exception
    * @throws Exception                           the exception
    */
-  @SuppressWarnings("unchecked")
   private void internalReadItemsFromXml(EwsServiceXmlReader reader,
       PropertySet propertySet, List<TItem> destinationList)
       throws XMLStreamException, ServiceXmlDeserializationException,

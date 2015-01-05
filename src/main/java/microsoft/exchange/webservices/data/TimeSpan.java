@@ -14,8 +14,9 @@ package microsoft.exchange.webservices.data;
  * The Class TimeSpan.
  */
 public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Cloneable {
+
   /**
-   * The Constant serialVersionUID.
+   * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 

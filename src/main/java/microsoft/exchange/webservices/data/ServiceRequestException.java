@@ -14,8 +14,9 @@ package microsoft.exchange.webservices.data;
  * The Class ServiceRequestException.
  */
 public class ServiceRequestException extends ServiceRemoteException {
+
   /**
-   * The Constant serialVersionUID.
+   * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 

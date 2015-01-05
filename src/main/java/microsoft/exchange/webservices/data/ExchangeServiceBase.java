@@ -626,7 +626,7 @@ public abstract class ExchangeServiceBase {
    *             the uRI syntax exception
    */
         /*public void setCookie(URL url, String value) throws IOException,
-        URISyntaxException {
+	URISyntaxException {
 		CookieHandler handler =CookieHandler.getDefault();
 		if (handler != null) {
 			Map<String, List<String>> headers =
@@ -640,7 +640,7 @@ public abstract class ExchangeServiceBase {
 	}*/
 
 	/*
-         * Gets the cookie.
+	 * Gets the cookie.
 	 * 
 	 * @param url
 	 *            the url

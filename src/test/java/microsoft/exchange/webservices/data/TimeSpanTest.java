@@ -38,7 +38,6 @@ public class TimeSpanTest extends BaseTest {
    * @param timeSpan the time span
    * @return the string
    */
-  @SuppressWarnings("static-access")
   public String timeSpanToXSDuration(Calendar timeSpan) {
     String offsetStr = (timeSpan.SECOND < 0) ? "-" : "";
     String obj = String.format("%s %s %s %s %s ", offsetStr, Math

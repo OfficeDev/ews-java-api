@@ -59,7 +59,6 @@ public class AsyncRequestResult implements IAsyncResult {
     return (FutureTask<?>) this.task;
   }
 
-  @SuppressWarnings("unchecked")
   public static <T extends SimpleServiceRequestBase> T extractServiceRequest(
       ExchangeService exchangeService, Future<?> asyncResult) throws Exception {
     EwsUtilities.validateParam(asyncResult, "asyncResult");

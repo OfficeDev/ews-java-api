@@ -32,7 +32,6 @@ public final class GenericItemAttachment<TItem extends Item> extends
    *
    * @return the t item
    */
-  @SuppressWarnings("unchecked")
   public TItem getTItem() {
     return (TItem) super.getItem();
   }

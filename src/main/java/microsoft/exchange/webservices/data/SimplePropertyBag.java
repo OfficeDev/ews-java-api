@@ -222,7 +222,6 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
    * @return an Iterator.
    */
   @Override
-  @SuppressWarnings("unchecked")
   public Iterator<HashMap<TKey, Object>> iterator() {
     return (Iterator<HashMap<TKey, Object>>) this.items.keySet().iterator();
   }

@@ -14,8 +14,9 @@ package microsoft.exchange.webservices.data;
  * Represents an error that occurs when a validation check fails.
  */
 public final class ServiceValidationException extends ServiceLocalException {
+
   /**
-   * The Constant serialVersionUID.
+   * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 

@@ -59,7 +59,6 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
    * @param value   The setting value.
    * @return True if setting was available.
    */
-  @SuppressWarnings("unchecked")
   public <T> boolean tryGetSettingValue(Class<T> cls,
       UserSettingName setting, OutParam<T> value) {
     Object objValue;

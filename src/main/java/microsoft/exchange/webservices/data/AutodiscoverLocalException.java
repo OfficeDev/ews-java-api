@@ -15,8 +15,9 @@ package microsoft.exchange.webservices.data;
  * not be contacted.
  */
 public class AutodiscoverLocalException extends ServiceLocalException {
+
   /**
-   * The Constant serialVersionUID.
+   * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 

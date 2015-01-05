@@ -162,7 +162,6 @@ class EwsServiceXmlReader extends EwsXmlReader {
    * @return the list
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   public <TServiceObject extends ServiceObject> List<TServiceObject>
   readServiceObjectsCollectionFromXml(
       String collectionXmlElementName,

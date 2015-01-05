@@ -419,7 +419,6 @@ class EwsUtilities {
    * @return the t service object
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   protected static <TServiceObject extends ServiceObject>
   TServiceObject createEwsObjectFromXmlElementName(
       Class<?> itemClass, ExchangeService service, String xmlElementName)
@@ -518,8 +517,6 @@ class EwsUtilities {
    * @param items   the items
    * @return A TItem instance or null if no instance of TItem could be found.
    */
-
-  @SuppressWarnings("unchecked")
   static <TItem extends Item> TItem findFirstItemOfType(Class<TItem> cls,
       Iterable<Item> items) {
     for (Item item : items) {
@@ -679,7 +676,6 @@ class EwsUtilities {
    * @param value      the value
    * @param separators the separators
    */
-  @SuppressWarnings("unchecked")
   protected static <T extends Enum<?>> void parseEnumValueList(Class<T> c,
       List<T> list, String value, char... separators) {
     EwsUtilities.EwsAssert(c.isEnum(), "EwsUtilities.ParseEnumValueList",
@@ -740,7 +736,6 @@ class EwsUtilities {
    * @throws IllegalAccessException   the illegal access exception
    * @throws java.text.ParseException the parse exception
    */
-  @SuppressWarnings("unchecked")
   protected static <T> T parse(Class<T> cls, String value)
       throws InstantiationException, IllegalAccessException,
       ParseException {
@@ -1534,7 +1529,6 @@ class EwsUtilities {
   protected static <T> int getEnumeratedObjectCount(Iterator<T> objects) {
     int count = 0;
     while (objects != null && objects.hasNext()) {
-      @SuppressWarnings("unused")
       Object obj = objects.next();
       count++;
     }

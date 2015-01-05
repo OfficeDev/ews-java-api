@@ -17,8 +17,9 @@ import java.net.URI;
  * being accessed is locked and requires user interaction to be unlocked.
  */
 public class AccountIsLockedException extends ServiceRemoteException {
+
   /**
-   * The Constant serialVersionUID.
+   * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 

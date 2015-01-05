@@ -522,7 +522,6 @@ public final class StreamingSubscriptionConnection implements Closeable,
    * @param suppressFinalizer Value indicating whether to suppress the garbage collector's
    *                          finalizer.
    */
-  @SuppressWarnings("deprecation")
   private void dispose(boolean suppressFinalizer) {
     if (suppressFinalizer) {
       System.runFinalizersOnExit(false);

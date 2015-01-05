@@ -14,8 +14,9 @@ package microsoft.exchange.webservices.data;
  * Represents an error that occurs when a service operation fails remotely.
  */
 public class ServiceRemoteException extends Exception {
+
   /**
-   * The Constant serialVersionUID.
+   * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 

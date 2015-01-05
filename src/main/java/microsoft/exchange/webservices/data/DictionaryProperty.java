@@ -54,7 +54,6 @@ public abstract class DictionaryProperty
    *
    * @param complexProperty the complex property
    */
-  @SuppressWarnings("unchecked")
   private void entryChanged(ComplexProperty complexProperty) {
     TKey key = ((TEntry) complexProperty).getKey();
 

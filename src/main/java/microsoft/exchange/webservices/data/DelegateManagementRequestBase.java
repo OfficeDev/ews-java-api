@@ -88,7 +88,6 @@ abstract class DelegateManagementRequestBase
    * @return Response object.
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   protected TResponse execute() throws Exception {
     TResponse serviceResponse = (TResponse) this.internalExecute();
     serviceResponse.throwIfNecessary();

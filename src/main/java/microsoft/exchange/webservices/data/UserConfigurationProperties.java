@@ -50,7 +50,6 @@ public enum UserConfigurationProperties {
   /**
    * The config properties.
    */
-  @SuppressWarnings("unused")
   private int configProperties = 0;
 
   /**

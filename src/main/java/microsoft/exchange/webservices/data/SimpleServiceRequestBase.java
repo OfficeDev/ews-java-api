@@ -90,7 +90,6 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 
     HttpWebRequest request = this.buildEwsHttpWebRequest();
 
-    @SuppressWarnings("unused")
     WebAsyncCallStateAnchor wrappedState = new WebAsyncCallStateAnchor(
         this, request, callback /* user callback */, state /*user state*/);
 

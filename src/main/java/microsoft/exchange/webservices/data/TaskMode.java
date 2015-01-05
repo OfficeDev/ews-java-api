@@ -54,7 +54,6 @@ public enum TaskMode {
   /**
    * The task mode.
    */
-  @SuppressWarnings("unused")
   private final int taskMode;
 
   /**

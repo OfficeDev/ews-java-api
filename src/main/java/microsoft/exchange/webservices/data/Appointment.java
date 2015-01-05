@@ -870,7 +870,6 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @return the conflicting meetings
    * @throws ServiceLocalException the service local exception
    */
-  @SuppressWarnings("unchecked")
   public ItemCollection<Appointment> getConflictingMeetings()
       throws ServiceLocalException {
     return (ItemCollection<Appointment>) this.getPropertyBag()
@@ -885,7 +884,6 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @return the adjacent meetings
    * @throws ServiceLocalException the service local exception
    */
-  @SuppressWarnings("unchecked")
   public ItemCollection<Appointment> getAdjacentMeetings()
       throws ServiceLocalException {
     return (ItemCollection<Appointment>) this.getPropertyBag()
