@@ -127,6 +127,14 @@ class HttpClientWebRequest extends HttpWebRequest {
       rcBuilder.setConnectTimeout(getTimeout());
       rcBuilder.setRedirectsEnabled(isAllowAutoRedirect());
       rcBuilder.setSocketTimeout(getTimeout());
+	  
+	  // fix issue #144 + #160: if we used NTCredentials from above: these are NT credentials
+      if (getUserName() != null) {
+    	ArrayList<String> authPrefs = new ArrayList<String>();
+    	authPrefs.add(AuthSchemes.NTLM);
+    	rcBuilder.setTargetPreferredAuthSchemes(authPrefs).build();
+      }
+      //
       builder.setDefaultRequestConfig(rcBuilder.build());
 
       httpPostReq = new HttpPost(getUrl().toString());
