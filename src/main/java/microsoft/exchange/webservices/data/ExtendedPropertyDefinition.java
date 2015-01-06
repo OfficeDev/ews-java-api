@@ -308,8 +308,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
         .readAttributeValue(XmlAttributeNames.PropertyTag);
     if (null != attributeValue && !attributeValue.isEmpty()) {
 
-      this.tag = Integer.getInteger(attributeValue, 16);
-      //	this.tag = Integer.parseInt(attributeValue, 16);
+      this.tag = Integer.decode(attributeValue);
     }
 
     this.name = reader.readAttributeValue(XmlAttributeNames.PropertyName);
