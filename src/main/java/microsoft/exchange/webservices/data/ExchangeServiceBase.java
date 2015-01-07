@@ -160,10 +160,6 @@ public abstract class ExchangeServiceBase {
     this.requestedServerVersion = requestedServerVersion;
   }
 
-  protected ExchangeServiceBase(ExchangeServiceBase service) {
-    this(service, service.getRequestedServerVersion());
-  }
-
   protected ExchangeServiceBase(ExchangeServiceBase service, ExchangeVersion requestedServerVersion) {
     this(requestedServerVersion);
     this.useDefaultCredentials = service.getUseDefaultCredentials();
