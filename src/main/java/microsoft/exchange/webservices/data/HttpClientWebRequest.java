@@ -139,11 +139,11 @@ class HttpClientWebRequest extends HttpWebRequest {
       rcBuilder.setRedirectsEnabled(isAllowAutoRedirect());
       rcBuilder.setSocketTimeout(getTimeout());
 	  
-	  // fix issue #144 + #160: if we used NTCredentials from above: these are NT credentials
+      // fix issue #144 + #160: if we used NTCredentials from above: these are NT credentials
       if (getUserName() != null) {
     	ArrayList<String> authPrefs = new ArrayList<String>();
     	authPrefs.add(AuthSchemes.NTLM);
-    	rcBuilder.setTargetPreferredAuthSchemes(authPrefs).build();
+    	rcBuilder.setTargetPreferredAuthSchemes(authPrefs);
       }
       //
       builder.setDefaultRequestConfig(rcBuilder.build());
@@ -208,6 +208,13 @@ class HttpClientWebRequest extends HttpWebRequest {
       rcBuilder.setConnectionRequestTimeout(getTimeout());
       rcBuilder.setConnectTimeout(getTimeout());
       rcBuilder.setSocketTimeout(getTimeout());
+	  
+      // fix issue #144 + #160: if we used NTCredentials from above: these are NT credentials
+      ArrayList<String> authPrefs = new ArrayList<String>();
+      authPrefs.add(AuthSchemes.NTLM);
+      rcBuilder.setTargetPreferredAuthSchemes(authPrefs);
+      //
+	  
       builder.setDefaultRequestConfig(rcBuilder.build());
 
       //HttpClientParams.setRedirecting(client.getParams(), isAllowAutoRedirect()); by default it follows redirects
