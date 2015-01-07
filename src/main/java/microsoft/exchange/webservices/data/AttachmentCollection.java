@@ -352,7 +352,7 @@ public final class AttachmentCollection extends
     for (int attachmentIndex = 0; attachmentIndex < this.getAddedItems()
         .size(); attachmentIndex++) {
       Attachment attachment = this.getAddedItems().get(attachmentIndex);
-      if (attachment.isNew()) {
+      if (attachment != null && attachment.isNew()) {
 
         // At the server side, only the last attachment with
         // IsContactPhoto is kept, all other IsContactPhoto
@@ -372,15 +372,17 @@ public final class AttachmentCollection extends
             && this.owner.getService().getRequestedServerVersion()
             .ordinal() >= ExchangeVersion.Exchange2010_SP2
             .ordinal()) {
-          FileAttachment fileAttachment = (FileAttachment) attachment;
+          if (attachment instanceof FileAttachment) {
+            FileAttachment fileAttachment = (FileAttachment) attachment;
 
-          if (fileAttachment.isContactPhoto()) {
-            if (contactPhotoFound) {
-              throw new ServiceValidationException(
-                  Strings.MultipleContactPhotosInAttachment);
+            if (fileAttachment.isContactPhoto()) {
+              if (contactPhotoFound) {
+                throw new ServiceValidationException(
+                    Strings.MultipleContactPhotosInAttachment);
+              }
+
+              contactPhotoFound = true;
             }
-
-            contactPhotoFound = true;
           }
         }
 
