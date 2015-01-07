@@ -38,8 +38,6 @@ import java.util.regex.Pattern;
  */
 public abstract class ExchangeServiceBase {
 
-  // Fields
-
   /**
    * Prefix for "extended" headers.
    */
@@ -98,8 +96,7 @@ public abstract class ExchangeServiceBase {
   /**
    * The requested server version.
    */
-  private ExchangeVersion requestedServerVersion =
-      ExchangeVersion.Exchange2010_SP2;
+  private ExchangeVersion requestedServerVersion = ExchangeVersion.Exchange2010_SP2;
 
   /**
    * The server info.
@@ -121,26 +118,22 @@ public abstract class ExchangeServiceBase {
   // protected static HttpStatusCode AccountIsLocked = (HttpStatusCode)456;
 
   /**
-   * Static members
+   * Default UserAgent.
    */
+  private static String defaultUserAgent = "ExchangeServicesClient/" +
+      EwsUtilities.getBuildVersion();
 
   protected HttpClientConnectionManager getSimpleHttpConnectionManager() {
     return httpConnectionManager;
   }
 
   /**
-   * Default UserAgent.
-   */
-  private static String defaultUserAgent = "ExchangeServicesClient/" +
-      EwsUtilities.getBuildVersion();
-
-  /**
    * Initializes a new instance.
    *
-   * @param requestedServerVersion The requested server version.
+   * This constructor performs the initialization of the HTTP connection manager, so it should be called by
+   * every other constructor.
    */
   protected ExchangeServiceBase() {
-    //real init -- ONLY WAY TO BUILD AN OBJECT => each constructor must call this() to build properly the httpConnectionManager
     this.setUseDefaultCredentials(true);
 
     try {
@@ -182,9 +175,9 @@ public abstract class ExchangeServiceBase {
    * @param writer The XmlWriter to which to write the custom SOAP headers.
    */
   protected void doOnSerializeCustomSoapHeaders(XMLStreamWriter writer) {
-    EwsUtilities.EwsAssert(writer != null,
-        "ExchangeService.DoOnSerializeCustomSoapHeaders",
-        "writer is null");
+    EwsUtilities
+        .EwsAssert(writer != null, "ExchangeService.DoOnSerializeCustomSoapHeaders", "writer is null");
+
     if (null != getOnSerializeCustomSoapHeaders() &&
         !getOnSerializeCustomSoapHeaders().isEmpty()) {
       for (ICustomXmlSerialization customSerialization : getOnSerializeCustomSoapHeaders()) {
@@ -207,9 +200,8 @@ public abstract class ExchangeServiceBase {
    * @throws ServiceLocalException       the service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
-  protected HttpWebRequest prepareHttpWebRequestForUrl(URI url,
-      boolean acceptGzipEncoding, boolean allowAutoRedirect)
-      throws ServiceLocalException, URISyntaxException {
+  protected HttpWebRequest prepareHttpWebRequestForUrl(URI url, boolean acceptGzipEncoding,
+    boolean allowAutoRedirect) throws ServiceLocalException, URISyntaxException {
     // Verify that the protocol is something that we can handle
     if (!url.getScheme().equalsIgnoreCase("HTTP")
         && !url.getScheme().equalsIgnoreCase("HTTPS")) {
@@ -282,24 +274,16 @@ public abstract class ExchangeServiceBase {
    *
    * @throws Exception
    */
-  protected void internalProcessHttpErrorResponse(
-      HttpWebRequest httpWebResponse,
-      Exception webException,
-      TraceFlags responseHeadersTraceFlag,
-      TraceFlags responseTraceFlag) throws Exception {
-    EwsUtilities.EwsAssert(
-        500 != httpWebResponse.getResponseCode(),
+  protected void internalProcessHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException,
+      TraceFlags responseHeadersTraceFlag, TraceFlags responseTraceFlag) throws Exception {
+    EwsUtilities.EwsAssert(500 != httpWebResponse.getResponseCode(),
         "ExchangeServiceBase.InternalProcessHttpErrorResponse",
-        "InternalProcessHttpErrorResponse does not handle 500 ISE errors," +
-            " the caller is supposed to handle this.");
+        "InternalProcessHttpErrorResponse does not handle 500 ISE errors, the caller is supposed to handle this.");
 
-    this.processHttpResponseHeaders(responseHeadersTraceFlag,
-        httpWebResponse);
+    this.processHttpResponseHeaders(responseHeadersTraceFlag, httpWebResponse);
 
-    // E14:321785 -- Deal with new HTTP
-    // error code indicating that account is locked.
-    // The "unlock" URL is returned as
-    // the status description in the response.
+    // E14:321785 -- Deal with new HTTP error code indicating that account is locked.
+    // The "unlock" URL is returned as the status description in the response.
     if (httpWebResponse.getResponseCode() == 456) {
       String location = httpWebResponse.getResponseContentType();
 
@@ -308,13 +292,11 @@ public abstract class ExchangeServiceBase {
         accountUnlockUrl = new URI(location);
       }
 
-      this.traceMessage(responseTraceFlag, String.format("Account is locked." +
-          " Unlock URL is {0}", accountUnlockUrl));
+      this.traceMessage(responseTraceFlag,
+          String.format("Account is locked. Unlock URL is {0}", accountUnlockUrl));
 
-      throw new AccountIsLockedException(
-          String.format(Strings.AccountIsLocked, accountUnlockUrl),
-          accountUnlockUrl,
-          webException);
+      throw new AccountIsLockedException(String.format(Strings.AccountIsLocked, accountUnlockUrl),
+          accountUnlockUrl, webException);
     }
   }
 
@@ -333,8 +315,7 @@ public abstract class ExchangeServiceBase {
   /**
    * @throws Exception
    */
-  protected abstract void processHttpErrorResponse(
-      HttpWebRequest httpWebResponse, Exception webException)
+  protected abstract void processHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException)
       throws Exception;
 
   /**
@@ -355,12 +336,10 @@ public abstract class ExchangeServiceBase {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws java.io.IOException                 Signals that an I/O exception has occurred.
    */
-  protected void traceMessage(TraceFlags traceType, String logEntry)
-      throws XMLStreamException, IOException {
+  protected void traceMessage(TraceFlags traceType, String logEntry) throws XMLStreamException, IOException {
     if (this.isTraceEnabledFor(traceType)) {
       String traceTypeStr = traceType.toString();
-      String logMessage = EwsUtilities.formatLogMessage(traceTypeStr,
-          logEntry);
+      String logMessage = EwsUtilities.formatLogMessage(traceTypeStr, logEntry);
       this.traceListener.trace(traceTypeStr, logMessage);
     }
   }
@@ -371,12 +350,10 @@ public abstract class ExchangeServiceBase {
    * @param traceType Kind of trace entry.
    * @param stream    The stream containing XML.
    */
-  protected void traceXml(TraceFlags traceType,
-      ByteArrayOutputStream stream) {
+  protected void traceXml(TraceFlags traceType, ByteArrayOutputStream stream) {
     if (this.isTraceEnabledFor(traceType)) {
       String traceTypeStr = traceType.toString();
-      String logMessage = EwsUtilities.formatLogMessageWithXmlContent(
-          traceTypeStr, stream);
+      String logMessage = EwsUtilities.formatLogMessageWithXmlContent(traceTypeStr, stream);
       this.traceListener.trace(traceTypeStr, logMessage);
     }
   }
@@ -391,15 +368,12 @@ public abstract class ExchangeServiceBase {
    * @throws java.io.IOException
    * @throws javax.xml.stream.XMLStreamException
    */
-  protected void traceHttpRequestHeaders(TraceFlags traceType,
-      HttpWebRequest request)
+  protected void traceHttpRequestHeaders(TraceFlags traceType, HttpWebRequest request)
       throws URISyntaxException, EWSHttpException, XMLStreamException, IOException {
     if (this.isTraceEnabledFor(traceType)) {
       String traceTypeStr = traceType.toString();
-      String headersAsString = EwsUtilities.
-          formatHttpRequestHeaders(request);
-      String logMessage = EwsUtilities.
-          formatLogMessage(traceTypeStr, headersAsString);
+      String headersAsString = EwsUtilities.formatHttpRequestHeaders(request);
+      String logMessage = EwsUtilities.formatLogMessage(traceTypeStr, headersAsString);
       this.traceListener.trace(traceTypeStr, logMessage);
     }
   }
@@ -413,14 +387,12 @@ public abstract class ExchangeServiceBase {
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
    * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
    */
-  private void traceHttpResponseHeaders(TraceFlags traceType,
-      HttpWebRequest request) throws XMLStreamException, IOException,
-      EWSHttpException {
+  private void traceHttpResponseHeaders(TraceFlags traceType, HttpWebRequest request)
+      throws XMLStreamException, IOException, EWSHttpException {
     if (this.isTraceEnabledFor(traceType)) {
       String traceTypeStr = traceType.toString();
       String headersAsString = EwsUtilities.formatHttpResponseHeaders(request);
-      String logMessage = EwsUtilities.formatLogMessage(traceTypeStr,
-          headersAsString);
+      String logMessage = EwsUtilities.formatLogMessage(traceTypeStr, headersAsString);
       this.traceListener.trace(traceTypeStr, logMessage);
     }
   }
@@ -537,8 +509,7 @@ public abstract class ExchangeServiceBase {
    * @param value The string value to parse.
    * @return The parsed DateTime value.
    */
-  protected Date convertStartDateToUnspecifiedDateTime(String value)
-      throws ParseException {
+  protected Date convertStartDateToUnspecifiedDateTime(String value) throws ParseException {
     if (value == null || value.isEmpty()) {
       return null;
     } else {
@@ -569,81 +540,69 @@ public abstract class ExchangeServiceBase {
     this.userAgent = userAgent;
   }
 
-
-  // Abstract methods
-
   /**
    * Validates this instance.
    *
    * @throws ServiceLocalException the service local exception
    */
   protected void validate() throws ServiceLocalException {
-
-    // E14:302056 -- Allow clients to add HTTP request
-    //headers with 'X-' prefix but no others.
+    // E14:302056 -- Allow clients to add HTTP request headers with 'X-' prefix but no others.
     for (Map.Entry<String, String> key : this.httpHeaders.entrySet()) {
       if (!key.getKey().startsWith(ExtendedHeaderPrefix)) {
-        throw new ServiceValidationException(String.format(Strings.
-            CannotAddRequestHeader, key));
+        throw new ServiceValidationException(String.format(Strings.CannotAddRequestHeader, key));
       }
     }
   }
 
-  /**
-   * Gets  the cookie container. <value>The cookie container.</value>
-   *
-   * @param url
-   *            the url
-   * @param value
-   *            the value
-   * @throws java.io.IOException
-   *             , URISyntaxException
-   * @throws java.net.URISyntaxException
-   *             the uRI syntax exception
-   */
-        /*public void setCookie(URL url, String value) throws IOException,
-	URISyntaxException {
-		CookieHandler handler =CookieHandler.getDefault();
-		if (handler != null) {
-			Map<String, List<String>> headers =
-				new HashMap<String, List<String>>();
-			List<String> values = new Vector<String>();
-			values.add(value);
-			headers.put("Cookie", values);
-
-			handler.put(url.toURI(), headers);
-		}
-	}*/
-
-	/*
-	 * Gets the cookie.
-	 * 
-	 * @param url
-	 *            the url
-	 * @return the cookie
-	 * @throws java.io.IOException
-	 *             Signals that an I/O exception has occurred.
-	 * @throws java.net.URISyntaxException
-	 *             the uRI syntax exception
-	public String getCookie(URL url) throws IOException, URISyntaxException {
-		String cookieValue = null;
-
-		CookieHandler handler = CookieHandler.getDefault();
-		if (handler != null) {
-			Map<String, List<String>> headers = handler.get(url.toURI(),
-					new HashMap<String, List<String>>());
-			List<String> values = headers.get("Cookie");
-			for (Iterator<String> iter = values.iterator(); iter.hasNext();) {
-				String v = iter.next();
-
-				if (cookieValue == null)
-					cookieValue = v;
-				else
-					cookieValue = cookieValue + ";" + v;
-			}
-		}
-		return cookieValue;
-	}*/
+//  /**
+//   * Gets the cookie container. <value>The cookie container.</value>
+//   *
+//   * @param url   the url
+//   * @param value the value
+//   * @throws java.io.IOException         , URISyntaxException
+//   * @throws java.net.URISyntaxException the uRI syntax exception
+//   */
+//  public void setCookie(URL url, String value) throws IOException,
+//      URISyntaxException {
+//    CookieHandler handler = CookieHandler.getDefault();
+//    if (handler != null) {
+//      Map<String, List<String>> headers =
+//          new HashMap<String, List<String>>();
+//      List<String> values = new Vector<String>();
+//      values.add(value);
+//      headers.put("Cookie", values);
+//
+//      handler.put(url.toURI(), headers);
+//    }
+//  }
+//
+//  /**
+//   * Gets the cookie.
+//   *
+//   * @param url the url
+//   * @return the cookie
+//   * @throws java.io.IOException         Signals that an I/O exception has occurred.
+//   * @throws java.net.URISyntaxException the uRI syntax exception
+//   */
+//  public String getCookie(URL url) throws IOException, URISyntaxException {
+//    String cookieValue = null;
+//
+//    CookieHandler handler = CookieHandler.getDefault();
+//    if (handler != null) {
+//      Map<String, List<String>> headers = handler.get(url.toURI(),
+//          new HashMap<String, List<String>>());
+//      List<String> values = headers.get("Cookie");
+//      for (Iterator<String> iter = values.iterator(); iter.hasNext(); ) {
+//        String v = iter.next();
+//
+//        if (cookieValue == null)
+//          cookieValue = v;
+//        else
+//          cookieValue = cookieValue + ";" + v;
+//      }
+//    }
+//    return cookieValue;
+//  }
 
   /**
    * Gets a value indicating whether tracing is enabled.
@@ -770,8 +729,7 @@ public abstract class ExchangeServiceBase {
    */
   public void setTimeout(int timeout) {
     if (timeout < 1) {
-      throw new IllegalArgumentException(
-          Strings.TimeoutMustBeGreaterThanZero);
+      throw new IllegalArgumentException(Strings.TimeoutMustBeGreaterThanZero);
     }
     this.timeout = timeout;
   }
@@ -844,8 +802,7 @@ public abstract class ExchangeServiceBase {
    * @param userAgent The user agent
    */
   public void setUserAgent(String userAgent) {
-    this.userAgent = userAgent + " ("
-        + ExchangeServiceBase.defaultUserAgent + ")";
+    this.userAgent = userAgent + " (" + ExchangeServiceBase.defaultUserAgent + ")";
   }
 
   /**
@@ -911,8 +868,7 @@ public abstract class ExchangeServiceBase {
    *
    * @return the on serialize custom soap headers
    */
-  public List<ICustomXmlSerialization>
-  getOnSerializeCustomSoapHeaders() {
+  public List<ICustomXmlSerialization> getOnSerializeCustomSoapHeaders() {
     return OnSerializeCustomSoapHeaders;
   }
 
@@ -921,9 +877,7 @@ public abstract class ExchangeServiceBase {
    *
    * @param onSerializeCustomSoapHeaders the new on serialize custom soap headers
    */
-  public void setOnSerializeCustomSoapHeaders(
-      List<ICustomXmlSerialization>
-          onSerializeCustomSoapHeaders) {
+  public void setOnSerializeCustomSoapHeaders(List<ICustomXmlSerialization> onSerializeCustomSoapHeaders) {
     OnSerializeCustomSoapHeaders = onSerializeCustomSoapHeaders;
   }
 
@@ -939,7 +893,6 @@ public abstract class ExchangeServiceBase {
   protected void processHttpResponseHeaders(TraceFlags traceType, HttpWebRequest request)
       throws XMLStreamException, IOException, EWSHttpException {
     this.traceHttpResponseHeaders(traceType, request);
-
     this.saveHttpResponseHeaders(request.getResponseHeaders());
   }
 
