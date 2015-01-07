@@ -110,8 +110,6 @@ public abstract class ExchangeServiceBase {
 
   private Map<String, String> httpResponseHeaders = new HashMap<String, String>();
 
-  private TimeZone timeZone;
-
   private WebProxy webProxy;
 
   private HttpClientConnectionManager httpConnectionManager;
@@ -137,20 +135,12 @@ public abstract class ExchangeServiceBase {
       EwsUtilities.getBuildVersion();
 
   /**
-   * @return TimeZone
-   */
-  private TimeZone getTimeZone() {
-    return this.timeZone;
-  }
-
-  /**
    * Initializes a new instance.
    *
    * @param requestedServerVersion The requested server version.
    */
   protected ExchangeServiceBase() {
     //real init -- ONLY WAY TO BUILD AN OBJECT => each constructor must call this() to build properly the httpConnectionManager
-    this.timeZone = TimeZone.getDefault();
     this.setUseDefaultCredentials(true);
 
     try {
@@ -166,9 +156,6 @@ public abstract class ExchangeServiceBase {
   }
 
   protected ExchangeServiceBase(ExchangeVersion requestedServerVersion) {
-    // Removed because TimeZone class in Java doesn't maintaining the
-    //history of time change rules for a given time zone
-    //this(requestedServerVersion, TimeZone.getDefault());
     this();
     this.requestedServerVersion = requestedServerVersion;
   }
@@ -188,14 +175,7 @@ public abstract class ExchangeServiceBase {
     this.preAuthenticate = service.isPreAuthenticate();
     this.userAgent = service.getUserAgent();
     this.acceptGzipEncoding = service.getAcceptGzipEncoding();
-    this.timeZone = service.getTimeZone();
     this.httpHeaders = service.getHttpHeaders();
-  }
-
-
-  protected ExchangeServiceBase(ExchangeVersion requestedServerVersion, TimeZone timezone) {
-    this(requestedServerVersion);
-    this.timeZone = timezone;
   }
 
   // Event handlers

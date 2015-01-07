@@ -3649,19 +3649,6 @@ public final class ExchangeService extends ExchangeServiceBase implements
     super(requestedServerVersion);
   }
 
-  /**
-   * Initializes a new instance of the <see cref="ExchangeService"/> class,
-   * targeting the specified version of EWS and scoped to the to the specified
-   * time zone.
-   *
-   * @param requestedServerVersion The version of EWS that the service targets.
-   * @param timeZone               The time zone to which the service is scoped.
-   */
-  public ExchangeService(ExchangeVersion requestedServerVersion,
-      TimeZone timeZone) {
-    super(requestedServerVersion, timeZone);
-  }
-
   // Utilities
 
   /**
@@ -3798,14 +3785,6 @@ public final class ExchangeService extends ExchangeServiceBase implements
       IFileAttachmentContentHandler fileAttachmentContentHandler) {
     this.fileAttachmentContentHandler = fileAttachmentContentHandler;
   }
-
-	/*
-	 * Gets the time zone this service is scoped to.
-	 * 
-	 * @return the unified messaging
-	 *
-	  public TimeZone getTimeZone() { return super.getTimeZone(); }
-    */
 
   /**
    * Provides access to the Unified Messaging functionalities.
