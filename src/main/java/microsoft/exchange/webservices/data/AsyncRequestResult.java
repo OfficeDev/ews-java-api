@@ -19,15 +19,15 @@ public class AsyncRequestResult implements IAsyncResult {
   AsyncCallback wasasyncCallback;
   IAsyncResult webAsyncResult;
   Object asyncState;
-  Future task;
+  Future<?> task;
 
-  AsyncRequestResult(Future task) {
+  AsyncRequestResult(Future<?> task) {
     this.task = task;
   }
 
 
   public AsyncRequestResult(ServiceRequestBase serviceRequest,
-      HttpWebRequest webRequest, Future task,
+      HttpWebRequest webRequest, Future<?> task,
       Object asyncState) throws Exception {
     EwsUtilities.validateParam(serviceRequest, "serviceRequest");
     EwsUtilities.validateParam(webRequest, "webRequest");
@@ -55,12 +55,12 @@ public class AsyncRequestResult implements IAsyncResult {
     return this.webRequest;
   }
 
-  public FutureTask getTask() {
-    return (FutureTask) this.task;
+  public FutureTask<?> getTask() {
+    return (FutureTask<?>) this.task;
   }
 
   public static <T extends SimpleServiceRequestBase> T extractServiceRequest(
-      ExchangeService exchangeService, Future asyncResult) throws Exception {
+      ExchangeService exchangeService, Future<?> asyncResult) throws Exception {
     EwsUtilities.validateParam(asyncResult, "asyncResult");
     AsyncRequestResult asyncRequestResult = (AsyncRequestResult) asyncResult;
     if (asyncRequestResult == null) {

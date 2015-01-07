@@ -152,7 +152,7 @@ public class RecurrencePropertyDefinition extends PropertyDefinition {
    * Gets the property type.
    */
   @Override
-  public Class getType() {
+  public Class<Recurrence> getType() {
     return Recurrence.class;
   }
 

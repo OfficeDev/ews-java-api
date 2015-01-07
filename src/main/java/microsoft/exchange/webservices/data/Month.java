@@ -90,7 +90,6 @@ public enum Month {
   /**
    * The month.
    */
-  @SuppressWarnings("unused")
   private final int month;
 
   /**

@@ -16,6 +16,11 @@ package microsoft.exchange.webservices.data;
 public final class ServiceValidationException extends ServiceLocalException {
 
   /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * ServiceValidationException Constructor.
    */
   public ServiceValidationException() {

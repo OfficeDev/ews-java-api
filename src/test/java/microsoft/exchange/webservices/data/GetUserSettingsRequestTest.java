@@ -60,6 +60,12 @@ public class GetUserSettingsRequestTest extends BaseTest {
   @Parameterized.Parameters
   public static List<Object[]> getAutodiscoverServices() throws ArgumentException {
     return new ArrayList<Object[]>() {
+
+      /**
+       * Constant serialized ID used for compatibility.
+       */
+      private static final long serialVersionUID = 1L;
+
       {
         for (ExchangeVersion exchangeVersion : ExchangeVersion.values()) {
           add(new Object[] {exchangeVersion, new AutodiscoverService(exchangeVersion)});

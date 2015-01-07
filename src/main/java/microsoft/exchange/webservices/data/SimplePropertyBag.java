@@ -45,7 +45,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
    * @param key        the key
    * @param changeList the change list
    */
-  private void internalAddItemToChangeList(TKey key, List changeList) {
+  private void internalAddItemToChangeList(TKey key, List<TKey> changeList) {
     if (!changeList.contains(key)) {
       changeList.add(key);
     }
@@ -56,7 +56,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
    */
   private void changed() {
     if (!onChange.isEmpty()) {
-      for (IPropertyBagChangedDelegate change : onChange) {
+      for (IPropertyBagChangedDelegate<TKey> change : onChange) {
         change.propertyBagChanged(this);
       }
     }
@@ -68,7 +68,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
    * @param key the key
    */
   private void internalRemoveItem(TKey key) {
-    OutParam value = new OutParam();
+    OutParam<Object> value = new OutParam<Object>();
     if (this.tryGetValue(key, value)) {
       this.items.remove(key);
       this.removedItems.add(key);
@@ -153,7 +153,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
    * @return the simple property bag
    */
   public Object getSimplePropertyBag(TKey key) {
-    OutParam value = new OutParam();
+    OutParam<Object> value = new OutParam<Object>();
     if (this.tryGetValue(key, value)) {
       return value.getParam();
     } else {
@@ -195,15 +195,15 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
   /**
    * Occurs when Changed.
    */
-  private List<IPropertyBagChangedDelegate> onChange =
-      new ArrayList<IPropertyBagChangedDelegate>();
+  private List<IPropertyBagChangedDelegate<TKey>> onChange =
+      new ArrayList<IPropertyBagChangedDelegate<TKey>>();
 
   /**
    * Set event to happen when property changed.
    *
    * @param change change event
    */
-  public void addOnChangeEvent(IPropertyBagChangedDelegate change) {
+  public void addOnChangeEvent(IPropertyBagChangedDelegate<TKey> change) {
     onChange.add(change);
   }
 
@@ -212,7 +212,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
    *
    * @param change change event
    */
-  public void removeChangeEvent(IPropertyBagChangedDelegate change) {
+  public void removeChangeEvent(IPropertyBagChangedDelegate<TKey> change) {
     onChange.remove(change);
   }
 

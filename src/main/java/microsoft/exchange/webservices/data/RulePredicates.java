@@ -927,7 +927,7 @@ public final class RulePredicates extends ComplexProperty {
           this.getIsPermissionControlled());
     }
 
-    if (this.isReadReceipt != false) {
+    if (this.getIsReadReceipt() != false) {
       writer.writeElementValue(
           XmlNamespace.Types,
           XmlElementNames.IsReadReceipt,

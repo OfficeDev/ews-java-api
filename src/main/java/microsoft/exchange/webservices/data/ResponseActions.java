@@ -86,7 +86,6 @@ public enum ResponseActions {
   /**
    * The response act.
    */
-  @SuppressWarnings("unused")
   private final int responseAct;
 
   /**

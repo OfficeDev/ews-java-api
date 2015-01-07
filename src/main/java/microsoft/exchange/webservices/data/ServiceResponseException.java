@@ -16,6 +16,11 @@ package microsoft.exchange.webservices.data;
 public class ServiceResponseException extends ServiceRemoteException {
 
   /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Error details Value keys.
    */
   private static final String ExceptionClassKey = "ExceptionClass";

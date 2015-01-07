@@ -65,7 +65,6 @@ enum DnsRecordType {
   /**
    * The dns record.
    */
-  @SuppressWarnings("unused")
   private final int dnsRecord;
 
   /**

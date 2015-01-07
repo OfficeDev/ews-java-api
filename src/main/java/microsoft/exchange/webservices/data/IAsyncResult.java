@@ -16,7 +16,7 @@ import java.util.concurrent.Future;
  * Represents the stauts of Asynchronous operation.
  */
 
-public interface IAsyncResult extends Future {
+public interface IAsyncResult extends Future<Object> {
 
   public Object getAsyncState();
 

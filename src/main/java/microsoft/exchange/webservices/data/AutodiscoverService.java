@@ -229,7 +229,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       writer.flush();
       urlOutStream.flush();
       urlOutStream.close();
-			/* Flush End */
+                        /* Flush End */
     }
     request.executeRequest();
     request.getResponseCode();
@@ -441,7 +441,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   protected <TSettings extends ConfigurationSettingsBase>
   TSettings getLegacyUserSettings(
       Class<TSettings> cls, String emailAddress) throws Exception {
-		/*int currentHop = 1;
+                /*int currentHop = 1;
 		return this.internalGetConfigurationSettings(cls, emailAddress,
 				currentHop);*/
 
@@ -1032,7 +1032,6 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       List<TSettingName> settings,
       ExchangeVersion requestedVersion,
       IFunctionDelegate<List<String>, List<TSettingName>,
-          ExchangeVersion, URI,
           TGetSettingsResponseCollection> getSettingsMethod,
       IFuncDelegate<String> getDomainMethod) throws Exception {
     TGetSettingsResponseCollection response;

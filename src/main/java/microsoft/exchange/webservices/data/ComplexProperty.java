@@ -16,9 +16,8 @@ import java.util.List;
 /**
  * Represents a property that can be sent to or retrieved from EWS.
  */
-@SuppressWarnings("unchecked")
 @EditorBrowsable(state = EditorBrowsableState.Never)
-public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionDelegate {
+public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionDelegate<EwsServiceXmlReader> {
 
   /**
    * The xml namespace.

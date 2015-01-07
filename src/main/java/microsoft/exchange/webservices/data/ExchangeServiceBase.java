@@ -458,8 +458,6 @@ public abstract class ExchangeServiceBase {
   protected Date convertUniversalDateTimeStringToDate(String dateString) {
     String localTimeRegex = "^(.*)([+-]{1}\\d\\d:\\d\\d)$";
     Pattern localTimePattern = Pattern.compile(localTimeRegex);
-    String timeRegex = "[0-9]{2,4}-[0-9]{1,2}-[0-9]{1,2}T[0-9]{2}:[0-9]{1,2}:[0-9]{1,2}.[0-9]{1,7}";
-    Pattern timePattern = Pattern.compile(timeRegex);
     String utcPattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     String utcPattern1 = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'";
     String localPattern = "yyyy-MM-dd'T'HH:mm:ssz";

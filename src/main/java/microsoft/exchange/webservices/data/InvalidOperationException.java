@@ -16,6 +16,11 @@ package microsoft.exchange.webservices.data;
 public class InvalidOperationException extends Exception {
 
   /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Instantiates a new invalid operation exception.
    */
   public InvalidOperationException() {

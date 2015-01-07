@@ -16,6 +16,11 @@ package microsoft.exchange.webservices.data;
 public class EWSHttpException extends Exception {
 
   /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Instantiates a new eWS http exception.
    */
   public EWSHttpException() {

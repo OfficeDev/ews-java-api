@@ -63,7 +63,6 @@ public final class FindItemResponse
    * @param reader ,The reader
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws Exception {
@@ -112,7 +111,7 @@ public final class FindItemResponse
                 XmlElementNames.GroupedItems);
 
             this.groupedFindResults.getItemGroups().add(
-                new ItemGroup(groupIndex, itemList));
+                new ItemGroup<TItem>(groupIndex, itemList));
           }
         } while (!reader.isEndElement(XmlNamespace.Types,
             XmlElementNames.Groups));

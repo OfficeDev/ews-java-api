@@ -16,7 +16,7 @@ import java.util.List;
  * Represents a response to an individual item retrieval operation.
  */
 public final class GetItemResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate {
+    IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The item.
@@ -50,7 +50,6 @@ public final class GetItemResponse extends ServiceResponse implements
    * @throws IllegalAccessException the illegal access exception
    * @throws Exception              the exception
    */
-  @SuppressWarnings("unchecked")
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws InstantiationException, IllegalAccessException, Exception {
     super.readElementsFromXml(reader);
@@ -72,7 +71,6 @@ public final class GetItemResponse extends ServiceResponse implements
    * @return Item
    * @throws Exception the exception
    */
-  @SuppressWarnings("unused")
   private Item getObjectInstance(ExchangeService service,
       String xmlElementName) throws Exception {
     if (this.getItem() != null) {

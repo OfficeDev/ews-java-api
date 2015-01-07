@@ -17,6 +17,11 @@ package microsoft.exchange.webservices.data;
 public class UpdateInboxRulesException extends ServiceRemoteException {
 
   /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * ServiceResponse when service operation failed remotely.
    */
   private ServiceResponse serviceResponse;

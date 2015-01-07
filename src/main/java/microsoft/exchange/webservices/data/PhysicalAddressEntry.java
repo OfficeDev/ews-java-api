@@ -19,7 +19,7 @@ import java.util.List;
  */
 public final class PhysicalAddressEntry extends
     DictionaryEntryProperty<PhysicalAddressKey> implements
-    IPropertyBagChangedDelegate {
+    IPropertyBagChangedDelegate<String> {
 
   /**
    * The property bag.
@@ -40,7 +40,7 @@ public final class PhysicalAddressEntry extends
    *
    * @param simplePropertyBag the simple property bag
    */
-  public void propertyBagChanged(SimplePropertyBag simplePropertyBag) {
+  public void propertyBagChanged(SimplePropertyBag<String> simplePropertyBag) {
     this.changed();
   }
 
@@ -282,13 +282,6 @@ public final class PhysicalAddressEntry extends
    */
   private static String getFieldUri(String xmlElementName) {
     return "contacts:PhysicalAddress:" + xmlElementName;
-  }
-
-  /**
-   * Property bag was changed.
-   */
-  private void propertyBagChanged() {
-    this.changed();
   }
 
   /**

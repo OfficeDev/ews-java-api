@@ -89,7 +89,7 @@ public abstract class PropertyDefinitionBase {
   /**
    * Gets the type of the property.
    */
-  public abstract Class getType();
+  public abstract Class<?> getType();
 
   /**
    * Writes to XML.

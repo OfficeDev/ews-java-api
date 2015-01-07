@@ -124,11 +124,11 @@ class EwsServiceXmlReader extends EwsXmlReader {
     // {
 
 		/*
-		 * calen.setTimeInMillis(calen.getTimeInMillis() -
+                 * calen.setTimeInMillis(calen.getTimeInMillis() -
 		 * tz.getOffset(tempDate.getTime()));
 		 */
     return tempDate;
-		/*
+                /*
 		 * } else if (EwsUtilities.isLocalTimeZone(this.service.getTimeZone()))
 		 * { calen.setTimeInMillis(calen.getTimeInMillis() +
 		 * tz.getOffset(tempDate.getTime())); return calen.getTime(); } else {
@@ -162,7 +162,6 @@ class EwsServiceXmlReader extends EwsXmlReader {
    * @return the list
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   public <TServiceObject extends ServiceObject> List<TServiceObject>
   readServiceObjectsCollectionFromXml(
       String collectionXmlElementName,

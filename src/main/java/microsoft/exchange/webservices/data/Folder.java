@@ -707,7 +707,6 @@ public class Folder extends ServiceObject {
    * @return the effective rights
    * @throws ServiceLocalException the service local exception
    */
-  @SuppressWarnings("unchecked")
   public EnumSet<EffectiveRights> getEffectiveRights() throws ServiceLocalException {
     return (EnumSet<EffectiveRights>) this.getPropertyBag()
         .getObjectFromPropertyDefinition(FolderSchema.EffectiveRights);

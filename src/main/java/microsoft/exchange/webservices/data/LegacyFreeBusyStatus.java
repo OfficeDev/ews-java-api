@@ -48,7 +48,6 @@ public enum LegacyFreeBusyStatus {
   /**
    * The busy status.
    */
-  @SuppressWarnings("unused")
   private final int busyStatus;
 
   /**

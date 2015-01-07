@@ -48,7 +48,7 @@ class PermissionSetPropertyDefinition extends ComplexPropertyDefinitionBase {
    * Gets the property type.
    */
   @Override
-  public Class getType() {
+  public Class<FolderPermissionCollection> getType() {
     return FolderPermissionCollection.class;
   }
 }

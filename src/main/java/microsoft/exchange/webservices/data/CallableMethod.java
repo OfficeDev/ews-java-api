@@ -13,7 +13,7 @@ package microsoft.exchange.webservices.data;
 import java.io.IOException;
 import java.util.concurrent.Callable;
 
-public class CallableMethod implements Callable {
+public class CallableMethod implements Callable<Object> {
   HttpWebRequest request;
 
   CallableMethod(HttpWebRequest request) {

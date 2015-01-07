@@ -330,13 +330,13 @@ class MapiTypeConverter {
    * @return Array of objects.
    * @throws Exception the exception
    */
-  protected static List convertToValue(MapiPropertyType mapiPropType,
+  protected static List<Object> convertToValue(MapiPropertyType mapiPropType,
       Iterator<String> strings) throws Exception {
     EwsUtilities.validateParam(strings, "strings");
 
     MapiTypeConverterMapEntry typeConverter = getMapiTypeConverterMap()
         .get(mapiPropType);
-    List array = new ArrayList();
+    List<Object> array = new ArrayList<Object>();
 
     int index = 0;
 

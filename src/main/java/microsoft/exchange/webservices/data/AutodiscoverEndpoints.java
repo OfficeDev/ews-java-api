@@ -48,7 +48,6 @@ enum AutodiscoverEndpoints {
   /**
    * The autodiscover end points.
    */
-  @SuppressWarnings("unused")
   private final int autodiscoverEndPoints;
 
   /**

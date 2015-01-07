@@ -18,12 +18,12 @@ abstract class AsyncCallback extends AbstractAsyncCallback {
 
   }
 
-  void setTask(Future task) {
+  void setTask(Future<?> task) {
 
     this.task = task;
   }
 
-  Future getTask() {
+  Future<?> getTask() {
     return this.task;
   }
 

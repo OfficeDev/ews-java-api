@@ -20,7 +20,6 @@ import java.util.EnumSet;
 class ContainedPropertyDefinition<TComplexProperty extends ComplexProperty>
     extends ComplexPropertyDefinition<TComplexProperty> {
 
-  private Class<TComplexProperty> instance;
   /**
    * The contained xml element name.
    */

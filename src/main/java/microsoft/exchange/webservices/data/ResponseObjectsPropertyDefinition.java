@@ -129,7 +129,7 @@ public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
    * Gets the property type.
    */
   @Override
-  public Class getType() {
+  public Class<ResponseActions> getType() {
     return ResponseActions.class;
   }
 }

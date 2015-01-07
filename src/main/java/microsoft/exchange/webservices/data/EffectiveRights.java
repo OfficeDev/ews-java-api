@@ -68,7 +68,6 @@ public enum EffectiveRights {
   /**
    * The effective rights.
    */
-  @SuppressWarnings("unused")
   private final int effectiveRights;
 
   /**

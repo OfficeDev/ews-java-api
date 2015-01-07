@@ -16,7 +16,7 @@ import javax.xml.stream.XMLStreamException;
  * The Class UpdateItemResponse.
  */
 public final class UpdateItemResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate {
+    IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * Represents the response to an individual item update operation.
@@ -55,7 +55,6 @@ public final class UpdateItemResponse extends ServiceResponse implements
    * @throws IllegalAccessException              the illegal access exception
    * @throws Exception                           the exception
    */
-  @SuppressWarnings("unchecked")
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,

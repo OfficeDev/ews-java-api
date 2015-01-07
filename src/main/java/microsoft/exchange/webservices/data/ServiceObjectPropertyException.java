@@ -16,6 +16,11 @@ package microsoft.exchange.webservices.data;
 public class ServiceObjectPropertyException extends PropertyException {
 
   /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * The property definition.
    */
   private PropertyDefinitionBase propertyDefinition;

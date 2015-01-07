@@ -13,7 +13,12 @@ package microsoft.exchange.webservices.data;
 /**
  * The Class TimeSpan.
  */
-public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
+public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Cloneable {
+
+  /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * The time.
@@ -77,7 +82,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
    * @param value the number of units to use to create a TimeSpan instance.
    */
   public TimeSpan(int units, long value) {
-    this.time = this.toMilliseconds(units, value);
+    this.time = TimeSpan.toMilliseconds(units, value);
   }
 
 	/*
@@ -108,7 +113,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
    * @return a negative integer, zero, or a positive integer as this object is
    * less than, equal to, or greater than the specified object.
    */
-  public int compareTo(Object o) {
+  public int compareTo(TimeSpan o) {
     TimeSpan compare = (TimeSpan) o;
     if (this.time == compare.time) {
       return 0;
@@ -167,23 +172,23 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
       millis = -millis;
     }
 
-    long day = millis / this.DAYS;
+    long day = millis / TimeSpan.DAYS;
 
     if (day != 0) {
       sb.append(day);
       sb.append("d.");
-      millis = millis % this.DAYS;
+      millis = millis % TimeSpan.DAYS;
     }
 
-    sb.append(millis / this.HOURS);
-    millis = millis % this.HOURS;
+    sb.append(millis / TimeSpan.HOURS);
+    millis = millis % TimeSpan.HOURS;
     sb.append("h:");
-    sb.append(millis / this.MINUTES);
-    millis = millis % this.MINUTES;
+    sb.append(millis / TimeSpan.MINUTES);
+    millis = millis % TimeSpan.MINUTES;
     sb.append("m:");
-    sb.append(millis / this.SECONDS);
+    sb.append(millis / TimeSpan.SECONDS);
     sb.append("s");
-    millis = millis % this.SECONDS;
+    millis = millis % TimeSpan.SECONDS;
     if (millis != 0) {
       sb.append(".");
       sb.append(millis);
@@ -242,7 +247,8 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
    * @return the number of milliseconds.
    */
   public long getMilliseconds() {
-    return (((this.time % this.HOURS) % this.MINUTES) % this.MILLISECONDS) / this.MILLISECONDS;
+    return (((this.time % TimeSpan.HOURS) % TimeSpan.MINUTES) % TimeSpan.MILLISECONDS)
+        / TimeSpan.MILLISECONDS;
   }
 
   /**
@@ -260,8 +266,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
    * @return the number of seconds.
    */
   public long getSeconds() {
-
-    return ((this.time % this.HOURS) % this.MINUTES) / this.SECONDS;
+    return ((this.time % TimeSpan.HOURS) % TimeSpan.MINUTES) / TimeSpan.SECONDS;
   }
 
   /**
@@ -279,7 +284,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
    * @return the number of minutes.
    */
   public long getMinutes() {
-    return (this.time % this.HOURS) / this.MINUTES;// (this.time/1000)/60;
+    return (this.time % TimeSpan.HOURS) / TimeSpan.MINUTES;// (this.time/1000)/60;
   }
 
   /**
@@ -333,7 +338,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
    * @param timespan the TimeSpan to add to this TimeSpan.
    */
   public void add(TimeSpan timespan) {
-    add(this.MILLISECONDS, timespan.time);
+    add(TimeSpan.MILLISECONDS, timespan.time);
   }
 
   /**
@@ -343,7 +348,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
    * @param value the number of units to add to this TimeSpan.
    */
   public void add(int units, long value) {
-    this.time += this.toMilliseconds(units, value);
+    this.time += TimeSpan.toMilliseconds(units, value);
   }
 
   /**
@@ -389,7 +394,7 @@ public class TimeSpan implements Comparable, java.io.Serializable, Cloneable {
    * @param timespan the TimeSpan to subtract from this TimeSpan.
    */
   public void subtract(TimeSpan timespan) {
-    subtract(this.MILLISECONDS, timespan.time);
+    subtract(TimeSpan.MILLISECONDS, timespan.time);
   }
 
   /**

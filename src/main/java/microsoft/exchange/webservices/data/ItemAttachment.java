@@ -121,7 +121,7 @@ public class ItemAttachment extends Attachment implements
     super.tryReadElementFromXml(reader);
 
     reader.read();
-    Class itemClass = EwsUtilities.getItemTypeFromXmlElementName(reader
+    Class<?> itemClass = EwsUtilities.getItemTypeFromXmlElementName(reader
         .getLocalName().toString());
 
     if (itemClass != null) {

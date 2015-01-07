@@ -98,7 +98,7 @@ final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
         element = document.createElementNS(ele.getName()
             .getNamespaceURI(), ele.getName().getLocalPart());
 
-        Iterator ite = ele.getAttributes();
+        Iterator<Attribute> ite = ele.getAttributes();
 
         while (ite.hasNext()) {
           Attribute attr = (Attribute) ite.next();

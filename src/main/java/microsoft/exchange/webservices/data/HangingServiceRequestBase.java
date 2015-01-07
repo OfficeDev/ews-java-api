@@ -9,7 +9,6 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownServiceException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -233,7 +232,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
    * @param state The state.
    */
   private void parseResponses(Object state) {
-    UUID traceId = UUID.fromString("00000000-0000-0000-0000-000000000000");
     HangingTraceStream tracingStream = null;
     ByteArrayOutputStream responseCopy = null;
 

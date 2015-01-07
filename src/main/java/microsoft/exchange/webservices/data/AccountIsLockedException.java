@@ -18,6 +18,11 @@ import java.net.URI;
  */
 public class AccountIsLockedException extends ServiceRemoteException {
 
+  /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
   private URI accountUnlockUrl;
 
 

@@ -18,6 +18,10 @@ public final class DeleteAttachmentException extends
     ServiceRemoteException {// extends
   // BatchServiceResponseException<DeleteAttachmentResponse>
 
+  /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
 
   /**
    * The responses.

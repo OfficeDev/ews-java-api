@@ -17,6 +17,11 @@ package microsoft.exchange.webservices.data;
 public final class ServiceVersionException extends ServiceLocalException {
 
   /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Initializes a new instance of the class.
    */
   public ServiceVersionException() {

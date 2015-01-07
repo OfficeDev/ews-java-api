@@ -19,6 +19,11 @@ public final class CreateAttachmentException extends
   // BatchServiceResponseException<CreateAttachmentResponse>
 
   /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * The responses.
    */
   private ServiceResponseCollection<CreateAttachmentResponse> responses;

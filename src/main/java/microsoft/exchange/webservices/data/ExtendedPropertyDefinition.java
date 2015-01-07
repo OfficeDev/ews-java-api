@@ -452,7 +452,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
    * Gets the property type.
    */
   @Override
-  public Class getType() {
+  public Class<?> getType() {
     return MapiTypeConverter.getMapiTypeConverterMap().
         get(getMapiType()).getType();
   }

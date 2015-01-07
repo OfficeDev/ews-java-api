@@ -16,6 +16,11 @@ package microsoft.exchange.webservices.data;
 public class ArgumentOutOfRangeException extends Exception {
 
   /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Instantiates a new argument out of range exception.
    */
   public ArgumentOutOfRangeException() {

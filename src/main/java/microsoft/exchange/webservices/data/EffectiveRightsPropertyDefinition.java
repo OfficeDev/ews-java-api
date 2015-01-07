@@ -117,7 +117,7 @@ final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
    * Gets the property type.
    */
   @Override
-  public Class getType() {
+  public Class<EffectiveRights> getType() {
     return EffectiveRights.class;
   }
 }

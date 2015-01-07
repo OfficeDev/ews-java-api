@@ -50,7 +50,6 @@ public final class MoveCopyItemResponse extends ServiceResponse implements
    * @param reader the reader
    * @throws Exception the exception
    */
-  @SuppressWarnings("unchecked")
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws Exception {

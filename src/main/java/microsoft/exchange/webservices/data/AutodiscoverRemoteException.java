@@ -17,6 +17,11 @@ package microsoft.exchange.webservices.data;
 public class AutodiscoverRemoteException extends ServiceRemoteException {
 
   /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * The error.
    */
   private AutodiscoverError error;
