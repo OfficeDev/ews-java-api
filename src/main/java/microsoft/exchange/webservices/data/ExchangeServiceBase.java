@@ -26,6 +26,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.*;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -133,18 +136,25 @@ public abstract class ExchangeServiceBase {
    * every other constructor.
    */
   protected ExchangeServiceBase() {
-    this.setUseDefaultCredentials(true);
+    setUseDefaultCredentials(true);
 
+    EwsSSLProtocolSocketFactory factory;
     try {
-      EwsSSLProtocolSocketFactory factory = EwsSSLProtocolSocketFactory.build(null);
-      Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
-          .register("http", new PlainConnectionSocketFactory())
-          .register("https", factory)
-          .build();
-      this.httpConnectionManager = new PoolingHttpClientConnectionManager(registry);
-    } catch (Exception err) {
-      err.printStackTrace();
+      factory = EwsSSLProtocolSocketFactory.build(null);
+    } catch (NoSuchAlgorithmException e) {
+      throw new RuntimeException("Could not initialize HttpClientConnectionManager.", e);
+    } catch (KeyStoreException e) {
+      throw new RuntimeException("Could not initialize HttpClientConnectionManager.", e);
+    } catch (KeyManagementException e) {
+      throw new RuntimeException("Could not initialize HttpClientConnectionManager.", e);
     }
+
+    Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
+        .register("http", new PlainConnectionSocketFactory())
+        .register("https", factory)
+        .build();
+
+    httpConnectionManager = new PoolingHttpClientConnectionManager(registry);
   }
 
   protected ExchangeServiceBase(ExchangeVersion requestedServerVersion) {
