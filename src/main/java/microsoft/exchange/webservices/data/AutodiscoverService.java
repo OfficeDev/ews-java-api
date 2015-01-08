@@ -333,7 +333,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
     HttpWebRequest request = null;
 
     try {
-      request = new HttpClientWebRequest(this.getSimpleHttpConnectionManager());
+      request = new HttpClientWebRequest(this.getHttpConnectionManager());
 
       try {
         request.setUrl(URI.create(url).toURL());
@@ -1475,7 +1475,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
 
       HttpWebRequest request = null;
       try {
-        request = new HttpClientWebRequest(this.getSimpleHttpConnectionManager());
+        request = new HttpClientWebRequest(this.getHttpConnectionManager());
 
         try {
           request.setUrl(autoDiscoverUrl.toURL());

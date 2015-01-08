@@ -120,10 +120,9 @@ public abstract class ExchangeServiceBase {
   /**
    * Default UserAgent.
    */
-  private static String defaultUserAgent = "ExchangeServicesClient/" +
-      EwsUtilities.getBuildVersion();
+  private static String defaultUserAgent = "ExchangeServicesClient/" + EwsUtilities.getBuildVersion();
 
-  protected HttpClientConnectionManager getSimpleHttpConnectionManager() {
+  protected HttpClientConnectionManager getHttpConnectionManager() {
     return httpConnectionManager;
   }
 
