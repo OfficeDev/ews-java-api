@@ -30,7 +30,6 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
 
 
 /**
@@ -71,8 +70,6 @@ class HttpClientWebRequest extends HttpWebRequest {
    */
   @Override
   public void close() {
-    ExecutorService es = CallableSingleTon.getExecutor();
-    es.shutdown();
     if (null != httpPostReq) {
       httpPostReq.releaseConnection();
       //postMethod.abort();
