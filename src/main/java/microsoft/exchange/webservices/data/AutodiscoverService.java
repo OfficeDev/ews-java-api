@@ -10,6 +10,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
 import java.net.MalformedURLException;
@@ -22,6 +25,8 @@ import java.util.*;
  */
 public final class AutodiscoverService extends ExchangeServiceBase implements
     IAutodiscoverRedirectionUrl, IFunctionDelegate {
+
+  private static final Log log = LogFactory.getLog(AutodiscoverService.class);
 
   // region Private members
   /**
@@ -318,64 +323,64 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * @throws ServiceLocalException                                the service local exception
    * @throws java.net.URISyntaxException                          the uRI syntax exception
    */
-  private URI getRedirectUrl(String domainName) throws EWSHttpException,
-      XMLStreamException, IOException, ServiceLocalException,
-      URISyntaxException {
-    String url = String.format(AutodiscoverLegacyHttpUrl, "autodiscover."
-        + domainName);
+  private URI getRedirectUrl(String domainName)
+      throws EWSHttpException, XMLStreamException, IOException, ServiceLocalException, URISyntaxException {
+    String url = String.format(AutodiscoverLegacyHttpUrl, "autodiscover." + domainName);
 
-    this.traceMessage(TraceFlags.AutodiscoverConfiguration, String.format(
-        "Trying to get Autodiscover redirection URL from %s.", url));
+    traceMessage(TraceFlags.AutodiscoverConfiguration,
+        String.format("Trying to get Autodiscover redirection URL from %s.", url));
 
-    HttpWebRequest request = new HttpClientWebRequest(this.getSimpleHttpConnectionManager());
+    HttpWebRequest request = null;
+
     try {
-      request.setUrl(URI.create(url).toURL());
-    } catch (MalformedURLException e) {
-      String strErr = String.format("Incorrect format : %s", url);
-      throw new ServiceLocalException(strErr);
-    }
+      request = new HttpClientWebRequest(this.getSimpleHttpConnectionManager());
 
-    request.setAllowAutoRedirect(false);
-    request.setPreAuthenticate(false);
-    request.setRequestMethod("GET");
-    request.setUseDefaultCredentials(this.getUseDefaultCredentials());
-    if (!this.getUseDefaultCredentials()) {
-      ExchangeCredentials serviceCredentials = this.getCredentials();
-      if (null == serviceCredentials) {
-        throw new ServiceLocalException(Strings.CredentialsRequired);
+      try {
+        request.setUrl(URI.create(url).toURL());
+      } catch (MalformedURLException e) {
+        String strErr = String.format("Incorrect format : %s", url);
+        throw new ServiceLocalException(strErr);
       }
-      // Make sure that credentials have been authenticated if required
-      serviceCredentials.preAuthenticate();
 
-      // Apply credentials to the request
-      serviceCredentials.prepareWebRequest(request);
-    }
-    try {
-      request.prepareAsyncConnection();
-    } catch (Exception ex) {
-      ex.getMessage();
-      request = null;
-    }
+      request.setAllowAutoRedirect(false);
+      request.setPreAuthenticate(false);
+      request.setRequestMethod("GET");
+      request.setUseDefaultCredentials(this.getUseDefaultCredentials());
+      if (!this.getUseDefaultCredentials()) {
+        ExchangeCredentials serviceCredentials = this.getCredentials();
+        if (null == serviceCredentials) {
+          throw new ServiceLocalException(Strings.CredentialsRequired);
+        }
+        // Make sure that credentials have been authenticated if required
+        serviceCredentials.preAuthenticate();
 
-    if (request != null) {
-      URI redirectUrl;
+        // Apply credentials to the request
+        serviceCredentials.prepareWebRequest(request);
+      }
+
+      try {
+        request.prepareAsyncConnection();
+      } catch (Exception e) {
+        log.warn("Error while preparing asynchronous connection.", e);
+        traceMessage(TraceFlags.AutodiscoverConfiguration, "No Autodiscover redirection URL was returned.");
+        return null;
+      }
+
       OutParam<URI> outParam = new OutParam<URI>();
-      if (this.tryGetRedirectionResponse(request, outParam)) {
-        redirectUrl = outParam.getParam();
-        return redirectUrl;
+      if (tryGetRedirectionResponse(request, outParam)) {
+        return outParam.getParam();
       }
-    }
-    try {
+    } finally {
       if (request != null) {
-        request.close();
+        try {
+          request.close();
+        } catch (Exception e) {
+          // Ignore exceptions when closing the request
+        }
       }
-    } catch (Exception e2) {
-      // do nothing
     }
 
-    this.traceMessage(TraceFlags.AutodiscoverConfiguration,
-        "No Autodiscover redirection URL was returned.");
-
+    traceMessage(TraceFlags.AutodiscoverConfiguration, "No Autodiscover redirection URL was returned.");
     return null;
   }
 
@@ -1457,91 +1462,85 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * @throws Exception the exception
    */
   private boolean tryGetEnabledEndpointsForHost(String host,
-      OutParam<EnumSet<AutodiscoverEndpoints>> endpoints)
-      throws Exception {
+      OutParam<EnumSet<AutodiscoverEndpoints>> endpoints) throws Exception {
     this.traceMessage(TraceFlags.AutodiscoverConfiguration, String.format(
         "Determining which endpoints are enabled for host %s", host));
 
-    // We may get redirected to another host. And therefore need to limit
-    // the number
-    // of redirections we'll tolerate.
+    // We may get redirected to another host. And therefore need to limit the number of redirections we'll
+    // tolerate.
     for (int currentHop = 0; currentHop < AutodiscoverMaxRedirections; currentHop++) {
-      URI autoDiscoverUrl = new URI(String.format(
-          AutodiscoverLegacyHttpsUrl, host));
+      URI autoDiscoverUrl = new URI(String.format(AutodiscoverLegacyHttpsUrl, host));
 
       endpoints.setParam(EnumSet.of(AutodiscoverEndpoints.None));
 
-      HttpWebRequest request = new HttpClientWebRequest(this.getSimpleHttpConnectionManager());
+      HttpWebRequest request = null;
       try {
-        request.setUrl(autoDiscoverUrl.toURL());
-      } catch (MalformedURLException e) {
-        String strErr = String.format("Incorrect format : %s", url);
-        throw new ServiceLocalException(strErr);
-      }
+        request = new HttpClientWebRequest(this.getSimpleHttpConnectionManager());
 
-      request.setRequestMethod("GET");
-      request.setAllowAutoRedirect(false);
-      request.setPreAuthenticate(false);
-      request.setUseDefaultCredentials(this.getUseDefaultCredentials());
-      if (!this.getUseDefaultCredentials()) {
-        ExchangeCredentials serviceCredentials = this.getCredentials();
-        if (null == serviceCredentials) {
-          throw new ServiceLocalException(Strings.
-              CredentialsRequired);
+        try {
+          request.setUrl(autoDiscoverUrl.toURL());
+        } catch (MalformedURLException e) {
+          String strErr = String.format("Incorrect format : %s", url);
+          throw new ServiceLocalException(strErr);
         }
 
-        // Make sure that credentials have been
-        // authenticated if required
-        serviceCredentials.preAuthenticate();
+        request.setRequestMethod("GET");
+        request.setAllowAutoRedirect(false);
+        request.setPreAuthenticate(false);
+        request.setUseDefaultCredentials(this.getUseDefaultCredentials());
 
-        // Apply credentials to the request
-        serviceCredentials.prepareWebRequest(request);
-      }
-      try {
-        request.prepareAsyncConnection();
-      } catch (Exception ex) {
-        ex.getMessage();
-        request = null;
-      }
+        if (!this.getUseDefaultCredentials()) {
+          ExchangeCredentials serviceCredentials = this.getCredentials();
+          if (null == serviceCredentials) {
+            throw new ServiceLocalException(Strings.CredentialsRequired);
+          }
 
-      if (request != null) {
+          // Make sure that credentials have been authenticated if required
+          serviceCredentials.preAuthenticate();
+
+          // Apply credentials to the request
+          serviceCredentials.prepareWebRequest(request);
+        }
+
+        try {
+          request.prepareAsyncConnection();
+        } catch (Exception e) {
+          log.warn("Error while preparing asynchronous connection.", e);
+          return false;
+        }
+
         URI redirectUrl;
         OutParam<URI> outParam = new OutParam<URI>();
+
         if (this.tryGetRedirectionResponse(request, outParam)) {
           redirectUrl = outParam.getParam();
           this.traceMessage(TraceFlags.AutodiscoverConfiguration,
-              String.format(
-                  "Host returned redirection to host '%s'",
-                  redirectUrl.getHost()));
+              String.format("Host returned redirection to host '%s'", redirectUrl.getHost()));
 
           host = redirectUrl.getHost();
         } else {
-          endpoints.setParam(this
-              .getEndpointsFromHttpWebResponse(request));
+          endpoints.setParam(this.getEndpointsFromHttpWebResponse(request));
 
           this.traceMessage(TraceFlags.AutodiscoverConfiguration,
-              String.format(
-                  "Host returned enabled endpoint flags: %s",
-                  endpoints.getParam().toString()));
+              String.format("Host returned enabled endpoint flags: %s", endpoints.getParam().toString()));
 
           return true;
         }
-      } else {
-        return false;
-      }
-      try {
-        request.close();
-      } catch (Exception e2) {
-        // do nothing
+      } finally {
+        if (request != null) {
+          try {
+            request.close();
+          } catch (Exception e) {
+            // Connection can't be closed. We'll ignore this...
+          }
+        }
       }
     }
 
-    this.traceMessage(TraceFlags.AutodiscoverConfiguration, String.format(
-        "Maximum number of redirection hops %d exceeded",
-        AutodiscoverMaxRedirections));
+    this.traceMessage(TraceFlags.AutodiscoverConfiguration,
+        String.format("Maximum number of redirection hops %d exceeded", AutodiscoverMaxRedirections));
 
-    throw new AutodiscoverLocalException(
-        Strings.MaximumRedirectionHopsExceeded);
+    throw new AutodiscoverLocalException(Strings.MaximumRedirectionHopsExceeded);
   }
 
   /**
