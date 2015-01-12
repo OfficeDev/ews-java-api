@@ -19,7 +19,7 @@ import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -174,7 +174,7 @@ public abstract class ExchangeServiceBase implements Closeable {
         .register("https", factory)
         .build();
 
-    HttpClientConnectionManager httpConnectionManager = new PoolingHttpClientConnectionManager(registry);
+    HttpClientConnectionManager httpConnectionManager = new BasicHttpClientConnectionManager(registry);
     HttpClientBuilder httpClientBuilder = HttpClients.custom().setConnectionManager(httpConnectionManager);
     httpClient = httpClientBuilder.build();
   }
