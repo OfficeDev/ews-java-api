@@ -333,7 +333,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
     HttpWebRequest request = null;
 
     try {
-      request = new HttpClientWebRequest(this.getHttpConnectionManager());
+      request = new HttpClientWebRequest(httpClient, httpContext);
 
       try {
         request.setUrl(URI.create(url).toURL());
@@ -342,26 +342,18 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
         throw new ServiceLocalException(strErr);
       }
 
-      request.setAllowAutoRedirect(false);
-      request.setPreAuthenticate(false);
       request.setRequestMethod("GET");
-      request.setUseDefaultCredentials(this.getUseDefaultCredentials());
-      if (!this.getUseDefaultCredentials()) {
-        ExchangeCredentials serviceCredentials = this.getCredentials();
-        if (null == serviceCredentials) {
-          throw new ServiceLocalException(Strings.CredentialsRequired);
-        }
-        // Make sure that credentials have been authenticated if required
-        serviceCredentials.preAuthenticate();
+      request.setAllowAutoRedirect(false);
 
-        // Apply credentials to the request
-        serviceCredentials.prepareWebRequest(request);
-      }
+      // Do NOT allow authentication as this single request will be made over plain HTTP.
+      request.setAllowAuthentication(false);
 
+      prepareCredentials(request);
+
+      request.prepareConnection();
       try {
-        request.prepareAsyncConnection();
-      } catch (Exception e) {
-        log.warn("Error while preparing asynchronous connection.", e);
+        request.executeRequest();
+      } catch (IOException e) {
         traceMessage(TraceFlags.AutodiscoverConfiguration, "No Autodiscover redirection URL was returned.");
         return null;
       }
@@ -1475,7 +1467,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
 
       HttpWebRequest request = null;
       try {
-        request = new HttpClientWebRequest(this.getHttpConnectionManager());
+        request = new HttpClientWebRequest(httpClient, httpContext);
 
         try {
           request.setUrl(autoDiscoverUrl.toURL());
@@ -1489,31 +1481,18 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
         request.setPreAuthenticate(false);
         request.setUseDefaultCredentials(this.getUseDefaultCredentials());
 
-        if (!this.getUseDefaultCredentials()) {
-          ExchangeCredentials serviceCredentials = this.getCredentials();
-          if (null == serviceCredentials) {
-            throw new ServiceLocalException(Strings.CredentialsRequired);
-          }
+        prepareCredentials(request);
 
-          // Make sure that credentials have been authenticated if required
-          serviceCredentials.preAuthenticate();
-
-          // Apply credentials to the request
-          serviceCredentials.prepareWebRequest(request);
-        }
-
+        request.prepareConnection();
         try {
-          request.prepareAsyncConnection();
-        } catch (Exception e) {
-          log.warn("Error while preparing asynchronous connection.", e);
+          request.executeRequest();
+        } catch (IOException e) {
           return false;
         }
 
-        URI redirectUrl;
         OutParam<URI> outParam = new OutParam<URI>();
-
         if (this.tryGetRedirectionResponse(request, outParam)) {
-          redirectUrl = outParam.getParam();
+          URI redirectUrl = outParam.getParam();
           this.traceMessage(TraceFlags.AutodiscoverConfiguration,
               String.format("Host returned redirection to host '%s'", redirectUrl.getHost()));
 

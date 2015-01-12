@@ -16,15 +16,12 @@ package microsoft.exchange.webservices.data;
  */
 public class WebProxy {
 
-  /**
-   * proxy host.
-   */
   private String host;
 
-  /**
-   * proxy post.
-   */
   private int port;
+
+  private WebProxyCredentials credentials;
+
 
   /**
    * Initializes a new instance to use specified proxy details.
@@ -47,10 +44,29 @@ public class WebProxy {
     this.port = 80;
   }
 
-	/*public WebProxy(ProxyHost httpproxy) throws UnknownHostException {
-		this.host = httpproxy.getHostName();
-		this.port = httpproxy.getPort();
-	}	*/
+  /**
+   * Initializes a new instance to use specified proxy with default port 80.
+   *
+   * @param host proxy host.
+   * @param credentials the credentials to use for the proxy.
+   */
+  public WebProxy(String host, WebProxyCredentials credentials) {
+    this.host = host;
+    this.credentials = credentials;
+  }
+
+  /**
+   * Initializes a new instance to use specified proxy details.
+   *
+   * @param host proxy host.
+   * @param port proxy port.
+   * @param credentials the credentials to use for the proxy.
+   */
+  public WebProxy(String host, int port, WebProxyCredentials credentials) {
+    this.host = host;
+    this.port = port;
+    this.credentials = credentials;
+  }
 
   /**
    * Gets the Proxy Host.
@@ -70,16 +86,16 @@ public class WebProxy {
     return this.port;
   }
 
+  public boolean hasCredentials() {
+    return credentials != null;
+  }
+
   /**
-   * This method is used to set proxy credentials to a Web Request before
-   * the request is made.
+   * Gets the Proxy Credentials.
    *
-   * @param user   The proxy username.
-   * @param pwd    The proxy password.
-   * @param domain The proxy domain.
+   * @return the proxy credentials
    */
-  public void setCredentials(String user, String pwd, String domain) {
-    HttpProxyCredentials.setCredentials(user, pwd, domain);
-    HttpProxyCredentials.isProxySet();
+  public WebProxyCredentials getCredentials() {
+    return credentials;
   }
 }
