@@ -408,8 +408,7 @@ public abstract class ExchangeServiceBase {
    * Converts the universal date time string to local date time.
    *
    * @param dateString The value.
-   * @return DateTime Returned date is always in UTC date.
-   * @throws IllegalArgumentException if unable to parse date
+   * @return Date Returned date is always in UTC date.
    */
   protected Date convertUniversalDateTimeStringToDate(String dateString) {
 	  return convertDateTimeStringToDate(dateString, true);
@@ -420,8 +419,7 @@ public abstract class ExchangeServiceBase {
    *
    * @param dateString The value.
    * @param defaultUTC set timezeone UTC if no timezone is specified in dateString
-   * @return DateTime Returned date is always in UTC date.
-   * @throws IllegalArgumentException if unable to parse date
+   * @return Date Returned date is always in UTC date.
    */
   protected Date convertDateTimeStringToDate(String dateString, boolean defaultUTC) {
     String localTimeRegex = "^(.*)([+-]{1}\\d\\d:\\d\\d)$";
@@ -432,10 +430,7 @@ public abstract class ExchangeServiceBase {
     String localPattern1 = "yyyy-MM-dd'Z'";
     String pattern = "yyyy-MM-ddz";
     String localPattern2 = "yyyy-MM-dd'T'HH:mm:ss";
-    DateFormat utcFormatter = null;
     Date dt = null;
-    String errMsg = String.format(
-        "Date String %s not in valid UTC/local format", dateString);
     if (dateString == null || dateString.isEmpty()) {
       return null;
     } else {
@@ -448,7 +443,6 @@ public abstract class ExchangeServiceBase {
         // Check for yyyy-MM-ddTHH:mm:ss+/-HH:mm pattern
         Matcher localTimeMatcher = localTimePattern.matcher(dateString);
         if (localTimeMatcher.find()) {
-          log.debug("Pattern matched");
           String date = localTimeMatcher.group(1);
           String zone = localTimeMatcher.group(2);
           // Add the string GMT between DateTime and TimeZone
@@ -467,15 +461,15 @@ public abstract class ExchangeServiceBase {
   /**
    * Tries to parse the dateString using the given patterns. If no timezone is
    * defined in the dateString, you can choose to default to UTC. If none of 
-   * the patterns can parse the dateString, and Exception is thrown.
+   * the patterns can parse the dateString, and IllegalArgumentException is thrown.
    * 
    * @param dateString dateString to parse
    * @param isUTC if no timezone if defined in dateString, default to UTC
    * @param patterns patterns to try for parsing. 
-   * @return parsed Date. 
+   * @return Date parsed date 
    * @throws IllegalArgumentException if no patterns can parse the dateString
    */
-  Date parseDateTimeString(String dateString, boolean isUTC, String... patterns) {
+  protected Date parseDateTimeString(String dateString, boolean isUTC, String... patterns) {
     for (String pattern : patterns) {
       SimpleDateFormat utcFormatter = new SimpleDateFormat(pattern);
       if (isUTC) {
