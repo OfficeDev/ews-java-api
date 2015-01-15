@@ -10,6 +10,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.client.CookieStore;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
@@ -22,6 +24,7 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +41,11 @@ import java.util.regex.Pattern;
  */
 public abstract class ExchangeServiceBase {
 
+  /**
+   * Logger
+   */
+  private static final Log log = LogFactory.getLog(ExchangeServiceBase.class);
+  
   /**
    * Prefix for "extended" headers.
    */
@@ -400,9 +408,20 @@ public abstract class ExchangeServiceBase {
    * Converts the universal date time string to local date time.
    *
    * @param dateString The value.
-   * @return DateTime Returned date is always in UTC date.
+   * @return Date Returned date is always in UTC date.
    */
   protected Date convertUniversalDateTimeStringToDate(String dateString) {
+	  return convertDateTimeStringToDate(dateString, true);
+  }
+	  
+  /**
+   * Converts the universal date time string to local date time.
+   *
+   * @param dateString The value.
+   * @param defaultUTC set timezeone UTC if no timezone is specified in dateString
+   * @return Date Returned date is always in UTC date.
+   */
+  protected Date convertDateTimeStringToDate(String dateString, boolean defaultUTC) {
     String localTimeRegex = "^(.*)([+-]{1}\\d\\d:\\d\\d)$";
     Pattern localTimePattern = Pattern.compile(localTimeRegex);
     String utcPattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
@@ -411,89 +430,28 @@ public abstract class ExchangeServiceBase {
     String localPattern1 = "yyyy-MM-dd'Z'";
     String pattern = "yyyy-MM-ddz";
     String localPattern2 = "yyyy-MM-dd'T'HH:mm:ss";
-    DateFormat utcFormatter = null;
     Date dt = null;
-    String errMsg = String.format(
-        "Date String %s not in valid UTC/local format", dateString);
     if (dateString == null || dateString.isEmpty()) {
       return null;
     } else {
       if (dateString.endsWith("Z")) {
-        // String in UTC format yyyy-MM-ddTHH:mm:ssZ
-        utcFormatter = new SimpleDateFormat(utcPattern);
-        utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-        try {
-          dt = utcFormatter.parse(dateString);
-        } catch (ParseException e) {
-          utcFormatter = new SimpleDateFormat(pattern);
-          utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-          //	dateString = dateString.substring(0, 10)+"T12:00:00Z";
-          try {
-            dt = utcFormatter.parse(dateString);
-          } catch (ParseException e1) {
-            utcFormatter = new SimpleDateFormat(localPattern1);
-            utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-            try {
-              dt = utcFormatter.parse(dateString);
-            } catch (ParseException ex) {
-
-              utcFormatter = new SimpleDateFormat(utcPattern1);
-              utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-            }
-            try {
-              dt = utcFormatter.parse(dateString);
-            } catch (ParseException e2) {
-              throw new IllegalArgumentException(errMsg, e);
-            }
-
-          }
-          // throw new IllegalArgumentException(errMsg,e);
-        }
+        dt = parseDateTimeString(dateString, defaultUTC, utcPattern, pattern, localPattern1, utcPattern1);
       } else if (dateString.endsWith("z")) {
-        // String in UTC format yyyy-MM-ddTHH:mm:ssZ
-        utcFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'z'");
-        utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-        try {
-          dt = utcFormatter.parse(dateString);
-        } catch (ParseException e) {
-          throw new IllegalArgumentException(e);
-        }
+        dt = parseDateTimeString(dateString, defaultUTC, "yyyy-MM-dd'T'HH:mm:ss'z'");
       } else {
         // dateString is not ending with Z.
         // Check for yyyy-MM-ddTHH:mm:ss+/-HH:mm pattern
         Matcher localTimeMatcher = localTimePattern.matcher(dateString);
         if (localTimeMatcher.find()) {
-          System.out.println("Pattern matched");
           String date = localTimeMatcher.group(1);
           String zone = localTimeMatcher.group(2);
           // Add the string GMT between DateTime and TimeZone
           // since 'z' in yyyy-MM-dd'T'HH:mm:ssz matches
           // either format GMT+/-HH:mm or +/-HHmm
           dateString = String.format("%sGMT%s", date, zone);
-          try {
-            utcFormatter = new SimpleDateFormat(localPattern);
-            utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-            dt = utcFormatter.parse(dateString);
-          } catch (ParseException e) {
-            try {
-              utcFormatter = new SimpleDateFormat(pattern);
-              utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-              dt = utcFormatter.parse(dateString);
-            } catch (ParseException ex) {
-              throw new IllegalArgumentException(ex);
-            }
-          }
+          dt = parseDateTimeString(dateString, defaultUTC, localPattern, pattern);
         } else {
-          // Invalid format
-          utcFormatter = new SimpleDateFormat(localPattern2);
-          utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-          try {
-            dt = utcFormatter.parse(dateString);
-          } catch (ParseException e) {
-            e.printStackTrace();
-            throw new IllegalArgumentException(errMsg);
-          }
+          dt = parseDateTimeString(dateString, defaultUTC, localPattern2);
         }
       }
       return dt;
@@ -501,20 +459,29 @@ public abstract class ExchangeServiceBase {
   }
 
   /**
-   * Converts xs:dateTime string with either "Z", "-00:00" bias, or ""
-   * suffixes to unspecified StartDate value ignoring the suffix.Needs to fix
-   * E14:232996.
-   *
-   * @param value The string value to parse.
-   * @return The parsed DateTime value.
+   * Tries to parse the dateString using the given patterns. If no timezone is
+   * defined in the dateString, you can choose to default to UTC. If none of 
+   * the patterns can parse the dateString, and IllegalArgumentException is thrown.
+   * 
+   * @param dateString dateString to parse
+   * @param isUTC if no timezone if defined in dateString, default to UTC
+   * @param patterns patterns to try for parsing. 
+   * @return Date parsed date 
+   * @throws IllegalArgumentException if no patterns can parse the dateString
    */
-  protected Date convertStartDateToUnspecifiedDateTime(String value) throws ParseException {
-    if (value == null || value.isEmpty()) {
-      return null;
-    } else {
-      DateFormat df = new SimpleDateFormat("yyyy-MM-dd'Z'");
-      return df.parse(value);
+  protected Date parseDateTimeString(String dateString, boolean isUTC, String... patterns) {
+    for (String pattern : patterns) {
+      SimpleDateFormat utcFormatter = new SimpleDateFormat(pattern);
+      if (isUTC) {
+        utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+      }
+      try {
+        return utcFormatter.parse(dateString);
+      } catch (ParseException e) {
+    	log.debug("Unable to parse " + dateString + " using pattern " + pattern, e); 
+      }
     }
+    throw new IllegalArgumentException(String.format("Date String %s not in valid UTC/local format using any of the following patterns %s", dateString, Arrays.toString(patterns)));
   }
 
   /**
