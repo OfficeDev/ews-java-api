@@ -10,6 +10,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.util.DateTimeParser;
+
 import java.util.Date;
 import java.util.EnumSet;
 
@@ -71,12 +73,11 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    * @param propertyBag the property bag
    * @throws Exception the exception
    */
-  protected void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
-    String value = reader.readElementValue(XmlNamespace.Types,
-        getXmlElement());
-    propertyBag.setObjectFromPropertyDefinition(this, reader.getService()
-        .convertUniversalDateTimeStringToDate(value));
+  protected void loadPropertyValueFromXml(EwsServiceXmlReader reader, PropertyBag propertyBag)
+      throws Exception {
+    String value = reader.readElementValue(XmlNamespace.Types, getXmlElement());
+    propertyBag.setObjectFromPropertyDefinition(this, new DateTimeParser()
+        .convertDateTimeStringToDate(value));
   }
 
 

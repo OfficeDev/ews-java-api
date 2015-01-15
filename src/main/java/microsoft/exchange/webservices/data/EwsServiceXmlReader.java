@@ -10,6 +10,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.util.DateTimeParser;
+
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -23,6 +25,8 @@ import java.util.TimeZone;
  * XML reader.
  */
 class EwsServiceXmlReader extends EwsXmlReader {
+
+  private DateTimeParser dateTimeParser = new DateTimeParser();
 
   /**
    * The service.
@@ -43,37 +47,13 @@ class EwsServiceXmlReader extends EwsXmlReader {
   }
 
   /**
-   * Converts the specified string into a DateTime objects.
-   *
-   * @param dateTimeString The date time string to convert.
-   * @return A DateTime representing the converted string.
-   */
-  private Date convertStringToDateTime(String dateTimeString) {
-    return this.service
-        .convertUniversalDateTimeStringToDate(dateTimeString);
-  }
-
-  /**
-   * Converts the specified string into a
-   * unspecified Date object, ignoring offset.
-   *
-   * @param dateTimeString The date time string to convert.
-   * @return A DateTime representing the converted string.
-   * @throws java.text.ParseException
-   */
-  private Date convertStringToUnspecifiedDate(String dateTimeString) throws ParseException {
-    return this.getService().
-        convertStartDateToUnspecifiedDateTime(dateTimeString);
-  }
-
-  /**
    * Reads the element value as date time.
    *
    * @return Element value
    * @throws Exception the exception
    */
   public Date readElementValueAsDateTime() throws Exception {
-    return this.convertStringToDateTime(this.readElementValue());
+    return dateTimeParser.convertDateTimeStringToDate(readElementValue());
   }
 
   /**
@@ -83,7 +63,7 @@ class EwsServiceXmlReader extends EwsXmlReader {
    * @throws Exception
    */
   public Date readElementValueAsUnspecifiedDate() throws Exception {
-    return this.convertStringToUnspecifiedDate(this.readElementValue());
+    return dateTimeParser.convertDateStringToDate(readElementValue());
   }
 
   /**
@@ -144,10 +124,8 @@ class EwsServiceXmlReader extends EwsXmlReader {
    * @return the date
    * @throws Exception the exception
    */
-  public Date readElementValueAsDateTime(XmlNamespace xmlNamespace,
-      String localName) throws Exception {
-    return this.convertStringToDateTime(this.readElementValue(xmlNamespace,
-        localName));
+  public Date readElementValueAsDateTime(XmlNamespace xmlNamespace, String localName) throws Exception {
+    return dateTimeParser.convertDateTimeStringToDate(readElementValue(xmlNamespace, localName));
   }
 
   /**
