@@ -62,8 +62,7 @@ class EwsServiceXmlReader extends EwsXmlReader {
    * @throws java.text.ParseException
    */
   private Date convertStringToUnspecifiedDate(String dateTimeString) throws ParseException {
-    return this.getService().
-        convertStartDateToUnspecifiedDateTime(dateTimeString);
+    return getService().convertDateTimeStringToDate(dateTimeString, false);
   }
 
   /**
