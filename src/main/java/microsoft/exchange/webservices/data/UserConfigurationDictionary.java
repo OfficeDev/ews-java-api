@@ -10,6 +10,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.util.DateTimeParser;
+
 import javax.xml.stream.XMLStreamException;
 import java.lang.reflect.Array;
 import java.util.*;
@@ -581,8 +583,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
     } else if (type.equals(UserConfigurationDictionaryObjectType.ByteArray)) {
       dictionaryObject = Base64EncoderStream.decode(value.get(0));
     } else if (type.equals(UserConfigurationDictionaryObjectType.DateTime)) {
-      Date dateTime = reader.getService()
-          .convertUniversalDateTimeStringToDate(value.get(0));
+      Date dateTime = new DateTimeParser().convertDateTimeStringToDate(value.get(0));
       if (dateTime != null) {
         dictionaryObject = dateTime;
       } else {
