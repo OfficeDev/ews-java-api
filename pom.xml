@@ -35,6 +35,30 @@
         <javaLanguage.version>1.6</javaLanguage.version>
     </properties>
 
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <issueManagement>
+        <url>https://github.com/OfficeDev/ews-java-api/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <ciManagement>
+        <system>travis</system>
+        <url>https://travis-ci.org/OfficeDev/ews-java-api</url>
+    </ciManagement>
+
+    <scm>
+        <url>https://github.com/OfficeDev/ews-java-api</url>
+        <connection>scm:git:ssh://git@github.com:OfficeDev/ews-java-api.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:OfficeDev/ews-java-api.git</developerConnection>
+    </scm>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -77,6 +101,7 @@
 
     <build>
         <plugins>
+            <!--Deployment / build plugins-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -86,6 +111,33 @@
                     <target>${javaLanguage.version}</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--Deployment / build plugins END-->
         </plugins>
         <!-- Used to bump all of the various core plugins up to Maven current.
             Use this in conjunction with the versions-maven-plugin to keep your Maven
@@ -132,7 +184,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
+                <version>2.10.1</version>
                 <configuration>
                     <linksource>true</linksource>
                 </configuration>
