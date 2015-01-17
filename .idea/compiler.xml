@@ -25,6 +25,8 @@
         <module name="ews-java-api" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ews-java-api" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
-
