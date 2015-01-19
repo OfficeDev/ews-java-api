@@ -200,89 +200,95 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
                 emailAddress, url));
 
     TSettings settings = cls.newInstance();
-    HttpWebRequest request = this.prepareHttpWebRequestForUrl(url);
 
-    this.traceHttpRequestHeaders(
-        TraceFlags.AutodiscoverRequestHttpHeaders,
-        request);
-    // OutputStreamWriter out = new
-    // OutputStreamWriter(request.getOutputStream());
-    OutputStream urlOutStream = request.getOutputStream();
+    HttpWebRequest request = null;
+    try {
+      request = this.prepareHttpWebRequestForUrl(url);
 
-    // If tracing is enabled, we generate the request in-memory so that we
-    // can pass it along to the ITraceListener. Then we copy the stream to
-    // the request stream.
-    if (this.isTraceEnabledFor(TraceFlags.AutodiscoverRequest)) {
-      ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
+      this.traceHttpRequestHeaders(
+          TraceFlags.AutodiscoverRequestHttpHeaders,
+          request);
+      // OutputStreamWriter out = new
+      // OutputStreamWriter(request.getOutputStream());
+      OutputStream urlOutStream = request.getOutputStream();
 
-      PrintWriter writer = new PrintWriter(memoryStream);
-      this.writeLegacyAutodiscoverRequest(emailAddress, settings, writer);
-      writer.flush();
+      // If tracing is enabled, we generate the request in-memory so that we
+      // can pass it along to the ITraceListener. Then we copy the stream to
+      // the request stream.
+      if (this.isTraceEnabledFor(TraceFlags.AutodiscoverRequest)) {
+        ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
 
-      this.traceXml(TraceFlags.AutodiscoverRequest, memoryStream);
-      // out.write(memoryStream.toString());
-      // out.close();
-      memoryStream.writeTo(urlOutStream);
-      urlOutStream.flush();
-      urlOutStream.close();
-      memoryStream.close();
-    } else {
-      PrintWriter writer = new PrintWriter(urlOutStream);
-      this.writeLegacyAutodiscoverRequest(emailAddress, settings, writer);
+        PrintWriter writer = new PrintWriter(memoryStream);
+        this.writeLegacyAutodiscoverRequest(emailAddress, settings, writer);
+        writer.flush();
 
-			/*  Flush Start */
-      writer.flush();
-      urlOutStream.flush();
-      urlOutStream.close();
-                        /* Flush End */
-    }
-    request.executeRequest();
-    request.getResponseCode();
-    URI redirectUrl;
-    OutParam<URI> outParam = new OutParam<URI>();
-    if (this.tryGetRedirectionResponse(request, outParam)) {
-      redirectUrl = outParam.getParam();
-      settings.makeRedirectionResponse(redirectUrl);
-      return settings;
-    }
-    InputStream serviceResponseStream = request.getInputStream();
-    // If tracing is enabled, we read the entire response into a
-    // MemoryStream so that we
-    // can pass it along to the ITraceListener. Then we parse the response
-    // from the
-    // MemoryStream.
-    if (this.isTraceEnabledFor(TraceFlags.AutodiscoverResponse)) {
-      ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
+        this.traceXml(TraceFlags.AutodiscoverRequest, memoryStream);
+        // out.write(memoryStream.toString());
+        // out.close();
+        memoryStream.writeTo(urlOutStream);
+        urlOutStream.flush();
+        urlOutStream.close();
+        memoryStream.close();
+      } else {
+        PrintWriter writer = new PrintWriter(urlOutStream);
+        this.writeLegacyAutodiscoverRequest(emailAddress, settings, writer);
 
-      while (true) {
-        int data = serviceResponseStream.read();
-        if (-1 == data) {
-          break;
-        } else {
-          memoryStream.write(data);
+      /*  Flush Start */
+        writer.flush();
+        urlOutStream.flush();
+        urlOutStream.close();
+      /* Flush End */
+      }
+      request.executeRequest();
+      request.getResponseCode();
+      URI redirectUrl;
+      OutParam<URI> outParam = new OutParam<URI>();
+      if (this.tryGetRedirectionResponse(request, outParam)) {
+        redirectUrl = outParam.getParam();
+        settings.makeRedirectionResponse(redirectUrl);
+        return settings;
+      }
+      InputStream serviceResponseStream = request.getInputStream();
+      // If tracing is enabled, we read the entire response into a
+      // MemoryStream so that we
+      // can pass it along to the ITraceListener. Then we parse the response
+      // from the
+      // MemoryStream.
+      if (this.isTraceEnabledFor(TraceFlags.AutodiscoverResponse)) {
+        ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
+
+        while (true) {
+          int data = serviceResponseStream.read();
+          if (-1 == data) {
+            break;
+          } else {
+            memoryStream.write(data);
+          }
+        }
+        memoryStream.flush();
+
+        this.traceResponse(request, memoryStream);
+        ByteArrayInputStream memoryStreamIn = new ByteArrayInputStream(
+            memoryStream.toByteArray());
+        EwsXmlReader reader = new EwsXmlReader(memoryStreamIn);
+        reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
+        settings.loadFromXml(reader);
+
+      } else {
+        EwsXmlReader reader = new EwsXmlReader(serviceResponseStream);
+        reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
+        settings.loadFromXml(reader);
+      }
+
+      serviceResponseStream.close();
+    } finally {
+      if (request != null) {
+        try {
+          request.close();
+        } catch (Exception e2) {
+          // Ignore exceptions while closing the request.
         }
       }
-      memoryStream.flush();
-
-      this.traceResponse(request, memoryStream);
-      ByteArrayInputStream memoryStreamIn = new ByteArrayInputStream(
-          memoryStream.toByteArray());
-      EwsXmlReader reader = new EwsXmlReader(memoryStreamIn);
-      reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
-      settings.loadFromXml(reader);
-
-    } else {
-      EwsXmlReader reader = new EwsXmlReader(serviceResponseStream);
-      reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
-      settings.loadFromXml(reader);
-    }
-
-    serviceResponseStream.close();
-
-    try {
-      request.close();
-    } catch (Exception e2) {
-      // do nothing
     }
 
     return settings;
