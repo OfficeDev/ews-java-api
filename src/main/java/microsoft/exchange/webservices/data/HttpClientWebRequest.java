@@ -16,6 +16,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.NTCredentials;
 import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.config.AuthSchemes;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
@@ -23,6 +24,7 @@ import org.apache.http.config.SocketConfig;
 import org.apache.http.impl.client.*;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -88,12 +90,15 @@ class HttpClientWebRequest extends HttpWebRequest {
     }
 
     // Build request configuration.
+    // Disable Kerberos in the preferred auth schemes - EWS should usually allow NTLM or Basic auth
     RequestConfig.Builder requestConfigBuilder = RequestConfig.custom()
         .setAuthenticationEnabled(true)
         .setConnectionRequestTimeout(getTimeout())
         .setConnectTimeout(getTimeout())
         .setRedirectsEnabled(isAllowAutoRedirect())
-        .setSocketTimeout(getTimeout());
+        .setSocketTimeout(getTimeout())
+        .setTargetPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.BASIC))
+        .setProxyPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.BASIC));
 
     CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
 
