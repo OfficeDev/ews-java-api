@@ -115,15 +115,14 @@ public final class WebCredentials extends ExchangeCredentials {
    * This method is called to apply credentials to a service request before
    * the request is made.
    *
-   * @param client The request.
+   * @param request The request.
    */
   @Override
-  protected void prepareWebRequest(HttpWebRequest client) {
+  protected void prepareWebRequest(HttpWebRequest request) {
     if (useDefaultCredentials) {
-      client.setUseDefaultCredentials(true);
+      request.setUseDefaultCredentials(true);
     } else {
-      client.setCredentials(domain, user, pwd);
+      request.setCredentials(domain, user, pwd);
     }
   }
-
 }

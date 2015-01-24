@@ -200,89 +200,95 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
                 emailAddress, url));
 
     TSettings settings = cls.newInstance();
-    HttpWebRequest request = this.prepareHttpWebRequestForUrl(url);
 
-    this.traceHttpRequestHeaders(
-        TraceFlags.AutodiscoverRequestHttpHeaders,
-        request);
-    // OutputStreamWriter out = new
-    // OutputStreamWriter(request.getOutputStream());
-    OutputStream urlOutStream = request.getOutputStream();
+    HttpWebRequest request = null;
+    try {
+      request = this.prepareHttpWebRequestForUrl(url);
 
-    // If tracing is enabled, we generate the request in-memory so that we
-    // can pass it along to the ITraceListener. Then we copy the stream to
-    // the request stream.
-    if (this.isTraceEnabledFor(TraceFlags.AutodiscoverRequest)) {
-      ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
+      this.traceHttpRequestHeaders(
+          TraceFlags.AutodiscoverRequestHttpHeaders,
+          request);
+      // OutputStreamWriter out = new
+      // OutputStreamWriter(request.getOutputStream());
+      OutputStream urlOutStream = request.getOutputStream();
 
-      PrintWriter writer = new PrintWriter(memoryStream);
-      this.writeLegacyAutodiscoverRequest(emailAddress, settings, writer);
-      writer.flush();
+      // If tracing is enabled, we generate the request in-memory so that we
+      // can pass it along to the ITraceListener. Then we copy the stream to
+      // the request stream.
+      if (this.isTraceEnabledFor(TraceFlags.AutodiscoverRequest)) {
+        ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
 
-      this.traceXml(TraceFlags.AutodiscoverRequest, memoryStream);
-      // out.write(memoryStream.toString());
-      // out.close();
-      memoryStream.writeTo(urlOutStream);
-      urlOutStream.flush();
-      urlOutStream.close();
-      memoryStream.close();
-    } else {
-      PrintWriter writer = new PrintWriter(urlOutStream);
-      this.writeLegacyAutodiscoverRequest(emailAddress, settings, writer);
+        PrintWriter writer = new PrintWriter(memoryStream);
+        this.writeLegacyAutodiscoverRequest(emailAddress, settings, writer);
+        writer.flush();
 
-			/*  Flush Start */
-      writer.flush();
-      urlOutStream.flush();
-      urlOutStream.close();
-                        /* Flush End */
-    }
-    request.executeRequest();
-    request.getResponseCode();
-    URI redirectUrl;
-    OutParam<URI> outParam = new OutParam<URI>();
-    if (this.tryGetRedirectionResponse(request, outParam)) {
-      redirectUrl = outParam.getParam();
-      settings.makeRedirectionResponse(redirectUrl);
-      return settings;
-    }
-    InputStream serviceResponseStream = request.getInputStream();
-    // If tracing is enabled, we read the entire response into a
-    // MemoryStream so that we
-    // can pass it along to the ITraceListener. Then we parse the response
-    // from the
-    // MemoryStream.
-    if (this.isTraceEnabledFor(TraceFlags.AutodiscoverResponse)) {
-      ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
+        this.traceXml(TraceFlags.AutodiscoverRequest, memoryStream);
+        // out.write(memoryStream.toString());
+        // out.close();
+        memoryStream.writeTo(urlOutStream);
+        urlOutStream.flush();
+        urlOutStream.close();
+        memoryStream.close();
+      } else {
+        PrintWriter writer = new PrintWriter(urlOutStream);
+        this.writeLegacyAutodiscoverRequest(emailAddress, settings, writer);
 
-      while (true) {
-        int data = serviceResponseStream.read();
-        if (-1 == data) {
-          break;
-        } else {
-          memoryStream.write(data);
+      /*  Flush Start */
+        writer.flush();
+        urlOutStream.flush();
+        urlOutStream.close();
+      /* Flush End */
+      }
+      request.executeRequest();
+      request.getResponseCode();
+      URI redirectUrl;
+      OutParam<URI> outParam = new OutParam<URI>();
+      if (this.tryGetRedirectionResponse(request, outParam)) {
+        redirectUrl = outParam.getParam();
+        settings.makeRedirectionResponse(redirectUrl);
+        return settings;
+      }
+      InputStream serviceResponseStream = request.getInputStream();
+      // If tracing is enabled, we read the entire response into a
+      // MemoryStream so that we
+      // can pass it along to the ITraceListener. Then we parse the response
+      // from the
+      // MemoryStream.
+      if (this.isTraceEnabledFor(TraceFlags.AutodiscoverResponse)) {
+        ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
+
+        while (true) {
+          int data = serviceResponseStream.read();
+          if (-1 == data) {
+            break;
+          } else {
+            memoryStream.write(data);
+          }
+        }
+        memoryStream.flush();
+
+        this.traceResponse(request, memoryStream);
+        ByteArrayInputStream memoryStreamIn = new ByteArrayInputStream(
+            memoryStream.toByteArray());
+        EwsXmlReader reader = new EwsXmlReader(memoryStreamIn);
+        reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
+        settings.loadFromXml(reader);
+
+      } else {
+        EwsXmlReader reader = new EwsXmlReader(serviceResponseStream);
+        reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
+        settings.loadFromXml(reader);
+      }
+
+      serviceResponseStream.close();
+    } finally {
+      if (request != null) {
+        try {
+          request.close();
+        } catch (Exception e2) {
+          // Ignore exceptions while closing the request.
         }
       }
-      memoryStream.flush();
-
-      this.traceResponse(request, memoryStream);
-      ByteArrayInputStream memoryStreamIn = new ByteArrayInputStream(
-          memoryStream.toByteArray());
-      EwsXmlReader reader = new EwsXmlReader(memoryStreamIn);
-      reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
-      settings.loadFromXml(reader);
-
-    } else {
-      EwsXmlReader reader = new EwsXmlReader(serviceResponseStream);
-      reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
-      settings.loadFromXml(reader);
-    }
-
-    serviceResponseStream.close();
-
-    try {
-      request.close();
-    } catch (Exception e2) {
-      // do nothing
     }
 
     return settings;
@@ -333,7 +339,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
     HttpWebRequest request = null;
 
     try {
-      request = new HttpClientWebRequest(this.getHttpConnectionManager());
+      request = new HttpClientWebRequest(httpClient, httpContext);
 
       try {
         request.setUrl(URI.create(url).toURL());
@@ -342,26 +348,18 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
         throw new ServiceLocalException(strErr);
       }
 
-      request.setAllowAutoRedirect(false);
-      request.setPreAuthenticate(false);
       request.setRequestMethod("GET");
-      request.setUseDefaultCredentials(this.getUseDefaultCredentials());
-      if (!this.getUseDefaultCredentials()) {
-        ExchangeCredentials serviceCredentials = this.getCredentials();
-        if (null == serviceCredentials) {
-          throw new ServiceLocalException(Strings.CredentialsRequired);
-        }
-        // Make sure that credentials have been authenticated if required
-        serviceCredentials.preAuthenticate();
+      request.setAllowAutoRedirect(false);
 
-        // Apply credentials to the request
-        serviceCredentials.prepareWebRequest(request);
-      }
+      // Do NOT allow authentication as this single request will be made over plain HTTP.
+      request.setAllowAuthentication(false);
 
+      prepareCredentials(request);
+
+      request.prepareConnection();
       try {
-        request.prepareAsyncConnection();
-      } catch (Exception e) {
-        log.warn("Error while preparing asynchronous connection.", e);
+        request.executeRequest();
+      } catch (IOException e) {
         traceMessage(TraceFlags.AutodiscoverConfiguration, "No Autodiscover redirection URL was returned.");
         return null;
       }
@@ -1475,7 +1473,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
 
       HttpWebRequest request = null;
       try {
-        request = new HttpClientWebRequest(this.getHttpConnectionManager());
+        request = new HttpClientWebRequest(httpClient, httpContext);
 
         try {
           request.setUrl(autoDiscoverUrl.toURL());
@@ -1489,31 +1487,18 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
         request.setPreAuthenticate(false);
         request.setUseDefaultCredentials(this.getUseDefaultCredentials());
 
-        if (!this.getUseDefaultCredentials()) {
-          ExchangeCredentials serviceCredentials = this.getCredentials();
-          if (null == serviceCredentials) {
-            throw new ServiceLocalException(Strings.CredentialsRequired);
-          }
+        prepareCredentials(request);
 
-          // Make sure that credentials have been authenticated if required
-          serviceCredentials.preAuthenticate();
-
-          // Apply credentials to the request
-          serviceCredentials.prepareWebRequest(request);
-        }
-
+        request.prepareConnection();
         try {
-          request.prepareAsyncConnection();
-        } catch (Exception e) {
-          log.warn("Error while preparing asynchronous connection.", e);
+          request.executeRequest();
+        } catch (IOException e) {
           return false;
         }
 
-        URI redirectUrl;
         OutParam<URI> outParam = new OutParam<URI>();
-
         if (this.tryGetRedirectionResponse(request, outParam)) {
-          redirectUrl = outParam.getParam();
+          URI redirectUrl = outParam.getParam();
           this.traceMessage(TraceFlags.AutodiscoverConfiguration,
               String.format("Host returned redirection to host '%s'", redirectUrl.getHost()));
 

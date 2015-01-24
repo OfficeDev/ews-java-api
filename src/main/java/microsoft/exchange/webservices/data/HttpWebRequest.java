@@ -71,10 +71,12 @@ abstract class HttpWebRequest {
    */
   private boolean useDefaultCredentials;
 
+  private boolean allowAuthentication = true;
+
   /**
    * The user name.
    */
-  private String userName;
+  private String username;
 
   /**
    * The password.
@@ -125,12 +127,7 @@ abstract class HttpWebRequest {
    * @return true, if is http scheme
    */
   public boolean isHttpScheme() {
-
-    if (getUrl().getProtocol().equalsIgnoreCase(EWSConstants.HTTP_SCHEME)) {
-      return true;
-    } else {
-      return false;
-    }
+    return getUrl().getProtocol().equalsIgnoreCase(EWSConstants.HTTP_SCHEME);
   }
 
   /**
@@ -139,11 +136,7 @@ abstract class HttpWebRequest {
    * @return true, if is https scheme
    */
   public boolean isHttpsScheme() {
-    if (getUrl().getProtocol().equalsIgnoreCase(EWSConstants.HTTPS_SCHEME)) {
-      return true;
-    } else {
-      return false;
-    }
+    return getUrl().getProtocol().equalsIgnoreCase(EWSConstants.HTTPS_SCHEME);
   }
 
   /**
@@ -151,17 +144,17 @@ abstract class HttpWebRequest {
    *
    * @return the user name
    */
-  public String getUserName() {
-    return userName;
+  public String getUsername() {
+    return username;
   }
 
   /**
    * Sets the user name.
    *
-   * @param userName the new user name
+   * @param username the new user name
    */
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   /**
@@ -220,18 +213,14 @@ abstract class HttpWebRequest {
   }
 
   /**
-   * Checks if is pre authenticate.
-   *
-   * @return true, if is pre authenticate
+   * Whether to use preemptive authentication. Currently not implemented, though.
    */
   public boolean isPreAuthenticate() {
     return preAuthenticate;
   }
 
   /**
-   * Sets the pre authenticate.
-   *
-   * @param preAuthenticate the new pre authenticate
+   * Whether to use preemptive authentication. Currently not implemented, though.
    */
   public void setPreAuthenticate(boolean preAuthenticate) {
     this.preAuthenticate = preAuthenticate;
@@ -382,6 +371,34 @@ abstract class HttpWebRequest {
   }
 
   /**
+   * Whether web service authentication is allowed.
+   * This can be set to {@code false} to disallow sending credentials with this request.
+   *
+   * This is useful for the autodiscover request to the legacy HTTP url, because this single request doesn't
+   * require authentication and we don't want to send credentials over HTTP.
+   *
+   * @return {@code true} if authentication is allowed.
+   */
+  public boolean isAllowAuthentication() {
+    return allowAuthentication;
+  }
+
+  /**
+   * Whether web service authentication is allowed.
+   * This can be set to {@code false} to disallow sending credentials with this request.
+   *
+   * This is useful for the autodiscover request to the legacy HTTP url, because this single request doesn't
+   * require authentication and we don't want to send credentials over HTTP.
+   *
+   * Default is {@code true}.
+   *
+   * @param allowAuthentication {@code true} if authentication is allowed.
+   */
+  public void setAllowAuthentication(boolean allowAuthentication) {
+    this.allowAuthentication = allowAuthentication;
+  }
+
+  /**
    * Gets the request method type.
    *
    * @return the request method type.
@@ -426,7 +443,7 @@ abstract class HttpWebRequest {
    */
   public void setCredentials(String domain, String user, String pwd) {
     this.domain = domain;
-    this.userName = user;
+    this.username = user;
     this.password = pwd;
   }
 
@@ -462,10 +479,8 @@ abstract class HttpWebRequest {
 
   /**
    * Prepare connection.
-   *
-   * @throws EWSHttpException the eWS http exception
    */
-  public abstract void prepareConnection() throws EWSHttpException;
+  public abstract void prepareConnection();
 
   /**
    * Gets the response headers.
@@ -519,13 +534,6 @@ abstract class HttpWebRequest {
       throws EWSHttpException;
 
   /**
-   * Prepare asynchronous connection.
-   *
-   * @throws EWSHttpException the eWS http exception
-   */
-  public abstract void prepareAsyncConnection() throws EWSHttpException, UnsupportedEncodingException;
-
-  /**
    * Gets the request properties.
    *
    * @return the request properties
@@ -541,7 +549,7 @@ abstract class HttpWebRequest {
    * @throws HttpException       the http exception
    * @throws java.io.IOException the IO Exception
    */
-  public abstract int executeRequest() throws EWSHttpException, HttpErrorException, IOException;
+  public abstract int executeRequest() throws EWSHttpException, IOException;
 
   public IAsyncResult beginGetResponse(Object webRequestAsyncCallback,
       WebAsyncCallStateAnchor wrappedState) {
