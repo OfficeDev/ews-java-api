@@ -348,42 +348,37 @@ public final class AttachmentCollection extends
    */
   public void validate() throws Exception {
     // Validate all added attachments
-    boolean contactPhotoFound = false;
-    for (int attachmentIndex = 0; attachmentIndex < this.getAddedItems()
-        .size(); attachmentIndex++) {
-      Attachment attachment = this.getAddedItems().get(attachmentIndex);
-      if (attachment.isNew()) {
-
-        // At the server side, only the last attachment with
-        // IsContactPhoto is kept, all other IsContactPhoto
-        // attachments are removed. CreateAttachment will generate
-        // AttachmentId for each of such attachments (although
-        // only the last one is valid).
-        //
-        // With E14 SP2 CreateItemWithAttachment, such request will only
-        // return 1 AttachmentId; but the client
-        // expects to see all, so let us prevent such "invalid" request
-        // in the first place.
-        //
-        // The IsNew check is to still let CreateAttachmentRequest allow
-        // multiple IsContactPhoto attachments.
-        //
-        if (this.owner.isNew()
-            && this.owner.getService().getRequestedServerVersion()
-            .ordinal() >= ExchangeVersion.Exchange2010_SP2
-            .ordinal()) {
-          FileAttachment fileAttachment = (FileAttachment) attachment;
-
-          if (fileAttachment.isContactPhoto()) {
+    if (this.owner.isNew()
+        && this.owner.getService().getRequestedServerVersion()
+        .ordinal() >= ExchangeVersion.Exchange2010_SP2
+        .ordinal()) {
+      boolean contactPhotoFound = false;
+      for (int attachmentIndex = 0; attachmentIndex < this.getAddedItems()
+          .size(); attachmentIndex++) {
+        final Attachment attachment = this.getAddedItems().get(attachmentIndex);
+        if (attachment != null && attachment.isNew() && attachment instanceof FileAttachment) {
+          // At the server side, only the last attachment with
+          // IsContactPhoto is kept, all other IsContactPhoto
+          // attachments are removed. CreateAttachment will generate
+          // AttachmentId for each of such attachments (although
+          // only the last one is valid).
+          //
+          // With E14 SP2 CreateItemWithAttachment, such request will only
+          // return 1 AttachmentId; but the client
+          // expects to see all, so let us prevent such "invalid" request
+          // in the first place.
+          //
+          // The IsNew check is to still let CreateAttachmentRequest allow
+          // multiple IsContactPhoto attachments.
+          //
+          if (((FileAttachment) attachment).isContactPhoto()) {
             if (contactPhotoFound) {
               throw new ServiceValidationException(
                   Strings.MultipleContactPhotosInAttachment);
             }
-
             contactPhotoFound = true;
           }
         }
-
         attachment.validate(attachmentIndex);
       }
     }
