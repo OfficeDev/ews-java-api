@@ -10,40 +10,27 @@
 
 package microsoft.exchange.webservices.data.util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.util.Date;
-import java.util.TimeZone;
 
 public class DateTimeParser {
 
-  private final SimpleDateFormat[] dateTimeFormats = {
-      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX"),
-      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX"),
-      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"),
-      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS"),
-      new SimpleDateFormat("yyyy-MM-ddX"),
-      new SimpleDateFormat("yyyy-MM-dd")
+  private final DateTimeFormatter[] dateTimeFormats = {
+      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssZ").withZoneUTC(),
+      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ").withZoneUTC(),
+      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss").withZoneUTC(),
+      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").withZoneUTC(),
+      DateTimeFormat.forPattern("yyyy-MM-ddZ").withZoneUTC(),
+      DateTimeFormat.forPattern("yyyy-MM-dd").withZoneUTC()
   };
 
-  private final SimpleDateFormat[] dateFormats = {
-      new SimpleDateFormat("yyyy-MM-ddX"),
-      new SimpleDateFormat("yyyy-MM-dd")
+  private final DateTimeFormatter[] dateFormats = {
+      DateTimeFormat.forPattern("yyyy-MM-ddZ").withZoneUTC(),
+      DateTimeFormat.forPattern("yyyy-MM-dd").withZoneUTC()
   };
 
-
-  public DateTimeParser() {
-    // Set default timezone of the formats to UTC, which will be used when the date string doesn't supply a
-    // timezone itself.
-
-    for (SimpleDateFormat format : dateTimeFormats) {
-      format.setTimeZone(TimeZone.getTimeZone("UTC"));
-    }
-
-    for (SimpleDateFormat format : dateFormats) {
-      format.setTimeZone(TimeZone.getTimeZone("UTC"));
-    }
-  }
 
   /**
    * Converts a date time string to local date time.
@@ -85,11 +72,11 @@ public class DateTimeParser {
         value = value.substring(0, value.length() - 1) + "Z";
       }
 
-      SimpleDateFormat[] formats = dateOnly ? dateFormats : dateTimeFormats;
-      for (SimpleDateFormat format : formats) {
+      DateTimeFormatter[] formats = dateOnly ? dateFormats : dateTimeFormats;
+      for (DateTimeFormatter format : formats) {
         try {
-          return format.parse(value);
-        } catch (ParseException e) {
+          return format.parseDateTime(value).toDate();
+        } catch (IllegalArgumentException e) {
           // Ignore and try the next pattern.
         }
       }
