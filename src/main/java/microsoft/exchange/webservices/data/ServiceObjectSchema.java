@@ -36,25 +36,25 @@ public abstract class ServiceObjectSchema implements
                                        public List<Class<?>> createInstance() {
                                          List<Class<?>> typeList = new ArrayList<Class<?>>();
                                          // typeList.add()
-                                        /*
-					 * typeList.add(AppointmentSchema.class);
-					 * typeList.add(CalendarResponseObjectSchema.class);
-					 * typeList.add(CancelMeetingMessageSchema.class);
-					 * typeList.add(ContactGroupSchema.class);
-					 * typeList.add(ContactSchema.class);
-					 * typeList.add(EmailMessageSchema.class);
-					 * typeList.add(FolderSchema.class);
-					 * typeList.add(ItemSchema.class);
-					 * typeList.add(MeetingMessageSchema.class);
-					 * typeList.add(MeetingRequestSchema.class);
-					 * typeList.add(PostItemSchema.class);
-					 * typeList.add(PostReplySchema.class);
-					 * typeList.add(ResponseMessageSchema.class);
-					 * typeList.add(ResponseObjectSchema.class);
-					 * typeList.add(ServiceObjectSchema.class);
-					 * typeList.add(SearchFolderSchema.class);
-					 * typeList.add(TaskSchema.class);
-					 */
+                                        
+					  typeList.add(AppointmentSchema.class);
+					  typeList.add(CalendarResponseObjectSchema.class);
+					  typeList.add(CancelMeetingMessageSchema.class);
+					  typeList.add(ContactGroupSchema.class);
+					  typeList.add(ContactSchema.class);
+					  typeList.add(EmailMessageSchema.class);
+					  typeList.add(FolderSchema.class);
+					  typeList.add(ItemSchema.class);
+					  typeList.add(MeetingMessageSchema.class);
+					  typeList.add(MeetingRequestSchema.class);
+					  typeList.add(PostItemSchema.class);
+					  typeList.add(PostReplySchema.class);
+					  typeList.add(ResponseMessageSchema.class);
+					  typeList.add(ResponseObjectSchema.class);
+					  typeList.add(ServiceObjectSchema.class);
+					  typeList.add(SearchFolderSchema.class);
+					  typeList.add(TaskSchema.class);
+					 
                                          // Verify that all Schema types in the Managed API assembly
                                          // have been included.
 					/*
