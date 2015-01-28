@@ -8,9 +8,6 @@
     <artifactId>ews-java-api</artifactId>
     <version>1.3-SNAPSHOT</version>
 
-    <name>Exchange Web Services Java API</name>
-    <description>Exchange Web Services (EWS) Java API</description>
-
     <!-- Required by the site command for certain relative URL configuration. -->
     <url>http://www.microsoft.com/</url>
 
@@ -33,6 +30,26 @@
         <artifactId>maven.parent</artifactId>
         <version>0.3.0</version>
     </parent>
+    
+    <repositories>
+        <repository>
+            <id>ebf-releases</id>
+            <url>http://cindy.ebf.de:8081/nexus/content/repositories/releases/</url>
+            <snapshots>
+                <updatePolicy>always</updatePolicy>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>ebf-snapshots</id>
+            <url>http://cindy.ebf.de:8081/nexus/content/repositories/snapshots/</url>
+            <snapshots>
+                <updatePolicy>always</updatePolicy>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    
     <properties>
         <!-- Eliminates the file encoding warning. Of course, all of your files
             should probably be UTF-8 nowadays. -->
