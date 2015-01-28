@@ -10,7 +10,6 @@
 
 package microsoft.exchange.webservices.data.util;
 
-import microsoft.exchange.webservices.data.util.DateTimeParser;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +21,7 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(JUnit4.class)
 public class DateTimeParserTest {
@@ -36,6 +36,12 @@ public class DateTimeParserTest {
 
 
   // Tests for DateTimeParser.convertDateTimeStringToDate()
+
+  @Test
+  public void testDateTimeEmpty() {
+    assertNull(parser.convertDateTimeStringToDate(null));
+    assertNull(parser.convertDateTimeStringToDate(""));
+  }
 
   @Test
   public void testDateTimeZulu() {
@@ -146,6 +152,12 @@ public class DateTimeParserTest {
 
 
   // Tests for DateTimeParser.convertDateStringToDate()
+
+  @Test
+  public void testDateOnlyEmpty() {
+    assertNull(parser.convertDateStringToDate(null));
+    assertNull(parser.convertDateStringToDate(""));
+  }
 
   @Test
    public void testDateOnlyZulu() {

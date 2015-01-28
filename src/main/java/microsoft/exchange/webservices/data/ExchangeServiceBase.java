@@ -10,22 +10,29 @@
 
 package microsoft.exchange.webservices.data;
 
-import org.apache.http.client.CookieStore;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.cookie.Cookie;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
-import java.net.*;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,7 +43,7 @@ import java.util.regex.Pattern;
 /**
  * Represents an abstract binding to an Exchange Service.
  */
-public abstract class ExchangeServiceBase {
+public abstract class ExchangeServiceBase implements Closeable {
 
   /**
    * Prefix for "extended" headers.
@@ -109,11 +116,11 @@ public abstract class ExchangeServiceBase {
 
   private WebProxy webProxy;
 
-  private HttpClientConnectionManager httpConnectionManager;
+  protected CloseableHttpClient httpClient;
 
-  HttpClientWebRequest request = null;
+  protected HttpClientContext httpContext = HttpClientContext.create();
 
-  private CookieStore cookieStore;
+  protected HttpClientWebRequest request = null;
 
   // protected static HttpStatusCode AccountIsLocked = (HttpStatusCode)456;
 
@@ -122,10 +129,6 @@ public abstract class ExchangeServiceBase {
    */
   private static String defaultUserAgent = "ExchangeServicesClient/" + EwsUtilities.getBuildVersion();
 
-  protected HttpClientConnectionManager getHttpConnectionManager() {
-    return httpConnectionManager;
-  }
-
   /**
    * Initializes a new instance.
    *
@@ -133,18 +136,8 @@ public abstract class ExchangeServiceBase {
    * every other constructor.
    */
   protected ExchangeServiceBase() {
-    this.setUseDefaultCredentials(true);
-
-    try {
-      EwsSSLProtocolSocketFactory factory = EwsSSLProtocolSocketFactory.build(null);
-      Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
-          .register("http", new PlainConnectionSocketFactory())
-          .register("https", factory)
-          .build();
-      this.httpConnectionManager = new PoolingHttpClientConnectionManager(registry);
-    } catch (Exception err) {
-      err.printStackTrace();
-    }
+    setUseDefaultCredentials(true);
+    initializeHttpClient();
   }
 
   protected ExchangeServiceBase(ExchangeVersion requestedServerVersion) {
@@ -164,6 +157,37 @@ public abstract class ExchangeServiceBase {
     this.userAgent = service.getUserAgent();
     this.acceptGzipEncoding = service.getAcceptGzipEncoding();
     this.httpHeaders = service.getHttpHeaders();
+  }
+
+  private void initializeHttpClient() {
+    EwsSSLProtocolSocketFactory factory;
+    try {
+      factory = EwsSSLProtocolSocketFactory.build(null);
+    } catch (NoSuchAlgorithmException e) {
+      throw new RuntimeException("Could not initialize HttpClientConnectionManager.", e);
+    } catch (KeyStoreException e) {
+      throw new RuntimeException("Could not initialize HttpClientConnectionManager.", e);
+    } catch (KeyManagementException e) {
+      throw new RuntimeException("Could not initialize HttpClientConnectionManager.", e);
+    }
+
+    Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
+        .register("http", new PlainConnectionSocketFactory())
+        .register("https", factory)
+        .build();
+
+    HttpClientConnectionManager httpConnectionManager = new BasicHttpClientConnectionManager(registry);
+    HttpClientBuilder httpClientBuilder = HttpClients.custom().setConnectionManager(httpConnectionManager);
+    httpClient = httpClientBuilder.build();
+  }
+
+  @Override
+  public void close() {
+    try {
+      httpClient.close();
+    } catch (IOException e) {
+      // Ignore exceptions while closing the HttpClient.
+    }
   }
 
   // Event handlers
@@ -200,70 +224,52 @@ public abstract class ExchangeServiceBase {
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
   protected HttpWebRequest prepareHttpWebRequestForUrl(URI url, boolean acceptGzipEncoding,
-    boolean allowAutoRedirect) throws ServiceLocalException, URISyntaxException {
+      boolean allowAutoRedirect) throws ServiceLocalException, URISyntaxException {
     // Verify that the protocol is something that we can handle
-    if (!url.getScheme().equalsIgnoreCase("HTTP")
-        && !url.getScheme().equalsIgnoreCase("HTTPS")) {
-      String strErr = String.format(Strings.UnsupportedWebProtocol, url.
-          getScheme());
+    if (!url.getScheme().equalsIgnoreCase("HTTP") && !url.getScheme().equalsIgnoreCase("HTTPS")) {
+      String strErr = String.format(Strings.UnsupportedWebProtocol, url.getScheme());
       throw new ServiceLocalException(strErr);
     }
 
-    request = new HttpClientWebRequest(this.httpConnectionManager);
+    request = new HttpClientWebRequest(httpClient, httpContext);
     try {
       request.setUrl(url.toURL());
     } catch (MalformedURLException e) {
       String strErr = String.format("Incorrect format : %s", url);
       throw new ServiceLocalException(strErr);
     }
-    request.setPreAuthenticate(this.preAuthenticate);
-    request.setTimeout(this.timeout);
+
+    request.setPreAuthenticate(preAuthenticate);
+    request.setTimeout(timeout);
     request.setContentType("text/xml; charset=utf-8");
     request.setAccept("text/xml");
-    request.setUserAgent(this.userAgent);
+    request.setUserAgent(userAgent);
     request.setAllowAutoRedirect(allowAutoRedirect);
-    //request.setKeepAlive(true);
+    request.setAcceptGzipEncoding(acceptGzipEncoding);
+    request.setHeaders(getHttpHeaders());
 
-    if (acceptGzipEncoding) {
-      request.setAcceptGzipEncoding(acceptGzipEncoding);
-    }
+    prepareCredentials(request);
 
-    if (this.webProxy != null) {
-      request.setProxy(this.webProxy);
-    }
+    request.prepareConnection();
 
-    //if (this.getHttpHeaders().size() > 0){
-    request.setHeaders(this.getHttpHeaders());
-    //}
+    httpResponseHeaders.clear();
 
+    return request;
+  }
+
+  protected void prepareCredentials(HttpWebRequest request) throws ServiceLocalException, URISyntaxException {
     request.setUseDefaultCredentials(useDefaultCredentials);
     if (!useDefaultCredentials) {
-      ExchangeCredentials serviceCredentials = this.credentials;
-      if (null == serviceCredentials) {
+      if (credentials == null) {
         throw new ServiceLocalException(Strings.CredentialsRequired);
       }
 
-      if (cookieStore != null) {
-        request.setUserCookie(cookieStore.getCookies());
-      }
-
       // Make sure that credentials have been authenticated if required
-      serviceCredentials.preAuthenticate();
+      credentials.preAuthenticate();
 
       // Apply credentials to the request
-      serviceCredentials.prepareWebRequest(request);
+      credentials.prepareWebRequest(request);
     }
-
-    try {
-      request.prepareConnection();
-    } catch (Exception e) {
-      String strErr = String.format("%s : Connection error ", url);
-      throw new ServiceLocalException(strErr);
-    }
-
-    this.httpResponseHeaders.clear();
-
-    return request;
   }
 
   /**
@@ -559,7 +565,6 @@ public abstract class ExchangeServiceBase {
   public void setCredentials(ExchangeCredentials credentials) {
     this.credentials = credentials;
     this.useDefaultCredentials = false;
-    CookieHandler.setDefault(new CookieManager());
   }
 
   /**
@@ -585,7 +590,6 @@ public abstract class ExchangeServiceBase {
     this.useDefaultCredentials = value;
     if (value) {
       this.credentials = null;
-      CookieHandler.setDefault(null);
     }
   }
 
@@ -789,19 +793,6 @@ public abstract class ExchangeServiceBase {
     for (String key : headers.keySet()) {
       this.httpResponseHeaders.put(key, headers.get(key));
     }
-
-    // Save the cookies for subsequent requests
-    if (this.request.getCookies() != null) {
-      if (cookieStore == null) {
-        cookieStore = new BasicCookieStore();
-      }
-
-      cookieStore.clear();
-      for (Cookie c : this.request.getCookies()) {
-        cookieStore.addCookie(c);
-      }
-    }
-
   }
 
   /**

@@ -15,20 +15,17 @@ import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.NTCredentials;
-import org.apache.http.client.CookieStore;
 import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.config.AuthSchemes;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.SocketConfig;
-import org.apache.http.conn.HttpClientConnectionManager;
-import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.*;
-import org.apache.http.impl.conn.DefaultSchemePortResolver;
 
-import javax.net.ssl.TrustManager;
 import java.io.*;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -39,30 +36,21 @@ import java.util.Map;
 class HttpClientWebRequest extends HttpWebRequest {
 
   /**
-   * The Http Client.
-   */
-  private CloseableHttpClient client = null;
-  private CookieStore cookieStore = null;
-
-  /**
    * The Http Method.
    */
-  private HttpPost httpPostReq = null;
+  private HttpPost httpPost = null;
   private HttpResponse response = null;
 
-  /**
-   * The TrustManager.
-   */
-  private TrustManager trustManger = null;
-
-  private HttpClientConnectionManager httpClientConnMng = null;
+  private final CloseableHttpClient httpClient;
+  private final HttpClientContext httpContext;
 
 
   /**
    * Instantiates a new http native web request.
    */
-  public HttpClientWebRequest(HttpClientConnectionManager simpleHttpConnMng) {
-    this.httpClientConnMng = simpleHttpConnMng;
+  public HttpClientWebRequest(CloseableHttpClient httpClient, HttpClientContext httpContext) {
+    this.httpClient = httpClient;
+    this.httpContext = httpContext;
   }
 
   /**
@@ -70,163 +58,74 @@ class HttpClientWebRequest extends HttpWebRequest {
    */
   @Override
   public void close() {
-    if (null != httpPostReq) {
-      httpPostReq.releaseConnection();
+    if (null != httpPost) {
+      httpPost.releaseConnection();
       //postMethod.abort();
     }
-    httpPostReq = null;
+    httpPost = null;
   }
 
   /**
-   * Prepare connection
-   *
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * Prepares the request by setting appropriate headers, authentication, timeouts, etc.
    */
   @Override
-  public void prepareConnection() throws EWSHttpException {
-    try {
-      HttpClientBuilder builder = HttpClients.custom();
-      builder.setConnectionManager(this.httpClientConnMng);
+  public void prepareConnection() {
+    httpPost = new HttpPost(getUrl().toString());
 
-      //create the cookie store
-      if (cookieStore == null) {
-        cookieStore = new BasicCookieStore();
-      }
-      builder.setDefaultCookieStore(cookieStore);
+    // Populate headers.
+    httpPost.addHeader("Content-type", getContentType());
+    httpPost.addHeader("User-Agent", getUserAgent());
+    httpPost.addHeader("Accept", getAccept());
+    httpPost.addHeader("Keep-Alive", "300");
+    httpPost.addHeader("Connection", "Keep-Alive");
 
-      if (getProxy() != null) {
-        HttpHost proxy = new HttpHost(getProxy().getHost(), getProxy().getPort());
-        builder.setProxy(proxy);
-
-        if (HttpProxyCredentials.isProxySet()) {
-          NTCredentials cred =
-              new NTCredentials(HttpProxyCredentials.getUserName(), HttpProxyCredentials.getPassword(), "",
-                  HttpProxyCredentials.getDomain());
-          CredentialsProvider credsProvider = new BasicCredentialsProvider();
-          credsProvider.setCredentials(new AuthScope(proxy), cred);
-          builder.setDefaultCredentialsProvider(credsProvider);
-        }
-      }
-      if (getUserName() != null) {
-        CredentialsProvider credsProvider = new BasicCredentialsProvider();
-        credsProvider
-            .setCredentials(AuthScope.ANY, new NTCredentials(getUserName(), getPassword(), "", getDomain()));
-        builder.setDefaultCredentialsProvider(credsProvider);
-      }
-
-      //fix socket config
-      SocketConfig sc = SocketConfig.custom().setSoTimeout(getTimeout()).build();
-      builder.setDefaultSocketConfig(sc);
-
-      RequestConfig.Builder rcBuilder = RequestConfig.custom();
-      rcBuilder.setAuthenticationEnabled(true);
-      rcBuilder.setConnectionRequestTimeout(getTimeout());
-      rcBuilder.setConnectTimeout(getTimeout());
-      rcBuilder.setRedirectsEnabled(isAllowAutoRedirect());
-      rcBuilder.setSocketTimeout(getTimeout());
-      builder.setDefaultRequestConfig(rcBuilder.build());
-
-      httpPostReq = new HttpPost(getUrl().toString());
-      httpPostReq.addHeader("Content-type", getContentType());
-      //httpPostReq.setDoAuthentication(true);
-      httpPostReq.addHeader("User-Agent", getUserAgent());
-      httpPostReq.addHeader("Accept", getAccept());
-      httpPostReq.addHeader("Keep-Alive", "300");
-      httpPostReq.addHeader("Connection", "Keep-Alive");
-
-      if (isAcceptGzipEncoding()) {
-        httpPostReq.addHeader("Accept-Encoding", "gzip,deflate");
-      }
-
-      if (getHeaders().size() > 0) {
-        for (Map.Entry<String, String> httpHeader : getHeaders().entrySet()) {
-          httpPostReq.addHeader(httpHeader.getKey(), httpHeader.getValue());
-        }
-      }
-
-      //create the client
-      client = builder.build();
-    } catch (Exception er) {
-      er.printStackTrace();
+    if (isAcceptGzipEncoding()) {
+      httpPost.addHeader("Accept-Encoding", "gzip,deflate");
     }
-  }
 
-  /**
-   * Prepare asynchronous connection.
-   *
-   * @throws microsoft.exchange.webservices.data.EWSHttpException throws EWSHttpException
-   */
-  public void prepareAsyncConnection() throws EWSHttpException {
-    try {
-      //ssl config
-      HttpClientBuilder builder = HttpClients.custom();
-      builder.setConnectionManager(this.httpClientConnMng);
-      builder.setSchemePortResolver(new DefaultSchemePortResolver());
-
-      EwsSSLProtocolSocketFactory factory = EwsSSLProtocolSocketFactory.build(trustManger);
-      builder.setSSLSocketFactory(factory);
-      builder.setSslcontext(factory.getContext());
-
-      //create the cookie store
-      if (cookieStore == null) {
-        cookieStore = new BasicCookieStore();
-      }
-      builder.setDefaultCookieStore(cookieStore);
-
-      CredentialsProvider credsProvider = new BasicCredentialsProvider();
-      credsProvider
-          .setCredentials(AuthScope.ANY, new NTCredentials(getUserName(), getPassword(), "", getDomain()));
-      builder.setDefaultCredentialsProvider(credsProvider);
-
-      //fix socket config
-      SocketConfig sc = SocketConfig.custom().setSoTimeout(getTimeout()).build();
-      builder.setDefaultSocketConfig(sc);
-
-      RequestConfig.Builder rcBuilder = RequestConfig.custom();
-      rcBuilder.setConnectionRequestTimeout(getTimeout());
-      rcBuilder.setConnectTimeout(getTimeout());
-      rcBuilder.setSocketTimeout(getTimeout());
-      builder.setDefaultRequestConfig(rcBuilder.build());
-
-      //HttpClientParams.setRedirecting(client.getParams(), isAllowAutoRedirect()); by default it follows redirects
-      //create the client and execute requests
-      client = builder.build();
-      httpPostReq = new HttpPost(getUrl().toString());
-      response = client.execute(httpPostReq);
-    } catch (IOException e) {
-      client = null;
-      httpPostReq = null;
-      throw new EWSHttpException("Unable to open connection to " + this.getUrl());
-    } catch (Exception e) {
-      client = null;
-      httpPostReq = null;
-      e.printStackTrace();
-      throw new EWSHttpException("SSL problem " + this.getUrl());
-    }
-  }
-
-  /**
-   * Method for getting the cookie values.
-   */
-  public List<Cookie> getCookies() {
-    return this.cookieStore.getCookies();
-  }
-
-  /**
-   * Method for setting the cookie values.
-   */
-  public void setUserCookie(List<Cookie> rcookies) {
-    if (rcookies != null && rcookies.size() > 0) {
-      if (this.cookieStore == null) {
-        this.cookieStore = new BasicCookieStore();
-      }
-      for (Cookie c : rcookies) {
-        this.cookieStore.addCookie(c);
+    if (getHeaders() != null) {
+      for (Map.Entry<String, String> httpHeader : getHeaders().entrySet()) {
+        httpPost.addHeader(httpHeader.getKey(), httpHeader.getValue());
       }
     }
+
+    // Build request configuration.
+    // Disable Kerberos in the preferred auth schemes - EWS should usually allow NTLM or Basic auth
+    RequestConfig.Builder requestConfigBuilder = RequestConfig.custom()
+        .setAuthenticationEnabled(true)
+        .setConnectionRequestTimeout(getTimeout())
+        .setConnectTimeout(getTimeout())
+        .setRedirectsEnabled(isAllowAutoRedirect())
+        .setSocketTimeout(getTimeout())
+        .setTargetPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.BASIC))
+        .setProxyPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.BASIC));
+
+    CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+
+    // Add proxy credentials if necessary.
+    WebProxy proxy = getProxy();
+    if (proxy != null) {
+      HttpHost proxyHost = new HttpHost(proxy.getHost(), proxy.getPort());
+      requestConfigBuilder.setProxy(proxyHost);
+
+      if (proxy.hasCredentials()) {
+        NTCredentials proxyCredentials = new NTCredentials(proxy.getCredentials().getUsername(),
+            proxy.getCredentials().getPassword(), "", proxy.getCredentials().getDomain());
+
+        credentialsProvider.setCredentials(new AuthScope(proxyHost), proxyCredentials);
+      }
+    }
+
+    // Add web service credentials if necessary.
+    if (isAllowAuthentication() && getUsername() != null) {
+      NTCredentials webServiceCredentials = new NTCredentials(getUsername(), getPassword(), "", getDomain());
+      credentialsProvider.setCredentials(new AuthScope(AuthScope.ANY), webServiceCredentials);
+    }
+
+    httpContext.setCredentialsProvider(credentialsProvider);
+
+    httpPost.setConfig(requestConfigBuilder.build());
   }
-
-
 
   /**
    * Gets the input stream.
@@ -277,7 +176,7 @@ class HttpClientWebRequest extends HttpWebRequest {
     throwIfRequestIsNull();
     os = new ByteArrayOutputStream();
 
-    httpPostReq.setEntity(new ByteArrayOSRequestEntity(os));
+    httpPost.setEntity(new ByteArrayOSRequestEntity(os));
     return os;
   }
 
@@ -365,7 +264,7 @@ class HttpClientWebRequest extends HttpWebRequest {
   @Override
   public int executeRequest() throws EWSHttpException, IOException {
     throwIfRequestIsNull();
-    response = client.execute(httpPostReq);
+    response = httpClient.execute(httpPost, httpContext);
     return response.getStatusLine().getStatusCode(); // ?? don't know what is wanted in return
   }
 
@@ -398,7 +297,7 @@ class HttpClientWebRequest extends HttpWebRequest {
    * @throws EWSHttpException the eWS http exception
    */
   private void throwIfRequestIsNull() throws EWSHttpException {
-    if (null == httpPostReq) {
+    if (null == httpPost) {
       throw new EWSHttpException("Connection not established");
     }
   }
@@ -419,7 +318,7 @@ class HttpClientWebRequest extends HttpWebRequest {
     throwIfRequestIsNull();
     Map<String, String> map = new HashMap<String, String>();
 
-    Header[] hM = httpPostReq.getAllHeaders();
+    Header[] hM = httpPost.getAllHeaders();
     for (Header header : hM) {
       map.put(header.getName(), header.getValue());
     }

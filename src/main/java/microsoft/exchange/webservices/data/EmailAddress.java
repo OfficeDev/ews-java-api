@@ -353,7 +353,7 @@ public class EmailAddress extends ComplexProperty implements
       addressPart = this.getAddress();
     }
 
-    if (null != this.getName() && this.getName().isEmpty()) {
+    if (null != this.getName() && !this.getName().isEmpty()) {
       return this.getName() + " <" + addressPart + ">";
     } else {
       return addressPart;
