@@ -28,7 +28,12 @@
         <name>Microsoft</name>
         <url>http://www.microsoft.com/</url>
     </organization>
-
+    
+    <parent>
+        <groupId>de.ebf</groupId>
+        <artifactId>maven.parent</artifactId>
+        <version>0.3.0</version>
+    </parent>
     <properties>
         <!-- Eliminates the file encoding warning. Of course, all of your files
             should probably be UTF-8 nowadays. -->
