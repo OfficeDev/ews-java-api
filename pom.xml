@@ -33,7 +33,21 @@
             should probably be UTF-8 nowadays. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javaLanguage.version>1.6</javaLanguage.version>
+        <javadoc.doclint.param/>
     </properties>
+
+    <profiles>
+        <profile>
+            <!-- handle broken builds on jdk1.8 due to doclint function -->
+            <id>default-jdk18-profile</id>
+            <activation>
+                <jdk>[1.8,)</jdk>
+            </activation>
+            <properties>
+                <javadoc.doclint.param>-Xdoclint:none</javadoc.doclint.param>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -80,6 +94,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <source>${javaLanguage.version}</source>
@@ -135,6 +150,7 @@
                 <version>2.9.1</version>
                 <configuration>
                     <linksource>true</linksource>
+                    <additionalparam>${javadoc.doclint.param}</additionalparam>
                 </configuration>
             </plugin>
 
