@@ -784,9 +784,9 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @param headers The response headers
    */
   private void saveHttpResponseHeaders(Map<String, String> headers) {
-    EwsUtilities.EwsAssert(this.httpResponseHeaders.size() == 0,
-        "ExchangeServiceBase.SaveHttpResponseHeaders",
-        "expect no headers in the dictionary yet.");
+//    EwsUtilities.EwsAssert(this.httpResponseHeaders.size() == 0,
+//        "ExchangeServiceBase.SaveHttpResponseHeaders",
+//        "expect no headers in the dictionary yet.");
 
     this.httpResponseHeaders.clear();
 
