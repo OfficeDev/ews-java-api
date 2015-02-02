@@ -479,7 +479,6 @@ public final class PropertySet implements ISelfValidate,
                 PropertyDefinitionFlags.CanFind, request.
                     getService().getRequestedServerVersion())) {
           throw new ServiceValidationException(String.format(
-              "ServiceValidationException :%s,%s,%s",
               Strings.NonSummaryPropertyCannotBeUsed,
               propertyDefinition.getName(), request
                   .getXmlElementName()));

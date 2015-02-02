@@ -2,6 +2,10 @@
 
 # Getting Started with the EWS JAVA API
 
+## Building EWS JAVA API
+To build your own jar you will need to download and [install maven](http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html).
+After the installation you can navigate to your local repository via cmd and run `mvn clean install`. This will validate the available unit-tests und build all necessary jars which afterwards may be found @ `PROJECT_ROOT\target`.
+
 ## Using the EWS JAVA API for https
 
 To make an environment secure, you must be sure that any communication is with "trusted" sites. SSL uses certificates for authentication — these are digitally signed documents that bind the public key to the identity of the private key owner.
@@ -10,7 +14,7 @@ For testing the application with https, you don't have to add any additional cod
 
 ## Accessing EWS by using the EWS JAVA API
 To access Exchange Web Services (EWS) by using the EWS JAVA API, all you need is an instance of the ExchangeService class, as shown in the following example.
-```
+```Java
 ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2010_SP2);
 ExchangeCredentials credentials = new WebCredentials("emailAddress", "password");
 service.setCredentials(credentials);
@@ -23,12 +27,12 @@ You can set the URL of the service in one of two ways:
 
 To set the URL manually, use the following:
 
-```
+```Java
 service.setUrl(new Uri("<ews_url>"));
 ```
 To set the URL by using Autodiscover, use the following:
 
-```
+```Java
 service.autodiscoverUrl("<your_email_address>");
 ```
 
@@ -59,7 +63,7 @@ static class RedirectionUrlCallback implements IAutodiscoverRedirectionUrl {
 ```
 
 Now 
-```
+```Java
 service.autodiscoverUrl("<your_email_address>", new RedirectionUrlCallback());
 ```
 can be called to deal with the redirection in a safe manner.
@@ -88,32 +92,26 @@ Items and folders in Exchange are uniquely identified. In the EWS JAVA API, item
 
 If you know the unique identifier of an email message and want to retrieve its details from Exchange, you have to write the following.
 
-```
+```Java
 // Bind to an existing message using its unique identifier.
 EmailMessage message = EmailMessage.bind(service, new ItemId(uniqueId));
 
 // Write the sender's name.
 System.out.println(message.getSender().getName());
-
 ```
 If you do not know what type of item the unique identifier maps to, you can also write the following.
 
-```
+```Java
 // Bind to an existing item using its unique identifier.
 Item item = Item.bind(service, new ItemId(uniqueId));
 
-if (item.equals(message))
-{
+if (item.equals(message)) {
 	// If the item is an e-mail message, write the sender's name.
 	System.out.println((item(EmailMessage)).getSender().getName());
-}
-else if (item.equals(Appointment))
-{
+} else if (item.equals(Appointment)) {
 	// If the item is an appointment, write its start time.
 	System.out.println((item(Appointment).Start));
-}
-else
-{
+} else {
 	// Handle other types.
 }
 ```
@@ -122,20 +120,20 @@ else
 
 Bind to an existing folder in the same way that you bind to an existing item.
 
-```
+```Java
 // Bind to an existing folder using its unique identifier.
 Folder folder = Folder.bind(service, new FolderId(uniqueId));
 ```
 You can also bind to a well-known folder (Inbox, Calendar, Tasks, and so on) without knowing its ID.
 
-```
+```Java
 // Bind to the Inbox.
 Folder inbox = Folder.bind(service, WellKnownFolderName.Inbox);
 ```
 
 ## Sending a Message
 
-```
+```Java
 EmailMessage msg= new EmailMessage(service);
 msg.setSubject("Hello world!");
 msg.setBody(MessageBody.getMessageBodyFromText("Sent using the EWS Java API."));
@@ -148,7 +146,7 @@ msg.send();
 To schedule a recurring appointment, create an appointment for the first meeting time, and choose 'Recurrence.' Outlook will use your initial appointment as a start date. Set the end date by specifying a date for the recurring appointments to end or a number of occurrences for this recurring appointment. You can also specify no end date. If the meeting will occur on more than one day of the week, choose the days on which the meeting/appointment will occur.
 You can use the EWS JAVA API to create a recurring appointment, as shown in the following code.
 
-```
+```Java
 Appointment appointment = new Appointment(service);
 appointment.setSubject("Recurrence Appointment for JAVA XML TEST");
 appointment.setBody(MessageBody.getMessageBodyFromText("Recurrence Test Body Msg"));
@@ -172,7 +170,7 @@ appointment.save();
 
 ## Inviting Attendees to the Previously Created Appointment to Make it a Meeting
 
-```
+```Java
 appointment.getRequiredAttendees().add("someone@contoso.com");
 appointment.update(ConflictResolutionMode.AutoResolve);
 ```
@@ -180,7 +178,7 @@ appointment.update(ConflictResolutionMode.AutoResolve);
 
 ## Deleting an Item of Any Type
 
-```
+```Java
 message.delete(DeleteMode.HardDelete);
 ```
 
@@ -188,7 +186,7 @@ message.delete(DeleteMode.HardDelete);
 
 The following code shows how to create a folder by using the EWS JAVA API.
 
-```
+```Java
 Folder folder = new Folder(service);
 folder.setDisplayName("EWS-JAVA-Folder");
 // creates the folder as a child of the Inbox folder.
@@ -201,14 +199,12 @@ folder.save(WellKnownFolderName.Inbox);
 
 You can use EWS to list the first 10 items in the user's mailbox. The following code shows how to search for a list of first 10 items in the Inbox by using the EWS JAVA API.
 
-```
-public void listFirstTenItems()
-{
+```Java
+public void listFirstTenItems() {
 	ItemView view = new ItemView(10);
 	FindItemsResults<Item> findResults = service.findItems(folder.getId(), view);
 
-	for (Item item : findResults1.getItems())
-	{
+	for (Item item : findResults1.getItems()) {
 		// Do something with the item as shown
 		System.out.println("id==========" + item.getId());
 		System.out.println("sub==========" + item.getSubject());
@@ -218,14 +214,12 @@ public void listFirstTenItems()
 
 ### Retrieve all the items in the Inbox by groups of 50 items
 
-```
-public void pageThroughEntireInbox()
-{
+```Java
+public void pageThroughEntireInbox() {
 	ItemView view = new ItemView(50);
 	FindItemsResults<Item> findResults;
 
-	do
-	{
+	do {
 		findResults = service.FindItems(WellKnownFolderName.Inbox, view);
 
 		for(Item item : findResults.getItems())
@@ -240,9 +234,8 @@ public void pageThroughEntireInbox()
 
 ### Find the first 10 messages in the Inbox that have a subject that contains the words "EWS" or "API", order by date received, and only return the Subject and DateTimeReceived properties.
 
-```
-public void findItems()
-{
+```Java
+public void findItems() {
 	ItemView view = new ItemView(10);
 	view.getOrderBy().add(ItemSchema.DateTimeReceived, SortDirection.Ascending);
 	view.setPropertySet(new PropertySet(BasePropertySet.IdOnly, ItemSchema.Subject, ItemSchema.DateTimeReceived));
@@ -255,8 +248,7 @@ public void findItems()
 
 	System.out.println("Total number of items found: " + findResults.getTotalCount());
 
-	for (Item item : findResults)
-	{
+	for (Item item : findResults) {
 		System.out.println(item.getSubject());
 		System.out.println(item.getBody());
 		// Do something with the item.
@@ -268,13 +260,11 @@ public void findItems()
 
 Use the FindFolder operation to search in all child folders of the identified parent folder; for example, you can search all child folders of the Inbox, as shown in the following example.
 
-```
-public void findChildFolders()
-{
+```Java
+public void findChildFolders() {
 	FindFoldersResults findResults = service.findFolders(WellKnownFolderName.Inbox, new FolderView(Integer.MAX_VALUE));
 
-	for (Folder folder : findResults.getFolders())
-	{
+	for (Folder folder : findResults.getFolders()) {
 		System.out.println("Count======" + folder.getChildFolderCount());
 		System.out.println("Name=======" + folder.getDisplayName());
 	}
@@ -285,16 +275,14 @@ public void findChildFolders()
 
 The following example shows you how to get all appointments between startDate and endDate in the specified folder, including recurring meeting occurrences.
 
-```
-public void findAppointments(CalendarFolder folder, Date startDate, Date endDate)
-{
+```Java
+public void findAppointments(CalendarFolder folder, Date startDate, Date endDate) {
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	Date startDate = formatter.parse("2010-05-01 12:00:00");
 	Date endDate = formatter.parse("2010-05-30 13:00:00");
 	CalendarFolder cf=CalendarFolder.bind(service, WellKnownFolderName.Calendar);
 	FindItemsResults<Appointment> findResults = cf.findAppointments(new CalendarView(startDate, endDate));
-	for (Appointment appt : findResults.getItems())
-	{
+	for (Appointment appt : findResults.getItems()) {
 		System.out.println("SUBJECT====="+appt.getSubject());
 		System.out.println("BODY========"+appt.getBody());
 	}
@@ -305,13 +293,12 @@ public void findAppointments(CalendarFolder folder, Date startDate, Date endDate
 
 You can resolve a partial name against the Active Directory directory service and the Contacts folder (in that order), as shown in the following example.
 
-```
+```Java
 // Resolve a partial name against the Active Directory and the Contacts folder (in that order).
 NameResolutionCollection nameResolutions = service.resolveName("test",ResolveNameSearchLocation.ContactsOnly, true);
 System.out.println("nameResolutions==="+nameResolutions.getCount());
 
-for (NameResolution nameResolution : nameResolutions)
-{
+for (NameResolution nameResolution : nameResolutions) {
 	System.out.println("NAME==="+nameResolution.getMailbox().getName());
 	System.out.println(" PHONENO===" +nameResolution.getMailbox().getMailboxType());
 }
@@ -323,7 +310,7 @@ Items in the EWS JAVA  API expose strongly typed, first-class properties that pr
 
 To stamp an email message with a custom extended property, do the following.
 
-```
+```Java
 // Create a new email message.
 EmailMessage message = new EmailMessage(service);
 message.setSubject("Message with custom extended property");
@@ -341,9 +328,7 @@ UUID yourPropertySetId = UUID.fromString("01638372-9F96-43b2-A403-B504ED14A910")
 
 // Define the extended property itself.
 ExtendedPropertyDefinition extendedPropertyDefinition = new ExtendedPropertyDefinition(
-	yourPropertySetId,
-	"MyProperty",
-	MapiPropertyType.String);
+	yourPropertySetId, "MyProperty", MapiPropertyType.String);
 
 // Stamp the extended property on a message.
 message.setExtendedProperty(extendedPropertyDefinition, "MyValue");
@@ -358,7 +343,7 @@ The EWS Java API makes it very easy to consume the Availability service. The Ava
 
 The following example shows how to call the Availability service by using the EWS Java API.
 
-```
+```Java
 // Create a list of attendees for which to request availability
 // information and meeting time suggestions.
 
@@ -379,13 +364,10 @@ GetUserAvailabilityResults results = service.getUserAvailability(
 // Output attendee availability information.
 int attendeeIndex = 0;
 
-for (AttendeeAvailability attendeeAvailability : results.getAttendeesAvailability())
-{
+for (AttendeeAvailability attendeeAvailability : results.getAttendeesAvailability()) {
 	System.out.println("Availability for " + attendees.get(attendeeIndex));
-	if (attendeeAvailability.getErrorCode() == ServiceError.NoError)
-	{
-		for (CalendarEvent calendarEvent : ttendeeAvailability.getCalendarEvents())
-		{
+	if (attendeeAvailability.getErrorCode() == ServiceError.NoError) {
+		for (CalendarEvent calendarEvent : ttendeeAvailability.getCalendarEvents()) {
 			System.out.println("Calendar event");
 			System.out.println("  Start time: " + CalendarEvent.getStartTime().toString());
 			System.out.println("  End time: " + calendarEvent.getEndTime().toString());
@@ -403,13 +385,11 @@ for (AttendeeAvailability attendeeAvailability : results.getAttendeesAvailabilit
 
 
 // Output suggested meeting times.
-for (Suggestion suggestion : results.getSuggestions())
-{
+for (Suggestion suggestion : results.getSuggestions()) {
 	System.out.println("Suggested day: " + suggestion.getDate().toString());
 	System.out.println("Overall quality of the suggested day: " + suggestion.getQuality().toString());
 
-	for (TimeSuggestion timeSuggestion : suggestion.getTimeSuggestions())
-	{
+	for (TimeSuggestion timeSuggestion : suggestion.getTimeSuggestions()) {
 		System.out.println("  Suggested time: " + timeSuggestion.getMeetingTime().toString());
 		System.out.println("  Suggested time quality: " + timeSuggestion.getQuality().toString());
 		// Output additonal properties.
@@ -427,7 +407,7 @@ There are two types of subscriptions: pull subscriptions and push subscriptions.
 
 The following example shows how to subscribe to pull notifications and how to retrieve the latest events.
 
-```
+```Java
 // Subscribe to pull notifications in the Inbox folder, and get notified when a new mail is received, when an item or folder is created, or when an item or folder is deleted.
 
 List  folder = new ArrayList();
@@ -440,31 +420,21 @@ PullSubscription subscription = service.subscribeToPullNotifications(folder,5
 GetEventsResults events = subscription.getEvents();
 
 // Loop through all item-related events.
-for(ItemEvent itemEvent : events.getItemEvents())
-{
-	if (itemEvent.getEventType()== EventType.NewMail)
-	{
+for(ItemEvent itemEvent : events.getItemEvents()) {
+	if (itemEvent.getEventType()== EventType.NewMail) {
 		EmailMessage message = EmailMessage.bind(service, itemEvent.getItemId());
-	}
-	else if(itemEvent.getEventType()==EventType.Created)
-	{
+	} else if(itemEvent.getEventType()==EventType.Created) {
 		Item item = Item.bind(service, itemEvent.getItemId());
-	}
-	else if(itemEvent.getEventType()==EventType.Deleted)
-	{
+	} else if(itemEvent.getEventType()==EventType.Deleted) {
 		break;
 	}
  }
 
 // Loop through all folder-related events.
-for (FolderEvent folderEvent : events.getFolderEvents())
-{
-	if (folderEvent.getEventType()==EventType.Created)
-	{
+for (FolderEvent folderEvent : events.getFolderEvents()) {
+	if (folderEvent.getEventType()==EventType.Created) {
 		Folder folder = Folder.bind(service, folderEvent.getFolderId());
-	}
-	else if(folderEvent.getEventType()==EventType.Deleted)
-	{
+	} else if(folderEvent.getEventType()==EventType.Deleted) {
 		System.out.println("folder  deleted”+ folderEvent.getFolderId.UniqueId);
 	}
 }
@@ -472,7 +442,7 @@ for (FolderEvent folderEvent : events.getFolderEvents())
 
 ### SubscribeToPullNotifications asynchronously
 
-```
+```Java
 WellKnownFolderName wkFolder = WellKnownFolderName.Inbox;
 
 FolderId folderId = new FolderId(wkFolder);
@@ -481,7 +451,7 @@ List<FolderId> folder = new ArrayList<FolderId>();
 
 folder.add(folderId);
 
-IAsyncResult subscription = getService().beginSubscribeToPullNotifications(new AsyncCallbackImplementation(),null,folder, 5, null, EventType.NewMail, EventType.Created, EventType.Deleted);
+IAsyncResult subscription = getService().beginSubscribeToPullNotifications(new AsyncCallbackImplementation(), null, folder, 5, null, EventType.NewMail, EventType.Created, EventType.Deleted);
 
 PullSubscription ps= getService().endSubscribeToPullNotifications(subscription);
 ```
@@ -490,13 +460,10 @@ PullSubscription ps= getService().endSubscribeToPullNotifications(subscription);
 
 The following example shows how to subscribe to pull notifications on all folders.
 
-```
-// Subscribe to push notifications on the Inbox folder, and only listen
-// to "new mail" events.
+```Java
+// Subscribe to push notifications on the Inbox folder, and only listen to "new mail" events.
 
-IAsyncResult asyncresult = getService().beginSubscribeToPullNotificationsOnAllFolders(null,null,5,null,
-
-EventType.NewMail, EventType.Created, EventType.Deleted);
+IAsyncResult asyncresult = getService().beginSubscribeToPullNotificationsOnAllFolders(null, null, 5, null, EventType.NewMail, EventType.Created, EventType.Deleted);
 
 PullSubscription subscription = getService().endSubscribeToPullNotifications(asyncresult);
 
@@ -511,7 +478,7 @@ The EWS Java API does not provide a built-in push notifications listener. It is 
 
 The following example shows how to subscribe to push notifications.
 
-```
+```Java
 // Subscribe to push notifications on the Inbox folder, and only listen
 // to "new mail" events.
 PushSubscription pushSubscription = service.SubscribeToPushNotifications(
@@ -526,11 +493,11 @@ PushSubscription pushSubscription = service.SubscribeToPushNotifications(
 
 The following example shows how to subscribe to push notifications.
 
-```
+```Java
 WellKnownFolderName wkFolder = WellKnownFolderName.Inbox;
-	FolderId folderId = new FolderId(wkFolder);
-	List<FolderId> folder = new ArrayList<FolderId>();
-	folder.add(folderId);
+FolderId folderId = new FolderId(wkFolder);
+List<FolderId> folder = new ArrayList<FolderId>();
+folder.add(folderId);
 IAsyncResult result = getService().beginSubscribeToPushNotifications(null, null, folder, new URI(CredentialConstants.URL), 5, null, EventType.NewMail, EventType.Created, EventType.Deleted);
 PushSubscription subscription = getService().endSubscribeToPushNotifications(result);
 ```
@@ -545,11 +512,11 @@ You can use EWS to create tasks or to update tasks in a user's mailbox.
 
 The following code example shows how to create a task.
 
-```
+```Java
 Task task = new Task(service);
 task.setSubject("Task to test in JAVA");
 task.setBody(MessageBody.getMessageBodyFromText("Test body from JAVA"));
-task.setStartDate(new Date(2010-1900,5-1,20,17,00));
+task.setStartDate(new Date(2010-1900, 5-1, 20, 17, 00));
 task.save();
 ```
 
@@ -563,12 +530,12 @@ A PostItem object is not sent to a recipient. You use the Post method, which is 
 
 The following code shows how to create PostItem by using the EWS Java API.
 
-```
+```Java
 PostItem post = new PostItem(service);
 post.setBody(new MessageBody("Test From JAVA: Body Content"));
 post.setImportance(Importance.High);
 post.setSubject("Test From JAVA: Subject");
-String id =((Folder)findResults1.getFolders().get(0)).getId().toString();
+String id = ((Folder) findResults1.getFolders().get(0)).getId().toString();
 System.out.println("Id : " +id);
 post.save(new FolderId(id));
 ```
@@ -577,8 +544,8 @@ post.save(new FolderId(id));
 
 The following code shows how to update PostItem by using the EWS Java API.
 
-```
-PostItem post= PostItem.bind(service, new ItemId(uniqueId));
+```Java
+PostItem post = PostItem.bind(service, new ItemId(uniqueId));
 post.setSubject("post update in java");
 post.setBody(MessageBody.getMessageBodyFromText("update post body in java"));
 post.update(ConflictResolutionMode.AlwaysOverwrite);
@@ -592,7 +559,7 @@ You can add contacts even if a contact group does not exist. If you create your 
 
 ### ContactGroup Creation
 
-```
+```Java
 ContactGroup cgroup = new ContactGroup(service);
 cgroup.setBody(new MessageBody("contact groups "));
 cgroup.setDisplayName("test");
@@ -603,12 +570,11 @@ cgroup.save(folder.getId());
 
 You can enable users to update their contact list by adding and removing contacts. 
 
-```
+```Java
 Folder folder = Folder.bind(service, WellKnownFolderName.Contacts);
 ItemView view = new ItemView(10);
 FindItemsResults<Item> findResults = service.findItems(folder.getId(), view);
-for (Item item : findResults.getItems())
-{
+for (Item item : findResults.getItems()) {
       System.out.println("id:" + item.getId());
       System.out.println("sub==========" + item.getSubject());
 }
@@ -627,7 +593,7 @@ You can use EWS to create contact items in a mailbox.
 You can use EWS to create contact items in a mailbox.
 To create a Contact object, bind to the object that will contain the object, create a Contact object, set its properties and save the object to the directory store.
 
-```
+```Java
 Contact contact = new Contact(service);
 contact.setGivenName("ContactName");
 contact.setMiddleName ("mName");
@@ -651,8 +617,8 @@ contact.save();
 You can use EWS to update a contact item in the Exchange store.
 Bind to an existing contact saves the changes made to a Contact item by updating its entry in the Contact collection.
 
-```
-Contact contact =  Contact.bind(service,new ItemId(uniqueId));
+```Java
+Contact contact = Contact.bind(service, new ItemId(uniqueId));
 contact.setSubject("subject");
 contact.setBody(new MessageBody("update contact body"));
 contact.update(ConflictResolutionMode.AlwaysOverwrite);
@@ -667,7 +633,7 @@ Create an attachment that contains or references the data to be attached, and th
 
 The following code shows how to support email message attachments by using the EWS JAVA API.
 
-```
+```Java
 EmailMessage message = new EmailMessage(service);
 message.getToRecipients().add("administrator@contoso.com");
 message.setSubject("attachements");
@@ -682,7 +648,7 @@ You can use EWS to create appointments in a user's mailbox. Appointments are blo
 
 Appointments can have beginning and ending times, can repeat, and can have a location, as shown in the following example.
 
-```
+```Java
 Appointment appointment = new  Appointment(service);
 appointment.setSubject("Appointment for JAVA XML TEST");
 appointment.setBody(MessageBody.getMessageBodyFromText("Test Body Msg in JAVA"));
@@ -697,7 +663,7 @@ appointment.save();
 ## Update an Appointment
 You can use the EWS JAVA API to update appointments, as shown in the following example.
 
-```
+```Java
 Appointment appointment= Appointment.bind(service, new  (uniqueId));
 SimpleDateFormat formatter = new  SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 Date startDate = formatter.parse("2012-06-19 13:00:00");
@@ -718,7 +684,7 @@ By adding attendees, you make the appointment a meeting.
 
 Set properties on the appointment. The following code shows how to add a subject, a body, a start time, an end time, a location, two required attendees, and an optional attendee to an appointment, and how to create a meeting and send a meeting request to invitees.
 
-```
+```Java
 // Create the appointment.
 Appointment appointment = new  Appointment(service);
 
@@ -744,7 +710,7 @@ appointment.save();
 
 The following code example shows how to update the subject, the location, the start time, and the end time of a meeting request, and add a user2@contoso.com as a new required attendee to the meeting request (user1@contoso.com was previously the only attendee). The updated meeting request is sent to all attendees and a copy is saved in the organizer's Sent Items folder.
 
-```
+```Java
 // Bind to an existing meeting request by using its unique identifier.
 Appointment appointment = Appointment.bind(service, new ItemId(uniqueId));
 
@@ -768,7 +734,7 @@ Accept the meeting invitation by using either the Accept method or the CreateAcc
 
 The following code shows how to accept a meeting invitation and send the response to the meeting organizer by using the Accept method. To accept a meeting invitation without sending the response to the meeting organizer, set the parameter value to false instead of true.
 
-```
+```Java
 // Bind to the meeting request message by using its unique identifier.
 Appointment appointment = Appointment.bind(service, new ItemId(uniqueId);
 appointment.Accept(true);
@@ -777,7 +743,7 @@ appointment.Accept(true);
 ### MeetingCancellation
 You can cancel a meeting by using the CancelMeeting method. The following code shows how to cancel a meeting by using the CancelMeeting method and send a generic cancellation message to all attendees.
 
-```
+```Java
 Appointment appointment = Appointment.bind(service, new ItemId(uniqueId);
 appointment.cancelMeeting();
 ```
@@ -788,7 +754,7 @@ Time and date details that you set by using the java.util.Date class are given a
 
 For example, if you're creating an Appointment from 10:00 am to 11:00 am on 20-09-2010 as per IST Indian Standard Time (which is +5:30 hours from UTC), the Time should be given in UTC, as shown in the following example.
 
-```
+```Java
 Appointment appointment = new  Appointment(service);
 appointment.setSubject("Appointment TEST for TimeZone Check");
 appointment.setBody(MessageBody.getMessageBodyFromText("Test Body Msg"));
@@ -804,7 +770,7 @@ appointment.save();
 
 EWS provides a streaming subscription that enables client applications to discover events that occur in the Exchange store. To subscribe to streaming notifications, call the subscribeToStreamingNotifications method. To create a connection to the server, create an object of the class StreamingSubscriptionConnection, as shown in the following example.
 
-```
+```Java
 WellKnownFolderName sd = WellKnownFolderName.Inbox;
 FolderId folderId = new FolderId(sd);
 
@@ -828,13 +794,11 @@ Thread.sleep(20000)
 conn.close();
 System.out.println("end........");
 
-void connection_OnDisconnect(Object sender, SubscriptionErrorEventArgs args)
-{
+void connection_OnDisconnect(Object sender, SubscriptionErrorEventArgs args) {
 	System.out.println("disconnecting........");
 }
 
-void connection_OnNotificationEvent(Object sender, NotificationEventArgs args) throws Exception
-{
+void connection_OnNotificationEvent(Object sender, NotificationEventArgs args) throws Exception {
 	System.out.println("==== hi notification event==========");
 	// First retrieve the IDs of all the new emails
 	List<ItemId> newMailsIds = new ArrayList<ItemId>();
@@ -848,12 +812,9 @@ void connection_OnNotificationEvent(Object sender, NotificationEventArgs args) t
 		}
 	}
 
-	if (newMailsIds.size() > 0)
-	{
+	if (newMailsIds.size() > 0) {
 		// Now retrieve the Subject property of all the new emails in one call to EWS.
-		ServiceResponseCollection<GetItemResponse> responses = service.bindToItems(
-			newMailsIds,
-			new PropertySet(ItemSchema.Subject));
+		ServiceResponseCollection<GetItemResponse> responses = service.bindToItems(newMailsIds, new PropertySet(ItemSchema.Subject));
 			System.out.println("count=======" + responses.getCount());
 
 		//this.listBox1.Items.Add(string.Format("{0} new mail(s)", newMailsIds.Count));
@@ -893,7 +854,7 @@ public void subscriptionErrorDelegate(Object sender,SubscriptionErrorEventArgs a
 
 The following code shows how to create a Streaming notification by using asynchronous functionality.
 
-```
+```Java
 WellKnownFolderName sd = WellKnownFolderName.Inbox;
 
 FolderId folderId = new FolderId(sd);
@@ -913,7 +874,7 @@ System.out.println(subscription.getId());
 
 The following code shows how to create an Inbox rule. The object of the class CreateRuleOperation  represents an operation to create a new rule.
 
-```
+```Java
 // Create an Inbox rule.
 // If "Interesting" is in the subject, move it into the Junk folder.
 Rule newRule = new Rule();
@@ -934,12 +895,11 @@ System.out.println("Collection count: " + ruleCollection.getCount());
 List<RuleOperation> deleterules = new ArrayList<RuleOperation>();
 
 // Write the DisplayName and ID of each rule.
-for(Rule rule : ruleCollection)
-{
+for (Rule rule : ruleCollection) {
 	System.out.println(rule.getDisplayName());
 	System.out.println(rule.getId());
-    DeleteRuleOperation d = new DeleteRuleOperation(rule.getId());
-    deleterules.add(d);
+	DeleteRuleOperation d = new DeleteRuleOperation(rule.getId());
+	deleterules.add(d);
 }
 
 service.updateInboxRules(deleterules, true);
@@ -947,8 +907,7 @@ ruleCollection = service.getInboxRules("someone@contoso.com");
 System.out.println("Collection count: " + ruleCollection.getCount());
 
 // Write the DisplayName and ID of each rule.
-for(Rule rule : ruleCollection)
-{
+for (Rule rule : ruleCollection) {
 	System.out.println(rule.getDisplayName());
 	System.out.println(rule.getId());
 }
@@ -958,13 +917,12 @@ for(Rule rule : ruleCollection)
 
 This method retrieves the Inbox rules of the specified user. The following code shows how to retrieve the Inbox rules.
 
-```
+```Java
 RuleCollection ruleCollection = service.getInboxRules("someone@contoso.com");
 System.out.println("Collection count: " + ruleCollection.getCount());
 
 // Write the DisplayName and Id of each Rule.
-for (Rule rule : ruleCollection)
-{
+for (Rule rule : ruleCollection) {
 	System.out.println(rule.getDisplayName());
 	System.out.println(rule.getId());
 }
@@ -974,7 +932,7 @@ for (Rule rule : ruleCollection)
 
 You can use the findConversation method to find the conversations in specified folder. You can fetch the details of the conversation by using mehods such as getId, which gets the ID; getImportance, which gets the importance; getHasAttachments, which indicates whether at least one message in the conversation has an attachment; and getUnreadCount, which gets the number of unread messages.
 
-```
+```Java
 // Enumerating conversations
 Collection<Conversation> conversations = service.findConversation(
 		new ConversationIndexedItemView(10),
@@ -992,7 +950,7 @@ for (Conversation conversation : conversations) {
 
 By using findConversation method, you can find the conversations in specified folder. To categorize the conversation, use the enableAlwaysCategorizeItems method.
 
-```
+```Java
 // Enumerating conversations
 Collection<Conversation> conversations = service.findConversation(
 		new ConversationIndexedItemView(5),
@@ -1001,7 +959,7 @@ Collection<Conversation> conversations = service.findConversation(
 List<String> conv = new ArrayList<String>();
 conv.add("Category1");
 conv.add("Category2");
-for(Conversation conversation : conversations) {
+for (Conversation conversation : conversations) {
 	conversation.enableAlwaysCategorizeItems(conv,true);
 	System.out.println(conversation.getId() + " " + conversation.getImportance() + " " + conversation.getHasAttachments());
 }
@@ -1011,14 +969,13 @@ for(Conversation conversation : conversations) {
 
 By using the findConversation method, you can find the conversations in specified folder. You can delete them by using the deleteItems method. The following code shows how to delete the conversations.
 
-```
+```Java
 // Enumerating conversations
 Collection<Conversation> conversations = service.findConversation(
     new ConversationIndexedItemView(10),
     new FolderId(WellKnownFolderName.Inbox));
 
-for (Conversation conversation : conversations)
-{
+for (Conversation conversation : conversations) {
 	conversation.deleteItems(new FolderId(WellKnownFolderName.Inbox), DeleteMode.HardDelete);
 	System.out.println("Deleting Conversation Id: " + conversation.getId());
 }
@@ -1030,7 +987,7 @@ You can empty a folder by using the Empty method, which takes two parameters:
 1. Delete Mode - Indicates the type of deletion. There are three types of deletions: HardDelete, which will delete folder/item permanently, SoftDelete, which will move the folder/item to the dumpster, and MoveToDeletedItems, which will move the folder/item to the mailbox.
 2. Boolean value - Indicates weather subfolders should also be deleted.
 
-```
+```Java
 WellKnownFolderName sd = WellKnownFolderName.Inbox;
 FolderId folderId = new FolderId(sd);
 
@@ -1042,7 +999,7 @@ folder.empty(DeleteMode.HardDelete, true);
 
 The WebProxy class contains the proxy settings that WebRequest instances use to override the proxy settings in GlobalProxySelection.
 
-```
+```Java
 WebProxy proxy = new WebProxy("proxyServerHostName", 80);
 proxy.setCredentials("proxyServerUser", "proxyPassword");
 service.setWebProxy(proxy);
@@ -1060,8 +1017,8 @@ msg.send();
 
 To move an item to another folder, use the “move()" method in the Item class. The following code example moves an email message from “WellKnownFolderName.Drafts” to “WellKnownFolderName.Notes”.
 
-```
-Item item =new EmailMessage(service);
+```Java
+Item item = new EmailMessage(service);
 item.setSubject("testing move item to another folder");
 item.setBody(MessageBody.getMessageBodyFromText("Item moved"));
 item.setSensitivity(Sensitivity.Confidential);
@@ -1076,28 +1033,28 @@ To access a calendar from public folder:
 
 1. Create an Exchange service object.
 2. Create a calendar item in the public folder, as shown.
-```
+```Java
 CalendarFolder folder = new CalendarFolder(service);
 folder.setDisplayName ( "Test");
 folder.save(WellKnownFolderName.PublicFoldersRoot);
 ```
 3. Get the folder ID of the public calendar and bind the FolderId to CalendarFolder, as shown.
-```
+```Java
 CalendarFolder calendar = CalendarFolder.bind(service, <Folderid>);
 ```
 4. Create an Appointment in the public calendar and save the appointment, as shown.
-```
+```Java
 appointment.save(calendar.getId(), SendInvitationsMode.SendToNone);
 ```
 5. Check the appointment details created in step 4, by passing the folder ID identified in step 3.
 
 ## UserConfiguration settings
 
-```
+```Java
 ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2010_SP1);
 service.setTraceEnabled(true);
-service.setUrl(<URL>);
-ExchangeCredentials credentials = new WebCredentials(USERNAME,PASSWORD, DOMAIN);
+service.setUrl("<URL>");
+ExchangeCredentials credentials = new WebCredentials("USERNAME", "PASSWORD", "DOMAIN");
 service.setCredentials(credentials);
 String name = "test configuration";
 UserConfiguration config1 = new UserConfiguration(service);
@@ -1118,8 +1075,7 @@ UserConfiguration config = UserConfiguration.bind(service, name, WellKnownFolder
 // Read binary data from user configuration.
 byte[] bData=config.getBinaryData();
 System.out.print("config.getBinaryData() value :");
-for (int i = 0; i < bData.length; i++)
-{
+for (int i = 0; i < bData.length; i++) {
 	System.out.print((char)bData[i]);
 }
 
@@ -1128,8 +1084,7 @@ System.out.println();
 // Read XML data from user configuration.
 byte[] xData=config.getXmlData();
 System.out.print("config.getXmlData() value :");
-for (int i = 0;i < xData.length; i++)
-{
+for (int i = 0;i < xData.length; i++) {
 	System.out.print((char)xData[i]);
 }
 ```
@@ -1137,14 +1092,14 @@ for (int i = 0;i < xData.length; i++)
 ## Getting Password expiry Date
 The following example shows how get the password expiry date for the user’s email mentioned in the request.
 
-```
+```Java
 Date d = service.getPasswordExpirationDate("emailid@contoso.com");
 System.out.println(“Password Expiration Date”+ d);
 ```
 
 ## BeginSyncFolderItems
 
-```
+```Java
 WellKnownFolderName wkFolder = WellKnownFolderName.Inbox;
 FolderId folderId = new FolderId(wkFolder);
 IAsyncResult asyncResult = getService().beginSyncFolderHierarchy(null, null, folderId, PropertySet.FirstClassProperties, null);
