@@ -23,17 +23,15 @@
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import javax.xml.ws.http.HTTPException;
+import java.io.*;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
 
 /**
  * Represents an abstract service request.
  */
-abstract class ServiceRequestBase {
+abstract class ServiceRequestBase<T> {
 
   // Private Constants
   // private final String XMLSchemaNamespace =
@@ -70,6 +68,16 @@ abstract class ServiceRequestBase {
   protected abstract ExchangeVersion getMinimumRequiredServerVersion();
 
   /**
+   * Parses the response.
+   *
+   * @param reader The reader.
+   * @return the Response Object.
+   * @throws Exception                           the exception
+   */
+  protected abstract T parseResponse(EwsServiceXmlReader reader)
+      throws Exception;
+
+  /**
    * Writes XML elements.
    *
    * @param writer The writer.
@@ -85,26 +93,6 @@ abstract class ServiceRequestBase {
       throws XMLStreamException, ServiceXmlSerializationException,
       ServiceLocalException, InstantiationException,
       IllegalAccessException, ServiceValidationException, Exception;
-
-  /**
-   * Parses the response.
-   *
-   * @param reader The reader.
-   * @return Response object.
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws InstantiationException              the instantiation exception
-   * @throws IllegalAccessException              the illegal access exception
-   * @throws ServiceLocalException               the service local exception
-   * @throws ServiceResponseException            the service response exception
-   * @throws IndexOutOfBoundsException           the index out of bounds exception
-   * @throws Exception                           the exception
-   */
-  protected abstract Object parseResponse(EwsServiceXmlReader reader)
-      throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException,
-      ServiceLocalException, ServiceResponseException,
-      IndexOutOfBoundsException, Exception;
 
   /**
    * Validate request.
@@ -380,13 +368,89 @@ abstract class ServiceRequestBase {
   /**
    * Reads the response.
    *
+   * @return serviceResponse
+   * @throws Exception
+   */
+  protected T readResponse(HttpWebRequest response) throws Exception {
+    T serviceResponse;
+
+    if (!response.getResponseContentType().startsWith("text/xml")) {
+      String line = new BufferedReader(new InputStreamReader(ServiceRequestBase.getResponseStream(response)))
+          .readLine();
+      throw new ServiceRequestException(Strings.ServiceResponseDoesNotContainXml);
+    }
+
+    /**
+     * If tracing is enabled, we read the entire response into a
+     * MemoryStream so that we can pass it along to the ITraceListener. Then
+     * we parse the response from the MemoryStream.
+     */
+
+    try {
+      this.getService().processHttpResponseHeaders(
+          TraceFlags.EwsResponseHttpHeaders, response);
+
+      if (this.getService().isTraceEnabledFor(TraceFlags.EwsResponse)) {
+        ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
+        InputStream serviceResponseStream = ServiceRequestBase
+            .getResponseStream(response);
+        while (true) {
+          int data = serviceResponseStream.read();
+          if (-1 == data) {
+            break;
+          } else {
+            memoryStream.write(data);
+          }
+        }
+
+        this.traceResponse(response, memoryStream);
+        ByteArrayInputStream memoryStreamIn = new ByteArrayInputStream(
+            memoryStream.toByteArray());
+        EwsServiceXmlReader ewsXmlReader = new EwsServiceXmlReader(
+            memoryStreamIn, this.getService());
+        serviceResponse = this.readResponse(ewsXmlReader);
+        serviceResponseStream.close();
+        memoryStream.flush();
+      } else {
+        InputStream responseStream = ServiceRequestBase
+            .getResponseStream(response);
+        EwsServiceXmlReader ewsXmlReader = new EwsServiceXmlReader(
+            responseStream, this.getService());
+        serviceResponse = this.readResponse(ewsXmlReader);
+
+      }
+    } catch (HTTPException e) {
+      if (e.getMessage() != null) {
+        this.getService().processHttpResponseHeaders(
+            TraceFlags.EwsResponseHttpHeaders, response);
+      }
+
+      throw new ServiceRequestException(String.format(
+          Strings.ServiceRequestFailed, e.getMessage()), e);
+    } catch (IOException e) {
+      // Wrap exception.
+      throw new ServiceRequestException(String.format(
+          Strings.ServiceRequestFailed, e.getMessage()), e);
+    } finally {
+      if (response != null) {
+        response.close();
+      }
+    }
+
+    return serviceResponse;
+
+  }
+
+  /**
+   * Reads the response.
+   *
    * @param ewsXmlReader The XML reader.
    * @return Service response.
    * @throws Exception the exception
    */
-  protected Object readResponse(EwsServiceXmlReader ewsXmlReader)
+  protected T readResponse(EwsServiceXmlReader ewsXmlReader)
       throws Exception {
-    Object serviceResponse;
+    T serviceResponse;
     this.readPreamble(ewsXmlReader);
     ewsXmlReader.readStartElement(XmlNamespace.Soap,
         XmlElementNames.SOAPEnvelopeElementName);

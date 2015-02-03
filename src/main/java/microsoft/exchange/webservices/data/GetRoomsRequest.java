@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a GetRooms request.
  */
-final class GetRoomsRequest extends SimpleServiceRequestBase {
+final class GetRoomsRequest extends SimpleServiceRequestBase<GetRoomsResponse> {
 
   /**
    * Represents a GetRooms request.
@@ -72,14 +72,10 @@ final class GetRoomsRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader the reader
-   * @return Response object.
-   * @throws Exception the exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected GetRoomsResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     GetRoomsResponse response = new GetRoomsResponse();
     response.loadFromXml(reader, XmlElementNames.GetRoomsResponse);

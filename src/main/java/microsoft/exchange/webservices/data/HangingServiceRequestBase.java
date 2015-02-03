@@ -128,7 +128,7 @@ class HangingRequestDisconnectEventArgs {
 /**
  * Represents an abstract, hanging service request.
  */
-abstract class HangingServiceRequestBase extends ServiceRequestBase {
+abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T> {
 
   protected interface IHandleResponseObject {
 
@@ -251,9 +251,8 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
   /**
    * Parses the responses.
    *
-   * @param state The state.
    */
-  private void parseResponses(Object state) {
+  private void parseResponses() {
     HangingTraceStream tracingStream = null;
     ByteArrayOutputStream responseCopy = null;
 
@@ -275,7 +274,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 
 
       while (this.isConnected()) {
-        Object responseObject = null;
+        T responseObject = null;
         if (traceEWSResponse) {
                                         /*try{*/
           EwsServiceMultiResponseXmlReader ewsXmlReader =
@@ -413,7 +412,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
           keepAliveTime, TimeUnit.SECONDS, queue);
       threadPool.execute(new Runnable() {
         public void run() {
-          parseResponses(null);
+          parseResponses();
         }
       });
       threadPool.shutdown();

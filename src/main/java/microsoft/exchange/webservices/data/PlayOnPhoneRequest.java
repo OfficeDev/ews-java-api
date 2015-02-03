@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a PlayOnPhone request.
  */
-final class PlayOnPhoneRequest extends SimpleServiceRequestBase {
+final class PlayOnPhoneRequest extends SimpleServiceRequestBase<PlayOnPhoneResponse> {
 
   /**
    * The item id.
@@ -84,14 +84,10 @@ final class PlayOnPhoneRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader the reader
-   * @return Response object.
-   * @throws Exception the exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected PlayOnPhoneResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     PlayOnPhoneResponse serviceResponse = new PlayOnPhoneResponse(this
         .getService());

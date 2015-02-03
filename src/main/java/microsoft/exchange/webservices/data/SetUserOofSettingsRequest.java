@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a SetUserOofSettings request.
  */
-final class SetUserOofSettingsRequest extends SimpleServiceRequestBase {
+final class SetUserOofSettingsRequest extends SimpleServiceRequestBase<ServiceResponse> {
 
   /**
    * The smtp address.
@@ -89,14 +89,10 @@ final class SetUserOofSettingsRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader the reader
-   * @return Service response
-   * @throws Exception the exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected ServiceResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     ServiceResponse serviceResponse = new ServiceResponse();
     serviceResponse.loadFromXml(reader, XmlElementNames.ResponseMessage);
