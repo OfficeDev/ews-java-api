@@ -68,14 +68,6 @@ abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> {
       }
 
       throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
-    } finally {
-      try {
-        if (response != null) {
-          response.close();
-        }
-      } catch (Exception e2) {
-        response = null;
-      }
     }
   }
 

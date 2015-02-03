@@ -417,28 +417,24 @@ abstract class ServiceRequestBase<T> {
         EwsServiceXmlReader ewsXmlReader = new EwsServiceXmlReader(
             responseStream, this.getService());
         serviceResponse = this.readResponse(ewsXmlReader);
-
       }
+
+      return serviceResponse;
     } catch (HTTPException e) {
       if (e.getMessage() != null) {
         this.getService().processHttpResponseHeaders(
             TraceFlags.EwsResponseHttpHeaders, response);
       }
-
       throw new ServiceRequestException(String.format(
           Strings.ServiceRequestFailed, e.getMessage()), e);
     } catch (IOException e) {
-      // Wrap exception.
       throw new ServiceRequestException(String.format(
           Strings.ServiceRequestFailed, e.getMessage()), e);
-    } finally {
+    } finally { // close the underlying response
       if (response != null) {
         response.close();
       }
     }
-
-    return serviceResponse;
-
   }
 
   /**
