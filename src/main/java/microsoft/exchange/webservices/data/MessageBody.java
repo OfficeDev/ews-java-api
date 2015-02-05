@@ -100,8 +100,7 @@ public final class MessageBody extends ComplexProperty {
   @Override
   protected void readTextValueFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException {
-    boolean keepWhiteSpace = this.getBodyType() == BodyType.Text;
-    this.text = reader.readValue(keepWhiteSpace);
+    this.text = reader.readValue(this.getBodyType() == BodyType.Text);
   }
 
   /**
