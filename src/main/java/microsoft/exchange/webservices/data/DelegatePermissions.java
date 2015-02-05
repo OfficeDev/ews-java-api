@@ -344,15 +344,7 @@ public final class DelegatePermissions extends ComplexProperty {
       this.permissionLevel = value;
     }
 
-
     private boolean isExistingPermissionLevelCustom;
-
-    /**
-     * Gets IsExistingPermissionLevelCustom.
-     */
-    protected boolean getIsExistingPermissionLevelCustom() {
-      return this.isExistingPermissionLevelCustom;
-    }
 
     /**
      * Sets IsExistingPermissionLevelCustom.

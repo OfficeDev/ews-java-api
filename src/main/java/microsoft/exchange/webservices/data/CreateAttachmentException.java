@@ -24,11 +24,6 @@ public final class CreateAttachmentException extends
   private static final long serialVersionUID = 1L;
 
   /**
-   * The responses.
-   */
-  private ServiceResponseCollection<CreateAttachmentResponse> responses;
-
-  /**
    * Initializes a new instance of CreateAttachmentException.
    *
    * @param serviceResponses the service responses
@@ -43,8 +38,6 @@ public final class CreateAttachmentException extends
     EwsUtilities.EwsAssert(serviceResponses != null,
         "MultiServiceResponseException.ctor",
         "serviceResponses is null");
-
-    this.responses = serviceResponses;
   }
 
   /**
@@ -63,7 +56,5 @@ public final class CreateAttachmentException extends
     EwsUtilities.EwsAssert(serviceResponses != null,
         "MultiServiceResponseException.ctor",
         "serviceResponses is null");
-
-    this.responses = serviceResponses;
   }
 }

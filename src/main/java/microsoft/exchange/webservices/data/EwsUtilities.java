@@ -10,10 +10,6 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -23,9 +19,18 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 /**
  * EWS utilities.
@@ -173,53 +178,6 @@ class EwsUtilities {
                                                 return new ServiceObjectInfo();
                                               }
                                             });
-
-
-  /**
-   * Copies source stream to target.
-   *
-   * @param source The source stream.
-   * @param target The target stream.
-   */
-  protected static void copyStream(ByteArrayOutputStream source, ByteArrayOutputStream target)
-      throws Exception {
-    // See if this is a MemoryStream -- we can use WriteTo.
-
-    	
-   /* 	InputStream inputStream = new FileInputStream ("D:\\EWS ManagedAPI sp2\\Rp\\xml\\useravailrequest.xml");
-
-    	 byte buf[]=new byte[1024];
-    	 int len;
-    	 while((len=inputStream.read(buf))>0)
-    	 {
-    	  target.write(buf,0, len);
-    	 }
-    	*/
-
-    	/*PrintWriter pw = new PrintWriter(source,true);
-    	PrintWriter pw1 = new PrintWriter(target,true);
-    	pw1.println(pw.toString());*/
-
-
-
-    ByteArrayOutputStream memContentStream = source;
-    if (memContentStream != null) {
-      memContentStream.writeTo(target);
-      memContentStream.flush();
-    } else {
-      // Otherwise, copy data through a buffer
-
-      int c;
-      ByteArrayInputStream inStream = new ByteArrayInputStream(source.toByteArray());
-
-      while ((c = inStream.read()) != -1) {
-        target.write((char) c);
-
-      }
-    }
-  }
-
-
 
   /**
    * Gets the builds the version.
@@ -1528,9 +1486,11 @@ class EwsUtilities {
    */
   protected static <T> int getEnumeratedObjectCount(Iterator<T> objects) {
     int count = 0;
-    while (objects != null && objects.hasNext()) {
-      Object obj = objects.next();
-      count++;
+    if (null != objects) {
+      while (objects.hasNext()) {
+        objects.next();
+        count++;
+      }
     }
     return count;
   }

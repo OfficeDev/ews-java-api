@@ -166,7 +166,6 @@ public class GetUserSettingsRequestTest extends BaseTest {
   @Test(expected = ServiceValidationException.class)
   public void testWriteExtraCustomSoapHeadersToXmlWithPartnertoken2()
       throws ServiceValidationException, XMLStreamException, ServiceXmlSerializationException {
-    GetUserSettingsRequest getUserSettingsRequest =
-        new GetUserSettingsRequest(autodiscoverService, uriMockHttp, Boolean.TRUE);
+      new GetUserSettingsRequest(autodiscoverService, uriMockHttp, Boolean.TRUE);
   }
 }

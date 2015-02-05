@@ -57,25 +57,11 @@ public final class ItemGroup<TItem extends Item> {
   }
 
   /**
-   * Sets an index identifying the group.
-   */
-  private void setGroupIndex(String value) {
-    this.groupIndex = value;
-  }
-
-  /**
    * Gets a collection of the items in this group.
    *
    * @return the items
    */
   public Collection<TItem> getItems() {
     return this.items;
-  }
-
-  /**
-   * Sets a collection of the items in this group.
-   */
-  private void setItems(Collection<TItem> value) {
-    this.items = value;
   }
 }

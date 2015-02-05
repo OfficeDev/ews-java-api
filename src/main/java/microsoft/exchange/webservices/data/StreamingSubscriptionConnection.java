@@ -505,14 +505,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
    */
   @Override
   protected void finalize() throws Throwable {
-    this.dispose(false);
-  }
-
-  /**
-   * Frees resources associated with this StreamingSubscriptionConnection.
-   */
-  public void dispose() {
-    this.dispose(true);
+    this.dispose();
   }
 
   /**
@@ -522,11 +515,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
    * @param suppressFinalizer Value indicating whether to suppress the garbage collector's
    *                          finalizer.
    */
-  private void dispose(boolean suppressFinalizer) {
-    if (suppressFinalizer) {
-      System.runFinalizersOnExit(false);
-    }
-
+  private void dispose() {
     synchronized (this) {
       if (!this.isDisposed) {
         if (this.currentHangingRequest != null) {

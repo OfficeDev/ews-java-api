@@ -14,69 +14,45 @@ package microsoft.exchange.webservices.data;
  * Defines the effective user rights associated with an item or folder.
  */
 public enum EffectiveRights {
-
-  // The user has no acces right on the item or folder.
   /**
    * The None.
+   * The user has no acces right on the item or folder.
    */
-  None(0),
-
-  // The user can create associated items (FAI)
+  None,
   /**
    * The Create associated.
+   * The user can create associated items (FAI)
    */
-  CreateAssociated(1),
-
-  // The user can create items.
+  CreateAssociated,
   /**
    * The Create contents.
+   * The user can create items.
    */
-  CreateContents(2),
-
-  // The user can create sub-folders.
-
+  CreateContents,
   /**
    * The Create hierarchy.
+   * The user can create sub-folders.
    */
-  CreateHierarchy(4),
-
-  // The user can delete items and/or folders.
+  CreateHierarchy,
   /**
    * The Delete.
+   * The user can delete items and/or folders.
    */
-  Delete(8),
-
-  // The user can modify the properties of items and/or folders.
+  Delete,
   /**
    * The Modify.
+   * The user can modify the properties of items and/or folders.
    */
-  Modify(16),
-
-  // The user can read the contents of items.
+  Modify,
   /**
    * The Read.
+   * The user can read the contents of items.
    */
-  Read(32),
-
-  /// The user can view private items.
+  Read,
   /**
    * The View Private Items.
+   * The user can view private items.
    */
-  ViewPrivateItems(64);
-
-
-  /**
-   * The effective rights.
-   */
-  private final int effectiveRights;
-
-  /**
-   * Instantiates a new effective rights.
-   *
-   * @param effectiveRights the effective rights
-   */
-  EffectiveRights(int effectiveRights) {
-    this.effectiveRights = effectiveRights;
-  }
+  ViewPrivateItems;
 
 }

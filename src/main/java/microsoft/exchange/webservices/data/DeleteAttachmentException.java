@@ -24,11 +24,6 @@ public final class DeleteAttachmentException extends
   private static final long serialVersionUID = 1L;
 
   /**
-   * The responses.
-   */
-  private ServiceResponseCollection<DeleteAttachmentResponse> responses;
-
-  /**
    * Initializes a new instance of DeleteAttachmentException.
    *
    * @param serviceResponses The list of responses to be associated with this exception.
@@ -43,8 +38,6 @@ public final class DeleteAttachmentException extends
     EwsUtilities.EwsAssert(serviceResponses != null,
         "MultiServiceResponseException.ctor",
         "serviceResponses is null");
-
-    this.responses = serviceResponses;
   }
 
   /**
@@ -63,7 +56,5 @@ public final class DeleteAttachmentException extends
     EwsUtilities.EwsAssert(serviceResponses != null,
         "MultiServiceResponseException.ctor",
         "serviceResponses is null");
-
-    this.responses = serviceResponses;
   }
 }

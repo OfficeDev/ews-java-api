@@ -10,6 +10,9 @@ There are several ways to contribute to the project:
 
 GitHub supports [markdown](http://github.github.com/github-flavored-markdown/), so when filing bugs make sure you check the formatting before clicking submit.
 
+### plugins used
+* findbugs: ews-java-api uses findbugs to check the code, and you should do so too before submitting your code. A findbugs report can be generated using "mvn site", or by downloading it as a plugin for your favorite IDE.
+
 ### Contributing code and content
 Before submitting a feature or substantial code contribution please discuss it with the team and ensure it follows the product roadmap.  You might also read these two blogs posts on contributing code:
 

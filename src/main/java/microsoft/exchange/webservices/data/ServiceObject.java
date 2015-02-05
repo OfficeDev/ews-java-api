@@ -384,7 +384,7 @@ public abstract class ServiceObject {
         // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
         throw new NotSupportedException(String.format(
             Strings.OperationNotSupportedForPropertyDefinitionType,
-            propertyDefinition.getType().getName()));
+            "null"));
       }
     }
   }
@@ -447,7 +447,7 @@ public abstract class ServiceObject {
         // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
         throw new NotSupportedException(String.format(
             Strings.OperationNotSupportedForPropertyDefinitionType,
-            propertyDefinition.getType().getName()));
+            "null"));
       }
     }
   }

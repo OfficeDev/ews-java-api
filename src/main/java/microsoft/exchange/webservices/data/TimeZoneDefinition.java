@@ -10,7 +10,13 @@
 
 package microsoft.exchange.webservices.data;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Represents a time zone as defined by the EWS schema.
@@ -102,25 +108,6 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
     super();
   }
 
-
-  /**
-   * Adds a transition group with a single transition to the specified period.
-   *
-   * @param timeZonePeriod the time zone period
-   * @return A TimeZoneTransitionGroup.
-   */
-  private TimeZoneTransitionGroup createTransitionGroupToPeriod(
-      TimeZonePeriod timeZonePeriod) {
-    TimeZoneTransition transitionToPeriod = new TimeZoneTransition(this,
-        timeZonePeriod);
-
-    TimeZoneTransitionGroup transitionGroup = new TimeZoneTransitionGroup(
-        this, String.valueOf(this.transitionGroups.size()));
-    transitionGroup.getTransitions().add(transitionToPeriod);
-    this.transitionGroups.put(transitionGroup.getId(), transitionGroup);
-    return transitionGroup;
-  }
-
   /**
    * Reads the attributes from XML.
    *
@@ -137,7 +124,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
     if (this.id == null || this.id.isEmpty()) {
       String nameValue = (this.getName() == null || this.
           getName().isEmpty()) ? "" : this.getName();
-      this.setId(NoIdPrefix + Math.abs(nameValue.hashCode()));
+      this.setId(NoIdPrefix + Integer.toString(nameValue.hashCode()).replace("-", ""));
     }
   }
 

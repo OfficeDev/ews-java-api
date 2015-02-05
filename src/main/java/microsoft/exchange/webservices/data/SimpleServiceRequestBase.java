@@ -90,9 +90,6 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 
     HttpWebRequest request = this.buildEwsHttpWebRequest();
 
-    WebAsyncCallStateAnchor wrappedState = new WebAsyncCallStateAnchor(
-        this, request, callback /* user callback */, state /*user state*/);
-
     AsyncExecutor es = new AsyncExecutor();
     Callable<?> cl = new CallableMethod(request);
     Future<?> task = es.submit(cl, callback);

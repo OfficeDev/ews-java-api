@@ -45,17 +45,6 @@ class TimeZoneTransitionGroup extends ComplexProperty {
   private TimeZoneTransition transitionToDaylight;
 
   /**
-   * The Constant PeriodTarget.
-   */
-  private final static String PeriodTarget = "Period";
-
-  /**
-   * The Constant GroupTarget.
-   */
-  private final static String GroupTarget = "Group";
-
-
-  /**
    * Loads from XML.
    *
    * @param reader the reader
@@ -282,56 +271,6 @@ class TimeZoneTransitionGroup extends ComplexProperty {
    */
   protected boolean getSupportsDaylight() {
     return this.transitions.size() == 2;
-  }
-
-  /**
-   * Initializes the private members holding references to the transitions to
-   * the Daylight and Standard periods.
-   *
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
-   */
-  private void initializeTransitions() throws ServiceLocalException {
-    if (this.transitionToStandard == null) {
-      for (TimeZoneTransition transition : this.transitions) {
-        if (transition.getTargetPeriod().isStandardPeriod() ||
-            (this.transitions.size() == 1)) {
-          this.transitionToStandard = transition;
-        } else {
-          this.transitionToDaylight = transition;
-        }
-      }
-    }
-
-    // If we didn't find a Standard period, this is an invalid time zone
-    // group.
-    if (this.transitionToStandard == null) {
-      throw new ServiceLocalException(
-          Strings.InvalidOrUnsupportedTimeZoneDefinition);
-    }
-  }
-
-  /**
-   * Gets the transition to the Daylight period.
-   *
-   * @return the transition to daylight
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
-   */
-  private TimeZoneTransition getTransitionToDaylight()
-      throws ServiceLocalException {
-    this.initializeTransitions();
-    return this.transitionToDaylight;
-  }
-
-  /**
-   * Gets the transition to the Standard period.
-   *
-   * @return the transition to standard
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
-   */
-  private TimeZoneTransition getTransitionToStandard()
-      throws ServiceLocalException {
-    this.initializeTransitions();
-    return this.transitionToStandard;
   }
 
   /**

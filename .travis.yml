@@ -5,6 +5,10 @@ jdk:
   - oraclejdk7
   - openjdk6
 
+after_success:
+  - mvn findbugs:check
+  - mvn clean cobertura:cobertura coveralls:cobertura
+  
 notifications:
   webhooks:
     urls:
