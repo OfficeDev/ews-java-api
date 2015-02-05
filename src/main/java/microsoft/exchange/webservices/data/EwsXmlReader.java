@@ -152,6 +152,8 @@ class EwsXmlReader {
 
   /**
    * Reads the specified node type.
+   * 
+   * @param keepWhiteSpace Do not remove whitespace characters if true
    *
    * @throws ServiceXmlDeserializationException  the service xml deserialization exception
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
@@ -408,6 +410,7 @@ class EwsXmlReader {
    * Present event must be START ELEMENT. After executing this function
    * Present event will be set on END ELEMENT
    *
+   * @param keepWhiteSpace Do not remove whitespace characters if true
    * @return String
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlDeserializationException  the service xml deserialization exception
