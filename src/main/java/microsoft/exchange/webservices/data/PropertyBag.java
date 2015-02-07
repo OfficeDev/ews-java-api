@@ -222,8 +222,8 @@ class PropertyBag implements IComplexPropertyChanged,
     if (!cls.isAssignableFrom(propertyDefinition.getType())) {
       String errorMessage = String.format(
           Strings.PropertyDefinitionTypeMismatch,
-          EwsUtilities.getPrintableTypeName(propertyDefinition.getType()),
-          EwsUtilities.getPrintableTypeName(cls));
+          propertyDefinition.getType().getSimpleName(),
+          cls.getSimpleName());
       throw new ArgumentException(errorMessage, "propertyDefinition");
     }
 
