@@ -1,9 +1,3 @@
-/**************************************************************************
- * copyright file="PermissionCollectionPropertyDefinition.java" company="Microsoft"
- *     Copyright (c) Microsoft Corporation.  All rights reserved.
- *
- * Defines the PermissionCollectionPropertyDefinition class.
- **************************************************************************/
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
