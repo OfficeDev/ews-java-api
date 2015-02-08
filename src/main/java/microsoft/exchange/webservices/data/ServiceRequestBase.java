@@ -394,13 +394,11 @@ abstract class ServiceRequestBase<T> {
         ByteArrayOutputStream memoryStream = new ByteArrayOutputStream();
         InputStream serviceResponseStream = ServiceRequestBase
             .getResponseStream(response);
-        while (true) {
-          int data = serviceResponseStream.read();
-          if (-1 == data) {
-            break;
-          } else {
+
+        int data = serviceResponseStream.read();
+        while (data != -1) {
             memoryStream.write(data);
-          }
+            data = serviceResponseStream.read();
         }
 
         this.traceResponse(response, memoryStream);
