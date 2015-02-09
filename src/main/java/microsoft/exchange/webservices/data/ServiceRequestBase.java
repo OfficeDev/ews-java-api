@@ -621,13 +621,24 @@ abstract class ServiceRequestBase {
     this.validate();
 
     HttpWebRequest request = this.buildEwsHttpWebRequest();
-    try {
-      return this.getEwsHttpWebResponse(request);
-    } catch (HttpErrorException e) {
-      processWebException(e, request);
 
-      // Wrap exception if the above code block didn't throw
-      throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+    try {
+      try {
+        return this.getEwsHttpWebResponse(request);
+      } catch (HttpErrorException e) {
+        processWebException(e, request);
+
+        // Wrap exception if the above code block didn't throw
+        throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+      }
+    } catch (Exception e) {
+      try {
+        request.close();
+      } catch (Exception e2) {
+        // Ignore exceptions while closing the request.
+      }
+
+      throw e;
     }
   }
 
