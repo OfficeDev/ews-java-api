@@ -1,5 +1,20 @@
 [![Build Status](https://travis-ci.org/OfficeDev/ews-java-api.svg)](https://travis-ci.org/OfficeDev/ews-java-api) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/OfficeDev/ews-java-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+
+# Spanning
+
+This project is a fork of the Ms Office EWS api
+There are a few code changes.
+This project is distributed via the Spanning Cloudbees maven repo
+to update the repo
+
+Mount the cloudbees repo locally via DAV
+http://wiki.cloudbees.com/bin/view/DEV/Mounting+DAV+Repositories
+
+Run:
+mvn clean source:jar javadoc:jar deploy -DrepositoryId=local-dav
+
+
 # Getting Started with the EWS JAVA API
 
 ## Building EWS JAVA API
