@@ -20,7 +20,7 @@ import java.util.*;
 /**
  * Represents a binding to the Exchange Web Services.
  */
-public final class ExchangeService extends ExchangeServiceBase implements
+public class ExchangeService extends ExchangeServiceBase implements
     IAutodiscoverRedirectionUrl {
 
   /**

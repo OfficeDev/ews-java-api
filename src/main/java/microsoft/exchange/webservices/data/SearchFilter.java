@@ -390,7 +390,7 @@ public abstract class SearchFilter extends ComplexProperty {
       if (!result) {
         if (reader.getLocalName().equals(XmlElementNames.Bitmask)) {
           // EWS always returns the Bitmask value in hexadecimal
-          this.bitmask = Integer.parseInt(reader
+          this.bitmask = Integer.decode(reader
               .readAttributeValue(XmlAttributeNames.Value));
         }
       }
