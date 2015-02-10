@@ -10,22 +10,27 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
 import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 /**
  * EWS utilities.
@@ -312,24 +317,6 @@ class EwsUtilities {
               enumDicts.put(RuleProperty.class,
                   buildEnumToSchemaDict(RuleProperty.class));
               return enumDicts;
-            }
-          });
-
-  /**
-   * Dictionary to map from special CLR type names to their "short" names.
-   */
-  private static LazyMember<Map<String, String>>
-      typeNameToShortNameMap =
-      new LazyMember<Map<String, String>>(
-          new ILazyMember<Map<String, String>>() {
-            public Map<String, String> createInstance() {
-              Map<String, String> result =
-                  new HashMap<String, String>();
-              result.put("Boolean", "bool");
-              result.put("Int16", "short");
-              result.put("Int32", "int");
-              result.put("String", "string");
-              return result;
             }
           });
 
@@ -1117,65 +1104,6 @@ class EwsUtilities {
     DecimalFormat myFormatter = new DecimalFormat("00");
     return String.format("%s:%s:%s", myFormatter.format(timeSpan.getHours()), myFormatter.format(timeSpan
         .getMinutes()), myFormatter.format(timeSpan.getSeconds()));
-  }
-
-  /**
-   * Gets the printable name of a CLR type.
-   *
-   * @param type The class.
-   * @return Printable name.
-   */
-  public static String getPrintableTypeName(Class<?> type) {
-    // Note: building array of generic parameters is
-    //done recursively. Each parameter could be any type.
-    Type[] genericArgs = type.getGenericInterfaces();
-    if (genericArgs.length > 0) {
-      // Convert generic type to printable form (e.g. List<Item>)
-      String genericPrefix = type.getName().substring(0,
-          type.getName().indexOf('`'));
-      StringBuilder nameBuilder = new StringBuilder(genericPrefix);
-
-      //List<Type> genericList = new ArrayList<Type>();
-      StringBuffer genericArgsStr = new StringBuffer();
-      for (int i = 0; i < genericArgs.length; i++) {
-
-        if (!"".equals(genericArgsStr.toString())) {
-          genericArgsStr.append(",");
-        }
-        genericArgsStr.append(getPrintableTypeName(
-            genericArgs[i].getClass()));
-      }
-      nameBuilder.append("<");
-      nameBuilder.append(genericArgsStr.toString());
-      nameBuilder.append(">");
-      return nameBuilder.toString();
-    } else if (type.isArray()) {
-      // Convert array type to printable form.
-      String arrayPrefix = type.getName().substring(0,
-          type.getName().indexOf('['));
-      StringBuilder nameBuilder =
-          new StringBuilder(EwsUtilities.
-              getSimplifiedTypeName(arrayPrefix));
-
-      for (int rank = 0; rank < getDim(type); rank++) {
-        nameBuilder.append("[]");
-      }
-      return nameBuilder.toString();
-    } else {
-      return EwsUtilities.getSimplifiedTypeName(type.getName());
-    }
-  }
-
-  /**
-   * Gets the printable name of a CLR type.
-   *
-   * @param typeName The type name.
-   * @return Printable name.
-   */
-  private static String getSimplifiedTypeName(String typeName) {
-    // If type has a shortname (e.g. int for Int32) map to the short name.
-    return typeNameToShortNameMap.getMember().containsKey(typeName) ?
-        typeNameToShortNameMap.getMember().get(typeName) : typeName;
   }
 
   /**
