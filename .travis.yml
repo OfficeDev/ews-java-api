@@ -7,7 +7,6 @@ jdk:
 
 after_success:
   - mvn findbugs:check
-  - mvn clean cobertura:cobertura coveralls:cobertura
   
 notifications:
   webhooks:

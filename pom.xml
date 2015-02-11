@@ -59,6 +59,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javaLanguage.version>1.6</javaLanguage.version>
         <javadoc.doclint.param/>
+        <findbugs.version>2.5.5</findbugs.version>
     </properties>
 
     <profiles>
@@ -70,6 +71,16 @@
             </activation>
             <properties>
                 <javadoc.doclint.param>-Xdoclint:none</javadoc.doclint.param>
+				<findbugs.version>3.0.0</findbugs.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>default-jdk17-profile</id>
+            <activation>
+                <jdk>1.7</jdk>
+            </activation>
+            <properties>
+				<findbugs.version>3.0.0</findbugs.version>
             </properties>
         </profile>
     </profiles>
@@ -203,6 +214,11 @@
                 </executions>
             </plugin>
             <!-- Deployment / build plugins END -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs.version}</version>
+            </plugin>
         </plugins>
         <!-- Used to bump all of the various core plugins up to Maven current.
             Use this in conjunction with the versions-maven-plugin to keep your Maven
@@ -274,26 +290,6 @@
                         </reports>
                     </reportSet>
                 </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>3.0.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.eluder.coveralls</groupId>
-                <artifactId>coveralls-maven-plugin</artifactId>
-                <version>2.2.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <format>xml</format>
-                    <maxmem>256m</maxmem>
-                    <aggregate>true</aggregate>
-                </configuration>
             </plugin>
        </plugins>
     </reporting>
