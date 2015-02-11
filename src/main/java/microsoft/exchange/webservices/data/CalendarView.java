@@ -26,8 +26,7 @@ package microsoft.exchange.webservices.data;
 import java.util.Date;
 
 /**
- * Represents a date range view of appointments in calendar folder search
- * operations.
+ * Represents a date range view of appointments in calendar folder search operations.
  */
 public final class CalendarView extends ViewBase {
 
@@ -52,47 +51,6 @@ public final class CalendarView extends ViewBase {
   private Date endDate;
 
   /**
-   * Writes the attributes to XML.
-   *
-   * @param writer the writer
-   * @throws ServiceXmlSerializationException the service xml serialization exception
-   */
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
-      throws ServiceXmlSerializationException {
-    writer.writeAttributeValue(XmlAttributeNames.Traversal, this
-        .getTraversal());
-  }
-
-  /**
-   * Writes the search settings to XML.
-   *
-   * @param writer  the writer
-   * @param groupBy the group by
-   */
-  protected void internalWriteSearchSettingsToXml(EwsServiceXmlWriter writer,
-      Grouping groupBy) {
-    // No search settings for calendar views.
-  }
-
-  /**
-   * Writes OrderBy property to XML.
-   *
-   * @param writer the writer
-   */
-  protected void writeOrderByToXml(EwsServiceXmlWriter writer) {
-    // No OrderBy for calendar views.
-  }
-
-  /**
-   * Gets the type of service object this view applies to.
-   *
-   * @return A ServiceObjectType value.
-   */
-  protected ServiceObjectType getServiceObjectType() {
-    return ServiceObjectType.Item;
-  }
-
-  /**
    * Initializes a new instance of CalendarView.
    *
    * @param startDate the start date
@@ -114,6 +72,47 @@ public final class CalendarView extends ViewBase {
   public CalendarView(Date startDate, Date endDate, int maxItemsReturned) {
     this(startDate, endDate);
     this.maxItemsReturned = maxItemsReturned;
+  }
+
+  /**
+   * Writes the attributes to XML.
+   *
+   * @param writer the writer
+   * @throws ServiceXmlSerializationException the service xml serialization exception
+   */
+  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+      throws ServiceXmlSerializationException {
+    writer.writeAttributeValue(XmlAttributeNames.Traversal, this
+        .getTraversal());
+  }
+
+  /**
+   * Writes the search settings to XML.
+   *
+   * @param writer  the writer
+   * @param groupBy the group by
+   */
+  protected void internalWriteSearchSettingsToXml(EwsServiceXmlWriter writer,
+                                                  Grouping groupBy) {
+    // No search settings for calendar views.
+  }
+
+  /**
+   * Writes OrderBy property to XML.
+   *
+   * @param writer the writer
+   */
+  protected void writeOrderByToXml(EwsServiceXmlWriter writer) {
+    // No OrderBy for calendar views.
+  }
+
+  /**
+   * Gets the type of service object this view applies to.
+   *
+   * @return A ServiceObjectType value.
+   */
+  protected ServiceObjectType getServiceObjectType() {
+    return ServiceObjectType.Item;
   }
 
   /**
@@ -157,8 +156,7 @@ public final class CalendarView extends ViewBase {
   }
 
   /**
-   * Gets the maximum number of items or folders the search operation should
-   * return.
+   * Gets the maximum number of items or folders the search operation should return.
    *
    * @return The maximum number of items the search operation should return.
    */
@@ -230,8 +228,7 @@ public final class CalendarView extends ViewBase {
   }
 
   /**
-   * Gets  the search traversal mode. Defaults to
-   * ItemTraversal.Shallow.
+   * Gets  the search traversal mode. Defaults to ItemTraversal.Shallow.
    *
    * @return the traversal
    */

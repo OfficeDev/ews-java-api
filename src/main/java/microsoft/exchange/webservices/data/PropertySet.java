@@ -23,50 +23,32 @@
 
 package microsoft.exchange.webservices.data;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import javax.xml.stream.XMLStreamException;
-import java.util.*;
 
 /**
- * Represents a set of item or folder properties. Property sets are used to
- * indicate what properties of an item or folder should be loaded when binding
- * to an existing item or folder or when loading an item or folder's properties.
+ * Represents a set of item or folder properties. Property sets are used to indicate what properties
+ * of an item or folder should be loaded when binding to an existing item or folder or when loading
+ * an item or folder's properties.
  */
 public final class PropertySet implements ISelfValidate,
-    Iterable<PropertyDefinitionBase> {
+                                          Iterable<PropertyDefinitionBase> {
 
   /**
    * The Constant IdOnly.
    */
   public static final PropertySet IdOnly = PropertySet.
       createReadonlyPropertySet(BasePropertySet.IdOnly);
-
-  /**
-   * Returns a predefined property set that only includes the Id property.
-   *
-   * @return Returns a predefined property set that only includes the Id
-   * property.
-   */
-  public static PropertySet getIdOnly() {
-    return IdOnly;
-  }
-
   /**
    * The Constant FirstClassProperties.
    */
   public static final PropertySet FirstClassProperties = PropertySet.
       createReadonlyPropertySet(BasePropertySet.FirstClassProperties);
-
-  /**
-   * Returns a predefined property set that includes the first class
-   * properties of an item or folder.
-   *
-   * @return A predefined property set that includes the first class
-   * properties of an item or folder.
-   */
-  public static PropertySet getFirstClassProperties() {
-    return FirstClassProperties;
-  }
-
   /**
    * Maps BasePropertySet values to EWS's BaseShape values.
    */
@@ -78,9 +60,10 @@ public final class PropertySet implements ISelfValidate,
                                                            Map<BasePropertySet, String> result = new
                                                                HashMap<BasePropertySet, String>();
                                                            result.put(BasePropertySet.IdOnly,
-                                                               BasePropertySet.IdOnly
-                                                                   .getBaseShapeValue());
-                                                           result.put(BasePropertySet.FirstClassProperties,
+                                                                      BasePropertySet.IdOnly
+                                                                          .getBaseShapeValue());
+                                                           result.put(
+                                                               BasePropertySet.FirstClassProperties,
                                                                BasePropertySet.FirstClassProperties
                                                                    .getBaseShapeValue());
                                                            return result;
@@ -90,30 +73,23 @@ public final class PropertySet implements ISelfValidate,
    * The base property set this property set is based upon.
    */
   private BasePropertySet basePropertySet;
-
   /**
    * The list of additional properties included in this property set.
    */
   private List<PropertyDefinitionBase> additionalProperties = new
       ArrayList<PropertyDefinitionBase>();
-
   /**
-   * The requested body type for get and find operations. If null, the
-   * "best body" is returned.
+   * The requested body type for get and find operations. If null, the "best body" is returned.
    */
   private BodyType requestedBodyType;
-
   /**
    * Value indicating whether or not the server should filter HTML content.
    */
   private Boolean filterHtml;
-
   /**
-   * Value indicating whether or not the server
-   * should convert HTML code page to UTF8.
+   * Value indicating whether or not the server should convert HTML code page to UTF8.
    */
   private Boolean convertHtmlCodePageToUTF8;
-
   /**
    * Value indicating whether or not this PropertySet can be modified.
    */
@@ -124,12 +100,12 @@ public final class PropertySet implements ISelfValidate,
    *
    * @param basePropertySet      The base property set to base the property set upon.
    * @param additionalProperties Additional properties to include in the property set. Property
-   *                             definitions are available as static members from schema
-   *                             classes (for example, EmailMessageSchema.Subject,
-   *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
+   *                             definitions are available as static members from schema classes
+   *                             (for example, EmailMessageSchema.Subject, AppointmentSchema.Start,
+   *                             ContactSchema.GivenName, etc.)
    */
   public PropertySet(BasePropertySet basePropertySet,
-      PropertyDefinitionBase... additionalProperties) {
+                     PropertyDefinitionBase... additionalProperties) {
     this.basePropertySet = basePropertySet;
     if (null != additionalProperties) {
       for (PropertyDefinitionBase property : additionalProperties) {
@@ -143,12 +119,12 @@ public final class PropertySet implements ISelfValidate,
    *
    * @param basePropertySet      The base property set to base the property set upon.
    * @param additionalProperties Additional properties to include in the property set. Property
-   *                             definitions are available as static members from schema
-   *                             classes (for example, EmailMessageSchema.Subject,
-   *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
+   *                             definitions are available as static members from schema classes
+   *                             (for example, EmailMessageSchema.Subject, AppointmentSchema.Start,
+   *                             ContactSchema.GivenName, etc.)
    */
   public PropertySet(BasePropertySet basePropertySet,
-      Iterator<PropertyDefinitionBase> additionalProperties) {
+                     Iterator<PropertyDefinitionBase> additionalProperties) {
     this.basePropertySet = basePropertySet;
     if (null != additionalProperties) {
       while (additionalProperties.hasNext()) {
@@ -158,8 +134,7 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Initializes a new instance of PropertySet based upon
-   * BasePropertySet.IdOnly.
+   * Initializes a new instance of PropertySet based upon BasePropertySet.IdOnly.
    */
   public PropertySet() {
     this.basePropertySet = BasePropertySet.IdOnly;
@@ -175,43 +150,106 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Initializes a new instance of PropertySet based upon
-   * BasePropertySet.IdOnly.
+   * Initializes a new instance of PropertySet based upon BasePropertySet.IdOnly.
    *
    * @param additionalProperties Additional properties to include in the property set. Property
-   *                             definitions are available as static members from schema
-   *                             classes (for example, EmailMessageSchema.Subject,
-   *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
+   *                             definitions are available as static members from schema classes
+   *                             (for example, EmailMessageSchema.Subject, AppointmentSchema.Start,
+   *                             ContactSchema.GivenName, etc.)
    */
   public PropertySet(PropertyDefinitionBase... additionalProperties) {
     this(BasePropertySet.IdOnly, additionalProperties);
   }
 
   /**
-   * Initializes a new instance of PropertySet based upon
-   * BasePropertySet.IdOnly.
+   * Initializes a new instance of PropertySet based upon BasePropertySet.IdOnly.
    *
    * @param additionalProperties Additional properties to include in the property set. Property
-   *                             definitions are available as static members from schema
-   *                             classes (for example, EmailMessageSchema.Subject,
-   *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
+   *                             definitions are available as static members from schema classes
+   *                             (for example, EmailMessageSchema.Subject, AppointmentSchema.Start,
+   *                             ContactSchema.GivenName, etc.)
    */
   public PropertySet(Iterator<PropertyDefinitionBase> additionalProperties) {
     this(BasePropertySet.IdOnly, additionalProperties);
   }
 
   /**
-   * Implements an implicit conversion between
-   * PropertySet and BasePropertySet.
+   * Returns a predefined property set that only includes the Id property.
+   *
+   * @return Returns a predefined property set that only includes the Id property.
+   */
+  public static PropertySet getIdOnly() {
+    return IdOnly;
+  }
+
+  /**
+   * Returns a predefined property set that includes the first class properties of an item or
+   * folder.
+   *
+   * @return A predefined property set that includes the first class properties of an item or
+   * folder.
+   */
+  public static PropertySet getFirstClassProperties() {
+    return FirstClassProperties;
+  }
+
+  /**
+   * Implements an implicit conversion between PropertySet and BasePropertySet.
    *
    * @param basePropertySet The BasePropertySet value to convert from.
    * @return A PropertySet instance based on the specified base property set.
    */
   public static PropertySet getPropertySetFromBasePropertySet(BasePropertySet
-      basePropertySet) {
+                                                                  basePropertySet) {
     return new PropertySet(basePropertySet);
   }
 
+  /**
+   * Creates a read-only PropertySet.
+   *
+   * @param basePropertySet The base property set.
+   * @return PropertySet
+   */
+  private static PropertySet createReadonlyPropertySet(
+      BasePropertySet basePropertySet) {
+    PropertySet propertySet = new PropertySet(basePropertySet);
+    propertySet.isReadOnly = true;
+    return propertySet;
+  }
+
+  /**
+   * Maps BasePropertySet values to EWS's BaseShape values.
+   *
+   * @return the base property set
+   */
+  public static LazyMember<Map<BasePropertySet, String>> getDefaultPropertySetMap() {
+    return PropertySet.defaultPropertySetMap;
+
+  }
+
+  /**
+   * Writes additonal properties to XML.
+   *
+   * @param writer              The writer to write to.
+   * @param propertyDefinitions The property definitions to write.
+   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   */
+  protected static void writeAdditionalPropertiesToXml(
+      EwsServiceXmlWriter writer,
+      Iterator<PropertyDefinitionBase> propertyDefinitions)
+      throws XMLStreamException, ServiceXmlSerializationException {
+    writer.writeStartElement(XmlNamespace.Types,
+                             XmlElementNames.AdditionalProperties);
+
+    while (propertyDefinitions.hasNext()) {
+      PropertyDefinitionBase propertyDefinition = propertyDefinitions
+          .next();
+      propertyDefinition.writeToXml(writer);
+    }
+
+    writer.writeEndElement();
+  }
 
   /**
    * Adds the specified property to the property set.
@@ -255,19 +293,6 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Creates a read-only PropertySet.
-   *
-   * @param basePropertySet The base property set.
-   * @return PropertySet
-   */
-  private static PropertySet createReadonlyPropertySet(
-      BasePropertySet basePropertySet) {
-    PropertySet propertySet = new PropertySet(basePropertySet);
-    propertySet.isReadOnly = true;
-    return propertySet;
-  }
-
-  /**
    * Throws if readonly property set.
    */
   private void throwIfReadonly() {
@@ -278,12 +303,11 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Determines whether the specified property has been explicitly added to
-   * this property set using the Add or AddRange methods.
+   * Determines whether the specified property has been explicitly added to this property set using
+   * the Add or AddRange methods.
    *
    * @param property The property.
-   * @return true if this property set contains the specified property
-   * otherwise, false
+   * @return true if this property set contains the specified property otherwise, false
    */
   public boolean contains(PropertyDefinitionBase property) {
     return this.additionalProperties.contains(property);
@@ -310,16 +334,6 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Maps BasePropertySet values to EWS's BaseShape values.
-   *
-   * @return the base property set
-   */
-  public static LazyMember<Map<BasePropertySet, String>> getDefaultPropertySetMap() {
-    return PropertySet.defaultPropertySetMap;
-
-  }
-
-  /**
    * Sets the base property set, the property set is based upon.
    *
    * @param basePropertySet Base property set.
@@ -330,8 +344,8 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Gets type of body that should be loaded on items. If RequestedBodyType
-   * is null, body is returned as HTML if available, plain text otherwise.
+   * Gets type of body that should be loaded on items. If RequestedBodyType is null, body is
+   * returned as HTML if available, plain text otherwise.
    *
    * @return the requested body type
    */
@@ -340,8 +354,8 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Sets type of body that should be loaded on items. If RequestedBodyType is
-   * null, body is returned as HTML if available, plain text otherwise.
+   * Sets type of body that should be loaded on items. If RequestedBodyType is null, body is
+   * returned as HTML if available, plain text otherwise.
    *
    * @param requestedBodyType Type of body that should be loaded on items.
    */
@@ -360,8 +374,8 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Gets value indicating whether or not to filter potentially unsafe HTML
-   * content from message bodies.
+   * Gets value indicating whether or not to filter potentially unsafe HTML content from message
+   * bodies.
    *
    * @return the filter html content
    */
@@ -370,8 +384,8 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Sets value indicating whether or not to filter potentially unsafe HTML
-   * content from message bodies.
+   * Sets value indicating whether or not to filter potentially unsafe HTML content from message
+   * bodies.
    *
    * @param filterHtml true to filter otherwise false.
    */
@@ -380,11 +394,8 @@ public final class PropertySet implements ISelfValidate,
     this.filterHtml = filterHtml;
   }
 
-
-
   /**
-   * Gets value indicating whether or not to convert
-   * HTML code page to UTF8 encoding.
+   * Gets value indicating whether or not to convert HTML code page to UTF8 encoding.
    */
   public Boolean getConvertHtmlCodePageToUTF8() {
     return this.convertHtmlCodePageToUTF8;
@@ -392,15 +403,13 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Sets value indicating whether or not to
-   * convert HTML code page to UTF8 encoding.
+   * Sets value indicating whether or not to convert HTML code page to UTF8 encoding.
    */
   public void setConvertHtmlCodePageToUTF8(Boolean value) {
     this.throwIfReadonly();
     this.convertHtmlCodePageToUTF8 = value;
 
   }
-
 
   /**
    * Gets the PropertyDefinitionBase at the specified index.
@@ -412,7 +421,6 @@ public final class PropertySet implements ISelfValidate,
     return this.additionalProperties.get(index);
   }
 
-
   /**
    * Validate.
    *
@@ -421,30 +429,6 @@ public final class PropertySet implements ISelfValidate,
   @Override
   public void validate() throws ServiceValidationException {
     this.internalValidate();
-  }
-
-  /**
-   * Writes additonal properties to XML.
-   *
-   * @param writer              The writer to write to.
-   * @param propertyDefinitions The property definitions to write.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
-   */
-  protected static void writeAdditionalPropertiesToXml(
-      EwsServiceXmlWriter writer,
-      Iterator<PropertyDefinitionBase> propertyDefinitions)
-      throws XMLStreamException, ServiceXmlSerializationException {
-    writer.writeStartElement(XmlNamespace.Types,
-        XmlElementNames.AdditionalProperties);
-
-    while (propertyDefinitions.hasNext()) {
-      PropertyDefinitionBase propertyDefinition = propertyDefinitions
-          .next();
-      propertyDefinition.writeToXml(writer);
-    }
-
-    writer.writeEndElement();
   }
 
   /**
@@ -462,10 +446,9 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Validates this property set instance for request to ensure that: 1.
-   * Properties are valid for the request server version 2. If only summary
-   * properties are legal for this request (e.g. FindItem) then only summary
-   * properties were specified.
+   * Validates this property set instance for request to ensure that: 1. Properties are valid for
+   * the request server version 2. If only summary properties are legal for this request (e.g.
+   * FindItem) then only summary properties were specified.
    *
    * @param request               The request.
    * @param summaryPropertiesOnly if set to true then only summary properties are allowed.
@@ -473,8 +456,8 @@ public final class PropertySet implements ISelfValidate,
    * @throws ServiceValidationException the service validation exception
    */
   protected void validateForRequest(ServiceRequestBase request,
-      boolean summaryPropertiesOnly) throws ServiceVersionException,
-      ServiceValidationException {
+                                    boolean summaryPropertiesOnly) throws ServiceVersionException,
+                                                                          ServiceValidationException {
     for (PropertyDefinitionBase propDefBase : this.additionalProperties) {
       if (propDefBase instanceof PropertyDefinition) {
         PropertyDefinition propertyDefinition =
@@ -499,7 +482,8 @@ public final class PropertySet implements ISelfValidate,
       }
     }
     if (this.getFilterHtmlContent() != null) {
-      if (request.getService().getRequestedServerVersion().compareTo(ExchangeVersion.Exchange2010) < 0) {
+      if (request.getService().getRequestedServerVersion().compareTo(ExchangeVersion.Exchange2010)
+          < 0) {
         throw new ServiceVersionException(
             String.format(
                 Strings.PropertyIncompatibleWithRequestVersion,
@@ -509,7 +493,8 @@ public final class PropertySet implements ISelfValidate,
     }
 
     if (this.getConvertHtmlCodePageToUTF8() != null) {
-      if (request.getService().getRequestedServerVersion().compareTo(ExchangeVersion.Exchange2010_SP1) < 0) {
+      if (request.getService().getRequestedServerVersion()
+              .compareTo(ExchangeVersion.Exchange2010_SP1) < 0) {
         throw new ServiceVersionException(
             String.format(
                 Strings.PropertyIncompatibleWithRequestVersion,
@@ -528,27 +513,27 @@ public final class PropertySet implements ISelfValidate,
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   protected void writeToXml(EwsServiceXmlWriter writer,
-      ServiceObjectType serviceObjectType) throws XMLStreamException,
-      ServiceXmlSerializationException {
+                            ServiceObjectType serviceObjectType) throws XMLStreamException,
+                                                                        ServiceXmlSerializationException {
     writer
         .writeStartElement(
             XmlNamespace.Messages,
             serviceObjectType == ServiceObjectType.Item ?
-                XmlElementNames.ItemShape
-                : XmlElementNames.FolderShape);
+            XmlElementNames.ItemShape
+                                                        : XmlElementNames.FolderShape);
 
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.BaseShape,
-        this.getBasePropertySet().getBaseShapeValue());
+                             this.getBasePropertySet().getBaseShapeValue());
 
     if (serviceObjectType == ServiceObjectType.Item) {
       if (this.getRequestedBodyType() != null) {
         writer.writeElementValue(XmlNamespace.Types,
-            XmlElementNames.BodyType, this.getRequestedBodyType());
+                                 XmlElementNames.BodyType, this.getRequestedBodyType());
       }
 
       if (this.getFilterHtmlContent() != null) {
         writer.writeElementValue(XmlNamespace.Types,
-            XmlElementNames.FilterHtmlContent, this
+                                 XmlElementNames.FilterHtmlContent, this
                 .getFilterHtmlContent());
       }
       if ((this.getConvertHtmlCodePageToUTF8() != null) &&

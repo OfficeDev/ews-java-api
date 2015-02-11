@@ -98,7 +98,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
    * @throws Exception the exception
    */
   protected void writeToXml(EwsServiceXmlWriter writer,
-      XmlNamespace ewsNamesapce, String xmlElementName) throws Exception {
+                            XmlNamespace ewsNamesapce, String xmlElementName) throws Exception {
     if (this.getCount() > 0) {
       writer.writeStartElement(ewsNamesapce, xmlElementName);
 

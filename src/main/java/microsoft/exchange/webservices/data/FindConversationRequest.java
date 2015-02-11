@@ -54,7 +54,6 @@ final class FindConversationRequest extends SimpleServiceRequestBase {
   }
 
 
-
   /**
    * Gets or sets the search filter.
    */
@@ -82,9 +81,6 @@ final class FindConversationRequest extends SimpleServiceRequestBase {
 
   /**
    * Validate request.
-   *
-   * @throws Exception
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException
    */
   @Override
   protected void validate() throws ServiceLocalException, Exception {
@@ -97,7 +93,6 @@ final class FindConversationRequest extends SimpleServiceRequestBase {
    * Writes XML attributes.
    *
    * @param writer The writer.
-   * @throws ServiceXmlSerializationException
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
@@ -110,7 +105,6 @@ final class FindConversationRequest extends SimpleServiceRequestBase {
    * Writes XML attributes.
    *
    * @param writer The writer.
-   * @throws Exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
@@ -119,7 +113,7 @@ final class FindConversationRequest extends SimpleServiceRequestBase {
 
     if (this.getConversationViewFilter() != null) {
       writer.writeStartElement(XmlNamespace.Messages,
-          XmlElementNames.Restriction);
+                               XmlElementNames.Restriction);
       this.getConversationViewFilter().writeToXml(writer);
       writer.writeEndElement(); // Restriction
     }
@@ -127,7 +121,7 @@ final class FindConversationRequest extends SimpleServiceRequestBase {
     this.getIndexedItemView().writeOrderByToXml(writer);
 
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.ParentFolderId);
+                             XmlElementNames.ParentFolderId);
     this.getFolderId().writeToXml(writer);
     writer.writeEndElement();
   }
@@ -137,14 +131,13 @@ final class FindConversationRequest extends SimpleServiceRequestBase {
    *
    * @param reader The reader.
    * @return Response object.
-   * @throws Exception
    */
   @Override
   protected Object parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     FindConversationResponse response = new FindConversationResponse();
     response.loadFromXml(reader,
-        XmlElementNames.FindConversationResponse);
+                         XmlElementNames.FindConversationResponse);
     return response;
   }
 
@@ -182,8 +175,6 @@ final class FindConversationRequest extends SimpleServiceRequestBase {
    * Executes this request.
    *
    * @return Service response.
-   * @throws Exception
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException
    */
   protected FindConversationResponse execute()
       throws ServiceLocalException, Exception {

@@ -41,19 +41,6 @@ public final class OofReply {
   private String message;
 
   /**
-   * Writes an empty OofReply to XML.
-   *
-   * @param writer         the writer
-   * @param xmlElementName the xml element name
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   */
-  protected static void writeEmptyReplyToXml(EwsServiceXmlWriter writer,
-      String xmlElementName) throws XMLStreamException {
-    writer.writeStartElement(XmlNamespace.Types, xmlElementName);
-    writer.writeEndElement(); // xmlElementName
-  }
-
-  /**
    * Initializes a new instance of the class.
    */
   public OofReply() {
@@ -66,6 +53,19 @@ public final class OofReply {
    */
   public OofReply(String message) {
     this.message = message;
+  }
+
+  /**
+   * Writes an empty OofReply to XML.
+   *
+   * @param writer         the writer
+   * @param xmlElementName the xml element name
+   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   */
+  protected static void writeEmptyReplyToXml(EwsServiceXmlWriter writer,
+                                             String xmlElementName) throws XMLStreamException {
+    writer.writeStartElement(XmlNamespace.Types, xmlElementName);
+    writer.writeEndElement(); // xmlElementName
   }
 
   /**
@@ -99,17 +99,17 @@ public final class OofReply {
    * @throws Exception the exception
    */
   protected void loadFromXml(EwsServiceXmlReader reader,
-      String xmlElementName)
+                             String xmlElementName)
       throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
-        xmlElementName);
+                                           xmlElementName);
 
     if (reader.hasAttributes()) {
       this.setCulture(reader.readAttributeValue("xml:lang"));
     }
 
     this.message = reader.readElementValue(XmlNamespace.Types,
-        XmlElementNames.Message);
+                                           XmlElementNames.Message);
 
     reader.readEndElement(XmlNamespace.Types, xmlElementName);
   }
@@ -131,7 +131,7 @@ public final class OofReply {
     }
 
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Message,
-        this.message);
+                             this.message);
 
     writer.writeEndElement(); // xmlElementName
   }

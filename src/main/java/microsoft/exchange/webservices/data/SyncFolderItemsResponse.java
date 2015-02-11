@@ -27,7 +27,7 @@ package microsoft.exchange.webservices.data;
  * Represents the response to a folder items synchronization operation.
  */
 public final class SyncFolderItemsResponse extends
-    SyncResponse<Item, ItemChange> {
+                                           SyncResponse<Item, ItemChange> {
 
   /**
    * Initializes a new instance of the class.
@@ -59,9 +59,8 @@ public final class SyncFolderItemsResponse extends
   }
 
   /**
-   * Gets a value indicating whether this request returns full or summary
-   * properties. <value> <c>true</c> if summary properties only; otherwise,
-   * <c>false</c>. </value>
+   * Gets a value indicating whether this request returns full or summary properties. <value>
+   * <c>true</c> if summary properties only; otherwise, <c>false</c>. </value>
    *
    * @return the summary properties only
    */

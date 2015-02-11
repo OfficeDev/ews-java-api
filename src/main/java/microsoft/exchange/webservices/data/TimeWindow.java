@@ -23,10 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a time period.
@@ -59,6 +60,30 @@ public class TimeWindow implements ISelfValidate {
     this();
     this.startTime = startTime;
     this.endTime = endTime;
+  }
+
+  /**
+   * Writes to XML.
+   *
+   * @param writer         the writer
+   * @param xmlElementName the xml element name
+   * @param startTime      the start time
+   * @param endTime        the end time
+   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   */
+  private static void writeToXml(EwsServiceXmlWriter writer,
+                                 String xmlElementName, Object startTime, Object endTime)
+      throws XMLStreamException, ServiceXmlSerializationException {
+    writer.writeStartElement(XmlNamespace.Types, xmlElementName);
+
+    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.StartTime,
+                             startTime);
+
+    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.EndTime,
+                             endTime);
+
+    writer.writeEndElement(); // xmlElementName
   }
 
   /**
@@ -105,38 +130,14 @@ public class TimeWindow implements ISelfValidate {
    */
   protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
-        XmlElementNames.Duration);
+                                           XmlElementNames.Duration);
 
     this.startTime = reader.readElementValueAsDateTime(XmlNamespace.Types,
-        XmlElementNames.StartTime);
+                                                       XmlElementNames.StartTime);
     this.endTime = reader.readElementValueAsDateTime(XmlNamespace.Types,
-        XmlElementNames.EndTime);
+                                                     XmlElementNames.EndTime);
 
     reader.readEndElement(XmlNamespace.Types, XmlElementNames.Duration);
-  }
-
-  /**
-   * Writes to XML.
-   *
-   * @param writer         the writer
-   * @param xmlElementName the xml element name
-   * @param startTime      the start time
-   * @param endTime        the end time
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
-   */
-  private static void writeToXml(EwsServiceXmlWriter writer,
-      String xmlElementName, Object startTime, Object endTime)
-      throws XMLStreamException, ServiceXmlSerializationException {
-    writer.writeStartElement(XmlNamespace.Types, xmlElementName);
-
-    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.StartTime,
-        startTime);
-
-    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.EndTime,
-        endTime);
-
-    writer.writeEndElement(); // xmlElementName
   }
 
   /**
@@ -148,8 +149,8 @@ public class TimeWindow implements ISelfValidate {
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   protected void writeToXmlUnscopedDatesOnly(EwsServiceXmlWriter writer,
-      String xmlElementName) throws XMLStreamException,
-      ServiceXmlSerializationException {
+                                             String xmlElementName) throws XMLStreamException,
+                                                                           ServiceXmlSerializationException {
     final String DateOnlyFormat = "yyyy-MM-dd'T'00:00:00";
 
     DateFormat formatter = new SimpleDateFormat(DateOnlyFormat);
@@ -170,7 +171,7 @@ public class TimeWindow implements ISelfValidate {
   protected void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
       throws XMLStreamException, ServiceXmlSerializationException {
     TimeWindow.writeToXml(writer, xmlElementName, this.startTime,
-        this.endTime);
+                          this.endTime);
   }
 
   /**
@@ -187,7 +188,7 @@ public class TimeWindow implements ISelfValidate {
    */
   public void validate() {
                 /*
-		 * if (this.startTime >= this.endTime) { throw new
+                 * if (this.startTime >= this.endTime) { throw new
 		 * ArgumentException(Strings
 		 * .TimeWindowStartTimeMustBeGreaterThanEndTime); }
 		 */

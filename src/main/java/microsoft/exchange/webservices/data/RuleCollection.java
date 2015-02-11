@@ -30,7 +30,7 @@ import java.util.Iterator;
  * Represents a collection of rules.
  */
 public final class RuleCollection extends
-    ComplexProperty implements Iterable<Rule> {
+                                  ComplexProperty implements Iterable<Rule> {
 
   /**
    * The OutlookRuleBlobExists flag.
@@ -51,10 +51,9 @@ public final class RuleCollection extends
   }
 
   /**
-   * Gets a value indicating whether an Outlook rule blob exists in the user's
-   * mailbox. To update rules with EWS when the Outlook rule blob exists, call
-   * SetInboxRules passing true as the
-   * value of the removeOutlookBlob parameter.
+   * Gets a value indicating whether an Outlook rule blob exists in the user's mailbox. To update
+   * rules with EWS when the Outlook rule blob exists, call SetInboxRules passing true as the value
+   * of the removeOutlookBlob parameter.
    */
   public boolean getOutlookRuleBlobExists() {
     return this.outlookRuleBlobExists;
@@ -76,7 +75,6 @@ public final class RuleCollection extends
    *
    * @param index The index of the rule to get.
    * @return The rule at the specified index.
-   * @throws ArgumentOutOfRangeException
    */
   public Rule getRule(int index) throws ArgumentOutOfRangeException {
     if (index < 0 || index >= this.rules.size()) {
@@ -93,7 +91,6 @@ public final class RuleCollection extends
    *
    * @param reader The reader.
    * @return True if element was read.
-   * @throws Exception
    */
   @Override
   protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)

@@ -50,10 +50,9 @@ abstract class CreateItemRequestBase<TServiceObject extends ServiceObject,
    *
    * @param service           The service.
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   protected CreateItemRequestBase(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                                  ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -131,7 +130,7 @@ abstract class CreateItemRequestBase<TServiceObject extends ServiceObject,
     super.writeAttributesToXml(writer);
     if (this.messageDisposition != null) {
       writer.writeAttributeValue(XmlAttributeNames.MessageDisposition,
-          this.getMessageDisposition());
+                                 this.getMessageDisposition());
     }
     if (this.sendInvitationsMode != null) {
       writer.writeAttributeValue(
@@ -177,21 +176,21 @@ abstract class CreateItemRequestBase<TServiceObject extends ServiceObject,
   }
 
   /**
-   * Gets  the items.
-   *
-   * @param value the new items
-   */
-  public void setItems(Collection<TServiceObject> value) {
-    this.setObjects(value);
-  }
-
-  /**
    * Gets the items.
    *
    * @return the items
    */
   public Iterable<TServiceObject> getItems() {
     return this.getObjects();
+  }
+
+  /**
+   * Gets  the items.
+   *
+   * @param value the new items
+   */
+  public void setItems(Collection<TServiceObject> value) {
+    this.setObjects(value);
   }
 
 }

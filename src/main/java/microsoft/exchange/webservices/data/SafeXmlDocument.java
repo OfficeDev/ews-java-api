@@ -30,12 +30,18 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.io.StringReader;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import java.io.*;
 
 /**
  * XmlDocument that does not allow DTD parsing.
@@ -53,11 +59,9 @@ public class SafeXmlDocument extends DocumentBuilder {
   }
 
   /**
-   * Initializes a new instance of the SafeXmlDocument class with the
-   * specified XSImplementation.
+   * Initializes a new instance of the SafeXmlDocument class with the specified XSImplementation.
    *
    * @param imp The XmlImplementation to use.
-   * @throws NotSupportedException
    */
   // <remarks>Not supported do to no use within exchange dev code.</remarks>
   public SafeXmlDocument(DocumentBuilder imp) throws NotSupportedException {
@@ -65,8 +69,7 @@ public class SafeXmlDocument extends DocumentBuilder {
   }
 
   /**
-   * Initializes a new instance of the SafeXmlDocument class with the
-   * specified XmlNameTable.
+   * Initializes a new instance of the SafeXmlDocument class with the specified XmlNameTable.
    *
    * @param nt The XmlNameTable to use.
    */
@@ -81,7 +84,6 @@ public class SafeXmlDocument extends DocumentBuilder {
    * Loads the XML document from the specified stream.
    *
    * @param inStream The stream containing the XML document to load.
-   * @throws javax.xml.stream.XMLStreamException
    */
   public void load(InputStream inStream) throws XMLStreamException {
     // not in a using block because
@@ -97,8 +99,8 @@ public class SafeXmlDocument extends DocumentBuilder {
   /**
    * Loads the XML document from the specified URL.
    *
-   * @param filename URL for the file containing the XML document to load. The URL
-   *                 can be either a local file or an HTTP URL (a Web address).
+   * @param filename URL for the file containing the XML document to load. The URL can be either a
+   *                 local file or an HTTP URL (a Web address).
    */
   public void load(String filename) {
     if (inputFactory != null) {
@@ -144,8 +146,6 @@ public class SafeXmlDocument extends DocumentBuilder {
    * Loads the XML document from the specified XMLReader.
    *
    * @param reader The XMLReader used to feed the XML data into the document.
-   * @throws java.io.IOException
-   * @throws org.xml.sax.SAXException
    */
   public void load(XMLStreamReader reader) throws SAXException, IOException {
 

@@ -27,7 +27,7 @@ package microsoft.exchange.webservices.data;
  * Represents a SyncFolderItems request.
  */
 class SyncFolderItemsRequest extends
-    MultiResponseServiceRequest<SyncFolderItemsResponse> {
+                             MultiResponseServiceRequest<SyncFolderItemsResponse> {
 
   /**
    * The property set.
@@ -63,7 +63,6 @@ class SyncFolderItemsRequest extends
    * Initializes a new instance of the class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected SyncFolderItemsRequest(ExchangeService service)
       throws Exception {
@@ -164,24 +163,24 @@ class SyncFolderItemsRequest extends
     this.getPropertySet().writeToXml(writer, ServiceObjectType.Item);
 
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.SyncFolderId);
+                             XmlElementNames.SyncFolderId);
     this.getSyncFolderId().writeToXml(writer);
     writer.writeEndElement();
 
     writer.writeElementValue(XmlNamespace.Messages,
-        XmlElementNames.SyncState, this.getSyncState());
+                             XmlElementNames.SyncState, this.getSyncState());
 
     this.getIgnoredItemIds().writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.Ignore);
+                                        XmlElementNames.Ignore);
 
     writer.writeElementValue(XmlNamespace.Messages,
-        XmlElementNames.MaxChangesReturned, this
+                             XmlElementNames.MaxChangesReturned, this
             .getMaxChangesReturned());
 
     if (this.getService().getRequestedServerVersion().compareTo(
         ExchangeVersion.Exchange2010) >= 0) {
       writer.writeElementValue(XmlNamespace.Messages,
-          XmlElementNames.SyncScope, this.syncScope);
+                               XmlElementNames.SyncScope, this.syncScope);
     }
   }
 
@@ -232,8 +231,7 @@ class SyncFolderItemsRequest extends
   }
 
   /**
-   * Gets the scope of the sync. <value>The scope of the
-   * sync.</value>
+   * Gets the scope of the sync. <value>The scope of the sync.</value>
    *
    * @return the sync scope
    */
@@ -251,8 +249,7 @@ class SyncFolderItemsRequest extends
   }
 
   /**
-   * Gets the state of the sync. <value>The state of the
-   * sync.</value>
+   * Gets the state of the sync. <value>The state of the sync.</value>
    *
    * @return the sync state
    */
@@ -279,8 +276,8 @@ class SyncFolderItemsRequest extends
   }
 
   /**
-   * Gets the maximum number of changes returned by SyncFolderItems.
-   * Values must be between 1 and 512. Default is 100.
+   * Gets the maximum number of changes returned by SyncFolderItems. Values must be between 1 and
+   * 512. Default is 100.
    *
    * @return the max changes returned
    */

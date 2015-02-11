@@ -27,12 +27,22 @@ package microsoft.exchange.webservices.data;
  * Represents a CreateUserConfiguration request.
  */
 class CreateUserConfigurationRequest extends
-    MultiResponseServiceRequest<ServiceResponse> {
+                                     MultiResponseServiceRequest<ServiceResponse> {
 
   /**
    * The user configuration.
    */
   protected UserConfiguration userConfiguration;
+
+  /**
+   * Initializes a new instance of the <see cref="CreateUserConfigurationRequest"/> class.
+   *
+   * @param service The service.
+   */
+  protected CreateUserConfigurationRequest(ExchangeService service)
+      throws Exception {
+    super(service, ServiceErrorHandling.ThrowOnError);
+  }
 
   /**
    * Validate request.
@@ -54,7 +64,7 @@ class CreateUserConfigurationRequest extends
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new ServiceResponse();
   }
 
@@ -119,19 +129,7 @@ class CreateUserConfigurationRequest extends
       throws Exception {
     // Write UserConfiguation element
     this.userConfiguration.writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.UserConfiguration);
-  }
-
-  /**
-   * Initializes a new instance of the <see
-   * cref="CreateUserConfigurationRequest"/> class.
-   *
-   * @param service The service.
-   * @throws Exception
-   */
-  protected CreateUserConfigurationRequest(ExchangeService service)
-      throws Exception {
-    super(service, ServiceErrorHandling.ThrowOnError);
+                                      XmlElementNames.UserConfiguration);
   }
 
   /**

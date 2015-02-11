@@ -41,7 +41,7 @@ public final class DeleteAttachmentResponse extends ServiceResponse {
   protected DeleteAttachmentResponse(Attachment attachment) {
     super();
     EwsUtilities.EwsAssert(attachment != null,
-        "DeleteAttachmentResponse.ctor", "attachment is null");
+                           "DeleteAttachmentResponse.ctor", "attachment is null");
 
     this.attachment = attachment;
   }
@@ -59,7 +59,7 @@ public final class DeleteAttachmentResponse extends ServiceResponse {
     super.readElementsFromXml(reader);
 
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.RootItemId);
+                            XmlElementNames.RootItemId);
 
     String changeKey = reader
         .readAttributeValue(XmlAttributeNames.RootItemChangeKey);
@@ -67,7 +67,7 @@ public final class DeleteAttachmentResponse extends ServiceResponse {
       this.attachment.getOwner().getRootItemId().setChangeKey(changeKey);
     }
     reader.readEndElement(XmlNamespace.Messages,
-        XmlElementNames.RootItemId);
+                          XmlElementNames.RootItemId);
   }
 
   /**

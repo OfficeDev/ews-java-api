@@ -58,8 +58,8 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
     super(xmlElementName, flags, version);
     this.instance = cls;
     EwsUtilities.EwsAssert(propertyCreationDelegate != null,
-        "ComplexPropertyDefinition ctor",
-        "CreateComplexPropertyDelegate cannot be null");
+                           "ComplexPropertyDefinition ctor",
+                           "CreateComplexPropertyDelegate cannot be null");
 
     this.propertyCreationDelegate = propertyCreationDelegate;
   }
@@ -167,7 +167,7 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
 			       getGenericSuperclass()).getActualTypeArguments()[0]).
 			       newInstance(); */
                 /*return ((Class)((ParameterizedType)this.getClass().
-			       getGenericSuperclass()).getActualTypeArguments()[0]).
+                               getGenericSuperclass()).getActualTypeArguments()[0]).
 			       newInstance();*/
     //return ComplexProperty.class;
     return this.instance;

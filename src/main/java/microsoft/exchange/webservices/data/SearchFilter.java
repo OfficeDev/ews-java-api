@@ -23,14 +23,15 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.xml.stream.XMLStreamException;
+
 /**
- * Represents the base search filter class. Use descendant search filter classes
- * such as SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
- * SearchFilter.SearchFilterCollection to define search filters.
+ * Represents the base search filter class. Use descendant search filter classes such as
+ * SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection to
+ * define search filters.
  */
 public abstract class SearchFilter extends ComplexProperty {
 
@@ -125,9 +126,8 @@ public abstract class SearchFilter extends ComplexProperty {
   }
 
   /**
-   * Represents a search filter that checks for the presence of a substring
-   * inside a text property. Applications can use ContainsSubstring to define
-   * conditions such as "Field CONTAINS Value" or
+   * Represents a search filter that checks for the presence of a substring inside a text property.
+   * Applications can use ContainsSubstring to define conditions such as "Field CONTAINS Value" or
    * "Field IS PREFIXED WITH Value".
    */
   public static final class ContainsSubstring extends PropertyBasedFilter {
@@ -161,7 +161,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param value              The value to compare with.
      */
     public ContainsSubstring(PropertyDefinitionBase propertyDefinition,
-        String value) {
+                             String value) {
       super(propertyDefinition);
       this.value = value;
     }
@@ -175,8 +175,8 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param comparisonMode     The comparison mode.
      */
     public ContainsSubstring(PropertyDefinitionBase propertyDefinition,
-        String value, ContainmentMode containmentMode,
-        ComparisonMode comparisonMode) {
+                             String value, ContainmentMode containmentMode,
+                             ComparisonMode comparisonMode) {
       this(propertyDefinition, value);
       this.containmentMode = containmentMode;
       this.comparisonMode = comparisonMode;
@@ -268,9 +268,9 @@ public abstract class SearchFilter extends ComplexProperty {
       super.writeAttributesToXml(writer);
 
       writer.writeAttributeValue(XmlAttributeNames.ContainmentMode,
-          this.containmentMode);
+                                 this.containmentMode);
       writer.writeAttributeValue(XmlAttributeNames.ContainmentComparison,
-          this.comparisonMode);
+                                 this.comparisonMode);
     }
 
     /**
@@ -286,7 +286,7 @@ public abstract class SearchFilter extends ComplexProperty {
       super.writeElementsToXml(writer);
 
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.Constant);
+                               XmlElementNames.Constant);
       writer.writeAttributeValue(XmlAttributeNames.Value, this.value);
       writer.writeEndElement(); // Constant
     }
@@ -349,8 +349,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
   /**
    * Represents a bitmask exclusion search filter. Applications can use
-   * ExcludesBitExcludesBitmaskFilter to define conditions such as
-   * "(OrdinalField and 0x0010) != 0x0010"
+   * ExcludesBitExcludesBitmaskFilter to define conditions such as "(OrdinalField and 0x0010) !=
+   * 0x0010"
    */
   public static class ExcludesBitmask extends PropertyBasedFilter {
 
@@ -373,7 +373,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param bitmask            the bitmask
      */
     public ExcludesBitmask(PropertyDefinitionBase propertyDefinition,
-        int bitmask) {
+                           int bitmask) {
       super(propertyDefinition);
       this.bitmask = bitmask;
     }
@@ -404,7 +404,7 @@ public abstract class SearchFilter extends ComplexProperty {
         if (reader.getLocalName().equals(XmlElementNames.Bitmask)) {
           // EWS always returns the Bitmask value in hexadecimal
           this.bitmask = Integer.parseInt(reader
-              .readAttributeValue(XmlAttributeNames.Value));
+                                              .readAttributeValue(XmlAttributeNames.Value));
         }
       }
 
@@ -424,7 +424,7 @@ public abstract class SearchFilter extends ComplexProperty {
       super.writeElementsToXml(writer);
 
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.Bitmask);
+                               XmlElementNames.Bitmask);
       writer.writeAttributeValue(XmlAttributeNames.Value, this.bitmask);
       writer.writeEndElement(); // Bitmask
     }
@@ -451,8 +451,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter checking if a field is set. Applications can
-   * use ExistsFilter to define conditions such as "Field IS SET".
+   * Represents a search filter checking if a field is set. Applications can use ExistsFilter to
+   * define conditions such as "Field IS SET".
    */
   public static final class Exists extends PropertyBasedFilter {
 
@@ -485,8 +485,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is equal to a given
-   * value or other property.
+   * Represents a search filter that checks if a property is equal to a given value or other
+   * property.
    */
   public static class IsEqualTo extends RelationalFilter {
 
@@ -504,7 +504,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param otherPropertyDefinition The definition of the property to compare with.
      */
     public IsEqualTo(PropertyDefinitionBase propertyDefinition,
-        PropertyDefinitionBase otherPropertyDefinition) {
+                     PropertyDefinitionBase otherPropertyDefinition) {
       super(propertyDefinition, otherPropertyDefinition);
     }
 
@@ -515,7 +515,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param value              The value of the property to compare with.
      */
     public IsEqualTo(PropertyDefinitionBase propertyDefinition,
-        Object value) {
+                     Object value) {
       super(propertyDefinition, value);
     }
 
@@ -533,8 +533,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is greater than a
-   * given value or other property.
+   * Represents a search filter that checks if a property is greater than a given value or other
+   * property.
    */
   public static class IsGreaterThan extends RelationalFilter {
 
@@ -552,7 +552,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param otherPropertyDefinition The definition of the property to compare with.
      */
     public IsGreaterThan(PropertyDefinitionBase propertyDefinition,
-        PropertyDefinitionBase otherPropertyDefinition) {
+                         PropertyDefinitionBase otherPropertyDefinition) {
       super(propertyDefinition, otherPropertyDefinition);
     }
 
@@ -563,7 +563,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param value              The value of the property to compare with.
      */
     public IsGreaterThan(PropertyDefinitionBase propertyDefinition,
-        Object value) {
+                         Object value) {
       super(propertyDefinition, value);
     }
 
@@ -580,8 +580,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is greater than or
-   * equal to a given value or other property.
+   * Represents a search filter that checks if a property is greater than or equal to a given value
+   * or other property.
    */
   public static class IsGreaterThanOrEqualTo extends RelationalFilter {
 
@@ -629,8 +629,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is less than a given
-   * value or other property.
+   * Represents a search filter that checks if a property is less than a given value or other
+   * property.
    */
   public static class IsLessThan extends RelationalFilter {
 
@@ -648,7 +648,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param otherPropertyDefinition The definition of the property to compare with.
      */
     public IsLessThan(PropertyDefinitionBase propertyDefinition,
-        PropertyDefinitionBase otherPropertyDefinition) {
+                      PropertyDefinitionBase otherPropertyDefinition) {
       super(propertyDefinition, otherPropertyDefinition);
     }
 
@@ -659,7 +659,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param value              The value of the property to compare with.
      */
     public IsLessThan(PropertyDefinitionBase propertyDefinition,
-        Object value) {
+                      Object value) {
       super(propertyDefinition, value);
     }
 
@@ -677,8 +677,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is less than or
-   * equal to a given value or other property.
+   * Represents a search filter that checks if a property is less than or equal to a given value or
+   * other property.
    */
   public static class IsLessThanOrEqualTo extends RelationalFilter {
 
@@ -696,7 +696,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param otherPropertyDefinition The definition of the property to compare with.
      */
     public IsLessThanOrEqualTo(PropertyDefinitionBase propertyDefinition,
-        PropertyDefinitionBase otherPropertyDefinition) {
+                               PropertyDefinitionBase otherPropertyDefinition) {
       super(propertyDefinition, otherPropertyDefinition);
     }
 
@@ -707,7 +707,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param value              The value of the property to compare with.
      */
     public IsLessThanOrEqualTo(PropertyDefinitionBase propertyDefinition,
-        Object value) {
+                               Object value) {
       super(propertyDefinition, value);
     }
 
@@ -725,8 +725,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that checks if a property is not equal to a
-   * given value or other property.
+   * Represents a search filter that checks if a property is not equal to a given value or other
+   * property.
    */
   public static class IsNotEqualTo extends RelationalFilter {
 
@@ -744,7 +744,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param otherPropertyDefinition The definition of the property to compare with.
      */
     public IsNotEqualTo(PropertyDefinitionBase propertyDefinition,
-        PropertyDefinitionBase otherPropertyDefinition) {
+                        PropertyDefinitionBase otherPropertyDefinition) {
       super(propertyDefinition, otherPropertyDefinition);
     }
 
@@ -755,7 +755,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param value              The value of the property to compare with.
      */
     public IsNotEqualTo(PropertyDefinitionBase propertyDefinition,
-        Object value) {
+                        Object value) {
       super(propertyDefinition, value);
     }
 
@@ -773,11 +773,11 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a search filter that negates another. Applications can use
-   * NotFilter to define conditions such as "NOT(other filter)".
+   * Represents a search filter that negates another. Applications can use NotFilter to define
+   * conditions such as "NOT(other filter)".
    */
   public static class Not extends SearchFilter implements
-      IComplexPropertyChangedDelegate {
+                                               IComplexPropertyChangedDelegate {
 
     /**
      * The search filter.
@@ -860,10 +860,8 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Gets  the search filter to negate. Available search filter
-     * classes include SearchFilter.IsEqualTo,
-     * SearchFilter.ContainsSubstring and
-     * SearchFilter.SearchFilterCollection.
+     * Gets  the search filter to negate. Available search filter classes include
+     * SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection.
      *
      * @return SearchFilter
      */
@@ -872,9 +870,8 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Sets the search filter to negate. Available search filter classes
-     * include SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
-     * SearchFilter.SearchFilterCollection.
+     * Sets the search filter to negate. Available search filter classes include
+     * SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection.
      *
      * @param searchFilter the new search filter
      */
@@ -983,8 +980,7 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Gets the definition of the property that is involved in the search
-     * filter.
+     * Gets the definition of the property that is involved in the search filter.
      *
      * @return propertyDefinition
      */
@@ -993,8 +989,7 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Sets the definition of the property that is involved in the search
-     * filter.
+     * Sets the definition of the property that is involved in the search filter.
      *
      * @param propertyDefinition the new property definition
      */
@@ -1006,8 +1001,8 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents the base class for relational filters (for example, IsEqualTo,
-   * IsGreaterThan or IsLessThanOrEqualTo).
+   * Represents the base class for relational filters (for example, IsEqualTo, IsGreaterThan or
+   * IsLessThanOrEqualTo).
    */
   @EditorBrowsable(state = EditorBrowsableState.Never)
   public abstract static class RelationalFilter extends PropertyBasedFilter {
@@ -1036,7 +1031,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param otherPropertyDefinition The definition of the property to compare with
      */
     RelationalFilter(PropertyDefinitionBase propertyDefinition,
-        PropertyDefinitionBase otherPropertyDefinition) {
+                     PropertyDefinitionBase otherPropertyDefinition) {
       super(propertyDefinition);
       this.otherPropertyDefinition = otherPropertyDefinition;
     }
@@ -1048,7 +1043,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param value              The value to compare with.
      */
     RelationalFilter(PropertyDefinitionBase propertyDefinition,
-        Object value) {
+                     Object value) {
       super(propertyDefinition);
       this.value = value;
     }
@@ -1105,7 +1100,7 @@ public abstract class SearchFilter extends ComplexProperty {
           }
 
           if (reader.isStartElement(XmlNamespace.Types,
-              XmlElementNames.Constant)) {
+                                    XmlElementNames.Constant)) {
             this.value = reader
                 .readAttributeValue(XmlAttributeNames.Value);
             result = true;
@@ -1115,7 +1110,7 @@ public abstract class SearchFilter extends ComplexProperty {
             outParam.setParam(this.otherPropertyDefinition);
 
             result = PropertyDefinitionBase.tryLoadFromXml(reader,
-                outParam);
+                                                           outParam);
           }
         }
       }
@@ -1136,13 +1131,13 @@ public abstract class SearchFilter extends ComplexProperty {
       super.writeElementsToXml(writer);
 
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.FieldURIOrConstant);
+                               XmlElementNames.FieldURIOrConstant);
 
       if (this.value != null) {
         writer.writeStartElement(XmlNamespace.Types,
-            XmlElementNames.Constant);
+                                 XmlElementNames.Constant);
         writer.writeAttributeValue(XmlAttributeNames.Value,
-            true /* alwaysWriteEmptyString */, this.value);
+                                   true /* alwaysWriteEmptyString */, this.value);
         writer.writeEndElement(); // Constant
       } else {
         this.otherPropertyDefinition.writeToXml(writer);
@@ -1203,12 +1198,12 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a collection of search filters linked by a logical operator.
-   * Applications can use SearchFilterCollection to define complex search
-   * filters such as "Condition1 AND Condition2".
+   * Represents a collection of search filters linked by a logical operator. Applications can use
+   * SearchFilterCollection to define complex search filters such as "Condition1 AND Condition2".
    */
   public static class SearchFilterCollection extends SearchFilter implements
-      Iterable<SearchFilter>, IComplexPropertyChangedDelegate {
+                                                                  Iterable<SearchFilter>,
+                                                                  IComplexPropertyChangedDelegate {
 
     /**
      * The logical operator.
@@ -1244,7 +1239,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param searchFilters   The search filters to add to the collection.
      */
     public SearchFilterCollection(LogicalOperator logicalOperator,
-        SearchFilter... searchFilters) {
+                                  SearchFilter... searchFilters) {
       this(logicalOperator);
       for (SearchFilter search : searchFilters) {
         Iterable<SearchFilter> searchFil = java.util.Arrays
@@ -1260,15 +1255,13 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param searchFilters   The search filters to add to the collection.
      */
     public SearchFilterCollection(LogicalOperator logicalOperator,
-        Iterable<SearchFilter> searchFilters) {
+                                  Iterable<SearchFilter> searchFilters) {
       this(logicalOperator);
       this.addRange(searchFilters);
     }
 
     /**
      * Validate instance.
-     *
-     * @throws Exception
      */
     @Override
     protected void internalValidate() throws Exception {
@@ -1278,7 +1271,7 @@ public abstract class SearchFilter extends ComplexProperty {
         } catch (ServiceValidationException e) {
           throw new ServiceValidationException(String.format(
               Strings.SearchFilterAtIndexIsInvalid, i),
-              e);
+                                               e);
         }
       }
     }
@@ -1357,9 +1350,8 @@ public abstract class SearchFilter extends ComplexProperty {
     /**
      * Adds a search filter of any type to the collection.
      *
-     * @param searchFilter >The search filter to add. Available search filter classes
-     *                     include SearchFilter.IsEqualTo,
-     *                     SearchFilter.ContainsSubstring and
+     * @param searchFilter >The search filter to add. Available search filter classes include
+     *                     SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
      *                     SearchFilter.SearchFilterCollection.
      */
     public void add(SearchFilter searchFilter) {
@@ -1374,9 +1366,8 @@ public abstract class SearchFilter extends ComplexProperty {
     /**
      * Adds multiple search filters to the collection.
      *
-     * @param searchFilters The search filters to add. Available search filter classes
-     *                      include SearchFilter.IsEqualTo,
-     *                      SearchFilter.ContainsSubstring and
+     * @param searchFilters The search filters to add. Available search filter classes include
+     *                      SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
      *                      SearchFilter.SearchFilterCollection
      */
     public void addRange(Iterable<SearchFilter> searchFilters) {
@@ -1408,8 +1399,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * Determines whether a specific search filter is in the collection.
      *
      * @param searchFilter The search filter to locate in the collection.
-     * @return True is the search filter was found in the collection, false
-     * otherwise.
+     * @return True is the search filter was found in the collection, false otherwise.
      */
     public boolean contains(SearchFilter searchFilter) {
       return this.searchFilters.contains(searchFilter);
@@ -1467,7 +1457,7 @@ public abstract class SearchFilter extends ComplexProperty {
     public SearchFilter getSearchFilter(int index) {
       if (index < 0 || index >= this.getCount()) {
         throw new IllegalArgumentException(Strings.IndexIsOutOfRange
-            + ":" + index);
+                                           + ":" + index);
       }
       return this.searchFilters.get(index);
     }
@@ -1481,14 +1471,13 @@ public abstract class SearchFilter extends ComplexProperty {
     public void setSearchFilter(int index, SearchFilter searchFilter) {
       if (index < 0 || index >= this.getCount()) {
         throw new IllegalArgumentException(Strings.IndexIsOutOfRange
-            + ":" + index);
+                                           + ":" + index);
       }
       this.searchFilters.add(index, searchFilter);
     }
 
     /**
-     * Gets the logical operator that links the serach filters in this
-     * collection.
+     * Gets the logical operator that links the serach filters in this collection.
      *
      * @return LogicalOperator
      */
@@ -1497,8 +1486,7 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Sets the logical operator that links the serach filters in this
-     * collection.
+     * Sets the logical operator that links the serach filters in this collection.
      *
      * @param logicalOperator the new logical operator
      */

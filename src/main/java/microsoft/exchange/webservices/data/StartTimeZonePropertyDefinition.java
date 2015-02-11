@@ -23,9 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.EnumSet;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a property definition for properties of type TimeZoneInfo.
@@ -33,8 +34,7 @@ import java.util.List;
 class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
 
   /**
-   * Initializes a new instance of the StartTimeZonePropertyDefinition
-   * class.
+   * Initializes a new instance of the StartTimeZonePropertyDefinition class.
    *
    * @param xmlElementName the xml element name
    * @param uri            the uri
@@ -42,8 +42,8 @@ class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
    * @param version        the version
    */
   protected StartTimeZonePropertyDefinition(String xmlElementName,
-      String uri, EnumSet<PropertyDefinitionFlags> flags,
-      ExchangeVersion version) {
+                                            String uri, EnumSet<PropertyDefinitionFlags> flags,
+                                            ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
 
@@ -68,7 +68,7 @@ class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
    * @throws Exception the exception
    */
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+                                         PropertyBag propertyBag, boolean isUpdateOperation)
       throws Exception {
     Object value = propertyBag.getObjectFromPropertyDefinition(this);
 
@@ -79,11 +79,11 @@ class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
           MeetingTimeZone meetingTimeZone = new MeetingTimeZone(
               (TimeZoneDefinition) value);
           meetingTimeZone.writeToXml(writer,
-              XmlElementNames.MeetingTimeZone);
+                                     XmlElementNames.MeetingTimeZone);
         }
       } else {
         super.writePropertyValueToXml(writer, propertyBag,
-            isUpdateOperation);
+                                      isUpdateOperation);
       }
     }
   }
@@ -109,12 +109,11 @@ class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
    *
    * @param flag    The flag.
    * @param version Requested version.
-   * @return <c>true</c> if the specified
-   * flag is set; otherwise, <c>false</c>.
+   * @return <c>true</c> if the specified flag is set; otherwise, <c>false</c>.
    */
   @Override
   protected boolean hasFlag(PropertyDefinitionFlags flag,
-      ExchangeVersion version) {
+                            ExchangeVersion version) {
     if (version != null && (version == ExchangeVersion.Exchange2007_SP1)) {
       return AppointmentSchema.MeetingTimeZone.hasFlag(flag, version);
     } else {

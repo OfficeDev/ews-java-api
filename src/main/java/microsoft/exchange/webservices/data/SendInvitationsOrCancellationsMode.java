@@ -24,8 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Defines if/how meeting invitations or cancellations should be sent to
- * attendees when an appointment is updated.
+ * Defines if/how meeting invitations or cancellations should be sent to attendees when an
+ * appointment is updated.
  */
 public enum SendInvitationsOrCancellationsMode {
 

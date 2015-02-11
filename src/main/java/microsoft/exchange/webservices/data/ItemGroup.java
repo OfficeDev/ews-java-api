@@ -52,7 +52,7 @@ public final class ItemGroup<TItem extends Item> {
    */
   protected ItemGroup(String groupIndex, List<TItem> items) {
     EwsUtilities.EwsAssert(groupIndex != null, "ItemGroup.ctor",
-        "groupIndex is null");
+                           "groupIndex is null");
     EwsUtilities
         .EwsAssert(items != null, "ItemGroup.ctor", "items is null");
 

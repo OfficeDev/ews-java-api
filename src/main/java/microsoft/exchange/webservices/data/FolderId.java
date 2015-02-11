@@ -46,8 +46,8 @@ public final class FolderId extends ServiceId {
   }
 
   /**
-   * Initializes a new instance.Use this constructor to link this FolderId to
-   * an existing folder that you have the unique Id of.
+   * Initializes a new instance.Use this constructor to link this FolderId to an existing folder
+   * that you have the unique Id of.
    *
    * @param uniqueId the unique id
    * @throws Exception the exception
@@ -57,8 +57,8 @@ public final class FolderId extends ServiceId {
   }
 
   /**
-   * Initializes a new instance.Use this constructor to link this FolderId to
-   * a well known folder (e.g. Inbox, Calendar or Contacts)
+   * Initializes a new instance.Use this constructor to link this FolderId to a well known folder
+   * (e.g. Inbox, Calendar or Contacts)
    *
    * @param folderName the folder name
    */
@@ -68,9 +68,8 @@ public final class FolderId extends ServiceId {
   }
 
   /**
-   * Initializes a new instance.Use this constructor to link this FolderId to
-   * a well known folder (e.g. Inbox, Calendar or Contacts) in a specific
-   * mailbox.
+   * Initializes a new instance.Use this constructor to link this FolderId to a well known folder
+   * (e.g. Inbox, Calendar or Contacts) in a specific mailbox.
    *
    * @param folderName the folder name
    * @param mailbox    the mailbox
@@ -78,6 +77,29 @@ public final class FolderId extends ServiceId {
   public FolderId(WellKnownFolderName folderName, Mailbox mailbox) {
     this(folderName);
     this.mailbox = mailbox;
+  }
+
+  /**
+   * Defines an implicit conversion between string and FolderId.
+   *
+   * @param uniqueId the unique id
+   * @return A FolderId initialized with the specified unique Id
+   * @throws Exception the exception
+   */
+  public static FolderId getFolderIdFromString(String uniqueId)
+      throws Exception {
+    return new FolderId(uniqueId);
+  }
+
+  /**
+   * Defines an implicit conversion between WellKnownFolderName and FolderId.
+   *
+   * @param folderName the folder name
+   * @return A FolderId initialized with the specified folder name
+   */
+  public static FolderId getFolderIdFromWellKnownFolderName(
+      WellKnownFolderName folderName) {
+    return new FolderId(folderName);
   }
 
   /**
@@ -135,8 +157,8 @@ public final class FolderId extends ServiceId {
   }
 
   /**
-   * Gets the name of the folder associated with the folder Id. Name and Id
-   * are mutually exclusive; if one is set, the other is null.
+   * Gets the name of the folder associated with the folder Id. Name and Id are mutually exclusive;
+   * if one is set, the other is null.
    *
    * @return the folder name
    */
@@ -145,36 +167,12 @@ public final class FolderId extends ServiceId {
   }
 
   /**
-   * Gets the mailbox of the folder. Mailbox is only set when FolderName is
-   * set.
+   * Gets the mailbox of the folder. Mailbox is only set when FolderName is set.
    *
    * @return the mailbox
    */
   public Mailbox getMailbox() {
     return this.mailbox;
-  }
-
-  /**
-   * Defines an implicit conversion between string and FolderId.
-   *
-   * @param uniqueId the unique id
-   * @return A FolderId initialized with the specified unique Id
-   * @throws Exception the exception
-   */
-  public static FolderId getFolderIdFromString(String uniqueId)
-      throws Exception {
-    return new FolderId(uniqueId);
-  }
-
-  /**
-   * Defines an implicit conversion between WellKnownFolderName and FolderId.
-   *
-   * @param folderName the folder name
-   * @return A FolderId initialized with the specified folder name
-   */
-  public static FolderId getFolderIdFromWellKnownFolderName(
-      WellKnownFolderName folderName) {
-    return new FolderId(folderName);
   }
 
   /**
@@ -254,7 +252,7 @@ public final class FolderId extends ServiceId {
       if (this.folderName != null) {
         if ((this.mailbox != null) && mailbox.isValid()) {
           return String.format("%s,(%s)", this.folderName,
-              this.mailbox.toString());
+                               this.mailbox.toString());
         } else {
           return this.folderName.toString();
         }

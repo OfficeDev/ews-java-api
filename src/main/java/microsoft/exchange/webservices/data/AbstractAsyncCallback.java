@@ -26,8 +26,9 @@ package microsoft.exchange.webservices.data;
 import java.util.concurrent.Future;
 
 abstract class AbstractAsyncCallback implements Runnable, Callback<Object> {
-  Future<?> task;
+
   static boolean callbackProcessed = false;
+  Future<?> task;
 
   AbstractAsyncCallback() {
   }

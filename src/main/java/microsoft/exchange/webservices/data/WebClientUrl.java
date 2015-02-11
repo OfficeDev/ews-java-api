@@ -74,13 +74,13 @@ public final class WebClientUrl {
         if (reader.getLocalName().equals(
             XmlElementNames.AuthenticationMethods)) {
           webClientUrl.setAuthenticationMethods(reader
-              .readElementValue(String.class));
+                                                    .readElementValue(String.class));
         } else if (reader.getLocalName().equals(XmlElementNames.Url)) {
           webClientUrl.setUrl(reader.readElementValue(String.class));
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-        XmlElementNames.WebClientUrl));
+                                  XmlElementNames.WebClientUrl));
 
     return webClientUrl;
   }

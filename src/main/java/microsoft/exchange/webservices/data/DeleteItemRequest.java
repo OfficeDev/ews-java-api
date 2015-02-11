@@ -48,10 +48,9 @@ final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
    */
   DeleteItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                    ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -86,7 +85,7 @@ final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new ServiceResponse();
   }
 
@@ -154,7 +153,7 @@ final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.itemIds.writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.ItemIds);
+                            XmlElementNames.ItemIds);
   }
 
   /**

@@ -26,8 +26,7 @@ package microsoft.exchange.webservices.data;
 import java.util.List;
 
 /**
- * Represents a response object created to remove a calendar item from a meeting
- * cancellation.
+ * Represents a response object created to remove a calendar item from a meeting cancellation.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.RemoveItem, returnedByServer = false)
 class RemoveFromCalendar extends ServiceObject {
@@ -64,8 +63,7 @@ class RemoveFromCalendar extends ServiceObject {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -86,15 +84,14 @@ class RemoveFromCalendar extends ServiceObject {
    * Deletes the object.
    *
    * @param deleteMode              The deletion mode.
-   * @param sendCancellationsMode   Indicates whether meeting cancellation messages should be
-   *                                sent.
+   * @param sendCancellationsMode   Indicates whether meeting cancellation messages should be sent.
    * @param affectedTaskOccurrences Indicate which occurrence of a recurring task should be
    *                                deleted.
    */
   @Override
   protected void internalDelete(DeleteMode deleteMode,
-      SendCancellationsMode sendCancellationsMode,
-      AffectedTaskOccurrence affectedTaskOccurrences) {
+                                SendCancellationsMode sendCancellationsMode,
+                                AffectedTaskOccurrence affectedTaskOccurrences) {
     throw new UnsupportedOperationException();
   }
 
@@ -103,18 +100,17 @@ class RemoveFromCalendar extends ServiceObject {
    *
    * @param parentFolderId     The parent folder id.
    * @param messageDisposition The message disposition.
-   * @return A list of items that were created or modified as a results of
-   * this operation.
+   * @return A list of items that were created or modified as a results of this operation.
    * @throws Exception the exception
    */
   protected List<Item> internalCreate(FolderId parentFolderId,
-      MessageDisposition messageDisposition) throws Exception {
+                                      MessageDisposition messageDisposition) throws Exception {
     ((ItemId) this.getPropertyBag().getObjectFromPropertyDefinition(
         ResponseObjectSchema.ReferenceItemId))
         .assign(this.referenceItem.getId());
 
     return this.getService().internalCreateResponseObject(this,
-        parentFolderId, messageDisposition);
+                                                          parentFolderId, messageDisposition);
   }
 
 }

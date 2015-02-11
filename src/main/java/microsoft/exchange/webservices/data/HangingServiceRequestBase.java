@@ -23,7 +23,6 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,6 +34,8 @@ import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Enumeration of reasons that a hanging request may disconnect.
@@ -64,15 +65,16 @@ enum HangingRequestDisconnectReason {
 
 
 /**
- * Represents a collection of arguments for the
- * HangingServiceRequestBase.HangingRequestDisconnectHandler
+ * Represents a collection of arguments for the HangingServiceRequestBase.HangingRequestDisconnectHandler
  * delegate method.
  */
 class HangingRequestDisconnectEventArgs {
 
+  private HangingRequestDisconnectReason reason;
+  private Exception exception;
+
   /**
-   * Initializes a new instance of the
-   * HangingRequestDisconnectEventArgs class.
+   * Initializes a new instance of the HangingRequestDisconnectEventArgs class.
    *
    * @param reason    The reason.
    * @param exception The exception.
@@ -83,8 +85,6 @@ class HangingRequestDisconnectEventArgs {
     this.reason = reason;
     this.exception = exception;
   }
-
-  private HangingRequestDisconnectReason reason;
 
   /**
    * Gets the reason that the user was disconnected.
@@ -103,8 +103,6 @@ class HangingRequestDisconnectEventArgs {
   protected void setReason(HangingRequestDisconnectReason value) {
     reason = value;
   }
-
-  private Exception exception;
 
   /**
    * Gets the exception that caused the disconnection. Can be null.
@@ -131,26 +129,16 @@ class HangingRequestDisconnectEventArgs {
  */
 abstract class HangingServiceRequestBase extends ServiceRequestBase {
 
-  protected interface IHandleResponseObject {
-
-    /**
-     * Callback delegate to handle asynchronous responses.
-     *
-     * @param response Response received from the server
-     * @throws microsoft.exchange.webservices.data.ArgumentException
-     */
-    void handleResponseObject(Object response) throws ArgumentException;
-  }
-
-
   private static final int BufferSize = 4096;
-
   /**
-   * Test switch to log all bytes that come across the wire.
-   * Helpful when parsing fails before certain bytes hit the trace logs.
+   * Test switch to log all bytes that come across the wire. Helpful when parsing fails before
+   * certain bytes hit the trace logs.
    */
   protected static boolean LogAllWireBytes = false;
-
+  /**
+   * Expected minimum frequency in responses, in milliseconds.
+   */
+  protected int heartbeatFrequencyMilliseconds;
   /**
    * Callback delegate to handle response objects
    */
@@ -170,32 +158,28 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
    * Xml reader used to parse the response.
    */
   private EwsServiceMultiResponseXmlReader ewsXmlReader;
-
-  /**
-   * Expected minimum frequency in responses, in milliseconds.
-   */
-  protected int heartbeatFrequencyMilliseconds;
-
-
-  protected interface IHangingRequestDisconnectHandler {
-
-    /**
-     * Delegate method to handle a hanging request disconnection.
-     *
-     * @param sender The object invoking the delegate.
-     * @param args,  Event data.
-     */
-    void hangingRequestDisconnectHandler(Object sender,
-        HangingRequestDisconnectEventArgs args);
-
-  }
-
-
   /**
    * Disconnect events Occur when the hanging request is disconnected.
    */
   private List<IHangingRequestDisconnectHandler> onDisconnectList =
       new ArrayList<IHangingRequestDisconnectHandler>();
+  private boolean isConnected;
+
+
+  /**
+   * Initializes a new instance of the HangingServiceRequestBase class.
+   *
+   * @param service            The service.
+   * @param handler            Callback delegate to handle response objects
+   * @param heartbeatFrequency Frequency at which we expect heartbeats, in milliseconds.
+   */
+  protected HangingServiceRequestBase(ExchangeService service,
+                                      IHandleResponseObject handler, int heartbeatFrequency)
+      throws ServiceVersionException {
+    super(service);
+    this.responseHandler = handler;
+    this.heartbeatFrequencyMilliseconds = heartbeatFrequency;
+  }
 
   /**
    * Set event to happen when property disconnect.
@@ -225,21 +209,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
   }
 
   /**
-   * Initializes a new instance of the HangingServiceRequestBase class.
-   *
-   * @param service            The service.
-   * @param handler            Callback delegate to handle response objects
-   * @param heartbeatFrequency Frequency at which we expect heartbeats, in milliseconds.
-   */
-  protected HangingServiceRequestBase(ExchangeService service,
-      IHandleResponseObject handler, int heartbeatFrequency)
-      throws ServiceVersionException {
-    super(service);
-    this.responseHandler = handler;
-    this.heartbeatFrequencyMilliseconds = heartbeatFrequency;
-  }
-
-  /**
    * Exectures the request.
    */
   protected void internalExecute() throws ServiceLocalException, Exception {
@@ -258,12 +227,11 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
     HangingTraceStream tracingStream = null;
     ByteArrayOutputStream responseCopy = null;
 
-
     try {
       boolean traceEWSResponse = this.getService().isTraceEnabledFor(TraceFlags.EwsResponse);
       InputStream responseStream = this.response.getInputStream();
       tracingStream = new HangingTraceStream(responseStream,
-          this.getService());
+                                             this.getService());
       //EWSServiceMultiResponseXmlReader. Create causes a read.
 
       if (traceEWSResponse) {
@@ -273,8 +241,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
 
       //EwsServiceMultiResponseXmlReader ewsXmlReader = EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
 
-
-
       while (this.isConnected()) {
         Object responseObject = null;
         if (traceEWSResponse) {
@@ -283,10 +249,10 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
               EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
           responseObject = this.readResponse(ewsXmlReader);
           this.responseHandler.handleResponseObject(responseObject);
-				/*	}catch(Exception ex){
-						this.disconnect(HangingRequestDisconnectReason.Exception, ex);
+                                /*	}catch(Exception ex){
+                                                this.disconnect(HangingRequestDisconnectReason.Exception, ex);
 						return;
-						
+
 					}
 					finally{
 						this.getService().traceXml(TraceFlags.EwsResponse,responseCopy);
@@ -346,8 +312,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
     }
   }
 
-  private boolean isConnected;
-
   /**
    * Gets a value indicating whether this instance is connected.
    *
@@ -379,7 +343,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
    * @param exception The exception.
    */
   protected void disconnect(HangingRequestDisconnectReason reason,
-      Exception exception) {
+                            Exception exception) {
     if (this.isConnected()) {
       this.response.close();
       this.internalOnDisconnect(reason, exception);
@@ -390,7 +354,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
    * Perform any bookkeeping needed when we connect
    */
   private void internalOnConnect() throws XMLStreamException,
-      IOException, EWSHttpException {
+                                          IOException, EWSHttpException {
     if (!this.isConnected()) {
       this.isConnected = true;
 
@@ -410,8 +374,9 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
           new ArrayBlockingQueue<Runnable>(
               1);
       ThreadPoolExecutor threadPool = new ThreadPoolExecutor(poolSize,
-          maxPoolSize,
-          keepAliveTime, TimeUnit.SECONDS, queue);
+                                                             maxPoolSize,
+                                                             keepAliveTime, TimeUnit.SECONDS,
+                                                             queue);
       threadPool.execute(new Runnable() {
         public void run() {
           parseResponses(null);
@@ -428,12 +393,13 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
    * @param exception The exception.
    */
   private void internalOnDisconnect(HangingRequestDisconnectReason reason,
-      Exception exception) {
+                                    Exception exception) {
     if (this.isConnected()) {
       this.isConnected = false;
       for (IHangingRequestDisconnectHandler disconnect : onDisconnectList) {
         disconnect.hangingRequestDisconnectHandler(this,
-            new HangingRequestDisconnectEventArgs(reason, exception));
+                                                   new HangingRequestDisconnectEventArgs(reason,
+                                                                                         exception));
       }
     }
   }
@@ -442,7 +408,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
    * Reads any preamble data not part of the core response.
    *
    * @param ewsXmlReader The EwsServiceXmlReader.
-   * @throws Exception
    */
   @Override
   protected void readPreamble(EwsServiceXmlReader ewsXmlReader)
@@ -452,10 +417,33 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
       ewsXmlReader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
     } catch (XmlException ex) {
       throw new ServiceRequestException(Strings.
-          ServiceResponseDoesNotContainXml, ex);
+                                            ServiceResponseDoesNotContainXml, ex);
     } catch (ServiceXmlDeserializationException ex) {
       throw new ServiceRequestException(Strings.
-          ServiceResponseDoesNotContainXml, ex);
+                                            ServiceResponseDoesNotContainXml, ex);
     }
+  }
+
+  protected interface IHandleResponseObject {
+
+    /**
+     * Callback delegate to handle asynchronous responses.
+     *
+     * @param response Response received from the server
+     */
+    void handleResponseObject(Object response) throws ArgumentException;
+  }
+
+  protected interface IHangingRequestDisconnectHandler {
+
+    /**
+     * Delegate method to handle a hanging request disconnection.
+     *
+     * @param sender The object invoking the delegate.
+     * @param args,  Event data.
+     */
+    void hangingRequestDisconnectHandler(Object sender,
+                                         HangingRequestDisconnectEventArgs args);
+
   }
 }

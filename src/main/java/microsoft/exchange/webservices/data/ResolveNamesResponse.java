@@ -41,7 +41,7 @@ final class ResolveNamesResponse extends ServiceResponse {
   protected ResolveNamesResponse(ExchangeService service) {
     super();
     EwsUtilities.EwsAssert(service != null, "ResolveNamesResponse.ctor",
-        "service is null");
+                           "service is null");
 
     this.resolutions = new NameResolutionCollection(service);
   }
@@ -60,9 +60,9 @@ final class ResolveNamesResponse extends ServiceResponse {
   }
 
   /**
-   * Override base implementation so that API does not throw when name
-   * resolution fails to find a match. EWS returns an error in this case but
-   * the API will just return an empty NameResolutionCollection.
+   * Override base implementation so that API does not throw when name resolution fails to find a
+   * match. EWS returns an error in this case but the API will just return an empty
+   * NameResolutionCollection.
    *
    * @throws ServiceResponseException the service response exception
    */

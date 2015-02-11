@@ -58,7 +58,7 @@ public class ServiceObjectPropertyException extends PropertyException {
    *                           exception.
    */
   public ServiceObjectPropertyException(String message,
-      PropertyDefinitionBase propertyDefinition) {
+                                        PropertyDefinitionBase propertyDefinition) {
     super(message, propertyDefinition.getPrintableName());
     this.propertyDefinition = propertyDefinition;
   }
@@ -72,8 +72,8 @@ public class ServiceObjectPropertyException extends PropertyException {
    * @param innerException     the inner exception
    */
   public ServiceObjectPropertyException(String message,
-      PropertyDefinitionBase propertyDefinition,
-      Exception innerException) {
+                                        PropertyDefinitionBase propertyDefinition,
+                                        Exception innerException) {
     super(message, propertyDefinition.getPrintableName(), innerException);
     this.propertyDefinition = propertyDefinition;
   }

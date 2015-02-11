@@ -41,14 +41,13 @@ public final class AppointmentOccurrenceId extends ItemId {
    * @throws Exception the exception
    */
   public AppointmentOccurrenceId(String recurringMasterUniqueId,
-      int occurrenceIndex) throws Exception {
+                                 int occurrenceIndex) throws Exception {
     super(recurringMasterUniqueId);
     this.occurrenceIndex = occurrenceIndex;
   }
 
   /**
-   * Gets  the index of the occurrence. Note that the occurrence index
-   * starts at one not zero.
+   * Gets  the index of the occurrence. Note that the occurrence index starts at one not zero.
    *
    * @return the occurrence index
    */

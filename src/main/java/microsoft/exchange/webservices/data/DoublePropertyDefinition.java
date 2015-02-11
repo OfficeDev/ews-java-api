@@ -29,7 +29,7 @@ import java.util.EnumSet;
  * Represents double-precision floating point property definition.
  */
 final class DoublePropertyDefinition extends
-    GenericPropertyDefinition<Double> {
+                                     GenericPropertyDefinition<Double> {
 
   /**
    * Initializes a new instance of the "DoublePropertyDefinition" class.
@@ -40,7 +40,8 @@ final class DoublePropertyDefinition extends
    * @param version        The version.
    */
   protected DoublePropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                     EnumSet<PropertyDefinitionFlags> flags,
+                                     ExchangeVersion version) {
     super(Double.class, xmlElementName, uri, flags, version);
   }
 

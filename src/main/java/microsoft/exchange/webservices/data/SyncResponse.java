@@ -32,7 +32,7 @@ package microsoft.exchange.webservices.data;
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public abstract class SyncResponse<TServiceObject extends ServiceObject,
     TChange extends Change> extends
-    ServiceResponse {
+                            ServiceResponse {
 
   /**
    * The changes.
@@ -53,7 +53,7 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
     super();
     this.propertySet = propertySet;
     EwsUtilities.EwsAssert(this.propertySet != null, "SyncResponse.ctor",
-        "PropertySet should not be null");
+                           "PropertySet should not be null");
   }
 
   /**
@@ -118,7 +118,7 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
                 ChangeType.ReadFlagChange)) {
               change.setId(change.createId());
               change.getId().loadFromXml(reader,
-                  change.getId().getXmlElementName());
+                                         change.getId().getXmlElementName());
 
               if (change.getChangeType().equals(
                   ChangeType.ReadFlagChange)) {
@@ -132,9 +132,9 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
                     .EwsAssert(
                         itemChange != null,
                         "SyncResponse." +
-                            "ReadElementsFromXml",
+                        "ReadElementsFromXml",
                         "ReadFlagChange is only " +
-                            "valid on ItemChange");
+                        "valid on ItemChange");
 
                 itemChange.setIsRead(reader.readElementValue(
                     Boolean.class, XmlNamespace.Types,
@@ -143,23 +143,25 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
             } else {
 
               change.setServiceObject(EwsUtilities
-                  .createEwsObjectFromXmlElementName(null,
-                      reader.getService(), reader
-                          .getLocalName()));
+                                          .createEwsObjectFromXmlElementName(null,
+                                                                             reader.getService(),
+                                                                             reader
+                                                                                 .getLocalName()));
 
               change.getServiceObject().loadFromXml(reader,
-                  true, /* clearPropertyBag */
-                  this.propertySet, this.getSummaryPropertiesOnly());
+                                                    true, /* clearPropertyBag */
+                                                    this.propertySet,
+                                                    this.getSummaryPropertiesOnly());
             }
 
             reader.readEndElementIfNecessary(XmlNamespace.Types,
-                change.getChangeType().toString());
+                                             change.getChangeType().toString());
 
             this.changes.add(change);
           }
         }
       } while (!reader.isEndElement(XmlNamespace.Messages,
-          XmlElementNames.Changes));
+                                    XmlElementNames.Changes));
     } else {
       reader.read();
     }
@@ -175,8 +177,7 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
   }
 
   /**
-   * Gets a value indicating whether this request returns full or summary
-   * properties.
+   * Gets a value indicating whether this request returns full or summary properties.
    *
    * @return the summary properties only
    */

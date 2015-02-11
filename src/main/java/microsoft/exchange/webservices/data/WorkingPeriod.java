@@ -65,7 +65,7 @@ final class WorkingPeriod extends ComplexProperty {
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.DayOfWeek)) {
       EwsUtilities.parseEnumValueList(DayOfTheWeek.class,
-          this.daysOfWeek, reader.readElementValue(), ' ');
+                                      this.daysOfWeek, reader.readElementValue(), ' ');
       return true;
     } else if (reader.getLocalName().equals(
         XmlElementNames.StartTimeInMinutes)) {

@@ -23,16 +23,15 @@
 
 package microsoft.exchange.webservices.data;
 
-import microsoft.exchange.webservices.data.util.DateTimeParser;
-
 import java.io.InputStream;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+
+import microsoft.exchange.webservices.data.util.DateTimeParser;
 
 /**
  * XML reader.
@@ -51,7 +50,6 @@ class EwsServiceXmlReader extends EwsXmlReader {
    *
    * @param stream  the stream
    * @param service the service
-   * @throws Exception
    */
   protected EwsServiceXmlReader(InputStream stream, ExchangeService service)
       throws Exception {
@@ -73,15 +71,14 @@ class EwsServiceXmlReader extends EwsXmlReader {
    * Reads the element value as unspecified date.
    *
    * @return Element value
-   * @throws Exception
    */
   public Date readElementValueAsUnspecifiedDate() throws Exception {
     return dateTimeParser.convertDateStringToDate(readElementValue());
   }
 
   /**
-   * Reads the element value as date time, assuming it is unbiased (e.g.
-   * 2009/01/01T08:00) and scoped to service's time zone.
+   * Reads the element value as date time, assuming it is unbiased (e.g. 2009/01/01T08:00) and
+   * scoped to service's time zone.
    *
    * @return Date
    * @throws Exception the exception
@@ -122,7 +119,7 @@ class EwsServiceXmlReader extends EwsXmlReader {
 		 */
     return tempDate;
                 /*
-		 * } else if (EwsUtilities.isLocalTimeZone(this.service.getTimeZone()))
+                 * } else if (EwsUtilities.isLocalTimeZone(this.service.getTimeZone()))
 		 * { calen.setTimeInMillis(calen.getTimeInMillis() +
 		 * tz.getOffset(tempDate.getTime())); return calen.getTime(); } else {
 		 * return tempDate; }
@@ -137,7 +134,8 @@ class EwsServiceXmlReader extends EwsXmlReader {
    * @return the date
    * @throws Exception the exception
    */
-  public Date readElementValueAsDateTime(XmlNamespace xmlNamespace, String localName) throws Exception {
+  public Date readElementValueAsDateTime(XmlNamespace xmlNamespace, String localName)
+      throws Exception {
     return dateTimeParser.convertDateTimeStringToDate(readElementValue(xmlNamespace, localName));
   }
 
@@ -178,26 +176,26 @@ class EwsServiceXmlReader extends EwsXmlReader {
             this.skipCurrentElement();
           } else {
             if (!(this.getLocalName()).equals(serviceObject
-                .getXmlElementName())) {
+                                                  .getXmlElementName())) {
 
               throw new ServiceLocalException(String
-                  .format(
-                      "The type of the " + "object in " +
-                          "the store (%s)" +
-                          " does not match that" +
-                          " of the " +
-                          "local object (%s).",
-                      this.getLocalName(), serviceObject
-                          .getXmlElementName()));
+                                                  .format(
+                                                      "The type of the " + "object in " +
+                                                      "the store (%s)" +
+                                                      " does not match that" +
+                                                      " of the " +
+                                                      "local object (%s).",
+                                                      this.getLocalName(), serviceObject
+                                                          .getXmlElementName()));
             }
             serviceObject.loadFromXml(this, clearPropertyBag,
-                requestedPropertySet, summaryPropertiesOnly);
+                                      requestedPropertySet, summaryPropertiesOnly);
 
             serviceObjects.add(serviceObject);
           }
         }
       } while (!this.isEndElement(XmlNamespace.Messages,
-          collectionXmlElementName));
+                                  collectionXmlElementName));
     } else {
       // For empty elements read End Element tag
       // i.e. position cursor on End Element

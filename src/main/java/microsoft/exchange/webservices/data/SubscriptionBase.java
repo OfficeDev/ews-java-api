@@ -81,7 +81,7 @@ public abstract class SubscriptionBase {
    * @throws Exception the exception
    */
   protected SubscriptionBase(ExchangeService service, String id,
-      String watermark) throws Exception {
+                             String watermark) throws Exception {
     this(service, id);
     this.watermark = watermark;
   }
@@ -94,10 +94,10 @@ public abstract class SubscriptionBase {
    */
   protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     this.id = reader.readElementValue(XmlNamespace.Messages,
-        XmlElementNames.SubscriptionId);
+                                      XmlElementNames.SubscriptionId);
     if (this.getUsesWatermark()) {
       this.watermark = reader.readElementValue(XmlNamespace.Messages,
-          XmlElementNames.Watermark);
+                                               XmlElementNames.Watermark);
     }
 
   }
@@ -130,21 +130,21 @@ public abstract class SubscriptionBase {
   }
 
   /**
-   * Sets the water mark.
-   *
-   * @param watermark the new water mark
-   */
-  protected void setWaterMark(String watermark) {
-    this.watermark = watermark;
-  }
-
-  /**
    * Gets the water mark.
    *
    * @return the water mark
    */
   public String getWaterMark() {
     return this.watermark;
+  }
+
+  /**
+   * Sets the water mark.
+   *
+   * @param watermark the new water mark
+   */
+  protected void setWaterMark(String watermark) {
+    this.watermark = watermark;
   }
 
   /**

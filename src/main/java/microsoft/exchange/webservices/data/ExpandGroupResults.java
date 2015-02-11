@@ -33,8 +33,8 @@ import java.util.Iterator;
 public final class ExpandGroupResults implements Iterable<EmailAddress> {
 
   /**
-   * True, if all members are returned. EWS always returns true on ExpandDL,
-   * i.e. all members are returned.
+   * True, if all members are returned. EWS always returns true on ExpandDL, i.e. all members are
+   * returned.
    */
   private boolean includesAllMembers;
 
@@ -50,9 +50,9 @@ public final class ExpandGroupResults implements Iterable<EmailAddress> {
   }
 
   /**
-   * Gets the number of members that were returned by the ExpandGroup
-   * operation. Count might be less than the total number of members in the
-   * group, in which case the value of the IncludesAllMembers is false.
+   * Gets the number of members that were returned by the ExpandGroup operation. Count might be less
+   * than the total number of members in the group, in which case the value of the
+   * IncludesAllMembers is false.
    *
    * @return the count
    */
@@ -61,8 +61,8 @@ public final class ExpandGroupResults implements Iterable<EmailAddress> {
   }
 
   /**
-   * Gets a value indicating whether all the members of the group have been
-   * returned by ExpandGroup.
+   * Gets a value indicating whether all the members of the group have been returned by
+   * ExpandGroup.
    *
    * @return the includes all members
    */
@@ -87,25 +87,25 @@ public final class ExpandGroupResults implements Iterable<EmailAddress> {
    */
   protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.DLExpansion);
+                            XmlElementNames.DLExpansion);
     if (!reader.isEmptyElement()) {
       int totalItemsInView = reader.readAttributeValue(Integer.class,
-          XmlAttributeNames.TotalItemsInView);
+                                                       XmlAttributeNames.TotalItemsInView);
       this.includesAllMembers = reader.readAttributeValue(Boolean.class,
-          XmlAttributeNames.IncludesLastItemInRange);
+                                                          XmlAttributeNames.IncludesLastItemInRange);
 
       for (int i = 0; i < totalItemsInView; i++) {
         EmailAddress emailAddress = new EmailAddress();
 
         reader.readStartElement(XmlNamespace.Types,
-            XmlElementNames.Mailbox);
+                                XmlElementNames.Mailbox);
         emailAddress.loadFromXml(reader, XmlElementNames.Mailbox);
 
         this.getMembers().add(emailAddress);
       }
 
       reader.readEndElement(XmlNamespace.Messages,
-          XmlElementNames.DLExpansion);
+                            XmlElementNames.DLExpansion);
     } else {
       reader.read();
     }

@@ -27,12 +27,22 @@ package microsoft.exchange.webservices.data;
  * Represents an ExpandGroup request.
  */
 public class ExpandGroupRequest extends
-    MultiResponseServiceRequest<ExpandGroupResponse> {
+                                MultiResponseServiceRequest<ExpandGroupResponse> {
 
   /**
    * The email address.
    */
   private EmailAddress emailAddress;
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param service the service
+   */
+  protected ExpandGroupRequest(ExchangeService service)
+      throws Exception {
+    super(service, ServiceErrorHandling.ThrowOnError);
+  }
 
   /**
    * Represents an ExpandGroup request.
@@ -109,7 +119,7 @@ public class ExpandGroupRequest extends
       throws Exception {
     if (this.getEmailAddress() != null) {
       this.getEmailAddress().writeToXml(writer, XmlNamespace.Messages,
-          XmlElementNames.Mailbox);
+                                        XmlElementNames.Mailbox);
     }
   }
 
@@ -121,17 +131,6 @@ public class ExpandGroupRequest extends
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
     return ExchangeVersion.Exchange2007_SP1;
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param service the service
-   * @throws Exception
-   */
-  protected ExpandGroupRequest(ExchangeService service)
-      throws Exception {
-    super(service, ServiceErrorHandling.ThrowOnError);
   }
 
   /**

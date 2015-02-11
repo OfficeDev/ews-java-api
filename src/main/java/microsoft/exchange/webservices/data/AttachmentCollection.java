@@ -34,7 +34,8 @@ import java.util.Enumeration;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class AttachmentCollection extends
-    ComplexPropertyCollection<Attachment> implements IOwnedProperty {
+                                        ComplexPropertyCollection<Attachment>
+    implements IOwnedProperty {
 
   // The item owner that owns this attachment collection
   /**
@@ -66,8 +67,8 @@ public final class AttachmentCollection extends
   public void setOwner(ServiceObject value) {
     Item item = (Item) value;
     EwsUtilities.EwsAssert(item != null,
-        "AttachmentCollection.IOwnedProperty.set_Owner",
-        "value is not a descendant of ItemBase");
+                           "AttachmentCollection.IOwnedProperty.set_Owner",
+                           "value is not a descendant of ItemBase");
 
     this.owner = item;
   }
@@ -86,8 +87,7 @@ public final class AttachmentCollection extends
    * Adds a file attachment to the collection.
    *
    * @param name     accepts String display name of the new attachment.
-   * @param fileName accepts String name of the file representing the content of
-   *                 the attachment.
+   * @param fileName accepts String name of the file representing the content of the attachment.
    * @return A FileAttachment instance.
    */
   public FileAttachment addFileAttachment(String name, String fileName) {
@@ -104,12 +104,12 @@ public final class AttachmentCollection extends
    * Adds a file attachment to the collection.
    *
    * @param name          accepts String display name of the new attachment.
-   * @param contentStream accepts InputStream stream from which to read the content of
-   *                      the attachment.
+   * @param contentStream accepts InputStream stream from which to read the content of the
+   *                      attachment.
    * @return A FileAttachment instance.
    */
   public FileAttachment addFileAttachment(String name,
-      InputStream contentStream) {
+                                          InputStream contentStream) {
     FileAttachment fileAttachment = new FileAttachment(this.owner);
     fileAttachment.setName(name);
     fileAttachment.setContentStream(contentStream);
@@ -123,8 +123,7 @@ public final class AttachmentCollection extends
    * Adds a file attachment to the collection.
    *
    * @param name    the name
-   * @param content accepts byte byte arrays representing the content of the
-   *                attachment.
+   * @param content accepts byte byte arrays representing the content of the attachment.
    * @return FileAttachment
    */
   public FileAttachment addFileAttachment(String name, byte[] content) {
@@ -179,7 +178,7 @@ public final class AttachmentCollection extends
   public void removeAt(int index) {
     if (index < 0 || index >= this.getCount()) {
       throw new IllegalArgumentException("parameter \'index\' : " +
-          Strings.IndexIsOutOfRange);
+                                         Strings.IndexIsOutOfRange);
     }
 
     this.internalRemoveAt(index);
@@ -189,8 +188,7 @@ public final class AttachmentCollection extends
    * Removes the specified attachment.
    *
    * @param attachment The attachment to remove.
-   * @return True if the attachment was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the attachment was successfully removed from the collection, false otherwise.
    * @throws Exception the exception
    */
   public boolean remove(Attachment attachment) throws Exception {
@@ -200,11 +198,10 @@ public final class AttachmentCollection extends
   }
 
   /**
-   * Instantiate the appropriate attachment type depending on the current XML
-   * element name.
+   * Instantiate the appropriate attachment type depending on the current XML element name.
    *
-   * @param xmlElementName The XML element name from which to determine the type of
-   *                       attachment to create.
+   * @param xmlElementName The XML element name from which to determine the type of attachment to
+   *                       create.
    * @return An Attachment instance.
    */
   @Override
@@ -219,17 +216,14 @@ public final class AttachmentCollection extends
   }
 
   /**
-   * Determines the name of the XML element associated with the
-   * complexProperty parameter.
+   * Determines the name of the XML element associated with the complexProperty parameter.
    *
-   * @param complexProperty The attachment object for which to determine the XML element
-   *                        name with.
-   * @return The XML element name associated with the complexProperty
-   * parameter.
+   * @param complexProperty The attachment object for which to determine the XML element name with.
+   * @return The XML element name associated with the complexProperty parameter.
    */
   @Override
   protected String getCollectionItemXmlElementName(Attachment
-      complexProperty) {
+                                                       complexProperty) {
     if (complexProperty instanceof FileAttachment) {
       return XmlElementNames.FileAttachment;
     } else {
@@ -238,8 +232,7 @@ public final class AttachmentCollection extends
   }
 
   /**
-   * Saves this collection by creating new attachment and deleting removed
-   * ones.
+   * Saves this collection by creating new attachment and deleting removed ones.
    *
    * @throws Exception the exception
    */
@@ -272,20 +265,19 @@ public final class AttachmentCollection extends
     if (attachments.size() > 0) {
       if (this.owner.isAttachment()) {
         this.internalCreateAttachments(this.owner.getParentAttachment()
-            .getId(), attachments);
+                                           .getId(), attachments);
       } else {
         this.internalCreateAttachments(
             this.owner.getId().getUniqueId(), attachments);
       }
     }
 
-
     // Process all of the item attachments in this collection.
     for (Attachment attachment : this) {
       ItemAttachment itemAttachment = (ItemAttachment)
           ((attachment instanceof
-              ItemAttachment) ? attachment :
-              null);
+                ItemAttachment) ? attachment :
+           null);
       if (itemAttachment != null) {
         // Bug E14:80864: Make sure item was created/loaded before
         // trying to create/delete sub-attachments
@@ -306,7 +298,6 @@ public final class AttachmentCollection extends
    * Determines whether there are any unsaved attachment collection changes.
    *
    * @return True if attachment adds or deletes haven't been processed yet.
-   * @throws ServiceLocalException
    */
   protected boolean hasUnprocessedChanges() throws ServiceLocalException {
     // Any new attachments?
@@ -322,7 +313,6 @@ public final class AttachmentCollection extends
         return true;
       }
     }
-
 
     Collection<ItemAttachment> itemAttachments =
         new ArrayList<ItemAttachment>();
@@ -346,8 +336,8 @@ public final class AttachmentCollection extends
   }
 
   /**
-   * Disables the change log clearing mechanism. Attachment collections are
-   * saved separately from the items they belong to.
+   * Disables the change log clearing mechanism. Attachment collections are saved separately from
+   * the items they belong to.
    */
   @Override
   protected void clearChangeLog() {
@@ -363,8 +353,8 @@ public final class AttachmentCollection extends
     // Validate all added attachments
     if (this.owner.isNew()
         && this.owner.getService().getRequestedServerVersion()
-        .ordinal() >= ExchangeVersion.Exchange2010_SP2
-        .ordinal()) {
+               .ordinal() >= ExchangeVersion.Exchange2010_SP2
+               .ordinal()) {
       boolean contactPhotoFound = false;
       for (int attachmentIndex = 0; attachmentIndex < this.getAddedItems()
           .size(); attachmentIndex++) {
@@ -424,7 +414,7 @@ public final class AttachmentCollection extends
     // TODO : Should we throw for warnings as well?
     if (responses.getOverallResult() == ServiceResult.Error) {
       throw new DeleteAttachmentException(responses,
-          Strings.AtLeastOneAttachmentCouldNotBeDeleted);
+                                          Strings.AtLeastOneAttachmentCouldNotBeDeleted);
     }
   }
 
@@ -436,7 +426,7 @@ public final class AttachmentCollection extends
    * @throws Exception the exception
    */
   private void internalCreateAttachments(String parentItemId,
-      Iterable<Attachment> attachments) throws Exception {
+                                         Iterable<Attachment> attachments) throws Exception {
     ServiceResponseCollection<CreateAttachmentResponse> responses =
         this.owner
             .getService().createAttachments(parentItemId, attachments);
@@ -456,7 +446,7 @@ public final class AttachmentCollection extends
     // TODO : Should we throw for warnings as well?
     if (responses.getOverallResult() == ServiceResult.Error) {
       throw new CreateAttachmentException(responses,
-          Strings.AttachmentCreationFailed);
+                                          Strings.AttachmentCreationFailed);
     }
   }
 

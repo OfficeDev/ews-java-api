@@ -41,9 +41,9 @@ class FolderWrapper extends AbstractFolderIdWrapper {
    */
   protected FolderWrapper(Folder folder) throws ServiceLocalException {
     EwsUtilities.EwsAssert(folder != null, "FolderWrapper.ctor",
-        "folder is null");
+                           "folder is null");
     EwsUtilities.EwsAssert(!folder.isNew(), "FolderWrapper.ctor",
-        "folder does not have an Id");
+                           "folder does not have an Id");
     this.folder = folder;
   }
 

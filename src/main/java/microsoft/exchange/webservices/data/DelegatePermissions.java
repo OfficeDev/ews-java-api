@@ -23,9 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents the permissions of a delegate user.
@@ -70,7 +71,8 @@ public final class DelegatePermissions extends ComplexProperty {
    */
   public DelegateFolderPermissionLevel getCalendarFolderPermissionLevel() {
     return this.delegateFolderPermissions.get(XmlElementNames.
-        CalendarFolderPermissionLevel).getPermissionLevel();
+                                                  CalendarFolderPermissionLevel)
+        .getPermissionLevel();
 
   }
 
@@ -82,18 +84,17 @@ public final class DelegatePermissions extends ComplexProperty {
   public void setCalendarFolderPermissionLevel(
       DelegateFolderPermissionLevel value) {
     this.delegateFolderPermissions.get(XmlElementNames.
-        CalendarFolderPermissionLevel).setPermissionLevel(value);
+                                           CalendarFolderPermissionLevel).setPermissionLevel(value);
   }
 
   /**
-   * Gets  the delegate user's permission on the principal's tasks
-   * folder.
+   * Gets  the delegate user's permission on the principal's tasks folder.
    *
    * @return the tasks folder permission level
    */
   public DelegateFolderPermissionLevel getTasksFolderPermissionLevel() {
     return this.delegateFolderPermissions.get(XmlElementNames.
-        TasksFolderPermissionLevel).getPermissionLevel();
+                                                  TasksFolderPermissionLevel).getPermissionLevel();
 
   }
 
@@ -106,7 +107,7 @@ public final class DelegatePermissions extends ComplexProperty {
       DelegateFolderPermissionLevel value) {
 
     this.delegateFolderPermissions.get(XmlElementNames.
-        TasksFolderPermissionLevel).setPermissionLevel(value);
+                                           TasksFolderPermissionLevel).setPermissionLevel(value);
   }
 
   /**
@@ -116,7 +117,7 @@ public final class DelegatePermissions extends ComplexProperty {
    */
   public DelegateFolderPermissionLevel getInboxFolderPermissionLevel() {
     return this.delegateFolderPermissions.get(XmlElementNames.
-        InboxFolderPermissionLevel).
+                                                  InboxFolderPermissionLevel).
         getPermissionLevel();
   }
 
@@ -128,13 +129,12 @@ public final class DelegatePermissions extends ComplexProperty {
   public void setInboxFolderPermissionLevel(
       DelegateFolderPermissionLevel value) {
     this.delegateFolderPermissions.get(XmlElementNames.
-        InboxFolderPermissionLevel).
+                                           InboxFolderPermissionLevel).
         setPermissionLevel(value);
   }
 
   /**
-   * Gets  the delegate user's permission on the principal's contacts
-   * folder.
+   * Gets  the delegate user's permission on the principal's contacts folder.
    *
    * @return the contacts folder permission level
    */
@@ -157,14 +157,13 @@ public final class DelegatePermissions extends ComplexProperty {
   }
 
   /**
-   * Gets the delegate user's permission on the principal's notes
-   * folder.
+   * Gets the delegate user's permission on the principal's notes folder.
    *
    * @return the notes folder permission level
    */
   public DelegateFolderPermissionLevel getNotesFolderPermissionLevel() {
     return this.delegateFolderPermissions.get(XmlElementNames.
-        NotesFolderPermissionLevel).
+                                                  NotesFolderPermissionLevel).
         getPermissionLevel();
   }
 
@@ -176,19 +175,18 @@ public final class DelegatePermissions extends ComplexProperty {
   public void setNotesFolderPermissionLevel(
       DelegateFolderPermissionLevel value) {
     this.delegateFolderPermissions.get(XmlElementNames.
-        NotesFolderPermissionLevel).
+                                           NotesFolderPermissionLevel).
         setPermissionLevel(value);
   }
 
   /**
-   * Gets  the delegate user's permission on the principal's journal
-   * folder.
+   * Gets  the delegate user's permission on the principal's journal folder.
    *
    * @return the journal folder permission level
    */
   public DelegateFolderPermissionLevel getJournalFolderPermissionLevel() {
     return this.delegateFolderPermissions.get(XmlElementNames.
-        JournalFolderPermissionLevel).
+                                                  JournalFolderPermissionLevel).
         getPermissionLevel();
   }
 
@@ -200,7 +198,7 @@ public final class DelegatePermissions extends ComplexProperty {
   public void setJournalFolderPermissionLevel(
       DelegateFolderPermissionLevel value) {
     this.delegateFolderPermissions.get(XmlElementNames.
-        JournalFolderPermissionLevel).
+                                           JournalFolderPermissionLevel).
         setPermissionLevel(value);
   }
 
@@ -208,7 +206,8 @@ public final class DelegatePermissions extends ComplexProperty {
    * Reset.
    */
   protected void reset() {
-    for (DelegateFolderPermission delegateFolderPermission : this.delegateFolderPermissions.values()) {
+    for (DelegateFolderPermission delegateFolderPermission : this.delegateFolderPermissions
+        .values()) {
       delegateFolderPermission.reset();
     }
   }
@@ -231,7 +230,6 @@ public final class DelegatePermissions extends ComplexProperty {
           readElementValue(DelegateFolderPermissionLevel.class));
     }
 
-
     return delegateFolderPermission != null;
   }
 
@@ -244,22 +242,22 @@ public final class DelegatePermissions extends ComplexProperty {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.writePermissionToXml(writer,
-        XmlElementNames.CalendarFolderPermissionLevel);
+                              XmlElementNames.CalendarFolderPermissionLevel);
 
     this.writePermissionToXml(writer,
-        XmlElementNames.TasksFolderPermissionLevel);
+                              XmlElementNames.TasksFolderPermissionLevel);
 
     this.writePermissionToXml(writer,
-        XmlElementNames.InboxFolderPermissionLevel);
+                              XmlElementNames.InboxFolderPermissionLevel);
 
     this.writePermissionToXml(writer,
-        XmlElementNames.ContactsFolderPermissionLevel);
+                              XmlElementNames.ContactsFolderPermissionLevel);
 
     this.writePermissionToXml(writer,
-        XmlElementNames.NotesFolderPermissionLevel);
+                              XmlElementNames.NotesFolderPermissionLevel);
 
     this.writePermissionToXml(writer,
-        XmlElementNames.JournalFolderPermissionLevel);
+                              XmlElementNames.JournalFolderPermissionLevel);
   }
 
   /**
@@ -271,7 +269,7 @@ public final class DelegatePermissions extends ComplexProperty {
   private void writePermissionToXml(
       EwsServiceXmlWriter writer,
       String xmlElementName) throws ServiceXmlSerializationException,
-      XMLStreamException {
+                                    XMLStreamException {
     DelegateFolderPermissionLevel delegateFolderPermissionLevel =
         this.delegateFolderPermissions.
             get(xmlElementName).getPermissionLevel();
@@ -288,29 +286,27 @@ public final class DelegatePermissions extends ComplexProperty {
 
   /**
    * Validates this instance for AddDelegate.
-   *
-   * @throws ServiceValidationException
    */
   protected void validateAddDelegate() throws ServiceValidationException {
-    for (DelegateFolderPermission delegateFolderPermission : this.delegateFolderPermissions.values()) {
+    for (DelegateFolderPermission delegateFolderPermission : this.delegateFolderPermissions
+        .values()) {
       if (delegateFolderPermission.getPermissionLevel() == DelegateFolderPermissionLevel.Custom) {
         throw new ServiceValidationException(Strings.
-            CannotSetDelegateFolderPermissionLevelToCustom);
+                                                 CannotSetDelegateFolderPermissionLevelToCustom);
       }
     }
   }
 
   /**
    * Validates this instance for UpdateDelegate.
-   *
-   * @throws ServiceValidationException
    */
   protected void validateUpdateDelegate() throws ServiceValidationException {
-    for (DelegateFolderPermission delegateFolderPermission : this.delegateFolderPermissions.values()) {
+    for (DelegateFolderPermission delegateFolderPermission : this.delegateFolderPermissions
+        .values()) {
       if (delegateFolderPermission.getPermissionLevel() == DelegateFolderPermissionLevel.Custom &&
           !delegateFolderPermission.isExistingPermissionLevelCustom) {
         throw new ServiceValidationException(Strings.
-            CannotSetDelegateFolderPermissionLevelToCustom);
+                                                 CannotSetDelegateFolderPermissionLevelToCustom);
       }
     }
   }
@@ -319,6 +315,9 @@ public final class DelegatePermissions extends ComplexProperty {
    * Represents a folder's DelegateFolderPermissionLevel
    */
   private static class DelegateFolderPermission {
+
+    private DelegateFolderPermissionLevel permissionLevel = DelegateFolderPermissionLevel.None;
+    private boolean isExistingPermissionLevelCustom;
 
     /**
      * Initializes this DelegateFolderPermission.
@@ -329,7 +328,7 @@ public final class DelegatePermissions extends ComplexProperty {
         DelegateFolderPermissionLevel permissionLevel) {
       this.setPermissionLevel(permissionLevel);
       this.setIsExistingPermissionLevelCustom(permissionLevel ==
-          DelegateFolderPermissionLevel.Custom);
+                                              DelegateFolderPermissionLevel.Custom);
     }
 
     /**
@@ -338,9 +337,6 @@ public final class DelegatePermissions extends ComplexProperty {
     protected void reset() {
       this.initialize(DelegateFolderPermissionLevel.None);
     }
-
-
-    private DelegateFolderPermissionLevel permissionLevel = DelegateFolderPermissionLevel.None;
 
     /**
      * Gets the delegate user's permission on a principal's folder.
@@ -356,9 +352,6 @@ public final class DelegatePermissions extends ComplexProperty {
         DelegateFolderPermissionLevel value) {
       this.permissionLevel = value;
     }
-
-
-    private boolean isExistingPermissionLevelCustom;
 
     /**
      * Gets IsExistingPermissionLevelCustom.

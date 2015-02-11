@@ -41,7 +41,6 @@ abstract class DelegateManagementRequestBase
    * Initializes a new instance of the class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected DelegateManagementRequestBase(ExchangeService service)
       throws Exception {
@@ -70,7 +69,7 @@ abstract class DelegateManagementRequestBase
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.getMailbox().writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.Mailbox);
+                                 XmlElementNames.Mailbox);
   }
 
   /**

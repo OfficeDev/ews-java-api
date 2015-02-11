@@ -30,6 +30,7 @@ import java.util.List;
  * Represents an array of byte arrays
  */
 public class ByteArrayArray extends ComplexProperty {
+
   final static String ItemXmlElementName = "Base64Binary";
   private List<byte[]> content = new ArrayList<byte[]>();
 
@@ -68,7 +69,7 @@ public class ByteArrayArray extends ComplexProperty {
       throws Exception {
     for (byte[] item : this.content) {
       writer.writeStartElement(XmlNamespace.Types,
-          ByteArrayArray.ItemXmlElementName);
+                               ByteArrayArray.ItemXmlElementName);
       writer.writeBase64ElementValue(item);
       writer.writeEndElement();
     }

@@ -31,6 +31,7 @@ import java.util.List;
  * Represents the response to a Conversation search operation.
  */
 final class FindConversationResponse extends ServiceResponse {
+
   List<Conversation> conversations = new ArrayList<Conversation>();
 
   /**
@@ -53,7 +54,6 @@ final class FindConversationResponse extends ServiceResponse {
    * Read Conversations from XML.
    *
    * @param reader The reader.
-   * @throws Exception
    */
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
@@ -64,7 +64,7 @@ final class FindConversationResponse extends ServiceResponse {
         "conversations is null.");
 
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.Conversations);
+                            XmlElementNames.Conversations);
     if (!reader.isEmptyElement()) {
       do {
         reader.read();
@@ -72,7 +72,7 @@ final class FindConversationResponse extends ServiceResponse {
         if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
           Conversation item = EwsUtilities.
               createEwsObjectFromXmlElementName(Conversation.class,
-                  reader.getService(), reader.getLocalName());
+                                                reader.getService(), reader.getLocalName());
 
           if (item == null) {
             reader.skipCurrentElement();
@@ -88,7 +88,7 @@ final class FindConversationResponse extends ServiceResponse {
         }
       }
       while (!reader.isEndElement(XmlNamespace.Messages,
-          XmlElementNames.Conversations));
+                                  XmlElementNames.Conversations));
     }
   }
 }

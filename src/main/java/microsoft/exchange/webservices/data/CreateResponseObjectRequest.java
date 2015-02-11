@@ -27,17 +27,16 @@ package microsoft.exchange.webservices.data;
  * Represents a CreateItem request for a response object.
  */
 final class CreateResponseObjectRequest extends
-    CreateItemRequestBase<ServiceObject, CreateResponseObjectResponse> {
+                                        CreateItemRequestBase<ServiceObject, CreateResponseObjectResponse> {
 
   /**
    * Initializes a new instance of the CreateResponseObjectRequest class.
    *
    * @param service           The Service
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   CreateResponseObjectRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                              ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }

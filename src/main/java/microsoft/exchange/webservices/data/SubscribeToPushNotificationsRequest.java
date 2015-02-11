@@ -23,14 +23,15 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.net.URI;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * The Class SubscribeToPushNotificationsRequest.
  */
 class SubscribeToPushNotificationsRequest extends
-    SubscribeRequest<PushSubscription> {
+                                          SubscribeRequest<PushSubscription> {
 
   /**
    * The frequency.
@@ -46,7 +47,6 @@ class SubscribeToPushNotificationsRequest extends
    * Instantiates a new subscribe to push notifications request.
    *
    * @param service the service
-   * @throws Exception
    */
   protected SubscribeToPushNotificationsRequest(ExchangeService service)
       throws Exception {
@@ -93,7 +93,7 @@ class SubscribeToPushNotificationsRequest extends
   protected void internalWriteElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.StatusFrequency, this.getFrequency());
+                             XmlElementNames.StatusFrequency, this.getFrequency());
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.URL, this
         .getUrl().toString());
   }

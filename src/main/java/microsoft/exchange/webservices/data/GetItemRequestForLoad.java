@@ -33,10 +33,9 @@ final class GetItemRequestForLoad extends GetItemRequestBase<ServiceResponse> {
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
    */
   protected GetItemRequestForLoad(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                                  ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -50,7 +49,7 @@ final class GetItemRequestForLoad extends GetItemRequestBase<ServiceResponse> {
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new GetItemResponse(this.getItemIds().getItemIdWrapperList(
         responseIndex), this.getPropertySet());
 

@@ -28,16 +28,16 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Represents a post item. Properties available on post items are defined in the
- * PostItemSchema class.
+ * Represents a post item. Properties available on post items are defined in the PostItemSchema
+ * class.
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.PostItem)
 public final class PostItem extends Item {
 
   /**
-   * Initializes an unsaved local instance of PostItem.To bind to an existing
-   * post item, use PostItem.Bind() instead.
+   * Initializes an unsaved local instance of PostItem.To bind to an existing post item, use
+   * PostItem.Bind() instead.
    *
    * @param service the service
    * @throws Exception the exception
@@ -57,29 +57,27 @@ public final class PostItem extends Item {
   }
 
   /**
-   * Binds to an existing post item and loads the specified set of properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing post item and loads the specified set of properties. Calling this method
+   * results in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
    * @param propertySet the property set
-   * @return An PostItem instance representing the post item corresponding to
-   * the specified Id.
+   * @return An PostItem instance representing the post item corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static PostItem bind(ExchangeService service, ItemId id,
-      PropertySet propertySet) throws Exception {
+                              PropertySet propertySet) throws Exception {
     return service.bindToItem(PostItem.class, id, propertySet);
   }
 
   /**
-   * Binds to an existing post item and loads its first class properties.
-   * calling this method results in a call to EWS.
+   * Binds to an existing post item and loads its first class properties. calling this method
+   * results in a call to EWS.
    *
    * @param service the service
    * @param id      the id
-   * @return An PostItem instance representing the post item corresponding to
-   * the specified Id.
+   * @return An PostItem instance representing the post item corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static PostItem bind(ExchangeService service, ItemId id)
@@ -120,8 +118,7 @@ public final class PostItem extends Item {
   }
 
   /**
-   * Posts a reply to this post item. Calling this method results in a call to
-   * EWS.
+   * Posts a reply to this post item. Calling this method results in a call to EWS.
    *
    * @param bodyPrefix the body prefix
    * @throws Exception the exception
@@ -136,15 +133,15 @@ public final class PostItem extends Item {
    * Creates a e-mail reply response to the post item.
    *
    * @param replyAll the reply all
-   * @return A ResponseMessage representing the e-mail reply response that can
-   * subsequently be modified and sent.
+   * @return A ResponseMessage representing the e-mail reply response that can subsequently be
+   * modified and sent.
    * @throws Exception the exception
    */
   public ResponseMessage createReply(boolean replyAll) throws Exception {
     this.throwIfThisIsNew();
     return new ResponseMessage(this,
-        replyAll ? ResponseMessageType.ReplyAll :
-            ResponseMessageType.Reply);
+                               replyAll ? ResponseMessageType.ReplyAll :
+                               ResponseMessageType.Reply);
   }
 
   /**
@@ -164,8 +161,8 @@ public final class PostItem extends Item {
   /**
    * Creates a forward response to the post item.
    *
-   * @return A ResponseMessage representing the forward response that can
-   * subsequently be modified and sent.
+   * @return A ResponseMessage representing the forward response that can subsequently be modified
+   * and sent.
    * @throws Exception the exception
    */
   public ResponseMessage createForward() throws Exception {
@@ -197,7 +194,7 @@ public final class PostItem extends Item {
    * @throws Exception the exception
    */
   public void forward(MessageBody bodyPrefix,
-      Iterable<EmailAddress> toRecipients) throws Exception {
+                      Iterable<EmailAddress> toRecipients) throws Exception {
     ResponseMessage responseMessage = this.createForward();
     responseMessage.setBodyPrefix(bodyPrefix);
     responseMessage.getToRecipients()
@@ -286,6 +283,17 @@ public final class PostItem extends Item {
   }
 
   /**
+   * Sets the checks if is read.
+   *
+   * @param value the new checks if is read
+   * @throws Exception the exception
+   */
+  public void setIsRead(String value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        EmailMessageSchema.References, value);
+  }
+
+  /**
    * Gets the the date and time when the post item was posted.
    *
    * @return the posted time
@@ -305,17 +313,6 @@ public final class PostItem extends Item {
   public String getReferences() throws ServiceLocalException {
     return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
         EmailMessageSchema.References);
-  }
-
-  /**
-   * Sets the checks if is read.
-   *
-   * @param value the new checks if is read
-   * @throws Exception the exception
-   */
-  public void setIsRead(String value) throws Exception {
-    this.getPropertyBag().setObjectFromPropertyDefinition(
-        EmailMessageSchema.References, value);
   }
 
   /**

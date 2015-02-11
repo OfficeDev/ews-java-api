@@ -36,6 +36,16 @@ public class ConversationId extends ServiceId {
   }
 
   /**
+   * Initializes a new instance of ConversationId.
+   *
+   * @param uniqueId the unique id
+   * @throws Exception the exception
+   */
+  public ConversationId(String uniqueId) throws Exception {
+    super(uniqueId);
+  }
+
+  /**
    * Defines an implicit conversion between string and ConversationId.
    *
    * @param uniqueId the unique id
@@ -77,16 +87,6 @@ public class ConversationId extends ServiceId {
   @Override
   protected String getXmlElementName() {
     return XmlElementNames.ConversationId;
-  }
-
-  /**
-   * Initializes a new instance of ConversationId.
-   *
-   * @param uniqueId the unique id
-   * @throws Exception the exception
-   */
-  public ConversationId(String uniqueId) throws Exception {
-    super(uniqueId);
   }
 
   /**

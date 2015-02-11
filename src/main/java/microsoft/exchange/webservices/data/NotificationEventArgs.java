@@ -24,10 +24,10 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Provides data to a StreamingSubscriptionConnection's
- * OnNotificationEvent event.
+ * Provides data to a StreamingSubscriptionConnection's OnNotificationEvent event.
  */
 public class NotificationEventArgs {
+
   private StreamingSubscription subscription;
   private Iterable<NotificationEvent> events;
 

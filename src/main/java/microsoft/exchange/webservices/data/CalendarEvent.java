@@ -85,8 +85,8 @@ public final class CalendarEvent extends ComplexProperty {
   }
 
   /**
-   * Gets the details of the calendar event. Details is null if the user
-   * requsting them does no have the appropriate rights.
+   * Gets the details of the calendar event. Details is null if the user requsting them does no have
+   * the appropriate rights.
    *
    * @return the details
    */

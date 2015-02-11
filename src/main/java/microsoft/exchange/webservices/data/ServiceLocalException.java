@@ -24,8 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an error that occurs when a service operation fails locally (e.g.
- * validation error).
+ * Represents an error that occurs when a service operation fails locally (e.g. validation error).
  */
 public class ServiceLocalException extends Exception {
 

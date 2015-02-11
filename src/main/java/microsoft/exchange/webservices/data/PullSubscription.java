@@ -27,6 +27,7 @@ package microsoft.exchange.webservices.data;
  * Represents a pull subscription.
  */
 public final class PullSubscription extends SubscriptionBase {
+
   /**
    * The more events available.
    */
@@ -43,17 +44,15 @@ public final class PullSubscription extends SubscriptionBase {
   }
 
   /**
-   * Obtains a collection of events that occurred on the subscribed folders
-   * since the point in time defined by the Watermark property. When GetEvents
-   * succeeds, Watermark is updated.
+   * Obtains a collection of events that occurred on the subscribed folders since the point in time
+   * defined by the Watermark property. When GetEvents succeeds, Watermark is updated.
    *
-   * @return Returns a collection of events that occurred since the last
-   * watermark
+   * @return Returns a collection of events that occurred since the last watermark
    * @throws Exception the exception
    */
   public GetEventsResults getEvents() throws Exception {
     GetEventsResults results = getService().getEvents(this.getId(),
-        this.getWaterMark());
+                                                      this.getWaterMark());
     this.setWaterMark(results.getNewWatermark());
     this.moreEventsAvailable = results.isMoreEventsAvailable();
     return results;
@@ -66,7 +65,6 @@ public final class PullSubscription extends SubscriptionBase {
    * @param callback The AsyncCallback delegate
    * @param state    An object that contains state information for this request
    * @return An IAsyncResult that references the asynchronous request
-   * @throws Exception
    */
   public IAsyncResult beginGetEvents(AsyncCallback callback, Object state) throws Exception {
     return this.getService().beginGetEvents(callback, state, this.getId(), this.getWaterMark());
@@ -79,7 +77,6 @@ public final class PullSubscription extends SubscriptionBase {
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
    * @return Returns a collection of events that occurred since the last watermark.
-   * @throws Exception
    */
   public GetEventsResults endGetEvents(IAsyncResult asyncResult) throws Exception {
     GetEventsResults results = this.getService().endGetEvents(asyncResult);
@@ -105,7 +102,6 @@ public final class PullSubscription extends SubscriptionBase {
    * @param callback The AsyncCallback delegate.
    * @param state    An object that contains state information for this request
    * @return An IAsyncResult that references the asynchronous request
-   * @throws Exception
    */
   public IAsyncResult beginUnsubscribe(AsyncCallback callback, Object state) throws Exception {
     return this.getService().beginUnsubscribe(callback, state, this.getId());
@@ -115,15 +111,14 @@ public final class PullSubscription extends SubscriptionBase {
    * Ends an asynchronous request to unsubscribe from the pull subscription.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
-   * @throws Exception
    */
   public void endUnsubscribe(IAsyncResult asyncResult) throws Exception {
     this.getService().endUnsubscribe(asyncResult);
   }
 
   /**
-   * Gets a value indicating whether more events are available on the server.
-   * MoreEventsAvailable is undefined (null) until GetEvents is called.
+   * Gets a value indicating whether more events are available on the server. MoreEventsAvailable is
+   * undefined (null) until GetEvents is called.
    *
    * @return true, if is more events available
    */

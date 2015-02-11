@@ -29,58 +29,48 @@ package microsoft.exchange.webservices.data;
 public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Cloneable {
 
   /**
+   * Constant for milliseconds unit and conversion.
+   */
+  public static final int MILLISECONDS = 1;
+  /**
+   * Constant for seconds unit and conversion.
+   */
+  public static final int SECONDS = MILLISECONDS * 1000;
+  /**
+   * Constant for minutes unit and conversion.
+   */
+  public static final int MINUTES = SECONDS * 60;
+  /**
+   * Constant for hours unit and conversion.
+   */
+  public static final int HOURS = MINUTES * 60;
+  /**
+   * Constant for days unit and conversion.
+   */
+  public static final int DAYS = HOURS * 24;
+  /**
+   * Represents the Maximum TimeSpan value.
+   */
+  public static final TimeSpan MAX_VALUE = new TimeSpan(Long.MAX_VALUE);
+  /**
+   * Represents the Minimum TimeSpan value.
+   */
+  public static final TimeSpan MIN_VALUE = new TimeSpan(Long.MIN_VALUE);
+  /**
+   * Represents the TimeSpan with a value of zero.
+   */
+  public static final TimeSpan ZERO = new TimeSpan(0L);
+  /**
    * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
-
   /**
    * The time.
    */
   private long time = 0;
 
   /**
-   * Constant for milliseconds unit and conversion.
-   */
-  public static final int MILLISECONDS = 1;
-
-  /**
-   * Constant for seconds unit and conversion.
-   */
-  public static final int SECONDS = MILLISECONDS * 1000;
-
-  /**
-   * Constant for minutes unit and conversion.
-   */
-  public static final int MINUTES = SECONDS * 60;
-
-  /**
-   * Constant for hours unit and conversion.
-   */
-  public static final int HOURS = MINUTES * 60;
-
-  /**
-   * Constant for days unit and conversion.
-   */
-  public static final int DAYS = HOURS * 24;
-
-  /**
-   * Represents the Maximum TimeSpan value.
-   */
-  public static final TimeSpan MAX_VALUE = new TimeSpan(Long.MAX_VALUE);
-
-  /**
-   * Represents the Minimum TimeSpan value.
-   */
-  public static final TimeSpan MIN_VALUE = new TimeSpan(Long.MIN_VALUE);
-
-  /**
-   * Represents the TimeSpan with a value of zero.
-   */
-  public static final TimeSpan ZERO = new TimeSpan(0L);
-
-  /**
-   * Creates a new instance of TimeSpan based on the number of milliseconds
-   * entered.
+   * Creates a new instance of TimeSpan based on the number of milliseconds entered.
    *
    * @param time the number of milliseconds for this TimeSpan.
    */
@@ -108,23 +98,116 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
    *
    * @param date1 Date to use as the base value.
    * @param date2 Date to subtract from the base value.
-   * @return a TimeSpan object representing the difference bewteen the two
-   * Date objects.
+   * @return a TimeSpan object representing the difference bewteen the two Date objects.
    */
   public static TimeSpan subtract(java.util.Date date1,
-      java.util.Date date2) {
+                                  java.util.Date date2) {
     return new TimeSpan(date1.getTime() - date2.getTime());
   }
 
   /**
-   * Compares this object with the specified object for order. Returns a
-   * negative integer, zero, or a positive integer as this object is less
-   * than, equal to, or greater than the specified object. Comparison is based
-   * on the number of milliseconds in this TimeSpan.
+   * Compares two TimeSpan objects.
+   *
+   * @param first  first TimeSpan to use in the compare.
+   * @param second second TimeSpan to use in the compare.
+   * @return a negative integer, zero, or a positive integer as the first TimeSpan is less than,
+   * equal to, or greater than the second TimeSpan.
+   */
+  public static int compare(TimeSpan first, TimeSpan second) {
+    if (first.time == second.time) {
+      return 0;
+    }
+    if (first.time > second.time) {
+      return +1;
+    }
+    return -1;
+  }
+
+  /**
+   * To milliseconds.
+   *
+   * @param units the units
+   * @param value the value
+   * @return the long
+   */
+  private static long toMilliseconds(int units, long value) {
+    long millis;
+    switch (units) {
+      case TimeSpan.MILLISECONDS:
+      case TimeSpan.SECONDS:
+      case TimeSpan.MINUTES:
+      case TimeSpan.HOURS:
+      case TimeSpan.DAYS:
+        millis = value * units;
+        break;
+      default:
+        throw new IllegalArgumentException("Unrecognized units: " + units);
+    }
+    return millis;
+  }
+
+  public static TimeSpan parse(String s) throws Exception {
+    String str = s.trim();
+    String[] st1 = str.split("\\.");
+    int days = 0, millsec = 0, totMillSec = 0;
+    String data = str;
+    switch (st1.length) {
+      case 1:
+        data = str;
+        break;
+      case 2:
+        if (st1[0].split(":").length > 1) {
+          millsec = Integer.parseInt(st1[1]);
+          data = st1[0];
+        } else {
+          days = Integer.parseInt(st1[0]);
+          data = st1[1];
+        }
+        break;
+      case 3:
+        days = Integer.parseInt(st1[0]);
+        data = st1[1];
+        millsec = Integer.parseInt(st1[2]);
+        break;
+      default:
+        throw new FormatException("Bad Format");
+
+    }
+    String[] st = data.split(":");
+    switch (st.length) {
+      case 1:
+        totMillSec = Integer.parseInt(str) * 24 * 60 * 60 * 1000;
+        break;
+      case 2:
+        totMillSec =
+            (Integer.parseInt(st[0]) * 60 * 60 * 1000) + (Integer.parseInt(st[1]) * 60 * 1000);
+        break;
+      case 3:
+        totMillSec =
+            (Integer.parseInt(st[0]) * 60 * 60 * 1000) + (Integer.parseInt(st[1]) * 60 * 1000) + (
+                Integer.parseInt(st[2]) * 1000);
+        break;
+      case 4:
+        totMillSec =
+            (Integer.parseInt(st[0]) * 24 * 60 * 60 * 1000) + (Integer.parseInt(st[1]) * 60 * 60
+                                                               * 1000) + (
+                Integer.parseInt(st[2]) * 60 * 1000) + (Integer.parseInt(st[3]) * 1000);
+        break;
+      default:
+        throw new FormatException("Bad Format/Overflow");
+    }
+    totMillSec += (days * 24 * 60 * 60 * 1000) + millsec;
+    return new TimeSpan(totMillSec);
+  }
+
+  /**
+   * Compares this object with the specified object for order. Returns a negative integer, zero, or
+   * a positive integer as this object is less than, equal to, or greater than the specified object.
+   * Comparison is based on the number of milliseconds in this TimeSpan.
    *
    * @param o the Object to be compared.
-   * @return a negative integer, zero, or a positive integer as this object is
-   * less than, equal to, or greater than the specified object.
+   * @return a negative integer, zero, or a positive integer as this object is less than, equal to,
+   * or greater than the specified object.
    */
   public int compareTo(TimeSpan o) {
     TimeSpan compare = (TimeSpan) o;
@@ -138,12 +221,12 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
   }
 
   /**
-   * Indicates whether some other object is "equal to" this one. Comparison is
-   * based on the number of milliseconds in this TimeSpan.
+   * Indicates whether some other object is "equal to" this one. Comparison is based on the number
+   * of milliseconds in this TimeSpan.
    *
    * @param obj the reference object with which to compare.
-   * @return if the obj argument is a TimeSpan object with the exact same
-   * number of milliseconds. otherwise.
+   * @return if the obj argument is a TimeSpan object with the exact same number of milliseconds.
+   * otherwise.
    */
   public boolean equals(Object obj) {
     if (obj instanceof TimeSpan) {
@@ -156,10 +239,9 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
   }
 
   /**
-   * Returns a hash code value for the object. This method is supported for
-   * the benefit of hashtables such as those provided by
-   * <code>java.util.Hashtable</code>. The method uses the same algorithm as
-   * found in the Long class.
+   * Returns a hash code value for the object. This method is supported for the benefit of
+   * hashtables such as those provided by <code>java.util.Hashtable</code>. The method uses the same
+   * algorithm as found in the Long class.
    *
    * @return a hash code value for this object.
    * @see Object#equals(Object)
@@ -170,10 +252,9 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
   }
 
   /**
-   * Returns a string representation of the object in the format.
-   * "[-]d.hh:mm:ss.ff" where "-" is an optional sign for negative TimeSpan
-   * values, the "d" component is days, "hh" is hours, "mm" is minutes, "ss"
-   * is seconds, and "ff" is milliseconds
+   * Returns a string representation of the object in the format. "[-]d.hh:mm:ss.ff" where "-" is an
+   * optional sign for negative TimeSpan values, the "d" component is days, "hh" is hours, "mm" is
+   * minutes, "ss" is seconds, and "ff" is milliseconds
    *
    * @return a string containing the number of milliseconds.
    */
@@ -227,8 +308,7 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
   /**
    * Indicates whether the value of the TimeSpan is positive.
    *
-   * @return if the value of the TimeSpan is greater than
-   * zero.  otherwise.
+   * @return if the value of the TimeSpan is greater than zero.  otherwise.
    */
   public boolean isPositive() {
     return this.compareTo(TimeSpan.ZERO) > 0 ? true : false;
@@ -237,8 +317,7 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
   /**
    * Indicates whether the value of the TimeSpan is negative.
    *
-   * @return if the value of the TimeSpan is less than zero.
-   * otherwise.
+   * @return if the value of the TimeSpan is less than zero. otherwise.
    */
   public boolean isNegative() {
     return this.compareTo(TimeSpan.ZERO) < 0 ? true : false;
@@ -247,8 +326,7 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
   /**
    * Indicates whether the value of the TimeSpan is zero.
    *
-   * @return if the value of the TimeSpan is equal to zero.
-   * otherwise.
+   * @return if the value of the TimeSpan is equal to zero. otherwise.
    */
   public boolean isZero() {
     return this.equals(TimeSpan.ZERO);
@@ -261,7 +339,7 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
    */
   public long getMilliseconds() {
     return (((this.time % TimeSpan.HOURS) % TimeSpan.MINUTES) % TimeSpan.MILLISECONDS)
-        / TimeSpan.MILLISECONDS;
+           / TimeSpan.MILLISECONDS;
   }
 
   /**
@@ -365,25 +443,6 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
   }
 
   /**
-   * Compares two TimeSpan objects.
-   *
-   * @param first  first TimeSpan to use in the compare.
-   * @param second second TimeSpan to use in the compare.
-   * @return a negative integer, zero, or a positive integer as the first
-   * TimeSpan is less than, equal to, or greater than the second
-   * TimeSpan.
-   */
-  public static int compare(TimeSpan first, TimeSpan second) {
-    if (first.time == second.time) {
-      return 0;
-    }
-    if (first.time > second.time) {
-      return +1;
-    }
-    return -1;
-  }
-
-  /**
    * Returns a TimeSpan whose value is the absolute value of this TimeSpan.
    *
    * @return a TimeSpan whose value is the absolute value of this TimeSpan.
@@ -418,80 +477,6 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
    */
   public void subtract(int units, long value) {
     add(units, -value);
-  }
-
-  /**
-   * To milliseconds.
-   *
-   * @param units the units
-   * @param value the value
-   * @return the long
-   */
-  private static long toMilliseconds(int units, long value) {
-    long millis;
-    switch (units) {
-      case TimeSpan.MILLISECONDS:
-      case TimeSpan.SECONDS:
-      case TimeSpan.MINUTES:
-      case TimeSpan.HOURS:
-      case TimeSpan.DAYS:
-        millis = value * units;
-        break;
-      default:
-        throw new IllegalArgumentException("Unrecognized units: " + units);
-    }
-    return millis;
-  }
-
-  public static TimeSpan parse(String s) throws Exception {
-    String str = s.trim();
-    String[] st1 = str.split("\\.");
-    int days = 0, millsec = 0, totMillSec = 0;
-    String data = str;
-    switch (st1.length) {
-      case 1:
-        data = str;
-        break;
-      case 2:
-        if (st1[0].split(":").length > 1) {
-          millsec = Integer.parseInt(st1[1]);
-          data = st1[0];
-        } else {
-          days = Integer.parseInt(st1[0]);
-          data = st1[1];
-        }
-        break;
-      case 3:
-        days = Integer.parseInt(st1[0]);
-        data = st1[1];
-        millsec = Integer.parseInt(st1[2]);
-        break;
-      default:
-        throw new FormatException("Bad Format");
-
-    }
-    String[] st = data.split(":");
-    switch (st.length) {
-      case 1:
-        totMillSec = Integer.parseInt(str) * 24 * 60 * 60 * 1000;
-        break;
-      case 2:
-        totMillSec = (Integer.parseInt(st[0]) * 60 * 60 * 1000) + (Integer.parseInt(st[1]) * 60 * 1000);
-        break;
-      case 3:
-        totMillSec = (Integer.parseInt(st[0]) * 60 * 60 * 1000) + (Integer.parseInt(st[1]) * 60 * 1000) + (
-            Integer.parseInt(st[2]) * 1000);
-        break;
-      case 4:
-        totMillSec =
-            (Integer.parseInt(st[0]) * 24 * 60 * 60 * 1000) + (Integer.parseInt(st[1]) * 60 * 60 * 1000) + (
-                Integer.parseInt(st[2]) * 60 * 1000) + (Integer.parseInt(st[3]) * 1000);
-        break;
-      default:
-        throw new FormatException("Bad Format/Overflow");
-    }
-    totMillSec += (days * 24 * 60 * 60 * 1000) + millsec;
-    return new TimeSpan(totMillSec);
   }
 
 }

@@ -66,8 +66,7 @@ final class TimeChange extends ComplexProperty {
   /**
    * Initializes a new instance of the <see cref="TimeChange"/> class.
    *
-   * @param offset The offset since the beginning of the year when the change
-   *               occurs.
+   * @param offset The offset since the beginning of the year when the change occurs.
    */
   public TimeChange(TimeSpan offset) {
     this();
@@ -77,8 +76,7 @@ final class TimeChange extends ComplexProperty {
   /**
    * Initializes a new instance of the "TimeChange" class.
    *
-   * @param offset The offset since the beginning of the year when the change
-   *               occurs.
+   * @param offset The offset since the beginning of the year when the change occurs.
    * @param time   The time at which the change occurs.
    */
   public TimeChange(TimeSpan offset, Time time) {
@@ -195,7 +193,7 @@ final class TimeChange extends ComplexProperty {
 
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.Offset)) {
       this.offset = EwsUtilities.getXSDurationToTimeSpan(reader
-          .readElementValue());
+                                                             .readElementValue());
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(
         XmlElementNames.RelativeYearlyRecurrence)) {
@@ -242,7 +240,7 @@ final class TimeChange extends ComplexProperty {
   protected void writeAttributesToXml(EwsServiceXmlWriter writer) {
     try {
       writer.writeAttributeValue(XmlAttributeNames.TimeZoneName,
-          this.timeZoneName);
+                                 this.timeZoneName);
     } catch (ServiceXmlSerializationException e) {
       e.printStackTrace();
     }
@@ -259,24 +257,24 @@ final class TimeChange extends ComplexProperty {
       throws Exception {
     if (this.offset != null) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.Offset, EwsUtilities
+                               XmlElementNames.Offset, EwsUtilities
               .getTimeSpanToXSDuration(this.getOffset()));
     }
 
     if (this.recurrence != null) {
       this.recurrence.writeToXml(writer,
-          XmlElementNames.RelativeYearlyRecurrence);
+                                 XmlElementNames.RelativeYearlyRecurrence);
     }
 
     if (this.absoluteDate != null) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.AbsoluteDate, EwsUtilities
+                               XmlElementNames.AbsoluteDate, EwsUtilities
               .dateTimeToXSDate(this.getAbsoluteDate()));
     }
 
     if (this.time != null) {
       writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Time,
-          this.getTime().toXSTime());
+                               this.getTime().toXSTime());
     }
   }
 

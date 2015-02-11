@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 //These constants needs to be defined as per user configurations.
 public interface CredentialConstants {
+
   String URL = "";
   String USERNAME = "";
   String DOMAIN = "";

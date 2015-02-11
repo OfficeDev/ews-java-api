@@ -27,13 +27,15 @@ import java.io.IOException;
 import java.util.concurrent.Callable;
 
 public class CallableMethod implements Callable<Object> {
+
   HttpWebRequest request;
 
   CallableMethod(HttpWebRequest request) {
     this.request = request;
   }
 
-  protected HttpClientWebRequest executeMethod() throws EWSHttpException, HttpErrorException, IOException {
+  protected HttpClientWebRequest executeMethod()
+      throws EWSHttpException, HttpErrorException, IOException {
 
     request.executeRequest();
     return (HttpClientWebRequest) request;

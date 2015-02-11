@@ -29,7 +29,7 @@ package microsoft.exchange.webservices.data;
  * @param <TResponse> The type of the response.
  */
 abstract class FindRequest<TResponse extends ServiceResponse> extends
-    MultiResponseServiceRequest<TResponse> {
+                                                              MultiResponseServiceRequest<TResponse> {
 
   /**
    * The parent folder ids.
@@ -56,10 +56,9 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
    *
    * @param service           The service.
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   protected FindRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                        ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -80,7 +79,7 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
     //
     if (!(this.queryString == null || this.queryString.isEmpty())
         && this.getService().getRequestedServerVersion().ordinal() <
-        ExchangeVersion.Exchange2010.ordinal()) {
+           ExchangeVersion.Exchange2010.ordinal()) {
       throw new ServiceVersionException(String.format(
           Strings.ParameterIncompatibleWithRequestVersion,
           "queryString", ExchangeVersion.Exchange2010));
@@ -106,8 +105,7 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
   /**
    * Gets the group by clause.
    *
-   * @return The group by clause, null if the request does not have or support
-   * grouping.
+   * @return The group by clause, null if the request does not have or support grouping.
    */
   protected Grouping getGroupBy() {
     return null;
@@ -140,7 +138,7 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
 
     if (this.getSearchFilter() != null) {
       writer.writeStartElement(XmlNamespace.Messages,
-          XmlElementNames.Restriction);
+                               XmlElementNames.Restriction);
       this.getSearchFilter().writeToXml(writer);
       writer.writeEndElement(); // Restriction
     }
@@ -149,14 +147,14 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
 
     try {
       this.getParentFolderIds().writeToXml(writer, XmlNamespace.Messages,
-          XmlElementNames.ParentFolderIds);
+                                           XmlElementNames.ParentFolderIds);
     } catch (Exception e) {
       e.printStackTrace();
     }
 
     if (!(this.queryString == null || this.queryString.isEmpty())) {
       writer.writeElementValue(XmlNamespace.Messages,
-          XmlElementNames.QueryString, this.queryString);
+                               XmlElementNames.QueryString, this.queryString);
     }
   }
 
@@ -170,10 +168,9 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
   }
 
   /**
-   * Gets the search filter. Available search filter classes include
-   * SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
-   * SearchFilter.SearchFilterCollection. If SearchFilter is null, no search
-   * filters are applied.
+   * Gets the search filter. Available search filter classes include SearchFilter.IsEqualTo,
+   * SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection. If SearchFilter is
+   * null, no search filters are applied.
    *
    * @return the search filter
    */
@@ -182,10 +179,9 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
   }
 
   /**
-   * Sets the search filter. Available search filter classes include
-   * SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
-   * SearchFilter.SearchFilterCollection. If SearchFilter is null, no search
-   * filters are applied.
+   * Sets the search filter. Available search filter classes include SearchFilter.IsEqualTo,
+   * SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection. If SearchFilter is
+   * null, no search filters are applied.
    *
    * @param searchFilter the new search filter
    */

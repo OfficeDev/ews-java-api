@@ -33,10 +33,9 @@ public class MoveItemRequest extends MoveCopyItemRequest<MoveCopyItemResponse> {
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
    */
   MoveItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                  ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }

@@ -40,7 +40,7 @@ class ItemIdWrapper extends AbstractItemIdWrapper {
    */
   protected ItemIdWrapper(ItemId itemId) {
     EwsUtilities.EwsAssert(itemId != null, "ItemIdWrapper.ctor",
-        "itemId is null");
+                           "itemId is null");
     this.itemId = itemId;
   }
 

@@ -40,7 +40,8 @@ class TimeSpanPropertyDefinition extends GenericPropertyDefinition<TimeSpan> {
    * @param version        The version.
    */
   protected TimeSpanPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                       EnumSet<PropertyDefinitionFlags> flags,
+                                       ExchangeVersion version) {
     super(TimeSpan.class, xmlElementName, uri, flags, version);
   }
 

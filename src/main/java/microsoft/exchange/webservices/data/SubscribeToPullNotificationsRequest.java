@@ -29,7 +29,7 @@ import javax.xml.stream.XMLStreamException;
  * Represents a "pull" Subscribe request.
  */
 class SubscribeToPullNotificationsRequest extends
-    SubscribeRequest<PullSubscription> {
+                                          SubscribeRequest<PullSubscription> {
 
   /**
    * The timeout.
@@ -119,14 +119,17 @@ class SubscribeToPullNotificationsRequest extends
    * Reads response elements from XML.
    *
    * @param writer the writer
-   * @throws javax.xml.stream.XMLStreamException                                  the xML stream exception
-   * @throws microsoft.exchange.webservices.data.ServiceXmlSerializationException the service xml serialization exception
+   * @throws javax.xml.stream.XMLStreamException                                  the xML stream
+   *                                                                              exception
+   * @throws microsoft.exchange.webservices.data.ServiceXmlSerializationException the service xml
+   *                                                                              serialization
+   *                                                                              exception
    */
   @Override
   protected void internalWriteElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Timeout,
-        this.getTimeout());
+                             this.getTimeout());
 
   }
 }

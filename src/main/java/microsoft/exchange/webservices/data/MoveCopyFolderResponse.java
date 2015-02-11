@@ -26,11 +26,10 @@ package microsoft.exchange.webservices.data;
 import java.util.List;
 
 /**
- * Represents the base response class for individual folder move and copy
- * operations.
+ * Represents the base response class for individual folder move and copy operations.
  */
 public final class MoveCopyFolderResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                                  IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The folder.
@@ -53,9 +52,9 @@ public final class MoveCopyFolderResponse extends ServiceResponse implements
    * @throws Exception the exception
    */
   private Folder getObjectInstance(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                   String xmlElementName) throws Exception {
     return EwsUtilities.createEwsObjectFromXmlElementName(Folder.class,
-        service, xmlElementName);
+                                                          service, xmlElementName);
   }
 
   /**
@@ -103,7 +102,7 @@ public final class MoveCopyFolderResponse extends ServiceResponse implements
    */
   @Override
   public ServiceObject getObjectInstanceDelegate(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                                 String xmlElementName) throws Exception {
     return this.getObjectInstance(service, xmlElementName);
   }
 

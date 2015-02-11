@@ -118,6 +118,5 @@ public enum WebExceptionStatus {
   //     This request was not permitted by the proxy.
   RequestProhibitedByProxy,
 
-
 }
 

@@ -24,8 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Defines the type of free/busy information returned by a GetUserAvailability
- * operation.
+ * Defines the type of free/busy information returned by a GetUserAvailability operation.
  */
 public enum FreeBusyViewType {
 

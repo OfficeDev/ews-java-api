@@ -74,18 +74,18 @@ public final class ExchangeServerInfo {
   protected static ExchangeServerInfo parse(EwsServiceXmlReader reader)
       throws Exception {
     EwsUtilities.EwsAssert(reader.hasAttributes(),
-        "ExchangeServerVersion.Parse",
-        "Current element doesn't have attributes");
+                           "ExchangeServerVersion.Parse",
+                           "Current element doesn't have attributes");
 
     ExchangeServerInfo info = new ExchangeServerInfo();
     info.majorVersion = reader.readAttributeValue(Integer.class,
-        "MajorVersion");
+                                                  "MajorVersion");
     info.minorVersion = reader.readAttributeValue(Integer.class,
-        "MinorVersion");
+                                                  "MinorVersion");
     info.majorBuildNumber = reader.readAttributeValue(Integer.class,
-        "MajorBuildNumber");
+                                                      "MajorBuildNumber");
     info.minorBuildNumber = reader.readAttributeValue(Integer.class,
-        "MinorBuildNumber");
+                                                      "MinorBuildNumber");
     info.versionString = reader.readAttributeValue("Version");
     return info;
   }
@@ -193,6 +193,6 @@ public final class ExchangeServerInfo {
   public String toString() {
     return String
         .format("%d,%2d,%4d,%3d", this.majorVersion, this.minorVersion,
-            this.majorBuildNumber, this.minorBuildNumber);
+                this.majorBuildNumber, this.minorBuildNumber);
   }
 }

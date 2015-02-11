@@ -81,8 +81,6 @@ public final class MobilePhone implements ISelfValidate {
 
   /**
    * Validates this instance.//>!(contentType == null || contentType.isEmpty()
-   *
-   * @throws ServiceValidationException
    */
   public void validate() throws ServiceValidationException {
     if (this.getPhoneNumber() == null || this.getPhoneNumber().isEmpty()) {

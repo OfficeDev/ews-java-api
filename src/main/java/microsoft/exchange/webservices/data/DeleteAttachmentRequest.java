@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a DeleteAttachment request.
  */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,7 @@ import java.util.List;
  * The Class DeleteAttachmentRequest.
  */
 final class DeleteAttachmentRequest extends
-    MultiResponseServiceRequest<DeleteAttachmentResponse> {
+                                    MultiResponseServiceRequest<DeleteAttachmentResponse> {
 
   /**
    * The attachments.
@@ -45,10 +46,9 @@ final class DeleteAttachmentRequest extends
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
    */
   protected DeleteAttachmentRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                                    ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -61,10 +61,10 @@ final class DeleteAttachmentRequest extends
     try {
       super.validate();
       EwsUtilities.validateParamCollection(this.getAttachments()
-          .iterator(), "Attachments");
+                                               .iterator(), "Attachments");
       for (int i = 0; i < this.attachments.size(); i++) {
         EwsUtilities.validateParam(this.attachments.get(i).getId(),
-            String.format("Attachment[%d].Id ", i));
+                                   String.format("Attachment[%d].Id ", i));
       }
     } catch (ServiceLocalException e) {
       e.printStackTrace();
@@ -137,11 +137,11 @@ final class DeleteAttachmentRequest extends
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.AttachmentIds);
+                             XmlElementNames.AttachmentIds);
 
     for (Attachment attachment : this.attachments) {
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.AttachmentId);
+                               XmlElementNames.AttachmentId);
       writer
           .writeAttributeValue(XmlAttributeNames.Id, attachment
               .getId());

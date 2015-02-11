@@ -96,7 +96,7 @@ public abstract class AlternateIdBase implements ISelfValidate {
   protected void loadAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.setFormat(reader.readAttributeValue(IdFormat.class,
-        XmlAttributeNames.Format));
+                                             XmlAttributeNames.Format));
   }
 
   /**
@@ -115,8 +115,6 @@ public abstract class AlternateIdBase implements ISelfValidate {
 
   /**
    * Validate this instance.
-   *
-   * @throws Exception
    */
   protected void internalValidate() throws Exception {
     // nothing to do.
@@ -124,8 +122,6 @@ public abstract class AlternateIdBase implements ISelfValidate {
 
   /**
    * Validates this instance.
-   *
-   * @throws Exception
    */
   public void validate() throws Exception {
     this.internalValidate();

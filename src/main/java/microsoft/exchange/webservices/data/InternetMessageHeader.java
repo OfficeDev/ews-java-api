@@ -101,21 +101,21 @@ public final class InternetMessageHeader extends ComplexProperty {
   }
 
   /**
-   * The name of the header.
-   *
-   * @param name the new name
-   */
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
    * Gets the name.
    *
    * @return the name
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * The name of the header.
+   *
+   * @param name the new name
+   */
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**

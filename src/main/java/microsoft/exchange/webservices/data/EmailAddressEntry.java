@@ -28,8 +28,8 @@ package microsoft.exchange.webservices.data;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class EmailAddressEntry extends
-    DictionaryEntryProperty<EmailAddressKey> implements
-    IComplexPropertyChangedDelegate {
+                                     DictionaryEntryProperty<EmailAddressKey> implements
+                                                                              IComplexPropertyChangedDelegate {
   // / The email address.
   /**
    * The email address.
@@ -52,7 +52,7 @@ public final class EmailAddressEntry extends
    * @param emailAddress The email address.
    */
   protected EmailAddressEntry(EmailAddressKey key,
-      EmailAddress emailAddress) {
+                              EmailAddress emailAddress) {
     super(EmailAddressKey.class, key);
     this.emailAddress = emailAddress;
   }
@@ -74,7 +74,7 @@ public final class EmailAddressEntry extends
         .setRoutingType(
             reader
                 .readAttributeValue(XmlAttributeNames.
-                    RoutingType));
+                                        RoutingType));
     String mailboxTypeString = reader
         .readAttributeValue(XmlAttributeNames.MailboxType);
     if ((mailboxTypeString != null) && (!mailboxTypeString.isEmpty())) {
@@ -131,7 +131,7 @@ public final class EmailAddressEntry extends
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeValue(this.getEmailAddress().getAddress(),
-        XmlElementNames.EmailAddress);
+                      XmlElementNames.EmailAddress);
   }
 
   /**

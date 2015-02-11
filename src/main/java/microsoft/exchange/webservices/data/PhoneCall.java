@@ -75,7 +75,7 @@ public final class PhoneCall extends ComplexProperty {
    */
   protected PhoneCall(ExchangeService service) {
     EwsUtilities.EwsAssert(service != null, "PhoneCall.ctor",
-        "service is null");
+                           "service is null");
 
     this.service = service;
     this.state = PhoneCallState.Connecting;

@@ -29,7 +29,7 @@ package microsoft.exchange.webservices.data;
  * @param <TItem> Item type.
  */
 public final class GenericItemAttachment<TItem extends Item> extends
-    ItemAttachment {
+                                                             ItemAttachment {
 
   /**
    * Initializes a new instance of the GenericItemAttachment class.

@@ -23,10 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * The Interface FuncDelegateInterface.
@@ -53,6 +54,6 @@ interface IFunctionDelegate<T1 extends List<?>, T2 extends List<?>, TResult> {
    */
   TResult func(T1 arg1, T2 arg2, ExchangeVersion arg3, URI arg4)
       throws AutodiscoverLocalException, XMLStreamException, IOException,
-      ServiceLocalException, Exception;
+             ServiceLocalException, Exception;
 
 }

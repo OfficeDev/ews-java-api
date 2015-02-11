@@ -68,7 +68,7 @@ public final class MimeContent extends ComplexProperty {
   protected void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.characterSet = reader.readAttributeValue(String.class,
-        XmlAttributeNames.CharacterSet);
+                                                  XmlAttributeNames.CharacterSet);
   }
 
   /**
@@ -94,7 +94,7 @@ public final class MimeContent extends ComplexProperty {
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.CharacterSet,
-        this.characterSet);
+                               this.characterSet);
   }
 
   /**
@@ -165,8 +165,8 @@ public final class MimeContent extends ComplexProperty {
         // which is a subclass
         // of ArgumentException.
         String charSet = (this.getCharacterSet() == null ||
-            this.getCharacterSet().isEmpty()) ?
-            "UTF-8" : this.getCharacterSet();
+                          this.getCharacterSet().isEmpty()) ?
+                         "UTF-8" : this.getCharacterSet();
         return new String(this.getContent(), charSet);
       } catch (Exception e) {
         return Base64EncoderStream.encode(this.getContent());

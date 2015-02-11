@@ -27,6 +27,7 @@ package microsoft.exchange.webservices.data;
  * Represents an operation to update an existing rule.
  */
 public class SetRuleOperation extends RuleOperation {
+
   /**
    * Inbox rule to be updated.
    */
@@ -42,8 +43,7 @@ public class SetRuleOperation extends RuleOperation {
   /**
    * Initializes a new instance of the SetRuleOperation class.
    *
-   * @param rule The rule
-   *             The inbox rule to update.
+   * @param rule The rule The inbox rule to update.
    */
   public SetRuleOperation(Rule rule) {
     super();
@@ -98,8 +98,6 @@ public class SetRuleOperation extends RuleOperation {
 
   /**
    * Validates this instance.
-   *
-   * @throws Exception
    */
   @Override
   protected void internalValidate() throws Exception {

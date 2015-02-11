@@ -60,7 +60,7 @@ final class TimeChangeRecurrence extends ComplexProperty {
    * @param month             the month
    */
   public TimeChangeRecurrence(DayOfTheWeekIndex dayOfTheWeekIndex,
-      DayOfTheWeek dayOfTheWeek, Month month) {
+                              DayOfTheWeek dayOfTheWeek, Month month) {
     this();
     this.dayOfTheWeekIndex = dayOfTheWeekIndex;
     this.dayOfTheWeek = dayOfTheWeek;
@@ -89,8 +89,7 @@ final class TimeChangeRecurrence extends ComplexProperty {
   }
 
   /**
-   * Gets the index of the day in the month at which the time change
-   * occurs.
+   * Gets the index of the day in the month at which the time change occurs.
    *
    * @return the day of the week index
    */
@@ -142,17 +141,17 @@ final class TimeChangeRecurrence extends ComplexProperty {
       throws XMLStreamException, ServiceXmlSerializationException {
     if (this.dayOfTheWeek != null) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.DaysOfWeek, this.dayOfTheWeek);
+                               XmlElementNames.DaysOfWeek, this.dayOfTheWeek);
     }
 
     if (this.dayOfTheWeekIndex != null) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.DayOfWeekIndex, this.dayOfTheWeekIndex);
+                               XmlElementNames.DayOfWeekIndex, this.dayOfTheWeekIndex);
     }
 
     if (this.month != null) {
       writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Month,
-          this.month);
+                               this.month);
     }
   }
 

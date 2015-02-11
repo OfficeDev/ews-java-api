@@ -38,7 +38,7 @@ final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
    * @param version        The version.
    */
   protected BoolPropertyDefinition(String xmlElementName, String uri,
-      ExchangeVersion version) {
+                                   ExchangeVersion version) {
     super(Boolean.class, xmlElementName, uri, version);
   }
 
@@ -51,7 +51,8 @@ final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
    * @param version        The version.
    */
   protected BoolPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                   EnumSet<PropertyDefinitionFlags> flags,
+                                   ExchangeVersion version) {
     super(Boolean.class, xmlElementName, uri, flags, version);
   }
 
@@ -62,12 +63,11 @@ final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
    * @param uri            The URI.
    * @param flags          The flags.
    * @param version        The version.
-   * @param isNullable     Indicates that this property definition is for a nullable
-   *                       property.
+   * @param isNullable     Indicates that this property definition is for a nullable property.
    */
   protected BoolPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
-      boolean isNullable) {
+                                   EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
+                                   boolean isNullable) {
     super(Boolean.class, xmlElementName, uri, flags, version, isNullable);
   }
 

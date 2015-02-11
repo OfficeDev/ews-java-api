@@ -94,7 +94,6 @@ public final class RuleError extends ComplexProperty {
    *
    * @param reader The reader
    * @return True if element was read
-   * @throws Exception
    */
   @Override
   protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)

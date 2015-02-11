@@ -43,31 +43,27 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
-   * EWS.
+   * Binds to an existing folder, whatever its actual type is, and loads the specified set of
+   * properties. Calling this method results in a call to EWS.
    *
    * @param service     The service to use to bind to the folder.
    * @param id          The Id of the folder to bind to.
    * @param propertySet The set of properties to load.
-   * @return A Folder instance representing the folder corresponding to the
-   * specified Id.
+   * @return A Folder instance representing the folder corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Folder bind(ExchangeService service, FolderId id,
-      PropertySet propertySet) throws Exception {
+                            PropertySet propertySet) throws Exception {
     return service.bindToFolder(Folder.class, id, propertySet);
   }
 
   /**
-   * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
-   * EWS.
+   * Binds to an existing folder, whatever its actual type is, and loads the specified set of
+   * properties. Calling this method results in a call to EWS.
    *
    * @param service , The service to use to bind to the folder.
    * @param id      , The Id of the folder to bind to.
-   * @return A Folder instance representing the folder corresponding to the
-   * specified Id.
+   * @return A Folder instance representing the folder corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Folder bind(ExchangeService service, FolderId id)
@@ -76,27 +72,24 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
-   * EWS.
+   * Binds to an existing folder, whatever its actual type is, and loads the specified set of
+   * properties. Calling this method results in a call to EWS.
    *
    * @param service     The service to use to bind to the folder.
    * @param name        The name of the folder to bind to.
    * @param propertySet The set of properties to load.
-   * @return A Folder instance representing the folder corresponding to the
-   * specified Id.
+   * @return A Folder instance representing the folder corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Folder bind(ExchangeService service,
-      WellKnownFolderName name, PropertySet propertySet)
+                            WellKnownFolderName name, PropertySet propertySet)
       throws Exception {
     return Folder.bind(service, new FolderId(name), propertySet);
   }
 
   /**
-   * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
-   * EWS.
+   * Binds to an existing folder, whatever its actual type is, and loads the specified set of
+   * properties. Calling this method results in a call to EWS.
    *
    * @param service The service to use to bind to the folder.
    * @param name    The name of the folder to bind to.
@@ -141,8 +134,7 @@ public class Folder extends ServiceObject {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -196,16 +188,15 @@ public class Folder extends ServiceObject {
    * Deletes the object.
    *
    * @param deleteMode              the delete mode
-   * @param sendCancellationsMode   Indicates whether meeting cancellation messages should be
-   *                                sent.
+   * @param sendCancellationsMode   Indicates whether meeting cancellation messages should be sent.
    * @param affectedTaskOccurrences Indicate which occurrence of a recurring task should be
    *                                deleted.
    * @throws Exception the exception
    */
   @Override
   protected void internalDelete(DeleteMode deleteMode,
-      SendCancellationsMode sendCancellationsMode,
-      AffectedTaskOccurrence affectedTaskOccurrences) throws Exception {
+                                SendCancellationsMode sendCancellationsMode,
+                                AffectedTaskOccurrence affectedTaskOccurrences) throws Exception {
     try {
       this.throwIfThisIsNew();
     } catch (InvalidOperationException e) {
@@ -230,18 +221,16 @@ public class Folder extends ServiceObject {
    *
    * @param deletemode       the delete mode
    * @param deleteSubFolders Indicates whether sub-folders should also be deleted.
-   * @throws Exception
    */
   public void empty(DeleteMode deletemode, boolean deleteSubFolders)
       throws Exception {
     this.throwIfThisIsNew();
     this.getService().emptyFolder(this.getId(),
-        deletemode, deleteSubFolders);
+                                  deletemode, deleteSubFolders);
   }
 
   /**
-   * Saves this folder in a specific folder. Calling this method results in a
-   * call to EWS.
+   * Saves this folder in a specific folder. Calling this method results in a call to EWS.
    *
    * @param parentFolderId The Id of the folder in which to save this folder.
    * @throws Exception the exception
@@ -257,8 +246,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Saves this folder in a specific folder. Calling this method results in a
-   * call to EWS.
+   * Saves this folder in a specific folder. Calling this method results in a call to EWS.
    *
    * @param parentFolderName The name of the folder in which to save this folder.
    * @throws Exception the exception
@@ -268,8 +256,8 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Applies the local changes that have been made to this folder. Calling
-   * this method results in a call to EWS.
+   * Applies the local changes that have been made to this folder. Calling this method results in a
+   * call to EWS.
    *
    * @throws Exception the exception
    */
@@ -282,8 +270,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Copies this folder into a specific folder. Calling this method results in
-   * a call to EWS.
+   * Copies this folder into a specific folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderId The Id of the folder in which to copy this folder.
    * @return A Folder representing the copy of this folder.
@@ -298,8 +285,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Copies this folder into the specified folder. Calling this method results
-   * in a call to EWS.
+   * Copies this folder into the specified folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderName The name of the folder in which to copy this folder.
    * @return A Folder representing the copy of this folder.
@@ -311,12 +297,11 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Moves this folder to a specific folder. Calling this method results in a
-   * call to EWS.
+   * Moves this folder to a specific folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderId The Id of the folder in which to move this folder.
-   * @return A new folder representing this folder in its new location. After
-   * Move completes, this folder does not exist anymore.
+   * @return A new folder representing this folder in its new location. After Move completes, this
+   * folder does not exist anymore.
    * @throws Exception the exception
    */
   public Folder move(FolderId destinationFolderId) throws Exception {
@@ -328,12 +313,11 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Moves this folder to a specific folder. Calling this method results in a
-   * call to EWS.
+   * Moves this folder to a specific folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderName The name of the folder in which to move this folder.
-   * @return A new folder representing this folder in its new location. After
-   * Move completes, this folder does not exist anymore.
+   * @return A new folder representing this folder in its new location. After Move completes, this
+   * folder does not exist anymore.
    * @throws Exception the exception
    */
   public Folder move(WellKnownFolderName destinationFolderName)
@@ -353,15 +337,16 @@ public class Folder extends ServiceObject {
    */
   <TItem extends Item> ServiceResponseCollection<FindItemResponse<TItem>>
   internalFindItems(String queryString,
-      ViewBase view, Grouping groupBy)
+                    ViewBase view, Grouping groupBy)
       throws Exception {
     ArrayList<FolderId> folderIdArry = new ArrayList<FolderId>();
     folderIdArry.add(this.getId());
 
     this.throwIfThisIsNew();
     return this.getService().findItems(folderIdArry,
-        null, /* searchFilter */
-        queryString, view, groupBy, ServiceErrorHandling.ThrowOnError);
+                                       null, /* searchFilter */
+                                       queryString, view, groupBy,
+                                       ServiceErrorHandling.ThrowOnError);
 
   }
 
@@ -379,15 +364,15 @@ public class Folder extends ServiceObject {
    */
   <TItem extends Item> ServiceResponseCollection<FindItemResponse<TItem>>
   internalFindItems(SearchFilter searchFilter,
-      ViewBase view, Grouping groupBy)
+                    ViewBase view, Grouping groupBy)
       throws Exception {
     ArrayList<FolderId> folderIdArry = new ArrayList<FolderId>();
     folderIdArry.add(this.getId());
     this.throwIfThisIsNew();
 
     return this.getService().findItems(folderIdArry, searchFilter,
-        null, /* queryString */
-        view, groupBy, ServiceErrorHandling.ThrowOnError);
+                                       null, /* queryString */
+                                       view, groupBy, ServiceErrorHandling.ThrowOnError);
   }
 
   /**
@@ -401,7 +386,7 @@ public class Folder extends ServiceObject {
    * @throws Exception the exception
    */
   public FindItemsResults<Item> findItems(SearchFilter searchFilter,
-      ItemView view) throws Exception {
+                                          ItemView view) throws Exception {
     EwsUtilities.validateParamAllowNull(searchFilter, "searchFilter");
 
     ServiceResponseCollection<FindItemResponse<Item>> responses = this
@@ -438,7 +423,7 @@ public class Folder extends ServiceObject {
   public FindItemsResults<Item> findItems(ItemView view) throws Exception {
     ServiceResponseCollection<FindItemResponse<Item>> responses = this
         .internalFindItems((SearchFilter) null, view,
-            null /* groupBy */);
+                           null /* groupBy */);
 
     return responses.getResponseAtIndex(0).getResults();
   }
@@ -451,12 +436,11 @@ public class Folder extends ServiceObject {
    *                     SearchFilter.SearchFilterCollection
    * @param view         The view controlling the number of items returned.
    * @param groupBy      The group by.
-   * @return A collection of grouped items representing the contents of this
-   * folder.
+   * @return A collection of grouped items representing the contents of this folder.
    * @throws Exception the exception
    */
   public GroupedFindItemsResults<Item> findItems(SearchFilter searchFilter,
-      ItemView view, Grouping groupBy) throws Exception {
+                                                 ItemView view, Grouping groupBy) throws Exception {
     EwsUtilities.validateParam(groupBy, "groupBy");
     EwsUtilities.validateParamAllowNull(searchFilter, "searchFilter");
 
@@ -472,12 +456,11 @@ public class Folder extends ServiceObject {
    * @param queryString query string to be used for indexed search
    * @param view        The view controlling the number of items returned.
    * @param groupBy     The group by.
-   * @return A collection of grouped items representing the contents of this
-   * folder.
+   * @return A collection of grouped items representing the contents of this folder.
    * @throws Exception the exception
    */
   public GroupedFindItemsResults<Item> findItems(String queryString,
-      ItemView view, Grouping groupBy) throws Exception {
+                                                 ItemView view, Grouping groupBy) throws Exception {
     EwsUtilities.validateParam(groupBy, "groupBy");
 
     ServiceResponseCollection<FindItemResponse<Item>> responses = this
@@ -487,8 +470,8 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of this folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a list of folders by searching the sub-folders of this folder. Calling this method
+   * results in a call to EWS.
    *
    * @param view The view controlling the number of folders returned.
    * @return An object representing the results of the search operation.
@@ -501,8 +484,8 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of this folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a list of folders by searching the sub-folders of this folder. Calling this method
+   * results in a call to EWS.
    *
    * @param searchFilter The search filter. Available search filter classes include
    *                     SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
@@ -512,24 +495,23 @@ public class Folder extends ServiceObject {
    * @throws Exception the exception
    */
   public FindFoldersResults findFolders(SearchFilter searchFilter,
-      FolderView view) throws Exception {
+                                        FolderView view) throws Exception {
     this.throwIfThisIsNew();
 
     return this.getService().findFolders(this.getId(), searchFilter, view);
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of this folder.
-   * Calling this method results in a call to EWS.
+   * Obtains a grouped list of items by searching the contents of this folder. Calling this method
+   * results in a call to EWS.
    *
    * @param view    The view controlling the number of folders returned.
    * @param groupBy The grouping criteria.
-   * @return A collection of grouped items representing the contents of this
-   * folder.
+   * @return A collection of grouped items representing the contents of this folder.
    * @throws Exception the exception
    */
   public GroupedFindItemsResults<Item> findItems(ItemView view,
-      Grouping groupBy) throws Exception {
+                                                 Grouping groupBy) throws Exception {
     EwsUtilities.validateParam(groupBy, "groupBy");
 
     return this.findItems((SearchFilter) null, view, groupBy);
@@ -593,8 +575,8 @@ public class Folder extends ServiceObject {
   public FolderId getId() {
     try {
       return (FolderId) (this.getPropertyBag()
-          .getObjectFromPropertyDefinition(this
-              .getIdPropertyDefinition()));
+                             .getObjectFromPropertyDefinition(this
+                                                                  .getIdPropertyDefinition()));
     } catch (ServiceLocalException e) {
       e.printStackTrace();
       return null;
@@ -620,10 +602,10 @@ public class Folder extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public int getChildFolderCount() throws NumberFormatException,
-      ServiceLocalException {
+                                          ServiceLocalException {
     return (Integer.parseInt(this.getPropertyBag()
-        .getObjectFromPropertyDefinition(FolderSchema.ChildFolderCount)
-        .toString()));
+                                 .getObjectFromPropertyDefinition(FolderSchema.ChildFolderCount)
+                                 .toString()));
   }
 
   /**
@@ -634,7 +616,7 @@ public class Folder extends ServiceObject {
    */
   public String getDisplayName() throws ServiceLocalException {
     return (String) (this.getPropertyBag()
-        .getObjectFromPropertyDefinition(FolderSchema.DisplayName));
+                         .getObjectFromPropertyDefinition(FolderSchema.DisplayName));
 
   }
 
@@ -679,10 +661,10 @@ public class Folder extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public int getTotalCount() throws NumberFormatException,
-      ServiceLocalException {
+                                    ServiceLocalException {
     return (Integer.parseInt(this.getPropertyBag()
-        .getObjectFromPropertyDefinition(FolderSchema.TotalCount)
-        .toString()));
+                                 .getObjectFromPropertyDefinition(FolderSchema.TotalCount)
+                                 .toString()));
   }
 
   /**
@@ -700,8 +682,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Gets the Email Lifecycle Management (ELC) information associated with the
-   * folder.
+   * Gets the Email Lifecycle Management (ELC) information associated with the folder.
    *
    * @return the managed folder information
    * @throws ServiceLocalException the service local exception
@@ -714,8 +695,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Gets a value indicating the effective rights the current authenticated
-   * user has on the folder.
+   * Gets a value indicating the effective rights the current authenticated user has on the folder.
    *
    * @return the effective rights
    * @throws ServiceLocalException the service local exception
@@ -745,10 +725,10 @@ public class Folder extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public int getUnreadCount() throws NumberFormatException,
-      ServiceLocalException {
+                                     ServiceLocalException {
     return (Integer.parseInt(this.getPropertyBag()
-        .getObjectFromPropertyDefinition(FolderSchema.UnreadCount)
-        .toString()));
+                                 .getObjectFromPropertyDefinition(FolderSchema.UnreadCount)
+                                 .toString()));
   }
 
 }

@@ -41,9 +41,8 @@ public class FolderEvent extends NotificationEvent {
   private FolderId oldFolderId;
 
   /**
-   * The new number of unread messages. This is is only meaningful when
-   * EventType is equal to EventType.Modified. For all other event types, it's
-   * null.
+   * The new number of unread messages. This is is only meaningful when EventType is equal to
+   * EventType.Modified. For all other event types, it's null.
    */
   private int unreadCount;
 
@@ -93,7 +92,7 @@ public class FolderEvent extends NotificationEvent {
         reader.read();
         if (reader.isStartElement()) {
           reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
-              XmlElementNames.UnreadCount);
+                                                 XmlElementNames.UnreadCount);
           String str = reader.readValue();
           this.unreadCount = Integer.parseInt(str);
         }
@@ -114,9 +113,9 @@ public class FolderEvent extends NotificationEvent {
   }
 
   /**
-   * gets the Id of the folder that was moved or copied. OldFolderId is only
-   * meaningful when EventType is equal to either EventType.Moved or
-   * EventType.Copied. For all other event types, OldFolderId is null.
+   * gets the Id of the folder that was moved or copied. OldFolderId is only meaningful when
+   * EventType is equal to either EventType.Moved or EventType.Copied. For all other event types,
+   * OldFolderId is null.
    *
    * @return oldFolderId
    */
@@ -125,9 +124,8 @@ public class FolderEvent extends NotificationEvent {
   }
 
   /**
-   * Gets the new number of unread messages. This is is only meaningful when
-   * EventType is equal to EventType.Modified. For all other event types,
-   * UnreadCount is null.
+   * Gets the new number of unread messages. This is is only meaningful when EventType is equal to
+   * EventType.Modified. For all other event types, UnreadCount is null.
    *
    * @return unreadCount
    */

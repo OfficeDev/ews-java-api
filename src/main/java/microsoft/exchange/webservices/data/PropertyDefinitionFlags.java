@@ -69,9 +69,9 @@ public enum PropertyDefinitionFlags {
   MustBeExplicitlyLoaded,
 
   /**
-   * Only meaningful for "collection" property. With this flag, the item in the collection gets updated,
-   * instead of creating and adding new items to the collection.
-   * Should be used together with the ReuseInstance flag.
+   * Only meaningful for "collection" property. With this flag, the item in the collection gets
+   * updated, instead of creating and adding new items to the collection. Should be used together
+   * with the ReuseInstance flag.
    */
 
   UpdateCollectionItems;

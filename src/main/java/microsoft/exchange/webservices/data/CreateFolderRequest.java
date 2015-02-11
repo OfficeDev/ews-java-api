@@ -35,10 +35,9 @@ final class CreateFolderRequest extends CreateRequest<Folder, ServiceResponse> {
    *
    * @param service           The service
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   protected CreateFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                                ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -68,7 +67,7 @@ final class CreateFolderRequest extends CreateRequest<Folder, ServiceResponse> {
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new CreateFolderResponse((Folder) EwsUtilities
         .getEnumeratedObjectAt(this.getFolders(), responseIndex));
   }
@@ -124,8 +123,7 @@ final class CreateFolderRequest extends CreateRequest<Folder, ServiceResponse> {
   }
 
   /**
-   * Gets the request version. Earliest Exchange version in which this request
-   * is supported.
+   * Gets the request version. Earliest Exchange version in which this request is supported.
    *
    * @return the minimum required server version
    */

@@ -29,7 +29,7 @@ import java.util.EnumSet;
  * The Class GetUserConfigurationRequest.
  */
 class GetUserConfigurationRequest extends
-    MultiResponseServiceRequest<GetUserConfigurationResponse> {
+                                  MultiResponseServiceRequest<GetUserConfigurationResponse> {
 
   /**
    * The name.
@@ -50,6 +50,16 @@ class GetUserConfigurationRequest extends
    * The user configuration.
    */
   private UserConfiguration userConfiguration;
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param service the service
+   */
+  protected GetUserConfigurationRequest(ExchangeService service)
+      throws Exception {
+    super(service, ServiceErrorHandling.ThrowOnError);
+  }
 
   /**
    * Validate request.
@@ -82,7 +92,7 @@ class GetUserConfigurationRequest extends
     // set.
     if (this.userConfiguration == null) {
       this.userConfiguration = new UserConfiguration(service,
-          this.properties);
+                                                     this.properties);
       this.userConfiguration.setName(this.name);
       this.userConfiguration.setParentFolderId(this.parentFolderId);
     }
@@ -153,24 +163,14 @@ class GetUserConfigurationRequest extends
 
     // Write UserConfiguationName element
     UserConfiguration.writeUserConfigurationNameToXml(writer,
-        XmlNamespace.Messages, this.name, this.parentFolderId);
+                                                      XmlNamespace.Messages, this.name,
+                                                      this.parentFolderId);
 
     // Write UserConfigurationProperties element
     writer.writeElementValue(XmlNamespace.Messages,
-        XmlElementNames.UserConfigurationProperties, this.properties
+                             XmlElementNames.UserConfigurationProperties, this.properties
             .toString().replace(EnumDelimiter, "").
                 replace("[", "").replace("]", ""));
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param service the service
-   * @throws Exception
-   */
-  protected GetUserConfigurationRequest(ExchangeService service)
-      throws Exception {
-    super(service, ServiceErrorHandling.ThrowOnError);
   }
 
   /**
@@ -210,8 +210,7 @@ class GetUserConfigurationRequest extends
   }
 
   /**
-   * Gets  the user configuration. <value>The user
-   * configuration.</value>
+   * Gets  the user configuration. <value>The user configuration.</value>
    *
    * @return the user configuration
    */

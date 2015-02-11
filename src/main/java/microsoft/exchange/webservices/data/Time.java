@@ -63,7 +63,7 @@ final class Time {
     this();
     if (minutes < 0 || minutes >= 1440) {
       throw new ArgumentException(String.format("%s,%s",
-          Strings.MinutesMustBeBetween0And1439, "minutes"));
+                                                Strings.MinutesMustBeBetween0And1439, "minutes"));
     }
 
     this.hours = minutes / 60;
@@ -109,7 +109,7 @@ final class Time {
 
   protected String toXSTime() {
     return String.format("%s,%s,%s,%s", "{0:00}:{1:00}:{2:00}",
-        this.getHours(), this
+                         this.getHours(), this
             .getMinutes(), this.getSeconds());
   }
 

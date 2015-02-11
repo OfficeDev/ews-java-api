@@ -30,7 +30,7 @@ import java.util.List;
  * The Class UpdateItemRequest.
  */
 final class UpdateItemRequest extends
-    MultiResponseServiceRequest<UpdateItemResponse> {
+                              MultiResponseServiceRequest<UpdateItemResponse> {
 
   /**
    * The items.
@@ -63,10 +63,9 @@ final class UpdateItemRequest extends
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
    */
   protected UpdateItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                              ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -80,7 +79,7 @@ final class UpdateItemRequest extends
   protected void validate() throws ServiceLocalException, Exception {
     super.validate();
     EwsUtilities.validateParamCollection(this.getItems().iterator(),
-        "Items");
+                                         "Items");
     for (int i = 0; i < this.getItems().size(); i++) {
       if ((this.getItems().get(i) == null) ||
           this.getItems().get(i).isNew()) {
@@ -91,7 +90,7 @@ final class UpdateItemRequest extends
 
     if (this.savedItemsDestinationFolder != null) {
       this.savedItemsDestinationFolder.validate(this.getService()
-          .getRequestedServerVersion());
+                                                    .getRequestedServerVersion());
     }
 
     // Validate each item.
@@ -109,7 +108,7 @@ final class UpdateItemRequest extends
    */
   @Override
   protected UpdateItemResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                     int responseIndex) {
     return new UpdateItemResponse(this.getItems().get(responseIndex));
   }
 
@@ -173,11 +172,11 @@ final class UpdateItemRequest extends
 
     if (this.messageDisposition != null) {
       writer.writeAttributeValue(XmlAttributeNames.MessageDisposition,
-          this.messageDisposition);
+                                 this.messageDisposition);
     }
 
     writer.writeAttributeValue(XmlAttributeNames.ConflictResolution,
-        this.conflictResolutionMode);
+                               this.conflictResolutionMode);
 
     if (this.sendInvitationsOrCancellationsMode != null) {
       writer.writeAttributeValue(
@@ -198,13 +197,13 @@ final class UpdateItemRequest extends
       throws Exception {
     if (this.savedItemsDestinationFolder != null) {
       writer.writeStartElement(XmlNamespace.Messages,
-          XmlElementNames.SavedItemFolderId);
+                               XmlElementNames.SavedItemFolderId);
       this.savedItemsDestinationFolder.writeToXml(writer);
       writer.writeEndElement();
     }
 
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.ItemChanges);
+                             XmlElementNames.ItemChanges);
 
     for (Item item : this.items) {
       item.writeToXmlForUpdate(writer);

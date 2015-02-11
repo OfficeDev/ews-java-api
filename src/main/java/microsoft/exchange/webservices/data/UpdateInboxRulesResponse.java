@@ -46,18 +46,17 @@ final class UpdateInboxRulesResponse extends ServiceResponse {
    *
    * @param reader         The reader.
    * @param xmlElementName The current element name of the extra error details.
-   * @return True if the expected extra details is loaded,
-   * False if the element name does not match the expected element.
-   * @throws Exception
+   * @return True if the expected extra details is loaded, False if the element name does not match
+   * the expected element.
    */
   @Override
   protected boolean loadExtraErrorDetailsFromXml(EwsServiceXmlReader reader,
-      String xmlElementName) throws Exception {
+                                                 String xmlElementName) throws Exception {
     if (xmlElementName.equals(XmlElementNames.MessageXml)) {
       return super.loadExtraErrorDetailsFromXml(reader, xmlElementName);
     } else if (xmlElementName.equals(XmlElementNames.RuleOperationErrors)) {
       this.getErrors().loadFromXml(reader,
-          XmlNamespace.Messages, xmlElementName);
+                                   XmlNamespace.Messages, xmlElementName);
       return true;
     } else {
       return false;

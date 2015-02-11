@@ -31,15 +31,13 @@ import javax.xml.stream.XMLStreamException;
  * Defines the ExecuteDiagnosticMethodRequest class.
  */
 final class ExecuteDiagnosticMethodRequest extends
-    MultiResponseServiceRequest<ExecuteDiagnosticMethodResponse> {
+                                           MultiResponseServiceRequest<ExecuteDiagnosticMethodResponse> {
 
   private Node xmlNode;
   private String verb;
 
   /**
    * Initializes a new instance of the ExecuteDiagnosticMethodRequest class.
-   *
-   * @throws Exception
    */
   protected ExecuteDiagnosticMethodRequest(ExchangeService service)
       throws Exception {
@@ -60,17 +58,15 @@ final class ExecuteDiagnosticMethodRequest extends
    * Writes XML elements.
    *
    * @param writer The writer
-   * @throws javax.xml.stream.XMLStreamException
-   * @throws ServiceXmlSerializationException
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     writer.writeElementValue(XmlNamespace.Messages,
-        XmlElementNames.Verb, this.getVerb());
+                             XmlElementNames.Verb, this.getVerb());
 
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.Parameter);
+                             XmlElementNames.Parameter);
     writer.writeNode(this.getParameter());
     writer.writeEndElement();
   }
@@ -138,7 +134,7 @@ final class ExecuteDiagnosticMethodRequest extends
    */
   @Override
   protected ExecuteDiagnosticMethodResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                                  int responseIndex) {
     return new ExecuteDiagnosticMethodResponse(service);
   }
 

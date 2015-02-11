@@ -54,8 +54,7 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
   private Collection<DomainSettingError> domainSettingErrors;
 
   /**
-   * Initializes a new instance of the <see cref="GetDomainSettingsResponse"/>
-   * class.
+   * Initializes a new instance of the <see cref="GetDomainSettingsResponse"/> class.
    */
   public GetDomainSettingsResponse() {
     super();
@@ -159,7 +158,7 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
 
         if ((reader.getNodeType().nodeType == XmlNodeType.START_ELEMENT) &&
             (reader.getLocalName()
-                .equals(XmlElementNames.DomainSetting))) {
+                 .equals(XmlElementNames.DomainSetting))) {
           String settingClass = reader.readAttributeValue(
               XmlNamespace.XmlSchemaInstance,
               XmlAttributeNames.Type);
@@ -173,18 +172,18 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
                 .EwsAssert(
                     false,
                     "GetDomainSettingsResponse." +
-                        "LoadDomainSettingsFromXml",
+                    "LoadDomainSettingsFromXml",
                     String
                         .format(
                             "%s,%s",
                             "Invalid setting " +
-                                "class '%s' returned",
+                            "class '%s' returned",
                             settingClass));
             break;
           }
         }
       } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-          XmlElementNames.DomainSettings));
+                                    XmlElementNames.DomainSettings));
     } else {
       reader.read();
     }
@@ -212,11 +211,11 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-        XmlElementNames.DomainSetting));
+                                  XmlElementNames.DomainSetting));
 
     EwsUtilities.EwsAssert(name != null,
-        "GetDomainSettingsResponse.ReadSettingFromXml",
-        "Missing name element in domain setting");
+                           "GetDomainSettingsResponse.ReadSettingFromXml",
+                           "Missing name element in domain setting");
 
     this.settings.put(name, value);
   }
@@ -235,13 +234,13 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
 
         if ((reader.getNodeType().nodeType == XmlNodeType.START_ELEMENT) &&
             (reader.getLocalName()
-                .equals(XmlElementNames.DomainSettingError))) {
+                 .equals(XmlElementNames.DomainSettingError))) {
           DomainSettingError error = new DomainSettingError();
           error.loadFromXml(reader);
           domainSettingErrors.add(error);
         }
       } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-          XmlElementNames.DomainSettingErrors));
+                                    XmlElementNames.DomainSettingErrors));
     } else {
       reader.read();
     }

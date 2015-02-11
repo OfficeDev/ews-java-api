@@ -45,7 +45,7 @@ public class AutodiscoverResponseException extends ServiceRemoteException {
    * @param message   the message
    */
   protected AutodiscoverResponseException(AutodiscoverErrorCode errorCode,
-      String message) {
+                                          String message) {
     super(message);
     this.errorCode = errorCode;
   }

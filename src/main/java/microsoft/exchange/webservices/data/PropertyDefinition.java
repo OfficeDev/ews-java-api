@@ -23,16 +23,17 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents the definition of a folder or item property.
  */
 public abstract class PropertyDefinition extends
-    ServiceObjectPropertyDefinition {
+                                         ServiceObjectPropertyDefinition {
 
   /**
    * The xml element name.
@@ -62,7 +63,7 @@ public abstract class PropertyDefinition extends
    * @param version        The version.
    */
   protected PropertyDefinition(String xmlElementName, String uri,
-      ExchangeVersion version) {
+                               ExchangeVersion version) {
     super(uri);
     this.xmlElementName = xmlElementName;
     this.flags = EnumSet.of(PropertyDefinitionFlags.None);
@@ -77,7 +78,7 @@ public abstract class PropertyDefinition extends
    * @param version        The version.
    */
   protected PropertyDefinition(String xmlElementName,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                               EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
     super();
     this.xmlElementName = xmlElementName;
     this.flags = flags;
@@ -93,7 +94,7 @@ public abstract class PropertyDefinition extends
    * @param version        The version.
    */
   protected PropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                               EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
     this(xmlElementName, uri, version);
     this.flags = flags;
   }
@@ -115,7 +116,7 @@ public abstract class PropertyDefinition extends
    * @return true if the specified flag is set; otherwise, false.
    */
   protected boolean hasFlag(PropertyDefinitionFlags flag,
-      ExchangeVersion version) {
+                            ExchangeVersion version) {
     return this.flags.contains(flag);
   }
 
@@ -131,9 +132,8 @@ public abstract class PropertyDefinition extends
   /**
    * Gets a list of associated internal properties.
    *
-   * @return A list of PropertyDefinition objects. This is a hack. It is here
-   * (currently) solely to help the API register the MeetingTimeZone
-   * property definition that is internal.
+   * @return A list of PropertyDefinition objects. This is a hack. It is here (currently) solely to
+   * help the API register the MeetingTimeZone property definition that is internal.
    */
   protected List<PropertyDefinition> getAssociatedInternalProperties() {
     List<PropertyDefinition> properties = new
@@ -152,8 +152,7 @@ public abstract class PropertyDefinition extends
   }
 
   /**
-   * Gets a value indicating whether this property definition is for a
-   * nullable type.
+   * Gets a value indicating whether this property definition is for a nullable type.
    *
    * @return always true
    */
@@ -177,8 +176,8 @@ public abstract class PropertyDefinition extends
   protected abstract void loadPropertyValueFromXml(
       EwsServiceXmlReader reader, PropertyBag propertyBag)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException,
-      ServiceObjectPropertyException, ServiceVersionException, Exception;
+             InstantiationException, IllegalAccessException,
+             ServiceObjectPropertyException, ServiceVersionException, Exception;
 
   /**
    * Writes the property value to XML.
@@ -195,10 +194,11 @@ public abstract class PropertyDefinition extends
    * @throws Exception                           the exception
    */
   protected abstract void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+                                                  PropertyBag propertyBag,
+                                                  boolean isUpdateOperation)
       throws XMLStreamException, ServiceXmlSerializationException,
-      ServiceLocalException, InstantiationException,
-      IllegalAccessException, ServiceValidationException, Exception;
+             ServiceLocalException, InstantiationException,
+             IllegalAccessException, ServiceValidationException, Exception;
 
   /**
    * Gets the name of the XML element.

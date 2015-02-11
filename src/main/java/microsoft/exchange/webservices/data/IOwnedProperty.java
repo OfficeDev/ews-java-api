@@ -24,8 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Complex properties that implement that interface are owned by an instance of
- * EwsObject. For this reason, they also cannot be shared.
+ * Complex properties that implement that interface are owned by an instance of EwsObject. For this
+ * reason, they also cannot be shared.
  */
 interface IOwnedProperty {
 

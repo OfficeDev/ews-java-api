@@ -27,7 +27,7 @@ package microsoft.exchange.webservices.data;
  * Represents response to UpdateFolder request.
  */
 final class UpdateFolderResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                         IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The folder.
@@ -42,7 +42,7 @@ final class UpdateFolderResponse extends ServiceResponse implements
   protected UpdateFolderResponse(Folder folder) {
     super();
     EwsUtilities.EwsAssert(folder != null, "UpdateFolderResponse.ctor",
-        "folder is null");
+                           "folder is null");
 
     this.folder = folder;
   }
@@ -59,9 +59,9 @@ final class UpdateFolderResponse extends ServiceResponse implements
     super.readElementsFromXml(reader);
 
     reader.readServiceObjectsCollectionFromXml(XmlElementNames.Folders,
-        this, false, /* clearPropertyBag */
-        null, /* requestedPropertySet */
-        false); /* summaryPropertiesOnly */
+                                               this, false, /* clearPropertyBag */
+                                               null, /* requestedPropertySet */
+                                               false); /* summaryPropertiesOnly */
   }
 
   /**
@@ -82,7 +82,7 @@ final class UpdateFolderResponse extends ServiceResponse implements
    * @return Folder
    */
   private Folder getObjectInstance(ExchangeService session,
-      String xmlElementName) {
+                                   String xmlElementName) {
     return this.folder;
   }
 
@@ -96,7 +96,7 @@ final class UpdateFolderResponse extends ServiceResponse implements
    */
   @Override
   public ServiceObject getObjectInstanceDelegate(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                                 String xmlElementName) throws Exception {
     return this.getObjectInstance(service, xmlElementName);
   }
 }

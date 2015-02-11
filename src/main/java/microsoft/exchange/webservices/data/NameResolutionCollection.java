@@ -31,7 +31,7 @@ import java.util.List;
  * Represents a list of suggested name resolutions.
  */
 public final class NameResolutionCollection implements
-    Iterable<NameResolution> {
+                                            Iterable<NameResolution> {
 
   /**
    * The service.
@@ -55,7 +55,7 @@ public final class NameResolutionCollection implements
    */
   protected NameResolutionCollection(ExchangeService service) {
     EwsUtilities.EwsAssert(service != null, "NameResolutionSet.ctor",
-        "service is null.");
+                           "service is null.");
     this.service = service;
   }
 
@@ -67,11 +67,11 @@ public final class NameResolutionCollection implements
    */
   protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.ResolutionSet);
+                            XmlElementNames.ResolutionSet);
     int totalItemsInView = reader.readAttributeValue(Integer.class,
-        XmlAttributeNames.TotalItemsInView);
+                                                     XmlAttributeNames.TotalItemsInView);
     this.includesAllResolutions = reader.readAttributeValue(Boolean.class,
-        XmlAttributeNames.IncludesLastItemInRange);
+                                                            XmlAttributeNames.IncludesLastItemInRange);
 
     for (int i = 0; i < totalItemsInView; i++) {
       NameResolution nameResolution = new NameResolution(this);
@@ -80,7 +80,7 @@ public final class NameResolutionCollection implements
     }
 
     reader.readEndElement(XmlNamespace.Messages,
-        XmlElementNames.ResolutionSet);
+                          XmlElementNames.ResolutionSet);
   }
 
   /**
@@ -102,11 +102,10 @@ public final class NameResolutionCollection implements
   }
 
   /**
-   * Gets a value indicating whether more suggested resolutions are available.
-   * ResolveName only returns a maximum of 100 name resolutions. When
-   * IncludesAllResolutions is false, there were more than 100 matching names
-   * on the server. To narrow the search, provide a more precise name to
-   * ResolveName.
+   * Gets a value indicating whether more suggested resolutions are available. ResolveName only
+   * returns a maximum of 100 name resolutions. When IncludesAllResolutions is false, there were
+   * more than 100 matching names on the server. To narrow the search, provide a more precise name
+   * to ResolveName.
    *
    * @return the includes all resolutions
    */
@@ -125,7 +124,7 @@ public final class NameResolutionCollection implements
       throws ArgumentOutOfRangeException {
     if (index < 0 || index >= this.getCount()) {
       throw new ArgumentOutOfRangeException("index",
-          Strings.IndexIsOutOfRange);
+                                            Strings.IndexIsOutOfRange);
     }
 
     return this.items.get(index);

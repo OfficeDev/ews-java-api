@@ -72,7 +72,7 @@ final class GetRoomsResponse extends ServiceResponse {
       // return object or EndElement
       reader.read();
       while (reader.isStartElement(XmlNamespace.Types,
-          XmlElementNames.Room)) {
+                                   XmlElementNames.Room)) {
         reader.read(); // skip the start <Room>
 
         EmailAddress emailAddress = new EmailAddress();
@@ -84,7 +84,7 @@ final class GetRoomsResponse extends ServiceResponse {
       }
 
       reader.ensureCurrentNodeIsEndElement(XmlNamespace.Messages,
-          XmlElementNames.Rooms);
+                                           XmlElementNames.Rooms);
     } else {
       reader.read();
     }

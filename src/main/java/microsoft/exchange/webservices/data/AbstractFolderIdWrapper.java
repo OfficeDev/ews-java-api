@@ -29,18 +29,18 @@ package microsoft.exchange.webservices.data;
 abstract class AbstractFolderIdWrapper {
 
   /**
+   * Initializes a new instance of AbstractFolderIdWrapper.
+   */
+  protected AbstractFolderIdWrapper() {
+  }
+
+  /**
    * Obtains the Folder object associated with the wrapper.
    *
    * @return The Folder object associated with the wrapper.
    */
   public Folder getFolder() {
     return null;
-  }
-
-  /**
-   * Initializes a new instance of AbstractFolderIdWrapper.
-   */
-  protected AbstractFolderIdWrapper() {
   }
 
   /**

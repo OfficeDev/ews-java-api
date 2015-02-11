@@ -31,7 +31,7 @@ import java.util.ListIterator;
  */
 
 final class CreateAttachmentRequest extends
-    MultiResponseServiceRequest<CreateAttachmentResponse> {
+                                    MultiResponseServiceRequest<CreateAttachmentResponse> {
 
   /**
    * The parent item id.
@@ -44,25 +44,24 @@ final class CreateAttachmentRequest extends
   private ArrayList<Attachment> attachments = new ArrayList<Attachment>();
 
   /**
+   * Initializes a new instance of the class.
+   *
+   * @param service           the service
+   * @param errorHandlingMode the error handling mode
+   */
+  protected CreateAttachmentRequest(ExchangeService service,
+                                    ServiceErrorHandling errorHandlingMode)
+      throws Exception {
+    super(service, errorHandlingMode);
+  }
+
+  /**
    * Gets the attachments.
    *
    * @return attachments
    */
   public ArrayList<Attachment> getAttachments() {
     return attachments;
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param service           the service
-   * @param errorHandlingMode the error handling mode
-   * @throws Exception
-   */
-  protected CreateAttachmentRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
-      throws Exception {
-    super(service, errorHandlingMode);
   }
 
   /**
@@ -127,8 +126,7 @@ final class CreateAttachmentRequest extends
   }
 
   /**
-   * Gets a value indicating whether the TimeZoneContext SOAP header should be
-   * emitted.
+   * Gets a value indicating whether the TimeZoneContext SOAP header should be emitted.
    */
   protected boolean emitTimeZoneHeader() throws ServiceLocalException, Exception {
     {
@@ -183,12 +181,12 @@ final class CreateAttachmentRequest extends
       throws Exception {
 
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.ParentItemId);
+                             XmlElementNames.ParentItemId);
     writer.writeAttributeValue(XmlAttributeNames.Id, this.parentItemId);
     writer.writeEndElement();
 
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.Attachments);
+                             XmlElementNames.Attachments);
     for (Attachment attachment : this.attachments) {
       attachment.writeToXml(writer, attachment.getXmlElementName());
     }

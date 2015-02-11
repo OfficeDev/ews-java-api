@@ -60,8 +60,7 @@ final class SuppressReadReceipt extends ServiceObject {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -87,8 +86,8 @@ final class SuppressReadReceipt extends ServiceObject {
    */
   @Override
   protected void internalDelete(DeleteMode deleteMode,
-      SendCancellationsMode sendCancellationsMode,
-      AffectedTaskOccurrence affectedTaskOccurrences) {
+                                SendCancellationsMode sendCancellationsMode,
+                                AffectedTaskOccurrence affectedTaskOccurrences) {
     throw new UnsupportedOperationException();
   }
 
@@ -100,11 +99,11 @@ final class SuppressReadReceipt extends ServiceObject {
    * @throws Exception the exception
    */
   protected void internalCreate(FolderId parentFolderId,
-      MessageDisposition messageDisposition) throws Exception {
+                                MessageDisposition messageDisposition) throws Exception {
     ((ItemId) this.getPropertyBag().getObjectFromPropertyDefinition(
         ResponseObjectSchema.ReferenceItemId))
         .assign(this.referenceItem.getId());
     this.getService().internalCreateResponseObject(this, parentFolderId,
-        messageDisposition);
+                                                   messageDisposition);
   }
 }

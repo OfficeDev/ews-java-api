@@ -24,8 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an error that occurs when the XML for a request cannot be
- * serialized.
+ * Represents an error that occurs when the XML for a request cannot be serialized.
  */
 public class ServiceXmlSerializationException extends ServiceLocalException {
 
@@ -58,7 +57,7 @@ public class ServiceXmlSerializationException extends ServiceLocalException {
    * @param innerException the inner exception
    */
   public ServiceXmlSerializationException(String message,
-      Exception innerException) {
+                                          Exception innerException) {
     super(message, innerException);
   }
 

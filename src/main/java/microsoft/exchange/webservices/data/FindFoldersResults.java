@@ -59,8 +59,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets the total number of folders matching the search criteria available
-   * in the searched folder.
+   * Gets the total number of folders matching the search criteria available in the searched
+   * folder.
    *
    * @return the total count
    */
@@ -78,8 +78,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets the offset that should be used with FolderView to retrieve the next
-   * page of folders in a FindFolders operation.
+   * Gets the offset that should be used with FolderView to retrieve the next page of folders in a
+   * FindFolders operation.
    *
    * @return the next page offset
    */
@@ -88,8 +88,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Sets the offset that should be used with FolderView to retrieve the next
-   * page of folders in a FindFolders operation.
+   * Sets the offset that should be used with FolderView to retrieve the next page of folders in a
+   * FindFolders operation.
    *
    * @param nextPageOffset the new next page offset
    */
@@ -98,8 +98,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets a value indicating whether more folders matching the search
-   * criteria. are available in the searched folder.
+   * Gets a value indicating whether more folders matching the search criteria. are available in the
+   * searched folder.
    *
    * @return true, if is more available
    */
@@ -108,8 +108,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Sets a value indicating whether more folders matching the search
-   * criteria. are available in the searched folder.
+   * Sets a value indicating whether more folders matching the search criteria. are available in the
+   * searched folder.
    *
    * @param moreAvailable the new more available
    */
@@ -118,8 +118,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets a collection containing the folders that were found by the search
-   * operation.
+   * Gets a collection containing the folders that were found by the search operation.
    *
    * @return the folders
    */

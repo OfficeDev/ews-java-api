@@ -31,7 +31,7 @@ import javax.xml.stream.XMLStreamException;
  * @param <TSubscription> Subscription type
  */
 final class SubscribeResponse<TSubscription extends SubscriptionBase> extends
-    ServiceResponse {
+                                                                      ServiceResponse {
 
   /**
    * The subscription.
@@ -39,15 +39,14 @@ final class SubscribeResponse<TSubscription extends SubscriptionBase> extends
   private TSubscription subscription;
 
   /**
-   * Initializes a new instance of the SubscribeResponse&lt;TSubscription
-   * class.
+   * Initializes a new instance of the SubscribeResponse&lt;TSubscription class.
    *
    * @param subscription The Subscription
    */
   protected SubscribeResponse(TSubscription subscription) {
     super();
     EwsUtilities.EwsAssert(subscription != null, "SubscribeResponse.ctor",
-        "subscription is null");
+                           "subscription is null");
     this.subscription = subscription;
   }
 
@@ -65,8 +64,8 @@ final class SubscribeResponse<TSubscription extends SubscriptionBase> extends
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException,
-      ServiceLocalException, Exception {
+             InstantiationException, IllegalAccessException,
+             ServiceLocalException, Exception {
     super.readElementsFromXml(reader);
     this.subscription.loadFromXml(reader);
   }

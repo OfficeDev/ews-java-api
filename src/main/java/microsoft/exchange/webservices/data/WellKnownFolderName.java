@@ -191,5 +191,4 @@ public enum WellKnownFolderName {
   @RequiredServerVersion(version = ExchangeVersion.Exchange2010_SP1)
   ArchiveRecoverableItemsPurges,
 
-
 }

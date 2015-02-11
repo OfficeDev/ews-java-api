@@ -39,6 +39,16 @@ final class SetUserOofSettingsRequest extends SimpleServiceRequestBase {
   private OofSettings oofSettings;
 
   /**
+   * Initializes a new instance of the class.
+   *
+   * @param service the service
+   */
+  protected SetUserOofSettingsRequest(ExchangeService service)
+      throws Exception {
+    super(service);
+  }
+
+  /**
    * Gets the name of the XML element.
    *
    * @return XML element name.
@@ -72,11 +82,11 @@ final class SetUserOofSettingsRequest extends SimpleServiceRequestBase {
       throws Exception {
     writer.writeStartElement(XmlNamespace.Types, XmlElementNames.Mailbox);
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Address,
-        this.getSmtpAddress());
+                             this.getSmtpAddress());
     writer.writeEndElement(); // Mailbox
 
     this.getOofSettings().writeToXml(writer,
-        XmlElementNames.UserOofSettings);
+                                     XmlElementNames.UserOofSettings);
   }
 
   /**
@@ -112,17 +122,6 @@ final class SetUserOofSettingsRequest extends SimpleServiceRequestBase {
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
     return ExchangeVersion.Exchange2007_SP1;
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param service the service
-   * @throws Exception
-   */
-  protected SetUserOofSettingsRequest(ExchangeService service)
-      throws Exception {
-    super(service);
   }
 
   /**

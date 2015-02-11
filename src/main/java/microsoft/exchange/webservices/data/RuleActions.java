@@ -117,9 +117,49 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets the categories that should be stamped on incoming messages.
-   * To disable stamping incoming messages with categories, set
-   * AssignCategories to null.
+   * Convert the SMS recipient list from EmailAddressCollection type to MobilePhone collection
+   * type.
+   *
+   * @param Recipient list in EmailAddressCollection type.
+   * @return A MobilePhone collection object containing all SMS recipient in MobilePhone type.
+   */
+  private static Collection<MobilePhone> convertSMSRecipientsFromEmailAddressCollectionToMobilePhoneCollection(
+      EmailAddressCollection emailCollection) {
+    Collection<MobilePhone> mobilePhoneCollection =
+        new ArrayList<MobilePhone>();
+    for (EmailAddress emailAddress : emailCollection) {
+      mobilePhoneCollection.add(new MobilePhone(emailAddress.getName(),
+                                                emailAddress.getAddress()));
+    }
+
+    return mobilePhoneCollection;
+  }
+
+  /**
+   * Convert the SMS recipient list from MobilePhone collection type to EmailAddressCollection
+   * type.
+   *
+   * @param Recipient list in a MobilePhone collection type.
+   * @return An EmailAddressCollection object containing recipients with "MOBILE" address type.
+   */
+  private static EmailAddressCollection convertSMSRecipientsFromMobilePhoneCollectionToEmailAddressCollection(
+      Collection<MobilePhone> recipientCollection) {
+    EmailAddressCollection emailCollection =
+        new EmailAddressCollection(XmlElementNames.Address);
+    for (MobilePhone recipient : recipientCollection) {
+      EmailAddress emailAddress = new EmailAddress(
+          recipient.getName(),
+          recipient.getPhoneNumber(),
+          RuleActions.MobileType);
+      emailCollection.add(emailAddress);
+    }
+
+    return emailCollection;
+  }
+
+  /**
+   * Gets the categories that should be stamped on incoming messages. To disable stamping incoming
+   * messages with categories, set AssignCategories to null.
    */
   public StringList getAssignCategories() {
 
@@ -128,9 +168,8 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the Id of the folder incoming messages should be copied to.
-   * To disable copying incoming messages
-   * to a folder, set CopyToFolder to null.
+   * Gets or sets the Id of the folder incoming messages should be copied to. To disable copying
+   * incoming messages to a folder, set CopyToFolder to null.
    */
   public FolderId getCopyToFolder() {
     return this.copyToFolder;
@@ -144,8 +183,8 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether incoming messages should be
-   * automatically moved to the Deleted Items folder.
+   * Gets or sets a value indicating whether incoming messages should be automatically moved to the
+   * Deleted Items folder.
    */
   public boolean getDelete() {
     return this.delete;
@@ -160,19 +199,17 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets the e-mail addresses to which incoming messages should be
-   * forwarded as attachments. To disable forwarding incoming messages
-   * as attachments, empty the ForwardAsAttachmentToRecipients list.
+   * Gets the e-mail addresses to which incoming messages should be forwarded as attachments. To
+   * disable forwarding incoming messages as attachments, empty the ForwardAsAttachmentToRecipients
+   * list.
    */
   public EmailAddressCollection getForwardAsAttachmentToRecipients() {
     return this.forwardAsAttachmentToRecipients;
   }
 
   /**
-   * Gets the e-mail addresses to which
-   * incoming messages should be forwarded.
-   * To disable forwarding incoming messages,
-   * empty the ForwardToRecipients list.
+   * Gets the e-mail addresses to which incoming messages should be forwarded. To disable forwarding
+   * incoming messages, empty the ForwardToRecipients list.
    */
   public EmailAddressCollection getForwardToRecipients() {
     return this.forwardToRecipients;
@@ -180,9 +217,8 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the importance that should be stamped on incoming
-   * messages. To disable the stamping of incoming messages with an
-   * importance, set MarkImportance to null.
+   * Gets or sets the importance that should be stamped on incoming messages. To disable the
+   * stamping of incoming messages with an importance, set MarkImportance to null.
    */
   public Importance getMarkImportance() {
     return this.markImportance;
@@ -196,8 +232,7 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether
-   * incoming messages should be marked as read.
+   * Gets or sets a value indicating whether incoming messages should be marked as read.
    */
   public boolean getMarkAsRead() {
     return this.markAsRead;
@@ -211,9 +246,8 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the Id of the folder to which incoming messages should be
-   * moved. To disable the moving of incoming messages to a folder, set
-   * CopyToFolder to null.
+   * Gets or sets the Id of the folder to which incoming messages should be moved. To disable the
+   * moving of incoming messages to a folder, set CopyToFolder to null.
    */
   public FolderId getMoveToFolder() {
     return this.moveToFolder;
@@ -228,10 +262,9 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether incoming messages should be
-   * permanently deleted. When a message is permanently deleted, it is never
-   * saved into the recipient's mailbox. To delete a message after it has
-   * saved into the recipient's mailbox. To delete a message after it has
+   * Gets or sets a value indicating whether incoming messages should be permanently deleted. When a
+   * message is permanently deleted, it is never saved into the recipient's mailbox. To delete a
+   * message after it has saved into the recipient's mailbox. To delete a message after it has
    */
   public boolean getPermanentDelete() {
     return this.permanentDelete;
@@ -245,10 +278,9 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets the e-mail addresses to which incoming messages should be
-   * redirecteded. To disable redirection of incoming messages, empty
-   * the RedirectToRecipients list. Unlike forwarded mail, redirected mail
-   * maintains the original sender and recipients.
+   * Gets the e-mail addresses to which incoming messages should be redirecteded. To disable
+   * redirection of incoming messages, empty the RedirectToRecipients list. Unlike forwarded mail,
+   * redirected mail maintains the original sender and recipients.
    */
   public EmailAddressCollection getRedirectToRecipients() {
     return this.redirectToRecipients;
@@ -256,9 +288,8 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets the phone numbers to which an SMS alert should be sent. To disable
-   * sending SMS alerts for incoming messages, empty the
-   * SendSMSAlertToRecipients list.
+   * Gets the phone numbers to which an SMS alert should be sent. To disable sending SMS alerts for
+   * incoming messages, empty the SendSMSAlertToRecipients list.
    */
   public Collection<MobilePhone> getSendSMSAlertToRecipients() {
     return this.sendSMSAlertToRecipients;
@@ -266,9 +297,8 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the Id of the template message that should be sent
-   * as a reply to incoming messages. To disable automatic replies, set
-   * ServerReplyWithMessage to null.
+   * Gets or sets the Id of the template message that should be sent as a reply to incoming
+   * messages. To disable automatic replies, set ServerReplyWithMessage to null.
    */
   public ItemId getServerReplyWithMessage() {
     return this.serverReplyWithMessage;
@@ -282,8 +312,7 @@ public final class RuleActions extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether
-   * subsequent rules should be evaluated.
+   * Gets or sets a value indicating whether subsequent rules should be evaluated.
    */
   public boolean getStopProcessingRules() {
     return this.stopProcessingRules;
@@ -302,29 +331,28 @@ public final class RuleActions extends ComplexProperty {
    *
    * @param reader The reader.
    * @return True if element was read.
-   * @throws Exception
    */
   @Override
   protected boolean tryReadElementFromXml(EwsServiceXmlReader
-      reader) throws Exception {
+                                              reader) throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.CopyToFolder)) {
       reader.readStartElement(XmlNamespace.NotSpecified,
-          XmlElementNames.FolderId);
+                              XmlElementNames.FolderId);
       this.copyToFolder = new FolderId();
       this.copyToFolder.loadFromXml(reader, XmlElementNames.FolderId);
       reader.readEndElement(XmlNamespace.NotSpecified,
-          XmlElementNames.CopyToFolder);
+                            XmlElementNames.CopyToFolder);
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.AssignCategories)) {
       this.assignCategories.loadFromXml(reader,
-          reader.getLocalName());
+                                        reader.getLocalName());
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.Delete)) {
       this.delete = reader.readElementValue(Boolean.class);
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.ForwardAsAttachmentToRecipients)) {
       this.forwardAsAttachmentToRecipients.loadFromXml(reader,
-          reader.getLocalName());
+                                                       reader.getLocalName());
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.ForwardToRecipients)) {
       this.forwardToRecipients.loadFromXml(reader, reader.getLocalName());
@@ -337,30 +365,31 @@ public final class RuleActions extends ComplexProperty {
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.MoveToFolder)) {
       reader.readStartElement(XmlNamespace.NotSpecified,
-          XmlElementNames.FolderId);
+                              XmlElementNames.FolderId);
       this.moveToFolder = new FolderId();
       this.moveToFolder.loadFromXml(reader, XmlElementNames.FolderId);
       reader.readEndElement(XmlNamespace.NotSpecified,
-          XmlElementNames.MoveToFolder);
+                            XmlElementNames.MoveToFolder);
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.PermanentDelete)) {
       this.permanentDelete = reader.readElementValue(Boolean.class);
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.RedirectToRecipients)) {
       this.redirectToRecipients.loadFromXml(reader,
-          reader.getLocalName());
+                                            reader.getLocalName());
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.SendSMSAlertToRecipients)) {
       EmailAddressCollection smsRecipientCollection =
           new EmailAddressCollection(XmlElementNames.Address);
       smsRecipientCollection.loadFromXml(reader, reader.getLocalName());
-      this.sendSMSAlertToRecipients = convertSMSRecipientsFromEmailAddressCollectionToMobilePhoneCollection(
-          smsRecipientCollection);
+      this.sendSMSAlertToRecipients =
+          convertSMSRecipientsFromEmailAddressCollectionToMobilePhoneCollection(
+              smsRecipientCollection);
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.ServerReplyWithMessage)) {
       this.serverReplyWithMessage = new ItemId();
       this.serverReplyWithMessage.loadFromXml(reader,
-          reader.getLocalName());
+                                              reader.getLocalName());
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.StopProcessingRules)) {
       this.stopProcessingRules = reader.readElementValue(Boolean.class);
@@ -375,19 +404,18 @@ public final class RuleActions extends ComplexProperty {
    * Writes elements to XML.
    *
    * @param writer The writer.
-   * @throws Exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     if (this.getAssignCategories().getSize() > 0) {
       this.getAssignCategories().writeToXml(writer,
-          XmlElementNames.AssignCategories);
+                                            XmlElementNames.AssignCategories);
     }
 
     if (this.getCopyToFolder() != null) {
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.CopyToFolder);
+                               XmlElementNames.CopyToFolder);
       this.getCopyToFolder().writeToXml(writer);
       writer.writeEndElement();
     }
@@ -401,12 +429,12 @@ public final class RuleActions extends ComplexProperty {
 
     if (this.getForwardAsAttachmentToRecipients().getCount() > 0) {
       this.getForwardAsAttachmentToRecipients().writeToXml(writer,
-          XmlElementNames.ForwardAsAttachmentToRecipients);
+                                                           XmlElementNames.ForwardAsAttachmentToRecipients);
     }
 
     if (this.getForwardToRecipients().getCount() > 0) {
       this.getForwardToRecipients().writeToXml(writer,
-          XmlElementNames.ForwardToRecipients);
+                                               XmlElementNames.ForwardToRecipients);
     }
 
     if (this.getMarkImportance() != null) {
@@ -425,7 +453,7 @@ public final class RuleActions extends ComplexProperty {
 
     if (this.getMoveToFolder() != null) {
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.MoveToFolder);
+                               XmlElementNames.MoveToFolder);
       this.getMoveToFolder().writeToXml(writer);
       writer.writeEndElement();
     }
@@ -439,7 +467,7 @@ public final class RuleActions extends ComplexProperty {
 
     if (this.getRedirectToRecipients().getCount() > 0) {
       this.getRedirectToRecipients().writeToXml(writer,
-          XmlElementNames.RedirectToRecipients);
+                                                XmlElementNames.RedirectToRecipients);
     }
 
     if (this.getSendSMSAlertToRecipients().size() > 0) {
@@ -447,12 +475,12 @@ public final class RuleActions extends ComplexProperty {
           convertSMSRecipientsFromMobilePhoneCollectionToEmailAddressCollection(
               this.getSendSMSAlertToRecipients());
       emailCollection.writeToXml(writer,
-          XmlElementNames.SendSMSAlertToRecipients);
+                                 XmlElementNames.SendSMSAlertToRecipients);
     }
 
     if (this.getServerReplyWithMessage() != null) {
       this.getServerReplyWithMessage().writeToXml(writer,
-          XmlElementNames.ServerReplyWithMessage);
+                                                  XmlElementNames.ServerReplyWithMessage);
     }
 
     if (this.getStopProcessingRules() != false) {
@@ -465,65 +493,20 @@ public final class RuleActions extends ComplexProperty {
 
   /**
    * Validates this instance.
-   *
-   * @throws Exception
    */
   @Override
   protected void internalValidate() throws Exception {
     super.internalValidate();
     EwsUtilities.validateParam(this.forwardAsAttachmentToRecipients,
-        "ForwardAsAttachmentToRecipients");
+                               "ForwardAsAttachmentToRecipients");
     EwsUtilities.validateParam(this.forwardToRecipients,
-        "ForwardToRecipients");
+                               "ForwardToRecipients");
     EwsUtilities.validateParam(this.redirectToRecipients,
-        "RedirectToRecipients");
+                               "RedirectToRecipients");
     for (MobilePhone sendSMSAlertToRecipient : this.sendSMSAlertToRecipients) {
       EwsUtilities.validateParam(sendSMSAlertToRecipient,
-          "SendSMSAlertToRecipient");
+                                 "SendSMSAlertToRecipient");
     }
-  }
-
-  /**
-   * Convert the SMS recipient list from
-   * EmailAddressCollection type to MobilePhone collection type.
-   *
-   * @param Recipient list in EmailAddressCollection type.
-   * @return A MobilePhone collection object
-   * containing all SMS recipient in MobilePhone type.
-   */
-  private static Collection<MobilePhone> convertSMSRecipientsFromEmailAddressCollectionToMobilePhoneCollection(
-      EmailAddressCollection emailCollection) {
-    Collection<MobilePhone> mobilePhoneCollection =
-        new ArrayList<MobilePhone>();
-    for (EmailAddress emailAddress : emailCollection) {
-      mobilePhoneCollection.add(new MobilePhone(emailAddress.getName(),
-          emailAddress.getAddress()));
-    }
-
-    return mobilePhoneCollection;
-  }
-
-  /**
-   * Convert the SMS recipient list from MobilePhone
-   * collection type to EmailAddressCollection type.
-   *
-   * @param Recipient list in a MobilePhone collection type.
-   * @return An EmailAddressCollection object
-   * containing recipients with "MOBILE" address type.
-   */
-  private static EmailAddressCollection convertSMSRecipientsFromMobilePhoneCollectionToEmailAddressCollection(
-      Collection<MobilePhone> recipientCollection) {
-    EmailAddressCollection emailCollection =
-        new EmailAddressCollection(XmlElementNames.Address);
-    for (MobilePhone recipient : recipientCollection) {
-      EmailAddress emailAddress = new EmailAddress(
-          recipient.getName(),
-          recipient.getPhoneNumber(),
-          RuleActions.MobileType);
-      emailCollection.add(emailAddress);
-    }
-
-    return emailCollection;
   }
 
 }

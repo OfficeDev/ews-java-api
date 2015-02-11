@@ -29,7 +29,7 @@ import javax.xml.stream.XMLStreamException;
  * The Class UpdateItemResponse.
  */
 public final class UpdateItemResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                              IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * Represents the response to an individual item update operation.
@@ -54,7 +54,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
   protected UpdateItemResponse(Item item) {
     super();
     EwsUtilities.EwsAssert(item != null, "UpdateItemResponse.ctor",
-        "item is null");
+                           "item is null");
     this.item = item;
   }
 
@@ -71,19 +71,19 @@ public final class UpdateItemResponse extends ServiceResponse implements
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException, Exception {
+             InstantiationException, IllegalAccessException, Exception {
     super.readElementsFromXml(reader);
 
     reader.readServiceObjectsCollectionFromXml(XmlElementNames.Items, this,
-        false, null, false);
+                                               false, null, false);
 
     if (!reader.getService().getExchange2007CompatibilityMode()) {
       reader.readStartElement(XmlNamespace.Messages,
-          XmlElementNames.ConflictResults);
+                              XmlElementNames.ConflictResults);
       this.conflictCount = reader.readElementValue(Integer.class,
-          XmlNamespace.Types, XmlElementNames.Count);
+                                                   XmlNamespace.Types, XmlElementNames.Count);
       reader.readEndElement(XmlNamespace.Messages,
-          XmlElementNames.ConflictResults);
+                            XmlElementNames.ConflictResults);
     }
 
     // If UpdateItem returned an item that has the same Id as the item that
@@ -121,7 +121,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
    * java.lang.String)
    */
   public ServiceObject getObjectInstanceDelegate(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                                 String xmlElementName) throws Exception {
     return this.getObjectInstance(service, xmlElementName);
   }
 
@@ -144,16 +144,15 @@ public final class UpdateItemResponse extends ServiceResponse implements
    * @throws Exception the exception
    */
   private Item getObjectInstance(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                 String xmlElementName) throws Exception {
     this.returnedItem = EwsUtilities.createEwsObjectFromXmlElementName(
         Item.class, service, xmlElementName);
     return this.returnedItem;
   }
 
   /**
-   * Gets the item that was returned by the update operation. ReturnedItem
-   * is set only when a recurring Task is marked as complete or when its
-   * recurrence pattern changes.
+   * Gets the item that was returned by the update operation. ReturnedItem is set only when a
+   * recurring Task is marked as complete or when its recurrence pattern changes.
    *
    * @return the returned item
    */
@@ -162,8 +161,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
   }
 
   /**
-   * Gets the number of property conflicts that were resolved during the
-   * update operation.
+   * Gets the number of property conflicts that were resolved during the update operation.
    *
    * @return the conflict count
    */

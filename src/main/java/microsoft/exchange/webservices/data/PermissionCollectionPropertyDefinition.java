@@ -39,7 +39,8 @@ class PermissionSetPropertyDefinition extends ComplexPropertyDefinitionBase {
    * @param version        The version.
    */
   protected PermissionSetPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                            EnumSet<PropertyDefinitionFlags> flags,
+                                            ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
 

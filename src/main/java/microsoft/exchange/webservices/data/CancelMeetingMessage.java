@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data;
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.CancelCalendarItem, returnedByServer = false)
 public final class CancelMeetingMessage extends
-    CalendarResponseMessageBase<MeetingCancellation> {
+                                        CalendarResponseMessageBase<MeetingCancellation> {
 
   /**
    * Initializes a new instance of the class.
@@ -43,8 +43,7 @@ public final class CancelMeetingMessage extends
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -54,8 +53,7 @@ public final class CancelMeetingMessage extends
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ServiceObjectSchema getSchema() {

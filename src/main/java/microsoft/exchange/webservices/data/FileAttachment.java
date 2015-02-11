@@ -23,7 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Represents a file attachment.
@@ -159,7 +163,7 @@ public final class FileAttachment extends Attachment {
         ExchangeVersion.Exchange2007_SP1
             .ordinal()) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.IsContactPhoto, this.isContactPhoto);
+                               XmlElementNames.IsContactPhoto, this.isContactPhoto);
     }
 
     writer.writeStartElement(XmlNamespace.Types, XmlElementNames.Content);
@@ -182,15 +186,15 @@ public final class FileAttachment extends Attachment {
       writer.writeBase64ElementValue(this.content);
     } else {
       EwsUtilities.EwsAssert(false, "FileAttachment.WriteElementsToXml",
-          "The attachment's content is not set.");
+                             "The attachment's content is not set.");
     }
 
     writer.writeEndElement();
   }
 
   /**
-   * Loads the content of the file attachment into the specified stream.
-   * Calling this method results in a call to EWS.
+   * Loads the content of the file attachment into the specified stream. Calling this method results
+   * in a call to EWS.
    *
    * @param stream the stream
    * @throws Exception the exception
@@ -206,8 +210,8 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Loads the content of the file attachment into the specified file.
-   * Calling this method results in a call to EWS.
+   * Loads the content of the file attachment into the specified file. Calling this method results
+   * in a call to EWS.
    *
    * @param fileName the file name
    * @throws Exception the exception
@@ -251,8 +255,7 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Gets  the content stream.Gets the name of the file the attachment
-   * is linked to.
+   * Gets  the content stream.Gets the name of the file the attachment is linked to.
    *
    * @return The content stream
    */
@@ -274,8 +277,7 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Gets the content of the attachment into memory. Content is set only
-   * when Load() is called.
+   * Gets the content of the attachment into memory. Content is set only when Load() is called.
    *
    * @return the content
    */
@@ -297,15 +299,14 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Gets  a value indicating whether this attachment is a contact
-   * photo.
+   * Gets  a value indicating whether this attachment is a contact photo.
    *
    * @return true, if is contact photo
    * @throws ServiceVersionException the service version exception
    */
   public boolean isContactPhoto() throws ServiceVersionException {
     EwsUtilities.validatePropertyVersion(this.getOwner().getService(),
-        ExchangeVersion.Exchange2010, "IsContactPhoto");
+                                         ExchangeVersion.Exchange2010, "IsContactPhoto");
     return this.isContactPhoto;
   }
 
@@ -318,7 +319,7 @@ public final class FileAttachment extends Attachment {
   public void setIsContactPhoto(boolean isContactPhoto)
       throws ServiceVersionException {
     EwsUtilities.validatePropertyVersion(this.getOwner().getService(),
-        ExchangeVersion.Exchange2010, "IsContactPhoto");
+                                         ExchangeVersion.Exchange2010, "IsContactPhoto");
     this.throwIfThisIsNotNew();
     this.isContactPhoto = isContactPhoto;
   }

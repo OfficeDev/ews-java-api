@@ -37,7 +37,6 @@ final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase {
    * Initializes a new instance of the DisconnectPhoneCallRequest class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected DisconnectPhoneCallRequest(ExchangeService service)
       throws Exception {
@@ -64,7 +63,7 @@ final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.id.writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.PhoneCallId);
+                       XmlElementNames.PhoneCallId);
   }
 
   /**
@@ -89,7 +88,7 @@ final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase {
       throws Exception {
     ServiceResponse serviceResponse = new ServiceResponse();
     serviceResponse.loadFromXml(reader,
-        XmlElementNames.DisconnectPhoneCallResponse);
+                                XmlElementNames.DisconnectPhoneCallResponse);
     return serviceResponse;
   }
 

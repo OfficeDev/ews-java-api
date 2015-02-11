@@ -27,17 +27,16 @@ package microsoft.exchange.webservices.data;
  * Represents a CreateItem request.
  */
 final class CreateItemRequest extends
-    CreateItemRequestBase<Item, ServiceResponse> {
+                              CreateItemRequestBase<Item, ServiceResponse> {
 
   /**
    * Initializes a new instance.
    *
    * @param service           The service.
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   protected CreateItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                              ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -51,7 +50,7 @@ final class CreateItemRequest extends
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new CreateItemResponse((Item) EwsUtilities
         .getEnumeratedObjectAt(this.getItems(), responseIndex));
   }
@@ -73,8 +72,8 @@ final class CreateItemRequest extends
   }
 
   /**
-   * Gets the request version. Returns earliest Exchange version in which
-   * this request is supported.
+   * Gets the request version. Returns earliest Exchange version in which this request is
+   * supported.
    *
    * @return the minimum required server version
    */

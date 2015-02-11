@@ -32,6 +32,7 @@ import java.lang.annotation.Target;
  * The Interface Schema.
  */
 @Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME) @interface Schema {
+@Retention(RetentionPolicy.RUNTIME)
+@interface Schema {
 
 }

@@ -46,13 +46,13 @@ public abstract class PropertyDefinitionBase {
    * @throws Exception the exception
    */
   protected static boolean tryLoadFromXml(EwsServiceXmlReader reader,
-      OutParam<PropertyDefinitionBase> propertyDefinition)
+                                          OutParam<PropertyDefinitionBase> propertyDefinition)
       throws Exception {
     String strLocalName = reader.getLocalName();
     if (strLocalName.equals(XmlElementNames.FieldURI)) {
       PropertyDefinitionBase p = ServiceObjectSchema
           .findPropertyDefinition(reader
-              .readAttributeValue(XmlAttributeNames.FieldURI));
+                                      .readAttributeValue(XmlAttributeNames.FieldURI));
       propertyDefinition.setParam(p);
       return true;
     } else if (strLocalName.equals(XmlElementNames.IndexedFieldURI)) {

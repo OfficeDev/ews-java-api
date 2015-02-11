@@ -31,16 +31,15 @@ import org.junit.runners.JUnit4;
 public class PropertyBagTest {
 
   /**
-   * Calling tryGetPropertyType with invalid data.
-   * Expecting exception
-   * 
-   * @throws Exception
+   * Calling tryGetPropertyType with invalid data. Expecting exception
    */
-  @Test(expected=ArgumentException.class)
-  public void tryGetPropertyType() throws Exception{
+  @Test(expected = ArgumentException.class)
+  public void tryGetPropertyType() throws Exception {
     ExchangeService es = new ExchangeService();
     ServiceObject owner = new Item(es);
     PropertyBag pb = new PropertyBag(owner);
-    pb.tryGetPropertyType(String.class, new RecurrencePropertyDefinition("test", "none", null, ExchangeVersion.Exchange2010_SP2), new OutParam<String>());
+    pb.tryGetPropertyType(String.class, new RecurrencePropertyDefinition("test", "none", null,
+                                                                         ExchangeVersion.Exchange2010_SP2),
+                          new OutParam<String>());
   }
 }

@@ -35,7 +35,7 @@ abstract class DnsRecord {
    */
   private String name;
         /*
-	 * The suggested time for this dnsRecord to be valid
+         * The suggested time for this dnsRecord to be valid
 	 */
   /**
    * The time to live.

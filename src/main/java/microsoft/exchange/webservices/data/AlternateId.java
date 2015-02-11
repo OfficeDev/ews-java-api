@@ -161,7 +161,7 @@ public class AlternateId extends AlternateIdBase {
     super.writeAttributesToXml(writer);
     writer.writeAttributeValue(XmlAttributeNames.Id, this.getUniqueId());
     writer.writeAttributeValue(XmlAttributeNames.Mailbox,
-        this.getMailbox());
+                               this.getMailbox());
     //.getMailbox() == null || this.getMailbox().isEmpty()) ? ""
     //: this.getMailbox());
     if (this.getIsArchive()) {
@@ -188,7 +188,7 @@ public class AlternateId extends AlternateIdBase {
 
     if (!(isArchive == null || isArchive.isEmpty())) {
       this.isArchive = reader.readAttributeValue(Boolean.class,
-          XmlAttributeNames.IsArchive);
+                                                 XmlAttributeNames.IsArchive);
     } else {
       this.isArchive = false;
     }

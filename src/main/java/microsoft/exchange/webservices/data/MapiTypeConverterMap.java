@@ -29,7 +29,7 @@ import java.util.HashMap;
  * The Class MapiTypeConverterMap.
  */
 class MapiTypeConverterMap extends
-    HashMap<MapiPropertyType, MapiTypeConverterMapEntry> {
+                           HashMap<MapiPropertyType, MapiTypeConverterMapEntry> {
 
   /**
    * Constant serialized ID used for compatibility.

@@ -39,7 +39,8 @@ class StringPropertyDefinition extends TypedPropertyDefinition {
    * @param version        The version.
    */
   protected StringPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                     EnumSet<PropertyDefinitionFlags> flags,
+                                     ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
 
@@ -55,8 +56,8 @@ class StringPropertyDefinition extends TypedPropertyDefinition {
   }
 
   /**
-   * Gets a value indicating whether this property definition is for a
-   * nullable type (ref, int?, bool?...).
+   * Gets a value indicating whether this property definition is for a nullable type (ref, int?,
+   * bool?...).
    *
    * @return True
    */

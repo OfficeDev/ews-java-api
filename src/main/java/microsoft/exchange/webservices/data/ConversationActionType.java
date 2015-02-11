@@ -59,8 +59,7 @@ public enum ConversationActionType {
   Copy,
 
   /**
-   * Marks current item in context folder in the conversation with
-   * provided read state
+   * Marks current item in context folder in the conversation with provided read state
    */
   SetReadState,
 

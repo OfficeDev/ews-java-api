@@ -95,10 +95,8 @@ public abstract class Attachment extends ComplexProperty {
   }
 
   /**
-   * Sets value of field.
-   * <p/>
-   * We override the base implementation. Attachments cannot be modified so
-   * any attempts the change a property on an existing attachment is an error.
+   * Sets value of field. <p/> We override the base implementation. Attachments cannot be modified
+   * so any attempts the change a property on an existing attachment is an error.
    *
    * @param <T>   the generic type
    * @param field The field
@@ -162,9 +160,9 @@ public abstract class Attachment extends ComplexProperty {
   }
 
   /**
-   * Gets  the content Id of the attachment. ContentId can be used as a
-   * custom way to identify an attachment in order to reference it from within
-   * the body of the item the attachment belongs to.
+   * Gets  the content Id of the attachment. ContentId can be used as a custom way to identify an
+   * attachment in order to reference it from within the body of the item the attachment belongs
+   * to.
    *
    * @return the content id
    */
@@ -185,9 +183,8 @@ public abstract class Attachment extends ComplexProperty {
   }
 
   /**
-   * Gets  the content location of the attachment. ContentLocation can
-   * be used to associate an attachment with a Url defining its location on
-   * the Web.
+   * Gets  the content location of the attachment. ContentLocation can be used to associate an
+   * attachment with a Url defining its location on the Web.
    *
    * @return the content location
    */
@@ -215,7 +212,7 @@ public abstract class Attachment extends ComplexProperty {
    */
   public int getSize() throws ServiceVersionException {
     EwsUtilities.validatePropertyVersion(this.getOwner().getService(),
-        ExchangeVersion.Exchange2010, "Size");
+                                         ExchangeVersion.Exchange2010, "Size");
     return this.size;
   }
 
@@ -228,22 +225,22 @@ public abstract class Attachment extends ComplexProperty {
   public Date getLastModifiedTime() throws ServiceVersionException {
 
     EwsUtilities.validatePropertyVersion(this.getOwner().getService(),
-        ExchangeVersion.Exchange2010, "LastModifiedTime");
+                                         ExchangeVersion.Exchange2010, "LastModifiedTime");
 
     return this.lastModifiedTime;
 
   }
 
   /**
-   * Gets  a value indicating whether this is an inline attachment.
-   * Inline attachments are not visible to end users.
+   * Gets  a value indicating whether this is an inline attachment. Inline attachments are not
+   * visible to end users.
    *
    * @return the checks if is inline
    * @throws ServiceVersionException the service version exception
    */
   public boolean getIsInline() throws ServiceVersionException {
     EwsUtilities.validatePropertyVersion(this.getOwner().getService(),
-        ExchangeVersion.Exchange2010, "IsInline");
+                                         ExchangeVersion.Exchange2010, "IsInline");
     return this.isInline;
 
   }
@@ -256,7 +253,7 @@ public abstract class Attachment extends ComplexProperty {
    */
   public void setIsInline(boolean value) throws ServiceVersionException {
     EwsUtilities.validatePropertyVersion(this.getOwner().getService(),
-        ExchangeVersion.Exchange2010, "IsInline");
+                                         ExchangeVersion.Exchange2010, "IsInline");
     if (this.canSetFieldValue(this.isInline, value)) {
       this.isInline = value;
       this.changed();
@@ -311,7 +308,7 @@ public abstract class Attachment extends ComplexProperty {
         if (this.getOwner() != null) {
           String rootItemChangeKey = reader
               .readAttributeValue(XmlAttributeNames.
-                  RootItemChangeKey);
+                                      RootItemChangeKey);
           if (null != rootItemChangeKey &&
               !rootItemChangeKey.isEmpty()) {
             this.getOwner().getRootItemId().setChangeKey(
@@ -319,7 +316,7 @@ public abstract class Attachment extends ComplexProperty {
           }
         }
         reader.readEndElementIfNecessary(XmlNamespace.Types,
-            XmlElementNames.AttachmentId);
+                                         XmlElementNames.AttachmentId);
         return true;
       } else if (reader.getLocalName().equalsIgnoreCase(
           XmlElementNames.Name)) {
@@ -370,16 +367,16 @@ public abstract class Attachment extends ComplexProperty {
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Name, this
         .getName());
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.ContentType, this.getContentType());
+                             XmlElementNames.ContentType, this.getContentType());
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.ContentId,
-        this.getContentId());
+                             this.getContentId());
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.ContentLocation, this.getContentLocation());
+                             XmlElementNames.ContentLocation, this.getContentLocation());
     if (writer.getService().getRequestedServerVersion().ordinal() >
         ExchangeVersion.Exchange2007_SP1
             .ordinal()) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.IsInline, this.getIsInline());
+                               XmlElementNames.IsInline, this.getIsInline());
     }
   }
 
@@ -391,10 +388,10 @@ public abstract class Attachment extends ComplexProperty {
    * @throws Exception the exception
    */
   protected void internalLoad(BodyType bodyType,
-      Iterable<PropertyDefinitionBase> additionalProperties)
+                              Iterable<PropertyDefinitionBase> additionalProperties)
       throws Exception {
     this.getOwner().getService().getAttachment(this, bodyType,
-        additionalProperties);
+                                               additionalProperties);
   }
 
   /**

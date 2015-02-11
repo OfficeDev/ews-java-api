@@ -41,5 +41,4 @@ public enum DomainSettingName {
    */
   ExternalEwsVersion,
 
-
 }

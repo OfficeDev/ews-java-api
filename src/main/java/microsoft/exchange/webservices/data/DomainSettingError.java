@@ -73,7 +73,7 @@ public final class DomainSettingError {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-        XmlElementNames.DomainSettingError));
+                                  XmlElementNames.DomainSettingError));
   }
 
   /**

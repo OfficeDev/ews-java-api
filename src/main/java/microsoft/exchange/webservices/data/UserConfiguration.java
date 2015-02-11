@@ -23,33 +23,32 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.EnumSet;
 
+import javax.xml.stream.XMLStreamException;
+
 /**
- * Represents an object that can be used to store user-defined configuration
- * settings.
+ * Represents an object that can be used to store user-defined configuration settings.
  */
 public class UserConfiguration {
 
-  /**
-   * The object version.
-   */
-  private static ExchangeVersion ObjectVersion = ExchangeVersion.Exchange2010;
-
-  /**
-   * For consistency with ServiceObject behavior, access to ItemId is
-   * permitted for a new object.
-   */
   /**
    * The Constant PropertiesAvailableForNewObject.
    */
   private final static EnumSet<UserConfigurationProperties>
       PropertiesAvailableForNewObject =
       EnumSet.of(UserConfigurationProperties.BinaryData,
-          UserConfigurationProperties.Dictionary,
-          UserConfigurationProperties.XmlData);
+                 UserConfigurationProperties.Dictionary,
+                 UserConfigurationProperties.XmlData);
 
+  /**
+   * For consistency with ServiceObject behavior, access to ItemId is
+   * permitted for a new object.
+   */
+  /**
+   * The object version.
+   */
+  private static ExchangeVersion ObjectVersion = ExchangeVersion.Exchange2010;
   /**
    * The No properties.
    */
@@ -117,6 +116,30 @@ public class UserConfiguration {
   }
 
   /**
+   * Initializes a new instance of <see cref="UserConfiguration"/> class.
+   *
+   * @param service             The service to which the user configuration is bound.
+   * @param requestedProperties The properties requested for this user configuration.
+   * @throws Exception the exception
+   */
+  protected UserConfiguration(ExchangeService service,
+                              EnumSet<UserConfigurationProperties> requestedProperties)
+      throws Exception {
+    EwsUtilities.validateParam(service, "service");
+
+    if (service.getRequestedServerVersion().ordinal() < UserConfiguration.ObjectVersion.ordinal()) {
+      throw new ServiceVersionException(String.format(
+          Strings.ObjectTypeIncompatibleWithRequestVersion, this
+              .getClass().getName(), UserConfiguration.ObjectVersion));
+    }
+
+    this.service = service;
+    this.isNew = true;
+
+    this.initializeProperties(requestedProperties);
+  }
+
+  /**
    * Writes a byte array to Xml.
    *
    * @param writer         The writer.
@@ -126,24 +149,24 @@ public class UserConfiguration {
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   private static void writeByteArrayToXml(EwsServiceXmlWriter writer,
-      byte[] byteArray, String xmlElementName) throws XMLStreamException,
-      ServiceXmlSerializationException {
+                                          byte[] byteArray, String xmlElementName)
+      throws XMLStreamException,
+             ServiceXmlSerializationException {
     EwsUtilities.EwsAssert(writer != null,
-        "UserConfiguration.WriteByteArrayToXml", "writer is null");
+                           "UserConfiguration.WriteByteArrayToXml", "writer is null");
     EwsUtilities.EwsAssert(xmlElementName != null,
-        "UserConfiguration.WriteByteArrayToXml",
-        "xmlElementName is null");
+                           "UserConfiguration.WriteByteArrayToXml",
+                           "xmlElementName is null");
 
     writer.writeStartElement(XmlNamespace.Types, xmlElementName);
 
     if (byteArray != null && byteArray.length > 0) {
       writer.writeValue(Base64EncoderStream.encode(byteArray),
-          xmlElementName);
+                        xmlElementName);
     }
 
     writer.writeEndElement();
   }
-
 
   /**
    * Writes to Xml.
@@ -158,17 +181,17 @@ public class UserConfiguration {
       EwsServiceXmlWriter writer, XmlNamespace xmlNamespace, String name,
       FolderId parentFolderId) throws Exception {
     EwsUtilities.EwsAssert(writer != null,
-        "UserConfiguration.WriteUserConfigurationNameToXml",
-        "writer is null");
+                           "UserConfiguration.WriteUserConfigurationNameToXml",
+                           "writer is null");
     EwsUtilities.EwsAssert(name != null,
-        "UserConfiguration.WriteUserConfigurationNameToXml",
-        "name is null");
+                           "UserConfiguration.WriteUserConfigurationNameToXml",
+                           "name is null");
     EwsUtilities.EwsAssert(parentFolderId != null,
-        "UserConfiguration.WriteUserConfigurationNameToXml",
-        "parentFolderId is null");
+                           "UserConfiguration.WriteUserConfigurationNameToXml",
+                           "parentFolderId is null");
 
     writer.writeStartElement(xmlNamespace,
-        XmlElementNames.UserConfigurationName);
+                             XmlElementNames.UserConfigurationName);
 
     writer.writeAttributeValue(XmlAttributeNames.Name, name);
 
@@ -178,27 +201,45 @@ public class UserConfiguration {
   }
 
   /**
-   * Initializes a new instance of <see cref="UserConfiguration"/> class.
+   * Binds to an existing user configuration and loads the specified properties. Calling this method
+   * results in a call to EWS.
    *
-   * @param service             The service to which the user configuration is bound.
-   * @param requestedProperties The properties requested for this user configuration.
-   * @throws Exception the exception
+   * @param service        The service to which the user configuration is bound.
+   * @param name           The name of the user configuration.
+   * @param parentFolderId The Id of the folder containing the user configuration.
+   * @param properties     The properties to load.
+   * @return A user configuration instance.
+   * @throws IndexOutOfBoundsException the index out of bounds exception
+   * @throws Exception                 the exception
    */
-  protected UserConfiguration(ExchangeService service,
-      EnumSet<UserConfigurationProperties> requestedProperties)
-      throws Exception {
-    EwsUtilities.validateParam(service, "service");
+  public static UserConfiguration bind(ExchangeService service, String name,
+                                       FolderId parentFolderId,
+                                       UserConfigurationProperties properties)
+      throws IndexOutOfBoundsException, Exception {
 
-    if (service.getRequestedServerVersion().ordinal() < UserConfiguration.ObjectVersion.ordinal()) {
-      throw new ServiceVersionException(String.format(
-          Strings.ObjectTypeIncompatibleWithRequestVersion, this
-              .getClass().getName(), UserConfiguration.ObjectVersion));
-    }
+    UserConfiguration result = service.getUserConfiguration(name,
+                                                            parentFolderId, properties);
+    result.isNew = false;
+    return result;
+  }
 
-    this.service = service;
-    this.isNew = true;
-
-    this.initializeProperties(requestedProperties);
+  /**
+   * Binds to an existing user configuration and loads the specified properties.
+   *
+   * @param service          The service to which the user configuration is bound.
+   * @param name             The name of the user configuration.
+   * @param parentFolderName The name of the folder containing the user configuration.
+   * @param properties       The properties to load.
+   * @return A user configuration instance.
+   * @throws IndexOutOfBoundsException the index out of bounds exception
+   * @throws Exception                 the exception
+   */
+  public static UserConfiguration bind(ExchangeService service, String name,
+                                       WellKnownFolderName parentFolderName,
+                                       UserConfigurationProperties properties)
+      throws IndexOutOfBoundsException, Exception {
+    return UserConfiguration.bind(service, name, new FolderId(
+        parentFolderName), properties);
   }
 
   /**
@@ -303,61 +344,17 @@ public class UserConfiguration {
   }
 
   /**
-   * Gets a value indicating whether this user configuration has been
-   * modified.
+   * Gets a value indicating whether this user configuration has been modified.
    *
    * @return the checks if is dirty
    */
   public boolean getIsDirty() {
     return (!this.updatedProperties.contains(NoProperties))
-        || this.dictionary.getIsDirty();
+           || this.dictionary.getIsDirty();
   }
 
   /**
-   * Binds to an existing user configuration and loads the specified
-   * properties. Calling this method results in a call to EWS.
-   *
-   * @param service        The service to which the user configuration is bound.
-   * @param name           The name of the user configuration.
-   * @param parentFolderId The Id of the folder containing the user configuration.
-   * @param properties     The properties to load.
-   * @return A user configuration instance.
-   * @throws IndexOutOfBoundsException the index out of bounds exception
-   * @throws Exception                 the exception
-   */
-  public static UserConfiguration bind(ExchangeService service, String name,
-      FolderId parentFolderId, UserConfigurationProperties properties)
-      throws IndexOutOfBoundsException, Exception {
-
-    UserConfiguration result = service.getUserConfiguration(name,
-        parentFolderId, properties);
-    result.isNew = false;
-    return result;
-  }
-
-  /**
-   * Binds to an existing user configuration and loads the specified
-   * properties.
-   *
-   * @param service          The service to which the user configuration is bound.
-   * @param name             The name of the user configuration.
-   * @param parentFolderName The name of the folder containing the user configuration.
-   * @param properties       The properties to load.
-   * @return A user configuration instance.
-   * @throws IndexOutOfBoundsException the index out of bounds exception
-   * @throws Exception                 the exception
-   */
-  public static UserConfiguration bind(ExchangeService service, String name,
-      WellKnownFolderName parentFolderName,
-      UserConfigurationProperties properties)
-      throws IndexOutOfBoundsException, Exception {
-    return UserConfiguration.bind(service, name, new FolderId(
-        parentFolderName), properties);
-  }
-
-  /**
-   * Saves the user configuration. Calling this method results in a call to
-   * EWS.
+   * Saves the user configuration. Calling this method results in a call to EWS.
    *
    * @param name           The name of the user configuration.
    * @param parentFolderId The Id of the folder in which to save the user configuration.
@@ -385,12 +382,10 @@ public class UserConfiguration {
   }
 
   /**
-   * Saves the user configuration. Calling this method results in a call to
-   * EWS.
+   * Saves the user configuration. Calling this method results in a call to EWS.
    *
    * @param name             The name of the user configuration.
-   * @param parentFolderName The name of the folder in which to save the user
-   *                         configuration.
+   * @param parentFolderName The name of the folder in which to save the user configuration.
    * @throws Exception the exception
    */
   public void save(String name, WellKnownFolderName parentFolderName)
@@ -399,8 +394,8 @@ public class UserConfiguration {
   }
 
   /**
-   * Updates the user configuration by applying local changes to the Exchange
-   * server. Calling this method results in a call to EWS
+   * Updates the user configuration by applying local changes to the Exchange server. Calling this
+   * method results in a call to EWS
    *
    * @throws Exception the exception
    */
@@ -414,9 +409,9 @@ public class UserConfiguration {
     if (this.isPropertyUpdated(UserConfigurationProperties.BinaryData)
         || this
         .isPropertyUpdated(UserConfigurationProperties.
-            Dictionary)
+                               Dictionary)
         || this.isPropertyUpdated(UserConfigurationProperties.
-        XmlData)) {
+                                      XmlData)) {
 
       this.service.updateUserConfiguration(this);
     }
@@ -425,8 +420,7 @@ public class UserConfiguration {
   }
 
   /**
-   * Deletes the user configuration. Calling this method results in a call to
-   * EWS.
+   * Deletes the user configuration. Calling this method results in a call to EWS.
    *
    * @throws Exception the exception
    */
@@ -441,8 +435,8 @@ public class UserConfiguration {
   }
 
   /**
-   * Loads the specified properties on the user configuration. Calling this
-   * method results in a call to EWS.
+   * Loads the specified properties on the user configuration. Calling this method results in a call
+   * to EWS.
    *
    * @param properties The properties to load.
    * @throws Exception the exception
@@ -461,17 +455,17 @@ public class UserConfiguration {
    * @throws Exception the exception
    */
   protected void writeToXml(EwsServiceXmlWriter writer,
-      XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
+                            XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
     EwsUtilities.EwsAssert(writer != null, "UserConfiguration.WriteToXml",
-        "writer is null");
+                           "writer is null");
     EwsUtilities.EwsAssert(xmlElementName != null,
-        "UserConfiguration.WriteToXml", "xmlElementName is null");
+                           "UserConfiguration.WriteToXml", "xmlElementName is null");
 
     writer.writeStartElement(xmlNamespace, xmlElementName);
 
     // Write the UserConfigurationName element
     writeUserConfigurationNameToXml(writer, XmlNamespace.Types, this.name,
-        this.parentFolderId);
+                                    this.parentFolderId);
 
     // Write the Dictionary element
     if (this.isPropertyUpdated(UserConfigurationProperties.Dictionary)) {
@@ -509,17 +503,17 @@ public class UserConfiguration {
       case XmlData:
         isPropertyDirty = this.updatedProperties.contains(property);
         isPropertyEmpty = (this.xmlData == null) ||
-            (this.xmlData.length == 0);
+                          (this.xmlData.length == 0);
         break;
       case BinaryData:
         isPropertyDirty = this.updatedProperties.contains(property);
         isPropertyEmpty = (this.binaryData == null) ||
-            (this.binaryData.length == 0);
+                          (this.binaryData.length == 0);
         break;
       default:
         EwsUtilities.EwsAssert(false,
-            "UserConfiguration.IsPropertyUpdated",
-            "property not supported: " + property.toString());
+                               "UserConfiguration.IsPropertyUpdated",
+                               "property not supported: " + property.toString());
         break;
     }
 
@@ -539,7 +533,7 @@ public class UserConfiguration {
   private void writeXmlDataToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     EwsUtilities.EwsAssert(writer != null,
-        "UserConfiguration.WriteXmlDataToXml", "writer is null");
+                           "UserConfiguration.WriteXmlDataToXml", "writer is null");
 
     writeByteArrayToXml(writer, this.xmlData, XmlElementNames.XmlData);
   }
@@ -554,12 +548,11 @@ public class UserConfiguration {
   private void writeBinaryDataToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     EwsUtilities.EwsAssert(writer != null,
-        "UserConfiguration.WriteBinaryDataToXml", "writer is null");
+                           "UserConfiguration.WriteBinaryDataToXml", "writer is null");
 
     writeByteArrayToXml(writer, this.binaryData,
-        XmlElementNames.BinaryData);
+                        XmlElementNames.BinaryData);
   }
-
 
 
   /**
@@ -570,10 +563,10 @@ public class UserConfiguration {
    */
   protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     EwsUtilities.EwsAssert(reader != null, "UserConfiguration.LoadFromXml",
-        "reader is null");
+                           "reader is null");
 
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.UserConfiguration);
+                            XmlElementNames.UserConfiguration);
     reader.read(); // Position at first property element
 
     do {
@@ -584,10 +577,10 @@ public class UserConfiguration {
               .readAttributeValue(XmlAttributeNames.Name);
 
           EwsUtilities.EwsAssert(this.name.equals(responseName),
-              "UserConfiguration.LoadFromXml",
-              "UserConfigurationName does not match: Expected: "
-                  + this.name + " Name in response: "
-                  + responseName);
+                                 "UserConfiguration.LoadFromXml",
+                                 "UserConfigurationName does not match: Expected: "
+                                 + this.name + " Name in response: "
+                                 + responseName);
 
           reader.skipCurrentElement();
         } else if (reader.getLocalName().equals(XmlElementNames.ItemId)) {
@@ -596,20 +589,20 @@ public class UserConfiguration {
         } else if (reader.getLocalName().equals(
             XmlElementNames.Dictionary)) {
           this.dictionary.loadFromXml(reader,
-              XmlElementNames.Dictionary);
+                                      XmlElementNames.Dictionary);
         } else if (reader.getLocalName()
             .equals(XmlElementNames.XmlData)) {
           this.xmlData = Base64EncoderStream.decode(reader
-              .readElementValue());
+                                                        .readElementValue());
         } else if (reader.getLocalName().equals(
             XmlElementNames.BinaryData)) {
           this.binaryData = Base64EncoderStream.decode(reader
-              .readElementValue());
+                                                           .readElementValue());
         } else {
           EwsUtilities.EwsAssert(false,
-              "UserConfiguration.LoadFromXml",
-              "Xml element not supported: "
-                  + reader.getLocalName());
+                                 "UserConfiguration.LoadFromXml",
+                                 "Xml element not supported: "
+                                 + reader.getLocalName());
         }
       }
 
@@ -617,7 +610,7 @@ public class UserConfiguration {
       // positions the reader at the next property.
       reader.read();
     } while (!reader.isEndElement(XmlNamespace.Messages,
-        XmlElementNames.UserConfiguration));
+                                  XmlElementNames.UserConfiguration));
   }
 
   /**

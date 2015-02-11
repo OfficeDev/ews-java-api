@@ -41,6 +41,37 @@ public final class ItemView extends PagedView {
   private OrderByCollection orderBy = new OrderByCollection();
 
   /**
+   * Initializes a new instance of the ItemView class.
+   *
+   * @param pageSize the page size
+   */
+  public ItemView(int pageSize) {
+    super(pageSize);
+  }
+
+  /**
+   * Initializes a new instance of the ItemView class.
+   *
+   * @param pageSize the page size
+   * @param offset   the offset
+   */
+  public ItemView(int pageSize, int offset) {
+    super(pageSize, offset);
+    this.setOffset(offset);
+  }
+
+  /**
+   * Initializes a new instance of the ItemView class.
+   *
+   * @param pageSize        the page size
+   * @param offset          the offset
+   * @param offsetBasePoint the offset base point
+   */
+  public ItemView(int pageSize, int offset, OffsetBasePoint offsetBasePoint) {
+    super(pageSize, offset, offsetBasePoint);
+  }
+
+  /**
    * Gets the name of the view XML element.
    *
    * @return XML element name.
@@ -98,8 +129,8 @@ public final class ItemView extends PagedView {
    */
   @Override
   protected void internalWriteSearchSettingsToXml(EwsServiceXmlWriter writer,
-      Grouping groupBy) throws XMLStreamException,
-      ServiceXmlSerializationException {
+                                                  Grouping groupBy) throws XMLStreamException,
+                                                                           ServiceXmlSerializationException {
     super.internalWriteSearchSettingsToXml(writer, groupBy);
   }
 
@@ -117,39 +148,7 @@ public final class ItemView extends PagedView {
   }
 
   /**
-   * Initializes a new instance of the ItemView class.
-   *
-   * @param pageSize the page size
-   */
-  public ItemView(int pageSize) {
-    super(pageSize);
-  }
-
-  /**
-   * Initializes a new instance of the ItemView class.
-   *
-   * @param pageSize the page size
-   * @param offset   the offset
-   */
-  public ItemView(int pageSize, int offset) {
-    super(pageSize, offset);
-    this.setOffset(offset);
-  }
-
-  /**
-   * Initializes a new instance of the ItemView class.
-   *
-   * @param pageSize        the page size
-   * @param offset          the offset
-   * @param offsetBasePoint the offset base point
-   */
-  public ItemView(int pageSize, int offset, OffsetBasePoint offsetBasePoint) {
-    super(pageSize, offset, offsetBasePoint);
-  }
-
-  /**
-   * Gets  the search traversal mode. Defaults to
-   * ItemTraversal.Shallow.
+   * Gets  the search traversal mode. Defaults to ItemTraversal.Shallow.
    *
    * @return the traversal
    */

@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class FolderIdCollection extends
-    ComplexPropertyCollection<FolderId> {
+                                      ComplexPropertyCollection<FolderId> {
 
   /**
    * Initializes a new instance of the <see cref="FolderIdCollection"/> class.
@@ -116,8 +116,7 @@ public final class FolderIdCollection extends
    * Removes the specified folder Id from the collection.
    *
    * @param folderId The folder Id to remove from the collection.
-   * @return True if the folder id was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the folder id was successfully removed from the collection, false otherwise.
    * @throws Exception the exception
    */
   public boolean remove(FolderId folderId) throws Exception {
@@ -129,8 +128,8 @@ public final class FolderIdCollection extends
    * Removes the specified well-known folder from the collection.
    *
    * @param folderName The well-knwon folder to remove from the collection.
-   * @return True if the well-known folder was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the well-known folder was successfully removed from the collection, false
+   * otherwise.
    */
   public boolean remove(WellKnownFolderName folderName) {
     FolderId folderId = FolderId

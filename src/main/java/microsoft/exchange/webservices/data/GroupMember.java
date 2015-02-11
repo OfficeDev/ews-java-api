@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data;
  */
 @RequiredServerVersion(version = ExchangeVersion.Exchange2010)
 public class GroupMember extends ComplexProperty implements
-    IComplexPropertyChangedDelegate {
+                                                 IComplexPropertyChangedDelegate {
 
   // AddressInformation field.
   /**
@@ -83,7 +83,7 @@ public class GroupMember extends ComplexProperty implements
    * @throws ServiceLocalException the service local exception
    */
   public GroupMember(String address, String routingType,
-      MailboxType mailboxType) throws ServiceLocalException {
+                     MailboxType mailboxType) throws ServiceLocalException {
     this();
 
     switch (mailboxType) {
@@ -93,7 +93,7 @@ public class GroupMember extends ComplexProperty implements
       case Contact:
       case OneOff:
         this.setAddressInformation(new EmailAddress(null, address,
-            routingType, mailboxType));
+                                                    routingType, mailboxType));
         break;
 
       default:
@@ -126,7 +126,7 @@ public class GroupMember extends ComplexProperty implements
     this();
 
     this.setAddressInformation(new EmailAddress(name, address, routingType,
-        MailboxType.OneOff));
+                                                MailboxType.OneOff));
   }
 
   /**
@@ -149,7 +149,7 @@ public class GroupMember extends ComplexProperty implements
     this();
 
     this.setAddressInformation(new EmailAddress(null, null, null,
-        MailboxType.ContactGroup, contactGroupId));
+                                                MailboxType.ContactGroup, contactGroupId));
   }
 
   /**
@@ -162,7 +162,7 @@ public class GroupMember extends ComplexProperty implements
     this();
 
     this.setAddressInformation(new EmailAddress(null, addressToLink, null,
-        MailboxType.Contact, contactId));
+                                                MailboxType.Contact, contactId));
   }
 
   /**
@@ -188,7 +188,7 @@ public class GroupMember extends ComplexProperty implements
 
     EwsUtilities.validateParam(member, "member");
     this.setAddressInformation(new EmailAddress(member
-        .getAddressInformation()));
+                                                    .getAddressInformation()));
   }
 
   /**
@@ -271,7 +271,7 @@ public class GroupMember extends ComplexProperty implements
   protected void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.key = reader.readAttributeValue(String.class,
-        XmlAttributeNames.Key);
+                                         XmlAttributeNames.Key);
   }
 
   /**
@@ -292,7 +292,7 @@ public class GroupMember extends ComplexProperty implements
 
       this.setAddressInformation(new EmailAddress());
       this.getAddressInformation().loadFromXml(reader,
-          reader.getLocalName());
+                                               reader.getLocalName());
       return true;
     } else {
 
@@ -323,7 +323,7 @@ public class GroupMember extends ComplexProperty implements
     // No need to write member Status back to server
     // Write only AddressInformation container element
     this.getAddressInformation().writeToXml(writer, XmlNamespace.Types,
-        XmlElementNames.Mailbox);
+                                            XmlElementNames.Mailbox);
   }
 
   /**

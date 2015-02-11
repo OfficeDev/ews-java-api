@@ -24,8 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * WebCredentials is used for password-based authentication schemes such as
- * basic, digest, NTLM, and Kerberos authentication.
+ * WebCredentials is used for password-based authentication schemes such as basic, digest, NTLM, and
+ * Kerberos authentication.
  */
 public final class WebCredentials extends ExchangeCredentials {
 
@@ -48,42 +48,6 @@ public final class WebCredentials extends ExchangeCredentials {
    * The use default credentials.
    */
   private boolean useDefaultCredentials = true;
-
-  /**
-   * Gets the domain.
-   *
-   * @return the domain
-   */
-  public String getDomain() {
-    return domain;
-  }
-
-  /**
-   * Gets the user.
-   *
-   * @return the user
-   */
-  public String getUser() {
-    return user;
-  }
-
-  /**
-   * Gets the pwd.
-   *
-   * @return the pwd
-   */
-  public String getPwd() {
-    return pwd;
-  }
-
-  /**
-   * Checks if is use default credentials.
-   *
-   * @return true, if is use default credentials
-   */
-  public boolean isUseDefaultCredentials() {
-    return useDefaultCredentials;
-  }
 
   /**
    * Initializes a new instance to use default network credentials.
@@ -125,8 +89,43 @@ public final class WebCredentials extends ExchangeCredentials {
   }
 
   /**
-   * This method is called to apply credentials to a service request before
-   * the request is made.
+   * Gets the domain.
+   *
+   * @return the domain
+   */
+  public String getDomain() {
+    return domain;
+  }
+
+  /**
+   * Gets the user.
+   *
+   * @return the user
+   */
+  public String getUser() {
+    return user;
+  }
+
+  /**
+   * Gets the pwd.
+   *
+   * @return the pwd
+   */
+  public String getPwd() {
+    return pwd;
+  }
+
+  /**
+   * Checks if is use default credentials.
+   *
+   * @return true, if is use default credentials
+   */
+  public boolean isUseDefaultCredentials() {
+    return useDefaultCredentials;
+  }
+
+  /**
+   * This method is called to apply credentials to a service request before the request is made.
    *
    * @param request The request.
    */

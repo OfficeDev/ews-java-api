@@ -27,7 +27,7 @@ package microsoft.exchange.webservices.data;
  * Represents a collection of responses to GetDomainSettings.
  */
 public final class GetDomainSettingsResponseCollection extends
-    AutodiscoverResponseCollection<GetDomainSettingsResponse> {
+                                                       AutodiscoverResponseCollection<GetDomainSettingsResponse> {
 
   /**
    * Initializes a new instance of the AutodiscoverResponseCollection class.

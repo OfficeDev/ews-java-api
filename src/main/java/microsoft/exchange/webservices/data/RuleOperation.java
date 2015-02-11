@@ -27,6 +27,7 @@ package microsoft.exchange.webservices.data;
  * Represents an operation to be performed on a rule.
  */
 public abstract class RuleOperation extends ComplexProperty {
+
   protected String xmlElementName;
 
   /**

@@ -68,12 +68,12 @@ public final class AttendeeAvailability extends ServiceResponse {
    * @throws Exception the exception
    */
   protected void loadFreeBusyViewFromXml(EwsServiceXmlReader reader,
-      FreeBusyViewType viewType) throws Exception {
+                                         FreeBusyViewType viewType) throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.FreeBusyView);
+                            XmlElementNames.FreeBusyView);
 
     String viewTypeString = reader.readElementValue(XmlNamespace.Types,
-        XmlElementNames.FreeBusyViewType);
+                                                    XmlElementNames.FreeBusyViewType);
 
     for (Object o : FreeBusyViewType.class.getEnumConstants()) {
       if (o.toString().equals(viewTypeString)) {
@@ -107,16 +107,16 @@ public final class AttendeeAvailability extends ServiceResponse {
             reader.read();
 
             if (reader.isStartElement(XmlNamespace.Types,
-                XmlElementNames.CalendarEvent)) {
+                                      XmlElementNames.CalendarEvent)) {
               CalendarEvent calendarEvent = new CalendarEvent();
 
               calendarEvent.loadFromXml(reader,
-                  XmlElementNames.CalendarEvent);
+                                        XmlElementNames.CalendarEvent);
 
               this.calendarEvents.add(calendarEvent);
             }
           } while (!reader.isEndElement(XmlNamespace.Types,
-              XmlElementNames.CalendarEventArray));
+                                        XmlElementNames.CalendarEventArray));
 
         } else if (reader.getLocalName().equals(
             XmlElementNames.WorkingHours)) {
@@ -128,7 +128,7 @@ public final class AttendeeAvailability extends ServiceResponse {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Messages,
-        XmlElementNames.FreeBusyView));
+                                  XmlElementNames.FreeBusyView));
   }
 
   /**

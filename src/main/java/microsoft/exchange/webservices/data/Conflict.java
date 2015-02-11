@@ -115,9 +115,8 @@ public final class Conflict extends ComplexProperty {
   }
 
   /**
-   * Gets the number of users, resources, and rooms in the conflicting group.
-   * The value of this property is only meaningful when ConflictType is equal
-   * to ConflictType.GroupConflict.
+   * Gets the number of users, resources, and rooms in the conflicting group. The value of this
+   * property is only meaningful when ConflictType is equal to ConflictType.GroupConflict.
    *
    * @return the number of members
    */
@@ -126,9 +125,9 @@ public final class Conflict extends ComplexProperty {
   }
 
   /**
-   * Gets the number of members who are available (whose status is Free) in
-   * the conflicting group. The value of this property is only meaningful when
-   * ConflictType is equal to ConflictType.GroupConflict.
+   * Gets the number of members who are available (whose status is Free) in the conflicting group.
+   * The value of this property is only meaningful when ConflictType is equal to
+   * ConflictType.GroupConflict.
    *
    * @return the number of members available
    */
@@ -137,9 +136,9 @@ public final class Conflict extends ComplexProperty {
   }
 
   /**
-   * Gets the number of members who have a conflict (whose status is Busy, OOF
-   * or Tentative) in the conflicting group. The value of this property is
-   * only meaningful when ConflictType is equal to ConflictType.GroupConflict.
+   * Gets the number of members who have a conflict (whose status is Busy, OOF or Tentative) in the
+   * conflicting group. The value of this property is only meaningful when ConflictType is equal to
+   * ConflictType.GroupConflict.
    *
    * @return the number of members with conflict
    */
@@ -148,9 +147,9 @@ public final class Conflict extends ComplexProperty {
   }
 
   /**
-   * Gets the number of members who do not have published free/busy data in
-   * the conflicting group. The value of this property is only meaningful when
-   * ConflictType is equal to ConflictType.GroupConflict.
+   * Gets the number of members who do not have published free/busy data in the conflicting group.
+   * The value of this property is only meaningful when ConflictType is equal to
+   * ConflictType.GroupConflict.
    *
    * @return the number of members with no data
    */
@@ -159,9 +158,8 @@ public final class Conflict extends ComplexProperty {
   }
 
   /**
-   * Gets the free/busy status of the conflicting attendee. The value of this
-   * property is only meaningful when ConflictType is equal to
-   * ConflictType.IndividualAttendee.
+   * Gets the free/busy status of the conflicting attendee. The value of this property is only
+   * meaningful when ConflictType is equal to ConflictType.IndividualAttendee.
    *
    * @return the free busy status
    */

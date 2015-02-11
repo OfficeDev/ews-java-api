@@ -34,6 +34,16 @@ final class CreateItemResponse extends CreateItemResponseBase {
   private Item item;
 
   /**
+   * Initializes a new instance.
+   *
+   * @param item The item.
+   */
+  protected CreateItemResponse(Item item) {
+    super();
+    this.item = item;
+  }
+
+  /**
    * Gets Item instance.
    *
    * @param service        The service.
@@ -42,18 +52,8 @@ final class CreateItemResponse extends CreateItemResponseBase {
    */
   @Override
   protected Item getObjectInstance(ExchangeService service,
-      String xmlElementName) {
+                                   String xmlElementName) {
     return this.item;
-  }
-
-  /**
-   * Initializes a new instance.
-   *
-   * @param item The item.
-   */
-  protected CreateItemResponse(Item item) {
-    super();
-    this.item = item;
   }
 
   /**

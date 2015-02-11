@@ -62,7 +62,7 @@ final class GetRoomListsResponse extends ServiceResponse {
     super.readElementsFromXml(reader);
 
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.RoomLists);
+                            XmlElementNames.RoomLists);
 
     if (!reader.isEmptyElement()) {
       // Because we don't have an element for count of returned object,
@@ -70,14 +70,14 @@ final class GetRoomListsResponse extends ServiceResponse {
       // or EndElement
       reader.read();
       while (reader.isStartElement(XmlNamespace.Types,
-          XmlElementNames.Address)) {
+                                   XmlElementNames.Address)) {
         EmailAddress emailAddress = new EmailAddress();
         emailAddress.loadFromXml(reader, XmlElementNames.Address);
         this.roomLists.add(emailAddress);
         reader.read();
       }
       reader.ensureCurrentNodeIsEndElement(XmlNamespace.Messages,
-          XmlElementNames.RoomLists);
+                                           XmlElementNames.RoomLists);
     } else {
       reader.read();
     }

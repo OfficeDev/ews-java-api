@@ -23,10 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents recurrent range with an end date.
@@ -92,7 +93,7 @@ final class EndDateRecurrenceRange extends RecurrenceRange {
     super.writeElementsToXml(writer);
 
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.EndDate,
-        formattedString);
+                             formattedString);
   }
 
   /**

@@ -24,8 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents a Contact Group. Properties available on contact groups are
- * defined in the ContactGroupSchema class.
+ * Represents a Contact Group. Properties available on contact groups are defined in the
+ * ContactGroupSchema class.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.DistributionList, returnedByServer = true)
 public class ContactGroup extends Item {
@@ -48,6 +48,38 @@ public class ContactGroup extends Item {
    */
   protected ContactGroup(ItemAttachment parentAttachment) throws Exception {
     super(parentAttachment);
+  }
+
+  /**
+   * Binds to an existing contact group and loads the specified set of properties.Calling this
+   * method results in a call to EWS.
+   *
+   * @param service     the service
+   * @param id          the id
+   * @param propertySet the property set
+   * @return A ContactGroup instance representing the contact group corresponding to the specified
+   * Id
+   * @throws Exception the exception
+   */
+  public static ContactGroup bind(ExchangeService service, ItemId id,
+                                  PropertySet propertySet) throws Exception {
+    return service.bindToItem(ContactGroup.class, id, propertySet);
+  }
+
+  /**
+   * Binds to an existing contact group and loads the specified set of properties.Calling this
+   * method results in a call to EWS.
+   *
+   * @param service the service
+   * @param id      the id
+   * @return A ContactGroup instance representing the contact group corresponding to the specified
+   * Id.
+   * @throws Exception the exception
+   */
+  public static ContactGroup bind(ExchangeService service, ItemId id)
+      throws Exception {
+    return ContactGroup.bind(service, id, PropertySet
+        .getFirstClassProperties());
   }
 
   /**
@@ -98,38 +130,6 @@ public class ContactGroup extends Item {
   }
 
   /**
-   * Binds to an existing contact group and loads the specified set of
-   * properties.Calling this method results in a call to EWS.
-   *
-   * @param service     the service
-   * @param id          the id
-   * @param propertySet the property set
-   * @return A ContactGroup instance representing the contact group
-   * corresponding to the specified Id
-   * @throws Exception the exception
-   */
-  public static ContactGroup bind(ExchangeService service, ItemId id,
-      PropertySet propertySet) throws Exception {
-    return service.bindToItem(ContactGroup.class, id, propertySet);
-  }
-
-  /**
-   * Binds to an existing contact group and loads the specified set of
-   * properties.Calling this method results in a call to EWS.
-   *
-   * @param service the service
-   * @param id      the id
-   * @return A ContactGroup instance representing the contact group
-   * corresponding to the specified Id.
-   * @throws Exception the exception
-   */
-  public static ContactGroup bind(ExchangeService service, ItemId id)
-      throws Exception {
-    return ContactGroup.bind(service, id, PropertySet
-        .getFirstClassProperties());
-  }
-
-  /**
    * Internal method to return the schema associated with this type of object.
    *
    * @return The schema associated with this type of object.
@@ -142,8 +142,7 @@ public class ContactGroup extends Item {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -164,6 +163,6 @@ public class ContactGroup extends Item {
     // Setting Subject out of sync with DisplayName breaks interop with OLK.
     // See E14:70417, 65663, 6529.
     throw new ServiceObjectPropertyException(Strings.PropertyIsReadOnly,
-        ContactGroupSchema.Subject);
+                                             ContactGroupSchema.Subject);
   }
 }

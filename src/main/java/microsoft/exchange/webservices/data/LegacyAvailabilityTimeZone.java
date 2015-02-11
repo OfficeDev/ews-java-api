@@ -81,7 +81,7 @@ final class LegacyAvailabilityTimeZone extends ComplexProperty {
   protected TimeZoneDefinition toTimeZoneInfo() {
 
 		/*NumberFormat formatter = new DecimalFormat("00");
-		String timeZoneId = this.bias.isNegative() ? "GMT+"+formatter.
+                String timeZoneId = this.bias.isNegative() ? "GMT+"+formatter.
 		format(this.bias.getHours())+":"+
 		formatter.format(this.bias.getMinutes()) : 
 		"GMT-"+formatter.format(this.bias.getHours())+":"+
@@ -105,7 +105,7 @@ final class LegacyAvailabilityTimeZone extends ComplexProperty {
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.Bias)) {
       this.bias = new TimeSpan((long)
-          reader.readElementValue(Integer.class) * 60 * 1000);
+                                   reader.readElementValue(Integer.class) * 60 * 1000);
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.StandardTime)) {
       this.standardTime = new LegacyAvailabilityTimeZoneTime();

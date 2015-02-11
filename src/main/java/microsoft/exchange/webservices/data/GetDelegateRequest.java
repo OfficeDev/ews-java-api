@@ -30,7 +30,7 @@ import java.util.List;
  * Represents a GetDelegate request.
  */
 class GetDelegateRequest extends
-    DelegateManagementRequestBase<GetDelegateResponse> {
+                         DelegateManagementRequestBase<GetDelegateResponse> {
 
   /**
    * The user ids.
@@ -46,7 +46,6 @@ class GetDelegateRequest extends
    * Initializes a new instance of the class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected GetDelegateRequest(ExchangeService service)
       throws Exception {
@@ -90,7 +89,7 @@ class GetDelegateRequest extends
 
     if (this.getUserIds().size() > 0) {
       writer.writeStartElement(XmlNamespace.Messages,
-          XmlElementNames.UserIds);
+                               XmlElementNames.UserIds);
 
       for (UserId userId : this.getUserIds()) {
         userId.writeToXml(writer, XmlElementNames.UserId);

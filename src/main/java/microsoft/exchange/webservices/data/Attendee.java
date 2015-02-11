@@ -91,8 +91,7 @@ public final class Attendee extends EmailAddress {
   }
 
   /**
-   * Gets the type of response the attendee gave to the meeting invitation
-   * it received.
+   * Gets the type of response the attendee gave to the meeting invitation it received.
    *
    * @return the response type
    */

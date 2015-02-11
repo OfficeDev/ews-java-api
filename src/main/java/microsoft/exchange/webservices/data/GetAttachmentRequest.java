@@ -23,15 +23,16 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a GetAttachment request.
  */
 final class GetAttachmentRequest extends
-    MultiResponseServiceRequest<GetAttachmentResponse> {
+                                 MultiResponseServiceRequest<GetAttachmentResponse> {
 
   /**
    * The attachments.
@@ -54,10 +55,9 @@ final class GetAttachmentRequest extends
    *
    * @param service           The service.
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   GetAttachmentRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                       ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -71,10 +71,10 @@ final class GetAttachmentRequest extends
   protected void validate() throws Exception {
     super.validate();
     EwsUtilities.validateParamCollection(this.getAttachments().iterator(),
-        "Attachments");
+                                         "Attachments");
     for (int i = 0; i < this.getAdditionalProperties().size(); i++) {
       EwsUtilities.validateParam(this.getAdditionalProperties().get(i),
-          String.format("AdditionalProperties[%d]", i));
+                                 String.format("AdditionalProperties[%d]", i));
     }
   }
 
@@ -145,11 +145,11 @@ final class GetAttachmentRequest extends
     if ((this.getBodyType() != null)
         || this.getAdditionalProperties().size() > 0) {
       writer.writeStartElement(XmlNamespace.Messages,
-          XmlElementNames.AttachmentShape);
+                               XmlElementNames.AttachmentShape);
 
       if (this.getBodyType() != null) {
         writer.writeElementValue(XmlNamespace.Types,
-            XmlElementNames.BodyType, this.getBodyType());
+                                 XmlElementNames.BodyType, this.getBodyType());
       }
 
       if (this.getAdditionalProperties().size() > 0) {
@@ -161,11 +161,11 @@ final class GetAttachmentRequest extends
     }
 
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.AttachmentIds);
+                             XmlElementNames.AttachmentIds);
 
     for (Attachment attachment : this.getAttachments()) {
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.AttachmentId);
+                               XmlElementNames.AttachmentId);
       writer
           .writeAttributeValue(XmlAttributeNames.Id, attachment
               .getId());

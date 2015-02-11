@@ -33,29 +33,32 @@ import org.apache.http.client.config.AuthSchemes;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.config.SocketConfig;
-import org.apache.http.impl.client.*;
+import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.apache.http.impl.client.CloseableHttpClient;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 
 /**
- * HttpClientWebRequest is used for making request to the server through
- * NTLM Authentication by using Apache HttpClient 3.1 and JCIFS Library.
+ * HttpClientWebRequest is used for making request to the server through NTLM Authentication by
+ * using Apache HttpClient 3.1 and JCIFS Library.
  */
 class HttpClientWebRequest extends HttpWebRequest {
 
+  private final CloseableHttpClient httpClient;
+  private final HttpClientContext httpContext;
   /**
    * The Http Method.
    */
   private HttpPost httpPost = null;
   private HttpResponse response = null;
-
-  private final CloseableHttpClient httpClient;
-  private final HttpClientContext httpContext;
 
 
   /**
@@ -123,7 +126,8 @@ class HttpClientWebRequest extends HttpWebRequest {
 
       if (proxy.hasCredentials()) {
         NTCredentials proxyCredentials = new NTCredentials(proxy.getCredentials().getUsername(),
-            proxy.getCredentials().getPassword(), "", proxy.getCredentials().getDomain());
+                                                           proxy.getCredentials().getPassword(), "",
+                                                           proxy.getCredentials().getDomain());
 
         credentialsProvider.setCredentials(new AuthScope(proxyHost), proxyCredentials);
       }
@@ -131,7 +135,9 @@ class HttpClientWebRequest extends HttpWebRequest {
 
     // Add web service credentials if necessary.
     if (isAllowAuthentication() && getUsername() != null) {
-      NTCredentials webServiceCredentials = new NTCredentials(getUsername(), getPassword(), "", getDomain());
+      NTCredentials
+          webServiceCredentials =
+          new NTCredentials(getUsername(), getPassword(), "", getDomain());
       credentialsProvider.setCredentials(new AuthScope(AuthScope.ANY), webServiceCredentials);
     }
 
@@ -145,7 +151,6 @@ class HttpClientWebRequest extends HttpWebRequest {
    *
    * @return the input stream
    * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
-   * @throws java.io.IOException
    */
   @Override
   public InputStream getInputStream() throws EWSHttpException, IOException {
@@ -250,8 +255,8 @@ class HttpClientWebRequest extends HttpWebRequest {
   public String getContentEncoding() throws EWSHttpException {
     throwIfResponseIsNull();
     return response.getFirstHeader("content-encoding") != null ?
-        response.getFirstHeader("content-encoding").getValue() :
-        null;
+           response.getFirstHeader("content-encoding").getValue() :
+           null;
   }
 
   /**
@@ -264,8 +269,8 @@ class HttpClientWebRequest extends HttpWebRequest {
   public String getResponseContentType() throws EWSHttpException {
     throwIfResponseIsNull();
     return response.getFirstHeader("Content-type") != null ?
-        response.getFirstHeader("Content-type").getValue() :
-        null;
+           response.getFirstHeader("Content-type").getValue() :
+           null;
   }
 
   /**

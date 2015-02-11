@@ -28,8 +28,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Represents a collection of properties that can be sent to and retrieved from
- * EWS.
+ * Represents a collection of properties that can be sent to and retrieved from EWS.
  *
  * @param <TComplexProperty> ComplexProperty type.
  */
@@ -37,7 +36,7 @@ import java.util.List;
 public abstract class ComplexPropertyCollection
     <TComplexProperty extends ComplexProperty>
     extends ComplexProperty implements ICustomXmlUpdateSerializer,
-    Iterable<TComplexProperty>, IComplexPropertyChangedDelegate {
+                                       Iterable<TComplexProperty>, IComplexPropertyChangedDelegate {
 
   /**
    * The items.
@@ -63,6 +62,13 @@ public abstract class ComplexPropertyCollection
       new ArrayList<TComplexProperty>();
 
   /**
+   * Initializes a new instance of. ComplexPropertyCollection
+   */
+  protected ComplexPropertyCollection() {
+    super();
+  }
+
+  /**
    * Creates the complex property.
    *
    * @param xmlElementName Name of the XML element.
@@ -81,24 +87,17 @@ public abstract class ComplexPropertyCollection
       TComplexProperty complexProperty);
 
   /**
-   * Initializes a new instance of. ComplexPropertyCollection
-   */
-  protected ComplexPropertyCollection() {
-    super();
-  }
-
-  /**
    * Item changed.
    *
    * @param complexProperty The complex property.
    */
   protected void itemChanged(ComplexProperty complexProperty) {
     EwsUtilities.EwsAssert(complexProperty instanceof ComplexProperty,
-        "ComplexPropertyCollection.ItemChanged", String.format(
+                           "ComplexPropertyCollection.ItemChanged", String.format(
             "ComplexPropertyCollection." +
-                "ItemChanged: the type of " +
-                "the complexProperty " + "argument " +
-                "(%s) is not supported.",
+            "ItemChanged: the type of " +
+            "the complexProperty " + "argument " +
+            "(%s) is not supported.",
             complexProperty.getClass().getName()));
 
     TComplexProperty property = (TComplexProperty) complexProperty;
@@ -118,7 +117,7 @@ public abstract class ComplexPropertyCollection
    */
   @Override
   protected void loadFromXml(EwsServiceXmlReader reader,
-      String localElementName) throws Exception {
+                             String localElementName) throws Exception {
     this.loadFromXml(
         reader,
         XmlNamespace.Types,
@@ -134,10 +133,10 @@ public abstract class ComplexPropertyCollection
    */
   @Override
   protected void loadFromXml(EwsServiceXmlReader reader,
-      XmlNamespace xmlNamespace,
-      String localElementName) throws Exception {
+                             XmlNamespace xmlNamespace,
+                             String localElementName) throws Exception {
     reader.ensureCurrentNodeIsStartElement(xmlNamespace,
-        localElementName);
+                                           localElementName);
     if (!reader.isEmptyElement()) {
       do {
         reader.read();
@@ -203,8 +202,8 @@ public abstract class ComplexPropertyCollection
    */
   @Override
   protected void writeToXml(EwsServiceXmlWriter writer,
-      XmlNamespace xmlNamespace,
-      String xmlElementName) throws Exception {
+                            XmlNamespace xmlNamespace,
+                            String xmlElementName) throws Exception {
     if (this.shouldWriteToXml()) {
       super.writeToXml(
           writer,
@@ -311,10 +310,10 @@ public abstract class ComplexPropertyCollection
    * @param loading         If true, collection is being loaded.
    */
   private void internalAdd(TComplexProperty complexProperty,
-      boolean loading) {
+                           boolean loading) {
     EwsUtilities.EwsAssert(complexProperty != null,
-        "ComplexPropertyCollection.InternalAdd",
-        "complexProperty is null");
+                           "ComplexPropertyCollection.InternalAdd",
+                           "complexProperty is null");
 
     if (!this.items.contains(complexProperty)) {
       this.items.add(complexProperty);
@@ -353,8 +352,8 @@ public abstract class ComplexPropertyCollection
    */
   protected void internalRemoveAt(int index) {
     EwsUtilities.EwsAssert(index >= 0 && index < this.getCount(),
-        "ComplexPropertyCollection.InternalRemoveAt",
-        "index is out of range.");
+                           "ComplexPropertyCollection.InternalRemoveAt",
+                           "index is out of range.");
 
     this.internalRemove(this.items.get(index));
   }
@@ -363,13 +362,13 @@ public abstract class ComplexPropertyCollection
    * Remove specified complex property.
    *
    * @param complexProperty The complex property.
-   * @return True if the complex property was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the complex property was successfully removed from the collection, false
+   * otherwise.
    */
   protected boolean internalRemove(TComplexProperty complexProperty) {
     EwsUtilities.EwsAssert(complexProperty != null,
-        "ComplexPropertyCollection.InternalRemove",
-        "complexProperty is null");
+                           "ComplexPropertyCollection.InternalRemove",
+                           "complexProperty is null");
 
     if (this.items.remove(complexProperty)) {
       complexProperty.removeChangeEvent(this);
@@ -390,16 +389,14 @@ public abstract class ComplexPropertyCollection
    * Determines whether a specific property is in the collection.
    *
    * @param complexProperty The property to locate in the collection.
-   * @return True if the property was found in the collection, false
-   * otherwise.
+   * @return True if the property was found in the collection, false otherwise.
    */
   public boolean contains(TComplexProperty complexProperty) {
     return this.items.contains(complexProperty);
   }
 
   /**
-   * Searches for a specific property and return its zero-based index within
-   * the collection.
+   * Searches for a specific property and return its zero-based index within the collection.
    *
    * @param complexProperty The property to locate in the collection.
    * @return The zero-based index of the property within the collection.
@@ -428,7 +425,7 @@ public abstract class ComplexPropertyCollection
       throws IllegalArgumentException {
     if (index < 0 || index >= this.getCount()) {
       throw new IllegalArgumentException("parameter \'index\' : " +
-          Strings.IndexIsOutOfRange);
+                                         Strings.IndexIsOutOfRange);
     }
     return this.items.get(index);
   }
@@ -454,7 +451,7 @@ public abstract class ComplexPropertyCollection
    */
   @Override
   public boolean writeSetUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject, PropertyDefinition propertyDefinition)
+                                     ServiceObject ewsObject, PropertyDefinition propertyDefinition)
       throws Exception {
     // If the collection is empty, delete the property.
     if (this.getCount() == 0) {
@@ -480,7 +477,7 @@ public abstract class ComplexPropertyCollection
    */
   @Override
   public boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject) throws Exception {
+                                        ServiceObject ewsObject) throws Exception {
     // Use the default XML serializer.
     return false;
   }

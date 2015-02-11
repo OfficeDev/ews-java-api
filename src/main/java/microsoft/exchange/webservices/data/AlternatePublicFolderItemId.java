@@ -54,7 +54,7 @@ public class AlternatePublicFolderItemId extends AlternatePublicFolderId {
    * @param itemId   the item id
    */
   public AlternatePublicFolderItemId(IdFormat format, String folderId,
-      String itemId) {
+                                     String itemId) {
     super(format, folderId);
     this.itemId = itemId;
   }

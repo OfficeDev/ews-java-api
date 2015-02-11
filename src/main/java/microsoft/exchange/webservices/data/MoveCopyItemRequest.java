@@ -30,8 +30,21 @@ package microsoft.exchange.webservices.data;
  */
 public abstract class MoveCopyItemRequest<TResponse extends ServiceResponse>
     extends MoveCopyRequest<Item, TResponse> {
+
   private ItemIdWrapperList itemIds = new ItemIdWrapperList();
   private Boolean newItemIds;
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param service           the service
+   * @param errorHandlingMode the error handling mode
+   */
+  protected MoveCopyItemRequest(ExchangeService service,
+                                ServiceErrorHandling errorHandlingMode)
+      throws Exception {
+    super(service, errorHandlingMode);
+  }
 
   /**
    * Validates request.
@@ -45,19 +58,6 @@ public abstract class MoveCopyItemRequest<TResponse extends ServiceResponse>
   }
 
   /**
-   * Initializes a new instance of the class.
-   *
-   * @param service           the service
-   * @param errorHandlingMode the error handling mode
-   * @throws Exception
-   */
-  protected MoveCopyItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
-      throws Exception {
-    super(service, errorHandlingMode);
-  }
-
-  /**
    * Writes the ids as XML.
    *
    * @param writer the writer
@@ -66,7 +66,7 @@ public abstract class MoveCopyItemRequest<TResponse extends ServiceResponse>
   @Override
   protected void writeIdsToXml(EwsServiceXmlWriter writer) throws Exception {
     this.getItemIds().writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.ItemIds);
+                                 XmlElementNames.ItemIds);
     if (this.getReturnNewItemIds() != null) {
       writer.writeElementValue(
           XmlNamespace.Messages,

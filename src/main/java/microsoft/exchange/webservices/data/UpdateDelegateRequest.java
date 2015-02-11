@@ -30,7 +30,7 @@ import java.util.List;
  * Represents an UpdateDelegate request.
  */
 public class UpdateDelegateRequest extends
-    DelegateManagementRequestBase<DelegateManagementResponse> {
+                                   DelegateManagementRequestBase<DelegateManagementResponse> {
 
   /**
    * The delegate users.
@@ -46,7 +46,6 @@ public class UpdateDelegateRequest extends
    * Initializes a new instance of the class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected UpdateDelegateRequest(ExchangeService service)
       throws Exception {
@@ -80,7 +79,7 @@ public class UpdateDelegateRequest extends
     super.writeElementsToXml(writer);
 
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.DelegateUsers);
+                             XmlElementNames.DelegateUsers);
 
     for (DelegateUser delegateUser : this.getDelegateUsers()) {
       delegateUser.writeToXml(writer, XmlElementNames.DelegateUser);
@@ -90,7 +89,7 @@ public class UpdateDelegateRequest extends
 
     if (this.getMeetingRequestsDeliveryScope() != null) {
       writer.writeElementValue(XmlNamespace.Messages,
-          XmlElementNames.DeliverMeetingRequests, this
+                               XmlElementNames.DeliverMeetingRequests, this
               .getMeetingRequestsDeliveryScope());
     }
   }
@@ -136,8 +135,7 @@ public class UpdateDelegateRequest extends
   }
 
   /**
-   * Gets the meeting requests delivery scope. <value>The meeting
-   * requests delivery scope.</value>
+   * Gets the meeting requests delivery scope. <value>The meeting requests delivery scope.</value>
    *
    * @return the meeting requests delivery scope
    */

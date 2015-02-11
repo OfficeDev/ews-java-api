@@ -24,8 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents a response to a meeting request. Properties available on meeting
- * messages are defined in the MeetingMessageSchema class.
+ * Represents a response to a meeting request. Properties available on meeting messages are defined
+ * in the MeetingMessageSchema class.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.MeetingResponse)
 public class MeetingResponse extends MeetingMessage {
@@ -52,17 +52,17 @@ public class MeetingResponse extends MeetingMessage {
   }
 
   /**
-   * Binds to an existing meeting response and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing meeting response and loads the specified set of properties. Calling this
+   * method results in a call to EWS.
    *
    * @param service     The service to use to bind to the meeting response.
    * @param id          The Id of the meeting response to bind to.
    * @param propertySet The set of properties to load.
-   * @return A MeetingResponse instance representing the meeting response
-   * corresponding to the specified Id.
+   * @return A MeetingResponse instance representing the meeting response corresponding to the
+   * specified Id.
    */
   public static MeetingResponse bind(ExchangeService service, ItemId id,
-      PropertySet propertySet) {
+                                     PropertySet propertySet) {
     try {
       return service.bindToItem(MeetingResponse.class, id, propertySet);
     } catch (Exception e) {
@@ -72,13 +72,13 @@ public class MeetingResponse extends MeetingMessage {
   }
 
   /**
-   * Binds to an existing meeting response and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing meeting response and loads the specified set of properties. Calling this
+   * method results in a call to EWS.
    *
    * @param service The service to use to bind to the meeting response.
    * @param id      The Id of the meeting response to bind to.
-   * @return A MeetingResponse instance representing the meeting response
-   * corresponding to the specified Id.
+   * @return A MeetingResponse instance representing the meeting response corresponding to the
+   * specified Id.
    */
   public static MeetingResponse bind(ExchangeService service, ItemId id) {
     return MeetingResponse.bind(service, id, PropertySet
@@ -88,8 +88,7 @@ public class MeetingResponse extends MeetingMessage {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {

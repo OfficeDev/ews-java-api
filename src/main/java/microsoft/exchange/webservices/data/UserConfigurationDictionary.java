@@ -23,12 +23,18 @@
 
 package microsoft.exchange.webservices.data;
 
-import microsoft.exchange.webservices.data.util.DateTimeParser;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.xml.stream.XMLStreamException;
-import java.lang.reflect.Array;
-import java.util.*;
-import java.util.Map.Entry;
+
+import microsoft.exchange.webservices.data.util.DateTimeParser;
 
 /**
  * Represents a user configuration's Dictionary property.
@@ -81,8 +87,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Adds an element with the provided key and value to the user configuration
-   * dictionary.
+   * Adds an element with the provided key and value to the user configuration dictionary.
    *
    * @param key   The object to use as the key of the element to add.
    * @param value The object to use as the value of the element to add.
@@ -95,20 +100,19 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Determines whether the user configuration dictionary contains an element
-   * with the specified key.
+   * Determines whether the user configuration dictionary contains an element with the specified
+   * key.
    *
    * @param key The key to locate in the user configuration dictionary.
-   * @return true if the user configuration dictionary contains an element
-   * with the key; otherwise false.
+   * @return true if the user configuration dictionary contains an element with the key; otherwise
+   * false.
    */
   public boolean containsKey(Object key) {
     return this.dictionary.containsKey(key);
   }
 
   /**
-   * Removes the element with the specified key from the user configuration
-   * dictionary.
+   * Removes the element with the specified key from the user configuration dictionary.
    *
    * @param key The key of the element to remove.
    * @return true if the element is successfully removed; otherwise false.
@@ -131,10 +135,9 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * Gets the value associated with the specified key.
    *
    * @param key   The key whose value to get.
-   * @param value When this method returns, the value associated with the
-   *              specified key, if the key is found; otherwise, null.
-   * @return true if the user configuration dictionary contains the key;
-   * otherwise false.
+   * @param value When this method returns, the value associated with the specified key, if the key
+   *              is found; otherwise, null.
+   * @return true if the user configuration dictionary contains the key; otherwise false.
    */
   public boolean tryGetValue(Object key, OutParam<Object> value) {
     if (this.dictionary.containsKey(key)) {
@@ -174,11 +177,9 @@ public final class UserConfigurationDictionary extends ComplexProperty
    */
 
   /**
-   * Returns an enumerator that iterates through
-   * the user configuration dictionary.
+   * Returns an enumerator that iterates through the user configuration dictionary.
    *
-   * @return An IEnumerator that can be used
-   * to iterate through the user configuration dictionary.
+   * @return An IEnumerator that can be used to iterate through the user configuration dictionary.
    */
   public Iterator<Object> getEnumerator() {
     return (this.dictionary.values().iterator());
@@ -222,18 +223,18 @@ public final class UserConfigurationDictionary extends ComplexProperty
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     EwsUtilities.EwsAssert(writer != null,
-        "UserConfigurationDictionary.WriteElementsToXml",
-        "writer is null");
+                           "UserConfigurationDictionary.WriteElementsToXml",
+                           "writer is null");
     Iterator<Entry<Object, Object>> it = this.dictionary.entrySet()
         .iterator();
     while (it.hasNext()) {
       Entry<Object, Object> dictionaryEntry = it.next();
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.DictionaryEntry);
+                               XmlElementNames.DictionaryEntry);
       this.writeObjectToXml(writer, XmlElementNames.DictionaryKey,
-          dictionaryEntry.getKey());
+                            dictionaryEntry.getKey());
       this.writeObjectToXml(writer, XmlElementNames.DictionaryValue,
-          dictionaryEntry.getValue());
+                            dictionaryEntry.getValue());
       writer.writeEndElement();
     }
   }
@@ -248,21 +249,21 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   private void writeObjectToXml(EwsServiceXmlWriter writer,
-      String xmlElementName, Object dictionaryObject)
+                                String xmlElementName, Object dictionaryObject)
       throws XMLStreamException, ServiceXmlSerializationException {
     EwsUtilities.EwsAssert(writer != null,
-        "UserConfigurationDictionary.WriteObjectToXml",
-        "writer is null");
+                           "UserConfigurationDictionary.WriteObjectToXml",
+                           "writer is null");
     EwsUtilities.EwsAssert(xmlElementName != null,
-        "UserConfigurationDictionary.WriteObjectToXml",
-        "xmlElementName is null");
+                           "UserConfigurationDictionary.WriteObjectToXml",
+                           "xmlElementName is null");
     writer.writeStartElement(XmlNamespace.Types, xmlElementName);
 
     if (dictionaryObject == null) {
       EwsUtilities.EwsAssert((!xmlElementName
-              .equals(XmlElementNames.DictionaryKey)),
-          "UserConfigurationDictionary.WriteObjectToXml",
-          "Key is null");
+                                 .equals(XmlElementNames.DictionaryKey)),
+                             "UserConfigurationDictionary.WriteObjectToXml",
+                             "Key is null");
 
       writer.writeAttributeValue(
           EwsUtilities.EwsXmlSchemaInstanceNamespacePrefix,
@@ -278,17 +279,16 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * Writes a dictionary Object's value to Xml.
    *
    * @param writer           The writer.
-   * @param dictionaryObject The dictionary object to write. <br />
-   *                         Object values are either:  <br />
-   *                         an array of strings, an array of bytes (which will be encoded into base64) <br />
-   *                         or a single value. Single values can be: <br />
-   *                         - datetime, boolean, byte, int, long, string
+   * @param dictionaryObject The dictionary object to write. <br /> Object values are either:  <br
+   *                         /> an array of strings, an array of bytes (which will be encoded into
+   *                         base64) <br /> or a single value. Single values can be: <br /> -
+   *                         datetime, boolean, byte, int, long, string
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   private void writeObjectValueToXml(final EwsServiceXmlWriter writer,
-      final Object dictionaryObject) throws XMLStreamException,
-      ServiceXmlSerializationException {
+                                     final Object dictionaryObject) throws XMLStreamException,
+                                                                           ServiceXmlSerializationException {
     // Preconditions
     if (dictionaryObject == null) {
       throw new NullPointerException("DictionaryObject must not be null");
@@ -368,12 +368,12 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   private void writeEntryTypeToXml(EwsServiceXmlWriter writer,
-      UserConfigurationDictionaryObjectType dictionaryObjectType)
+                                   UserConfigurationDictionaryObjectType dictionaryObjectType)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeStartElement(XmlNamespace.Types, XmlElementNames.Type);
     writer
         .writeValue(dictionaryObjectType.toString(),
-            XmlElementNames.Type);
+                    XmlElementNames.Type);
     writer.writeEndElement();
   }
 
@@ -415,7 +415,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * representing the dictionary.
    */
   protected void loadFromXml(EwsServiceXmlReader reader,
-      XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
+                             XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
     super.loadFromXml(reader, xmlNamespace, xmlElementName);
 
     this.isDirty = false;
@@ -437,39 +437,39 @@ public final class UserConfigurationDictionary extends ComplexProperty
   protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     reader.ensureCurrentNodeIsStartElement(this.getNamespace(),
-        XmlElementNames.DictionaryEntry);
+                                           XmlElementNames.DictionaryEntry);
     this.loadEntry(reader);
     return true;
   }
 
   /**
-   * Loads an entry, consisting of a key value pair, into this dictionary from
-   * the specified reader.
+   * Loads an entry, consisting of a key value pair, into this dictionary from the specified
+   * reader.
    *
    * @param reader The reader.
    * @throws Exception the exception
    */
   private void loadEntry(EwsServiceXmlReader reader) throws Exception {
     EwsUtilities.EwsAssert(reader != null,
-        "UserConfigurationDictionary.LoadEntry", "reader is null");
+                           "UserConfigurationDictionary.LoadEntry", "reader is null");
 
     Object key;
     Object value = null;
 
     // Position at DictionaryKey
     reader.readStartElement(this.getNamespace(),
-        XmlElementNames.DictionaryKey);
+                            XmlElementNames.DictionaryKey);
 
     key = this.getDictionaryObject(reader);
 
     // Position at DictionaryValue
     reader.readStartElement(this.getNamespace(),
-        XmlElementNames.DictionaryValue);
+                            XmlElementNames.DictionaryValue);
 
     String nil = reader.readAttributeValue(XmlNamespace.XmlSchemaInstance,
-        XmlAttributeNames.Nil);
+                                           XmlAttributeNames.Nil);
     boolean hasValue = (nil == null)
-        || (!nil.getClass().equals(Boolean.TYPE));
+                       || (!nil.getClass().equals(Boolean.TYPE));
     if (hasValue) {
       value = this.getDictionaryObject(reader);
     }
@@ -477,8 +477,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Extracts a dictionary object (key or entry value) from the specified
-   * reader.
+   * Extracts a dictionary object (key or entry value) from the specified reader.
    *
    * @param reader The reader.
    * @return Dictionary object.
@@ -487,15 +486,14 @@ public final class UserConfigurationDictionary extends ComplexProperty
   private Object getDictionaryObject(EwsServiceXmlReader reader)
       throws Exception {
     EwsUtilities.EwsAssert(reader != null,
-        "UserConfigurationDictionary.loadFromXml", "reader is null");
+                           "UserConfigurationDictionary.loadFromXml", "reader is null");
     UserConfigurationDictionaryObjectType type = this.getObjectType(reader);
     List<String> values = this.getObjectValue(reader, type);
     return this.constructObject(type, values, reader);
   }
 
   /**
-   * Extracts a dictionary object (key or entry value) as a string list from
-   * the specified reader.
+   * Extracts a dictionary object (key or entry value) as a string list from the specified reader.
    *
    * @param reader The reader.
    * @param type   The object type.
@@ -503,9 +501,9 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * @throws Exception the exception
    */
   private List<String> getObjectValue(EwsServiceXmlReader reader,
-      UserConfigurationDictionaryObjectType type) throws Exception {
+                                      UserConfigurationDictionaryObjectType type) throws Exception {
     EwsUtilities.EwsAssert(reader != null,
-        "UserConfigurationDictionary.LoadFromXml", "reader is null");
+                           "UserConfigurationDictionary.LoadFromXml", "reader is null");
 
     List<String> values = new ArrayList<String>();
 
@@ -519,16 +517,16 @@ public final class UserConfigurationDictionary extends ComplexProperty
         if (type.equals(UserConfigurationDictionaryObjectType.String)
             || type
             .equals(UserConfigurationDictionaryObjectType.
-                StringArray)) {
+                        StringArray)) {
           value = "";
         } else {
           EwsUtilities
               .EwsAssert(
                   false,
                   "UserConfigurationDictionary." +
-                      "GetObjectValue",
+                  "GetObjectValue",
                   "Empty element passed for type: "
-                      + type.toString());
+                  + type.toString());
 
         }
 
@@ -540,13 +538,12 @@ public final class UserConfigurationDictionary extends ComplexProperty
       reader.read(); // Position at next element or
       // DictionaryKey/DictionaryValue end element
     } while (reader.isStartElement(this.getNamespace(),
-        XmlElementNames.Value));
+                                   XmlElementNames.Value));
     return values;
   }
 
   /**
-   * Extracts the dictionary object (key or entry value) type from the
-   * specified reader.
+   * Extracts the dictionary object (key or entry value) type from the specified reader.
    *
    * @param reader The reader.
    * @return Dictionary object type.
@@ -555,7 +552,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   private UserConfigurationDictionaryObjectType getObjectType(
       EwsServiceXmlReader reader) throws Exception {
     EwsUtilities.EwsAssert(reader != null,
-        "UserConfigurationDictionary.LoadFromXml", "reader is null");
+                           "UserConfigurationDictionary.LoadFromXml", "reader is null");
 
     reader.readStartElement(this.getNamespace(), XmlElementNames.Type);
 
@@ -564,8 +561,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Constructs a dictionary object (key or entry value) from the specified
-   * type and string list.
+   * Constructs a dictionary object (key or entry value) from the specified type and string list.
    *
    * @param type   Object type to construct.
    * @param value  Value of the dictionary object as a string list
@@ -573,20 +569,20 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * @return Dictionary object.
    */
   private Object constructObject(UserConfigurationDictionaryObjectType type,
-      List<String> value, EwsServiceXmlReader reader) {
+                                 List<String> value, EwsServiceXmlReader reader) {
     EwsUtilities.EwsAssert(value != null,
-        "UserConfigurationDictionary.ConstructObject", "value is null");
+                           "UserConfigurationDictionary.ConstructObject", "value is null");
     EwsUtilities
         .EwsAssert(
             (value.size() == 1 || type ==
-                UserConfigurationDictionaryObjectType.StringArray),
+                                  UserConfigurationDictionaryObjectType.StringArray),
 
             "UserConfigurationDictionary.ConstructObject",
             "value is array but type is not StringArray");
     EwsUtilities
         .EwsAssert(reader != null,
-            "UserConfigurationDictionary.ConstructObject",
-            "reader is null");
+                   "UserConfigurationDictionary.ConstructObject",
+                   "reader is null");
 
     Object dictionaryObject = null;
     if (type.equals(UserConfigurationDictionaryObjectType.Boolean)) {
@@ -601,8 +597,8 @@ public final class UserConfigurationDictionary extends ComplexProperty
         dictionaryObject = dateTime;
       } else {
         EwsUtilities.EwsAssert(false,
-            "UserConfigurationDictionary.ConstructObject",
-            "DateTime is null");
+                               "UserConfigurationDictionary.ConstructObject",
+                               "DateTime is null");
       }
     } else if (type.equals(UserConfigurationDictionaryObjectType.Integer32)) {
       dictionaryObject = Integer.parseInt(value.get(0));
@@ -615,16 +611,16 @@ public final class UserConfigurationDictionary extends ComplexProperty
       dictionaryObject = value.toArray();
     } else if (type
         .equals(UserConfigurationDictionaryObjectType.
-            UnsignedInteger32)) {
+                    UnsignedInteger32)) {
       dictionaryObject = Integer.parseInt(value.get(0));
     } else if (type
         .equals(UserConfigurationDictionaryObjectType.
-            UnsignedInteger64)) {
+                    UnsignedInteger64)) {
       dictionaryObject = Long.parseLong(value.get(0));
     } else {
       EwsUtilities.EwsAssert(false,
-          "UserConfigurationDictionary.ConstructObject",
-          "Type not recognized: " + type.toString());
+                             "UserConfigurationDictionary.ConstructObject",
+                             "Type not recognized: " + type.toString());
     }
 
     return dictionaryObject;
@@ -732,7 +728,8 @@ public final class UserConfigurationDictionary extends ComplexProperty
     if (!isValidType) {
       throw new ServiceLocalException(
           String.format(Strings.ObjectTypeNotSupported, (theObject != null ?
-              theObject.getClass().toString() : "null")));
+                                                         theObject.getClass().toString()
+                                                                           : "null")));
     }
   }
 

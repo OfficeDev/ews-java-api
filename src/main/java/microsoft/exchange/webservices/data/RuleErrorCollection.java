@@ -27,7 +27,7 @@ package microsoft.exchange.webservices.data;
  * Represents a collection of rule validation errors.
  */
 public final class RuleErrorCollection extends
-    ComplexPropertyCollection<RuleError> {
+                                       ComplexPropertyCollection<RuleError> {
 
   /**
    * Initializes a new instance of the RuleErrorCollection class.
@@ -39,8 +39,7 @@ public final class RuleErrorCollection extends
   /**
    * Creates an RuleError object from an XML element name.
    *
-   * @param xmlElementName The XML element name from
-   *                       which to create the RuleError object.
+   * @param xmlElementName The XML element name from which to create the RuleError object.
    * @return A RuleError object.
    */
   @Override
@@ -53,17 +52,14 @@ public final class RuleErrorCollection extends
   }
 
   /**
-   * Retrieves the XML element name corresponding
-   * to the provided RuleError object.
+   * Retrieves the XML element name corresponding to the provided RuleError object.
    *
-   * @param ruleValidationError The RuleError object from which
-   *                            to determine the XML element name.
-   * @return The XML element name corresponding
-   * to the provided RuleError object.
+   * @param ruleValidationError The RuleError object from which to determine the XML element name.
+   * @return The XML element name corresponding to the provided RuleError object.
    */
   @Override
   protected String getCollectionItemXmlElementName(RuleError
-      ruleValidationError) {
+                                                       ruleValidationError) {
     return XmlElementNames.Error;
   }
 }

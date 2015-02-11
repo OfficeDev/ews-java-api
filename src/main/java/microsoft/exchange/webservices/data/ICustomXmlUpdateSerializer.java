@@ -45,10 +45,10 @@ interface ICustomXmlUpdateSerializer {
    * @throws Exception                           the exception
    */
   boolean writeSetUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject, PropertyDefinition propertyDefinition)
+                              ServiceObject ewsObject, PropertyDefinition propertyDefinition)
       throws XMLStreamException, ServiceXmlSerializationException,
-      InstantiationException, IllegalAccessException,
-      ServiceValidationException, Exception;
+             InstantiationException, IllegalAccessException,
+             ServiceValidationException, Exception;
 
   /**
    * Writes the deletion update to XML.
@@ -61,6 +61,7 @@ interface ICustomXmlUpdateSerializer {
    * @throws Exception                           the exception
    */
   boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject) throws XMLStreamException,
-      ServiceXmlSerializationException, Exception;
+                                 ServiceObject ewsObject) throws XMLStreamException,
+                                                                 ServiceXmlSerializationException,
+                                                                 Exception;
 }

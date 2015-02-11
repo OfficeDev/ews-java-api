@@ -23,36 +23,32 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+
 /**
- * Represents an xml reader used by the ExchangeService to parse multi-response streams,
- * such as GetStreamingEvents.
- * <p/>
- * Necessary because the basic EwsServiceXmlReader does not
- * use normalization (see E14:60369), and in order to turn normalization off, it is
- * necessary to use an XmlTextReader, which does not allow the ConformanceLevel.Auto that
- * a multi-response stream requires.
- * If ever there comes a time we need to deal with multi-response streams with user-generated
- * content, we will need to tackle that parsing problem separately.
+ * Represents an xml reader used by the ExchangeService to parse multi-response streams, such as
+ * GetStreamingEvents. <p/> Necessary because the basic EwsServiceXmlReader does not use
+ * normalization (see E14:60369), and in order to turn normalization off, it is necessary to use an
+ * XmlTextReader, which does not allow the ConformanceLevel.Auto that a multi-response stream
+ * requires. If ever there comes a time we need to deal with multi-response streams with
+ * user-generated content, we will need to tackle that parsing problem separately.
  */
 class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
 
   /**
-   * Initializes a new instance of the
-   * EwsServiceMultiResponseXmlReader class.
+   * Initializes a new instance of the EwsServiceMultiResponseXmlReader class.
    *
    * @param stream  The stream.
    * @param service The service.
-   * @throws Exception
    */
   private EwsServiceMultiResponseXmlReader(InputStream stream,
-      ExchangeService service) throws Exception {
+                                           ExchangeService service) throws Exception {
     super(stream, service);
   }
 
@@ -61,12 +57,11 @@ class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
    *
    * @param stream  The stream.
    * @param service The service.
-   * @return an instance of EwsServiceMultiResponseXmlReader
-   * wrapped around the input stream.
-   * @throws Exception
+   * @return an instance of EwsServiceMultiResponseXmlReader wrapped around the input stream.
    */
   protected static EwsServiceMultiResponseXmlReader create(InputStream stream,
-      ExchangeService service) throws Exception {
+                                                           ExchangeService service)
+      throws Exception {
     EwsServiceMultiResponseXmlReader reader =
         new EwsServiceMultiResponseXmlReader(stream, service);
     return reader;
@@ -77,7 +72,6 @@ class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
    *
    * @param stream The stream.
    * @return An XML reader to use.
-   * @throws javax.xml.stream.XMLStreamException
    */
   private static XMLEventReader createXmlReader(InputStream stream)
       throws XMLStreamException {
@@ -96,9 +90,7 @@ class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
   /**
    * Initializes the XML reader.
    *
-   * @param stream The stream.
-   *               An XML reader to use.
-   * @throws Exception
+   * @param stream The stream. An XML reader to use.
    */
   @Override
   protected XMLEventReader initializeXmlReader(InputStream stream)

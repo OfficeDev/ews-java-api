@@ -23,11 +23,12 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents the standard response to an Exchange Web Services operation.
@@ -86,14 +87,14 @@ public class ServiceResponse {
    * @throws Exception the exception
    */
   protected void loadFromXml(EwsServiceXmlReader reader,
-      String xmlElementName)
+                             String xmlElementName)
       throws Exception {
     if (!reader.isStartElement(XmlNamespace.Messages, xmlElementName)) {
       reader.readStartElement(XmlNamespace.Messages, xmlElementName);
     }
 
     this.result = reader.readAttributeValue(ServiceResult.class,
-        XmlAttributeNames.ResponseClass);
+                                            XmlAttributeNames.ResponseClass);
 
     if (this.result == ServiceResult.Success ||
         this.result == ServiceResult.Warning) {
@@ -103,11 +104,11 @@ public class ServiceResponse {
       }
 
       this.errorCode = reader.readElementValue(ServiceError.class,
-          XmlNamespace.Messages, XmlElementNames.ResponseCode);
+                                               XmlNamespace.Messages, XmlElementNames.ResponseCode);
 
       if (this.result == ServiceResult.Warning) {
         reader.readElementValue(int.class, XmlNamespace.Messages,
-            XmlElementNames.DescriptiveLinkKey);
+                                XmlElementNames.DescriptiveLinkKey);
       }
 
       // Bug E14:212308 -- If batch processing stopped, EWS returns an
@@ -116,7 +117,7 @@ public class ServiceResponse {
         do {
           reader.read();
         } while (!reader.isEndElement(XmlNamespace.Messages,
-            xmlElementName));
+                                      xmlElementName));
       } else {
 
         this.readElementsFromXml(reader);
@@ -125,18 +126,18 @@ public class ServiceResponse {
           reader.read();
         }
         reader.readEndElementIfNecessary(XmlNamespace.
-            Messages, xmlElementName);
+                                             Messages, xmlElementName);
       }
     } else {
       this.errorMessage = reader.readElementValue(XmlNamespace.Messages,
-          XmlElementNames.MessageText);
+                                                  XmlElementNames.MessageText);
       this.errorCode = reader.readElementValue(ServiceError.class,
-          XmlNamespace.Messages, XmlElementNames.ResponseCode);
+                                               XmlNamespace.Messages, XmlElementNames.ResponseCode);
       reader.readElementValue(int.class, XmlNamespace.Messages,
-          XmlElementNames.DescriptiveLinkKey);
+                              XmlElementNames.DescriptiveLinkKey);
 
       while (!reader.isEndElement(XmlNamespace.
-          Messages, xmlElementName)) {
+                                      Messages, xmlElementName)) {
         reader.read();
 
         if (reader.isStartElement()) {
@@ -166,25 +167,25 @@ public class ServiceResponse {
       if (reader.isStartElement()) {
         if (reader.getLocalName().equals(XmlElementNames.Value)) {
           this.errorDetails.put(reader
-              .readAttributeValue(XmlAttributeNames.Name), reader
-              .readElementValue());
+                                    .readAttributeValue(XmlAttributeNames.Name), reader
+                                    .readElementValue());
         } else if (reader.getLocalName().equals(
             XmlElementNames.FieldURI)) {
           this.errorProperties
               .add(ServiceObjectSchema
-                  .findPropertyDefinition(reader
-                      .readAttributeValue(XmlAttributeNames.
-                          FieldURI)));
+                       .findPropertyDefinition(reader
+                                                   .readAttributeValue(XmlAttributeNames.
+                                                                           FieldURI)));
         } else if (reader.getLocalName().equals(
             XmlElementNames.IndexedFieldURI)) {
           this.errorProperties
               .add(new IndexedPropertyDefinition(
                   reader
                       .readAttributeValue(XmlAttributeNames.
-                          FieldURI),
+                                              FieldURI),
                   reader
                       .readAttributeValue(XmlAttributeNames.
-                          FieldIndex)));
+                                              FieldIndex)));
         } else if (reader.getLocalName().equals(
             XmlElementNames.ExtendedFieldURI)) {
           ExtendedPropertyDefinition extendedPropDef =
@@ -194,9 +195,8 @@ public class ServiceResponse {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Messages,
-        XmlElementNames.MessageXml));
+                                  XmlElementNames.MessageXml));
   }
-
 
 
   /**
@@ -206,8 +206,8 @@ public class ServiceResponse {
   }
 
   /**
-   * Called after the response has been loaded from XML in order to map error
-   * codes to "better" error messages.
+   * Called after the response has been loaded from XML in order to map error codes to "better"
+   * error messages.
    */
   protected void mapErrorCodeToErrorMessage() {
     // Bug E14:69560 -- Use a better error message when an item cannot be
@@ -230,8 +230,8 @@ public class ServiceResponse {
    */
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException,
-      ServiceLocalException, Exception {
+             InstantiationException, IllegalAccessException,
+             ServiceLocalException, Exception {
   }
 
   /**
@@ -239,11 +239,11 @@ public class ServiceResponse {
    *
    * @param reader         The reader.
    * @param xmlElementName The current element name of the extra error details.
-   * @return True if the expected extra details is loaded;
-   * False if the element name does not match the expected element.
+   * @return True if the expected extra details is loaded; False if the element name does not match
+   * the expected element.
    */
   protected boolean loadExtraErrorDetailsFromXml(EwsServiceXmlReader reader,
-      String xmlElementName) throws Exception {
+                                                 String xmlElementName) throws Exception {
     if (reader.isStartElement(XmlNamespace.Messages, XmlElementNames.MessageXml) &&
         !reader.isEmptyElement()) {
       this.parseMessageXml(reader);
@@ -255,8 +255,7 @@ public class ServiceResponse {
   }
 
   /**
-   * Throws a ServiceResponseException if this response has its Result
-   * property set to Error.
+   * Throws a ServiceResponseException if this response has its Result property set to Error.
    *
    * @throws ServiceResponseException the service response exception
    */
@@ -265,8 +264,8 @@ public class ServiceResponse {
   }
 
   /**
-   * Internal method that throws a ServiceResponseException if this response
-   * has its Result property set to Error.
+   * Internal method that throws a ServiceResponseException if this response has its Result property
+   * set to Error.
    *
    * @throws ServiceResponseException the service response exception
    */
@@ -277,15 +276,13 @@ public class ServiceResponse {
   }
 
   /**
-   * Gets a value indicating whether a batch request stopped processing before
-   * the end.
+   * Gets a value indicating whether a batch request stopped processing before the end.
    *
-   * @return A value indicating whether a batch request stopped processing
-   * before the end.
+   * @return A value indicating whether a batch request stopped processing before the end.
    */
   protected boolean getBatchProcessingStopped() {
     return (this.result == ServiceResult.Warning)
-        && (this.errorCode == ServiceError.ErrorBatchProcessingStopped);
+           && (this.errorCode == ServiceError.ErrorBatchProcessingStopped);
   }
 
   /**
@@ -307,10 +304,9 @@ public class ServiceResponse {
   }
 
   /**
-   * Gets a detailed error message associated with the response. If Result
-   * is set to Success, ErrorMessage returns null. ErrorMessage is localized
-   * according to the PreferredCulture property of the ExchangeService object
-   * that was used to call the method that generated the response.
+   * Gets a detailed error message associated with the response. If Result is set to Success,
+   * ErrorMessage returns null. ErrorMessage is localized according to the PreferredCulture property
+   * of the ExchangeService object that was used to call the method that generated the response.
    *
    * @return the error message
    */
@@ -328,11 +324,10 @@ public class ServiceResponse {
   }
 
   /**
-   * Gets error details associated with the response. If Result is set to
-   * Success, ErrorDetailsDictionary returns null. Error details will only
-   * available for some error codes. For example, when error code is
-   * ErrorRecurrenceHasNoOccurrence, the ErrorDetailsDictionary will contain
-   * keys for EffectiveStartDate and EffectiveEndDate.
+   * Gets error details associated with the response. If Result is set to Success,
+   * ErrorDetailsDictionary returns null. Error details will only available for some error codes.
+   * For example, when error code is ErrorRecurrenceHasNoOccurrence, the ErrorDetailsDictionary will
+   * contain keys for EffectiveStartDate and EffectiveEndDate.
    *
    * @return The error details dictionary.
    */
@@ -341,11 +336,10 @@ public class ServiceResponse {
   }
 
   /**
-   * Gets information about property errors associated with the response. If
-   * Result is set to Success, ErrorProperties returns null. ErrorProperties
-   * is only available for some error codes. For example, when the error code
-   * is ErrorInvalidPropertyForOperation, ErrorProperties will contain the
-   * definition of the property that was invalid for the request.
+   * Gets information about property errors associated with the response. If Result is set to
+   * Success, ErrorProperties returns null. ErrorProperties is only available for some error codes.
+   * For example, when the error code is ErrorInvalidPropertyForOperation, ErrorProperties will
+   * contain the definition of the property that was invalid for the request.
    *
    * @return the error properties
    */

@@ -30,7 +30,7 @@ import javax.xml.stream.XMLStreamException;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class ImAddressEntry extends
-    DictionaryEntryProperty<ImAddressKey> {
+                                  DictionaryEntryProperty<ImAddressKey> {
 
   /**
    * The im address.

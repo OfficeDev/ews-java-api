@@ -32,28 +32,26 @@ import java.util.EnumSet;
  * @param <TPropertyValue> Property type.
  */
 class GenericPropertyDefinition<TPropertyValue> extends
-    TypedPropertyDefinition {
+                                                TypedPropertyDefinition {
 
   private Class<TPropertyValue> instance;
 
   /**
-   * Initializes a new instance of the "GenericPropertyDefinition&lt;T&gt;"
-   * class.
+   * Initializes a new instance of the "GenericPropertyDefinition&lt;T&gt;" class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.
    * @param version        The version.
    */
   protected GenericPropertyDefinition(Class<TPropertyValue> cls,
-      String xmlElementName, String uri,
-      ExchangeVersion version) {
+                                      String xmlElementName, String uri,
+                                      ExchangeVersion version) {
     super(xmlElementName, uri, version);
     this.instance = cls;
   }
 
   /**
-   * Initializes a new instance of the "GenericPropertyDefinition&lt;T&gt;"
-   * class.
+   * Initializes a new instance of the "GenericPropertyDefinition&lt;T&gt;" class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.
@@ -61,8 +59,9 @@ class GenericPropertyDefinition<TPropertyValue> extends
    * @param version        The version.
    */
   protected GenericPropertyDefinition(Class<TPropertyValue> cls,
-      String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                      String xmlElementName, String uri,
+                                      EnumSet<PropertyDefinitionFlags> flags,
+                                      ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
     this.instance = cls;
   }
@@ -93,13 +92,10 @@ class GenericPropertyDefinition<TPropertyValue> extends
    *
    * @param value The value
    * @return Double value from parsed value.
-   * @throws java.text.ParseException
-   * @throws IllegalAccessException
-   * @throws InstantiationException
    */
   @Override
   protected Object parse(String value) throws InstantiationException,
-      IllegalAccessException, ParseException {
+                                              IllegalAccessException, ParseException {
 
     return EwsUtilities.parse(instance, value);
   }

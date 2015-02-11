@@ -35,13 +35,13 @@ class EWSConstants {
    */
   public static final String SRVRECORD = "SRV";
         /*
-	 * Represents the name of the domain
+         * Represents the name of the domain
 	 */
   /**
    * The Constant DOMAIN.
    */
   public static final String DOMAIN = "domain";
-	/*
+        /*
 	 * Represents the domain server IP address
 	 */
   /**

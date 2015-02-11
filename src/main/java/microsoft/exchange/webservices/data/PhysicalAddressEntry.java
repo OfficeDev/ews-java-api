@@ -23,16 +23,17 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents an entry of an PhysicalAddressDictionary.
  */
 public final class PhysicalAddressEntry extends
-    DictionaryEntryProperty<PhysicalAddressKey> implements
-    IPropertyBagChangedDelegate<String> {
+                                        DictionaryEntryProperty<PhysicalAddressKey> implements
+                                                                                    IPropertyBagChangedDelegate<String> {
 
   /**
    * The property bag.
@@ -46,6 +47,16 @@ public final class PhysicalAddressEntry extends
     super(PhysicalAddressKey.class);
     this.propertyBag = new SimplePropertyBag<String>();
     this.propertyBag.addOnChangeEvent(this);
+  }
+
+  /**
+   * Gets the field URI.
+   *
+   * @param xmlElementName the xml element name
+   * @return Field URI.
+   */
+  private static String getFieldUri(String xmlElementName) {
+    return "contacts:PhysicalAddress:" + xmlElementName;
   }
 
   /**
@@ -76,7 +87,7 @@ public final class PhysicalAddressEntry extends
    */
   public void setStreet(String value) throws Exception {
     this.propertyBag.setSimplePropertyBag(PhysicalAddressSchema.Street,
-        value);
+                                          value);
 
   }
 
@@ -119,7 +130,7 @@ public final class PhysicalAddressEntry extends
    */
   public void setState(String value) {
     this.propertyBag.setSimplePropertyBag(PhysicalAddressSchema.State,
-        value);
+                                          value);
   }
 
   /**
@@ -160,7 +171,7 @@ public final class PhysicalAddressEntry extends
    */
   public void setPostalCode(String value) {
     this.propertyBag.setSimplePropertyBag(PhysicalAddressSchema.PostalCode,
-        value);
+                                          value);
   }
 
   /**
@@ -203,7 +214,7 @@ public final class PhysicalAddressEntry extends
       throws XMLStreamException, ServiceXmlSerializationException {
     for (String xmlElementName : PhysicalAddressSchema.getXmlElementNames()) {
       writer.writeElementValue(XmlNamespace.Types, xmlElementName,
-          this.propertyBag.getSimplePropertyBag(xmlElementName));
+                               this.propertyBag.getSimplePropertyBag(xmlElementName));
 
     }
   }
@@ -220,7 +231,8 @@ public final class PhysicalAddressEntry extends
    */
   @Override
   protected boolean writeSetUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject, String ownerDictionaryXmlElementName)
+                                        ServiceObject ewsObject,
+                                        String ownerDictionaryXmlElementName)
       throws XMLStreamException, ServiceXmlSerializationException {
     List<String> fieldsToSet = new ArrayList<String>();
 
@@ -237,9 +249,9 @@ public final class PhysicalAddressEntry extends
           .getSetFieldXmlElementName());
 
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.IndexedFieldURI);
+                               XmlElementNames.IndexedFieldURI);
       writer.writeAttributeValue(XmlAttributeNames.FieldURI,
-          getFieldUri(xmlElementName));
+                                 getFieldUri(xmlElementName));
       writer.writeAttributeValue(XmlAttributeNames.FieldIndex, this
           .getKey().toString());
       writer.writeEndElement(); // IndexedFieldURI
@@ -247,11 +259,11 @@ public final class PhysicalAddressEntry extends
       writer.writeStartElement(XmlNamespace.Types, ewsObject
           .getXmlElementName());
       writer.writeStartElement(XmlNamespace.Types,
-          ownerDictionaryXmlElementName);
+                               ownerDictionaryXmlElementName);
       writer.writeStartElement(XmlNamespace.Types, XmlElementNames.Entry);
       this.writeAttributesToXml(writer);
       writer.writeElementValue(XmlNamespace.Types, xmlElementName,
-          this.propertyBag.getSimplePropertyBag(xmlElementName));
+                               this.propertyBag.getSimplePropertyBag(xmlElementName));
       writer.writeEndElement(); // Entry
       writer.writeEndElement(); // ownerDictionaryXmlElementName
       writer.writeEndElement(); // ewsObject.GetXmlElementName()
@@ -261,7 +273,7 @@ public final class PhysicalAddressEntry extends
 
     for (String xmlElementName : this.propertyBag.getRemovedItems()) {
       this.internalWriteDeleteFieldToXml(writer, ewsObject,
-          xmlElementName);
+                                         xmlElementName);
     }
 
     return true;
@@ -278,23 +290,13 @@ public final class PhysicalAddressEntry extends
    */
   @Override
   protected boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject) throws XMLStreamException,
-      ServiceXmlSerializationException {
+                                           ServiceObject ewsObject) throws XMLStreamException,
+                                                                           ServiceXmlSerializationException {
     for (String xmlElementName : PhysicalAddressSchema.getXmlElementNames()) {
       this.internalWriteDeleteFieldToXml(writer, ewsObject,
-          xmlElementName);
+                                         xmlElementName);
     }
     return true;
-  }
-
-  /**
-   * Gets the field URI.
-   *
-   * @param xmlElementName the xml element name
-   * @return Field URI.
-   */
-  private static String getFieldUri(String xmlElementName) {
-    return "contacts:PhysicalAddress:" + xmlElementName;
   }
 
   /**
@@ -307,14 +309,14 @@ public final class PhysicalAddressEntry extends
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   private void internalWriteDeleteFieldToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject, String fieldXmlElementName)
+                                             ServiceObject ewsObject, String fieldXmlElementName)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeStartElement(XmlNamespace.Types, ewsObject
         .getDeleteFieldXmlElementName());
     writer.writeStartElement(XmlNamespace.Types,
-        XmlElementNames.IndexedFieldURI);
+                             XmlElementNames.IndexedFieldURI);
     writer.writeAttributeValue(XmlAttributeNames.FieldURI,
-        getFieldUri(fieldXmlElementName));
+                               getFieldUri(fieldXmlElementName));
     writer.writeAttributeValue(XmlAttributeNames.FieldIndex, this.getKey()
         .toString());
     writer.writeEndElement(); // IndexedFieldURI

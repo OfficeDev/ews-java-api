@@ -23,9 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents the response to a GetServerTimeZones request.
@@ -49,7 +50,8 @@ class GetServerTimeZonesResponse extends ServiceResponse {
    * Reads response elements from XML.
    *
    * @param reader the reader
-   * @throws ServiceXmlDeserializationException                        the service xml deserialization exception
+   * @throws ServiceXmlDeserializationException                        the service xml deserialization
+   *                                                                   exception
    * @throws javax.xml.stream.XMLStreamException                       the xML stream exception
    * @throws InstantiationException                                    the instantiation exception
    * @throws IllegalAccessException                                    the illegal access exception
@@ -59,19 +61,19 @@ class GetServerTimeZonesResponse extends ServiceResponse {
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException,
-      ServiceLocalException, Exception {
+             InstantiationException, IllegalAccessException,
+             ServiceLocalException, Exception {
     super.readElementsFromXml(reader);
 
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.TimeZoneDefinitions);
+                            XmlElementNames.TimeZoneDefinitions);
 
     if (!reader.isEmptyElement()) {
       do {
         reader.read();
 
         if (reader.isStartElement(XmlNamespace.Types,
-            XmlElementNames.TimeZoneDefinition)) {
+                                  XmlElementNames.TimeZoneDefinition)) {
           TimeZoneDefinition timeZoneDefinition =
               new TimeZoneDefinition();
           timeZoneDefinition.loadFromXml(reader);
@@ -79,7 +81,7 @@ class GetServerTimeZonesResponse extends ServiceResponse {
           this.timeZones.add(timeZoneDefinition);
         }
       } while (!reader.isEndElement(XmlNamespace.Messages,
-          XmlElementNames.TimeZoneDefinitions));
+                                    XmlElementNames.TimeZoneDefinitions));
     } else {
       reader.read();
     }

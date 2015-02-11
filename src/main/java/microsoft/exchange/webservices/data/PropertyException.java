@@ -74,7 +74,7 @@ public class PropertyException extends ServiceLocalException {
    * @param innerException the inner exception
    */
   public PropertyException(String message, String name,
-      Exception innerException) {
+                           Exception innerException) {
     super(message, innerException);
     this.name = name;
   }

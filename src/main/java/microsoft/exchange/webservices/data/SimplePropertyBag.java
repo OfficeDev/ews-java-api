@@ -23,7 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Represents a simple property bag.
@@ -51,6 +55,17 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
    * The modified items.
    */
   private List<TKey> modifiedItems = new ArrayList<TKey>();
+  /**
+   * Occurs when Changed.
+   */
+  private List<IPropertyBagChangedDelegate<TKey>> onChange =
+      new ArrayList<IPropertyBagChangedDelegate<TKey>>();
+
+  /**
+   * Initializes a new instance of the class.
+   */
+  public SimplePropertyBag() {
+  }
 
   /**
    * Add item to change list.
@@ -89,7 +104,6 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
     }
   }
 
-
   /**
    * Gets the added items. <value>The added items.</value>
    *
@@ -115,12 +129,6 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
    */
   protected Iterable<TKey> getModifiedItems() {
     return this.modifiedItems;
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   */
-  public SimplePropertyBag() {
   }
 
   /**
@@ -204,12 +212,6 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
       this.changed();
     }
   }
-
-  /**
-   * Occurs when Changed.
-   */
-  private List<IPropertyBagChangedDelegate<TKey>> onChange =
-      new ArrayList<IPropertyBagChangedDelegate<TKey>>();
 
   /**
    * Set event to happen when property changed.

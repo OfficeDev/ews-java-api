@@ -27,7 +27,7 @@ package microsoft.exchange.webservices.data;
  * Represents an e-mail address.
  */
 public class EmailAddress extends ComplexProperty implements
-    ISearchStringProvider {
+                                                  ISearchStringProvider {
 
   // SMTP routing type.
   /**
@@ -114,7 +114,7 @@ public class EmailAddress extends ComplexProperty implements
    * @param mailboxType Mailbox type of the participant.
    */
   protected EmailAddress(String name, String address, String routingType,
-      MailboxType mailboxType) {
+                         MailboxType mailboxType) {
     this(name, address, routingType);
     this.mailboxType = mailboxType;
   }
@@ -129,7 +129,7 @@ public class EmailAddress extends ComplexProperty implements
    * @param id          ItemId of a Contact or PDL.
    */
   protected EmailAddress(String name, String address, String routingType,
-      MailboxType mailboxType, ItemId id) {
+                         MailboxType mailboxType, ItemId id) {
     this(name, address, routingType);
     this.mailboxType = mailboxType;
     this.id = id;
@@ -150,6 +150,16 @@ public class EmailAddress extends ComplexProperty implements
     this.mailboxType = mailbox.getMailboxType();
     this.setId(mailbox.getId());
 
+  }
+
+  /**
+   * Defines an implicit conversion between a string representing an SMTP address and EmailAddress.
+   *
+   * @param smtpAddress The SMTP address to convert to EmailAddress.
+   * @return An EmailAddress initialized with the specified SMTP address.
+   */
+  public static EmailAddress getEmailAddressFromString(String smtpAddress) {
+    return new EmailAddress(smtpAddress);
   }
 
   /**
@@ -183,9 +193,9 @@ public class EmailAddress extends ComplexProperty implements
   }
 
   /**
-   * Sets the actual address associated with the e-mail address. The type of
-   * the Address property must match the specified routing type. If
-   * RoutingType is not set, Address is assumed to be an SMTP address.
+   * Sets the actual address associated with the e-mail address. The type of the Address property
+   * must match the specified routing type. If RoutingType is not set, Address is assumed to be an
+   * SMTP address.
    *
    * @param address address associated with the e-mail address.
    */
@@ -208,8 +218,8 @@ public class EmailAddress extends ComplexProperty implements
   }
 
   /**
-   * Sets the routing type associated with the e-mail address. If RoutingType
-   * is not set, Address is assumed to be an SMTP address.
+   * Sets the routing type associated with the e-mail address. If RoutingType is not set, Address is
+   * assumed to be an SMTP address.
    *
    * @param routingType routing type associated with the e-mail address.
    */
@@ -251,8 +261,8 @@ public class EmailAddress extends ComplexProperty implements
   }
 
   /**
-   * Sets the Id of the contact the e-mail address represents. When Id is
-   * specified, Address should be set to null.
+   * Sets the Id of the contact the e-mail address represents. When Id is specified, Address should
+   * be set to null.
    *
    * @param id the new id
    */
@@ -262,17 +272,6 @@ public class EmailAddress extends ComplexProperty implements
       this.id = id;
       this.changed();
     }
-  }
-
-  /**
-   * Defines an implicit conversion between a string representing an SMTP
-   * address and EmailAddress.
-   *
-   * @param smtpAddress The SMTP address to convert to EmailAddress.
-   * @return An EmailAddress initialized with the specified SMTP address.
-   */
-  public static EmailAddress getEmailAddressFromString(String smtpAddress) {
-    return new EmailAddress(smtpAddress);
   }
 
   /**
@@ -325,11 +324,11 @@ public class EmailAddress extends ComplexProperty implements
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Name, this
         .getName());
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.EmailAddress, this.getAddress());
+                             XmlElementNames.EmailAddress, this.getAddress());
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.RoutingType, this.getRoutingType());
+                             XmlElementNames.RoutingType, this.getRoutingType());
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.MailboxType, this.getMailboxType());
+                             XmlElementNames.MailboxType, this.getMailboxType());
 
     if (this.getId() != null) {
       this.getId().writeToXml(writer, XmlElementNames.ItemId);

@@ -29,12 +29,24 @@ package microsoft.exchange.webservices.data;
  * @param <TResponse> The type of response
  */
 abstract class MoveCopyFolderRequest<TResponse extends ServiceResponse> extends
-    MoveCopyRequest<Folder, TResponse> {
+                                                                        MoveCopyRequest<Folder, TResponse> {
 
   /**
    * The folder ids.
    */
   private FolderIdWrapperList folderIds = new FolderIdWrapperList();
+
+  /**
+   * Initializes a new instance of the <see cref="MoveCopyFolderRequest&lt;TResponse&gt;"/> class.
+   *
+   * @param service           The service.
+   * @param errorHandlingMode Indicates how errors should be handled.
+   */
+  protected MoveCopyFolderRequest(ExchangeService service,
+                                  ServiceErrorHandling errorHandlingMode)
+      throws Exception {
+    super(service, errorHandlingMode);
+  }
 
   /**
    * Validates request.
@@ -45,23 +57,9 @@ abstract class MoveCopyFolderRequest<TResponse extends ServiceResponse> extends
   protected void validate() throws Exception {
     super.validate();
     EwsUtilities.validateParamCollection(this.getFolderIds().iterator(),
-        "FolderIds");
+                                         "FolderIds");
     this.getFolderIds().validate(
         this.getService().getRequestedServerVersion());
-  }
-
-  /**
-   * Initializes a new instance of the <see
-   * cref="MoveCopyFolderRequest&lt;TResponse&gt;"/> class.
-   *
-   * @param service           The service.
-   * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
-   */
-  protected MoveCopyFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
-      throws Exception {
-    super(service, errorHandlingMode);
   }
 
   /**
@@ -73,7 +71,7 @@ abstract class MoveCopyFolderRequest<TResponse extends ServiceResponse> extends
   protected void writeIdsToXml(EwsServiceXmlWriter writer) {
     try {
       this.folderIds.writeToXml(writer, XmlNamespace.Messages,
-          XmlElementNames.FolderIds);
+                                XmlElementNames.FolderIds);
     } catch (Exception e) {
       e.printStackTrace();
     }

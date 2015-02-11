@@ -85,8 +85,7 @@ final class MeetingTimeZone extends ComplexProperty {
    * Gets the minimum required server version.
    *
    * @param reader the reader
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    * @throws Exception the exception
    */
   @Override
@@ -94,7 +93,7 @@ final class MeetingTimeZone extends ComplexProperty {
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.BaseOffset)) {
       this.baseOffset = EwsUtilities.getXSDurationToTimeSpan(reader
-          .readElementValue());
+                                                                 .readElementValue());
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.Standard)) {
       this.standard = new TimeChange();
@@ -145,7 +144,7 @@ final class MeetingTimeZone extends ComplexProperty {
       throws Exception {
     if (this.baseOffset != null) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.BaseOffset, EwsUtilities
+                               XmlElementNames.BaseOffset, EwsUtilities
               .getTimeSpanToXSDuration(this.getBaseOffset()));
     }
 
@@ -224,8 +223,7 @@ final class MeetingTimeZone extends ComplexProperty {
   }
 
   /**
-   * Gets  a TimeChange defining when the time changes to Standard
-   * Time.
+   * Gets  a TimeChange defining when the time changes to Standard Time.
    *
    * @return the standard
    */
@@ -246,8 +244,7 @@ final class MeetingTimeZone extends ComplexProperty {
   }
 
   /**
-   * Gets  a TimeChange defining when the time changes to Daylight
-   * Saving Time.
+   * Gets  a TimeChange defining when the time changes to Daylight Saving Time.
    *
    * @return the daylight
    */

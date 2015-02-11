@@ -57,7 +57,7 @@ public final class UserSettingError {
    * @param settingName  Name of the setting
    */
   protected UserSettingError(AutodiscoverErrorCode errorCode,
-      String errorMessage, String settingName) {
+                             String errorMessage, String settingName) {
     this.errorCode = errorCode;
     this.errorMessage = errorMessage;
     this.settingName = settingName;
@@ -77,7 +77,7 @@ public final class UserSettingError {
       if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
         if (reader.getLocalName().equals(XmlElementNames.ErrorCode)) {
           this.setErrorCode(reader
-              .readElementValue(AutodiscoverErrorCode.class));
+                                .readElementValue(AutodiscoverErrorCode.class));
         } else if (reader.getLocalName().equals(
             XmlElementNames.ErrorMessage)) {
           this.setErrorMessage(reader.readElementValue());
@@ -87,7 +87,7 @@ public final class UserSettingError {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-        XmlElementNames.UserSettingError));
+                                  XmlElementNames.UserSettingError));
   }
 
   /**

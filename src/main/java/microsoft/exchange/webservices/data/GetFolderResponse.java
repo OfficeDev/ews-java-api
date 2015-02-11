@@ -29,7 +29,7 @@ import java.util.List;
  * Represents the response to an individual folder retrieval operation.
  */
 public final class GetFolderResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                             IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The folder.
@@ -52,7 +52,7 @@ public final class GetFolderResponse extends ServiceResponse implements
     this.folder = folder;
     this.propertySet = propertySet;
     EwsUtilities.EwsAssert(this.propertySet != null,
-        "GetFolderResponse.ctor", "PropertySet should not be null");
+                           "GetFolderResponse.ctor", "PropertySet should not be null");
   }
 
   /**
@@ -82,7 +82,7 @@ public final class GetFolderResponse extends ServiceResponse implements
    */
   @Override
   public ServiceObject getObjectInstanceDelegate(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                                 String xmlElementName) throws Exception {
     return this.getObjectInstance(service, xmlElementName);
   }
 
@@ -95,12 +95,12 @@ public final class GetFolderResponse extends ServiceResponse implements
    * @throws Exception the exception
    */
   private Folder getObjectInstance(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                   String xmlElementName) throws Exception {
     if (this.getFolder() != null) {
       return this.getFolder();
     } else {
       return EwsUtilities.createEwsObjectFromXmlElementName(Folder.class,
-          service, xmlElementName);
+                                                            service, xmlElementName);
     }
   }
 

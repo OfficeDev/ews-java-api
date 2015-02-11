@@ -32,41 +32,57 @@ import java.util.List;
 class TimeZoneTransitionGroup extends ComplexProperty {
 
   /**
+   * The Constant PeriodTarget.
+   */
+  private final static String PeriodTarget = "Period";
+  /**
+   * The Constant GroupTarget.
+   */
+  private final static String GroupTarget = "Group";
+  /**
    * The time zone definition.
    */
   private TimeZoneDefinition timeZoneDefinition;
-
   /**
    * The id.
    */
   private String id;
-
   /**
    * The transitions.
    */
   private List<TimeZoneTransition> transitions =
       new ArrayList<TimeZoneTransition>();
-
   /**
    * The transition to standard.
    */
   private TimeZoneTransition transitionToStandard;
-
   /**
    * The transition to daylight.
    */
   private TimeZoneTransition transitionToDaylight;
 
-  /**
-   * The Constant PeriodTarget.
-   */
-  private final static String PeriodTarget = "Period";
 
   /**
-   * The Constant GroupTarget.
+   * Initializes a new instance of the class.
+   *
+   * @param timeZoneDefinition the time zone definition
    */
-  private final static String GroupTarget = "Group";
+  protected TimeZoneTransitionGroup(TimeZoneDefinition timeZoneDefinition) {
+    super();
+    this.timeZoneDefinition = timeZoneDefinition;
+  }
 
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   * @param id                 the id
+   */
+  protected TimeZoneTransitionGroup(TimeZoneDefinition timeZoneDefinition,
+                                    String id) {
+    this(timeZoneDefinition);
+    this.id = id;
+  }
 
   /**
    * Loads from XML.
@@ -130,8 +146,8 @@ class TimeZoneTransitionGroup extends ComplexProperty {
     transition.loadFromXml(reader);
 
     EwsUtilities.EwsAssert(transition.getTargetPeriod() != null,
-        "TimeZoneTransitionGroup.TryReadElementFromXml",
-        "The transition's target period is null.");
+                           "TimeZoneTransitionGroup.TryReadElementFromXml",
+                           "The transition's target period is null.");
 
     this.transitions.add(transition);
 
@@ -168,7 +184,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
     // TimeZoneTransition
     if (this.transitions.size() == 1
         && !(this.transitions.get(0).getClass() ==
-        TimeZoneTransition.class)) {
+             TimeZoneTransition.class)) {
       throw new ServiceLocalException(
           Strings.InvalidOrUnsupportedTimeZoneDefinition);
     }
@@ -191,6 +207,121 @@ class TimeZoneTransitionGroup extends ComplexProperty {
             Strings.InvalidOrUnsupportedTimeZoneDefinition);
       }
     }
+  }
+
+  /**
+   * Gets a value indicating whether this group contains a transition to the Daylight period.
+   * <value><c>true</c> if this group contains a transition to daylight; otherwise,
+   * <c>false</c>.</value>
+   *
+   * @return the supports daylight
+   */
+  protected boolean getSupportsDaylight() {
+    return this.transitions.size() == 2;
+  }
+
+  /**
+   * Initializes the private members holding references to the transitions to the Daylight and
+   * Standard periods.
+   *
+   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   */
+  private void initializeTransitions() throws ServiceLocalException {
+    if (this.transitionToStandard == null) {
+      for (TimeZoneTransition transition : this.transitions) {
+        if (transition.getTargetPeriod().isStandardPeriod() ||
+            (this.transitions.size() == 1)) {
+          this.transitionToStandard = transition;
+        } else {
+          this.transitionToDaylight = transition;
+        }
+      }
+    }
+
+    // If we didn't find a Standard period, this is an invalid time zone
+    // group.
+    if (this.transitionToStandard == null) {
+      throw new ServiceLocalException(
+          Strings.InvalidOrUnsupportedTimeZoneDefinition);
+    }
+  }
+
+  /**
+   * Gets the transition to the Daylight period.
+   *
+   * @return the transition to daylight
+   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   */
+  private TimeZoneTransition getTransitionToDaylight()
+      throws ServiceLocalException {
+    this.initializeTransitions();
+    return this.transitionToDaylight;
+  }
+
+  /**
+   * Gets the transition to the Standard period.
+   *
+   * @return the transition to standard
+   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   */
+  private TimeZoneTransition getTransitionToStandard()
+      throws ServiceLocalException {
+    this.initializeTransitions();
+    return this.transitionToStandard;
+  }
+
+  /**
+   * Gets the offset to UTC based on this group's transitions.
+   *
+   * @return the custom time zone creation params
+   */
+  protected CustomTimeZoneCreateParams getCustomTimeZoneCreationParams() {
+    CustomTimeZoneCreateParams result = new CustomTimeZoneCreateParams();
+
+    if (this.transitionToDaylight != null) {
+      result.setDaylightDisplayName(this.transitionToDaylight
+                                        .getTargetPeriod().getName());
+    }
+
+    result.setStandardDisplayName(this.transitionToStandard
+                                      .getTargetPeriod().getName());
+
+    // Assume that the standard period's offset is the base offset to UTC.
+    // EWS returns a positive offset for time zones that are behind UTC, and
+    // a negative one for time zones ahead of UTC. TimeZoneInfo does it the
+    // other
+    // way around.
+    // result.BaseOffsetToUtc =
+    // -this.TransitionToStandard.TargetPeriod.Bias;
+
+    return result;
+  }
+
+  /**
+   * Gets the id of this group.
+   *
+   * @return the id
+   */
+  protected String getId() {
+    return this.id;
+  }
+
+  /**
+   * Sets the id.
+   *
+   * @param id the new id
+   */
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * Gets the transitions in this group.
+   *
+   * @return the transitions
+   */
+  protected List<TimeZoneTransition> getTransitions() {
+    return this.transitions;
   }
 
   /**
@@ -274,152 +405,15 @@ class TimeZoneTransitionGroup extends ComplexProperty {
     }
 
     /**
-     * Gets a value indicating whether the custom time zone should have a
-     * daylight period. <value> <c>true</c> if the custom time zone should
-     * have a daylight period; otherwise, <c>false</c>. </value>
+     * Gets a value indicating whether the custom time zone should have a daylight period. <value>
+     * <c>true</c> if the custom time zone should have a daylight period; otherwise, <c>false</c>.
+     * </value>
      *
      * @return the checks for daylight period
      */
     protected boolean getHasDaylightPeriod() {
       return (!(this.daylightDisplayName == null ||
-          this.daylightDisplayName.isEmpty()));
+                this.daylightDisplayName.isEmpty()));
     }
-  }
-
-  /**
-   * Gets a value indicating whether this group contains a transition to the
-   * Daylight period. <value><c>true</c> if this group contains a transition
-   * to daylight; otherwise, <c>false</c>.</value>
-   *
-   * @return the supports daylight
-   */
-  protected boolean getSupportsDaylight() {
-    return this.transitions.size() == 2;
-  }
-
-  /**
-   * Initializes the private members holding references to the transitions to
-   * the Daylight and Standard periods.
-   *
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
-   */
-  private void initializeTransitions() throws ServiceLocalException {
-    if (this.transitionToStandard == null) {
-      for (TimeZoneTransition transition : this.transitions) {
-        if (transition.getTargetPeriod().isStandardPeriod() ||
-            (this.transitions.size() == 1)) {
-          this.transitionToStandard = transition;
-        } else {
-          this.transitionToDaylight = transition;
-        }
-      }
-    }
-
-    // If we didn't find a Standard period, this is an invalid time zone
-    // group.
-    if (this.transitionToStandard == null) {
-      throw new ServiceLocalException(
-          Strings.InvalidOrUnsupportedTimeZoneDefinition);
-    }
-  }
-
-  /**
-   * Gets the transition to the Daylight period.
-   *
-   * @return the transition to daylight
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
-   */
-  private TimeZoneTransition getTransitionToDaylight()
-      throws ServiceLocalException {
-    this.initializeTransitions();
-    return this.transitionToDaylight;
-  }
-
-  /**
-   * Gets the transition to the Standard period.
-   *
-   * @return the transition to standard
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
-   */
-  private TimeZoneTransition getTransitionToStandard()
-      throws ServiceLocalException {
-    this.initializeTransitions();
-    return this.transitionToStandard;
-  }
-
-  /**
-   * Gets the offset to UTC based on this group's transitions.
-   *
-   * @return the custom time zone creation params
-   */
-  protected CustomTimeZoneCreateParams getCustomTimeZoneCreationParams() {
-    CustomTimeZoneCreateParams result = new CustomTimeZoneCreateParams();
-
-    if (this.transitionToDaylight != null) {
-      result.setDaylightDisplayName(this.transitionToDaylight
-          .getTargetPeriod().getName());
-    }
-
-    result.setStandardDisplayName(this.transitionToStandard
-        .getTargetPeriod().getName());
-
-    // Assume that the standard period's offset is the base offset to UTC.
-    // EWS returns a positive offset for time zones that are behind UTC, and
-    // a negative one for time zones ahead of UTC. TimeZoneInfo does it the
-    // other
-    // way around.
-    // result.BaseOffsetToUtc =
-    // -this.TransitionToStandard.TargetPeriod.Bias;
-
-    return result;
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param timeZoneDefinition the time zone definition
-   */
-  protected TimeZoneTransitionGroup(TimeZoneDefinition timeZoneDefinition) {
-    super();
-    this.timeZoneDefinition = timeZoneDefinition;
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param timeZoneDefinition the time zone definition
-   * @param id                 the id
-   */
-  protected TimeZoneTransitionGroup(TimeZoneDefinition timeZoneDefinition,
-      String id) {
-    this(timeZoneDefinition);
-    this.id = id;
-  }
-
-  /**
-   * Gets the id of this group.
-   *
-   * @return the id
-   */
-  protected String getId() {
-    return this.id;
-  }
-
-  /**
-   * Sets the id.
-   *
-   * @param id the new id
-   */
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   * Gets the transitions in this group.
-   *
-   * @return the transitions
-   */
-  protected List<TimeZoneTransition> getTransitions() {
-    return this.transitions;
   }
 }

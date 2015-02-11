@@ -23,9 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents the response to a item search operation.
@@ -67,7 +68,7 @@ public final class FindItemResponse
     this.propertySet = propertySet;
 
     EwsUtilities.EwsAssert(this.propertySet != null,
-        "FindItemResponse.ctor", "PropertySet should not be null");
+                           "FindItemResponse.ctor", "PropertySet should not be null");
   }
 
   /**
@@ -80,17 +81,17 @@ public final class FindItemResponse
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.RootFolder);
+                            XmlElementNames.RootFolder);
 
     int totalItemsInView = reader.readAttributeValue(Integer.class,
-        XmlAttributeNames.TotalItemsInView);
+                                                     XmlAttributeNames.TotalItemsInView);
     boolean moreItemsAvailable = !reader.readAttributeValue(Boolean.class,
-        XmlAttributeNames.IncludesLastItemInRange);
+                                                            XmlAttributeNames.IncludesLastItemInRange);
 
     // Ignore IndexedPagingOffset attribute if moreItemsAvailable is false.
     Integer nextPageOffset = moreItemsAvailable ? reader
         .readNullableAttributeValue(Integer.class,
-            XmlAttributeNames.IndexedPagingOffset) : null;
+                                    XmlAttributeNames.IndexedPagingOffset) : null;
 
     if (!this.isGrouped) {
       this.results = new FindItemsResults<TItem>();
@@ -112,22 +113,22 @@ public final class FindItemResponse
           reader.read();
 
           if (reader.isStartElement(XmlNamespace.Types,
-              XmlElementNames.GroupedItems)) {
+                                    XmlElementNames.GroupedItems)) {
             String groupIndex = reader.readElementValue(
                 XmlNamespace.Types, XmlElementNames.GroupIndex);
 
             ArrayList<TItem> itemList = new ArrayList<TItem>();
             internalReadItemsFromXml(reader, this.propertySet,
-                itemList);
+                                     itemList);
 
             reader.readEndElement(XmlNamespace.Types,
-                XmlElementNames.GroupedItems);
+                                  XmlElementNames.GroupedItems);
 
             this.groupedFindResults.getItemGroups().add(
                 new ItemGroup<TItem>(groupIndex, itemList));
           }
         } while (!reader.isEndElement(XmlNamespace.Types,
-            XmlElementNames.Groups));
+                                      XmlElementNames.Groups));
       } else {
         reader.read();
       }
@@ -135,7 +136,7 @@ public final class FindItemResponse
 
     reader
         .readEndElement(XmlNamespace.Messages,
-            XmlElementNames.RootFolder);
+                        XmlElementNames.RootFolder);
   }
 
   /**
@@ -149,12 +150,12 @@ public final class FindItemResponse
    * @throws Exception                           the exception
    */
   private void internalReadItemsFromXml(EwsServiceXmlReader reader,
-      PropertySet propertySet, List<TItem> destinationList)
+                                        PropertySet propertySet, List<TItem> destinationList)
       throws XMLStreamException, ServiceXmlDeserializationException,
-      Exception {
+             Exception {
     EwsUtilities.EwsAssert(destinationList != null,
-        "FindItemResponse.InternalReadItemsFromXml",
-        "destinationList is null.");
+                           "FindItemResponse.InternalReadItemsFromXml",
+                           "destinationList is null.");
 
     reader.readStartElement(XmlNamespace.Types, XmlElementNames.Items);
     if (!reader.isEmptyElement()) {
@@ -170,13 +171,13 @@ public final class FindItemResponse
             reader.skipCurrentElement();
           } else {
             item.loadFromXml(reader, true, /* clearPropertyBag */
-                propertySet, true /* summaryPropertiesOnly */);
+                             propertySet, true /* summaryPropertiesOnly */);
 
             destinationList.add((TItem) item);
           }
         }
       } while (!reader.isEndElement(XmlNamespace.Types,
-          XmlElementNames.Items));
+                                    XmlElementNames.Items));
     } else {
       reader.read();
     }
@@ -184,9 +185,8 @@ public final class FindItemResponse
   }
 
   /**
-   * Gets a grouped list of items matching the specified search criteria that
-   * were found in Exchange. ItemGroups is null if the search operation did
-   * not specify grouping options.
+   * Gets a grouped list of items matching the specified search criteria that were found in
+   * Exchange. ItemGroups is null if the search operation did not specify grouping options.
    *
    * @return the grouped find results
    */

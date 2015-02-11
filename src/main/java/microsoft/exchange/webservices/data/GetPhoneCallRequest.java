@@ -37,7 +37,6 @@ final class GetPhoneCallRequest extends SimpleServiceRequestBase {
    * Initializes a new instance of the GetPhoneCallRequest class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected GetPhoneCallRequest(ExchangeService service)
       throws Exception {
@@ -64,7 +63,7 @@ final class GetPhoneCallRequest extends SimpleServiceRequestBase {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.id.writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.PhoneCallId);
+                       XmlElementNames.PhoneCallId);
   }
 
   /**

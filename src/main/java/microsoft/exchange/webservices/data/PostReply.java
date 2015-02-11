@@ -45,7 +45,7 @@ public final class PostReply extends ServiceObject {
   protected PostReply(Item referenceItem) throws Exception {
     super(referenceItem.getService());
     EwsUtilities.EwsAssert(referenceItem != null, "PostReply.ctor",
-        "referenceItem is null");
+                           "referenceItem is null");
     referenceItem.throwIfThisIsNew();
 
     this.referenceItem = referenceItem;
@@ -64,8 +64,7 @@ public final class PostReply extends ServiceObject {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -81,23 +80,24 @@ public final class PostReply extends ServiceObject {
    * @throws Exception the exception
    */
   protected PostItem internalCreate(FolderId parentFolderId,
-      MessageDisposition messageDisposition) throws Exception {
+                                    MessageDisposition messageDisposition) throws Exception {
     ((ItemId) this
         .getObjectFromPropertyDefinition(
             ResponseObjectSchema.ReferenceItemId))
         .assign(this.referenceItem.getId());
 
     List<Item> items = this.getService().internalCreateResponseObject(this,
-        parentFolderId, messageDisposition);
+                                                                      parentFolderId,
+                                                                      messageDisposition);
 
     PostItem postItem = EwsUtilities.findFirstItemOfType(PostItem.class,
-        items);
+                                                         items);
 
     // This should never happen. If it does, we have a bug.
     EwsUtilities
         .EwsAssert(postItem != null, "PostReply.InternalCreate",
-            "postItem is null. The CreateItem call did" +
-                " not return the expected PostItem.");
+                   "postItem is null. The CreateItem call did" +
+                   " not return the expected PostItem.");
 
     return postItem;
   }
@@ -125,16 +125,16 @@ public final class PostReply extends ServiceObject {
    */
   @Override
   protected void internalDelete(DeleteMode deleteMode,
-      SendCancellationsMode sendCancellationsMode,
-      AffectedTaskOccurrence affectedTaskOccurrences)
+                                SendCancellationsMode sendCancellationsMode,
+                                AffectedTaskOccurrence affectedTaskOccurrences)
       throws InvalidOperationException {
     throw new InvalidOperationException(
         Strings.DeletingThisObjectTypeNotAuthorized);
   }
 
   /**
-   * Saves the post reply in the same folder as the original post item.
-   * Calling this method results in a call to EWS.
+   * Saves the post reply in the same folder as the original post item. Calling this method results
+   * in a call to EWS.
    *
    * @return A PostItem representing the posted reply
    * @throws Exception the exception
@@ -144,8 +144,8 @@ public final class PostReply extends ServiceObject {
   }
 
   /**
-   * Saves the post reply in the same folder as the original post item.
-   * Calling this method results in a call to EWS.
+   * Saves the post reply in the same folder as the original post item. Calling this method results
+   * in a call to EWS.
    *
    * @param destinationFolderId the destination folder id
    * @return A PostItem representing the posted reply
@@ -157,8 +157,7 @@ public final class PostReply extends ServiceObject {
   }
 
   /**
-   * Saves the post reply in a specified folder. Calling this method results
-   * in a call to EWS.
+   * Saves the post reply in a specified folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderName the destination folder name
    * @return A PostItem representing the posted reply.
@@ -210,12 +209,11 @@ public final class PostReply extends ServiceObject {
    */
   public void setBody(MessageBody value) throws Exception {
     this.getPropertyBag().setObjectFromPropertyDefinition(ItemSchema.Body,
-        value);
+                                                          value);
   }
 
   /**
-   * Gets the body prefix that should be prepended to the original
-   * post item's body.
+   * Gets the body prefix that should be prepended to the original post item's body.
    *
    * @return the body prefix
    * @throws Exception the exception

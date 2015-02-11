@@ -23,9 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.net.URI;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a GetUserSettings request.
@@ -37,11 +38,10 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
    */
   // / </summary>
   private static final String GetUserSettingsActionUri = EwsUtilities.
-      AutodiscoverSoapNamespace +
-      "/Autodiscover/GetUserSettings";
+                                                             AutodiscoverSoapNamespace +
+                                                         "/Autodiscover/GetUserSettings";
   private List<String> smtpAddresses;
   private List<UserSettingName> settings;
-
 
   // Expect this request to return the partner token.
 
@@ -50,24 +50,21 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
   private String partnerToken;
 
   /**
-   * Initializes a new instance of the <see cref="GetUserSettingsRequest"/>
-   * class.
+   * Initializes a new instance of the <see cref="GetUserSettingsRequest"/> class.
    *
    * @param service the service
    * @param url     the url
-   * @throws ServiceValidationException
    */
-  protected GetUserSettingsRequest(AutodiscoverService service, URI url) throws ServiceValidationException {
+  protected GetUserSettingsRequest(AutodiscoverService service, URI url)
+      throws ServiceValidationException {
     this(service, url, false);
   }
 
   /**
-   * Initializes a new instance of the <see cref="GetUserSettingsRequest"/>
-   * class.
+   * Initializes a new instance of the <see cref="GetUserSettingsRequest"/> class.
    *
    * @param service Autodiscover service associated with this request
    * @param url     URL of Autodiscover service.
-   * @throws ServiceValidationException
    */
   protected GetUserSettingsRequest(AutodiscoverService service, URI url, boolean expectPartnerToken)
       throws ServiceValidationException
@@ -195,8 +192,8 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue("xmlns",
-        EwsUtilities.AutodiscoverSoapNamespacePrefix,
-        EwsUtilities.AutodiscoverSoapNamespace);
+                               EwsUtilities.AutodiscoverSoapNamespacePrefix,
+                               EwsUtilities.AutodiscoverSoapNamespace);
   }
 
   /**
@@ -204,14 +201,15 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
    * @throws ServiceXmlSerializationException
    */
   @Override
-  protected void writeExtraCustomSoapHeadersToXml(EwsServiceXmlWriter writer) throws XMLStreamException,
-      ServiceXmlSerializationException {
+  protected void writeExtraCustomSoapHeadersToXml(EwsServiceXmlWriter writer)
+      throws XMLStreamException,
+             ServiceXmlSerializationException {
     if (this.expectPartnerToken) {
       writer
           .writeElementValue(XmlNamespace.Autodiscover,
-              XmlElementNames.BinarySecret,
-              new String(org.apache.commons.codec.binary.Base64.
-                  encodeBase64(ExchangeServiceBase.getSessionKey())));
+                             XmlElementNames.BinarySecret,
+                             new String(org.apache.commons.codec.binary.Base64.
+                                 encodeBase64(ExchangeServiceBase.getSessionKey())));
     }
   }
 
@@ -226,28 +224,28 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeStartElement(XmlNamespace.Autodiscover,
-        XmlElementNames.Request);
+                             XmlElementNames.Request);
 
     writer.writeStartElement(XmlNamespace.Autodiscover,
-        XmlElementNames.Users);
+                             XmlElementNames.Users);
 
     for (String smtpAddress : this.getSmtpAddresses()) {
       writer.writeStartElement(XmlNamespace.Autodiscover,
-          XmlElementNames.User);
+                               XmlElementNames.User);
 
       if (!(smtpAddress == null || smtpAddress.isEmpty())) {
         writer.writeElementValue(XmlNamespace.Autodiscover,
-            XmlElementNames.Mailbox, smtpAddress);
+                                 XmlElementNames.Mailbox, smtpAddress);
       }
       writer.writeEndElement(); // User
     }
     writer.writeEndElement(); // Users
 
     writer.writeStartElement(XmlNamespace.Autodiscover,
-        XmlElementNames.RequestedSettings);
+                             XmlElementNames.RequestedSettings);
     for (UserSettingName setting : this.getSettings()) {
       writer.writeElementValue(XmlNamespace.Autodiscover,
-          XmlElementNames.Setting, setting);
+                               XmlElementNames.Setting, setting);
     }
 
     writer.writeEndElement(); // RequestedSettings
@@ -259,7 +257,6 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
    * Read the partner token soap header.
    *
    * @param reader ewsxmlreader
-   * @throws Exception
    */
   @Override
   protected void readSoapHeader(EwsXmlReader reader) throws Exception {
@@ -267,12 +264,12 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
 
     if (this.expectPartnerToken) {
       if (reader.isStartElement(XmlNamespace.Autodiscover,
-          XmlElementNames.PartnerToken)) {
+                                XmlElementNames.PartnerToken)) {
         this.partnerToken = reader.readInnerXml();
       }
 
       if (reader.isStartElement(XmlNamespace.Autodiscover,
-          XmlElementNames.PartnerTokenReference)) {
+                                XmlElementNames.PartnerTokenReference)) {
         partnerTokenReference = reader.readInnerXml();
       }
     }
@@ -327,8 +324,7 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
   }
 
   /**
-   * <summary>
-   * Gets the partner token reference.
+   * <summary> Gets the partner token reference.
    */
   protected String getPartnerTokenReference() {
     return partnerTokenReference;

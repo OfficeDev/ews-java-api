@@ -24,11 +24,10 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an error that occurs when a call to the DeleteAttachment web
- * method fails.
+ * Represents an error that occurs when a call to the DeleteAttachment web method fails.
  */
 public final class DeleteAttachmentException extends
-    ServiceRemoteException {// extends
+                                             ServiceRemoteException {// extends
   // BatchServiceResponseException<DeleteAttachmentResponse>
 
   /**
@@ -54,8 +53,8 @@ public final class DeleteAttachmentException extends
     // super(serviceResponses, message);
     super(message);
     EwsUtilities.EwsAssert(serviceResponses != null,
-        "MultiServiceResponseException.ctor",
-        "serviceResponses is null");
+                           "MultiServiceResponseException.ctor",
+                           "serviceResponses is null");
 
     this.responses = serviceResponses;
   }
@@ -74,8 +73,8 @@ public final class DeleteAttachmentException extends
     // super(serviceResponses, message, innerException);
     super(message, innerException);
     EwsUtilities.EwsAssert(serviceResponses != null,
-        "MultiServiceResponseException.ctor",
-        "serviceResponses is null");
+                           "MultiServiceResponseException.ctor",
+                           "serviceResponses is null");
 
     this.responses = serviceResponses;
   }

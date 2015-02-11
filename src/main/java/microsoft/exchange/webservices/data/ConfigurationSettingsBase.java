@@ -69,9 +69,9 @@ abstract class ConfigurationSettingsBase {
    */
   protected void loadFromXml(EwsXmlReader reader) throws Exception {
     reader.readStartElement(XmlNamespace.NotSpecified,
-        XmlElementNames.Autodiscover);
+                            XmlElementNames.Autodiscover);
     reader.readStartElement(XmlNamespace.NotSpecified,
-        XmlElementNames.Response);
+                            XmlElementNames.Response);
 
     do {
       reader.read();
@@ -82,10 +82,10 @@ abstract class ConfigurationSettingsBase {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.NotSpecified,
-        XmlElementNames.Response));
+                                  XmlElementNames.Response));
 
     reader.readEndElement(XmlNamespace.NotSpecified,
-        XmlElementNames.Autodiscover);
+                          XmlElementNames.Autodiscover);
   }
 
   /**

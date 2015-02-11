@@ -36,6 +36,16 @@ final class GetUserOofSettingsRequest extends SimpleServiceRequestBase {
   private String smtpAddress;
 
   /**
+   * Initializes a new instance of the class.
+   *
+   * @param service the service
+   */
+  protected GetUserOofSettingsRequest(ExchangeService service)
+      throws Exception {
+    super(service);
+  }
+
+  /**
    * Gets the name of the XML element.
    *
    * @return XML element name.
@@ -69,7 +79,7 @@ final class GetUserOofSettingsRequest extends SimpleServiceRequestBase {
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeStartElement(XmlNamespace.Types, XmlElementNames.Mailbox);
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Address,
-        this.getSmtpAddress());
+                             this.getSmtpAddress());
     writer.writeEndElement(); // Mailbox
   }
 
@@ -99,16 +109,16 @@ final class GetUserOofSettingsRequest extends SimpleServiceRequestBase {
     serviceResponse.loadFromXml(reader, XmlElementNames.ResponseMessage);
     if (serviceResponse.getErrorCode() == ServiceError.NoError) {
       reader.readStartElement(XmlNamespace.Types,
-          XmlElementNames.OofSettings);
+                              XmlElementNames.OofSettings);
 
       serviceResponse.setOofSettings(new OofSettings());
       serviceResponse.getOofSettings().loadFromXml(reader,
-          reader.getLocalName());
+                                                   reader.getLocalName());
 
       serviceResponse.getOofSettings().setAllowExternalOof(
           reader.readElementValue(OofExternalAudience.class,
-              XmlNamespace.Messages,
-              XmlElementNames.AllowExternalOof));
+                                  XmlNamespace.Messages,
+                                  XmlElementNames.AllowExternalOof));
     }
 
     return serviceResponse;
@@ -122,17 +132,6 @@ final class GetUserOofSettingsRequest extends SimpleServiceRequestBase {
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
     return ExchangeVersion.Exchange2007_SP1;
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param service the service
-   * @throws Exception
-   */
-  protected GetUserOofSettingsRequest(ExchangeService service)
-      throws Exception {
-    super(service);
   }
 
   /**

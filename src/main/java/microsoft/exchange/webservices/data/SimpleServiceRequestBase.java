@@ -26,10 +26,16 @@ package microsoft.exchange.webservices.data;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import javax.xml.ws.http.HTTPException;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
+
+import javax.xml.ws.http.HTTPException;
 
 /**
  * Defines the SimpleServiceRequestBase class.
@@ -48,9 +54,6 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
 
   /**
    * Executes this request.
-   *
-   * @throws Exception
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException
    */
   protected Object internalExecute() throws ServiceLocalException, Exception {
     HttpWebRequest response = null;
@@ -65,10 +68,11 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
     } catch (Exception e) {
       if (response != null) {
         this.getService().processHttpResponseHeaders(TraceFlags.
-            EwsResponseHttpHeaders, response);
+                                                         EwsResponseHttpHeaders, response);
       }
 
-      throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+      throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()),
+                                        e);
     } finally {
       try {
         if (response != null) {
@@ -125,14 +129,15 @@ abstract class SimpleServiceRequestBase extends ServiceRequestBase {
    * Reads the response.
    *
    * @return serviceResponse
-   * @throws Exception
    */
   private Object readResponse(HttpWebRequest response) throws Exception {
     Object serviceResponse;
 
     if (!response.getResponseContentType().startsWith("text/xml")) {
-      String line = new BufferedReader(new InputStreamReader(ServiceRequestBase.getResponseStream(response)))
-          .readLine();
+      String
+          line =
+          new BufferedReader(new InputStreamReader(ServiceRequestBase.getResponseStream(response)))
+              .readLine();
       log.error("Response content type not XML; first line: '" + line + "'");
       throw new ServiceRequestException(Strings.ServiceResponseDoesNotContainXml);
     }

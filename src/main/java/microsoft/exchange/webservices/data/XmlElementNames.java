@@ -4346,7 +4346,6 @@ class XmlElementNames {
    */
   public static final String HeartbeatFrequency = "HeartbeatFrequency";
 
-
   // SyncFolderItems
   /**
    * The Constant SyncFolderItems.
@@ -4707,7 +4706,9 @@ class XmlElementNames {
   /**
    * The Constant GetPasswordExpirationDateResponse.
    */
-  public static final String GetPasswordExpirationDateResponse = "GetPasswordExpirationDateResponse";
+  public static final String
+      GetPasswordExpirationDateResponse =
+      "GetPasswordExpirationDateResponse";
 
   // SOAP element names
 
@@ -4776,7 +4777,6 @@ class XmlElementNames {
    */
   public static final String EwsErrorCodeElementName =
       "ErrorCode"; // Generated
-
 
   // by
   // Availability

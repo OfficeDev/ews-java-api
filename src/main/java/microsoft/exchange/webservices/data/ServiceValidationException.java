@@ -56,7 +56,7 @@ public final class ServiceValidationException extends ServiceLocalException {
    * @param innerException the inner exception
    */
   public ServiceValidationException(String message,
-      Exception innerException) {
+                                    Exception innerException) {
     super(message, innerException);
 
   }

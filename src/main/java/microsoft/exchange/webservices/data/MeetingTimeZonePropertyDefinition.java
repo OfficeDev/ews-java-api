@@ -31,8 +31,7 @@ import java.util.EnumSet;
 class MeetingTimeZonePropertyDefinition extends PropertyDefinition {
 
   /**
-   * Initializes a new instance of the MeetingTimeZonePropertyDefinition
-   * class.
+   * Initializes a new instance of the MeetingTimeZonePropertyDefinition class.
    *
    * @param xmlElementName the xml element name
    * @param uri            the uri
@@ -40,8 +39,8 @@ class MeetingTimeZonePropertyDefinition extends PropertyDefinition {
    * @param version        the version
    */
   protected MeetingTimeZonePropertyDefinition(String xmlElementName,
-      String uri, EnumSet<PropertyDefinitionFlags> flags,
-      ExchangeVersion version) {
+                                              String uri, EnumSet<PropertyDefinitionFlags> flags,
+                                              ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
 
   }
@@ -54,7 +53,7 @@ class MeetingTimeZonePropertyDefinition extends PropertyDefinition {
    * @throws Exception the exception
    */
   protected final void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+                                                PropertyBag propertyBag) throws Exception {
     MeetingTimeZone meetingTimeZone = new MeetingTimeZone();
     meetingTimeZone.loadFromXml(reader, this.getXmlElement());
 
@@ -72,7 +71,7 @@ class MeetingTimeZonePropertyDefinition extends PropertyDefinition {
    * @throws Exception the exception
    */
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+                                         PropertyBag propertyBag, boolean isUpdateOperation)
       throws Exception {
     MeetingTimeZone value = (MeetingTimeZone) propertyBag
         .getObjectFromPropertyDefinition(this);

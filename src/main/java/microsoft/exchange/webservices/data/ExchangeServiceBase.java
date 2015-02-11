@@ -34,8 +34,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
@@ -47,11 +45,17 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Date;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.TimeZone;
+
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 /**
  * Represents an abstract binding to an Exchange Service.
@@ -62,91 +66,79 @@ public abstract class ExchangeServiceBase implements Closeable {
    * Prefix for "extended" headers.
    */
   private static final String ExtendedHeaderPrefix = "X-";
-
-  /**
-   * The credentials.
-   */
-  private ExchangeCredentials credentials;
-
-  /**
-   * The use default credentials.
-   */
-  private boolean useDefaultCredentials;
-
   /**
    * The binary secret.
    */
   private static byte[] binarySecret;
-
+  /**
+   * Default UserAgent.
+   */
+  private static String
+      defaultUserAgent =
+      "ExchangeServicesClient/" + EwsUtilities.getBuildVersion();
+  protected CloseableHttpClient httpClient;
+  protected HttpClientContext httpContext = HttpClientContext.create();
+  protected HttpClientWebRequest request = null;
+  /**
+   * The credentials.
+   */
+  private ExchangeCredentials credentials;
+  /**
+   * The use default credentials.
+   */
+  private boolean useDefaultCredentials;
   /**
    * The timeout.
    */
   private int timeout = 100000;
-
   /**
    * The trace enabled.
    */
   private boolean traceEnabled;
-
   /**
    * The trace flags.
    */
   private EnumSet<TraceFlags> traceFlags = EnumSet.allOf(TraceFlags.class);
-
   /**
    * The trace listener.
    */
   private ITraceListener traceListener = new EwsTraceListener();
-
   /**
    * The pre authenticate.
    */
   private boolean preAuthenticate;
-
   /**
    * The user agent.
    */
   private String userAgent = ExchangeServiceBase.defaultUserAgent;
-
   /**
    * The accept gzip encoding.
    */
   private boolean acceptGzipEncoding = true;
-
   /**
    * The requested server version.
    */
   private ExchangeVersion requestedServerVersion = ExchangeVersion.Exchange2010_SP2;
-
   /**
    * The server info.
    */
   private ExchangeServerInfo serverInfo;
-
   private Map<String, String> httpHeaders = new HashMap<String, String>();
-
   private Map<String, String> httpResponseHeaders = new HashMap<String, String>();
 
-  private WebProxy webProxy;
-
-  protected CloseableHttpClient httpClient;
-
-  protected HttpClientContext httpContext = HttpClientContext.create();
-
-  protected HttpClientWebRequest request = null;
-
   // protected static HttpStatusCode AccountIsLocked = (HttpStatusCode)456;
-
+  private WebProxy webProxy;
   /**
-   * Default UserAgent.
+   * Provides an event that applications can implement to emit custom SOAP headers in requests that
+   * are sent to Exchange.
    */
-  private static String defaultUserAgent = "ExchangeServicesClient/" + EwsUtilities.getBuildVersion();
+  private List<ICustomXmlSerialization> OnSerializeCustomSoapHeaders;
 
   /**
    * Initializes a new instance.
    *
-   * This constructor performs the initialization of the HTTP connection manager, so it should be called by
-   * every other constructor.
+   * This constructor performs the initialization of the HTTP connection manager, so it should be
+   * called by every other constructor.
    */
   protected ExchangeServiceBase() {
     setUseDefaultCredentials(true);
@@ -158,7 +150,8 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.requestedServerVersion = requestedServerVersion;
   }
 
-  protected ExchangeServiceBase(ExchangeServiceBase service, ExchangeVersion requestedServerVersion) {
+  protected ExchangeServiceBase(ExchangeServiceBase service,
+                                ExchangeVersion requestedServerVersion) {
     this(requestedServerVersion);
     this.useDefaultCredentials = service.getUseDefaultCredentials();
     this.credentials = service.getCredentials();
@@ -171,6 +164,37 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.acceptGzipEncoding = service.getAcceptGzipEncoding();
     this.httpHeaders = service.getHttpHeaders();
   }
+
+  /**
+   * @return false if location is null,true if this abstract pathname is absolute,
+   */
+  public static boolean checkURIPath(String location) {
+    if (location == null) {
+      return false;
+    }
+    final File file = new File(location);
+    return file.isAbsolute();
+  }
+
+  // Event handlers
+
+  /**
+   * Gets the session key.
+   */
+  protected static byte[] getSessionKey() {
+    // this has to be computed only once.
+    synchronized (ExchangeServiceBase.class) {
+      if (ExchangeServiceBase.binarySecret == null) {
+        Random randomNumberGenerator = new Random();
+        ExchangeServiceBase.binarySecret = new byte[256 / 8];
+        randomNumberGenerator.nextBytes(binarySecret);
+      }
+
+      return ExchangeServiceBase.binarySecret;
+    }
+  }
+
+  // Utilities
 
   private void initializeHttpClient() {
     EwsSSLProtocolSocketFactory factory;
@@ -189,8 +213,12 @@ public abstract class ExchangeServiceBase implements Closeable {
         .register("https", factory)
         .build();
 
-    HttpClientConnectionManager httpConnectionManager = new BasicHttpClientConnectionManager(registry);
-    HttpClientBuilder httpClientBuilder = HttpClients.custom().setConnectionManager(httpConnectionManager);
+    HttpClientConnectionManager
+        httpConnectionManager =
+        new BasicHttpClientConnectionManager(registry);
+    HttpClientBuilder
+        httpClientBuilder =
+        HttpClients.custom().setConnectionManager(httpConnectionManager);
     httpClient = httpClientBuilder.build();
   }
 
@@ -203,8 +231,6 @@ public abstract class ExchangeServiceBase implements Closeable {
     }
   }
 
-  // Event handlers
-
   /**
    * Calls the custom SOAP header serialisation event handlers, if defined.
    *
@@ -212,7 +238,8 @@ public abstract class ExchangeServiceBase implements Closeable {
    */
   protected void doOnSerializeCustomSoapHeaders(XMLStreamWriter writer) {
     EwsUtilities
-        .EwsAssert(writer != null, "ExchangeService.DoOnSerializeCustomSoapHeaders", "writer is null");
+        .EwsAssert(writer != null, "ExchangeService.DoOnSerializeCustomSoapHeaders",
+                   "writer is null");
 
     if (null != getOnSerializeCustomSoapHeaders() &&
         !getOnSerializeCustomSoapHeaders().isEmpty()) {
@@ -222,12 +249,9 @@ public abstract class ExchangeServiceBase implements Closeable {
     }
   }
 
-  // Utilities
-
   /**
-   * Creates an HttpWebRequest instance and initialises it with the
-   * appropriate parameters, based on the configuration of this service
-   * object.
+   * Creates an HttpWebRequest instance and initialises it with the appropriate parameters, based on
+   * the configuration of this service object.
    *
    * @param url                The URL that the HttpWebRequest should target.
    * @param acceptGzipEncoding If true, ask server for GZip compressed content.
@@ -237,7 +261,8 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
   protected HttpWebRequest prepareHttpWebRequestForUrl(URI url, boolean acceptGzipEncoding,
-      boolean allowAutoRedirect) throws ServiceLocalException, URISyntaxException {
+                                                       boolean allowAutoRedirect)
+      throws ServiceLocalException, URISyntaxException {
     // Verify that the protocol is something that we can handle
     if (!url.getScheme().equalsIgnoreCase("HTTP") && !url.getScheme().equalsIgnoreCase("HTTPS")) {
       String strErr = String.format(Strings.UnsupportedWebProtocol, url.getScheme());
@@ -270,7 +295,8 @@ public abstract class ExchangeServiceBase implements Closeable {
     return request;
   }
 
-  protected void prepareCredentials(HttpWebRequest request) throws ServiceLocalException, URISyntaxException {
+  protected void prepareCredentials(HttpWebRequest request)
+      throws ServiceLocalException, URISyntaxException {
     request.setUseDefaultCredentials(useDefaultCredentials);
     if (!useDefaultCredentials) {
       if (credentials == null) {
@@ -286,17 +312,17 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * This method doesn't handle 500 ISE errors. This is handled by the caller since
-   * 500 ISE typically indicates that a SOAP fault has occurred and the handling of
-   * a SOAP fault is currently service specific.
-   *
-   * @throws Exception
+   * This method doesn't handle 500 ISE errors. This is handled by the caller since 500 ISE
+   * typically indicates that a SOAP fault has occurred and the handling of a SOAP fault is
+   * currently service specific.
    */
-  protected void internalProcessHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException,
-      TraceFlags responseHeadersTraceFlag, TraceFlags responseTraceFlag) throws Exception {
+  protected void internalProcessHttpErrorResponse(HttpWebRequest httpWebResponse,
+                                                  Exception webException,
+                                                  TraceFlags responseHeadersTraceFlag,
+                                                  TraceFlags responseTraceFlag) throws Exception {
     EwsUtilities.EwsAssert(500 != httpWebResponse.getResponseCode(),
-        "ExchangeServiceBase.InternalProcessHttpErrorResponse",
-        "InternalProcessHttpErrorResponse does not handle 500 ISE errors, the caller is supposed to handle this.");
+                           "ExchangeServiceBase.InternalProcessHttpErrorResponse",
+                           "InternalProcessHttpErrorResponse does not handle 500 ISE errors, the caller is supposed to handle this.");
 
     this.processHttpResponseHeaders(responseHeadersTraceFlag, httpWebResponse);
 
@@ -311,29 +337,18 @@ public abstract class ExchangeServiceBase implements Closeable {
       }
 
       this.traceMessage(responseTraceFlag,
-          String.format("Account is locked. Unlock URL is {0}", accountUnlockUrl));
+                        String.format("Account is locked. Unlock URL is {0}", accountUnlockUrl));
 
       throw new AccountIsLockedException(String.format(Strings.AccountIsLocked, accountUnlockUrl),
-          accountUnlockUrl, webException);
+                                         accountUnlockUrl, webException);
     }
-  }
-
-  /**
-   * @return false if location is null,true if this abstract pathname is
-   * absolute,
-   */
-  public static boolean checkURIPath(String location) {
-    if (location == null) {
-      return false;
-    }
-    final File file = new File(location);
-    return file.isAbsolute();
   }
 
   /**
    * @throws Exception
    */
-  protected abstract void processHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException)
+  protected abstract void processHttpErrorResponse(HttpWebRequest httpWebResponse,
+                                                   Exception webException)
       throws Exception;
 
   /**
@@ -354,7 +369,8 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws java.io.IOException                 Signals that an I/O exception has occurred.
    */
-  protected void traceMessage(TraceFlags traceType, String logEntry) throws XMLStreamException, IOException {
+  protected void traceMessage(TraceFlags traceType, String logEntry)
+      throws XMLStreamException, IOException {
     if (this.isTraceEnabledFor(traceType)) {
       String traceTypeStr = traceType.toString();
       String logMessage = EwsUtilities.formatLogMessage(traceTypeStr, logEntry);
@@ -381,10 +397,6 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param traceType Kind of trace entry.
    * @param request   The request
-   * @throws microsoft.exchange.webservices.data.EWSHttpException
-   * @throws java.net.URISyntaxException
-   * @throws java.io.IOException
-   * @throws javax.xml.stream.XMLStreamException
    */
   protected void traceHttpRequestHeaders(TraceFlags traceType, HttpWebRequest request)
       throws URISyntaxException, EWSHttpException, XMLStreamException, IOException {
@@ -402,7 +414,8 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @param traceType Kind of trace entry.
    * @param request   The HttpRequest object.
    * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
-   * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
+   * @throws java.io.IOException                                  Signals that an I/O exception has
+   *                                                              occurred.
    * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
    */
   private void traceHttpResponseHeaders(TraceFlags traceType, HttpWebRequest request)
@@ -426,29 +439,6 @@ public abstract class ExchangeServiceBase implements Closeable {
     DateFormat utcFormatter = new SimpleDateFormat(utcPattern);
     utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
     return utcFormatter.format(dt);
-  }
-
-  /**
-   * Sets the user agent to a custom value
-   *
-   * @param userAgent User agent string to set on the service
-   */
-  protected void setCustomUserAgent(String userAgent) {
-    this.userAgent = userAgent;
-  }
-
-  /**
-   * Validates this instance.
-   *
-   * @throws ServiceLocalException the service local exception
-   */
-  protected void validate() throws ServiceLocalException {
-    // E14:302056 -- Allow clients to add HTTP request headers with 'X-' prefix but no others.
-    for (Map.Entry<String, String> key : this.httpHeaders.entrySet()) {
-      if (!key.getKey().startsWith(ExtendedHeaderPrefix)) {
-        throw new ServiceValidationException(String.format(Strings.CannotAddRequestHeader, key));
-      }
-    }
   }
 
 //  /**
@@ -500,6 +490,29 @@ public abstract class ExchangeServiceBase implements Closeable {
 //    }
 //    return cookieValue;
 //  }
+
+  /**
+   * Sets the user agent to a custom value
+   *
+   * @param userAgent User agent string to set on the service
+   */
+  protected void setCustomUserAgent(String userAgent) {
+    this.userAgent = userAgent;
+  }
+
+  /**
+   * Validates this instance.
+   *
+   * @throws ServiceLocalException the service local exception
+   */
+  protected void validate() throws ServiceLocalException {
+    // E14:302056 -- Allow clients to add HTTP request headers with 'X-' prefix but no others.
+    for (Map.Entry<String, String> key : this.httpHeaders.entrySet()) {
+      if (!key.getKey().startsWith(ExtendedHeaderPrefix)) {
+        throw new ServiceValidationException(String.format(Strings.CannotAddRequestHeader, key));
+      }
+    }
+  }
 
   /**
    * Gets a value indicating whether tracing is enabled.
@@ -569,9 +582,8 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Sets the credentials used to authenticate with the Exchange Web Services.
-   * Setting the Credentials property automatically sets the
-   * UseDefaultCredentials to false.
+   * Sets the credentials used to authenticate with the Exchange Web Services. Setting the
+   * Credentials property automatically sets the UseDefaultCredentials to false.
    *
    * @param credentials Exchange credentials.
    */
@@ -581,9 +593,8 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Gets a value indicating whether the credentials of the user currently
-   * logged into Windows should be used to authenticate with the Exchange Web
-   * Services.
+   * Gets a value indicating whether the credentials of the user currently logged into Windows
+   * should be used to authenticate with the Exchange Web Services.
    *
    * @return true if credentials of the user currently logged in are used
    */
@@ -592,10 +603,9 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Sets a value indicating whether the credentials of the user currently
-   * logged into Windows should be used to authenticate with the Exchange Web
-   * Services. Setting UseDefaultCredentials to true automatically sets the
-   * Credentials property to null.
+   * Sets a value indicating whether the credentials of the user currently logged into Windows
+   * should be used to authenticate with the Exchange Web Services. Setting UseDefaultCredentials to
+   * true automatically sets the Credentials property to null.
    *
    * @param value the new use default credentials
    */
@@ -607,8 +617,8 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Gets the timeout used when sending HTTP requests and when receiving HTTP
-   * responses, in milliseconds.
+   * Gets the timeout used when sending HTTP requests and when receiving HTTP responses, in
+   * milliseconds.
    *
    * @return timeout in milliseconds
    */
@@ -617,8 +627,8 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Sets the timeout used when sending HTTP requests and when receiving HTTP
-   * respones, in milliseconds. Defaults to 100000.
+   * Sets the timeout used when sending HTTP requests and when receiving HTTP respones, in
+   * milliseconds. Defaults to 100000.
    *
    * @param timeout timeout in milliseconds
    */
@@ -630,8 +640,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Gets a value that indicates whether HTTP pre-authentication should be
-   * performed.
+   * Gets a value that indicates whether HTTP pre-authentication should be performed.
    *
    * @return true indicates pre-authentication is set
    */
@@ -640,8 +649,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Sets a value that indicates whether HTTP pre-authentication should be
-   * performed.
+   * Sets a value that indicates whether HTTP pre-authentication should be performed.
    *
    * @param preAuthenticate true to enable pre-authentication
    */
@@ -650,10 +658,9 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Gets a value indicating whether GZip compression encoding should be
-   * accepted. This value will tell the server that the client is able to
-   * handle GZip compression encoding. The server will only send Gzip
-   * compressed content if it has been configured to do so.
+   * Gets a value indicating whether GZip compression encoding should be accepted. This value will
+   * tell the server that the client is able to handle GZip compression encoding. The server will
+   * only send Gzip compressed content if it has been configured to do so.
    *
    * @return true if compression is used
    */
@@ -662,10 +669,9 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Gets a value indicating whether GZip compression encoding should
-   * be accepted. This value will tell the server that the client is able to
-   * handle GZip compression encoding. The server will only send Gzip
-   * compressed content if it has been configured to do so.
+   * Gets a value indicating whether GZip compression encoding should be accepted. This value will
+   * tell the server that the client is able to handle GZip compression encoding. The server will
+   * only send Gzip compressed content if it has been configured to do so.
    *
    * @param acceptGzipEncoding true to enable compression
    */
@@ -701,8 +707,8 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Gets information associated with the server that processed the last
-   * request. Will be null if no requests have been processed.
+   * Gets information associated with the server that processed the last request. Will be null if no
+   * requests have been processed.
    *
    * @return the server info
    */
@@ -711,8 +717,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Sets information associated with the server that processed the last
-   * request.
+   * Sets information associated with the server that processed the last request.
    *
    * @param serverInfo Server Information
    */
@@ -723,16 +728,17 @@ public abstract class ExchangeServiceBase implements Closeable {
   /**
    * Gets the web proxy that should be used when sending requests to EWS.
    *
-   * @return Proxy
-   * the Proxy Information
+   * @return Proxy the Proxy Information
    */
   public WebProxy getWebProxy() {
     return this.webProxy;
   }
 
+  // Events
+
   /**
-   * Sets the web proxy that should be used when sending requests to EWS.
-   * Set this property to null to use the default web proxy.
+   * Sets the web proxy that should be used when sending requests to EWS. Set this property to null
+   * to use the default web proxy.
    *
    * @param value the Proxy Information
    */
@@ -741,22 +747,13 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Gets a collection of HTTP headers that will be sent with each request to
-   * EWS.
+   * Gets a collection of HTTP headers that will be sent with each request to EWS.
    *
    * @return httpHeaders
    */
   public Map<String, String> getHttpHeaders() {
     return this.httpHeaders;
   }
-
-  // Events
-
-  /**
-   * Provides an event that applications can implement to emit custom SOAP
-   * headers in requests that are sent to Exchange.
-   */
-  private List<ICustomXmlSerialization> OnSerializeCustomSoapHeaders;
 
   /**
    * Gets the on serialize custom soap headers.
@@ -772,7 +769,8 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param onSerializeCustomSoapHeaders the new on serialize custom soap headers
    */
-  public void setOnSerializeCustomSoapHeaders(List<ICustomXmlSerialization> onSerializeCustomSoapHeaders) {
+  public void setOnSerializeCustomSoapHeaders(
+      List<ICustomXmlSerialization> onSerializeCustomSoapHeaders) {
     OnSerializeCustomSoapHeaders = onSerializeCustomSoapHeaders;
   }
 
@@ -781,9 +779,6 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param traceType kind of trace entry
    * @param request   The request
-   * @throws microsoft.exchange.webservices.data.EWSHttpException
-   * @throws java.io.IOException
-   * @throws javax.xml.stream.XMLStreamException
    */
   protected void processHttpResponseHeaders(TraceFlags traceType, HttpWebRequest request)
       throws XMLStreamException, IOException, EWSHttpException {
@@ -798,8 +793,8 @@ public abstract class ExchangeServiceBase implements Closeable {
    */
   private void saveHttpResponseHeaders(Map<String, String> headers) {
     EwsUtilities.EwsAssert(this.httpResponseHeaders.size() == 0,
-        "ExchangeServiceBase.SaveHttpResponseHeaders",
-        "expect no headers in the dictionary yet.");
+                           "ExchangeServiceBase.SaveHttpResponseHeaders",
+                           "expect no headers in the dictionary yet.");
 
     this.httpResponseHeaders.clear();
 
@@ -813,21 +808,5 @@ public abstract class ExchangeServiceBase implements Closeable {
    */
   public Map<String, String> getHttpResponseHeaders() {
     return this.httpResponseHeaders;
-  }
-
-  /**
-   * Gets the session key.
-   */
-  protected static byte[] getSessionKey() {
-    // this has to be computed only once.
-    synchronized (ExchangeServiceBase.class) {
-      if (ExchangeServiceBase.binarySecret == null) {
-        Random randomNumberGenerator = new Random();
-        ExchangeServiceBase.binarySecret = new byte[256 / 8];
-        randomNumberGenerator.nextBytes(binarySecret);
-      }
-
-      return ExchangeServiceBase.binarySecret;
-    }
   }
 }

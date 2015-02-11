@@ -28,13 +28,12 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Represents a collection of changes as returned by a synchronization
- * operation.
+ * Represents a collection of changes as returned by a synchronization operation.
  *
  * @param <TChange> the generic type
  */
 public final class ChangeCollection<TChange extends Change> implements
-    Iterable<TChange> {
+                                                            Iterable<TChange> {
 
   /**
    * The changes.
@@ -64,7 +63,7 @@ public final class ChangeCollection<TChange extends Change> implements
    */
   protected void add(TChange change) {
     EwsUtilities.EwsAssert(change != null, "ChangeList.Add",
-        "change is null");
+                           "change is null");
     this.changes.add(change);
   }
 

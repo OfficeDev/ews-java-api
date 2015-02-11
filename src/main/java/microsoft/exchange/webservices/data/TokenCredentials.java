@@ -43,8 +43,7 @@ public final class TokenCredentials extends WSSecurityBasedCredentials {
   }
 
   /**
-   * This method is called to apply credentials to a service request before
-   * the request is made.
+   * This method is called to apply credentials to a service request before the request is made.
    *
    * @param request The request.
    * @throws java.net.URISyntaxException the uRI syntax exception

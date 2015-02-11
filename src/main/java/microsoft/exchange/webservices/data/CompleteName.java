@@ -233,24 +233,24 @@ public final class CompleteName extends ComplexProperty {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Title,
-        this.title);
+                             this.title);
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.FirstName,
-        this.givenName);
+                             this.givenName);
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.MiddleName, this.middleName);
+                             XmlElementNames.MiddleName, this.middleName);
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.LastName,
-        this.surname);
+                             this.surname);
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Suffix,
-        this.suffix);
+                             this.suffix);
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Initials,
-        this.initials);
+                             this.initials);
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.FullName,
-        this.fullName);
+                             this.fullName);
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.NickName,
-        this.nickname);
+                             this.nickname);
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.YomiFirstName, this.yomiGivenName);
+                             XmlElementNames.YomiFirstName, this.yomiGivenName);
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.YomiLastName, this.yomiSurname);
+                             XmlElementNames.YomiLastName, this.yomiSurname);
   }
 }

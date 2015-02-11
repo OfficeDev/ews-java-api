@@ -52,13 +52,13 @@ final class SuggestionsResponse extends ServiceResponse {
   protected void loadSuggestedDaysFromXml(EwsServiceXmlReader reader)
       throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.SuggestionDayResultArray);
+                            XmlElementNames.SuggestionDayResultArray);
 
     do {
       reader.read();
 
       if (reader.isStartElement(XmlNamespace.Types,
-          XmlElementNames.SuggestionDayResult)) {
+                                XmlElementNames.SuggestionDayResult)) {
         Suggestion daySuggestion = new Suggestion();
 
         daySuggestion.loadFromXml(reader, reader.getLocalName());
@@ -66,7 +66,7 @@ final class SuggestionsResponse extends ServiceResponse {
         this.daySuggestions.add(daySuggestion);
       }
     } while (!reader.isEndElement(XmlNamespace.Messages,
-        XmlElementNames.SuggestionDayResultArray));
+                                  XmlElementNames.SuggestionDayResultArray));
   }
 
   /**

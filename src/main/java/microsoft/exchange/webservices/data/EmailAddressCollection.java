@@ -29,7 +29,7 @@ import java.util.Iterator;
  * Represents a collection of e-mail addresses.
  */
 public final class EmailAddressCollection extends
-    ComplexPropertyCollection<EmailAddress> {
+                                          ComplexPropertyCollection<EmailAddress> {
 
   //XML element name
   private String collectionItemXmlElementName;
@@ -77,8 +77,7 @@ public final class EmailAddressCollection extends
    * Adds an e-mail address to the collection.
    *
    * @param smtpAddress The SMTP address used to initialize the e-mail address.
-   * @return An EmailAddress object initialized with the provided SMTP
-   * address.
+   * @return An EmailAddress object initialized with the provided SMTP address.
    */
   public EmailAddress add(String smtpAddress) {
     EmailAddress emailAddress = new EmailAddress(smtpAddress);
@@ -104,8 +103,7 @@ public final class EmailAddressCollection extends
    *
    * @param name        The name used to initialize the e-mail address.
    * @param smtpAddress The SMTP address used to initialize the e-mail address.
-   * @return An EmailAddress object initialized with the provided SMTP
-   * address.
+   * @return An EmailAddress object initialized with the provided SMTP address.
    */
   public EmailAddress add(String name, String smtpAddress) {
     EmailAddress emailAddress = new EmailAddress(name, smtpAddress);
@@ -128,7 +126,7 @@ public final class EmailAddressCollection extends
   public void removeAt(int index) {
     if (index < 0 || index >= this.getCount()) {
       throw new IllegalArgumentException("Argument \'index\' : " +
-          Strings.IndexIsOutOfRange);
+                                         Strings.IndexIsOutOfRange);
     }
 
     this.internalRemoveAt(index);
@@ -138,8 +136,8 @@ public final class EmailAddressCollection extends
    * Removes an e-mail address from the collection.
    *
    * @param emailAddress The e-mail address to remove.
-   * @return True if the email address was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the email address was successfully removed from the collection, false
+   * otherwise.
    * @throws Exception the exception
    */
   public boolean remove(EmailAddress emailAddress) throws Exception {
@@ -163,13 +161,10 @@ public final class EmailAddressCollection extends
   }
 
   /**
-   * Retrieves the XML element name corresponding to the provided EmailAddress
-   * object.
+   * Retrieves the XML element name corresponding to the provided EmailAddress object.
    *
-   * @param complexProperty The EmailAddress object from which to determine the XML
-   *                        element name.
-   * @return The XML element name corresponding to the provided EmailAddress
-   * object.
+   * @param complexProperty The EmailAddress object from which to determine the XML element name.
+   * @return The XML element name corresponding to the provided EmailAddress object.
    */
   @Override
   protected String getCollectionItemXmlElementName(

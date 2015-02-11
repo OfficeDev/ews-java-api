@@ -38,10 +38,9 @@ final class DeleteFolderRequest extends DeleteRequest<ServiceResponse> {
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
    */
   protected DeleteFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                                ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -78,7 +77,7 @@ final class DeleteFolderRequest extends DeleteRequest<ServiceResponse> {
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new ServiceResponse();
   }
 
@@ -121,7 +120,7 @@ final class DeleteFolderRequest extends DeleteRequest<ServiceResponse> {
   protected void writeElementsToXml(EwsServiceXmlWriter writer) {
     try {
       this.getFolderIds().writeToXml(writer, XmlNamespace.Messages,
-          XmlElementNames.FolderIds);
+                                     XmlElementNames.FolderIds);
     } catch (Exception e) {
       e.printStackTrace();
     }

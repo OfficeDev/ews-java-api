@@ -68,20 +68,20 @@ public final class ImpersonatedUserId {
     }
 
     writer.writeStartElement(XmlNamespace.Types,
-        XmlElementNames.ExchangeImpersonation);
+                             XmlElementNames.ExchangeImpersonation);
     writer.writeStartElement(XmlNamespace.Types,
-        XmlElementNames.ConnectingSID);
+                             XmlElementNames.ConnectingSID);
 
     // For 2007 SP1, use PrimarySmtpAddress for type SmtpAddress
     String connectingIdTypeLocalName = (this.idType ==
-        ConnectingIdType.SmtpAddress) &&
-        (writer.getService().getRequestedServerVersion() ==
-            ExchangeVersion.Exchange2007_SP1) ?
-        XmlElementNames.PrimarySmtpAddress :
-        this.getIdType().toString();
+                                        ConnectingIdType.SmtpAddress) &&
+                                       (writer.getService().getRequestedServerVersion() ==
+                                        ExchangeVersion.Exchange2007_SP1) ?
+                                       XmlElementNames.PrimarySmtpAddress :
+                                       this.getIdType().toString();
 
     writer.writeElementValue(XmlNamespace.Types, connectingIdTypeLocalName,
-        this.id);
+                             this.id);
 
     writer.writeEndElement(); // ConnectingSID
     writer.writeEndElement(); // ExchangeImpersonation

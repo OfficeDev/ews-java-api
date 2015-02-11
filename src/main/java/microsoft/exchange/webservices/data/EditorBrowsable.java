@@ -32,7 +32,8 @@ import java.lang.annotation.Target;
  * The Interface EditorBrowsable.
  */
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME) @interface EditorBrowsable {
+@Retention(RetentionPolicy.RUNTIME)
+@interface EditorBrowsable {
 
   /**
    * State.

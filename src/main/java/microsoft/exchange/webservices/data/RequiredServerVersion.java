@@ -32,7 +32,8 @@ import java.lang.annotation.Target;
  * The Interface RequiredServerVersion.
  */
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME) @interface RequiredServerVersion {
+@Retention(RetentionPolicy.RUNTIME)
+@interface RequiredServerVersion {
 
   /**
    * Version.

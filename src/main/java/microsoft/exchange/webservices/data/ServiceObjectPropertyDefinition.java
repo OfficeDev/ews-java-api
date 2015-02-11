@@ -27,12 +27,31 @@ package microsoft.exchange.webservices.data;
  * Represents a property definition for a service object.
  */
 public abstract class ServiceObjectPropertyDefinition extends
-    PropertyDefinitionBase {
+                                                      PropertyDefinitionBase {
 
   /**
    * The uri.
    */
   private String uri;
+
+  /**
+   * Initializes a new instance.
+   */
+  protected ServiceObjectPropertyDefinition() {
+
+  }
+
+  /**
+   * Initializes a new instance.
+   *
+   * @param uri The URI.
+   */
+  protected ServiceObjectPropertyDefinition(String uri) {
+    super();
+    EwsUtilities.EwsAssert(!(uri == null || uri.isEmpty()),
+                           "ServiceObjectPropertyDefinition.ctor", "uri is null or empty");
+    this.uri = uri;
+  }
 
   /**
    * Gets the name of the XML element.
@@ -64,25 +83,6 @@ public abstract class ServiceObjectPropertyDefinition extends
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.FieldURI, this.getUri());
-  }
-
-  /**
-   * Initializes a new instance.
-   */
-  protected ServiceObjectPropertyDefinition() {
-
-  }
-
-  /**
-   * Initializes a new instance.
-   *
-   * @param uri The URI.
-   */
-  protected ServiceObjectPropertyDefinition(String uri) {
-    super();
-    EwsUtilities.EwsAssert(!(uri == null || uri.isEmpty()),
-        "ServiceObjectPropertyDefinition.ctor", "uri is null or empty");
-    this.uri = uri;
   }
 
   /**

@@ -32,7 +32,7 @@ import java.util.Iterator;
  * @param <TItem> The type of item returned by the search operation.
  */
 public final class GroupedFindItemsResults<TItem extends Item> implements
-    Iterable<ItemGroup<TItem>> {
+                                                               Iterable<ItemGroup<TItem>> {
 
   /**
    * The total count.
@@ -62,8 +62,7 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Gets the total number of items matching the search criteria available in
-   * the searched folder.
+   * Gets the total number of items matching the search criteria available in the searched folder.
    *
    * @return the total count
    */
@@ -72,8 +71,7 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Gets the total number of items matching the search criteria available in
-   * the searched folder.
+   * Gets the total number of items matching the search criteria available in the searched folder.
    *
    * @param totalCount Total number of items
    */
@@ -82,8 +80,8 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Gets the offset that should be used with ItemView to retrieve the next
-   * page of items in a FindItems operation.
+   * Gets the offset that should be used with ItemView to retrieve the next page of items in a
+   * FindItems operation.
    *
    * @return the next page offset
    */
@@ -92,8 +90,8 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Sets the offset that should be used with ItemView to retrieve the next
-   * page of items in a FindItems operation.
+   * Sets the offset that should be used with ItemView to retrieve the next page of items in a
+   * FindItems operation.
    *
    * @param nextPageOffset the new next page offset
    */
@@ -102,8 +100,8 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Gets a value indicating whether more items corresponding to the search
-   * criteria are available in the searched folder.
+   * Gets a value indicating whether more items corresponding to the search criteria are available
+   * in the searched folder.
    *
    * @return true, if is more available
    */
@@ -112,8 +110,8 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Sets a value indicating whether more items corresponding to the search
-   * criteria are available in the searched folder.
+   * Sets a value indicating whether more items corresponding to the search criteria are available
+   * in the searched folder.
    *
    * @param moreAvailable the new more available
    */

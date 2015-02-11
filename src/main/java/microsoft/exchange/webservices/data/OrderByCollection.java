@@ -23,15 +23,19 @@
 
 package microsoft.exchange.webservices.data;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import javax.xml.stream.XMLStreamException;
-import java.util.*;
 
 /**
- * Represents an ordered collection of property definitions qualified with a
- * sort direction.
+ * Represents an ordered collection of property definitions qualified with a sort direction.
  */
 public final class OrderByCollection implements
-    Iterable<Map<PropertyDefinitionBase, SortDirection>> {
+                                     Iterable<Map<PropertyDefinitionBase, SortDirection>> {
 
   /**
    * The prop def sort order pair list.
@@ -48,15 +52,14 @@ public final class OrderByCollection implements
   }
 
   /**
-   * Adds the specified property definition / sort direction pair to the
-   * collection.
+   * Adds the specified property definition / sort direction pair to the collection.
    *
    * @param propertyDefinition the property definition
    * @param sortDirection      the sort direction
    * @throws ServiceLocalException the service local exception
    */
   public void add(PropertyDefinitionBase propertyDefinition,
-      SortDirection sortDirection) throws ServiceLocalException {
+                  SortDirection sortDirection) throws ServiceLocalException {
     if (this.contains(propertyDefinition)) {
       throw new ServiceLocalException(String.format(
           Strings.PropertyAlreadyExistsInOrderByCollection,
@@ -65,7 +68,7 @@ public final class OrderByCollection implements
     Map<PropertyDefinitionBase, SortDirection> propertyDefinitionSortDirectionPair = new
         HashMap<PropertyDefinitionBase, SortDirection>();
     propertyDefinitionSortDirectionPair.put(propertyDefinition,
-        sortDirection);
+                                            sortDirection);
     this.propDefSortOrderPairList.add(propertyDefinitionSortDirectionPair);
   }
 
@@ -77,12 +80,10 @@ public final class OrderByCollection implements
   }
 
   /**
-   * Determines whether the collection contains the specified property
-   * definition.
+   * Determines whether the collection contains the specified property definition.
    *
    * @param propertyDefinition the property definition
-   * @return True if the collection contains the specified property
-   * definition; otherwise, false.
+   * @return True if the collection contains the specified property definition; otherwise, false.
    */
   protected boolean contains(PropertyDefinitionBase propertyDefinition) {
     for (Map<PropertyDefinitionBase, SortDirection> propDefSortOrderPair : propDefSortOrderPairList) {
@@ -104,8 +105,7 @@ public final class OrderByCollection implements
    * Removes the specified property definition from the collection.
    *
    * @param propertyDefinition the property definition
-   * @return True if the property definition is successfully removed;
-   * otherwise, false
+   * @return True if the property definition is successfully removed; otherwise, false
    */
   public boolean remove(PropertyDefinitionBase propertyDefinition) {
     List<Map<PropertyDefinitionBase, SortDirection>> removeList = new
@@ -136,7 +136,7 @@ public final class OrderByCollection implements
    * @return True if collection contains property definition, otherwise false.
    */
   public boolean tryGetValue(PropertyDefinitionBase propertyDefinition,
-      OutParam<SortDirection> sortDirection) {
+                             OutParam<SortDirection> sortDirection) {
     for (Map<PropertyDefinitionBase, SortDirection> pair : this.propDefSortOrderPairList) {
 
       if (pair.containsKey(propertyDefinition)) {
@@ -165,10 +165,10 @@ public final class OrderByCollection implements
 
       for (Map<PropertyDefinitionBase, SortDirection> keyValuePair : this.propDefSortOrderPairList) {
         writer.writeStartElement(XmlNamespace.Types,
-            XmlElementNames.FieldOrder);
+                                 XmlElementNames.FieldOrder);
 
         writer.writeAttributeValue(XmlAttributeNames.Order,
-            keyValuePair.values().iterator().next());
+                                   keyValuePair.values().iterator().next());
         keyValuePair.keySet().iterator().next().writeToXml(writer);
 
         writer.writeEndElement(); // FieldOrder

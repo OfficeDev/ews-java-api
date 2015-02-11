@@ -91,7 +91,7 @@ final class OutlookAccount {
           } else if (xmlResponseType
               .equals(OutlookAccount.RedirectUrl)) {
             this.setResponseType(AutodiscoverResponseType.
-                RedirectUrl);
+                                     RedirectUrl);
           } else if (xmlResponseType
               .equals(OutlookAccount.RedirectAddr)) {
             this.setResponseType(
@@ -122,21 +122,21 @@ final class OutlookAccount {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.NotSpecified,
-        XmlElementNames.Account));
+                                  XmlElementNames.Account));
   }
 
   /**
    * Gets the type of the account.
    */
   protected void convertToUserSettings(List<UserSettingName> requestedSettings,
-      GetUserSettingsResponse response) {
+                                       GetUserSettingsResponse response) {
     for (OutlookProtocol protocol : this.protocols.values()) {
       protocol.convertToUserSettings(requestedSettings, response);
     }
 
     if (requestedSettings.contains(UserSettingName.AlternateMailboxes)) {
       response.getSettings().put(UserSettingName.
-          AlternateMailboxes, this.alternateMailboxes);
+                                     AlternateMailboxes, this.alternateMailboxes);
     }
   }
 

@@ -29,7 +29,7 @@ package microsoft.exchange.webservices.data;
  * @param <TResponse> The type of the response.
  */
 abstract class DeleteRequest<TResponse extends ServiceResponse> extends
-    MultiResponseServiceRequest<TResponse> {
+                                                                MultiResponseServiceRequest<TResponse> {
 
   /**
    * Delete mode. Default is SoftDelete.
@@ -41,10 +41,9 @@ abstract class DeleteRequest<TResponse extends ServiceResponse> extends
    *
    * @param service           The Servcie
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   protected DeleteRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                          ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }

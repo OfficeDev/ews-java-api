@@ -33,28 +33,12 @@ final class GetStreamingEventsResponse extends ServiceResponse {
 
   private GetStreamingEventsResults results = new GetStreamingEventsResults();
   private HangingServiceRequestBase request;
-
-
-  /**
-   * Enumeration of ConnectionStatus that can be returned by the server.
-   */
-  private enum ConnectionStatus {
-    /**
-     * Simple heartbeat
-     */
-    OK,
-
-    /**
-     * Server is closing the connection.
-     */
-    Closed
-  }
+  private List<String> errorSubscriptionIds;
 
   /**
    * Initializes a new instance of the GetStreamingEventsResponse class.
    *
-   * @param request The request
-   *                Request to disconnect when we get a close message.
+   * @param request The request Request to disconnect when we get a close message.
    */
   protected GetStreamingEventsResponse(HangingServiceRequestBase request) {
     super();
@@ -65,8 +49,6 @@ final class GetStreamingEventsResponse extends ServiceResponse {
 
   /**
    * Reads response elements from XML.
-   *
-   * @throws Exception
    */
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
@@ -79,7 +61,8 @@ final class GetStreamingEventsResponse extends ServiceResponse {
       this.results.loadFromXml(reader);
     } else if (reader.getLocalName().equals(XmlElementNames.ConnectionStatus)) {
       String connectionStatus = reader.readElementValue(XmlNamespace.
-          Messages, XmlElementNames.ConnectionStatus);
+                                                            Messages,
+                                                        XmlElementNames.ConnectionStatus);
 
       if (connectionStatus.equals(ConnectionStatus.Closed.toString())) {
         this.request.disconnect(
@@ -90,12 +73,10 @@ final class GetStreamingEventsResponse extends ServiceResponse {
 
   /**
    * Loads extra error details from XML
-   *
-   * @throws Exception
    */
   @Override
   protected boolean loadExtraErrorDetailsFromXml(EwsServiceXmlReader reader,
-      String xmlElementName) throws Exception {
+                                                 String xmlElementName) throws Exception {
     boolean baseReturnVal = super.
         loadExtraErrorDetailsFromXml(reader, xmlElementName);
 
@@ -107,11 +88,11 @@ final class GetStreamingEventsResponse extends ServiceResponse {
             reader.getLocalName().equals(XmlElementNames.SubscriptionId)) {
           this.getErrorSubscriptionIds().add(
               reader.readElementValue(XmlNamespace.Messages,
-                  XmlElementNames.SubscriptionId));
+                                      XmlElementNames.SubscriptionId));
         }
       }
       while (!reader.isEndElement(XmlNamespace.Messages,
-          XmlElementNames.ErrorSubscriptionIds));
+                                  XmlElementNames.ErrorSubscriptionIds));
 
       return true;
     } else {
@@ -126,8 +107,6 @@ final class GetStreamingEventsResponse extends ServiceResponse {
     return this.results;
   }
 
-  private List<String> errorSubscriptionIds;
-
   /**
    * Gets the error subscription ids.
    */
@@ -140,6 +119,21 @@ final class GetStreamingEventsResponse extends ServiceResponse {
    */
   private void setErrorSubscriptionIds(List<String> value) {
     this.errorSubscriptionIds = value;
+  }
+
+  /**
+   * Enumeration of ConnectionStatus that can be returned by the server.
+   */
+  private enum ConnectionStatus {
+    /**
+     * Simple heartbeat
+     */
+    OK,
+
+    /**
+     * Server is closing the connection.
+     */
+    Closed
   }
 
 

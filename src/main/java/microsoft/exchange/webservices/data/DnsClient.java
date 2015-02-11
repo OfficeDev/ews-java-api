@@ -23,15 +23,16 @@
 
 package microsoft.exchange.webservices.data;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
 
 /**
  * Class that represents DNS Query client.
@@ -50,7 +51,8 @@ class DnsClient {
    */
 
   protected static <T extends DnsRecord> List<T> dnsQuery(Class<T> cls,
-      String domain, String dnsServerAddress) throws DnsException {
+                                                          String domain, String dnsServerAddress)
+      throws DnsException {
 
     List<T> dnsRecordList = new ArrayList<T>();
     try {
@@ -58,7 +60,7 @@ class DnsClient {
       // Set up environment for creating initial context
       Hashtable<String, String> env = new Hashtable<String, String>();
       env.put("java.naming.factory.initial",
-          "com.sun.jndi.dns.DnsContextFactory");
+              "com.sun.jndi.dns.DnsContextFactory");
       env.put("java.naming.provider.url", "dns://" + dnsServerAddress);
 
       // Create initial context
@@ -66,7 +68,7 @@ class DnsClient {
 
       // Retrieve SRV record context attributes for the specified domain
       Attributes contextAttributes = ictx.getAttributes(domain,
-          new String[] {EWSConstants.SRVRECORD});
+                                                        new String[]{EWSConstants.SRVRECORD});
       if (contextAttributes != null) {
         NamingEnumeration<?> attributes = contextAttributes.getAll();
         if (attributes != null) {

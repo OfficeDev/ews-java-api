@@ -30,6 +30,13 @@ package microsoft.exchange.webservices.data;
 final class CreateResponseObjectResponse extends CreateItemResponseBase {
 
   /**
+   * Initializes a new instance of the CreateResponseObjectResponse class.
+   */
+  protected CreateResponseObjectResponse() {
+    super();
+  }
+
+  /**
    * Gets Item instance.
    *
    * @param service        The service.
@@ -39,10 +46,10 @@ final class CreateResponseObjectResponse extends CreateItemResponseBase {
    */
   @Override
   protected Item getObjectInstance(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                   String xmlElementName) throws Exception {
     try {
       return EwsUtilities.createEwsObjectFromXmlElementName(Item.class,
-          service, xmlElementName);
+                                                            service, xmlElementName);
     } catch (InstantiationException e) {
       e.printStackTrace();
       return null;
@@ -50,13 +57,6 @@ final class CreateResponseObjectResponse extends CreateItemResponseBase {
       e.printStackTrace();
       return null;
     }
-  }
-
-  /**
-   * Initializes a new instance of the CreateResponseObjectResponse class.
-   */
-  protected CreateResponseObjectResponse() {
-    super();
   }
 
 }

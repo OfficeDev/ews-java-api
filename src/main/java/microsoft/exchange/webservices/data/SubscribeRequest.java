@@ -23,9 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * The Class SubscribeRequest.
@@ -33,7 +34,7 @@ import java.util.List;
  * @param <TSubscription> the generic type
  */
 abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
-    MultiResponseServiceRequest<SubscribeResponse<TSubscription>> {
+                                                                        MultiResponseServiceRequest<SubscribeResponse<TSubscription>> {
 
   /**
    * The folder ids.
@@ -51,6 +52,18 @@ abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
   private String watermark;
 
   /**
+   * Instantiates a new subscribe request.
+   *
+   * @param service the service
+   */
+  protected SubscribeRequest(ExchangeService service)
+      throws Exception {
+    super(service, ServiceErrorHandling.ThrowOnError);
+    this.setFolderIds(new FolderIdWrapperList());
+    this.setEventTypes(new ArrayList<EventType>());
+  }
+
+  /**
    * Validate request.
    *
    * @throws Exception the exception
@@ -60,7 +73,7 @@ abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
     super.validate();
     EwsUtilities.validateParam(this.getFolderIds(), "FolderIds");
     EwsUtilities.validateParamCollection(this.getEventTypes().iterator(),
-        "EventTypes");
+                                         "EventTypes");
     this.getFolderIds().validate(
         this.getService().getRequestedServerVersion());
     // Check that caller isn't trying
@@ -72,14 +85,14 @@ abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
 
     // If Watermark was specified, make sure it's not a blank string.
     if (!(this.getWatermark() == null ||
-        this.getWatermark().isEmpty())) {
+          this.getWatermark().isEmpty())) {
       EwsUtilities.validateNonBlankStringParam(this.
           getWatermark(), "Watermark");
     }
 
     for (EventType eventType : this.getEventTypes()) {
       EwsUtilities.validateEnumVersionValue(eventType,
-          this.getService().getRequestedServerVersion());
+                                            this.getService().getRequestedServerVersion());
     }
 
   }
@@ -140,7 +153,7 @@ abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
    */
   protected abstract void internalWriteElementsToXml(
       EwsServiceXmlWriter writer) throws XMLStreamException,
-      ServiceXmlSerializationException;
+                                         ServiceXmlSerializationException;
 
   /**
    * Writes XML elements.
@@ -156,42 +169,29 @@ abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
 
     if (this.getFolderIds().getCount() == 0) {
       writer.writeAttributeValue(XmlAttributeNames.SubscribeToAllFolders,
-          true);
+                                 true);
     }
 
     this.getFolderIds().writeToXml(writer, XmlNamespace.Types,
-        XmlElementNames.FolderIds);
+                                   XmlElementNames.FolderIds);
 
     writer
         .writeStartElement(XmlNamespace.Types,
-            XmlElementNames.EventTypes);
+                           XmlElementNames.EventTypes);
     for (EventType eventType : this.getEventTypes()) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.EventType, eventType);
+                               XmlElementNames.EventType, eventType);
     }
     writer.writeEndElement();
 
     if (!(this.getWatermark() == null || this.getWatermark().isEmpty())) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.Watermark, this.getWatermark());
+                               XmlElementNames.Watermark, this.getWatermark());
     }
 
     this.internalWriteElementsToXml(writer);
 
     writer.writeEndElement();
-  }
-
-  /**
-   * Instantiates a new subscribe request.
-   *
-   * @param service the service
-   * @throws Exception
-   */
-  protected SubscribeRequest(ExchangeService service)
-      throws Exception {
-    super(service, ServiceErrorHandling.ThrowOnError);
-    this.setFolderIds(new FolderIdWrapperList());
-    this.setEventTypes(new ArrayList<EventType>());
   }
 
   /**

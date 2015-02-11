@@ -46,8 +46,6 @@ public class DateTimeParserTest {
     parser = new DateTimeParser();
   }
 
-
-
   // Tests for DateTimeParser.convertDateTimeStringToDate()
 
   @Test
@@ -99,7 +97,7 @@ public class DateTimeParserTest {
   }
 
   @Test
-   public void testDateTimeWithTimeZone() {
+  public void testDateTimeWithTimeZone() {
     String dateString = "2015-01-08T10:11:12+0200";
     Date parsed = parser.convertDateTimeStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
@@ -162,8 +160,6 @@ public class DateTimeParserTest {
     assertEquals(8, calendar.get(Calendar.DATE));
   }
 
-
-
   // Tests for DateTimeParser.convertDateStringToDate()
 
   @Test
@@ -173,7 +169,7 @@ public class DateTimeParserTest {
   }
 
   @Test
-   public void testDateOnlyZulu() {
+  public void testDateOnlyZulu() {
     String dateString = "2015-01-08Z";
     Date parsed = parser.convertDateStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));

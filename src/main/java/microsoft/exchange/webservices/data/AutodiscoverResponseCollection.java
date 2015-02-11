@@ -113,7 +113,7 @@ public abstract class AutodiscoverResponseCollection
         reader.read();
         if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
             (reader.getLocalName().equals(this
-                .getResponseInstanceXmlElementName()))) {
+                                              .getResponseInstanceXmlElementName()))) {
           TResponse response = this.createResponseInstance();
           response.loadFromXml(reader, this
               .getResponseInstanceXmlElementName());

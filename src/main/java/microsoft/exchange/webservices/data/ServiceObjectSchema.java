@@ -25,23 +25,45 @@ package microsoft.exchange.webservices.data;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Represents the base class for all item and folder schemas.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public abstract class ServiceObjectSchema implements
-    Iterable<PropertyDefinition> {
+                                          Iterable<PropertyDefinition> {
 
+  /**
+   * Defines the ExtendedProperties property.
+   */
+  public static final PropertyDefinition extendedProperties =
+      new ComplexPropertyDefinition<ExtendedPropertyCollection>(
+          ExtendedPropertyCollection.class,
+          XmlElementNames.ExtendedProperty,
+          EnumSet.of(PropertyDefinitionFlags.AutoInstantiateOnRead,
+                     PropertyDefinitionFlags.ReuseInstance,
+                     PropertyDefinitionFlags.CanSet,
+                     PropertyDefinitionFlags.CanUpdate),
+          ExchangeVersion.Exchange2007_SP1,
+          new ICreateComplexPropertyDelegate
+              <ExtendedPropertyCollection>() {
+            public ExtendedPropertyCollection createComplexProperty() {
+              return new ExtendedPropertyCollection();
+            }
+          });
   /**
    * The lock object.
    */
   private static Object lockObject = new Object();
-
   /**
-   * List of all schema types. If you add a new ServiceObject subclass that
-   * has an associated schema, add the schema type to the list below.
+   * List of all schema types. If you add a new ServiceObject subclass that has an associated
+   * schema, add the schema type to the list below.
    */
   private static LazyMember<List<Class<?>>> allSchemaTypes = new
       LazyMember<List<Class<?>>>(new
@@ -50,7 +72,7 @@ public abstract class ServiceObjectSchema implements
                                          List<Class<?>> typeList = new ArrayList<Class<?>>();
                                          // typeList.add()
                                         /*
-					 * typeList.add(AppointmentSchema.class);
+                                         * typeList.add(AppointmentSchema.class);
 					 * typeList.add(CalendarResponseObjectSchema.class);
 					 * typeList.add(CancelMeetingMessageSchema.class);
 					 * typeList.add(ContactGroupSchema.class);
@@ -70,21 +92,20 @@ public abstract class ServiceObjectSchema implements
 					 */
                                          // Verify that all Schema types in the Managed API assembly
                                          // have been included.
-					/*
-					 * var missingTypes = from type in
+                                        /*
+                                         * var missingTypes = from type in
 					 * Assembly.GetExecutingAssembly().GetTypes() where
 					 * type.IsSubclassOf(typeof(ServiceObjectSchema)) &&
 					 * !typeList.Contains(type) select type; if
 					 * (missingTypes.Count() > 0) { throw new
 					 * ServiceLocalException
-					 * ("SchemaTypeList does not include all 
+					 * ("SchemaTypeList does not include all
 					 * defined schema types."
 					 * ); }
 					 */
                                          return typeList;
                                        }
                                      });
-
   /**
    * Dictionary of all property definitions.
    */
@@ -98,11 +119,40 @@ public abstract class ServiceObjectSchema implements
           for (Class<?> c : ServiceObjectSchema.allSchemaTypes
               .getMember()) {
             ServiceObjectSchema.addSchemaPropertiesToDictionary(c,
-                propDefDictionary);
+                                                                propDefDictionary);
           }
           return propDefDictionary;
         }
       });
+  /**
+   * The properties.
+   */
+  private Map<String, PropertyDefinition> properties =
+      new HashMap<String, PropertyDefinition>();
+  /**
+   * The visible properties.
+   */
+  private List<PropertyDefinition> visibleProperties =
+      new ArrayList<PropertyDefinition>();
+  /**
+   * The first class properties.
+   */
+  private List<PropertyDefinition> firstClassProperties =
+      new ArrayList<PropertyDefinition>();
+  /**
+   * The first class summary properties.
+   */
+  private List<PropertyDefinition> firstClassSummaryProperties =
+      new ArrayList<PropertyDefinition>();
+  private List<IndexedPropertyDefinition> indexedProperties =
+      new ArrayList<IndexedPropertyDefinition>();
+
+  /**
+   * Initializes a new instance.
+   */
+  protected ServiceObjectSchema() {
+    this.registerProperties();
+  }
 
   /**
    * Adds schema properties to dictionary.
@@ -111,7 +161,7 @@ public abstract class ServiceObjectSchema implements
    * @param propDefDictionary The property definition dictionary.
    */
   protected static void addSchemaPropertiesToDictionary(Class<?> type,
-      Map<String, PropertyDefinitionBase> propDefDictionary) {
+                                                        Map<String, PropertyDefinitionBase> propDefDictionary) {
     Field[] fields = type.getDeclaredFields();
     for (Field field : fields) {
       int modifier = field.getModifiers();
@@ -135,20 +185,20 @@ public abstract class ServiceObjectSchema implements
                 EwsUtilities
                     .EwsAssert(
                         existingPropertyDefinition ==
-                            propertyDefinition,
+                        propertyDefinition,
                         "Schema.allSchemaProperties." +
-                            "delegate",
+                        "delegate",
                         String
                             .format(
                                 "There are at least " +
-                                    "two distinct property " +
-                                    "definitions with the" +
-                                    " following URI: %s",
+                                "two distinct property " +
+                                "definitions with the" +
+                                " following URI: %s",
                                 propertyDefinition
                                     .getUri()));
               } else {
                 propDefDictionary.put(propertyDefinition
-                    .getUri(), propertyDefinition);
+                                          .getUri(), propertyDefinition);
                 // The following is a "generic hack" to register
                 // properties that are not public and
                 // thus not returned by the above GetFields
@@ -159,8 +209,8 @@ public abstract class ServiceObjectSchema implements
                 for (PropertyDefinition associatedInternalProperty : associatedInternalProperties) {
                   propDefDictionary
                       .put(associatedInternalProperty
-                              .getUri(),
-                          associatedInternalProperty);
+                               .getUri(),
+                           associatedInternalProperty);
                 }
 
               }
@@ -187,7 +237,7 @@ public abstract class ServiceObjectSchema implements
    * @param propertyNameDictionary The property name dictionary.
    */
   protected static void addSchemaPropertyNamesToDictionary(Class<?> type,
-      Map<PropertyDefinition, String> propertyNameDictionary) {
+                                                           Map<PropertyDefinition, String> propertyNameDictionary) {
 
     Field[] fields = type.getDeclaredFields();
     for (Field field : fields) {
@@ -213,13 +263,6 @@ public abstract class ServiceObjectSchema implements
         }
       }
     }
-  }
-
-  /**
-   * Initializes a new instance.
-   */
-  protected ServiceObjectSchema() {
-    this.registerProperties();
   }
 
   /**
@@ -267,60 +310,14 @@ public abstract class ServiceObjectSchema implements
   }
 
   /**
-   * Defines the ExtendedProperties property.
-   */
-  public static final PropertyDefinition extendedProperties =
-      new ComplexPropertyDefinition<ExtendedPropertyCollection>(
-          ExtendedPropertyCollection.class,
-          XmlElementNames.ExtendedProperty,
-          EnumSet.of(PropertyDefinitionFlags.AutoInstantiateOnRead,
-              PropertyDefinitionFlags.ReuseInstance,
-              PropertyDefinitionFlags.CanSet,
-              PropertyDefinitionFlags.CanUpdate),
-          ExchangeVersion.Exchange2007_SP1,
-          new ICreateComplexPropertyDelegate
-              <ExtendedPropertyCollection>() {
-            public ExtendedPropertyCollection createComplexProperty() {
-              return new ExtendedPropertyCollection();
-            }
-          });
-
-  /**
-   * The properties.
-   */
-  private Map<String, PropertyDefinition> properties =
-      new HashMap<String, PropertyDefinition>();
-
-  /**
-   * The visible properties.
-   */
-  private List<PropertyDefinition> visibleProperties =
-      new ArrayList<PropertyDefinition>();
-
-  /**
-   * The first class properties.
-   */
-  private List<PropertyDefinition> firstClassProperties =
-      new ArrayList<PropertyDefinition>();
-
-  /**
-   * The first class summary properties.
-   */
-  private List<PropertyDefinition> firstClassSummaryProperties =
-      new ArrayList<PropertyDefinition>();
-
-  private List<IndexedPropertyDefinition> indexedProperties =
-      new ArrayList<IndexedPropertyDefinition>();
-
-  /**
    * Registers a schema property.
    *
    * @param property   The property to register.
-   * @param isInternal Indicates whether the property is internal or should be
-   *                   visible to developers.
+   * @param isInternal Indicates whether the property is internal or should be visible to
+   *                   developers.
    */
   private void registerProperty(PropertyDefinition property,
-      boolean isInternal) {
+                                boolean isInternal) {
     this.properties.put(property.getXmlElement(), property);
 
     if (!isInternal) {
@@ -364,7 +361,7 @@ public abstract class ServiceObjectSchema implements
    * @param indexedProperty The indexed property to register.
    */
   protected void registerIndexedProperty(IndexedPropertyDefinition
-      indexedProperty) {
+                                             indexedProperty) {
     this.indexedProperties.add(indexedProperty);
   }
 
@@ -385,8 +382,7 @@ public abstract class ServiceObjectSchema implements
   }
 
   /**
-   * Gets the list of first class summary properties for this service object
-   * type.
+   * Gets the list of first class summary properties for this service object type.
    *
    * @return the first class summary properties
    */
@@ -402,10 +398,10 @@ public abstract class ServiceObjectSchema implements
    * @return True if property definition exists.
    */
   protected boolean tryGetPropertyDefinition(String xmlElementName,
-      OutParam<PropertyDefinition> propertyDefinitionOutParam) {
+                                             OutParam<PropertyDefinition> propertyDefinitionOutParam) {
     if (this.properties.containsKey(xmlElementName)) {
       propertyDefinitionOutParam.setParam(this.properties
-          .get(xmlElementName));
+                                              .get(xmlElementName));
       return true;
     } else {
       return false;

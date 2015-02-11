@@ -43,10 +43,9 @@ abstract class GetRequest<TServiceObject extends ServiceObject,
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
    */
   protected GetRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                       ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -75,7 +74,6 @@ abstract class GetRequest<TServiceObject extends ServiceObject,
    * Gets the type of the service object this request applies to.
    *
    * @param writer the writer
-   * @throws Exception
    */
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {

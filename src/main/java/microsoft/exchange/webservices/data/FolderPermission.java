@@ -33,9 +33,93 @@ import java.util.Map.Entry;
  * Represents a permission on a folder.
  */
 public final class FolderPermission extends ComplexProperty implements
-    IComplexPropertyChangedDelegate {
+                                                            IComplexPropertyChangedDelegate {
 
 
+  /**
+   * The user id.
+   */
+  private UserId userId;
+  //End Region
+  /**
+   * The can create items.
+   */
+  private boolean canCreateItems;
+  /**
+   * The can create sub folders.
+   */
+  private boolean canCreateSubFolders;
+  /**
+   * The is folder owner.
+   */
+  private boolean isFolderOwner;
+  /**
+   * The is folder visible.
+   */
+  private boolean isFolderVisible;
+  /**
+   * The is folder contact.
+   */
+  private boolean isFolderContact;
+  /**
+   * Variants of pre-defined permission levels that Outlook also displays with the same levels.
+   */
+  private static LazyMember<List<FolderPermission>> levelVariants =
+      new LazyMember<List<FolderPermission>>(
+          new ILazyMember<List<FolderPermission>>() {
+            @Override
+            public List<FolderPermission> createInstance() {
+              List<FolderPermission> results =
+                  new ArrayList<FolderPermission>();
+
+              FolderPermission permissionNone = FolderPermission.
+                  defaultPermissions
+                  .getMember().get(FolderPermissionLevel.None);
+              FolderPermission permissionOwner = FolderPermission.
+                  defaultPermissions
+                  .getMember().get(FolderPermissionLevel.Owner);
+
+              // PermissionLevelNoneOption1
+              FolderPermission permission;
+              try {
+                permission = (FolderPermission) permissionNone.clone();
+                permission.isFolderVisible = true;
+                results.add(permission);
+
+                // PermissionLevelNoneOption2
+                permission = (FolderPermission) permissionNone.clone();
+                permission.isFolderContact = true;
+                results.add(permission);
+
+                // PermissionLevelNoneOption3
+                permission = (FolderPermission) permissionNone.clone();
+                permission.isFolderContact = true;
+                permission.isFolderVisible = true;
+                results.add(permission);
+
+                // PermissionLevelOwnerOption1
+                permission = (FolderPermission) permissionOwner.clone();
+                permission.isFolderContact = false;
+                results.add(permission);
+
+              } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+              }
+              return results;
+            }
+          });
+  /**
+   * The edit items.
+   */
+  private PermissionScope editItems = PermissionScope.None;
+  /**
+   * The delete items.
+   */
+  private PermissionScope deleteItems = PermissionScope.None;
+  /**
+   * The read items.
+   */
+  private FolderPermissionReadAccess readItems = FolderPermissionReadAccess.None;
   private static LazyMember<Map<FolderPermissionLevel, FolderPermission>>
       defaultPermissions =
       new LazyMember<Map<FolderPermissionLevel, FolderPermission>>(
@@ -96,7 +180,7 @@ public final class FolderPermission extends ComplexProperty implements
                   FullDetails;
 
               result.put(FolderPermissionLevel.NoneditingAuthor,
-                  permission);
+                         permission);
 
               permission = new FolderPermission();
               permission.canCreateItems = true;
@@ -123,7 +207,7 @@ public final class FolderPermission extends ComplexProperty implements
                   FullDetails;
 
               result.put(FolderPermissionLevel.PublishingAuthor,
-                  permission);
+                         permission);
 
               permission = new FolderPermission();
               permission.canCreateItems = true;
@@ -150,7 +234,7 @@ public final class FolderPermission extends ComplexProperty implements
                   FullDetails;
 
               result.put(FolderPermissionLevel.PublishingEditor,
-                  permission);
+                         permission);
 
               permission = new FolderPermission();
               permission.canCreateItems = true;
@@ -176,7 +260,7 @@ public final class FolderPermission extends ComplexProperty implements
               permission.readItems = FolderPermissionReadAccess.TimeOnly;
 
               result.put(FolderPermissionLevel.FreeBusyTimeOnly,
-                  permission);
+                         permission);
 
               permission = new FolderPermission();
               permission.canCreateItems = false;
@@ -191,174 +275,15 @@ public final class FolderPermission extends ComplexProperty implements
 
               result
                   .put(FolderPermissionLevel.
-                          FreeBusyTimeAndSubjectAndLocation,
-                      permission);
+                           FreeBusyTimeAndSubjectAndLocation,
+                       permission);
               return result;
             }
           });
-  //End Region
-
-  /**
-   * Variants of pre-defined permission levels that Outlook also displays with
-   * the same levels.
-   */
-  private static LazyMember<List<FolderPermission>> levelVariants =
-      new LazyMember<List<FolderPermission>>(
-          new ILazyMember<List<FolderPermission>>() {
-            @Override
-            public List<FolderPermission> createInstance() {
-              List<FolderPermission> results =
-                  new ArrayList<FolderPermission>();
-
-              FolderPermission permissionNone = FolderPermission.
-                  defaultPermissions
-                  .getMember().get(FolderPermissionLevel.None);
-              FolderPermission permissionOwner = FolderPermission.
-                  defaultPermissions
-                  .getMember().get(FolderPermissionLevel.Owner);
-
-              // PermissionLevelNoneOption1
-              FolderPermission permission;
-              try {
-                permission = (FolderPermission) permissionNone.clone();
-                permission.isFolderVisible = true;
-                results.add(permission);
-
-                // PermissionLevelNoneOption2
-                permission = (FolderPermission) permissionNone.clone();
-                permission.isFolderContact = true;
-                results.add(permission);
-
-                // PermissionLevelNoneOption3
-                permission = (FolderPermission) permissionNone.clone();
-                permission.isFolderContact = true;
-                permission.isFolderVisible = true;
-                results.add(permission);
-
-                // PermissionLevelOwnerOption1
-                permission = (FolderPermission) permissionOwner.clone();
-                permission.isFolderContact = false;
-                results.add(permission);
-
-              } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
-              }
-              return results;
-            }
-          });
-
-  /**
-   * The user id.
-   */
-  private UserId userId;
-
-  /**
-   * The can create items.
-   */
-  private boolean canCreateItems;
-
-  /**
-   * The can create sub folders.
-   */
-  private boolean canCreateSubFolders;
-
-  /**
-   * The is folder owner.
-   */
-  private boolean isFolderOwner;
-
-  /**
-   * The is folder visible.
-   */
-  private boolean isFolderVisible;
-
-  /**
-   * The is folder contact.
-   */
-  private boolean isFolderContact;
-
-  /**
-   * The edit items.
-   */
-  private PermissionScope editItems = PermissionScope.None;
-
-  /**
-   * The delete items.
-   */
-  private PermissionScope deleteItems = PermissionScope.None;
-
-  /**
-   * The read items.
-   */
-  private FolderPermissionReadAccess readItems = FolderPermissionReadAccess.None;
-
   /**
    * The permission level.
    */
   private FolderPermissionLevel permissionLevel = FolderPermissionLevel.None;
-
-  /**
-   * Determines whether the specified folder permission is the same as this
-   * one. The comparison does not take UserId and PermissionLevel into
-   * consideration.
-   *
-   * @param permission the permission
-   * @return True is the specified folder permission is equal to this one,
-   * false otherwise.
-   */
-  private boolean isEqualTo(FolderPermission permission) {
-
-    return this.canCreateItems == permission.canCreateItems &&
-        this.canCreateSubFolders == permission.canCreateSubFolders &&
-        this.isFolderContact == permission.isFolderContact &&
-        this.isFolderVisible == permission.isFolderVisible &&
-        this.isFolderOwner == permission.isFolderOwner &&
-        this.editItems == permission.editItems &&
-        this.deleteItems == permission.deleteItems &&
-        this.readItems == permission.readItems;
-  }
-
-  /**
-   * Create a copy of this FolderPermission instance.
-   *
-   * @return Clone of this instance.
-   */
-        /*
-	 * private FolderPermission Clone() throws CloneNotSupportedException {
-	 * return (FolderPermission)this.clone(); }
-	 */
-
-  /**
-   * Determines the permission level of this folder permission based on its
-   * individual settings, and sets the PermissionLevel property accordingly.
-   */
-  private void AdjustPermissionLevel() {
-    for (Entry<FolderPermissionLevel, FolderPermission> keyValuePair : defaultPermissions
-        .getMember().entrySet()) {
-      if (this.isEqualTo(keyValuePair.getValue())) {
-        this.permissionLevel = keyValuePair.getKey();
-        return;
-      }
-    }
-    this.permissionLevel = FolderPermissionLevel.Custom;
-  }
-
-  /**
-   * Copies the values of the individual permissions of the specified folder
-   * permission to this folder permissions.
-   *
-   * @param permission the permission
-   */
-  private void AssignIndividualPermissions(FolderPermission permission) {
-    this.canCreateItems = permission.canCreateItems;
-    this.canCreateSubFolders = permission.canCreateSubFolders;
-    this.isFolderContact = permission.isFolderContact;
-    this.isFolderOwner = permission.isFolderOwner;
-    this.isFolderVisible = permission.isFolderVisible;
-    this.editItems = permission.editItems;
-    this.deleteItems = permission.deleteItems;
-    this.readItems = permission.readItems;
-  }
 
   /**
    * Initializes a new instance of the FolderPermission class.
@@ -369,6 +294,16 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
+   * Create a copy of this FolderPermission instance.
+   *
+   * @return Clone of this instance.
+   */
+        /*
+         * private FolderPermission Clone() throws CloneNotSupportedException {
+	 * return (FolderPermission)this.clone(); }
+	 */
+
+  /**
    * Initializes a new instance of the FolderPermission class.
    *
    * @param userId          the user id
@@ -376,7 +311,7 @@ public final class FolderPermission extends ComplexProperty implements
    * @throws Exception the exception
    */
   public FolderPermission(UserId userId,
-      FolderPermissionLevel permissionLevel)
+                          FolderPermissionLevel permissionLevel)
       throws Exception {
     EwsUtilities.validateParam(userId, "userId");
 
@@ -391,7 +326,7 @@ public final class FolderPermission extends ComplexProperty implements
    * @param permissionLevel    the permission level
    */
   public FolderPermission(String primarySmtpAddress,
-      FolderPermissionLevel permissionLevel) {
+                          FolderPermissionLevel permissionLevel) {
     this.userId = new UserId(primarySmtpAddress);
     this.permissionLevel = permissionLevel;
   }
@@ -403,9 +338,60 @@ public final class FolderPermission extends ComplexProperty implements
    * @param permissionLevel the permission level
    */
   public FolderPermission(StandardUser standardUser,
-      FolderPermissionLevel permissionLevel) {
+                          FolderPermissionLevel permissionLevel) {
     this.userId = new UserId(standardUser);
     this.permissionLevel = permissionLevel;
+  }
+
+  /**
+   * Determines whether the specified folder permission is the same as this one. The comparison does
+   * not take UserId and PermissionLevel into consideration.
+   *
+   * @param permission the permission
+   * @return True is the specified folder permission is equal to this one, false otherwise.
+   */
+  private boolean isEqualTo(FolderPermission permission) {
+
+    return this.canCreateItems == permission.canCreateItems &&
+           this.canCreateSubFolders == permission.canCreateSubFolders &&
+           this.isFolderContact == permission.isFolderContact &&
+           this.isFolderVisible == permission.isFolderVisible &&
+           this.isFolderOwner == permission.isFolderOwner &&
+           this.editItems == permission.editItems &&
+           this.deleteItems == permission.deleteItems &&
+           this.readItems == permission.readItems;
+  }
+
+  /**
+   * Determines the permission level of this folder permission based on its individual settings, and
+   * sets the PermissionLevel property accordingly.
+   */
+  private void AdjustPermissionLevel() {
+    for (Entry<FolderPermissionLevel, FolderPermission> keyValuePair : defaultPermissions
+        .getMember().entrySet()) {
+      if (this.isEqualTo(keyValuePair.getValue())) {
+        this.permissionLevel = keyValuePair.getKey();
+        return;
+      }
+    }
+    this.permissionLevel = FolderPermissionLevel.Custom;
+  }
+
+  /**
+   * Copies the values of the individual permissions of the specified folder permission to this
+   * folder permissions.
+   *
+   * @param permission the permission
+   */
+  private void AssignIndividualPermissions(FolderPermission permission) {
+    this.canCreateItems = permission.canCreateItems;
+    this.canCreateSubFolders = permission.canCreateSubFolders;
+    this.isFolderContact = permission.isFolderContact;
+    this.isFolderOwner = permission.isFolderOwner;
+    this.isFolderVisible = permission.isFolderVisible;
+    this.editItems = permission.editItems;
+    this.deleteItems = permission.deleteItems;
+    this.readItems = permission.readItems;
   }
 
   /**
@@ -519,8 +505,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets  a value indicating whether the user can create
-   * sub-folders.
+   * Gets  a value indicating whether the user can create sub-folders.
    *
    * @return the can create sub folders
    */
@@ -564,8 +549,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets a value indicating whether the folder is visible to the
-   * user.
+   * Gets a value indicating whether the folder is visible to the user.
    *
    * @return the checks if is folder visible
    */
@@ -587,8 +571,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets  a value indicating whether the user is a contact for the
-   * folder.
+   * Gets  a value indicating whether the user is a contact for the folder.
    *
    * @return the checks if is folder contact
    */
@@ -610,8 +593,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets  a value indicating if/how the user can edit existing
-   * items.
+   * Gets  a value indicating if/how the user can edit existing items.
    *
    * @return the edits the items
    */
@@ -633,8 +615,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets  a value indicating if/how the user can delete existing
-   * items.
+   * Gets  a value indicating if/how the user can delete existing items.
    *
    * @return the delete items
    */
@@ -701,7 +682,7 @@ public final class FolderPermission extends ComplexProperty implements
       }
 
       this.AssignIndividualPermissions(defaultPermissions.getMember()
-          .get(value));
+                                           .get(value));
       if (this.canSetFieldValue(this.permissionLevel, value)) {
         this.permissionLevel = value;
         this.changed();
@@ -710,8 +691,7 @@ public final class FolderPermission extends ComplexProperty implements
   }
 
   /**
-   * Gets the permission level that Outlook would display for this folder
-   * permission.
+   * Gets the permission level that Outlook would display for this folder permission.
    *
    * @return the display permission level
    */
@@ -777,7 +757,7 @@ public final class FolderPermission extends ComplexProperty implements
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(
         XmlElementNames.PermissionLevel)
-        || reader.getLocalName().equalsIgnoreCase(
+               || reader.getLocalName().equalsIgnoreCase(
         XmlElementNames.CalendarPermissionLevel)) {
       this.permissionLevel = reader
           .readValue(FolderPermissionLevel.class);
@@ -796,7 +776,7 @@ public final class FolderPermission extends ComplexProperty implements
    * @throws Exception the exception
    */
   protected void loadFromXml(EwsServiceXmlReader reader,
-      XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
+                             XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
     super.loadFromXml(reader, xmlNamespace, xmlElementName);
 
     this.AdjustPermissionLevel();
@@ -810,36 +790,36 @@ public final class FolderPermission extends ComplexProperty implements
    * @throws Exception the exception
    */
   protected void writeElementsToXml(EwsServiceXmlWriter writer,
-      boolean isCalendarFolder) throws Exception {
+                                    boolean isCalendarFolder) throws Exception {
     if (this.userId != null) {
       this.userId.writeToXml(writer, XmlElementNames.UserId);
     }
 
     if (this.permissionLevel == FolderPermissionLevel.Custom) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.CanCreateItems, this.canCreateItems);
+                               XmlElementNames.CanCreateItems, this.canCreateItems);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.CanCreateSubFolders,
-          this.canCreateSubFolders);
+                               XmlElementNames.CanCreateSubFolders,
+                               this.canCreateSubFolders);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.IsFolderOwner, this.isFolderOwner);
+                               XmlElementNames.IsFolderOwner, this.isFolderOwner);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.IsFolderVisible, this.isFolderVisible);
+                               XmlElementNames.IsFolderVisible, this.isFolderVisible);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.IsFolderContact, this.isFolderContact);
+                               XmlElementNames.IsFolderContact, this.isFolderContact);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.EditItems, this.editItems);
+                               XmlElementNames.EditItems, this.editItems);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.DeleteItems, this.deleteItems);
+                               XmlElementNames.DeleteItems, this.deleteItems);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.ReadItems, this.readItems);
+                               XmlElementNames.ReadItems, this.readItems);
     }
 
     writer
@@ -847,7 +827,7 @@ public final class FolderPermission extends ComplexProperty implements
             XmlNamespace.Types,
             isCalendarFolder ? XmlElementNames.
                 CalendarPermissionLevel
-                : XmlElementNames.PermissionLevel,
+                             : XmlElementNames.PermissionLevel,
             this.permissionLevel);
   }
 
@@ -860,7 +840,7 @@ public final class FolderPermission extends ComplexProperty implements
    * @throws Exception the exception
    */
   protected void writeToXml(EwsServiceXmlWriter writer,
-      String xmlElementName, boolean isCalendarFolder) throws Exception {
+                            String xmlElementName, boolean isCalendarFolder) throws Exception {
     writer.writeStartElement(this.getNamespace(), xmlElementName);
     this.writeAttributesToXml(writer);
     this.writeElementsToXml(writer, isCalendarFolder);

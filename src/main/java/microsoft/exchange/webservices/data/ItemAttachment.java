@@ -30,7 +30,7 @@ import java.util.List;
  * Represents an item attachment.
  */
 public class ItemAttachment extends Attachment implements
-    IServiceObjectChangedDelegate {
+                                               IServiceObjectChangedDelegate {
 
   /**
    * The item.
@@ -74,8 +74,7 @@ public class ItemAttachment extends Attachment implements
   }
 
   /**
-   * Implements the OnChange event handler for the item associated with the
-   * attachment.
+   * Implements the OnChange event handler for the item associated with the attachment.
    *
    * @param serviceObject ,The service object that triggered the OnChange event.
    */
@@ -125,9 +124,7 @@ public class ItemAttachment extends Attachment implements
   /**
    * For ItemAttachment, AttachmentId and Item should be patched.
    *
-   * @param reader The reader.
-   *               <p/>
-   *               True if element was read.
+   * @param reader The reader. <p/> True if element was read.
    */
   protected boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception {
     // update the attachment id.
@@ -135,7 +132,7 @@ public class ItemAttachment extends Attachment implements
 
     reader.read();
     Class<?> itemClass = EwsUtilities.getItemTypeFromXmlElementName(reader
-        .getLocalName().toString());
+                                                                        .getLocalName().toString());
 
     if (itemClass != null) {
       if (this.item == null
@@ -220,7 +217,7 @@ public class ItemAttachment extends Attachment implements
    * @throws Exception the exception
    */
   public void load(BodyType bodyType,
-      PropertyDefinitionBase... additionalProperties) throws Exception {
+                   PropertyDefinitionBase... additionalProperties) throws Exception {
     List<PropertyDefinitionBase> addProp =
         new ArrayList<PropertyDefinitionBase>();
     for (PropertyDefinitionBase addProperties1 : additionalProperties) {
@@ -237,7 +234,7 @@ public class ItemAttachment extends Attachment implements
    * @throws Exception the exception
    */
   public void load(BodyType bodyType,
-      Iterable<PropertyDefinitionBase> additionalProperties)
+                   Iterable<PropertyDefinitionBase> additionalProperties)
       throws Exception {
     this.internalLoad(bodyType, additionalProperties);
   }

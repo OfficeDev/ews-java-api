@@ -30,25 +30,25 @@ import java.util.List;
  * Represents a request to a Apply Conversation Action operation
  */
 final class ApplyConversationActionRequest extends
-    MultiResponseServiceRequest<ServiceResponse> {
+                                           MultiResponseServiceRequest<ServiceResponse> {
 
   private List<ConversationAction> conversationActions =
       new ArrayList<ConversationAction>();
-
-  public List<ConversationAction> getConversationActions() {
-    return this.conversationActions;
-  }
 
   /**
    * Initializes a new instance of the ApplyConversationActionRequest class
    *
    * @param service           The service.
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   protected ApplyConversationActionRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode) throws Exception {
+                                           ServiceErrorHandling errorHandlingMode)
+      throws Exception {
     super(service, errorHandlingMode);
+  }
+
+  public List<ConversationAction> getConversationActions() {
+    return this.conversationActions;
   }
 
   /**
@@ -60,7 +60,7 @@ final class ApplyConversationActionRequest extends
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new ServiceResponse();
   }
 
@@ -76,15 +76,13 @@ final class ApplyConversationActionRequest extends
 
   /**
    * Validate request.
-   *
-   * @throws Exception
    */
   @Override
   protected void validate() throws Exception {
     super.validate();
     EwsUtilities.validateParamCollection(this.
-            conversationActions.iterator(),
-        "conversationActions");
+                                             conversationActions.iterator(),
+                                         "conversationActions");
     for (int iAction = 0; iAction < this.getConversationActions().size(); iAction++) {
       this.getConversationActions().get(iAction).validate();
     }
@@ -95,7 +93,6 @@ final class ApplyConversationActionRequest extends
    * Writes XML elements.
    *
    * @param writer The writer.
-   * @throws Exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)

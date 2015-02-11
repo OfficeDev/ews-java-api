@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class DeletedOccurrenceInfoCollection extends
-    ComplexPropertyCollection<DeletedOccurrenceInfo> {
+                                                   ComplexPropertyCollection<DeletedOccurrenceInfo> {
 
   /**
    * Initializes a new instance of the OccurrenceInfoCollection class.

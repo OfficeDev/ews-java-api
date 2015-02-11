@@ -23,10 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents Outlook configuration settings.
@@ -72,8 +73,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
   }
 
   /**
-   * Determines whether user setting is available in the
-   * OutlookConfiguration or not.
+   * Determines whether user setting is available in the OutlookConfiguration or not.
    *
    * @param setting The setting.
    * @return True if user setting is available, otherwise, false.
@@ -90,7 +90,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
   @Override
   protected String getNamespace() {
     return "http://schemas.microsoft.com/exchange/" +
-        "autodiscover/outlook/responseschema/2006a";
+           "autodiscover/outlook/responseschema/2006a";
   }
 
   /**
@@ -117,7 +117,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
   @Override
   protected boolean tryReadCurrentXmlElement(EwsXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      Exception {
+             Exception {
     if (!super.tryReadCurrentXmlElement(reader)) {
       if (reader.getLocalName().equals(XmlElementNames.User)) {
         this.user.loadFromXml(reader);
@@ -143,7 +143,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
    */
   @Override
   protected GetUserSettingsResponse convertSettings(String smtpAddress,
-      List<UserSettingName> requestedSettings) {
+                                                    List<UserSettingName> requestedSettings) {
     GetUserSettingsResponse response = new GetUserSettingsResponse();
     response.setSmtpAddress(smtpAddress);
 
@@ -178,7 +178,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
               false,
               "OutlookConfigurationSettings.ConvertSettings",
               "An unexpected error has occured. " +
-                  "This code path should never be reached.");
+              "This code path should never be reached.");
           break;
       }
     }
@@ -186,14 +186,13 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
   }
 
   /**
-   * Reports any requested user settings that aren't
-   * supported by the Outlook provider.
+   * Reports any requested user settings that aren't supported by the Outlook provider.
    *
    * @param requestedSettings The requested settings.
    * @param response          The response.
    */
   private void reportUnsupportedSettings(List<UserSettingName> requestedSettings,
-      GetUserSettingsResponse response) {
+                                         GetUserSettingsResponse response) {
     // In English: find settings listed in requestedSettings that are not supported by the Legacy provider.
 
     //TODO need to check Iterable
@@ -213,8 +212,9 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
       UserSettingError settingError = new UserSettingError();
       settingError.setErrorCode(AutodiscoverErrorCode.InvalidSetting);
       settingError.setSettingName(invalidSetting.toString());
-      settingError.setErrorMessage(String.format(Strings.AutodiscoverInvalidSettingForOutlookProvider,
-          invalidSetting.toString()));
+      settingError
+          .setErrorMessage(String.format(Strings.AutodiscoverInvalidSettingForOutlookProvider,
+                                         invalidSetting.toString()));
       response.getUserSettingErrors().add(settingError);
     }
   }
@@ -236,8 +236,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
   /**
    * Gets the redirect target.
    *
-   * @return String
-   * the redirect target.
+   * @return String the redirect target.
    */
   @Override
   protected String getRedirectTarget() {

@@ -23,8 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.Date;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * The Class NumberedRecurrenceRange.
@@ -50,7 +51,7 @@ final class NumberedRecurrenceRange extends RecurrenceRange {
    * @param numberOfOccurrences the number of occurrences
    */
   public NumberedRecurrenceRange(Date startDate,
-      Integer numberOfOccurrences) {
+                                 Integer numberOfOccurrences) {
     super(startDate);
     this.numberOfOccurrences = numberOfOccurrences;
   }
@@ -88,8 +89,8 @@ final class NumberedRecurrenceRange extends RecurrenceRange {
 
     if (this.numberOfOccurrences != null) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.NumberOfOccurrences,
-          this.numberOfOccurrences);
+                               XmlElementNames.NumberOfOccurrences,
+                               this.numberOfOccurrences);
     }
   }
 

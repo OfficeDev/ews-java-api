@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data;
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.DeclineItem, returnedByServer = false)
 public final class DeclineMeetingInvitationMessage extends
-    CalendarResponseMessage<MeetingResponse> {
+                                                   CalendarResponseMessage<MeetingResponse> {
 
   /**
    * Initializes a new instance of the DeclineMeetingInvitationMessage class.
@@ -44,8 +44,7 @@ public final class DeclineMeetingInvitationMessage extends
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {

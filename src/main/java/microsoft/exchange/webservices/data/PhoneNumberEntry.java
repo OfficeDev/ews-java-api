@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class PhoneNumberEntry extends
-    DictionaryEntryProperty<PhoneNumberKey> {
+                                    DictionaryEntryProperty<PhoneNumberKey> {
 
   /**
    * The phone number.

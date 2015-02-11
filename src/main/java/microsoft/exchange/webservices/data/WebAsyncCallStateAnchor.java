@@ -34,9 +34,9 @@ public class WebAsyncCallStateAnchor {
    * Construtctor
    */
   public WebAsyncCallStateAnchor(ServiceRequestBase serviceRequest,
-      HttpWebRequest webRequest,
-      AsyncCallback asyncCallback,
-      Object asyncState)
+                                 HttpWebRequest webRequest,
+                                 AsyncCallback asyncCallback,
+                                 Object asyncState)
       throws Exception {
     EwsUtilities.validateParam(serviceRequest, "serviceRequest");
     EwsUtilities.validateParam(webRequest, "webRequest");
@@ -50,24 +50,24 @@ public class WebAsyncCallStateAnchor {
     return this.serviceRequest;
   }
 
-  public void setAsyncCallback(AsyncCallback asyncCallback) {
-    this.asyncCallback = asyncCallback;
+  public void setServiceRequest(ServiceRequestBase wasserviceRequest) {
+    serviceRequest = wasserviceRequest;
   }
 
   public AsyncCallback getAsyncCallback() {
     return this.asyncCallback;
   }
 
-  public void setServiceRequest(ServiceRequestBase wasserviceRequest) {
-    serviceRequest = wasserviceRequest;
-  }
-
-  public void setHttpWebRequest(HttpWebRequest waswebRequest) {
-    webRequest = waswebRequest;
+  public void setAsyncCallback(AsyncCallback asyncCallback) {
+    this.asyncCallback = asyncCallback;
   }
 
   public HttpWebRequest getHttpWebRequest() {
     return this.webRequest;
+  }
+
+  public void setHttpWebRequest(HttpWebRequest waswebRequest) {
+    webRequest = waswebRequest;
   }
 
   public void setAsynncState(Object wasasyncState) {

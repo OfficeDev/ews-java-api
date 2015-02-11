@@ -24,8 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an exception that is thrown when the Autodiscover service returns
- * an error.
+ * Represents an exception that is thrown when the Autodiscover service returns an error.
  */
 public class AutodiscoverRemoteException extends ServiceRemoteException {
 
@@ -68,7 +67,7 @@ public class AutodiscoverRemoteException extends ServiceRemoteException {
    * @param innerException the inner exception
    */
   public AutodiscoverRemoteException(String message, AutodiscoverError error,
-      Exception innerException) {
+                                     Exception innerException) {
     super(message, innerException);
     this.error = error;
   }

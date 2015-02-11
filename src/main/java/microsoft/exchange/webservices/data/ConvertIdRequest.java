@@ -23,15 +23,16 @@
 
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a ConvertId request.
  */
 final class ConvertIdRequest extends
-    MultiResponseServiceRequest<ConvertIdResponse> {
+                             MultiResponseServiceRequest<ConvertIdResponse> {
 
   /**
    * The destination format.
@@ -48,10 +49,9 @@ final class ConvertIdRequest extends
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
    */
   protected ConvertIdRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                             ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -65,7 +65,7 @@ final class ConvertIdRequest extends
    */
   @Override
   protected ConvertIdResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                    int responseIndex) {
     return new ConvertIdResponse();
   }
 
@@ -131,9 +131,9 @@ final class ConvertIdRequest extends
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.DestinationFormat,
-        this.destinationFormat);
+                               this.destinationFormat);
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.SourceIds);
+                             XmlElementNames.SourceIds);
     for (AlternateIdBase alternateId : this.ids) {
       alternateId.writeToXml(writer);
     }
@@ -152,8 +152,7 @@ final class ConvertIdRequest extends
   }
 
   /**
-   * Gets the destination format. <value>The destination
-   * format.</value>
+   * Gets the destination format. <value>The destination format.</value>
    *
    * @return the destination format
    */

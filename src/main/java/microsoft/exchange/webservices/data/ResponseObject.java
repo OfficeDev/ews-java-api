@@ -27,6 +27,7 @@ package microsoft.exchange.webservices.data;
  * Represents the base class for all responses that can be sent.
  *
  */
+
 import java.util.List;
 
 /**
@@ -36,7 +37,7 @@ import java.util.List;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public abstract class ResponseObject<TMessage extends EmailMessage> extends
-    ServiceObject {
+                                                                    ServiceObject {
 
   /**
    * The reference item.
@@ -52,7 +53,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   protected ResponseObject(Item referenceItem) throws Exception {
     super(referenceItem.getService());
     EwsUtilities.EwsAssert(referenceItem != null, "ResponseObject.ctor",
-        "referenceItem is null");
+                           "referenceItem is null");
     referenceItem.throwIfThisIsNew();
     this.referenceItem = referenceItem;
   }
@@ -86,8 +87,8 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
    */
   @Override
   protected void internalDelete(DeleteMode deleteMode,
-      SendCancellationsMode sendCancellationsMode,
-      AffectedTaskOccurrence affectedTaskOccurrences) {
+                                SendCancellationsMode sendCancellationsMode,
+                                AffectedTaskOccurrence affectedTaskOccurrences) {
     throw new UnsupportedOperationException();
   }
 
@@ -100,17 +101,16 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
    * @throws Exception the exception
    */
   protected List<Item> internalCreate(FolderId destinationFolderId,
-      MessageDisposition messageDisposition) throws Exception {
+                                      MessageDisposition messageDisposition) throws Exception {
     ((ItemId) this.getPropertyBag().getObjectFromPropertyDefinition(
         ResponseObjectSchema.ReferenceItemId))
         .assign(this.referenceItem.getId());
     return this.getService().internalCreateResponseObject(this,
-        destinationFolderId, messageDisposition);
+                                                          destinationFolderId, messageDisposition);
   }
 
   /**
-   * Saves the response in the specified folder. Calling this method results
-   * in a call to EWS.
+   * Saves the response in the specified folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderId the destination folder id
    * @return A TMessage that represents the response.
@@ -119,12 +119,11 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   public TMessage save(FolderId destinationFolderId) throws Exception {
     EwsUtilities.validateParam(destinationFolderId, "destinationFolderId");
     return (TMessage) this.internalCreate(destinationFolderId,
-        MessageDisposition.SaveOnly).get(0);
+                                          MessageDisposition.SaveOnly).get(0);
   }
 
   /**
-   * Saves the response in the specified folder. Calling this method results
-   * in a call to EWS.
+   * Saves the response in the specified folder. Calling this method results in a call to EWS.
    *
    * @param destinationFolderName the destination folder name
    * @return A TMessage that represents the response.
@@ -138,8 +137,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   }
 
   /**
-   * Saves the response in the Drafts folder. Calling this method results in a
-   * call to EWS.
+   * Saves the response in the Drafts folder. Calling this method results in a call to EWS.
    *
    * @return A TMessage that represents the response.
    * @throws Exception the exception
@@ -150,8 +148,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   }
 
   /**
-   * Sends this response without saving a copy. Calling this method results in
-   * a call to EWS.
+   * Sends this response without saving a copy. Calling this method results in a call to EWS.
    *
    * @throws Exception the exception
    */
@@ -160,8 +157,8 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   }
 
   /**
-   * Sends this response and saves a copy in the specified folder. Calling
-   * this method results in a call to EWS.
+   * Sends this response and saves a copy in the specified folder. Calling this method results in a
+   * call to EWS.
    *
    * @param destinationFolderId the destination folder id
    * @throws Exception the exception
@@ -169,12 +166,12 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   public void sendAndSaveCopy(FolderId destinationFolderId) throws Exception {
     EwsUtilities.validateParam(destinationFolderId, "destinationFolderId");
     this.internalCreate(destinationFolderId,
-        MessageDisposition.SendAndSaveCopy);
+                        MessageDisposition.SendAndSaveCopy);
   }
 
   /**
-   * Sends this response and saves a copy in the specified folder. Calling
-   * this method results in a call to EWS.
+   * Sends this response and saves a copy in the specified folder. Calling this method results in a
+   * call to EWS.
    *
    * @param destinationFolderName the destination folder name
    * @throws Exception the exception
@@ -182,12 +179,12 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
   public void sendAndSaveCopy(WellKnownFolderName destinationFolderName)
       throws Exception {
     this.internalCreate(new FolderId(destinationFolderName),
-        MessageDisposition.SendAndSaveCopy);
+                        MessageDisposition.SendAndSaveCopy);
   }
 
   /**
-   * Sends this response and saves a copy in the Sent Items folder. Calling
-   * this method results in a call to EWS.
+   * Sends this response and saves a copy in the Sent Items folder. Calling this method results in a
+   * call to EWS.
    *
    * @throws Exception the exception
    */

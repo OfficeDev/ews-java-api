@@ -36,9 +36,8 @@ public final class ItemEvent extends NotificationEvent {
   private ItemId itemId;
 
   /**
-   * Id of the item that moved or copied. This is only meaningful when
-   * EventType is equal to either EventType.Moved or EventType.Copied. For all
-   * other event types, it's null.
+   * Id of the item that moved or copied. This is only meaningful when EventType is equal to either
+   * EventType.Moved or EventType.Copied. For all other event types, it's null.
    */
   private ItemId oldItemId;
 
@@ -101,9 +100,9 @@ public final class ItemEvent extends NotificationEvent {
   }
 
   /**
-   * Gets the Id of the item that was moved or copied. OldItemId is only
-   * meaningful when EventType is equal to either EventType.Moved or
-   * EventType.Copied. For all other event types, OldItemId is null.
+   * Gets the Id of the item that was moved or copied. OldItemId is only meaningful when EventType
+   * is equal to either EventType.Moved or EventType.Copied. For all other event types, OldItemId is
+   * null.
    *
    * @return the old item id
    */

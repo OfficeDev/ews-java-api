@@ -83,9 +83,9 @@ public enum UserConfigurationProperties {
    * @param binaryData the binary data
    */
   UserConfigurationProperties(UserConfigurationProperties id,
-      UserConfigurationProperties dictionary,
-      UserConfigurationProperties xmlData,
-      UserConfigurationProperties binaryData) {
+                              UserConfigurationProperties dictionary,
+                              UserConfigurationProperties xmlData,
+                              UserConfigurationProperties binaryData) {
 
   }
 

@@ -23,30 +23,27 @@
 
 package microsoft.exchange.webservices.data;
 
-import java.util.ArrayList;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.util.ArrayList;
+
 @RunWith(JUnit4.class)
 public class ExtendedPropertyCollectionTest {
-  
+
   /**
-   * Calling tryGetValue with invalid input
-   * expecting exception.
-   * 
-   * @throws Exception
+   * Calling tryGetValue with invalid input expecting exception.
    */
-   @Test(expected=ArgumentException.class)
-   public void tryGetValue() throws Exception{
-     ExtendedPropertyCollection epc = new ExtendedPropertyCollection();
-     epc.setExtendedProperty(new ExtendedPropertyDefinition(), new ArrayList<Boolean>());
-     Class<String> cls = String.class;
-     ExtendedPropertyDefinition propertyDefinition = new ExtendedPropertyDefinition();
-     
-     OutParam<String> propertyValueOut = new OutParam<String>();
-     Assert.assertTrue(epc.tryGetValue(cls, propertyDefinition, propertyValueOut));
-   }
+  @Test(expected = ArgumentException.class)
+  public void tryGetValue() throws Exception {
+    ExtendedPropertyCollection epc = new ExtendedPropertyCollection();
+    epc.setExtendedProperty(new ExtendedPropertyDefinition(), new ArrayList<Boolean>());
+    Class<String> cls = String.class;
+    ExtendedPropertyDefinition propertyDefinition = new ExtendedPropertyDefinition();
+
+    OutParam<String> propertyValueOut = new OutParam<String>();
+    Assert.assertTrue(epc.tryGetValue(cls, propertyDefinition, propertyValueOut));
+  }
 }

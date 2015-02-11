@@ -25,7 +25,10 @@ package microsoft.exchange.webservices.data;
 
 import org.apache.http.HttpException;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.Map;
 
@@ -384,11 +387,11 @@ abstract class HttpWebRequest {
   }
 
   /**
-   * Whether web service authentication is allowed.
-   * This can be set to {@code false} to disallow sending credentials with this request.
+   * Whether web service authentication is allowed. This can be set to {@code false} to disallow
+   * sending credentials with this request.
    *
-   * This is useful for the autodiscover request to the legacy HTTP url, because this single request doesn't
-   * require authentication and we don't want to send credentials over HTTP.
+   * This is useful for the autodiscover request to the legacy HTTP url, because this single request
+   * doesn't require authentication and we don't want to send credentials over HTTP.
    *
    * @return {@code true} if authentication is allowed.
    */
@@ -397,11 +400,11 @@ abstract class HttpWebRequest {
   }
 
   /**
-   * Whether web service authentication is allowed.
-   * This can be set to {@code false} to disallow sending credentials with this request.
+   * Whether web service authentication is allowed. This can be set to {@code false} to disallow
+   * sending credentials with this request.
    *
-   * This is useful for the autodiscover request to the legacy HTTP url, because this single request doesn't
-   * require authentication and we don't want to send credentials over HTTP.
+   * This is useful for the autodiscover request to the legacy HTTP url, because this single request
+   * doesn't require authentication and we don't want to send credentials over HTTP.
    *
    * Default is {@code true}.
    *
@@ -464,8 +467,7 @@ abstract class HttpWebRequest {
    * Gets the input stream.
    *
    * @return the input stream
-   * @throws EWSHttpException    the eWS http exception
-   * @throws java.io.IOException
+   * @throws EWSHttpException the eWS http exception
    */
   public abstract InputStream getInputStream() throws EWSHttpException, IOException;
 
@@ -565,11 +567,10 @@ abstract class HttpWebRequest {
   public abstract int executeRequest() throws EWSHttpException, IOException;
 
   public IAsyncResult beginGetResponse(Object webRequestAsyncCallback,
-      WebAsyncCallStateAnchor wrappedState) {
+                                       WebAsyncCallStateAnchor wrappedState) {
     // TODO Auto-generated method stub
     return null;
   }
-
 
 
   public ByteArrayOutputStream endGetRequestStream(
@@ -577,7 +578,6 @@ abstract class HttpWebRequest {
     // TODO Auto-generated method stub
     return new ByteArrayOutputStream();
   }
-
 
 
 }

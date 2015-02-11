@@ -39,7 +39,8 @@ public class RecurrencePropertyDefinition extends PropertyDefinition {
    * @param version        the version
    */
   protected RecurrencePropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                         EnumSet<PropertyDefinitionFlags> flags,
+                                         ExchangeVersion version) {
 
     super(xmlElementName, uri, flags, version);
 
@@ -53,9 +54,9 @@ public class RecurrencePropertyDefinition extends PropertyDefinition {
    * @throws Exception the exception
    */
   protected void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+                                          PropertyBag propertyBag) throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
-        XmlElementNames.Recurrence);
+                                           XmlElementNames.Recurrence);
 
     Recurrence recurrence = null;
 
@@ -137,7 +138,7 @@ public class RecurrencePropertyDefinition extends PropertyDefinition {
     range.setupRecurrence(recurrence);
 
     reader.readEndElementIfNecessary(XmlNamespace.Types,
-        XmlElementNames.Recurrence);
+                                     XmlElementNames.Recurrence);
 
     propertyBag.setObjectFromPropertyDefinition(this, recurrence);
   }
@@ -151,7 +152,7 @@ public class RecurrencePropertyDefinition extends PropertyDefinition {
    * @throws Exception the exception
    */
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+                                         PropertyBag propertyBag, boolean isUpdateOperation)
       throws Exception {
     Recurrence value = (Recurrence) propertyBag
         .getObjectFromPropertyDefinition(this);

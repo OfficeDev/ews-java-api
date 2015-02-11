@@ -29,7 +29,7 @@ import java.util.ArrayList;
  * Represents an UpdateFolder request.
  */
 final class UpdateFolderRequest extends
-    MultiResponseServiceRequest<ServiceResponse> {
+                                MultiResponseServiceRequest<ServiceResponse> {
 
   /**
    * The folders.
@@ -41,10 +41,9 @@ final class UpdateFolderRequest extends
    *
    * @param service           The Servcie
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   protected UpdateFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                                ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -59,7 +58,7 @@ final class UpdateFolderRequest extends
   protected void validate() throws ServiceLocalException, Exception {
     super.validate();
     EwsUtilities.validateParamCollection(this
-        .getFolders().iterator(), "Folders");
+                                             .getFolders().iterator(), "Folders");
     for (int i = 0; i < this.getFolders().size(); i++) {
       Folder folder = this.getFolders().get(i);
 
@@ -81,7 +80,7 @@ final class UpdateFolderRequest extends
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService session,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new UpdateFolderResponse(this.getFolders().get(responseIndex));
   }
 
@@ -135,7 +134,7 @@ final class UpdateFolderRequest extends
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.FolderChanges);
+                             XmlElementNames.FolderChanges);
 
     for (Folder folder : this.folders) {
       folder.writeToXmlForUpdate(writer);

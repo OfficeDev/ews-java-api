@@ -37,7 +37,7 @@ class Base64 {
    * The char set.
    */
   static String strSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZab" +
-      "cdefghijklmnopqrstuvwxyz0123456789+/";
+                         "cdefghijklmnopqrstuvwxyz0123456789+/";
 
   static {
     dataArry = new byte[64];
@@ -51,8 +51,7 @@ class Base64 {
    * Encodes String.
    *
    * @param data The String to be encoded
-   * @return String
-   * encoded value of String
+   * @return String encoded value of String
    */
   public static String encode(String data) {
     return encode(data.getBytes());
@@ -62,8 +61,7 @@ class Base64 {
    * Encodes  byte array.
    *
    * @param byteArry The value
-   * @return String
-   * encoded result of byte array
+   * @return String encoded result of byte array
    */
 
   public static String encode(byte[] byteArry) {
@@ -95,11 +93,11 @@ class Base64 {
           break;
         case 2:
           resArry[resIndex++] = dataArry[((prev << 4) & 0x30) |
-              ((x >> 4) & 0xf)];
+                                         ((x >> 4) & 0xf)];
           break;
         case 3:
           resArry[resIndex++] = dataArry[((prev << 2) & 0x3C) |
-              ((x >> 6) & 0x3)];
+                                         ((x >> 6) & 0x3)];
           resArry[resIndex++] = dataArry[x & 0x3F];
           curState = 0;
           break;
