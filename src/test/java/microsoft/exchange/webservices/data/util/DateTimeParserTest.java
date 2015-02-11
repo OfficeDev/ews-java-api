@@ -86,6 +86,20 @@ public class DateTimeParserTest {
   }
 
   @Test
+  public void testDateTimeZuluWithMilliseconds() {
+    String dateString = "9999-12-30T23:59:59.9999999Z";
+    Date parsed = parser.convertDateTimeStringToDate(dateString);
+    Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
+    calendar.setTime(parsed);
+    assertEquals(9999, calendar.get(Calendar.YEAR));
+    assertEquals(11, calendar.get(Calendar.MONTH));
+    assertEquals(30, calendar.get(Calendar.DATE));
+    assertEquals(23, calendar.get(Calendar.HOUR_OF_DAY));
+    assertEquals(59, calendar.get(Calendar.MINUTE));
+    assertEquals(59, calendar.get(Calendar.SECOND));
+  }
+
+  @Test
    public void testDateTimeWithTimeZone() {
     String dateString = "2015-01-08T10:11:12+0200";
     Date parsed = parser.convertDateTimeStringToDate(dateString);

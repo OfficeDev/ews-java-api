@@ -10,18 +10,20 @@
 
 package microsoft.exchange.webservices.data.util;
 
+import java.util.Date;
+
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-
-import java.util.Date;
 
 public class DateTimeParser {
 
   private final DateTimeFormatter[] dateTimeFormats = {
       DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssZ").withZoneUTC(),
       DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ").withZoneUTC(),
+      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ").withZoneUTC(),
       DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss").withZoneUTC(),
       DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").withZoneUTC(),
+      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS").withZoneUTC(),
       DateTimeFormat.forPattern("yyyy-MM-ddZ").withZoneUTC(),
       DateTimeFormat.forPattern("yyyy-MM-dd").withZoneUTC()
   };
