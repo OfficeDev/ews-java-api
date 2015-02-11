@@ -1,19 +1,30 @@
-/**************************************************************************
- Exchange Web Services Java API
- Copyright (c) Microsoft Corporation
- All rights reserved.
- MIT License
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- **************************************************************************/
-
+/**
+ * The MIT License
+ * Copyright (c) 2012 Microsoft Corporation
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package microsoft.exchange.webservices.data;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
 import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -270,24 +281,6 @@ class EwsUtilities {
               enumDicts.put(RuleProperty.class,
                   buildEnumToSchemaDict(RuleProperty.class));
               return enumDicts;
-            }
-          });
-
-  /**
-   * Dictionary to map from special CLR type names to their "short" names.
-   */
-  private static LazyMember<Map<String, String>>
-      typeNameToShortNameMap =
-      new LazyMember<Map<String, String>>(
-          new ILazyMember<Map<String, String>>() {
-            public Map<String, String> createInstance() {
-              Map<String, String> result =
-                  new HashMap<String, String>();
-              result.put("Boolean", "bool");
-              result.put("Int16", "short");
-              result.put("Int32", "int");
-              result.put("String", "string");
-              return result;
             }
           });
 
@@ -1075,65 +1068,6 @@ class EwsUtilities {
     DecimalFormat myFormatter = new DecimalFormat("00");
     return String.format("%s:%s:%s", myFormatter.format(timeSpan.getHours()), myFormatter.format(timeSpan
         .getMinutes()), myFormatter.format(timeSpan.getSeconds()));
-  }
-
-  /**
-   * Gets the printable name of a CLR type.
-   *
-   * @param type The class.
-   * @return Printable name.
-   */
-  public static String getPrintableTypeName(Class<?> type) {
-    // Note: building array of generic parameters is
-    //done recursively. Each parameter could be any type.
-    Type[] genericArgs = type.getGenericInterfaces();
-    if (genericArgs.length > 0) {
-      // Convert generic type to printable form (e.g. List<Item>)
-      String genericPrefix = type.getName().substring(0,
-          type.getName().indexOf('`'));
-      StringBuilder nameBuilder = new StringBuilder(genericPrefix);
-
-      //List<Type> genericList = new ArrayList<Type>();
-      StringBuffer genericArgsStr = new StringBuffer();
-      for (int i = 0; i < genericArgs.length; i++) {
-
-        if (!"".equals(genericArgsStr.toString())) {
-          genericArgsStr.append(",");
-        }
-        genericArgsStr.append(getPrintableTypeName(
-            genericArgs[i].getClass()));
-      }
-      nameBuilder.append("<");
-      nameBuilder.append(genericArgsStr.toString());
-      nameBuilder.append(">");
-      return nameBuilder.toString();
-    } else if (type.isArray()) {
-      // Convert array type to printable form.
-      String arrayPrefix = type.getName().substring(0,
-          type.getName().indexOf('['));
-      StringBuilder nameBuilder =
-          new StringBuilder(EwsUtilities.
-              getSimplifiedTypeName(arrayPrefix));
-
-      for (int rank = 0; rank < getDim(type); rank++) {
-        nameBuilder.append("[]");
-      }
-      return nameBuilder.toString();
-    } else {
-      return EwsUtilities.getSimplifiedTypeName(type.getName());
-    }
-  }
-
-  /**
-   * Gets the printable name of a CLR type.
-   *
-   * @param typeName The type name.
-   * @return Printable name.
-   */
-  private static String getSimplifiedTypeName(String typeName) {
-    // If type has a shortname (e.g. int for Int32) map to the short name.
-    return typeNameToShortNameMap.getMember().containsKey(typeName) ?
-        typeNameToShortNameMap.getMember().get(typeName) : typeName;
   }
 
   /**
