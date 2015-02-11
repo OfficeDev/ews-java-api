@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -28,7 +29,7 @@ package microsoft.exchange.webservices.data;
  * @param <TResponse> the generic type
  */
 abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
-    GetRequest<Item, TResponse> {
+                                                                     GetRequest<Item, TResponse> {
 
   /**
    * The item ids.
@@ -40,10 +41,9 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
    */
   protected GetItemRequestBase(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                               ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -57,7 +57,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
   protected void validate() throws ServiceLocalException, Exception {
     super.validate();
     EwsUtilities.validateParamCollection(this.getItemIds().iterator(),
-        "ItemIds");
+                                         "ItemIds");
   }
 
   /**
@@ -89,7 +89,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
     super.writeElementsToXml(writer);
 
     this.itemIds.writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.ItemIds);
+                            XmlElementNames.ItemIds);
   }
 
   /**

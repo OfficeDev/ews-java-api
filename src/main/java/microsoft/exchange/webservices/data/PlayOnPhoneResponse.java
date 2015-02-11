@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -40,7 +41,7 @@ final class PlayOnPhoneResponse extends ServiceResponse {
   protected PlayOnPhoneResponse(ExchangeService service) {
     super();
     EwsUtilities.EwsAssert(service != null, "PlayOnPhoneResponse.ctor",
-        "service is null");
+                           "service is null");
 
     this.phoneCallId = new PhoneCallId();
   }
@@ -55,11 +56,11 @@ final class PlayOnPhoneResponse extends ServiceResponse {
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.PhoneCallId);
+                            XmlElementNames.PhoneCallId);
     this.phoneCallId.loadFromXml(reader, XmlNamespace.Messages,
-        XmlElementNames.PhoneCallId);
+                                 XmlElementNames.PhoneCallId);
     reader.readEndElementIfNecessary(XmlNamespace.Messages,
-        XmlElementNames.PhoneCallId);
+                                     XmlElementNames.PhoneCallId);
   }
 
   /**

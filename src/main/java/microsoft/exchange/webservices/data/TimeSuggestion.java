@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -112,13 +113,13 @@ public final class TimeSuggestion extends ComplexProperty {
                   .EwsAssert(
                       false,
                       "TimeSuggestion." +
-                          "TryReadElementFromXml",
+                      "TryReadElementFromXml",
                       String
                           .format(
                               "The %s element name " +
-                                  "does not map " +
-                                  "to any AttendeeConflict " +
-                                  "descendant.",
+                              "does not map " +
+                              "to any AttendeeConflict " +
+                              "descendant.",
                               reader
                                   .getLocalName()));
 
@@ -129,7 +130,7 @@ public final class TimeSuggestion extends ComplexProperty {
             this.conflicts.add(conflict);
           }
         } while (!reader.isEndElement(XmlNamespace.Types,
-            XmlElementNames.AttendeeConflictDataArray));
+                                      XmlElementNames.AttendeeConflictDataArray));
       }
 
       return true;
@@ -149,8 +150,7 @@ public final class TimeSuggestion extends ComplexProperty {
   }
 
   /**
-   * Gets a value indicating whether the suggested time is within working
-   * hours.
+   * Gets a value indicating whether the suggested time is within working hours.
    *
    * @return true, if is work time
    */

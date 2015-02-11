@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.net.URI;
 
 /**
- * Represents the base class for all responses returned by the Autodiscover
- * service.
+ * Represents the base class for all responses returned by the Autodiscover service.
  */
 public abstract class AutodiscoverResponse {
 

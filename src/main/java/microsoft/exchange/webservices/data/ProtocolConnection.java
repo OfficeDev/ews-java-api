@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents the email Protocol connection settings for pop/imap/smtp
- * protocols.
+ * Represents the email Protocol connection settings for pop/imap/smtp protocols.
  */
 public final class ProtocolConnection {
 
@@ -51,6 +51,20 @@ public final class ProtocolConnection {
   }
 
   /**
+   * Initializes a new instance of the ProtocolConnection class.
+   *
+   * @param encryptionMethod The encryption method.
+   * @param hostname         The hostname.
+   * @param port             The port number to use for the portocol.
+   */
+  protected ProtocolConnection(String encryptionMethod, String hostname,
+                               int port) {
+    this.encryptionMethod = encryptionMethod;
+    this.hostname = hostname;
+    this.port = port;
+  }
+
+  /**
    * Read user setting with ProtocolConnection value.
    *
    * @param reader EwsServiceXmlReader
@@ -68,33 +82,19 @@ public final class ProtocolConnection {
         if (reader.getLocalName().equals(
             XmlElementNames.EncryptionMethod)) {
           connection.setEncryptionMethod(reader
-              .readElementValue(String.class));
+                                             .readElementValue(String.class));
         } else if (reader.getLocalName().equals(
             XmlElementNames.Hostname)) {
           connection.setHostname(reader
-              .readElementValue(String.class));
+                                     .readElementValue(String.class));
         } else if (reader.getLocalName().equals(XmlElementNames.Port)) {
           connection.setPort(reader.readElementValue(int.class));
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-        XmlElementNames.ProtocolConnection));
+                                  XmlElementNames.ProtocolConnection));
 
     return connection;
-  }
-
-  /**
-   * Initializes a new instance of the ProtocolConnection class.
-   *
-   * @param encryptionMethod The encryption method.
-   * @param hostname         The hostname.
-   * @param port             The port number to use for the portocol.
-   */
-  protected ProtocolConnection(String encryptionMethod, String hostname,
-      int port) {
-    this.encryptionMethod = encryptionMethod;
-    this.hostname = hostname;
-    this.port = port;
   }
 
   /**

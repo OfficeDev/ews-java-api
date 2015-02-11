@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents the details of a calendar event as returned by the
- * GetUserAvailability operation.
+ * Represents the details of a calendar event as returned by the GetUserAvailability operation.
  */
 public final class CalendarEventDetails extends ComplexProperty {
 
@@ -162,8 +162,7 @@ public final class CalendarEventDetails extends ComplexProperty {
   }
 
   /**
-   * Gets a value indicating whether the calendar event is an exception in a
-   * recurring series.
+   * Gets a value indicating whether the calendar event is an exception in a recurring series.
    *
    * @return true, if is exception
    */

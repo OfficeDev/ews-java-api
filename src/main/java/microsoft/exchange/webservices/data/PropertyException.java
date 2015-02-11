@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -73,7 +74,7 @@ public class PropertyException extends ServiceLocalException {
    * @param innerException the inner exception
    */
   public PropertyException(String message, String name,
-      Exception innerException) {
+                           Exception innerException) {
     super(message, innerException);
     this.name = name;
   }

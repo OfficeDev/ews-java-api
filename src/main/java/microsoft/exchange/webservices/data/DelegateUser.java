@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -96,8 +97,7 @@ public final class DelegateUser extends ComplexProperty {
   }
 
   /**
-   * Gets  a value indicating if the delegate user should receive
-   * copies of meeting requests.
+   * Gets  a value indicating if the delegate user should receive copies of meeting requests.
    *
    * @return the receive copies of meeting messages
    */
@@ -116,8 +116,8 @@ public final class DelegateUser extends ComplexProperty {
   }
 
   /**
-   * Gets  a value indicating if the delegate user should be
-   * able to view the principal's private items.
+   * Gets  a value indicating if the delegate user should be able to view the principal's private
+   * items.
    *
    * @return the view private items
    */
@@ -127,8 +127,8 @@ public final class DelegateUser extends ComplexProperty {
   }
 
   /**
-   * Gets  a value indicating if the delegate user should be able to
-   * view the principal's private items.
+   * Gets  a value indicating if the delegate user should be able to view the principal's private
+   * items.
    *
    * @param value the new view private items
    */
@@ -183,14 +183,14 @@ public final class DelegateUser extends ComplexProperty {
       throws Exception {
     this.getUserId().writeToXml(writer, XmlElementNames.UserId);
     this.getPermissions().writeToXml(writer,
-        XmlElementNames.DelegatePermissions);
+                                     XmlElementNames.DelegatePermissions);
 
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.ReceiveCopiesOfMeetingMessages,
-        this.receiveCopiesOfMeetingMessages);
+                             XmlElementNames.ReceiveCopiesOfMeetingMessages,
+                             this.receiveCopiesOfMeetingMessages);
 
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.ViewPrivateItems, this.viewPrivateItems);
+                             XmlElementNames.ViewPrivateItems, this.viewPrivateItems);
   }
 
   /**
@@ -210,12 +210,9 @@ public final class DelegateUser extends ComplexProperty {
 
   /**
    * Validates this instance for AddDelegate.
-   *
-   * @throws Exception
-   * @throws ServiceValidationException
    */
   protected void validateAddDelegate() throws ServiceValidationException,
-      Exception {
+                                              Exception {
     {
       this.permissions.validateAddDelegate();
     }

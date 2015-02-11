@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,20 +20,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.Date;
 
+import javax.xml.stream.XMLStreamException;
+
 /**
- * Encapsulates information on the deleted occurrence of a recurring
- * appointment.
+ * Encapsulates information on the deleted occurrence of a recurring appointment.
  */
 public class DeletedOccurrenceInfo extends ComplexProperty {
+
   /**
-   * The original start date and time of the deleted occurrence. The EWS
-   * schema contains a Start property for deleted occurrences but it's really
-   * the original start date and time of the occurrence.
+   * The original start date and time of the deleted occurrence. The EWS schema contains a Start
+   * property for deleted occurrences but it's really the original start date and time of the
+   * occurrence.
    */
   private Date originalStart;
 

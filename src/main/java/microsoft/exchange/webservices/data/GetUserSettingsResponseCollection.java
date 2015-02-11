@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Represents a collection of responses to GetUserSettings.
  */
 public final class GetUserSettingsResponseCollection extends
-    AutodiscoverResponseCollection<GetUserSettingsResponse> {
+                                                     AutodiscoverResponseCollection<GetUserSettingsResponse> {
 
   /**
    * Initializes a new instance of the AutodiscoverResponseCollection class.

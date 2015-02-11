@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -50,6 +51,25 @@ public abstract class ServiceObject {
    * The xml element name.
    */
   private String xmlElementName;
+  /**
+   * The on change.
+   */
+  private List<IServiceObjectChangedDelegate> onChange =
+      new ArrayList<IServiceObjectChangedDelegate>();
+
+  /**
+   * Internal constructor.
+   *
+   * @param service the service
+   * @throws Exception the exception
+   */
+  protected ServiceObject(ExchangeService service) throws Exception {
+    EwsUtilities.validateParam(service, "service");
+    EwsUtilities.validateServiceObjectVersion(this, service
+        .getRequestedServerVersion());
+    this.service = service;
+    this.propertyBag = new PropertyBag(this);
+  }
 
   /**
    * Triggers dispatch of the change event.
@@ -61,6 +81,10 @@ public abstract class ServiceObject {
     }
   }
 
+  // / This methods lets subclasses of ServiceObject override the default
+  // mechanism
+  // / by which the XML element name associated with their type is retrieved.
+
   /**
    * Throws exception if this is a new service object.
    *
@@ -68,10 +92,10 @@ public abstract class ServiceObject {
    * @throws ServiceLocalException     the service local exception
    */
   protected void throwIfThisIsNew() throws InvalidOperationException,
-      ServiceLocalException {
+                                           ServiceLocalException {
     if (this.isNew()) {
       throw new InvalidOperationException(Strings.
-          ServiceObjectDoesNotHaveId);
+                                              ServiceObjectDoesNotHaveId);
     }
   }
 
@@ -82,21 +106,16 @@ public abstract class ServiceObject {
    * @throws ServiceLocalException     the service local exception
    */
   protected void throwIfThisIsNotNew() throws InvalidOperationException,
-      ServiceLocalException {
+                                              ServiceLocalException {
     if (!this.isNew()) {
       throw new InvalidOperationException(Strings.
-          ServiceObjectAlreadyHasId);
+                                              ServiceObjectAlreadyHasId);
     }
   }
 
-  // / This methods lets subclasses of ServiceObject override the default
-  // mechanism
-  // / by which the XML element name associated with their type is retrieved.
-
   /**
-   * This methods lets subclasses of ServiceObject override the default
-   * mechanism by which the XML element name associated with their type is
-   * retrieved.
+   * This methods lets subclasses of ServiceObject override the default mechanism by which the XML
+   * element name associated with their type is retrieved.
    *
    * @return String
    */
@@ -105,8 +124,8 @@ public abstract class ServiceObject {
   }
 
   /**
-   * GetXmlElementName retrieves the XmlElementName of this type based on the
-   * EwsObjectDefinition attribute that decorates it, if present.
+   * GetXmlElementName retrieves the XmlElementName of this type based on the EwsObjectDefinition
+   * attribute that decorates it, if present.
    *
    * @return The XML element name associated with this type.
    */
@@ -131,7 +150,7 @@ public abstract class ServiceObject {
             String
                 .format(
                     "The class %s does not have an " +
-                        "associated XML element name.",
+                    "associated XML element name.",
                     this.getClass().getName()));
 
     return this.xmlElementName;
@@ -165,14 +184,11 @@ public abstract class ServiceObject {
   }
 
   /**
-   * Gets a value indicating whether a time zone SOAP header should be emitted
-   * in a CreateItem or UpdateItem request so this item can be property saved
-   * or updated.
+   * Gets a value indicating whether a time zone SOAP header should be emitted in a CreateItem or
+   * UpdateItem request so this item can be property saved or updated.
    *
    * @param isUpdateOperation the is update operation
    * @return boolean
-   * @throws ServiceLocalException
-   * @throws Exception
    */
   protected boolean getIsTimeZoneHeaderRequired(boolean isUpdateOperation)
       throws ServiceLocalException, Exception {
@@ -180,8 +196,8 @@ public abstract class ServiceObject {
   }
 
   /**
-   * Determines whether properties defined with
-   * ScopedDateTimePropertyDefinition require custom time zone scoping.
+   * Determines whether properties defined with ScopedDateTimePropertyDefinition require custom time
+   * zone scoping.
    *
    * @return boolean
    */
@@ -196,20 +212,6 @@ public abstract class ServiceObject {
    */
   protected PropertyBag getPropertyBag() {
     return this.propertyBag;
-  }
-
-  /**
-   * Internal constructor.
-   *
-   * @param service the service
-   * @throws Exception the exception
-   */
-  protected ServiceObject(ExchangeService service) throws Exception {
-    EwsUtilities.validateParam(service, "service");
-    EwsUtilities.validateServiceObjectVersion(this, service
-        .getRequestedServerVersion());
-    this.service = service;
-    this.propertyBag = new PropertyBag(this);
   }
 
   /**
@@ -235,6 +237,8 @@ public abstract class ServiceObject {
    */
   protected abstract ExchangeVersion getMinimumRequiredServerVersion();
 
+  // / Validates this instance.
+
   /**
    * Loads service object from XML.
    *
@@ -243,15 +247,15 @@ public abstract class ServiceObject {
    * @throws Exception the exception
    */
   protected void loadFromXml(EwsServiceXmlReader reader,
-      boolean clearPropertyBag) throws Exception {
+                             boolean clearPropertyBag) throws Exception {
 
     this.getPropertyBag().loadFromXml(reader, clearPropertyBag,
-        null, // propertySet
-        false); // summaryPropertiesOnly
+                                      null, // propertySet
+                                      false); // summaryPropertiesOnly
 
   }
 
-  // / Validates this instance.
+  // / Loads service object from XML.
 
   /**
    * Validate.
@@ -262,7 +266,7 @@ public abstract class ServiceObject {
     this.getPropertyBag().validate();
   }
 
-  // / Loads service object from XML.
+  // Clears the object's change log.
 
   /**
    * Load from xml.
@@ -274,15 +278,15 @@ public abstract class ServiceObject {
    * @throws Exception the exception
    */
   protected void loadFromXml(EwsServiceXmlReader reader,
-      boolean clearPropertyBag, PropertySet requestedPropertySet,
-      boolean summaryPropertiesOnly) throws Exception {
+                             boolean clearPropertyBag, PropertySet requestedPropertySet,
+                             boolean summaryPropertiesOnly) throws Exception {
 
     this.getPropertyBag().loadFromXml(reader, clearPropertyBag,
-        requestedPropertySet, summaryPropertiesOnly);
+                                      requestedPropertySet, summaryPropertiesOnly);
 
   }
 
-  // Clears the object's change log.
+  // / Writes service object as XML.
 
   /**
    * Clear change log.
@@ -292,7 +296,7 @@ public abstract class ServiceObject {
     this.getPropertyBag().clearChangeLog();
   }
 
-  // / Writes service object as XML.
+  // Writes service object for update as XML.
 
   /**
    * Write to xml.
@@ -305,7 +309,7 @@ public abstract class ServiceObject {
     this.getPropertyBag().writeToXml(writer);
   }
 
-  // Writes service object for update as XML.
+  // / Loads the specified set of properties on the object.
 
   /**
    * Write to xml for update.
@@ -319,7 +323,7 @@ public abstract class ServiceObject {
     this.getPropertyBag().writeToXmlForUpdate(writer);
   }
 
-  // / Loads the specified set of properties on the object.
+  // / Deletes the object.
 
   /**
    * Internal load.
@@ -330,7 +334,8 @@ public abstract class ServiceObject {
   protected abstract void internalLoad(PropertySet propertySet)
       throws Exception;
 
-  // / Deletes the object.
+  // / Loads the specified set of properties. Calling this method results in a
+  // call to EWS.
 
   /**
    * Internal delete.
@@ -341,11 +346,12 @@ public abstract class ServiceObject {
    * @throws Exception the exception
    */
   protected abstract void internalDelete(DeleteMode deleteMode,
-      SendCancellationsMode sendCancellationsMode,
-      AffectedTaskOccurrence affectedTaskOccurrences) throws Exception;
+                                         SendCancellationsMode sendCancellationsMode,
+                                         AffectedTaskOccurrence affectedTaskOccurrences)
+      throws Exception;
 
-  // / Loads the specified set of properties. Calling this method results in a
-  // call to EWS.
+  // Loads the first class properties. Calling this method results in a call
+  // to EWS.
 
   /**
    * Load.
@@ -356,9 +362,6 @@ public abstract class ServiceObject {
   public void load(PropertySet propertySet) throws Exception {
     this.internalLoad(propertySet);
   }
-
-  // Loads the first class properties. Calling this method results in a call
-  // to EWS.
 
   /**
    * Load.
@@ -390,7 +393,7 @@ public abstract class ServiceObject {
           return propertyValue;
         } else {
           throw new ServiceObjectPropertyException(Strings.MustLoadOrAssignPropertyBeforeAccess,
-              propertyDefinition);
+                                                   propertyDefinition);
         }
       } else {
         // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
@@ -410,8 +413,8 @@ public abstract class ServiceObject {
    * @throws Exception the exception
    */
   protected <T> boolean tryGetExtendedProperty(Class<T> cls,
-      ExtendedPropertyDefinition propertyDefinition,
-      OutParam<T> propertyValue) throws Exception {
+                                               ExtendedPropertyDefinition propertyDefinition,
+                                               OutParam<T> propertyValue) throws Exception {
     ExtendedPropertyCollection propertyCollection = this
         .getExtendedProperties();
 
@@ -430,9 +433,9 @@ public abstract class ServiceObject {
    * @param propertyDefinition The property definition.
    * @param propertyValue      The property value
    * @return True if property retrieved, false otherwise.
-   * @throws Exception
    */
-  public boolean tryGetProperty(PropertyDefinitionBase propertyDefinition, OutParam<Object> propertyValue)
+  public boolean tryGetProperty(PropertyDefinitionBase propertyDefinition,
+                                OutParam<Object> propertyValue)
       throws Exception {
     return this.tryGetProperty(Object.class, propertyDefinition, propertyValue);
   }
@@ -446,7 +449,7 @@ public abstract class ServiceObject {
    * @throws Exception the exception
    */
   public <T> boolean tryGetProperty(Class<T> cls, PropertyDefinitionBase propertyDefinition,
-      OutParam<T> propertyValue) throws Exception {
+                                    OutParam<T> propertyValue) throws Exception {
 
     PropertyDefinition propDef = (PropertyDefinition) propertyDefinition;
     if (propDef != null) {
@@ -498,6 +501,8 @@ public abstract class ServiceObject {
     return service;
   }
 
+  // / The property definition for the Id of this object.
+
   /**
    * Sets the service.
    *
@@ -507,7 +512,7 @@ public abstract class ServiceObject {
     this.service = service;
   }
 
-  // / The property definition for the Id of this object.
+  // / The unique Id of this object.
 
   /**
    * Gets the id property definition.
@@ -518,7 +523,9 @@ public abstract class ServiceObject {
     return null;
   }
 
-  // / The unique Id of this object.
+  // / Indicates whether this object is a real store item, or if it's a local
+  // object
+  // / that has yet to be saved.
 
   /**
    * Gets the id.
@@ -539,9 +546,8 @@ public abstract class ServiceObject {
     return (ServiceId) serviceId.getParam();
   }
 
-  // / Indicates whether this object is a real store item, or if it's a local
-  // object
-  // / that has yet to be saved.
+  // / Gets a value indicating whether the object has been modified and should
+  // be saved.
 
   /**
    * Checks if is new.
@@ -557,8 +563,7 @@ public abstract class ServiceObject {
 
   }
 
-  // / Gets a value indicating whether the object has been modified and should
-  // be saved.
+  // Gets the extended properties collection.
 
   /**
    * Checks if is dirty.
@@ -570,8 +575,6 @@ public abstract class ServiceObject {
     return this.getPropertyBag().getIsDirty();
 
   }
-
-  // Gets the extended properties collection.
 
   /**
    * Gets the extended properties.
@@ -594,12 +597,6 @@ public abstract class ServiceObject {
     return (namespacePrefix == null || namespacePrefix.isEmpty());
 
   }
-
-  /**
-   * The on change.
-   */
-  private List<IServiceObjectChangedDelegate> onChange =
-      new ArrayList<IServiceObjectChangedDelegate>();
 
   /**
    * Adds the service object changed event.

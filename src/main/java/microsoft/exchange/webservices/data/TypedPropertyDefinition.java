@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.text.ParseException;
 import java.util.EnumSet;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents typed property definition.
@@ -44,7 +46,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    * @param version        The version.
    */
   protected TypedPropertyDefinition(String xmlElementName, String uri,
-      ExchangeVersion version) {
+                                    ExchangeVersion version) {
     super(xmlElementName, uri, version);
     this.isNullable = false;
   }
@@ -58,7 +60,8 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    * @param version        The version.
    */
   protected TypedPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                    EnumSet<PropertyDefinitionFlags> flags,
+                                    ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
 
@@ -69,12 +72,11 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    * @param uri            The URI.
    * @param flags          The flags.
    * @param version        The version.
-   * @param isNullable     Indicates that this property definition is for a nullable
-   *                       property.
+   * @param isNullable     Indicates that this property definition is for a nullable property.
    */
   protected TypedPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
-      boolean isNullable) {
+                                    EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
+                                    boolean isNullable) {
     super(xmlElementName, uri, flags, version);
     this.isNullable = isNullable;
   }
@@ -84,16 +86,12 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    *
    * @param value The value.
    * @return Typed value.
-   * @throws java.text.ParseException
-   * @throws IllegalAccessException
-   * @throws InstantiationException
    */
   protected abstract Object parse(String value) throws InstantiationException,
-      IllegalAccessException, ParseException;
+                                                       IllegalAccessException, ParseException;
 
   /**
-   * Gets a value indicating whether this property definition is for a
-   * nullable type.
+   * Gets a value indicating whether this property definition is for a nullable type.
    *
    * @return always true
    */
@@ -121,7 +119,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    */
   @Override
   protected void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+                                          PropertyBag propertyBag) throws Exception {
     String value = reader.readElementValue(XmlNamespace.Types, this
         .getXmlElement());
 
@@ -138,19 +136,20 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    * @param propertyBag       The property bag.
    * @param isUpdateOperation Indicates whether the context is an update operation.
    * @throws javax.xml.stream.XMLStreamException                       the xML stream exception
-   * @throws ServiceXmlSerializationException                          the service xml serialization exception
+   * @throws ServiceXmlSerializationException                          the service xml serialization
+   *                                                                   exception
    * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
    */
   @Override
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+                                         PropertyBag propertyBag, boolean isUpdateOperation)
       throws XMLStreamException, ServiceXmlSerializationException,
-      ServiceLocalException {
+             ServiceLocalException {
     Object value = propertyBag.getObjectFromPropertyDefinition(this);
 
     if (value != null) {
       writer.writeElementValue(XmlNamespace.Types, this.getXmlElement(),
-          this.getName(), value);
+                               this.getName(), value);
     }
 
   }

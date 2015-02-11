@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
 /**
- * Represents a time zone period transition that occurs on a specific day of a
- * specific month.
+ * Represents a time zone period transition that occurs on a specific day of a specific month.
  */
 class AbsoluteDayOfMonthTransition extends AbsoluteMonthTransition {
 
@@ -34,6 +34,27 @@ class AbsoluteDayOfMonthTransition extends AbsoluteMonthTransition {
    * The day of month.
    */
   private int dayOfMonth;
+
+  /**
+   * Initializes a new instance of the AbsoluteDayOfMonthTransition class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   */
+  protected AbsoluteDayOfMonthTransition(TimeZoneDefinition timeZoneDefinition) {
+    super(timeZoneDefinition);
+  }
+
+  /**
+   * Initializes a new instance of the AbsoluteDayOfMonthTransition class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   * @param targetPeriod       the target period
+   */
+
+  protected AbsoluteDayOfMonthTransition(
+      TimeZoneDefinition timeZoneDefinition, TimeZonePeriod targetPeriod) {
+    super(timeZoneDefinition, targetPeriod);
+  }
 
   /**
    * Gets the XML element name associated with the transition.
@@ -62,9 +83,9 @@ class AbsoluteDayOfMonthTransition extends AbsoluteMonthTransition {
         this.dayOfMonth = reader.readElementValue(Integer.class);
 
         EwsUtilities.EwsAssert(this.dayOfMonth > 0
-                && this.dayOfMonth <= 31,
-            "AbsoluteDayOfMonthTransition.TryReadElementFromXml",
-            "dayOfMonth is not in the valid 1 - 31 range.");
+                               && this.dayOfMonth <= 31,
+                               "AbsoluteDayOfMonthTransition.TryReadElementFromXml",
+                               "dayOfMonth is not in the valid 1 - 31 range.");
 
         return true;
       } else {
@@ -86,28 +107,7 @@ class AbsoluteDayOfMonthTransition extends AbsoluteMonthTransition {
     super.writeElementsToXml(writer);
 
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Day,
-        this.dayOfMonth);
-  }
-
-  /**
-   * Initializes a new instance of the AbsoluteDayOfMonthTransition class.
-   *
-   * @param timeZoneDefinition the time zone definition
-   */
-  protected AbsoluteDayOfMonthTransition(TimeZoneDefinition timeZoneDefinition) {
-    super(timeZoneDefinition);
-  }
-
-  /**
-   * Initializes a new instance of the AbsoluteDayOfMonthTransition class.
-   *
-   * @param timeZoneDefinition the time zone definition
-   * @param targetPeriod       the target period
-   */
-
-  protected AbsoluteDayOfMonthTransition(
-      TimeZoneDefinition timeZoneDefinition, TimeZonePeriod targetPeriod) {
-    super(timeZoneDefinition, targetPeriod);
+                             this.dayOfMonth);
   }
 
   /**

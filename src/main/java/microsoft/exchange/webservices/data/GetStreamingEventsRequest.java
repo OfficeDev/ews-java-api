@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -42,16 +43,22 @@ class GetStreamingEventsRequest extends HangingServiceRequestBase {
    * @param serviceObjectHandler The serviceObjectHandler
    * @param subscriptionIds      The subscriptionIds
    * @param connectionTimeout    The connectionTimeout
-   * @throws microsoft.exchange.webservices.data.ServiceVersionException
    */
   protected GetStreamingEventsRequest(ExchangeService service,
-      IHandleResponseObject serviceObjectHandler,
-      Iterable<String> subscriptionIds, int connectionTimeout)
+                                      IHandleResponseObject serviceObjectHandler,
+                                      Iterable<String> subscriptionIds, int connectionTimeout)
       throws ServiceVersionException {
     super(service, serviceObjectHandler,
-        GetStreamingEventsRequest.heartbeatFrequency);
+          GetStreamingEventsRequest.heartbeatFrequency);
     this.subscriptionIds = subscriptionIds;
     this.connectionTimeout = connectionTimeout;
+  }
+
+  /**
+   * region Test hooks Allow test code to change heartbeat value
+   */
+  protected static void setHeartbeatFrequency(int heartbeatFrequency) {
+    GetStreamingEventsRequest.heartbeatFrequency = heartbeatFrequency;
   }
 
   /**
@@ -78,14 +85,12 @@ class GetStreamingEventsRequest extends HangingServiceRequestBase {
    * Writes the elements to XML writer.
    *
    * @param writer The writer
-   * @throws javax.xml.stream.XMLStreamException
-   * @throws ServiceXmlSerializationException
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.SubscriptionIds);
+                             XmlElementNames.SubscriptionIds);
 
     for (String id : this.subscriptionIds) {
       writer.writeElementValue(
@@ -117,13 +122,12 @@ class GetStreamingEventsRequest extends HangingServiceRequestBase {
    *
    * @param reader The reader
    * @return response
-   * @throws Exception
    */
   @Override
   protected Object parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.ResponseMessages);
+                            XmlElementNames.ResponseMessages);
 
     GetStreamingEventsResponse response =
         new GetStreamingEventsResponse(this);
@@ -131,17 +135,9 @@ class GetStreamingEventsRequest extends HangingServiceRequestBase {
         GetStreamingEventsResponseMessage);
 
     reader.readEndElementIfNecessary(XmlNamespace.Messages,
-        XmlElementNames.ResponseMessages);
+                                     XmlElementNames.ResponseMessages);
 
     return response;
-  }
-
-  /**
-   * region Test hooks
-   * Allow test code to change heartbeat value
-   */
-  protected static void setHeartbeatFrequency(int heartbeatFrequency) {
-    GetStreamingEventsRequest.heartbeatFrequency = heartbeatFrequency;
   }
 
 

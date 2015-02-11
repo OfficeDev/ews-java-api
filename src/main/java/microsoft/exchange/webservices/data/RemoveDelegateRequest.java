@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ import java.util.List;
  * Represents a RemoveDelete request.
  */
 class RemoveDelegateRequest extends
-    DelegateManagementRequestBase<DelegateManagementResponse> {
+                            DelegateManagementRequestBase<DelegateManagementResponse> {
 
   /**
    * The user ids.
@@ -40,7 +41,6 @@ class RemoveDelegateRequest extends
    * Initializes a new instance of the class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected RemoveDelegateRequest(ExchangeService service)
       throws Exception {
@@ -56,7 +56,7 @@ class RemoveDelegateRequest extends
   protected void validate() throws Exception {
     super.validate();
     EwsUtilities.validateParamCollection(this.getUserIds().iterator(),
-        "UserIds");
+                                         "UserIds");
   }
 
   /**
@@ -71,7 +71,7 @@ class RemoveDelegateRequest extends
     super.writeElementsToXml(writer);
     writer
         .writeStartElement(XmlNamespace.Messages,
-            XmlElementNames.UserIds);
+                           XmlElementNames.UserIds);
 
     for (UserId userId : this.getUserIds()) {
       userId.writeToXml(writer, XmlElementNames.UserId);

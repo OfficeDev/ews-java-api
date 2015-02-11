@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -39,7 +40,7 @@ class FolderIdWrapper extends AbstractFolderIdWrapper {
    */
   protected FolderIdWrapper(FolderId folderId) {
     EwsUtilities.EwsAssert(folderId != null, "FolderIdWrapper.ctor",
-        "folderId is null");
+                           "folderId is null");
     this.folderId = folderId;
   }
 

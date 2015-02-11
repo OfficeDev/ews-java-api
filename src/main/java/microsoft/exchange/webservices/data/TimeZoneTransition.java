@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -55,8 +56,41 @@ class TimeZoneTransition extends ComplexProperty {
   private TimeZoneTransitionGroup targetGroup;
 
   /**
-   * Creates a time zone period transition of the appropriate type given an
-   * XML element name.
+   * Initializes a new instance of the class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   */
+  protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition) {
+    super();
+    this.timeZoneDefinition = timeZoneDefinition;
+  }
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   * @param targetGroup        the target group
+   */
+  protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition,
+                               TimeZoneTransitionGroup targetGroup) {
+    this(timeZoneDefinition);
+    this.targetGroup = targetGroup;
+  }
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   * @param targetPeriod       the target period
+   */
+  protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition,
+                               TimeZonePeriod targetPeriod) {
+    this(timeZoneDefinition);
+    this.targetPeriod = targetPeriod;
+  }
+
+  /**
+   * Creates a time zone period transition of the appropriate type given an XML element name.
    *
    * @param timeZoneDefinition the time zone definition
    * @param xmlElementName     the xml element name
@@ -81,8 +115,8 @@ class TimeZoneTransition extends ComplexProperty {
       return new TimeZoneTransition(timeZoneDefinition);
     } else {
       throw new ServiceLocalException(String
-          .format(Strings.UnknownTimeZonePeriodTransitionType,
-              xmlElementName));
+                                          .format(Strings.UnknownTimeZonePeriodTransitionType,
+                                                  xmlElementName));
     }
   }
 
@@ -98,8 +132,7 @@ class TimeZoneTransition extends ComplexProperty {
   /**
    * Tries to read element from XML.The reader.
    *
-   * @param reader The
-   *               reader.
+   * @param reader The reader.
    * @return True if element was read.
    * @throws Exception the exception
    */
@@ -177,40 +210,6 @@ class TimeZoneTransition extends ComplexProperty {
    */
   protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     this.writeToXml(writer, this.getXmlElementName());
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param timeZoneDefinition the time zone definition
-   */
-  protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition) {
-    super();
-    this.timeZoneDefinition = timeZoneDefinition;
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param timeZoneDefinition the time zone definition
-   * @param targetGroup        the target group
-   */
-  protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition,
-      TimeZoneTransitionGroup targetGroup) {
-    this(timeZoneDefinition);
-    this.targetGroup = targetGroup;
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param timeZoneDefinition the time zone definition
-   * @param targetPeriod       the target period
-   */
-  protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition,
-      TimeZonePeriod targetPeriod) {
-    this(timeZoneDefinition);
-    this.targetPeriod = targetPeriod;
   }
 
   /**

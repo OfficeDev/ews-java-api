@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.List;
@@ -28,7 +29,7 @@ import java.util.List;
  * Represents a response to an individual item retrieval operation.
  */
 public final class GetItemResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                           IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The item.
@@ -51,7 +52,7 @@ public final class GetItemResponse extends ServiceResponse implements
     this.item = item;
     this.propertySet = propertySet;
     EwsUtilities.EwsAssert(this.propertySet != null,
-        "GetItemResponse.ctor", "PropertySet should not be null");
+                           "GetItemResponse.ctor", "PropertySet should not be null");
   }
 
   /**
@@ -84,12 +85,12 @@ public final class GetItemResponse extends ServiceResponse implements
    * @throws Exception the exception
    */
   private Item getObjectInstance(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                 String xmlElementName) throws Exception {
     if (this.getItem() != null) {
       return this.getItem();
     } else {
       return EwsUtilities.createEwsObjectFromXmlElementName(Item.class,
-          service, xmlElementName);
+                                                            service, xmlElementName);
 
     }
   }
@@ -113,7 +114,7 @@ public final class GetItemResponse extends ServiceResponse implements
    */
   @Override
   public ServiceObject getObjectInstanceDelegate(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                                 String xmlElementName) throws Exception {
     return getObjectInstance(service, xmlElementName);
   }
 }

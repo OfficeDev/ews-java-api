@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,10 +20,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.Date;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents the date and time range within which messages have been received.
@@ -48,8 +50,7 @@ public final class RulePredicateDateRange extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the range start date and time.
-   * If Start is set to null, no start date applies.
+   * Gets or sets the range start date and time. If Start is set to null, no start date applies.
    */
   public Date getStart() {
     return this.start;
@@ -63,8 +64,7 @@ public final class RulePredicateDateRange extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the range end date and time.
-   * If End is set to null, no end date applies.
+   * Gets or sets the range end date and time. If End is set to null, no end date applies.
    */
   public Date getEnd() {
     return this.end;
@@ -85,7 +85,7 @@ public final class RulePredicateDateRange extends ComplexProperty {
    */
   @Override
   protected boolean tryReadElementFromXml(EwsServiceXmlReader
-      reader) throws Exception {
+                                              reader) throws Exception {
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.StartDateTime)) {
       this.start = reader.readElementValueAsDateTime();
       return true;
@@ -107,11 +107,11 @@ public final class RulePredicateDateRange extends ComplexProperty {
       throws ServiceXmlSerializationException, XMLStreamException {
     if (this.getStart() != null) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.StartDateTime, this.getStart());
+                               XmlElementNames.StartDateTime, this.getStart());
     }
     if (this.getEnd() != null) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.EndDateTime, this.getEnd());
+                               XmlElementNames.EndDateTime, this.getEnd());
     }
   }
 

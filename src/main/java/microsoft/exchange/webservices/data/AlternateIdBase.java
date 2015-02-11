@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -95,7 +96,7 @@ public abstract class AlternateIdBase implements ISelfValidate {
   protected void loadAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.setFormat(reader.readAttributeValue(IdFormat.class,
-        XmlAttributeNames.Format));
+                                             XmlAttributeNames.Format));
   }
 
   /**
@@ -114,8 +115,6 @@ public abstract class AlternateIdBase implements ISelfValidate {
 
   /**
    * Validate this instance.
-   *
-   * @throws Exception
    */
   protected void internalValidate() throws Exception {
     // nothing to do.
@@ -123,8 +122,6 @@ public abstract class AlternateIdBase implements ISelfValidate {
 
   /**
    * Validates this instance.
-   *
-   * @throws Exception
    */
   public void validate() throws Exception {
     this.internalValidate();

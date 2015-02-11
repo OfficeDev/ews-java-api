@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -34,10 +35,8 @@ final class PostReplySchema extends ServiceObjectSchema {
   static final PostReplySchema Instance = new PostReplySchema();
 
   /**
-   * Registers properties.
-   * <p/>
-   * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
-   * same order as they are defined in types.xsd)
+   * Registers properties. <p/> IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e.
+   * the same order as they are defined in types.xsd)
    */
   @Override
   protected void registerProperties() {

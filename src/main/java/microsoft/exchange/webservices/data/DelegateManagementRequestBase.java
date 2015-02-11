@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -40,7 +41,6 @@ abstract class DelegateManagementRequestBase
    * Initializes a new instance of the class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected DelegateManagementRequestBase(ExchangeService service)
       throws Exception {
@@ -69,7 +69,7 @@ abstract class DelegateManagementRequestBase
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.getMailbox().writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.Mailbox);
+                                 XmlElementNames.Mailbox);
   }
 
   /**

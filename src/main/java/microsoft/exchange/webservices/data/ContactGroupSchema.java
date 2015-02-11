@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -30,7 +31,6 @@ import java.util.EnumSet;
 @Schema
 public class ContactGroupSchema extends ItemSchema {
 
-
   // Defines the DisplayName property.
   /**
    * The Constant DisplayName.
@@ -38,13 +38,11 @@ public class ContactGroupSchema extends ItemSchema {
   public static final PropertyDefinition DisplayName =
       ContactSchema.DisplayName;
 
-
   // Defines the FileAs property.
   /**
    * The Constant FileAs.
    */
   public static final PropertyDefinition FileAs = ContactSchema.FileAs;
-
 
   // Defines the Members property.
   /**
@@ -56,8 +54,8 @@ public class ContactGroupSchema extends ItemSchema {
           XmlElementNames.Members,
           FieldUris.Members,
           EnumSet.of(PropertyDefinitionFlags.AutoInstantiateOnRead,
-              PropertyDefinitionFlags.CanSet,
-              PropertyDefinitionFlags.CanUpdate),
+                     PropertyDefinitionFlags.CanSet,
+                     PropertyDefinitionFlags.CanUpdate),
           ExchangeVersion.Exchange2010,
           new ICreateComplexPropertyDelegate
               <GroupMemberCollection>() {
@@ -67,14 +65,12 @@ public class ContactGroupSchema extends ItemSchema {
             }
           });
 
-
   //This must be declared after the property definitions.
   /**
    * The Constant Instance.
    */
   protected static final ContactGroupSchema Instance =
       new ContactGroupSchema();
-
 
   //  Initializes a new instance of the
   // <see cref="ContactGroupSchema"/> class.
@@ -91,10 +87,8 @@ public class ContactGroupSchema extends ItemSchema {
   // the same order as they are defined in types.xsd)
 
   /**
-   * Registers properties.
-   * <p/>
-   * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
-   * same order as they are defined in types.xsd)
+   * Registers properties. <p/> IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e.
+   * the same order as they are defined in types.xsd)
    */
   @Override
   protected void registerProperties() {
@@ -105,7 +99,6 @@ public class ContactGroupSchema extends ItemSchema {
     this.registerProperty(Members);
   }
 
-
   //  Field URIs for Members.
 
 
@@ -113,6 +106,7 @@ public class ContactGroupSchema extends ItemSchema {
    * The Interface FieldUris.
    */
   private static interface FieldUris {
+
     /**
      * FieldUri for members.
      */

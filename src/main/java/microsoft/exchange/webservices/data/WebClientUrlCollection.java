@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -35,8 +36,7 @@ public final class WebClientUrlCollection {
   private ArrayList<WebClientUrl> urls;
 
   /**
-   * Initializes a new instance of the <see cref="WebClientUrlCollection"/>
-   * class.
+   * Initializes a new instance of the <see cref="WebClientUrlCollection"/> class.
    */
   protected WebClientUrlCollection() {
     this.urls = new ArrayList<WebClientUrl>();
@@ -58,11 +58,11 @@ public final class WebClientUrlCollection {
 
       if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
           (reader.getLocalName()
-              .equals(XmlElementNames.WebClientUrl))) {
+               .equals(XmlElementNames.WebClientUrl))) {
         instance.getUrls().add(WebClientUrl.loadFromXml(reader));
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-        XmlElementNames.WebClientUrls));
+                                  XmlElementNames.WebClientUrls));
 
     return instance;
   }

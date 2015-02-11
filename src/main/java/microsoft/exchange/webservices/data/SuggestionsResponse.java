@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -51,13 +52,13 @@ final class SuggestionsResponse extends ServiceResponse {
   protected void loadSuggestedDaysFromXml(EwsServiceXmlReader reader)
       throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.SuggestionDayResultArray);
+                            XmlElementNames.SuggestionDayResultArray);
 
     do {
       reader.read();
 
       if (reader.isStartElement(XmlNamespace.Types,
-          XmlElementNames.SuggestionDayResult)) {
+                                XmlElementNames.SuggestionDayResult)) {
         Suggestion daySuggestion = new Suggestion();
 
         daySuggestion.loadFromXml(reader, reader.getLocalName());
@@ -65,7 +66,7 @@ final class SuggestionsResponse extends ServiceResponse {
         this.daySuggestions.add(daySuggestion);
       }
     } while (!reader.isEndElement(XmlNamespace.Messages,
-        XmlElementNames.SuggestionDayResultArray));
+                                  XmlElementNames.SuggestionDayResultArray));
   }
 
   /**

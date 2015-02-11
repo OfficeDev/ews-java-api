@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -29,8 +30,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Represents a supported Outlook protocol in an Outlook configurations settings
- * account.
+ * Represents a supported Outlook protocol in an Outlook configurations settings account.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 final class OutlookProtocol {
@@ -49,393 +49,6 @@ final class OutlookProtocol {
    * The Constant WEB.
    */
   private final static String WEB = "WEB";
-
-  /**
-   * Converters to translate common Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
-   */
-  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
-      commonProtocolSettings =
-      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
-          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
-            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
-
-              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
-                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
-
-              results.put(UserSettingName.EcpDeliveryReportUrlFragment,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.ecpUrlMt;
-                    }
-                  });
-              results.put(UserSettingName.EcpEmailSubscriptionsUrlFragment,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.ecpUrlAggr;
-                    }
-                  });
-              results.put(UserSettingName.EcpPublishingUrlFragment,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.ecpUrlPublish;
-                    }
-                  });
-              results.put(UserSettingName.EcpRetentionPolicyTagsUrlFragment,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.ecpUrlRet;
-                    }
-                  });
-              results.put(UserSettingName.EcpTextMessagingUrlFragment,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.ecpUrlSms;
-                    }
-                  });
-              results.put(UserSettingName.EcpVoicemailUrlFragment,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.ecpUrlUm;
-                    }
-                  });
-              return results;
-            }
-          });
-
-
-  /**
-   * Converters to translate internal (EXCH) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
-   */
-  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
-      internalProtocolSettings =
-      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
-          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
-            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
-
-              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
-                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
-
-              results.put(UserSettingName.ActiveDirectoryServer,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.activeDirectoryServer;
-                    }
-                  });
-              results.put(UserSettingName.CrossOrganizationSharingEnabled,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return String.valueOf(arg.sharingEnabled);
-                    }
-                  });
-              results.put(UserSettingName.InternalEcpUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.ecpUrl;
-                    }
-                  });
-              results.put(UserSettingName.InternalEcpDeliveryReportUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlMt);
-                    }
-                  });
-              results.put(UserSettingName.InternalEcpEmailSubscriptionsUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlAggr);
-                    }
-                  });
-              results.put(UserSettingName.InternalEcpPublishingUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlPublish);
-                    }
-                  });
-              results.put(UserSettingName.InternalEcpRetentionPolicyTagsUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlRet);
-                    }
-                  });
-              results.put(UserSettingName.InternalEcpTextMessagingUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlSms);
-                    }
-                  });
-              results.put(UserSettingName.InternalEcpVoicemailUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlUm);
-                    }
-                  });
-              results.put(UserSettingName.InternalEwsUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.exchangeWebServicesUrl == null ?
-                          arg.availabilityServiceUrl : arg.exchangeWebServicesUrl;
-                    }
-                  });
-              results.put(UserSettingName.InternalMailboxServerDN,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.serverDN;
-                    }
-                  });
-              results.put(UserSettingName.InternalRpcClientServer,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.server;
-                    }
-                  });
-              results.put(UserSettingName.InternalOABUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.offlineAddressBookUrl;
-                    }
-                  });
-              results.put(UserSettingName.InternalUMUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.unifiedMessagingUrl;
-                    }
-                  });
-              results.put(UserSettingName.MailboxDN,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.mailboxDN;
-                    }
-                  });
-              results.put(UserSettingName.PublicFolderServer,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.publicFolderServer;
-                    }
-                  });
-              return results;
-            }
-          });
-
-  /**
-   * Converters to translate external (EXPR) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
-   */
-  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
-      externalProtocolSettings =
-      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
-          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
-            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
-
-              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
-                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
-
-              results.put(UserSettingName.ExternalEcpDeliveryReportUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlRet);
-                    }
-                  });
-              results.put(UserSettingName.ExternalEcpEmailSubscriptionsUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlAggr);
-                    }
-                  });
-              results.put(UserSettingName.ExternalEcpPublishingUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlPublish);
-                    }
-                  });
-              results.put(UserSettingName.ExternalEcpRetentionPolicyTagsUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlRet);
-                    }
-                  });
-              results.put(UserSettingName.ExternalEcpTextMessagingUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlSms);
-                    }
-                  });
-              results.put(UserSettingName.ExternalEcpUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.ecpUrl;
-                    }
-                  });
-              results.put(UserSettingName.ExternalEcpVoicemailUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.convertEcpFragmentToUrl(arg.ecpUrlUm);
-                    }
-                  });
-              results.put(UserSettingName.ExternalEwsUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.exchangeWebServicesUrl == null ?
-                          arg.availabilityServiceUrl : arg.exchangeWebServicesUrl;
-                    }
-                  });
-              results.put(UserSettingName.ExternalMailboxServer,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.server;
-                    }
-                  });
-              results.put(
-                  UserSettingName.ExternalMailboxServerAuthenticationMethods,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.authPackage;
-                    }
-                  });
-              results.put(
-                  UserSettingName.ExternalMailboxServerRequiresSSL,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return String.valueOf(arg.sslEnabled);
-                    }
-                  });
-              results.put(UserSettingName.ExternalOABUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.offlineAddressBookUrl;
-                    }
-                  });
-              results.put(UserSettingName.ExternalUMUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.unifiedMessagingUrl;
-                    }
-                  });
-              results.put(UserSettingName.ExchangeRpcUrl,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.exchangeRpcUrl;
-                    }
-                  });
-              return results;
-            }
-          });
-
-
-  /**
-   * Merged converter dictionary for translating
-   * internal (EXCH) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
-   */
-  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
-      internalProtocolConverterDictionary =
-      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
-          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
-            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
-
-              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
-                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
-              for (Entry<UserSettingName, IFunc<OutlookProtocol, Object>> kv : commonProtocolSettings
-                  .getMember().entrySet()) {
-                results.put(kv.getKey(), kv.getValue());
-              }
-              for (Entry<UserSettingName, IFunc<OutlookProtocol, Object>> kv : internalProtocolSettings
-                  .getMember().entrySet()) {
-                results.put(kv.getKey(), kv.getValue());
-              }
-              return results;
-            }
-          });
-
-
-  /**
-   * Merged converter dictionary for translating
-   * external (EXPR) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
-   */
-  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
-      externalProtocolConverterDictionary =
-      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
-          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
-            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
-
-              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
-                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
-              for (Entry<UserSettingName, IFunc<OutlookProtocol, Object>> kv : commonProtocolSettings
-                  .getMember().entrySet()) {
-                results.put(kv.getKey(), kv.getValue());
-              }
-              for (Entry<UserSettingName, IFunc<OutlookProtocol, Object>> kv : externalProtocolSettings
-                  .getMember().entrySet()) {
-                results.put(kv.getKey(), kv.getValue());
-              }
-              return results;
-            }
-          });
-
-
-  /**
-   * Converters to translate Web (WEB) Outlook protocol settings.
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
-   */
-  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
-      webProtocolConverterDictionary =
-      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
-          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
-            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
-
-              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
-                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
-
-              results.put(UserSettingName.InternalWebClientUrls,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.internalOutlookWebAccessUrls;
-                    }
-                  });
-              results.put(UserSettingName.ExternalWebClientUrls,
-                  new IFunc<OutlookProtocol, Object>() {
-                    public Object func(OutlookProtocol arg) {
-                      return arg.externalOutlookWebAccessUrls;
-                    }
-                  });
-              return results;
-            }
-          });
-
-  /**
-   * Each entry maps to a lambda expression used to
-   * get the matching property from the OutlookProtocol instance.
-   */
-  private static LazyMember<List<UserSettingName>>
-      availableUserSettings =
-      new LazyMember<List<UserSettingName>>(
-          new ILazyMember<List<UserSettingName>>() {
-            public List<UserSettingName> createInstance() {
-
-              List<UserSettingName> results =
-                  new ArrayList<UserSettingName>();
-
-              results.addAll(commonProtocolSettings.
-                  getMember().keySet());
-              results.addAll(internalProtocolSettings.
-                  getMember().keySet());
-              results.addAll(externalProtocolSettings.
-                  getMember().keySet());
-              results.addAll(webProtocolConverterDictionary.
-                  getMember().keySet());
-              return results;
-            }
-          });
-
-
   /**
    * Map Outlook protocol name to type.
    */
@@ -454,8 +67,10 @@ final class OutlookProtocol {
 
             }
           });
-
-
+  /**
+   * The constant exchangeWebServicesUrl.
+   */
+  private String exchangeWebServicesUrl;
   /**
    * The constant activeDirectoryServer.
    */
@@ -497,9 +112,61 @@ final class OutlookProtocol {
    */
   private String ecpUrlUm;
   /**
-   * The constant exchangeWebServicesUrl.
+   * Converters to translate common Outlook protocol settings. Each entry maps to a lambda
+   * expression used to get the matching property from the OutlookProtocol instance.
    */
-  private String exchangeWebServicesUrl;
+  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
+      commonProtocolSettings =
+      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
+          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
+            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
+
+              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
+                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
+
+              results.put(UserSettingName.EcpDeliveryReportUrlFragment,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.ecpUrlMt;
+                            }
+                          });
+              results.put(UserSettingName.EcpEmailSubscriptionsUrlFragment,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.ecpUrlAggr;
+                            }
+                          });
+              results.put(UserSettingName.EcpPublishingUrlFragment,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.ecpUrlPublish;
+                            }
+                          });
+              results.put(UserSettingName.EcpRetentionPolicyTagsUrlFragment,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.ecpUrlRet;
+                            }
+                          });
+              results.put(UserSettingName.EcpTextMessagingUrlFragment,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.ecpUrlSms;
+                            }
+                          });
+              results.put(UserSettingName.EcpVoicemailUrlFragment,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.ecpUrlUm;
+                            }
+                          });
+              return results;
+            }
+          });
+  /**
+   * The constant sslEnabled.
+   */
+  private boolean sslEnabled;
   /**
    * The constant mailboxDN.
    */
@@ -529,13 +196,273 @@ final class OutlookProtocol {
    */
   private String unifiedMessagingUrl;
   /**
+   * Converters to translate external (EXPR) Outlook protocol settings. Each entry maps to a lambda
+   * expression used to get the matching property from the OutlookProtocol instance.
+   */
+  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
+      externalProtocolSettings =
+      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
+          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
+            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
+
+              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
+                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
+
+              results.put(UserSettingName.ExternalEcpDeliveryReportUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlRet);
+                            }
+                          });
+              results.put(UserSettingName.ExternalEcpEmailSubscriptionsUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlAggr);
+                            }
+                          });
+              results.put(UserSettingName.ExternalEcpPublishingUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlPublish);
+                            }
+                          });
+              results.put(UserSettingName.ExternalEcpRetentionPolicyTagsUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlRet);
+                            }
+                          });
+              results.put(UserSettingName.ExternalEcpTextMessagingUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlSms);
+                            }
+                          });
+              results.put(UserSettingName.ExternalEcpUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.ecpUrl;
+                            }
+                          });
+              results.put(UserSettingName.ExternalEcpVoicemailUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlUm);
+                            }
+                          });
+              results.put(UserSettingName.ExternalEwsUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.exchangeWebServicesUrl == null ?
+                                     arg.availabilityServiceUrl : arg.exchangeWebServicesUrl;
+                            }
+                          });
+              results.put(UserSettingName.ExternalMailboxServer,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.server;
+                            }
+                          });
+              results.put(
+                  UserSettingName.ExternalMailboxServerAuthenticationMethods,
+                  new IFunc<OutlookProtocol, Object>() {
+                    public Object func(OutlookProtocol arg) {
+                      return arg.authPackage;
+                    }
+                  });
+              results.put(
+                  UserSettingName.ExternalMailboxServerRequiresSSL,
+                  new IFunc<OutlookProtocol, Object>() {
+                    public Object func(OutlookProtocol arg) {
+                      return String.valueOf(arg.sslEnabled);
+                    }
+                  });
+              results.put(UserSettingName.ExternalOABUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.offlineAddressBookUrl;
+                            }
+                          });
+              results.put(UserSettingName.ExternalUMUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.unifiedMessagingUrl;
+                            }
+                          });
+              results.put(UserSettingName.ExchangeRpcUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.exchangeRpcUrl;
+                            }
+                          });
+              return results;
+            }
+          });
+  /**
+   * Merged converter dictionary for translating external (EXPR) Outlook protocol settings. Each
+   * entry maps to a lambda expression used to get the matching property from the OutlookProtocol
+   * instance.
+   */
+  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
+      externalProtocolConverterDictionary =
+      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
+          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
+            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
+
+              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
+                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
+              for (Entry<UserSettingName, IFunc<OutlookProtocol, Object>> kv : commonProtocolSettings
+                  .getMember().entrySet()) {
+                results.put(kv.getKey(), kv.getValue());
+              }
+              for (Entry<UserSettingName, IFunc<OutlookProtocol, Object>> kv : externalProtocolSettings
+                  .getMember().entrySet()) {
+                results.put(kv.getKey(), kv.getValue());
+              }
+              return results;
+            }
+          });
+  /**
    * The constant sharingEnabled.
    */
   private boolean sharingEnabled;
   /**
-   * The constant sslEnabled.
+   * Converters to translate internal (EXCH) Outlook protocol settings. Each entry maps to a lambda
+   * expression used to get the matching property from the OutlookProtocol instance.
    */
-  private boolean sslEnabled;
+  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
+      internalProtocolSettings =
+      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
+          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
+            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
+
+              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
+                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
+
+              results.put(UserSettingName.ActiveDirectoryServer,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.activeDirectoryServer;
+                            }
+                          });
+              results.put(UserSettingName.CrossOrganizationSharingEnabled,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return String.valueOf(arg.sharingEnabled);
+                            }
+                          });
+              results.put(UserSettingName.InternalEcpUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.ecpUrl;
+                            }
+                          });
+              results.put(UserSettingName.InternalEcpDeliveryReportUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlMt);
+                            }
+                          });
+              results.put(UserSettingName.InternalEcpEmailSubscriptionsUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlAggr);
+                            }
+                          });
+              results.put(UserSettingName.InternalEcpPublishingUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlPublish);
+                            }
+                          });
+              results.put(UserSettingName.InternalEcpRetentionPolicyTagsUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlRet);
+                            }
+                          });
+              results.put(UserSettingName.InternalEcpTextMessagingUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlSms);
+                            }
+                          });
+              results.put(UserSettingName.InternalEcpVoicemailUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.convertEcpFragmentToUrl(arg.ecpUrlUm);
+                            }
+                          });
+              results.put(UserSettingName.InternalEwsUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.exchangeWebServicesUrl == null ?
+                                     arg.availabilityServiceUrl : arg.exchangeWebServicesUrl;
+                            }
+                          });
+              results.put(UserSettingName.InternalMailboxServerDN,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.serverDN;
+                            }
+                          });
+              results.put(UserSettingName.InternalRpcClientServer,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.server;
+                            }
+                          });
+              results.put(UserSettingName.InternalOABUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.offlineAddressBookUrl;
+                            }
+                          });
+              results.put(UserSettingName.InternalUMUrl,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.unifiedMessagingUrl;
+                            }
+                          });
+              results.put(UserSettingName.MailboxDN,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.mailboxDN;
+                            }
+                          });
+              results.put(UserSettingName.PublicFolderServer,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.publicFolderServer;
+                            }
+                          });
+              return results;
+            }
+          });
+  /**
+   * Merged converter dictionary for translating internal (EXCH) Outlook protocol settings. Each
+   * entry maps to a lambda expression used to get the matching property from the OutlookProtocol
+   * instance.
+   */
+  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
+      internalProtocolConverterDictionary =
+      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
+          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
+            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
+
+              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
+                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
+              for (Entry<UserSettingName, IFunc<OutlookProtocol, Object>> kv : commonProtocolSettings
+                  .getMember().entrySet()) {
+                results.put(kv.getKey(), kv.getValue());
+              }
+              for (Entry<UserSettingName, IFunc<OutlookProtocol, Object>> kv : internalProtocolSettings
+                  .getMember().entrySet()) {
+                results.put(kv.getKey(), kv.getValue());
+              }
+              return results;
+            }
+          });
   /**
    * The constant externalOutlookWebAccessUrls.
    */
@@ -544,6 +471,59 @@ final class OutlookProtocol {
    * The constant internalOutlookWebAccessUrls.
    */
   private WebClientUrlCollection internalOutlookWebAccessUrls;
+  /**
+   * Converters to translate Web (WEB) Outlook protocol settings. Each entry maps to a lambda
+   * expression used to get the matching property from the OutlookProtocol instance.
+   */
+  private static LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>
+      webProtocolConverterDictionary =
+      new LazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>(
+          new ILazyMember<Map<UserSettingName, IFunc<OutlookProtocol, Object>>>() {
+            public Map<UserSettingName, IFunc<OutlookProtocol, Object>> createInstance() {
+
+              Map<UserSettingName, IFunc<OutlookProtocol, Object>> results =
+                  new HashMap<UserSettingName, IFunc<OutlookProtocol, Object>>();
+
+              results.put(UserSettingName.InternalWebClientUrls,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.internalOutlookWebAccessUrls;
+                            }
+                          });
+              results.put(UserSettingName.ExternalWebClientUrls,
+                          new IFunc<OutlookProtocol, Object>() {
+                            public Object func(OutlookProtocol arg) {
+                              return arg.externalOutlookWebAccessUrls;
+                            }
+                          });
+              return results;
+            }
+          });
+  /**
+   * Each entry maps to a lambda expression used to get the matching property from the
+   * OutlookProtocol instance.
+   */
+  private static LazyMember<List<UserSettingName>>
+      availableUserSettings =
+      new LazyMember<List<UserSettingName>>(
+          new ILazyMember<List<UserSettingName>>() {
+            public List<UserSettingName> createInstance() {
+
+              List<UserSettingName> results =
+                  new ArrayList<UserSettingName>();
+
+              results.addAll(commonProtocolSettings.
+                  getMember().keySet());
+              results.addAll(internalProtocolSettings.
+                  getMember().keySet());
+              results.addAll(externalProtocolSettings.
+                  getMember().keySet());
+              results.addAll(webProtocolConverterDictionary.
+                  getMember().keySet());
+              return results;
+            }
+          });
+  private OutlookProtocolType protocolType;
 
 
   /**
@@ -554,10 +534,64 @@ final class OutlookProtocol {
     this.externalOutlookWebAccessUrls = new WebClientUrlCollection();
   }
 
+  /**
+   * Convert protocol name to protocol type.
+   *
+   * @param protocolName Name of the protocol.
+   * @return OutlookProtocolType
+   */
+  private static OutlookProtocolType protocolNameToType(String
+                                                            protocolName) {
+    OutlookProtocolType protocolType = null;
+    if (!(protocolNameToTypeMap.getMember().containsKey(protocolName))) {
+      protocolType = OutlookProtocolType.Unknown;
+    } else {
+      protocolType = protocolNameToTypeMap.getMember().get(protocolName);
+    }
+    return protocolType;
+
+  }
 
   /**
-   * Parses the XML using the specified reader and creates an Outlook
-   * protocol.
+   * Loads web client urls from XML.
+   *
+   * @param reader        The reader.
+   * @param webClientUrls The web client urls.
+   * @param elementName   Name of the element.
+   */
+  private static void loadWebClientUrlsFromXml(EwsXmlReader reader,
+                                               WebClientUrlCollection webClientUrls,
+                                               String elementName) throws Exception {
+    do {
+      reader.read();
+
+      if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
+        if (reader.getLocalName().equals(XmlElementNames.OWAUrl)) {
+          String authMethod = reader.readAttributeValue(
+              XmlAttributeNames.AuthenticationMethod);
+          String owaUrl = reader.readElementValue();
+          WebClientUrl webClientUrl =
+              new WebClientUrl(authMethod, owaUrl);
+          webClientUrls.getUrls().add(webClientUrl);
+        } else {
+          reader.skipCurrentElement();
+        }
+      }
+    }
+    while (!reader.isEndElement(XmlNamespace.NotSpecified, elementName));
+  }
+
+  /**
+   * Gets the available user settings.
+   *
+   * @return availableUserSettings
+   */
+  protected static List<UserSettingName> getAvailableUserSettings() {
+    return availableUserSettings.getMember();
+  }
+
+  /**
+   * Parses the XML using the specified reader and creates an Outlook protocol.
    *
    * @param reader The reader.
    * @throws Exception the exception
@@ -598,11 +632,13 @@ final class OutlookProtocol {
         } else if (reader.getLocalName().equals(
             XmlElementNames.Internal)) {
           OutlookProtocol.loadWebClientUrlsFromXml(reader,
-              this.internalOutlookWebAccessUrls, reader.getLocalName());
+                                                   this.internalOutlookWebAccessUrls,
+                                                   reader.getLocalName());
         } else if (reader.getLocalName().equals(
             XmlElementNames.External)) {
           OutlookProtocol.loadWebClientUrlsFromXml(reader,
-              this.externalOutlookWebAccessUrls, reader.getLocalName());
+                                                   this.externalOutlookWebAccessUrls,
+                                                   reader.getLocalName());
         } else if (reader.getLocalName().equals(
             XmlElementNames.Ssl)) {
           String sslStr = reader.readElementValue();
@@ -640,56 +676,8 @@ final class OutlookProtocol {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.NotSpecified,
-        XmlElementNames.Protocol));
+                                  XmlElementNames.Protocol));
   }
-
-  /**
-   * Convert protocol name to protocol type.
-   *
-   * @param protocolName Name of the protocol.
-   * @return OutlookProtocolType
-   */
-  private static OutlookProtocolType protocolNameToType(String
-      protocolName) {
-    OutlookProtocolType protocolType = null;
-    if (!(protocolNameToTypeMap.getMember().containsKey(protocolName))) {
-      protocolType = OutlookProtocolType.Unknown;
-    } else {
-      protocolType = protocolNameToTypeMap.getMember().get(protocolName);
-    }
-    return protocolType;
-
-  }
-
-  /**
-   * Loads web client urls from XML.
-   *
-   * @param reader        The reader.
-   * @param webClientUrls The web client urls.
-   * @param elementName   Name of the element.
-   * @throws Exception
-   */
-  private static void loadWebClientUrlsFromXml(EwsXmlReader reader,
-      WebClientUrlCollection webClientUrls, String elementName) throws Exception {
-    do {
-      reader.read();
-
-      if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
-        if (reader.getLocalName().equals(XmlElementNames.OWAUrl)) {
-          String authMethod = reader.readAttributeValue(
-              XmlAttributeNames.AuthenticationMethod);
-          String owaUrl = reader.readElementValue();
-          WebClientUrl webClientUrl =
-              new WebClientUrl(authMethod, owaUrl);
-          webClientUrls.getUrls().add(webClientUrl);
-        } else {
-          reader.skipCurrentElement();
-        }
-      }
-    }
-    while (!reader.isEndElement(XmlNamespace.NotSpecified, elementName));
-  }
-
 
   /**
    * Convert ECP fragment to full ECP URL.
@@ -699,7 +687,7 @@ final class OutlookProtocol {
    */
   private String convertEcpFragmentToUrl(String fragment) {
     return ((this.ecpUrl == null || this.ecpUrl.isEmpty()) ||
-        (fragment == null || fragment.isEmpty())) ? null : (this.ecpUrl + fragment);
+            (fragment == null || fragment.isEmpty())) ? null : (this.ecpUrl + fragment);
   }
 
   /**
@@ -731,8 +719,6 @@ final class OutlookProtocol {
       }
     }
   }
-
-  private OutlookProtocolType protocolType;
 
   /**
    * Gets the type of the protocol.
@@ -767,16 +753,6 @@ final class OutlookProtocol {
       default:
         return null;
     }
-  }
-
-
-  /**
-   * Gets the available user settings.
-   *
-   * @return availableUserSettings
-   */
-  protected static List<UserSettingName> getAvailableUserSettings() {
-    return availableUserSettings.getMember();
   }
 }
 

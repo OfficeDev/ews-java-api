@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,24 +20,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
 
 /**
- * Represents an e-mail message. Properties available on e-mail messages are
- * defined in the EmailMessageSchema class.
+ * Represents an e-mail message. Properties available on e-mail messages are defined in the
+ * EmailMessageSchema class.
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Message)
 public class EmailMessage extends Item {
 
   /**
-   * Initializes an unsaved local instance of EmailMessage. To bind to an
-   * existing e-mail message, use EmailMessage.Bind() instead.
+   * Initializes an unsaved local instance of EmailMessage. To bind to an existing e-mail message,
+   * use EmailMessage.Bind() instead.
    *
-   * @param service The ExchangeService object to which the e-mail message will be
-   *                bound.
+   * @param service The ExchangeService object to which the e-mail message will be bound.
    * @throws Exception the exception
    */
   public EmailMessage(ExchangeService service) throws Exception {
@@ -55,30 +55,30 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Binds to an existing e-mail message and loads the specified set of
-   * properties.Calling this method results in a call to EWS.
+   * Binds to an existing e-mail message and loads the specified set of properties.Calling this
+   * method results in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
    * @param propertySet the property set
-   * @return An EmailMessage instance representing the e-mail message
-   * corresponding to the specified Id
+   * @return An EmailMessage instance representing the e-mail message corresponding to the specified
+   * Id
    * @throws Exception the exception
    */
   public static EmailMessage bind(ExchangeService service, ItemId id,
-      PropertySet propertySet) throws Exception {
+                                  PropertySet propertySet) throws Exception {
     return service.bindToItem(EmailMessage.class, id, propertySet);
 
   }
 
   /**
-   * Binds to an existing e-mail message and loads its first class
-   * properties.Calling this method results in a call to EWS.
+   * Binds to an existing e-mail message and loads its first class properties.Calling this method
+   * results in a call to EWS.
    *
    * @param service the service
    * @param id      the id
-   * @return An EmailMessage instance representing the e-mail message
-   * corresponding to the specified Id
+   * @return An EmailMessage instance representing the e-mail message corresponding to the specified
+   * Id
    * @throws Exception the exception
    */
   public static EmailMessage bind(ExchangeService service, ItemId id)
@@ -100,8 +100,7 @@ public class EmailMessage extends Item {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -116,7 +115,7 @@ public class EmailMessage extends Item {
    * @throws Exception the exception
    */
   private void internalSend(FolderId parentFolderId,
-      MessageDisposition messageDisposition) throws Exception {
+                            MessageDisposition messageDisposition) throws Exception {
     this.throwIfThisIsAttachment();
 
     if (this.isNew()) {
@@ -127,9 +126,9 @@ public class EmailMessage extends Item {
         // Bug E14:80316 -- If the message has attachments, save as a
         // draft (and add attachments) before sending.
         this.internalCreate(null, // null means use the Drafts folder in
-            // the mailbox of the authenticated
-            // user.
-            MessageDisposition.SaveOnly, null);
+                            // the mailbox of the authenticated
+                            // user.
+                            MessageDisposition.SaveOnly, null);
 
         this.getService().sendItem(this, parentFolderId);
       }
@@ -140,8 +139,8 @@ public class EmailMessage extends Item {
 
       if (this.getPropertyBag().getIsUpdateCallNecessary()) {
         this.internalUpdate(parentFolderId,
-            ConflictResolutionMode.AutoResolve, messageDisposition,
-            null);
+                            ConflictResolutionMode.AutoResolve, messageDisposition,
+                            null);
       } else {
         this.getService().sendItem(this, parentFolderId);
       }
@@ -156,23 +155,23 @@ public class EmailMessage extends Item {
    * Creates a reply response to the message.
    *
    * @param replyAll the reply all
-   * @return A ResponseMessage representing the reply response that can
-   * subsequently be modified and sent.
+   * @return A ResponseMessage representing the reply response that can subsequently be modified and
+   * sent.
    * @throws Exception the exception
    */
   public ResponseMessage createReply(boolean replyAll) throws Exception {
     this.throwIfThisIsNew();
 
     return new ResponseMessage(this,
-        replyAll ? ResponseMessageType.ReplyAll :
-            ResponseMessageType.Reply);
+                               replyAll ? ResponseMessageType.ReplyAll :
+                               ResponseMessageType.Reply);
   }
 
   /**
    * Creates a forward response to the message.
    *
-   * @return A ResponseMessage representing the forward response that can
-   * subsequently be modified and sent.
+   * @return A ResponseMessage representing the forward response that can subsequently be modified
+   * and sent.
    * @throws Exception the exception
    */
   public ResponseMessage createForward() throws Exception {
@@ -220,7 +219,7 @@ public class EmailMessage extends Item {
    * @throws Exception the exception
    */
   public void forward(MessageBody bodyPrefix,
-      Iterable<EmailAddress> toRecipients) throws Exception {
+                      Iterable<EmailAddress> toRecipients) throws Exception {
     ResponseMessage responseMessage = this.createForward();
 
     responseMessage.setBodyPrefix(bodyPrefix);
@@ -231,8 +230,7 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Sends this e-mail message. Calling this method results in at least one
-   * call to EWS.
+   * Sends this e-mail message. Calling this method results in at least one call to EWS.
    *
    * @throws Exception the exception
    */
@@ -241,10 +239,9 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Sends this e-mail message and saves a copy of it in the specified
-   * folder. SendAndSaveCopy does not work if the message has unsaved
-   * attachments. In that case, the message must first be saved and then sent.
-   * Calling this method results in a call to EWS.
+   * Sends this e-mail message and saves a copy of it in the specified folder. SendAndSaveCopy does
+   * not work if the message has unsaved attachments. In that case, the message must first be saved
+   * and then sent. Calling this method results in a call to EWS.
    *
    * @param destinationFolderId the destination folder id
    * @throws Exception the exception
@@ -252,14 +249,13 @@ public class EmailMessage extends Item {
   public void sendAndSaveCopy(FolderId destinationFolderId) throws Exception {
     EwsUtilities.validateParam(destinationFolderId, "destinationFolderId");
     this.internalSend(destinationFolderId,
-        MessageDisposition.SendAndSaveCopy);
+                      MessageDisposition.SendAndSaveCopy);
   }
 
   /**
-   * Sends this e-mail message and saves a copy of it in the specified
-   * folder. SendAndSaveCopy does not work if the message has unsaved
-   * attachments. In that case, the message must first be saved and then sent.
-   * Calling this method results in a call to EWS.
+   * Sends this e-mail message and saves a copy of it in the specified folder. SendAndSaveCopy does
+   * not work if the message has unsaved attachments. In that case, the message must first be saved
+   * and then sent. Calling this method results in a call to EWS.
    *
    * @param destinationFolderName the destination folder name
    * @throws Exception the exception
@@ -267,25 +263,23 @@ public class EmailMessage extends Item {
   public void sendAndSaveCopy(WellKnownFolderName destinationFolderName)
       throws Exception {
     this.internalSend(new FolderId(destinationFolderName),
-        MessageDisposition.SendAndSaveCopy);
+                      MessageDisposition.SendAndSaveCopy);
   }
 
   /**
-   * Sends this e-mail message and saves a copy of it in the Sent Items
-   * folder. SendAndSaveCopy does not work if the message has unsaved
-   * attachments. In that case, the message must first be saved and then sent.
-   * Calling this method results in a call to EWS.
+   * Sends this e-mail message and saves a copy of it in the Sent Items folder. SendAndSaveCopy does
+   * not work if the message has unsaved attachments. In that case, the message must first be saved
+   * and then sent. Calling this method results in a call to EWS.
    *
    * @throws Exception the exception
    */
   public void sendAndSaveCopy() throws Exception {
     this.internalSend(new FolderId(WellKnownFolderName.SentItems),
-        MessageDisposition.SendAndSaveCopy);
+                      MessageDisposition.SendAndSaveCopy);
   }
 
   /**
-   * Suppresses the read receipt on the message. Calling this method results
-   * in a call to EWS.
+   * Suppresses the read receipt on the message. Calling this method results in a call to EWS.
    *
    * @throws Exception the exception
    */
@@ -407,8 +401,7 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Gets a value indicating whether a read receipt is requested for
-   * the e-mail message.
+   * Gets a value indicating whether a read receipt is requested for the e-mail message.
    *
    * @return the checks if is delivery receipt requested
    * @throws ServiceLocalException the service local exception
@@ -453,8 +446,7 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Gets a value indicating whether a read receipt is requested for
-   * the e-mail message.
+   * Gets a value indicating whether a read receipt is requested for the e-mail message.
    *
    * @return the checks if is read receipt requested
    * @throws ServiceLocalException the service local exception
@@ -476,8 +468,7 @@ public class EmailMessage extends Item {
   }
 
   /**
-   * Gets  a value indicating whether a response is requested for the
-   * e-mail message.
+   * Gets  a value indicating whether a response is requested for the e-mail message.
    *
    * @return the checks if is response requested
    * @throws ServiceLocalException the service local exception

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -34,10 +35,9 @@ final class GetFolderRequest extends GetFolderRequestBase<GetFolderResponse> {
    *
    * @param service           the service
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   protected GetFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                             ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -51,10 +51,10 @@ final class GetFolderRequest extends GetFolderRequestBase<GetFolderResponse> {
    */
   @Override
   protected GetFolderResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                    int responseIndex) {
     return new GetFolderResponse(this.getFolderIds()
-        .getFolderIdWrapperList(responseIndex).getFolder(), this
-        .getPropertySet());
+                                     .getFolderIdWrapperList(responseIndex).getFolder(), this
+                                     .getPropertySet());
   }
 
 }

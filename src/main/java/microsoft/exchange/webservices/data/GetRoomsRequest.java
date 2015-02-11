@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -28,10 +29,14 @@ package microsoft.exchange.webservices.data;
 final class GetRoomsRequest extends SimpleServiceRequestBase {
 
   /**
+   * The room list.
+   */
+  private EmailAddress roomList;
+
+  /**
    * Represents a GetRooms request.
    *
    * @param service the service
-   * @throws Exception
    */
   protected GetRoomsRequest(ExchangeService service)
       throws Exception {
@@ -58,7 +63,7 @@ final class GetRoomsRequest extends SimpleServiceRequestBase {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.getRoomList().writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.RoomList);
+                                  XmlElementNames.RoomList);
   }
 
   /**
@@ -126,10 +131,5 @@ final class GetRoomsRequest extends SimpleServiceRequestBase {
   protected void setRoomList(EmailAddress value) {
     this.roomList = value;
   }
-
-  /**
-   * The room list.
-   */
-  private EmailAddress roomList;
 
 }

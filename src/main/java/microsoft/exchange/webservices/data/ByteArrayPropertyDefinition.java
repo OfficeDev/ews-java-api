@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -38,7 +39,8 @@ final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
    * @param version        The version.
    */
   protected ByteArrayPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                        EnumSet<PropertyDefinitionFlags> flags,
+                                        ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
 
@@ -66,8 +68,8 @@ final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
   }
 
   /**
-   * Gets a value indicating whether this property definition is for a
-   * nullable type (ref, int?, bool?...).
+   * Gets a value indicating whether this property definition is for a nullable type (ref, int?,
+   * bool?...).
    *
    * @return True
    */

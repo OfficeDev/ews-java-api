@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -57,7 +58,7 @@ class ContainedPropertyDefinition<TComplexProperty extends ComplexProperty>
       ICreateComplexPropertyDelegate<TComplexProperty>
           propertyCreationDelegate) {
     super(cls, xmlElementName, uri, flags, version,
-        propertyCreationDelegate);
+          propertyCreationDelegate);
     this.containedXmlElementName = containedXmlElementName;
   }
 
@@ -70,12 +71,12 @@ class ContainedPropertyDefinition<TComplexProperty extends ComplexProperty>
    */
   @Override
   protected void internalLoadFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+                                     PropertyBag propertyBag) throws Exception {
     reader.readStartElement(XmlNamespace.Types,
-        this.containedXmlElementName);
+                            this.containedXmlElementName);
     super.internalLoadFromXml(reader, propertyBag);
     reader.readEndElementIfNecessary(XmlNamespace.Types,
-        this.containedXmlElementName);
+                                     this.containedXmlElementName);
 
   }
 
@@ -89,7 +90,7 @@ class ContainedPropertyDefinition<TComplexProperty extends ComplexProperty>
    */
   @Override
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+                                         PropertyBag propertyBag, boolean isUpdateOperation)
       throws Exception {
 
     Object o = propertyBag.getObjectFromPropertyDefinition(this);

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -41,7 +42,6 @@ final class PlayOnPhoneRequest extends SimpleServiceRequestBase {
    * Initializes a new instance of the PlayOnPhoneRequest class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected PlayOnPhoneRequest(ExchangeService service)
       throws Exception {
@@ -68,9 +68,9 @@ final class PlayOnPhoneRequest extends SimpleServiceRequestBase {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.itemId.writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.ItemId);
+                           XmlElementNames.ItemId);
     writer.writeElementValue(XmlNamespace.Messages,
-        XmlElementNames.DialString, dialString);
+                             XmlElementNames.DialString, dialString);
   }
 
   /**
@@ -94,7 +94,7 @@ final class PlayOnPhoneRequest extends SimpleServiceRequestBase {
   protected Object parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     PlayOnPhoneResponse serviceResponse = new PlayOnPhoneResponse(this
-        .getService());
+                                                                      .getService());
     serviceResponse
         .loadFromXml(reader, XmlElementNames.PlayOnPhoneResponse);
     return serviceResponse;

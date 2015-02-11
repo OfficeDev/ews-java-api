@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.UUID;
@@ -30,69 +31,57 @@ import java.util.UUID;
 public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 
   /**
-   * The property set.
-   */
-  private DefaultExtendedPropertySet propertySet;
-
-  /**
-   * The property set id.
-   */
-  private UUID propertySetId;
-
-  /**
-   * The tag.
-   */
-  private Integer tag;
-
-  /**
-   * The name.
-   */
-  private String name;
-
-  /**
-   * The id.
-   */
-  private Integer id;
-
-  /**
-   * The mapi type.
-   */
-  private MapiPropertyType mapiType;
-
-  /**
    * The Constant FieldFormat.
    */
   private final static String FieldFormat = "%s: %s ";
-
   /**
    * The Property set field name.
    */
   private static final String PropertySetFieldName = "PropertySet";
-
   /**
    * The Property set id field name.
    */
   private static final String PropertySetIdFieldName = "PropertySetId";
-
   /**
    * The Tag field name.
    */
   private static final String TagFieldName = "Tag";
-
   /**
    * The Name field name.
    */
   private static final String NameFieldName = "Name";
-
   /**
    * The Id field name.
    */
   private static final String IdFieldName = "Id";
-
   /**
    * The Mapi type field name.
    */
   private static final String MapiTypeFieldName = "MapiType";
+  /**
+   * The property set.
+   */
+  private DefaultExtendedPropertySet propertySet;
+  /**
+   * The property set id.
+   */
+  private UUID propertySetId;
+  /**
+   * The tag.
+   */
+  private Integer tag;
+  /**
+   * The name.
+   */
+  private String name;
+  /**
+   * The id.
+   */
+  private Integer id;
+  /**
+   * The mapi type.
+   */
+  private MapiPropertyType mapiType;
 
   /**
    * Initializes a new instance.
@@ -122,7 +111,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
     this(mapiType);
     if (tag < 0) {
       throw new IllegalArgumentException("Argument out of range : tag " +
-          Strings.TagValueIsOutOfRange);
+                                         Strings.TagValueIsOutOfRange);
     }
     this.tag = tag;
   }
@@ -136,7 +125,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
    * @throws Exception the exception
    */
   public ExtendedPropertyDefinition(DefaultExtendedPropertySet propertySet,
-      String name, MapiPropertyType mapiType) throws Exception {
+                                    String name, MapiPropertyType mapiType) throws Exception {
     this(mapiType);
     EwsUtilities.validateParam(name, "name");
 
@@ -152,7 +141,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
    * @param mapiType    The MAPI type of the extended property.
    */
   public ExtendedPropertyDefinition(DefaultExtendedPropertySet propertySet,
-      int id, MapiPropertyType mapiType) {
+                                    int id, MapiPropertyType mapiType) {
     this(mapiType);
     this.propertySet = propertySet;
     this.id = id;
@@ -167,7 +156,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
    * @throws Exception the exception
    */
   public ExtendedPropertyDefinition(UUID propertySetId, String name,
-      MapiPropertyType mapiType) throws Exception {
+                                    MapiPropertyType mapiType) throws Exception {
     this(mapiType);
     EwsUtilities.validateParam(name, "name");
 
@@ -183,7 +172,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
    * @param mapiType      The MAPI type of the extended property.
    */
   public ExtendedPropertyDefinition(UUID propertySetId, int id,
-      MapiPropertyType mapiType) {
+                                    MapiPropertyType mapiType) {
     this(mapiType);
     this.propertySetId = propertySetId;
     this.id = id;
@@ -197,7 +186,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
    * @return True if extended property definitions are equal.
    */
   protected static boolean isEqualTo(ExtendedPropertyDefinition extPropDef1,
-      ExtendedPropertyDefinition extPropDef2) {
+                                     ExtendedPropertyDefinition extPropDef2) {
     if (extPropDef1 == extPropDef2) {
       return true;
     }
@@ -285,20 +274,20 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
     }
     if (this.propertySetId != null) {
       writer.writeAttributeValue(XmlAttributeNames.PropertySetId,
-          this.propertySetId.toString());
+                                 this.propertySetId.toString());
     }
     if (this.tag != null) {
       writer.writeAttributeValue(XmlAttributeNames.PropertyTag, this.tag);
     }
     if (null != this.name && !this.name.isEmpty()) {
       writer.writeAttributeValue(XmlAttributeNames.PropertyName,
-          this.name);
+                                 this.name);
     }
     if (this.id != null) {
       writer.writeAttributeValue(XmlAttributeNames.PropertyId, this.id);
     }
     writer.writeAttributeValue(XmlAttributeNames.PropertyType,
-        this.mapiType);
+                               this.mapiType);
   }
 
   /**
@@ -312,7 +301,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
 
     attributeValue = reader
         .readAttributeValue(XmlAttributeNames.
-            DistinguishedPropertySetId);
+                                DistinguishedPropertySetId);
     if (null != attributeValue && !attributeValue.isEmpty()) {
       this.propertySet = DefaultExtendedPropertySet
           .valueOf(attributeValue);
@@ -339,13 +328,12 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
     }
 
     this.mapiType = reader.readAttributeValue(MapiPropertyType.class,
-        XmlAttributeNames.PropertyType);
+                                              XmlAttributeNames.PropertyType);
   }
 
 
   /**
-   * Determines whether two specified instances of ExtendedPropertyDefinition
-   * are equal.
+   * Determines whether two specified instances of ExtendedPropertyDefinition are equal.
    *
    * @param obj the obj
    * @return True if extended property definitions are equal.
@@ -357,7 +345,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
     }
     if (obj instanceof ExtendedPropertyDefinition) {
       return ExtendedPropertyDefinition.isEqualTo(this,
-          (ExtendedPropertyDefinition) obj);
+                                                  (ExtendedPropertyDefinition) obj);
     } else {
       return false;
     }
@@ -402,7 +390,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
    */
   protected <T> String formatField(String name, T fieldValue) {
     return (fieldValue != null) ? String.format(FieldFormat, name,
-        fieldValue.toString()) : "";
+                                                fieldValue.toString()) : "";
   }
 
   /**

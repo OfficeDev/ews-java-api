@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -42,7 +43,7 @@ class ItemWrapper extends AbstractItemIdWrapper {
     EwsUtilities
         .EwsAssert(item != null, "ItemWrapper.ctor", "item is null");
     EwsUtilities.EwsAssert(!item.isNew(), "ItemWrapper.ctor",
-        "item does not have an Id");
+                           "item does not have an Id");
     this.item = item;
   }
 

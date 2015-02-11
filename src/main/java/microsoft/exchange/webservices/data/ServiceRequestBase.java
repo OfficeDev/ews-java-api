@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,15 +20,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents an abstract service request.
@@ -47,6 +49,76 @@ abstract class ServiceRequestBase {
   private ExchangeService service;
 
   // Methods for subclasses to override
+
+  /**
+   * Initializes a new instance.
+   *
+   * @param service The service.
+   * @throws ServiceVersionException the service version exception
+   */
+  protected ServiceRequestBase(ExchangeService service)
+      throws ServiceVersionException {
+    this.service = service;
+    this.throwIfNotSupportedByRequestedServerVersion();
+  }
+
+  /**
+   * Gets the response stream (may be wrapped with GZip/Deflate stream to decompress content).
+   *
+   * @param request HttpWebRequest object from which response stream can be read.
+   * @return ResponseStream
+   * @throws java.io.IOException                                  Signals that an I/O exception has
+   *                                                              occurred.
+   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   */
+  protected static InputStream getResponseStream(HttpWebRequest request)
+      throws IOException, EWSHttpException {
+    String contentEncoding = "";
+
+    if (null != request.getContentEncoding()) {
+      contentEncoding = request.getContentEncoding().toLowerCase();
+    }
+
+    InputStream responseStream;
+
+    if (contentEncoding.contains("gzip")) {
+      responseStream = new GZIPInputStream(request.getInputStream());
+    } else if (contentEncoding.contains("deflate")) {
+      responseStream = new InflaterInputStream(request.getInputStream());
+    } else {
+      responseStream = request.getInputStream();
+    }
+    return responseStream;
+  }
+
+  /**
+   * Gets the response error stream.
+   *
+   * @param request the request
+   * @return the response error stream
+   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws java.io.IOException                                  Signals that an I/O exception has
+   *                                                              occurred.
+   */
+  private static InputStream getResponseErrorStream(HttpWebRequest request)
+      throws EWSHttpException, IOException {
+    String contentEncoding = "";
+
+    if (null != request.getContentEncoding()) {
+      contentEncoding = request.getContentEncoding().toLowerCase();
+    }
+
+    InputStream responseStream;
+
+    if (contentEncoding.contains("gzip")) {
+      responseStream = new GZIPInputStream(request.getErrorStream());
+    } else if (contentEncoding.contains("deflate")) {
+      responseStream = new InflaterInputStream(request.getErrorStream());
+    } else {
+      responseStream = request.getErrorStream();
+    }
+    return responseStream;
+  }
 
   /**
    * Gets the name of the XML element.
@@ -83,8 +155,8 @@ abstract class ServiceRequestBase {
    */
   protected abstract void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException,
-      ServiceLocalException, InstantiationException,
-      IllegalAccessException, ServiceValidationException, Exception;
+             ServiceLocalException, InstantiationException,
+             IllegalAccessException, ServiceValidationException, Exception;
 
   /**
    * Parses the response.
@@ -102,9 +174,9 @@ abstract class ServiceRequestBase {
    */
   protected abstract Object parseResponse(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException,
-      ServiceLocalException, ServiceResponseException,
-      IndexOutOfBoundsException, Exception;
+             InstantiationException, IllegalAccessException,
+             ServiceLocalException, ServiceResponseException,
+             IndexOutOfBoundsException, Exception;
 
   /**
    * Validate request.
@@ -142,17 +214,7 @@ abstract class ServiceRequestBase {
       throws ServiceXmlSerializationException {
   }
 
-  /**
-   * Initializes a new instance.
-   *
-   * @param service The service.
-   * @throws ServiceVersionException the service version exception
-   */
-  protected ServiceRequestBase(ExchangeService service)
-      throws ServiceVersionException {
-    this.service = service;
-    this.throwIfNotSupportedByRequestedServerVersion();
-  }
+  // HttpWebRequest-based implementation
 
   /**
    * Gets the service.
@@ -164,8 +226,7 @@ abstract class ServiceRequestBase {
   }
 
   /**
-   * Throw exception if request is not supported in requested server
-   * version.
+   * Throw exception if request is not supported in requested server version.
    *
    * @throws ServiceVersionException the service version exception
    */
@@ -180,8 +241,6 @@ abstract class ServiceRequestBase {
     }
   }
 
-  // HttpWebRequest-based implementation
-
   /**
    * Writes XML.
    *
@@ -191,27 +250,27 @@ abstract class ServiceRequestBase {
   protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     writer.writeStartDocument();
     writer.writeStartElement(XmlNamespace.Soap,
-        XmlElementNames.SOAPEnvelopeElementName);
+                             XmlElementNames.SOAPEnvelopeElementName);
     writer.writeAttributeValue("xmlns", EwsUtilities
         .getNamespacePrefix(XmlNamespace.Soap), EwsUtilities
-        .getNamespaceUri(XmlNamespace.Soap));
+                                   .getNamespaceUri(XmlNamespace.Soap));
     writer.writeAttributeValue("xmlns",
-        EwsUtilities.EwsXmlSchemaInstanceNamespacePrefix,
-        EwsUtilities.EwsXmlSchemaInstanceNamespace);
+                               EwsUtilities.EwsXmlSchemaInstanceNamespacePrefix,
+                               EwsUtilities.EwsXmlSchemaInstanceNamespace);
     writer.writeAttributeValue("xmlns",
-        EwsUtilities.EwsMessagesNamespacePrefix,
-        EwsUtilities.EwsMessagesNamespace);
+                               EwsUtilities.EwsMessagesNamespacePrefix,
+                               EwsUtilities.EwsMessagesNamespace);
     writer.writeAttributeValue("xmlns",
-        EwsUtilities.EwsTypesNamespacePrefix,
-        EwsUtilities.EwsTypesNamespace);
+                               EwsUtilities.EwsTypesNamespacePrefix,
+                               EwsUtilities.EwsTypesNamespace);
     if (writer.isRequireWSSecurityUtilityNamespace()) {
       writer.writeAttributeValue("xmlns",
-          EwsUtilities.WSSecurityUtilityNamespacePrefix,
-          EwsUtilities.WSSecurityUtilityNamespace);
+                                 EwsUtilities.WSSecurityUtilityNamespacePrefix,
+                                 EwsUtilities.WSSecurityUtilityNamespace);
     }
 
     writer.writeStartElement(XmlNamespace.Soap,
-        XmlElementNames.SOAPHeaderElementName);
+                             XmlElementNames.SOAPHeaderElementName);
 
     if (this.service.getCredentials() != null) {
       this.service.getCredentials().emitExtraSoapHeaderNamespaceAliases(
@@ -220,7 +279,7 @@ abstract class ServiceRequestBase {
 
     // Emit the RequestServerVersion header
     writer.writeStartElement(XmlNamespace.Types,
-        XmlElementNames.RequestServerVersion);
+                             XmlElementNames.RequestServerVersion);
     writer.writeAttributeValue(XmlAttributeNames.Version, this
         .getRequestedServiceVersionString());
     writer.writeEndElement(); // RequestServerVersion
@@ -232,17 +291,17 @@ abstract class ServiceRequestBase {
 		 * (!this.getService().getExchange2007CompatibilityMode())) {
 		 * writer.writeStartElement(XmlNamespace.Types,
 		 * XmlElementNames.TimeZoneContext);
-		 * 
+		 *
 		 * this.getService().TimeZoneDefinition().WriteToXml(writer);
-		 * 
+		 *
 		 * writer.WriteEndElement(); // TimeZoneContext
-		 * 
+		 *
 		 * writer.IsTimeZoneHeaderEmitted = true; }
 		 */
 
     if (this.service.getPreferredCulture() != null) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.MailboxCulture, this.service
+                               XmlElementNames.MailboxCulture, this.service
               .getPreferredCulture().getDisplayName());
     }
 
@@ -251,7 +310,7 @@ abstract class ServiceRequestBase {
     if (this.getService().getDateTimePrecision().ordinal() != DateTimePrecision.Default
         .ordinal()) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.DateTimePrecision, this.getService()
+                               XmlElementNames.DateTimePrecision, this.getService()
               .getDateTimePrecision().toString());
     }
     if (this.service.getImpersonatedUserId() != null) {
@@ -267,7 +326,7 @@ abstract class ServiceRequestBase {
     writer.writeEndElement(); // soap:Header
 
     writer.writeStartElement(XmlNamespace.Soap,
-        XmlElementNames.SOAPBodyElementName);
+                             XmlElementNames.SOAPBodyElementName);
 
     this.writeBodyToXml(writer);
 
@@ -277,10 +336,9 @@ abstract class ServiceRequestBase {
   }
 
   /**
-   * Gets st ring representation of requested server version. In order to
-   * support E12 RTM servers, ExchangeService has another flag indicating that
-   * we should use "Exchange2007" as the server version string rather than
-   * Exchange2007_SP1.
+   * Gets st ring representation of requested server version. In order to support E12 RTM servers,
+   * ExchangeService has another flag indicating that we should use "Exchange2007" as the server
+   * version string rather than Exchange2007_SP1.
    *
    * @return String representation of requested server version.
    */
@@ -293,46 +351,19 @@ abstract class ServiceRequestBase {
   }
 
   /**
-   * Gets the response stream (may be wrapped with GZip/Deflate stream to
-   * decompress content).
-   *
-   * @param request HttpWebRequest object from which response stream can be read.
-   * @return ResponseStream
-   * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
-   */
-  protected static InputStream getResponseStream(HttpWebRequest request)
-      throws IOException, EWSHttpException {
-    String contentEncoding = "";
-
-    if (null != request.getContentEncoding()) {
-      contentEncoding = request.getContentEncoding().toLowerCase();
-    }
-
-    InputStream responseStream;
-
-    if (contentEncoding.contains("gzip")) {
-      responseStream = new GZIPInputStream(request.getInputStream());
-    } else if (contentEncoding.contains("deflate")) {
-      responseStream = new InflaterInputStream(request.getInputStream());
-    } else {
-      responseStream = request.getInputStream();
-    }
-    return responseStream;
-  }
-
-  /**
    * Traces the response.
    *
    * @param request      The response.
    * @param memoryStream The response content in a MemoryStream.
    * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
-   * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
+   * @throws java.io.IOException                                  Signals that an I/O exception has
+   *                                                              occurred.
    * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
    */
   protected void traceResponse(HttpWebRequest request,
-      ByteArrayOutputStream memoryStream) throws XMLStreamException,
-      IOException, EWSHttpException {
+                               ByteArrayOutputStream memoryStream) throws XMLStreamException,
+                                                                          IOException,
+                                                                          EWSHttpException {
 
     this.service.processHttpResponseHeaders(
         TraceFlags.EwsResponseHttpHeaders, request);
@@ -344,37 +375,9 @@ abstract class ServiceRequestBase {
       this.service.traceXml(TraceFlags.EwsResponse, memoryStream);
     } else {
       this.service.traceMessage(TraceFlags.EwsResponse,
-          "Non-textual response");
+                                "Non-textual response");
     }
 
-  }
-
-  /**
-   * Gets the response error stream.
-   *
-   * @param request the request
-   * @return the response error stream
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
-   * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   */
-  private static InputStream getResponseErrorStream(HttpWebRequest request)
-      throws EWSHttpException, IOException {
-    String contentEncoding = "";
-
-    if (null != request.getContentEncoding()) {
-      contentEncoding = request.getContentEncoding().toLowerCase();
-    }
-
-    InputStream responseStream;
-
-    if (contentEncoding.contains("gzip")) {
-      responseStream = new GZIPInputStream(request.getErrorStream());
-    } else if (contentEncoding.contains("deflate")) {
-      responseStream = new InflaterInputStream(request.getErrorStream());
-    } else {
-      responseStream = request.getErrorStream();
-    }
-    return responseStream;
   }
 
   /**
@@ -389,10 +392,10 @@ abstract class ServiceRequestBase {
     Object serviceResponse;
     this.readPreamble(ewsXmlReader);
     ewsXmlReader.readStartElement(XmlNamespace.Soap,
-        XmlElementNames.SOAPEnvelopeElementName);
+                                  XmlElementNames.SOAPEnvelopeElementName);
     this.readSoapHeader(ewsXmlReader);
     ewsXmlReader.readStartElement(XmlNamespace.Soap,
-        XmlElementNames.SOAPBodyElementName);
+                                  XmlElementNames.SOAPBodyElementName);
 
     ewsXmlReader.readStartElement(XmlNamespace.Messages, this
         .getResponseXmlElementName());
@@ -403,9 +406,9 @@ abstract class ServiceRequestBase {
         .getResponseXmlElementName());
 
     ewsXmlReader.readEndElement(XmlNamespace.Soap,
-        XmlElementNames.SOAPBodyElementName);
+                                XmlElementNames.SOAPBodyElementName);
     ewsXmlReader.readEndElement(XmlNamespace.Soap,
-        XmlElementNames.SOAPEnvelopeElementName);
+                                XmlElementNames.SOAPEnvelopeElementName);
     return serviceResponse;
   }
 
@@ -413,7 +416,6 @@ abstract class ServiceRequestBase {
    * Reads any preamble data not part of the core response.
    *
    * @param ewsXmlReader The EwsServiceXmlReader.
-   * @throws Exception
    */
   protected void readPreamble(EwsServiceXmlReader ewsXmlReader)
       throws Exception {
@@ -428,19 +430,19 @@ abstract class ServiceRequestBase {
    */
   private void readSoapHeader(EwsServiceXmlReader reader) throws Exception {
     reader.readStartElement(XmlNamespace.Soap,
-        XmlElementNames.SOAPHeaderElementName);
+                            XmlElementNames.SOAPHeaderElementName);
     do {
       reader.read();
 
       // Is this the ServerVersionInfo?
       if (reader.isStartElement(XmlNamespace.Types,
-          XmlElementNames.ServerVersionInfo)) {
+                                XmlElementNames.ServerVersionInfo)) {
         this.service.setServerInfo(ExchangeServerInfo.parse(reader));
       }
 
       // Ignore anything else inside the SOAP header
     } while (!reader.isEndElement(XmlNamespace.Soap,
-        XmlElementNames.SOAPHeaderElementName));
+                                  XmlElementNames.SOAPHeaderElementName));
   }
 
   /**
@@ -448,7 +450,6 @@ abstract class ServiceRequestBase {
    *
    * @param webException The web exception.
    * @param req          http Request object used to send the http request.
-   * @throws Exception
    */
   protected void processWebException(Exception webException, HttpWebRequest req)
       throws Exception {
@@ -504,9 +505,9 @@ abstract class ServiceRequestBase {
               // for E12).
               if ((this.service.getServerInfo() != null)
                   && (this.service.getServerInfo()
-                  .getMajorVersion() == 8)
+                          .getMajorVersion() == 8)
                   && (this.service.getServerInfo()
-                  .getMinorVersion() == 0)) {
+                          .getMinorVersion() == 0)) {
                 throw new ServiceVersionException(
                     Strings.ServerVersionNotSupported);
               }
@@ -522,8 +523,8 @@ abstract class ServiceRequestBase {
                       false,
                       "ServiceRequestBase.ProcessWebException",
                       "Exchange server supports "
-                          + "requested version "
-                          + "but request was invalid for that version");
+                      + "requested version "
+                      + "but request was invalid for that version");
               break;
 
             default:
@@ -580,17 +581,17 @@ abstract class ServiceRequestBase {
       // contains a header element,
       // read the server version information contained in the header.
       if (reader.isStartElement(soapNamespace,
-          XmlElementNames.SOAPHeaderElementName)) {
+                                XmlElementNames.SOAPHeaderElementName)) {
         do {
           reader.read();
 
           if (reader.isStartElement(XmlNamespace.Types,
-              XmlElementNames.ServerVersionInfo)) {
+                                    XmlElementNames.ServerVersionInfo)) {
             this.service.setServerInfo(ExchangeServerInfo
-                .parse(reader));
+                                           .parse(reader));
           }
         } while (!reader.isEndElement(soapNamespace,
-            XmlElementNames.SOAPHeaderElementName));
+                                      XmlElementNames.SOAPHeaderElementName));
 
         // Queue up the next read
         reader.read();
@@ -598,22 +599,22 @@ abstract class ServiceRequestBase {
 
       // Parse the fault element contained within the SOAP body.
       if (reader.isStartElement(soapNamespace,
-          XmlElementNames.SOAPBodyElementName)) {
+                                XmlElementNames.SOAPBodyElementName)) {
         do {
           reader.read();
 
           // Parse Fault element
           if (reader.isStartElement(soapNamespace,
-              XmlElementNames.SOAPFaultElementName)) {
+                                    XmlElementNames.SOAPFaultElementName)) {
             soapFaultDetails = SoapFaultDetails.parse(reader,
-                soapNamespace);
+                                                      soapNamespace);
           }
         } while (!reader.isEndElement(soapNamespace,
-            XmlElementNames.SOAPBodyElementName));
+                                      XmlElementNames.SOAPBodyElementName));
       }
 
       reader.readEndElement(soapNamespace,
-          XmlElementNames.SOAPEnvelopeElementName);
+                            XmlElementNames.SOAPEnvelopeElementName);
     } catch (Exception e) {
       // If response doesn't contain a valid SOAP fault, just ignore
       // exception and
@@ -641,7 +642,8 @@ abstract class ServiceRequestBase {
         processWebException(e, request);
 
         // Wrap exception if the above code block didn't throw
-        throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+        throw new ServiceRequestException(
+            String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
       }
     } catch (Exception e) {
       try {
@@ -655,8 +657,8 @@ abstract class ServiceRequestBase {
   }
 
   /**
-   * <summary> Builds the HttpWebRequest object for current service request
-   * with exception handling.
+   * <summary> Builds the HttpWebRequest object for current service request with exception
+   * handling.
    *
    * @return An HttpWebRequest instance
    */
@@ -670,7 +672,9 @@ abstract class ServiceRequestBase {
 
       EwsServiceXmlWriter writer = new EwsServiceXmlWriter(service, requestStream);
 
-      boolean needSignature = service.getCredentials() != null && service.getCredentials().isNeedSignature();
+      boolean
+          needSignature =
+          service.getCredentials() != null && service.getCredentials().isNeedSignature();
       writer.setRequireWSSecurityUtilityNamespace(needSignature);
 
       writeToXml(writer);
@@ -684,13 +688,14 @@ abstract class ServiceRequestBase {
       return request;
     } catch (IOException e) {
       // Wrap exception.
-      throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+      throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()),
+                                        e);
     }
   }
 
   /**
-   * Gets the IEwsHttpWebRequest object from the specifiedHttpWebRequest
-   * object with exception handling
+   * Gets the IEwsHttpWebRequest object from the specifiedHttpWebRequest object with exception
+   * handling
    *
    * @param request The specified HttpWebRequest
    * @return An HttpWebResponse instance
@@ -702,11 +707,12 @@ abstract class ServiceRequestBase {
       if (request.getResponseCode() >= 400) {
         throw new HttpErrorException(
             "The remote server returned an error: (" + request.getResponseCode() + ")" +
-                request.getResponseText(), request.getResponseCode());
+            request.getResponseText(), request.getResponseCode());
       }
     } catch (IOException e) {
       // Wrap exception.
-      throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+      throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()),
+                                        e);
     }
 
     return request;
@@ -723,11 +729,9 @@ abstract class ServiceRequestBase {
   }
 
   /**
-   * Try to read the XML declaration. If it's not there, the server didn't
-   * return XML.
+   * Try to read the XML declaration. If it's not there, the server didn't return XML.
    *
    * @param reader The reader.
-   * @throws Exception
    */
   private void readXmlDeclaration(EwsServiceXmlReader reader)
       throws Exception {

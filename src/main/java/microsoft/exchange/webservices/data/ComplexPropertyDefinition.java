@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -57,8 +58,8 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
     super(xmlElementName, flags, version);
     this.instance = cls;
     EwsUtilities.EwsAssert(propertyCreationDelegate != null,
-        "ComplexPropertyDefinition ctor",
-        "CreateComplexPropertyDelegate cannot be null");
+                           "ComplexPropertyDefinition ctor",
+                           "CreateComplexPropertyDelegate cannot be null");
 
     this.propertyCreationDelegate = propertyCreationDelegate;
   }
@@ -166,7 +167,7 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
 			       getGenericSuperclass()).getActualTypeArguments()[0]).
 			       newInstance(); */
                 /*return ((Class)((ParameterizedType)this.getClass().
-			       getGenericSuperclass()).getActualTypeArguments()[0]).
+                               getGenericSuperclass()).getActualTypeArguments()[0]).
 			       newInstance();*/
     //return ComplexProperty.class;
     return this.instance;

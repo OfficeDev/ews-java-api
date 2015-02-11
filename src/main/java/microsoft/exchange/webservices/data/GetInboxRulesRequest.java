@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -38,15 +39,13 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase {
    * Initializes a new instance of the GetInboxRulesRequest class.
    *
    * @param service The service.
-   * @throws Exception
    */
   protected GetInboxRulesRequest(ExchangeService service) throws Exception {
     super(service);
   }
 
   /**
-   * Gets or sets the address of the mailbox
-   * from which to get the inbox rules.
+   * Gets or sets the address of the mailbox from which to get the inbox rules.
    *
    * @return the mailboxSmtpAddress
    */
@@ -75,14 +74,12 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase {
    * Writes XML elements.
    *
    * @param writer The writer.
-   * @throws javax.xml.stream.XMLStreamException
-   * @throws ServiceXmlSerializationException
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     if (!(this.mailboxSmtpAddress == null ||
-        this.mailboxSmtpAddress.isEmpty())) {
+          this.mailboxSmtpAddress.isEmpty())) {
       writer.writeElementValue(
           XmlNamespace.Messages,
           XmlElementNames.MailboxSmtpAddress,
@@ -105,7 +102,6 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase {
    *
    * @param reader The reader.
    * @return Response object.
-   * @throws Exception
    */
   @Override
   protected Object parseResponse(EwsServiceXmlReader reader)
@@ -129,8 +125,6 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase {
    * Executes this request.
    *
    * @return Service response.
-   * @throws Exception
-   * @throws ServiceLocalException
    */
   protected GetInboxRulesResponse execute()
       throws ServiceLocalException, Exception {

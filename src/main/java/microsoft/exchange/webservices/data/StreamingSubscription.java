@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -44,7 +45,6 @@ public final class StreamingSubscription extends SubscriptionBase {
    * @param callback The AsyncCallback delegate.
    * @param state    An object that contains state information for this request.
    * @return An IAsyncResult that references the asynchronous request.
-   * @throws Exception
    */
   public IAsyncResult beginUnsubscribe(AsyncCallback callback, Object state) throws Exception {
     return this.getService().beginUnsubscribe(callback, state, this.getId());

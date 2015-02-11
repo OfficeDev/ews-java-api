@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents information about an attendee for which to request availability
- * information.
+ * Represents information about an attendee for which to request availability information.
  */
 public final class AttendeeInfo implements ISelfValidate {
 
@@ -57,7 +57,7 @@ public final class AttendeeInfo implements ISelfValidate {
    * @param excludeConflicts the exclude conflicts
    */
   public AttendeeInfo(String smtpAddress, MeetingAttendeeType attendeeType,
-      boolean excludeConflicts) {
+                      boolean excludeConflicts) {
     this();
     this.smtpAddress = smtpAddress;
     this.attendeeType = attendeeType;
@@ -75,8 +75,7 @@ public final class AttendeeInfo implements ISelfValidate {
   }
 
   /**
-   * Defines an implicit conversion between a string representing an SMTP
-   * address and AttendeeInfo.
+   * Defines an implicit conversion between a string representing an SMTP address and AttendeeInfo.
    *
    * @param smtpAddress the smtp address
    * @return An AttendeeInfo initialized with the specified SMTP address.
@@ -93,18 +92,18 @@ public final class AttendeeInfo implements ISelfValidate {
    */
   protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     writer.writeStartElement(XmlNamespace.Types,
-        XmlElementNames.MailboxData);
+                             XmlElementNames.MailboxData);
 
     writer.writeStartElement(XmlNamespace.Types, XmlElementNames.Email);
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Address,
-        this.smtpAddress);
+                             this.smtpAddress);
     writer.writeEndElement(); // Email
 
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.AttendeeType, this.attendeeType);
+                             XmlElementNames.AttendeeType, this.attendeeType);
 
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.ExcludeConflicts, this.excludeConflicts);
+                             XmlElementNames.ExcludeConflicts, this.excludeConflicts);
 
     writer.writeEndElement(); // MailboxData
   }
@@ -146,8 +145,7 @@ public final class AttendeeInfo implements ISelfValidate {
   }
 
   /**
-   * Gets a value indicating whether times when this attendee is not
-   * available should be returned.
+   * Gets a value indicating whether times when this attendee is not available should be returned.
    *
    * @return true, if is exclude conflicts
    */

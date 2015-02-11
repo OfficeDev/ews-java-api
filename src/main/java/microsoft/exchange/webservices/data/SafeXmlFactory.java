@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,15 +20,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.Reader;
 
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+
 public class SafeXmlFactory {
+
   public static XMLInputFactory factory = XMLInputFactory.newInstance();
 
 
@@ -53,7 +56,6 @@ public class SafeXmlFactory {
 
 
   }
-
 
 
 }

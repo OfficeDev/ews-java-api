@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.io.ByteArrayInputStream;
@@ -179,7 +180,32 @@ class EwsUtilities {
       "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";
   protected static final String WSSecuritySecExtNamespace =
       "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
-
+  /**
+   * Regular expression for legal domain names.
+   */
+  protected static final String DomainRegex = "^[-a-zA-Z0-9_.]+$";
+  /**
+   * Dictionary of enum type to enum-value-to-schema-name maps.
+   */
+  protected static LazyMember<Map<Class<?>, Map<String, String>>>
+      enumToSchemaDictionaries =
+      new LazyMember<Map<Class<?>, Map<String, String>>>(
+          new ILazyMember<Map<Class<?>, Map<String, String>>>() {
+            @Override
+            public Map<Class<?>, Map<String, String>> createInstance() {
+              Map<Class<?>, Map<String, String>> enumDicts =
+                  new HashMap<Class<?>, Map<String, String>>();
+              enumDicts.put(EventType.class,
+                            buildEnumToSchemaDict(EventType.class));
+              enumDicts.put(MailboxType.class,
+                            buildEnumToSchemaDict(MailboxType.class));
+              enumDicts.put(FileAsMapping.class,
+                            buildEnumToSchemaDict(FileAsMapping.class));
+              enumDicts.put(RuleProperty.class,
+                            buildEnumToSchemaDict(RuleProperty.class));
+              return enumDicts;
+            }
+          });
   /**
    * The service object info.
    */
@@ -190,7 +216,56 @@ class EwsUtilities {
                                                 return new ServiceObjectInfo();
                                               }
                                             });
+  /**
+   * The enum version dictionaries.
+   */
+  private static LazyMember<Map<Class<?>, Map<String, ExchangeVersion>>>
+      enumVersionDictionaries =
+      new LazyMember<Map<Class<?>, Map<String, ExchangeVersion>>>(
+          new ILazyMember<Map<Class<?>, Map<String, ExchangeVersion>>>() {
+            @Override
+            public Map<Class<?>, Map<String, ExchangeVersion>>
+            createInstance() {
+              Map<Class<?>, Map<String, ExchangeVersion>> enumDicts =
+                  new HashMap<Class<?>, Map<String,
+                      ExchangeVersion>>();
+              enumDicts.put(WellKnownFolderName.class,
+                            buildEnumDict(WellKnownFolderName.class));
+              enumDicts.put(ItemTraversal.class,
+                            buildEnumDict(ItemTraversal.class));
+              enumDicts.put(FileAsMapping.class,
+                            buildEnumDict(FileAsMapping.class));
+              enumDicts.put(EventType.class,
+                            buildEnumDict(EventType.class));
+              enumDicts.put(MeetingRequestsDeliveryScope.class,
+                            buildEnumDict(MeetingRequestsDeliveryScope.
+                                              class));
+              return enumDicts;
+            }
+          });
+  /**
+   * Dictionary of enum type to schema-name-to-enum-value maps.
+   */
+  private static LazyMember<Map<Class<?>, Map<String, String>>>
+      schemaToEnumDictionaries =
+      new LazyMember<Map<Class<?>, Map<String, String>>>(
+          new ILazyMember<Map<Class<?>, Map<String, String>>>() {
+            @Override
+            public Map<Class<?>, Map<String, String>> createInstance() {
+              Map<Class<?>, Map<String, String>> enumDicts =
+                  new HashMap<Class<?>, Map<String, String>>();
+              enumDicts.put(EventType.class,
+                            buildSchemaToEnumDict(EventType.class));
+              enumDicts.put(MailboxType.class,
+                            buildSchemaToEnumDict(MailboxType.class));
+              enumDicts.put(FileAsMapping.class,
+                            buildSchemaToEnumDict(FileAsMapping.class));
+              enumDicts.put(RuleProperty.class,
+                            buildSchemaToEnumDict(RuleProperty.class));
+              return enumDicts;
 
+            }
+          });
 
   /**
    * Copies source stream to target.
@@ -202,7 +277,7 @@ class EwsUtilities {
       throws Exception {
     // See if this is a MemoryStream -- we can use WriteTo.
 
-    	
+
    /* 	InputStream inputStream = new FileInputStream ("D:\\EWS ManagedAPI sp2\\Rp\\xml\\useravailrequest.xml");
 
     	 byte buf[]=new byte[1024];
@@ -214,10 +289,8 @@ class EwsUtilities {
     	*/
 
     	/*PrintWriter pw = new PrintWriter(source,true);
-    	PrintWriter pw1 = new PrintWriter(target,true);
+            PrintWriter pw1 = new PrintWriter(target,true);
     	pw1.println(pw.toString());*/
-
-
 
     ByteArrayOutputStream memContentStream = source;
     if (memContentStream != null) {
@@ -235,8 +308,6 @@ class EwsUtilities {
       }
     }
   }
-
-
 
   /**
    * Gets the builds the version.
@@ -259,85 +330,6 @@ class EwsUtilities {
   }
 
   /**
-   * The enum version dictionaries.
-   */
-  private static LazyMember<Map<Class<?>, Map<String, ExchangeVersion>>>
-      enumVersionDictionaries =
-      new LazyMember<Map<Class<?>, Map<String, ExchangeVersion>>>(
-          new ILazyMember<Map<Class<?>, Map<String, ExchangeVersion>>>() {
-            @Override
-            public Map<Class<?>, Map<String, ExchangeVersion>>
-            createInstance() {
-              Map<Class<?>, Map<String, ExchangeVersion>> enumDicts =
-                  new HashMap<Class<?>, Map<String,
-                      ExchangeVersion>>();
-              enumDicts.put(WellKnownFolderName.class,
-                  buildEnumDict(WellKnownFolderName.class));
-              enumDicts.put(ItemTraversal.class,
-                  buildEnumDict(ItemTraversal.class));
-              enumDicts.put(FileAsMapping.class,
-                  buildEnumDict(FileAsMapping.class));
-              enumDicts.put(EventType.class,
-                  buildEnumDict(EventType.class));
-              enumDicts.put(MeetingRequestsDeliveryScope.class,
-                  buildEnumDict(MeetingRequestsDeliveryScope.
-                      class));
-              return enumDicts;
-            }
-          });
-  /**
-   * Dictionary of enum type to schema-name-to-enum-value maps.
-   */
-  private static LazyMember<Map<Class<?>, Map<String, String>>>
-      schemaToEnumDictionaries =
-      new LazyMember<Map<Class<?>, Map<String, String>>>(
-          new ILazyMember<Map<Class<?>, Map<String, String>>>() {
-            @Override
-            public Map<Class<?>, Map<String, String>> createInstance() {
-              Map<Class<?>, Map<String, String>> enumDicts =
-                  new HashMap<Class<?>, Map<String, String>>();
-              enumDicts.put(EventType.class,
-                  buildSchemaToEnumDict(EventType.class));
-              enumDicts.put(MailboxType.class,
-                  buildSchemaToEnumDict(MailboxType.class));
-              enumDicts.put(FileAsMapping.class,
-                  buildSchemaToEnumDict(FileAsMapping.class));
-              enumDicts.put(RuleProperty.class,
-                  buildSchemaToEnumDict(RuleProperty.class));
-              return enumDicts;
-
-            }
-          });
-
-  /**
-   * Dictionary of enum type to enum-value-to-schema-name maps.
-   */
-  protected static LazyMember<Map<Class<?>, Map<String, String>>>
-      enumToSchemaDictionaries =
-      new LazyMember<Map<Class<?>, Map<String, String>>>(
-          new ILazyMember<Map<Class<?>, Map<String, String>>>() {
-            @Override
-            public Map<Class<?>, Map<String, String>> createInstance() {
-              Map<Class<?>, Map<String, String>> enumDicts =
-                  new HashMap<Class<?>, Map<String, String>>();
-              enumDicts.put(EventType.class,
-                  buildEnumToSchemaDict(EventType.class));
-              enumDicts.put(MailboxType.class,
-                  buildEnumToSchemaDict(MailboxType.class));
-              enumDicts.put(FileAsMapping.class,
-                  buildEnumToSchemaDict(FileAsMapping.class));
-              enumDicts.put(RuleProperty.class,
-                  buildEnumToSchemaDict(RuleProperty.class));
-              return enumDicts;
-            }
-          });
-
-  /**
-   * Regular expression for legal domain names.
-   */
-  protected static final String DomainRegex = "^[-a-zA-Z0-9_.]+$";
-
-  /**
    * Asserts that the specified condition if true.
    *
    * @param condition Assertion.
@@ -345,9 +337,9 @@ class EwsUtilities {
    * @param message   The message to use if assertion fails.
    */
   protected static void EwsAssert(boolean condition, String caller,
-      String message) {
+                                  String message) {
     assert condition : String.format("[%s] %s",
-        caller, message);
+                                     caller, message);
   }
 
   /**
@@ -468,7 +460,7 @@ class EwsUtilities {
               itemClass);
       return (Item) creationDelegate
           .createServiceObjectWithAttachmentParam(itemAttachment,
-              isNew);
+                                                  isNew);
     } else {
       throw new IllegalArgumentException(
           Strings.NoAppropriateConstructorForItemClass);
@@ -508,8 +500,7 @@ class EwsUtilities {
   }
 
   /**
-   * Finds the first item of type TItem (not a descendant type) in the
-   * specified collection.
+   * Finds the first item of type TItem (not a descendant type) in the specified collection.
    *
    * @param <TItem> TItem is the type of the item to find.
    * @param cls     the cls
@@ -517,7 +508,7 @@ class EwsUtilities {
    * @return A TItem instance or null if no instance of TItem could be found.
    */
   static <TItem extends Item> TItem findFirstItemOfType(Class<TItem> cls,
-      Iterable<Item> items) {
+                                                        Iterable<Item> items) {
     for (Item item : items) {
       // We're looking for an exact class match here.
       if (item.getClass().equals(cls)) {
@@ -647,7 +638,7 @@ class EwsUtilities {
    * @return XML log entry as a string.
    */
   protected static String formatLogMessageWithXmlContent(String traceTypeStr,
-      ByteArrayOutputStream stream) {
+                                                         ByteArrayOutputStream stream) {
     try {
       return formatLogMessage(traceTypeStr, stream.toString());
     } catch (Exception e) {
@@ -676,9 +667,10 @@ class EwsUtilities {
    * @param separators the separators
    */
   protected static <T extends Enum<?>> void parseEnumValueList(Class<T> c,
-      List<T> list, String value, char... separators) {
+                                                               List<T> list, String value,
+                                                               char... separators) {
     EwsUtilities.EwsAssert(c.isEnum(), "EwsUtilities.ParseEnumValueList",
-        "T is not an enum type.");
+                           "T is not an enum type.");
 
     StringBuffer regexp = new StringBuffer("");
     regexp.append("[");
@@ -702,8 +694,7 @@ class EwsUtilities {
   }
 
   /**
-   * Converts an enum to a string, using the mapping dictionaries if
-   * appropriate.
+   * Converts an enum to a string, using the mapping dictionaries if appropriate.
    *
    * @param value The enum value to be serialized
    * @return String representation of enum to be used in the protocol
@@ -737,7 +728,7 @@ class EwsUtilities {
    */
   protected static <T> T parse(Class<T> cls, String value)
       throws InstantiationException, IllegalAccessException,
-      ParseException {
+             ParseException {
 
     if (cls.isEnum()) {
       Map<String, String> stringToEnumDict;
@@ -795,7 +786,6 @@ class EwsUtilities {
   }
 
 
-
   /**
    * Builds the schema to enum mapping dictionary.
    *
@@ -829,7 +819,7 @@ class EwsUtilities {
    * @throws Exception the exception
    */
   protected static void validateParamCollection(EventType[] eventTypes,
-      String paramName) throws Exception {
+                                                String paramName) throws Exception {
 
     validateParam(eventTypes, paramName);
 
@@ -852,7 +842,6 @@ class EwsUtilities {
           Strings.CollectionIsEmpty, paramName));
     }
   }
-
 
 
   /**
@@ -882,9 +871,8 @@ class EwsUtilities {
   }
 
   /**
-   * Takes a System.TimeSpan structure and converts it into an xs:duration
-   * string as defined by the W3 Consortiums Recommendation
-   * "XML Schema Part 2: Datatypes Second Edition",
+   * Takes a System.TimeSpan structure and converts it into an xs:duration string as defined by the
+   * W3 Consortiums Recommendation "XML Schema Part 2: Datatypes Second Edition",
    * http://www.w3.org/TR/xmlschema-2/#duration
    *
    * @param timeOffset structure to convert
@@ -893,7 +881,7 @@ class EwsUtilities {
   protected static String getTimeSpanToXSDuration(TimeSpan timeOffset) {
 
 		/*
-		 * SimpleDateFormat dateformatter = new SimpleDateFormat("dd:HH:mm:ss");
+                 * SimpleDateFormat dateformatter = new SimpleDateFormat("dd:HH:mm:ss");
 		 * return dateformatter.format(timeOffset.toString());
 		 */
     // Optional '-' offset
@@ -904,19 +892,18 @@ class EwsUtilities {
     // string from a TimeSpan that included the nY or nM components.
 
     return String.format("%sP%sDT%sH%sM%sS", offsetStr, Math.abs(timeOffset
-        .getDays()), Math.abs(timeOffset.getHours()), Math
-        .abs(timeOffset.getMinutes()), Math
-        .abs(timeOffset.getSeconds())
-        + "." + Math.abs(timeOffset.getMilliseconds()));
+                                                                     .getDays()),
+                         Math.abs(timeOffset.getHours()), Math
+            .abs(timeOffset.getMinutes()), Math
+                                               .abs(timeOffset.getSeconds())
+                                           + "." + Math.abs(timeOffset.getMilliseconds()));
   }
 
   /**
-   * Takes an xs:duration string as defined by the W3 Consortiums
-   * Recommendation "XML Schema Part 2: Datatypes Second Edition",
-   * http://www.w3.org/TR/xmlschema-2/#duration, and converts it into a
-   * System.TimeSpan structure This method uses the following approximations:
-   * 1 year = 365 days 1 month = 30 days Additionally, it only allows for four
-   * decimal points of seconds precision.
+   * Takes an xs:duration string as defined by the W3 Consortiums Recommendation "XML Schema Part 2:
+   * Datatypes Second Edition", http://www.w3.org/TR/xmlschema-2/#duration, and converts it into a
+   * System.TimeSpan structure This method uses the following approximations: 1 year = 365 days 1
+   * month = 30 days Additionally, it only allows for four decimal points of seconds precision.
    *
    * @param xsDuration xs:duration string to convert
    * @return System.TimeSpan structure
@@ -938,7 +925,7 @@ class EwsUtilities {
     int year = 0;
     if (m.find()) {
       year = Integer.parseInt(m.group().substring(0,
-          m.group().indexOf("Y")));
+                                                  m.group().indexOf("Y")));
     }
 
     // Month
@@ -947,7 +934,7 @@ class EwsUtilities {
     int month = 0;
     if (m.find()) {
       month = Integer.parseInt(m.group().substring(0,
-          m.group().indexOf("M")));
+                                                   m.group().indexOf("M")));
     }
 
     // Day
@@ -956,7 +943,7 @@ class EwsUtilities {
     int day = 0;
     if (m.find()) {
       day = Integer.parseInt(m.group().substring(0,
-          m.group().indexOf("D")));
+                                                 m.group().indexOf("D")));
     }
 
     // Hour
@@ -965,7 +952,7 @@ class EwsUtilities {
     int hour = 0;
     if (m.find()) {
       hour = Integer.parseInt(m.group().substring(0,
-          m.group().indexOf("H")));
+                                                  m.group().indexOf("H")));
     }
 
     // Minute
@@ -974,7 +961,7 @@ class EwsUtilities {
     int minute = 0;
     if (m.find()) {
       minute = Integer.parseInt(m.group().substring(0,
-          m.group().indexOf("M")));
+                                                    m.group().indexOf("M")));
     }
 
     // Seconds
@@ -983,7 +970,7 @@ class EwsUtilities {
     int seconds = 0;
     if (m.find()) {
       seconds = Integer.parseInt(m.group().substring(0,
-          m.group().indexOf(".")));
+                                                     m.group().indexOf(".")));
     }
 
     int milliseconds = 0;
@@ -995,7 +982,7 @@ class EwsUtilities {
         milliseconds = Integer.parseInt(m.group().substring(0, 4));
       } else {
         seconds = Integer.parseInt(m.group().substring(0,
-            m.group().indexOf("S")));
+                                                       m.group().indexOf("S")));
       }
     }
 
@@ -1006,7 +993,7 @@ class EwsUtilities {
     // TimeSpan retval = new TimeSpan(day, hour, minute, seconds,
     // milliseconds);
     long retval = (((((((day * 24) + hour) * 60) + minute) * 60) +
-        seconds) * 1000) + milliseconds;
+                    seconds) * 1000) + milliseconds;
     if (negative) {
       retval = -retval;
     }
@@ -1015,12 +1002,10 @@ class EwsUtilities {
   }
 
   /**
-   * Takes an xs:duration string as defined by the W3 Consortiums
-   * Recommendation "XML Schema Part 2: Datatypes Second Edition",
-   * http://www.w3.org/TR/xmlschema-2/#duration, and converts it into a
-   * System.TimeSpan structure This method uses the following approximations:
-   * 1 year = 365 days 1 month = 30 days Additionally, it only allows for four
-   * decimal points of seconds precision.
+   * Takes an xs:duration string as defined by the W3 Consortiums Recommendation "XML Schema Part 2:
+   * Datatypes Second Edition", http://www.w3.org/TR/xmlschema-2/#duration, and converts it into a
+   * System.TimeSpan structure This method uses the following approximations: 1 year = 365 days 1
+   * month = 30 days Additionally, it only allows for four decimal points of seconds precision.
    *
    * @param xsDuration xs:duration string to convert
    * @return System.TimeSpan structure
@@ -1055,7 +1040,7 @@ class EwsUtilities {
     long day = 0;
     if (m.find()) {
       day = Integer.parseInt(m.group().substring(0,
-          m.group().indexOf("D")));
+                                                 m.group().indexOf("D")));
     }
 
     // Hour
@@ -1063,7 +1048,7 @@ class EwsUtilities {
     int hour = 0;
     if (m.find()) {
       hour = Integer.parseInt(m.group().substring(0,
-          m.group().indexOf("H")));
+                                                  m.group().indexOf("H")));
     }
 
     // Minute
@@ -1071,7 +1056,7 @@ class EwsUtilities {
     int minute = 0;
     if (m.find()) {
       minute = Integer.parseInt(m.group().substring(0,
-          m.group().indexOf("M")));
+                                                    m.group().indexOf("M")));
     }
 
     // Seconds
@@ -1096,8 +1081,9 @@ class EwsUtilities {
     // milliseconds);
 
     long retval =
-        day * TimeSpan.DAYS + hour * TimeSpan.HOURS + minute * TimeSpan.MINUTES + seconds * TimeSpan.SECONDS
-            + milliseconds * TimeSpan.MILLISECONDS;
+        day * TimeSpan.DAYS + hour * TimeSpan.HOURS + minute * TimeSpan.MINUTES
+        + seconds * TimeSpan.SECONDS
+        + milliseconds * TimeSpan.MILLISECONDS;
     if (negative) {
       retval = -retval;
     }
@@ -1114,8 +1100,10 @@ class EwsUtilities {
    */
   public static String timeSpanToXSTime(TimeSpan timeSpan) {
     DecimalFormat myFormatter = new DecimalFormat("00");
-    return String.format("%s:%s:%s", myFormatter.format(timeSpan.getHours()), myFormatter.format(timeSpan
-        .getMinutes()), myFormatter.format(timeSpan.getSeconds()));
+    return String
+        .format("%s:%s:%s", myFormatter.format(timeSpan.getHours()), myFormatter.format(timeSpan
+                                                                                            .getMinutes()),
+                myFormatter.format(timeSpan.getSeconds()));
   }
 
   /**
@@ -1163,7 +1151,7 @@ class EwsUtilities {
         selfValidate.validate();
       } catch (ServiceValidationException e) {
         throw new Exception(String.format("%s %s",
-            Strings.ValidationFailed, paramName), e);
+                                          Strings.ValidationFailed, paramName), e);
       }
     }
 
@@ -1171,7 +1159,7 @@ class EwsUtilities {
       ServiceObject ewsObject = (ServiceObject) param;
       if (ewsObject.isNew()) {
         throw new Exception(String.format("%s %s",
-            Strings.ObjectDoesNotHaveId, paramName));
+                                          Strings.ObjectDoesNotHaveId, paramName));
       }
     }
   }
@@ -1196,7 +1184,7 @@ class EwsUtilities {
 
     if (!isValid) {
       throw new Exception(String.format("Argument %s not valid",
-          paramName));
+                                        paramName));
     }
     validateParamAllowNull(param, paramName);
   }
@@ -1210,7 +1198,7 @@ class EwsUtilities {
    * @throws Exception the exception
    */
   protected static <T> void validateParamCollection(Iterator<T> collection,
-      String paramName) throws Exception {
+                                                    String paramName) throws Exception {
 
     validateParam(collection, paramName);
 
@@ -1239,40 +1227,36 @@ class EwsUtilities {
    *
    * @param param     The string parameter.
    * @param paramName Name of the parameter.
-   * @throws ArgumentException
-   * @throws ServiceLocalException
    */
   protected static void validateNonBlankStringParamAllowNull(String param,
-      String paramName) throws ArgumentException, ServiceLocalException {
+                                                             String paramName)
+      throws ArgumentException, ServiceLocalException {
     if (param != null) {
       // Non-empty string has at least one character
       //which is *not* a whitespace character
       if (param.length() == countMatchingChars(param,
-          new IPredicate<Character>() {
-            @Override
-            public boolean predicate(Character obj) {
-              return Character.isWhitespace(obj);
-            }
-          })) {
+                                               new IPredicate<Character>() {
+                                                 @Override
+                                                 public boolean predicate(Character obj) {
+                                                   return Character.isWhitespace(obj);
+                                                 }
+                                               })) {
         throw new ArgumentException(Strings.
-            ArgumentIsBlankString, paramName);
+                                        ArgumentIsBlankString, paramName);
       }
     }
   }
 
 
   /**
-   * Validates string parameter to be
-   * non-empty string (null value not allowed).
+   * Validates string parameter to be non-empty string (null value not allowed).
    *
    * @param param     The string parameter.
    * @param paramName Name of the parameter.
-   * @throws ArgumentNullException
-   * @throws ArgumentException
-   * @throws ServiceLocalException
    */
   protected static void validateNonBlankStringParam(String param,
-      String paramName) throws ArgumentNullException, ArgumentException, ServiceLocalException {
+                                                    String paramName)
+      throws ArgumentNullException, ArgumentException, ServiceLocalException {
     if (param == null) {
       throw new ArgumentNullException(paramName);
     }
@@ -1288,19 +1272,21 @@ class EwsUtilities {
    * @throws ServiceVersionException the service version exception
    */
   protected static void validateEnumVersionValue(Enum<?> enumValue,
-      ExchangeVersion requestVersion) throws ServiceVersionException {
+                                                 ExchangeVersion requestVersion)
+      throws ServiceVersionException {
     Map<String, ExchangeVersion> enumVersionDict = enumVersionDictionaries
         .getMember().get(enumValue.getClass());
     // String strValue = enumValue.toString();
     if (enumVersionDict.containsKey(enumValue.toString())) {
       ExchangeVersion enumVersion = enumVersionDict.get(enumValue
-          .toString());
+                                                            .toString());
       int i = requestVersion.compareTo(enumVersion);
       if (i < 0) {
         throw new ServiceVersionException(String.format("%S,%S,%S,%S",
-            Strings.EnumValueIncompatibleWithRequestVersion,
-            enumValue.toString(), enumValue.getClass().getName(),
-            enumVersion));
+                                                        Strings.EnumValueIncompatibleWithRequestVersion,
+                                                        enumValue.toString(),
+                                                        enumValue.getClass().getName(),
+                                                        enumVersion));
       }
     }
   }
@@ -1310,8 +1296,8 @@ class EwsUtilities {
    *
    * @param serviceObject  The service object.
    * @param requestVersion The request version.
-   * @throws ServiceVersionException Raised if this service object type requires a later version
-   *                                 of Exchange.
+   * @throws ServiceVersionException Raised if this service object type requires a later version of
+   *                                 Exchange.
    */
   protected static void validateServiceObjectVersion(
       ServiceObject serviceObject, ExchangeVersion requestVersion)
@@ -1359,7 +1345,8 @@ class EwsUtilities {
    * @throws ServiceVersionException the service version exception
    */
   protected static void validateMethodVersion(ExchangeService service,
-      ExchangeVersion minimumServerVersion, String methodName)
+                                              ExchangeVersion minimumServerVersion,
+                                              String methodName)
       throws ServiceVersionException {
     if (service.getRequestedServerVersion().ordinal() <
         minimumServerVersion.ordinal())
@@ -1377,7 +1364,6 @@ class EwsUtilities {
    * @param service              the service
    * @param minimumServerVersion The minimum server version that supports the method.
    * @param className            Name of the class.
-   * @throws ServiceVersionException
    */
   protected static void validateClassVersion(
       ExchangeService service,
@@ -1398,16 +1384,15 @@ class EwsUtilities {
    *
    * @param domainName Domain name.
    * @param paramName  Parameter name.
-   * @throws ArgumentException
    */
   protected static void validateDomainNameAllowNull(String domainName,
-      String paramName) throws ArgumentException {
+                                                    String paramName) throws ArgumentException {
     if (domainName != null) {
       Pattern domainNamePattern = Pattern.compile(DomainRegex);
       Matcher domainNameMatcher = domainNamePattern.matcher(domainName);
       if (!domainNameMatcher.find()) {
         throw new ArgumentException(String.format(Strings.
-            InvalidDomainName, domainName), paramName);
+                                                      InvalidDomainName, domainName), paramName);
       }
     }
   }
@@ -1484,7 +1469,7 @@ class EwsUtilities {
    * @return the enumerated object at
    */
   protected static <T> Object getEnumeratedObjectAt(Iterable<T> objects,
-      int index) {
+                                                    int index) {
     int count = 0;
     for (Object obj : objects) {
       if (count == index) {
@@ -1503,10 +1488,10 @@ class EwsUtilities {
    * @param str           The string.
    * @param charPredicate Predicate to evaluate for each character in the string.
    * @return Count of characters that match condition expressed by predicate.
-   * @throws ServiceLocalException
    */
   protected static int countMatchingChars(String str,
-      IPredicate<Character> charPredicate) throws ServiceLocalException {
+                                          IPredicate<Character> charPredicate)
+      throws ServiceLocalException {
     int count = 0;
     for (int i = 0; i < str.length(); i++) {
       if (charPredicate.predicate(Character.valueOf(str.charAt(i)))) {
@@ -1518,18 +1503,17 @@ class EwsUtilities {
   }
 
   /**
-   * Determines whether every element in the collection
-   * matches the conditions defined by the specified predicate.
+   * Determines whether every element in the collection matches the conditions defined by the
+   * specified predicate.
    *
    * @param <T>        Entry type.
    * @param collection The collection.
    * @param predicate  Predicate that defines the conditions to check against the elements.
-   * @return True if every element in the collection matches
-   * the conditions defined by the specified predicate; otherwise, false.
-   * @throws ServiceLocalException
+   * @return True if every element in the collection matches the conditions defined by the specified
+   * predicate; otherwise, false.
    */
   protected static <T> boolean trueForAll(Iterable<T> collection,
-      IPredicate<T> predicate) throws ServiceLocalException {
+                                          IPredicate<T> predicate) throws ServiceLocalException {
     for (T entry : collection) {
       if (!predicate.predicate(entry)) {
         return false;

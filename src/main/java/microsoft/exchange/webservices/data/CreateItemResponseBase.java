@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.List;
@@ -29,12 +30,19 @@ import java.util.List;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 abstract class CreateItemResponseBase extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                              IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The items.
    */
   private List<Item> items;
+
+  /**
+   * Initializes a new instance.
+   */
+  protected CreateItemResponseBase() {
+    super();
+  }
 
   /**
    * Gets Item instance.
@@ -47,8 +55,9 @@ abstract class CreateItemResponseBase extends ServiceResponse implements
    * @throws Exception              the exception
    */
   protected abstract Item getObjectInstance(ExchangeService service,
-      String xmlElementName) throws InstantiationException,
-      IllegalAccessException, Exception;
+                                            String xmlElementName) throws InstantiationException,
+                                                                          IllegalAccessException,
+                                                                          Exception;
 
   /**
    * Gets the object instance delegate.
@@ -59,15 +68,8 @@ abstract class CreateItemResponseBase extends ServiceResponse implements
    * @throws Exception throws Exception
    */
   public ServiceObject getObjectInstanceDelegate(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                                 String xmlElementName) throws Exception {
     return this.getObjectInstance(service, xmlElementName);
-  }
-
-  /**
-   * Initializes a new instance.
-   */
-  protected CreateItemResponseBase() {
-    super();
   }
 
   /**

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -28,7 +29,7 @@ import javax.xml.stream.XMLStreamException;
  * Represents a user's Out of Office (OOF) settings.
  */
 public final class OofSettings extends
-    ComplexProperty implements ISelfValidate {
+                               ComplexProperty implements ISelfValidate {
 
   /**
    * The state.
@@ -61,8 +62,16 @@ public final class OofSettings extends
   private OofReply externalReply;
 
   /**
-   * Serializes an OofReply. Emits an empty OofReply in case the one passed in
-   * is null.
+   * Initializes a new instance of OofSettings.
+   */
+  public OofSettings()
+
+  {
+    super();
+  }
+
+  /**
+   * Serializes an OofReply. Emits an empty OofReply in case the one passed in is null.
    *
    * @param oofReply       The oof reply
    * @param writer         The writer
@@ -71,22 +80,13 @@ public final class OofSettings extends
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   private void serializeOofReply(OofReply oofReply,
-      EwsServiceXmlWriter writer, String xmlElementName)
+                                 EwsServiceXmlWriter writer, String xmlElementName)
       throws XMLStreamException, ServiceXmlSerializationException {
     if (oofReply != null) {
       oofReply.writeToXml(writer, xmlElementName);
     } else {
       OofReply.writeEmptyReplyToXml(writer, xmlElementName);
     }
-  }
-
-  /**
-   * Initializes a new instance of OofSettings.
-   */
-  public OofSettings()
-
-  {
-    super();
   }
 
   /**
@@ -135,19 +135,19 @@ public final class OofSettings extends
     super.writeElementsToXml(writer);
 
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.OofState,
-        this.getState());
+                             this.getState());
 
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.ExternalAudience, this.getExternalAudience());
+                             XmlElementNames.ExternalAudience, this.getExternalAudience());
 
     if (this.getDuration() != null && this.getState() == OofState.Scheduled) {
       this.getDuration().writeToXml(writer, XmlElementNames.Duration);
     }
 
     this.serializeOofReply(this.getInternalReply(), writer,
-        XmlElementNames.InternalReply);
+                           XmlElementNames.InternalReply);
     this.serializeOofReply(this.getExternalReply(), writer,
-        XmlElementNames.ExternalReply);
+                           XmlElementNames.ExternalReply);
   }
 
   /**
@@ -187,8 +187,7 @@ public final class OofSettings extends
   }
 
   /**
-   * Gets the duration of the OOF status when State is set to
-   * OofState.Scheduled.
+   * Gets the duration of the OOF status when State is set to OofState.Scheduled.
    *
    * @return the duration
    */
@@ -197,8 +196,7 @@ public final class OofSettings extends
   }
 
   /**
-   * Sets the duration of the OOF status when State is set to
-   * OofState.Scheduled.
+   * Sets the duration of the OOF status when State is set to OofState.Scheduled.
    *
    * @param duration the new duration
    */
@@ -207,8 +205,7 @@ public final class OofSettings extends
   }
 
   /**
-   * Gets the OOF response sent other users in the user's domain or trusted
-   * domain.
+   * Gets the OOF response sent other users in the user's domain or trusted domain.
    *
    * @return the internal reply
    */
@@ -217,8 +214,7 @@ public final class OofSettings extends
   }
 
   /**
-   * Sets the OOF response sent other users in the user's domain or trusted
-   * domain.
+   * Sets the OOF response sent other users in the user's domain or trusted domain.
    *
    * @param internalReply the new internal reply
    */
@@ -227,8 +223,7 @@ public final class OofSettings extends
   }
 
   /**
-   * Gets the OOF response sent to addresses outside the user's domain or
-   * trusted domain.
+   * Gets the OOF response sent to addresses outside the user's domain or trusted domain.
    *
    * @return the external reply
    */
@@ -237,8 +232,7 @@ public final class OofSettings extends
   }
 
   /**
-   * Sets the OOF response sent to addresses outside the user's domain or
-   * trusted domain.
+   * Sets the OOF response sent to addresses outside the user's domain or trusted domain.
    *
    * @param externalReply the new external reply
    */

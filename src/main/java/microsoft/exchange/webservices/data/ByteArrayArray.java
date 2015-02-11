@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ import java.util.List;
  * Represents an array of byte arrays
  */
 public class ByteArrayArray extends ComplexProperty {
+
   final static String ItemXmlElementName = "Base64Binary";
   private List<byte[]> content = new ArrayList<byte[]>();
 
@@ -67,7 +69,7 @@ public class ByteArrayArray extends ComplexProperty {
       throws Exception {
     for (byte[] item : this.content) {
       writer.writeStartElement(XmlNamespace.Types,
-          ByteArrayArray.ItemXmlElementName);
+                               ByteArrayArray.ItemXmlElementName);
       writer.writeBase64ElementValue(item);
       writer.writeEndElement();
     }

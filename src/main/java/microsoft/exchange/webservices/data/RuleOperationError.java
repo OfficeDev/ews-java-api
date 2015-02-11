@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.Iterator;
@@ -28,7 +29,8 @@ import java.util.Iterator;
  * Defines the RuleOperationError class.
  */
 public final class RuleOperationError extends
-    ComplexProperty implements Iterable<RuleError> {
+                                      ComplexProperty implements Iterable<RuleError> {
+
   /**
    * Index of the operation mapping to the error.
    */
@@ -73,7 +75,6 @@ public final class RuleOperationError extends
    * Gets the rule error at the specified index.
    *
    * @return Index
-   * @throws ArgumentOutOfRangeException
    */
   public RuleError getRuleError(int index)
       throws ArgumentOutOfRangeException {
@@ -90,7 +91,6 @@ public final class RuleOperationError extends
    * Tries to read element from XML.
    *
    * @return true
-   * @throws Exception
    */
   @Override
   protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)

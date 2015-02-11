@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -37,7 +38,7 @@ class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
    * @param version        The version.
    */
   protected IntPropertyDefinition(String xmlElementName, String uri,
-      ExchangeVersion version) {
+                                  ExchangeVersion version) {
     super(Integer.class, xmlElementName, uri, version);
   }
 
@@ -50,7 +51,7 @@ class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
    * @param version        The version.
    */
   protected IntPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                  EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
     super(Integer.class, xmlElementName, uri, flags, version);
   }
 
@@ -61,12 +62,11 @@ class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
    * @param uri            The URI.
    * @param flags          The flags.
    * @param version        The version.
-   * @param isNullable     Indicates that this property definition is for a nullable
-   *                       property.
+   * @param isNullable     Indicates that this property definition is for a nullable property.
    */
   protected IntPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
-      boolean isNullable) {
+                                  EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
+                                  boolean isNullable) {
     super(Integer.class, xmlElementName, uri, flags, version, isNullable);
   }
 

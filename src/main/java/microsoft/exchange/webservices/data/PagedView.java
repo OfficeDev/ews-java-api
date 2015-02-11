@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -46,6 +47,40 @@ public abstract class PagedView extends ViewBase {
   private int offset;
 
   /**
+   * Initializes a new instance of the "PagedView" class.
+   *
+   * @param pageSize The maximum number of elements the search operation should return.
+   */
+  protected PagedView(int pageSize) {
+    super();
+    this.setPageSize(pageSize);
+  }
+
+  /**
+   * Initializes a new instance of the "PagedView" class.
+   *
+   * @param pageSize The maximum number of elements the search operation should return.
+   * @param offset   The offset of the view from the base point.
+   */
+  protected PagedView(int pageSize, int offset) {
+    this(pageSize);
+    this.setOffset(offset);
+  }
+
+  /**
+   * Initializes a new instance of the "PagedView" class.
+   *
+   * @param pageSize        The maximum number of elements the search operation should return.
+   * @param offset          The offset of the view from the base point.
+   * @param offsetBasePoint The base point of the offset.
+   */
+  protected PagedView(int pageSize, int offset,
+                      OffsetBasePoint offsetBasePoint) {
+    this(pageSize, offset);
+    this.setOffsetBasePoint(offsetBasePoint);
+  }
+
+  /**
    * Write to XML.
    *
    * @param writer The Writer
@@ -62,11 +97,9 @@ public abstract class PagedView extends ViewBase {
   }
 
   /**
-   * Gets the maximum number of items or folders the search operation should
-   * return.
+   * Gets the maximum number of items or folders the search operation should return.
    *
-   * @return The maximum number of items or folders that should be returned by
-   * the search operation.
+   * @return The maximum number of items or folders that should be returned by the search operation.
    */
   @Override
   protected Integer getMaxEntriesReturned() {
@@ -83,8 +116,8 @@ public abstract class PagedView extends ViewBase {
    */
   @Override
   protected void internalWriteSearchSettingsToXml(EwsServiceXmlWriter writer,
-      Grouping groupBy) throws XMLStreamException,
-      ServiceXmlSerializationException {
+                                                  Grouping groupBy) throws XMLStreamException,
+                                                                           ServiceXmlSerializationException {
     if (groupBy != null) {
       groupBy.writeToXml(writer);
     }
@@ -117,45 +150,7 @@ public abstract class PagedView extends ViewBase {
   }
 
   /**
-   * Initializes a new instance of the "PagedView" class.
-   *
-   * @param pageSize The maximum number of elements the search operation should
-   *                 return.
-   */
-  protected PagedView(int pageSize) {
-    super();
-    this.setPageSize(pageSize);
-  }
-
-  /**
-   * Initializes a new instance of the "PagedView" class.
-   *
-   * @param pageSize The maximum number of elements the search operation should
-   *                 return.
-   * @param offset   The offset of the view from the base point.
-   */
-  protected PagedView(int pageSize, int offset) {
-    this(pageSize);
-    this.setOffset(offset);
-  }
-
-  /**
-   * Initializes a new instance of the "PagedView" class.
-   *
-   * @param pageSize        The maximum number of elements the search operation should
-   *                        return.
-   * @param offset          The offset of the view from the base point.
-   * @param offsetBasePoint The base point of the offset.
-   */
-  protected PagedView(int pageSize, int offset,
-      OffsetBasePoint offsetBasePoint) {
-    this(pageSize, offset);
-    this.setOffsetBasePoint(offsetBasePoint);
-  }
-
-  /**
-   * Gets the maximum number of items or folders the search operation should
-   * return.
+   * Gets the maximum number of items or folders the search operation should return.
    *
    * @return the page size
    */
@@ -164,8 +159,7 @@ public abstract class PagedView extends ViewBase {
   }
 
   /**
-   * Sets the maximum number of items or folders the search operation should
-   * return.
+   * Sets the maximum number of items or folders the search operation should return.
    *
    * @param pageSize the new page size
    */

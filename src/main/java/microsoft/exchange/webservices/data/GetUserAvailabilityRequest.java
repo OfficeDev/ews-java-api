@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -52,7 +53,6 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase {
    * Initializes a new instance of the "GetUserAvailabilityRequest" class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected GetUserAvailabilityRequest(ExchangeService service)
       throws Exception {
@@ -76,8 +76,8 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase {
    */
   protected boolean isFreeBusyViewRequested() {
     return this.requestedData == AvailabilityData.FreeBusy ||
-        this.requestedData == AvailabilityData.
-            FreeBusyAndSuggestions;
+           this.requestedData == AvailabilityData.
+               FreeBusyAndSuggestions;
   }
 
   /**
@@ -87,8 +87,8 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase {
    */
   protected boolean isSuggestionsViewRequested() {
     return this.requestedData == AvailabilityData.Suggestions ||
-        this.requestedData == AvailabilityData.
-            FreeBusyAndSuggestions;
+           this.requestedData == AvailabilityData.
+               FreeBusyAndSuggestions;
   }
 
   /**
@@ -123,9 +123,8 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase {
 
     legacyTimeZone.writeToXml(writer, XmlElementNames.TimeZone);
 
-
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.MailboxDataArray);
+                             XmlElementNames.MailboxDataArray);
 
     for (AttendeeInfo attendee : this.attendees) {
       attendee.writeToXml(writer);
@@ -165,40 +164,40 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase {
               <AttendeeAvailability>());
 
       reader.readStartElement(XmlNamespace.Messages,
-          XmlElementNames.FreeBusyResponseArray);
+                              XmlElementNames.FreeBusyResponseArray);
 
       do {
         reader.read();
 
         if (reader.isStartElement(XmlNamespace.Messages,
-            XmlElementNames.FreeBusyResponse)) {
+                                  XmlElementNames.FreeBusyResponse)) {
           AttendeeAvailability freeBusyResponse =
               new AttendeeAvailability();
 
           freeBusyResponse.loadFromXml(reader,
-              XmlElementNames.ResponseMessage);
+                                       XmlElementNames.ResponseMessage);
 
           if (freeBusyResponse.getErrorCode().equals(
               ServiceError.NoError)) {
             freeBusyResponse.loadFreeBusyViewFromXml(reader,
-                this.options.getRequestedFreeBusyView());
+                                                     this.options.getRequestedFreeBusyView());
           }
 
           serviceResponse.getAttendeesAvailability().add(
               freeBusyResponse);
         }
       } while (!reader.isEndElement(XmlNamespace.Messages,
-          XmlElementNames.FreeBusyResponseArray));
+                                    XmlElementNames.FreeBusyResponseArray));
     }
 
     if (this.isSuggestionsViewRequested()) {
       serviceResponse.setSuggestionsResponse(new SuggestionsResponse());
 
       reader.readStartElement(XmlNamespace.Messages,
-          XmlElementNames.SuggestionsResponse);
+                              XmlElementNames.SuggestionsResponse);
 
       serviceResponse.getSuggestionsResponse().loadFromXml(reader,
-          XmlElementNames.ResponseMessage);
+                                                           XmlElementNames.ResponseMessage);
 
       if (serviceResponse.getSuggestionsResponse().getErrorCode().equals(
           ServiceError.NoError)) {
@@ -207,7 +206,7 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase {
       }
 
       reader.readEndElement(XmlNamespace.Messages,
-          XmlElementNames.SuggestionsResponse);
+                            XmlElementNames.SuggestionsResponse);
     }
 
     return serviceResponse;
@@ -252,8 +251,7 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Gets the time window in which to retrieve user availability
-   * information.
+   * Gets the time window in which to retrieve user availability information.
    *
    * @return the time window
    */
@@ -271,8 +269,7 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Gets  a value indicating what data is requested (free/busy and/or
-   * suggestions).
+   * Gets  a value indicating what data is requested (free/busy and/or suggestions).
    *
    * @return the requested data
    */
@@ -290,8 +287,8 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Gets an object that allows you to specify options controlling the
-   * information returned by the GetUserAvailability request.
+   * Gets an object that allows you to specify options controlling the information returned by the
+   * GetUserAvailability request.
    *
    * @return the options
    */

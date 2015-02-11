@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -31,6 +32,37 @@ public final class FolderView extends PagedView {
    * The traversal.
    */
   private FolderTraversal traversal = FolderTraversal.Shallow;
+
+  /**
+   * Initializes a new instance of the FolderView class.
+   *
+   * @param pageSize The maximum number of elements the search operation should return.
+   */
+  public FolderView(int pageSize) {
+    super(pageSize);
+  }
+
+  /**
+   * Initializes a new instance of the FolderView class.
+   *
+   * @param pageSize The maximum number of elements the search operation should return.
+   * @param offset   The offset of the view from the base point.
+   */
+  public FolderView(int pageSize, int offset) {
+    super(pageSize, offset);
+  }
+
+  /**
+   * Initializes a new instance of the FolderView class.
+   *
+   * @param pageSize        The maximum number of elements the search operation should return.
+   * @param offset          The offset of the view from the base point.
+   * @param offsetBasePoint The base point of the offset.
+   */
+  public FolderView(int pageSize, int offset,
+                    OffsetBasePoint offsetBasePoint) {
+    super(pageSize, offset, offsetBasePoint);
+  }
 
   /**
    * Gets the name of the view XML element.
@@ -65,40 +97,6 @@ public final class FolderView extends PagedView {
     } catch (ServiceXmlSerializationException e) {
       e.printStackTrace();
     }
-  }
-
-  /**
-   * Initializes a new instance of the FolderView class.
-   *
-   * @param pageSize The maximum number of elements the search operation should
-   *                 return.
-   */
-  public FolderView(int pageSize) {
-    super(pageSize);
-  }
-
-  /**
-   * Initializes a new instance of the FolderView class.
-   *
-   * @param pageSize The maximum number of elements the search operation should
-   *                 return.
-   * @param offset   The offset of the view from the base point.
-   */
-  public FolderView(int pageSize, int offset) {
-    super(pageSize, offset);
-  }
-
-  /**
-   * Initializes a new instance of the FolderView class.
-   *
-   * @param pageSize        The maximum number of elements the search operation should
-   *                        return.
-   * @param offset          The offset of the view from the base point.
-   * @param offsetBasePoint The base point of the offset.
-   */
-  public FolderView(int pageSize, int offset,
-      OffsetBasePoint offsetBasePoint) {
-    super(pageSize, offset, offsetBasePoint);
   }
 
   /**

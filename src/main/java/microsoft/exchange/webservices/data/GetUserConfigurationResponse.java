@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -43,8 +44,8 @@ public final class GetUserConfigurationResponse extends ServiceResponse {
       UserConfiguration userConfiguration) {
     super();
     EwsUtilities.EwsAssert(userConfiguration != null,
-        "GetUserConfigurationResponse.ctor",
-        "userConfiguration is null");
+                           "GetUserConfigurationResponse.ctor",
+                           "userConfiguration is null");
 
     this.userConfiguration = userConfiguration;
   }
@@ -53,7 +54,8 @@ public final class GetUserConfigurationResponse extends ServiceResponse {
    * Reads response elements from XML.
    *
    * @param reader the reader
-   * @throws ServiceXmlDeserializationException                        the service xml deserialization exception
+   * @throws ServiceXmlDeserializationException                        the service xml deserialization
+   *                                                                   exception
    * @throws javax.xml.stream.XMLStreamException                       the xML stream exception
    * @throws InstantiationException                                    the instantiation exception
    * @throws IllegalAccessException                                    the illegal access exception
@@ -63,8 +65,8 @@ public final class GetUserConfigurationResponse extends ServiceResponse {
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException,
-      ServiceLocalException, Exception {
+             InstantiationException, IllegalAccessException,
+             ServiceLocalException, Exception {
     super.readElementsFromXml(reader);
     this.userConfiguration.loadFromXml(reader);
   }

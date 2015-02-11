@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -27,7 +28,7 @@ package microsoft.exchange.webservices.data;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class PhysicalAddressDictionary extends
-    DictionaryProperty<PhysicalAddressKey, PhysicalAddressEntry> {
+                                             DictionaryProperty<PhysicalAddressKey, PhysicalAddressEntry> {
 
   /**
    * Creates instance of dictionary entry.
@@ -56,7 +57,7 @@ public final class PhysicalAddressDictionary extends
    * @param value the value
    */
   public void setPhysicalAddress(PhysicalAddressKey key,
-      PhysicalAddressEntry value) {
+                                 PhysicalAddressEntry value) {
     if (value == null) {
       this.internalRemove(key);
     } else {
@@ -70,11 +71,11 @@ public final class PhysicalAddressDictionary extends
    *
    * @param key      the key
    * @param outparam the outparam
-   * @return true if the Dictionary contains a physical address associated
-   * with the specified key; otherwise, false.
+   * @return true if the Dictionary contains a physical address associated with the specified key;
+   * otherwise, false.
    */
   public boolean tryGetValue(PhysicalAddressKey key,
-      OutParam<PhysicalAddressEntry> outparam) {
+                             OutParam<PhysicalAddressEntry> outparam) {
     if (this.getEntries().containsKey(key)) {
       outparam.setParam(this.getEntries().get(key));
     }

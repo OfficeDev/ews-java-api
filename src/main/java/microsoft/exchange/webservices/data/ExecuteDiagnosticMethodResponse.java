@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
+import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -34,7 +37,6 @@ import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.Namespace;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import java.util.Iterator;
 
 
 /**
@@ -42,6 +44,8 @@ import java.util.Iterator;
  */
 final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
 
+
+  private Document returnValue;
 
   /**
    * Initializes a new instance of the ExecuteDiagnosticMethodResponse class.
@@ -51,20 +55,18 @@ final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
   protected ExecuteDiagnosticMethodResponse(ExchangeService service) {
     super();
     EwsUtilities.EwsAssert(service != null,
-        "ExecuteDiagnosticMethodResponse.ctor",
-        "service is null");
+                           "ExecuteDiagnosticMethodResponse.ctor",
+                           "service is null");
   }
 
   /**
    * Reads response elements from XML.
-   *
-   * @throws Exception
    */
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.ReturnValue);
+                            XmlElementNames.ReturnValue);
 
     XMLEventReader returnValueReader = reader.getXmlReaderForNode();
     //this.returnValue = (Document) new SafeXmlDocument();
@@ -74,13 +76,11 @@ final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
 
     reader.skipCurrentElement();
     reader.readEndElementIfNecessary(XmlNamespace.Messages,
-        XmlElementNames.ReturnValue);
+                                     XmlElementNames.ReturnValue);
   }
-
 
   /**
    * @return document
-   * @throws javax.xml.parsers.ParserConfigurationException
    */
   public Document retriveDocument(XMLEventReader xmlEventReader)
       throws ParserConfigurationException {
@@ -108,24 +108,26 @@ final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
         StartElement ele = (StartElement) xmleve;
         Element element = null;
         element = document.createElementNS(ele.getName()
-            .getNamespaceURI(), ele.getName().getLocalPart());
+                                               .getNamespaceURI(), ele.getName().getLocalPart());
 
         Iterator<Attribute> ite = ele.getAttributes();
 
         while (ite.hasNext()) {
           Attribute attr = (Attribute) ite.next();
           element.setAttribute(attr.getName().getLocalPart(),
-              attr.getValue());
+                               attr.getValue());
         }
 
-        String xmlns = EwsUtilities.WSTrustFebruary2005Namespace;//"http://schemas.xmlsoap.org/wsdl/";
+        String
+            xmlns =
+            EwsUtilities.WSTrustFebruary2005Namespace;//"http://schemas.xmlsoap.org/wsdl/";
         ite = ele.getNamespaces();
         while (ite.hasNext()) {
           Namespace ns = (Namespace) ite.next();
           String name = ns.getPrefix();
           if (!name.isEmpty()) {
             element.setAttributeNS(xmlns, name,
-                ns.getNamespaceURI());
+                                   ns.getNamespaceURI());
           } else {
             xmlns = ns.getNamespaceURI();
           }
@@ -143,8 +145,6 @@ final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
     }
     return document;
   }
-
-  private Document returnValue;
 
   /**
    * Gets the return value.

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,12 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Represents a UpdateInboxRulesRequest request.
  */
 final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
+
   /**
    * The smtp address of the mailbox from which to get the inbox rules.
    */
@@ -42,8 +44,7 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
   private Iterable<RuleOperation> inboxRuleOperations;
 
   /**
-   * Initializes a new instance of the
-   * <see cref="UpdateInboxRulesRequest"/> class.
+   * Initializes a new instance of the <see cref="UpdateInboxRulesRequest"/> class.
    *
    * @param service The service.
    */
@@ -82,7 +83,7 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
         XmlElementNames.RemoveOutlookRuleBlob,
         this.removeOutlookRuleBlob);
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.Operations);
+                             XmlElementNames.Operations);
     for (RuleOperation operation : this.inboxRuleOperations) {
       operation.writeToXml(writer, operation.getXmlElementName());
     }
@@ -104,7 +105,6 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
    *
    * @param reader The reader.
    * @return Response object.
-   * @throws Exception
    */
   @Override
   protected Object parseResponse(EwsServiceXmlReader reader)
@@ -152,8 +152,6 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
    * Executes this request.
    *
    * @return Service response.
-   * @throws Exception
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException
    */
   protected UpdateInboxRulesResponse execute()
       throws ServiceLocalException, Exception {
@@ -161,7 +159,7 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
         (UpdateInboxRulesResponse) this.internalExecute();
     if (serviceResponse.getResult() == ServiceResult.Error) {
       throw new UpdateInboxRulesException(serviceResponse,
-          this.inboxRuleOperations);
+                                          this.inboxRuleOperations);
     }
     return serviceResponse;
   }
@@ -181,16 +179,14 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Gets a value indicating whether or not to
-   * remove OutlookRuleBlob from the rule collection.
+   * Gets a value indicating whether or not to remove OutlookRuleBlob from the rule collection.
    */
   protected boolean getRemoveOutlookRuleBlob() {
     return this.removeOutlookRuleBlob;
   }
 
   /**
-   * Sets a value indicating whether or not to
-   * remove OutlookRuleBlob from the rule collection.
+   * Sets a value indicating whether or not to remove OutlookRuleBlob from the rule collection.
    */
   protected void setRemoveOutlookRuleBlob(boolean value) {
     this.removeOutlookRuleBlob = value;

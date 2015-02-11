@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,10 +20,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.Date;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents an event as exposed by push and pull notifications.
@@ -46,10 +48,9 @@ public abstract class NotificationEvent {
   private FolderId parentFolderId;
 
   /**
-   * Id of the old parent folder of the item or folder this event applies to.
-   * This property is only meaningful when EventType is equal to either
-   * EventType.Moved or EventType.Copied. For all other event types,
-   * oldParentFolderId will be null
+   * Id of the old parent folder of the item or folder this event applies to. This property is only
+   * meaningful when EventType is equal to either EventType.Moved or EventType.Copied. For all other
+   * event types, oldParentFolderId will be null
    */
   private FolderId oldParentFolderId;
 
@@ -76,7 +77,7 @@ public abstract class NotificationEvent {
    */
   protected void internalLoadFromXml(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException, Exception {
+             InstantiationException, IllegalAccessException, Exception {
   }
 
   /**
@@ -87,7 +88,7 @@ public abstract class NotificationEvent {
    * @throws Exception the exception
    */
   protected void loadFromXml(EwsServiceXmlReader reader,
-      String xmlElementName)
+                             String xmlElementName)
       throws Exception {
     this.internalLoadFromXml(reader);
 

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.net.URI;
 
 /**
- * Represents an error that occurs when the account that is
- * being accessed is locked and requires user interaction to be unlocked.
+ * Represents an error that occurs when the account that is being accessed is locked and requires
+ * user interaction to be unlocked.
  */
 public class AccountIsLockedException extends ServiceRemoteException {
 
@@ -45,15 +46,14 @@ public class AccountIsLockedException extends ServiceRemoteException {
    * @param accountUnlockUrl URL for client to visit to unlock account.
    */
   public AccountIsLockedException(String message, URI accountUnlockUrl,
-      Exception innerException) {
+                                  Exception innerException) {
 
     super(message, innerException);
     this.setAccountUnlockUrl(accountUnlockUrl);
   }
 
   /**
-   * Gets the URL of a web page where the user
-   * can navigate to unlock his or her account.
+   * Gets the URL of a web page where the user can navigate to unlock his or her account.
    */
   public URI getAccountUnlockUrl() {
     return accountUnlockUrl;
@@ -61,8 +61,7 @@ public class AccountIsLockedException extends ServiceRemoteException {
 
 
   /**
-   * Sets the URL of a web page where the
-   * user can navigate to unlock his or her account.
+   * Sets the URL of a web page where the user can navigate to unlock his or her account.
    */
   private void setAccountUnlockUrl(URI value) {
     this.accountUnlockUrl = value;

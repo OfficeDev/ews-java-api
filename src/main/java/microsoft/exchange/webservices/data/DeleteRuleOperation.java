@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -28,22 +29,21 @@ import javax.xml.stream.XMLStreamException;
  * Represents an operation to delete an existing rule.
  */
 public final class DeleteRuleOperation extends RuleOperation {
+
   /**
    * Id of the inbox rule to delete.
    */
   private String ruleId;
 
   /**
-   * Initializes a new instance of the
-   * <see cref="DeleteRuleOperation"/> class.
+   * Initializes a new instance of the <see cref="DeleteRuleOperation"/> class.
    */
   public DeleteRuleOperation() {
     super();
   }
 
   /**
-   * Initializes a new instance of the
-   * <see cref="DeleteRuleOperation"/> class.
+   * Initializes a new instance of the <see cref="DeleteRuleOperation"/> class.
    *
    * @param ruleId The Id of the inbox rule to delete.
    */
@@ -75,7 +75,7 @@ public final class DeleteRuleOperation extends RuleOperation {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.RuleId, this.getRuleId());
+                             XmlElementNames.RuleId, this.getRuleId());
   }
 
   /**

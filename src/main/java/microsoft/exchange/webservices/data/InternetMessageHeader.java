@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -100,21 +101,21 @@ public final class InternetMessageHeader extends ComplexProperty {
   }
 
   /**
-   * The name of the header.
-   *
-   * @param name the new name
-   */
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
    * Gets the name.
    *
    * @return the name
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * The name of the header.
+   *
+   * @param name the new name
+   */
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents recurrence range with start and end dates.
@@ -80,7 +82,7 @@ abstract class RecurrenceRange extends ComplexProperty {
    */
   protected void setupRecurrence(Recurrence recurrence)
       throws InstantiationException, IllegalAccessException,
-      ServiceValidationException, Exception {
+             ServiceValidationException, Exception {
     recurrence.setStartDate(this.getStartDate());
   }
 
@@ -98,7 +100,7 @@ abstract class RecurrenceRange extends ComplexProperty {
     String formattedString = df.format(d);
 
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.StartDate,
-        formattedString);
+                             formattedString);
   }
 
   /**
@@ -115,8 +117,8 @@ abstract class RecurrenceRange extends ComplexProperty {
    */
   protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, InstantiationException,
-      IllegalAccessException, XMLStreamException, ParseException,
-      Exception {
+             IllegalAccessException, XMLStreamException, ParseException,
+             Exception {
     if (reader.getLocalName().equals(XmlElementNames.StartDate)) {
       //this.startDate = reader.readElementValueAsDateTime();
       Date startDate = reader.readElementValueAsUnspecifiedDate();

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ final class WorkingPeriod extends ComplexProperty {
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.DayOfWeek)) {
       EwsUtilities.parseEnumValueList(DayOfTheWeek.class,
-          this.daysOfWeek, reader.readElementValue(), ' ');
+                                      this.daysOfWeek, reader.readElementValue(), ' ');
       return true;
     } else if (reader.getLocalName().equals(
         XmlElementNames.StartTimeInMinutes)) {

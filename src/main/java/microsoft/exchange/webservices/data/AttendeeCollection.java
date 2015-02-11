@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -27,7 +28,7 @@ package microsoft.exchange.webservices.data;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class AttendeeCollection extends
-    ComplexPropertyCollection<Attendee> {
+                                      ComplexPropertyCollection<Attendee> {
 
   /**
    * Initializes a new instance of the AttendeeCollection class.
@@ -65,8 +66,7 @@ public final class AttendeeCollection extends
    *
    * @param name        the name
    * @param smtpAddress the smtp address
-   * @return An Attendee instance initialized with the provided name and SMTP
-   * address.
+   * @return An Attendee instance initialized with the provided name and SMTP address.
    */
   public Attendee add(String name, String smtpAddress) {
     Attendee result = new Attendee(name, smtpAddress);
@@ -91,7 +91,7 @@ public final class AttendeeCollection extends
   public void removeAt(int index) {
     if (index < 0 || index >= this.getCount()) {
       throw new IllegalArgumentException("parameter \'index\' : " +
-          Strings.IndexIsOutOfRange);
+                                         Strings.IndexIsOutOfRange);
     }
 
     this.internalRemoveAt(index);
@@ -101,8 +101,7 @@ public final class AttendeeCollection extends
    * Removes an attendee from the collection.
    *
    * @param attendee the attendee
-   * @return True if the attendee was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the attendee was successfully removed from the collection, false otherwise.
    * @throws Exception the exception
    */
   public boolean remove(Attendee attendee) throws Exception {
@@ -127,12 +126,10 @@ public final class AttendeeCollection extends
   }
 
   /**
-   * Retrieves the XML element name corresponding to the provided Attendee
-   * object.
+   * Retrieves the XML element name corresponding to the provided Attendee object.
    *
    * @param attendee the attendee
-   * @return The XML element name corresponding to the provided Attendee
-   * object.
+   * @return The XML element name corresponding to the provided Attendee object.
    */
   @Override
   protected String getCollectionItemXmlElementName(Attendee attendee) {

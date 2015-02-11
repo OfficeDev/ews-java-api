@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -28,7 +29,8 @@ import java.util.EnumSet;
  * Represents a task delegation property definition.
  */
 final class TaskDelegationStatePropertyDefinition extends
-    GenericPropertyDefinition<TaskDelegationState> {
+                                                  GenericPropertyDefinition<TaskDelegationState> {
+
   /**
    * The No match.
    */
@@ -50,8 +52,7 @@ final class TaskDelegationStatePropertyDefinition extends
   private static final String Accepted = "Accepted";
 
   /**
-   * Initializes a new instance of the "TaskDelegationStatePropertyDefinition"
-   * class.
+   * Initializes a new instance of the "TaskDelegationStatePropertyDefinition" class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.
@@ -59,32 +60,10 @@ final class TaskDelegationStatePropertyDefinition extends
    * @param version        The version.
    */
   protected TaskDelegationStatePropertyDefinition(String xmlElementName,
-      String uri, EnumSet<PropertyDefinitionFlags> flags,
-      ExchangeVersion version) {
+                                                  String uri,
+                                                  EnumSet<PropertyDefinitionFlags> flags,
+                                                  ExchangeVersion version) {
     super(TaskDelegationState.class, xmlElementName, uri, flags, version);
-  }
-
-  /**
-   * The Enum Status.
-   */
-  public enum Status {
-
-    /**
-     * The No match.
-     */
-    NoMatch,
-    /**
-     * The Own new.
-     */
-    OwnNew,
-    /**
-     * The Owned.
-     */
-    Owned,
-    /**
-     * The Accepted.
-     */
-    Accepted;
   }
 
   /**
@@ -106,10 +85,10 @@ final class TaskDelegationStatePropertyDefinition extends
         return TaskDelegationState.Declined;
       default:
         EwsUtilities.EwsAssert(false,
-            "TaskDelegationStatePropertyDefinition.Parse", String
+                               "TaskDelegationStatePropertyDefinition.Parse", String
                 .format("TaskDelegationStatePropertyDefinition." +
-                    "Parse():" +
-                    " value %s cannot be handled.", value));
+                        "Parse():" +
+                        " value %s cannot be handled.", value));
 
         return null; // To keep the compiler happy
     }
@@ -136,11 +115,34 @@ final class TaskDelegationStatePropertyDefinition extends
       return Accepted;
     } else {
       EwsUtilities.EwsAssert(false,
-          "TaskDelegationStatePropertyDefinition.ToString",
-          "Invalid TaskDelegationState value.");
+                             "TaskDelegationStatePropertyDefinition.ToString",
+                             "Invalid TaskDelegationState value.");
       return null; // To keep the compiler happy
     }
 
+  }
+
+  /**
+   * The Enum Status.
+   */
+  public enum Status {
+
+    /**
+     * The No match.
+     */
+    NoMatch,
+    /**
+     * The Own new.
+     */
+    OwnNew,
+    /**
+     * The Owned.
+     */
+    Owned,
+    /**
+     * The Accepted.
+     */
+    Accepted;
   }
 
 }

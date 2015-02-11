@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.concurrent.Future;
@@ -30,15 +31,14 @@ abstract class AsyncCallback extends AbstractAsyncCallback {
 
   }
 
-  void setTask(Future<?> task) {
-
-    this.task = task;
-  }
-
   Future<?> getTask() {
     return this.task;
   }
 
+  void setTask(Future<?> task) {
+
+    this.task = task;
+  }
 
 
 }

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.Date;
@@ -80,6 +81,12 @@ public final class AvailabilityOptions {
   private String globalObjectId;
 
   /**
+   * Initializes a new instance of the AvailabilityOptions class.
+   */
+  public AvailabilityOptions() {
+  }
+
+  /**
    * Validates this instance against the specified time window.
    *
    * @param timeWindow the time window
@@ -88,12 +95,12 @@ public final class AvailabilityOptions {
   protected void validate(long timeWindow) throws Exception {
     if (this.mergedFreeBusyInterval > timeWindow) {
       throw new IllegalArgumentException(String.format("%s,%s",
-          Strings.MergedFreeBusyIntervalMustBeSmallerThanTimeWindow,
-          "MergedFreeBusyInterval"));
+                                                       Strings.MergedFreeBusyIntervalMustBeSmallerThanTimeWindow,
+                                                       "MergedFreeBusyInterval"));
     }
 
     EwsUtilities.validateParamAllowNull(this.detailedSuggestionsWindow,
-        "DetailedSuggestionsWindow");
+                                        "DetailedSuggestionsWindow");
   }
 
   /**
@@ -104,80 +111,73 @@ public final class AvailabilityOptions {
    * @throws Exception the exception
    */
   protected void writeToXml(EwsServiceXmlWriter writer,
-      GetUserAvailabilityRequest request) throws Exception {
+                            GetUserAvailabilityRequest request) throws Exception {
     if (request.isFreeBusyViewRequested()) {
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.FreeBusyViewOptions);
+                               XmlElementNames.FreeBusyViewOptions);
 
       request.getTimeWindow().writeToXmlUnscopedDatesOnly(writer,
-          XmlElementNames.TimeWindow);
+                                                          XmlElementNames.TimeWindow);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.MergedFreeBusyIntervalInMinutes,
-          this.mergedFreeBusyInterval);
+                               XmlElementNames.MergedFreeBusyIntervalInMinutes,
+                               this.mergedFreeBusyInterval);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.RequestedView, this.requestedFreeBusyView);
+                               XmlElementNames.RequestedView, this.requestedFreeBusyView);
 
       writer.writeEndElement(); // FreeBusyViewOptions
     }
 
     if (request.isSuggestionsViewRequested()) {
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.SuggestionsViewOptions);
+                               XmlElementNames.SuggestionsViewOptions);
 
       writer
           .writeElementValue(XmlNamespace.Types,
-              XmlElementNames.GoodThreshold,
-              this.goodSuggestionThreshold);
+                             XmlElementNames.GoodThreshold,
+                             this.goodSuggestionThreshold);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.MaximumResultsByDay,
-          this.maximumSuggestionsPerDay);
+                               XmlElementNames.MaximumResultsByDay,
+                               this.maximumSuggestionsPerDay);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.MaximumNonWorkHourResultsByDay,
-          this.maximumNonWorkHoursSuggestionsPerDay);
+                               XmlElementNames.MaximumNonWorkHourResultsByDay,
+                               this.maximumNonWorkHoursSuggestionsPerDay);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.MeetingDurationInMinutes,
-          this.meetingDuration);
+                               XmlElementNames.MeetingDurationInMinutes,
+                               this.meetingDuration);
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.MinimumSuggestionQuality,
-          this.minimumSuggestionQuality);
+                               XmlElementNames.MinimumSuggestionQuality,
+                               this.minimumSuggestionQuality);
 
       TimeWindow timeWindowToSerialize =
           this.detailedSuggestionsWindow == null ? request
               .getTimeWindow() :
-              this.detailedSuggestionsWindow;
+          this.detailedSuggestionsWindow;
 
       timeWindowToSerialize.writeToXmlUnscopedDatesOnly(writer,
-          XmlElementNames.DetailedSuggestionsWindow);
+                                                        XmlElementNames.DetailedSuggestionsWindow);
 
       if (this.currentMeetingTime != null) {
         writer.writeElementValue(XmlNamespace.Types,
-            XmlElementNames.CurrentMeetingTime,
-            this.currentMeetingTime);
+                                 XmlElementNames.CurrentMeetingTime,
+                                 this.currentMeetingTime);
       }
 
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.GlobalObjectId, this.globalObjectId);
+                               XmlElementNames.GlobalObjectId, this.globalObjectId);
 
       writer.writeEndElement(); // SuggestionsViewOptions
     }
   }
 
   /**
-   * Initializes a new instance of the AvailabilityOptions class.
-   */
-  public AvailabilityOptions() {
-  }
-
-  /**
-   * Gets the time difference between two successive slots in a
-   * FreeBusyMerged view. MergedFreeBusyInterval must be between 5 and 1440.
-   * The default value is 30.
+   * Gets the time difference between two successive slots in a FreeBusyMerged view.
+   * MergedFreeBusyInterval must be between 5 and 1440. The default value is 30.
    *
    * @return the merged free busy interval
    */
@@ -193,16 +193,15 @@ public final class AvailabilityOptions {
   public void setMergedFreeBusyInterval(int value) {
     if (value < 5 || value > 1440) {
       throw new IllegalArgumentException(String.format("%s,%s,%s,%s",
-          Strings.InvalidPropertyValueNotInRange,
-          "MergedFreeBusyInterval", 5, 1440));
+                                                       Strings.InvalidPropertyValueNotInRange,
+                                                       "MergedFreeBusyInterval", 5, 1440));
     }
 
     this.mergedFreeBusyInterval = value;
   }
 
   /**
-   * Gets  the requested type of free/busy view. The default value is
-   * FreeBusyViewType.Detailed.
+   * Gets  the requested type of free/busy view. The default value is FreeBusyViewType.Detailed.
    *
    * @return the requested free busy view
    */
@@ -220,10 +219,9 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets  the percentage of attendees that must have the time period
-   * open for the time period to qualify as a good suggested meeting time.
-   * GoodSuggestionThreshold must be between 1 and 49. The default value is
-   * 25.
+   * Gets  the percentage of attendees that must have the time period open for the time period to
+   * qualify as a good suggested meeting time. GoodSuggestionThreshold must be between 1 and 49. The
+   * default value is 25.
    *
    * @return the good suggestion threshold
    */
@@ -247,9 +245,8 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets the number of suggested meeting times that should be
-   * returned per day. MaximumSuggestionsPerDay must be between 0 and 48. The
-   * default value is 10.
+   * Gets the number of suggested meeting times that should be returned per day.
+   * MaximumSuggestionsPerDay must be between 0 and 48. The default value is 10.
    *
    * @return the maximum suggestions per day
    */
@@ -265,17 +262,16 @@ public final class AvailabilityOptions {
   public void setMaximumSuggestionsPerDay(int value) {
     if (value < 0 || value > 48) {
       throw new IllegalArgumentException(String.format("%s,%s,%s,%s",
-          Strings.InvalidPropertyValueNotInRange,
-          "MaximumSuggestionsPerDay", 0, 48));
+                                                       Strings.InvalidPropertyValueNotInRange,
+                                                       "MaximumSuggestionsPerDay", 0, 48));
     }
 
     this.maximumSuggestionsPerDay = value;
   }
 
   /**
-   * Gets the number of suggested meeting times outside regular
-   * working hours per day. MaximumNonWorkHoursSuggestionsPerDay must be
-   * between 0 and 48. The default value is 0.
+   * Gets the number of suggested meeting times outside regular working hours per day.
+   * MaximumNonWorkHoursSuggestionsPerDay must be between 0 and 48. The default value is 0.
    *
    * @return the maximum non work hours suggestions per day
    */
@@ -299,9 +295,8 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets  the duration, in minutes, of the meeting for which to obtain
-   * suggestions. MeetingDuration must be between 30 and 1440. The default
-   * value is 60.
+   * Gets  the duration, in minutes, of the meeting for which to obtain suggestions. MeetingDuration
+   * must be between 30 and 1440. The default value is 60.
    *
    * @return the meeting duration
    */
@@ -317,16 +312,17 @@ public final class AvailabilityOptions {
   public void setMeetingDuration(int value) {
     if (value < 30 || value > 1440) {
       throw new IllegalArgumentException(String.format("%s,%s,%s,%s",
-          Strings.InvalidPropertyValueNotInRange, "MeetingDuration",
-          30, 1440));
+                                                       Strings.InvalidPropertyValueNotInRange,
+                                                       "MeetingDuration",
+                                                       30, 1440));
     }
 
     this.meetingDuration = value;
   }
 
   /**
-   * Gets the minimum quality of suggestions that should be returned.
-   * The default is SuggestionQuality.Fair.
+   * Gets the minimum quality of suggestions that should be returned. The default is
+   * SuggestionQuality.Fair.
    *
    * @return the minimum suggestion quality
    */
@@ -344,8 +340,8 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets the time window for which detailed information about
-   * suggested meeting times should be returned.
+   * Gets the time window for which detailed information about suggested meeting times should be
+   * returned.
    *
    * @return the detailed suggestions window
    */
@@ -363,8 +359,7 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets the start time of a meeting that you want to update with the
-   * suggested meeting times.
+   * Gets the start time of a meeting that you want to update with the suggested meeting times.
    *
    * @return the current meeting time
    */
@@ -382,8 +377,8 @@ public final class AvailabilityOptions {
   }
 
   /**
-   * Gets the global object Id of a meeting that will be modified
-   * based on the data returned by GetUserAvailability.
+   * Gets the global object Id of a meeting that will be modified based on the data returned by
+   * GetUserAvailability.
    *
    * @return the global object id
    */

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -93,7 +94,6 @@ public final class RuleError extends ComplexProperty {
    *
    * @param reader The reader
    * @return True if element was read
-   * @throws Exception
    */
   @Override
   protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)

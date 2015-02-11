@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Represents a SendItem request.
  */
 final class SendItemRequest extends
-    MultiResponseServiceRequest<ServiceResponse> {
+                            MultiResponseServiceRequest<ServiceResponse> {
 
   /**
    * The items.
@@ -37,6 +38,18 @@ final class SendItemRequest extends
    * The saved copy destination folder id.
    */
   private FolderId savedCopyDestinationFolderId;
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param service           the service
+   * @param errorHandlingMode the error handling mode
+   */
+  protected SendItemRequest(ExchangeService service,
+                            ServiceErrorHandling errorHandlingMode)
+      throws Exception {
+    super(service, errorHandlingMode);
+  }
 
   /**
    * Asserts the valid.
@@ -50,7 +63,7 @@ final class SendItemRequest extends
 
     if (this.savedCopyDestinationFolderId != null) {
       this.savedCopyDestinationFolderId.validate(this.getService()
-          .getRequestedServerVersion());
+                                                     .getRequestedServerVersion());
     }
   }
 
@@ -63,7 +76,7 @@ final class SendItemRequest extends
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new ServiceResponse();
   }
 
@@ -119,7 +132,7 @@ final class SendItemRequest extends
     super.writeAttributesToXml(writer);
 
     writer.writeAttributeValue(XmlAttributeNames.SaveItemToFolder,
-        this.savedCopyDestinationFolderId != null);
+                               this.savedCopyDestinationFolderId != null);
   }
 
   /**
@@ -134,7 +147,7 @@ final class SendItemRequest extends
       throws ServiceLocalException, Exception {
     writer
         .writeStartElement(XmlNamespace.Messages,
-            XmlElementNames.ItemIds);
+                           XmlElementNames.ItemIds);
 
     for (Item item : this.getItems()) {
       item.getId().writeToXml(writer, XmlElementNames.ItemId);
@@ -144,7 +157,7 @@ final class SendItemRequest extends
 
     if (this.savedCopyDestinationFolderId != null) {
       writer.writeStartElement(XmlNamespace.Messages,
-          XmlElementNames.SavedItemFolderId);
+                               XmlElementNames.SavedItemFolderId);
       this.savedCopyDestinationFolderId.writeToXml(writer);
       writer.writeEndElement();
     }
@@ -158,19 +171,6 @@ final class SendItemRequest extends
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
     return ExchangeVersion.Exchange2007_SP1;
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param service           the service
-   * @param errorHandlingMode the error handling mode
-   * @throws Exception
-   */
-  protected SendItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
-      throws Exception {
-    super(service, errorHandlingMode);
   }
 
   /**
@@ -192,8 +192,8 @@ final class SendItemRequest extends
   }
 
   /**
-   * Gets the saved copy destination folder id. <value>The saved
-   * copy destination folder id.</value>
+   * Gets the saved copy destination folder id. <value>The saved copy destination folder
+   * id.</value>
    *
    * @return the saved copy destination folder id
    */

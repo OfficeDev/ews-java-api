@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,16 +20,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.xml.stream.XMLStreamException;
+
 /**
- * Represents a time zone period transition that occurs on a fixed (absolute)
- * date.
+ * Represents a time zone period transition that occurs on a fixed (absolute) date.
  */
 class AbsoluteDateTransition extends TimeZoneTransition {
 
@@ -37,6 +38,26 @@ class AbsoluteDateTransition extends TimeZoneTransition {
    * The date time.
    */
   private Date dateTime;
+
+  /**
+   * Initializes a new instance of the AbsoluteDateTransition class.
+   *
+   * @param timeZoneDefinition , The time zone definition the transition will belong to.
+   */
+  protected AbsoluteDateTransition(TimeZoneDefinition timeZoneDefinition) {
+    super(timeZoneDefinition);
+  }
+
+  /**
+   * Initializes a new instance of the AbsoluteDateTransition class.
+   *
+   * @param timeZoneDefinition The time zone definition the transition will belong to.
+   * @param targetGroup        the target group
+   */
+  protected AbsoluteDateTransition(TimeZoneDefinition timeZoneDefinition,
+                                   TimeZoneTransitionGroup targetGroup) {
+    super(timeZoneDefinition, targetGroup);
+  }
 
   /**
    * Gets the XML element name associated with the transition.
@@ -87,27 +108,7 @@ class AbsoluteDateTransition extends TimeZoneTransition {
     super.writeElementsToXml(writer);
 
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.DateTime,
-        this.dateTime);
-  }
-
-  /**
-   * Initializes a new instance of the AbsoluteDateTransition class.
-   *
-   * @param timeZoneDefinition , The time zone definition the transition will belong to.
-   */
-  protected AbsoluteDateTransition(TimeZoneDefinition timeZoneDefinition) {
-    super(timeZoneDefinition);
-  }
-
-  /**
-   * Initializes a new instance of the AbsoluteDateTransition class.
-   *
-   * @param timeZoneDefinition The time zone definition the transition will belong to.
-   * @param targetGroup        the target group
-   */
-  protected AbsoluteDateTransition(TimeZoneDefinition timeZoneDefinition,
-      TimeZoneTransitionGroup targetGroup) {
-    super(timeZoneDefinition, targetGroup);
+                             this.dateTime);
   }
 
   /**

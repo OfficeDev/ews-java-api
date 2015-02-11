@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -38,7 +39,6 @@ class UnsubscribeRequest extends MultiResponseServiceRequest<ServiceResponse> {
    * Instantiates a new unsubscribe request.
    *
    * @param service the service
-   * @throws Exception
    */
   protected UnsubscribeRequest(ExchangeService service)
       throws Exception {
@@ -54,7 +54,7 @@ class UnsubscribeRequest extends MultiResponseServiceRequest<ServiceResponse> {
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new ServiceResponse();
   }
 
@@ -123,7 +123,7 @@ class UnsubscribeRequest extends MultiResponseServiceRequest<ServiceResponse> {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeElementValue(XmlNamespace.Messages,
-        XmlElementNames.SubscriptionId, this.getSubscriptionId());
+                             XmlElementNames.SubscriptionId, this.getSubscriptionId());
   }
 
   /**

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -28,7 +29,7 @@ package microsoft.exchange.webservices.data;
  * @param <TItem> The type of the item.
  */
 final class FindItemRequest<TItem extends Item> extends
-    FindRequest<FindItemResponse<TItem>> {
+                                                FindRequest<FindItemResponse<TItem>> {
 
   /**
    * The group by.
@@ -40,10 +41,9 @@ final class FindItemRequest<TItem extends Item> extends
    *
    * @param service           The Service
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   protected FindItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                            ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }

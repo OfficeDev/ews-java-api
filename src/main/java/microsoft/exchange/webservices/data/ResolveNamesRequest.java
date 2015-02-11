@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.HashMap;
@@ -29,7 +30,7 @@ import java.util.Map;
  * Represents a ResolveNames request.
  */
 final class ResolveNamesRequest extends
-    MultiResponseServiceRequest<ResolveNamesResponse> {
+                                MultiResponseServiceRequest<ResolveNamesResponse> {
 
   /**
    * The Search scope map.
@@ -46,13 +47,13 @@ final class ResolveNamesRequest extends
                   new HashMap<ResolveNameSearchLocation, String>();
 
               map.put(ResolveNameSearchLocation.DirectoryOnly,
-                  "ActiveDirectory");
+                      "ActiveDirectory");
               map.put(ResolveNameSearchLocation.DirectoryThenContacts,
-                  "ActiveDirectoryContacts");
+                      "ActiveDirectoryContacts");
               map.put(ResolveNameSearchLocation.ContactsOnly,
-                  "Contacts");
+                      "Contacts");
               map.put(ResolveNameSearchLocation.ContactsThenDirectory,
-                  "ContactsActiveDirectory");
+                      "ContactsActiveDirectory");
 
               return map;
             }
@@ -85,6 +86,15 @@ final class ResolveNamesRequest extends
   private FolderIdWrapperList parentFolderIds = new FolderIdWrapperList();
 
 
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param service the service
+   */
+  protected ResolveNamesRequest(ExchangeService service)
+      throws Exception {
+    super(service, ServiceErrorHandling.ThrowOnError);
+  }
 
   /**
    * Asserts the valid.
@@ -142,17 +152,6 @@ final class ResolveNamesRequest extends
   }
 
   /**
-   * Initializes a new instance of the class.
-   *
-   * @param service the service
-   * @throws Exception
-   */
-  protected ResolveNamesRequest(ExchangeService service)
-      throws Exception {
-    super(service, ServiceErrorHandling.ThrowOnError);
-  }
-
-  /**
    * Gets the expected response message count.
    *
    * @return Number of expected response messages
@@ -172,7 +171,7 @@ final class ResolveNamesRequest extends
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.ReturnFullContactData,
-        this.returnFullContactData);
+                               this.returnFullContactData);
 
     String searchScope = null;
     if (searchScopeMap.getMember().containsKey(searchLocation)) {
@@ -184,7 +183,7 @@ final class ResolveNamesRequest extends
             (!(searchScope == null || searchScope.isEmpty())),
             "ResolveNameRequest.WriteAttributesToXml",
             "The specified search location cannot " +
-                "be mapped to an EWS search scope.");
+            "be mapped to an EWS search scope.");
 
     String propertySet = null;
     if (this.getContactDataPropertySet() != null) {
@@ -198,7 +197,7 @@ final class ResolveNamesRequest extends
 
     if (!this.getService().getExchange2007CompatibilityMode()) {
       writer.writeAttributeValue(XmlAttributeNames.
-          SearchScope, searchScope);
+                                     SearchScope, searchScope);
     }
     if (!(propertySet == null)) {
       writer.writeAttributeValue(XmlAttributeNames.ContactDataShape, propertySet);
@@ -215,10 +214,10 @@ final class ResolveNamesRequest extends
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.getParentFolderIds().writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.ParentFolderIds);
+                                         XmlElementNames.ParentFolderIds);
 
     writer.writeElementValue(XmlNamespace.Messages,
-        XmlElementNames.UnresolvedEntry, this.getNameToResolve());
+                             XmlElementNames.UnresolvedEntry, this.getNameToResolve());
   }
 
   /**
@@ -250,9 +249,8 @@ final class ResolveNamesRequest extends
   }
 
   /**
-   * Gets a value indicating whether to return full contact data or
-   * not. <value> <c>true</c> if should return full contact data; otherwise,
-   * <c>false</c>. </value>
+   * Gets a value indicating whether to return full contact data or not. <value> <c>true</c> if
+   * should return full contact data; otherwise, <c>false</c>. </value>
    *
    * @return the return full contact data
    */
@@ -298,17 +296,6 @@ final class ResolveNamesRequest extends
 
   /**
    * Gets or sets the PropertySet for Contact Data
-   * <p/>
-   * The PropertySet
-   */
-  public void setContactDataPropertySet(PropertySet propertySet) {
-
-
-    this.contactDataPropertySet = propertySet;
-  }
-
-  /**
-   * Gets or sets the PropertySet for Contact Data
    *
    * @return The PropertySet
    */
@@ -316,6 +303,13 @@ final class ResolveNamesRequest extends
     return this.contactDataPropertySet;
   }
 
+  /**
+   * Gets or sets the PropertySet for Contact Data <p/> The PropertySet
+   */
+  public void setContactDataPropertySet(PropertySet propertySet) {
+
+    this.contactDataPropertySet = propertySet;
+  }
 
 
 }

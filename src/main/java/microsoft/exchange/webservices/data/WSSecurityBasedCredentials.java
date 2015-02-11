@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,35 +20,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Calendar;
 
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
+
 /**
- * WSSecurityBasedCredentials is the base class for all credential classes using
- * WS-Security.
+ * WSSecurityBasedCredentials is the base class for all credential classes using WS-Security.
  */
 public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
 
-  /**
-   * The security token.
-   */
-  private String securityToken;
-
-  /**
-   * The ews url.
-   */
-  private URI ewsUrl;
-
   protected static final String wsuTimeStampFormat =
       "<wsu:Timestamp>" +
-          "<wsu:Created>{0:yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'}</wsu:Created>" +
-          "<wsu:Expires>{1:yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'}</wsu:Expires>" +
-          "</wsu:Timestamp>";
+      "<wsu:Created>{0:yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'}</wsu:Created>" +
+      "<wsu:Expires>{1:yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'}</wsu:Expires>" +
+      "</wsu:Timestamp>";
+  /**
+   * The Constant WsAddressingHeadersFormat.
+   */
+  protected static final String
+      wsAddressingHeadersFormat =
+      "<wsa:Action soap:mustUnderstand='1'>http://schemas.microsoft.com/exchange/services/2006/messages/%s</wsa:Action>"
+      +
+      "<wsa:ReplyTo><wsa:Address>http://www.w3.org/2005/08/addressing/anonymous</wsa:Address>" +
+      "</wsa:ReplyTo>" +
+      "<wsa:To soap:mustUnderstand='1'>%s</wsa:To>";
+  /**
+   * The Constant WsSecurityHeaderFormat.
+   */
+  protected static final String wsSecurityHeaderFormat =
+      "<wsse:Security soap:mustUnderstand='1'>" +
+      "  %s" + // EncryptedData (token)
+      "</wsse:Security>";
   //kavi-start
   // WS-Security SecExt 1.0 Namespace (and the namespace prefix we will use
   // for it).
@@ -61,7 +69,6 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
 
   // WS-Addressing 1.0 Namespace (and the namespace prefix we will use for
   // it).
-
 
   /** The Constant WSAddressing10NamespacePrefix. */
   //protected static final String WSAddressing10NamespacePrefix = "wsa";
@@ -76,34 +83,25 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
   // WS-Addressing headers.
   // Fill-Ins: %s = Web method name; %s = EWS URL
   /**
-   * The Constant WsAddressingHeadersFormat.
+   * The Constant WsSecurityPathSuffix.
    */
-  protected static final String wsAddressingHeadersFormat =
-      "<wsa:Action soap:mustUnderstand='1'>http://schemas.microsoft.com/exchange/services/2006/messages/%s</wsa:Action>"
-          +
-          "<wsa:ReplyTo><wsa:Address>http://www.w3.org/2005/08/addressing/anonymous</wsa:Address>" +
-          "</wsa:ReplyTo>" +
-          "<wsa:To soap:mustUnderstand='1'>%s</wsa:To>";
+  protected static final String wsSecurityPathSuffix = "/wssecurity";
 
   // The WS-Security header format string to use for adding the WS-Security
   // header.
   // Fill-Ins:
   // %s = EncryptedData block (the token)
   /**
-   * The Constant WsSecurityHeaderFormat.
+   * The security token.
    */
-  protected static final String wsSecurityHeaderFormat =
-      "<wsse:Security soap:mustUnderstand='1'>" +
-          "  %s" + // EncryptedData (token)
-          "</wsse:Security>";
-
-  private boolean addTimestamp;
+  private String securityToken;
+  /**
+   * The ews url.
+   */
+  private URI ewsUrl;
 
   // / Path suffix for WS-Security endpoint.
-  /**
-   * The Constant WsSecurityPathSuffix.
-   */
-  protected static final String wsSecurityPathSuffix = "/wssecurity";
+  private boolean addTimestamp;
 
   /**
    * Initializes a new instance of the WSSecurityBasedCredentials class.
@@ -132,8 +130,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
   }
 
   /**
-   * This method is called to pre-authenticate credentials before a service
-   * request is made.
+   * This method is called to pre-authenticate credentials before a service request is made.
    */
   @Override
   protected void preAuthenticate() {
@@ -170,28 +167,27 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
    */
   @Override
   protected void serializeExtraSoapHeaders(XMLStreamWriter writer,
-      String webMethodName) throws XMLStreamException {
+                                           String webMethodName) throws XMLStreamException {
     this.serializeWSAddressingHeaders(writer, webMethodName);
     this.serializeWSSecurityHeaders(writer);
   }
 
   /**
-   * Creates the WS-Addressing headers necessary to send with an outgoing
-   * request.
+   * Creates the WS-Addressing headers necessary to send with an outgoing request.
    *
    * @param xmlWriter     The XML writer to serialize the headers to.
    * @param webMethodName The Web method being called.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
   private void serializeWSAddressingHeaders(XMLStreamWriter xmlWriter,
-      String webMethodName) throws XMLStreamException {
+                                            String webMethodName) throws XMLStreamException {
     EwsUtilities.EwsAssert(webMethodName != null,
-        "WSSecurityBasedCredentials.SerializeWSAddressingHeaders",
-        "Web method name cannot be null!");
+                           "WSSecurityBasedCredentials.SerializeWSAddressingHeaders",
+                           "Web method name cannot be null!");
 
     EwsUtilities.EwsAssert(this.ewsUrl != null,
-        "WSSecurityBasedCredentials.SerializeWSAddressingHeaders",
-        "EWS Url cannot be null!");
+                           "WSSecurityBasedCredentials.SerializeWSAddressingHeaders",
+                           "EWS Url cannot be null!");
 
     // Format the WS-Addressing headers.
     String wsAddressingHeaders = String.format(
@@ -203,8 +199,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
   }
 
   /**
-   * Creates the WS-Security header necessary to send with an outgoing
-   * request.
+   * Creates the WS-Security header necessary to send with an outgoing request.
    *
    * @param xmlWriter The XML writer to serialize the headers to.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
@@ -213,8 +208,8 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
   protected void serializeWSSecurityHeaders(XMLStreamWriter xmlWriter)
       throws XMLStreamException {
     EwsUtilities.EwsAssert(this.securityToken != null,
-        "WSSecurityBasedCredentials.SerializeWSSecurityHeaders",
-        "Security token cannot be null!");
+                           "WSSecurityBasedCredentials.SerializeWSSecurityHeaders",
+                           "Security token cannot be null!");
 
     // <wsu:Timestamp wsu:Id="_timestamp">
     //   <wsu:Created>2007-09-20T01:13:10.468Z</wsu:Created>

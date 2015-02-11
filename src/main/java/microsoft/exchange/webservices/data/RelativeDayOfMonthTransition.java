@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
 /**
- * Represents a time zone period transition that occurs on a relative day of a
- * specific month.
+ * Represents a time zone period transition that occurs on a relative day of a specific month.
  */
 class RelativeDayOfMonthTransition extends AbsoluteMonthTransition {
 
@@ -39,6 +39,28 @@ class RelativeDayOfMonthTransition extends AbsoluteMonthTransition {
    * The week index.
    */
   private int weekIndex;
+
+  /**
+   * Initializes a new instance of the "RelativeDayOfMonthTransition class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   */
+  protected RelativeDayOfMonthTransition(
+      TimeZoneDefinition timeZoneDefinition) {
+    super(timeZoneDefinition);
+  }
+
+  /**
+   * Initializes a new instance of the "RelativeDayOfMonthTransition class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   * @param targetPeriod       the target period
+   */
+  protected RelativeDayOfMonthTransition(
+      TimeZoneDefinition timeZoneDefinition,
+      TimeZonePeriod targetPeriod) {
+    super(timeZoneDefinition, targetPeriod);
+  }
 
   /**
    * Gets the XML element name associated with the transition.
@@ -96,28 +118,6 @@ class RelativeDayOfMonthTransition extends AbsoluteMonthTransition {
         XmlNamespace.Types,
         XmlElementNames.Occurrence,
         this.weekIndex);
-  }
-
-  /**
-   * Initializes a new instance of the "RelativeDayOfMonthTransition class.
-   *
-   * @param timeZoneDefinition the time zone definition
-   */
-  protected RelativeDayOfMonthTransition(
-      TimeZoneDefinition timeZoneDefinition) {
-    super(timeZoneDefinition);
-  }
-
-  /**
-   * Initializes a new instance of the "RelativeDayOfMonthTransition class.
-   *
-   * @param timeZoneDefinition the time zone definition
-   * @param targetPeriod       the target period
-   */
-  protected RelativeDayOfMonthTransition(
-      TimeZoneDefinition timeZoneDefinition,
-      TimeZonePeriod targetPeriod) {
-    super(timeZoneDefinition, targetPeriod);
   }
 
   /**

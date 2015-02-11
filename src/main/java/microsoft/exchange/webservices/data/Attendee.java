@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.Date;
@@ -90,8 +91,7 @@ public final class Attendee extends EmailAddress {
   }
 
   /**
-   * Gets the type of response the attendee gave to the meeting invitation
-   * it received.
+   * Gets the type of response the attendee gave to the meeting invitation it received.
    *
    * @return the response type
    */

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -70,6 +71,16 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
   }
 
   /**
+   * Defines an implicit conversion between a string representing an SMTP address and Mailbox.
+   *
+   * @param smtpAddress the smtp address
+   * @return A Mailbox initialized with the specified SMTP address.
+   */
+  public static Mailbox getMailboxFromString(String smtpAddress) {
+    return new Mailbox(smtpAddress);
+  }
+
+  /**
    * Gets the address.
    *
    * @return the address
@@ -97,8 +108,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
   }
 
   /**
-   * Gets  the routing type of the address used to refer to the user
-   * mailbox.
+   * Gets  the routing type of the address used to refer to the user mailbox.
    *
    * @return the routing type
    */
@@ -113,17 +123,6 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
    */
   public void setRoutingType(String routingType) {
     this.routingType = routingType;
-  }
-
-  /**
-   * Defines an implicit conversion between a string representing an SMTP
-   * address and Mailbox.
-   *
-   * @param smtpAddress the smtp address
-   * @return A Mailbox initialized with the specified SMTP address.
-   */
-  public static Mailbox getMailboxFromString(String smtpAddress) {
-    return new Mailbox(smtpAddress);
   }
 
   /**
@@ -158,9 +157,9 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.EmailAddress, this.address);
+                             XmlElementNames.EmailAddress, this.address);
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.RoutingType, this.routingType);
+                             XmlElementNames.RoutingType, this.routingType);
   }
 
   /**
@@ -174,9 +173,6 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
 
   /**
    * Validates this instance.
-   *
-   * @throws Exception
-   * @throws ServiceValidationException
    */
   @Override
   protected void internalValidate()
@@ -194,8 +190,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
    * Determines whether the specified Object is equal to the current Object.
    *
    * @param obj the obj
-   * @return true if the specified Object is equal to the current Object
-   * otherwise, false.
+   * @return true if the specified Object is equal to the current Object otherwise, false.
    */
   @Override
   public boolean equals(Object obj) {
@@ -210,8 +205,8 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
             || ((this.address != null) && this.address
             .equalsIgnoreCase(other.address))) {
           return ((this.routingType == null) &&
-              (other.routingType == null))
-              || ((this.routingType != null) && this.routingType
+                  (other.routingType == null))
+                 || ((this.routingType != null) && this.routingType
               .equalsIgnoreCase(other.routingType));
         } else {
           return false;

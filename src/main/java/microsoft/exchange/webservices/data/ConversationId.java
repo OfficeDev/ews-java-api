@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -32,6 +33,16 @@ public class ConversationId extends ServiceId {
    */
   ConversationId() {
     super();
+  }
+
+  /**
+   * Initializes a new instance of ConversationId.
+   *
+   * @param uniqueId the unique id
+   * @throws Exception the exception
+   */
+  public ConversationId(String uniqueId) throws Exception {
+    super(uniqueId);
   }
 
   /**
@@ -76,16 +87,6 @@ public class ConversationId extends ServiceId {
   @Override
   protected String getXmlElementName() {
     return XmlElementNames.ConversationId;
-  }
-
-  /**
-   * Initializes a new instance of ConversationId.
-   *
-   * @param uniqueId the unique id
-   * @throws Exception the exception
-   */
-  public ConversationId(String uniqueId) throws Exception {
-    super(uniqueId);
   }
 
   /**

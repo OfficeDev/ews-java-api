@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -32,10 +33,9 @@ final class FindFolderRequest extends FindRequest<FindFolderResponse> {
    *
    * @param exchangeService   The Service
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   protected FindFolderRequest(ExchangeService exchangeService,
-      ServiceErrorHandling errorHandlingMode)
+                              ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(exchangeService, errorHandlingMode);
   }
@@ -49,7 +49,7 @@ final class FindFolderRequest extends FindRequest<FindFolderResponse> {
    */
   @Override
   protected FindFolderResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                     int responseIndex) {
     return new FindFolderResponse(this.getView().getPropertySetOrDefault());
   }
 

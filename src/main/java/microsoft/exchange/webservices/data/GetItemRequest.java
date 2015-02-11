@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -32,10 +33,9 @@ final class GetItemRequest extends GetItemRequestBase<GetItemResponse> {
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
    */
   protected GetItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                           ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -48,7 +48,7 @@ final class GetItemRequest extends GetItemRequestBase<GetItemResponse> {
    * @return Service response
    */
   protected GetItemResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new GetItemResponse(this.getItemIds().getItemIdWrapperList(
         responseIndex), this.getPropertySet());
   }

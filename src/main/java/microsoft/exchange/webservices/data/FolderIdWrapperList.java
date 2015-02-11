@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -93,7 +94,7 @@ class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
    * @throws Exception the exception
    */
   protected void writeToXml(EwsServiceXmlWriter writer,
-      XmlNamespace ewsNamesapce, String xmlElementName) throws Exception {
+                            XmlNamespace ewsNamesapce, String xmlElementName) throws Exception {
     if (this.getCount() > 0) {
       writer.writeStartElement(ewsNamesapce, xmlElementName);
 
@@ -115,9 +116,8 @@ class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
   }
 
   /**
-   * Gets the <see
-   * cref="Microsoft.Exchange.WebServices.Data.AbstractFolderIdWrapper"/> at
-   * the specified index.
+   * Gets the <see cref="Microsoft.Exchange.WebServices.Data.AbstractFolderIdWrapper"/> at the
+   * specified index.
    *
    * @param i the i
    * @return the index

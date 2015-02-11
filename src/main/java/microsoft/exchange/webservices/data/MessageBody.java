@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -99,7 +100,7 @@ public final class MessageBody extends ComplexProperty {
   protected void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.bodyType = reader.readAttributeValue(BodyType.class,
-        XmlAttributeNames.BodyType);
+                                              XmlAttributeNames.BodyType);
   }
 
   /**

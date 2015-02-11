@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -32,30 +33,14 @@ import java.util.Date;
 final class GetStreamingEventsResults {
 
   /**
-   * Structure to track a subscription and its associated notification events.
-   */
-  protected static class NotificationGroup {
-    /**
-     * Subscription Id
-     */
-    protected String subscriptionId;
-
-    /**
-     * Events in the response associated with the subscription id.
-     */
-    protected Collection<NotificationEvent> events;
-  }
-
-
-  /**
    * Collection of notification events.
    */
   private Collection<NotificationGroup> events =
       new ArrayList<NotificationGroup>();
 
+
   /**
-   * Initializes a new instance of the <see cref=
-   * "GetStreamingEventsResults"/> class.
+   * Initializes a new instance of the <see cref= "GetStreamingEventsResults"/> class.
    */
   protected GetStreamingEventsResults() {
   }
@@ -64,11 +49,10 @@ final class GetStreamingEventsResults {
    * Loads from XML.
    *
    * @param reader The reader.
-   * @throws Exception
    */
   protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.Notification);
+                            XmlElementNames.Notification);
 
     do {
       NotificationGroup notifications = new NotificationGroup();
@@ -93,7 +77,7 @@ final class GetStreamingEventsResults {
             if (eventType == EventType.Status) {
               // We don't need to return status events
               reader.readEndElementIfNecessary(XmlNamespace.Types,
-                  eventElementName);
+                                               eventElementName);
             } else {
               this.loadNotificationEventFromXml(
                   reader,
@@ -107,12 +91,12 @@ final class GetStreamingEventsResults {
         }
       }
       while (!reader.isEndElement(XmlNamespace.Messages,
-          XmlElementNames.Notification));
+                                  XmlElementNames.Notification));
 
       reader.read();
     }
     while (!reader.isEndElement(XmlNamespace.Messages,
-        XmlElementNames.Notifications));
+                                XmlElementNames.Notifications));
   }
 
   /**
@@ -122,7 +106,6 @@ final class GetStreamingEventsResults {
    * @param eventElementName Name of the event XML element.
    * @param eventType        Type of the event.
    * @param notifications    Collection of notifications
-   * @throws Exception
    */
   private void loadNotificationEventFromXml(
       EwsServiceXmlReader reader,
@@ -130,7 +113,7 @@ final class GetStreamingEventsResults {
       EventType eventType,
       NotificationGroup notifications) throws Exception {
     Date timestamp = reader.readElementValue(Date.class, XmlNamespace.Types,
-        XmlElementNames.TimeStamp);
+                                             XmlElementNames.TimeStamp);
 
     NotificationEvent notificationEvent;
 
@@ -153,6 +136,22 @@ final class GetStreamingEventsResults {
    */
   protected Collection<NotificationGroup> getNotifications() {
     return this.events;
+  }
+
+  /**
+   * Structure to track a subscription and its associated notification events.
+   */
+  protected static class NotificationGroup {
+
+    /**
+     * Subscription Id
+     */
+    protected String subscriptionId;
+
+    /**
+     * Events in the response associated with the subscription id.
+     */
+    protected Collection<NotificationEvent> events;
   }
 }
 

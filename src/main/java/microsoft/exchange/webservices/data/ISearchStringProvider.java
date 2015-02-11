@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Interface defined for types that can produce a string representation for use
- * in search filters.
+ * Interface defined for types that can produce a string representation for use in search filters.
  */
 public interface ISearchStringProvider {
+
   /**
    * Get a string representation for using this instance in a search filter.
    *

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -77,15 +78,36 @@ public class UserId extends ComplexProperty {
   }
 
   /**
+   * Implements an implicit conversion between a string representing a primary SMTP address and
+   * UserId.
+   *
+   * @param primarySmtpAddress the primary smtp address
+   * @return A UserId initialized with the specified primary SMTP address
+   */
+  public static UserId getUserId(String primarySmtpAddress) {
+    return new UserId(primarySmtpAddress);
+  }
+
+  /**
+   * Implements an implicit conversion between StandardUser and UserId.
+   *
+   * @param standardUser the standard user
+   * @return A UserId initialized with the specified standard user value
+   */
+  public static UserId getUserIdFromStandardUser(StandardUser standardUser) {
+    return new UserId(standardUser);
+  }
+
+  /**
    * Determines whether this instance is valid.
    *
    * @return true, if this instance is valid. Else, false
    */
   protected boolean isValid() {
     return (this.standardUser != null ||
-        !(this.primarySmtpAddress == null || this.primarySmtpAddress
-            .isEmpty()) || !(this.sID == null ||
-        this.sID.isEmpty()));
+            !(this.primarySmtpAddress == null || this.primarySmtpAddress
+                .isEmpty()) || !(this.sID == null ||
+                                 this.sID.isEmpty()));
   }
 
   /**
@@ -153,8 +175,7 @@ public class UserId extends ComplexProperty {
   }
 
   /**
-   * Gets  a value indicating which standard user the user
-   * represents.
+   * Gets  a value indicating which standard user the user represents.
    *
    * @return the standard user
    */
@@ -172,27 +193,6 @@ public class UserId extends ComplexProperty {
       this.standardUser = standardUser;
       this.changed();
     }
-  }
-
-  /**
-   * Implements an implicit conversion between a string representing a
-   * primary SMTP address and UserId.
-   *
-   * @param primarySmtpAddress the primary smtp address
-   * @return A UserId initialized with the specified primary SMTP address
-   */
-  public static UserId getUserId(String primarySmtpAddress) {
-    return new UserId(primarySmtpAddress);
-  }
-
-  /**
-   * Implements an implicit conversion between StandardUser and UserId.
-   *
-   * @param standardUser the standard user
-   * @return A UserId initialized with the specified standard user value
-   */
-  public static UserId getUserIdFromStandardUser(StandardUser standardUser) {
-    return new UserId(standardUser);
   }
 
   /**
@@ -233,12 +233,12 @@ public class UserId extends ComplexProperty {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.SID,
-        this.sID);
+                             this.sID);
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.PrimarySmtpAddress, this.primarySmtpAddress);
+                             XmlElementNames.PrimarySmtpAddress, this.primarySmtpAddress);
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.DisplayName, this.displayName);
+                             XmlElementNames.DisplayName, this.displayName);
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.DistinguishedUser, this.standardUser);
+                             XmlElementNames.DistinguishedUser, this.standardUser);
   }
 }

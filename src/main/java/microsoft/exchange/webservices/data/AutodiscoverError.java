@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -60,8 +61,7 @@ public final class AutodiscoverError {
   }
 
   /**
-   * Parses the XML through the specified reader and creates an Autodiscover
-   * error.
+   * Parses the XML through the specified reader and creates an Autodiscover error.
    *
    * @param reader the reader
    * @return AutodiscoverError
@@ -91,7 +91,7 @@ public final class AutodiscoverError {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.NotSpecified,
-        XmlElementNames.Error));
+                                  XmlElementNames.Error));
 
     return error;
   }
@@ -106,8 +106,8 @@ public final class AutodiscoverError {
   }
 
   /**
-   * Gets a hash of the name of the computer that is running Microsoft
-   * Exchange Server that has the Client Access server role installed.
+   * Gets a hash of the name of the computer that is running Microsoft Exchange Server that has the
+   * Client Access server role installed.
    *
    * @return the id
    */

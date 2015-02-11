@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -34,13 +35,13 @@ class EWSConstants {
    */
   public static final String SRVRECORD = "SRV";
         /*
-	 * Represents the name of the domain
+         * Represents the name of the domain
 	 */
   /**
    * The Constant DOMAIN.
    */
   public static final String DOMAIN = "domain";
-	/*
+        /*
 	 * Represents the domain server IP address
 	 */
   /**

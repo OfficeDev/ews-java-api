@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -43,7 +44,6 @@ class GetEventsRequest extends MultiResponseServiceRequest<GetEventsResponse> {
    * Initializes a new instance.
    *
    * @param service the service
-   * @throws Exception
    */
   protected GetEventsRequest(ExchangeService service)
       throws Exception {
@@ -59,7 +59,7 @@ class GetEventsRequest extends MultiResponseServiceRequest<GetEventsResponse> {
    */
   @Override
   protected GetEventsResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                    int responseIndex) {
     return new GetEventsResponse();
   }
 
@@ -127,9 +127,9 @@ class GetEventsRequest extends MultiResponseServiceRequest<GetEventsResponse> {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeElementValue(XmlNamespace.Messages,
-        XmlElementNames.SubscriptionId, this.getSubscriptionId());
+                             XmlElementNames.SubscriptionId, this.getSubscriptionId());
     writer.writeElementValue(XmlNamespace.Messages,
-        XmlElementNames.Watermark, this.getWatermark());
+                             XmlElementNames.Watermark, this.getWatermark());
   }
 
   /**

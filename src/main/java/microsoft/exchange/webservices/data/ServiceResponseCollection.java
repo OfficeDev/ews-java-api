@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.Enumeration;
@@ -59,7 +60,7 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
   protected void add(TResponse response) {
 
     EwsUtilities.EwsAssert(response != null, "EwsResponseList.Add",
-        "response is null");
+                           "response is null");
     if (response.getResult().ordinal() > this.overallResult.ordinal()) {
       this.overallResult = response.getResult();
     }
@@ -91,13 +92,11 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
   }
 
   /**
-   * Gets a value indicating the overall result of the request that
-   * generated this response collection. If all of the responses have their
-   * Result property set to Success, OverallResult returns Success. If at
-   * least one response has its Result property set to Warning and all other
-   * responses have their Result property set to Success, OverallResult
-   * returns Warning. If at least one response has a its Result set to Error,
-   * OverallResult returns Error.
+   * Gets a value indicating the overall result of the request that generated this response
+   * collection. If all of the responses have their Result property set to Success, OverallResult
+   * returns Success. If at least one response has its Result property set to Warning and all other
+   * responses have their Result property set to Success, OverallResult returns Warning. If at least
+   * one response has a its Result set to Error, OverallResult returns Error.
    *
    * @return the overall result
    */

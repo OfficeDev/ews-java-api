@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,19 +20,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a collection of extended properties.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class ExtendedPropertyCollection extends
-    ComplexPropertyCollection<ExtendedProperty> implements
-    ICustomXmlUpdateSerializer {
+                                              ComplexPropertyCollection<ExtendedProperty> implements
+                                                                                          ICustomXmlUpdateSerializer {
 
   /**
    * Creates the complex property.
@@ -68,7 +70,7 @@ public final class ExtendedPropertyCollection extends
    */
   @Override
   protected void loadFromXml(EwsServiceXmlReader reader,
-      String localElementName) throws Exception {
+                             String localElementName) throws Exception {
     ExtendedProperty extendedProperty = new ExtendedProperty();
     extendedProperty.loadFromXml(reader, reader.getLocalName());
     this.internalAdd(extendedProperty);
@@ -86,7 +88,7 @@ public final class ExtendedPropertyCollection extends
       throws Exception {
     for (ExtendedProperty extendedProperty : this) {
       extendedProperty.writeToXml(writer,
-          XmlElementNames.ExtendedProperty);
+                                  XmlElementNames.ExtendedProperty);
     }
   }
 
@@ -130,8 +132,8 @@ public final class ExtendedPropertyCollection extends
    * Removes a specific extended property definition from the collection.
    *
    * @param propertyDefinition The definition of the extended property to remove.
-   * @return True if the property matching the extended property definition
-   * was successfully removed from the collection, false otherwise.
+   * @return True if the property matching the extended property definition was successfully removed
+   * from the collection, false otherwise.
    * @throws Exception the exception
    */
   protected boolean removeExtendedProperty(
@@ -177,11 +179,10 @@ public final class ExtendedPropertyCollection extends
    * @param propertyDefinition The property definition.
    * @param propertyValueOut   The property value.
    * @return True if property exists in collection.
-   * @throws microsoft.exchange.webservices.data.ArgumentException
    */
   protected <T> boolean tryGetValue(Class<T> cls,
-      ExtendedPropertyDefinition propertyDefinition,
-      OutParam<T> propertyValueOut) throws ArgumentException {
+                                    ExtendedPropertyDefinition propertyDefinition,
+                                    OutParam<T> propertyValueOut) throws ArgumentException {
     ExtendedProperty extendedProperty = null;
     OutParam<ExtendedProperty> extendedPropertyOut =
         new OutParam<ExtendedProperty>();
@@ -214,7 +215,7 @@ public final class ExtendedPropertyCollection extends
    */
   @Override
   public boolean writeSetUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject, PropertyDefinition propertyDefinition)
+                                     ServiceObject ewsObject, PropertyDefinition propertyDefinition)
       throws Exception {
     List<ExtendedProperty> propertiesToSet =
         new ArrayList<ExtendedProperty>();
@@ -230,7 +231,7 @@ public final class ExtendedPropertyCollection extends
       writer.writeStartElement(XmlNamespace.Types, ewsObject
           .getXmlElementName());
       extendedProperty.writeToXml(writer,
-          XmlElementNames.ExtendedProperty);
+                                  XmlElementNames.ExtendedProperty);
       writer.writeEndElement();
 
       writer.writeEndElement();
@@ -257,8 +258,8 @@ public final class ExtendedPropertyCollection extends
    */
   @Override
   public boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject) throws XMLStreamException,
-      ServiceXmlSerializationException {
+                                        ServiceObject ewsObject) throws XMLStreamException,
+                                                                        ServiceXmlSerializationException {
     for (ExtendedProperty extendedProperty : this.getItems()) {
       writer.writeStartElement(XmlNamespace.Types, ewsObject
           .getDeleteFieldXmlElementName());

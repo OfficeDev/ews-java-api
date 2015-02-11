@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,43 +20,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Represents a collection of notification events.
  */
 public final class GetEventsResults {
-  /**
-   * Watermark in event.
-   */
-  private String newWatermark;
 
   /**
-   * Subscription id.
-   */
-  private String subscriptionId;
-
-  /**
-   * Previous watermark.
-   */
-  private String previousWatermark;
-
-  /**
-   * True if more events available for this subscription.
-   */
-  private boolean moreEventsAvailable;
-
-  /**
-   * Collection of notification events.
-   */
-  private Collection<NotificationEvent> events =
-      new ArrayList<NotificationEvent>();
-
-  /**
-   * Map XML element name to notification event type. If you add a new
-   * notification event type, you'll need to add a new entry to the Map here.
+   * Map XML element name to notification event type. If you add a new notification event type,
+   * you'll need to add a new entry to the Map here.
    */
   private static LazyMember<Map<String, EventType>>
       xmlElementNameToEventTypeMap =
@@ -70,15 +50,42 @@ public final class GetEventsResults {
               result.put(XmlElementNames.CreatedEvent, EventType.Created);
               result.put(XmlElementNames.DeletedEvent, EventType.Deleted);
               result.put(XmlElementNames.ModifiedEvent,
-                  EventType.Modified);
+                         EventType.Modified);
               result.put(XmlElementNames.MovedEvent, EventType.Moved);
               result.put(XmlElementNames.NewMailEvent, EventType.NewMail);
               result.put(XmlElementNames.StatusEvent, EventType.Status);
               result.put(XmlElementNames.FreeBusyChangedEvent,
-                  EventType.FreeBusyChanged);
+                         EventType.FreeBusyChanged);
               return result;
             }
           });
+  /**
+   * Watermark in event.
+   */
+  private String newWatermark;
+  /**
+   * Subscription id.
+   */
+  private String subscriptionId;
+  /**
+   * Previous watermark.
+   */
+  private String previousWatermark;
+  /**
+   * True if more events available for this subscription.
+   */
+  private boolean moreEventsAvailable;
+  /**
+   * Collection of notification events.
+   */
+  private Collection<NotificationEvent> events =
+      new ArrayList<NotificationEvent>();
+
+  /**
+   * Initializes a new instance.
+   */
+  protected GetEventsResults() {
+  }
 
   /**
    * Gets the XML element name to event type mapping.
@@ -90,12 +97,6 @@ public final class GetEventsResults {
   }
 
   /**
-   * Initializes a new instance.
-   */
-  protected GetEventsResults() {
-  }
-
-  /**
    * Loads from XML.
    *
    * @param reader the reader
@@ -103,14 +104,15 @@ public final class GetEventsResults {
    */
   protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.Notification);
+                            XmlElementNames.Notification);
 
     this.subscriptionId = reader.readElementValue(XmlNamespace.Types,
-        XmlElementNames.SubscriptionId);
+                                                  XmlElementNames.SubscriptionId);
     this.previousWatermark = reader.readElementValue(XmlNamespace.Types,
-        XmlElementNames.PreviousWatermark);
+                                                     XmlElementNames.PreviousWatermark);
     this.moreEventsAvailable = reader.readElementValue(Boolean.class,
-        XmlNamespace.Types, XmlElementNames.MoreEvents);
+                                                       XmlNamespace.Types,
+                                                       XmlElementNames.MoreEvents);
 
     do {
       reader.read();
@@ -128,10 +130,10 @@ public final class GetEventsResults {
           if (eventType == EventType.Status) {
             // We don't need to return status events
             reader.readEndElementIfNecessary(XmlNamespace.Types,
-                eventElementName);
+                                             eventElementName);
           } else {
             this.loadNotificationEventFromXml(reader,
-                eventElementName, eventType);
+                                              eventElementName, eventType);
           }
         } else {
           reader.skipCurrentElement();
@@ -140,7 +142,7 @@ public final class GetEventsResults {
       }
 
     } while (!reader.isEndElement(XmlNamespace.Messages,
-        XmlElementNames.Notification));
+                                  XmlElementNames.Notification));
   }
 
   /**
@@ -152,9 +154,10 @@ public final class GetEventsResults {
    * @throws Exception the exception
    */
   private void loadNotificationEventFromXml(EwsServiceXmlReader reader,
-      String eventElementName, EventType eventType) throws Exception {
+                                            String eventElementName, EventType eventType)
+      throws Exception {
     Date date = reader.readElementValue(Date.class, XmlNamespace.Types,
-        XmlElementNames.TimeStamp);
+                                        XmlElementNames.TimeStamp);
 
     NotificationEvent notificationEvent;
 
@@ -198,8 +201,7 @@ public final class GetEventsResults {
   }
 
   /**
-   * Gets a value indicating whether more events are available on the Exchange
-   * server.
+   * Gets a value indicating whether more events are available on the Exchange server.
    *
    * @return true, if is more events available
    */

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -36,6 +37,19 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
   private ServiceErrorHandling errorHandlingMode;
 
   /**
+   * Initializes a new instance.
+   *
+   * @param service           The service.
+   * @param errorHandlingMode Indicates how errors should be handled.
+   */
+  protected MultiResponseServiceRequest(ExchangeService service,
+                                        ServiceErrorHandling errorHandlingMode)
+      throws Exception {
+    super(service);
+    this.errorHandlingMode = errorHandlingMode;
+  }
+
+  /**
    * Parses the response.
    *
    * @param reader The reader.
@@ -49,14 +63,14 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
         new ServiceResponseCollection<TResponse>();
 
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.ResponseMessages);
+                            XmlElementNames.ResponseMessages);
 
     for (int i = 0; i < this.getExpectedResponseMessageCount(); i++) {
       // Read ahead to see if we've reached the end of the response
       // messages early.
       reader.read();
       if (reader.isEndElement(XmlNamespace.Messages,
-          XmlElementNames.ResponseMessages)) {
+                              XmlElementNames.ResponseMessages)) {
         break;
       }
 
@@ -81,9 +95,9 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
         .getExpectedResponseMessageCount()) {
       if ((serviceResponses.getCount() == 1) &&
           (serviceResponses.getResponseAtIndex(0).getResult() ==
-              ServiceResult.Error)) {
+           ServiceResult.Error)) {
         throw new ServiceResponseException(serviceResponses
-            .getResponseAtIndex(0));
+                                               .getResponseAtIndex(0));
       } else {
         throw new ServiceXmlDeserializationException(String.format(
             Strings.TooFewServiceReponsesReturned, this
@@ -94,7 +108,7 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
     }
 
     reader.readEndElementIfNecessary(XmlNamespace.Messages,
-        XmlElementNames.ResponseMessages);
+                                     XmlElementNames.ResponseMessages);
 
     return serviceResponses;
   }
@@ -108,7 +122,7 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
    * @throws Exception the exception
    */
   protected abstract TResponse createServiceResponse(ExchangeService service,
-      int responseIndex) throws Exception;
+                                                     int responseIndex) throws Exception;
 
   /**
    * Gets the name of the response message XML element.
@@ -125,20 +139,6 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
   protected abstract int getExpectedResponseMessageCount();
 
   /**
-   * Initializes a new instance.
-   *
-   * @param service           The service.
-   * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
-   */
-  protected MultiResponseServiceRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
-      throws Exception {
-    super(service);
-    this.errorHandlingMode = errorHandlingMode;
-  }
-
-  /**
    * Executes this request.
    *
    * @return Service response collection.
@@ -151,9 +151,9 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
 
     if (this.errorHandlingMode == ServiceErrorHandling.ThrowOnError) {
       EwsUtilities.EwsAssert(serviceResponses.getCount() == 1,
-          "MultiResponseServiceRequest.Execute",
-          "ServiceErrorHandling.ThrowOnError " + "error handling " +
-              "is only valid for singleton request");
+                             "MultiResponseServiceRequest.Execute",
+                             "ServiceErrorHandling.ThrowOnError " + "error handling " +
+                             "is only valid for singleton request");
 
       serviceResponses.getResponseAtIndex(0).throwIfNecessary();
     }
@@ -167,7 +167,8 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
    * @param asyncResult The async result
    * @return Service response collection.
    */
-  protected ServiceResponseCollection<TResponse> endExecute(IAsyncResult asyncResult) throws Exception {
+  protected ServiceResponseCollection<TResponse> endExecute(IAsyncResult asyncResult)
+      throws Exception {
     ServiceResponseCollection<TResponse> serviceResponses =
         (ServiceResponseCollection<TResponse>) this.endInternalExecute(asyncResult);
 

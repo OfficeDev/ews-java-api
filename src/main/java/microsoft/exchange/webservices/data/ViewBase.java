@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -71,7 +72,7 @@ public abstract class ViewBase {
 
     if (maxEntriesReturned != null) {
       writer.writeAttributeValue(XmlAttributeNames.MaxEntriesReturned,
-          maxEntriesReturned);
+                                 maxEntriesReturned);
     }
   }
 
@@ -105,11 +106,9 @@ public abstract class ViewBase {
   protected abstract String getViewXmlElementName();
 
   /**
-   * Gets the maximum number of items or folders the search operation should
-   * return.
+   * Gets the maximum number of items or folders the search operation should return.
    *
-   * @return The maximum number of items or folders that should be returned by
-   * the search operation.
+   * @return The maximum number of items or folders that should be returned by the search operation.
    */
   protected abstract Integer getMaxEntriesReturned();
 
@@ -139,7 +138,7 @@ public abstract class ViewBase {
   protected void writeToXml(EwsServiceXmlWriter writer, Grouping groupBy)
       throws Exception {
     this.getPropertySetOrDefault().writeToXml(writer,
-        this.getServiceObjectType());
+                                              this.getServiceObjectType());
     writer.writeStartElement(XmlNamespace.Messages, this
         .getViewXmlElementName());
     this.internalWriteViewToXml(writer);
@@ -161,9 +160,8 @@ public abstract class ViewBase {
   }
 
   /**
-   * Gets the property set. PropertySet determines which properties will be
-   * loaded on found items. If PropertySet is null, all first class properties
-   * are loaded on found items.
+   * Gets the property set. PropertySet determines which properties will be loaded on found items.
+   * If PropertySet is null, all first class properties are loaded on found items.
    *
    * @return the property set
    */
@@ -172,9 +170,8 @@ public abstract class ViewBase {
   }
 
   /**
-   * Sets the property set. PropertySet determines which properties will be
-   * loaded on found items. If PropertySet is null, all first class properties
-   * are loaded on found items.
+   * Sets the property set. PropertySet determines which properties will be loaded on found items.
+   * If PropertySet is null, all first class properties are loaded on found items.
    *
    * @param propertySet The property set
    */

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -35,8 +36,7 @@ public final class ProtocolConnectionCollection {
   private ArrayList<ProtocolConnection> connections;
 
   /**
-   * Initializes a new instance of the <see
-   * cref="ProtocolConnectionCollection"/> class.
+   * Initializes a new instance of the <see cref="ProtocolConnectionCollection"/> class.
    */
   ProtocolConnectionCollection() {
     this.connections = new ArrayList<ProtocolConnection>();
@@ -67,7 +67,7 @@ public final class ProtocolConnectionCollection {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-        XmlElementNames.ProtocolConnections));
+                                  XmlElementNames.ProtocolConnections));
 
     return value;
   }

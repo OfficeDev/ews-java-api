@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -35,6 +36,16 @@ public class ItemId extends ServiceId {
   }
 
   /**
+   * Initializes a new instance of ItemId.
+   *
+   * @param uniqueId The unique Id used to initialize the ItemId.
+   * @throws Exception the exception
+   */
+  public ItemId(String uniqueId) throws Exception {
+    super(uniqueId);
+  }
+
+  /**
    * Defines an implicit conversion between string and ItemId.
    *
    * @param uniqueId The unique Id to convert to ItemId.
@@ -43,16 +54,6 @@ public class ItemId extends ServiceId {
    */
   public static ItemId getItemIdFromString(String uniqueId) throws Exception {
     return new ItemId(uniqueId);
-  }
-
-  /**
-   * Initializes a new instance of ItemId.
-   *
-   * @param uniqueId The unique Id used to initialize the ItemId.
-   * @throws Exception the exception
-   */
-  public ItemId(String uniqueId) throws Exception {
-    super(uniqueId);
   }
 
   /**

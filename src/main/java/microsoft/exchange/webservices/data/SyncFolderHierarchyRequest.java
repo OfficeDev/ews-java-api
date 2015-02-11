@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Represents a SyncFolderHierarchy request.
  */
 class SyncFolderHierarchyRequest extends
-    MultiResponseServiceRequest<SyncFolderHierarchyResponse> {
+                                 MultiResponseServiceRequest<SyncFolderHierarchyResponse> {
 
   /**
    * The property set.
@@ -47,7 +48,6 @@ class SyncFolderHierarchyRequest extends
    * Initializes a new instance of the class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected SyncFolderHierarchyRequest(ExchangeService service)
       throws Exception {
@@ -138,13 +138,13 @@ class SyncFolderHierarchyRequest extends
 
     if (this.getSyncFolderId() != null) {
       writer.writeStartElement(XmlNamespace.Messages,
-          XmlElementNames.SyncFolderId);
+                               XmlElementNames.SyncFolderId);
       this.getSyncFolderId().writeToXml(writer);
       writer.writeEndElement();
     }
 
     writer.writeElementValue(XmlNamespace.Messages,
-        XmlElementNames.SyncState, this.getSyncState());
+                             XmlElementNames.SyncState, this.getSyncState());
   }
 
   /**
@@ -194,8 +194,7 @@ class SyncFolderHierarchyRequest extends
   }
 
   /**
-   * Gets or sets the state of the sync. <value>The state of the
-   * sync.</value>
+   * Gets or sets the state of the sync. <value>The state of the sync.</value>
    *
    * @return the sync state
    */

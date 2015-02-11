@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Class that reads AutoDiscover configuration information from DNS.
@@ -80,13 +82,13 @@ class AutodiscoverDnsClient {
     if ((dnsSrvRecord == null) || dnsSrvRecord.getNameTarget() == null ||
         dnsSrvRecord.getNameTarget().isEmpty()) {
       this.service.traceMessage(TraceFlags.AutodiscoverConfiguration,
-          "No appropriate SRV record was found.");
+                                "No appropriate SRV record was found.");
       return null;
     } else {
       this.service.traceMessage(TraceFlags.AutodiscoverConfiguration,
-          String.format(
-              "DNS query for SRV record for domain %s found %s",
-              domain, dnsSrvRecord.getNameTarget()));
+                                String.format(
+                                    "DNS query for SRV record for domain %s found %s",
+                                    domain, dnsSrvRecord.getNameTarget()));
 
       return dnsSrvRecord.getNameTarget();
     }
@@ -106,7 +108,7 @@ class AutodiscoverDnsClient {
     try {
       // Make DnsQuery call to get collection of SRV records.
       dnsSrvRecordList = DnsClient.dnsQuery(DnsSrvRecord.class, domain,
-          this.service.getDnsServerAddress());
+                                            this.service.getDnsServerAddress());
     } catch (DnsException ex) {
       String dnsExcMessage = String.format("DnsQuery returned error '%s'.", ex.getMessage());
       this.service
@@ -118,9 +120,9 @@ class AutodiscoverDnsClient {
       // In restricted environments, we may not be allowed to call
       // un-managed code.
       this.service.traceMessage(TraceFlags.AutodiscoverConfiguration,
-          String.format(
-              "DnsQuery cannot be called. Security error: %s.",
-              ex.getMessage()));
+                                String.format(
+                                    "DnsQuery cannot be called. Security error: %s.",
+                                    ex.getMessage()));
       return null;
     }
 
@@ -147,7 +149,7 @@ class AutodiscoverDnsClient {
     // Records were returned but nothing matched our criteria.
     if (!recordFound) {
       this.service.traceMessage(TraceFlags.AutodiscoverConfiguration,
-          "No appropriate SRV records were found.");
+                                "No appropriate SRV records were found.");
 
       return null;
     }
@@ -164,28 +166,27 @@ class AutodiscoverDnsClient {
     // The list must contain at least one matching record since we found one
     // earlier.
     EwsUtilities.EwsAssert(dnsSrvRecordList.size() > 0,
-        "AutodiscoverDnsClient.FindBestMatchingSrvRecord",
-        "At least one DNS SRV record must match the criteria.");
+                           "AutodiscoverDnsClient.FindBestMatchingSrvRecord",
+                           "At least one DNS SRV record must match the criteria.");
 
     // If we have multiple records with the same priority and weight,
     // randomly pick one.
     int recordIndex = (bestDnsSrvRecordList.size() > 1) ?
-        RandomTieBreakerSelector
-            .nextInt(bestDnsSrvRecordList.size()) :
-        0;
+                      RandomTieBreakerSelector
+                          .nextInt(bestDnsSrvRecordList.size()) :
+                      0;
 
     DnsSrvRecord bestDnsSrvRecord = bestDnsSrvRecordList.get(recordIndex);
 
     String traceMessage = String.format("Returning SRV record %d " +
-            "of %d records. " +
-            "Target: %s, Priority: %d, Weight: %d",
-        recordIndex, dnsSrvRecordList.size(),
-        bestDnsSrvRecord.getNameTarget(),
-        bestDnsSrvRecord.getPriority(),
-        bestDnsSrvRecord.getWeight());
+                                        "of %d records. " +
+                                        "Target: %s, Priority: %d, Weight: %d",
+                                        recordIndex, dnsSrvRecordList.size(),
+                                        bestDnsSrvRecord.getNameTarget(),
+                                        bestDnsSrvRecord.getPriority(),
+                                        bestDnsSrvRecord.getWeight());
     this.service.traceMessage(TraceFlags.
-        AutodiscoverConfiguration, traceMessage);
-
+                                  AutodiscoverConfiguration, traceMessage);
 
     return bestDnsSrvRecord;
   }

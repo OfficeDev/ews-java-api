@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.net.URI;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a GetDomainSettings request.
@@ -36,7 +38,7 @@ class GetDomainSettingsRequest extends AutodiscoverRequest {
    */
   private static final String GetDomainSettingsActionUri =
       EwsUtilities.AutodiscoverSoapNamespace +
-          "/Autodiscover/GetDomainSettings";
+      "/Autodiscover/GetDomainSettings";
 
   /**
    * The domains.
@@ -51,8 +53,7 @@ class GetDomainSettingsRequest extends AutodiscoverRequest {
   private ExchangeVersion requestedVersion;
 
   /**
-   * Initializes a new instance of the <see cref="GetDomainSettingsRequest"/>
-   * class.
+   * Initializes a new instance of the <see cref="GetDomainSettingsRequest"/> class.
    *
    * @param service the service
    * @param url     the url
@@ -174,8 +175,8 @@ class GetDomainSettingsRequest extends AutodiscoverRequest {
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue("xmlns",
-        EwsUtilities.AutodiscoverSoapNamespacePrefix,
-        EwsUtilities.AutodiscoverSoapNamespace);
+                               EwsUtilities.AutodiscoverSoapNamespacePrefix,
+                               EwsUtilities.AutodiscoverSoapNamespace);
   }
 
   /**
@@ -189,31 +190,31 @@ class GetDomainSettingsRequest extends AutodiscoverRequest {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeStartElement(XmlNamespace.Autodiscover,
-        XmlElementNames.Request);
+                             XmlElementNames.Request);
 
     writer.writeStartElement(XmlNamespace.Autodiscover,
-        XmlElementNames.Domains);
+                             XmlElementNames.Domains);
 
     for (String domain : this.getDomains()) {
       if (!(domain == null || domain.isEmpty())) {
         writer.writeElementValue(XmlNamespace.Autodiscover,
-            XmlElementNames.Domain, domain);
+                                 XmlElementNames.Domain, domain);
       }
     }
     writer.writeEndElement(); // Domains
 
     writer.writeStartElement(XmlNamespace.Autodiscover,
-        XmlElementNames.RequestedSettings);
+                             XmlElementNames.RequestedSettings);
     for (DomainSettingName setting : settings) {
       writer.writeElementValue(XmlNamespace.Autodiscover,
-          XmlElementNames.Setting, setting);
+                               XmlElementNames.Setting, setting);
     }
 
     writer.writeEndElement(); // RequestedSettings
 
     if (this.requestedVersion != null) {
       writer.writeElementValue(XmlNamespace.Autodiscover,
-          XmlElementNames.RequestedVersion, this.requestedVersion);
+                               XmlElementNames.RequestedVersion, this.requestedVersion);
     }
 
     writer.writeEndElement(); // Request

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an exception thrown when an error occurs as a result of calling
- * the UpdateInboxRules operation.
+ * Represents an exception thrown when an error occurs as a result of calling the UpdateInboxRules
+ * operation.
  */
 public class UpdateInboxRulesException extends ServiceRemoteException {
 
@@ -50,7 +51,7 @@ public class UpdateInboxRulesException extends ServiceRemoteException {
    * @param ruleOperations  The original operations.
    */
   protected UpdateInboxRulesException(UpdateInboxRulesResponse serviceResponse,
-      Iterable<RuleOperation> ruleOperations) {
+                                      Iterable<RuleOperation> ruleOperations) {
     super();
     this.serviceResponse = serviceResponse;
     this.errors = serviceResponse.getErrors();

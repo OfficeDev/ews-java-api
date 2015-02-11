@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -50,16 +51,6 @@ public final class Grouping implements ISelfValidate {
   private AggregateType aggregateType = AggregateType.Minimum;
 
   /**
-   * Validates this grouping.
-   *
-   * @throws Exception the exception
-   */
-  private void internalValidate() throws Exception {
-    EwsUtilities.validateParam(this.groupOn, "GroupOn");
-    EwsUtilities.validateParam(this.aggregateOn, "AggregateOn");
-  }
-
-  /**
    * Initializes a new instance of the "Grouping" class.
    */
   public Grouping() {
@@ -76,8 +67,8 @@ public final class Grouping implements ISelfValidate {
    * @throws Exception the exception
    */
   public Grouping(PropertyDefinitionBase groupOn,
-      SortDirection sortDirection, PropertyDefinitionBase aggregateOn,
-      AggregateType aggregateType) throws Exception {
+                  SortDirection sortDirection, PropertyDefinitionBase aggregateOn,
+                  AggregateType aggregateType) throws Exception {
     this();
     EwsUtilities.validateParam(groupOn, "groupOn");
     EwsUtilities.validateParam(aggregateOn, "aggregateOn");
@@ -86,6 +77,16 @@ public final class Grouping implements ISelfValidate {
     this.sortDirection = sortDirection;
     this.aggregateOn = aggregateOn;
     this.aggregateType = aggregateType;
+  }
+
+  /**
+   * Validates this grouping.
+   *
+   * @throws Exception the exception
+   */
+  private void internalValidate() throws Exception {
+    EwsUtilities.validateParam(this.groupOn, "GroupOn");
+    EwsUtilities.validateParam(this.aggregateOn, "AggregateOn");
   }
 
   /**
@@ -99,15 +100,15 @@ public final class Grouping implements ISelfValidate {
       throws XMLStreamException, ServiceXmlSerializationException {
     writer
         .writeStartElement(XmlNamespace.Messages,
-            XmlElementNames.GroupBy);
+                           XmlElementNames.GroupBy);
     writer.writeAttributeValue(XmlAttributeNames.Order, this.sortDirection);
 
     this.groupOn.writeToXml(writer);
 
     writer.writeStartElement(XmlNamespace.Types,
-        XmlElementNames.AggregateOn);
+                             XmlElementNames.AggregateOn);
     writer.writeAttributeValue(XmlAttributeNames.Aggregate,
-        this.aggregateType);
+                               this.aggregateType);
 
     this.aggregateOn.writeToXml(writer);
 

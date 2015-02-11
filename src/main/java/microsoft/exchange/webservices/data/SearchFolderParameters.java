@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Represents the parameters associated with a search folder.
  */
 public final class SearchFolderParameters extends ComplexProperty implements
-    IComplexPropertyChangedDelegate {
+                                                                  IComplexPropertyChangedDelegate {
 
   /**
    * The traversal.
@@ -105,7 +106,7 @@ public final class SearchFolderParameters extends ComplexProperty implements
   protected void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.traversal = reader.readAttributeValue(SearchFolderTraversal.class,
-        XmlAttributeNames.Traversal);
+                                               XmlAttributeNames.Traversal);
   }
 
   /**
@@ -131,7 +132,7 @@ public final class SearchFolderParameters extends ComplexProperty implements
       throws Exception {
     if (this.searchFilter != null) {
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.Restriction);
+                               XmlElementNames.Restriction);
       this.searchFilter.writeToXml(writer);
       writer.writeEndElement(); // Restriction
     }
@@ -141,8 +142,6 @@ public final class SearchFolderParameters extends ComplexProperty implements
 
   /**
    * Validates this instance.
-   *
-   * @throws Exception
    */
   public void validate() throws Exception {
     // Search folder must have at least one root folder id.
@@ -188,9 +187,9 @@ public final class SearchFolderParameters extends ComplexProperty implements
   }
 
   /**
-   * Gets the search filter associated with the search folder.
-   * Available search filter classes include SearchFilter.IsEqualTo,
-   * SearchFilter.ContainsSubstring and SearchFilter.SearchFilterCollection.
+   * Gets the search filter associated with the search folder. Available search filter classes
+   * include SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
+   * SearchFilter.SearchFilterCollection.
    *
    * @return the search filter
    */

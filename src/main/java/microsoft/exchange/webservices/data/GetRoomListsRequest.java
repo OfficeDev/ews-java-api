@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -31,7 +32,6 @@ final class GetRoomListsRequest extends SimpleServiceRequestBase {
    * Initializes a new instance of the class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected GetRoomListsRequest(ExchangeService service)
       throws Exception {

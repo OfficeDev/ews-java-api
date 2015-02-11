@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.Date;
@@ -84,8 +85,8 @@ public final class CalendarEvent extends ComplexProperty {
   }
 
   /**
-   * Gets the details of the calendar event. Details is null if the user
-   * requsting them does no have the appropriate rights.
+   * Gets the details of the calendar event. Details is null if the user requsting them does no have
+   * the appropriate rights.
    *
    * @return the details
    */

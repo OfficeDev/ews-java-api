@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -40,7 +41,7 @@ public final class DeleteAttachmentResponse extends ServiceResponse {
   protected DeleteAttachmentResponse(Attachment attachment) {
     super();
     EwsUtilities.EwsAssert(attachment != null,
-        "DeleteAttachmentResponse.ctor", "attachment is null");
+                           "DeleteAttachmentResponse.ctor", "attachment is null");
 
     this.attachment = attachment;
   }
@@ -58,7 +59,7 @@ public final class DeleteAttachmentResponse extends ServiceResponse {
     super.readElementsFromXml(reader);
 
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.RootItemId);
+                            XmlElementNames.RootItemId);
 
     String changeKey = reader
         .readAttributeValue(XmlAttributeNames.RootItemChangeKey);
@@ -66,7 +67,7 @@ public final class DeleteAttachmentResponse extends ServiceResponse {
       this.attachment.getOwner().getRootItemId().setChangeKey(changeKey);
     }
     reader.readEndElement(XmlNamespace.Messages,
-        XmlElementNames.RootItemId);
+                          XmlElementNames.RootItemId);
   }
 
   /**

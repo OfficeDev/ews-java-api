@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -33,6 +34,16 @@ final class CreateItemResponse extends CreateItemResponseBase {
   private Item item;
 
   /**
+   * Initializes a new instance.
+   *
+   * @param item The item.
+   */
+  protected CreateItemResponse(Item item) {
+    super();
+    this.item = item;
+  }
+
+  /**
    * Gets Item instance.
    *
    * @param service        The service.
@@ -41,18 +52,8 @@ final class CreateItemResponse extends CreateItemResponseBase {
    */
   @Override
   protected Item getObjectInstance(ExchangeService service,
-      String xmlElementName) {
+                                   String xmlElementName) {
     return this.item;
-  }
-
-  /**
-   * Initializes a new instance.
-   *
-   * @param item The item.
-   */
-  protected CreateItemResponse(Item item) {
-    super();
-    this.item = item;
   }
 
   /**

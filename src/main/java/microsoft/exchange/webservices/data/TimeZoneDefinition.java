@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,9 +20,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Represents a time zone as defined by the EWS schema.
@@ -83,12 +90,19 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
       new ArrayList<TimeZoneTransition>();
 
   /**
+   * Initializes a new instance of the TimeZoneDefinition class.
+   */
+  protected TimeZoneDefinition() {
+    super();
+  }
+
+  /**
    * Compares the transitions.
    *
    * @param x The first transition.
    * @param y The second transition.
-   * @return A negative number if x is less than y, 0 if x and y are equal, a
-   * positive number if x is greater than y.
+   * @return A negative number if x is less than y, 0 if x and y are equal, a positive number if x
+   * is greater than y.
    */
   @Override
   public int compare(TimeZoneTransition x, TimeZoneTransition y) {
@@ -108,14 +122,6 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
   }
 
   /**
-   * Initializes a new instance of the TimeZoneDefinition class.
-   */
-  protected TimeZoneDefinition() {
-    super();
-  }
-
-
-  /**
    * Adds a transition group with a single transition to the specified period.
    *
    * @param timeZonePeriod the time zone period
@@ -124,7 +130,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
   private TimeZoneTransitionGroup createTransitionGroupToPeriod(
       TimeZonePeriod timeZonePeriod) {
     TimeZoneTransition transitionToPeriod = new TimeZoneTransition(this,
-        timeZonePeriod);
+                                                                   timeZonePeriod);
 
     TimeZoneTransitionGroup transitionGroup = new TimeZoneTransitionGroup(
         this, String.valueOf(this.transitionGroups.size()));
@@ -184,14 +190,14 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
       do {
         reader.read();
         if (reader.isStartElement(XmlNamespace.Types,
-            XmlElementNames.Period)) {
+                                  XmlElementNames.Period)) {
           TimeZonePeriod period = new TimeZonePeriod();
           period.loadFromXml(reader);
 
           this.periods.put(period.getId(), period);
         }
       } while (!reader.isEndElement(XmlNamespace.Types,
-          XmlElementNames.Periods));
+                                    XmlElementNames.Periods));
 
       return true;
     } else if (reader.getLocalName().equals(
@@ -199,7 +205,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
       do {
         reader.read();
         if (reader.isStartElement(XmlNamespace.Types,
-            XmlElementNames.TransitionsGroup)) {
+                                  XmlElementNames.TransitionsGroup)) {
           TimeZoneTransitionGroup transitionGroup =
               new TimeZoneTransitionGroup(
                   this);
@@ -207,10 +213,10 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
           transitionGroup.loadFromXml(reader);
 
           this.transitionGroups.put(transitionGroup.getId(),
-              transitionGroup);
+                                    transitionGroup);
         }
       } while (!reader.isEndElement(XmlNamespace.Types,
-          XmlElementNames.TransitionsGroups));
+                                    XmlElementNames.TransitionsGroups));
 
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.Transitions)) {
@@ -225,7 +231,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
           this.transitions.add(transition);
         }
       } while (!reader.isEndElement(XmlNamespace.Types,
-          XmlElementNames.Transitions));
+                                    XmlElementNames.Transitions));
 
       return true;
     } else {
@@ -258,7 +264,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
     if (writer.getService().getRequestedServerVersion() != ExchangeVersion.Exchange2007_SP1) {
       if (this.periods.size() > 0) {
         writer.writeStartElement(XmlNamespace.Types,
-            XmlElementNames.Periods);
+                                 XmlElementNames.Periods);
 
         Iterator<TimeZonePeriod> it = this.periods.values().iterator();
         while (it.hasNext()) {
@@ -270,7 +276,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
 
       if (this.transitionGroups.size() > 0) {
         writer.writeStartElement(XmlNamespace.Types,
-            XmlElementNames.TransitionsGroups);
+                                 XmlElementNames.TransitionsGroups);
         for (int i = 0; i < this.transitionGroups.size(); i++) {
           Object key[] = this.transitionGroups.keySet().toArray();
           this.transitionGroups.get(key[i]).writeToXml(writer);
@@ -280,7 +286,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
 
       if (this.transitions.size() > 0) {
         writer.writeStartElement(XmlNamespace.Types,
-            XmlElementNames.Transitions);
+                                 XmlElementNames.Transitions);
 
         for (TimeZoneTransition transition : this.transitions) {
           transition.writeToXml(writer);
@@ -394,8 +400,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
   }
 
   /**
-   * Gets the transition groups associated with this time zone definition,
-   * indexed by Id.
+   * Gets the transition groups associated with this time zone definition, indexed by Id.
    *
    * @return the transition groups
    */

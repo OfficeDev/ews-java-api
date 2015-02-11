@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Represents the response to a folder synchronization operation.
  */
 public final class SyncFolderHierarchyResponse extends
-    SyncResponse<Folder, FolderChange> {
+                                               SyncResponse<Folder, FolderChange> {
 
   /**
    * Represents the response to a folder synchronization operation.
@@ -58,9 +59,8 @@ public final class SyncFolderHierarchyResponse extends
   }
 
   /**
-   * Gets a value indicating whether this request returns full or summary
-   * properties. <value> <c>true</c> if summary properties only; otherwise,
-   * <c>false</c>. </value>
+   * Gets a value indicating whether this request returns full or summary properties. <value>
+   * <c>true</c> if summary properties only; otherwise, <c>false</c>. </value>
    *
    * @return the summary properties only
    */

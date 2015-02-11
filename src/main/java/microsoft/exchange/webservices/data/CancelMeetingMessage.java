@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -27,7 +28,7 @@ package microsoft.exchange.webservices.data;
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.CancelCalendarItem, returnedByServer = false)
 public final class CancelMeetingMessage extends
-    CalendarResponseMessageBase<MeetingCancellation> {
+                                        CalendarResponseMessageBase<MeetingCancellation> {
 
   /**
    * Initializes a new instance of the class.
@@ -42,8 +43,7 @@ public final class CancelMeetingMessage extends
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -53,8 +53,7 @@ public final class CancelMeetingMessage extends
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ServiceObjectSchema getSchema() {

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.HashMap;
@@ -34,8 +35,19 @@ import java.util.Map.Entry;
 final class OutlookUser {
 
   /**
-   * Converters to translate Outlook user settings.
-   * Each entry maps to a lambda expression used to
+   * The display name.
+   */
+  private String displayName;
+  /**
+   * The legacy dn.
+   */
+  private String legacyDN;
+  /**
+   * The deployment id.
+   */
+  private String deploymentId;
+  /**
+   * Converters to translate Outlook user settings. Each entry maps to a lambda expression used to
    * get the matching property from the OutlookUser instance.
    */
   private static LazyMember<Map<UserSettingName, IFunc<OutlookUser, String>>>
@@ -46,46 +58,40 @@ final class OutlookUser {
               Map<UserSettingName, IFunc<OutlookUser, String>> results =
                   new HashMap<UserSettingName, IFunc<OutlookUser, String>>();
               results.put(UserSettingName.UserDisplayName,
-                  new IFunc<OutlookUser, String>() {
-                    public String func(OutlookUser arg) {
-                      return arg.displayName;
-                    }
-                  });
+                          new IFunc<OutlookUser, String>() {
+                            public String func(OutlookUser arg) {
+                              return arg.displayName;
+                            }
+                          });
               results.put(UserSettingName.UserDN,
-                  new IFunc<OutlookUser, String>() {
-                    public String func(OutlookUser arg) {
-                      return arg.legacyDN;
-                    }
-                  });
+                          new IFunc<OutlookUser, String>() {
+                            public String func(OutlookUser arg) {
+                              return arg.legacyDN;
+                            }
+                          });
               results.put(UserSettingName.UserDeploymentId,
-                  new IFunc<OutlookUser, String>() {
-                    public String func(OutlookUser arg) {
-                      return arg.deploymentId;
-                    }
-                  });
+                          new IFunc<OutlookUser, String>() {
+                            public String func(OutlookUser arg) {
+                              return arg.deploymentId;
+                            }
+                          });
               return results;
             }
           });
 
   /**
-   * The display name.
-   */
-  private String displayName;
-
-  /**
-   * The legacy dn.
-   */
-  private String legacyDN;
-
-  /**
-   * The deployment id.
-   */
-  private String deploymentId;
-
-  /**
    * Initializes a new instance of the OutlookUser class.
    */
   protected OutlookUser() {
+  }
+
+  /**
+   * Gets the available user settings.
+   *
+   * @return The available user settings.
+   */
+  protected static Iterable<UserSettingName> getAvailableUserSettings() {
+    return converterDictionary.getMember().keySet();
   }
 
   /**
@@ -114,7 +120,7 @@ final class OutlookUser {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.NotSpecified,
-        XmlElementNames.User));
+                                  XmlElementNames.User));
   }
 
   /**
@@ -144,14 +150,5 @@ final class OutlookUser {
         response.getSettings().put(kv.getKey(), value);
       }
     }
-  }
-
-  /**
-   * Gets the available user settings.
-   *
-   * @return The available user settings.
-   */
-  protected static Iterable<UserSettingName> getAvailableUserSettings() {
-    return converterDictionary.getMember().keySet();
   }
 }

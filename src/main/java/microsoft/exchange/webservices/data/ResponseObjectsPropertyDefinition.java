@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -30,15 +31,14 @@ import java.util.EnumSet;
 public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
 
   /**
-   * Initializes a new instance of the ResponseObjectsPropertyDefinition
-   * class.
+   * Initializes a new instance of the ResponseObjectsPropertyDefinition class.
    *
    * @param xmlElementName the xml element name
    * @param uri            the uri
    * @param version        the version
    */
   protected ResponseObjectsPropertyDefinition(String xmlElementName,
-      String uri, ExchangeVersion version) {
+                                              String uri, ExchangeVersion version) {
     super(xmlElementName, uri, version);
 
   }
@@ -51,7 +51,7 @@ public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
    * @throws Exception the exception
    */
   protected final void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+                                                PropertyBag propertyBag) throws Exception {
     EnumSet<ResponseActions> value = EnumSet.noneOf(ResponseActions.class);
     value.add(ResponseActions.None);
 
@@ -124,13 +124,13 @@ public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
    * @param isUpdateOperation the is update operation
    */
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation) {
+                                         PropertyBag propertyBag, boolean isUpdateOperation) {
     // ResponseObjects is a read-only property, no need to implement this.
   }
 
   /**
-   * Gets a value indicating whether this property
-   * definition is for a nullable type (ref, int?, bool?...).
+   * Gets a value indicating whether this property definition is for a nullable type (ref, int?,
+   * bool?...).
    */
   @Override
   protected boolean isNullable() {

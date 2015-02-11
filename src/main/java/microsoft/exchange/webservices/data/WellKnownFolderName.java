@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -189,6 +190,5 @@ public enum WellKnownFolderName {
    */
   @RequiredServerVersion(version = ExchangeVersion.Exchange2010_SP1)
   ArchiveRecoverableItemsPurges,
-
 
 }

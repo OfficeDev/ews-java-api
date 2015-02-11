@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -37,7 +38,8 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
    * @param version        The version.
    */
   protected ComplexPropertyDefinitionBase(String xmlElementName,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                          EnumSet<PropertyDefinitionFlags> flags,
+                                          ExchangeVersion version) {
     super(xmlElementName, flags, version);
   }
 
@@ -49,7 +51,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
    * @param version        The version.
    */
   protected ComplexPropertyDefinitionBase(String xmlElementName, String uri,
-      ExchangeVersion version) {
+                                          ExchangeVersion version) {
     super(xmlElementName, uri, version);
   }
 
@@ -62,7 +64,8 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
    * @param version        The version.
    */
   protected ComplexPropertyDefinitionBase(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                          EnumSet<PropertyDefinitionFlags> flags,
+                                          ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
 
@@ -83,17 +86,17 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
    * @throws Exception the exception
    */
   protected void internalLoadFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+                                     PropertyBag propertyBag) throws Exception {
     OutParam<Object> complexProperty = new OutParam<Object>();
 
     boolean justCreated = getPropertyInstance(propertyBag, complexProperty);
     if (!justCreated && this.hasFlag(PropertyDefinitionFlags.UpdateCollectionItems,
-        propertyBag.getOwner().getService().getRequestedServerVersion())) {
+                                     propertyBag.getOwner().getService()
+                                         .getRequestedServerVersion())) {
       ComplexProperty c = (ComplexProperty) complexProperty.getParam();
       if (complexProperty.getParam() instanceof ComplexProperty) {
         c.updateFromXml(reader, reader.getLocalName());
       }
-
 
 
     } else {
@@ -114,7 +117,6 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
   }
 
 
-
   /**
    * Gets the property instance.
    *
@@ -126,9 +128,9 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
     boolean retValue = false;
     if (!propertyBag.tryGetValue(this, complexProperty) || !this
         .hasFlag(PropertyDefinitionFlags.ReuseInstance,
-            propertyBag.getOwner().getService().getRequestedServerVersion())) {
+                 propertyBag.getOwner().getService().getRequestedServerVersion())) {
       complexProperty.setParam(this.createPropertyInstance(propertyBag
-          .getOwner()));
+                                                               .getOwner()));
       retValue = true;
     }
     return retValue;
@@ -144,7 +146,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
    */
   @Override
   protected void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+                                          PropertyBag propertyBag) throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types, this
         .getXmlElement());
 
@@ -165,7 +167,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
    */
   @Override
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+                                         PropertyBag propertyBag, boolean isUpdateOperation)
       throws Exception {
     ComplexProperty complexProperty = (ComplexProperty) propertyBag
         .getObjectFromPropertyDefinition(this);

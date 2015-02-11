@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -27,11 +28,10 @@ package microsoft.exchange.webservices.data;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class OccurrenceInfoCollection extends
-    ComplexPropertyCollection<OccurrenceInfo> {
+                                            ComplexPropertyCollection<OccurrenceInfo> {
 
   /**
-   * Initializes a new instance of the <see cref="OccurrenceInfoCollection"/>
-   * class.
+   * Initializes a new instance of the <see cref="OccurrenceInfoCollection"/> class.
    */
   protected OccurrenceInfoCollection() {
   }

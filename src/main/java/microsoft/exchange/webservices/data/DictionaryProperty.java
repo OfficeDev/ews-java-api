@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -29,8 +30,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Represents a generic dictionary that can be sent to or retrieved from EWS.
- * TKey The type of key. TEntry The type of entry.
+ * Represents a generic dictionary that can be sent to or retrieved from EWS. TKey The type of key.
+ * TEntry The type of entry.
  *
  * @param <TKey>   the generic type
  * @param <TEntry> the generic type
@@ -39,7 +40,7 @@ import java.util.Map.Entry;
 public abstract class DictionaryProperty
     <TKey, TEntry extends DictionaryEntryProperty<TKey>>
     extends ComplexProperty implements ICustomXmlUpdateSerializer,
-    IComplexPropertyChangedDelegate {
+                                       IComplexPropertyChangedDelegate {
 
   /**
    * The entries.
@@ -85,7 +86,7 @@ public abstract class DictionaryProperty
   private void writeUriToXml(EwsServiceXmlWriter writer, TKey key)
       throws Exception {
     writer.writeStartElement(XmlNamespace.Types,
-        XmlElementNames.IndexedFieldURI);
+                             XmlElementNames.IndexedFieldURI);
     writer.writeAttributeValue(XmlAttributeNames.FieldURI, this
         .getFieldURI());
     writer.writeAttributeValue(XmlAttributeNames.FieldIndex, this
@@ -234,9 +235,9 @@ public abstract class DictionaryProperty
    * @throws Exception the exception
    */
   protected void loadFromXml(EwsServiceXmlReader reader,
-      String localElementName) throws Exception {
+                             String localElementName) throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
-        localElementName);
+                                           localElementName);
 
     if (!reader.isEmptyElement()) {
       do {
@@ -253,7 +254,7 @@ public abstract class DictionaryProperty
           }
         }
       } while (!reader.isEndElement(XmlNamespace.Types,
-          localElementName));
+                                    localElementName));
     } else {
       reader.read();
     }
@@ -265,12 +266,11 @@ public abstract class DictionaryProperty
    * @param writer         The writer
    * @param xmlNamespace   The XML namespace.
    * @param xmlElementName Name of the XML element.
-   * @throws Exception
    */
   @Override
   protected void writeToXml(EwsServiceXmlWriter writer,
-      XmlNamespace xmlNamespace,
-      String xmlElementName) throws Exception {
+                            XmlNamespace xmlNamespace,
+                            String xmlElementName) throws Exception {
     //  Only write collection if it has at least one element.
     if (this.entries.size() > 0) {
       super.writeToXml(
@@ -290,7 +290,7 @@ public abstract class DictionaryProperty
       throws Exception {
     for (Entry<TKey, TEntry> keyValuePair : this.entries.entrySet()) {
       keyValuePair.getValue().writeToXml(writer,
-          this.getEntryXmlElementName(keyValuePair.getValue()));
+                                         this.getEntryXmlElementName(keyValuePair.getValue()));
     }
   }
 
@@ -307,8 +307,7 @@ public abstract class DictionaryProperty
    * Determines whether this instance contains the specified key.
    *
    * @param key the key
-   * @return true if this instance contains the specified key; otherwise,
-   * false.
+   * @return true if this instance contains the specified key; otherwise, false.
    */
   public boolean contains(TKey key) {
     return this.entries.containsKey(key);
@@ -324,7 +323,7 @@ public abstract class DictionaryProperty
    * @throws Exception the exception
    */
   public boolean writeSetUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject, PropertyDefinition propertyDefinition)
+                                     ServiceObject ewsObject, PropertyDefinition propertyDefinition)
       throws Exception {
     List<TEntry> tempEntries = new ArrayList<TEntry>();
 
@@ -337,7 +336,7 @@ public abstract class DictionaryProperty
     for (TEntry entry : tempEntries) {
 
       if (!entry.writeSetUpdateToXml(writer, ewsObject,
-          propertyDefinition.getXmlElement())) {
+                                     propertyDefinition.getXmlElement())) {
         writer.writeStartElement(XmlNamespace.Types, ewsObject
             .getSetFieldXmlElementName());
         this.writeUriToXml(writer, entry.getKey());
@@ -374,7 +373,7 @@ public abstract class DictionaryProperty
    * @return True if property generated serialization.
    */
   public boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject) {
+                                        ServiceObject ewsObject) {
     return false;
   }
 }

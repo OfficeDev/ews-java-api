@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -28,7 +29,7 @@ import javax.xml.stream.XMLStreamException;
  * Represents a "pull" Subscribe request.
  */
 class SubscribeToPullNotificationsRequest extends
-    SubscribeRequest<PullSubscription> {
+                                          SubscribeRequest<PullSubscription> {
 
   /**
    * The timeout.
@@ -118,14 +119,17 @@ class SubscribeToPullNotificationsRequest extends
    * Reads response elements from XML.
    *
    * @param writer the writer
-   * @throws javax.xml.stream.XMLStreamException                                  the xML stream exception
-   * @throws microsoft.exchange.webservices.data.ServiceXmlSerializationException the service xml serialization exception
+   * @throws javax.xml.stream.XMLStreamException                                  the xML stream
+   *                                                                              exception
+   * @throws microsoft.exchange.webservices.data.ServiceXmlSerializationException the service xml
+   *                                                                              serialization
+   *                                                                              exception
    */
   @Override
   protected void internalWriteElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Timeout,
-        this.getTimeout());
+                             this.getTimeout());
 
   }
 }

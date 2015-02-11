@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -34,8 +35,8 @@ public abstract class XmlNameTable {
   }
 
   /**
-   * When overridden in a derived class, atomizes the specified String and
-   * adds it to the XmlNameTable.
+   * When overridden in a derived class, atomizes the specified String and adds it to the
+   * XmlNameTable.
    *
    * @param array : The name to add.
    * @return The new atomized String or the existing one if it already exists.
@@ -47,11 +48,10 @@ public abstract class XmlNameTable {
    * Reads an XML Schema from the supplied stream.
    *
    * @param array  The character array containing the name to add.
-   * @param offset Zero-based index into the array specifying the first character
-   *               of the name.
+   * @param offset Zero-based index into the array specifying the first character of the name.
    * @param length The number of characters in the name.
-   * @return The new atomized String or the existing one if it already exists.
-   * If length is zero, String.Empty is returned
+   * @return The new atomized String or the existing one if it already exists. If length is zero,
+   * String.Empty is returned
    * @throws ArgumentOutOfRangeException 0 > offset -or- offset >= array.Length -or- length >
    *                                     array.Length The above conditions do not cause an exception
    *                                     to be thrown if length =0.
@@ -60,27 +60,24 @@ public abstract class XmlNameTable {
   public abstract String Add(char[] array, int offset, int length);
 
   /**
-   * When overridden in a derived class, gets the atomized String containing
-   * the same value as the specified String.
+   * When overridden in a derived class, gets the atomized String containing the same value as the
+   * specified String.
    *
    * @param array The name to look up.
-   * @return The atomized String or null if the String has not already been
-   * atomized.
+   * @return The atomized String or null if the String has not already been atomized.
    * @throws ArgumentNullException : array is null.
    */
   public abstract String Get(String array);
 
   /**
-   * When overridden in a derived class, gets the atomized String containing
-   * the same characters as the specified range of characters in the given
-   * array.
+   * When overridden in a derived class, gets the atomized String containing the same characters as
+   * the specified range of characters in the given array.
    *
    * @param array  The character array containing the name to add.
-   * @param offset Zero-based index into the array specifying the first character
-   *               of the name.
+   * @param offset Zero-based index into the array specifying the first character of the name.
    * @param length The number of characters in the name.
-   * @return The atomized String or null if the String has not already been
-   * atomized. If length is zero, String.Empty is returned
+   * @return The atomized String or null if the String has not already been atomized. If length is
+   * zero, String.Empty is returned
    * @throws ArgumentOutOfRangeException 0 > offset -or- offset >= array.Length -or- length >
    *                                     array.Length The above conditions do not cause an exception
    *                                     to be thrown if length =0.

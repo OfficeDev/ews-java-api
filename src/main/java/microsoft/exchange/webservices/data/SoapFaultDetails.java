@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents SoapFault details.
@@ -77,10 +79,9 @@ class SoapFaultDetails {
   private int positionWithinLine;
 
   /**
-   * Dictionary of key/value pairs from the MessageXml node in the fault.
-   * Usually empty but there are a few cases where SOAP faults may include
-   * MessageXml details (e.g. CASOverBudgetException includes BackoffTime
-   * value).
+   * Dictionary of key/value pairs from the MessageXml node in the fault. Usually empty but there
+   * are a few cases where SOAP faults may include MessageXml details (e.g. CASOverBudgetException
+   * includes BackoffTime value).
    */
   private Map<String, String> errorDetails = new HashMap<String, String>();
 
@@ -93,7 +94,7 @@ class SoapFaultDetails {
    * @throws Exception the exception
    */
   protected static SoapFaultDetails parse(EwsXmlReader reader,
-      XmlNamespace soapNamespace) throws Exception {
+                                          XmlNamespace soapNamespace) throws Exception {
     SoapFaultDetails soapFaultDetails = new SoapFaultDetails();
 
     do {
@@ -115,7 +116,7 @@ class SoapFaultDetails {
         }
       }
     } while (!reader.isEndElement(soapNamespace,
-        XmlElementNames.SOAPFaultElementName));
+                                  XmlElementNames.SOAPFaultElementName));
 
     return soapFaultDetails;
   }
@@ -130,7 +131,7 @@ class SoapFaultDetails {
    */
   private void parseDetailNode(EwsXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      Exception, Exception {
+             Exception, Exception {
     do {
       reader.read();
       if (reader.getNodeType().equals(
@@ -140,7 +141,7 @@ class SoapFaultDetails {
             .equals(XmlElementNames.EwsResponseCodeElementName)) {
           try {
             this.setResponseCode(reader
-                .readElementValue(ServiceError.class));
+                                     .readElementValue(ServiceError.class));
           } catch (Exception e) {
             e.printStackTrace();
 
@@ -148,7 +149,7 @@ class SoapFaultDetails {
             // as an ISE
             this
                 .setResponseCode(ServiceError.
-                    ErrorInternalServerError);
+                                     ErrorInternalServerError);
           }
 
         } else if (localName
@@ -159,12 +160,12 @@ class SoapFaultDetails {
         } else if (localName
             .equals(XmlElementNames.EwsPositionElementName)) {
           this.setPositionWithinLine(reader
-              .readElementValue(Integer.class));
+                                         .readElementValue(Integer.class));
         } else if (localName
             .equals(XmlElementNames.EwsErrorCodeElementName)) {
           try {
             this.setErrorCode(reader
-                .readElementValue(ServiceError.class));
+                                  .readElementValue(ServiceError.class));
           } catch (Exception e) {
             e.printStackTrace();
 
@@ -172,7 +173,7 @@ class SoapFaultDetails {
             // as an ISE
             this
                 .setErrorCode(ServiceError.
-                    ErrorInternalServerError);
+                                  ErrorInternalServerError);
           }
 
         } else if (localName
@@ -188,7 +189,7 @@ class SoapFaultDetails {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.NotSpecified,
-        XmlElementNames.SOAPDetailElementName));
+                                  XmlElementNames.SOAPDetailElementName));
   }
 
   /**
@@ -199,13 +200,14 @@ class SoapFaultDetails {
    * @throws ServiceXmlDeserializationException the service xml deserialization exception
    */
   private void parseMessageXml(EwsXmlReader reader) throws Exception,
-      ServiceXmlDeserializationException, Exception {
+                                                           ServiceXmlDeserializationException,
+                                                           Exception {
     // E14:172881: E12 and E14 return the MessageXml element in different
     // namespaces (types namespace for E12, errors namespace in E14). To
     // avoid this problem, the parser will match the namespace from the
     // start and end elements.
     XmlNamespace elementNS = EwsUtilities.getNamespaceFromUri(reader
-        .getNamespaceUri());
+                                                                  .getNamespaceUri());
 
     if (!reader.isEmptyElement()) {
       do {
@@ -215,8 +217,8 @@ class SoapFaultDetails {
           String localName = reader.getLocalName();
           if (localName.equals(XmlElementNames.Value)) {
             this.errorDetails.put(reader
-                    .readAttributeValue(XmlAttributeNames.Name),
-                reader.readElementValue());
+                                      .readAttributeValue(XmlAttributeNames.Name),
+                                  reader.readElementValue());
           }
         }
       } while (!reader

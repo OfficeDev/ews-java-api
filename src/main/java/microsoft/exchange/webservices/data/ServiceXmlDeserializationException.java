@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,14 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents an error that occurs when the XML for a response cannot be
- * deserialized.
+ * Represents an error that occurs when the XML for a response cannot be deserialized.
  */
 public final class ServiceXmlDeserializationException extends
-    ServiceLocalException {
+                                                      ServiceLocalException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -57,7 +57,7 @@ public final class ServiceXmlDeserializationException extends
    * @param innerException the inner exception
    */
   public ServiceXmlDeserializationException(String message,
-      Exception innerException) {
+                                            Exception innerException) {
     super(message, innerException);
   }
 

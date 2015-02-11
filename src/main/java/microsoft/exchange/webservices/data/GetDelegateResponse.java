@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -69,8 +70,7 @@ final class GetDelegateResponse extends DelegateManagementResponse {
   }
 
   /**
-   * Gets a value indicating if and how meeting requests are delivered to
-   * delegates.
+   * Gets a value indicating if and how meeting requests are delivered to delegates.
    *
    * @return the meeting requests delivery scope
    */

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -220,26 +221,23 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets the categories that an incoming message
-   * should be stamped with for the condition or exception to apply.
-   * To disable this predicate, empty the list.
+   * Gets the categories that an incoming message should be stamped with for the condition or
+   * exception to apply. To disable this predicate, empty the list.
    */
   public StringList getCategories() {
     return this.categories;
   }
 
   /**
-   * Gets the strings that should appear in the body of
-   * incoming messages for the condition or exception to apply.
-   * To disable this predicate, empty the list.
+   * Gets the strings that should appear in the body of incoming messages for the condition or
+   * exception to apply. To disable this predicate, empty the list.
    */
   public StringList getContainsBodyStrings() {
     return this.containsBodyStrings;
   }
 
   /**
-   * Gets the strings that should appear in the
-   * headers of incoming messages for the condition or
+   * Gets the strings that should appear in the headers of incoming messages for the condition or
    * exception to apply. To disable this predicate, empty the list.
    */
   public StringList getContainsHeaderStrings() {
@@ -247,47 +245,40 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets the strings that should appear in either the
-   * To or Cc fields of incoming messages for the condition
-   * or exception to apply. To disable this predicate, empty the list.
+   * Gets the strings that should appear in either the To or Cc fields of incoming messages for the
+   * condition or exception to apply. To disable this predicate, empty the list.
    */
   public StringList getContainsRecipientStrings() {
     return this.containsRecipientStrings;
   }
 
   /**
-   * Gets the strings that should appear
-   * in the From field of incoming messages
-   * for the condition or exception to apply.
-   * To disable this predicate, empty  the list.
+   * Gets the strings that should appear in the From field of incoming messages for the condition or
+   * exception to apply. To disable this predicate, empty  the list.
    */
   public StringList getContainsSenderStrings() {
     return this.containsSenderStrings;
   }
 
   /**
-   * Gets the strings that should appear in either
-   * the body or the subject of incoming messages for the
-   * condition or exception to apply.
-   * To disable this predicate, empty the list.
+   * Gets the strings that should appear in either the body or the subject of incoming messages for
+   * the condition or exception to apply. To disable this predicate, empty the list.
    */
   public StringList getContainsSubjectOrBodyStrings() {
     return this.containsSubjectOrBodyStrings;
   }
 
   /**
-   * Gets the strings that should appear in the subject
-   * of incoming messages for the condition or exception
-   * to apply. To disable this predicate, empty the list.
+   * Gets the strings that should appear in the subject of incoming messages for the condition or
+   * exception to apply. To disable this predicate, empty the list.
    */
   public StringList getContainsSubjectStrings() {
     return this.containsSubjectStrings;
   }
 
   /**
-   * Gets or sets the flag for action value that should
-   * appear on incoming messages for the condition or execption to apply.
-   * To disable this predicate, set it to null.
+   * Gets or sets the flag for action value that should appear on incoming messages for the
+   * condition or execption to apply. To disable this predicate, set it to null.
    */
   public FlaggedForAction getFlaggedForAction() {
 
@@ -302,17 +293,16 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets the e-mail addresses of the senders of incoming
-   * messages for the condition or exception to apply.
-   * To disable this predicate, empty the list.
+   * Gets the e-mail addresses of the senders of incoming messages for the condition or exception to
+   * apply. To disable this predicate, empty the list.
    */
   public EmailAddressCollection getFromAddresses() {
     return this.fromAddresses;
   }
 
   /**
-   * Gets or sets a value indicating whether incoming messages must have
-   * attachments for the condition or exception to apply.
+   * Gets or sets a value indicating whether incoming messages must have attachments for the
+   * condition or exception to apply.
    */
   public boolean getHasAttachments() {
     return this.hasAttachments;
@@ -326,9 +316,8 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the importance that should be stamped on incoming messages
-   * for the condition or exception to apply.
-   * To disable this predicate, set it to null.
+   * Gets or sets the importance that should be stamped on incoming messages for the condition or
+   * exception to apply. To disable this predicate, set it to null.
    */
   public Importance getImportance() {
     return this.importance;
@@ -342,8 +331,8 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether incoming messages must be
-   * approval requests for the condition or exception to apply.
+   * Gets or sets a value indicating whether incoming messages must be approval requests for the
+   * condition or exception to apply.
    */
   public boolean getIsApprovalRequest() {
     return this.isApprovalRequest;
@@ -358,8 +347,8 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether incoming messages must be
-   * automatic forwards for the condition or exception to apply.
+   * Gets or sets a value indicating whether incoming messages must be automatic forwards for the
+   * condition or exception to apply.
    */
   public boolean getIsAutomaticForward() {
     return this.isAutomaticForward;
@@ -373,8 +362,8 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether incoming messages must be
-   * automatic replies for the condition or exception to apply.
+   * Gets or sets a value indicating whether incoming messages must be automatic replies for the
+   * condition or exception to apply.
    */
   public boolean getIsAutomaticReply() {
     return this.isAutomaticReply;
@@ -389,8 +378,8 @@ public final class RulePredicates extends ComplexProperty {
 
 
   /**
-   * Gets or sets a value indicating whether incoming messages must be
-   * S/MIME encrypted for the condition or exception to apply.
+   * Gets or sets a value indicating whether incoming messages must be S/MIME encrypted for the
+   * condition or exception to apply.
    */
   public boolean getIsEncrypted() {
     return this.isEncrypted;
@@ -404,8 +393,8 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether incoming messages must be
-   * meeting requests for the condition or exception to apply.
+   * Gets or sets a value indicating whether incoming messages must be meeting requests for the
+   * condition or exception to apply.
    */
   public boolean getIsMeetingRequest() {
     return this.isMeetingRequest;
@@ -422,8 +411,8 @@ public final class RulePredicates extends ComplexProperty {
 
 
   /**
-   * Gets or sets a value indicating whether incoming messages must be
-   * meeting responses for the condition or exception to apply.
+   * Gets or sets a value indicating whether incoming messages must be meeting responses for the
+   * condition or exception to apply.
    */
   public boolean getIsMeetingResponse() {
 
@@ -438,8 +427,8 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether incoming messages must be
-   * non-delivery reports (NDR) for the condition or exception to apply.
+   * Gets or sets a value indicating whether incoming messages must be non-delivery reports (NDR)
+   * for the condition or exception to apply.
    */
   public boolean getIsNonDeliveryReport() {
     return this.isNonDeliveryReport;
@@ -453,9 +442,8 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether incoming messages must be
-   * permission controlled (RMS protected) for the condition or exception
-   * to apply.
+   * Gets or sets a value indicating whether incoming messages must be permission controlled (RMS
+   * protected) for the condition or exception to apply.
    */
   public boolean getIsPermissionControlled() {
     return this.isPermissionControlled;
@@ -470,8 +458,8 @@ public final class RulePredicates extends ComplexProperty {
 
 
   /**
-   * Gets or sets a value indicating whether incoming messages must be
-   * S/MIME signed for the condition or exception to apply.
+   * Gets or sets a value indicating whether incoming messages must be S/MIME signed for the
+   * condition or exception to apply.
    */
   public boolean getIsSigned() {
     return this.isSigned;
@@ -486,8 +474,8 @@ public final class RulePredicates extends ComplexProperty {
 
 
   /**
-   * Gets or sets a value indicating whether incoming messages must be
-   * voice mails for the condition or exception to apply.
+   * Gets or sets a value indicating whether incoming messages must be voice mails for the condition
+   * or exception to apply.
    */
   public boolean getIsVoicemail() {
     return this.isVoicemail;
@@ -502,8 +490,8 @@ public final class RulePredicates extends ComplexProperty {
 
 
   /**
-   * Gets or sets a value indicating whether incoming messages must be
-   * read receipts for the condition or exception to apply.
+   * Gets or sets a value indicating whether incoming messages must be read receipts for the
+   * condition or exception to apply.
    */
   public boolean getIsReadReceipt() {
     return this.isReadReceipt;
@@ -517,28 +505,24 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets the e-mail account names from which incoming messages must have
-   * been aggregated for the condition or exception to apply. To disable
-   * this predicate, empty the list.
+   * Gets the e-mail account names from which incoming messages must have been aggregated for the
+   * condition or exception to apply. To disable this predicate, empty the list.
    */
   public StringList getFromConnectedAccounts() {
     return this.fromConnectedAccounts;
   }
 
   /**
-   * Gets the item classes that must be stamped on incoming messages for
-   * the condition or exception to apply. To disable this predicate,
-   * empty the list.
+   * Gets the item classes that must be stamped on incoming messages for the condition or exception
+   * to apply. To disable this predicate, empty the list.
    */
   public StringList getItemClasses() {
     return this.itemClasses;
   }
 
   /**
-   * Gets the message classifications that
-   * must be stamped on incoming messages
-   * for the condition or exception to apply. To disable this predicate,
-   * empty the list.
+   * Gets the message classifications that must be stamped on incoming messages for the condition or
+   * exception to apply. To disable this predicate, empty the list.
    */
   public StringList getMessageClassifications() {
 
@@ -547,9 +531,8 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether the owner of the mailbox must
-   * NOT be a To recipient of the incoming messages for the condition or
-   * exception to apply.
+   * Gets or sets a value indicating whether the owner of the mailbox must NOT be a To recipient of
+   * the incoming messages for the condition or exception to apply.
    */
 
   public boolean getNotSentToMe() {
@@ -565,9 +548,8 @@ public final class RulePredicates extends ComplexProperty {
 
 
   /**
-   * Gets or sets a value indicating whether the owner of the mailbox must be
-   * a Cc recipient of incoming messages
-   * for the condition or exception to apply.
+   * Gets or sets a value indicating whether the owner of the mailbox must be a Cc recipient of
+   * incoming messages for the condition or exception to apply.
    */
   public boolean getSentCcMe() {
     return this.sentCcMe;
@@ -582,10 +564,8 @@ public final class RulePredicates extends ComplexProperty {
 
 
   /**
-   * Gets or sets a value indicating whether the owner of the mailbox must be
-   * the only To recipient of incoming
-   * messages for the condition or exception
-   * to apply.
+   * Gets or sets a value indicating whether the owner of the mailbox must be the only To recipient
+   * of incoming messages for the condition or exception to apply.
    */
   public boolean getSentOnlyToMe() {
     return this.sentOnlyToMe;
@@ -600,9 +580,8 @@ public final class RulePredicates extends ComplexProperty {
 
 
   /**
-   * Gets the e-mail addresses incoming messages must have been sent to for
-   * the condition or exception to apply. To disable this predicate, empty
-   * the list.
+   * Gets the e-mail addresses incoming messages must have been sent to for the condition or
+   * exception to apply. To disable this predicate, empty the list.
    */
   public EmailAddressCollection getSentToAddresses() {
     return this.sentToAddresses;
@@ -610,9 +589,8 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets or sets a value indicating whether the owner of the mailbox must be
-   * a To recipient of incoming messages
-   * for the condition or exception to apply.
+   * Gets or sets a value indicating whether the owner of the mailbox must be a To recipient of
+   * incoming messages for the condition or exception to apply.
    */
   public boolean getSentToMe() {
     return this.sentToMe;
@@ -627,9 +605,8 @@ public final class RulePredicates extends ComplexProperty {
 
 
   /**
-   * Gets or sets a value indicating whether the owner of the mailbox must be
-   * either a To or Cc recipient of incoming messages for the condition or
-   * exception to apply.
+   * Gets or sets a value indicating whether the owner of the mailbox must be either a To or Cc
+   * recipient of incoming messages for the condition or exception to apply.
    */
   public boolean getSentToOrCcMe() {
     return this.sentToOrCcMe;
@@ -644,10 +621,8 @@ public final class RulePredicates extends ComplexProperty {
 
 
   /**
-   * Gets or sets the sensitivity that must be stamped on incoming messages
-   * for the condition or exception to apply.
-   * To disable this predicate, set it
-   * to null.
+   * Gets or sets the sensitivity that must be stamped on incoming messages for the condition or
+   * exception to apply. To disable this predicate, set it to null.
    */
   public Sensitivity getSensitivity() {
     return this.sensitivity;
@@ -661,11 +636,8 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets the date range within which
-   * incoming messages must have been received
-   * for the condition or exception to apply.
-   * To disable this predicate, set both
-   * its Start and End properties to null.
+   * Gets the date range within which incoming messages must have been received for the condition or
+   * exception to apply. To disable this predicate, set both its Start and End properties to null.
    */
   public RulePredicateDateRange getWithinDateRange() {
     return this.withinDateRange;
@@ -673,9 +645,9 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   /**
-   * Gets the minimum and maximum sizes incoming messages must have for the
-   * condition or exception to apply. To disable this predicate, set both its
-   * MinimumSize and MaximumSize properties to null.
+   * Gets the minimum and maximum sizes incoming messages must have for the condition or exception
+   * to apply. To disable this predicate, set both its MinimumSize and MaximumSize properties to
+   * null.
    */
   public RulePredicateSizeRange getWithinSizeRange() {
     return this.withinSizeRange;
@@ -687,11 +659,10 @@ public final class RulePredicates extends ComplexProperty {
    *
    * @param reader The reader
    * @return True if element was read.
-   * @throws Exception
    */
   @Override
   protected boolean tryReadElementFromXml(EwsServiceXmlReader
-      reader) throws Exception {
+                                              reader) throws Exception {
 
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.Categories)) {
       this.categories.loadFromXml(reader, reader.getLocalName());
@@ -701,23 +672,24 @@ public final class RulePredicates extends ComplexProperty {
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.ContainsHeaderStrings)) {
       this.containsHeaderStrings.loadFromXml(reader,
-          reader.getLocalName());
+                                             reader.getLocalName());
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.ContainsRecipientStrings)) {
       this.containsRecipientStrings.loadFromXml(reader,
-          reader.getLocalName());
+                                                reader.getLocalName());
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.ContainsSenderStrings)) {
       this.containsSenderStrings.loadFromXml(reader,
-          reader.getLocalName());
+                                             reader.getLocalName());
       return true;
-    } else if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.ContainsSubjectOrBodyStrings)) {
+    } else if (reader.getLocalName()
+        .equalsIgnoreCase(XmlElementNames.ContainsSubjectOrBodyStrings)) {
       this.containsSubjectOrBodyStrings.loadFromXml(reader,
-          reader.getLocalName());
+                                                    reader.getLocalName());
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.ContainsSubjectStrings)) {
       this.containsSubjectStrings.loadFromXml(reader,
-          reader.getLocalName());
+                                              reader.getLocalName());
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.FlaggedForAction)) {
       this.flaggedForAction = reader.
@@ -728,7 +700,7 @@ public final class RulePredicates extends ComplexProperty {
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.FromConnectedAccounts)) {
       this.fromConnectedAccounts.loadFromXml(reader,
-          reader.getLocalName());
+                                             reader.getLocalName());
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.HasAttachments)) {
       this.hasAttachments = reader.readElementValue(Boolean.class);
@@ -775,7 +747,7 @@ public final class RulePredicates extends ComplexProperty {
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.MessageClassifications)) {
       this.messageClassifications.loadFromXml(reader,
-          reader.getLocalName());
+                                              reader.getLocalName());
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.NotSentToMe)) {
       this.notSentToMe = reader.readElementValue(Boolean.class);
@@ -813,7 +785,6 @@ public final class RulePredicates extends ComplexProperty {
    * Writes elements to XML.
    *
    * @param writer The writer.
-   * @throws Exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
@@ -824,32 +795,32 @@ public final class RulePredicates extends ComplexProperty {
 
     if (this.getContainsBodyStrings().getSize() > 0) {
       this.getContainsBodyStrings().writeToXml(writer,
-          XmlElementNames.ContainsBodyStrings);
+                                               XmlElementNames.ContainsBodyStrings);
     }
 
     if (this.getContainsHeaderStrings().getSize() > 0) {
       this.getContainsHeaderStrings().writeToXml(writer,
-          XmlElementNames.ContainsHeaderStrings);
+                                                 XmlElementNames.ContainsHeaderStrings);
     }
 
     if (this.getContainsRecipientStrings().getSize() > 0) {
       this.getContainsRecipientStrings().writeToXml(writer,
-          XmlElementNames.ContainsRecipientStrings);
+                                                    XmlElementNames.ContainsRecipientStrings);
     }
 
     if (this.getContainsSenderStrings().getSize() > 0) {
       this.getContainsSenderStrings().writeToXml(writer,
-          XmlElementNames.ContainsSenderStrings);
+                                                 XmlElementNames.ContainsSenderStrings);
     }
 
     if (this.getContainsSubjectOrBodyStrings().getSize() > 0) {
       this.getContainsSubjectOrBodyStrings().writeToXml(writer,
-          XmlElementNames.ContainsSubjectOrBodyStrings);
+                                                        XmlElementNames.ContainsSubjectOrBodyStrings);
     }
 
     if (this.getContainsSubjectStrings().getSize() > 0) {
       this.getContainsSubjectStrings().writeToXml(writer,
-          XmlElementNames.ContainsSubjectStrings);
+                                                  XmlElementNames.ContainsSubjectStrings);
     }
 
     if (this.getFlaggedForAction() != null) {
@@ -861,12 +832,12 @@ public final class RulePredicates extends ComplexProperty {
 
     if (this.getFromAddresses().getCount() > 0) {
       this.getFromAddresses().writeToXml(writer,
-          XmlElementNames.FromAddresses);
+                                         XmlElementNames.FromAddresses);
     }
 
     if (this.getFromConnectedAccounts().getSize() > 0) {
       this.getFromConnectedAccounts().writeToXml(writer,
-          XmlElementNames.FromConnectedAccounts);
+                                                 XmlElementNames.FromConnectedAccounts);
     }
 
     if (this.getHasAttachments() != false) {
@@ -962,12 +933,12 @@ public final class RulePredicates extends ComplexProperty {
 
     if (this.getItemClasses().getSize() > 0) {
       this.getItemClasses().writeToXml(writer,
-          XmlElementNames.ItemClasses);
+                                       XmlElementNames.ItemClasses);
     }
 
     if (this.getMessageClassifications().getSize() > 0) {
       this.getMessageClassifications().writeToXml(writer,
-          XmlElementNames.MessageClassifications);
+                                                  XmlElementNames.MessageClassifications);
     }
 
     if (this.getNotSentToMe() != false) {
@@ -993,7 +964,7 @@ public final class RulePredicates extends ComplexProperty {
 
     if (this.getSentToAddresses().getCount() > 0) {
       this.getSentToAddresses().writeToXml(writer,
-          XmlElementNames.SentToAddresses);
+                                           XmlElementNames.SentToAddresses);
     }
 
     if (this.getSentToMe() != false) {
@@ -1017,15 +988,16 @@ public final class RulePredicates extends ComplexProperty {
           this.getSensitivity().values());
     }
 
-    if (this.getWithinDateRange().getStart() != null || this.getWithinDateRange().getEnd() != null) {
+    if (this.getWithinDateRange().getStart() != null
+        || this.getWithinDateRange().getEnd() != null) {
       this.getWithinDateRange().writeToXml(writer,
-          XmlElementNames.WithinDateRange);
+                                           XmlElementNames.WithinDateRange);
     }
 
     if (this.getWithinSizeRange().getMaximumSize() != null
         || this.getWithinSizeRange().getMinimumSize() != null) {
       this.getWithinSizeRange().writeToXml(writer,
-          XmlElementNames.WithinSizeRange);
+                                           XmlElementNames.WithinSizeRange);
     }
   }
 

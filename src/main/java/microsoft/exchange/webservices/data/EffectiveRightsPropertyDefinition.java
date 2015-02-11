@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -38,8 +39,8 @@ final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
    * @param version        the version
    */
   protected EffectiveRightsPropertyDefinition(String xmlElementName,
-      String uri, EnumSet<PropertyDefinitionFlags> flags,
-      ExchangeVersion version) {
+                                              String uri, EnumSet<PropertyDefinitionFlags> flags,
+                                              ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
 
   }
@@ -52,7 +53,7 @@ final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
    * @throws Exception the exception
    */
   protected void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+                                          PropertyBag propertyBag) throws Exception {
     EnumSet<EffectiveRights> value = EnumSet.noneOf(EffectiveRights.class);
     value.add(EffectiveRights.None);
 
@@ -121,7 +122,7 @@ final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
    * @param isUpdateOperation the is update operation
    */
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation) {
+                                         PropertyBag propertyBag, boolean isUpdateOperation) {
     // EffectiveRights is a read-only property, no need to implement this.
   }
 

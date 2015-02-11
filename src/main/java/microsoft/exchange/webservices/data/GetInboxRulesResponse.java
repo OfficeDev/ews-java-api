@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,20 +20,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Represents the response to a GetInboxRules operation.
  */
 final class GetInboxRulesResponse extends ServiceResponse {
+
   /**
    * Rule collection.
    */
   private RuleCollection ruleCollection;
 
   /**
-   * Initializes a new instance of the
-   * <see cref="GetInboxRulesResponse"/> class.
+   * Initializes a new instance of the <see cref="GetInboxRulesResponse"/> class.
    */
   protected GetInboxRulesResponse() {
     super();
@@ -51,13 +52,13 @@ final class GetInboxRulesResponse extends ServiceResponse {
     reader.read();
     this.ruleCollection.setOutlookRuleBlobExists(reader.
         readElementValue(Boolean.class,
-            XmlNamespace.Messages,
-            XmlElementNames.OutlookRuleBlobExists));
+                         XmlNamespace.Messages,
+                         XmlElementNames.OutlookRuleBlobExists));
     reader.read();
     if (reader.isStartElement(XmlNamespace.NotSpecified, XmlElementNames.InboxRules)) {
       this.ruleCollection.loadFromXml(reader,
-          XmlNamespace.NotSpecified,
-          XmlElementNames.InboxRules);
+                                      XmlNamespace.NotSpecified,
+                                      XmlElementNames.InboxRules);
     }
   }
 

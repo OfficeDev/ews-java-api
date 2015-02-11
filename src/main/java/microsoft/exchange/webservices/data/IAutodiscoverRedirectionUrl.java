@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Defines a delegate that is used by the AutodiscoverService to ask whether a
- * redirectionUrl can be used.
+ * Defines a delegate that is used by the AutodiscoverService to ask whether a redirectionUrl can be
+ * used.
  */
 public interface IAutodiscoverRedirectionUrl {
 
@@ -33,7 +34,8 @@ public interface IAutodiscoverRedirectionUrl {
    *
    * @param redirectionUrl the redirection url
    * @return true, if successful
-   * @throws microsoft.exchange.webservices.data.AutodiscoverLocalException the autodiscover local exception
+   * @throws microsoft.exchange.webservices.data.AutodiscoverLocalException the autodiscover local
+   *                                                                        exception
    */
   boolean autodiscoverRedirectionUrlValidationCallback(
       String redirectionUrl) throws AutodiscoverLocalException;

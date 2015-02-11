@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -34,16 +35,14 @@ public final class CreateRuleOperation extends RuleOperation {
   private Rule rule;
 
   /**
-   * Initializes a new instance of the
-   * <see cref="CreateRuleOperation"/> class.
+   * Initializes a new instance of the <see cref="CreateRuleOperation"/> class.
    */
   public CreateRuleOperation() {
     super();
   }
 
   /**
-   * Initializes a new instance of the
-   * <see cref="CreateRuleOperation"/> class.
+   * Initializes a new instance of the <see cref="CreateRuleOperation"/> class.
    *
    * @param rule The inbox rule to create.
    */
@@ -73,7 +72,6 @@ public final class CreateRuleOperation extends RuleOperation {
    * Writes elements to XML.
    *
    * @param writer The writer.
-   * @throws Exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
@@ -83,8 +81,6 @@ public final class CreateRuleOperation extends RuleOperation {
 
   /**
    * Validates this instance.
-   *
-   * @throws Exception
    */
   @Override
   protected void internalValidate() throws Exception {

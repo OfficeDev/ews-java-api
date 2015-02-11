@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -30,12 +31,24 @@ package microsoft.exchange.webservices.data;
  */
 abstract class MoveCopyRequest<TServiceObject extends ServiceObject,
     TResponse extends ServiceResponse> extends
-    MultiResponseServiceRequest<TResponse> {
+                                       MultiResponseServiceRequest<TResponse> {
 
   /**
    * The destination folder id.
    */
   private FolderId destinationFolderId;
+
+  /**
+   * Initializes a new instance of the MoveCopyRequest class.
+   *
+   * @param service           The Service
+   * @param errorHandlingMode Indicates how errors should be handled.
+   */
+  protected MoveCopyRequest(ExchangeService service,
+                            ServiceErrorHandling errorHandlingMode)
+      throws Exception {
+    super(service, errorHandlingMode);
+  }
 
   /**
    * Validates request.
@@ -45,22 +58,9 @@ abstract class MoveCopyRequest<TServiceObject extends ServiceObject,
   @Override
   protected void validate() throws Exception {
     EwsUtilities.validateParam(this.getDestinationFolderId(),
-        "DestinationFolderId");
+                               "DestinationFolderId");
     this.getDestinationFolderId().validate(
         this.getService().getRequestedServerVersion());
-  }
-
-  /**
-   * Initializes a new instance of the MoveCopyRequest class.
-   *
-   * @param service           The Service
-   * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
-   */
-  protected MoveCopyRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
-      throws Exception {
-    super(service, errorHandlingMode);
   }
 
   /**
@@ -82,7 +82,7 @@ abstract class MoveCopyRequest<TServiceObject extends ServiceObject,
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeStartElement(XmlNamespace.Messages,
-        XmlElementNames.ToFolderId);
+                             XmlElementNames.ToFolderId);
     this.getDestinationFolderId().writeToXml(writer);
     writer.writeEndElement();
 

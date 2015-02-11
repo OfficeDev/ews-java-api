@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -28,8 +29,7 @@ package microsoft.exchange.webservices.data;
 public final class ResponseMessage extends ResponseObject<EmailMessage> {
 
   /**
-   * Represents the base class for e-mail related responses (Reply, Reply all
-   * and Forward).
+   * Represents the base class for e-mail related responses (Reply, Reply all and Forward).
    */
   private ResponseMessageType responseType;
 
@@ -59,8 +59,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -68,14 +67,12 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
   }
 
   /**
-   * This methods lets subclasses of ServiceObject override the default
-   * mechanism by which the XML element name associated with their type is
-   * retrieved.
+   * This methods lets subclasses of ServiceObject override the default mechanism by which the XML
+   * element name associated with their type is retrieved.
    *
-   * @return The XML element name associated with this type. If this method
-   * returns null or empty, the XML element name associated with this
-   * type is determined by the EwsObjectDefinition attribute that
-   * decorates the type,if present.
+   * @return The XML element name associated with this type. If this method returns null or empty,
+   * the XML element name associated with this type is determined by the EwsObjectDefinition
+   * attribute that decorates the type,if present.
    */
   protected String getXmlElementNameOverride() {
 
@@ -87,9 +84,9 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
       return XmlElementNames.ForwardItem;
     } else {
       EwsUtilities.EwsAssert(false,
-          "ResponseMessage.GetXmlElementNameOverride",
-          "An unexpected value for responseType " +
-              "could not be handled.");
+                             "ResponseMessage.GetXmlElementNameOverride",
+                             "An unexpected value for responseType " +
+                             "could not be handled.");
       return null; // Because the compiler wants it
     }
 
@@ -123,7 +120,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
    */
   public void setBody(MessageBody value) throws Exception {
     this.getPropertyBag().setObjectFromPropertyDefinition(ItemSchema.Body,
-        value);
+                                                          value);
   }
 
   /**
@@ -185,8 +182,8 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
   }
 
   /**
-   * Gets the body prefix of this response. The body prefix will be
-   * prepended to the original message's body when the response is created.
+   * Gets the body prefix of this response. The body prefix will be prepended to the original
+   * message's body when the response is created.
    *
    * @return the body prefix
    * @throws Exception the exception

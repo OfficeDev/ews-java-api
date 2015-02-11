@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -27,7 +28,7 @@ package microsoft.exchange.webservices.data;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class EmailAddressDictionary extends
-    DictionaryProperty<EmailAddressKey, EmailAddressEntry> {
+                                          DictionaryProperty<EmailAddressKey, EmailAddressEntry> {
 
   /**
    * Gets the field URI.
@@ -88,11 +89,11 @@ public final class EmailAddressDictionary extends
    *
    * @param key      the key
    * @param outparam the outparam
-   * @return true if the Dictionary contains an e-mail address associated with
-   * the specified key; otherwise, false.
+   * @return true if the Dictionary contains an e-mail address associated with the specified key;
+   * otherwise, false.
    */
   public boolean tryGetValue(EmailAddressKey key,
-      OutParam<EmailAddress> outparam) {
+                             OutParam<EmailAddress> outparam) {
     EmailAddressEntry entry = null;
 
     if (this.getEntries().containsKey(key)) {

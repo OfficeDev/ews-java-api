@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -33,15 +34,13 @@ public enum RuleErrorCode {
   ADOperationFailure,
 
   /**
-   * The e-mail account specified in the
-   * FromConnectedAccounts predicate was not found.
+   * The e-mail account specified in the FromConnectedAccounts predicate was not found.
    */
   ConnectedAccountNotFound,
 
   /**
-   * The Rule object in a CreateInboxRuleOperation has an Id. The Ids of new
-   * rules are generated server side and
-   * should not be provided by the client.
+   * The Rule object in a CreateInboxRuleOperation has an Id. The Ids of new rules are generated
+   * server side and should not be provided by the client.
    */
   CreateWithRuleId,
 
@@ -56,8 +55,7 @@ public enum RuleErrorCode {
   DuplicatedPriority,
 
   /**
-   * There are multiple operations against the same rule.
-   * Only one operation per rule is allowed.
+   * There are multiple operations against the same rule. Only one operation per rule is allowed.
    */
   DuplicatedOperationOnTheSameRule,
 

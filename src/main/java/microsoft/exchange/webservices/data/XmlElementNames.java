@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -4345,7 +4346,6 @@ class XmlElementNames {
    */
   public static final String HeartbeatFrequency = "HeartbeatFrequency";
 
-
   // SyncFolderItems
   /**
    * The Constant SyncFolderItems.
@@ -4706,7 +4706,9 @@ class XmlElementNames {
   /**
    * The Constant GetPasswordExpirationDateResponse.
    */
-  public static final String GetPasswordExpirationDateResponse = "GetPasswordExpirationDateResponse";
+  public static final String
+      GetPasswordExpirationDateResponse =
+      "GetPasswordExpirationDateResponse";
 
   // SOAP element names
 
@@ -4775,7 +4777,6 @@ class XmlElementNames {
    */
   public static final String EwsErrorCodeElementName =
       "ErrorCode"; // Generated
-
 
   // by
   // Availability

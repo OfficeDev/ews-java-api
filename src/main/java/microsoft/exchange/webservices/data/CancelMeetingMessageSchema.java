@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -36,7 +37,7 @@ class CancelMeetingMessageSchema extends ServiceObjectSchema {
       new ComplexPropertyDefinition<MessageBody>(
           MessageBody.class,
           XmlElementNames.NewBodyContent, EnumSet
-          .of(PropertyDefinitionFlags.CanSet),
+              .of(PropertyDefinitionFlags.CanSet),
           ExchangeVersion.Exchange2007_SP1,
           new ICreateComplexPropertyDelegate<MessageBody>() {
             public MessageBody createComplexProperty() {
@@ -51,8 +52,8 @@ class CancelMeetingMessageSchema extends ServiceObjectSchema {
       new CancelMeetingMessageSchema();
 
   /**
-   * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
-   * SCHEMA ORDER (i.e. the same order as they are defined in types.xsd)
+   * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
+   * same order as they are defined in types.xsd)
    */
   @Override
   protected void registerProperties() {

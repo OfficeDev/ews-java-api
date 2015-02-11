@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -85,7 +86,7 @@ public final class WorkingHours extends ComplexProperty {
         reader.read();
 
         if (reader.isStartElement(XmlNamespace.Types,
-            XmlElementNames.WorkingPeriod)) {
+                                  XmlElementNames.WorkingPeriod)) {
           WorkingPeriod workingPeriod = new WorkingPeriod();
 
           workingPeriod.loadFromXml(reader, reader.getLocalName());
@@ -93,7 +94,7 @@ public final class WorkingHours extends ComplexProperty {
           workingPeriods.add(workingPeriod);
         }
       } while (!reader.isEndElement(XmlNamespace.Types,
-          XmlElementNames.WorkingPeriodArray));
+                                    XmlElementNames.WorkingPeriodArray));
 
       // Availability supports a structure that can technically represent
       // different working

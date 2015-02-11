@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,18 +20,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Represents a UpdateUserConfiguration request.
  */
 public class UpdateUserConfigurationRequest extends
-    MultiResponseServiceRequest<ServiceResponse> {
+                                            MultiResponseServiceRequest<ServiceResponse> {
 
   /**
    * The user configuration.
    */
   protected UserConfiguration userConfiguration;
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param service the service
+   */
+  protected UpdateUserConfigurationRequest(ExchangeService service)
+      throws Exception {
+    super(service, ServiceErrorHandling.ThrowOnError);
+  }
 
   /**
    * Validate request.
@@ -54,7 +65,7 @@ public class UpdateUserConfigurationRequest extends
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new ServiceResponse();
   }
 
@@ -119,23 +130,11 @@ public class UpdateUserConfigurationRequest extends
       throws Exception {
     // Write UserConfiguation element
     this.userConfiguration.writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.UserConfiguration);
+                                      XmlElementNames.UserConfiguration);
   }
 
   /**
-   * Initializes a new instance of the class.
-   *
-   * @param service the service
-   * @throws Exception
-   */
-  protected UpdateUserConfigurationRequest(ExchangeService service)
-      throws Exception {
-    super(service, ServiceErrorHandling.ThrowOnError);
-  }
-
-  /**
-   * Gets the user configuration. <value>The user
-   * configuration.</value>
+   * Gets the user configuration. <value>The user configuration.</value>
    *
    * @return the user configuration
    */

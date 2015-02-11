@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.Collection;
@@ -65,8 +66,8 @@ public final class GetUserAvailabilityResults {
   }
 
   /**
-   * Gets a collection of AttendeeAvailability objects representing
-   * availability information for each of the specified attendees.
+   * Gets a collection of AttendeeAvailability objects representing availability information for
+   * each of the specified attendees.
    *
    * @return the attendees availability
    */
@@ -86,11 +87,11 @@ public final class GetUserAvailabilityResults {
   }
 
   /**
-   * Gets a collection of suggested meeting times for the specified time
-   * period.
+   * Gets a collection of suggested meeting times for the specified time period.
    *
    * @return the suggestions
-   * @throws microsoft.exchange.webservices.data.ServiceResponseException the service response exception
+   * @throws microsoft.exchange.webservices.data.ServiceResponseException the service response
+   *                                                                      exception
    */
   public Collection<Suggestion> getSuggestions()
       throws ServiceResponseException {

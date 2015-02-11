@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,25 +20,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Represents an appointment or a meeting. Properties available on appointments
- * are defined in the AppointmentSchema class.
+ * Represents an appointment or a meeting. Properties available on appointments are defined in the
+ * AppointmentSchema class.
  */
 @Attachable
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.CalendarItem)
 public class Appointment extends Item implements ICalendarActionProvider {
 
   /**
-   * Initializes an unsaved local instance of Appointment". To bind to an
-   * existing appointment, use Appointment.Bind() instead.
+   * Initializes an unsaved local instance of Appointment". To bind to an existing appointment, use
+   * Appointment.Bind() instead.
    *
-   * @param service The ExchangeService instance to which this appointmtnt is
-   *                bound.
+   * @param service The ExchangeService instance to which this appointmtnt is bound.
    * @throws Exception the exception
    */
   public Appointment(ExchangeService service) throws Exception {
@@ -61,29 +61,27 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Binds to an existing appointment and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing appointment and loads the specified set of properties. Calling this method
+   * results in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
    * @param propertySet the property set
-   * @return An Appointment instance representing the appointment
-   * corresponding to the specified Id.
+   * @return An Appointment instance representing the appointment corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Appointment bind(ExchangeService service, ItemId id,
-      PropertySet propertySet) throws Exception {
+                                 PropertySet propertySet) throws Exception {
     return service.bindToItem(Appointment.class, id, propertySet);
   }
 
   /**
-   * Binds to an existing appointment and loads its first class properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing appointment and loads its first class properties. Calling this method
+   * results in a call to EWS.
    *
    * @param service the service
    * @param id      the id
-   * @return An Appointment instance representing the appointment
-   * corresponding to the specified Id.
+   * @return An Appointment instance representing the appointment corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Appointment bind(ExchangeService service, ItemId id)
@@ -92,71 +90,69 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Binds to an existing appointment and loads its first class properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing appointment and loads its first class properties. Calling this method
+   * results in a call to EWS.
    *
    * @param service           the service
    * @param recurringMasterId the recurring master id
    * @param occurenceIndex    the occurence index
-   * @return An Appointment instance representing the appointment
-   * corresponding to the specified Id.
+   * @return An Appointment instance representing the appointment corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Appointment bindToOccurrence(ExchangeService service,
-      ItemId recurringMasterId, int occurenceIndex) throws Exception {
+                                             ItemId recurringMasterId, int occurenceIndex)
+      throws Exception {
     return Appointment.bindToOccurrence(service, recurringMasterId,
-        occurenceIndex, PropertySet.FirstClassProperties);
+                                        occurenceIndex, PropertySet.FirstClassProperties);
   }
 
   /**
-   * Binds to an existing appointment and loads its first class properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing appointment and loads its first class properties. Calling this method
+   * results in a call to EWS.
    *
    * @param service           the service
    * @param recurringMasterId the recurring master id
    * @param occurenceIndex    the occurence index
    * @param propertySet       the property set
-   * @return An Appointment instance representing the appointment
-   * corresponding to the specified Id.
+   * @return An Appointment instance representing the appointment corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Appointment bindToOccurrence(ExchangeService service,
-      ItemId recurringMasterId, int occurenceIndex,
-      PropertySet propertySet) throws Exception {
+                                             ItemId recurringMasterId, int occurenceIndex,
+                                             PropertySet propertySet) throws Exception {
     AppointmentOccurrenceId occurenceId = new AppointmentOccurrenceId(
         recurringMasterId.getUniqueId(), occurenceIndex);
     return Appointment.bind(service, occurenceId, propertySet);
   }
 
   /**
-   * Binds to the master appointment of a recurring series and loads its first
-   * class properties. Calling this method results in a call to EWS.
+   * Binds to the master appointment of a recurring series and loads its first class properties.
+   * Calling this method results in a call to EWS.
    *
    * @param service      the service
    * @param occurrenceId the occurrence id
-   * @return An Appointment instance representing the appointment
-   * corresponding to the specified Id.
+   * @return An Appointment instance representing the appointment corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Appointment bindToRecurringMaster(ExchangeService service,
-      ItemId occurrenceId) throws Exception {
+                                                  ItemId occurrenceId) throws Exception {
     return Appointment.bindToRecurringMaster(service, occurrenceId,
-        PropertySet.FirstClassProperties);
+                                             PropertySet.FirstClassProperties);
   }
 
   /**
-   * Binds to the master appointment of a recurring series and loads its first
-   * class properties. Calling this method results in a call to EWS.
+   * Binds to the master appointment of a recurring series and loads its first class properties.
+   * Calling this method results in a call to EWS.
    *
    * @param service      the service
    * @param occurrenceId the occurrence id
    * @param propertySet  the property set
-   * @return An Appointment instance representing the appointment
-   * corresponding to the specified Id.
+   * @return An Appointment instance representing the appointment corresponding to the specified Id.
    * @throws Exception the exception
    */
   public static Appointment bindToRecurringMaster(ExchangeService service,
-      ItemId occurrenceId, PropertySet propertySet) throws Exception {
+                                                  ItemId occurrenceId, PropertySet propertySet)
+      throws Exception {
     RecurringAppointmentMasterId recurringMasterId =
         new RecurringAppointmentMasterId(
             occurrenceId.getUniqueId());
@@ -176,8 +172,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -185,11 +180,10 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Determines whether properties defined with
-   * ScopedDateTimePropertyDefinition require custom time zone scoping.
+   * Determines whether properties defined with ScopedDateTimePropertyDefinition require custom time
+   * zone scoping.
    *
-   * @return if this item type requires custom scoping for scoped date/time
-   * properties; otherwise, .
+   * @return if this item type requires custom scoping for scoped date/time properties; otherwise, .
    */
   @Override
   protected boolean getIsCustomDateTimeScopingRequired() {
@@ -198,8 +192,6 @@ public class Appointment extends Item implements ICalendarActionProvider {
 
   /**
    * Validates this instance.
-   *
-   * @throws Exception
    */
   @Override
   protected void validate() throws Exception {
@@ -233,7 +225,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
         //  If the property isn't in the property bag, throw....
         if (!this.getPropertyBag().contains(AppointmentSchema.StartTimeZone)) {
           throw new ServiceLocalException(Strings.
-              StartTimeZoneRequired);
+                                              StartTimeZoneRequired);
           //getStartTimeZoneRequired());
         }
 
@@ -245,25 +237,24 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Creates a reply response to the organizer and/or attendees of the
-   * meeting.
+   * Creates a reply response to the organizer and/or attendees of the meeting.
    *
    * @param replyAll the reply all
-   * @return A ResponseMessage representing the reply response that can
-   * subsequently be modified and sent.
+   * @return A ResponseMessage representing the reply response that can subsequently be modified and
+   * sent.
    * @throws Exception the exception
    */
   public ResponseMessage createReply(boolean replyAll) throws Exception {
     this.throwIfThisIsNew();
 
     return new ResponseMessage(this,
-        replyAll ? ResponseMessageType.ReplyAll :
-            ResponseMessageType.Reply);
+                               replyAll ? ResponseMessageType.ReplyAll :
+                               ResponseMessageType.Reply);
   }
 
   /**
-   * Replies to the organizer and/or the attendees of the meeting. Calling
-   * this method results in a call to EWS.
+   * Replies to the organizer and/or the attendees of the meeting. Calling this method results in a
+   * call to EWS.
    *
    * @param bodyPrefix the body prefix
    * @param replyAll   the reply all
@@ -280,8 +271,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
   /**
    * Creates a forward message from this appointment.
    *
-   * @return A ResponseMessage representing the forward response that can
-   * subsequently be modified and sent.
+   * @return A ResponseMessage representing the forward response that can subsequently be modified
+   * and sent.
    * @throws Exception the exception
    */
   public ResponseMessage createForward() throws Exception {
@@ -316,7 +307,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws Exception the exception
    */
   public void forward(MessageBody bodyPrefix,
-      Iterable<EmailAddress> toRecipients) throws Exception {
+                      Iterable<EmailAddress> toRecipients) throws Exception {
     ResponseMessage responseMessage = this.createForward();
 
     responseMessage.setBodyPrefix(bodyPrefix);
@@ -327,40 +318,37 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Saves this appointment in the specified folder. Calling this method
-   * results in at least one call to EWS. Mutliple calls to EWS might be made
-   * if attachments have been added.
+   * Saves this appointment in the specified folder. Calling this method results in at least one
+   * call to EWS. Mutliple calls to EWS might be made if attachments have been added.
    *
    * @param destinationFolderName the destination folder name
    * @param sendInvitationsMode   the send invitations mode
    * @throws Exception the exception
    */
   public void save(WellKnownFolderName destinationFolderName,
-      SendInvitationsMode sendInvitationsMode) throws Exception {
+                   SendInvitationsMode sendInvitationsMode) throws Exception {
     this.internalCreate(new FolderId(destinationFolderName), null,
-        sendInvitationsMode);
+                        sendInvitationsMode);
   }
 
   /**
-   * Saves this appointment in the specified folder. Calling this method
-   * results in at least one call to EWS. Mutliple calls to EWS might be made
-   * if attachments have been added.
+   * Saves this appointment in the specified folder. Calling this method results in at least one
+   * call to EWS. Mutliple calls to EWS might be made if attachments have been added.
    *
    * @param destinationFolderId the destination folder id
    * @param sendInvitationsMode the send invitations mode
    * @throws Exception the exception
    */
   public void save(FolderId destinationFolderId,
-      SendInvitationsMode sendInvitationsMode) throws Exception {
+                   SendInvitationsMode sendInvitationsMode) throws Exception {
     EwsUtilities.validateParam(destinationFolderId, "destinationFolderId");
 
     this.internalCreate(destinationFolderId, null, sendInvitationsMode);
   }
 
   /**
-   * Saves this appointment in the Calendar folder. Calling this method
-   * results in at least one call to EWS. Mutliple calls to EWS might be made
-   * if attachments have been added.
+   * Saves this appointment in the Calendar folder. Calling this method results in at least one call
+   * to EWS. Mutliple calls to EWS might be made if attachments have been added.
    *
    * @param sendInvitationsMode the send invitations mode
    * @throws Exception the exception
@@ -370,9 +358,9 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Applies the local changes that have been made to this appointment.
-   * Calling this method results in at least one call to EWS. Mutliple calls
-   * to EWS might be made if attachments have been added or removed.
+   * Applies the local changes that have been made to this appointment. Calling this method results
+   * in at least one call to EWS. Mutliple calls to EWS might be made if attachments have been added
+   * or removed.
    *
    * @param conflictResolutionMode             the conflict resolution mode
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
@@ -384,7 +372,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
           sendInvitationsOrCancellationsMode)
       throws Exception {
     this.internalUpdate(null, conflictResolutionMode, null,
-        sendInvitationsOrCancellationsMode);
+                        sendInvitationsOrCancellationsMode);
   }
 
   /**
@@ -395,17 +383,15 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws Exception the exception
    */
   public void delete(DeleteMode deleteMode,
-      SendCancellationsMode sendCancellationsMode) throws Exception {
+                     SendCancellationsMode sendCancellationsMode) throws Exception {
     this.internalDelete(deleteMode, sendCancellationsMode, null);
   }
 
   /**
-   * Creates a local meeting acceptance message that can be customized and
-   * sent.
+   * Creates a local meeting acceptance message that can be customized and sent.
    *
    * @param tentative the tentative
-   * @return An AcceptMeetingInvitationMessage representing the meeting
-   * acceptance message.
+   * @return An AcceptMeetingInvitationMessage representing the meeting acceptance message.
    * @throws Exception the exception
    */
   public AcceptMeetingInvitationMessage createAcceptMessage(boolean tentative)
@@ -414,11 +400,9 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Creates a local meeting acceptance message that can be customized and
-   * sent.
+   * Creates a local meeting acceptance message that can be customized and sent.
    *
-   * @return A CancelMeetingMessage representing the meeting cancellation
-   * message.
+   * @return A CancelMeetingMessage representing the meeting cancellation message.
    * @throws Exception the exception
    */
   public CancelMeetingMessage createCancelMeetingMessage() throws Exception {
@@ -426,11 +410,9 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Creates a local meeting declination message that can be customized and
-   * sent.
+   * Creates a local meeting declination message that can be customized and sent.
    *
-   * @return A DeclineMeetingInvitation representing the meeting declination
-   * message.
+   * @return A DeclineMeetingInvitation representing the meeting declination message.
    * @throws Exception the exception
    */
   public DeclineMeetingInvitationMessage createDeclineMessage()
@@ -442,8 +424,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * Accepts the meeting. Calling this method results in a call to EWS.
    *
    * @param sendResponse the send response
-   * @return A CalendarActionResults object containing the various items that
-   * were created or modified as a results of this operation.
+   * @return A CalendarActionResults object containing the various items that were created or
+   * modified as a results of this operation.
    * @throws Exception the exception
    */
   public CalendarActionResults accept(boolean sendResponse) throws Exception {
@@ -451,12 +433,11 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Tentatively accepts the meeting. Calling this method results in a call to
-   * EWS.
+   * Tentatively accepts the meeting. Calling this method results in a call to EWS.
    *
    * @param sendResponse the send response
-   * @return A CalendarActionResults object containing the various items that
-   * were created or modified as a results of this operation.
+   * @return A CalendarActionResults object containing the various items that were created or
+   * modified as a results of this operation.
    * @throws Exception the exception
    */
   public CalendarActionResults acceptTentatively(boolean sendResponse)
@@ -469,12 +450,12 @@ public class Appointment extends Item implements ICalendarActionProvider {
    *
    * @param tentative    the tentative
    * @param sendResponse the send response
-   * @return A CalendarActionResults object containing the various items that
-   * were created or modified as a results of this operation.
+   * @return A CalendarActionResults object containing the various items that were created or
+   * modified as a results of this operation.
    * @throws Exception the exception
    */
   protected CalendarActionResults internalAccept(boolean tentative,
-      boolean sendResponse) throws Exception {
+                                                 boolean sendResponse) throws Exception {
     AcceptMeetingInvitationMessage accept = this
         .createAcceptMessage(tentative);
 
@@ -486,11 +467,11 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Cancels the meeting and sends cancellation messages to all attendees.
-   * Calling this method results in a call to EWS.
+   * Cancels the meeting and sends cancellation messages to all attendees. Calling this method
+   * results in a call to EWS.
    *
-   * @return A CalendarActionResults object containing the various items that
-   * were created or modified as a results of this operation.
+   * @return A CalendarActionResults object containing the various items that were created or
+   * modified as a results of this operation.
    * @throws Exception the exception
    */
   public CalendarActionResults cancelMeeting() throws Exception {
@@ -498,12 +479,12 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Cancels the meeting and sends cancellation messages to all attendees.
-   * Calling this method results in a call to EWS.
+   * Cancels the meeting and sends cancellation messages to all attendees. Calling this method
+   * results in a call to EWS.
    *
    * @param cancellationMessageText the cancellation message text
-   * @return A CalendarActionResults object containing the various items that
-   * were created or modified as a results of this operation.
+   * @return A CalendarActionResults object containing the various items that were created or
+   * modified as a results of this operation.
    * @throws Exception the exception
    */
   public CalendarActionResults cancelMeeting(String cancellationMessageText)
@@ -514,16 +495,15 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Declines the meeting invitation. Calling this method results in a call to
-   * EWS.
+   * Declines the meeting invitation. Calling this method results in a call to EWS.
    *
    * @param sendResponse the send response
-   * @return A CalendarActionResults object containing the various items that
-   * were created or modified as a results of this operation.
+   * @return A CalendarActionResults object containing the various items that were created or
+   * modified as a results of this operation.
    * @throws Exception the exception
    */
   public CalendarActionResults decline(boolean
-      sendResponse) throws Exception {
+                                           sendResponse) throws Exception {
     DeclineMeetingInvitationMessage decline = this.createDeclineMessage();
 
     if (sendResponse) {
@@ -536,8 +516,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   /**
    * Gets the default setting for sending cancellations on Delete.
    *
-   * @return If Delete() is called on Appointment, we want to send
-   * cancellations and save a copy.
+   * @return If Delete() is called on Appointment, we want to send cancellations and save a copy.
    */
   @Override
   protected SendCancellationsMode getDefaultSendCancellationsMode() {
@@ -623,8 +602,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets a value indicating whether this appointment is an all day
-   * event.
+   * Gets a value indicating whether this appointment is an all day event.
    *
    * @return the checks if is all day event
    * @throws ServiceLocalException the service local exception
@@ -646,8 +624,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets  a value indicating the free/busy status of the owner of this
-   * appointment.
+   * Gets  a value indicating the free/busy status of the owner of this appointment.
    *
    * @return the legacy free busy status
    * @throws ServiceLocalException the service local exception
@@ -694,10 +671,9 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets a text indicating when this appointment occurs. The text returned by
-   * When is localized using the Exchange Server culture or using the culture
-   * specified in the PreferredCulture property of the ExchangeService object
-   * this appointment is bound to.
+   * Gets a text indicating when this appointment occurs. The text returned by When is localized
+   * using the Exchange Server culture or using the culture specified in the PreferredCulture
+   * property of the ExchangeService object this appointment is bound to.
    *
    * @return the when
    * @throws ServiceLocalException the service local exception
@@ -741,8 +717,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets a value indicating whether the meeting request has already been
-   * sent.
+   * Gets a value indicating whether the meeting request has already been sent.
    *
    * @return the meeting request was sent
    * @throws ServiceLocalException the service local exception
@@ -753,8 +728,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets  a value indicating whether responses are requested when
-   * invitations are sent for this meeting.
+   * Gets  a value indicating whether responses are requested when invitations are sent for this
+   * meeting.
    *
    * @return the checks if is response requested
    * @throws ServiceLocalException the service local exception
@@ -788,8 +763,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets a value indicating what was the last response of the user that
-   * loaded this meeting.
+   * Gets a value indicating what was the last response of the user that loaded this meeting.
    *
    * @return the my response type
    * @throws ServiceLocalException the service local exception
@@ -802,9 +776,9 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets the organizer of this meeting. The Organizer property is read-only
-   * and is only relevant for attendees. The organizer of a meeting is
-   * automatically set to the user that created the meeting.
+   * Gets the organizer of this meeting. The Organizer property is read-only and is only relevant
+   * for attendees. The organizer of a meeting is automatically set to the user that created the
+   * meeting.
    *
    * @return the organizer
    * @throws ServiceLocalException the service local exception
@@ -852,8 +826,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets the number of calendar entries that conflict with this appointment
-   * in the authenticated user's calendar.
+   * Gets the number of calendar entries that conflict with this appointment in the authenticated
+   * user's calendar.
    *
    * @return the conflicting meeting count
    * @throws ServiceLocalException the service local exception
@@ -864,8 +838,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets the number of calendar entries that are adjacent to this appointment
-   * in the authenticated user's calendar.
+   * Gets the number of calendar entries that are adjacent to this appointment in the authenticated
+   * user's calendar.
    *
    * @return the adjacent meeting count
    * @throws ServiceLocalException the service local exception
@@ -876,8 +850,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets a list of meetings that conflict with this appointment in the
-   * authenticated user's calendar.
+   * Gets a list of meetings that conflict with this appointment in the authenticated user's
+   * calendar.
    *
    * @return the conflicting meetings
    * @throws ServiceLocalException the service local exception
@@ -890,8 +864,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets a list of meetings that conflict with this appointment in the
-   * authenticated user's calendar.
+   * Gets a list of meetings that conflict with this appointment in the authenticated user's
+   * calendar.
    *
    * @return the adjacent meetings
    * @throws ServiceLocalException the service local exception
@@ -959,9 +933,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets the recurrence pattern for this appointment. Available
-   * recurrence pattern classes include Recurrence.DailyPattern,
-   * Recurrence.MonthlyPattern and Recurrence.YearlyPattern.
+   * Gets the recurrence pattern for this appointment. Available recurrence pattern classes include
+   * Recurrence.DailyPattern, Recurrence.MonthlyPattern and Recurrence.YearlyPattern.
    *
    * @return the recurrence
    * @throws ServiceLocalException the service local exception
@@ -1086,8 +1059,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets  the type of conferencing that will be used during the
-   * meeting.
+   * Gets  the type of conferencing that will be used during the meeting.
    *
    * @return the conference type
    * @throws ServiceLocalException the service local exception
@@ -1109,8 +1081,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets a value indicating whether new time proposals are allowed
-   * for attendees of this meeting.
+   * Gets a value indicating whether new time proposals are allowed for attendees of this meeting.
    *
    * @return the allow new time proposal
    * @throws ServiceLocalException the service local exception
@@ -1154,8 +1125,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets  the URL of the meeting workspace. A meeting workspace is a
-   * shared Web site for planning meetings and tracking results.
+   * Gets  the URL of the meeting workspace. A meeting workspace is a shared Web site for planning
+   * meetings and tracking results.
    *
    * @return the meeting workspace url
    * @throws ServiceLocalException the service local exception
@@ -1213,7 +1184,6 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * Sets the ICalendar Uid.
    *
    * @param value the i cal uid
-   * @throws Exception
    *///this.PropertyBag[AppointmentSchema.ICalUid] = value;
   public void setICalUid(String value) throws Exception {
     this.getPropertyBag().setObjectFromPropertyDefinition(

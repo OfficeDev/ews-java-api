@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.List;
@@ -28,7 +29,7 @@ import java.util.List;
  * Represents the response to an individual folder creation operation.
  */
 final class CreateFolderResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                         IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The folder.
@@ -54,12 +55,12 @@ final class CreateFolderResponse extends ServiceResponse implements
    * @throws Exception the exception
    */
   private Folder getObjectInstance(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                   String xmlElementName) throws Exception {
     if (this.folder != null) {
       return this.folder;
     } else {
       return EwsUtilities.createEwsObjectFromXmlElementName(Folder.class,
-          service, xmlElementName);
+                                                            service, xmlElementName);
     }
   }
 
@@ -92,7 +93,7 @@ final class CreateFolderResponse extends ServiceResponse implements
    */
   @Override
   public ServiceObject getObjectInstanceDelegate(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                                 String xmlElementName) throws Exception {
     return this.getObjectInstance(service, xmlElementName);
   }
 

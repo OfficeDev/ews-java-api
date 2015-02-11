@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -76,7 +77,7 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
    *             the exception
    */
         /*
-	 * protected LegacyAvailabilityTimeZoneTime(TimeZone.TransitionTime
+         * protected LegacyAvailabilityTimeZoneTime(TimeZone.TransitionTime
 	 * transitionTime, TimeSpan delta) { this(); this.delta = delta;
 	 * 
 	 * if (transitionTime.IsFixedDateRule) { // TimeZoneInfo doesn't support an
@@ -97,7 +98,7 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
    * TimeZoneInfo.TransitionTime
    *
    */
-	/*
+        /*
 	 * protected TimeZone.TransitionTime toTransitionTime() { if (this.year ==
 	 * 0) { return TimeZone.TransitionTime.createFloatingDateRule( new Date(
 	 * Date.MinValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day,
@@ -120,7 +121,7 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.Bias)) {
       this.delta = new TimeSpan((long)
-          reader.readElementValue(Integer.class) * 60 * 1000);
+                                    reader.readElementValue(Integer.class) * 60 * 1000);
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.Time)) {
       this.timeOfDay = TimeSpan.parse(reader.readElementValue());
@@ -153,27 +154,27 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Bias,
-        (int) this.delta.getMinutes());
+                             (int) this.delta.getMinutes());
 
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Time,
-        EwsUtilities.timeSpanToXSTime(this.timeOfDay));
+                             EwsUtilities.timeSpanToXSTime(this.timeOfDay));
 
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.DayOrder,
-        this.dayOrder);
+                             this.dayOrder);
 
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Month, this.month);
 
     // Only write DayOfWeek if this is a recurring time change
     if (this.getYear() == 0) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.DayOfWeek, this.dayOfTheWeek);
+                               XmlElementNames.DayOfWeek, this.dayOfTheWeek);
     }
 
     // Only emit year if it's non zero, otherwise AS returns
     // "Request is invalid"
     if (this.getYear() != 0) {
       writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Year,
-          this.getYear());
+                               this.getYear());
     }
   }
 
@@ -224,8 +225,8 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
   }
 
   /**
-   * Gets  a value that represents: - The day of the month when Year is
-   * non zero, - The index of the week in the month if Year is equal to zero.
+   * Gets  a value that represents: - The day of the month when Year is non zero, - The index of the
+   * week in the month if Year is equal to zero.
    *
    * @return the day order
    */
@@ -279,9 +280,8 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
   }
 
   /**
-   * Gets  the year. If Year is 0, the time change occurs every year
-   * according to a recurring pattern; otherwise, the time change occurs at
-   * the date specified by Day, Month, Year.
+   * Gets  the year. If Year is 0, the time change occurs every year according to a recurring
+   * pattern; otherwise, the time change occurs at the date specified by Day, Month, Year.
    *
    * @return the year
    */

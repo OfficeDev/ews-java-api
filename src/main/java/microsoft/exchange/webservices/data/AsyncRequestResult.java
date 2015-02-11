@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,9 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class AsyncRequestResult implements IAsyncResult {
 
@@ -39,8 +44,8 @@ public class AsyncRequestResult implements IAsyncResult {
 
 
   public AsyncRequestResult(ServiceRequestBase serviceRequest,
-      HttpWebRequest webRequest, Future<?> task,
-      Object asyncState) throws Exception {
+                            HttpWebRequest webRequest, Future<?> task,
+                            Object asyncState) throws Exception {
     EwsUtilities.validateParam(serviceRequest, "serviceRequest");
     EwsUtilities.validateParam(webRequest, "webRequest");
     EwsUtilities.validateParam(task, "task");
@@ -49,26 +54,6 @@ public class AsyncRequestResult implements IAsyncResult {
     this.asyncState = asyncState;
     this.task = task;
 
-  }
-
-  public void setServiceRequestBase(ServiceRequestBase serviceRequest) {
-    this.serviceRequest = serviceRequest;
-  }
-
-  private ServiceRequestBase getServiceRequest() {
-    return this.serviceRequest;
-  }
-
-  public void setHttpWebRequest(HttpWebRequest webRequest) {
-    this.webRequest = webRequest;
-  }
-
-  public HttpWebRequest getHttpWebRequest() {
-    return this.webRequest;
-  }
-
-  public FutureTask<?> getTask() {
-    return (FutureTask<?>) this.task;
   }
 
   public static <T extends SimpleServiceRequestBase> T extractServiceRequest(
@@ -82,29 +67,48 @@ public class AsyncRequestResult implements IAsyncResult {
        * all kinds of invalid IAsyncResult parameters.
        */
       throw new ArgumentException(Strings.InvalidAsyncResult,
-          "asyncResult");
+                                  "asyncResult");
     }
     // Validate the serivce request.
     if (asyncRequestResult.serviceRequest == null) {
       throw new ArgumentException(Strings.InvalidAsyncResult,
-          "asyncResult");
+                                  "asyncResult");
     }
     // Validate the service object
     if (!asyncRequestResult.serviceRequest.getService().equals(
         exchangeService)) {
       throw new ArgumentException(Strings.InvalidAsyncResult,
-          "asyncResult");
+                                  "asyncResult");
     }
     T serviceRequest = (T) asyncRequestResult.getServiceRequest();
     // Validate the request type
     if (serviceRequest == null) {
       throw new ArgumentException(Strings.InvalidAsyncResult,
-          "asyncResult");
+                                  "asyncResult");
     }
     return serviceRequest;
 
   }
 
+  public void setServiceRequestBase(ServiceRequestBase serviceRequest) {
+    this.serviceRequest = serviceRequest;
+  }
+
+  private ServiceRequestBase getServiceRequest() {
+    return this.serviceRequest;
+  }
+
+  public HttpWebRequest getHttpWebRequest() {
+    return this.webRequest;
+  }
+
+  public void setHttpWebRequest(HttpWebRequest webRequest) {
+    this.webRequest = webRequest;
+  }
+
+  public FutureTask<?> getTask() {
+    return (FutureTask<?>) this.task;
+  }
 
   @Override
   public boolean cancel(boolean arg0) {
@@ -113,11 +117,10 @@ public class AsyncRequestResult implements IAsyncResult {
   }
 
 
-
   @Override
   public Object get(long timeout, TimeUnit unit)
       throws InterruptedException, ExecutionException,
-      TimeoutException {
+             TimeoutException {
     // TODO Auto-generated method stub
     return null;
   }
@@ -170,7 +173,6 @@ public class AsyncRequestResult implements IAsyncResult {
     // TODO Auto-generated method stub
     return this.task.get();
   }
-
 
 
 }

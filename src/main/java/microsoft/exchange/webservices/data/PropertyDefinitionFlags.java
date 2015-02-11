@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -68,9 +69,9 @@ public enum PropertyDefinitionFlags {
   MustBeExplicitlyLoaded,
 
   /**
-   * Only meaningful for "collection" property. With this flag, the item in the collection gets updated,
-   * instead of creating and adding new items to the collection.
-   * Should be used together with the ReuseInstance flag.
+   * Only meaningful for "collection" property. With this flag, the item in the collection gets
+   * updated, instead of creating and adding new items to the collection. Should be used together
+   * with the ReuseInstance flag.
    */
 
   UpdateCollectionItems;

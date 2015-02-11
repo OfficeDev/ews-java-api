@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -44,7 +45,7 @@ public class AutodiscoverResponseException extends ServiceRemoteException {
    * @param message   the message
    */
   protected AutodiscoverResponseException(AutodiscoverErrorCode errorCode,
-      String message) {
+                                          String message) {
     super(message);
     this.errorCode = errorCode;
   }

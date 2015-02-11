@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public final class ItemGroup<TItem extends Item> {
    */
   protected ItemGroup(String groupIndex, List<TItem> items) {
     EwsUtilities.EwsAssert(groupIndex != null, "ItemGroup.ctor",
-        "groupIndex is null");
+                           "groupIndex is null");
     EwsUtilities
         .EwsAssert(items != null, "ItemGroup.ctor", "items is null");
 

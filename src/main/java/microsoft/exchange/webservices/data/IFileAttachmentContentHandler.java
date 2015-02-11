@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,20 +20,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.io.OutputStream;
 
 /**
  * Defines a file attachment content handler. Application can implement
- * IFileAttachmentContentHandler /// to provide a stream in which the content of
- * file attachment should be written.
+ * IFileAttachmentContentHandler /// to provide a stream in which the content of file attachment
+ * should be written.
  */
 public interface IFileAttachmentContentHandler {
 
   /**
-   * Provides a stream to which the content of the attachment with the
-   * specified Id should be written.
+   * Provides a stream to which the content of the attachment with the specified Id should be
+   * written.
    *
    * @param attachmentId The Id of the attachment that is being loaded.
    * @return A Stream to which the content of the attachment will be written.

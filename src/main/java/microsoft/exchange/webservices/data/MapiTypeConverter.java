@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,12 +20,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Utility class to convert between MAPI Property type values and strings.
@@ -41,18 +47,22 @@ class MapiTypeConverter {
 
                                              @Override
                                              public MapiTypeConverterMap createInstance() {
-                                               MapiTypeConverterMap map = new MapiTypeConverterMap();
+                                               MapiTypeConverterMap
+                                                   map =
+                                                   new MapiTypeConverterMap();
 
                                                map.put(MapiPropertyType.ApplicationTime,
-                                                   new MapiTypeConverterMapEntry(Double.class));
+                                                       new MapiTypeConverterMapEntry(Double.class));
 
                                                MapiTypeConverterMapEntry mapitype =
                                                    new MapiTypeConverterMapEntry(
                                                        Double.class);
                                                mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.ApplicationTimeArray, mapitype);
+                                               map.put(MapiPropertyType.ApplicationTimeArray,
+                                                       mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Byte[].class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(Byte[].class);
                                                mapitype.setParse(new IFunction<String, Object>() {
                                                  public Object func(String s) {
                                                    return Base64EncoderStream.decode(s);
@@ -68,7 +78,8 @@ class MapiTypeConverter {
                                                    });
                                                map.put(MapiPropertyType.Binary, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Byte[].class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(Byte[].class);
                                                mapitype.setParse(new IFunction<String, Object>() {
                                                  public Object func(String s) {
                                                    return Base64EncoderStream.decode(s);
@@ -85,7 +96,8 @@ class MapiTypeConverter {
                                                mapitype.setIsArray(true);
                                                map.put(MapiPropertyType.BinaryArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Boolean.class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(Boolean.class);
                                                mapitype.setParse(new IFunction<String, Object>() {
                                                  public Object func(String s) {
                                                    return Boolean.parseBoolean(s);
@@ -132,50 +144,57 @@ class MapiTypeConverter {
                                                map.put(MapiPropertyType.CLSIDArray, mapitype);
 
                                                map.put(MapiPropertyType.Currency,
-                                                   new MapiTypeConverterMapEntry(Long.class));
+                                                       new MapiTypeConverterMapEntry(Long.class));
 
                                                mapitype = new MapiTypeConverterMapEntry(Long.class);
                                                mapitype.setIsArray(true);
                                                map.put(MapiPropertyType.CurrencyArray, mapitype);
 
                                                map.put(MapiPropertyType.Double,
-                                                   new MapiTypeConverterMapEntry(Double.class));
+                                                       new MapiTypeConverterMapEntry(Double.class));
 
-                                               mapitype = new MapiTypeConverterMapEntry(Double.class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(Double.class);
                                                mapitype.setIsArray(true);
                                                map.put(MapiPropertyType.DoubleArray, mapitype);
 
                                                map.put(MapiPropertyType.Error,
-                                                   new MapiTypeConverterMapEntry(Integer.class));
+                                                       new MapiTypeConverterMapEntry(
+                                                           Integer.class));
 
                                                map.put(MapiPropertyType.Float,
-                                                   new MapiTypeConverterMapEntry(Float.class));
+                                                       new MapiTypeConverterMapEntry(Float.class));
 
-                                               mapitype = new MapiTypeConverterMapEntry(Float.class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(Float.class);
                                                mapitype.setIsArray(true);
                                                map.put(MapiPropertyType.FloatArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Integer.class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(Integer.class);
                                                mapitype.setParse(new IFunction<String, Object>() {
                                                  public Object func(String s) {
-                                                   return MapiTypeConverter.parseMapiIntegerValue(s);
+                                                   return MapiTypeConverter
+                                                       .parseMapiIntegerValue(s);
                                                  }
                                                });
                                                map.put(MapiPropertyType.Integer,
-                                                   mapitype);
+                                                       mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Integer.class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(Integer.class);
                                                mapitype.setIsArray(true);
                                                map.put(MapiPropertyType.IntegerArray, mapitype);
 
                                                map.put(MapiPropertyType.Long,
-                                                   new MapiTypeConverterMapEntry(Long.class));
+                                                       new MapiTypeConverterMapEntry(Long.class));
 
                                                mapitype = new MapiTypeConverterMapEntry(Long.class);
                                                mapitype.setIsArray(true);
                                                map.put(MapiPropertyType.LongArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(String.class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(String.class);
                                                mapitype.setParse(new IFunction<String, Object>() {
                                                  public Object func(String s) {
                                                    return s;
@@ -183,7 +202,8 @@ class MapiTypeConverter {
                                                });
                                                map.put(MapiPropertyType.Object, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(String.class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(String.class);
                                                mapitype.setParse(new IFunction<String, Object>() {
                                                  public Object func(String s) {
                                                    return s;
@@ -193,13 +213,15 @@ class MapiTypeConverter {
                                                map.put(MapiPropertyType.ObjectArray, mapitype);
 
                                                map.put(MapiPropertyType.Short,
-                                                   new MapiTypeConverterMapEntry(Short.class));
+                                                       new MapiTypeConverterMapEntry(Short.class));
 
-                                               mapitype = new MapiTypeConverterMapEntry(Short.class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(Short.class);
                                                mapitype.setIsArray(true);
                                                map.put(MapiPropertyType.ShortArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(String.class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(String.class);
                                                mapitype.setParse(new IFunction<String, Object>() {
                                                  public Object func(String s) {
                                                    return s;
@@ -207,7 +229,8 @@ class MapiTypeConverter {
                                                });
                                                map.put(MapiPropertyType.String, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(String.class);
+                                               mapitype =
+                                                   new MapiTypeConverterMapEntry(String.class);
                                                mapitype.setParse(new IFunction<String, Object>() {
                                                  public Object func(String s) {
                                                    return s;
@@ -224,7 +247,7 @@ class MapiTypeConverter {
                                                    String errMsg = String
                                                        .format(
                                                            "Date String %s not in " +
-                                                               "valid UTC/local format",
+                                                           "valid UTC/local format",
                                                            s);
                                                    DateFormat utcFormatter = new SimpleDateFormat(
                                                        utcPattern);
@@ -280,7 +303,7 @@ class MapiTypeConverter {
                                                    String errMsg = String
                                                        .format(
                                                            "Date String %s not in " +
-                                                               "valid UTC/local format",
+                                                           "valid UTC/local format",
                                                            s);
                                                    DateFormat utcFormatter = new SimpleDateFormat(
                                                        utcPattern);
@@ -343,7 +366,7 @@ class MapiTypeConverter {
    * @throws Exception the exception
    */
   protected static List<Object> convertToValue(MapiPropertyType mapiPropType,
-      Iterator<String> strings) throws Exception {
+                                               Iterator<String> strings) throws Exception {
     EwsUtilities.validateParam(strings, "strings");
 
     MapiTypeConverterMapEntry typeConverter = getMapiTypeConverterMap()
@@ -366,12 +389,14 @@ class MapiTypeConverter {
    * @param mapiPropType the mapi prop type
    * @param stringValue  the string value
    * @return the object
-   * @throws ServiceXmlDeserializationException                  the service xml deserialization exception
+   * @throws ServiceXmlDeserializationException                  the service xml deserialization
+   *                                                             exception
    * @throws microsoft.exchange.webservices.data.FormatException the format exception
    */
   protected static Object convertToValue(MapiPropertyType mapiPropType,
-      String stringValue) throws ServiceXmlDeserializationException,
-      FormatException {
+                                         String stringValue)
+      throws ServiceXmlDeserializationException,
+             FormatException {
     return getMapiTypeConverterMap().get(mapiPropType).convertToValue(
         stringValue);
 
@@ -385,9 +410,9 @@ class MapiTypeConverter {
    * @return String value.
    */
   protected static String convertToString(MapiPropertyType mapiPropType,
-      Object value) {
+                                          Object value) {
                 /*
-		 * if(! (value instanceof FuncInterface<?,?>)){ return null; }
+                 * if(! (value instanceof FuncInterface<?,?>)){ return null; }
 		 */
     return (value == null) ? "" : getMapiTypeConverterMap().get(
         mapiPropType).getConvertToString().func(value);
@@ -409,9 +434,9 @@ class MapiTypeConverter {
   }
 
   /**
-   * Converts a MAPI Integer value.
-   * Usually the value is an integer but there are cases where the value has been "schematized" to an
-   * Enumeration value (e.g. NoData) which we have no choice but to fallback and represent as a string.
+   * Converts a MAPI Integer value. Usually the value is an integer but there are cases where the
+   * value has been "schematized" to an Enumeration value (e.g. NoData) which we have no choice but
+   * to fallback and represent as a string.
    *
    * @param s The string value.
    * @return Integer value or the original string if the value could not be parsed as such.

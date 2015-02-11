@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -40,6 +41,26 @@ abstract class AbsoluteMonthTransition extends TimeZoneTransition {
   private int month;
 
   /**
+   * Initializes a new instance of the AbsoluteMonthTransition class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   */
+  protected AbsoluteMonthTransition(TimeZoneDefinition timeZoneDefinition) {
+    super(timeZoneDefinition);
+  }
+
+  /**
+   * Initializes a new instance of the AbsoluteMonthTransition class.
+   *
+   * @param timeZoneDefinition the time zone definition
+   * @param targetPeriod       the target period
+   */
+  protected AbsoluteMonthTransition(TimeZoneDefinition timeZoneDefinition,
+                                    TimeZonePeriod targetPeriod) {
+    super(timeZoneDefinition, targetPeriod);
+  }
+
+  /**
    * Tries to read element from XML.
    *
    * @param reader accepts EwsServiceXmlReader
@@ -54,14 +75,14 @@ abstract class AbsoluteMonthTransition extends TimeZoneTransition {
     } else {
       if (reader.getLocalName().equals(XmlElementNames.TimeOffset)) {
         this.timeOffset = EwsUtilities.getXSDurationToTimeSpan(reader
-            .readElementValue());
+                                                                   .readElementValue());
         return true;
       } else if (reader.getLocalName().equals(XmlElementNames.Month)) {
         this.month = reader.readElementValue(Integer.class);
 
         EwsUtilities.EwsAssert(this.month > 0 && this.month <= 12,
-            "AbsoluteMonthTransition.TryReadElementFromXml",
-            "month is not in the valid 1 - 12 range.");
+                               "AbsoluteMonthTransition.TryReadElementFromXml",
+                               "month is not in the valid 1 - 12 range.");
 
         return true;
       } else {
@@ -83,31 +104,11 @@ abstract class AbsoluteMonthTransition extends TimeZoneTransition {
     super.writeElementsToXml(writer);
 
     writer.writeElementValue(XmlNamespace.Types,
-        XmlElementNames.TimeOffset, EwsUtilities
+                             XmlElementNames.TimeOffset, EwsUtilities
             .getTimeSpanToXSDuration(this.timeOffset));
 
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Month,
-        this.month);
-  }
-
-  /**
-   * Initializes a new instance of the AbsoluteMonthTransition class.
-   *
-   * @param timeZoneDefinition the time zone definition
-   */
-  protected AbsoluteMonthTransition(TimeZoneDefinition timeZoneDefinition) {
-    super(timeZoneDefinition);
-  }
-
-  /**
-   * Initializes a new instance of the AbsoluteMonthTransition class.
-   *
-   * @param timeZoneDefinition the time zone definition
-   * @param targetPeriod       the target period
-   */
-  protected AbsoluteMonthTransition(TimeZoneDefinition timeZoneDefinition,
-      TimeZonePeriod targetPeriod) {
-    super(timeZoneDefinition, targetPeriod);
+                             this.month);
   }
 
   /**

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,15 +20,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Defines the namespaces as used by the EwsXmlReader, EwsServiceXmlReader, and
- * EwsServiceXmlWriter classes.
+ * Defines the namespaces as used by the EwsXmlReader, EwsServiceXmlReader, and EwsServiceXmlWriter
+ * classes.
  */
 enum XmlNamespace {
         /*
-	 * The namespace is not specified.
+         * The namespace is not specified.
 	 */
   /**
    * The Not specified.
@@ -39,7 +40,7 @@ enum XmlNamespace {
    * The Messages.
    */
   Messages(EwsUtilities.EwsMessagesNamespacePrefix,
-      EwsUtilities.EwsMessagesNamespace),
+           EwsUtilities.EwsMessagesNamespace),
 
   /**
    * The Types.
@@ -50,7 +51,7 @@ enum XmlNamespace {
    * The Errors.
    */
   Errors(EwsUtilities.EwsErrorsNamespacePrefix,
-      EwsUtilities.EwsErrorsNamespace),
+         EwsUtilities.EwsErrorsNamespace),
 
   /**
    * The Soap.
@@ -61,37 +62,37 @@ enum XmlNamespace {
    * The Soap12.
    */
   Soap12(EwsUtilities.EwsSoapNamespacePrefix,
-      EwsUtilities.EwsSoap12Namespace),
+         EwsUtilities.EwsSoap12Namespace),
 
   /**
    * The Xml schema instance.
    */
   XmlSchemaInstance(EwsUtilities.EwsXmlSchemaInstanceNamespacePrefix,
-      EwsUtilities.EwsXmlSchemaInstanceNamespace),
+                    EwsUtilities.EwsXmlSchemaInstanceNamespace),
 
   /**
    * The Passport soap fault.
    */
   PassportSoapFault(EwsUtilities.PassportSoapFaultNamespacePrefix,
-      EwsUtilities.PassportSoapFaultNamespace),
+                    EwsUtilities.PassportSoapFaultNamespace),
 
   /**
    * The WS trust february2005.
    */
   WSTrustFebruary2005(EwsUtilities.WSTrustFebruary2005NamespacePrefix,
-      EwsUtilities.WSTrustFebruary2005Namespace),
+                      EwsUtilities.WSTrustFebruary2005Namespace),
 
   /**
    * The WS addressing.
    */
   WSAddressing(EwsUtilities.WSAddressingNamespacePrefix,
-      EwsUtilities.WSAddressingNamespace),
+               EwsUtilities.WSAddressingNamespace),
 
   /**
    * The Autodiscover.
    */
   Autodiscover(EwsUtilities.AutodiscoverSoapNamespacePrefix,
-      EwsUtilities.AutodiscoverSoapNamespace);
+               EwsUtilities.AutodiscoverSoapNamespace);
 
   /**
    * The prefix.

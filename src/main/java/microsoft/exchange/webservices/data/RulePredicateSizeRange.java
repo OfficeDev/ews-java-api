@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -28,6 +29,7 @@ import javax.xml.stream.XMLStreamException;
  * Represents the minimum and maximum size of a message.
  */
 public final class RulePredicateSizeRange extends ComplexProperty {
+
   /**
    * Minimum Size.
    */
@@ -46,8 +48,8 @@ public final class RulePredicateSizeRange extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the minimum size, in kilobytes.
-   * If MinimumSize is set to null, no minimum size applies.
+   * Gets or sets the minimum size, in kilobytes. If MinimumSize is set to null, no minimum size
+   * applies.
    */
   public Integer getMinimumSize() {
 
@@ -62,8 +64,8 @@ public final class RulePredicateSizeRange extends ComplexProperty {
   }
 
   /**
-   * Gets or sets the maximum size, in kilobytes.
-   * If MaximumSize is set to null, no maximum size applies.
+   * Gets or sets the maximum size, in kilobytes. If MaximumSize is set to null, no maximum size
+   * applies.
    */
   public Integer getMaximumSize() {
     return this.maximumSize;
@@ -110,11 +112,11 @@ public final class RulePredicateSizeRange extends ComplexProperty {
       throws ServiceXmlSerializationException, XMLStreamException {
     if (this.getMinimumSize() != null) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.MinimumSize, this.getMinimumSize());
+                               XmlElementNames.MinimumSize, this.getMinimumSize());
     }
     if (this.getMaximumSize() != null) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.MaximumSize, this.getMaximumSize());
+                               XmlElementNames.MaximumSize, this.getMaximumSize());
     }
   }
 

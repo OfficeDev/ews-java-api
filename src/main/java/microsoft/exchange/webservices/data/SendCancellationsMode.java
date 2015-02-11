@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Defines how meeting cancellations should be sent to attendees when an
- * appointment is deleted.
+ * Defines how meeting cancellations should be sent to attendees when an appointment is deleted.
  */
 public enum SendCancellationsMode {
 

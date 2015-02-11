@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
 public final class GetPasswordExpirationDateRequest extends SimpleServiceRequestBase {
+
+  private String mailboxSmtpAddress;
+
+  /**
+   * Initializes a new instance of the GetPasswordExpirationDateRequest class
+   */
+  protected GetPasswordExpirationDateRequest(ExchangeService service) throws Exception {
+    super(service);
+  }
 
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -32,22 +42,12 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
     return ExchangeVersion.Exchange2010_SP1;
   }
 
-  /**
-   * Initializes a new instance of the GetPasswordExpirationDateRequest class
-   *
-   * @throws Exception
-   */
-  protected GetPasswordExpirationDateRequest(ExchangeService service) throws Exception {
-    super(service);
-  }
-
   protected String getResponseXmlElementName() {
     return XmlElementNames.GetPasswordExpirationDateResponse;
   }
 
   /**
-   * Gets the name of the XML Element.
-   * returns XML element name
+   * Gets the name of the XML Element. returns XML element name
    */
   protected String getXmlElementName() {
     return XmlElementNames.GetPasswordExpirationDateRequest;
@@ -56,12 +56,20 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException,
-      ServiceLocalException, InstantiationException,
-      IllegalAccessException, ServiceValidationException, Exception {
+             ServiceLocalException, InstantiationException,
+             IllegalAccessException, ServiceValidationException, Exception {
     writer.writeElementValue(XmlNamespace.Messages,
-        XmlElementNames.MailboxSmtpAddress,
-        this.getMailboxSmtpAddress());
+                             XmlElementNames.MailboxSmtpAddress,
+                             this.getMailboxSmtpAddress());
   }
+
+  /**
+   * Gets the request version
+   * @return Earliest Exchange version in which this request is supported.
+   *//*
+        protected ExchangeVersion getMinimumRequiredServerVersion(){
+		return ExchangeVersion.Exchange2010_SP1;
+	}*/
 
   /**
    * Parses the response
@@ -74,14 +82,6 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
     return response;
 
   }
-
-  /**
-   * Gets the request version
-   * @return Earliest Exchange version in which this request is supported.
-   *//*
-        protected ExchangeVersion getMinimumRequiredServerVersion(){
-		return ExchangeVersion.Exchange2010_SP1;
-	}*/
 
   /**
    * Executes this request.
@@ -107,6 +107,4 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
   protected void setMailboxSmtpAddress(String mailboxSmtpAddress) {
     this.mailboxSmtpAddress = mailboxSmtpAddress;
   }
-
-  private String mailboxSmtpAddress;
 }

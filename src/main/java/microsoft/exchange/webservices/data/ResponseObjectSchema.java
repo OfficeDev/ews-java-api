@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -29,6 +30,25 @@ import java.util.EnumSet;
  */
 class ResponseObjectSchema extends ServiceObjectSchema {
 
+  /**
+   * The Body prefix.
+   */
+  public static final PropertyDefinition BodyPrefix =
+      new ComplexPropertyDefinition<MessageBody>(
+          MessageBody.class,
+          XmlElementNames.NewBodyContent, EnumSet
+              .of(PropertyDefinitionFlags.CanSet),
+          ExchangeVersion.Exchange2007_SP1,
+          new ICreateComplexPropertyDelegate<MessageBody>() {
+            public MessageBody createComplexProperty() {
+              return new MessageBody();
+            }
+          });
+  /**
+   * This must be declared after the property definitions.
+   */
+  protected static final ResponseObjectSchema Instance =
+      new ResponseObjectSchema();
   /**
    * The Reference item id.
    */
@@ -46,29 +66,8 @@ class ResponseObjectSchema extends ServiceObjectSchema {
           });
 
   /**
-   * The Body prefix.
-   */
-  public static final PropertyDefinition BodyPrefix =
-      new ComplexPropertyDefinition<MessageBody>(
-          MessageBody.class,
-          XmlElementNames.NewBodyContent, EnumSet
-          .of(PropertyDefinitionFlags.CanSet),
-          ExchangeVersion.Exchange2007_SP1,
-          new ICreateComplexPropertyDelegate<MessageBody>() {
-            public MessageBody createComplexProperty() {
-              return new MessageBody();
-            }
-          });
-
-  /**
-   * This must be declared after the property definitions.
-   */
-  protected static final ResponseObjectSchema Instance =
-      new ResponseObjectSchema();
-
-  /**
-   * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
-   * SCHEMA ORDER (i.e. the same order as they are defined in types.xsd)
+   * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
+   * same order as they are defined in types.xsd)
    */
   @Override
   protected void registerProperties() {

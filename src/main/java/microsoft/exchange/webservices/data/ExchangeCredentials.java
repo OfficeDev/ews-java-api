@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 /**
  * Base class of Exchange credential types.
@@ -34,12 +36,10 @@ import java.net.URISyntaxException;
 public abstract class ExchangeCredentials {
 
   /**
-   * Performs an implicit conversion from <see
-   * cref="System.Net.NetworkCredential"/> to <see
-   * cref="Microsoft.Exchange.WebServices.Data.ExchangeCredentials"/>. This
-   * allows a NetworkCredential object to be implictly converted to an
-   * ExchangeCredential which is useful when setting credentials on an
-   * ExchangeService.
+   * Performs an implicit conversion from <see cref="System.Net.NetworkCredential"/> to <see
+   * cref="Microsoft.Exchange.WebServices.Data.ExchangeCredentials"/>. This allows a
+   * NetworkCredential object to be implictly converted to an ExchangeCredential which is useful
+   * when setting credentials on an ExchangeService.
    *
    * @param userName Account user name.
    * @param password Account password.
@@ -71,16 +71,14 @@ public abstract class ExchangeCredentials {
   }
 
   /**
-   * This method is called to pre-authenticate credentials before a service
-   * request is made.
+   * This method is called to pre-authenticate credentials before a service request is made.
    */
   protected void preAuthenticate() {
     // do nothing by default.
   }
 
   /**
-   * This method is called to apply credentials to a service request before
-   * the request is made.
+   * This method is called to apply credentials to a service request before the request is made.
    *
    * @param client The request.
    * @throws java.net.URISyntaxException the uRI syntax exception
@@ -102,16 +100,15 @@ public abstract class ExchangeCredentials {
   }
 
   /**
-   * Serialize any extra necessary SOAP headers. This is used for
-   * authentication schemes that rely on WS-Security, or for endpoints
-   * requiring WS-Addressing.
+   * Serialize any extra necessary SOAP headers. This is used for authentication schemes that rely
+   * on WS-Security, or for endpoints requiring WS-Addressing.
    *
    * @param writer        The writer.
    * @param webMethodName The Web method being called.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
   protected void serializeExtraSoapHeaders(XMLStreamWriter writer,
-      String webMethodName) throws XMLStreamException {
+                                           String webMethodName) throws XMLStreamException {
     // do nothing by default.
   }
 
@@ -142,10 +139,8 @@ public abstract class ExchangeCredentials {
   }
 
 
-
   /**
-   * Serialize SOAP headers used for authentication schemes that rely on
-   * WS-Security.
+   * Serialize SOAP headers used for authentication schemes that rely on WS-Security.
    *
    * @param writer The writer.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception

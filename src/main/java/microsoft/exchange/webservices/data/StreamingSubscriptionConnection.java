@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.io.Closeable;
@@ -32,8 +33,8 @@ import java.util.Map;
  * Represents a connection to an ongoing stream of events.
  */
 public final class StreamingSubscriptionConnection implements Closeable,
-    HangingServiceRequestBase.IHandleResponseObject,
-    HangingServiceRequestBase.IHangingRequestDisconnectHandler {
+                                                              HangingServiceRequestBase.IHandleResponseObject,
+                                                              HangingServiceRequestBase.IHangingRequestDisconnectHandler {
 
   /**
    * Mapping of streaming id to subscriptions currently on the connection.
@@ -59,26 +60,69 @@ public final class StreamingSubscriptionConnection implements Closeable,
    * Currently used instance of a GetStreamingEventsRequest connected to EWS.
    */
   private GetStreamingEventsRequest currentHangingRequest;
-
-
-  public interface INotificationEventDelegate {
-    /**
-     * Represents a delegate that is invoked when notifications are received
-     * from the server
-     *
-     * @param sender The StreamingSubscriptionConnection instance that received
-     *               the events.
-     * @param args   The event data.
-     */
-    void notificationEventDelegate(Object sender, NotificationEventArgs args);
-  }
-
-
   /**
-   * Notification events Occurs when notifications are received from the
+   * Notification events Occurs when notifications are received from the server.
+   */
+  private List<INotificationEventDelegate>
+      onNotificationEvent =
+      new ArrayList<INotificationEventDelegate>();
+  /**
+   * Subscription events Occur when a subscription encounters an error.
+   */
+  private List<ISubscriptionErrorDelegate>
+      onSubscriptionError =
+      new ArrayList<ISubscriptionErrorDelegate>();
+  /**
+   * Disconnect events Occurs when a streaming subscription connection is disconnected from the
    * server.
    */
-  private List<INotificationEventDelegate> onNotificationEvent = new ArrayList<INotificationEventDelegate>();
+  private List<ISubscriptionErrorDelegate>
+      onDisconnect =
+      new ArrayList<ISubscriptionErrorDelegate>();
+
+  /**
+   * Initializes a new instance of the StreamingSubscriptionConnection class.
+   *
+   * @param service  The ExchangeService instance this connection uses to connect to the server.
+   * @param lifetime The maximum time, in minutes, the connection will remain open. Lifetime must be
+   *                 between 1 and 30.
+   */
+  public StreamingSubscriptionConnection(ExchangeService service, int lifetime)
+      throws Exception {
+    EwsUtilities.validateParam(service, "service");
+
+    EwsUtilities.validateClassVersion(service,
+                                      ExchangeVersion.Exchange2010_SP1, this.getClass().getName());
+
+    if (lifetime < 1 || lifetime > 30) {
+      throw new ArgumentOutOfRangeException("lifetime");
+    }
+
+    this.session = service;
+    this.subscriptions = new HashMap<String, StreamingSubscription>();
+    this.connectionTimeout = lifetime;
+  }
+
+  /**
+   * Initializes a new instance of the StreamingSubscriptionConnection class.
+   *
+   * @param service       The ExchangeService instance this connection uses to connect to the
+   *                      server.
+   * @param subscriptions Iterable subcriptions
+   * @param lifetime      The maximum time, in minutes, the connection will remain open. Lifetime
+   *                      must be between 1 and 30.
+   */
+  public StreamingSubscriptionConnection(ExchangeService service,
+                                         Iterable<StreamingSubscription> subscriptions,
+                                         int lifetime)
+      throws Exception {
+    this(service, lifetime);
+    EwsUtilities.validateParamCollection(subscriptions.iterator(),
+                                         "subscriptions");
+    for (StreamingSubscription subscription : subscriptions) {
+      this.subscriptions.put(subscription.getId(), subscription);
+    }
+  }
 
   /**
    * Set event to happen when property Notify.
@@ -106,26 +150,6 @@ public final class StreamingSubscriptionConnection implements Closeable,
   public void clearNotificationEvent() {
     onNotificationEvent.clear();
   }
-
-  public interface ISubscriptionErrorDelegate {
-
-    /**
-     * Represents a delegate that is invoked when an error occurs within a
-     * streaming subscription connection.
-     *
-     * @param sender The StreamingSubscriptionConnection instance within which
-     *               the error occurred.
-     * @param args   The event data.
-     */
-    void subscriptionErrorDelegate(Object sender,
-        SubscriptionErrorEventArgs args);
-  }
-
-
-  /**
-   * Subscription events Occur when a subscription encounters an error.
-   */
-  private List<ISubscriptionErrorDelegate> onSubscriptionError = new ArrayList<ISubscriptionErrorDelegate>();
 
   /**
    * Set event to happen when property subscriptionError.
@@ -155,12 +179,6 @@ public final class StreamingSubscriptionConnection implements Closeable,
   }
 
   /**
-   * Disconnect events Occurs when a streaming subscription connection is
-   * disconnected from the server.
-   */
-  private List<ISubscriptionErrorDelegate> onDisconnect = new ArrayList<ISubscriptionErrorDelegate>();
-
-  /**
    * Set event to happen when property disconnect.
    *
    * @param disconnect disconnect event
@@ -186,52 +204,6 @@ public final class StreamingSubscriptionConnection implements Closeable,
   }
 
   /**
-   * Initializes a new instance of the StreamingSubscriptionConnection class.
-   *
-   * @param service  The ExchangeService instance this connection uses to connect
-   *                 to the server.
-   * @param lifetime The maximum time, in minutes, the connection will remain open.
-   *                 Lifetime must be between 1 and 30.
-   * @throws Exception
-   */
-  public StreamingSubscriptionConnection(ExchangeService service, int lifetime)
-      throws Exception {
-    EwsUtilities.validateParam(service, "service");
-
-    EwsUtilities.validateClassVersion(service,
-        ExchangeVersion.Exchange2010_SP1, this.getClass().getName());
-
-    if (lifetime < 1 || lifetime > 30) {
-      throw new ArgumentOutOfRangeException("lifetime");
-    }
-
-    this.session = service;
-    this.subscriptions = new HashMap<String, StreamingSubscription>();
-    this.connectionTimeout = lifetime;
-  }
-
-  /**
-   * Initializes a new instance of the StreamingSubscriptionConnection class.
-   *
-   * @param service       The ExchangeService instance this connection uses to connect
-   *                      to the server.
-   * @param subscriptions Iterable subcriptions
-   * @param lifetime      The maximum time, in minutes, the connection will remain open.
-   *                      Lifetime must be between 1 and 30.
-   * @throws Exception
-   */
-  public StreamingSubscriptionConnection(ExchangeService service,
-      Iterable<StreamingSubscription> subscriptions, int lifetime)
-      throws Exception {
-    this(service, lifetime);
-    EwsUtilities.validateParamCollection(subscriptions.iterator(),
-        "subscriptions");
-    for (StreamingSubscription subscription : subscriptions) {
-      this.subscriptions.put(subscription.getId(), subscription);
-    }
-  }
-
-  /**
    * Adds a subscription to this connection.
    *
    * @param subscription The subscription to add.
@@ -242,7 +214,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
     this.throwIfDisposed();
     EwsUtilities.validateParam(subscription, "subscription");
     this.validateConnectionState(false,
-        Strings.CannotAddSubscriptionToLiveConnection);
+                                 Strings.CannotAddSubscriptionToLiveConnection);
 
     synchronized (this) {
       if (this.subscriptions.containsKey(subscription.getId())) {
@@ -265,7 +237,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
     EwsUtilities.validateParam(subscription, "subscription");
 
     this.validateConnectionState(false,
-        Strings.CannotRemoveSubscriptionFromLiveConnection);
+                                 Strings.CannotRemoveSubscriptionFromLiveConnection);
 
     synchronized (this) {
       this.subscriptions.remove(subscription.getId());
@@ -273,10 +245,9 @@ public final class StreamingSubscriptionConnection implements Closeable,
   }
 
   /**
-   * Opens this connection so it starts receiving events from the server.This
-   * results in a long-standing call to EWS.
+   * Opens this connection so it starts receiving events from the server.This results in a
+   * long-standing call to EWS.
    *
-   * @throws Exception
    * @throws ServiceLocalException Thrown when Open is called while connected.
    */
   public void open() throws ServiceLocalException, Exception {
@@ -284,7 +255,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
       this.throwIfDisposed();
 
       this.validateConnectionState(false,
-          Strings.CannotCallConnectDuringLiveConnection);
+                                   Strings.CannotCallConnectDuringLiveConnection);
 
       if (this.subscriptions.size() == 0) {
         throw new ServiceLocalException(
@@ -305,18 +276,17 @@ public final class StreamingSubscriptionConnection implements Closeable,
    * Called when the request is disconnected.
    *
    * @param sender The sender.
-   * @param args   The Microsoft.Exchange.WebServices.Data.
-   *               HangingRequestDisconnectEventArgs instance containing the
-   *               event data.
+   * @param args   The Microsoft.Exchange.WebServices.Data. HangingRequestDisconnectEventArgs
+   *               instance containing the event data.
    */
   private void onRequestDisconnect(Object sender,
-      HangingRequestDisconnectEventArgs args) {
+                                   HangingRequestDisconnectEventArgs args) {
     this.internalOnDisconnect(args.getException());
   }
 
   /**
-   * Closes this connection so it stops receiving events from the server.This
-   * terminates a long-standing call to EWS.
+   * Closes this connection so it stops receiving events from the server.This terminates a
+   * long-standing call to EWS.
    */
   public void close() {
     synchronized (this) {
@@ -324,7 +294,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
         this.throwIfDisposed();
 
         this.validateConnectionState(true,
-            Strings.CannotCallDisconnectWithNoLiveConnection);
+                                     Strings.CannotCallDisconnectWithNoLiveConnection);
 
         // Further down in the stack, this will result in a
         // call to our OnRequestDisconnect event handler,
@@ -345,7 +315,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
     if (!onDisconnect.isEmpty()) {
       for (ISubscriptionErrorDelegate disconnect : onDisconnect) {
         disconnect.subscriptionErrorDelegate(this,
-            new SubscriptionErrorEventArgs(null, ex));
+                                             new SubscriptionErrorEventArgs(null, ex));
       }
     }
     this.currentHangingRequest = null;
@@ -353,8 +323,6 @@ public final class StreamingSubscriptionConnection implements Closeable,
 
   /**
    * Gets a value indicating whether this connection is opened
-   *
-   * @throws Exception
    */
   public boolean getIsOpen() throws Exception {
 
@@ -372,10 +340,9 @@ public final class StreamingSubscriptionConnection implements Closeable,
    *
    * @param isConnectedExpected Value indicating whether we expect to be currently connected.
    * @param errorMessage        The error message.
-   * @throws Exception
    */
   private void validateConnectionState(boolean isConnectedExpected,
-      String errorMessage) throws Exception {
+                                       String errorMessage) throws Exception {
     if ((isConnectedExpected && !this.getIsOpen())
         || (!isConnectedExpected && this.getIsOpen())) {
       throw new ServiceLocalException(errorMessage);
@@ -386,7 +353,6 @@ public final class StreamingSubscriptionConnection implements Closeable,
    * Handles the service response object.
    *
    * @param response The response.
-   * @throws microsoft.exchange.webservices.data.ArgumentException
    */
   private void handleServiceResponseObject(Object response)
       throws ArgumentException {
@@ -528,8 +494,8 @@ public final class StreamingSubscriptionConnection implements Closeable,
   }
 
   /**
-   * Performs application-defined tasks associated with freeing, releasing, or
-   * resetting unmanaged resources.
+   * Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+   * resources.
    *
    * @param suppressFinalizer Value indicating whether to suppress the garbage collector's
    *                          finalizer.
@@ -555,8 +521,6 @@ public final class StreamingSubscriptionConnection implements Closeable,
 
   /**
    * Throws if disposed.
-   *
-   * @throws Exception
    */
   private void throwIfDisposed() throws Exception {
     if (this.isDisposed) {
@@ -571,8 +535,32 @@ public final class StreamingSubscriptionConnection implements Closeable,
 
   @Override
   public void hangingRequestDisconnectHandler(Object sender,
-      HangingRequestDisconnectEventArgs args) {
+                                              HangingRequestDisconnectEventArgs args) {
     this.onRequestDisconnect(sender, args);
+  }
+
+  public interface INotificationEventDelegate {
+
+    /**
+     * Represents a delegate that is invoked when notifications are received from the server
+     *
+     * @param sender The StreamingSubscriptionConnection instance that received the events.
+     * @param args   The event data.
+     */
+    void notificationEventDelegate(Object sender, NotificationEventArgs args);
+  }
+
+  public interface ISubscriptionErrorDelegate {
+
+    /**
+     * Represents a delegate that is invoked when an error occurs within a streaming subscription
+     * connection.
+     *
+     * @param sender The StreamingSubscriptionConnection instance within which the error occurred.
+     * @param args   The event data.
+     */
+    void subscriptionErrorDelegate(Object sender,
+                                   SubscriptionErrorEventArgs args);
   }
 
 }

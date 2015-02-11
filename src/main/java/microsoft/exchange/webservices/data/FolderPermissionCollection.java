@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ import java.util.Iterator;
  * Represents a collection of folder permissions.
  */
 public final class FolderPermissionCollection extends
-    ComplexPropertyCollection<FolderPermission> {
+                                              ComplexPropertyCollection<FolderPermission> {
 
   /**
    * The is calendar folder.
@@ -59,7 +60,7 @@ public final class FolderPermissionCollection extends
    */
   private String getInnerCollectionXmlElementName() {
     return this.isCalendarFolder ? XmlElementNames.CalendarPermissions :
-        XmlElementNames.Permissions;
+           XmlElementNames.Permissions;
   }
 
   /**
@@ -69,7 +70,7 @@ public final class FolderPermissionCollection extends
    */
   private String getCollectionItemXmlElementName() {
     return this.isCalendarFolder ? XmlElementNames.CalendarPermission :
-        XmlElementNames.Permission;
+           XmlElementNames.Permission;
   }
 
   /**
@@ -93,9 +94,9 @@ public final class FolderPermissionCollection extends
    */
   @Override
   protected void loadFromXml(EwsServiceXmlReader reader,
-      String localElementName) throws Exception {
+                             String localElementName) throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
-        localElementName);
+                                           localElementName);
 
     reader.readStartElement(XmlNamespace.Types, this
         .getInnerCollectionXmlElementName());
@@ -106,16 +107,16 @@ public final class FolderPermissionCollection extends
     reader.read();
 
     if (reader.isStartElement(XmlNamespace.Types,
-        XmlElementNames.UnknownEntries)) {
+                              XmlElementNames.UnknownEntries)) {
       do {
         reader.read();
 
         if (reader.isStartElement(XmlNamespace.Types,
-            XmlElementNames.UnknownEntry)) {
+                                  XmlElementNames.UnknownEntry)) {
           this.unknownEntries.add(reader.readElementValue());
         }
       } while (!reader.isEndElement(XmlNamespace.Types,
-          XmlElementNames.UnknownEntries));
+                                    XmlElementNames.UnknownEntries));
     }
   }
 
@@ -148,8 +149,8 @@ public final class FolderPermissionCollection extends
         .getInnerCollectionXmlElementName());
     for (FolderPermission folderPermission : this) {
       folderPermission.writeToXml(writer, this
-              .getCollectionItemXmlElementName(folderPermission),
-          this.isCalendarFolder);
+                                      .getCollectionItemXmlElementName(folderPermission),
+                                  this.isCalendarFolder);
     }
     writer.writeEndElement(); // this.InnerCollectionXmlElementName
   }
@@ -202,8 +203,8 @@ public final class FolderPermissionCollection extends
    * Removes a permission from the collection.
    *
    * @param permission the permission
-   * @return True if the folder permission was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the folder permission was successfully removed from the collection, false
+   * otherwise.
    */
   public boolean remove(FolderPermission permission) {
     return this.internalRemove(permission);

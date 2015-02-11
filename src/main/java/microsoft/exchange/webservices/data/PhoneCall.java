@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -74,7 +75,7 @@ public final class PhoneCall extends ComplexProperty {
    */
   protected PhoneCall(ExchangeService service) {
     EwsUtilities.EwsAssert(service != null, "PhoneCall.ctor",
-        "service is null");
+                           "service is null");
 
     this.service = service;
     this.state = PhoneCallState.Connecting;

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Represents the definition of the GroupMember property.
  */
 final class GroupMemberPropertyDefinition extends
-    ServiceObjectPropertyDefinition {
+                                          ServiceObjectPropertyDefinition {
 
   // / FieldUri of IndexedFieldURI for a group member.
   /**
@@ -52,8 +53,7 @@ final class GroupMemberPropertyDefinition extends
   }
 
   /**
-   * Initializes a new instance of the GroupMemberPropertyDefinition class
-   * without key.
+   * Initializes a new instance of the GroupMemberPropertyDefinition class without key.
    */
   protected GroupMemberPropertyDefinition() {
     super(FIELDURI);

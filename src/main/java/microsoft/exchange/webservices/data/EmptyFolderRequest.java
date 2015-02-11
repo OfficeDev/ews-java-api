@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -35,19 +36,15 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
    *
    * @param service           The service.
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
    */
   protected EmptyFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                               ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
 
   /**
    * Validates request.
-   *
-   * @throws Exception
-   * @throws ServiceLocalException
    */
   @Override
   protected void validate() throws ServiceLocalException, Exception {
@@ -76,7 +73,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new ServiceResponse();
   }
 
@@ -114,7 +111,6 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
    * Writes XML elements.
    *
    * @param writer The writer.
-   * @throws Exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
@@ -129,21 +125,19 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
    * Writes XML attributes.
    *
    * @param writer The writer.
-   * @throws ServiceXmlSerializationException
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     super.writeAttributesToXml(writer);
     writer.writeAttributeValue(XmlAttributeNames.DeleteSubFolders,
-        this.deleteSubFolders);
+                               this.deleteSubFolders);
   }
 
   /**
    * Gets the request version.
    *
-   * @return Earliest Exchange version
-   * in which this request is supported.
+   * @return Earliest Exchange version in which this request is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -160,22 +154,18 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
   }
 
   /**
-   * Gets a value indicating whether empty
-   * folder should also delete sub folders.
+   * Gets a value indicating whether empty folder should also delete sub folders.
    *
-   * @value true if empty folder should also
-   * delete sub folders, otherwise false.
+   * @value true if empty folder should also delete sub folders, otherwise false.
    */
   protected boolean getDeleteSubFolders() {
     return deleteSubFolders;
   }
 
   /**
-   * Sets a value indicating whether empty
-   * folder should also delete sub folders.
+   * Sets a value indicating whether empty folder should also delete sub folders.
    *
-   * @value true if empty folder should also
-   * delete sub folders, otherwise false.
+   * @value true if empty folder should also delete sub folders, otherwise false.
    */
   protected void setDeleteSubFolders(boolean value) {
     this.deleteSubFolders = value;

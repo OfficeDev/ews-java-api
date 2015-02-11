@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -63,6 +64,13 @@ class TimeZonePeriod extends ComplexProperty {
   private String id;
 
   /**
+   * Initializes a new instance of the TimeZonePeriod class.
+   */
+  protected TimeZonePeriod() {
+    super();
+  }
+
+  /**
    * Reads the attributes from XML.
    *
    * @param reader the reader
@@ -74,7 +82,8 @@ class TimeZonePeriod extends ComplexProperty {
     this.id = reader.readAttributeValue(XmlAttributeNames.Id);
     this.name = reader.readAttributeValue(XmlAttributeNames.Name);
     this.bias = EwsUtilities.getXSDurationToTimeSpan(reader
-        .readAttributeValue(XmlAttributeNames.Bias));
+                                                         .readAttributeValue(
+                                                             XmlAttributeNames.Bias));
   }
 
   /**
@@ -113,15 +122,7 @@ class TimeZonePeriod extends ComplexProperty {
   }
 
   /**
-   * Initializes a new instance of the TimeZonePeriod class.
-   */
-  protected TimeZonePeriod() {
-    super();
-  }
-
-  /**
-   * Gets a value indicating whether this period represents the Standard
-   * period.
+   * Gets a value indicating whether this period represents the Standard period.
    *
    * @return true if this instance is standard period; otherwise, false
    */

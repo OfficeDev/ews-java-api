@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -56,9 +57,9 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
    */
   @Override
   protected void loadFromXml(EwsServiceXmlReader reader,
-      String localElementName) throws Exception {
+                             String localElementName) throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
-        localElementName);
+                                           localElementName);
     if (!reader.isEmptyElement()) {
       do {
         reader.read();
@@ -66,14 +67,14 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
         if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
           TItem item = EwsUtilities
               .createEwsObjectFromXmlElementName(Item.class,
-                  reader.getService(), reader.getLocalName());
+                                                 reader.getService(), reader.getLocalName());
 
           if (item == null) {
             reader.skipCurrentElement();
           } else {
             try {
               item.loadFromXml(reader,
-                  true /* clearPropertyBag */);
+                               true /* clearPropertyBag */);
             } catch (ServiceObjectPropertyException e) {
               e.printStackTrace();
             } catch (ServiceVersionException e) {
@@ -84,7 +85,7 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
           }
         }
       } while (!reader.isEndElement(XmlNamespace.Types,
-          localElementName));
+                                    localElementName));
     } else {
       reader.read();
     }

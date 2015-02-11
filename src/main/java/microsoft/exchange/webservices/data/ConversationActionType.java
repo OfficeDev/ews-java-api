@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -58,8 +59,7 @@ public enum ConversationActionType {
   Copy,
 
   /**
-   * Marks current item in context folder in the conversation with
-   * provided read state
+   * Marks current item in context folder in the conversation with provided read state
    */
   SetReadState,
 

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -27,6 +28,13 @@ package microsoft.exchange.webservices.data;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 final class CreateResponseObjectResponse extends CreateItemResponseBase {
+
+  /**
+   * Initializes a new instance of the CreateResponseObjectResponse class.
+   */
+  protected CreateResponseObjectResponse() {
+    super();
+  }
 
   /**
    * Gets Item instance.
@@ -38,10 +46,10 @@ final class CreateResponseObjectResponse extends CreateItemResponseBase {
    */
   @Override
   protected Item getObjectInstance(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                   String xmlElementName) throws Exception {
     try {
       return EwsUtilities.createEwsObjectFromXmlElementName(Item.class,
-          service, xmlElementName);
+                                                            service, xmlElementName);
     } catch (InstantiationException e) {
       e.printStackTrace();
       return null;
@@ -49,13 +57,6 @@ final class CreateResponseObjectResponse extends CreateItemResponseBase {
       e.printStackTrace();
       return null;
     }
-  }
-
-  /**
-   * Initializes a new instance of the CreateResponseObjectResponse class.
-   */
-  protected CreateResponseObjectResponse() {
-    super();
   }
 
 }

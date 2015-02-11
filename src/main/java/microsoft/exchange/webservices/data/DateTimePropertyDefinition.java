@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,12 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package microsoft.exchange.webservices.data;
 
-import microsoft.exchange.webservices.data.util.DateTimeParser;
+package microsoft.exchange.webservices.data;
 
 import java.util.Date;
 import java.util.EnumSet;
+
+import microsoft.exchange.webservices.data.util.DateTimeParser;
 
 /**
  * Represents DateTime property definition.
@@ -45,7 +46,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    * @param version        the version
    */
   protected DateTimePropertyDefinition(String xmlElementName, String uri,
-      ExchangeVersion version) {
+                                       ExchangeVersion version) {
     super(xmlElementName, uri, version);
   }
 
@@ -58,7 +59,8 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    * @param version        the version
    */
   protected DateTimePropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+                                       EnumSet<PropertyDefinitionFlags> flags,
+                                       ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
 
@@ -72,8 +74,9 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    * @param isNullable     the is nullable
    */
   protected DateTimePropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
-      boolean isNullable) {
+                                       EnumSet<PropertyDefinitionFlags> flags,
+                                       ExchangeVersion version,
+                                       boolean isNullable) {
     super(xmlElementName, uri, flags, version);
     this.isNullable = isNullable;
   }
@@ -102,7 +105,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    * @throws Exception throws Exception
    */
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+                                         PropertyBag propertyBag, boolean isUpdateOperation)
       throws Exception {
     Object value = propertyBag.getObjectFromPropertyDefinition(this);
 
@@ -112,15 +115,15 @@ class DateTimePropertyDefinition extends PropertyDefinition {
       // default timezone as UTC
       Date dateTime = (Date) value;
       writer.writeValue(EwsUtilities.dateTimeToXSDateTime(dateTime),
-          getName());
+                        getName());
 
       writer.writeEndElement();
     }
   }
 
   /**
-   * Gets a value indicating whether this property definition is for a
-   * nullable type (ref, int?, bool?...).
+   * Gets a value indicating whether this property definition is for a nullable type (ref, int?,
+   * bool?...).
    *
    * @return true, if is nullable
    */

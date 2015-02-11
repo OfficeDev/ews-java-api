@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -139,8 +140,8 @@ public abstract class ServiceId extends ComplexProperty {
   }
 
   /**
-   * Gets the change key associated with the Exchange object. The change key
-   * represents the version of the associated item or folder.
+   * Gets the change key associated with the Exchange object. The change key represents the version
+   * of the associated item or folder.
    *
    * @return change key associated with the Exchange object.
    */
@@ -149,8 +150,8 @@ public abstract class ServiceId extends ComplexProperty {
   }
 
   /**
-   * Sets the change key associated with the Exchange object. The change key
-   * represents the version of the associated item or folder.
+   * Sets the change key associated with the Exchange object. The change key represents the version
+   * of the associated item or folder.
    *
    * @param changeKey change key associated with the Exchange object.
    */
@@ -159,8 +160,7 @@ public abstract class ServiceId extends ComplexProperty {
   }
 
   /**
-   * Determines whether two ServiceId instances are equal (including
-   * ChangeKeys).
+   * Determines whether two ServiceId instances are equal (including ChangeKeys).
    *
    * @param other The ServiceId to compare with the current ServiceId.
    * @return true if equal otherwise false.
@@ -168,20 +168,19 @@ public abstract class ServiceId extends ComplexProperty {
   public boolean sameIdAndChangeKey(ServiceId other) {
     if (this.equals(other)) {
       return ((this.getChangeKey() == null) &&
-          (other.getChangeKey() == null)) ||
-          this.getChangeKey().equals(other.getChangeKey());
+              (other.getChangeKey() == null)) ||
+             this.getChangeKey().equals(other.getChangeKey());
     } else {
       return false;
     }
   }
 
   /**
-   * Determines whether the specified instance is equal to the current
-   * instance. We do not consider the ChangeKey for ServiceId.Equals.
+   * Determines whether the specified instance is equal to the current instance. We do not consider
+   * the ChangeKey for ServiceId.Equals.
    *
    * @param obj The object to compare with the current instance
-   * @return true if the specified object is equal to the current instance,
-   * otherwise, false.
+   * @return true if the specified object is equal to the current instance, otherwise, false.
    */
   @Override
   public boolean equals(Object obj) {
@@ -202,8 +201,8 @@ public abstract class ServiceId extends ComplexProperty {
   }
 
   /**
-   * Serves as a hash function for a particular type. We do not consider the
-   * change key in the hash code computation.
+   * Serves as a hash function for a particular type. We do not consider the change key in the hash
+   * code computation.
    *
    * @return A hash code for the current
    */

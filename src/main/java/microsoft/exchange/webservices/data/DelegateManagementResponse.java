@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ class DelegateManagementResponse extends ServiceResponse {
    * @param delegateUsers     the delegate users
    */
   protected DelegateManagementResponse(boolean readDelegateUsers,
-      List<DelegateUser> delegateUsers) {
+                                       List<DelegateUser> delegateUsers) {
     super();
     this.readDelegateUsers = readDelegateUsers;
     this.delegateUsers = delegateUsers;
@@ -74,12 +75,12 @@ class DelegateManagementResponse extends ServiceResponse {
       reader.read();
 
       if (reader.isStartElement(XmlNamespace.Messages,
-          XmlElementNames.ResponseMessages)) {
+                                XmlElementNames.ResponseMessages)) {
         int delegateUserIndex = 0;
         do {
           reader.read();
           if (reader.isStartElement(XmlNamespace.Messages,
-              XmlElementNames.DelegateUserResponseMessageType)) {
+                                    XmlElementNames.DelegateUserResponseMessageType)) {
             DelegateUser delegateUser = null;
             if (this.readDelegateUsers &&
                 (this.delegateUsers != null)) {
@@ -100,14 +101,13 @@ class DelegateManagementResponse extends ServiceResponse {
             delegateUserIndex++;
           }
         } while (!reader.isEndElement(XmlNamespace.Messages,
-            XmlElementNames.ResponseMessages));
+                                      XmlElementNames.ResponseMessages));
       }
     }
   }
 
   /**
-   * Gets a collection of responses for each of the delegate users concerned
-   * by the operation.
+   * Gets a collection of responses for each of the delegate users concerned by the operation.
    *
    * @return the delegate user responses
    */

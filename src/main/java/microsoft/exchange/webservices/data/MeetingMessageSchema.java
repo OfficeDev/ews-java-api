@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -29,6 +30,107 @@ import java.util.EnumSet;
  */
 @Schema
 public class MeetingMessageSchema extends EmailMessageSchema {
+
+  /**
+   * Defines the AssociatedAppointmentId property.
+   */
+  public static final PropertyDefinition AssociatedAppointmentId =
+      new ComplexPropertyDefinition<ItemId>(
+          //	ItemId.class,
+          XmlElementNames.AssociatedCalendarItemId,
+          FieldUris.AssociatedCalendarItemId,
+          ExchangeVersion.Exchange2007_SP1,
+          new ICreateComplexPropertyDelegate<ItemId>() {
+            @Override
+            public ItemId createComplexProperty() {
+              return new ItemId();
+            }
+          });
+  /**
+   * Defines the IsDelegated property.
+   */
+  public static final PropertyDefinition IsDelegated =
+      new BoolPropertyDefinition(
+          XmlElementNames.IsDelegated, FieldUris.IsDelegated, EnumSet
+          .of(PropertyDefinitionFlags.CanFind),
+          ExchangeVersion.Exchange2007_SP1);
+  /**
+   * Defines the IsOutOfDate property.
+   */
+  public static final PropertyDefinition IsOutOfDate =
+      new BoolPropertyDefinition(
+          XmlElementNames.IsOutOfDate, FieldUris.IsOutOfDate,
+          ExchangeVersion.Exchange2007_SP1);
+  /**
+   * Defines the HasBeenProcessed property.
+   */
+  public static final PropertyDefinition HasBeenProcessed =
+      new BoolPropertyDefinition(
+          XmlElementNames.HasBeenProcessed, FieldUris.HasBeenProcessed,
+          EnumSet.of(PropertyDefinitionFlags.CanFind),
+          ExchangeVersion.Exchange2007_SP1);
+  /**
+   * Defines the ResponseType property.
+   */
+  public static final PropertyDefinition ResponseType =
+      new GenericPropertyDefinition<MeetingResponseType>(
+          MeetingResponseType.class,
+          XmlElementNames.ResponseType, FieldUris.ResponseType, EnumSet
+              .of(PropertyDefinitionFlags.CanFind),
+          ExchangeVersion.Exchange2007_SP1);
+  /**
+   * Defines the ICalendar Uid property.
+   */
+  public static final PropertyDefinition ICalUid = AppointmentSchema.ICalUid;
+  /**
+   * Defines the ICalendar RecurrenceId property.
+   */
+  public static final PropertyDefinition ICalRecurrenceId =
+      AppointmentSchema.ICalRecurrenceId;
+  /**
+   * Defines the ICalendar DateTimeStamp property.
+   */
+  public static final PropertyDefinition ICalDateTimeStamp =
+      AppointmentSchema.ICalDateTimeStamp;
+  /**
+   * This must be after the declaration of property definitions.
+   */
+  protected static final MeetingMessageSchema Instance =
+      new MeetingMessageSchema();
+
+  /**
+   * Initializes a new instance of the class.
+   */
+  protected MeetingMessageSchema() {
+    super();
+  }
+
+  /**
+   * Gets the single instance of MeetingMessageSchema.
+   *
+   * @return single instance of MeetingMessageSchema
+   */
+  public static MeetingMessageSchema getInstance() {
+    return Instance;
+  }
+
+  /**
+   * Registers properties. <p/> IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e.
+   * the same order as they are defined in types.xsd)
+   */
+  @Override
+  protected void registerProperties() {
+    super.registerProperties();
+
+    this.registerProperty(AssociatedAppointmentId);
+    this.registerProperty(IsDelegated);
+    this.registerProperty(IsOutOfDate);
+    this.registerProperty(HasBeenProcessed);
+    this.registerProperty(ResponseType);
+    this.registerProperty(ICalUid);
+    this.registerProperty(ICalRecurrenceId);
+    this.registerProperty(ICalDateTimeStamp);
+  }
 
   /**
    * Field URIs for MeetingMessage.
@@ -59,118 +161,6 @@ public class MeetingMessageSchema extends EmailMessageSchema {
      * The Response type.
      */
     String ResponseType = "meeting:ResponseType";
-  }
-
-
-  /**
-   * Defines the AssociatedAppointmentId property.
-   */
-  public static final PropertyDefinition AssociatedAppointmentId =
-      new ComplexPropertyDefinition<ItemId>(
-          //	ItemId.class,
-          XmlElementNames.AssociatedCalendarItemId,
-          FieldUris.AssociatedCalendarItemId,
-          ExchangeVersion.Exchange2007_SP1,
-          new ICreateComplexPropertyDelegate<ItemId>() {
-            @Override
-            public ItemId createComplexProperty() {
-              return new ItemId();
-            }
-          });
-
-  /**
-   * Defines the IsDelegated property.
-   */
-  public static final PropertyDefinition IsDelegated =
-      new BoolPropertyDefinition(
-          XmlElementNames.IsDelegated, FieldUris.IsDelegated, EnumSet
-          .of(PropertyDefinitionFlags.CanFind),
-          ExchangeVersion.Exchange2007_SP1);
-
-  /**
-   * Defines the IsOutOfDate property.
-   */
-  public static final PropertyDefinition IsOutOfDate =
-      new BoolPropertyDefinition(
-          XmlElementNames.IsOutOfDate, FieldUris.IsOutOfDate,
-          ExchangeVersion.Exchange2007_SP1);
-
-  /**
-   * Defines the HasBeenProcessed property.
-   */
-  public static final PropertyDefinition HasBeenProcessed =
-      new BoolPropertyDefinition(
-          XmlElementNames.HasBeenProcessed, FieldUris.HasBeenProcessed,
-          EnumSet.of(PropertyDefinitionFlags.CanFind),
-          ExchangeVersion.Exchange2007_SP1);
-
-  /**
-   * Defines the ResponseType property.
-   */
-  public static final PropertyDefinition ResponseType =
-      new GenericPropertyDefinition<MeetingResponseType>(
-          MeetingResponseType.class,
-          XmlElementNames.ResponseType, FieldUris.ResponseType, EnumSet
-          .of(PropertyDefinitionFlags.CanFind),
-          ExchangeVersion.Exchange2007_SP1);
-
-  /**
-   * Defines the ICalendar Uid property.
-   */
-  public static final PropertyDefinition ICalUid = AppointmentSchema.ICalUid;
-
-  /**
-   * Defines the ICalendar RecurrenceId property.
-   */
-  public static final PropertyDefinition ICalRecurrenceId =
-      AppointmentSchema.ICalRecurrenceId;
-
-  /**
-   * Defines the ICalendar DateTimeStamp property.
-   */
-  public static final PropertyDefinition ICalDateTimeStamp =
-      AppointmentSchema.ICalDateTimeStamp;
-
-  /**
-   * This must be after the declaration of property definitions.
-   */
-  protected static final MeetingMessageSchema Instance =
-      new MeetingMessageSchema();
-
-  /**
-   * Gets the single instance of MeetingMessageSchema.
-   *
-   * @return single instance of MeetingMessageSchema
-   */
-  public static MeetingMessageSchema getInstance() {
-    return Instance;
-  }
-
-  /**
-   * Registers properties.
-   * <p/>
-   * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
-   * same order as they are defined in types.xsd)
-   */
-  @Override
-  protected void registerProperties() {
-    super.registerProperties();
-
-    this.registerProperty(AssociatedAppointmentId);
-    this.registerProperty(IsDelegated);
-    this.registerProperty(IsOutOfDate);
-    this.registerProperty(HasBeenProcessed);
-    this.registerProperty(ResponseType);
-    this.registerProperty(ICalUid);
-    this.registerProperty(ICalRecurrenceId);
-    this.registerProperty(ICalDateTimeStamp);
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   */
-  protected MeetingMessageSchema() {
-    super();
   }
 
 }

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Represents an indexed property definition.
  */
 public final class IndexedPropertyDefinition extends
-    ServiceObjectPropertyDefinition {
+                                             ServiceObjectPropertyDefinition {
 
   // Index attribute of IndexedFieldURI element.
   /**
@@ -46,21 +47,20 @@ public final class IndexedPropertyDefinition extends
   }
 
   /**
-   * Determines whether two specified instances of IndexedPropertyDefinition
-   * are equal.
+   * Determines whether two specified instances of IndexedPropertyDefinition are equal.
    *
    * @param idxPropDef1 First indexed property definition.
    * @param idxPropDef2 Second indexed property definition.
    * @return True if indexed property definitions are equal.
    */
   protected static boolean isEqualTo(IndexedPropertyDefinition idxPropDef1,
-      IndexedPropertyDefinition idxPropDef2) {
+                                     IndexedPropertyDefinition idxPropDef2) {
     return (idxPropDef1 == idxPropDef2) ||
-        (idxPropDef1 != null &&
+           (idxPropDef1 != null &&
             idxPropDef2 != null &&
             idxPropDef1.getUri().equalsIgnoreCase(
                 idxPropDef2.getUri()) && idxPropDef1.index
-            .equalsIgnoreCase(idxPropDef2.index));
+                .equalsIgnoreCase(idxPropDef2.index));
   }
 
   /**
@@ -108,13 +108,11 @@ public final class IndexedPropertyDefinition extends
 
 
   /**
-   * Determines whether a given indexed property definition is equal to this
-   * indexed property definition.
+   * Determines whether a given indexed property definition is equal to this indexed property
+   * definition.
    *
-   * @param obj The
-   *            object to check for equality.
-   * @return True if the properties definitions define the same indexed
-   * property.
+   * @param obj The object to check for equality.
+   * @return True if the properties definitions define the same indexed property.
    */
   @Override
   public boolean equals(Object obj) {

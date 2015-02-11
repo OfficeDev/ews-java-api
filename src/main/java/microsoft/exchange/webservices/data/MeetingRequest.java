@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,18 +20,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.Date;
 
 /**
- * Represents a meeting request that an attendee can accept
- * or decline. Properties available on meeting
- * requests are defined in the MeetingRequestSchema class.
+ * Represents a meeting request that an attendee can accept or decline. Properties available on
+ * meeting requests are defined in the MeetingRequestSchema class.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.MeetingRequest)
 public class MeetingRequest extends MeetingMessage implements
-    ICalendarActionProvider {
+                                                   ICalendarActionProvider {
 
   /**
    * Initializes a new instance of the class.
@@ -54,17 +54,17 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Binds to an existing meeting response and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing meeting response and loads the specified set of properties. Calling this
+   * method results in a call to EWS.
    *
    * @param service     The service to use to bind to the meeting request.
    * @param id          The Id of the meeting request to bind to.
    * @param propertySet The set of properties to load.
-   * @return A MeetingResponse instance representing the meeting request
-   * corresponding to the specified Id.
+   * @return A MeetingResponse instance representing the meeting request corresponding to the
+   * specified Id.
    */
   public static MeetingRequest bind(ExchangeService service, ItemId id,
-      PropertySet propertySet) {
+                                    PropertySet propertySet) {
     try {
       return service.bindToItem(MeetingRequest.class, id, propertySet);
     } catch (Exception e) {
@@ -74,13 +74,13 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Binds to an existing meeting response and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing meeting response and loads the specified set of properties. Calling this
+   * method results in a call to EWS.
    *
    * @param service The service to use to bind to the meeting request.
    * @param id      The Id of the meeting request to bind to.
-   * @return A MeetingResponse instance representing the meeting request
-   * corresponding to the specified Id.
+   * @return A MeetingResponse instance representing the meeting request corresponding to the
+   * specified Id.
    */
   public static MeetingRequest bind(ExchangeService service, ItemId id) {
     return MeetingRequest.bind(service, id, PropertySet
@@ -100,8 +100,7 @@ public class MeetingRequest extends MeetingMessage implements
   /**
    * Gets the minimum required server version.
    *
-   * @return Earliest Exchange version in which this service object type is
-   * supported.
+   * @return Earliest Exchange version in which this service object type is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -109,15 +108,13 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Creates a local meeting acceptance message that can be customized and
-   * sent.
+   * Creates a local meeting acceptance message that can be customized and sent.
    *
    * @param tentative Specifies whether the meeting will be tentatively accepted.
-   * @return An AcceptMeetingInvitationMessage representing the meeting
-   * acceptance message.
+   * @return An AcceptMeetingInvitationMessage representing the meeting acceptance message.
    */
   public AcceptMeetingInvitationMessage createAcceptMessage(boolean
-      tentative) {
+                                                                tentative) {
     try {
       return new AcceptMeetingInvitationMessage(this, tentative);
     } catch (Exception e) {
@@ -127,11 +124,9 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Creates a local meeting declination message that can be customized and
-   * sent.
+   * Creates a local meeting declination message that can be customized and sent.
    *
-   * @return A DeclineMeetingInvitation representing the meeting declination
-   * message.
+   * @return A DeclineMeetingInvitation representing the meeting declination message.
    */
   public DeclineMeetingInvitationMessage createDeclineMessage() {
     try {
@@ -146,8 +141,8 @@ public class MeetingRequest extends MeetingMessage implements
    * Accepts the meeting. Calling this method results in a call to EWS.
    *
    * @param sendResponse Indicates whether to send a response to the organizer.
-   * @return A CalendarActionResults object containing the various items that
-   * were created or modified as a results of this operation.
+   * @return A CalendarActionResults object containing the various items that were created or
+   * modified as a results of this operation.
    * @throws Exception throws Exception
    */
   public CalendarActionResults accept(boolean sendResponse) throws Exception {
@@ -155,12 +150,11 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Tentatively accepts the meeting. Calling this method results in a call to
-   * EWS.
+   * Tentatively accepts the meeting. Calling this method results in a call to EWS.
    *
    * @param sendResponse Indicates whether to send a response to the organizer.
-   * @return A CalendarActionResults object containing the various items that
-   * were created or modified as a results of this operation.
+   * @return A CalendarActionResults object containing the various items that were created or
+   * modified as a results of this operation.
    * @throws Exception throws Exception
    */
   public CalendarActionResults acceptTentatively(boolean sendResponse)
@@ -173,12 +167,12 @@ public class MeetingRequest extends MeetingMessage implements
    *
    * @param tentative    True if tentative accept.
    * @param sendResponse Indicates whether to send a response to the organizer.
-   * @return A CalendarActionResults object containing the various items that
-   * were created or modified as a results of this operation.
+   * @return A CalendarActionResults object containing the various items that were created or
+   * modified as a results of this operation.
    * @throws Exception throws Exception
    */
   protected CalendarActionResults internalAccept(boolean tentative,
-      boolean sendResponse) throws Exception {
+                                                 boolean sendResponse) throws Exception {
     AcceptMeetingInvitationMessage accept = this
         .createAcceptMessage(tentative);
 
@@ -191,12 +185,11 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Declines the meeting invitation. Calling this method results in a call to
-   * EWS.
+   * Declines the meeting invitation. Calling this method results in a call to EWS.
    *
    * @param sendResponse Indicates whether to send a response to the organizer.
-   * @return A CalendarActionResults object containing the various items that
-   * were created or modified as a results of this operation.
+   * @return A CalendarActionResults object containing the various items that were created or
+   * modified as a results of this operation.
    * @throws Exception throws Exception
    */
   public CalendarActionResults decline(boolean sendResponse)
@@ -224,8 +217,7 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Gets the a value representing the intended free/busy status of the
-   * meeting.
+   * Gets the a value representing the intended free/busy status of the meeting.
    *
    * @return the intended free busy status
    * @throws ServiceLocalException the service local exception
@@ -283,8 +275,7 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Gets a value indicating the free/busy status of the owner of this
-   * appointment.
+   * Gets a value indicating the free/busy status of the owner of this appointment.
    *
    * @return the legacy free busy status
    * @throws ServiceLocalException the service local exception
@@ -308,10 +299,9 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Gets a text indicating when this appointment occurs. The text returned by
-   * When is localized using the Exchange Server culture or using the culture
-   * specified in the PreferredCulture property of the ExchangeService object
-   * this appointment is bound to.
+   * Gets a text indicating when this appointment occurs. The text returned by When is localized
+   * using the Exchange Server culture or using the culture specified in the PreferredCulture
+   * property of the ExchangeService object this appointment is bound to.
    *
    * @return the when
    * @throws ServiceLocalException the service local exception
@@ -355,8 +345,7 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Gets a value indicating whether the meeting request has already been
-   * sent.
+   * Gets a value indicating whether the meeting request has already been sent.
    *
    * @return the meeting request was sent
    * @throws ServiceLocalException the service local exception
@@ -379,8 +368,7 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Gets a value indicating what was the last response of the user that
-   * loaded this meeting.
+   * Gets a value indicating what was the last response of the user that loaded this meeting.
    *
    * @return the my response type
    * @throws ServiceLocalException the service local exception
@@ -441,38 +429,38 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Gets the number of calendar entries that conflict with
-   * this appointment in the authenticated user's calendar.
+   * Gets the number of calendar entries that conflict with this appointment in the authenticated
+   * user's calendar.
    *
    * @return the conflicting meeting count
    * @throws NumberFormatException the number format exception
    * @throws ServiceLocalException the service local exception
    */
   public int getConflictingMeetingCount() throws NumberFormatException,
-      ServiceLocalException {
+                                                 ServiceLocalException {
     return (Integer.parseInt(this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.ConflictingMeetingCount).toString()));
+                                 .getObjectFromPropertyDefinition(
+                                     AppointmentSchema.ConflictingMeetingCount).toString()));
   }
 
   /**
-   * Gets the number of calendar entries that are adjacent to
-   * this appointment in the authenticated user's calendar.
+   * Gets the number of calendar entries that are adjacent to this appointment in the authenticated
+   * user's calendar.
    *
    * @return the adjacent meeting count
    * @throws NumberFormatException the number format exception
    * @throws ServiceLocalException the service local exception
    */
   public int getAdjacentMeetingCount() throws NumberFormatException,
-      ServiceLocalException {
+                                              ServiceLocalException {
     return (Integer.parseInt(this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.AdjacentMeetingCount).toString()));
+                                 .getObjectFromPropertyDefinition(
+                                     AppointmentSchema.AdjacentMeetingCount).toString()));
   }
 
   /**
-   * Gets a list of meetings that conflict with
-   * this appointment in the authenticated user's calendar.
+   * Gets a list of meetings that conflict with this appointment in the authenticated user's
+   * calendar.
    *
    * @return the conflicting meetings
    * @throws ServiceLocalException the service local exception
@@ -485,8 +473,8 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Gets a list of meetings that are adjacent with this
-   * appointment in the authenticated user's calendar.
+   * Gets a list of meetings that are adjacent with this appointment in the authenticated user's
+   * calendar.
    *
    * @return the adjacent meetings
    * @throws ServiceLocalException the service local exception
@@ -539,12 +527,12 @@ public class MeetingRequest extends MeetingMessage implements
    * @throws ServiceLocalException the service local exception
    */
   public int getAppointmentSequenceNumber() throws NumberFormatException,
-      ServiceLocalException {
+                                                   ServiceLocalException {
     return (Integer
-        .parseInt(this.getPropertyBag()
-            .getObjectFromPropertyDefinition(
-                AppointmentSchema.AppointmentSequenceNumber)
-            .toString()));
+                .parseInt(this.getPropertyBag()
+                              .getObjectFromPropertyDefinition(
+                                  AppointmentSchema.AppointmentSequenceNumber)
+                              .toString()));
   }
 
   /**
@@ -555,10 +543,10 @@ public class MeetingRequest extends MeetingMessage implements
    * @throws ServiceLocalException the service local exception
    */
   public int getAppointmentState() throws NumberFormatException,
-      ServiceLocalException {
+                                          ServiceLocalException {
     return (Integer.parseInt(this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.AppointmentState).toString()));
+                                 .getObjectFromPropertyDefinition(
+                                     AppointmentSchema.AppointmentState).toString()));
   }
 
   /**
@@ -653,15 +641,14 @@ public class MeetingRequest extends MeetingMessage implements
    * @throws ServiceLocalException the service local exception
    */
   public int getConferenceType() throws NumberFormatException,
-      ServiceLocalException {
+                                        ServiceLocalException {
     return (Integer.parseInt(this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.ConferenceType).toString()));
+                                 .getObjectFromPropertyDefinition(
+                                     AppointmentSchema.ConferenceType).toString()));
   }
 
   /**
-   * Gets a value indicating whether new time
-   * proposals are allowed for attendees of this meeting.
+   * Gets a value indicating whether new time proposals are allowed for attendees of this meeting.
    *
    * @return the allow new time proposal
    * @throws ServiceLocalException the service local exception
@@ -683,9 +670,8 @@ public class MeetingRequest extends MeetingMessage implements
   }
 
   /**
-   * Gets the URL of the meeting workspace. A meeting
-   * workspace is a shared Web site for
-   * planning meetings and tracking results.
+   * Gets the URL of the meeting workspace. A meeting workspace is a shared Web site for planning
+   * meetings and tracking results.
    *
    * @return the meeting workspace url
    * @throws ServiceLocalException the service local exception

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -49,7 +50,7 @@ public final class NameResolution {
    */
   protected NameResolution(NameResolutionCollection owner) {
     EwsUtilities.EwsAssert(owner != null, "NameResolution.ctor",
-        "owner is null.");
+                           "owner is null.");
 
     this.owner = owner;
   }
@@ -69,14 +70,14 @@ public final class NameResolution {
     if (reader.isStartElement(XmlNamespace.Types, XmlElementNames.Contact)) {
       this.contact = new Contact(this.owner.getSession());
       this.contact.loadFromXml(reader, true /* clearPropertyBag */,
-          PropertySet.FirstClassProperties,
-          false /* summaryPropertiesOnly */);
+                               PropertySet.FirstClassProperties,
+                               false /* summaryPropertiesOnly */);
 
       reader.readEndElement(XmlNamespace.Types,
-          XmlElementNames.Resolution);
+                            XmlElementNames.Resolution);
     } else {
       reader.ensureCurrentNodeIsEndElement(XmlNamespace.Types,
-          XmlElementNames.Resolution);
+                                           XmlElementNames.Resolution);
     }
   }
 
@@ -90,9 +91,8 @@ public final class NameResolution {
   }
 
   /**
-   * Gets the contact information of the suggested resolved name. This
-   * property is only available when ResolveName is called with
-   * returnContactDetails = true.
+   * Gets the contact information of the suggested resolved name. This property is only available
+   * when ResolveName is called with returnContactDetails = true.
    *
    * @return the contact
    */

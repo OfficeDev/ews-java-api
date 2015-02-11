@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 public enum WebExceptionStatus {
@@ -116,7 +117,6 @@ public enum WebExceptionStatus {
   // Summary:
   //     This request was not permitted by the proxy.
   RequestProhibitedByProxy,
-
 
 }
 

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,18 +20,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a collection of DayOfTheWeek values.
  */
 public final class DayOfTheWeekCollection extends ComplexProperty implements
-    Iterable<DayOfTheWeek> {
+                                                                  Iterable<DayOfTheWeek> {
 
   /**
    * The items.
@@ -79,10 +81,10 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
    * @throws Exception the exception
    */
   protected void loadFromXml(EwsServiceXmlReader reader,
-      String xmlElementName)
+                             String xmlElementName)
       throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
-        xmlElementName);
+                                           xmlElementName);
     EwsUtilities.parseEnumValueList(DayOfTheWeek.class, this.items, reader
         .readElementValue(), ' ');
   }
@@ -102,7 +104,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
 
     if (!(daysOfWeekAsString == null || daysOfWeekAsString.isEmpty())) {
       writer.writeElementValue(XmlNamespace.Types,
-          XmlElementNames.DaysOfWeek, daysOfWeekAsString);
+                               XmlElementNames.DaysOfWeek, daysOfWeekAsString);
     }
   }
 
@@ -173,7 +175,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
   public void removeAt(int index) throws ArgumentOutOfRangeException {
     if (index < 0 || index >= this.getCount()) {
       throw new ArgumentOutOfRangeException("index",
-          Strings.IndexIsOutOfRange);
+                                            Strings.IndexIsOutOfRange);
     }
 
     this.items.remove(index);

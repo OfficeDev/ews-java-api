@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -80,8 +81,6 @@ public final class MobilePhone implements ISelfValidate {
 
   /**
    * Validates this instance.//>!(contentType == null || contentType.isEmpty()
-   *
-   * @throws ServiceValidationException
    */
   public void validate() throws ServiceValidationException {
     if (this.getPhoneNumber() == null || this.getPhoneNumber().isEmpty()) {

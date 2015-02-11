@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a suggestion for a specific date.
@@ -68,7 +70,7 @@ public final class Suggestion extends ComplexProperty {
   @Override
   protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException,
-      Exception {
+             Exception {
     if (reader.getLocalName().equals(XmlElementNames.Date)) {
       SimpleDateFormat sdfin = new SimpleDateFormat(
           "yyyy-MM-dd'T'HH:mm:ss");
@@ -85,7 +87,7 @@ public final class Suggestion extends ComplexProperty {
           reader.read();
 
           if (reader.isStartElement(XmlNamespace.Types,
-              XmlElementNames.Suggestion)) {
+                                    XmlElementNames.Suggestion)) {
             TimeSuggestion timeSuggestion = new TimeSuggestion();
 
             timeSuggestion.loadFromXml(reader, reader
@@ -94,7 +96,7 @@ public final class Suggestion extends ComplexProperty {
             this.timeSuggestions.add(timeSuggestion);
           }
         } while (!reader.isEndElement(XmlNamespace.Types,
-            XmlElementNames.SuggestionArray));
+                                      XmlElementNames.SuggestionArray));
       }
 
       return true;

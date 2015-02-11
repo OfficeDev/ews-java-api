@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.EnumSet;
@@ -31,18 +32,6 @@ import java.util.EnumSet;
 public class SearchFolderSchema extends FolderSchema {
 
   /**
-   * Field URIs for search folders.
-   */
-  private static interface FieldUris {
-
-    /**
-     * The Search parameters.
-     */
-    String SearchParameters = "folder:SearchParameters";
-  }
-
-
-  /**
    * Defines the SearchParameters property.
    */
   public static final PropertyDefinition SearchParameters =
@@ -51,8 +40,8 @@ public class SearchFolderSchema extends FolderSchema {
           XmlElementNames.SearchParameters,
           FieldUris.SearchParameters,
           EnumSet.of(PropertyDefinitionFlags.CanSet,
-              PropertyDefinitionFlags.CanUpdate,
-              PropertyDefinitionFlags.AutoInstantiateOnRead),
+                     PropertyDefinitionFlags.CanUpdate,
+                     PropertyDefinitionFlags.AutoInstantiateOnRead),
           ExchangeVersion.Exchange2007_SP1,
           new ICreateComplexPropertyDelegate
               <SearchFolderParameters>() {
@@ -61,12 +50,12 @@ public class SearchFolderSchema extends FolderSchema {
               return new SearchFolderParameters();
             }
           });
-
-  // This must be declared after the property definitions
   /**
    * The Constant Instance.
    */
   static final SearchFolderSchema Instance = new SearchFolderSchema();
+
+  // This must be declared after the property definitions
 
   /**
    * Registers properties.
@@ -78,5 +67,16 @@ public class SearchFolderSchema extends FolderSchema {
     super.registerProperties();
 
     this.registerProperty(SearchParameters);
+  }
+
+  /**
+   * Field URIs for search folders.
+   */
+  private static interface FieldUris {
+
+    /**
+     * The Search parameters.
+     */
+    String SearchParameters = "folder:SearchParameters";
   }
 }

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import org.junit.BeforeClass;
@@ -44,15 +45,14 @@ public abstract class BaseTest {
 
   /**
    * Setup Mocks
-   *
-   * @throws Exception
    */
   @BeforeClass
   public static final void setUpBaseClass() throws Exception {
     // Mock up ExchangeServiceBase
     exchangeServiceBaseMock = new ExchangeServiceBase() {
       @Override
-      protected void processHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException)
+      protected void processHttpErrorResponse(HttpWebRequest httpWebResponse,
+                                              Exception webException)
           throws Exception {
         throw webException;
       }

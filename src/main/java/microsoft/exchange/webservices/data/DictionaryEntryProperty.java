@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,16 +20,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
 /**
- * Represents an entry of a DictionaryProperty object.
- * <p/>
- * All descendants of DictionaryEntryProperty must implement a parameterless
- * constructor. That constructor does not have to be public. That constructor
- * does not have to be public.
+ * Represents an entry of a DictionaryProperty object. <p/> All descendants of
+ * DictionaryEntryProperty must implement a parameterless constructor. That constructor does not
+ * have to be public. That constructor does not have to be public.
  *
  * @param <TKey> the generic type
  */
@@ -43,16 +42,14 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
   private Class<TKey> instance;
 
   /**
-   * Initializes a new instance of the "DictionaryEntryProperty&lt;TKey&gt;"
-   * class.
+   * Initializes a new instance of the "DictionaryEntryProperty&lt;TKey&gt;" class.
    */
   protected DictionaryEntryProperty(Class<TKey> cls) {
     this.instance = cls;
   }
 
   /**
-   * Initializes a new instance of the "DictionaryEntryProperty&lt;TKey&gt;"
-   * class.
+   * Initializes a new instance of the "DictionaryEntryProperty&lt;TKey&gt;" class.
    *
    * @param key The key.
    */
@@ -90,7 +87,7 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
   protected void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.key = reader.readAttributeValue(instance,
-        XmlAttributeNames.Key);
+                                         XmlAttributeNames.Key);
   }
 
   /**
@@ -116,7 +113,8 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   protected boolean writeSetUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject, String ownerDictionaryXmlElementName)
+                                        ServiceObject ewsObject,
+                                        String ownerDictionaryXmlElementName)
       throws XMLStreamException, ServiceXmlSerializationException {
     return false;
   }
@@ -131,8 +129,8 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   protected boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject) throws XMLStreamException,
-      ServiceXmlSerializationException {
+                                           ServiceObject ewsObject) throws XMLStreamException,
+                                                                           ServiceXmlSerializationException {
     return false;
   }
 

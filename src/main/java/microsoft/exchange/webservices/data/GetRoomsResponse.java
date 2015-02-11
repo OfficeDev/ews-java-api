@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ final class GetRoomsResponse extends ServiceResponse {
       // return object or EndElement
       reader.read();
       while (reader.isStartElement(XmlNamespace.Types,
-          XmlElementNames.Room)) {
+                                   XmlElementNames.Room)) {
         reader.read(); // skip the start <Room>
 
         EmailAddress emailAddress = new EmailAddress();
@@ -83,7 +84,7 @@ final class GetRoomsResponse extends ServiceResponse {
       }
 
       reader.ensureCurrentNodeIsEndElement(XmlNamespace.Messages,
-          XmlElementNames.Rooms);
+                                           XmlElementNames.Rooms);
     } else {
       reader.read();
     }

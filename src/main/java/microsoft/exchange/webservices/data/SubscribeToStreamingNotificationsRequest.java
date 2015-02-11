@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,20 +20,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Defines the SubscribeToStreamingNotificationsRequest class.
  */
 class SubscribeToStreamingNotificationsRequest extends
-    SubscribeRequest<StreamingSubscription> {
+                                               SubscribeRequest<StreamingSubscription> {
 
   /**
-   * Initializes a new instance of the
-   * SubscribeToStreamingNotificationsRequest class.
+   * Initializes a new instance of the SubscribeToStreamingNotificationsRequest class.
    *
    * @param service The service
-   * @throws Exception
    */
   protected SubscribeToStreamingNotificationsRequest(ExchangeService service)
       throws Exception {
@@ -42,8 +41,6 @@ class SubscribeToStreamingNotificationsRequest extends
 
   /**
    * Validate request.
-   *
-   * @throws Exception
    */
   @Override
   protected void validate() throws Exception {
@@ -81,11 +78,11 @@ class SubscribeToStreamingNotificationsRequest extends
    * @param service       The service
    * @param responseIndex The responseIndex
    * @return SubscribeResponse
-   * @throws Exception
    */
   @Override
   protected SubscribeResponse<StreamingSubscription> createServiceResponse(ExchangeService service,
-      int responseIndex) throws Exception {
+                                                                           int responseIndex)
+      throws Exception {
     return new SubscribeResponse<StreamingSubscription>(
         new StreamingSubscription(service));
   }

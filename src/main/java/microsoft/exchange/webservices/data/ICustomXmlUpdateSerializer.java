@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -44,10 +45,10 @@ interface ICustomXmlUpdateSerializer {
    * @throws Exception                           the exception
    */
   boolean writeSetUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject, PropertyDefinition propertyDefinition)
+                              ServiceObject ewsObject, PropertyDefinition propertyDefinition)
       throws XMLStreamException, ServiceXmlSerializationException,
-      InstantiationException, IllegalAccessException,
-      ServiceValidationException, Exception;
+             InstantiationException, IllegalAccessException,
+             ServiceValidationException, Exception;
 
   /**
    * Writes the deletion update to XML.
@@ -60,6 +61,7 @@ interface ICustomXmlUpdateSerializer {
    * @throws Exception                           the exception
    */
   boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject) throws XMLStreamException,
-      ServiceXmlSerializationException, Exception;
+                                 ServiceObject ewsObject) throws XMLStreamException,
+                                                                 ServiceXmlSerializationException,
+                                                                 Exception;
 }

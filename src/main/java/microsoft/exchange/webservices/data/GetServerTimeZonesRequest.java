@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -28,12 +29,22 @@ import javax.xml.stream.XMLStreamException;
  * Represents a GetServerTimeZones request.
  */
 class GetServerTimeZonesRequest extends
-    MultiResponseServiceRequest<GetServerTimeZonesResponse> {
+                                MultiResponseServiceRequest<GetServerTimeZonesResponse> {
 
   /**
    * The ids.
    */
   private Iterable<String> ids;
+
+  /**
+   * Initializes a new instance of the "GetServerTimeZonesRequest" class.
+   *
+   * @param service the service
+   */
+  protected GetServerTimeZonesRequest(ExchangeService service)
+      throws Exception {
+    super(service, ServiceErrorHandling.ThrowOnError);
+  }
 
   /**
    * Gets the XML element name associated with the transition.
@@ -45,19 +56,8 @@ class GetServerTimeZonesRequest extends
     super.validate();
     if (this.ids != null) {
       EwsUtilities.validateParamCollection(this.getIds().iterator(),
-          "Ids");
+                                           "Ids");
     }
-  }
-
-  /**
-   * Initializes a new instance of the "GetServerTimeZonesRequest" class.
-   *
-   * @param service the service
-   * @throws Exception
-   */
-  protected GetServerTimeZonesRequest(ExchangeService service)
-      throws Exception {
-    super(service, ServiceErrorHandling.ThrowOnError);
   }
 
   /**
@@ -136,11 +136,11 @@ class GetServerTimeZonesRequest extends
     if (this.getIds() != null) {
       writer
           .writeStartElement(XmlNamespace.Messages,
-              XmlElementNames.Ids);
+                             XmlElementNames.Ids);
 
       for (String id : this.getIds()) {
         writer.writeElementValue(XmlNamespace.Types,
-            XmlElementNames.Id, id);
+                                 XmlElementNames.Id, id);
       }
 
       writer.writeEndElement(); // Ids
@@ -148,8 +148,7 @@ class GetServerTimeZonesRequest extends
   }
 
   /**
-   * Gets  the ids of the time zones that should be returned by the
-   * server.
+   * Gets  the ids of the time zones that should be returned by the server.
    *
    * @return the ids
    */

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -27,7 +28,7 @@ package microsoft.exchange.webservices.data;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class PhoneNumberDictionary extends
-    DictionaryProperty<PhoneNumberKey, PhoneNumberEntry> {
+                                         DictionaryProperty<PhoneNumberKey, PhoneNumberEntry> {
 
   /**
    * Gets the field URI.
@@ -93,8 +94,8 @@ public final class PhoneNumberDictionary extends
    *
    * @param key      the key
    * @param outparam the outparam
-   * @return true if the Dictionary contains a phone number associated with
-   * the specified key; otherwise, false.
+   * @return true if the Dictionary contains a phone number associated with the specified key;
+   * otherwise, false.
    */
   public boolean tryGetValue(PhoneNumberKey key, OutParam<String> outparam) {
     String phoneNumber = this.getPhoneNumber(key);

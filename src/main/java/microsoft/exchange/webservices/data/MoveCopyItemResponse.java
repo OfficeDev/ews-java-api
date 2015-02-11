@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.List;
@@ -28,7 +29,7 @@ import java.util.List;
  * Represents a response to a Move or Copy operation.
  */
 public final class MoveCopyItemResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                                IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The item.
@@ -51,9 +52,9 @@ public final class MoveCopyItemResponse extends ServiceResponse implements
    * @throws Exception the exception
    */
   private Item getObjectInstance(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                 String xmlElementName) throws Exception {
     return EwsUtilities.createEwsObjectFromXmlElementName(Item.class,
-        service, xmlElementName);
+                                                          service, xmlElementName);
   }
 
   /**
@@ -91,14 +92,13 @@ public final class MoveCopyItemResponse extends ServiceResponse implements
    */
   @Override
   public ServiceObject getObjectInstanceDelegate(ExchangeService service,
-      String xmlElementName) throws Exception {
+                                                 String xmlElementName) throws Exception {
     return this.getObjectInstance(service, xmlElementName);
   }
 
   /**
-   * Gets the copied or moved item. Item is null if the copy or move
-   * operation was between two mailboxes or between a mailbox and a public
-   * folder.
+   * Gets the copied or moved item. Item is null if the copy or move operation was between two
+   * mailboxes or between a mailbox and a public folder.
    *
    * @return the item
    */

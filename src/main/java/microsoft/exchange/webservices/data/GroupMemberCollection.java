@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,22 +20,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a collection of members of GroupMember type.
  */
 public final class GroupMemberCollection extends
-    ComplexPropertyCollection<GroupMember> implements
-    ICustomXmlUpdateSerializer {
+                                         ComplexPropertyCollection<GroupMember> implements
+                                                                                ICustomXmlUpdateSerializer {
+
   /**
-   * If the collection is cleared, then store PDL members collection is
-   * updated with "SetItemField". If the collection is not cleared, then store
-   * PDL members collection is updated with "AppendToItemField".
+   * If the collection is cleared, then store PDL members collection is updated with "SetItemField".
+   * If the collection is not cleared, then store PDL members collection is updated with
+   * "AppendToItemField".
    */
   private boolean collectionIsCleared = false;
 
@@ -47,12 +50,10 @@ public final class GroupMemberCollection extends
   }
 
   /**
-   * Retrieves the XML element name corresponding to the provided
-   * GroupMember object.
+   * Retrieves the XML element name corresponding to the provided GroupMember object.
    *
    * @param member the member
-   * @return The XML element name corresponding to the provided GroupMember
-   * object
+   * @return The XML element name corresponding to the provided GroupMember object
    */
   @Override
   protected String getCollectionItemXmlElementName(GroupMember member) {
@@ -60,8 +61,8 @@ public final class GroupMemberCollection extends
   }
 
   /**
-   * * Finds the member with the specified key in the collection.Members that
-   * have not yet been saved do not have a key.
+   * * Finds the member with the specified key in the collection.Members that have not yet been
+   * saved do not have a key.
    *
    * @param key the key
    * @return The member with the specified key
@@ -97,10 +98,10 @@ public final class GroupMemberCollection extends
   public void add(GroupMember member) throws Exception {
     EwsUtilities.validateParam(member, "member");
     EwsUtilities.EwsAssert(member.getKey() == null,
-        "GroupMemberCollection.Add", "member.Key is not null.");
+                           "GroupMemberCollection.Add", "member.Key is not null.");
     EwsUtilities.EwsAssert(!this.contains(member),
-        "GroupMemberCollection.Add",
-        "The member is already in the collection");
+                           "GroupMemberCollection.Add",
+                           "The member is already in the collection");
 
     this.internalAdd(member);
   }
@@ -238,7 +239,7 @@ public final class GroupMemberCollection extends
    * @throws Exception the exception
    */
   public void addOneOff(String displayName,
-      String address, String routingType)
+                        String address, String routingType)
       throws Exception {
     this.add(new GroupMember(displayName, address, routingType));
   }
@@ -264,7 +265,7 @@ public final class GroupMemberCollection extends
    * @throws Exception the exception
    */
   public void addContactEmailAddress(Contact contact,
-      EmailAddressKey emailAddressKey) throws Exception {
+                                     EmailAddressKey emailAddressKey) throws Exception {
     this.add(new GroupMember(contact, emailAddressKey));
   }
 
@@ -287,8 +288,7 @@ public final class GroupMemberCollection extends
    * Removes a member from the collection.
    *
    * @param member the member
-   * @return True if the group member was successfully removed from the
-   * collection, false otherwise.
+   * @return True if the group member was successfully removed from the collection, false otherwise.
    */
   public boolean remove(GroupMember member) {
     return this.internalRemove(member);
@@ -304,7 +304,8 @@ public final class GroupMemberCollection extends
    * @throws Exception the exception
    */
   public boolean writeSetUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ownerObject, PropertyDefinition propertyDefinition)
+                                     ServiceObject ownerObject,
+                                     PropertyDefinition propertyDefinition)
       throws Exception {
     if (this.collectionIsCleared) {
 
@@ -315,20 +316,20 @@ public final class GroupMemberCollection extends
       } else {
         // The collection is cleared, so Set
         this.writeSetOrAppendMembersToXml(writer, this.getAddedItems(),
-            true);
+                                          true);
       }
     } else {
       // The collection is not cleared, i.e. dl.Members.Clear() is not
       // called.
       // Append AddedItems.
       this.writeSetOrAppendMembersToXml(writer, this.getAddedItems(),
-          false);
+                                        false);
 
       // Since member replacement is not supported by server
       // Delete old ModifiedItems, then recreate new instead.
       this.writeDeleteMembersToXml(writer, this.getModifiedItems());
       this.writeSetOrAppendMembersToXml(writer, this.getModifiedItems(),
-          false);
+                                        false);
 
       // Delete RemovedItems.
       this.writeDeleteMembersToXml(writer, this.getRemovedItems());
@@ -345,7 +346,7 @@ public final class GroupMemberCollection extends
    * @return True if property generated serialization.
    */
   public boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject) {
+                                        ServiceObject ewsObject) {
     return false;
   }
 
@@ -377,7 +378,7 @@ public final class GroupMemberCollection extends
   private void writeDeleteMembersCollectionToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeStartElement(XmlNamespace.Types,
-        XmlElementNames.DeleteItemField);
+                             XmlElementNames.DeleteItemField);
     ContactGroupSchema.Members.writeToXml(writer);
     writer.writeEndElement();
   }
@@ -391,15 +392,15 @@ public final class GroupMemberCollection extends
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   private void writeDeleteMembersToXml(EwsServiceXmlWriter writer,
-      List<GroupMember> members) throws XMLStreamException,
-      ServiceXmlSerializationException {
+                                       List<GroupMember> members) throws XMLStreamException,
+                                                                         ServiceXmlSerializationException {
     if (!members.isEmpty()) {
       GroupMemberPropertyDefinition memberPropDef =
           new GroupMemberPropertyDefinition();
 
       for (GroupMember member : members) {
         writer.writeStartElement(XmlNamespace.Types,
-            XmlElementNames.DeleteItemField);
+                                 XmlElementNames.DeleteItemField);
 
         memberPropDef.setKey(member.getKey());
         memberPropDef.writeToXml(writer);
@@ -418,18 +419,19 @@ public final class GroupMemberCollection extends
    * @throws Exception the exception
    */
   private void writeSetOrAppendMembersToXml(EwsServiceXmlWriter writer,
-      List<GroupMember> members, boolean setMode) throws Exception {
+                                            List<GroupMember> members, boolean setMode)
+      throws Exception {
     if (!members.isEmpty()) {
       writer.writeStartElement(XmlNamespace.Types,
-          setMode ? XmlElementNames.SetItemField
-              : XmlElementNames.AppendToItemField);
+                               setMode ? XmlElementNames.SetItemField
+                                       : XmlElementNames.AppendToItemField);
 
       ContactGroupSchema.Members.writeToXml(writer);
 
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.DistributionList);
+                               XmlElementNames.DistributionList);
       writer.writeStartElement(XmlNamespace.Types,
-          XmlElementNames.Members);
+                               XmlElementNames.Members);
 
       for (GroupMember member : members) {
         member.writeToXml(writer, XmlElementNames.Member);
@@ -444,8 +446,6 @@ public final class GroupMemberCollection extends
 
   /**
    * Validates this instance.
-   *
-   * @throws Exception
    */
   @Override
   protected void internalValidate() throws Exception {
@@ -454,7 +454,7 @@ public final class GroupMemberCollection extends
     for (GroupMember groupMember : this.getModifiedItems()) {
       if (!(groupMember.getKey() == null || groupMember.getKey().isEmpty())) {
         throw new ServiceValidationException(Strings.
-            ContactGroupMemberCannotBeUpdatedWithoutBeingLoadedFirst);
+                                                 ContactGroupMemberCannotBeUpdatedWithoutBeingLoadedFirst);
       }
     }
   }

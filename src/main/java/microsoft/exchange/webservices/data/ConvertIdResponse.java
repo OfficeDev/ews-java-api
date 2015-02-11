@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -51,10 +52,10 @@ public final class ConvertIdResponse extends ServiceResponse {
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws InstantiationException, IllegalAccessException,
-      ServiceLocalException, Exception {
+             ServiceLocalException, Exception {
     super.readElementsFromXml(reader);
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.AlternateId);
+                            XmlElementNames.AlternateId);
     String alternateIdClass = reader.readAttributeValue(
         XmlNamespace.XmlSchemaInstance, XmlAttributeNames.Type);
 
@@ -78,13 +79,13 @@ public final class ConvertIdResponse extends ServiceResponse {
     } else {
       EwsUtilities
           .EwsAssert(false, "ConvertIdResponse.ReadElementsFromXml",
-              String.format("Unknown alternate Id class: %s",
-                  alternateIdClass));
+                     String.format("Unknown alternate Id class: %s",
+                                   alternateIdClass));
     }
 
     this.convertedId.loadAttributesFromXml(reader);
     reader.readEndElement(XmlNamespace.Messages,
-        XmlElementNames.AlternateId);
+                          XmlElementNames.AlternateId);
   }
 
   /**

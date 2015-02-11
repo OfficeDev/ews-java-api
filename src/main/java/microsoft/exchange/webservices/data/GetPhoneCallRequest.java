@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -36,7 +37,6 @@ final class GetPhoneCallRequest extends SimpleServiceRequestBase {
    * Initializes a new instance of the GetPhoneCallRequest class.
    *
    * @param service the service
-   * @throws Exception
    */
   protected GetPhoneCallRequest(ExchangeService service)
       throws Exception {
@@ -63,7 +63,7 @@ final class GetPhoneCallRequest extends SimpleServiceRequestBase {
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.id.writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.PhoneCallId);
+                       XmlElementNames.PhoneCallId);
   }
 
   /**

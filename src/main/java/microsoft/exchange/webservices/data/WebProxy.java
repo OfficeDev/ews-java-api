@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * WebProxy is used for setting proxy details for proxy authentication schemes such as
- * basic, digest, NTLM, and Kerberos authentication.
+ * WebProxy is used for setting proxy details for proxy authentication schemes such as basic,
+ * digest, NTLM, and Kerberos authentication.
  */
 public class WebProxy {
 
@@ -59,7 +60,7 @@ public class WebProxy {
   /**
    * Initializes a new instance to use specified proxy with default port 80.
    *
-   * @param host proxy host.
+   * @param host        proxy host.
    * @param credentials the credentials to use for the proxy.
    */
   public WebProxy(String host, WebProxyCredentials credentials) {
@@ -70,8 +71,8 @@ public class WebProxy {
   /**
    * Initializes a new instance to use specified proxy details.
    *
-   * @param host proxy host.
-   * @param port proxy port.
+   * @param host        proxy host.
+   * @param port        proxy port.
    * @param credentials the credentials to use for the proxy.
    */
   public WebProxy(String host, int port, WebProxyCredentials credentials) {

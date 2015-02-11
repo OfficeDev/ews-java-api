@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,22 +20,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * EwsX509TrustManager is used for SSL handshake.
  *
  */
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
+
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+
 class EwsX509TrustManager implements X509TrustManager {
+
   /**
    * The Standard TrustManager.
    */
@@ -62,7 +66,8 @@ class EwsX509TrustManager implements X509TrustManager {
   }
 
   /**
-   * @see javax.net.ssl.X509TrustManager#checkClientTrusted(java.security.cert.X509Certificate[], String authType)
+   * @see javax.net.ssl.X509TrustManager#checkClientTrusted(java.security.cert.X509Certificate[],
+   * String authType)
    */
   public void checkClientTrusted(X509Certificate[] certificates, String authType)
       throws CertificateException {
@@ -70,7 +75,8 @@ class EwsX509TrustManager implements X509TrustManager {
   }
 
   /**
-   * @see javax.net.ssl.X509TrustManager#checkServerTrusted(java.security.cert.X509Certificate[], String authType)
+   * @see javax.net.ssl.X509TrustManager#checkServerTrusted(java.security.cert.X509Certificate[],
+   * String authType)
    */
   public void checkServerTrusted(X509Certificate[] certificates, String authType)
       throws CertificateException {

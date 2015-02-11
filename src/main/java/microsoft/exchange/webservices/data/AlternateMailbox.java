@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -74,18 +75,18 @@ public final class AlternateMailbox {
         } else if (reader.getLocalName().equalsIgnoreCase(
             XmlElementNames.DisplayName)) {
           altMailbox.setDisplayName(reader
-              .readElementValue(String.class));
+                                        .readElementValue(String.class));
         } else if (reader.getLocalName().equalsIgnoreCase(
             XmlElementNames.LegacyDN)) {
           altMailbox.setLegacyDN(reader
-              .readElementValue(String.class));
+                                     .readElementValue(String.class));
         } else if (reader.getLocalName().equalsIgnoreCase(
             XmlElementNames.Server)) {
           altMailbox.setServer(reader.readElementValue(String.class));
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-        XmlElementNames.AlternateMailbox));
+                                  XmlElementNames.AlternateMailbox));
 
     return altMailbox;
   }

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
@@ -53,8 +54,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
   private Collection<UserSettingError> userSettingErrors;
 
   /**
-   * Initializes a new instance of the <see cref="GetUserSettingsResponse"/>
-   * class.
+   * Initializes a new instance of the <see cref="GetUserSettingsResponse"/> class.
    */
   public GetUserSettingsResponse() {
     super();
@@ -72,7 +72,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
    * @return True if setting was available.
    */
   public <T> boolean tryGetSettingValue(Class<T> cls,
-      UserSettingName setting, OutParam<T> value) {
+                                        UserSettingName setting, OutParam<T> value) {
     Object objValue;
     if (this.getSettings().containsKey(setting)) {
       objValue = this.getSettings().get(setting);
@@ -196,7 +196,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
 
         if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
             (reader.getLocalName()
-                .equals(XmlElementNames.UserSetting))) {
+                 .equals(XmlElementNames.UserSetting))) {
           String settingClass = reader.readAttributeValue(
               XmlNamespace.XmlSchemaInstance,
               XmlAttributeNames.Type);
@@ -211,16 +211,16 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
             this.readSettingFromXml(reader);
           } else {
             EwsUtilities.EwsAssert(false,
-                "GetUserSettingsResponse." +
-                    "LoadUserSettingsFromXml",
-                String.format("%s,%s",
-                    "Invalid setting class '%s' returned",
-                    settingClass));
+                                   "GetUserSettingsResponse." +
+                                   "LoadUserSettingsFromXml",
+                                   String.format("%s,%s",
+                                                 "Invalid setting class '%s' returned",
+                                                 settingClass));
             break;
           }
         }
       } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-          XmlElementNames.UserSettings));
+                                    XmlElementNames.UserSettings));
     } else {
       reader.read();
     }
@@ -257,11 +257,11 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-        XmlElementNames.UserSetting));
+                                  XmlElementNames.UserSetting));
 
     EwsUtilities.EwsAssert(name != null,
-        "GetUserSettingsResponse.ReadSettingFromXml",
-        "Missing name element in user setting");
+                           "GetUserSettingsResponse.ReadSettingFromXml",
+                           "Missing name element in user setting");
 
     this.getSettings().put(name, value);
   }
@@ -280,13 +280,13 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
 
         if ((reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) &&
             (reader.getLocalName()
-                .equals(XmlElementNames.UserSettingError))) {
+                 .equals(XmlElementNames.UserSettingError))) {
           UserSettingError error = new UserSettingError();
           error.loadFromXml(reader);
           this.getUserSettingErrors().add(error);
         }
       } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-          XmlElementNames.UserSettingErrors));
+                                    XmlElementNames.UserSettingErrors));
     } else {
       reader.read();
     }

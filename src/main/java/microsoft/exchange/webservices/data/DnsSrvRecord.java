@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.NoSuchElementException;
@@ -44,14 +45,14 @@ class DnsSrvRecord extends DnsRecord {
    * The priority.
    */
   private int priority;
-	/*
-	 * weight of the target host
+        /*
+         * weight of the target host
 	 */
   /**
    * The weight.
    */
   private int weight;
-	/*
+        /*
 	 * port used on the target for the service
 	 */
   /**

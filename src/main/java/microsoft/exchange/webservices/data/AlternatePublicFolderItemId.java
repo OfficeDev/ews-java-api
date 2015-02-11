@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -53,7 +54,7 @@ public class AlternatePublicFolderItemId extends AlternatePublicFolderId {
    * @param itemId   the item id
    */
   public AlternatePublicFolderItemId(IdFormat format, String folderId,
-      String itemId) {
+                                     String itemId) {
     super(format, folderId);
     this.itemId = itemId;
   }

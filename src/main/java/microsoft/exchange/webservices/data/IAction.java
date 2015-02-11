@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,19 +20,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * The Interface IAction.
  *
- * @param <T> The type of the parameter of the
- *            method that this delegate encapsulates.
+ * @param <T> The type of the parameter of the method that this delegate encapsulates.
  */
 public interface IAction<T> {
 
   /**
-   * Encapsulates a method that takes a single parameter and does not return a
-   * value.
+   * Encapsulates a method that takes a single parameter and does not return a value.
    *
    * @param obj The parameter of the method that this delegate encapsulates.
    */

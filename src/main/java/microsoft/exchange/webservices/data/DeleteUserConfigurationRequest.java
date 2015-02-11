@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,13 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
  * Represents a DeleteUserConfiguration request.
  */
 class DeleteUserConfigurationRequest extends
-    MultiResponseServiceRequest<ServiceResponse> {
+                                     MultiResponseServiceRequest<ServiceResponse> {
 
   /**
    * The name.
@@ -37,6 +38,16 @@ class DeleteUserConfigurationRequest extends
    * The parent folder id.
    */
   private FolderId parentFolderId;
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param service the service
+   */
+  protected DeleteUserConfigurationRequest(ExchangeService service)
+      throws Exception {
+    super(service, ServiceErrorHandling.ThrowOnError);
+  }
 
   /**
    * Validate request.
@@ -61,7 +72,7 @@ class DeleteUserConfigurationRequest extends
    */
   @Override
   protected ServiceResponse createServiceResponse(ExchangeService service,
-      int responseIndex) {
+                                                  int responseIndex) {
     return new ServiceResponse();
   }
 
@@ -126,18 +137,8 @@ class DeleteUserConfigurationRequest extends
       throws Exception {
     // Write UserConfiguationName element
     UserConfiguration.writeUserConfigurationNameToXml(writer,
-        XmlNamespace.Messages, this.name, this.parentFolderId);
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param service the service
-   * @throws Exception
-   */
-  protected DeleteUserConfigurationRequest(ExchangeService service)
-      throws Exception {
-    super(service, ServiceErrorHandling.ThrowOnError);
+                                                      XmlNamespace.Messages, this.name,
+                                                      this.parentFolderId);
   }
 
   /**
@@ -159,8 +160,7 @@ class DeleteUserConfigurationRequest extends
   }
 
   /**
-   * Gets  the parent folThe parent folder Id. <value>The parent folder
-   * Id.</value>
+   * Gets  the parent folThe parent folder Id. <value>The parent folder Id.</value>
    *
    * @return the parent folder id
    */

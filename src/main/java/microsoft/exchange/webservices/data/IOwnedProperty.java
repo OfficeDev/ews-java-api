@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Complex properties that implement that interface are owned by an instance of
- * EwsObject. For this reason, they also cannot be shared.
+ * Complex properties that implement that interface are owned by an instance of EwsObject. For this
+ * reason, they also cannot be shared.
  */
 interface IOwnedProperty {
 

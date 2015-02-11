@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.net.URISyntaxException;
@@ -42,8 +43,7 @@ public final class TokenCredentials extends WSSecurityBasedCredentials {
   }
 
   /**
-   * This method is called to apply credentials to a service request before
-   * the request is made.
+   * This method is called to apply credentials to a service request before the request is made.
    *
    * @param request The request.
    * @throws java.net.URISyntaxException the uRI syntax exception

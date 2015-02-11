@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import org.junit.Assert;
@@ -51,8 +52,6 @@ public class UserConfigurationDictionaryTest extends BaseTest {
 
   /**
    * Adding a Double Value to the Dictionary witch is not allowed
-   *
-   * @throws Exception
    */
   @Test(expected = ServiceLocalException.class)
   public void testAddUnsupportedElementsToDictionary() throws Exception {
@@ -61,8 +60,6 @@ public class UserConfigurationDictionaryTest extends BaseTest {
 
   /**
    * testAddSupportedElementsToDictionary
-   *
-   * @throws Exception
    */
   @Test
   public void testAddSupportedElementsToDictionary() throws Exception {
@@ -71,15 +68,13 @@ public class UserConfigurationDictionaryTest extends BaseTest {
 
   /**
    * Fills the Dictionary with
-   *
-   * @throws Exception
    */
   private void fillDictionaryWithValidEntries() throws Exception {
     // Adding Test Values to the Object
     final int testInt = 1;
     final long testLong = 1l;
     final String testString = "someVal";
-    final String[] testStringArray = new String[] {"test1", "test2", "test3"};
+    final String[] testStringArray = new String[]{"test1", "test2", "test3"};
     final Date testDate = new Date();
     final boolean testBoolean = true;
     final byte testByte = Byte.decode("0x10");
@@ -104,12 +99,15 @@ public class UserConfigurationDictionaryTest extends BaseTest {
     this.userConfigurationDictionary.addElement("someInteger", testInt);
     Assert.assertTrue(this.userConfigurationDictionary.containsKey("someInteger"));
     Assert.assertEquals(testInt, this.userConfigurationDictionary.getElements("someInteger"));
-    Assert.assertTrue(this.userConfigurationDictionary.getElements("someInteger") instanceof Integer);
+    Assert
+        .assertTrue(this.userConfigurationDictionary.getElements("someInteger") instanceof Integer);
 
     this.userConfigurationDictionary.addElement("someString[]", testStringArray);
     Assert.assertTrue(this.userConfigurationDictionary.containsKey("someString[]"));
-    Assert.assertEquals(testStringArray, this.userConfigurationDictionary.getElements("someString[]"));
-    Assert.assertTrue(this.userConfigurationDictionary.getElements("someString[]") instanceof String[]);
+    Assert.assertEquals(testStringArray,
+                        this.userConfigurationDictionary.getElements("someString[]"));
+    Assert.assertTrue(
+        this.userConfigurationDictionary.getElements("someString[]") instanceof String[]);
 
     this.userConfigurationDictionary.addElement("someDate", testDate);
     Assert.assertTrue(this.userConfigurationDictionary.containsKey("someDate"));
@@ -119,7 +117,8 @@ public class UserConfigurationDictionaryTest extends BaseTest {
     this.userConfigurationDictionary.addElement("someBoolean", testBoolean);
     Assert.assertTrue(this.userConfigurationDictionary.containsKey("someBoolean"));
     Assert.assertEquals(testBoolean, this.userConfigurationDictionary.getElements("someBoolean"));
-    Assert.assertTrue(this.userConfigurationDictionary.getElements("someBoolean") instanceof Boolean);
+    Assert
+        .assertTrue(this.userConfigurationDictionary.getElements("someBoolean") instanceof Boolean);
 
     this.userConfigurationDictionary.addElement("someByte", testByte);
     Assert.assertTrue(this.userConfigurationDictionary.containsKey("someByte"));
@@ -133,13 +132,14 @@ public class UserConfigurationDictionaryTest extends BaseTest {
 
     this.userConfigurationDictionary.addElement("someByte2[]", testByteArray2);
     Assert.assertTrue(this.userConfigurationDictionary.containsKey("someByte2[]"));
-    Assert.assertEquals(testByteArray2, this.userConfigurationDictionary.getElements("someByte2[]"));
-    Assert.assertTrue(this.userConfigurationDictionary.getElements("someByte2[]") instanceof Byte[]);
+    Assert
+        .assertEquals(testByteArray2, this.userConfigurationDictionary.getElements("someByte2[]"));
+    Assert
+        .assertTrue(this.userConfigurationDictionary.getElements("someByte2[]") instanceof Byte[]);
   }
 
   /**
-   * Tests the Method writeElementsToXml(...)
-   * with all valid Elements
+   * Tests the Method writeElementsToXml(...) with all valid Elements
    */
   @Test
   public void testWriteElementsToXml() throws Exception {

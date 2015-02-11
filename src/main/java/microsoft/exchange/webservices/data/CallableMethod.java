@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,19 +20,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.io.IOException;
 import java.util.concurrent.Callable;
 
 public class CallableMethod implements Callable<Object> {
+
   HttpWebRequest request;
 
   CallableMethod(HttpWebRequest request) {
     this.request = request;
   }
 
-  protected HttpClientWebRequest executeMethod() throws EWSHttpException, HttpErrorException, IOException {
+  protected HttpClientWebRequest executeMethod()
+      throws EWSHttpException, HttpErrorException, IOException {
 
     request.executeRequest();
     return (HttpClientWebRequest) request;

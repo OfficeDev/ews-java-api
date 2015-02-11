@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,11 +20,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents the response to an individual delegate user manipulation (add,
- * remove, update) operation.
+ * Represents the response to an individual delegate user manipulation (add, remove, update)
+ * operation.
  */
 public final class DelegateUserResponse extends ServiceResponse {
 
@@ -45,7 +46,7 @@ public final class DelegateUserResponse extends ServiceResponse {
    * @param delegateUser     the delegate user
    */
   protected DelegateUserResponse(boolean readDelegateUser,
-      DelegateUser delegateUser) {
+                                 DelegateUser delegateUser) {
     super();
     this.readDelegateUser = readDelegateUser;
     this.delegateUser = delegateUser;
@@ -65,7 +66,7 @@ public final class DelegateUserResponse extends ServiceResponse {
       }
 
       reader.readStartElement(XmlNamespace.Messages,
-          XmlElementNames.DelegateUser);
+                              XmlElementNames.DelegateUser);
 
       this.delegateUser.loadFromXml(reader, XmlNamespace.Messages, reader
           .getLocalName());

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,10 +20,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
-import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents an extended property.
@@ -76,22 +78,24 @@ public final class ExtendedProperty extends ComplexProperty {
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.Value)) {
       EwsUtilities.EwsAssert(this.getPropertyDefinition() != null,
-          "ExtendedProperty.TryReadElementFromXml",
-          "PropertyDefintion is missing");
+                             "ExtendedProperty.TryReadElementFromXml",
+                             "PropertyDefintion is missing");
       String stringValue = reader.readElementValue();
       this.value = MapiTypeConverter.convertToValue(this
-          .getPropertyDefinition().getMapiType(), stringValue);
+                                                        .getPropertyDefinition().getMapiType(),
+                                                    stringValue);
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.Values)) {
       EwsUtilities.EwsAssert(this.getPropertyDefinition() != null,
-          "ExtendedProperty.TryReadElementFromXml",
-          "PropertyDefintion is missing");
+                             "ExtendedProperty.TryReadElementFromXml",
+                             "PropertyDefintion is missing");
 
       StringList stringList = new StringList(XmlElementNames.Value);
       stringList.loadFromXml(reader, reader.getLocalName());
       this.value = MapiTypeConverter.convertToValue(this
-          .getPropertyDefinition().getMapiType(), stringList
-          .iterator());
+                                                        .getPropertyDefinition().getMapiType(),
+                                                    stringList
+                                                        .iterator());
       return true;
     } else {
       return false;
@@ -111,23 +115,24 @@ public final class ExtendedProperty extends ComplexProperty {
     this.getPropertyDefinition().writeToXml(writer);
 
     if (MapiTypeConverter.isArrayType(this.getPropertyDefinition()
-        .getMapiType())) {
+                                          .getMapiType())) {
       ArrayList<?> array = (ArrayList<?>) this.getValue();
       writer
           .writeStartElement(XmlNamespace.Types,
-              XmlElementNames.Values);
+                             XmlElementNames.Values);
       for (int index = 0; index < array.size(); index++) {
         writer.writeElementValue(XmlNamespace.Types,
-            XmlElementNames.Value, MapiTypeConverter
+                                 XmlElementNames.Value, MapiTypeConverter
                 .convertToString(this.getPropertyDefinition()
-                    .getMapiType(), array.get(index)));
+                                     .getMapiType(), array.get(index)));
       }
       writer.writeEndElement();
     } else {
       writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Value,
-          MapiTypeConverter.convertToString(this
-              .getPropertyDefinition().getMapiType(), this
-              .getValue()));
+                               MapiTypeConverter.convertToString(this
+                                                                     .getPropertyDefinition()
+                                                                     .getMapiType(), this
+                                                                     .getValue()));
     }
   }
 
@@ -158,9 +163,10 @@ public final class ExtendedProperty extends ComplexProperty {
   public void setValue(Object val) throws Exception {
     EwsUtilities.validateParam(val, "value");
     if (this.canSetFieldValue(this.value, MapiTypeConverter.changeType(this
-        .getPropertyDefinition().getMapiType(), val))) {
+                                                                           .getPropertyDefinition()
+                                                                           .getMapiType(), val))) {
       this.value = MapiTypeConverter.changeType(this
-          .getPropertyDefinition().getMapiType(), val);
+                                                    .getPropertyDefinition().getMapiType(), val);
       this.changed();
     }
   }
@@ -172,7 +178,7 @@ public final class ExtendedProperty extends ComplexProperty {
    */
   private String getStringValue() {
     if (MapiTypeConverter.isArrayType(this.getPropertyDefinition()
-        .getMapiType())) {
+                                          .getMapiType())) {
       ArrayList<?> array = (ArrayList<?>) this.getValue();
       if (array == null) {
         return null;
@@ -181,8 +187,9 @@ public final class ExtendedProperty extends ComplexProperty {
         sb.append("[");
         for (int index = 0; index < array.size(); index++) {
           sb.append(MapiTypeConverter.convertToString(this
-              .getPropertyDefinition().getMapiType(), array
-              .get(index)));
+                                                          .getPropertyDefinition().getMapiType(),
+                                                      array
+                                                          .get(index)));
           sb.append(",");
         }
         sb.append("]");
@@ -191,15 +198,15 @@ public final class ExtendedProperty extends ComplexProperty {
       }
     } else {
       return MapiTypeConverter.convertToString(this
-          .getPropertyDefinition().getMapiType(), this.getValue());
+                                                   .getPropertyDefinition().getMapiType(),
+                                               this.getValue());
     }
   }
 
   /**
-   * Determines whether the specified <see cref="T:System.Object"/> is equal
-   * to the current <see cref="T:System.Object"/> true if the specified <see
-   * cref="T:System.Object"/> is equal to the current <see
-   * cref="T:System.Object"/>
+   * Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see
+   * cref="T:System.Object"/> true if the specified <see cref="T:System.Object"/> is equal to the
+   * current <see cref="T:System.Object"/>
    *
    * @param obj the obj
    * @return boolean

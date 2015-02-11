@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,16 +20,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import java.util.Date;
 
 /**
- * ConversationAction class that represents
- * ConversationActionType in the request XML.
- * This class really is meant for representing
- * single ConversationAction that needs to
- * be taken on a conversation.
+ * ConversationAction class that represents ConversationActionType in the request XML. This class
+ * really is meant for representing single ConversationAction that needs to be taken on a
+ * conversation.
  */
 class ConversationAction {
 
@@ -159,9 +158,8 @@ class ConversationAction {
   }
 
   /**
-   * ConversationLastSyncTime is used in one
-   * time action to determine the items
-   * on which to take the action.
+   * ConversationLastSyncTime is used in one time action to determine the items on which to take the
+   * action.
    *
    * @return conversationLastSyncTime
    */
@@ -170,9 +168,8 @@ class ConversationAction {
   }
 
   /**
-   * ConversationLastSyncTime is used in
-   * one time action to determine the items
-   * on which to take the action.
+   * ConversationLastSyncTime is used in one time action to determine the items on which to take the
+   * action.
    */
   protected void setConversationLastSyncTime(Date value) {
     this.conversationLastSyncTime = value;
@@ -221,8 +218,6 @@ class ConversationAction {
 
   /**
    * Validate request.
-   *
-   * @throws Exception
    */
   protected void validate() throws Exception {
     EwsUtilities.validateParam(this.conversationId, "conversationId");
@@ -232,7 +227,6 @@ class ConversationAction {
    * Writes XML elements.
    *
    * @param writer The writer.
-   * @throws Exception
    */
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
@@ -300,7 +294,7 @@ class ConversationAction {
         // Emit the Move Folder Id
         if (this.getDestinationFolderId() != null) {
           writer.writeStartElement(XmlNamespace.Types,
-              XmlElementNames.DestinationFolderId);
+                                   XmlElementNames.DestinationFolderId);
           this.getDestinationFolderId().writeToXml(writer);
           writer.writeEndElement();
         }
@@ -327,7 +321,7 @@ class ConversationAction {
               this.getDestinationFolderId() != null,
               "ApplyconversationActionRequest",
               "DestinationFolderId should be set " +
-                  "when performing copy action");
+              "when performing copy action");
 
           writer.writeStartElement(
               XmlNamespace.Types,
@@ -339,7 +333,7 @@ class ConversationAction {
               this.getDestinationFolderId() != null,
               "ApplyconversationActionRequest",
               "DestinationFolderId should be " +
-                  "set when performing move action");
+              "set when performing move action");
 
           writer.writeStartElement(
               XmlNamespace.Types,
@@ -351,7 +345,7 @@ class ConversationAction {
               this.getDeleteType() != null,
               "ApplyconversationActionRequest",
               "DeleteType should be specified " +
-                  "when deleting a conversation.");
+              "when deleting a conversation.");
 
           writer.writeElementValue(
               XmlNamespace.Types,
@@ -362,7 +356,7 @@ class ConversationAction {
               this.getIsRead() != null,
               "ApplyconversationActionRequest",
               "IsRead should be specified when " +
-                  "marking/unmarking a conversation as read.");
+              "marking/unmarking a conversation as read.");
 
           writer.writeElementValue(
               XmlNamespace.Types,

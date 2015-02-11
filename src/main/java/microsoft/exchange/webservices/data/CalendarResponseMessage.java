@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,14 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
- * Represents the base class for accept, tentatively accept and decline response
- * messages.
+ * Represents the base class for accept, tentatively accept and decline response messages.
  *
- * @param <TMessage> The type of message that is created when this response message is
- *                   saved.
+ * @param <TMessage> The type of message that is created when this response message is saved.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public abstract class CalendarResponseMessage<TMessage extends EmailMessage>
@@ -72,7 +71,7 @@ public abstract class CalendarResponseMessage<TMessage extends EmailMessage>
    */
   public void setBody(MessageBody value) throws Exception {
     this.getPropertyBag().setObjectFromPropertyDefinition(ItemSchema.Body,
-        value);
+                                                          value);
   }
 
   /**

@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data.util;
 
 import org.joda.time.format.DateTimeFormat;
@@ -47,12 +48,11 @@ public class DateTimeParser {
   /**
    * Converts a date time string to local date time.
    *
-   * Note: this method also allows dates without times, in which case the time will be 00:00:00 in the
-   * supplied timezone. UTC timezone will be assumed if no timezone is supplied.
+   * Note: this method also allows dates without times, in which case the time will be 00:00:00 in
+   * the supplied timezone. UTC timezone will be assumed if no timezone is supplied.
    *
    * @param value The string value to parse.
    * @return The parsed {@link Date}.
-   *
    * @throws java.lang.IllegalArgumentException If string can not be parsed.
    */
   public Date convertDateTimeStringToDate(String value) {
@@ -66,7 +66,6 @@ public class DateTimeParser {
    *
    * @param value The string value to parse.
    * @return The parsed {@link Date}.
-   *
    * @throws java.lang.IllegalArgumentException If string can not be parsed.
    */
   public Date convertDateStringToDate(String value) {

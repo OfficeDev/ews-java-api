@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -40,7 +41,7 @@ public final class CreateAttachmentResponse extends ServiceResponse {
   protected CreateAttachmentResponse(Attachment attachment) {
     super();
     EwsUtilities.EwsAssert(attachment != null,
-        "CreateAttachmentResponse.ctor", "attachment is null");
+                           "CreateAttachmentResponse.ctor", "attachment is null");
 
     this.attachment = attachment;
   }
@@ -57,7 +58,7 @@ public final class CreateAttachmentResponse extends ServiceResponse {
     super.readElementsFromXml(reader);
 
     reader.readStartElement(XmlNamespace.Messages,
-        XmlElementNames.Attachments);
+                            XmlElementNames.Attachments);
 
     // reader.read(XmlNodeType.START_ELEMENT);
     XmlNodeType x = new XmlNodeType(XmlNodeType.START_ELEMENT);
@@ -65,7 +66,7 @@ public final class CreateAttachmentResponse extends ServiceResponse {
     this.attachment.loadFromXml(reader, reader.getLocalName());
 
     reader.readEndElement(XmlNamespace.Messages,
-        XmlElementNames.Attachments);
+                          XmlElementNames.Attachments);
   }
 
   /**

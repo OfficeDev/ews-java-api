@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 
@@ -31,11 +32,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import javax.xml.stream.XMLStreamException;
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Testclass for methods of GetUserSettingsRequest
@@ -64,10 +66,18 @@ public class GetUserSettingsRequestTest extends BaseTest {
   private final URI uriMockHttp = URI.create("http://localhost");
 
   /**
+   * Construct the Testobject with given Parameters
+   */
+  public GetUserSettingsRequestTest(final ExchangeVersion exchangeVersion,
+                                    final AutodiscoverService autodiscoverService) {
+    this.exchangeVersion = exchangeVersion;
+    this.autodiscoverService = autodiscoverService;
+  }
+
+  /**
    * Returns the Parameters which where handled to the constructor
    *
    * @return the available Services
-   * @throws ArgumentException
    */
   @Parameterized.Parameters
   public static List<Object[]> getAutodiscoverServices() throws ArgumentException {
@@ -80,22 +90,10 @@ public class GetUserSettingsRequestTest extends BaseTest {
 
       {
         for (ExchangeVersion exchangeVersion : ExchangeVersion.values()) {
-          add(new Object[] {exchangeVersion, new AutodiscoverService(exchangeVersion)});
+          add(new Object[]{exchangeVersion, new AutodiscoverService(exchangeVersion)});
         }
       }
     };
-  }
-
-  /**
-   * Construct the Testobject with given Parameters
-   *
-   * @param exchangeVersion
-   * @param autodiscoverService
-   */
-  public GetUserSettingsRequestTest(final ExchangeVersion exchangeVersion,
-      final AutodiscoverService autodiscoverService) {
-    this.exchangeVersion = exchangeVersion;
-    this.autodiscoverService = autodiscoverService;
   }
 
   /**
@@ -111,10 +109,6 @@ public class GetUserSettingsRequestTest extends BaseTest {
 
   /**
    * Nothing should be writen to the Outputstream if expectPartnerToken is not set
-   *
-   * @throws ServiceValidationException
-   * @throws XMLStreamException
-   * @throws ServiceXmlSerializationException
    */
   @Test
   public void testWriteExtraCustomSoapHeadersToXmlWithoutPartnertoken()
@@ -129,7 +123,8 @@ public class GetUserSettingsRequestTest extends BaseTest {
         new EwsServiceXmlWriter(exchangeServiceBaseMock, byteArrayOutputStream));
 
     // nothing should be writen to the outputstream
-    Assert.assertArrayEquals(byteArrayOutputStream.toByteArray(), new ByteArrayOutputStream().toByteArray());
+    Assert.assertArrayEquals(byteArrayOutputStream.toByteArray(),
+                             new ByteArrayOutputStream().toByteArray());
 
     // HTTP
     getUserSettingsRequest = new GetUserSettingsRequest(autodiscoverService, uriMockHttp);
@@ -140,15 +135,12 @@ public class GetUserSettingsRequestTest extends BaseTest {
         new EwsServiceXmlWriter(exchangeServiceBaseMock, byteArrayOutputStream));
 
     // nothing should be writen to the outputstream
-    Assert.assertArrayEquals(byteArrayOutputStream.toByteArray(), new ByteArrayOutputStream().toByteArray());
+    Assert.assertArrayEquals(byteArrayOutputStream.toByteArray(),
+                             new ByteArrayOutputStream().toByteArray());
   }
 
   /**
    * Test if content is added correctly if expectPartnerToken is set
-   *
-   * @throws ServiceValidationException
-   * @throws XMLStreamException
-   * @throws ServiceXmlSerializationException
    */
   @Test
   public void testWriteExtraCustomSoapHeadersToXmlWithPartnertoken()
@@ -163,17 +155,13 @@ public class GetUserSettingsRequestTest extends BaseTest {
 
     // data should be added the same way as mentioned
     Assert.assertThat(byteArrayOutputStream.toByteArray(),
-        IsNot.not(new ByteArrayOutputStream().toByteArray()));
+                      IsNot.not(new ByteArrayOutputStream().toByteArray()));
 
     //TODO Test if the output is really correct
   }
 
   /**
    * Initialising a GetUserSettingsRequest with Http should lead to an ServiceValidationException
-   *
-   * @throws ServiceValidationException
-   * @throws XMLStreamException
-   * @throws ServiceXmlSerializationException
    */
   @Test(expected = ServiceValidationException.class)
   public void testWriteExtraCustomSoapHeadersToXmlWithPartnertoken2()

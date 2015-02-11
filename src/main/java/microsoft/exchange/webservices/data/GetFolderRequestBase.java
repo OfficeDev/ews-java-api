@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 /**
@@ -28,7 +29,7 @@ package microsoft.exchange.webservices.data;
  * @param <TResponse> the generic type
  */
 abstract class GetFolderRequestBase<TResponse extends ServiceResponse> extends
-    GetRequest<Folder, TResponse> {
+                                                                       GetRequest<Folder, TResponse> {
 
   /**
    * The folder ids.
@@ -40,10 +41,9 @@ abstract class GetFolderRequestBase<TResponse extends ServiceResponse> extends
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
    */
   protected GetFolderRequestBase(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+                                 ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -56,7 +56,7 @@ abstract class GetFolderRequestBase<TResponse extends ServiceResponse> extends
   protected void validate() throws Exception {
     super.validate();
     EwsUtilities.validateParamCollection(this.getFolderIds().iterator(),
-        "FolderIds");
+                                         "FolderIds");
     this.getFolderIds().validate(
         this.getService().getRequestedServerVersion());
   }
@@ -89,7 +89,7 @@ abstract class GetFolderRequestBase<TResponse extends ServiceResponse> extends
       throws Exception {
     super.writeElementsToXml(writer);
     this.getFolderIds().writeToXml(writer, XmlNamespace.Messages,
-        XmlElementNames.FolderIds);
+                                   XmlElementNames.FolderIds);
   }
 
   /**
