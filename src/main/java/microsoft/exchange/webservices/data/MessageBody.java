@@ -22,12 +22,17 @@
  */
 package microsoft.exchange.webservices.data;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents the body of a message.
  */
 public final class MessageBody extends ComplexProperty {
+
+  private static final Log log = LogFactory.getLog(MessageBody.class);
 
   /**
    * The body type.
@@ -112,7 +117,15 @@ public final class MessageBody extends ComplexProperty {
   @Override
   protected void readTextValueFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException {
-    this.text = reader.readValue();
+    if (log.isDebugEnabled()) {
+       log.debug("Reading text value from XML. BodyType = " + this.getBodyType() +
+          ", keepWhiteSpace = " +
+          ((this.getBodyType() == BodyType.Text) ? "true." : "false."));
+    }
+    this.text = reader.readValue(this.getBodyType() == BodyType.Text);
+    if (log.isDebugEnabled()) {
+       log.debug("Text value read:\n---\n" + this.text + "\n---");
+    }
   }
 
   /**

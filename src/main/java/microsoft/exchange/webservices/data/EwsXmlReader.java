@@ -134,6 +134,19 @@ class EwsXmlReader {
    */
   public void read() throws ServiceXmlDeserializationException,
       XMLStreamException {
+    read(false);
+  }
+
+  /**
+   * Reads the specified node type.
+   * 
+   * @param keepWhiteSpace Do not remove whitespace characters if true
+   *
+   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   */
+  private void read(boolean keepWhiteSpace) throws ServiceXmlDeserializationException,
+      XMLStreamException {
     // The caller to EwsXmlReader.Read expects
     // that there's another node to
     // read. Throw an exception if not true.
@@ -145,9 +158,10 @@ class EwsXmlReader {
         XMLEvent event = xmlReader.nextEvent();
         if (event.getEventType() == XMLStreamConstants.CHARACTERS) {
           Characters characters = (Characters) event;
-          if (characters.isIgnorableWhiteSpace()
-              || characters.isWhiteSpace()) {
-            continue;
+          if (!keepWhiteSpace)
+            if (characters.isIgnorableWhiteSpace()
+                || characters.isWhiteSpace()) {
+              continue;
           }
         }
         this.presentEvent = event;
@@ -375,18 +389,32 @@ class EwsXmlReader {
    */
   public String readValue() throws XMLStreamException,
       ServiceXmlDeserializationException {
+    return readValue(false);
+  }
+  /**
+   * Reads the value. Should return content element or text node as string
+   * Present event must be START ELEMENT. After executing this function
+   * Present event will be set on END ELEMENT
+   *
+   * @param keepWhiteSpace Do not remove whitespace characters if true
+   * @return String
+   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
+   */
+  public String readValue(boolean keepWhiteSpace) throws XMLStreamException,
+      ServiceXmlDeserializationException {
     String errMsg = String.format("Could not read value from %s.",
         XmlNodeType.getString(this.presentEvent.getEventType()));
     if (this.presentEvent.isStartElement()) {
       // Go to next event and check for Characters event
-      this.read();
+      this.read(keepWhiteSpace);
       if (this.presentEvent.isCharacters()) {
         StringBuffer elementValue = new StringBuffer();
         do {
           if (this.getNodeType().nodeType == XmlNodeType.CHARACTERS) {
             Characters characters = (Characters) this.presentEvent;
-            if (!characters.isIgnorableWhiteSpace()
-                && !characters.isWhiteSpace()) {
+            if (keepWhiteSpace || (!characters.isIgnorableWhiteSpace()
+                && !characters.isWhiteSpace())) {
               if (characters.getData().length() != 0) {
                 elementValue.append(characters.getData());
               }
@@ -413,11 +441,11 @@ class EwsXmlReader {
       StringBuffer data = new StringBuffer(this.presentEvent
           .asCharacters().getData());
       do {
-        this.read();
+        this.read(keepWhiteSpace);
         if (this.getNodeType().nodeType == XmlNodeType.CHARACTERS) {
           Characters characters = (Characters) this.presentEvent;
-          if (!characters.isIgnorableWhiteSpace()
-              && !characters.isWhiteSpace()) {
+          if (keepWhiteSpace || (!characters.isIgnorableWhiteSpace()
+              && !characters.isWhiteSpace())) {
             if (characters.getData().length() != 0) {
               data.append(characters.getData());
             }
