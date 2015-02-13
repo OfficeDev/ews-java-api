@@ -22,6 +22,7 @@
  */
 package microsoft.exchange.webservices.data;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -136,7 +137,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
     if (this.id == null || this.id.isEmpty()) {
       String nameValue = (this.getName() == null || this.
           getName().isEmpty()) ? "" : this.getName();
-      this.setId(NoIdPrefix + Integer.toString(nameValue.hashCode()).replace("-", ""));
+      this.setId(NoIdPrefix + BigInteger.valueOf(nameValue.hashCode()).abs().toString());
     }
   }
 
