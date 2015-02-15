@@ -285,7 +285,7 @@ abstract class ServiceRequestBase {
    * @return String representation of requested server version.
    */
   private String getRequestedServiceVersionString() {
-    if (this.service.getRequestedServerVersion() == ExchangeVersion.Exchange2007_SP1) {
+    if (this.service.getRequestedServerVersion() == ExchangeVersion.Exchange2007_SP1 && this.service.getExchange2007CompatibilityMode()) {
       return "Exchange2007";
     } else {
       return this.service.getRequestedServerVersion().toString();
