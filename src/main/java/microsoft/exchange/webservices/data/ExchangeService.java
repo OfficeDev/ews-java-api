@@ -3826,21 +3826,29 @@ public final class ExchangeService extends ExchangeServiceBase implements
     return this.enableScpLookup;
   }
 
+
   public void setEnableScpLookup(boolean value) {
     this.enableScpLookup = value;
   }
 
   /**
-   * Gets or sets a value indicating whether Exchange2007 compatibility mode
-   * is enabled. <remarks> In order to support E12 servers, the
-   * Exchange2007CompatibilityMode property can be used to indicate that we
-   * should use "Exchange2007" as the server version String rather than
-   * Exchange2007_SP1. </remarks>
+   * Returns true whether Exchange2007 compatibility mode is enabled, false otherwise.
    */
   public boolean getExchange2007CompatibilityMode() {
     return this.exchange2007CompatibilityMode;
   }
 
+  /**
+   * Set the flag indicating if the Exchange2007 compatibility mode is enabled.
+   *
+   * <remarks>
+   * In order to support E12 servers, the <code>exchange2007CompatibilityMode</code> property,
+   * set to true, can be used to indicate that we should use "Exchange2007" as the server version String
+   * rather than Exchange2007_SP1.
+   * </remarks>
+   *
+   * @param value true if the Exchange2007 compatibility mode is enabled.
+   */
   public void setExchange2007CompatibilityMode(boolean value) {
     this.exchange2007CompatibilityMode = value;
   }
