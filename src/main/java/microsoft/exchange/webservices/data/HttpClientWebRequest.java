@@ -18,10 +18,12 @@ import org.apache.http.auth.NTCredentials;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.config.AuthSchemes;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.SocketConfig;
 import org.apache.http.impl.client.*;
+import org.apache.http.util.EntityUtils;
 
 import java.io.*;
 import java.util.Arrays;
@@ -39,7 +41,7 @@ class HttpClientWebRequest extends HttpWebRequest {
    * The Http Method.
    */
   private HttpPost httpPost = null;
-  private HttpResponse response = null;
+  private CloseableHttpResponse response = null;
 
   private final CloseableHttpClient httpClient;
   private final HttpClientContext httpContext;
@@ -57,11 +59,20 @@ class HttpClientWebRequest extends HttpWebRequest {
    * Releases the connection by Closing.
    */
   @Override
-  public void close() {
-    if (null != httpPost) {
+  public void close() throws IOException {
+    // First check if we can close the response, by consuming the complete response
+    // This releases the connection but keeps it alive for future requests
+    // If that is not possible, we simply cleanup the whole connection
+    if (response != null && response.getEntity() != null) {
+      EntityUtils.consume(response.getEntity());
+    } else if (httpPost != null) {
       httpPost.releaseConnection();
-      //postMethod.abort();
     }
+
+    // We set httpPost to null to prevent the connection from being closed again by an accidental
+    // second call to close()
+    // The response is kept, in case something in the library still wants to read something from it,
+    // like response code or headers
     httpPost = null;
   }
 

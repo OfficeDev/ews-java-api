@@ -475,7 +475,7 @@ abstract class HttpWebRequest {
   /**
    * Close.
    */
-  public abstract void close();
+  public abstract void close() throws IOException;
 
   /**
    * Prepare connection.
