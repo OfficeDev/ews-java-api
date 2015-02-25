@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License
  * Copyright (c) 2012 Microsoft Corporation
  *
@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
@@ -285,7 +286,7 @@ abstract class ServiceRequestBase {
    * @return String representation of requested server version.
    */
   private String getRequestedServiceVersionString() {
-    if (this.service.getRequestedServerVersion() == ExchangeVersion.Exchange2007_SP1) {
+    if (this.service.getRequestedServerVersion() == ExchangeVersion.Exchange2007_SP1 && this.service.getExchange2007CompatibilityMode()) {
       return "Exchange2007";
     } else {
       return this.service.getRequestedServerVersion().toString();
