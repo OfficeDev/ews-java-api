@@ -27,65 +27,45 @@ package microsoft.exchange.webservices.data;
  * DNS record types.
  */
 enum DnsRecordType {
-  // RFC 1034/1035 Address Record
   /**
    * The A.
+   * RFC 1034/1035 Address Record
    */
-  A(0x0001),
-
-  // Canonical Name Record
+  A,
   /**
    * The CNAME.
+   * Canonical Name Record
    */
-  CNAME(0x0005),
-
-  // / Start of Authority Record
+  CNAME,
   /**
    * The SOA.
+   * Start of Authority Record
    */
-  SOA(0x0006),
-
-  // / Pointer Record
+  SOA, 
   /**
    * The PTR.
+   * Pointer Record
    */
-  PTR(0x000c),
-
-  // / Mail Exchange Record
+  PTR,
   /**
    * The MX.
+   * Mail Exchange Record
    */
-  MX(0x000f),
-
-  // / Text Record
+  MX,
   /**
    * The TXT.
+   * Text Record
    */
-  TXT(0x0010),
-
-  // / RFC 1886 (IPv6 Address)
+  TXT, 
   /**
    * The AAAA.
+   * RFC 1886 (IPv6 Address)
    */
-  AAAA(0x001c),
-
-  // / Service location - RFC 2052
+  AAAA,
   /**
    * The SRV.
+   * Service location - RFC 2052
    */
-  SRV(0x0021);
+  SRV;
 
-  /**
-   * The dns record.
-   */
-  private final int dnsRecord;
-
-  /**
-   * Instantiates a new dns record type.
-   *
-   * @param dnsRecord the dns record
-   */
-  DnsRecordType(int dnsRecord) {
-    this.dnsRecord = dnsRecord;
-  }
 }

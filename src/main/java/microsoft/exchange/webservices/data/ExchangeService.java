@@ -3551,8 +3551,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
 
     switch (response.getErrorCode()) {
       case NoError:
-        return this.getEwsUrlFromResponse(response, autodiscoverService
-            .isExternal().TRUE);
+        return this.getEwsUrlFromResponse(response, true);
 
       case InvalidUser:
         throw new ServiceRemoteException(String.format(Strings.InvalidUser,

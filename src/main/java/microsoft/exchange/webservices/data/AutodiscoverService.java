@@ -23,23 +23,28 @@
 
 package microsoft.exchange.webservices.data;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import javax.xml.stream.XMLStreamException;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents a binding to the Exchange Autodiscover Service.
  */
 public final class AutodiscoverService extends ExchangeServiceBase implements
     IAutodiscoverRedirectionUrl, IFunctionDelegate {
-
-  private static final Log log = LogFactory.getLog(AutodiscoverService.class);
 
   // region Private members
   /**
@@ -104,25 +109,6 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   private static final String AutodiscoverSoapHttpsUrl =
       "https://%s/autodiscover/autodiscover.svc";
   // Autodiscover SOAP WS-Security HTTPS Url
-  /**
-   * The Constant AutodiscoverSoapWsSecurityHttpsUrl.
-   */
-  private static final String AutodiscoverSoapWsSecurityHttpsUrl =
-      AutodiscoverSoapHttpsUrl +
-          "/wssecurity";
-
-  /**
-   * Autodiscover SOAP WS-Security symmetrickey HTTPS Url
-   */
-  private static final String AutodiscoverSoapWsSecuritySymmetricKeyHttpsUrl =
-      AutodiscoverSoapHttpsUrl + "/wssecurity/symmetrickey";
-
-  /**
-   * Autodiscover SOAP WS-Security x509cert HTTPS Url
-   */
-  private static final String AutodiscoverSoapWsSecurityX509CertHttpsUrl =
-      AutodiscoverSoapHttpsUrl + "/wssecurity/x509cert";
-
 
   // Autodiscover request namespace
   /**
@@ -149,23 +135,6 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    */
   private static final String AutodiscoverWsSecurityEnabledHeaderName =
       "X-WSSecurity-Enabled";
-
-
-  /**
-   * HTTP header indicating that WS-Security/SymmetricKey Autodiscover service is enabled.
-   */
-
-  private static final String AutodiscoverWsSecuritySymmetricKeyEnabledHeaderName =
-      "X-WSSecurity-SymmetricKey-Enabled";
-
-
-  /**
-   * HTTP header indicating that WS-Security/X509Cert Autodiscover service is enabled.
-   */
-
-  private static final String AutodiscoverWsSecurityX509CertEnabledHeaderName =
-      "X-WSSecurity-X509Cert-Enabled";
-
 
   // Minimum request version for Autodiscover SOAP service.
   /**
@@ -646,33 +615,14 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
         // The content at the URL wasn't a valid response, let's try the next.
         currentUrlIndex++;
       } catch (Exception ex) {
-        HttpWebRequest response = null;
-        URI redirectUrl;
-        OutParam<URI> outParam1 = new OutParam<URI>();
-        if ((response != null) &&
-            this.tryGetRedirectionResponse(response, outParam1)) {
-          redirectUrl = outParam1.getParam();
-          this.traceMessage(TraceFlags.AutodiscoverConfiguration,
-              String.format(
-                  "Host returned a redirection to url %s",
-                  redirectUrl.toString()));
+        this.traceMessage(
+            TraceFlags.AutodiscoverConfiguration, 
+            String.format("%s failed: %s (%s)", url, ex.getClass().getName(), ex.getMessage()));
 
-          currentHop.setParam(currentHop.getParam() + 1);
-          urls.add(currentUrlIndex, redirectUrl);
-        } else {
-          if (response != null) {
-            this.processHttpErrorResponse(response, ex);
-
-          }
-
-          this.traceMessage(TraceFlags.AutodiscoverConfiguration,
-              String.format("%s failed: %s (%s)", url, ex
-                  .getClass().getName(), ex.getMessage()));
-
-          // The url did not work, let's try the next.
-          currentUrlIndex++;
-        }
+        // The url did not work, let's try the next.
+        currentUrlIndex++;
       }
+
     } while (currentUrlIndex < urls.size());
 
     // If we got this far it's because none of the URLs we tried have
@@ -761,127 +711,75 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * @throws AutodiscoverRemoteException the autodiscover remote exception
    * @throws Exception                   the exception
    */
-  private <TSettings extends ConfigurationSettingsBase> boolean
-  tryLastChanceHostRedirection(
-      Class<TSettings> cls, String emailAddress, URI redirectionUrl,
-      OutParam<TSettings> settings) throws AutodiscoverLocalException,
-      AutodiscoverRemoteException, Exception {
+  private <TSettings extends ConfigurationSettingsBase> boolean 
+  tryLastChanceHostRedirection(Class<TSettings> cls, String emailAddress, URI redirectionUrl,
+      OutParam<TSettings> settings) throws AutodiscoverLocalException, AutodiscoverRemoteException, Exception {
     List<String> redirectionEmailAddresses = new ArrayList<String>();
 
     // Bug 60274: Performing a non-SSL HTTP GET to retrieve a redirection
     // URL is potentially unsafe. We allow the caller
     // to specify delegate to be called to determine whether we are allowed
     // to use the redirection URL.
-    if (this
-        .callRedirectionUrlValidationCallback(
-            redirectionUrl.toString())) {
+    if (this.callRedirectionUrlValidationCallback(redirectionUrl.toString())) {
       for (int currentHop = 0; currentHop < AutodiscoverService.AutodiscoverMaxRedirections; currentHop++) {
         try {
-          settings.setParam(this.getLegacyUserSettingsAtUrl(cls,
-              emailAddress, redirectionUrl));
+          settings.setParam(this.getLegacyUserSettingsAtUrl(cls, emailAddress, redirectionUrl));
 
           switch (settings.getParam().getResponseType()) {
-            case Success:
-              return true;
-            case Error:
-              throw new AutodiscoverRemoteException(
-                  Strings.AutodiscoverError, settings.getParam()
-                  .getError());
-            case RedirectAddress:
-              // If this email address was already tried,
-              //we may have a loop
-              // in SCP lookups. Disable consideration of SCP records.
-              this.disableScpLookupIfDuplicateRedirection(settings.getParam().getRedirectTarget(),
-                  redirectionEmailAddresses);
-              OutParam<Integer> outParam = new OutParam<Integer>();
-              outParam.setParam(currentHop);
-              settings.setParam(
-                  this.internalGetLegacyUserSettings(cls,
-                      emailAddress,
-                      redirectionEmailAddresses,
-                      outParam));
-              currentHop = outParam.getParam();
-              return true;
-            case RedirectUrl:
-              try {
-                redirectionUrl = new URI(settings.getParam()
-                    .getRedirectTarget());
-              } catch (URISyntaxException ex) {
-                this
-                    .traceMessage(
-                        TraceFlags.
-                            AutodiscoverConfiguration,
-                        String
-                            .format(
-                                "Service " +
-                                    "returned " +
-                                    "invalid " +
-                                    "redirection " +
-                                    "URL %s",
-                                settings
-                                    .getParam()
-                                    .getRedirectTarget()));
-                return false;
-              }
-              break;
-            default:
-              String failureMessage = String.format(
-                  "Autodiscover call at %s failed with error %s, target %s",
-                  redirectionUrl,
-                  settings.getParam().getResponseType(),
-                  settings.getParam().getRedirectTarget());
-              this.traceMessage(
-                  TraceFlags.AutodiscoverConfiguration, failureMessage);
-
+          case Success:
+            return true;
+          case Error:
+            throw new AutodiscoverRemoteException(Strings.AutodiscoverError, settings.getParam().getError());
+          case RedirectAddress:
+            // If this email address was already tried,
+            // we may have a loop
+            // in SCP lookups. Disable consideration of SCP records.
+            this.disableScpLookupIfDuplicateRedirection(
+                settings.getParam().getRedirectTarget(), redirectionEmailAddresses);
+            OutParam<Integer> outParam = new OutParam<Integer>();
+            outParam.setParam(currentHop);
+            settings.setParam(this.internalGetLegacyUserSettings(
+                cls, emailAddress, redirectionEmailAddresses, outParam));
+            currentHop = outParam.getParam();
+            return true;
+          case RedirectUrl:
+            try {
+              redirectionUrl = new URI(settings.getParam().getRedirectTarget());
+            } catch (URISyntaxException ex) {
+              this.traceMessage(TraceFlags.AutodiscoverConfiguration,
+                  String.format(
+                      "Service " + "returned " + "invalid " + "redirection " + "URL %s", 
+                      settings.getParam().getRedirectTarget()));
               return false;
+            }
+            break;
+          default:
+            String failureMessage = String.format(
+                "Autodiscover call at %s failed with error %s, target %s", 
+                redirectionUrl, 
+                settings.getParam().getResponseType(), 
+                settings.getParam().getRedirectTarget());
+            this.traceMessage(TraceFlags.AutodiscoverConfiguration, failureMessage);
+
+            return false;
           }
         } catch (XMLStreamException ex) {
           // If the response is malformed, it wasn't a valid
           // Autodiscover endpoint.
-          this
-              .traceMessage(TraceFlags.AutodiscoverConfiguration,
-                  String.format(
-                      "%s failed: XML parsing error: %s",
-                      redirectionUrl.toString(), ex
-                          .getMessage()));
+          this.traceMessage(
+              TraceFlags.AutodiscoverConfiguration, 
+              String.format("%s failed: XML parsing error: %s", redirectionUrl.toString(), ex.getMessage()));
           return false;
         } catch (IOException ex) {
           this.traceMessage(
-              TraceFlags.AutodiscoverConfiguration,
-              String.format("%s failed: I/O error: %s",
-                  redirectionUrl, ex.getMessage()));
+              TraceFlags.AutodiscoverConfiguration, 
+              String.format("%s failed: I/O error: %s", redirectionUrl, ex.getMessage()));
           return false;
         } catch (Exception ex) {
-          // TODO: BUG response is always null
-          HttpWebRequest response = null;
-          OutParam<URI> outParam = new OutParam<URI>();
-          if ((response != null)
-              && this.tryGetRedirectionResponse(response,
-              outParam)) {
-            redirectionUrl = outParam.getParam();
-            this
-                .traceMessage(
-                    TraceFlags.AutodiscoverConfiguration,
-                    String
-                        .format(
-                            "Host returned a " +
-                                "redirection" +
-                                " to url %s",
-                            redirectionUrl));
-
-          } else {
-            if (response != null) {
-              this.processHttpErrorResponse(response, ex);
-            }
-
-            this
-                .traceMessage(
-                    TraceFlags.AutodiscoverConfiguration,
-                    String.format("%s failed: %s (%s)",
-                        url, ex.getClass().getName(),
-                        ex.getMessage()));
-            return false;
-          }
+          this.traceMessage(
+              TraceFlags.AutodiscoverConfiguration, 
+              String.format("%s failed: %s (%s)", url, ex.getClass().getName(), ex.getMessage()));
+          return false;
         }
       }
     }
@@ -1566,22 +1464,6 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
             AutodiscoverWsSecurityEnabledHeaderName).isEmpty())) {
       endpoints.add(AutodiscoverEndpoints.WsSecurity);
     }
-		
-		/* if (! (request.getResponseHeaders().get(
-				 AutodiscoverWsSecuritySymmetricKeyEnabledHeaderName) !=null || request
-				 .getResponseHeaders().get(
-				 AutodiscoverWsSecuritySymmetricKeyEnabledHeaderName).isEmpty()))
-         {
-             endpoints .add( AutodiscoverEndpoints.WSSecuritySymmetricKey);
-         }
-         if (!(request.getResponseHeaders().get(
-        		 AutodiscoverWsSecurityX509CertEnabledHeaderName)!=null ||
-        		 request.getResponseHeaders().get(
-                		 AutodiscoverWsSecurityX509CertEnabledHeaderName).isEmpty()))
-        		 
-         {
-             endpoints .add(AutodiscoverEndpoints.WSSecurityX509Cert);
-         }*/
 
     return endpoints;
   }

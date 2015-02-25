@@ -116,8 +116,7 @@ public final class WorkingHours extends ComplexProperty {
       this.endTime = workingPeriods.get(0).getEndTime();
 
       for (WorkingPeriod workingPeriod : workingPeriods) {
-        for (DayOfTheWeek dayOfWeek : workingPeriods.get(0)
-            .getDaysOfWeek()) {
+        for (DayOfTheWeek dayOfWeek : workingPeriod.getDaysOfWeek()) {
           if (!this.daysOfTheWeek.contains(dayOfWeek)) {
             this.daysOfTheWeek.add(dayOfWeek);
           }

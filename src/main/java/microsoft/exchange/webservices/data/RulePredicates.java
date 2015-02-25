@@ -853,11 +853,11 @@ public final class RulePredicates extends ComplexProperty {
           XmlElementNames.ContainsSubjectStrings);
     }
 
-    if (this.getFlaggedForAction() != null) {
+    if (getFlaggedForAction() != null) {
       writer.writeElementValue(
           XmlNamespace.Types,
           XmlElementNames.FlaggedForAction,
-          this.getFlaggedForAction().values());
+          FlaggedForAction.values());
     }
 
     if (this.getFromAddresses().getCount() > 0) {
@@ -1011,11 +1011,11 @@ public final class RulePredicates extends ComplexProperty {
           this.getSentToOrCcMe());
     }
 
-    if (this.getSensitivity() != null) {
+    if (getSensitivity() != null) {
       writer.writeElementValue(
           XmlNamespace.Types,
           XmlElementNames.Sensitivity,
-          this.getSensitivity().values());
+          Sensitivity.values());
     }
 
     if (this.getWithinDateRange().getStart() != null || this.getWithinDateRange().getEnd() != null) {

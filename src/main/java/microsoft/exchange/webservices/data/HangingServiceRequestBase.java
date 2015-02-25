@@ -142,9 +142,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
     void handleResponseObject(Object response) throws ArgumentException;
   }
 
-
-  private static final int BufferSize = 4096;
-
   /**
    * Test switch to log all bytes that come across the wire.
    * Helpful when parsing fails before certain bytes hit the trace logs.
@@ -160,16 +157,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
    * Response from the server.
    */
   private HttpWebRequest response;
-
-  /**
-   * Request to the server.
-   */
-  private HttpWebRequest request;
-
-  /**
-   * Xml reader used to parse the response.
-   */
-  private EwsServiceMultiResponseXmlReader ewsXmlReader;
 
   /**
    * Expected minimum frequency in responses, in milliseconds.
@@ -355,10 +342,6 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
    */
   protected boolean isConnected() {
     return this.isConnected;
-  }
-
-  private void setIsConnected(boolean value) {
-    this.isConnected = value;
   }
 
   /**

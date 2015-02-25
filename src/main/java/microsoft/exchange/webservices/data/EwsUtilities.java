@@ -23,7 +23,6 @@
 
 package microsoft.exchange.webservices.data;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -191,53 +190,6 @@ class EwsUtilities {
                                                 return new ServiceObjectInfo();
                                               }
                                             });
-
-
-  /**
-   * Copies source stream to target.
-   *
-   * @param source The source stream.
-   * @param target The target stream.
-   */
-  protected static void copyStream(ByteArrayOutputStream source, ByteArrayOutputStream target)
-      throws Exception {
-    // See if this is a MemoryStream -- we can use WriteTo.
-
-    	
-   /* 	InputStream inputStream = new FileInputStream ("D:\\EWS ManagedAPI sp2\\Rp\\xml\\useravailrequest.xml");
-
-    	 byte buf[]=new byte[1024];
-    	 int len;
-    	 while((len=inputStream.read(buf))>0)
-    	 {
-    	  target.write(buf,0, len);
-    	 }
-    	*/
-
-    	/*PrintWriter pw = new PrintWriter(source,true);
-    	PrintWriter pw1 = new PrintWriter(target,true);
-    	pw1.println(pw.toString());*/
-
-
-
-    ByteArrayOutputStream memContentStream = source;
-    if (memContentStream != null) {
-      memContentStream.writeTo(target);
-      memContentStream.flush();
-    } else {
-      // Otherwise, copy data through a buffer
-
-      int c;
-      ByteArrayInputStream inStream = new ByteArrayInputStream(source.toByteArray());
-
-      while ((c = inStream.read()) != -1) {
-        target.write((char) c);
-
-      }
-    }
-  }
-
-
 
   /**
    * Gets the builds the version.
@@ -1469,9 +1421,11 @@ class EwsUtilities {
    */
   protected static <T> int getEnumeratedObjectCount(Iterator<T> objects) {
     int count = 0;
-    while (objects != null && objects.hasNext()) {
-      Object obj = objects.next();
-      count++;
+    if (null != objects) {
+      while (objects.hasNext()) {
+        objects.next();
+        count++;
+      }
     }
     return count;
   }

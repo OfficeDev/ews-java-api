@@ -5,6 +5,9 @@ jdk:
   - oraclejdk7
   - openjdk6
 
+after_success:
+  - mvn findbugs:check
+  
 notifications:
   webhooks:
     urls:

@@ -322,10 +322,6 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
     return partnerToken;
   }
 
-  private void setPartnerToken(String value) {
-    partnerToken = value;
-  }
-
   /**
    * <summary>
    * Gets the partner token reference.
@@ -333,9 +329,5 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
   protected String getPartnerTokenReference() {
     return partnerTokenReference;
 
-  }
-
-  private void setPartnerTokenReference(String tokenReference) {
-    partnerTokenReference = tokenReference;
   }
 }

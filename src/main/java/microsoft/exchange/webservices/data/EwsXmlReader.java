@@ -37,11 +37,6 @@ import java.io.*;
 class EwsXmlReader {
 
   /**
-   * The Read write buffer size.
-   */
-  private static final int ReadWriteBufferSize = 4096;
-
-  /**
    * The xml reader.
    */
   private XMLEventReader xmlReader = null;
@@ -50,11 +45,6 @@ class EwsXmlReader {
    * The present event.
    */
   private XMLEvent presentEvent;
-
-  /**
-   * The prev event.
-   */
-  private XMLEvent prevEvent;
 
   /**
    * Initializes a new instance of the EwsXmlReader class.
@@ -81,21 +71,6 @@ class EwsXmlReader {
     //inputFactory.setProperty(XMLInputFactory.RESOLVER, null);
 
     return inputFactory.createXMLEventReader(stream);
-  }
-
-
-  /**
-   * Formats the name of the element.
-   *
-   * @param namespacePrefix  The namespace prefix
-   * @param localElementName Element name
-   * @return the string
-   */
-  private static String formatElementName(String namespacePrefix,
-      String localElementName) {
-
-    return isNullOrEmpty(namespacePrefix) ? localElementName :
-        namespacePrefix + ":" + localElementName;
   }
 
   /**
@@ -190,7 +165,6 @@ class EwsXmlReader {
               continue;
           }
         }
-        this.prevEvent = this.presentEvent;
         this.presentEvent = event;
         break;
       }
@@ -1108,17 +1082,6 @@ class EwsXmlReader {
       name = this.presentEvent.asEndElement().getName().toString();
     }
     return name;
-  }
-
-  /**
-   * Checks is the string is null or empty.
-   *
-   * @param namespacePrefix the namespace prefix
-   * @return true, if is null or empty
-   */
-  private static boolean isNullOrEmpty(String namespacePrefix) {
-    return (namespacePrefix == null || namespacePrefix.isEmpty());
-
   }
 
 }

@@ -361,10 +361,8 @@ public final class AttachmentCollection extends
    */
   public void validate() throws Exception {
     // Validate all added attachments
-    if (this.owner.isNew()
-        && this.owner.getService().getRequestedServerVersion()
-        .ordinal() >= ExchangeVersion.Exchange2010_SP2
-        .ordinal()) {
+    if (owner.isNew()
+        && owner.getService().getRequestedServerVersion().ordinal() >= ExchangeVersion.Exchange2010_SP2.ordinal()) {
       boolean contactPhotoFound = false;
       for (int attachmentIndex = 0; attachmentIndex < this.getAddedItems()
           .size(); attachmentIndex++) {
@@ -392,7 +390,9 @@ public final class AttachmentCollection extends
             contactPhotoFound = true;
           }
         }
-        attachment.validate(attachmentIndex);
+        if (null != attachment) {
+          attachment.validate(attachmentIndex);
+        }
       }
     }
   }

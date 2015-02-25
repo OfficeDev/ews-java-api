@@ -23,7 +23,6 @@
 
 package microsoft.exchange.webservices.data;
 
-import java.util.Calendar;
 
 /**
  * Specifies the day of the week. For the standard days of the week (Sunday,
@@ -34,59 +33,25 @@ import java.util.Calendar;
  */
 public enum DayOfTheWeek {
 
-  // Sunday
-  /**
-   * The Sunday.
-   */
-  Sunday(Calendar.SUNDAY),
-
-  // Monday
-  /**
-   * The Monday.
-   */
-  Monday(Calendar.MONDAY),
-
-  // Tuesday
-  /**
-   * The Tuesday.
-   */
-  Tuesday(Calendar.TUESDAY),
-
-  // Wednesday
-  /**
-   * The Wednesday.
-   */
-  Wednesday(Calendar.WEDNESDAY),
-
-  // Thursday
-  /**
-   * The Thursday.
-   */
-  Thursday(Calendar.THURSDAY),
-
-  // Friday
-  /**
-   * The Friday.
-   */
-  Friday(Calendar.FRIDAY),
-
-  // Saturday
-  /**
-   * The Saturday.
-   */
-  Saturday(Calendar.SATURDAY),
+  Sunday,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
 
   // Any day of the week
   /**
    * The Day.
    */
-  Day(),
+  Day,
 
   // Any day of the usual business week (Monday-Friday)
   /**
    * The Weekday.
    */
-  Weekday(),
+  Weekday,
 
   // Any weekend day (Saturday or Sunday)
   /**
@@ -94,24 +59,4 @@ public enum DayOfTheWeek {
    */
   WeekendDay;
 
-  /**
-   * The day of week.
-   */
-  private int dayOfWeek = 0;
-
-  /**
-   * Instantiates a new day of the week.
-   *
-   * @param dayOfWeek the day of week
-   */
-  DayOfTheWeek(int dayOfWeek) {
-    this.dayOfWeek = dayOfWeek;
-  }
-
-  /**
-   * Instantiates a new day of the week.
-   */
-  DayOfTheWeek() {
-
-  }
 }
