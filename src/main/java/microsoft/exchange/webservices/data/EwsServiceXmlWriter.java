@@ -478,7 +478,7 @@ class EwsServiceXmlWriter implements IDisposable {
   public void writeBase64ElementValue(byte[] buffer)
       throws XMLStreamException {
 
-    String strValue = Base64.encode(buffer);
+    String strValue = Base64EncoderStream.encode(buffer);
     this.xmlWriter.writeCharacters(strValue);//Base64.encode(buffer));
   }
 
@@ -504,7 +504,7 @@ class EwsServiceXmlWriter implements IDisposable {
       bos.close();
     }
     byte[] bytes = bos.toByteArray();
-    String strValue = Base64.encode(bytes);
+    String strValue = Base64EncoderStream.encode(bytes);
     this.xmlWriter.writeCharacters(strValue);
 
   }
