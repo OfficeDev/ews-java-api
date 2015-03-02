@@ -430,20 +430,19 @@ class EwsXmlReader {
    */
   public String readValue(boolean keepWhiteSpace) throws XMLStreamException,
       ServiceXmlDeserializationException {
-    String errMsg = String.format("Could not read value from %s.",
-        XmlNodeType.getString(this.presentEvent.getEventType()));
     if (this.presentEvent.isStartElement()) {
       // Go to next event and check for Characters event
       this.read(keepWhiteSpace);
       if (this.presentEvent.isCharacters()) {
-        StringBuffer elementValue = new StringBuffer();
+        final StringBuilder elementValue = new StringBuilder();
         do {
           if (this.getNodeType().nodeType == XmlNodeType.CHARACTERS) {
             Characters characters = (Characters) this.presentEvent;
             if (keepWhiteSpace || (!characters.isIgnorableWhiteSpace()
                 && !characters.isWhiteSpace())) {
-              if (characters.getData() != null && characters.getData().length() != 0) {
-                elementValue.append(characters.getData());
+              final String charactersData = characters.getData();
+              if (charactersData != null && !charactersData.isEmpty()) {
+                elementValue.append(charactersData);
               }
             }
           }
@@ -456,26 +455,26 @@ class EwsXmlReader {
         // this.read();
         return elementValue.toString();
       } else {
-        errMsg = errMsg + "Could not find "
-            + XmlNodeType.getString(XmlNodeType.CHARACTERS);
-        throw new ServiceXmlDeserializationException(errMsg);
+        throw new ServiceXmlDeserializationException(
+          getReadValueErrMsg("Could not find " + XmlNodeType.getString(XmlNodeType.CHARACTERS))
+        );
       }
     } else if (this.presentEvent.getEventType() == XmlNodeType.CHARACTERS
         && this.presentEvent.isCharacters()) {
                         /*
                          * if(this.presentEvent.asCharacters().getData().equals("<")) {
 			 */
-      final String charData = this.presentEvent
-          .asCharacters().getData();
-      StringBuffer data = new StringBuffer(charData == null ? "" : charData);
+      final String charData = this.presentEvent.asCharacters().getData();
+      final StringBuilder data = new StringBuilder(charData == null ? "" : charData);
       do {
         this.read(keepWhiteSpace);
         if (this.getNodeType().nodeType == XmlNodeType.CHARACTERS) {
           Characters characters = (Characters) this.presentEvent;
           if (keepWhiteSpace || (!characters.isIgnorableWhiteSpace()
               && !characters.isWhiteSpace())) {
-            if (characters.getData() != null && characters.getData().length() != 0) {
-              data.append(characters.getData());
+            final String charactersData = characters.getData();
+            if (charactersData != null && !charactersData.isEmpty()) {
+              data.append(charactersData);
             }
           }
         }
@@ -488,9 +487,9 @@ class EwsXmlReader {
 			 * return elementValue; }
 			 */
     } else {
-      errMsg = errMsg + "Expected is "
-          + XmlNodeType.getString(XmlNodeType.START_ELEMENT);
-      throw new ServiceXmlDeserializationException(errMsg);
+      throw new ServiceXmlDeserializationException(
+        getReadValueErrMsg("Expected is " + XmlNodeType.getString(XmlNodeType.START_ELEMENT))
+      );
     }
 
   }
@@ -1120,6 +1119,17 @@ class EwsXmlReader {
   private static boolean isNullOrEmpty(String namespacePrefix) {
     return (namespacePrefix == null || namespacePrefix.isEmpty());
 
+  }
+
+  /**
+   * Gets the error message which happened during {@link #readValue()}.
+   *
+   * @param details details message
+   * @return error message with details
+   */
+  private String getReadValueErrMsg(final String details) {
+    final int eventType = this.presentEvent.getEventType();
+    return "Could not read value from " + XmlNodeType.getString(eventType) + "." + details;
   }
 
 }
