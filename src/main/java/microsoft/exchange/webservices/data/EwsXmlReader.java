@@ -165,9 +165,8 @@ class EwsXmlReader {
 
   /**
    * Reads the specified node type.
-   * 
-   * @param keepWhiteSpace Do not remove whitespace characters if true
    *
+   * @param keepWhiteSpace Do not remove whitespace characters if true
    * @throws ServiceXmlDeserializationException  the service xml deserialization exception
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
@@ -188,7 +187,7 @@ class EwsXmlReader {
             if (characters.isIgnorableWhiteSpace()
                 || characters.isWhiteSpace()) {
               continue;
-          }
+            }
         }
         this.prevEvent = this.presentEvent;
         this.presentEvent = event;
@@ -418,6 +417,7 @@ class EwsXmlReader {
       ServiceXmlDeserializationException {
     return readValue(false);
   }
+
   /**
    * Reads the value. Should return content element or text node as string
    * Present event must be START ELEMENT. After executing this function
@@ -442,7 +442,7 @@ class EwsXmlReader {
             Characters characters = (Characters) this.presentEvent;
             if (keepWhiteSpace || (!characters.isIgnorableWhiteSpace()
                 && !characters.isWhiteSpace())) {
-              if (characters.getData().length() != 0) {
+              if (characters.getData() != null && characters.getData().length() != 0) {
                 elementValue.append(characters.getData());
               }
             }
@@ -463,17 +463,18 @@ class EwsXmlReader {
     } else if (this.presentEvent.getEventType() == XmlNodeType.CHARACTERS
         && this.presentEvent.isCharacters()) {
                         /*
-			 * if(this.presentEvent.asCharacters().getData().equals("<")) {
+                         * if(this.presentEvent.asCharacters().getData().equals("<")) {
 			 */
-      StringBuffer data = new StringBuffer(this.presentEvent
-          .asCharacters().getData());
+      final String charData = this.presentEvent
+          .asCharacters().getData();
+      StringBuffer data = new StringBuffer(charData == null ? "" : charData);
       do {
         this.read(keepWhiteSpace);
         if (this.getNodeType().nodeType == XmlNodeType.CHARACTERS) {
           Characters characters = (Characters) this.presentEvent;
           if (keepWhiteSpace || (!characters.isIgnorableWhiteSpace()
               && !characters.isWhiteSpace())) {
-            if (characters.getData().length() != 0) {
+            if (characters.getData() != null && characters.getData().length() != 0) {
               data.append(characters.getData());
             }
           }
