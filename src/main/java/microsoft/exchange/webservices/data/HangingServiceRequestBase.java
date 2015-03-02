@@ -283,7 +283,7 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
               EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
           responseObject = this.readResponse(ewsXmlReader);
           this.responseHandler.handleResponseObject(responseObject);
-				/*	}catch(Exception ex){
+                                /*	}catch(Exception ex){
 						this.disconnect(HangingRequestDisconnectReason.Exception, ex);
 						return;
 						
@@ -366,8 +366,11 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
    */
   protected void disconnect() {
     synchronized (this) {
-      //this.request.close();
-      this.response.close();
+      try {
+        this.response.close();
+      } catch (IOException e) {
+        // Ignore exception on disconnection
+      }
       this.disconnect(HangingRequestDisconnectReason.UserInitiated, null);
     }
   }
@@ -381,7 +384,11 @@ abstract class HangingServiceRequestBase extends ServiceRequestBase {
   protected void disconnect(HangingRequestDisconnectReason reason,
       Exception exception) {
     if (this.isConnected()) {
-      this.response.close();
+      try {
+        this.response.close();
+      } catch (IOException e) {
+        // Ignore exception on disconnection
+      }
       this.internalOnDisconnect(reason, exception);
     }
   }
