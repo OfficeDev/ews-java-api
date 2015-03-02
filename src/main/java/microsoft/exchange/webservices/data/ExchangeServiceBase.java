@@ -190,7 +190,8 @@ public abstract class ExchangeServiceBase implements Closeable {
         .build();
 
     HttpClientConnectionManager httpConnectionManager = new BasicHttpClientConnectionManager(registry);
-    HttpClientBuilder httpClientBuilder = HttpClients.custom().setConnectionManager(httpConnectionManager);
+    HttpClientBuilder httpClientBuilder = HttpClients.custom().setConnectionManager(httpConnectionManager)
+        .setTargetAuthenticationStrategy(new CookieProcessingTargetAuthenticationStrategy());
     httpClient = httpClientBuilder.build();
   }
 
