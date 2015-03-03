@@ -23,7 +23,6 @@
 
 package microsoft.exchange.webservices.data.util;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -37,29 +36,20 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(JUnit4.class)
-public class DateTimeParserTest {
+public class DateTimeUtilsTest {
 
-  private DateTimeParser parser;
-
-  @Before
-  public void setUp() {
-    parser = new DateTimeParser();
-  }
-
-
-
-  // Tests for DateTimeParser.convertDateTimeStringToDate()
+  // Tests for DateTimeUtils.convertDateTimeStringToDate()
 
   @Test
   public void testDateTimeEmpty() {
-    assertNull(parser.convertDateTimeStringToDate(null));
-    assertNull(parser.convertDateTimeStringToDate(""));
+    assertNull(DateTimeUtils.convertDateTimeStringToDate(null));
+    assertNull(DateTimeUtils.convertDateTimeStringToDate(""));
   }
 
   @Test
   public void testDateTimeZulu() {
     String dateString = "2015-01-08T10:11:12Z";
-    Date parsed = parser.convertDateTimeStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateTimeStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -73,7 +63,7 @@ public class DateTimeParserTest {
   @Test
   public void testDateTimeZuluLowerZ() {
     String dateString = "2015-01-08T10:11:12z";
-    Date parsed = parser.convertDateTimeStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateTimeStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -87,7 +77,7 @@ public class DateTimeParserTest {
   @Test
   public void testDateTimeZuluWithPrecision() {
     String dateString = "2015-01-08T10:11:12.123Z";
-    Date parsed = parser.convertDateTimeStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateTimeStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -101,7 +91,7 @@ public class DateTimeParserTest {
   @Test
   public void testDateTimeZuluWithMilliseconds() {
     String dateString = "9999-12-30T23:59:59.9999999Z";
-    Date parsed = parser.convertDateTimeStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateTimeStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(9999, calendar.get(Calendar.YEAR));
@@ -115,7 +105,7 @@ public class DateTimeParserTest {
   @Test
    public void testDateTimeWithTimeZone() {
     String dateString = "2015-01-08T10:11:12+0200";
-    Date parsed = parser.convertDateTimeStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateTimeStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -129,7 +119,7 @@ public class DateTimeParserTest {
   @Test
   public void testDateTimeWithTimeZoneWithColon() {
     String dateString = "2015-01-08T10:11:12-02:00";
-    Date parsed = parser.convertDateTimeStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateTimeStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -143,7 +133,7 @@ public class DateTimeParserTest {
   @Test
   public void testDateTime() {
     String dateString = "2015-01-08T10:11:12";
-    Date parsed = parser.convertDateTimeStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateTimeStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -157,7 +147,7 @@ public class DateTimeParserTest {
   @Test
   public void testDateZulu() {
     String dateString = "2015-01-08Z";
-    Date parsed = parser.convertDateTimeStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateTimeStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -168,7 +158,7 @@ public class DateTimeParserTest {
   @Test
   public void testDateOnly() {
     String dateString = "2015-01-08";
-    Date parsed = parser.convertDateTimeStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateTimeStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -178,18 +168,18 @@ public class DateTimeParserTest {
 
 
 
-  // Tests for DateTimeParser.convertDateStringToDate()
+  // Tests for DateTimeUtils.convertDateStringToDate()
 
   @Test
   public void testDateOnlyEmpty() {
-    assertNull(parser.convertDateStringToDate(null));
-    assertNull(parser.convertDateStringToDate(""));
+    assertNull(DateTimeUtils.convertDateStringToDate(null));
+    assertNull(DateTimeUtils.convertDateStringToDate(""));
   }
 
   @Test
    public void testDateOnlyZulu() {
     String dateString = "2015-01-08Z";
-    Date parsed = parser.convertDateStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -203,7 +193,7 @@ public class DateTimeParserTest {
   @Test
   public void testDateOnlyZuluWithLowerZ() {
     String dateString = "2015-01-08z";
-    Date parsed = parser.convertDateStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -217,7 +207,7 @@ public class DateTimeParserTest {
   @Test
   public void testDateOnlyWithTimeZone() {
     String dateString = "2015-01-08+0200";
-    Date parsed = parser.convertDateStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -231,7 +221,7 @@ public class DateTimeParserTest {
   @Test
   public void testDateOnlyWithTimeZoneWithColon() {
     String dateString = "2015-01-08-02:00";
-    Date parsed = parser.convertDateStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));
@@ -245,7 +235,7 @@ public class DateTimeParserTest {
   @Test
   public void testDateOnlyWithoutTimeZone() {
     String dateString = "2015-01-08";
-    Date parsed = parser.convertDateStringToDate(dateString);
+    Date parsed = DateTimeUtils.convertDateStringToDate(dateString);
     Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
     calendar.setTime(parsed);
     assertEquals(2015, calendar.get(Calendar.YEAR));

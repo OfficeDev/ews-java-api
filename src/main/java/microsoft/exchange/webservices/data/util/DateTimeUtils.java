@@ -28,23 +28,15 @@ import java.util.Date;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-public class DateTimeParser {
+public final class DateTimeUtils {
 
-  private final DateTimeFormatter[] dateTimeFormats = {
-      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssZ").withZoneUTC(),
-      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ").withZoneUTC(),
-      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ").withZoneUTC(),
-      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss").withZoneUTC(),
-      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").withZoneUTC(),
-      DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS").withZoneUTC(),
-      DateTimeFormat.forPattern("yyyy-MM-ddZ").withZoneUTC(),
-      DateTimeFormat.forPattern("yyyy-MM-dd").withZoneUTC()
-  };
+  private static final DateTimeFormatter[] DATE_TIME_FORMATS = createDateTimeFormats();
+  private static final DateTimeFormatter[] DATE_FORMATS = createDateFormats();
 
-  private final DateTimeFormatter[] dateFormats = {
-      DateTimeFormat.forPattern("yyyy-MM-ddZ").withZoneUTC(),
-      DateTimeFormat.forPattern("yyyy-MM-dd").withZoneUTC()
-  };
+
+  private DateTimeUtils() {
+    throw new UnsupportedOperationException();
+  }
 
 
   /**
@@ -58,7 +50,7 @@ public class DateTimeParser {
    *
    * @throws java.lang.IllegalArgumentException If string can not be parsed.
    */
-  public Date convertDateTimeStringToDate(String value) {
+  public static Date convertDateTimeStringToDate(String value) {
     return parseInternal(value, false);
   }
 
@@ -72,11 +64,12 @@ public class DateTimeParser {
    *
    * @throws java.lang.IllegalArgumentException If string can not be parsed.
    */
-  public Date convertDateStringToDate(String value) {
+  public static Date convertDateStringToDate(String value) {
     return parseInternal(value, true);
   }
 
-  private Date parseInternal(String value, boolean dateOnly) {
+
+  private static Date parseInternal(String value, boolean dateOnly) {
     String originalValue = value;
 
     if (value == null || value.isEmpty()) {
@@ -87,7 +80,7 @@ public class DateTimeParser {
         value = value.substring(0, value.length() - 1) + "Z";
       }
 
-      DateTimeFormatter[] formats = dateOnly ? dateFormats : dateTimeFormats;
+      DateTimeFormatter[] formats = dateOnly ? DATE_FORMATS : DATE_TIME_FORMATS;
       for (DateTimeFormatter format : formats) {
         try {
           return format.parseDateTime(value).toDate();
@@ -100,4 +93,25 @@ public class DateTimeParser {
     throw new IllegalArgumentException(
         String.format("Date String %s not in valid UTC/local format", originalValue));
   }
+
+  private static DateTimeFormatter[] createDateTimeFormats() {
+    return new DateTimeFormatter[] {
+        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssZ").withZoneUTC(),
+        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ").withZoneUTC(),
+        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ").withZoneUTC(),
+        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss").withZoneUTC(),
+        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").withZoneUTC(),
+        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS").withZoneUTC(),
+        DateTimeFormat.forPattern("yyyy-MM-ddZ").withZoneUTC(),
+        DateTimeFormat.forPattern("yyyy-MM-dd").withZoneUTC()
+    };
+  }
+
+  private static DateTimeFormatter[] createDateFormats() {
+    return new DateTimeFormatter[] {
+        DateTimeFormat.forPattern("yyyy-MM-ddZ").withZoneUTC(),
+        DateTimeFormat.forPattern("yyyy-MM-dd").withZoneUTC()
+    };
+  }
+
 }
