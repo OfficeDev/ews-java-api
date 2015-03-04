@@ -28,7 +28,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Defines the GetStreamingEventsRequest class.
  */
-class GetStreamingEventsRequest extends HangingServiceRequestBase {
+class GetStreamingEventsRequest extends HangingServiceRequestBase<GetStreamingEventsResponse> {
 
   protected final static int HeartbeatFrequencyDefault = 45000; ////45s in ms
   private static int heartbeatFrequency = HeartbeatFrequencyDefault;
@@ -114,14 +114,10 @@ class GetStreamingEventsRequest extends HangingServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader The reader
-   * @return response
-   * @throws Exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected GetStreamingEventsResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
         XmlElementNames.ResponseMessages);

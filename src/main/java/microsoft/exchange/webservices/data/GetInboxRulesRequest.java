@@ -28,7 +28,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a GetInboxRules request.
  */
-final class GetInboxRulesRequest extends SimpleServiceRequestBase {
+final class GetInboxRulesRequest extends SimpleServiceRequestBase<GetInboxRulesResponse> {
 
   /**
    * The smtp address of the mailbox from which to get the inbox rules.
@@ -102,14 +102,10 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader The reader.
-   * @return Response object.
-   * @throws Exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected GetInboxRulesResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     GetInboxRulesResponse response = new GetInboxRulesResponse();
     response.loadFromXml(reader, XmlElementNames.GetInboxRulesResponse);

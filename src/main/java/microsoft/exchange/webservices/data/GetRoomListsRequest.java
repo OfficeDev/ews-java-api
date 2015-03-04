@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a GetRoomList request.
  */
-final class GetRoomListsRequest extends SimpleServiceRequestBase {
+final class GetRoomListsRequest extends SimpleServiceRequestBase<GetRoomListsResponse> {
 
   /**
    * Initializes a new instance of the class.
@@ -70,14 +70,10 @@ final class GetRoomListsRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader the reader
-   * @return Response object.
-   * @throws Exception the exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected GetRoomListsResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     GetRoomListsResponse response = new GetRoomListsResponse();
     response.loadFromXml(reader, XmlElementNames.GetRoomListsResponse);

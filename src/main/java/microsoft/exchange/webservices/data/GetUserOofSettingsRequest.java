@@ -28,7 +28,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a GetUserOofSettings request.
  */
-final class GetUserOofSettingsRequest extends SimpleServiceRequestBase {
+final class GetUserOofSettingsRequest extends SimpleServiceRequestBase<GetUserOofSettingsResponse> {
 
   /**
    * The smtp address.
@@ -84,14 +84,10 @@ final class GetUserOofSettingsRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader the reader
-   * @return Response object
-   * @throws Exception the exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected GetUserOofSettingsResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     GetUserOofSettingsResponse serviceResponse =
         new GetUserOofSettingsResponse();

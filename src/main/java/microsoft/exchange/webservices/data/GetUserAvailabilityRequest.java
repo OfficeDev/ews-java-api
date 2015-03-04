@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a GetUserAvailability request.
  */
-final class GetUserAvailabilityRequest extends SimpleServiceRequestBase {
+final class GetUserAvailabilityRequest extends SimpleServiceRequestBase<GetUserAvailabilityResults> {
 
   /**
    * The attendees.
@@ -148,14 +148,10 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader the reader
-   * @return Response object.
-   * @throws Exception the exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected GetUserAvailabilityResults parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     GetUserAvailabilityResults serviceResponse =
         new GetUserAvailabilityResults();

@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a request to a Find Conversation operation
  */
-final class FindConversationRequest extends SimpleServiceRequestBase {
+final class FindConversationRequest extends SimpleServiceRequestBase<FindConversationResponse> {
 
 
   private ConversationIndexedItemView view;
@@ -133,14 +133,10 @@ final class FindConversationRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader The reader.
-   * @return Response object.
-   * @throws Exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected FindConversationResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     FindConversationResponse response = new FindConversationResponse();
     response.loadFromXml(reader,

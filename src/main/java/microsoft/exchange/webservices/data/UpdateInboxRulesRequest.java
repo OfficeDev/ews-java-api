@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a UpdateInboxRulesRequest request.
  */
-final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
+final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<UpdateInboxRulesResponse> {
   /**
    * The smtp address of the mailbox from which to get the inbox rules.
    */
@@ -101,14 +101,10 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader The reader.
-   * @return Response object.
-   * @throws Exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected UpdateInboxRulesResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     UpdateInboxRulesResponse response = new UpdateInboxRulesResponse();
     response.loadFromXml(reader, XmlElementNames.UpdateInboxRulesResponse);

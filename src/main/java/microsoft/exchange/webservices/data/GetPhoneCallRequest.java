@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a GetPhoneCall request.
  */
-final class GetPhoneCallRequest extends SimpleServiceRequestBase {
+final class GetPhoneCallRequest extends SimpleServiceRequestBase<GetPhoneCallResponse> {
 
   /**
    * The id.
@@ -78,14 +78,10 @@ final class GetPhoneCallRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader the reader
-   * @return Response object.
-   * @throws Exception the exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected GetPhoneCallResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     GetPhoneCallResponse response = new GetPhoneCallResponse(getService());
     response.loadFromXml(reader, XmlElementNames.GetPhoneCallResponse);

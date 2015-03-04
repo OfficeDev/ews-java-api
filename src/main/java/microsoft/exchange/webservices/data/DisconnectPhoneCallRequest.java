@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a DisconnectPhoneCall request.
  */
-final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase {
+final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase<ServiceResponse> {
 
   /**
    * The id.
@@ -78,14 +78,10 @@ final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase {
   }
 
   /**
-   * Parses the response.
-   *
-   * @param reader the reader
-   * @return Response object.
-   * @throws Exception the exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected ServiceResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     ServiceResponse serviceResponse = new ServiceResponse();
     serviceResponse.loadFromXml(reader,

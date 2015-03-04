@@ -28,9 +28,8 @@ package microsoft.exchange.webservices.data;
  *
  * @param <TResponse> The type of the response.
  */
-abstract class DelegateManagementRequestBase
-    <TResponse extends DelegateManagementResponse>
-    extends SimpleServiceRequestBase {
+abstract class DelegateManagementRequestBase<TResponse extends DelegateManagementResponse>
+    extends SimpleServiceRequestBase<TResponse> {
 
   /**
    * The mailbox.
@@ -81,16 +80,12 @@ abstract class DelegateManagementRequestBase
   protected abstract TResponse createResponse();
 
   /**
-   * Parses the response.
-   *
-   * @param reader the reader
-   * @return Response object.
-   * @throws Exception the exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected TResponse parseResponse(EwsServiceXmlReader reader)
       throws Exception {
-    DelegateManagementResponse response = this.createResponse();
+    TResponse response = this.createResponse();
     response.loadFromXml(reader, this.getResponseXmlElementName());
     return response;
   }

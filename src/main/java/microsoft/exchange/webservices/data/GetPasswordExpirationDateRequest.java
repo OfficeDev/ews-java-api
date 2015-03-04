@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 
-public final class GetPasswordExpirationDateRequest extends SimpleServiceRequestBase {
+public final class GetPasswordExpirationDateRequest extends SimpleServiceRequestBase<GetPasswordExpirationDateResponse> {
 
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -65,15 +65,13 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
   }
 
   /**
-   * Parses the response
-   *
-   * @return GEtPasswordExpirationDateResponse
+   * {@inheritDoc}
    */
-  protected Object parseResponse(EwsServiceXmlReader reader) throws Exception {
+  @Override
+  protected GetPasswordExpirationDateResponse parseResponse(EwsServiceXmlReader reader) throws Exception {
     GetPasswordExpirationDateResponse response = new GetPasswordExpirationDateResponse();
     response.loadFromXml(reader, XmlElementNames.GetPasswordExpirationDateResponse);
     return response;
-
   }
 
   /**

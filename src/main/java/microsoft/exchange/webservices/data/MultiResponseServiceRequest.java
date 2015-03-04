@@ -29,7 +29,7 @@ package microsoft.exchange.webservices.data;
  * @param <TResponse> The type of the response.
  */
 abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
-    extends SimpleServiceRequestBase {
+    extends SimpleServiceRequestBase<ServiceResponseCollection<TResponse>> {
 
   /**
    * The error handling mode.
@@ -37,14 +37,10 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
   private ServiceErrorHandling errorHandlingMode;
 
   /**
-   * Parses the response.
-   *
-   * @param reader The reader.
-   * @return Response object.
-   * @throws Exception the exception
+   * {@inheritDoc}
    */
   @Override
-  protected Object parseResponse(EwsServiceXmlReader reader)
+  protected ServiceResponseCollection<TResponse> parseResponse(EwsServiceXmlReader reader)
       throws Exception {
     ServiceResponseCollection<TResponse> serviceResponses =
         new ServiceResponseCollection<TResponse>();
