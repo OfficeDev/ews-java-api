@@ -30,26 +30,20 @@ package microsoft.exchange.webservices.data;
  * @param <T> Type of the lazy member
  *            <p/>
  *            If we find ourselves creating a whole bunch of these in our code,
- *            we need to rethink this. Each lazy member holds the actual member,
- *            a lock object, a boolean flag and a delegate. That can turn into a
- *            whole lot of overhead
+ *            we need to rethink this. Each lazy member holds the actual member
+ *            and a delegate. That can turn into a whole lot of overhead
  */
 class LazyMember<T> {
 
   /**
    * The lazy member.
    */
-  private T lazyMember;
-
-  /**
-   * The initialized.
-   */
-  private boolean initialized = false;
+  private volatile T lazyMember;
 
   /**
    * The lazy implementation.
    */
-  private ILazyMember<T> lazyImplementation;
+  private final ILazyMember<T> lazyImplementation;
 
   /**
    * Public accessor for the lazy member. Lazy initializes the member on first
@@ -58,15 +52,16 @@ class LazyMember<T> {
    * @return the member
    */
   public T getMember() {
-    if (!this.initialized) {
+    T result = this.lazyMember;
+    if (result == null) {  // first check (no locking)
       synchronized (this) {
-        if (!this.initialized) {
-          this.lazyMember = lazyImplementation.createInstance();
+        result = this.lazyMember;
+        if (result == null) { // second check (with locking)
+          this.lazyMember = result = lazyImplementation.createInstance();
         }
-        this.initialized = true;
       }
     }
-    return lazyMember;
+    return result;
   }
 
   /**

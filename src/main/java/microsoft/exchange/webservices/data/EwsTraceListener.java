@@ -31,7 +31,7 @@ import org.apache.commons.logging.LogFactory;
  */
 class EwsTraceListener implements ITraceListener {
 
-  private Log log = LogFactory.getLog(EwsTraceListener.class);
+  private final Log log = LogFactory.getLog(EwsTraceListener.class);
 
 
   protected EwsTraceListener() {
@@ -45,6 +45,8 @@ class EwsTraceListener implements ITraceListener {
    */
   @Override
   public void trace(String traceType, String traceMessage) {
-    log.trace(traceType + " - " + traceMessage);
+    if(log.isTraceEnabled()) {
+      log.trace(traceType + " - " + traceMessage);
+    }
   }
 }

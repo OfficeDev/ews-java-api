@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -56,7 +57,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
       return "";
     } else {
       // String[] daysOfTheWeekArray = new String[this.getCount()];
-      StringBuffer daysOfTheWeekstr = new StringBuffer();
+      StringBuilder daysOfTheWeekstr = new StringBuilder();
 
       for (int i = 0; i < this.getCount(); i++) {
         // daysOfTheWeekArray[i] = items.get(i).toString();
