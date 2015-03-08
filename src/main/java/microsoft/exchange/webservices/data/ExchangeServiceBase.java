@@ -23,12 +23,14 @@
 
 package microsoft.exchange.webservices.data;
 
+import org.apache.http.client.CookieStore;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
@@ -131,7 +133,7 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   protected CloseableHttpClient httpClient;
 
-  protected HttpClientContext httpContext = HttpClientContext.create();
+  protected HttpClientContext httpContext;
 
   protected HttpClientWebRequest request = null;
 
@@ -151,6 +153,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   protected ExchangeServiceBase() {
     setUseDefaultCredentials(true);
     initializeHttpClient();
+    initializeHttpContext();
   }
 
   protected ExchangeServiceBase(ExchangeVersion requestedServerVersion) {
@@ -195,7 +198,17 @@ public abstract class ExchangeServiceBase implements Closeable {
     httpClient = httpClientBuilder.build();
   }
 
-  @Override
+  /**
+   * (Re)initializes the HttpContext object. This removes any existing state (mainly cookies). Use an own
+   * cookie store, instead of the httpClient's global store, so cookies get reset on reinitialization
+   */
+  private void initializeHttpContext() {
+    CookieStore cookieStore = new BasicCookieStore();
+    httpContext = HttpClientContext.create();
+    httpContext.setCookieStore(cookieStore);
+  }
+
+    @Override
   public void close() {
     try {
       httpClient.close();
@@ -579,6 +592,9 @@ public abstract class ExchangeServiceBase implements Closeable {
   public void setCredentials(ExchangeCredentials credentials) {
     this.credentials = credentials;
     this.useDefaultCredentials = false;
+
+    // Reset the httpContext, to remove any existing authentication cookies from subsequent requests
+    initializeHttpContext();
   }
 
   /**
@@ -605,8 +621,11 @@ public abstract class ExchangeServiceBase implements Closeable {
     if (value) {
       this.credentials = null;
     }
-  }
 
+    // Reset the httpContext, to remove any existing authentication cookies from subsequent requests
+    initializeHttpContext();
+  }
+  
   /**
    * Gets the timeout used when sending HTTP requests and when receiving HTTP
    * responses, in milliseconds.
