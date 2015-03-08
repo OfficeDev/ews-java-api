@@ -82,7 +82,7 @@ class TimeZoneTransition extends ComplexProperty {
       return new TimeZoneTransition(timeZoneDefinition);
     } else {
       throw new ServiceLocalException(String
-          .format(Strings.UnknownTimeZonePeriodTransitionType,
+          .format("Unknown time zone transition type: %s",
               xmlElementName));
     }
   }
@@ -116,7 +116,7 @@ class TimeZoneTransition extends ComplexProperty {
           this.targetPeriod = this.timeZoneDefinition.getPeriods()
               .get(targetId);
           throw new ServiceLocalException(String.format(
-              Strings.PeriodNotFound, targetId));
+              "Invalid transition. A period with the specified Id couldn't be found: %s", targetId));
         }
       } else if (targetKind.equals(GroupTarget)) {
         if (!this.timeZoneDefinition.getTransitionGroups().containsKey(
@@ -124,11 +124,10 @@ class TimeZoneTransition extends ComplexProperty {
           this.targetGroup = this.timeZoneDefinition
               .getTransitionGroups().get(targetId);
           throw new ServiceLocalException(String.format(
-              Strings.TransitionGroupNotFound, targetId));
+              "Invalid transition. A transition group with the specified ID couldn't be found: %s", targetId));
         }
       } else {
-        throw new ServiceLocalException(
-            Strings.UnsupportedTimeZonePeriodTransitionTarget);
+        throw new ServiceLocalException("The time zone transition target isn't supported.");
       }
 
       return true;

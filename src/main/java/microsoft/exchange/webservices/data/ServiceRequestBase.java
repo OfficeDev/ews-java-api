@@ -163,7 +163,7 @@ abstract class ServiceRequestBase<T> {
     if (this.service.getRequestedServerVersion().ordinal() < this
         .getMinimumRequiredServerVersion().ordinal()) {
       throw new ServiceVersionException(String.format(
-          Strings.RequestIncompatibleWithRequestVersion, this
+          "The service request %s is only valid for Exchange version %s or later.", this
               .getXmlElementName(), this
               .getMinimumRequiredServerVersion()));
     }
@@ -378,7 +378,7 @@ abstract class ServiceRequestBase<T> {
     if (!response.getResponseContentType().startsWith("text/xml")) {
       String line = new BufferedReader(new InputStreamReader(ServiceRequestBase.getResponseStream(response)))
           .readLine();
-      throw new ServiceRequestException(Strings.ServiceResponseDoesNotContainXml);
+      throw new ServiceRequestException("The response received from the service didn't contain valid XML.");
     }
 
     /**
@@ -424,11 +424,9 @@ abstract class ServiceRequestBase<T> {
         this.getService().processHttpResponseHeaders(
             TraceFlags.EwsResponseHttpHeaders, response);
       }
-      throw new ServiceRequestException(String.format(
-          Strings.ServiceRequestFailed, e.getMessage()), e);
+      throw new ServiceRequestException(String.format("The request failed. %s", e.getMessage()), e);
     } catch (IOException e) {
-      throw new ServiceRequestException(String.format(
-          Strings.ServiceRequestFailed, e.getMessage()), e);
+      throw new ServiceRequestException(String.format("The request failed. %s", e.getMessage()), e);
     } finally { // close the underlying response
       if (response != null) {
         response.close();
@@ -550,8 +548,7 @@ abstract class ServiceRequestBase<T> {
         if (soapFaultDetails != null) {
           switch (soapFaultDetails.getResponseCode()) {
             case ErrorInvalidServerVersion:
-              throw new ServiceVersionException(
-                  Strings.ServerVersionNotSupported);
+              throw new ServiceVersionException("Exchange Server doesn't support the requested version.");
 
             case ErrorSchemaValidation:
               // If we're talking to an E12 server
@@ -566,8 +563,7 @@ abstract class ServiceRequestBase<T> {
                   .getMajorVersion() == 8)
                   && (this.service.getServerInfo()
                   .getMinorVersion() == 0)) {
-                throw new ServiceVersionException(
-                    Strings.ServerVersionNotSupported);
+                throw new ServiceVersionException("Exchange Server doesn't support the requested version.");
               }
 
               break;
@@ -700,7 +696,7 @@ abstract class ServiceRequestBase<T> {
         processWebException(e, request);
 
         // Wrap exception if the above code block didn't throw
-        throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+        throw new ServiceRequestException(String.format("The request failed. %s", e.getMessage()), e);
       }
     } catch (Exception e) {
       try {
@@ -743,7 +739,7 @@ abstract class ServiceRequestBase<T> {
       return request;
     } catch (IOException e) {
       // Wrap exception.
-      throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+      throw new ServiceRequestException(String.format("The request failed. %s", e.getMessage()), e);
     }
   }
 
@@ -765,7 +761,7 @@ abstract class ServiceRequestBase<T> {
       }
     } catch (IOException e) {
       // Wrap exception.
-      throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+      throw new ServiceRequestException(String.format("The request failed. %s", e.getMessage()), e);
     }
 
     return request;
@@ -793,11 +789,9 @@ abstract class ServiceRequestBase<T> {
     try {
       reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
     } catch (XmlException ex) {
-      throw new ServiceRequestException(
-          Strings.ServiceResponseDoesNotContainXml, ex);
+      throw new ServiceRequestException("The response received from the service didn't contain valid XML.", ex);
     } catch (ServiceXmlDeserializationException ex) {
-      throw new ServiceRequestException(
-          Strings.ServiceResponseDoesNotContainXml, ex);
+      throw new ServiceRequestException("The response received from the service didn't contain valid XML.", ex);
     }
   }
 

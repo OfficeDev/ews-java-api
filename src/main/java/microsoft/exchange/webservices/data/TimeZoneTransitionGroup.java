@@ -155,13 +155,12 @@ class TimeZoneTransitionGroup extends ComplexProperty {
   /**
    * Validates this transition group.
    *
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.InvalidOrUnsupportedTimeZoneDefinitionException thrown when time zone definition is not valid.
    */
   public void validate() throws ServiceLocalException {
     // There must be exactly one or two transitions in the group.
     if (this.transitions.size() < 1 || this.transitions.size() > 2) {
-      throw new ServiceLocalException(
-          Strings.InvalidOrUnsupportedTimeZoneDefinition);
+      throw new InvalidOrUnsupportedTimeZoneDefinitionException();
     }
 
     // If there is only one transition, it must be of type
@@ -169,8 +168,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
     if (this.transitions.size() == 1
         && !(this.transitions.get(0).getClass() ==
         TimeZoneTransition.class)) {
-      throw new ServiceLocalException(
-          Strings.InvalidOrUnsupportedTimeZoneDefinition);
+      throw new InvalidOrUnsupportedTimeZoneDefinitionException();
     }
 
     // If there are two transitions, none of them should be of type
@@ -178,8 +176,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
     if (this.transitions.size() == 2) {
       for (TimeZoneTransition transition : this.transitions) {
         if (transition.getClass() == TimeZoneTransition.class) {
-          throw new ServiceLocalException(
-              Strings.InvalidOrUnsupportedTimeZoneDefinition);
+          throw new InvalidOrUnsupportedTimeZoneDefinitionException();
         }
       }
     }
@@ -187,8 +184,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
     // All the transitions in the group must be to a period.
     for (TimeZoneTransition transition : this.transitions) {
       if (transition.getTargetPeriod() == null) {
-        throw new ServiceLocalException(
-            Strings.InvalidOrUnsupportedTimeZoneDefinition);
+        throw new InvalidOrUnsupportedTimeZoneDefinitionException();
       }
     }
   }
@@ -301,7 +297,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
    * Initializes the private members holding references to the transitions to
    * the Daylight and Standard periods.
    *
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.InvalidOrUnsupportedTimeZoneDefinitionException thrown when time zone definition is not valid.
    */
   private void initializeTransitions() throws ServiceLocalException {
     if (this.transitionToStandard == null) {
@@ -318,8 +314,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
     // If we didn't find a Standard period, this is an invalid time zone
     // group.
     if (this.transitionToStandard == null) {
-      throw new ServiceLocalException(
-          Strings.InvalidOrUnsupportedTimeZoneDefinition);
+      throw new InvalidOrUnsupportedTimeZoneDefinitionException();
     }
   }
 

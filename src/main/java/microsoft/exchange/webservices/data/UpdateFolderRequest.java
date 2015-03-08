@@ -64,8 +64,7 @@ final class UpdateFolderRequest extends
       Folder folder = this.getFolders().get(i);
 
       if ((folder == null) || folder.isNew()) {
-        throw new IllegalArgumentException(String.format(
-            Strings.FolderToUpdateCannotBeNullOrNew, i));
+        throw new IllegalArgumentException(String.format("Folders[%d] is either null or does not have an Id.", i));
       }
 
       folder.validate();

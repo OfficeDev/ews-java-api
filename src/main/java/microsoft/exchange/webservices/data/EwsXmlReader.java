@@ -120,7 +120,7 @@ class EwsXmlReader {
         throw new ServiceXmlDeserializationException(
             String
                 .format(
-                    Strings.UnexpectedElement,
+                    "An element node '%s:%s' of the type %s was expected, but node '%s' of type %s was found.",
                     EwsUtilities
                         .getNamespacePrefix(
                             xmlNamespace),
@@ -146,7 +146,7 @@ class EwsXmlReader {
     if ((!this.getLocalName().equals(localName)) ||
         (!this.getNamespacePrefix().equals(namespacePrefix))) {
       throw new ServiceXmlDeserializationException(String.format(
-          Strings.UnexpectedElement, namespacePrefix, localName,
+          "An element node '%s:%s' of the type %s was expected, but node '%s' of type %s was found.", namespacePrefix, localName,
           nodeType.toString(), this.getName(), this.getNodeType()
               .toString()));
     }
@@ -177,8 +177,7 @@ class EwsXmlReader {
     // read. Throw an exception if not true.
     while (true) {
       if (!xmlReader.hasNext()) {
-        throw new ServiceXmlDeserializationException(
-            Strings.UnexpectedEndOfXmlDocument);
+        throw new ServiceXmlDeserializationException("Unexpected end of XML document.");
       } else {
         XMLEvent event = xmlReader.nextEvent();
         if (event.getEventType() == XMLStreamConstants.CHARACTERS) {
@@ -206,7 +205,7 @@ class EwsXmlReader {
     this.read();
     if (!this.getNodeType().equals(nodeType)) {
       throw new ServiceXmlDeserializationException(String
-          .format(Strings.UnexpectedElementType, nodeType, this
+          .format("The expected XML node type was %s, but the actual type is %s.", nodeType, this
               .getNodeType()));
     }
   }
@@ -798,8 +797,7 @@ class EwsXmlReader {
     if (!this.isStartElement(xmlNamespace, localName)) {
       throw new ServiceXmlDeserializationException(
           String
-              .format(
-                  Strings.ElementNotFound,
+              .format("The element '%s' in namespace '%s' wasn't found at the current position.",
                   localName, xmlNamespace));
     }
   }
@@ -815,7 +813,7 @@ class EwsXmlReader {
         .getEventType());
     if (!this.presentEvent.isStartElement()) {
       throw new ServiceXmlDeserializationException(String.format(
-          Strings.ExpectedStartElement,
+          "The start element was expected, but node '%s' of type %s was found.",
           this.presentEvent.toString(), presentNodeType.toString()));
     }
   }
@@ -834,8 +832,7 @@ class EwsXmlReader {
           .isEmptyElement())) {
         throw new ServiceXmlDeserializationException(
             String
-                .format(
-                    Strings.ElementNotFound,
+                .format("The element '%s' in namespace '%s' wasn't found at the current position.",
                     xmlNamespace, localName));
       }
     }
@@ -851,8 +848,7 @@ class EwsXmlReader {
   public String readOuterXml() throws ServiceXmlDeserializationException,
       XMLStreamException {
     if (!this.isStartElement()) {
-      throw new ServiceXmlDeserializationException(
-          Strings.CurrentPositionNotElementStart);
+      throw new ServiceXmlDeserializationException("The current position is not the start of an element.");
     }
 
     XMLEvent startEvent = this.presentEvent;
@@ -877,8 +873,7 @@ class EwsXmlReader {
   public String readInnerXml() throws ServiceXmlDeserializationException,
       XMLStreamException {
     if (!this.isStartElement()) {
-      throw new ServiceXmlDeserializationException(
-          Strings.CurrentPositionNotElementStart);
+      throw new ServiceXmlDeserializationException("The current position is not the start of an element.");
     }
 
     XMLEvent startEvent = this.presentEvent;
@@ -934,8 +929,7 @@ class EwsXmlReader {
       throws XMLStreamException, FileNotFoundException, ServiceXmlDeserializationException {
 
     if (!this.isStartElement()) {
-      throw new ServiceXmlDeserializationException(
-          Strings.CurrentPositionNotElementStart);
+      throw new ServiceXmlDeserializationException("The current position is not the start of an element.");
     }
 
     XMLEventReader eventReader = null;

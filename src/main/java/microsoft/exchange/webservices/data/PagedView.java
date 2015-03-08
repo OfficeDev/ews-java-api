@@ -172,8 +172,7 @@ public abstract class PagedView extends ViewBase {
    */
   public void setPageSize(int pageSize) {
     if (pageSize <= 0) {
-      throw new IllegalArgumentException(
-          Strings.ValueMustBeGreaterThanZero);
+      throw new IllegalArgumentException("The value must be greater than 0.");
     }
     this.pageSize = pageSize;
   }
@@ -214,8 +213,7 @@ public abstract class PagedView extends ViewBase {
     if (offset >= 0) {
       this.offset = offset;
     } else {
-      throw new IllegalArgumentException(
-          Strings.OffsetMustBeGreaterThanZero);
+      throw new IllegalArgumentException("The offset must be greater than 0.");
     }
   }
 

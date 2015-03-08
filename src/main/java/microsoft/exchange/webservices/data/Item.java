@@ -128,8 +128,7 @@ public class Item extends ServiceObject {
    */
   protected void throwIfThisIsAttachment() throws InvalidOperationException {
     if (this.isAttachment()) {
-      throw new InvalidOperationException(
-          Strings.OperationDoesNotSupportAttachments);
+      throw new InvalidOperationException("This operation isn't supported on attachments.");
     }
   }
 

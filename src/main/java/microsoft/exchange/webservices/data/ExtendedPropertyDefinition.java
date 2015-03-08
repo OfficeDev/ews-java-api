@@ -122,8 +122,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
   public ExtendedPropertyDefinition(int tag, MapiPropertyType mapiType) {
     this(mapiType);
     if (tag < 0) {
-      throw new IllegalArgumentException("Argument out of range : tag " +
-          Strings.TagValueIsOutOfRange);
+      throw new IllegalArgumentException("Argument out of range : tag " + "The extended property tag value must be in the range of 0 to 65,535.");
     }
     this.tag = tag;
   }

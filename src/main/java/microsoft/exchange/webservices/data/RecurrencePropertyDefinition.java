@@ -105,8 +105,7 @@ public class RecurrencePropertyDefinition extends PropertyDefinition {
       recurrence = new Recurrence.YearlyRegenerationPattern();
     } else {
 
-      throw new ServiceXmlDeserializationException(String.format(
-          Strings.InvalidRecurrencePattern, reader.getLocalName()));
+      throw new ServiceXmlDeserializationException(String.format("Invalid recurrence pattern: (%s).", reader.getLocalName()));
     }
 
     recurrence.loadFromXml(reader, reader.getLocalName());
@@ -129,8 +128,7 @@ public class RecurrencePropertyDefinition extends PropertyDefinition {
 
       range = new NumberedRecurrenceRange();
     } else {
-      throw new ServiceXmlDeserializationException(String.format(
-          Strings.InvalidRecurrenceRange, reader.getLocalName()));
+      throw new ServiceXmlDeserializationException(String.format("Invalid recurrence range: (%s).", reader.getLocalName()));
     }
 
     range.loadFromXml(reader, reader.getLocalName());

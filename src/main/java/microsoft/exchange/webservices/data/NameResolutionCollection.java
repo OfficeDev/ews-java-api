@@ -124,8 +124,7 @@ public final class NameResolutionCollection implements
   public NameResolution nameResolutionCollection(int index)
       throws ArgumentOutOfRangeException {
     if (index < 0 || index >= this.getCount()) {
-      throw new ArgumentOutOfRangeException("index",
-          Strings.IndexIsOutOfRange);
+      throw new ArgumentOutOfRangeException("index", "index is out of range.");
     }
 
     return this.items.get(index);

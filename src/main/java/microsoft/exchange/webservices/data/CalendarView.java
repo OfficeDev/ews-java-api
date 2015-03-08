@@ -128,8 +128,7 @@ public final class CalendarView extends ViewBase {
     super.internalValidate(request);
 
     if (this.endDate.compareTo(this.startDate) < 0) {
-      throw new ServiceValidationException(
-          Strings.EndDateMustBeGreaterThanStartDate);
+      throw new ServiceValidationException("EndDate must be greater than StartDate.");
     }
   }
 
@@ -222,7 +221,7 @@ public final class CalendarView extends ViewBase {
       throws ArgumentException {
     if (maxItemsReturned != null) {
       if (maxItemsReturned.intValue() <= 0) {
-        throw new ArgumentException(Strings.ValueMustBeGreaterThanZero);
+        throw new ArgumentException("The value must be greater than 0.");
       }
     }
 

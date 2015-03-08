@@ -141,7 +141,7 @@ public abstract class Recurrence extends ComplexProperty {
       return (T) value;
     } else {
       throw new ServiceValidationException(String.format(
-          Strings.PropertyValueMustBeSpecifiedForRecurrencePattern,
+          "The recurrence pattern's %s property must be specified.",
           name));
     }
   }
@@ -198,8 +198,7 @@ public abstract class Recurrence extends ComplexProperty {
     super.internalValidate();
 
     if (this.startDate == null) {
-      throw new ServiceValidationException(
-          Strings.RecurrencePatternMustHaveStartDate);
+      throw new ServiceValidationException("The recurrence pattern's StartDate property must be specified.");
     }
   }
 
@@ -223,8 +222,7 @@ public abstract class Recurrence extends ComplexProperty {
    */
   public void setNumberOfOccurrences(Integer value) throws ArgumentException {
     if (value < 1) {
-      throw new ArgumentException(
-          Strings.NumberOfOccurrencesMustBeGreaterThanZero);
+      throw new ArgumentException("NumberOfOccurrences must be greater than 0.");
     }
 
     if (this.canSetFieldValue(this.numberOfOccurrences, value)) {
@@ -385,8 +383,7 @@ public abstract class Recurrence extends ComplexProperty {
 
       super(startDate);
       if (interval < 1) {
-        throw new ArgumentOutOfRangeException("interval",
-            Strings.IntervalMustBeGreaterOrEqualToOne);
+        throw new ArgumentOutOfRangeException("interval", "The interval must be greater than or equal to 1.");
       }
 
       this.setInterval(interval);
@@ -452,8 +449,7 @@ public abstract class Recurrence extends ComplexProperty {
     public void setInterval(int value) throws ArgumentOutOfRangeException {
 
       if (value < 1) {
-        throw new ArgumentOutOfRangeException("value",
-            Strings.IntervalMustBeGreaterOrEqualToOne);
+        throw new ArgumentOutOfRangeException("value", "The interval must be greater than or equal to 1.");
       }
 
       if (this.canSetFieldValue(this.interval, value)) {
@@ -560,8 +556,7 @@ public abstract class Recurrence extends ComplexProperty {
       super.internalValidate();
 
       if (this.dayOfMonth == null) {
-        throw new ServiceValidationException(
-            Strings.DayOfMonthMustBeBetween1And31);
+        throw new ServiceValidationException("DayOfMonth must be between 1 and 31.");
       }
     }
 
@@ -586,8 +581,7 @@ public abstract class Recurrence extends ComplexProperty {
     public void setDayOfMonth(int value)
         throws ArgumentOutOfRangeException {
       if (value < 1 || value > 31) {
-        throw new ArgumentOutOfRangeException("DayOfMonth",
-            Strings.DayOfMonthMustBeBetween1And31);
+        throw new ArgumentOutOfRangeException("DayOfMonth", "DayOfMonth must be between 1 and 31.");
       }
 
       if (this.canSetFieldValue(this.dayOfMonth, value)) {
@@ -767,12 +761,12 @@ public abstract class Recurrence extends ComplexProperty {
 
       if (this.dayOfTheWeek == null) {
         throw new ServiceValidationException(
-            Strings.DayOfTheWeekMustBeSpecifiedForRecurrencePattern);
+            "The recurrence pattern's property DayOfTheWeek must be specified.");
       }
 
       if (this.dayOfTheWeekIndex == null) {
         throw new ServiceValidationException(
-            Strings.DayOfWeekIndexMustBeSpecifiedForRecurrencePattern);
+            "The recurrence pattern's DayOfWeekIndex property must be specified.");
       }
     }
 
@@ -953,17 +947,16 @@ public abstract class Recurrence extends ComplexProperty {
 
       if (this.dayOfTheWeekIndex == null) {
         throw new ServiceValidationException(
-            Strings.DayOfWeekIndexMustBeSpecifiedForRecurrencePattern);
+            "The recurrence pattern's DayOfWeekIndex property must be specified.");
       }
 
       if (this.dayOfTheWeek == null) {
         throw new ServiceValidationException(
-            Strings.DayOfTheWeekMustBeSpecifiedForRecurrencePattern);
+            "The recurrence pattern's property DayOfTheWeek must be specified.");
       }
 
       if (this.month == null) {
-        throw new ServiceValidationException(
-            Strings.MonthMustBeSpecifiedForRecurrencePattern);
+        throw new ServiceValidationException("The recurrence pattern's Month property must be specified.");
       }
     }
 
@@ -1183,7 +1176,7 @@ public abstract class Recurrence extends ComplexProperty {
 
       if (this.getDaysOfTheWeek().getCount() == 0) {
         throw new ServiceValidationException(
-            Strings.DaysOfTheWeekNotSpecified);
+            "The recurrence pattern's property DaysOfTheWeek must contain at least one day of the week.");
       }
     }
 
@@ -1383,13 +1376,12 @@ public abstract class Recurrence extends ComplexProperty {
       super.internalValidate();
 
       if (this.month == null) {
-        throw new ServiceValidationException(
-            Strings.MonthMustBeSpecifiedForRecurrencePattern);
+        throw new ServiceValidationException("The recurrence pattern's Month property must be specified.");
       }
 
       if (this.dayOfMonth == null) {
         throw new ServiceValidationException(
-            Strings.DayOfMonthMustBeSpecifiedForRecurrencePattern);
+            "The recurrence pattern's DayOfMonth property must be specified.");
       }
     }
 
@@ -1442,8 +1434,7 @@ public abstract class Recurrence extends ComplexProperty {
         throws ArgumentOutOfRangeException {
 
       if (value < 1 || value > 31) {
-        throw new ArgumentOutOfRangeException("DayOfMonth",
-            Strings.DayOfMonthMustBeBetween1And31);
+        throw new ArgumentOutOfRangeException("DayOfMonth", "DayOfMonth must be between 1 and 31.");
       }
 
       if (this.canSetFieldValue(this.dayOfMonth, value)) {

@@ -82,14 +82,14 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
         && this.getService().getRequestedServerVersion().ordinal() <
         ExchangeVersion.Exchange2010.ordinal()) {
       throw new ServiceVersionException(String.format(
-          Strings.ParameterIncompatibleWithRequestVersion,
+          "The parameter %s is only valid for Exchange Server version %s or a later version.",
           "queryString", ExchangeVersion.Exchange2010));
     }
 
     if ((!(this.queryString == null || this.queryString.isEmpty()))
         && this.searchFilter != null) {
       throw new ServiceLocalException(
-          Strings.BothSearchFilterAndQueryStringCannotBeSpecified);
+          "Both search filter and query string can't be specified. One of them must be null.");
     }
   }
 

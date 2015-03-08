@@ -234,7 +234,7 @@ class PropertyBag implements IComplexPropertyChanged,
     //property definition's type are compatible.
     if (!cls.isAssignableFrom(propertyDefinition.getType())) {
       String errorMessage = String.format(
-          Strings.PropertyDefinitionTypeMismatch,
+          "Property definition type '%s' and type parameter '%s' aren't compatible.",
           propertyDefinition.getType().getSimpleName(),
           cls.getSimpleName());
       throw new ArgumentException(errorMessage, "propertyDefinition");
@@ -270,8 +270,7 @@ class PropertyBag implements IComplexPropertyChanged,
     if (propertyDefinition.getVersion().ordinal() > this.getOwner()
         .getService().getRequestedServerVersion().ordinal()) {
       serviceExceptionOutParam.setParam(new ServiceVersionException(
-          String.format(
-              Strings.PropertyIncompatibleWithRequestVersion,
+          String.format("The property %s is valid only for Exchange %s or later versions.",
               propertyDefinition.getName(), propertyDefinition
                   .getVersion())));
       return null;
@@ -313,8 +312,7 @@ class PropertyBag implements IComplexPropertyChanged,
           if (!this.isPropertyLoaded(propertyDefinition)) {
             serviceExceptionOutParam
                 .setParam(new ServiceObjectPropertyException(
-                    Strings.
-                        MustLoadOrAssignPropertyBeforeAccess,
+                    "You must load or assign this property before you can read its value.",
                     propertyDefinition));
             return null;
           }
@@ -323,9 +321,8 @@ class PropertyBag implements IComplexPropertyChanged,
           // assigned or loaded; cannot return null value.
           if (!propertyDefinition.isNullable()) {
             String errorMessage = this
-                .isRequestedProperty(propertyDefinition) ?
-                Strings.ValuePropertyNotLoaded :
-                Strings.ValuePropertyNotAssigned;
+                .isRequestedProperty(propertyDefinition) ? "This property was requested, but it wasn't returned by the server."
+                                                         : "You must assign this property before you can read its value.";
             serviceExceptionOutParam
                 .setParam(new ServiceObjectPropertyException(
                     errorMessage, propertyDefinition));
@@ -768,7 +765,7 @@ class PropertyBag implements IComplexPropertyChanged,
     if (propertyDefinition.getVersion().ordinal() > this.getOwner()
         .getService().getRequestedServerVersion().ordinal()) {
       throw new ServiceVersionException(String.format(
-          Strings.PropertyIncompatibleWithRequestVersion,
+          "The property %s is valid only for Exchange %s or later versions.",
           propertyDefinition.getName(), propertyDefinition
               .getVersion()));
     }
@@ -782,8 +779,7 @@ class PropertyBag implements IComplexPropertyChanged,
           && !propertyDefinition
           .hasFlag(PropertyDefinitionFlags.CanSet, this.getOwner()
               .getService().getRequestedServerVersion())) {
-        throw new ServiceObjectPropertyException(
-            Strings.PropertyIsReadOnly, propertyDefinition);
+        throw new ServiceObjectPropertyException("This property is read-only and can't be set.", propertyDefinition);
       }
 
       if (!this.getOwner().isNew()) {
@@ -793,8 +789,7 @@ class PropertyBag implements IComplexPropertyChanged,
         if ((this.getOwner() instanceof Item)) {
           Item ownerItem = (Item) this.getOwner();
           if (ownerItem.isAttachment()) {
-            throw new ServiceObjectPropertyException(
-                Strings.ItemAttachmentCannotBeUpdated,
+            throw new ServiceObjectPropertyException("Item attachments can't be updated.",
                 propertyDefinition);
           }
         }
@@ -803,16 +798,14 @@ class PropertyBag implements IComplexPropertyChanged,
         if (object == null
             && !propertyDefinition
             .hasFlag(PropertyDefinitionFlags.CanDelete)) {
-          throw new ServiceObjectPropertyException(
-              Strings.PropertyCannotBeDeleted,
+          throw new ServiceObjectPropertyException("This property can't be deleted.",
               propertyDefinition);
         }
 
         // If the property cannot be updated, throw.
         if (!propertyDefinition
             .hasFlag(PropertyDefinitionFlags.CanUpdate)) {
-          throw new ServiceObjectPropertyException(
-              Strings.PropertyCannotBeUpdated,
+          throw new ServiceObjectPropertyException("This property can't be updated.",
               propertyDefinition);
         }
       }

@@ -148,8 +148,7 @@ public final class SearchFolderParameters extends ComplexProperty implements
   public void validate() throws Exception {
     // Search folder must have at least one root folder id.
     if (this.rootFolderIds.getCount() == 0) {
-      throw new ServiceValidationException(
-          Strings.SearchParametersRootFolderIdsEmpty);
+      throw new ServiceValidationException("SearchParameters must contain at least one folder id.");
     }
 
     // Validate the search filter

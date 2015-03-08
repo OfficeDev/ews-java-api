@@ -421,7 +421,8 @@ public final class FolderPermission extends ComplexProperty implements
     // Check UserId
     if (!this.userId.isValid()) {
       throw new ServiceValidationException(String.format(
-          Strings.FolderPermissionHasInvalidUserId, permissionIndex));
+          "The UserId in the folder permission at index %d is invalid. "
+          + "The StandardUser, PrimarySmtpAddress, or SID property must be set.", permissionIndex));
     }
 
     // If this permission is to be used for a non-calendar folder make sure
@@ -432,7 +433,7 @@ public final class FolderPermission extends ComplexProperty implements
           || (this.readItems == FolderPermissionReadAccess.
           TimeOnly)) {
         throw new ServiceLocalException(String.format(
-            Strings.ReadAccessInvalidForNonCalendarFolder,
+            "Permission read access value %s cannot be used with non-calendar folder.",
             this.readItems));
       }
 
@@ -440,7 +441,7 @@ public final class FolderPermission extends ComplexProperty implements
           || (this.permissionLevel == FolderPermissionLevel.
           FreeBusyTimeOnly)) {
         throw new ServiceLocalException(String.format(
-            Strings.PermissionLevelInvalidForNonCalendarFolder,
+            "Permission level value %s cannot be used with non-calendar folder.",
             this.permissionLevel));
       }
     }
@@ -697,7 +698,8 @@ public final class FolderPermission extends ComplexProperty implements
     if (this.permissionLevel != value) {
       if (value == FolderPermissionLevel.Custom) {
         throw new ServiceLocalException(
-            Strings.CannotSetPermissionLevelToCustom);
+            "The PermissionLevel property can't be set to FolderPermissionLevel.Custom. "
+            + "To define a custom permission, set its individual properties to the values you want.");
       }
 
       this.AssignIndividualPermissions(defaultPermissions.getMember()

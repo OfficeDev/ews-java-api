@@ -82,24 +82,24 @@ public class AsyncRequestResult implements IAsyncResult {
        * HttpWebRequest.EndGetResponse() Just use this simple string for
        * all kinds of invalid IAsyncResult parameters.
        */
-      throw new ArgumentException(Strings.InvalidAsyncResult,
+      throw new ArgumentException("Invalid AsyncResult.",
           "asyncResult");
     }
     // Validate the serivce request.
     if (asyncRequestResult.serviceRequest == null) {
-      throw new ArgumentException(Strings.InvalidAsyncResult,
+      throw new ArgumentException("Invalid AsyncResult.",
           "asyncResult");
     }
     // Validate the service object
     if (!asyncRequestResult.serviceRequest.getService().equals(
         exchangeService)) {
-      throw new ArgumentException(Strings.InvalidAsyncResult,
+      throw new ArgumentException("Invalid AsyncResult.",
           "asyncResult");
     }
     T serviceRequest = (T) asyncRequestResult.getServiceRequest();
     // Validate the request type
     if (serviceRequest == null) {
-      throw new ArgumentException(Strings.InvalidAsyncResult,
+      throw new ArgumentException("Invalid AsyncResult.",
           "asyncResult");
     }
     return serviceRequest;

@@ -83,7 +83,7 @@ abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
             .getResponseAtIndex(0));
       } else {
         throw new ServiceXmlDeserializationException(String.format(
-            Strings.TooFewServiceReponsesReturned, this
+            "The service was expected to return %s responses of type '%d', but %d responses were received.", this
                 .getResponseMessageXmlElementName(), this
                 .getExpectedResponseMessageCount(),
             serviceResponses.getCount()));

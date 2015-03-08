@@ -78,7 +78,7 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
 
     // make an explicit https check.
     if (expectPartnerToken && !url.getScheme().equalsIgnoreCase("https")) {
-      throw new ServiceValidationException(Strings.HttpsIsRequired);
+      throw new ServiceValidationException("Https is required.");
     }
   }
 
@@ -95,19 +95,16 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
     EwsUtilities.validateParam(this.getSettings(), "settings");
 
     if (this.getSettings().size() == 0) {
-      throw new ServiceValidationException(
-          Strings.InvalidAutodiscoverSettingsCount);
+      throw new ServiceValidationException("At least one setting must be requested.");
     }
 
     if (this.getSmtpAddresses().size() == 0) {
-      throw new ServiceValidationException(
-          Strings.InvalidAutodiscoverSmtpAddressesCount);
+      throw new ServiceValidationException("At least one SMTP address must be requested.");
     }
 
     for (String smtpAddress : this.getSmtpAddresses()) {
       if (smtpAddress == null || smtpAddress.isEmpty()) {
-        throw new ServiceValidationException(
-            Strings.InvalidAutodiscoverSmtpAddress);
+        throw new ServiceValidationException("A valid SMTP address must be specified.");
       }
     }
   }

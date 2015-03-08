@@ -64,7 +64,7 @@ public final class ImpersonatedUserId {
    */
   protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     if (this.id == null || this.id.isEmpty()) {
-      throw new Exception(Strings.IdPropertyMustBeSet);
+      throw new Exception("The Id property must be set.");
     }
 
     writer.writeStartElement(XmlNamespace.Types,

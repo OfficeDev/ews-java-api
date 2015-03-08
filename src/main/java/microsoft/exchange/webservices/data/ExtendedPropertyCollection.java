@@ -190,7 +190,7 @@ public final class ExtendedPropertyCollection extends
       extendedProperty = extendedPropertyOut.getParam();
       if (cls.isAssignableFrom(propertyDefinition.getType())) {
         String errorMessage = String.format(
-            Strings.PropertyDefinitionTypeMismatch,
+            "Property definition type '%s' and type parameter '%s' aren't compatible.",
             propertyDefinition.getType().getSimpleName(),
             cls.getSimpleName());
         throw new ArgumentException(errorMessage, "propertyDefinition");

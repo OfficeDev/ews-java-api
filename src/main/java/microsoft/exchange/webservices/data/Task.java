@@ -449,7 +449,7 @@ public class Task extends Item {
   public void setPercentComplete(Double value) throws Exception {
     if (value == null || Double.isNaN(value) || value < 0.0 || value > 100.0) {
       throw new IllegalArgumentException(
-          String.format(Strings.InvalidPropertyValueNotInRange,
+          String.format("%s must be between %d and %d.",
               ((value != null) ? value : "null"), 0.0, 100));
     }
     this.getPropertyBag().setObjectFromPropertyDefinition(

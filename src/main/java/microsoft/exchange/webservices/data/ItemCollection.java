@@ -109,7 +109,7 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
   public TItem getItem(int index) {
 
     if (index < 0 || index >= this.getCount()) {
-      throw new ArrayIndexOutOfBoundsException(Strings.IndexIsOutOfRange);
+      throw new ArrayIndexOutOfBoundsException("index is out of range.");
     }
     return this.items.get(index);
   }

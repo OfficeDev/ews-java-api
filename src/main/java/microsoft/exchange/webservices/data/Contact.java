@@ -173,7 +173,7 @@ public class Contact extends Item {
         ExchangeVersion.Exchange2010, "GetContactPictureAttachment");
 
     if (!this.getPropertyBag().isPropertyLoaded(ContactSchema.Attachments)) {
-      throw new PropertyException(Strings.AttachmentCollectionNotLoaded);
+      throw new PropertyException("The attachment collection must be loaded.");
     }
 
     for (Attachment fileAttachment : this.getAttachments()) {
@@ -216,7 +216,7 @@ public class Contact extends Item {
         ExchangeVersion.Exchange2010, "RemoveContactPicture");
 
     if (!this.getPropertyBag().isPropertyLoaded(ContactSchema.Attachments)) {
-      throw new PropertyException(Strings.AttachmentCollectionNotLoaded);
+      throw new PropertyException("The attachment collection must be loaded.");
     }
 
     internalRemoveContactPicture();

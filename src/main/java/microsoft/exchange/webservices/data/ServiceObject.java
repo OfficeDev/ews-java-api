@@ -71,8 +71,8 @@ public abstract class ServiceObject {
   protected void throwIfThisIsNew() throws InvalidOperationException,
       ServiceLocalException {
     if (this.isNew()) {
-      throw new InvalidOperationException(Strings.
-          ServiceObjectDoesNotHaveId);
+      throw new InvalidOperationException(
+          "This operation can't be performed because this service object doesn't have an Id.");
     }
   }
 
@@ -85,8 +85,8 @@ public abstract class ServiceObject {
   protected void throwIfThisIsNotNew() throws InvalidOperationException,
       ServiceLocalException {
     if (!this.isNew()) {
-      throw new InvalidOperationException(Strings.
-          ServiceObjectAlreadyHasId);
+      throw new InvalidOperationException(
+          "This operation can't be performed because this service object already has an ID. To update this service object, use the Update() method instead.");
     }
   }
 
@@ -390,13 +390,14 @@ public abstract class ServiceObject {
         if (this.tryGetExtendedProperty(Object.class, extendedPropDef, propertyValue)) {
           return propertyValue;
         } else {
-          throw new ServiceObjectPropertyException(Strings.MustLoadOrAssignPropertyBeforeAccess,
+          throw new ServiceObjectPropertyException(
+              "You must load or assign this property before you can read its value.",
               propertyDefinition);
         }
       } else {
         // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
         throw new NotSupportedException(String.format(
-            Strings.OperationNotSupportedForPropertyDefinitionType,
+            "This operation isn't supported for property definition type %s.",
             propertyDefinition.getType().getName()));
       }
     }
@@ -459,7 +460,7 @@ public abstract class ServiceObject {
       } else {
         // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
         throw new NotSupportedException(String.format(
-            Strings.OperationNotSupportedForPropertyDefinitionType,
+            "This operation isn't supported for property definition type %s.",
             propertyDefinition.getType().getName()));
       }
     }

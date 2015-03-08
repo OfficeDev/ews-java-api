@@ -63,8 +63,7 @@ public final class AppointmentOccurrenceId extends ItemId {
    */
   public void setOccurrenceIndex(int occurrenceIndex) {
     if (occurrenceIndex < 1) {
-      throw new IllegalArgumentException(
-          Strings.OccurrenceIndexMustBeGreaterThanZero);
+      throw new IllegalArgumentException("OccurrenceIndex must be greater than 0.");
     }
     this.occurrenceIndex = occurrenceIndex;
   }

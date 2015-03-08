@@ -178,8 +178,7 @@ public final class AttachmentCollection extends
    */
   public void removeAt(int index) {
     if (index < 0 || index >= this.getCount()) {
-      throw new IllegalArgumentException("parameter \'index\' : " +
-          Strings.IndexIsOutOfRange);
+      throw new IllegalArgumentException("parameter \'index\' : " + "index is out of range.");
     }
 
     this.internalRemoveAt(index);
@@ -387,7 +386,7 @@ public final class AttachmentCollection extends
           if (((FileAttachment) attachment).isContactPhoto()) {
             if (contactPhotoFound) {
               throw new ServiceValidationException(
-                  Strings.MultipleContactPhotosInAttachment);
+                  "Multiple contact photos in attachment.");
             }
             contactPhotoFound = true;
           }
@@ -423,8 +422,7 @@ public final class AttachmentCollection extends
 
     // TODO : Should we throw for warnings as well?
     if (responses.getOverallResult() == ServiceResult.Error) {
-      throw new DeleteAttachmentException(responses,
-          Strings.AtLeastOneAttachmentCouldNotBeDeleted);
+      throw new DeleteAttachmentException(responses, "At least one attachment couldn't be deleted.");
     }
   }
 
@@ -455,8 +453,7 @@ public final class AttachmentCollection extends
 
     // TODO : Should we throw for warnings as well?
     if (responses.getOverallResult() == ServiceResult.Error) {
-      throw new CreateAttachmentException(responses,
-          Strings.AttachmentCreationFailed);
+      throw new CreateAttachmentException(responses, "At least one attachment couldn't be created.");
     }
   }
 

@@ -26,7 +26,6 @@ package microsoft.exchange.webservices.data;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import javax.xml.ws.http.HTTPException;
 import java.io.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
@@ -61,14 +60,14 @@ abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> {
     } catch (IOException ex) {
       // Wrap exception.
       throw new ServiceRequestException(String.
-          format(Strings.ServiceRequestFailed, ex.getMessage(), ex));
+          format("The request failed. %s", ex.getMessage(), ex));
     } catch (Exception e) {
       if (response != null) {
         this.getService().processHttpResponseHeaders(TraceFlags.
             EwsResponseHttpHeaders, response);
       }
 
-      throw new ServiceRequestException(String.format(Strings.ServiceRequestFailed, e.getMessage()), e);
+      throw new ServiceRequestException(String.format("The request failed. %s", e.getMessage()), e);
     }
   }
 

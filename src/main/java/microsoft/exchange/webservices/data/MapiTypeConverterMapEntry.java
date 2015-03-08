@@ -147,7 +147,7 @@ class MapiTypeConverterMapEntry {
         return null;
       } catch (ClassCastException ex) {
         throw new ArgumentException(String.format(
-            Strings.ValueOfTypeCannotBeConverted, "%s", "%s"
+            "The value '%s' of type %s can't be converted to a value of type %s.", "%s", "%s"
             , this.getType()), ex);
       }
     }
@@ -169,11 +169,11 @@ class MapiTypeConverterMapEntry {
       return this.getParse().func(stringValue);
     } catch (ClassCastException ex) {
       throw new ServiceXmlDeserializationException(String
-          .format(Strings.ValueCannotBeConverted, stringValue, this
+          .format("The value '%s' couldn't be converted to type %s.", stringValue, this
               .getType()), ex);
     } catch (NumberFormatException ex) {
       throw new ServiceXmlDeserializationException(String
-          .format(Strings.ValueCannotBeConverted, stringValue, this.getType()), ex);
+          .format("The value '%s' couldn't be converted to type %s.", stringValue, this.getType()), ex);
     }
 
   }
@@ -208,11 +208,11 @@ class MapiTypeConverterMapEntry {
     if (value instanceof ArrayList) {
       ArrayList<?> arrayList = (ArrayList<?>) value;
       if (arrayList.isEmpty()) {
-        throw new ArgumentException(Strings.ArrayMustHaveAtLeastOneElement);
+        throw new ArgumentException("The Array value must have at least one element.");
       }
 
       if (arrayList.get(0).getClass() != this.getType()) {
-        throw new ArgumentException(String.format(Strings.IncompatibleTypeForArray, value.getClass(),
+        throw new ArgumentException(String.format("Type %s can't be used as an array of type %s.", value.getClass(),
             this.getType()));
       }
     }

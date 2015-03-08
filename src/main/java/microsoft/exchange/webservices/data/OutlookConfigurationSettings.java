@@ -161,7 +161,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
           break;
         case Error:
           response.setErrorCode(AutodiscoverErrorCode.InternalServerError);
-          response.setErrorMessage(Strings.InvalidAutodiscoverServiceResponse);
+          response.setErrorMessage("The Autodiscover service response was invalid.");
           break;
         case RedirectAddress:
           response.setErrorCode(AutodiscoverErrorCode.RedirectAddress);
@@ -213,7 +213,8 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
       UserSettingError settingError = new UserSettingError();
       settingError.setErrorCode(AutodiscoverErrorCode.InvalidSetting);
       settingError.setSettingName(invalidSetting.toString());
-      settingError.setErrorMessage(String.format(Strings.AutodiscoverInvalidSettingForOutlookProvider,
+      settingError.setErrorMessage(String.format(
+          "The requested setting, '%s', isn't supported by this Autodiscover endpoint.",
           invalidSetting.toString()));
       response.getUserSettingErrors().add(settingError);
     }

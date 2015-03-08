@@ -111,8 +111,7 @@ public final class PostReply extends ServiceObject {
   @Override
   protected void internalLoad(PropertySet propertySet)
       throws InvalidOperationException {
-    throw new InvalidOperationException(
-        Strings.LoadingThisObjectTypeNotSupported);
+    throw new InvalidOperationException("Loading this type of object is not supported.");
   }
 
   /**
@@ -128,8 +127,7 @@ public final class PostReply extends ServiceObject {
       SendCancellationsMode sendCancellationsMode,
       AffectedTaskOccurrence affectedTaskOccurrences)
       throws InvalidOperationException {
-    throw new InvalidOperationException(
-        Strings.DeletingThisObjectTypeNotAuthorized);
+    throw new InvalidOperationException("Deleting this type of object isn't authorized.");
   }
 
   /**

@@ -66,8 +66,7 @@ abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
     // Check that caller isn't trying
     //to subscribe to Status events.
     if (this.getEventTypes().contains(EventType.Status)) {
-      throw new ServiceValidationException(
-          Strings.CannotSubscribeToStatusEvents);
+      throw new ServiceValidationException("Status events can't be subscribed to.");
     }
 
     // If Watermark was specified, make sure it's not a blank string.

@@ -97,7 +97,7 @@ public class GroupMember extends ComplexProperty implements
         break;
 
       default:
-        throw new ServiceLocalException(Strings.InvalidMailboxType);
+        throw new ServiceLocalException("The mailbox type isn't valid.");
     }
   }
 

@@ -84,8 +84,7 @@ final class UpdateItemRequest extends
     for (int i = 0; i < this.getItems().size(); i++) {
       if ((this.getItems().get(i) == null) ||
           this.getItems().get(i).isNew()) {
-        throw new ArgumentException(String.format(
-            Strings.ItemToUpdateCannotBeNullOrNew, i));
+        throw new ArgumentException(String.format("Items[%d] is either null or does not have an Id.", i));
       }
     }
 

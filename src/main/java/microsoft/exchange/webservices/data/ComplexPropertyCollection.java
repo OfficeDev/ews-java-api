@@ -97,7 +97,7 @@ public abstract class ComplexPropertyCollection
         "ComplexPropertyCollection.ItemChanged", String.format(
             "ComplexPropertyCollection." +
                 "ItemChanged: the type of " +
-                "the complexProperty " + "argument " +
+                "the complexProperty argument " +
                 "(%s) is not supported.",
             complexProperty.getClass().getName()));
 
@@ -184,7 +184,7 @@ public abstract class ComplexPropertyCollection
           TComplexProperty actualComplexProperty = this.getPropertyAtIndex(index++);
 
           if (complexProperty == null || !complexProperty.equals(actualComplexProperty)) {
-            throw new ServiceLocalException(Strings.PropertyTypeIncompatibleWhenUpdatingCollection);
+            throw new ServiceLocalException("Property type incompatible when updating collection.");
           }
 
           actualComplexProperty.updateFromXml(reader, xmlNamespace, reader.getLocalName());
@@ -427,8 +427,9 @@ public abstract class ComplexPropertyCollection
   public TComplexProperty getPropertyAtIndex(int index)
       throws IllegalArgumentException {
     if (index < 0 || index >= this.getCount()) {
-      throw new IllegalArgumentException("parameter \'index\' : " +
-          Strings.IndexIsOutOfRange);
+      throw new IllegalArgumentException(
+          String.format("index %d is out of range [0..%d[.", index, this.getCount())
+      );
     }
     return this.items.get(index);
   }

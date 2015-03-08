@@ -141,7 +141,7 @@ public class ItemAttachment extends Attachment implements
       if (this.item == null
           || this.item.getClass() != itemClass) {
         throw new ServiceLocalException(
-            Strings.AttachmentItemTypeMismatch);
+            "Attachment item type mismatch.");
       }
 
       this.item.loadFromXml(reader, false /* clearPropertyBag */);
@@ -177,7 +177,7 @@ public class ItemAttachment extends Attachment implements
   protected void validate(int attachmentIndex) throws Exception {
     if (this.getName() == null || this.getName().isEmpty()) {
       throw new ServiceValidationException(String.format(
-          Strings.ItemAttachmentMustBeNamed, attachmentIndex));
+          "The name of the item attachment at index %d must be set.", attachmentIndex));
     }
 
     // Recurse through any items attached to item attachment.

@@ -62,8 +62,7 @@ final class Time {
   protected Time(int minutes) throws ArgumentException {
     this();
     if (minutes < 0 || minutes >= 1440) {
-      throw new ArgumentException(String.format("%s,%s",
-          Strings.MinutesMustBeBetween0And1439, "minutes"));
+      throw new ArgumentException(String.format("%s,%s", "minutes must be between 0 and 1439, inclusive.", "minutes"));
     }
 
     this.hours = minutes / 60;
@@ -143,7 +142,7 @@ final class Time {
     if (value >= 0 && value < 24) {
       this.hours = value;
     } else {
-      throw new ArgumentException(Strings.HourMustBeBetween0And23);
+      throw new ArgumentException("Hour must be between 0 and 23.");
     }
   }
 
@@ -166,7 +165,7 @@ final class Time {
     if (value >= 0 && value < 60) {
       this.minutes = value;
     } else {
-      throw new ArgumentException(Strings.MinuteMustBeBetween0And59);
+      throw new ArgumentException("Minute must be between 0 and 59.");
     }
   }
 
@@ -189,7 +188,7 @@ final class Time {
     if (value >= 0 && value < 60) {
       this.seconds = value;
     } else {
-      throw new ArgumentException(Strings.SecondMustBeBetween0And59);
+      throw new ArgumentException("Second must be between 0 and 59.");
     }
   }
 }

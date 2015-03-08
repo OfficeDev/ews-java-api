@@ -76,7 +76,7 @@ class SubscribeToPullNotificationsRequest extends
     super.validate();
     if ((this.getTimeout() < 1) || (this.getTimeout() > 1440)) {
       throw new ArgumentException(String.format(
-          Strings.InvalidTimeoutValue, this.getTimeout()));
+          "%d is not a valid timeout value. Valid values range from 1 to 1440.", this.getTimeout()));
     }
   }
 
