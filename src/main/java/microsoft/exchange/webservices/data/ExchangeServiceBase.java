@@ -38,6 +38,7 @@ import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
+
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
@@ -49,11 +50,14 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Date;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.TimeZone;
 
 /**
  * Represents an abstract binding to an Exchange Service.
@@ -324,11 +328,9 @@ public abstract class ExchangeServiceBase implements Closeable {
         accountUnlockUrl = new URI(location);
       }
 
-      this.traceMessage(responseTraceFlag,
-          String.format("Account is locked. Unlock URL is {0}", accountUnlockUrl));
-
-      throw new AccountIsLockedException(String.format(Strings.AccountIsLocked, accountUnlockUrl),
-          accountUnlockUrl, webException);
+      final String message = String.format(Strings.AccountIsLocked, accountUnlockUrl);
+      this.traceMessage(responseTraceFlag, message);
+      throw new AccountIsLockedException(message, accountUnlockUrl, webException);
     }
   }
 
