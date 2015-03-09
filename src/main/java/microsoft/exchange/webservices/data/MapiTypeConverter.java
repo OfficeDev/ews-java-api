@@ -33,307 +33,132 @@ import java.util.*;
  */
 class MapiTypeConverter {
 
+  private static final IFunction<String, Object> DATE_TIME_PARSER = new IFunction<String, Object>() {
+    public Object func(final String s) {
+      return parseDateTime(s);
+    }
+  };
+
+  private static final IFunction<String, Object> MAPI_VALUE_PARSER = new IFunction<String, Object>() {
+    public Object func(final String s) {
+      return MapiTypeConverter.parseMapiIntegerValue(s);
+    }
+  };
+
   /**
    * The mapi type converter map.
    */
-  private static LazyMember<MapiTypeConverterMap> mapiTypeConverterMap = new
-      LazyMember<MapiTypeConverterMap>(new
-                                           ILazyMember<MapiTypeConverterMap>() {
+  private static final LazyMember<MapiTypeConverterMap> MAPI_TYPE_CONVERTER_MAP =
+      new LazyMember<MapiTypeConverterMap>(new ILazyMember<MapiTypeConverterMap>() {
+         @Override
+         public MapiTypeConverterMap createInstance() {
+           MapiTypeConverterMap map = new MapiTypeConverterMap();
 
-                                             @Override
-                                             public MapiTypeConverterMap createInstance() {
-                                               MapiTypeConverterMap map = new MapiTypeConverterMap();
+           map.put(MapiPropertyType.ApplicationTime, new MapiTypeConverterMapEntry(Double.class));
 
-                                               map.put(MapiPropertyType.ApplicationTime,
-                                                   new MapiTypeConverterMapEntry(Double.class));
+           MapiTypeConverterMapEntry mapitype = new MapiTypeConverterMapEntry(Double.class);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.ApplicationTimeArray, mapitype);
 
-                                               MapiTypeConverterMapEntry mapitype =
-                                                   new MapiTypeConverterMapEntry(
-                                                       Double.class);
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.ApplicationTimeArray, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(Byte[].class);
+           mapitype.setParse(IFunctions.Base64Decoder.INSTANCE);
+           mapitype.setConvertToString(IFunctions.Base64Encoder.INSTANCE);
+           map.put(MapiPropertyType.Binary, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Byte[].class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   return Base64EncoderStream.decode(s);
-                                                 }
-                                               });
-                                               mapitype
-                                                   .setConvertToString(new IFunction<Object,
-                                                       String>() {
-                                                     public String func(Object o) {
-                                                       return Base64EncoderStream
-                                                           .encode((byte[]) o);
-                                                     }
-                                                   });
-                                               map.put(MapiPropertyType.Binary, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(Byte[].class);
+           mapitype.setParse(IFunctions.Base64Decoder.INSTANCE);
+           mapitype.setConvertToString(IFunctions.Base64Encoder.INSTANCE);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.BinaryArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Byte[].class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   return Base64EncoderStream.decode(s);
-                                                 }
-                                               });
-                                               mapitype
-                                                   .setConvertToString(new IFunction<Object,
-                                                       String>() {
-                                                     public String func(Object o) {
-                                                       return Base64EncoderStream
-                                                           .encode((byte[]) o);
-                                                     }
-                                                   });
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.BinaryArray, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(Boolean.class);
+           mapitype.setParse(IFunctions.ToBoolean.INSTANCE);
+           mapitype.setConvertToString(IFunctions.ToLowerCase.INSTANCE);
+           map.put(MapiPropertyType.Boolean, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Boolean.class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   return Boolean.parseBoolean(s);
-                                                 }
-                                               });
-                                               mapitype
-                                                   .setConvertToString(new IFunction<Object,
-                                                       String>() {
-                                                     public String func(Object o) {
-                                                       return o.toString().toLowerCase();
-                                                     }
-                                                   });
-                                               map.put(MapiPropertyType.Boolean, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(UUID.class);
+           mapitype.setParse(IFunctions.ToUUID.INSTANCE);
+           mapitype.setConvertToString(IFunctions.ToString.INSTANCE);
+           map.put(MapiPropertyType.CLSID, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(UUID.class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   return UUID.fromString(s);
-                                                 }
-                                               });
-                                               mapitype
-                                                   .setConvertToString(new IFunction<Object,
-                                                       String>() {
-                                                     public String func(Object o) {
-                                                       return o.toString();
-                                                     }
-                                                   });
-                                               map.put(MapiPropertyType.CLSID, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(UUID.class);
+           mapitype.setParse(IFunctions.ToUUID.INSTANCE);
+           mapitype.setConvertToString(IFunctions.ToString.INSTANCE);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.CLSIDArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(UUID.class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   return UUID.fromString(s);
-                                                 }
-                                               });
-                                               mapitype
-                                                   .setConvertToString(new IFunction<Object,
-                                                       String>() {
-                                                     public String func(Object o) {
-                                                       return o.toString();
-                                                     }
-                                                   });
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.CLSIDArray, mapitype);
+           map.put(MapiPropertyType.Currency, new MapiTypeConverterMapEntry(Long.class));
 
-                                               map.put(MapiPropertyType.Currency,
-                                                   new MapiTypeConverterMapEntry(Long.class));
+           mapitype = new MapiTypeConverterMapEntry(Long.class);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.CurrencyArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Long.class);
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.CurrencyArray, mapitype);
+           map.put(MapiPropertyType.Double, new MapiTypeConverterMapEntry(Double.class));
 
-                                               map.put(MapiPropertyType.Double,
-                                                   new MapiTypeConverterMapEntry(Double.class));
+           mapitype = new MapiTypeConverterMapEntry(Double.class);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.DoubleArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Double.class);
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.DoubleArray, mapitype);
+           map.put(MapiPropertyType.Error, new MapiTypeConverterMapEntry(Integer.class));
+           map.put(MapiPropertyType.Float, new MapiTypeConverterMapEntry(Float.class));
 
-                                               map.put(MapiPropertyType.Error,
-                                                   new MapiTypeConverterMapEntry(Integer.class));
+           mapitype = new MapiTypeConverterMapEntry(Float.class);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.FloatArray, mapitype);
 
-                                               map.put(MapiPropertyType.Float,
-                                                   new MapiTypeConverterMapEntry(Float.class));
+           mapitype = new MapiTypeConverterMapEntry(Integer.class);
+           mapitype.setParse(MAPI_VALUE_PARSER);
+           map.put(MapiPropertyType.Integer, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Float.class);
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.FloatArray, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(Integer.class);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.IntegerArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Integer.class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   return MapiTypeConverter.parseMapiIntegerValue(s);
-                                                 }
-                                               });
-                                               map.put(MapiPropertyType.Integer,
-                                                   mapitype);
+           map.put(MapiPropertyType.Long, new MapiTypeConverterMapEntry(Long.class));
 
-                                               mapitype = new MapiTypeConverterMapEntry(Integer.class);
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.IntegerArray, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(Long.class);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.LongArray, mapitype);
 
-                                               map.put(MapiPropertyType.Long,
-                                                   new MapiTypeConverterMapEntry(Long.class));
+           mapitype = new MapiTypeConverterMapEntry(String.class);
+           mapitype.setParse(IFunctions.StringToObject.INSTANCE);
+           map.put(MapiPropertyType.Object, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Long.class);
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.LongArray, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(String.class);
+           mapitype.setParse(IFunctions.StringToObject.INSTANCE);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.ObjectArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(String.class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   return s;
-                                                 }
-                                               });
-                                               map.put(MapiPropertyType.Object, mapitype);
+           map.put(MapiPropertyType.Short, new MapiTypeConverterMapEntry(Short.class));
 
-                                               mapitype = new MapiTypeConverterMapEntry(String.class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   return s;
-                                                 }
-                                               });
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.ObjectArray, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(Short.class);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.ShortArray, mapitype);
 
-                                               map.put(MapiPropertyType.Short,
-                                                   new MapiTypeConverterMapEntry(Short.class));
+           mapitype = new MapiTypeConverterMapEntry(String.class);
+           mapitype.setParse(IFunctions.StringToObject.INSTANCE);
+           map.put(MapiPropertyType.String, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Short.class);
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.ShortArray, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(String.class);
+           mapitype.setParse(IFunctions.StringToObject.INSTANCE);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.StringArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(String.class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   return s;
-                                                 }
-                                               });
-                                               map.put(MapiPropertyType.String, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(Date.class);
+           mapitype.setParse(DATE_TIME_PARSER);
+           mapitype.setConvertToString(IFunctions.DateTimeToXSDateTime.INSTANCE);
+           map.put(MapiPropertyType.SystemTime, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(String.class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   return s;
-                                                 }
-                                               });
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.StringArray, mapitype);
+           mapitype = new MapiTypeConverterMapEntry(Date.class);
+           mapitype.setParse(DATE_TIME_PARSER);
+           mapitype.setConvertToString(IFunctions.DateTimeToXSDateTime.INSTANCE);
+           mapitype.setIsArray(true);
+           map.put(MapiPropertyType.SystemTimeArray, mapitype);
 
-                                               mapitype = new MapiTypeConverterMapEntry(Date.class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   String utcPattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-                                                   Date dt = null;
-                                                   String errMsg = String
-                                                       .format(
-                                                           "Date String %s not in " +
-                                                               "valid UTC/local format",
-                                                           s);
-                                                   DateFormat utcFormatter = new SimpleDateFormat(
-                                                       utcPattern);
-                                                   if (s.endsWith("Z")) {
-                                                     try {
-                                                       dt = utcFormatter.parse(s);
-                                                     } catch (ParseException e) {
-                                                       s = s.substring(0, 10) + "T12:00:00Z";
-                                                       try {
-                                                         dt = utcFormatter.parse(s);
-                                                       } catch (ParseException e1) {
-                                                         e.printStackTrace();
-                                                         throw new IllegalArgumentException(
-                                                             errMsg, e);
-                                                       }
-                                                     }
-                                                   } else if (s.endsWith("z")) {
-                                                     // String in UTC format yyyy-MM-ddTHH:mm:ssZ
-                                                     utcFormatter = new SimpleDateFormat(
-                                                         "yyyy-MM-dd'T'HH:mm:ss'z'");
-                                                     try {
-                                                       dt = utcFormatter.parse(s);
-                                                     } catch (ParseException e) {
-                                                       throw new IllegalArgumentException(e);
-                                                     }
-                                                   } else {
-                                                     utcFormatter = new SimpleDateFormat(
-                                                         "yyyy-MM-dd'T'HH:mm:ss");
-                                                     try {
-                                                       dt = utcFormatter.parse(s);
-                                                     } catch (ParseException e) {
-                                                       throw new IllegalArgumentException(e);
-                                                     }
-                                                   }
-                                                   return dt;
-                                                 }
-                                               });
-                                               mapitype
-                                                   .setConvertToString(new IFunction<Object,
-                                                       String>() {
-                                                     public String func(Object o) {
-                                                       return EwsUtilities
-                                                           .dateTimeToXSDateTime((Date) o);
-                                                     }
-                                                   });
-                                               map.put(MapiPropertyType.SystemTime, mapitype);
+           return map;
+         }
+  });
 
-                                               mapitype = new MapiTypeConverterMapEntry(Date.class);
-                                               mapitype.setParse(new IFunction<String, Object>() {
-                                                 public Object func(String s) {
-                                                   String utcPattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-                                                   Date dt = null;
-                                                   String errMsg = String
-                                                       .format(
-                                                           "Date String %s not in " +
-                                                               "valid UTC/local format",
-                                                           s);
-                                                   DateFormat utcFormatter = new SimpleDateFormat(
-                                                       utcPattern);
-                                                   if (s.endsWith("Z")) {
-                                                     try {
-                                                       dt = utcFormatter.parse(s);
-                                                     } catch (ParseException e) {
-                                                       s = s.substring(0, 10) + "T12:00:00Z";
-                                                       try {
-                                                         dt = utcFormatter.parse(s);
-                                                       } catch (ParseException e1) {
-                                                         e.printStackTrace();
-                                                         throw new IllegalArgumentException(
-                                                             errMsg, e);
-                                                       }
-                                                     }
-                                                   } else if (s.endsWith("z")) {
-                                                     // String in UTC format yyyy-MM-ddTHH:mm:ssZ
-                                                     utcFormatter = new SimpleDateFormat(
-                                                         "yyyy-MM-dd'T'HH:mm:ss'z'");
-                                                     try {
-                                                       dt = utcFormatter.parse(s);
-                                                     } catch (ParseException e) {
-                                                       throw new IllegalArgumentException(e);
-                                                     }
-                                                   } else {
-                                                     utcFormatter = new SimpleDateFormat(
-                                                         "yyyy-MM-dd'T'HH:mm:ss");
-                                                     try {
-                                                       dt = utcFormatter.parse(s);
-                                                     } catch (ParseException e) {
-                                                       throw new IllegalArgumentException(e);
-                                                     }
-                                                   }
-                                                   return dt;
-                                                 }
-                                               });
-                                               mapitype
-                                                   .setConvertToString(new IFunction<Object,
-                                                       String>() {
-                                                     public String func(Object o) {
-                                                       return EwsUtilities
-                                                           .dateTimeToXSDateTime((Date) o);
-                                                     }
-                                                   });
-                                               mapitype.setIsArray(true);
-                                               map.put(MapiPropertyType.SystemTimeArray, mapitype);
-
-                                               return map;
-                                             }
-
-                                           });
 
   /**
    * Converts the string list to array.
@@ -445,6 +270,46 @@ class MapiTypeConverter {
   protected static Map<MapiPropertyType, MapiTypeConverterMapEntry>
   getMapiTypeConverterMap() {
 
-    return mapiTypeConverterMap.getMember();
+    return MAPI_TYPE_CONVERTER_MAP.getMember();
   }
+
+
+  private static Object parseDateTime(String s) {
+    String utcPattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+    String errMsg = String.format("Date String %s not in " + "valid UTC/local format", s);
+    DateFormat utcFormatter = new SimpleDateFormat(utcPattern);
+    Date dt;
+
+    if (s.endsWith("Z")) {
+      try {
+        dt = utcFormatter.parse(s);
+      } catch (ParseException e) {
+        s = s.substring(0, 10) + "T12:00:00Z";
+        try {
+          dt = utcFormatter.parse(s);
+        } catch (ParseException e1) {
+          e.printStackTrace();
+          throw new IllegalArgumentException(
+              errMsg, e);
+        }
+      }
+    } else if (s.endsWith("z")) {
+      // String in UTC format yyyy-MM-ddTHH:mm:ssZ
+      utcFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'z'");
+      try {
+        dt = utcFormatter.parse(s);
+      } catch (ParseException e) {
+        throw new IllegalArgumentException(e);
+      }
+    } else {
+      utcFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+      try {
+        dt = utcFormatter.parse(s);
+      } catch (ParseException e) {
+        throw new IllegalArgumentException(e);
+      }
+    }
+    return dt;
+  }
+
 }
