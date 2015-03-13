@@ -88,6 +88,24 @@ public final class OccurrenceInfo extends ComplexProperty {
     }
   }
 
+  @Override protected void writeElementsToXml(EwsServiceXmlWriter writer) throws Exception {
+    if (itemId != null) {
+      itemId.writeToXml(writer);
+    }
+    if (start != null) {
+      writer.writeElementValue(XmlNamespace.Types,
+                               XmlElementNames.Start, start);
+    }
+    if (end != null) {
+      writer.writeElementValue(XmlNamespace.Types,
+                               XmlElementNames.End, end);
+    }
+    if (originalStart != null) {
+      writer.writeElementValue(XmlNamespace.Types,
+                               XmlElementNames.OriginalStart, originalStart);
+    }
+  }
+
   /**
    * Gets the Id of the occurrence.
    *
