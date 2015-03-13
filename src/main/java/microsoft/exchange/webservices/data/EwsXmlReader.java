@@ -438,8 +438,7 @@ class EwsXmlReader {
         do {
           if (this.getNodeType().nodeType == XmlNodeType.CHARACTERS) {
             Characters characters = (Characters) this.presentEvent;
-            if (keepWhiteSpace || (!characters.isIgnorableWhiteSpace()
-                && !characters.isWhiteSpace())) {
+            if (keepWhiteSpace || (!characters.isIgnorableWhiteSpace() && !characters.isWhiteSpace())) {
               final String charactersData = characters.getData();
               if (charactersData != null && !charactersData.isEmpty()) {
                 elementValue.append(charactersData);
@@ -454,6 +453,9 @@ class EwsXmlReader {
         // Element)
         // this.read();
         return elementValue.toString();
+      } else if (this.presentEvent.isEndElement()) {
+        // There's a chance that the read above this conditional just read whitespace, and keepWhiteSpace is false
+        return "";
       } else {
         throw new ServiceXmlDeserializationException(
           getReadValueErrMsg("Could not find " + XmlNodeType.getString(XmlNodeType.CHARACTERS))
