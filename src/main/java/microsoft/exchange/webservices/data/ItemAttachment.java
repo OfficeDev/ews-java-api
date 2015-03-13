@@ -162,11 +162,14 @@ public class ItemAttachment extends Attachment implements
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     super.writeElementsToXml(writer);
-    try {
-      this.item.writeToXml(writer);
-    } catch (Exception e) {
-      e.printStackTrace();
 
+    if (item != null) {
+      try {
+        this.item.writeToXml(writer);
+      } catch (Exception e) {
+        e.printStackTrace();
+
+      }
     }
   }
 
