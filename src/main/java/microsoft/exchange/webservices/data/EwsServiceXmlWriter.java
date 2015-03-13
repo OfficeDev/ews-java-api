@@ -116,7 +116,8 @@ class EwsServiceXmlWriter implements IDisposable {
         ISearchStringProvider searchStringProvider =
             (ISearchStringProvider) value;
         str.setParam(searchStringProvider.getSearchString());
-      } else if (value instanceof Integer) {
+      } else if (value instanceof Integer || value instanceof Double || value instanceof Float ||
+                 value instanceof Boolean) {
         str.setParam(value.toString());
       } else if (value instanceof TimeSpan) {
         str.setParam(EwsUtilities.getTimeSpanToXSDuration((TimeSpan) value));
