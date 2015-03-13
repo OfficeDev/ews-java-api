@@ -39,7 +39,7 @@ class Base64EncoderStream {
    * @return the string
    */
   public static String encode(byte[] vby) {
-    if (vby.length == 0) {
+    if (vby == null || vby.length == 0) {
       return "";
     }
 
@@ -53,7 +53,7 @@ class Base64EncoderStream {
    * @return size
    */
   public static byte[] decode(String stringToDecode) {
-    if (stringToDecode.length() == 0) {
+    if (stringToDecode == null || stringToDecode.length() == 0) {
       return new byte[0];
     }
 
