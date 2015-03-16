@@ -103,17 +103,8 @@ class MapiTypeConverterMapEntry {
         "No default value entry for type " + type.getName());
 
     this.type = type;
-    this.convertToString = new IFunction<Object, String>() {
-      public String func(Object o) {
-        return String.valueOf(o);
-      }
-    };
-
-    this.parse = new IFunction<String, Object>() {
-      public Object func(String o) {
-        return o;
-      }
-    };
+    this.convertToString = IFunctions.ToString.INSTANCE;
+    this.parse = IFunctions.StringToObject.INSTANCE;
   }
 
   /**
