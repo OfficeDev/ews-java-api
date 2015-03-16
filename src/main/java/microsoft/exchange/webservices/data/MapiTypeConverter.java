@@ -26,7 +26,12 @@ package microsoft.exchange.webservices.data;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Utility class to convert between MAPI Property type values and strings.
@@ -421,7 +426,7 @@ class MapiTypeConverter {
     int intValue;
     try {
       intValue = Integer.parseInt(s.trim());
-      return new Integer(intValue);
+      return Integer.valueOf(intValue);
     } catch (NumberFormatException e) {
       return s;
     }

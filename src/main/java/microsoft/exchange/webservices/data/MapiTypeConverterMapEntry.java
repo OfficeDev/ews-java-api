@@ -26,7 +26,11 @@ package microsoft.exchange.webservices.data;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Represents an entry in the MapiTypeConverter map.
@@ -46,9 +50,9 @@ class MapiTypeConverterMapEntry {
           map.put(Byte[].class, null);
           map.put(Short.class, new Short((short) 0));
           map.put(Integer.class, 0);
-          map.put(Long.class, new Long(0));
+          map.put(Long.class, new Long(0L));
           map.put(Float.class, new Float(0.0));
-          map.put(Double.class, new Double(0.0));
+          map.put(Double.class, new Double(0.0D));
           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
           try {
             map.put(Date.class, formatter.parse("0001-01-01 12:00:00"));
