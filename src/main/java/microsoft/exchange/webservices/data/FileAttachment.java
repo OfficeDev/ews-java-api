@@ -214,12 +214,17 @@ public final class FileAttachment extends Attachment {
    */
   public void load(String fileName) throws Exception {
     File fileStream = new File(fileName);
-    FileOutputStream fos = new FileOutputStream(fileStream);
-    this.loadToStream = fos;
+
     try {
+      this.loadToStream = new FileOutputStream(fileStream);
       this.load();
-    } finally {
       this.loadToStream.flush();
+    } finally {
+      try {
+        this.loadToStream.close();
+      } catch(Exception e) {
+        //ignore exception on close
+      }
       this.loadToStream = null;
     }
 
