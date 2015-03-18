@@ -23,11 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
-import microsoft.exchange.webservices.data.util.DateTimeParser;
+import microsoft.exchange.webservices.data.util.DateTimeUtils;
 
 import java.io.InputStream;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,8 +37,6 @@ import java.util.TimeZone;
  * XML reader.
  */
 class EwsServiceXmlReader extends EwsXmlReader {
-
-  private DateTimeParser dateTimeParser = new DateTimeParser();
 
   /**
    * The service.
@@ -66,7 +63,7 @@ class EwsServiceXmlReader extends EwsXmlReader {
    * @throws Exception the exception
    */
   public Date readElementValueAsDateTime() throws Exception {
-    return dateTimeParser.convertDateTimeStringToDate(readElementValue());
+    return DateTimeUtils.convertDateTimeStringToDate(readElementValue());
   }
 
   /**
@@ -76,7 +73,7 @@ class EwsServiceXmlReader extends EwsXmlReader {
    * @throws Exception
    */
   public Date readElementValueAsUnspecifiedDate() throws Exception {
-    return dateTimeParser.convertDateStringToDate(readElementValue());
+    return DateTimeUtils.convertDateStringToDate(readElementValue());
   }
 
   /**
@@ -138,7 +135,7 @@ class EwsServiceXmlReader extends EwsXmlReader {
    * @throws Exception the exception
    */
   public Date readElementValueAsDateTime(XmlNamespace xmlNamespace, String localName) throws Exception {
-    return dateTimeParser.convertDateTimeStringToDate(readElementValue(xmlNamespace, localName));
+    return DateTimeUtils.convertDateTimeStringToDate(readElementValue(xmlNamespace, localName));
   }
 
   /**

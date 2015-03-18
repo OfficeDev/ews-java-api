@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
-import microsoft.exchange.webservices.data.util.DateTimeParser;
+import microsoft.exchange.webservices.data.util.DateTimeUtils;
 
 import java.util.Date;
 import java.util.EnumSet;
@@ -89,8 +89,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
   protected void loadPropertyValueFromXml(EwsServiceXmlReader reader, PropertyBag propertyBag)
       throws Exception {
     String value = reader.readElementValue(XmlNamespace.Types, getXmlElement());
-    propertyBag.setObjectFromPropertyDefinition(this, new DateTimeParser()
-        .convertDateTimeStringToDate(value));
+    propertyBag.setObjectFromPropertyDefinition(this, DateTimeUtils.convertDateTimeStringToDate(value));
   }
 
 
