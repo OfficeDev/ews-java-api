@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * Represents SoapFault details.
  */
-class SoapFaultDetails {
+public class SoapFaultDetails {
 
   /**
    * The fault code.
@@ -93,8 +93,7 @@ class SoapFaultDetails {
    * @return the soap fault details
    * @throws Exception the exception
    */
-  protected static SoapFaultDetails parse(EwsXmlReader reader,
-      XmlNamespace soapNamespace) throws Exception {
+  public static SoapFaultDetails parse(EwsXmlReader reader, XmlNamespace soapNamespace) throws Exception {
     SoapFaultDetails soapFaultDetails = new SoapFaultDetails();
 
     do {

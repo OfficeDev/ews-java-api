@@ -97,7 +97,7 @@ public abstract class ExchangeCredentials {
    * @param writer The writer.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
-  protected void emitExtraSoapHeaderNamespaceAliases(XMLStreamWriter writer)
+  public void emitExtraSoapHeaderNamespaceAliases(XMLStreamWriter writer)
       throws XMLStreamException {
     // do nothing by default.
   }
@@ -129,7 +129,7 @@ public abstract class ExchangeCredentials {
   /**
    * Gets the flag indicating whether any sign action need taken.
    */
-  protected boolean isNeedSignature() {
+  public boolean isNeedSignature() {
     return false;
   }
 
@@ -138,7 +138,7 @@ public abstract class ExchangeCredentials {
    *
    * @param memoryStream The memory stream.
    */
-  protected void sign(ByteArrayOutputStream memoryStream) throws Exception {
+  public void sign(ByteArrayOutputStream memoryStream) throws Exception {
     throw new InvalidOperationException();
   }
 
@@ -151,7 +151,7 @@ public abstract class ExchangeCredentials {
    * @param writer The writer.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
-  protected void serializeWSSecurityHeaders(XMLStreamWriter writer)
+  public void serializeWSSecurityHeaders(XMLStreamWriter writer)
       throws XMLStreamException {
     // do nothing by default.
   }

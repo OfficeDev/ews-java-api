@@ -40,7 +40,7 @@ import java.util.List;
 /**
  * Represents a request to a Apply Conversation Action operation
  */
-final class ApplyConversationActionRequest extends MultiResponseServiceRequest<ServiceResponse> {
+public final class ApplyConversationActionRequest extends MultiResponseServiceRequest<ServiceResponse> {
 
   private List<ConversationAction> conversationActions =
       new ArrayList<ConversationAction>();
@@ -56,8 +56,7 @@ final class ApplyConversationActionRequest extends MultiResponseServiceRequest<S
    * @param errorHandlingMode Indicates how errors should be handled.
    * @throws Exception
    */
-  protected ApplyConversationActionRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode) throws Exception {
+  public ApplyConversationActionRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode) throws Exception {
     super(service, errorHandlingMode);
   }
 

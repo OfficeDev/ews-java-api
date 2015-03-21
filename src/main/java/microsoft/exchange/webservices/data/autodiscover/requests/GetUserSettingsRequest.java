@@ -84,7 +84,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    * @param url     URL of Autodiscover service.
    * @throws ServiceValidationException
    */
-  protected GetUserSettingsRequest(AutodiscoverService service, URI url, boolean expectPartnerToken)
+  public GetUserSettingsRequest(AutodiscoverService service, URI url, boolean expectPartnerToken)
       throws ServiceValidationException
 
   {
@@ -215,8 +215,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    * @throws XMLStreamException
    * @throws ServiceXmlSerializationException
    */
-  @Override
-  protected void writeExtraCustomSoapHeadersToXml(EwsServiceXmlWriter writer) throws XMLStreamException,
+  @Override public void writeExtraCustomSoapHeadersToXml(EwsServiceXmlWriter writer) throws XMLStreamException,
       ServiceXmlSerializationException {
     if (this.expectPartnerToken) {
       writer

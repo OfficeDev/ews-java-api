@@ -1062,7 +1062,7 @@ public class EwsXmlReader {
    *
    * @return String
    */
-  protected String getNamespaceUri() {
+  public String getNamespaceUri() {
 
     String nameSpaceUri = null;
     if (this.presentEvent.isStartElement()) {

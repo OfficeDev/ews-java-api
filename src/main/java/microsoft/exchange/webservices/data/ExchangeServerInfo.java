@@ -60,7 +60,7 @@ public final class ExchangeServerInfo {
   /**
    * Instantiates a new exchange server info.
    */
-  protected ExchangeServerInfo() {
+  public ExchangeServerInfo() {
 
   }
 
@@ -104,7 +104,7 @@ public final class ExchangeServerInfo {
    *
    * @param majorVersion the new major version
    */
-  protected void setMajorVersion(int majorVersion) {
+  public void setMajorVersion(int majorVersion) {
     this.majorVersion = majorVersion;
   }
 
@@ -122,7 +122,7 @@ public final class ExchangeServerInfo {
    *
    * @param minorVersion the new minor version
    */
-  protected void setMinorVersion(int minorVersion) {
+  public void setMinorVersion(int minorVersion) {
     this.minorVersion = minorVersion;
   }
 
@@ -140,7 +140,7 @@ public final class ExchangeServerInfo {
    *
    * @param majorBuildNumber the new major build number
    */
-  protected void setMajorBuildNumber(int majorBuildNumber) {
+  public void setMajorBuildNumber(int majorBuildNumber) {
     this.majorBuildNumber = majorBuildNumber;
   }
 
@@ -158,7 +158,7 @@ public final class ExchangeServerInfo {
    *
    * @param minorBuildNumber the new minor build number
    */
-  protected void setMinorBuildNumber(int minorBuildNumber) {
+  public void setMinorBuildNumber(int minorBuildNumber) {
     this.minorBuildNumber = minorBuildNumber;
   }
 
@@ -180,7 +180,7 @@ public final class ExchangeServerInfo {
    *
    * @param versionString the new version string
    */
-  protected void setVersionString(String versionString) {
+  public void setVersionString(String versionString) {
     this.versionString = versionString;
   }
 

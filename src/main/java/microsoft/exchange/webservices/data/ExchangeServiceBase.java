@@ -228,7 +228,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param writer The XmlWriter to which to write the custom SOAP headers.
    */
-  protected void doOnSerializeCustomSoapHeaders(XMLStreamWriter writer) {
+  public void doOnSerializeCustomSoapHeaders(XMLStreamWriter writer) {
     EwsUtilities
         .EwsAssert(writer != null, "ExchangeService.DoOnSerializeCustomSoapHeaders", "writer is null");
 
@@ -358,7 +358,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @param traceFlags The trace flags.
    * @return True if tracing is enabled for specified trace flag(s).
    */
-  protected boolean isTraceEnabledFor(TraceFlags traceFlags) {
+  public boolean isTraceEnabledFor(TraceFlags traceFlags) {
     return this.isTraceEnabled() && this.traceFlags.contains(traceFlags);
   }
 
@@ -384,7 +384,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @param traceType Kind of trace entry.
    * @param stream    The stream containing XML.
    */
-  protected void traceXml(TraceFlags traceType, ByteArrayOutputStream stream) {
+  public void traceXml(TraceFlags traceType, ByteArrayOutputStream stream) {
     if (this.isTraceEnabledFor(traceType)) {
       String traceTypeStr = traceType.toString();
       String logMessage = EwsUtilities.formatLogMessageWithXmlContent(traceTypeStr, stream);
@@ -402,7 +402,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @throws java.io.IOException
    * @throws javax.xml.stream.XMLStreamException
    */
-  protected void traceHttpRequestHeaders(TraceFlags traceType, HttpWebRequest request)
+  public void traceHttpRequestHeaders(TraceFlags traceType, HttpWebRequest request)
       throws URISyntaxException, EWSHttpException, XMLStreamException, IOException {
     if (this.isTraceEnabledFor(traceType)) {
       String traceTypeStr = traceType.toString();
@@ -458,7 +458,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @throws ServiceLocalException the service local exception
    */
-  protected void validate() throws ServiceLocalException {
+  public void validate() throws ServiceLocalException {
     // E14:302056 -- Allow clients to add HTTP request headers with 'X-' prefix but no others.
     for (Map.Entry<String, String> key : this.httpHeaders.entrySet()) {
       if (!key.getKey().startsWith(ExtendedHeaderPrefix)) {
@@ -738,7 +738,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param serverInfo Server Information
    */
-  protected void setServerInfo(ExchangeServerInfo serverInfo) {
+  public void setServerInfo(ExchangeServerInfo serverInfo) {
     this.serverInfo = serverInfo;
   }
 
@@ -807,7 +807,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @throws java.io.IOException
    * @throws javax.xml.stream.XMLStreamException
    */
-  protected void processHttpResponseHeaders(TraceFlags traceType, HttpWebRequest request)
+  public void processHttpResponseHeaders(TraceFlags traceType, HttpWebRequest request)
       throws XMLStreamException, IOException, EWSHttpException {
     this.traceHttpResponseHeaders(traceType, request);
     this.saveHttpResponseHeaders(request.getResponseHeaders());
@@ -840,7 +840,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   /**
    * Gets the session key.
    */
-  protected static byte[] getSessionKey() {
+  public static byte[] getSessionKey() {
     // this has to be computed only once.
     synchronized (ExchangeServiceBase.class) {
       if (ExchangeServiceBase.binarySecret == null) {

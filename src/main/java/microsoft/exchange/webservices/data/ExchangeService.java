@@ -3635,8 +3635,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @throws ServiceLocalException the service local exception
    */
-  @Override
-  protected void validate() throws ServiceLocalException {
+  @Override public void validate() throws ServiceLocalException {
     super.validate();
     if (this.getUrl() == null) {
       throw new ServiceLocalException("The Url property on the ExchangeService object must be set.");

@@ -63,7 +63,7 @@ public class ServiceResponse {
   /**
    * Initializes a new instance.
    */
-  protected ServiceResponse() {
+  public ServiceResponse() {
   }
 
   /**
@@ -71,7 +71,7 @@ public class ServiceResponse {
    *
    * @param soapFaultDetails The SOAP fault details.
    */
-  protected ServiceResponse(SoapFaultDetails soapFaultDetails) {
+  public ServiceResponse(SoapFaultDetails soapFaultDetails) {
     this.result = ServiceResult.Error;
     this.errorCode = soapFaultDetails.getResponseCode();
     this.errorMessage = soapFaultDetails.getFaultString();

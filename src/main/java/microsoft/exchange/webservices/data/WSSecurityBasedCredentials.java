@@ -147,8 +147,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
    * @param writer The writer.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
-  @Override
-  protected void emitExtraSoapHeaderNamespaceAliases(XMLStreamWriter writer)
+  @Override public void emitExtraSoapHeaderNamespaceAliases(XMLStreamWriter writer)
       throws XMLStreamException {
     writer.writeAttribute(
         "xmlns",
@@ -210,8 +209,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
    * @param xmlWriter The XML writer to serialize the headers to.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
-  @Override
-  protected void serializeWSSecurityHeaders(XMLStreamWriter xmlWriter)
+  @Override public void serializeWSSecurityHeaders(XMLStreamWriter xmlWriter)
       throws XMLStreamException {
     EwsUtilities.EwsAssert(this.securityToken != null,
         "WSSecurityBasedCredentials.SerializeWSSecurityHeaders",

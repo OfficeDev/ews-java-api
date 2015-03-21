@@ -58,7 +58,7 @@ public class ServiceResponseException extends ServiceRemoteException {
    *
    * @param response the response
    */
-  protected ServiceResponseException(ServiceResponse response) {
+  public ServiceResponseException(ServiceResponse response) {
     this.response = response;
   }
 

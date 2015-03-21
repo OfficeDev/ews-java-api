@@ -32,7 +32,7 @@ import java.util.Date;
  * single ConversationAction that needs to
  * be taken on a conversation.
  */
-class ConversationAction {
+public class ConversationAction {
 
   private ConversationActionType action;
   private ConversationId conversationId;
@@ -225,7 +225,7 @@ class ConversationAction {
    *
    * @throws Exception
    */
-  protected void validate() throws Exception {
+  public void validate() throws Exception {
     EwsUtilities.validateParam(this.conversationId, "conversationId");
   }
 
@@ -235,7 +235,7 @@ class ConversationAction {
    * @param writer The writer.
    * @throws Exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeStartElement(
         XmlNamespace.Types,

@@ -86,7 +86,7 @@ public class EwsUtilities {
   /**
    * The Constant EwsXmlSchemaInstanceNamespacePrefix.
    */
-  protected static final String EwsXmlSchemaInstanceNamespacePrefix = "xsi";
+  public static final String EwsXmlSchemaInstanceNamespacePrefix = "xsi";
 
   /**
    * The Constant PassportSoapFaultNamespacePrefix.
@@ -101,17 +101,17 @@ public class EwsUtilities {
   /**
    * The Constant WSAddressingNamespacePrefix.
    */
-  protected static final String WSAddressingNamespacePrefix = "wsa";
+  public static final String WSAddressingNamespacePrefix = "wsa";
 
   /**
    * The Constant AutodiscoverSoapNamespacePrefix.
    */
-  protected static final String AutodiscoverSoapNamespacePrefix = "a";
+  public static final String AutodiscoverSoapNamespacePrefix = "a";
 
   /**
    * The Constant WSSecurityUtilityNamespacePrefix.
    */
-  protected static final String WSSecurityUtilityNamespacePrefix = "wsu";
+  public static final String WSSecurityUtilityNamespacePrefix = "wsu";
 
   /**
    * The Constant WSSecuritySecExtNamespacePrefix.
@@ -151,7 +151,7 @@ public class EwsUtilities {
   /**
    * The Constant EwsXmlSchemaInstanceNamespace.
    */
-  protected static final String EwsXmlSchemaInstanceNamespace =
+  public static final String EwsXmlSchemaInstanceNamespace =
       "http://www.w3.org/2001/XMLSchema-instance";
 
   /**
@@ -169,17 +169,17 @@ public class EwsUtilities {
   /**
    * The Constant WSAddressingNamespace.
    */
-  protected static final String WSAddressingNamespace =
+  public static final String WSAddressingNamespace =
       "http://www.w3.org/2005/08/addressing";
   // "http://schemas.xmlsoap.org/ws/2004/08/addressing";
 
   /**
    * The Constant AutodiscoverSoapNamespace.
    */
-  protected static final String AutodiscoverSoapNamespace =
+  public static final String AutodiscoverSoapNamespace =
       "http://schemas.microsoft.com/exchange/2010/Autodiscover";
 
-  protected static final String WSSecurityUtilityNamespace =
+  public static final String WSSecurityUtilityNamespace =
       "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";
   protected static final String WSSecuritySecExtNamespace =
       "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
@@ -359,7 +359,7 @@ public class EwsUtilities {
    * @param xmlNamespace The XML namespace
    * @return Namespace prefix string.
    */
-  protected static String getNamespacePrefix(XmlNamespace xmlNamespace) {
+  public static String getNamespacePrefix(XmlNamespace xmlNamespace) {
     return xmlNamespace.getNameSpacePrefix();
   }
 
@@ -369,7 +369,7 @@ public class EwsUtilities {
    * @param xmlNamespace The XML namespace.
    * @return Uri as string
    */
-  protected static String getNamespaceUri(XmlNamespace xmlNamespace) {
+  public static String getNamespaceUri(XmlNamespace xmlNamespace) {
     return xmlNamespace.getNameSpaceUri();
   }
 
@@ -379,7 +379,7 @@ public class EwsUtilities {
    * @param namespaceUri the namespace uri
    * @return the namespace from uri
    */
-  protected static XmlNamespace getNamespaceFromUri(String namespaceUri) {
+  public static XmlNamespace getNamespaceFromUri(String namespaceUri) {
     if (namespaceUri.equals(EwsErrorsNamespace)) {
       return XmlNamespace.Errors;
     }
@@ -1207,8 +1207,7 @@ public class EwsUtilities {
    * @param paramName  Name of the param.
    * @throws Exception the exception
    */
-  protected static <T> void validateParamCollection(Iterator<T> collection,
-      String paramName) throws Exception {
+  public static <T> void validateParamCollection(Iterator<T> collection, String paramName) throws Exception {
 
     validateParam(collection, paramName);
 

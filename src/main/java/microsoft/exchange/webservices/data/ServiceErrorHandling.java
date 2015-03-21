@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Defines the type of error handling used for service method calls.
  */
-enum ServiceErrorHandling {
+public enum ServiceErrorHandling {
 
   // Service method should return the error(s).
   /**

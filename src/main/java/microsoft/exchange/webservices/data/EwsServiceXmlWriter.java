@@ -37,7 +37,7 @@ import java.util.Date;
 /**
  * Stax based XML Writer implementation.
  */
-class EwsServiceXmlWriter implements IDisposable {
+public class EwsServiceXmlWriter implements IDisposable {
 
   /**
    * The is disposed.
@@ -77,8 +77,7 @@ class EwsServiceXmlWriter implements IDisposable {
    * @param stream  The stream.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
-  protected EwsServiceXmlWriter(ExchangeServiceBase service,
-      OutputStream stream) throws XMLStreamException {
+  public EwsServiceXmlWriter(ExchangeServiceBase service, OutputStream stream) throws XMLStreamException {
     this.service = service;
     XMLOutputFactory xmlof = XMLOutputFactory.newInstance();
     xmlWriter = xmlof.createXMLStreamWriter(stream, "utf-8");
@@ -567,7 +566,7 @@ class EwsServiceXmlWriter implements IDisposable {
    *
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
-  protected void writeStartDocument() throws XMLStreamException {
+  public void writeStartDocument() throws XMLStreamException {
     this.xmlWriter.writeStartDocument("utf-8", "1.0");
   }
 }

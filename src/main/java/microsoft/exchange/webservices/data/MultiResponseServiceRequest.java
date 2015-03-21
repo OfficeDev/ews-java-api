@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data;
  *
  * @param <TResponse> The type of the response.
  */
-abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
+public abstract class MultiResponseServiceRequest<TResponse extends ServiceResponse>
     extends SimpleServiceRequestBase<ServiceResponseCollection<TResponse>> {
 
   /**
