@@ -81,7 +81,7 @@ public final class FileAttachment extends Attachment {
     if ((this.fileName == null || this.fileName.isEmpty())
         && this.content == null && this.contentStream == null) {
       throw new ServiceValidationException(String.format(
-          Strings.FileAttachmentContentIsNotSet,
+          "The content of the file attachment at index %d must be set.",
           attachmentIndex));
     }
   }

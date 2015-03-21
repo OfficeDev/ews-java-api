@@ -91,8 +91,7 @@ public final class AttendeeCollection extends
    */
   public void removeAt(int index) {
     if (index < 0 || index >= this.getCount()) {
-      throw new IllegalArgumentException("parameter \'index\' : " +
-          Strings.IndexIsOutOfRange);
+      throw new IllegalArgumentException("parameter \'index\' : " + "index is out of range.");
     }
 
     this.internalRemoveAt(index);

@@ -242,8 +242,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
       throws Exception {
     this.throwIfDisposed();
     EwsUtilities.validateParam(subscription, "subscription");
-    this.validateConnectionState(false,
-        Strings.CannotAddSubscriptionToLiveConnection);
+    this.validateConnectionState(false, "Subscriptions can't be added to an open connection.");
 
     synchronized (this) {
       if (this.subscriptions.containsKey(subscription.getId())) {
@@ -265,8 +264,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
 
     EwsUtilities.validateParam(subscription, "subscription");
 
-    this.validateConnectionState(false,
-        Strings.CannotRemoveSubscriptionFromLiveConnection);
+    this.validateConnectionState(false, "Subscriptions can't be removed from an open connection.");
 
     synchronized (this) {
       this.subscriptions.remove(subscription.getId());
@@ -284,12 +282,11 @@ public final class StreamingSubscriptionConnection implements Closeable,
     synchronized (this) {
       this.throwIfDisposed();
 
-      this.validateConnectionState(false,
-          Strings.CannotCallConnectDuringLiveConnection);
+      this.validateConnectionState(false, "The connection has already opened.");
 
       if (this.subscriptions.size() == 0) {
         throw new ServiceLocalException(
-            Strings.NoSubscriptionsOnConnection);
+            "You must add at least one subscription to this connection before it can be opened.");
       }
 
       this.currentHangingRequest = new GetStreamingEventsRequest(
@@ -324,8 +321,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
       try {
         this.throwIfDisposed();
 
-        this.validateConnectionState(true,
-            Strings.CannotCallDisconnectWithNoLiveConnection);
+        this.validateConnectionState(true, "The connection is already closed.");
 
         // Further down in the stack, this will result in a
         // call to our OnRequestDisconnect event handler,

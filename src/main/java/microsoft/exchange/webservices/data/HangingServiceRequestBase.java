@@ -457,11 +457,9 @@ abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T> {
     try {
       ewsXmlReader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
     } catch (XmlException ex) {
-      throw new ServiceRequestException(Strings.
-          ServiceResponseDoesNotContainXml, ex);
+      throw new ServiceRequestException("The response received from the service didn't contain valid XML.", ex);
     } catch (ServiceXmlDeserializationException ex) {
-      throw new ServiceRequestException(Strings.
-          ServiceResponseDoesNotContainXml, ex);
+      throw new ServiceRequestException("The response received from the service didn't contain valid XML.", ex);
     }
   }
 }

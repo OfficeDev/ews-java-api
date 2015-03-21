@@ -171,7 +171,7 @@ public class StringList extends ComplexProperty implements Iterable<String> {
    */
   public void removeAt(int index) {
     if (index < 0 || index >= this.getSize()) {
-      throw new ArrayIndexOutOfBoundsException(Strings.IndexIsOutOfRange);
+      throw new ArrayIndexOutOfBoundsException("index is out of range.");
     }
     this.items.remove(index);
     this.changed();
@@ -233,7 +233,7 @@ public class StringList extends ComplexProperty implements Iterable<String> {
    */
   public String getString(int index) {
     if (index < 0 || index >= this.getSize()) {
-      throw new ArrayIndexOutOfBoundsException(Strings.IndexIsOutOfRange);
+      throw new ArrayIndexOutOfBoundsException("index is out of range.");
     }
     return this.items.get(index);
   }
@@ -246,7 +246,7 @@ public class StringList extends ComplexProperty implements Iterable<String> {
    */
   public void setString(int index, Object object) {
     if (index < 0 || index >= this.getSize()) {
-      throw new ArrayIndexOutOfBoundsException(Strings.IndexIsOutOfRange);
+      throw new ArrayIndexOutOfBoundsException("index is out of range.");
     }
 
     if (this.items.get(index) != object) {

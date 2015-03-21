@@ -439,8 +439,7 @@ class EwsUtilities {
         return (TServiceObject) creationDelegate
             .createServiceObjectWithServiceParam(service);
       } else {
-        throw new IllegalArgumentException(
-            Strings.NoAppropriateConstructorForItemClass);
+        throw new IllegalArgumentException("No appropriate constructor could be found for this item class.");
       }
     } else {
       return (TServiceObject) itemClass.newInstance();
@@ -471,8 +470,7 @@ class EwsUtilities {
           .createServiceObjectWithAttachmentParam(itemAttachment,
               isNew);
     } else {
-      throw new IllegalArgumentException(
-          Strings.NoAppropriateConstructorForItemClass);
+      throw new IllegalArgumentException("No appropriate constructor could be found for this item class.");
     }
   }
 
@@ -849,8 +847,7 @@ class EwsUtilities {
     }
 
     if (count == 0) {
-      throw new IllegalArgumentException(String.format(
-          Strings.CollectionIsEmpty, paramName));
+      throw new IllegalArgumentException(String.format("The collection is empty.", paramName));
     }
   }
 
@@ -1133,7 +1130,7 @@ class EwsUtilities {
     if (emailAddressParts.length != 2
         || (emailAddressParts[1] == null || emailAddressParts[1]
         .isEmpty())) {
-      throw new FormatException(Strings.InvalidEmailAddress);
+      throw new FormatException("The e-mail address is formed incorrectly.");
     }
 
     return emailAddressParts[1];
@@ -1163,16 +1160,14 @@ class EwsUtilities {
       try {
         selfValidate.validate();
       } catch (ServiceValidationException e) {
-        throw new Exception(String.format("%s %s",
-            Strings.ValidationFailed, paramName), e);
+        throw new Exception(String.format("%s %s", "Validation failed.", paramName), e);
       }
     }
 
     if (param instanceof ServiceObject) {
       ServiceObject ewsObject = (ServiceObject) param;
       if (ewsObject.isNew()) {
-        throw new Exception(String.format("%s %s",
-            Strings.ObjectDoesNotHaveId, paramName));
+        throw new Exception(String.format("%s %s", "This service object doesn't have an ID.", paramName));
       }
     }
   }
@@ -1230,8 +1225,7 @@ class EwsUtilities {
     }
 
     if (count == 0) {
-      throw new IllegalArgumentException(String.format(
-          Strings.CollectionIsEmpty, paramName));
+      throw new IllegalArgumentException(String.format("The collection is empty.", paramName));
     }
   }
 
@@ -1255,8 +1249,7 @@ class EwsUtilities {
               return Character.isWhitespace(obj);
             }
           })) {
-        throw new ArgumentException(Strings.
-            ArgumentIsBlankString, paramName);
+        throw new ArgumentException("The string argument contains only white space characters.", paramName);
       }
     }
   }
@@ -1298,10 +1291,12 @@ class EwsUtilities {
           .toString());
       int i = requestVersion.compareTo(enumVersion);
       if (i < 0) {
-        throw new ServiceVersionException(String.format("%S,%S,%S,%S",
-            Strings.EnumValueIncompatibleWithRequestVersion,
-            enumValue.toString(), enumValue.getClass().getName(),
-            enumVersion));
+        throw new ServiceVersionException(
+            String.format("Enumeration value %s in enumeration type %s is only valid for Exchange version %s "
+                          + "or later.",
+                          enumValue.toString(),
+                          enumValue.getClass().getName(),
+                          enumVersion));
       }
     }
   }
@@ -1322,7 +1317,7 @@ class EwsUtilities {
 
     if (requestVersion.ordinal() < minimumRequiredServerVersion.ordinal()) {
       String msg = String.format(
-          Strings.ObjectTypeIncompatibleWithRequestVersion,
+          "The object type %s is only valid for Exchange Server version %s or later versions.",
           serviceObject.getClass().getName(),
           minimumRequiredServerVersion.toString());
       throw new ServiceVersionException(msg);
@@ -1344,8 +1339,7 @@ class EwsUtilities {
     if (service.getRequestedServerVersion().ordinal() <
         minimumServerVersion.ordinal()) {
       throw new ServiceVersionException(
-          String.format(
-              Strings.PropertyIncompatibleWithRequestVersion,
+          String.format("The property %s is valid only for Exchange %s or later versions.",
               propertyName,
               minimumServerVersion));
     }
@@ -1367,7 +1361,7 @@ class EwsUtilities {
 
     {
       throw new ServiceVersionException(String.format(
-          Strings.MethodIncompatibleWithRequestVersion, methodName,
+          "Method %s is only valid for Exchange Server version %s or later.", methodName,
           minimumServerVersion));
     }
   }
@@ -1387,8 +1381,7 @@ class EwsUtilities {
     if (service.getRequestedServerVersion().ordinal() <
         minimumServerVersion.ordinal()) {
       throw new ServiceVersionException(
-          String.format(
-              Strings.ClassIncompatibleWithRequestVersion,
+          String.format("Class %s is only valid for Exchange version %s or later.",
               className,
               minimumServerVersion));
     }
@@ -1407,8 +1400,7 @@ class EwsUtilities {
       Pattern domainNamePattern = Pattern.compile(DomainRegex);
       Matcher domainNameMatcher = domainNamePattern.matcher(domainName);
       if (!domainNameMatcher.find()) {
-        throw new ArgumentException(String.format(Strings.
-            InvalidDomainName, domainName), paramName);
+        throw new ArgumentException(String.format("'%s' is not a valid domain name.", domainName), paramName);
       }
     }
   }
@@ -1493,8 +1485,7 @@ class EwsUtilities {
       }
       count++;
     }
-    throw new IndexOutOfBoundsException(
-        Strings.IEnumerableDoesNotContainThatManyObject);
+    throw new IndexOutOfBoundsException("The IEnumerable doesn't contain that many objects.");
   }
 
 

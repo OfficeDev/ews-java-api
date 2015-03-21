@@ -135,8 +135,7 @@ abstract class AutodiscoverRequest {
         if (response != null) {
           return response;
         } else {
-          throw new ServiceRemoteException(
-              Strings.InvalidRedirectionResponseReturned);
+          throw new ServiceRemoteException("The service returned an invalid redirection response.");
         }
       }
 
@@ -181,8 +180,7 @@ abstract class AutodiscoverRequest {
           XmlElementNames.SOAPEnvelopeElementName))
           || (!ewsXmlReader.getNamespaceUri().equals(
           EwsUtilities.getNamespaceUri(XmlNamespace.Soap)))) {
-        throw new ServiceXmlDeserializationException(
-            Strings.InvalidAutodiscoverServiceResponse);
+        throw new ServiceXmlDeserializationException("The Autodiscover service response was invalid.");
       }
 
       this.readSoapHeaders(ewsXmlReader);
@@ -204,15 +202,13 @@ abstract class AutodiscoverRequest {
           String.format("XML parsing error: %s", ex.getMessage()));
 
       // Wrap exception
-      throw new ServiceRequestException(String.format(
-          Strings.ServiceRequestFailed, ex.getMessage()), ex);
+      throw new ServiceRequestException(String.format("The request failed. %s", ex.getMessage()), ex);
     } catch (IOException ex) {
       this.service.traceMessage(TraceFlags.AutodiscoverConfiguration,
           String.format("I/O error: %s", ex.getMessage()));
 
       // Wrap exception
-      throw new ServiceRequestException(String.format(
-          Strings.ServiceRequestFailed, ex.getMessage()), ex);
+      throw new ServiceRequestException(String.format("The request failed. %s", ex.getMessage()), ex);
     } catch (Exception ex) {
       // HttpWebRequest httpWebResponse = (HttpWebRequest)ex;
 
@@ -234,8 +230,7 @@ abstract class AutodiscoverRequest {
       }
 
       // Wrap exception if the above code block didn't throw
-      throw new ServiceRequestException(String.format(
-          Strings.ServiceRequestFailed, ex.getMessage()), ex);
+      throw new ServiceRequestException(String.format("The request failed. %s", ex.getMessage()), ex);
     } finally {
       try {
         if (request != null) {

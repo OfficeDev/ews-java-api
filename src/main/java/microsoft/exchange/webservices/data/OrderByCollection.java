@@ -58,8 +58,7 @@ public final class OrderByCollection implements
   public void add(PropertyDefinitionBase propertyDefinition,
       SortDirection sortDirection) throws ServiceLocalException {
     if (this.contains(propertyDefinition)) {
-      throw new ServiceLocalException(String.format(
-          Strings.PropertyAlreadyExistsInOrderByCollection,
+      throw new ServiceLocalException(String.format("Property %s already exists in OrderByCollection.",
           propertyDefinition.getPrintableName()));
     }
     Map<PropertyDefinitionBase, SortDirection> propertyDefinitionSortDirectionPair = new

@@ -174,8 +174,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
    */
   public void removeAt(int index) throws ArgumentOutOfRangeException {
     if (index < 0 || index >= this.getCount()) {
-      throw new ArgumentOutOfRangeException("index",
-          Strings.IndexIsOutOfRange);
+      throw new ArgumentOutOfRangeException("index", "index is out of range.");
     }
 
     this.items.remove(index);

@@ -205,7 +205,7 @@ class EwsServiceXmlWriter implements IDisposable {
       }
     } else {
       throw new ServiceXmlSerializationException(String.format(
-          Strings.AttributeValueCannotBeSerialized, value.getClass()
+          "Values of type '%s' can't be used for the '%s' attribute.", value.getClass()
               .getName(), localName));
     }
   }
@@ -230,7 +230,7 @@ class EwsServiceXmlWriter implements IDisposable {
       }
     } else {
       throw new ServiceXmlSerializationException(String.format(
-          Strings.AttributeValueCannotBeSerialized, value.getClass()
+          "Values of type '%s' can't be used for the '%s' attribute.", value.getClass()
               .getName(), localName));
     }
   }
@@ -250,7 +250,7 @@ class EwsServiceXmlWriter implements IDisposable {
       // Bug E14:65046: XmlTextWriter will throw ArgumentException
       //if string includes invalid characters.
       throw new ServiceXmlSerializationException(String.format(
-          Strings.InvalidAttributeValue, stringValue, localName), e);
+          "The invalid value '%s' was specified for the '%s' attribute.", stringValue, localName), e);
     }
   }
 
@@ -272,7 +272,7 @@ class EwsServiceXmlWriter implements IDisposable {
       // Bug E14:65046: XmlTextWriter will throw ArgumentException
       //if string includes invalid characters.
       throw new ServiceXmlSerializationException(String.format(
-          Strings.InvalidAttributeValue, stringValue, localName), e);
+          "The invalid value '%s' was specified for the '%s' attribute.", stringValue, localName), e);
     }
   }
 
@@ -291,7 +291,7 @@ class EwsServiceXmlWriter implements IDisposable {
       // Bug E14:65046: XmlTextWriter will throw ArgumentException
       //if string includes invalid characters.
       throw new ServiceXmlSerializationException(String.format(
-          Strings.InvalidElementStringValue, value, name), e);
+          "The invalid value '%s' was specified for the '%s' element.", value, name), e);
     }
   }
 
@@ -323,7 +323,7 @@ class EwsServiceXmlWriter implements IDisposable {
       }
     } else {
       throw new ServiceXmlSerializationException(String.format(
-          Strings.ElementValueCannotBeSerialized, value.getClass()
+          "Values of type '%s' can't be used for the '%s' element.", value.getClass()
               .getName(), localName));
     }
   }

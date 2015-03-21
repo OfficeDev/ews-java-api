@@ -118,8 +118,7 @@ public final class PhoneCall extends ComplexProperty {
     // If call is already disconnected, throw exception
     //
     if (this.state == PhoneCallState.Disconnected) {
-      throw new ServiceLocalException(
-          Strings.PhoneCallAlreadyDisconnected);
+      throw new ServiceLocalException("The phone call has already been disconnected.");
     }
 
     this.service.getUnifiedMessaging().disconnectPhoneCall(this.id);

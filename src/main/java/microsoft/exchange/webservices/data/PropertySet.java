@@ -272,8 +272,7 @@ public final class PropertySet implements ISelfValidate,
    */
   private void throwIfReadonly() {
     if (this.isReadOnly) {
-      throw new UnsupportedOperationException(
-          Strings.PropertySetCannotBeModified);
+      throw new UnsupportedOperationException("This PropertySet is read-only and can't be modified.");
     }
   }
 
@@ -455,8 +454,7 @@ public final class PropertySet implements ISelfValidate,
   protected void internalValidate() throws ServiceValidationException {
     for (int i = 0; i < this.additionalProperties.size(); i++) {
       if (this.additionalProperties.get(i) == null) {
-        throw new ServiceValidationException(String.format(
-            Strings.AdditionalPropertyIsNull, i));
+        throw new ServiceValidationException(String.format("The additional property at index %d is null.", i));
       }
     }
   }
@@ -482,7 +480,7 @@ public final class PropertySet implements ISelfValidate,
         if (propertyDefinition.getVersion().ordinal() > request
             .getService().getRequestedServerVersion().ordinal()) {
           throw new ServiceVersionException(String.format(
-              Strings.PropertyIncompatibleWithRequestVersion,
+              "The property %s is valid only for Exchange %s or later versions.",
               propertyDefinition.getName(), propertyDefinition
                   .getVersion()));
         }
@@ -491,8 +489,7 @@ public final class PropertySet implements ISelfValidate,
             !propertyDefinition.hasFlag(
                 PropertyDefinitionFlags.CanFind, request.
                     getService().getRequestedServerVersion())) {
-          throw new ServiceValidationException(String.format(
-              Strings.NonSummaryPropertyCannotBeUsed,
+          throw new ServiceValidationException(String.format("The property %s can't be used in %s requests.",
               propertyDefinition.getName(), request
                   .getXmlElementName()));
         }
@@ -501,8 +498,7 @@ public final class PropertySet implements ISelfValidate,
     if (this.getFilterHtmlContent() != null) {
       if (request.getService().getRequestedServerVersion().compareTo(ExchangeVersion.Exchange2010) < 0) {
         throw new ServiceVersionException(
-            String.format(
-                Strings.PropertyIncompatibleWithRequestVersion,
+            String.format("The property %s is valid only for Exchange %s or later versions.",
                 "FilterHtmlContent",
                 ExchangeVersion.Exchange2010));
       }
@@ -511,8 +507,7 @@ public final class PropertySet implements ISelfValidate,
     if (this.getConvertHtmlCodePageToUTF8() != null) {
       if (request.getService().getRequestedServerVersion().compareTo(ExchangeVersion.Exchange2010_SP1) < 0) {
         throw new ServiceVersionException(
-            String.format(
-                Strings.PropertyIncompatibleWithRequestVersion,
+            String.format("The property %s is valid only for Exchange %s or later versions.",
                 "ConvertHtmlCodePageToUTF8",
                 ExchangeVersion.Exchange2010_SP1));
       }

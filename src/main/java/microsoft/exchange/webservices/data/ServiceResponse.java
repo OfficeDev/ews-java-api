@@ -213,7 +213,8 @@ public class ServiceResponse {
     // Bug E14:69560 -- Use a better error message when an item cannot be
     // updated because its changeKey is old.
     if (this.getErrorCode() == ServiceError.ErrorIrresolvableConflict) {
-      this.setErrorMessage(Strings.ItemIsOutOfDate);
+      this.setErrorMessage(
+          "The operation can't be performed because the item is out of date. Reload the item and try again.");
     }
   }
 

@@ -108,8 +108,7 @@ public class ServiceResponseException extends ServiceRemoteException {
         stackTrace = this.response.getErrorDetails().get(StackTraceKey);
 
         // return
-        return String.format(
-            Strings.ServerErrorAndStackTraceDetails, this.response
+        return String.format("%s -- Server Error: %s: %s %s", this.response
                 .getErrorMessage(), exceptionClass,
             exceptionMessage, stackTrace);
       }

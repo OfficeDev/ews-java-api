@@ -201,11 +201,10 @@ public final class DelegateUser extends ComplexProperty {
    */
   protected void internalValidate() throws ServiceValidationException {
     if (this.getUserId() == null) {
-      throw new ServiceValidationException(
-          Strings.UserIdForDelegateUserNotSpecified);
+      throw new ServiceValidationException("The UserId in the DelegateUser hasn't been specified.");
     } else if (!this.getUserId().isValid()) {
       throw new ServiceValidationException(
-          Strings.DelegateUserHasInvalidUserId);
+          "The UserId in the DelegateUser is invalid. The StandardUser, PrimarySmtpAddress or SID property must be set.");
     }
   }
 

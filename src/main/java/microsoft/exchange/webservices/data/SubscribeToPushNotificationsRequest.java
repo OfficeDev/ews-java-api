@@ -64,7 +64,7 @@ class SubscribeToPushNotificationsRequest extends
     EwsUtilities.validateParam(this.getUrl(), "Url");
     if ((this.getFrequency() < 1) || (this.getFrequency() > 1440)) {
       throw new ArgumentException(String.format(
-          Strings.InvalidFrequencyValue, this.getFrequency()));
+          "%d is not a valid frequency value. Valid values range from 1 to 1440.", this.getFrequency()));
     }
   }
 

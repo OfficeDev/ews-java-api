@@ -85,7 +85,8 @@ public final class ChangeCollection<TChange extends Change> implements
    */
   public TChange getChangeAtIndex(int index) {
     if (index < 0 || index >= this.getCount()) {
-      throw new IndexOutOfBoundsException(Strings.IndexIsOutOfRange);
+      throw new IndexOutOfBoundsException(
+          String.format("index %d is out of range [0..%d[.", index, this.getCount()));
     }
     return this.changes.get(index);
   }

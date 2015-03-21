@@ -274,8 +274,7 @@ public final class OofSettings extends
   public void validate() throws Exception {
     if (this.getState() == OofState.Scheduled) {
       if (this.getDuration() == null) {
-        throw new ArgumentException(
-            Strings.DurationMustBeSpecifiedWhenScheduled);
+        throw new ArgumentException("Duration must be specified when State is equal to Scheduled.");
       }
 
       EwsUtilities.validateParam(this.getDuration(), "Duration");

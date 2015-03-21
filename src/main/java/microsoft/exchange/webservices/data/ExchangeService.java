@@ -354,7 +354,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
     if (cls.isAssignableFrom(result.getClass())) {
       return (TFolder) result;
     } else {
-      throw new ServiceLocalException(String.format(Strings.FolderTypeNotCompatible,
+      throw new ServiceLocalException(String.format(
+          "The folder type returned by the service (%s) isn't compatible with the requested folder type (%s).",
           result.getClass().getName(), cls.getName()));
     }
   }
@@ -453,7 +454,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
       }
     })) {
       throw new ServiceValidationException(
-          Strings.CreateItemsDoesNotHandleExistingItems);
+          "This operation can't be performed because at least one item already has an ID.");
     }
 
     // E14:298274 Make sure that all items do *not* have unprocessed
@@ -464,8 +465,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
         return !obj.hasUnprocessedAttachmentChanges();
       }
     })) {
-      throw new ServiceValidationException(
-          Strings.CreateItemsDoesNotAllowAttachments);
+      throw new ServiceValidationException("This operation doesn't support items that have attachments.");
     }
     return this.internalCreateItems(items, parentFolderId,
         messageDisposition, sendInvitationsMode,
@@ -552,7 +552,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
       }
     })) {
       throw new ServiceValidationException(
-          Strings.UpdateItemsDoesNotSupportNewOrUnchangedItems);
+          "This operation can't be performed because one or more items are new or unmodified.");
     }
 
     // E14:298274 Make sure that all items do *not* have unprocessed
@@ -564,7 +564,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
       }
     })) {
       throw new ServiceValidationException(
-          Strings.UpdateItemsDoesNotAllowAttachments);
+          "This operation can't be performed because attachments have been added or deleted for one or more items.");
     }
 
     return this.internalUpdateItems(items, savedItemsDestinationFolderId,
@@ -1244,7 +1244,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
       return (TItem) result;
     } else {
       throw new ServiceLocalException(String.format(
-          Strings.ItemTypeNotCompatible, result.getClass().getName(),
+          "The item type returned by the service (%s) isn't compatible with the requested item type (%s).", result.getClass().getName(),
           c.getName()));
     }
   }
@@ -1768,7 +1768,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
       EventType... eventTypes) throws Exception {
     if (timeout < 1 || timeout > 1440) {
       throw new IllegalArgumentException("timeout", new Throwable(
-          Strings.TimeoutMustBeBetween1And1440));
+          "Timeout must be a value between 1 and 1440."));
     }
 
     EwsUtilities.validateParamCollection(eventTypes, "eventTypes");
@@ -2057,8 +2057,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
       String watermark, EventType[] eventTypes) throws Exception {
     EwsUtilities.validateParam(url, "url");
     if (frequency < 1 || frequency > 1440) {
-      throw new ArgumentOutOfRangeException("frequency",
-          Strings.FrequencyMustBeBetween1And1440);
+      throw new ArgumentOutOfRangeException("frequency", "The frequency must be a value between 1 and 1440.");
     }
 
     EwsUtilities.validateParamCollection(eventTypes, "eventTypes");
@@ -3441,7 +3440,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   private boolean defaultAutodiscoverRedirectionUrlValidationCallback(
       String redirectionUrl) throws AutodiscoverLocalException {
     throw new AutodiscoverLocalException(String.format(
-        Strings.AutodiscoverRedirectBlocked, redirectionUrl));
+        "Autodiscover blocked a potentially insecure redirection to %s. To allow Autodiscover to follow the redirection, use the AutodiscoverUrl(string, AutodiscoverRedirectionUrlValidationCallback) overload.", redirectionUrl));
   }
 
   /**
@@ -3554,12 +3553,11 @@ public final class ExchangeService extends ExchangeServiceBase implements
             .isExternal().TRUE);
 
       case InvalidUser:
-        throw new ServiceRemoteException(String.format(Strings.InvalidUser,
+        throw new ServiceRemoteException(String.format("Invalid user: '%s'",
             emailAddress));
 
       case InvalidRequest:
-        throw new ServiceRemoteException(String.format(
-            Strings.InvalidAutodiscoverRequest, response
+        throw new ServiceRemoteException(String.format("Invalid Autodiscover request: '%s'", response
                 .getErrorMessage()));
 
       default:
@@ -3603,7 +3601,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
     // If Autodiscover doesn't return an
     // internal or external EWS URL, throw an exception.
     throw new AutodiscoverLocalException(
-        Strings.AutodiscoverDidNotReturnEwsUrl);
+        "The Autodiscover service didn't return an appropriate URL that can be used for the ExchangeService Autodiscover URL.");
   }
 
   // region Diagnostic Method -- Only used by test
@@ -3639,7 +3637,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   protected void validate() throws ServiceLocalException {
     super.validate();
     if (this.getUrl() == null) {
-      throw new ServiceLocalException(Strings.ServiceUrlMustBeSet);
+      throw new ServiceLocalException("The Url property on the ExchangeService object must be set.");
     }
   }
 

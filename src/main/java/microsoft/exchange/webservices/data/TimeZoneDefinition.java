@@ -305,7 +305,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
   /**
    * Validates this time zone definition.
    *
-   * @throws ServiceLocalException the service local exception
+   * @throws InvalidOrUnsupportedTimeZoneDefinitionException thrown when time zone definition is not valid.
    */
   public void validate() throws ServiceLocalException {
     // The definition must have at least one period, one transition group
@@ -314,14 +314,12 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
     if (this.periods.size() < 1 || this.transitions.size() < 1
         || this.transitionGroups.size() < 1
         || this.transitionGroups.size() != this.transitions.size()) {
-      throw new ServiceLocalException(
-          Strings.InvalidOrUnsupportedTimeZoneDefinition);
+      throw new InvalidOrUnsupportedTimeZoneDefinitionException();
     }
 
     // The first transition must be of type TimeZoneTransition.
     if (this.transitions.get(0).getClass() != TimeZoneTransition.class) {
-      throw new ServiceLocalException(
-          Strings.InvalidOrUnsupportedTimeZoneDefinition);
+      throw new InvalidOrUnsupportedTimeZoneDefinitionException();
     }
 
     // All transitions must be to transition groups and be either
@@ -332,13 +330,11 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
 
       if (transitionType != TimeZoneTransition.class
           && transitionType != AbsoluteDateTransition.class) {
-        throw new ServiceLocalException(
-            Strings.InvalidOrUnsupportedTimeZoneDefinition);
+        throw new InvalidOrUnsupportedTimeZoneDefinitionException();
       }
 
       if (transition.getTargetGroup() == null) {
-        throw new ServiceLocalException(
-            Strings.InvalidOrUnsupportedTimeZoneDefinition);
+        throw new InvalidOrUnsupportedTimeZoneDefinitionException();
       }
     }
 

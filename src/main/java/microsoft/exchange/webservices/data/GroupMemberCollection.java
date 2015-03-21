@@ -276,8 +276,7 @@ public final class GroupMemberCollection extends
    */
   public void removeAt(int index) {
     if (index < 0 || index >= this.getCount()) {
-      throw new IllegalArgumentException("index", new Throwable(
-          Strings.IndexIsOutOfRange));
+      throw new IllegalArgumentException("index", new Throwable("index is out of range."));
 
     }
 
@@ -454,8 +453,8 @@ public final class GroupMemberCollection extends
 
     for (GroupMember groupMember : this.getModifiedItems()) {
       if (!(groupMember.getKey() == null || groupMember.getKey().isEmpty())) {
-        throw new ServiceValidationException(Strings.
-            ContactGroupMemberCannotBeUpdatedWithoutBeingLoadedFirst);
+        throw new ServiceValidationException("The contact group's Members property must be reloaded before "
+                                             + "newly-added members can be updated.");
       }
     }
   }

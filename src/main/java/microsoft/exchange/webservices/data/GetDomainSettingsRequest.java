@@ -75,19 +75,16 @@ class GetDomainSettingsRequest extends AutodiscoverRequest {
     EwsUtilities.validateParam(this.getSettings(), "settings");
 
     if (this.getSettings().size() == 0) {
-      throw new ServiceValidationException(
-          Strings.InvalidAutodiscoverSettingsCount);
+      throw new ServiceValidationException("At least one setting must be requested.");
     }
 
     if (domains.size() == 0) {
-      throw new ServiceValidationException(
-          Strings.InvalidAutodiscoverDomainsCount);
+      throw new ServiceValidationException("At least one domain name must be requested.");
     }
 
     for (String domain : this.getDomains()) {
       if (domain == null || domain.isEmpty()) {
-        throw new ServiceValidationException(
-            Strings.InvalidAutodiscoverDomain);
+        throw new ServiceValidationException("The domain name must be specified.");
       }
     }
   }

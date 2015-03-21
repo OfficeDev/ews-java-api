@@ -233,8 +233,9 @@ public class Appointment extends Item implements ICalendarActionProvider {
           this.getPropertyBag().isPropertyUpdated(AppointmentSchema.Recurrence)) {
         //  If the property isn't in the property bag, throw....
         if (!this.getPropertyBag().contains(AppointmentSchema.StartTimeZone)) {
-          throw new ServiceLocalException(Strings.
-              StartTimeZoneRequired);
+          throw new ServiceLocalException("StartTimeZone required when setting the Start, End, IsAllDayEvent, "
+                                          + "or Recurrence properties.  You must load or assign this property "
+                                          + "before attempting to update the appointment.");
           //getStartTimeZoneRequired());
         }
 
@@ -981,8 +982,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   public void setRecurrence(Recurrence value) throws Exception {
     if (value != null) {
       if (value.isRegenerationPattern()) {
-        throw new ServiceLocalException(
-            Strings.RegenerationPatternsOnlyValidForTasks);
+        throw new ServiceLocalException("Regeneration patterns can only be used with Task items.");
       }
     }
     this.getPropertyBag().setObjectFromPropertyDefinition(

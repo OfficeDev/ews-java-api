@@ -294,8 +294,8 @@ public final class DelegatePermissions extends ComplexProperty {
   protected void validateAddDelegate() throws ServiceValidationException {
     for (DelegateFolderPermission delegateFolderPermission : this.delegateFolderPermissions.values()) {
       if (delegateFolderPermission.getPermissionLevel() == DelegateFolderPermissionLevel.Custom) {
-        throw new ServiceValidationException(Strings.
-            CannotSetDelegateFolderPermissionLevelToCustom);
+        throw new ServiceValidationException("This operation can't be performed because one or more folder "
+                                             + "permission levels were set to Custom.");
       }
     }
   }
@@ -309,8 +309,8 @@ public final class DelegatePermissions extends ComplexProperty {
     for (DelegateFolderPermission delegateFolderPermission : this.delegateFolderPermissions.values()) {
       if (delegateFolderPermission.getPermissionLevel() == DelegateFolderPermissionLevel.Custom &&
           !delegateFolderPermission.isExistingPermissionLevelCustom) {
-        throw new ServiceValidationException(Strings.
-            CannotSetDelegateFolderPermissionLevelToCustom);
+        throw new ServiceValidationException("This operation can't be performed because one or more folder "
+                                             + "permission levels were set to Custom.");
       }
     }
   }

@@ -142,7 +142,7 @@ class SyncFolderItemsRequest extends
         ExchangeVersion.Exchange2010) < 0 &&
         this.syncScope != SyncFolderItemsScope.NormalItems) {
       throw new ServiceVersionException(String.format(
-          Strings.EnumValueIncompatibleWithRequestVersion, this
+          "Enumeration value %s in enumeration type %s is only valid for Exchange version %s or later.", this
               .getSyncScope().toString(), this.getSyncScope()
               .name(), ExchangeVersion.Exchange2010));
     }
@@ -300,7 +300,7 @@ class SyncFolderItemsRequest extends
     if (maxChangesReturned >= 1 && maxChangesReturned <= 512) {
       this.maxChangesReturned = maxChangesReturned;
     } else {
-      throw new ArgumentException(Strings.MaxChangesMustBeBetween1And512);
+      throw new ArgumentException("MaxChangesReturned must be between 1 and 512.");
     }
   }
 

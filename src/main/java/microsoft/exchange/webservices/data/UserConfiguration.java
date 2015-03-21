@@ -191,7 +191,7 @@ public class UserConfiguration {
 
     if (service.getRequestedServerVersion().ordinal() < UserConfiguration.ObjectVersion.ordinal()) {
       throw new ServiceVersionException(String.format(
-          Strings.ObjectTypeIncompatibleWithRequestVersion, this
+          "The object type %s is only valid for Exchange Server version %s or later versions.", this
               .getClass().getName(), UserConfiguration.ObjectVersion));
     }
 
@@ -371,7 +371,7 @@ public class UserConfiguration {
 
     if (!this.isNew) {
       throw new InvalidOperationException(
-          Strings.CannotSaveNotNewUserConfiguration);
+          "Calling Save isn't allowed because this user configuration isn't new. To apply local changes to this user configuration, call Update instead.");
     }
 
     this.parentFolderId = parentFolderId;
@@ -408,7 +408,7 @@ public class UserConfiguration {
   public void update() throws Exception {
     if (this.isNew) {
       throw new InvalidOperationException(
-          Strings.CannotUpdateNewUserConfiguration);
+          "This user configuration can't be updated because it's never been saved.");
     }
 
     if (this.isPropertyUpdated(UserConfigurationProperties.BinaryData)
@@ -433,7 +433,7 @@ public class UserConfiguration {
   public void delete() throws Exception {
     if (this.isNew) {
       throw new InvalidOperationException(
-          Strings.DeleteInvalidForUnsavedUserConfiguration);
+          "This user configuration object can't be deleted because it's never been saved.");
     } else {
       this.service
           .deleteUserConfiguration(this.name, this.parentFolderId);
@@ -662,8 +662,7 @@ public class UserConfiguration {
   private void validatePropertyAccess(UserConfigurationProperties property)
       throws PropertyException {
     if (!this.propertiesAvailableForAccess.contains(property)) {
-      throw new PropertyException(
-          Strings.MustLoadOrAssignPropertyBeforeAccess, property
+      throw new PropertyException("You must load or assign this property before you can read its value.", property
           .toString());
     }
   }

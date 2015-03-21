@@ -88,9 +88,8 @@ public final class AvailabilityOptions {
    */
   protected void validate(long timeWindow) throws Exception {
     if (this.mergedFreeBusyInterval > timeWindow) {
-      throw new IllegalArgumentException(String.format("%s,%s",
-          Strings.MergedFreeBusyIntervalMustBeSmallerThanTimeWindow,
-          "MergedFreeBusyInterval"));
+      throw new IllegalArgumentException(
+          "MergedFreeBusyInterval must be smaller than the specified time window.");
     }
 
     EwsUtilities.validateParamAllowNull(this.detailedSuggestionsWindow,
@@ -193,8 +192,7 @@ public final class AvailabilityOptions {
    */
   public void setMergedFreeBusyInterval(int value) {
     if (value < 5 || value > 1440) {
-      throw new IllegalArgumentException(String.format("%s,%s,%s,%s",
-          Strings.InvalidPropertyValueNotInRange,
+      throw new IllegalArgumentException(String.format("%s,%s,%s,%s", "%s must be between %d and %d.",
           "MergedFreeBusyInterval", 5, 1440));
     }
 
@@ -239,8 +237,7 @@ public final class AvailabilityOptions {
    */
   public void setGoodSuggestionThreshold(int value) {
     if (value < 1 || value > 49) {
-      throw new IllegalArgumentException(String.format(
-          Strings.InvalidPropertyValueNotInRange,
+      throw new IllegalArgumentException(String.format("%s must be between %d and %d.",
           "GoodSuggestionThreshold", 1, 49));
     }
 
@@ -265,8 +262,7 @@ public final class AvailabilityOptions {
    */
   public void setMaximumSuggestionsPerDay(int value) {
     if (value < 0 || value > 48) {
-      throw new IllegalArgumentException(String.format("%s,%s,%s,%s",
-          Strings.InvalidPropertyValueNotInRange,
+      throw new IllegalArgumentException(String.format("%s,%s,%s,%s", "%s must be between %d and %d.",
           "MaximumSuggestionsPerDay", 0, 48));
     }
 
@@ -291,8 +287,7 @@ public final class AvailabilityOptions {
    */
   public void setMaximumNonWorkHoursSuggestionsPerDay(int value) {
     if (value < 0 || value > 48) {
-      throw new IllegalArgumentException(String.format(
-          Strings.InvalidPropertyValueNotInRange,
+      throw new IllegalArgumentException(String.format("%s must be between %d and %d.",
           "MaximumNonWorkHoursSuggestionsPerDay", 0, 48));
     }
 
@@ -317,8 +312,7 @@ public final class AvailabilityOptions {
    */
   public void setMeetingDuration(int value) {
     if (value < 30 || value > 1440) {
-      throw new IllegalArgumentException(String.format("%s,%s,%s,%s",
-          Strings.InvalidPropertyValueNotInRange, "MeetingDuration",
+      throw new IllegalArgumentException(String.format("%s,%s,%s,%s", "%s must be between %d and %d.", "MeetingDuration",
           30, 1440));
     }
 

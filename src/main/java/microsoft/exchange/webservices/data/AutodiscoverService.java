@@ -186,7 +186,9 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
   private boolean defaultAutodiscoverRedirectionUrlValidationCallback(
       String redirectionUrl) throws AutodiscoverLocalException {
     throw new AutodiscoverLocalException(String.format(
-        Strings.AutodiscoverRedirectBlocked, redirectionUrl));
+        "Autodiscover blocked a potentially insecure redirection to %s. To allow Autodiscover to follow the "
+        + "redirection, use the AutodiscoverUrl(string, AutodiscoverRedirectionUrlValidationCallback) "
+        + "overload.", redirectionUrl));
   }
 
   // Legacy Autodiscover
@@ -513,7 +515,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
     scpUrlCount = outParamInt.getParam();
     if (urls.size() == 0) {
       throw new ServiceValidationException(
-          Strings.AutodiscoverServiceRequestRequiresDomainOrUrl);
+          "This Autodiscover request requires that either the Domain or Url be specified.");
     }
 
     // Assume caller is not inside the Intranet, regardless of whether SCP
@@ -567,8 +569,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
 
               break;
             } else {
-              throw new AutodiscoverLocalException(
-                  Strings.MaximumRedirectionHopsExceeded);
+              throw new MaximumRedirectionHopsExceededException();
             }
           case RedirectAddress:
             if (currentHop.getParam() < AutodiscoverMaxRedirections) {
@@ -597,8 +598,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
                   redirectionEmailAddresses,
                   currentHop);
             } else {
-              throw new AutodiscoverLocalException(
-                  Strings.MaximumRedirectionHopsExceeded);
+              throw new MaximumRedirectionHopsExceededException();
             }
           case Error:
             // Don't treat errors from an SCP-based Autodiscover service
@@ -614,11 +614,10 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
                           "as inconclusive.");
 
               delayedException = new AutodiscoverRemoteException(
-                  Strings.AutodiscoverError, settings.getError());
+                  "The Autodiscover service returned an error.", settings.getError());
               currentUrlIndex++;
             } else {
-              throw new AutodiscoverRemoteException(
-                  Strings.AutodiscoverError, settings.getError());
+              throw new AutodiscoverRemoteException("The Autodiscover service returned an error.", settings.getError());
             }
             break;
           default:
@@ -706,7 +705,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
         throw delayedException;
       }
 
-      throw new AutodiscoverLocalException(Strings.AutodiscoverCouldNotBeLocated);
+      throw new AutodiscoverLocalException("The Autodiscover service couldn't be located.");
     }
   }
 
@@ -784,8 +783,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
             case Success:
               return true;
             case Error:
-              throw new AutodiscoverRemoteException(
-                  Strings.AutodiscoverError, settings.getParam()
+              throw new AutodiscoverRemoteException("The Autodiscover service returned an error.", settings.getParam()
                   .getError());
             case RedirectAddress:
               // If this email address was already tried,
@@ -927,7 +925,8 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
 
     // Cannot call legacy Autodiscover service with WindowsLive and other WSSecurity-based credentials
     if ((this.getCredentials() != null) && (this.getCredentials() instanceof WSSecurityBasedCredentials)) {
-      throw new AutodiscoverLocalException(Strings.WLIDCredentialsCannotBeUsedWithLegacyAutodiscover);
+      throw new AutodiscoverLocalException(
+          "WindowsLiveCredentials can't be used with this Autodiscover endpoint.");
     }
 
     OutlookConfigurationSettings settings = this.getLegacyUserSettings(
@@ -996,8 +995,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       }
     }
 
-    throw new AutodiscoverLocalException(
-        Strings.AutodiscoverCouldNotBeLocated);
+    throw new AutodiscoverLocalException("The Autodiscover service couldn't be located.");
   }
 
   /**
@@ -1056,7 +1054,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
     if (this.getRequestedServerVersion().compareTo(
         MinimumRequestVersionForAutoDiscoverSoapService) < 0) {
       throw new ServiceVersionException(String.format(
-          Strings.AutodiscoverServiceIncompatibleWithRequestVersion,
+          "The Autodiscover service only supports %s or a later version.",
           MinimumRequestVersionForAutoDiscoverSoapService));
     }
 
@@ -1099,7 +1097,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       scpHostCount = outParam.getParam();
       if (hosts.size() == 0) {
         throw new ServiceValidationException(
-            Strings.AutodiscoverServiceRequestRequiresDomainOrUrl);
+            "This Autodiscover request requires that either the Domain or Url be specified.");
       }
 
       for (int currentHostIndex = 0; currentHostIndex < hosts.size(); currentHostIndex++) {
@@ -1167,8 +1165,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
 
         return response;
       } else {
-        throw new AutodiscoverLocalException(
-            Strings.AutodiscoverCouldNotBeLocated);
+        throw new AutodiscoverLocalException("The Autodiscover service couldn't be located.");
       }
     }
   }
@@ -1216,8 +1213,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
         "Maximum number of redirection hops %d exceeded",
         AutodiscoverMaxRedirections));
 
-    throw new AutodiscoverLocalException(
-        Strings.MaximumRedirectionHopsExceeded);
+    throw new MaximumRedirectionHopsExceededException();
   }
 
   /**
@@ -1286,8 +1282,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
         "Maximum number of redirection hops %d exceeded",
         AutodiscoverMaxRedirections));
 
-    throw new AutodiscoverLocalException(
-        Strings.MaximumRedirectionHopsExceeded);
+    throw new MaximumRedirectionHopsExceededException();
   }
 
   /**
@@ -1304,7 +1299,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       return autodiscoverUrl;
     } else {
       throw new AutodiscoverLocalException(
-          Strings.NoSoapOrWsSecurityEndpointAvailable);
+          "No appropriate Autodiscover SOAP or WS-Security endpoint is available.");
     }
   }
 
@@ -1538,7 +1533,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
     this.traceMessage(TraceFlags.AutodiscoverConfiguration,
         String.format("Maximum number of redirection hops %d exceeded", AutodiscoverMaxRedirections));
 
-    throw new AutodiscoverLocalException(Strings.MaximumRedirectionHopsExceeded);
+    throw new MaximumRedirectionHopsExceededException();
   }
 
   /**
@@ -1818,13 +1813,11 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
     requestedSettings.addAll(Arrays.asList(userSettingNames));
 
     if (userSmtpAddress == null || userSmtpAddress.isEmpty()) {
-      throw new ServiceValidationException(
-          Strings.InvalidAutodiscoverSmtpAddress);
+      throw new ServiceValidationException("A valid SMTP address must be specified.");
     }
 
     if (requestedSettings.size() == 0) {
-      throw new ServiceValidationException(
-          Strings.InvalidAutodiscoverSettingsCount);
+      throw new ServiceValidationException("At least one setting must be requested.");
     }
 
     if (this.getRequestedServerVersion().compareTo(MinimumRequestVersionForAutoDiscoverSoapService) < 0) {
@@ -1851,7 +1844,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
       UserSettingName... userSettingNames) throws Exception {
     if (this.getRequestedServerVersion().compareTo(MinimumRequestVersionForAutoDiscoverSoapService) < 0) {
       throw new ServiceVersionException(
-          String.format(Strings.AutodiscoverServiceIncompatibleWithRequestVersion,
+          String.format("The Autodiscover service only supports %s or a later version.",
               MinimumRequestVersionForAutoDiscoverSoapService));
     }
     List<String> smtpAddresses = new ArrayList<String>();

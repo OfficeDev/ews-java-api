@@ -89,8 +89,7 @@ public abstract class Attachment extends ComplexProperty {
    */
   protected void throwIfThisIsNotNew() {
     if (!this.isNew()) {
-      throw new UnsupportedOperationException(
-          Strings.AttachmentCannotBeUpdated);
+      throw new UnsupportedOperationException("Attachments can't be updated.");
     }
   }
 

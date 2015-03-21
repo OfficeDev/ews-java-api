@@ -38,7 +38,6 @@ import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
-
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
@@ -50,6 +49,7 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.EnumSet;
@@ -258,7 +258,7 @@ public abstract class ExchangeServiceBase implements Closeable {
       boolean allowAutoRedirect) throws ServiceLocalException, URISyntaxException {
     // Verify that the protocol is something that we can handle
     if (!url.getScheme().equalsIgnoreCase("HTTP") && !url.getScheme().equalsIgnoreCase("HTTPS")) {
-      String strErr = String.format(Strings.UnsupportedWebProtocol, url.getScheme());
+      String strErr = String.format("Protocol %s isn't supported for service requests.", url.getScheme());
       throw new ServiceLocalException(strErr);
     }
 
@@ -292,7 +292,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     request.setUseDefaultCredentials(useDefaultCredentials);
     if (!useDefaultCredentials) {
       if (credentials == null) {
-        throw new ServiceLocalException(Strings.CredentialsRequired);
+        throw new ServiceLocalException("Credentials are required to make a service request.");
       }
 
       // Make sure that credentials have been authenticated if required
@@ -328,7 +328,7 @@ public abstract class ExchangeServiceBase implements Closeable {
         accountUnlockUrl = new URI(location);
       }
 
-      final String message = String.format(Strings.AccountIsLocked, accountUnlockUrl);
+      final String message = String.format("This account is locked. Visit %s to unlock it.", accountUnlockUrl);
       this.traceMessage(responseTraceFlag, message);
       throw new AccountIsLockedException(message, accountUnlockUrl, webException);
     }
@@ -462,7 +462,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     // E14:302056 -- Allow clients to add HTTP request headers with 'X-' prefix but no others.
     for (Map.Entry<String, String> key : this.httpHeaders.entrySet()) {
       if (!key.getKey().startsWith(ExtendedHeaderPrefix)) {
-        throw new ServiceValidationException(String.format(Strings.CannotAddRequestHeader, key));
+        throw new ServiceValidationException(String.format("HTTP header '%s' isn't permitted. Only HTTP headers with the 'X-' prefix are permitted.", key));
       }
     }
   }
@@ -646,7 +646,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    */
   public void setTimeout(int timeout) {
     if (timeout < 1) {
-      throw new IllegalArgumentException(Strings.TimeoutMustBeGreaterThanZero);
+      throw new IllegalArgumentException("Timeout must be greater than zero.");
     }
     this.timeout = timeout;
   }

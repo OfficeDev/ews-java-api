@@ -191,8 +191,7 @@ public abstract class SearchFilter extends ComplexProperty {
     protected void internalValidate() throws ServiceValidationException {
       super.internalValidate();
       if ((this.value == null) || this.value.isEmpty()) {
-        throw new ServiceValidationException(
-            Strings.ValuePropertyMustBeSet);
+        throw new ServiceValidationException("The Value property must be set.");
       }
     }
 
@@ -818,8 +817,7 @@ public abstract class SearchFilter extends ComplexProperty {
     @Override
     protected void internalValidate() throws ServiceValidationException {
       if (this.searchFilter == null) {
-        throw new ServiceValidationException(
-            Strings.SearchFilterMustBeSet);
+        throw new ServiceValidationException("The SearchFilter property must be set.");
       }
     }
 
@@ -947,8 +945,7 @@ public abstract class SearchFilter extends ComplexProperty {
     @Override
     protected void internalValidate() throws ServiceValidationException {
       if (this.propertyDefinition == null) {
-        throw new ServiceValidationException(
-            Strings.PropertyDefinitionPropertyMustBeSet);
+        throw new ServiceValidationException("The PropertyDefinition property must be set.");
       }
     }
 
@@ -1064,7 +1061,7 @@ public abstract class SearchFilter extends ComplexProperty {
 
       if (this.otherPropertyDefinition == null && this.value == null) {
         throw new ServiceValidationException(
-            Strings.EqualityComparisonFilterIsInvalid);
+            "Either the OtherPropertyDefinition or the Value properties must be set.");
       } else if (value != null) {
         // All objects implement Object.
         // Value types that don't implement Object must implement
@@ -1073,8 +1070,7 @@ public abstract class SearchFilter extends ComplexProperty {
         if (!((value instanceof Object) || (value instanceof ISearchStringProvider))) {
           throw new ServiceValidationException(
               String
-                  .format(
-                      Strings.SearchFilterComparisonValueTypeIsNotSupported,
+                  .format("Values of type '%s' cannot be as comparison values in search filters.",
                       value.getClass().getName()));
         }
       }
@@ -1276,8 +1272,7 @@ public abstract class SearchFilter extends ComplexProperty {
         try {
           this.searchFilters.get(i).internalValidate();
         } catch (ServiceValidationException e) {
-          throw new ServiceValidationException(String.format(
-              Strings.SearchFilterAtIndexIsInvalid, i),
+          throw new ServiceValidationException(String.format("The search filter at index %d is invalid.", i),
               e);
         }
       }
@@ -1439,8 +1434,8 @@ public abstract class SearchFilter extends ComplexProperty {
      */
     public void removeAt(int index) {
       if (index < 0 || index >= this.getCount()) {
-        throw new IllegalArgumentException("index", new Throwable(
-            Strings.IndexIsOutOfRange));
+        throw new IllegalArgumentException(
+            String.format("index %d is out of range [0..%d[.", index, this.getCount()));
       }
 
       this.searchFilters.get(index).removeChangeEvent(this);
@@ -1466,8 +1461,9 @@ public abstract class SearchFilter extends ComplexProperty {
      */
     public SearchFilter getSearchFilter(int index) {
       if (index < 0 || index >= this.getCount()) {
-        throw new IllegalArgumentException(Strings.IndexIsOutOfRange
-            + ":" + index);
+        throw new IllegalArgumentException(
+            String.format("index %d is out of range [0..%d[.", index, this.getCount())
+        );
       }
       return this.searchFilters.get(index);
     }
@@ -1480,8 +1476,9 @@ public abstract class SearchFilter extends ComplexProperty {
      */
     public void setSearchFilter(int index, SearchFilter searchFilter) {
       if (index < 0 || index >= this.getCount()) {
-        throw new IllegalArgumentException(Strings.IndexIsOutOfRange
-            + ":" + index);
+        throw new IllegalArgumentException(
+            String.format("index %d is out of range [0..%d[.", index, this.getCount())
+        );
       }
       this.searchFilters.add(index, searchFilter);
     }

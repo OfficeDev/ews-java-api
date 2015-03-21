@@ -689,20 +689,19 @@ public final class UserConfigurationDictionary extends ComplexProperty
       if (dictionaryObjectAsArray.length > 0) {
         for (Object arrayElement : dictionaryObjectAsArray) {
           if (arrayElement == null) {
-            throw new ServiceLocalException(
-                Strings.NullStringArrayElementInvalid);
+            throw new ServiceLocalException("The array contains at least one null element.");
           }
         }
       } else {
-        throw new ServiceLocalException(Strings.ZeroLengthArrayInvalid);
+        throw new ServiceLocalException("The array must contain at least one element.");
       }
     } else if (dictionaryObjectAsArray instanceof Byte[]) {
       if (dictionaryObjectAsArray.length <= 0) {
-        throw new ServiceLocalException(Strings.ZeroLengthArrayInvalid);
+        throw new ServiceLocalException("The array must contain at least one element.");
       }
     } else {
       throw new ServiceLocalException(String.format(
-          Strings.ObjectTypeNotSupported, dictionaryObjectAsArray
+          "Objects of type %s can't be added to the dictionary. The following types are supported: string array, byte array, boolean, byte, DateTime, integer, long, string, unsigned integer, and unsigned long.", dictionaryObjectAsArray
               .getClass()));
     }
   }
@@ -731,7 +730,8 @@ public final class UserConfigurationDictionary extends ComplexProperty
 
     if (!isValidType) {
       throw new ServiceLocalException(
-          String.format(Strings.ObjectTypeNotSupported, (theObject != null ?
+          String.format(
+              "Objects of type %s can't be added to the dictionary. The following types are supported: string array, byte array, boolean, byte, DateTime, integer, long, string, unsigned integer, and unsigned long.", (theObject != null ?
               theObject.getClass().toString() : "null")));
     }
   }

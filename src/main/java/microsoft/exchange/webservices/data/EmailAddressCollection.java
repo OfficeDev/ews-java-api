@@ -127,8 +127,9 @@ public final class EmailAddressCollection extends
    */
   public void removeAt(int index) {
     if (index < 0 || index >= this.getCount()) {
-      throw new IllegalArgumentException("Argument \'index\' : " +
-          Strings.IndexIsOutOfRange);
+      throw new IllegalArgumentException(
+          String.format("index %d is out of range [0..%d[.", index, this.getCount())
+      );
     }
 
     this.internalRemoveAt(index);

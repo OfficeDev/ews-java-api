@@ -62,7 +62,7 @@ public final class FolderIdCollection extends
   public void add(FolderId folderId) throws Exception {
     EwsUtilities.validateParam(folderId, "folderId");
     if (this.contains(folderId)) {
-      throw new IllegalArgumentException(Strings.IdAlreadyInList);
+      throw new IllegalArgumentException("The ID is already in the list.");
     }
     this.internalAdd(folderId);
   }
@@ -87,7 +87,7 @@ public final class FolderIdCollection extends
   public FolderId add(WellKnownFolderName folderName) {
     FolderId folderId = new FolderId(folderName);
     if (this.contains(folderId)) {
-      throw new IllegalArgumentException(Strings.IdAlreadyInList);
+      throw new IllegalArgumentException("The ID is already in the list.");
     }
     this.internalAdd(folderId);
     return folderId;
@@ -107,7 +107,7 @@ public final class FolderIdCollection extends
    */
   public void removeAt(int index) {
     if (index < 0 || index >= this.getCount()) {
-      throw new IndexOutOfBoundsException(Strings.IndexIsOutOfRange);
+      throw new IndexOutOfBoundsException("index is out of range.");
     }
     this.internalRemoveAt(index);
   }

@@ -163,7 +163,7 @@ public class ContactGroup extends Item {
     // protocol for Item.Subject.
     // Setting Subject out of sync with DisplayName breaks interop with OLK.
     // See E14:70417, 65663, 6529.
-    throw new ServiceObjectPropertyException(Strings.PropertyIsReadOnly,
+    throw new ServiceObjectPropertyException("This property is read-only and can't be set.",
         ContactGroupSchema.Subject);
   }
 }
