@@ -107,7 +107,7 @@ abstract class DelegateManagementRequestBase<TResponse extends DelegateManagemen
    * @throws Exception the exception
    */
   public TResponse execute() throws Exception {
-    TResponse serviceResponse = (TResponse) this.internalExecute();
+    TResponse serviceResponse = internalExecute();
     serviceResponse.throwIfNecessary();
     return serviceResponse;
   }

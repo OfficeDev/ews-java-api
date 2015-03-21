@@ -279,7 +279,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getFileAs() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.FileAs);
 
   }
@@ -303,8 +303,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public FileAsMapping getFileAsMapping() throws ServiceLocalException {
-    return (FileAsMapping) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ContactSchema.FileAsMapping);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.FileAsMapping);
   }
 
   /**
@@ -325,7 +324,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getDisplayName() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.DisplayName);
   }
 
@@ -347,7 +346,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getGivenName() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.GivenName);
   }
 
@@ -369,7 +368,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getInitials() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.Initials);
   }
 
@@ -391,7 +390,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getMiddleName() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.MiddleName);
   }
 
@@ -413,7 +412,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getNickName() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.NickName);
   }
 
@@ -435,7 +434,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public CompleteName getCompleteName() throws ServiceLocalException {
-    return (CompleteName) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.CompleteName);
   }
 
@@ -446,7 +445,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getCompanyName() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.CompanyName);
   }
 
@@ -471,8 +470,7 @@ public class Contact extends Item {
    */
   public EmailAddressDictionary getEmailAddresses()
       throws ServiceLocalException {
-    return (EmailAddressDictionary) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ContactSchema.EmailAddresses);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.EmailAddresses);
   }
 
   /**
@@ -485,9 +483,7 @@ public class Contact extends Item {
    */
   public PhysicalAddressDictionary getPhysicalAddresses()
       throws ServiceLocalException {
-    return (PhysicalAddressDictionary) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            ContactSchema.PhysicalAddresses);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.PhysicalAddresses);
   }
 
   /**
@@ -500,7 +496,7 @@ public class Contact extends Item {
    */
   public PhoneNumberDictionary getPhoneNumbers()
       throws ServiceLocalException {
-    return (PhoneNumberDictionary) this.getPropertyBag()
+    return getPropertyBag()
         .getObjectFromPropertyDefinition(ContactSchema.PhoneNumbers);
   }
 
@@ -511,7 +507,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getAssistantName() throws ServiceLocalException {
-    return (String) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.AssistantName);
   }
 
@@ -533,7 +529,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Date getBirthday() throws ServiceLocalException {
-    return (Date) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.Birthday);
 
   }
@@ -556,7 +552,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getBusinessHomePage() throws ServiceLocalException {
-    return (String) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.BusinessHomePage);
 
   }
@@ -579,9 +575,8 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public StringList getChildren() throws ServiceLocalException {
-    return (StringList) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.Children);
-
   }
 
   /**
@@ -602,9 +597,8 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public StringList getCompanies() throws ServiceLocalException {
-    return (StringList) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.Companies);
-
   }
 
   /**
@@ -625,7 +619,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public ContactSource getContactSource() throws ServiceLocalException {
-    return (ContactSource) getPropertyBag()
+    return getPropertyBag()
         .getObjectFromPropertyDefinition(ContactSchema.ContactSource);
   }
 
@@ -636,7 +630,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getDepartment() throws ServiceLocalException {
-    return (String) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.Department);
   }
 
@@ -658,7 +652,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getGeneration() throws ServiceLocalException {
-    return (String) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.Generation);
   }
 
@@ -682,8 +676,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public ImAddressDictionary getImAddresses() throws ServiceLocalException {
-    return (ImAddressDictionary) getPropertyBag()
-        .getObjectFromPropertyDefinition(ContactSchema.ImAddresses);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.ImAddresses);
   }
 
   /**
@@ -693,7 +686,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getJobTitle() throws ServiceLocalException {
-    return (String) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.JobTitle);
   }
 
@@ -715,7 +708,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getManager() throws ServiceLocalException {
-    return (String) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.Manager);
   }
 
@@ -737,7 +730,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getMileage() throws ServiceLocalException {
-    return (String) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.Mileage);
   }
 
@@ -759,7 +752,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getOfficeLocation() throws ServiceLocalException {
-    return (String) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.OfficeLocation);
   }
 
@@ -784,9 +777,8 @@ public class Contact extends Item {
    */
   public PhysicalAddressIndex getPostalAddressIndex()
       throws ServiceLocalException {
-    return (PhysicalAddressIndex) getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            ContactSchema.PostalAddressIndex);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ContactSchema.PostalAddressIndex);
   }
 
   /**
@@ -808,7 +800,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getProfession() throws ServiceLocalException {
-    return (String) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.Profession);
   }
 
@@ -830,7 +822,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getSpouseName() throws ServiceLocalException {
-    return (String) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.SpouseName);
   }
 
@@ -852,7 +844,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getSurname() throws ServiceLocalException {
-    return (String) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.Surname);
   }
 
@@ -874,7 +866,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Date getWeddingAnniversary() throws ServiceLocalException {
-    return (Date) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.WeddingAnniversary);
   }
 
@@ -897,7 +889,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getHasPicture() throws ServiceLocalException {
-    return (Boolean) getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ContactSchema.HasPicture);
   }
 
@@ -905,14 +897,14 @@ public class Contact extends Item {
    * Gets the funn phonetic name from the directory
    */
   public String getPhoneticFullName() throws Exception {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.PhoneticFullName);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.PhoneticFullName);
   }
 
   /**
    * Gets the funn phonetic name from the directory
    */
   public String getPhoneticFirstName() throws Exception {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.PhoneticFirstName);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.PhoneticFirstName);
   }
 
   /**
@@ -921,7 +913,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException
    */
   public String getPhoneticLastName() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.PhoneticLastName);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.PhoneticLastName);
   }
 
   /**
@@ -930,7 +922,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException
    */
   public String getAlias() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.Alias);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.Alias);
   }
 
   /**
@@ -939,7 +931,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException
    */
   public String getNotes() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.Notes);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.Notes);
   }
 
   /**
@@ -948,7 +940,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException
    */
   public byte[] getDirectoryPhoto() throws ServiceLocalException {
-    return (byte[]) this.getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.Photo);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.Photo);
   }
 
   /**
@@ -957,12 +949,9 @@ public class Contact extends Item {
    * @throws ServiceLocalException
    */
   public byte[][] getUserSMIMECertificate() throws ServiceLocalException {
-
-    {
-      ByteArrayArray array = (ByteArrayArray) this.getPropertyBag()
-          .getObjectFromPropertyDefinition(ContactSchema.UserSMIMECertificate);
-      return array.getContent();
-    }
+    ByteArrayArray array = this.getPropertyBag()
+        .getObjectFromPropertyDefinition(ContactSchema.UserSMIMECertificate);
+    return array.getContent();
   }
 
   /**
@@ -971,12 +960,9 @@ public class Contact extends Item {
    * @throws ServiceLocalException
    */
   public byte[][] getMSExchangeCertificate() throws ServiceLocalException {
-
-    {
-      ByteArrayArray array = (ByteArrayArray) this.getPropertyBag()
+      ByteArrayArray array = getPropertyBag()
           .getObjectFromPropertyDefinition(ContactSchema.MSExchangeCertificate);
       return array.getContent();
-    }
   }
 
   /**
@@ -985,7 +971,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException
    */
   public String getDirectoryId() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.DirectoryId);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.DirectoryId);
   }
 
   /**
@@ -994,7 +980,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException
    */
   public EmailAddress getManagerMailbox() throws ServiceLocalException {
-    return (EmailAddress) this.getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.ManagerMailbox);
+    return getPropertyBag().getObjectFromPropertyDefinition(ContactSchema.ManagerMailbox);
   }
 
   /**
@@ -1003,7 +989,7 @@ public class Contact extends Item {
    * @throws ServiceLocalException
    */
   public EmailAddressCollection getDirectReports() throws ServiceLocalException {
-    return (EmailAddressCollection) this.getPropertyBag()
+    return getPropertyBag()
         .getObjectFromPropertyDefinition(ContactSchema.DirectReports);
   }
 }

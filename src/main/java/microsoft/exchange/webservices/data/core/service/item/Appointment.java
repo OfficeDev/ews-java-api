@@ -615,7 +615,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Date getStart() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.Start);
   }
 
@@ -637,7 +637,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Date getEnd() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.End);
   }
 
@@ -659,7 +659,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   public Date getOriginalStart() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.OriginalStart);
   }
 
@@ -671,7 +671,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsAllDayEvent() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.IsAllDayEvent);
   }
 
@@ -695,9 +695,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    */
   public LegacyFreeBusyStatus getLegacyFreeBusyStatus()
       throws ServiceLocalException {
-    return (LegacyFreeBusyStatus) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.LegacyFreeBusyStatus);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        AppointmentSchema.LegacyFreeBusyStatus);
   }
 
   /**
@@ -719,7 +718,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public String getLocation() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.Location);
   }
 
@@ -744,7 +743,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public String getWhen() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.When);
   }
 
@@ -755,7 +754,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsMeeting() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.IsMeeting);
   }
 
@@ -766,7 +765,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsCancelled() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.IsCancelled);
   }
 
@@ -777,7 +776,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsRecurring() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.IsRecurring);
   }
 
@@ -789,7 +788,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getMeetingRequestWasSent() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.MeetingRequestWasSent);
   }
 
@@ -801,7 +800,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsResponseRequested() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.IsResponseRequested);
   }
 
@@ -823,9 +822,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public AppointmentType getAppointmentType() throws ServiceLocalException {
-    return (AppointmentType) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.AppointmentType);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        AppointmentSchema.AppointmentType);
   }
 
   /**
@@ -837,9 +835,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    */
   public MeetingResponseType getMyResponseType()
       throws ServiceLocalException {
-    return (MeetingResponseType) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.MyResponseType);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        AppointmentSchema.MyResponseType);
   }
 
   /**
@@ -851,8 +848,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public EmailAddress getOrganizer() throws ServiceLocalException {
-    return (EmailAddress) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(AppointmentSchema.Organizer);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        AppointmentSchema.Organizer);
   }
 
   /**
@@ -863,9 +860,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    */
   public AttendeeCollection getRequiredAttendees()
       throws ServiceLocalException {
-    return (AttendeeCollection) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.RequiredAttendees);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        AppointmentSchema.RequiredAttendees);
   }
 
   /**
@@ -876,9 +872,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    */
   public AttendeeCollection getOptionalAttendees()
       throws ServiceLocalException {
-    return (AttendeeCollection) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.OptionalAttendees);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        AppointmentSchema.OptionalAttendees);
   }
 
   /**
@@ -888,8 +883,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public AttendeeCollection getResources() throws ServiceLocalException {
-    return (AttendeeCollection) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(AppointmentSchema.Resources);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        AppointmentSchema.Resources);
   }
 
   /**
@@ -900,7 +895,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Integer getConflictingMeetingCount() throws ServiceLocalException {
-    return (Integer) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.ConflictingMeetingCount);
   }
 
@@ -912,7 +907,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Integer getAdjacentMeetingCount() throws ServiceLocalException {
-    return (Integer) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.AdjacentMeetingCount);
   }
 
@@ -925,9 +920,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    */
   public ItemCollection<Appointment> getConflictingMeetings()
       throws ServiceLocalException {
-    return (ItemCollection<Appointment>) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.ConflictingMeetings);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        AppointmentSchema.ConflictingMeetings);
   }
 
   /**
@@ -939,8 +933,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    */
   public ItemCollection<Appointment> getAdjacentMeetings()
       throws ServiceLocalException {
-    return (ItemCollection<Appointment>) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
             AppointmentSchema.AdjacentMeetings);
   }
 
@@ -951,7 +944,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public TimeSpan getDuration() throws ServiceLocalException {
-    return (TimeSpan) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.Duration);
   }
 
@@ -962,7 +955,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public String getTimeZone() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.TimeZone);
   }
 
@@ -973,7 +966,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Date getAppointmentReplyTime() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.AppointmentReplyTime);
   }
 
@@ -984,7 +977,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Integer getAppointmentSequenceNumber() throws ServiceLocalException {
-    return (Integer) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.AppointmentSequenceNumber);
   }
 
@@ -995,7 +988,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Integer getAppointmentState() throws ServiceLocalException {
-    return (Integer) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.AppointmentState);
   }
 
@@ -1008,8 +1001,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Recurrence getRecurrence() throws ServiceLocalException {
-    return (Recurrence) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(AppointmentSchema.Recurrence);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        AppointmentSchema.Recurrence);
   }
 
   /**
@@ -1035,9 +1028,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public OccurrenceInfo getFirstOccurrence() throws ServiceLocalException {
-    return (OccurrenceInfo) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.FirstOccurrence);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+          AppointmentSchema.FirstOccurrence);
   }
 
   /**
@@ -1047,9 +1039,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public OccurrenceInfo getLastOccurrence() throws ServiceLocalException {
-    return (OccurrenceInfo) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.LastOccurrence);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+          AppointmentSchema.LastOccurrence);
   }
 
   /**
@@ -1060,9 +1051,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    */
   public OccurrenceInfoCollection getModifiedOccurrences()
       throws ServiceLocalException {
-    return (OccurrenceInfoCollection) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.ModifiedOccurrences);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+          AppointmentSchema.ModifiedOccurrences);
   }
 
   /**
@@ -1073,9 +1063,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    */
   public DeletedOccurrenceInfoCollection getDeletedOccurrences()
       throws ServiceLocalException {
-    return (DeletedOccurrenceInfoCollection) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.DeletedOccurrences);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+          AppointmentSchema.DeletedOccurrences);
   }
 
   /**
@@ -1085,9 +1074,8 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public TimeZoneDefinition getStartTimeZone() throws ServiceLocalException {
-    return (TimeZoneDefinition) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            AppointmentSchema.StartTimeZone);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+          AppointmentSchema.StartTimeZone);
   }
 
   /**
@@ -1109,7 +1097,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public TimeZoneDefinition getEndTimeZone() throws ServiceLocalException {
-    return (TimeZoneDefinition) this.getPropertyBag()
+    return getPropertyBag()
         .getObjectFromPropertyDefinition(AppointmentSchema.EndTimeZone);
   }
 
@@ -1133,7 +1121,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Integer getConferenceType() throws ServiceLocalException {
-    return (Integer) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.ConferenceType);
   }
 
@@ -1156,7 +1144,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getAllowNewTimeProposal() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.AllowNewTimeProposal);
   }
 
@@ -1178,7 +1166,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsOnlineMeeting() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.IsOnlineMeeting);
   }
 
@@ -1201,7 +1189,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public String getMeetingWorkspaceUrl() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.MeetingWorkspaceUrl);
   }
 
@@ -1223,7 +1211,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public String getNetShowUrl() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.NetShowUrl);
   }
 
@@ -1245,7 +1233,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public String getICalUid() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.ICalUid);
   }
 
@@ -1267,7 +1255,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Date getICalRecurrenceId() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.ICalRecurrenceId);
   }
 
@@ -1278,7 +1266,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @throws ServiceLocalException the service local exception
    */
   public Date getICalDateTimeStamp() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.ICalDateTimeStamp);
   }
 }

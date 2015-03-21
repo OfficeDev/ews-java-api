@@ -620,9 +620,8 @@ public class Folder extends ServiceObject {
    */
   public FolderId getId() {
     try {
-      return (FolderId) (this.getPropertyBag()
-          .getObjectFromPropertyDefinition(this
-              .getIdPropertyDefinition()));
+      return getPropertyBag().getObjectFromPropertyDefinition(
+          getIdPropertyDefinition());
     } catch (ServiceLocalException e) {
       e.printStackTrace();
       return null;
@@ -636,8 +635,8 @@ public class Folder extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public FolderId getParentFolderId() throws ServiceLocalException {
-    return (FolderId) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(FolderSchema.ParentFolderId);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        FolderSchema.ParentFolderId);
   }
 
   /**
@@ -661,9 +660,8 @@ public class Folder extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public String getDisplayName() throws ServiceLocalException {
-    return (String) (this.getPropertyBag()
-        .getObjectFromPropertyDefinition(FolderSchema.DisplayName));
-
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        FolderSchema.DisplayName);
   }
 
   /**
@@ -684,7 +682,7 @@ public class Folder extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public String getFolderClass() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         FolderSchema.FolderClass);
   }
 
@@ -722,9 +720,8 @@ public class Folder extends ServiceObject {
   // changed the name of method as another method with same name exists
   public ExtendedPropertyCollection getExtendedPropertiesForService()
       throws ServiceLocalException {
-    return (ExtendedPropertyCollection) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            ServiceObjectSchema.extendedProperties);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ServiceObjectSchema.extendedProperties);
   }
 
   /**
@@ -736,9 +733,8 @@ public class Folder extends ServiceObject {
    */
   public ManagedFolderInformation getManagedFolderInformation()
       throws ServiceLocalException {
-    return (ManagedFolderInformation) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            FolderSchema.ManagedFolderInformation);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        FolderSchema.ManagedFolderInformation);
   }
 
   /**
@@ -749,8 +745,8 @@ public class Folder extends ServiceObject {
    * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   public EnumSet<EffectiveRights> getEffectiveRights() throws ServiceLocalException {
-    return (EnumSet<EffectiveRights>) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(FolderSchema.EffectiveRights);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        FolderSchema.EffectiveRights);
   }
 
   /**
@@ -761,8 +757,8 @@ public class Folder extends ServiceObject {
    */
   public FolderPermissionCollection getPermissions()
       throws ServiceLocalException {
-    return (FolderPermissionCollection) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(FolderSchema.Permissions);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        FolderSchema.Permissions);
   }
 
   /**

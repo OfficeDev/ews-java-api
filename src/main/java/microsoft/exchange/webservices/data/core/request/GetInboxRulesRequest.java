@@ -140,8 +140,7 @@ public final class GetInboxRulesRequest extends SimpleServiceRequestBase<GetInbo
    */
   public GetInboxRulesResponse execute()
       throws ServiceLocalException, Exception {
-    GetInboxRulesResponse serviceResponse =
-        (GetInboxRulesResponse) this.internalExecute();
+    GetInboxRulesResponse serviceResponse = internalExecute();
     serviceResponse.throwIfNecessary();
     return serviceResponse;
   }

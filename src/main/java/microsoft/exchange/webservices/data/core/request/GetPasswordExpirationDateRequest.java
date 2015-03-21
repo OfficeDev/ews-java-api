@@ -26,8 +26,8 @@ package microsoft.exchange.webservices.data.core.request;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.response.GetPasswordExpirationDateResponse;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.response.GetPasswordExpirationDateResponse;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
@@ -98,8 +98,7 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
    * @return Service response.
    */
   public GetPasswordExpirationDateResponse execute() throws Exception {
-    GetPasswordExpirationDateResponse serviceResponse =
-        (GetPasswordExpirationDateResponse) this.internalExecute();
+    GetPasswordExpirationDateResponse serviceResponse = internalExecute();
     serviceResponse.throwIfNecessary();
     return serviceResponse;
   }

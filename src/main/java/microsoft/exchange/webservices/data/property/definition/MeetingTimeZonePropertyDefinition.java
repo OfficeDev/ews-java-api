@@ -80,8 +80,7 @@ public class MeetingTimeZonePropertyDefinition extends PropertyDefinition {
   public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
       boolean isUpdateOperation)
       throws Exception {
-    MeetingTimeZone value = (MeetingTimeZone) propertyBag
-        .getObjectFromPropertyDefinition(this);
+    MeetingTimeZone value = propertyBag.getObjectFromPropertyDefinition(this);
 
     if (value != null) {
       value.writeToXml(writer, this.getXmlElement());

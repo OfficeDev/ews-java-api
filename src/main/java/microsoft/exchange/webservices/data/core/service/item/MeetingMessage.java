@@ -127,9 +127,8 @@ public class MeetingMessage extends EmailMessage {
    */
   public ItemId getAssociatedAppointmentId()
       throws ServiceLocalException {
-    return (ItemId) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            MeetingMessageSchema.AssociatedAppointmentId);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingMessageSchema.AssociatedAppointmentId);
   }
 
   /**
@@ -140,9 +139,8 @@ public class MeetingMessage extends EmailMessage {
    */
   public Boolean getHasBeenProcessed()
       throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            MeetingMessageSchema.HasBeenProcessed);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingMessageSchema.HasBeenProcessed);
   }
 
   /**
@@ -153,9 +151,8 @@ public class MeetingMessage extends EmailMessage {
    */
   public MeetingResponseType getResponseType()
       throws ServiceLocalException {
-    return (MeetingResponseType) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            MeetingMessageSchema.ResponseType);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingMessageSchema.ResponseType);
   }
 
   /**
@@ -165,7 +162,7 @@ public class MeetingMessage extends EmailMessage {
    * @throws ServiceLocalException the service local exception
    */
   public String getICalUid() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         MeetingMessageSchema.ICalUid);
   }
 
@@ -176,7 +173,7 @@ public class MeetingMessage extends EmailMessage {
    * @throws ServiceLocalException the service local exception
    */
   public Date getICalRecurrenceId() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         MeetingMessageSchema.ICalRecurrenceId);
   }
 
@@ -187,7 +184,7 @@ public class MeetingMessage extends EmailMessage {
    * @throws ServiceLocalException the service local exception
    */
   public Date getICalDateTimeStamp() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         MeetingMessageSchema.ICalDateTimeStamp);
   }
 
@@ -198,7 +195,7 @@ public class MeetingMessage extends EmailMessage {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsDelegated() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         MeetingMessageSchema.IsDelegated);
   }
 
@@ -209,7 +206,7 @@ public class MeetingMessage extends EmailMessage {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsOutOfDate() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         MeetingMessageSchema.IsOutOfDate);
   }
 

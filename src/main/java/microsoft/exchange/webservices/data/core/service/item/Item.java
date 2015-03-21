@@ -591,8 +591,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public ItemId getId() throws ServiceLocalException {
-    return (ItemId) this.getPropertyBag().getObjectFromPropertyDefinition(
-        this.getIdPropertyDefinition());
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        getIdPropertyDefinition());
   }
 
   /**
@@ -602,8 +602,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public MimeContent getMimeContent() throws ServiceLocalException {
-    return (MimeContent) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.MimeContent);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.MimeContent);
   }
 
   /**
@@ -624,8 +624,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public FolderId getParentFolderId() throws ServiceLocalException {
-    return (FolderId) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.ParentFolderId);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.ParentFolderId);
   }
 
   /**
@@ -635,8 +635,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public Sensitivity getSensitivity() throws ServiceLocalException {
-    return (Sensitivity) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.Sensitivity);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.Sensitivity);
   }
 
   /**
@@ -657,8 +657,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public AttachmentCollection getAttachments() throws ServiceLocalException {
-    return (AttachmentCollection) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.Attachments);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.Attachments);
   }
 
   /**
@@ -668,7 +668,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public Date getDateTimeReceived() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.DateTimeReceived);
   }
 
@@ -679,8 +679,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public int getSize() throws ServiceLocalException {
-    return ((Integer) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.Size)).intValue();
+    return getPropertyBag().<Integer>getObjectFromPropertyDefinition(ItemSchema.Size);
   }
 
   /**
@@ -690,8 +689,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public StringList getCategories() throws ServiceLocalException {
-    return (StringList) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.Categories);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.Categories);
   }
 
   /**
@@ -712,7 +711,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public String getCulture() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.Culture);
   }
 
@@ -734,8 +733,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public Importance getImportance() throws ServiceLocalException {
-    return (Importance) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.Importance);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.Importance);
   }
 
   /**
@@ -756,7 +755,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public String getInReplyTo() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.InReplyTo);
   }
 
@@ -779,9 +778,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public boolean getIsSubmitted() throws ServiceLocalException {
-    return ((Boolean) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.IsSubmitted))
-        .booleanValue();
+    return getPropertyBag().<Boolean>getObjectFromPropertyDefinition(ItemSchema.IsSubmitted);
   }
 
   /**
@@ -792,9 +789,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public boolean getIsAssociated() throws ServiceLocalException {
-    return ((Boolean) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.IsAssociated))
-        .booleanValue();
+    return getPropertyBag().<Boolean>getObjectFromPropertyDefinition(
+        ItemSchema.IsAssociated);
   }
 
   /**
@@ -805,9 +801,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public boolean getIsDraft() throws ServiceLocalException {
-    return ((Boolean) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.IsDraft))
-        .booleanValue();
+    return getPropertyBag().<Boolean>getObjectFromPropertyDefinition(
+        ItemSchema.IsDraft);
   }
 
   /**
@@ -818,9 +813,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public boolean getIsFromMe() throws ServiceLocalException {
-    return ((Boolean) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.IsFromMe))
-        .booleanValue();
+    return getPropertyBag().<Boolean>getObjectFromPropertyDefinition(
+        ItemSchema.IsFromMe);
   }
 
   /**
@@ -830,9 +824,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public boolean getIsResend() throws ServiceLocalException {
-    return ((Boolean) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.IsResend))
-        .booleanValue();
+    return getPropertyBag().<Boolean>getObjectFromPropertyDefinition(
+        ItemSchema.IsResend);
   }
 
   /**
@@ -843,10 +836,8 @@ public class Item extends ServiceObject {
    * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   public boolean getIsUnmodified() throws ServiceLocalException {
-    return ((Boolean) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.IsUnmodified))
-        .booleanValue();
-
+    return getPropertyBag().<Boolean>getObjectFromPropertyDefinition(
+        ItemSchema.IsUnmodified);
   }
 
   /**
@@ -857,9 +848,8 @@ public class Item extends ServiceObject {
    */
   public InternetMessageHeaderCollection getInternetMessageHeaders()
       throws ServiceLocalException {
-    return (InternetMessageHeaderCollection) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            ItemSchema.InternetMessageHeaders);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.InternetMessageHeaders);
   }
 
   /**
@@ -869,7 +859,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public Date getDateTimeSent() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.DateTimeSent);
   }
 
@@ -880,7 +870,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public Date getDateTimeCreated() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.DateTimeCreated);
   }
 
@@ -893,9 +883,8 @@ public class Item extends ServiceObject {
    */
   public EnumSet<ResponseActions> getAllowedResponseActions()
       throws ServiceLocalException {
-    return (EnumSet<ResponseActions>) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            ItemSchema.AllowedResponseActions);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.AllowedResponseActions);
   }
 
   /**
@@ -905,7 +894,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public Date getReminderDueBy() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.ReminderDueBy);
   }
 
@@ -927,9 +916,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public boolean getIsReminderSet() throws ServiceLocalException {
-    return ((Boolean) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.IsReminderSet))
-        .booleanValue();
+    return getPropertyBag().<Boolean>getObjectFromPropertyDefinition(
+        ItemSchema.IsReminderSet);
   }
 
   /**
@@ -951,9 +939,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public int getReminderMinutesBeforeStart() throws ServiceLocalException {
-    return ((Integer) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            ItemSchema.ReminderMinutesBeforeStart)).intValue();
+    return getPropertyBag().<Integer>getObjectFromPropertyDefinition(
+        ItemSchema.ReminderMinutesBeforeStart);
   }
 
   /**
@@ -974,7 +961,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public String getDisplayCc() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.DisplayCc);
   }
 
@@ -985,7 +972,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public String getDisplayTo() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.DisplayTo);
   }
 
@@ -996,9 +983,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public boolean getHasAttachments() throws ServiceLocalException {
-    return ((Boolean) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.HasAttachments))
-        .booleanValue();
+    return getPropertyBag().<Boolean>getObjectFromPropertyDefinition(
+        ItemSchema.HasAttachments);
   }
 
   /**
@@ -1008,8 +994,7 @@ public class Item extends ServiceObject {
    * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   public MessageBody getBody() throws ServiceLocalException {
-    return (MessageBody) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.Body);
+    return getPropertyBag().getObjectFromPropertyDefinition(ItemSchema.Body);
   }
 
   /**
@@ -1030,7 +1015,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public String getItemClass() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.ItemClass);
   }
 
@@ -1073,7 +1058,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public String getSubject() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.Subject);
   }
 
@@ -1086,7 +1071,7 @@ public class Item extends ServiceObject {
    */
   public String getWebClientReadFormQueryString()
       throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.WebClientReadFormQueryString);
   }
 
@@ -1099,7 +1084,7 @@ public class Item extends ServiceObject {
    */
   public String getWebClientEditFormQueryString()
       throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.WebClientEditFormQueryString);
   }
 
@@ -1112,9 +1097,8 @@ public class Item extends ServiceObject {
   @Override
   public ExtendedPropertyCollection getExtendedProperties()
       throws ServiceLocalException {
-    return (ExtendedPropertyCollection) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            ServiceObjectSchema.extendedProperties);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ServiceObjectSchema.extendedProperties);
   }
 
   /**
@@ -1126,8 +1110,8 @@ public class Item extends ServiceObject {
    */
   public EnumSet<EffectiveRights> getEffectiveRights()
       throws ServiceLocalException {
-    return (EnumSet<EffectiveRights>) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.EffectiveRights);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.EffectiveRights);
   }
 
   /**
@@ -1137,7 +1121,7 @@ public class Item extends ServiceObject {
    * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   public String getLastModifiedName() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.LastModifiedName);
   }
 
@@ -1148,7 +1132,7 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public Date getLastModifiedTime() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         ItemSchema.LastModifiedTime);
   }
 
@@ -1159,8 +1143,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public ConversationId getConversationId() throws ServiceLocalException {
-    return (ConversationId) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.ConversationId);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.ConversationId);
   }
 
   /**
@@ -1171,8 +1155,8 @@ public class Item extends ServiceObject {
    * @throws ServiceLocalException the service local exception
    */
   public UniqueBody getUniqueBody() throws ServiceLocalException {
-    return (UniqueBody) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(ItemSchema.UniqueBody);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.UniqueBody);
   }
 
   /**

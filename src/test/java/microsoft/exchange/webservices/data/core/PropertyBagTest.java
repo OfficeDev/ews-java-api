@@ -27,7 +27,9 @@ import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.exception.ArgumentException;
+import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
 import microsoft.exchange.webservices.data.misc.OutParam;
+import microsoft.exchange.webservices.data.property.definition.IntPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.RecurrencePropertyDefinition;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,9 +46,21 @@ public class PropertyBagTest {
    */
   @Test(expected=ArgumentException.class)
   public void tryGetPropertyType() throws Exception{
-    ExchangeService es = new ExchangeService();
-    ServiceObject owner = new Item(es);
-    PropertyBag pb = new PropertyBag(owner);
+    PropertyBag pb = createPropertyBag();
     pb.tryGetPropertyType(String.class, new RecurrencePropertyDefinition("test", "none", null, ExchangeVersion.Exchange2010_SP2), new OutParam<String>());
   }
+
+  @Test(expected = ServiceObjectPropertyException.class)
+  public void testGetObjectFromPropertyDefinition() throws Exception {
+    PropertyBag pb = createPropertyBag();
+    pb.getObjectFromPropertyDefinition(new IntPropertyDefinition("", "none", ExchangeVersion.Exchange2007_SP1));
+  }
+
+
+  private PropertyBag createPropertyBag() throws Exception {
+    ExchangeService es = new ExchangeService();
+    ServiceObject owner = new Item(es);
+    return new PropertyBag(owner);
+  }
+
 }

@@ -26,8 +26,8 @@ package microsoft.exchange.webservices.data.core.request;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.response.FindConversationResponse;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.response.FindConversationResponse;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
@@ -195,8 +195,7 @@ public final class FindConversationRequest extends SimpleServiceRequestBase<Find
    */
   public FindConversationResponse execute()
       throws ServiceLocalException, Exception {
-    FindConversationResponse serviceResponse =
-        (FindConversationResponse) this.internalExecute();
+    FindConversationResponse serviceResponse = internalExecute();
     serviceResponse.throwIfNecessary();
     return serviceResponse;
   }

@@ -154,9 +154,8 @@ public class SearchFolder extends Folder {
    * @throws Exception the exception
    */
   public SearchFolderParameters getSearchParameters() throws Exception {
-    return (SearchFolderParameters) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            SearchFolderSchema.SearchParameters);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        SearchFolderSchema.SearchParameters);
   }
 
 }

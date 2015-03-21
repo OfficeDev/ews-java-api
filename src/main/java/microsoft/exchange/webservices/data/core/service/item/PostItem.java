@@ -231,7 +231,7 @@ public final class PostItem extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public byte[] getConversationIndex() throws ServiceLocalException {
-    return (byte[]) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         EmailMessageSchema.ConversationIndex);
   }
 
@@ -242,7 +242,7 @@ public final class PostItem extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getConversationTopic() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         EmailMessageSchema.ConversationTopic);
   }
 
@@ -253,8 +253,8 @@ public final class PostItem extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public EmailAddress getFrom() throws ServiceLocalException {
-    return (EmailAddress) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(EmailMessageSchema.From);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        EmailMessageSchema.From);
   }
 
   /**
@@ -275,7 +275,7 @@ public final class PostItem extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getInternetMessageId() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         EmailMessageSchema.InternetMessageId);
   }
 
@@ -286,7 +286,7 @@ public final class PostItem extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsRead() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         EmailMessageSchema.IsRead);
   }
 
@@ -308,7 +308,7 @@ public final class PostItem extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Date getPostedTime() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         PostItemSchema.PostedTime);
   }
 
@@ -319,7 +319,7 @@ public final class PostItem extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getReferences() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         EmailMessageSchema.References);
   }
 
@@ -341,8 +341,8 @@ public final class PostItem extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public EmailAddress getSender() throws ServiceLocalException {
-    return (EmailAddress) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(EmailMessageSchema.Sender);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        EmailMessageSchema.Sender);
   }
 
   /**

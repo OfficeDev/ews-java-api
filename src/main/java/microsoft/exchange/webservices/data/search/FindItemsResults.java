@@ -139,7 +139,7 @@ public final class FindItemsResults<TItem extends Item> implements
    */
   @Override
   public Iterator<TItem> iterator() {
-    return (Iterator<TItem>) this.items.iterator();
+    return items.iterator();
   }
 
 }

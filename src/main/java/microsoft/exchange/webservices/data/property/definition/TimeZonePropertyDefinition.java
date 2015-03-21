@@ -79,10 +79,8 @@ public class TimeZonePropertyDefinition extends PropertyDefinition {
    * @throws Exception                                                 the exception
    */
   public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
-      boolean isUpdateOperation)
-      throws ServiceLocalException, XMLStreamException, ServiceXmlSerializationException, Exception {
-    TimeZoneDefinition timeZoneDefinition = (TimeZoneDefinition) propertyBag
-        .getObjectFromPropertyDefinition(this);
+      boolean isUpdateOperation) throws Exception {
+    TimeZoneDefinition timeZoneDefinition = propertyBag.getObjectFromPropertyDefinition(this);
 
     if (timeZoneDefinition != null) {
       // We emit time zone property only if we have not emitted the time

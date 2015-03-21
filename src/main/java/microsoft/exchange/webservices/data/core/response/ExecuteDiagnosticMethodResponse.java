@@ -27,8 +27,8 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -41,6 +41,7 @@ import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.Namespace;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
+
 import java.util.Iterator;
 
 
@@ -118,7 +119,7 @@ public final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
         Iterator<Attribute> ite = ele.getAttributes();
 
         while (ite.hasNext()) {
-          Attribute attr = (Attribute) ite.next();
+          Attribute attr = ite.next();
           element.setAttribute(attr.getName().getLocalPart(),
               attr.getValue());
         }
