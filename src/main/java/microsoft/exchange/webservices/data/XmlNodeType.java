@@ -33,7 +33,7 @@ public class XmlNodeType implements XMLStreamConstants {
   /**
    * The node type.
    */
-  int nodeType;
+  public int nodeType;
 
   /**
    * Instantiates a new Xml node type.

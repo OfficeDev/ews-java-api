@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
+import microsoft.exchange.webservices.data.autodiscover.responses.AutodiscoverResponse;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.*;

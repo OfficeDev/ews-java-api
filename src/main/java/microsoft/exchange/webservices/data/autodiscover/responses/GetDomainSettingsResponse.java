@@ -21,8 +21,15 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.autodiscover.responses;
 
+import microsoft.exchange.webservices.data.DomainSettingName;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.EwsXmlReader;
+import microsoft.exchange.webservices.data.XmlAttributeNames;
+import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.XmlNamespace;
+import microsoft.exchange.webservices.data.XmlNodeType;
 import microsoft.exchange.webservices.data.autodiscover.DomainSettingError;
 
 import java.util.ArrayList;
@@ -80,7 +87,7 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
    *
    * @param value the new domain
    */
-  protected void setDomain(String value) {
+  public void setDomain(String value) {
     this.domain = value;
   }
 
@@ -171,16 +178,8 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
             this.readSettingFromXml(reader);
           } else {
             EwsUtilities
-                .EwsAssert(
-                    false,
-                    "GetDomainSettingsResponse." +
-                        "LoadDomainSettingsFromXml",
-                    String
-                        .format(
-                            "%s,%s",
-                            "Invalid setting " +
-                                "class '%s' returned",
-                            settingClass));
+                .EwsAssert(false, "GetDomainSettingsResponse." + "LoadDomainSettingsFromXml",
+                           String.format("%s,%s", "Invalid setting " + "class '%s' returned", settingClass));
             break;
           }
         }

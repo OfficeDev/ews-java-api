@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.autodiscover.UserSettingError;
+import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
 
 import javax.xml.stream.XMLStreamException;
 import java.net.URI;

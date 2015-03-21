@@ -21,8 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.autodiscover.responses;
 
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverResponseCollection;
 
 /**
@@ -34,7 +35,7 @@ public final class GetUserSettingsResponseCollection extends
   /**
    * Initializes a new instance of the AutodiscoverResponseCollection class.
    */
-  protected GetUserSettingsResponseCollection() {
+  public GetUserSettingsResponseCollection() {
   }
 
   /**

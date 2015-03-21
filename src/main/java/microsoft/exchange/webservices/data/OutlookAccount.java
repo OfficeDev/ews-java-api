@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.autodiscover.AlternateMailbox;
 import microsoft.exchange.webservices.data.autodiscover.AlternateMailboxCollection;
+import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
 
 import java.util.HashMap;
 import java.util.List;

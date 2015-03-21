@@ -21,8 +21,16 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.autodiscover.responses;
 
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.EwsXmlReader;
+import microsoft.exchange.webservices.data.OutParam;
+import microsoft.exchange.webservices.data.UserSettingName;
+import microsoft.exchange.webservices.data.XmlAttributeNames;
+import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.XmlNamespace;
+import microsoft.exchange.webservices.data.XmlNodeType;
 import microsoft.exchange.webservices.data.autodiscover.AlternateMailboxCollection;
 import microsoft.exchange.webservices.data.autodiscover.ProtocolConnectionCollection;
 import microsoft.exchange.webservices.data.autodiscover.UserSettingError;
@@ -104,7 +112,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
    *
    * @param value the new smtp address
    */
-  protected void setSmtpAddress(String value) {
+  public void setSmtpAddress(String value) {
     this.smtpAddress = value;
   }
 
@@ -120,7 +128,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
   /**
    * Sets the redirectionTarget (URL or email address).
    */
-  protected void setRedirectTarget(String value) {
+  public void setRedirectTarget(String value) {
     this.redirectTarget = value;
   }
 
@@ -215,12 +223,8 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
           } else if (settingClass.equals(XmlElementNames.ProtocolConnectionCollectionSetting)) {
             this.readSettingFromXml(reader);
           } else {
-            EwsUtilities.EwsAssert(false,
-                "GetUserSettingsResponse." +
-                    "LoadUserSettingsFromXml",
-                String.format("%s,%s",
-                    "Invalid setting class '%s' returned",
-                    settingClass));
+            EwsUtilities.EwsAssert(false, "GetUserSettingsResponse." + "LoadUserSettingsFromXml", String
+                                       .format("%s,%s", "Invalid setting class '%s' returned", settingClass));
             break;
           }
         }
