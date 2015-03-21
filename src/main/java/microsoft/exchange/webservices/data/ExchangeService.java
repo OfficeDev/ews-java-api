@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
+import microsoft.exchange.webservices.data.autodiscover.requests.ApplyConversationActionRequest;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;

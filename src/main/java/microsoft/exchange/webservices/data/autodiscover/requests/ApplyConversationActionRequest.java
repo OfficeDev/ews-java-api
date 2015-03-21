@@ -21,7 +21,18 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.autodiscover.requests;
+
+import microsoft.exchange.webservices.data.ConversationAction;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.ExchangeVersion;
+import microsoft.exchange.webservices.data.MultiResponseServiceRequest;
+import microsoft.exchange.webservices.data.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.ServiceResponse;
+import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.XmlNamespace;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +40,7 @@ import java.util.List;
 /**
  * Represents a request to a Apply Conversation Action operation
  */
-final class ApplyConversationActionRequest extends
-    MultiResponseServiceRequest<ServiceResponse> {
+final class ApplyConversationActionRequest extends MultiResponseServiceRequest<ServiceResponse> {
 
   private List<ConversationAction> conversationActions =
       new ArrayList<ConversationAction>();
@@ -83,8 +93,7 @@ final class ApplyConversationActionRequest extends
   protected void validate() throws Exception {
     super.validate();
     EwsUtilities.validateParamCollection(this.
-            conversationActions.iterator(),
-        "conversationActions");
+                                             conversationActions.iterator(), "conversationActions");
     for (int iAction = 0; iAction < this.getConversationActions().size(); iAction++) {
       this.getConversationActions().get(iAction).validate();
     }

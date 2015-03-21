@@ -21,8 +21,28 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.autodiscover.requests;
 
+import microsoft.exchange.webservices.data.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.AutodiscoverResponseException;
+import microsoft.exchange.webservices.data.EWSHttpException;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.EwsXmlReader;
+import microsoft.exchange.webservices.data.ExchangeServerInfo;
+import microsoft.exchange.webservices.data.HttpWebRequest;
+import microsoft.exchange.webservices.data.ServiceLocalException;
+import microsoft.exchange.webservices.data.ServiceRemoteException;
+import microsoft.exchange.webservices.data.ServiceRequestException;
+import microsoft.exchange.webservices.data.ServiceResponse;
+import microsoft.exchange.webservices.data.ServiceResponseException;
+import microsoft.exchange.webservices.data.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.SoapFaultDetails;
+import microsoft.exchange.webservices.data.TraceFlags;
+import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.XmlNamespace;
+import microsoft.exchange.webservices.data.XmlNodeType;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.responses.AutodiscoverResponse;
 
@@ -77,7 +97,7 @@ public abstract class AutodiscoverRequest {
   /**
    * Validates the request.
    *
-   * @throws ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
    * @throws Exception             the exception
    */
   protected void validate() throws ServiceLocalException, Exception {
@@ -437,11 +457,10 @@ public abstract class AutodiscoverRequest {
    *
    * @param requestUrl Request URL.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.ServiceXmlSerializationException    the service xml serialization exception
    */
   protected void writeSoapRequest(URI requestUrl,
-      EwsServiceXmlWriter writer) throws XMLStreamException,
-      ServiceXmlSerializationException {
+      EwsServiceXmlWriter writer) throws XMLStreamException, ServiceXmlSerializationException {
 
     if (writer.isRequireWSSecurityUtilityNamespace()) {
       writer.writeAttributeValue("xmlns",

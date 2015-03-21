@@ -21,8 +21,19 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.autodiscover.requests;
 
+import microsoft.exchange.webservices.data.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.EwsXmlReader;
+import microsoft.exchange.webservices.data.ExchangeServiceBase;
+import microsoft.exchange.webservices.data.ServiceLocalException;
+import microsoft.exchange.webservices.data.ServiceValidationException;
+import microsoft.exchange.webservices.data.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.UserSettingName;
+import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.XmlNamespace;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.responses.AutodiscoverResponse;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponseCollection;
@@ -59,7 +70,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    *
    * @param service the service
    * @param url     the url
-   * @throws ServiceValidationException
+   * @throws microsoft.exchange.webservices.data.ServiceValidationException
    */
   public GetUserSettingsRequest(AutodiscoverService service, URI url) throws ServiceValidationException {
     this(service, url, false);
@@ -190,7 +201,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    * Writes the attributes to XML.
    *
    * @param writer The writer.
-   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
