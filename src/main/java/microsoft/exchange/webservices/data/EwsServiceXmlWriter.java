@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import org.apache.commons.codec.binary.Base64;
 import org.w3c.dom.*;
 
 import javax.xml.stream.XMLOutputFactory;
@@ -115,8 +116,13 @@ class EwsServiceXmlWriter implements IDisposable {
         ISearchStringProvider searchStringProvider =
             (ISearchStringProvider) value;
         str.setParam(searchStringProvider.getSearchString());
-      } else if (value instanceof Integer) {
+      } else if (value instanceof Integer || value instanceof Double || value instanceof Float ||
+                 value instanceof Boolean) {
         str.setParam(value.toString());
+      } else if (value instanceof TimeSpan) {
+        str.setParam(EwsUtilities.getTimeSpanToXSDuration((TimeSpan) value));
+      } else if (value instanceof byte[]) {
+        str.setParam(Base64.encodeBase64String((byte[]) value));
       } else {
         converted = false;
       }
@@ -181,8 +187,7 @@ class EwsServiceXmlWriter implements IDisposable {
    */
   public void writeAttributeValue(String localName, Object value)
       throws ServiceXmlSerializationException {
-    this.writeAttributeValue(localName,
-        false /* alwaysWriteEmptyString */, value);
+    this.writeAttributeValue(localName, false /* alwaysWriteEmptyString */, value);
   }
 
   /**
@@ -478,7 +483,7 @@ class EwsServiceXmlWriter implements IDisposable {
   public void writeBase64ElementValue(byte[] buffer)
       throws XMLStreamException {
 
-    String strValue = Base64.encode(buffer);
+    String strValue = Base64EncoderStream.encode(buffer);
     this.xmlWriter.writeCharacters(strValue);//Base64.encode(buffer));
   }
 
@@ -504,7 +509,7 @@ class EwsServiceXmlWriter implements IDisposable {
       bos.close();
     }
     byte[] bytes = bos.toByteArray();
-    String strValue = Base64.encode(bytes);
+    String strValue = Base64EncoderStream.encode(bytes);
     this.xmlWriter.writeCharacters(strValue);
 
   }

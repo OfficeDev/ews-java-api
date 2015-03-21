@@ -767,7 +767,7 @@ class EwsUtilities {
         }
         return null;
       }
-    } else if (cls.isInstance(Integer.valueOf(0)))
+    } else if (cls.isInstance(Integer.valueOf(0)) || cls.equals(int.class))
     // else if( cls.isInstance(new Integer(0)))
     {
       Object o = null;
@@ -777,7 +777,7 @@ class EwsUtilities {
       DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
       df.setTimeZone(TimeZone.getTimeZone("UTC"));
       return (T) df.parse(value);
-    } else if (cls.isInstance(Boolean.valueOf(false)))
+    } else if (cls.isInstance(Boolean.valueOf(false)) || cls.equals(boolean.class))
     // else if( cls.isInstance(new Boolean(false)))
     {
       Object o = null;
@@ -785,7 +785,7 @@ class EwsUtilities {
       return (T) o;
     } else if (cls.isInstance(new String())) {
       return (T) value;
-    } else if (cls.isInstance(Double.valueOf(0.0))) {
+    } else if (cls.isInstance(Double.valueOf(0.0)) || cls.equals(double.class)) {
       Object o = null;
       o = Double.parseDouble(value);
       return (T) o;
