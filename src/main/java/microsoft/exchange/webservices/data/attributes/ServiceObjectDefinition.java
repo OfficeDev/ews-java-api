@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
  * The Interface ServiceObjectDefinition.
  */
 @Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME) @interface ServiceObjectDefinition {
+@Retention(RetentionPolicy.RUNTIME) public @interface ServiceObjectDefinition {
 
   /**
    * The name of the XML element.

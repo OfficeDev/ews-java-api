@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
  * The Interface EwsEnum.
  */
 @Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME) @interface EwsEnum {
+@Retention(RetentionPolicy.RUNTIME) public @interface EwsEnum {
 
   /**
    * Schema name.
