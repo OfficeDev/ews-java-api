@@ -32,7 +32,7 @@ import java.util.Map;
 /**
  * The Class HttpWebRequest.
  */
-abstract class HttpWebRequest {
+public abstract class HttpWebRequest {
 
   /**
    * The url.

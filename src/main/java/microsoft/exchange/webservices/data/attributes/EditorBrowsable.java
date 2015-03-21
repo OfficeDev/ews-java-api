@@ -21,7 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.attributes;
+
+import microsoft.exchange.webservices.data.EditorBrowsableState;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -32,7 +34,7 @@ import java.lang.annotation.Target;
  * The Interface EditorBrowsable.
  */
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME) @interface EditorBrowsable {
+@Retention(RetentionPolicy.RUNTIME) public @interface EditorBrowsable {
 
   /**
    * State.

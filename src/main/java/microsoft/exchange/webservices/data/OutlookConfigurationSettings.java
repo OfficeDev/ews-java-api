@@ -33,7 +33,7 @@ import java.util.List;
 /**
  * Represents Outlook configuration settings.
  */
-final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
+public final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
 
   /**
    * All user settings that are available from the Outlook provider.
@@ -89,8 +89,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
    *
    * @return The namespace that defines the settings.
    */
-  @Override
-  protected String getNamespace() {
+  @Override public String getNamespace() {
     return "http://schemas.microsoft.com/exchange/" +
         "autodiscover/outlook/responseschema/2006a";
   }
@@ -100,8 +99,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
    *
    * @param redirectUrl The redirect URL.
    */
-  @Override
-  protected void makeRedirectionResponse(URI redirectUrl) {
+  @Override public void makeRedirectionResponse(URI redirectUrl) {
     this.account = new OutlookAccount();
     this.account.setRedirectTarget(redirectUrl.toString());
     this.account.setResponseType(AutodiscoverResponseType.RedirectUrl);
@@ -117,7 +115,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
    * @throws Exception                           the exception
    */
   @Override
-  protected boolean tryReadCurrentXmlElement(EwsXmlReader reader)
+  public boolean tryReadCurrentXmlElement(EwsXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
       Exception {
     if (!super.tryReadCurrentXmlElement(reader)) {
@@ -143,8 +141,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
    * @param requestedSettings The requested settings.
    * @return GetUserSettingsResponse
    */
-  @Override
-  protected GetUserSettingsResponse convertSettings(String smtpAddress,
+  @Override public GetUserSettingsResponse convertSettings(String smtpAddress,
       List<UserSettingName> requestedSettings) {
     GetUserSettingsResponse response = new GetUserSettingsResponse();
     response.setSmtpAddress(smtpAddress);
@@ -227,8 +224,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
    *
    * @return The type of the response.
    */
-  @Override
-  protected AutodiscoverResponseType getResponseType() {
+  @Override public AutodiscoverResponseType getResponseType() {
     if (this.account != null) {
       return this.account.getResponseType();
     } else {
@@ -242,8 +238,7 @@ final class OutlookConfigurationSettings extends ConfigurationSettingsBase {
    * @return String
    * the redirect target.
    */
-  @Override
-  protected String getRedirectTarget() {
+  @Override public String getRedirectTarget() {
     return this.account.getRedirectTarget();
   }
 

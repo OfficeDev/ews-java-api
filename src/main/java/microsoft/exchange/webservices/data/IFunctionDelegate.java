@@ -36,7 +36,7 @@ import java.util.List;
  * @param <T3>      the generic type
  * @param <TResult> the generic type
  */
-interface IFunctionDelegate<T1 extends List<?>, T2 extends List<?>, TResult> {
+public interface IFunctionDelegate<T1 extends List<?>, T2 extends List<?>, TResult> {
 
   /**
    * Func.

@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data;
  *
  * @param <TResult> the generic type
  */
-interface IFuncDelegate<TResult> {
+public interface IFuncDelegate<TResult> {
 
   /**
    * Func.

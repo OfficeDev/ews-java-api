@@ -370,7 +370,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws java.io.IOException                 Signals that an I/O exception has occurred.
    */
-  protected void traceMessage(TraceFlags traceType, String logEntry) throws XMLStreamException, IOException {
+  public void traceMessage(TraceFlags traceType, String logEntry) throws XMLStreamException, IOException {
     if (this.isTraceEnabledFor(traceType)) {
       String traceTypeStr = traceType.toString();
       String logMessage = EwsUtilities.formatLogMessage(traceTypeStr, logEntry);
@@ -738,7 +738,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param serverInfo Server Information
    */
-  void setServerInfo(ExchangeServerInfo serverInfo) {
+  protected void setServerInfo(ExchangeServerInfo serverInfo) {
     this.serverInfo = serverInfo;
   }
 

@@ -53,7 +53,7 @@ public final class DomainSettingError {
    * Initializes a new instance of the <see cref="DomainSettingError"/> class.
    */
 
-  DomainSettingError() {
+  public DomainSettingError() {
   }
 
   /**
@@ -62,7 +62,7 @@ public final class DomainSettingError {
    * @param reader The reader.
    * @throws Exception the exception
    */
-  void loadFromXml(EwsXmlReader reader) throws Exception {
+  public void loadFromXml(EwsXmlReader reader) throws Exception {
     do {
       reader.read();
 

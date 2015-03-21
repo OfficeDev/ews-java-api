@@ -36,7 +36,7 @@ import java.util.zip.InflaterInputStream;
 /**
  * Represents the base class for all requested made to the Autodiscover service.
  */
-abstract class AutodiscoverRequest {
+public abstract class AutodiscoverRequest {
   /**
    * The service.
    */
@@ -65,7 +65,7 @@ abstract class AutodiscoverRequest {
    * @return True if redirection response.
    * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
    */
-  protected static boolean isRedirectionResponse(HttpWebRequest request)
+  public static boolean isRedirectionResponse(HttpWebRequest request)
       throws EWSHttpException {
     return ((request.getResponseCode() == 301)
         || (request.getResponseCode() == 302)

@@ -44,7 +44,7 @@ public final class WebClientUrlCollection {
    * Initializes a new instance of the <see cref="WebClientUrlCollection"/>
    * class.
    */
-  protected WebClientUrlCollection() {
+  public WebClientUrlCollection() {
     this.urls = new ArrayList<WebClientUrl>();
   }
 
@@ -55,7 +55,7 @@ public final class WebClientUrlCollection {
    * @return the web client url collection
    * @throws Exception the exception
    */
-  protected static WebClientUrlCollection loadFromXml(EwsXmlReader reader)
+  public static WebClientUrlCollection loadFromXml(EwsXmlReader reader)
       throws Exception {
     WebClientUrlCollection instance = new WebClientUrlCollection();
 

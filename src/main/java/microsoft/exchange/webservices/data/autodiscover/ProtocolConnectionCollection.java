@@ -55,7 +55,7 @@ public final class ProtocolConnectionCollection {
    * @return the protocol connection collection
    * @throws Exception the exception
    */
-  static ProtocolConnectionCollection LoadFromXml(EwsXmlReader reader)
+  public static ProtocolConnectionCollection LoadFromXml(EwsXmlReader reader)
       throws Exception {
     ProtocolConnectionCollection value = new ProtocolConnectionCollection();
     ProtocolConnection connection = null;

@@ -49,7 +49,7 @@ public abstract class AutodiscoverResponse {
   /**
    * Initializes a new instance of the AutodiscoverResponse class.
    */
-  AutodiscoverResponse() {
+  public AutodiscoverResponse() {
     this.errorCode = AutodiscoverErrorCode.NoError;
   }
 
@@ -60,7 +60,7 @@ public abstract class AutodiscoverResponse {
    * @param endElementName the end element name
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsXmlReader reader, String endElementName)
+  public void loadFromXml(EwsXmlReader reader, String endElementName)
       throws Exception {
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.ErrorCode)) {
       this.errorCode = reader
@@ -112,7 +112,7 @@ public abstract class AutodiscoverResponse {
    *
    * @return the redirection url
    */
-  protected URI getRedirectionUrl() {
+  public URI getRedirectionUrl() {
     return redirectionUrl;
   }
 

@@ -34,7 +34,7 @@ import java.io.*;
 /**
  * Defines the EwsXmlReader class.
  */
-class EwsXmlReader {
+public class EwsXmlReader {
 
   /**
    * The Read write buffer size.

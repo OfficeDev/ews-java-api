@@ -28,7 +28,7 @@ import javax.xml.stream.XMLStreamConstants;
 /**
  * The Class XmlNodeType.
  */
-class XmlNodeType implements XMLStreamConstants {
+public class XmlNodeType implements XMLStreamConstants {
 
   /**
    * The node type.
@@ -40,7 +40,7 @@ class XmlNodeType implements XMLStreamConstants {
    *
    * @param nodeType The node type.
    */
-  XmlNodeType(int nodeType) {
+  public XmlNodeType(int nodeType) {
     this.nodeType = nodeType;
   }
 

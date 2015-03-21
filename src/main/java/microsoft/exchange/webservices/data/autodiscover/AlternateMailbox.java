@@ -66,7 +66,7 @@ public final class AlternateMailbox {
    * @return AlternateMailbox
    * @throws Exception the exception
    */
-  protected static AlternateMailbox loadFromXml(EwsXmlReader reader)
+  public static AlternateMailbox loadFromXml(EwsXmlReader reader)
       throws Exception {
     AlternateMailbox altMailbox = new AlternateMailbox();
 

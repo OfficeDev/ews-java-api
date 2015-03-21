@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Defines the types of Autodiscover endpoints that are available.
  */
-enum AutodiscoverEndpoints {
+public enum AutodiscoverEndpoints {
 
   /**
    * No endpoints available.

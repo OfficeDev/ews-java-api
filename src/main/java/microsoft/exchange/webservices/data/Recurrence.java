@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+
 import javax.xml.stream.XMLStreamException;
 import java.util.*;
 

@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * Represents a GetUserSettings request.
  */
-class GetUserSettingsRequest extends AutodiscoverRequest {
+public class GetUserSettingsRequest extends AutodiscoverRequest {
 
   /**
    * Action Uri of Autodiscover.GetUserSettings method.
@@ -59,7 +59,7 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
    * @param url     the url
    * @throws ServiceValidationException
    */
-  protected GetUserSettingsRequest(AutodiscoverService service, URI url) throws ServiceValidationException {
+  public GetUserSettingsRequest(AutodiscoverService service, URI url) throws ServiceValidationException {
     this(service, url, false);
   }
 
@@ -118,7 +118,7 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
    * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
    * @throws Exception                                                 the exception
    */
-  protected GetUserSettingsResponseCollection execute()
+  public GetUserSettingsResponseCollection execute()
       throws ServiceLocalException, Exception {
     GetUserSettingsResponseCollection responses =
         (GetUserSettingsResponseCollection) this
@@ -291,7 +291,7 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
    *
    * @param value the new smtp addresses
    */
-  protected void setSmtpAddresses(List<String> value) {
+  public void setSmtpAddresses(List<String> value) {
     this.smtpAddresses = value;
   }
 
@@ -309,7 +309,7 @@ class GetUserSettingsRequest extends AutodiscoverRequest {
    *
    * @param value the new settings
    */
-  protected void setSettings(List<UserSettingName> value) {
+  public void setSettings(List<UserSettingName> value) {
     this.settings = value;
 
   }

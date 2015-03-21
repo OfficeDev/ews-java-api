@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Defines the types of response the Autodiscover service can return.
  */
-enum AutodiscoverResponseType {
+public enum AutodiscoverResponseType {
 
   // The request returned an error.
   /**

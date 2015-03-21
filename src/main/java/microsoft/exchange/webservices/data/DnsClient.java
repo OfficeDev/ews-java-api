@@ -36,7 +36,7 @@ import java.util.List;
 /**
  * Class that represents DNS Query client.
  */
-class DnsClient {
+public class DnsClient {
 
   /**
    * Performs Dns query.
@@ -49,8 +49,7 @@ class DnsClient {
    * @throws DnsException the dns exception
    */
 
-  protected static <T extends DnsRecord> List<T> dnsQuery(Class<T> cls,
-      String domain, String dnsServerAddress) throws DnsException {
+  public static <T extends DnsRecord> List<T> dnsQuery(Class<T> cls, String domain, String dnsServerAddress) throws DnsException {
 
     List<T> dnsRecordList = new ArrayList<T>();
     try {

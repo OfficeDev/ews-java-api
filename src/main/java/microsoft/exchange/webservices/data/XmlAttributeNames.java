@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * XML attribute names.
  */
-class XmlAttributeNames {
+public class XmlAttributeNames {
 
   /**
    * The Constant XmlNs.

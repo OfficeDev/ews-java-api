@@ -118,8 +118,7 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
    * @param endElementName End element name.
    * @throws Exception the exception
    */
-  @Override
-  protected void loadFromXml(EwsXmlReader reader, String endElementName)
+  @Override public void loadFromXml(EwsXmlReader reader, String endElementName)
       throws Exception {
     do {
       reader.read();

@@ -51,7 +51,7 @@ import javax.xml.stream.XMLStreamWriter;
 /**
  * EWS utilities.
  */
-class EwsUtilities {
+public class EwsUtilities {
 
   /**
    * The Constant XSFalse.
@@ -348,8 +348,7 @@ class EwsUtilities {
    * @param caller    The caller.
    * @param message   The message to use if assertion fails.
    */
-  protected static void EwsAssert(boolean condition, String caller,
-      String message) {
+  public static void EwsAssert(boolean condition, String caller, String message) {
     assert condition : String.format("[%s] %s",
         caller, message);
   }
@@ -1126,7 +1125,7 @@ class EwsUtilities {
    * @return Domain name.
    * @throws FormatException the format exception
    */
-  protected static String domainFromEmailAddress(String emailAddress)
+  public static String domainFromEmailAddress(String emailAddress)
       throws FormatException {
     String[] emailAddressParts = emailAddress.split("@");
 
@@ -1182,7 +1181,7 @@ class EwsUtilities {
    * @param paramName Name of the param.
    * @throws Exception the exception
    */
-  protected static void validateParam(Object param, String paramName)
+  public static void validateParam(Object param, String paramName)
       throws Exception {
     boolean isValid = false;
 
@@ -1397,8 +1396,7 @@ class EwsUtilities {
    * @param paramName  Parameter name.
    * @throws ArgumentException
    */
-  protected static void validateDomainNameAllowNull(String domainName,
-      String paramName) throws ArgumentException {
+  public static void validateDomainNameAllowNull(String domainName, String paramName) throws ArgumentException {
     if (domainName != null) {
       Pattern domainNamePattern = Pattern.compile(DomainRegex);
       Matcher domainNameMatcher = domainNamePattern.matcher(domainName);

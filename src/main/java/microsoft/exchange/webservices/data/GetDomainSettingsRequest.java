@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * Represents a GetDomainSettings request.
  */
-class GetDomainSettingsRequest extends AutodiscoverRequest {
+public class GetDomainSettingsRequest extends AutodiscoverRequest {
 
   /**
    * Action Uri of Autodiscover.GetDomainSettings method.
@@ -60,7 +60,7 @@ class GetDomainSettingsRequest extends AutodiscoverRequest {
    * @param service the service
    * @param url     the url
    */
-  protected GetDomainSettingsRequest(AutodiscoverService service, URI url) {
+  public GetDomainSettingsRequest(AutodiscoverService service, URI url) {
     super(service, url);
   }
 
@@ -98,7 +98,7 @@ class GetDomainSettingsRequest extends AutodiscoverRequest {
    * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
    * @throws Exception                                                 the exception
    */
-  protected GetDomainSettingsResponseCollection execute()
+  public GetDomainSettingsResponseCollection execute()
       throws ServiceLocalException, Exception {
     GetDomainSettingsResponseCollection responses =
         (GetDomainSettingsResponseCollection) this
@@ -233,7 +233,7 @@ class GetDomainSettingsRequest extends AutodiscoverRequest {
    *
    * @param value the new domains
    */
-  protected void setDomains(List<String> value) {
+  public void setDomains(List<String> value) {
     domains = value;
   }
 
@@ -251,7 +251,7 @@ class GetDomainSettingsRequest extends AutodiscoverRequest {
    *
    * @param value the new settings
    */
-  protected void setSettings(List<DomainSettingName> value) {
+  public void setSettings(List<DomainSettingName> value) {
     settings = value;
   }
 
@@ -269,7 +269,7 @@ class GetDomainSettingsRequest extends AutodiscoverRequest {
    *
    * @param value the new requestedVersion
    */
-  protected void setRequestedVersion(ExchangeVersion value) {
+  public void setRequestedVersion(ExchangeVersion value) {
     requestedVersion = value;
   }
 

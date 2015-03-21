@@ -55,7 +55,7 @@ public final class WebClientUrl {
    * @param authenticationMethods The authentication methods.
    * @param url                   The URL.
    */
-  protected WebClientUrl(String authenticationMethods, String url) {
+  public WebClientUrl(String authenticationMethods, String url) {
     this.authenticationMethods = authenticationMethods;
     this.url = url;
   }

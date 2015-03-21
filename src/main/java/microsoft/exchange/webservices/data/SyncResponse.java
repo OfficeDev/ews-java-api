@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+
 /**
  * Represents the base response class for synchronuization operations.
  *

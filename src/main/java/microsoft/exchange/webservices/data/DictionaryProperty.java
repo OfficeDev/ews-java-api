@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -122,7 +122,7 @@ public abstract class ExchangeCredentials {
    * @param url The URL.
    * @return Adjust URL.
    */
-  protected URI adjustUrl(URI url) throws URISyntaxException {
+  public URI adjustUrl(URI url) throws URISyntaxException {
     return new URI(getUriWithoutWSSecurity(url));
   }
 

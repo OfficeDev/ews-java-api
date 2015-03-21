@@ -3538,8 +3538,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
       IAutodiscoverRedirectionUrl validateRedirectionUrlCallback)
       throws Exception {
 
-    AutodiscoverService autodiscoverService = new AutodiscoverService(this,
-        requestedServerVersion);
+    AutodiscoverService autodiscoverService = new AutodiscoverService(this, requestedServerVersion);
     autodiscoverService
         .setRedirectionUrlValidationCallback(validateRedirectionUrlCallback);
     autodiscoverService.setEnableScpLookup(this.getEnableScpLookup());

@@ -49,7 +49,8 @@ public abstract class AutodiscoverResponseCollection
   /**
    * Initializes a new instance of the AutodiscoverResponseCollection class.
    */
-  protected AutodiscoverResponseCollection() {
+  public AutodiscoverResponseCollection() {
+    super();
     this.responses = new ArrayList<TResponse>();
   }
 
@@ -77,7 +78,7 @@ public abstract class AutodiscoverResponseCollection
    *
    * @return the responses
    */
-  protected List<TResponse> getResponses() {
+  public List<TResponse> getResponses() {
     return responses;
   }
 
@@ -88,7 +89,7 @@ public abstract class AutodiscoverResponseCollection
    * @param endElementName End element name.
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsXmlReader reader, String endElementName)
+  public void loadFromXml(EwsXmlReader reader, String endElementName)
       throws Exception {
     do {
       reader.read();

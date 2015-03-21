@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover;
 
-import microsoft.exchange.webservices.data.EditorBrowsable;
+import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.EditorBrowsableState;
 import microsoft.exchange.webservices.data.EwsXmlReader;
 import microsoft.exchange.webservices.data.XmlAttributeNames;
@@ -76,7 +76,7 @@ public final class AutodiscoverError {
    * @return AutodiscoverError
    * @throws Exception the exception
    */
-  protected static AutodiscoverError parse(EwsXmlReader reader)
+  public static AutodiscoverError parse(EwsXmlReader reader)
       throws Exception {
     AutodiscoverError error = new AutodiscoverError();
     error.time = reader.readAttributeValue(XmlAttributeNames.Time);

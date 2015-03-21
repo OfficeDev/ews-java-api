@@ -27,7 +27,7 @@ package microsoft.exchange.webservices.data;
  * Defines the namespaces as used by the EwsXmlReader, EwsServiceXmlReader, and
  * EwsServiceXmlWriter classes.
  */
-enum XmlNamespace {
+public enum XmlNamespace {
         /*
 	 * The namespace is not specified.
 	 */

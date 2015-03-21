@@ -1625,8 +1625,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
    * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
    */
-  protected void traceResponse(HttpWebRequest request,
-      ByteArrayOutputStream memoryStream) throws XMLStreamException,
+  public void traceResponse(HttpWebRequest request, ByteArrayOutputStream memoryStream) throws XMLStreamException,
       IOException, EWSHttpException {
     this.processHttpResponseHeaders(
         TraceFlags.AutodiscoverResponseHttpHeaders, request);
@@ -1654,7 +1653,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @throws ServiceLocalException       the service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
-  protected HttpWebRequest prepareHttpWebRequestForUrl(URI url)
+  public HttpWebRequest prepareHttpWebRequestForUrl(URI url)
       throws ServiceLocalException, URISyntaxException {
     return this.prepareHttpWebRequestForUrl(url, false,
         // acceptGzipEncoding
@@ -1685,9 +1684,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @param httpWebResponse The HTTP web response.
    * @throws Exception the exception
    */
-  @Override
-  protected void processHttpErrorResponse(HttpWebRequest httpWebResponse,
-      Exception webException) throws Exception {
+  @Override public void processHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException) throws Exception {
     this.internalProcessHttpErrorResponse(
         httpWebResponse,
         webException,
@@ -1781,7 +1778,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    *               service.
    * @throws microsoft.exchange.webservices.data.ArgumentException
    */
-  protected AutodiscoverService(URI url, String domain)
+  public AutodiscoverService(URI url, String domain)
       throws ArgumentException {
     super();
     EwsUtilities.validateDomainNameAllowNull(domain, "domain");
@@ -1799,7 +1796,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @param requestedServerVersion The requested server version.
    * @throws microsoft.exchange.webservices.data.ArgumentException
    */
-  protected AutodiscoverService(URI url, String domain,
+  public AutodiscoverService(URI url, String domain,
       ExchangeVersion requestedServerVersion) throws ArgumentException {
     super(requestedServerVersion);
     EwsUtilities.validateDomainNameAllowNull(domain, "domain");
@@ -1815,7 +1812,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @param service                The other service.
    * @param requestedServerVersion The requested server version.
    */
-  protected AutodiscoverService(ExchangeServiceBase service,
+  public AutodiscoverService(ExchangeServiceBase service,
       ExchangeVersion requestedServerVersion) {
     super(service, requestedServerVersion);
     this.dnsClient = new AutodiscoverDnsClient(this);
@@ -1826,7 +1823,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    *
    * @param service The service.
    */
-  protected AutodiscoverService(ExchangeServiceBase service) {
+  public AutodiscoverService(ExchangeServiceBase service) {
     super(service, service.getRequestedServerVersion());
   }
 

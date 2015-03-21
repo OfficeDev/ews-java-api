@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * XML element names.
  */
-class XmlElementNames {
+public class XmlElementNames {
 
   /**
    * The Constant AllProperties.

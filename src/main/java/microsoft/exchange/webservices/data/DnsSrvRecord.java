@@ -29,7 +29,7 @@ import java.util.StringTokenizer;
 /**
  * Represents a DNS SRV Record.
  */
-class DnsSrvRecord extends DnsRecord {
+public class DnsSrvRecord extends DnsRecord {
         /*
          * The string representing the target host
 	 */
@@ -65,7 +65,7 @@ class DnsSrvRecord extends DnsRecord {
    *
    * @return target
    */
-  protected String getNameTarget() {
+  public String getNameTarget() {
     return this.target;
   }
 
@@ -74,7 +74,7 @@ class DnsSrvRecord extends DnsRecord {
    *
    * @return priority
    */
-  protected int getPriority() {
+  public int getPriority() {
     return priority;
   }
 
@@ -83,7 +83,7 @@ class DnsSrvRecord extends DnsRecord {
    *
    * @return weight
    */
-  protected int getWeight() {
+  public int getWeight() {
     return weight;
   }
 
@@ -92,7 +92,7 @@ class DnsSrvRecord extends DnsRecord {
    *
    * @return port
    */
-  protected int getPort() {
+  public int getPort() {
     return port;
   }
 

@@ -52,7 +52,7 @@ public final class UserSettingError {
   /**
    * Initializes a new instance of the "UserSettingError" class.
    */
-  protected UserSettingError() {
+  public UserSettingError() {
   }
 
   /**
@@ -76,7 +76,7 @@ public final class UserSettingError {
    * @param reader The reader.
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsXmlReader reader) throws Exception {
+  public void loadFromXml(EwsXmlReader reader) throws Exception {
     do {
       reader.read();
 
@@ -105,7 +105,7 @@ public final class UserSettingError {
     return errorCode;
   }
 
-  protected void setErrorCode(AutodiscoverErrorCode errorCode) {
+  public void setErrorCode(AutodiscoverErrorCode errorCode) {
     this.errorCode = errorCode;
   }
 
@@ -118,7 +118,7 @@ public final class UserSettingError {
     return errorMessage;
   }
 
-  protected void setErrorMessage(String errorMessage) {
+  public void setErrorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
   }
 
@@ -132,7 +132,7 @@ public final class UserSettingError {
     return settingName;
   }
 
-  protected void setSettingName(String settingName) {
+  public void setSettingName(String settingName) {
     this.settingName = settingName;
   }
 

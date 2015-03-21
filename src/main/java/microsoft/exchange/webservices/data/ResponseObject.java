@@ -27,6 +27,8 @@ package microsoft.exchange.webservices.data;
  * Represents the base class for all responses that can be sent.
  *
  */
+import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+
 import java.util.List;
 
 /**

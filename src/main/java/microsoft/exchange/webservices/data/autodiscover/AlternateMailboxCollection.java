@@ -41,7 +41,7 @@ public final class AlternateMailboxCollection {
   /**
    * Initializes a new instance of the class
    */
-  protected AlternateMailboxCollection() {
+  public AlternateMailboxCollection() {
     this.setEntries(new ArrayList<AlternateMailbox>());
   }
 
@@ -52,7 +52,7 @@ public final class AlternateMailboxCollection {
    * @return AlternateMailboxCollection
    * @throws Exception the exception
    */
-  protected static AlternateMailboxCollection loadFromXml(EwsXmlReader reader)
+  public static AlternateMailboxCollection loadFromXml(EwsXmlReader reader)
       throws Exception {
     AlternateMailboxCollection instance = new AlternateMailboxCollection();
 

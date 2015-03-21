@@ -246,8 +246,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
    * @return Adjust URL.
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
-  @Override
-  protected URI adjustUrl(URI url) throws URISyntaxException {
+  @Override public URI adjustUrl(URI url) throws URISyntaxException {
     return new URI(getUriWithoutWSSecurity(url) + WSSecurityBasedCredentials.wsSecurityPathSuffix);
   }
 

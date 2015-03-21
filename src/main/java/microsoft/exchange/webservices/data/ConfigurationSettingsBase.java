@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverError;
 
 import java.net.URI;
@@ -31,8 +32,7 @@ import java.util.List;
 /**
  * Represents the base class for configuration settings.
  */
-@EditorBrowsable(state = EditorBrowsableState.Never)
-abstract class ConfigurationSettingsBase {
+@EditorBrowsable(state = EditorBrowsableState.Never) public abstract class ConfigurationSettingsBase {
 
   /**
    * The error.
@@ -42,7 +42,7 @@ abstract class ConfigurationSettingsBase {
   /**
    * Initializes a new instance of the ConfigurationSettingsBase class.
    */
-  protected ConfigurationSettingsBase() {
+  public ConfigurationSettingsBase() {
   }
 
   /**
@@ -52,7 +52,7 @@ abstract class ConfigurationSettingsBase {
    * @return True is the current element was read, false otherwise.
    * @throws Exception the exception
    */
-  protected boolean tryReadCurrentXmlElement(EwsXmlReader reader)
+  public boolean tryReadCurrentXmlElement(EwsXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.Error)) {
       this.error = AutodiscoverError.parse(reader);
@@ -69,7 +69,7 @@ abstract class ConfigurationSettingsBase {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsXmlReader reader) throws Exception {
+  public void loadFromXml(EwsXmlReader reader) throws Exception {
     reader.readStartElement(XmlNamespace.NotSpecified,
         XmlElementNames.Autodiscover);
     reader.readStartElement(XmlNamespace.NotSpecified,
@@ -95,28 +95,28 @@ abstract class ConfigurationSettingsBase {
    *
    * @return The namespace that defines the settings
    */
-  protected abstract String getNamespace();
+  public abstract String getNamespace();
 
   /**
    * Makes this instance a redirection response.
    *
    * @param redirectUrl the redirect url
    */
-  protected abstract void makeRedirectionResponse(URI redirectUrl);
+  public abstract void makeRedirectionResponse(URI redirectUrl);
 
   /**
    * Gets the type of the response.
    *
    * @return The type of the response.
    */
-  protected abstract AutodiscoverResponseType getResponseType();
+  public abstract AutodiscoverResponseType getResponseType();
 
   /**
    * Gets the redirect target.
    *
    * @return The redirect target.
    */
-  protected abstract String getRedirectTarget();
+  public abstract String getRedirectTarget();
 
   /**
    * Convert ConfigurationSettings to GetUserSettings response.
@@ -125,7 +125,7 @@ abstract class ConfigurationSettingsBase {
    * @param requestedSettings The requested settings.
    * @return GetUserSettingsResponse.
    */
-  protected abstract GetUserSettingsResponse convertSettings(
+  public abstract GetUserSettingsResponse convertSettings(
       String smtpAddress,
       List<UserSettingName> requestedSettings);
 
@@ -135,7 +135,7 @@ abstract class ConfigurationSettingsBase {
    *
    * @return The error.
    */
-  protected AutodiscoverError getError() {
+  public AutodiscoverError getError() {
     return this.error;
   }
 }
