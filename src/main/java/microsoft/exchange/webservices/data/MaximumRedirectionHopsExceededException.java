@@ -27,7 +27,7 @@ package microsoft.exchange.webservices.data;
  *
  * The Class MaximumRedirectionHopsExceededException.
  *
- * @see microsoft.exchange.webservices.data.AutodiscoverService
+ * @see microsoft.exchange.webservices.data.autodiscover.AutodiscoverService
  */
 public class MaximumRedirectionHopsExceededException extends AutodiscoverLocalException {
 

@@ -21,12 +21,18 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.autodiscover;
+
+import microsoft.exchange.webservices.data.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.EwsXmlReader;
+import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.XmlNamespace;
+import microsoft.exchange.webservices.data.XmlNodeType;
 
 /**
- * Represents an error from a GetUserSettings request.
+ * Represents an error from a GetDomainSettings request.
  */
-public final class UserSettingError {
+public final class DomainSettingError {
 
   /**
    * The error code.
@@ -44,25 +50,11 @@ public final class UserSettingError {
   private String settingName;
 
   /**
-   * Initializes a new instance of the "UserSettingError" class.
+   * Initializes a new instance of the <see cref="DomainSettingError"/> class.
    */
-  protected UserSettingError() {
-  }
 
-  /**
-   * Initializes a new instance of the "UserSettingError" class.
-   *
-   * @param errorCode    The error code
-   * @param errorMessage The error message
-   * @param settingName  Name of the setting
-   */
-  protected UserSettingError(AutodiscoverErrorCode errorCode,
-      String errorMessage, String settingName) {
-    this.errorCode = errorCode;
-    this.errorMessage = errorMessage;
-    this.settingName = settingName;
+  DomainSettingError() {
   }
-
 
   /**
    * Loads from XML.
@@ -70,24 +62,24 @@ public final class UserSettingError {
    * @param reader The reader.
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsXmlReader reader) throws Exception {
+  void loadFromXml(EwsXmlReader reader) throws Exception {
     do {
       reader.read();
 
       if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
         if (reader.getLocalName().equals(XmlElementNames.ErrorCode)) {
-          this.setErrorCode(reader
-              .readElementValue(AutodiscoverErrorCode.class));
+          this.errorCode = reader
+              .readElementValue(AutodiscoverErrorCode.class);
         } else if (reader.getLocalName().equals(
             XmlElementNames.ErrorMessage)) {
-          this.setErrorMessage(reader.readElementValue());
+          this.errorMessage = reader.readElementValue();
         } else if (reader.getLocalName().equals(
             XmlElementNames.SettingName)) {
-          this.setSettingName(reader.readElementValue());
+          this.settingName = reader.readElementValue();
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-        XmlElementNames.UserSettingError));
+        XmlElementNames.DomainSettingError));
   }
 
   /**
@@ -95,12 +87,9 @@ public final class UserSettingError {
    *
    * @return The error code.
    */
-  public AutodiscoverErrorCode getErrorCode() {
-    return errorCode;
-  }
 
-  protected void setErrorCode(AutodiscoverErrorCode errorCode) {
-    this.errorCode = errorCode;
+  public AutodiscoverErrorCode getErrorCode() {
+    return this.errorCode;
   }
 
   /**
@@ -108,14 +97,10 @@ public final class UserSettingError {
    *
    * @return The error message.
    */
+
   public String getErrorMessage() {
-    return errorMessage;
+    return this.errorMessage;
   }
-
-  protected void setErrorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
-  }
-
 
   /**
    * Gets the name of the setting.
@@ -123,11 +108,7 @@ public final class UserSettingError {
    * @return The name of the setting.
    */
   public String getSettingName() {
-    return settingName;
-  }
-
-  protected void setSettingName(String settingName) {
-    this.settingName = settingName;
+    return this.settingName;
   }
 
 }

@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 

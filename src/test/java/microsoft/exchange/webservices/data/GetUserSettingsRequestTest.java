@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 
+import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import org.hamcrest.core.IsNot;
 import org.hamcrest.core.IsNull;
 import org.junit.Assert;

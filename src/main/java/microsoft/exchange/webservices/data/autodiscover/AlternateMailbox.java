@@ -21,7 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.autodiscover;
+
+import microsoft.exchange.webservices.data.EwsXmlReader;
+import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.XmlNamespace;
+import microsoft.exchange.webservices.data.XmlNodeType;
 
 /**
  * Defines the AlternateMailbox class.

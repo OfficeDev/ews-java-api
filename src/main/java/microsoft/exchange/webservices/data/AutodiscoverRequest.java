@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
+
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
 import java.net.URI;

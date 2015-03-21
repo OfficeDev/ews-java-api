@@ -21,7 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.autodiscover;
+
+import microsoft.exchange.webservices.data.DnsClient;
+import microsoft.exchange.webservices.data.DnsException;
+import microsoft.exchange.webservices.data.DnsSrvRecord;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.TraceFlags;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -106,8 +112,7 @@ class AutodiscoverDnsClient {
     List<DnsSrvRecord> dnsSrvRecordList;
     try {
       // Make DnsQuery call to get collection of SRV records.
-      dnsSrvRecordList = DnsClient.dnsQuery(DnsSrvRecord.class, domain,
-          this.service.getDnsServerAddress());
+      dnsSrvRecordList = DnsClient.dnsQuery(DnsSrvRecord.class, domain, this.service.getDnsServerAddress());
     } catch (DnsException ex) {
       String dnsExcMessage = String.format("DnsQuery returned error '%s'.", ex.getMessage());
       this.service
@@ -164,9 +169,8 @@ class AutodiscoverDnsClient {
 
     // The list must contain at least one matching record since we found one
     // earlier.
-    EwsUtilities.EwsAssert(dnsSrvRecordList.size() > 0,
-        "AutodiscoverDnsClient.FindBestMatchingSrvRecord",
-        "At least one DNS SRV record must match the criteria.");
+    EwsUtilities.EwsAssert(dnsSrvRecordList.size() > 0, "AutodiscoverDnsClient.FindBestMatchingSrvRecord",
+                           "At least one DNS SRV record must match the criteria.");
 
     // If we have multiple records with the same priority and weight,
     // randomly pick one.

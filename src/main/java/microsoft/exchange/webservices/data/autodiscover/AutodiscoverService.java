@@ -21,8 +21,43 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.autodiscover;
 
+import microsoft.exchange.webservices.data.ArgumentException;
+import microsoft.exchange.webservices.data.AutodiscoverEndpoints;
+import microsoft.exchange.webservices.data.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.AutodiscoverLocalException;
+import microsoft.exchange.webservices.data.AutodiscoverRemoteException;
+import microsoft.exchange.webservices.data.AutodiscoverRequest;
+import microsoft.exchange.webservices.data.ConfigurationSettingsBase;
+import microsoft.exchange.webservices.data.DomainSettingName;
+import microsoft.exchange.webservices.data.EWSHttpException;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.EwsXmlReader;
+import microsoft.exchange.webservices.data.ExchangeServiceBase;
+import microsoft.exchange.webservices.data.ExchangeVersion;
+import microsoft.exchange.webservices.data.FormatException;
+import microsoft.exchange.webservices.data.GetDomainSettingsRequest;
+import microsoft.exchange.webservices.data.GetDomainSettingsResponse;
+import microsoft.exchange.webservices.data.GetDomainSettingsResponseCollection;
+import microsoft.exchange.webservices.data.GetUserSettingsRequest;
+import microsoft.exchange.webservices.data.GetUserSettingsResponse;
+import microsoft.exchange.webservices.data.GetUserSettingsResponseCollection;
+import microsoft.exchange.webservices.data.HttpClientWebRequest;
+import microsoft.exchange.webservices.data.HttpWebRequest;
+import microsoft.exchange.webservices.data.IAutodiscoverRedirectionUrl;
+import microsoft.exchange.webservices.data.IFuncDelegate;
+import microsoft.exchange.webservices.data.IFunctionDelegate;
+import microsoft.exchange.webservices.data.MaximumRedirectionHopsExceededException;
+import microsoft.exchange.webservices.data.OutParam;
+import microsoft.exchange.webservices.data.OutlookConfigurationSettings;
+import microsoft.exchange.webservices.data.ServiceLocalException;
+import microsoft.exchange.webservices.data.ServiceValidationException;
+import microsoft.exchange.webservices.data.ServiceVersionException;
+import microsoft.exchange.webservices.data.TraceFlags;
+import microsoft.exchange.webservices.data.UserSettingName;
+import microsoft.exchange.webservices.data.WSSecurityBasedCredentials;
+import microsoft.exchange.webservices.data.XmlNodeType;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -36,8 +71,8 @@ import java.util.*;
 /**
  * Represents a binding to the Exchange Autodiscover Service.
  */
-public final class AutodiscoverService extends ExchangeServiceBase implements
-    IAutodiscoverRedirectionUrl, IFunctionDelegate {
+public final class AutodiscoverService extends ExchangeServiceBase
+    implements IAutodiscoverRedirectionUrl, IFunctionDelegate {
 
   private static final Log log = LogFactory.getLog(AutodiscoverService.class);
 
@@ -181,7 +216,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    *
    * @param redirectionUrl the redirection url
    * @return Returns true.
-   * @throws AutodiscoverLocalException the autodiscover local exception
+   * @throws microsoft.exchange.webservices.data.AutodiscoverLocalException the autodiscover local exception
    */
   private boolean defaultAutodiscoverRedirectionUrlValidationCallback(
       String redirectionUrl) throws AutodiscoverLocalException {
@@ -341,7 +376,7 @@ public final class AutodiscoverService extends ExchangeServiceBase implements
    * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
    * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws ServiceLocalException                                the service local exception
+   * @throws microsoft.exchange.webservices.data.ServiceLocalException                                the service local exception
    * @throws java.net.URISyntaxException                          the uRI syntax exception
    */
   private URI getRedirectUrl(String domainName)

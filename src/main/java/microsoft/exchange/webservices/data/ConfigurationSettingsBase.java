@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.autodiscover.AutodiscoverError;
+
 import java.net.URI;
 import java.util.List;
 

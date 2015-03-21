@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.autodiscover.WebClientUrl;
+import microsoft.exchange.webservices.data.autodiscover.WebClientUrlCollection;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

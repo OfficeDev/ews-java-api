@@ -23,6 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.autodiscover.AlternateMailboxCollection;
+import microsoft.exchange.webservices.data.autodiscover.ProtocolConnectionCollection;
+import microsoft.exchange.webservices.data.autodiscover.UserSettingError;
+import microsoft.exchange.webservices.data.autodiscover.WebClientUrlCollection;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
