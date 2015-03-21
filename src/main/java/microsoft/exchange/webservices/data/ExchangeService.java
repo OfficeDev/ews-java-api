@@ -1336,8 +1336,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
 
     Iterator<Attachment> it = attachments.iterator();
     while (it.hasNext()) {
-      ((ArrayList<Attachment>) request.getAttachments()).add(it.next());
-
+      request.getAttachments().add(it.next());
     }
     request.setBodyType(bodyType);
 
