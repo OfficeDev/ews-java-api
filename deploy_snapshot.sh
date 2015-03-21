@@ -34,9 +34,15 @@ elif [ "$TRAVIS_JDK_VERSION" != "oraclejdk7" ]; then
 else 
 	echo "[DEPLOY] Deploying snapshot for commit:'$TRAVIS_COMMIT' @ build-id:'$TRAVIS_BUILD_ID'"	
 	# create settings.xml
-	echo "<settings><servers><server><id>ossrh-snapshot</id><username>\${env.OSSRH_USER}</username><password>\${env.OSSRH_PASS}</password></server></servers></settings>" > $HOME/.m2/settings.xml	
+	echo "<settings><servers><server><id>ossrh-snapshot</id><username>${OSSRH_USER}</username><password>${OSSRH_PASS}</password></server></servers></settings>" > $HOME/.m2/settings.xml
 	# deploy
-	mvn clean deploy --settings="$HOME/.m2/settings.xml" -Dmaven.test.skip=true
+	if [ -z "${GPG_PASSPHRASE+xxx}" ]; then
+	    echo "[INFO] Deploying unsigned artifacts"
+            mvn clean deploy --settings="$HOME/.m2/settings.xml" -Dmaven.test.skip=true
+        else
+            echo "[INFO] Deploying signed artifacts"
+            mvn clean deploy --settings="$HOME/.m2/settings.xml" -Dmaven.test.skip=true -Dgpg.passphrase=$GPG_PASSPHRASE
+        fi
 	# clean up
 	rm -f $HOME/.m2/settings.xml
 fi
