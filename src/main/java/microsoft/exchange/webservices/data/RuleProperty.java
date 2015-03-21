@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.attributes.EwsEnum;
+
 public enum RuleProperty {
   /**
    * The RuleId property of a rule.

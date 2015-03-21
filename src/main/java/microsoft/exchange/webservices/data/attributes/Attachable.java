@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.attributes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

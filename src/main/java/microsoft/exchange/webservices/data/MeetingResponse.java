@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+
 /**
  * Represents a response to a meeting request. Properties available on meeting
  * messages are defined in the MeetingMessageSchema class.

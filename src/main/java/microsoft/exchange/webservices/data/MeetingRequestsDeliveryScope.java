@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.attributes.RequiredServerVersion;
+
 /**
  * Defines how meeting requests are sent to delegates.
  */

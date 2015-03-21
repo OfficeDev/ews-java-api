@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.attributes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -29,15 +29,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The Interface RequiredServerVersion.
+ * The Interface EwsEnum.
  */
-@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME) @interface RequiredServerVersion {
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME) @interface EwsEnum {
 
   /**
-   * Version.
+   * Schema name.
    *
-   * @return the exchange version
+   * @return the string
    */
-  ExchangeVersion version();
+  String schemaName();
 }

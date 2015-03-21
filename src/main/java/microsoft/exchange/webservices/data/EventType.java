@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.attributes.EwsEnum;
+import microsoft.exchange.webservices.data.attributes.RequiredServerVersion;
+
 /**
  * Defines the types of event that can occur in a folder.
  */

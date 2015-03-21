@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+
 /**
  * Represents a response object created to supress read receipts for an item.
  */

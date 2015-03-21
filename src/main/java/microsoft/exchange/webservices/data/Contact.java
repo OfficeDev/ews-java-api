@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.attributes.Attachable;
+import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+
 import java.io.File;
 import java.io.InputStream;
 import java.util.Date;

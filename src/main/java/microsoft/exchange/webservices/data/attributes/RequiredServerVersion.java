@@ -21,7 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.attributes;
+
+import microsoft.exchange.webservices.data.ExchangeVersion;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -29,9 +31,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The Interface Schema.
+ * The Interface RequiredServerVersion.
  */
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME) @interface Schema {
+@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME) @interface RequiredServerVersion {
 
+  /**
+   * Version.
+   *
+   * @return the exchange version
+   */
+  ExchangeVersion version();
 }

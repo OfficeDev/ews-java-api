@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.attributes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -29,15 +29,23 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The Interface EwsEnum.
+ * The Interface ServiceObjectDefinition.
  */
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME) @interface EwsEnum {
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME) @interface ServiceObjectDefinition {
 
   /**
-   * Schema name.
+   * The name of the XML element.
    *
    * @return the string
    */
-  String schemaName();
+  String xmlElementName();
+
+  /**
+   * True if this ServiceObject can be returned by the server as an object,
+   * false otherwise.
+   *
+   * @return true, if successful
+   */
+  boolean returnedByServer() default true;
 }
