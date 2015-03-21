@@ -34,7 +34,7 @@ elif [ "$TRAVIS_JDK_VERSION" != "oraclejdk7" ]; then
 else 
 	echo "[DEPLOY] Deploying snapshot for commit:'$TRAVIS_COMMIT' @ build-id:'$TRAVIS_BUILD_ID'"	
 	# create settings.xml
-	echo "<settings><servers><server><id>ossrh-snapshot</id><username>${env.OSSRH_USER}</username><password>${env.OSSRH_PASS}</password></server></servers></settings>" > $HOME/.m2/settings.xml
+	echo "<settings><servers><server><id>ossrh-snapshot</id><username>${OSSRHUSER}</username><password>${OSSRHPASS}</password></server></servers></settings>" > $HOME/.m2/settings.xml
 	# deploy
 	if [ -z "${GPG_PASSPHRASE+xxx}" ]; then
 	    echo "[INFO] Deploying unsigned artifacts"
