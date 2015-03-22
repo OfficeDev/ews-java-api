@@ -68,7 +68,7 @@ public final class CalendarView extends ViewBase {
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.Traversal, this
         .getTraversal());
@@ -90,7 +90,7 @@ public final class CalendarView extends ViewBase {
    *
    * @param writer the writer
    */
-  protected void writeOrderByToXml(EwsServiceXmlWriter writer) {
+  public void writeOrderByToXml(EwsServiceXmlWriter writer) {
     // No OrderBy for calendar views.
   }
 
@@ -134,7 +134,7 @@ public final class CalendarView extends ViewBase {
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException    the service version exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
    */
-  protected void internalValidate(ServiceRequestBase request)
+  public void internalValidate(ServiceRequestBase request)
       throws ServiceVersionException, ServiceValidationException {
     super.internalValidate(request);
 

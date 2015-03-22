@@ -59,7 +59,7 @@ public final class FindItemsResults<TItem extends Item> implements
   /**
    * Initializes a new instance of the FindItemsResults class.
    */
-  protected FindItemsResults() {
+  public FindItemsResults() {
   }
 
   /**
@@ -78,7 +78,7 @@ public final class FindItemsResults<TItem extends Item> implements
    *
    * @param totalCount the new total count
    */
-  protected void setTotalCount(int totalCount) {
+  public void setTotalCount(int totalCount) {
     this.totalCount = totalCount;
   }
 
@@ -98,7 +98,7 @@ public final class FindItemsResults<TItem extends Item> implements
    *
    * @param nextPageOffset the new next page offset
    */
-  protected void setNextPageOffset(Integer nextPageOffset) {
+  public void setNextPageOffset(Integer nextPageOffset) {
     this.nextPageOffset = nextPageOffset;
   }
 
@@ -118,7 +118,7 @@ public final class FindItemsResults<TItem extends Item> implements
    *
    * @param moreAvailable the new more available
    */
-  protected void setMoreAvailable(boolean moreAvailable) {
+  public void setMoreAvailable(boolean moreAvailable) {
     this.moreAvailable = moreAvailable;
   }
 

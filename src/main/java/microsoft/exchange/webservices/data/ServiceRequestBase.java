@@ -47,7 +47,7 @@ import java.util.zip.InflaterInputStream;
 /**
  * Represents an abstract service request.
  */
-abstract class ServiceRequestBase<T> {
+public abstract class ServiceRequestBase<T> {
 
   // Private Constants
   // private final String XMLSchemaNamespace =
@@ -163,7 +163,7 @@ abstract class ServiceRequestBase<T> {
    *
    * @return The service.
    */
-  protected ExchangeService getService() {
+  public ExchangeService getService() {
     return service;
   }
 

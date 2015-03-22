@@ -58,8 +58,7 @@ public final class ConversationIndexedItemView extends PagedView {
    *
    * @param writer The writer.
    */
-  @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer) {
+  @Override public void writeAttributesToXml(EwsServiceXmlWriter writer) {
     // Do nothing
   }
 
@@ -78,8 +77,7 @@ public final class ConversationIndexedItemView extends PagedView {
    *
    * @param request The request using this view.
    */
-  @Override
-  protected void internalValidate(ServiceRequestBase request)
+  @Override public void internalValidate(ServiceRequestBase request)
       throws ServiceVersionException, ServiceValidationException {
     super.internalValidate(request);
   }
@@ -102,8 +100,7 @@ public final class ConversationIndexedItemView extends PagedView {
    *
    * @param writer The writer
    */
-  @Override
-  protected void writeOrderByToXml(EwsServiceXmlWriter writer)
+  @Override public void writeOrderByToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     this.orderBy.writeToXml(writer, XmlElementNames.SortOrder);
   }
@@ -113,7 +110,7 @@ public final class ConversationIndexedItemView extends PagedView {
    *
    * @param writer The writer
    */
-  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     writer.writeStartElement(XmlNamespace.Messages,
         this.getViewXmlElementName());
 

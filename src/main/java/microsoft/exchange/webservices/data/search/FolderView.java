@@ -66,8 +66,7 @@ public final class FolderView extends PagedView {
    *
    * @param writer The writer
    */
-  @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer) {
+  @Override public void writeAttributesToXml(EwsServiceXmlWriter writer) {
     try {
       writer.writeAttributeValue(XmlAttributeNames.Traversal, this
           .getTraversal());

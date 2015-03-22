@@ -53,7 +53,7 @@ public final class ItemGroup<TItem extends Item> {
    * @param groupIndex the group index
    * @param items      the items
    */
-  protected ItemGroup(String groupIndex, List<TItem> items) {
+  public ItemGroup(String groupIndex, List<TItem> items) {
     EwsUtilities.EwsAssert(groupIndex != null, "ItemGroup.ctor", "groupIndex is null");
     EwsUtilities
         .EwsAssert(items != null, "ItemGroup.ctor", "items is null");

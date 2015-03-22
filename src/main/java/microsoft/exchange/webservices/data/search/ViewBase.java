@@ -62,7 +62,7 @@ public abstract class ViewBase {
    * @throws ServiceValidationException the service validation exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException    the service version exception
    */
-  protected void internalValidate(ServiceRequestBase request)
+  public void internalValidate(ServiceRequestBase request)
       throws ServiceValidationException, ServiceVersionException {
     if (this.getPropertySet() != null) {
       this.getPropertySet().internalValidate();
@@ -108,7 +108,7 @@ public abstract class ViewBase {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
-  protected abstract void writeOrderByToXml(EwsServiceXmlWriter writer)
+  public abstract void writeOrderByToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException;
 
   /**
@@ -140,7 +140,7 @@ public abstract class ViewBase {
    * @param writer The writer.
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
-  protected abstract void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public abstract void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException;
 
   /**
@@ -150,7 +150,7 @@ public abstract class ViewBase {
    * @param groupBy The group by clause.
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer, Grouping groupBy)
+  public void writeToXml(EwsServiceXmlWriter writer, Grouping groupBy)
       throws Exception {
     this.getPropertySetOrDefault().writeToXml(writer,
         this.getServiceObjectType());
@@ -166,7 +166,7 @@ public abstract class ViewBase {
    *
    * @return PropertySet
    */
-  protected PropertySet getPropertySetOrDefault() {
+  public PropertySet getPropertySetOrDefault() {
     if (this.getPropertySet() == null) {
       return PropertySet.getFirstClassProperties();
     } else {

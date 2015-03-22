@@ -79,8 +79,7 @@ public final class ItemView extends PagedView {
    * @throws ServiceVersionException    the service version exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
    */
-  @Override
-  protected void internalValidate(ServiceRequestBase request)
+  @Override public void internalValidate(ServiceRequestBase request)
       throws ServiceVersionException, ServiceValidationException {
     super.internalValidate(request);
 
@@ -93,8 +92,7 @@ public final class ItemView extends PagedView {
    * @param writer the writer
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
-  @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  @Override public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.Traversal, this.traversal);
   }
@@ -121,8 +119,7 @@ public final class ItemView extends PagedView {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
-  @Override
-  protected void writeOrderByToXml(EwsServiceXmlWriter writer)
+  @Override public void writeOrderByToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     this.orderBy.writeToXml(writer, XmlElementNames.SortOrder);
   }

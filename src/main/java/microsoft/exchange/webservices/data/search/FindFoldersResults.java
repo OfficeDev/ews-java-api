@@ -56,7 +56,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
   /**
    * Initializes a new instance of the <see cref="FindFoldersResults"/> class.
    */
-  protected FindFoldersResults() {
+  public FindFoldersResults() {
 
   }
 
@@ -75,7 +75,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
    *
    * @param totalCount the new total count
    */
-  protected void setTotalCount(int totalCount) {
+  public void setTotalCount(int totalCount) {
     this.totalCount = totalCount;
   }
 
@@ -95,7 +95,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
    *
    * @param nextPageOffset the new next page offset
    */
-  protected void setNextPageOffset(Integer nextPageOffset) {
+  public void setNextPageOffset(Integer nextPageOffset) {
     this.nextPageOffset = nextPageOffset;
   }
 
@@ -115,7 +115,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
    *
    * @param moreAvailable the new more available
    */
-  protected void setMoreAvailable(boolean moreAvailable) {
+  public void setMoreAvailable(boolean moreAvailable) {
     this.moreAvailable = moreAvailable;
   }
 

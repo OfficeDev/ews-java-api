@@ -465,7 +465,7 @@ public final class PropertySet implements ISelfValidate,
    *
    * @throws ServiceValidationException the service validation exception
    */
-  protected void internalValidate() throws ServiceValidationException {
+  public void internalValidate() throws ServiceValidationException {
     for (int i = 0; i < this.additionalProperties.size(); i++) {
       if (this.additionalProperties.get(i) == null) {
         throw new ServiceValidationException(String.format("The additional property at index %d is null.", i));
@@ -484,8 +484,7 @@ public final class PropertySet implements ISelfValidate,
    * @throws ServiceVersionException    the service version exception
    * @throws ServiceValidationException the service validation exception
    */
-  protected void validateForRequest(ServiceRequestBase request,
-      boolean summaryPropertiesOnly) throws ServiceVersionException,
+  public void validateForRequest(ServiceRequestBase request, boolean summaryPropertiesOnly) throws ServiceVersionException,
       ServiceValidationException {
     for (PropertyDefinitionBase propDefBase : this.additionalProperties) {
       if (propDefBase instanceof PropertyDefinition) {
@@ -536,8 +535,7 @@ public final class PropertySet implements ISelfValidate,
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer,
-      ServiceObjectType serviceObjectType) throws XMLStreamException, ServiceXmlSerializationException {
+  public void writeToXml(EwsServiceXmlWriter writer, ServiceObjectType serviceObjectType) throws XMLStreamException, ServiceXmlSerializationException {
     writer
         .writeStartElement(
             XmlNamespace.Messages,
