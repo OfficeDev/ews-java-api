@@ -53,7 +53,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
   /**
    * Initializes a new instance of the class.
    */
-  protected DayOfTheWeekCollection() {
+  public DayOfTheWeekCollection() {
   }
 
   /**
