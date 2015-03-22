@@ -37,6 +37,7 @@ import microsoft.exchange.webservices.data.enumerations.SendInvitationsMode;
 import microsoft.exchange.webservices.data.enumerations.SendInvitationsOrCancellationsMode;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
 import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition;
 
 import java.util.ArrayList;

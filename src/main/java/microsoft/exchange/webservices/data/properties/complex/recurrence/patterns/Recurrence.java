@@ -21,8 +21,19 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.complex.recurrence.patterns;
 
+import microsoft.exchange.webservices.data.ComplexProperty;
+import microsoft.exchange.webservices.data.EndDateRecurrenceRange;
+import microsoft.exchange.webservices.data.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.IComplexPropertyChangedDelegate;
+import microsoft.exchange.webservices.data.NoEndRecurrenceRange;
+import microsoft.exchange.webservices.data.NumberedRecurrenceRange;
+import microsoft.exchange.webservices.data.RecurrenceRange;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
 import microsoft.exchange.webservices.data.enumerations.DayOfTheWeekIndex;
@@ -1059,8 +1070,7 @@ public abstract class Recurrence extends ComplexProperty {
    * Represents a recurrence pattern where each occurrence happens on specific
    * days a specific number of weeks after the previous one.
    */
-  public final static class WeeklyPattern extends IntervalPattern implements
-      IComplexPropertyChangedDelegate {
+  public final static class WeeklyPattern extends IntervalPattern implements IComplexPropertyChangedDelegate {
 
     /**
      * The days of the week.

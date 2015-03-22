@@ -27,6 +27,7 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
 
 import javax.xml.stream.XMLStreamException;
 import java.text.DateFormat;

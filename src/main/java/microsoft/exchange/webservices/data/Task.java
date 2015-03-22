@@ -35,6 +35,7 @@ import microsoft.exchange.webservices.data.enumerations.TaskMode;
 import microsoft.exchange.webservices.data.enumerations.TaskStatus;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
 
 import java.util.Date;
 

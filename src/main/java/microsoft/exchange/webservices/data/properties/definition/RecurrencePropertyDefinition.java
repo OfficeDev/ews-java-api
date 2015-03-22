@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.NoEndRecurrenceRange;
 import microsoft.exchange.webservices.data.NumberedRecurrenceRange;
 import microsoft.exchange.webservices.data.PropertyBag;
-import microsoft.exchange.webservices.data.Recurrence;
+import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
 import microsoft.exchange.webservices.data.RecurrenceRange;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.XmlNodeType;
