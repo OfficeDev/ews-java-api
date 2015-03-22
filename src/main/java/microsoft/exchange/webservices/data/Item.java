@@ -87,7 +87,7 @@ public class Item extends ServiceObject {
    * @param service the service
    * @throws Exception the exception
    */
-  protected Item(ExchangeService service) throws Exception {
+  public Item(ExchangeService service) throws Exception {
     super(service);
   }
 
@@ -97,7 +97,7 @@ public class Item extends ServiceObject {
    * @param parentAttachment The parent attachment.
    * @throws Exception the exception
    */
-  protected Item(ItemAttachment parentAttachment) throws Exception {
+  public Item(ItemAttachment parentAttachment) throws Exception {
     this(parentAttachment.getOwner().getService());
     EwsUtilities.EwsAssert(parentAttachment != null, "Item.ctor", "parentAttachment is null");
 

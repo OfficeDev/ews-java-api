@@ -88,7 +88,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * @param isNew            If true, attachment is new.
    * @throws Exception the exception
    */
-  protected Appointment(ItemAttachment parentAttachment, boolean isNew)
+  public Appointment(ItemAttachment parentAttachment, boolean isNew)
       throws Exception {
     // If we're running against Exchange 2007, we need to explicitly preset
     // the StartTimeZone property since Exchange 2007 will otherwise scope

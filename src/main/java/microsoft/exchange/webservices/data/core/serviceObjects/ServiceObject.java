@@ -94,7 +94,7 @@ public abstract class ServiceObject {
    * @throws InvalidOperationException the invalid operation exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException     the service local exception
    */
-  protected void throwIfThisIsNew() throws InvalidOperationException,
+  public void throwIfThisIsNew() throws InvalidOperationException,
       ServiceLocalException {
     if (this.isNew()) {
       throw new InvalidOperationException(

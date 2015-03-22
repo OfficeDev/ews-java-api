@@ -65,7 +65,7 @@ public final class PostItem extends Item {
    * @param parentAttachment the parent attachment
    * @throws Exception the exception
    */
-  protected PostItem(ItemAttachment parentAttachment) throws Exception {
+  public PostItem(ItemAttachment parentAttachment) throws Exception {
     super(parentAttachment);
   }
 

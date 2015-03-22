@@ -70,7 +70,7 @@ public class Task extends Item {
    * @param parentAttachment the parent attachment
    * @throws Exception the exception
    */
-  protected Task(ItemAttachment parentAttachment) throws Exception {
+  public Task(ItemAttachment parentAttachment) throws Exception {
     super(parentAttachment);
   }
 

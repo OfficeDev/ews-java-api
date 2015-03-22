@@ -52,7 +52,7 @@ public class MeetingMessage extends EmailMessage {
    * @param parentAttachment the parent attachment
    * @throws Exception the exception
    */
-  protected MeetingMessage(ItemAttachment parentAttachment) throws Exception {
+  public MeetingMessage(ItemAttachment parentAttachment) throws Exception {
     super(parentAttachment);
   }
 
@@ -62,7 +62,7 @@ public class MeetingMessage extends EmailMessage {
    * @param service EWS service to which this object belongs.
    * @throws Exception the exception
    */
-  protected MeetingMessage(ExchangeService service) throws Exception {
+  public MeetingMessage(ExchangeService service) throws Exception {
     super(service);
   }
 

@@ -70,7 +70,7 @@ public class EmailMessage extends Item {
    * @param parentAttachment The parent attachment.
    * @throws Exception the exception
    */
-  protected EmailMessage(ItemAttachment parentAttachment) throws Exception {
+  public EmailMessage(ItemAttachment parentAttachment) throws Exception {
     super(parentAttachment);
   }
 

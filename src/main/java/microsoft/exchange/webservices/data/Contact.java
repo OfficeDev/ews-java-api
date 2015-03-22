@@ -84,7 +84,7 @@ public class Contact extends Item {
    * @param parentAttachment the parent attachment
    * @throws Exception the exception
    */
-  protected Contact(ItemAttachment parentAttachment) throws Exception {
+  public Contact(ItemAttachment parentAttachment) throws Exception {
     super(parentAttachment);
   }
 

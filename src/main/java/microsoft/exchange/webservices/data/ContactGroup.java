@@ -57,7 +57,7 @@ public class ContactGroup extends Item {
    * @param parentAttachment the parent attachment
    * @throws Exception the exception
    */
-  protected ContactGroup(ItemAttachment parentAttachment) throws Exception {
+  public ContactGroup(ItemAttachment parentAttachment) throws Exception {
     super(parentAttachment);
   }
 

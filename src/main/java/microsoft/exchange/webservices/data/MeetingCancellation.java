@@ -46,7 +46,7 @@ public class MeetingCancellation extends MeetingMessage {
    * @param parentAttachment The parent attachment.
    * @throws Exception the exception
    */
-  protected MeetingCancellation(ItemAttachment parentAttachment)
+  public MeetingCancellation(ItemAttachment parentAttachment)
       throws Exception {
     super(parentAttachment);
   }
@@ -57,7 +57,7 @@ public class MeetingCancellation extends MeetingMessage {
    * @param service EWS service to which this object belongs.
    * @throws Exception the exception
    */
-  protected MeetingCancellation(ExchangeService service) throws Exception {
+  public MeetingCancellation(ExchangeService service) throws Exception {
     super(service);
   }
 

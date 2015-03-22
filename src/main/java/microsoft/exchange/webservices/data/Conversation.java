@@ -64,7 +64,7 @@ public class Conversation extends ServiceObject {
    *                The ExchangeService object to which the item will be bound.
    * @throws Exception
    */
-  protected Conversation(ExchangeService service) throws Exception {
+  public Conversation(ExchangeService service) throws Exception {
     super(service);
   }
 
