@@ -74,7 +74,7 @@ public abstract class RecurrenceRange extends ComplexProperty {
   /**
    * Changes handler.
    */
-  protected void changed() {
+  public void changed() {
     if (this.recurrence != null) {
       this.recurrence.changed();
     }

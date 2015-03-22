@@ -211,8 +211,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   /**
    * Instance was changed.
    */
-  @Override
-  protected void changed() {
+  @Override public void changed() {
     super.changed();
     this.isDirty = true;
   }

@@ -71,7 +71,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
   /**
    * Instance was changed.
    */
-  protected void changed() {
+  public void changed() {
     if (!onChangeList.isEmpty()) {
       for (IComplexPropertyChangedDelegate change : onChangeList) {
         change.complexPropertyChanged(this);
