@@ -21,79 +21,56 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.sync;
 
+import microsoft.exchange.webservices.data.Folder;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.properties.complex.FolderId;
 import microsoft.exchange.webservices.data.properties.complex.ServiceId;
+import microsoft.exchange.webservices.data.sync.Change;
 
 /**
- * Represents a change on an item as returned by a synchronization operation.
+ * Represents a change on a folder as returned by a synchronization operation.
  */
-public final class ItemChange extends Change {
-
+public final class FolderChange extends Change {
   /**
-   * The is read.
+   * Initializes a new instance of FolderChange.
    */
-  private boolean isRead;
-
-  /**
-   * Initializes a new instance of ItemChange.
-   */
-  protected ItemChange() {
+  protected FolderChange() {
     super();
   }
 
   /**
-   * Creates an ItemId instance.
+   * Creates a FolderId instance.
    *
-   * @return A ItemId.
+   * @return A FolderId.
    */
   @Override
   protected ServiceId createId() {
-    return new ItemId();
+    return new FolderId();
   }
 
   /**
-   * Gets the item the change applies to. Item is null when ChangeType is
-   * equal to either ChangeType.Delete or ChangeType.ReadFlagChange. In those
-   * cases, use the ItemId property to retrieve the Id of the item that was
-   * deleted or whose IsRead property changed.
+   * Gets the folder the change applies to. Folder is null when ChangeType
+   * is equal to ChangeType.Delete. In that case, use the FolderId property to
+   * retrieve the Id of the folder that was deleted.
    *
-   * @return the item
+   * @return the folder
    */
-  public Item getItem() {
-    return (Item) this.getServiceObject();
+  public Folder getFolder() {
+    return (Folder) this.getServiceObject();
   }
 
   /**
-   * Gets the IsRead property for the item that the change applies to.
-   * IsRead is only valid when ChangeType is equal to
-   * ChangeType.ReadFlagChange.
+   * Gets the folder the change applies to. Folder is null when ChangeType
+   * is equal to ChangeType.Delete. In that case, use the FolderId property to
+   * retrieve the Id of the folder that was deleted.
    *
-   * @return the checks if is read
-   */
-  public boolean getIsRead() {
-    return this.isRead;
-  }
-
-  /**
-   * Sets the checks if is read.
-   *
-   * @param isRead the new checks if is read
-   */
-  protected void setIsRead(boolean isRead) {
-    this.isRead = isRead;
-  }
-
-  /**
-   * Gets the Id of the item the change applies to.
-   *
-   * @return the item id
+   * @return the folder id
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
-  public ItemId getItemId() throws ServiceLocalException {
-    return (ItemId) this.getId();
+  public FolderId getFolderId() throws ServiceLocalException {
+    return (FolderId) this.getId();
   }
 
 }

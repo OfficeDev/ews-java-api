@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.sync.FolderChange;
+
 /**
  * Represents the response to a folder synchronization operation.
  */

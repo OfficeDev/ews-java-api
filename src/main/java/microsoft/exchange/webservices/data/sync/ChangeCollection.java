@@ -21,7 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.sync;
+
+import microsoft.exchange.webservices.data.EwsUtilities;
 
 import java.util.ArrayList;
 import java.util.Iterator;

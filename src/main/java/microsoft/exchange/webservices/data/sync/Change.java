@@ -21,8 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.sync;
 
+import microsoft.exchange.webservices.data.ServiceObject;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.ChangeType;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;

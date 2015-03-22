@@ -84,6 +84,9 @@ import microsoft.exchange.webservices.data.search.Grouping;
 import microsoft.exchange.webservices.data.search.ItemView;
 import microsoft.exchange.webservices.data.search.ViewBase;
 import microsoft.exchange.webservices.data.search.filters.SearchFilter;
+import microsoft.exchange.webservices.data.sync.ChangeCollection;
+import microsoft.exchange.webservices.data.sync.FolderChange;
+import microsoft.exchange.webservices.data.sync.ItemChange;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
