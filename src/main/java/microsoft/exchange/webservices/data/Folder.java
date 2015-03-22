@@ -39,6 +39,13 @@ import microsoft.exchange.webservices.data.properties.complex.FolderPermissionCo
 import microsoft.exchange.webservices.data.properties.complex.ManagedFolderInformation;
 import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.search.FindFoldersResults;
+import microsoft.exchange.webservices.data.search.FindItemsResults;
+import microsoft.exchange.webservices.data.search.FolderView;
+import microsoft.exchange.webservices.data.search.GroupedFindItemsResults;
+import microsoft.exchange.webservices.data.search.Grouping;
+import microsoft.exchange.webservices.data.search.ItemView;
+import microsoft.exchange.webservices.data.search.ViewBase;
 import microsoft.exchange.webservices.data.search.filters.SearchFilter;
 
 import java.util.ArrayList;

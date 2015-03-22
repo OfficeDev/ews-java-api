@@ -21,7 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.search;
+
+import microsoft.exchange.webservices.data.Item;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,8 +33,8 @@ import java.util.Iterator;
  *
  * @param <TItem> The type of item returned by the search operation.
  */
-public final class GroupedFindItemsResults<TItem extends Item> implements
-    Iterable<ItemGroup<TItem>> {
+public final class FindItemsResults<TItem extends Item> implements
+    Iterable<TItem> {
 
   /**
    * The total count.
@@ -50,15 +52,14 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
   private boolean moreAvailable;
 
   /**
-   * List of ItemGroups.
+   * The items.
    */
-  private ArrayList<ItemGroup<TItem>> itemGroups =
-      new ArrayList<ItemGroup<TItem>>();
+  private ArrayList<TItem> items = new ArrayList<TItem>();
 
   /**
-   * Initializes a new instance of the GroupedFindItemsResults class.
+   * Initializes a new instance of the FindItemsResults class.
    */
-  protected GroupedFindItemsResults() {
+  protected FindItemsResults() {
   }
 
   /**
@@ -68,14 +69,14 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
    * @return the total count
    */
   public int getTotalCount() {
-    return totalCount;
+    return this.totalCount;
   }
 
   /**
-   * Gets the total number of items matching the search criteria available in
+   * Sets the total number of items matching the search criteria available in
    * the searched folder.
    *
-   * @param totalCount Total number of items
+   * @param totalCount the new total count
    */
   protected void setTotalCount(int totalCount) {
     this.totalCount = totalCount;
@@ -102,8 +103,8 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Gets a value indicating whether more items corresponding to the search
-   * criteria are available in the searched folder.
+   * Gets a value indicating whether more items matching the search criteria
+   * are available in the searched folder.
    *
    * @return true, if is more available
    */
@@ -112,8 +113,8 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Sets a value indicating whether more items corresponding to the search
-   * criteria are available in the searched folder.
+   * Sets a value indicating whether more items matching the search criteria
+   * are available in the searched folder.
    *
    * @param moreAvailable the new more available
    */
@@ -122,12 +123,13 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Gets the item groups returned by the search operation.
+   * Gets a collection containing the items that were found by the search
+   * operation.
    *
-   * @return the item groups
+   * @return the items
    */
-  public ArrayList<ItemGroup<TItem>> getItemGroups() {
-    return itemGroups;
+  public ArrayList<TItem> getItems() {
+    return this.items;
   }
 
   /**
@@ -136,8 +138,8 @@ public final class GroupedFindItemsResults<TItem extends Item> implements
    * @return the iterator
    */
   @Override
-  public Iterator<ItemGroup<TItem>> iterator() {
-    return this.itemGroups.iterator();
+  public Iterator<TItem> iterator() {
+    return (Iterator<TItem>) this.items.iterator();
   }
 
 }

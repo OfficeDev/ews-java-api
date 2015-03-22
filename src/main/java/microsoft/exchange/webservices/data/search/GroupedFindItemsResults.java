@@ -21,15 +21,20 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.search;
+
+import microsoft.exchange.webservices.data.Item;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Represents the results of a folder search operation.
+ * Represents the results of an item search operation.
+ *
+ * @param <TItem> The type of item returned by the search operation.
  */
-public final class FindFoldersResults implements Iterable<Folder> {
+public final class GroupedFindItemsResults<TItem extends Item> implements
+    Iterable<ItemGroup<TItem>> {
 
   /**
    * The total count.
@@ -47,20 +52,20 @@ public final class FindFoldersResults implements Iterable<Folder> {
   private boolean moreAvailable;
 
   /**
-   * The folders.
+   * List of ItemGroups.
    */
-  private ArrayList<Folder> folders = new ArrayList<Folder>();
+  private ArrayList<ItemGroup<TItem>> itemGroups =
+      new ArrayList<ItemGroup<TItem>>();
 
   /**
-   * Initializes a new instance of the <see cref="FindFoldersResults"/> class.
+   * Initializes a new instance of the GroupedFindItemsResults class.
    */
-  protected FindFoldersResults() {
-
+  protected GroupedFindItemsResults() {
   }
 
   /**
-   * Gets the total number of folders matching the search criteria available
-   * in the searched folder.
+   * Gets the total number of items matching the search criteria available in
+   * the searched folder.
    *
    * @return the total count
    */
@@ -69,17 +74,18 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Sets the total number of folders.
+   * Gets the total number of items matching the search criteria available in
+   * the searched folder.
    *
-   * @param totalCount the new total count
+   * @param totalCount Total number of items
    */
   protected void setTotalCount(int totalCount) {
     this.totalCount = totalCount;
   }
 
   /**
-   * Gets the offset that should be used with FolderView to retrieve the next
-   * page of folders in a FindFolders operation.
+   * Gets the offset that should be used with ItemView to retrieve the next
+   * page of items in a FindItems operation.
    *
    * @return the next page offset
    */
@@ -88,8 +94,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Sets the offset that should be used with FolderView to retrieve the next
-   * page of folders in a FindFolders operation.
+   * Sets the offset that should be used with ItemView to retrieve the next
+   * page of items in a FindItems operation.
    *
    * @param nextPageOffset the new next page offset
    */
@@ -98,8 +104,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets a value indicating whether more folders matching the search
-   * criteria. are available in the searched folder.
+   * Gets a value indicating whether more items corresponding to the search
+   * criteria are available in the searched folder.
    *
    * @return true, if is more available
    */
@@ -108,8 +114,8 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Sets a value indicating whether more folders matching the search
-   * criteria. are available in the searched folder.
+   * Sets a value indicating whether more items corresponding to the search
+   * criteria are available in the searched folder.
    *
    * @param moreAvailable the new more available
    */
@@ -118,23 +124,22 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets a collection containing the folders that were found by the search
-   * operation.
+   * Gets the item groups returned by the search operation.
    *
-   * @return the folders
+   * @return the item groups
    */
-  public ArrayList<Folder> getFolders() {
-    return folders;
+  public ArrayList<ItemGroup<TItem>> getItemGroups() {
+    return itemGroups;
   }
 
   /**
-   * Returns an iterator that iterates through a collection.
+   * Returns an iterator that iterates through the collection.
    *
    * @return the iterator
    */
   @Override
-  public Iterator<Folder> iterator() {
-    return this.folders.iterator();
+  public Iterator<ItemGroup<TItem>> iterator() {
+    return this.itemGroups.iterator();
   }
 
 }

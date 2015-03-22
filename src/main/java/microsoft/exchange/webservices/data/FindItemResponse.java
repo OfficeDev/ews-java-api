@@ -25,6 +25,9 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.search.FindItemsResults;
+import microsoft.exchange.webservices.data.search.GroupedFindItemsResults;
+import microsoft.exchange.webservices.data.search.ItemGroup;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
