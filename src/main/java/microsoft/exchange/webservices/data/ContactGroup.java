@@ -27,6 +27,9 @@ import microsoft.exchange.webservices.data.attributes.RequiredServerVersion;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
+import microsoft.exchange.webservices.data.properties.complex.GroupMemberCollection;
+import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
 
 /**
  * Represents a Contact Group. Properties available on contact groups are

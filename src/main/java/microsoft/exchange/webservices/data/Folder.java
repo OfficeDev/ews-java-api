@@ -33,6 +33,10 @@ import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.properties.complex.ExtendedPropertyCollection;
+import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.properties.complex.FolderPermissionCollection;
+import microsoft.exchange.webservices.data.properties.complex.ManagedFolderInformation;
 import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
 

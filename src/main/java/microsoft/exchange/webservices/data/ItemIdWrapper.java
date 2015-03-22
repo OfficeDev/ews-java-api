@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
+
 /**
  * Represents an item Id provided by a ItemId object.
  */

@@ -29,6 +29,8 @@ import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
 
 import java.util.Date;
 

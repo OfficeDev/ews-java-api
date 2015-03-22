@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.properties.complex.RuleOperationErrorCollection;
 
 /**
  * Represents the response to a UpdateInboxRulesResponse operation.

@@ -31,6 +31,9 @@ import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
 import microsoft.exchange.webservices.data.exceptions.PropertyException;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.properties.complex.UserConfigurationDictionary;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.EnumSet;

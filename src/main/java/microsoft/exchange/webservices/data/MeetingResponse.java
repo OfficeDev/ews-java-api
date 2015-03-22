@@ -25,6 +25,8 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
 
 /**
  * Represents a response to a meeting request. Properties available on meeting

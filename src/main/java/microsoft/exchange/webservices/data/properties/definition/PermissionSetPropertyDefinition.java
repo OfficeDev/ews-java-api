@@ -23,10 +23,10 @@
 
 package microsoft.exchange.webservices.data.properties.definition;
 
-import microsoft.exchange.webservices.data.ComplexProperty;
+import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.Folder;
-import microsoft.exchange.webservices.data.FolderPermissionCollection;
+import microsoft.exchange.webservices.data.properties.complex.FolderPermissionCollection;
 import microsoft.exchange.webservices.data.ServiceObject;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;

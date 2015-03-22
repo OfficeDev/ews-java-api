@@ -31,6 +31,9 @@ import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
 import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
+import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.properties.complex.MessageBody;
 
 import java.util.List;
 

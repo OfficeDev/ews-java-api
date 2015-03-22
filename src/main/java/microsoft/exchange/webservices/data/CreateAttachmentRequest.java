@@ -27,6 +27,8 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.properties.complex.Attachment;
+import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
 
 import java.util.ArrayList;
 import java.util.ListIterator;

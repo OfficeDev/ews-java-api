@@ -31,6 +31,12 @@ import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
 import microsoft.exchange.webservices.data.enumerations.ResponseMessageType;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
+import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollection;
+import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.properties.complex.MessageBody;
 
 import java.util.ArrayList;
 

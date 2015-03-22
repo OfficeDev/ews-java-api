@@ -29,6 +29,15 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.FileAsMapping;
 import microsoft.exchange.webservices.data.enumerations.PhysicalAddressIndex;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.properties.complex.ByteArrayArray;
+import microsoft.exchange.webservices.data.properties.complex.CompleteName;
+import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
+import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollection;
+import microsoft.exchange.webservices.data.properties.complex.EmailAddressDictionary;
+import microsoft.exchange.webservices.data.properties.complex.ImAddressDictionary;
+import microsoft.exchange.webservices.data.properties.complex.PhoneNumberDictionary;
+import microsoft.exchange.webservices.data.properties.complex.PhysicalAddressDictionary;
+import microsoft.exchange.webservices.data.properties.complex.StringList;
 import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.ByteArrayPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
@@ -406,7 +415,7 @@ public class ContactSchema extends ItemSchema {
    * Defines the CompleteName property.
    */
   public static final PropertyDefinition CompleteName =
-      new ComplexPropertyDefinition<CompleteName>(
+      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.properties.complex.CompleteName>(
           CompleteName.class,
           XmlElementNames.CompleteName, FieldUris.CompleteName, EnumSet
           .of(PropertyDefinitionFlags.CanFind),

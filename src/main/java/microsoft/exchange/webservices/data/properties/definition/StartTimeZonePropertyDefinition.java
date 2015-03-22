@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.properties.definition;
 import microsoft.exchange.webservices.data.AppointmentSchema;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.MeetingTimeZone;
+import microsoft.exchange.webservices.data.properties.complex.MeetingTimeZone;
 import microsoft.exchange.webservices.data.PropertyBag;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;

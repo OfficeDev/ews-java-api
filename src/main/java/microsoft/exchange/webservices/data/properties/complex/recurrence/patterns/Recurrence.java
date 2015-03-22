@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.properties.complex.recurrence.patterns;
 
-import microsoft.exchange.webservices.data.ComplexProperty;
+import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.properties.complex.recurrence.ranges.EndDateRecurrenceRange;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;

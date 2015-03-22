@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.properties.complex.availability;
 
-import microsoft.exchange.webservices.data.ComplexProperty;
+import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.XmlElementNames;

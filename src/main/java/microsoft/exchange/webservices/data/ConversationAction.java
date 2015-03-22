@@ -27,6 +27,8 @@ import microsoft.exchange.webservices.data.enumerations.ConversationActionType;
 import microsoft.exchange.webservices.data.enumerations.DeleteMode;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.properties.complex.ConversationId;
+import microsoft.exchange.webservices.data.properties.complex.StringList;
 
 import java.util.Date;
 

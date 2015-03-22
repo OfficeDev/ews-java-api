@@ -37,6 +37,18 @@ import microsoft.exchange.webservices.data.enumerations.SendInvitationsMode;
 import microsoft.exchange.webservices.data.enumerations.SendInvitationsOrCancellationsMode;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.properties.complex.AppointmentOccurrenceId;
+import microsoft.exchange.webservices.data.properties.complex.AttendeeCollection;
+import microsoft.exchange.webservices.data.properties.complex.DeletedOccurrenceInfoCollection;
+import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
+import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.properties.complex.ItemCollection;
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.properties.complex.MessageBody;
+import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfo;
+import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfoCollection;
+import microsoft.exchange.webservices.data.properties.complex.RecurringAppointmentMasterId;
 import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
 import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition;
 

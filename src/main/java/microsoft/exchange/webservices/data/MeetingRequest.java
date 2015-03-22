@@ -30,6 +30,14 @@ import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumerations.MeetingRequestType;
 import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.properties.complex.AttendeeCollection;
+import microsoft.exchange.webservices.data.properties.complex.DeletedOccurrenceInfoCollection;
+import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
+import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.properties.complex.ItemCollection;
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfo;
+import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfoCollection;
 import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
 import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition;
 

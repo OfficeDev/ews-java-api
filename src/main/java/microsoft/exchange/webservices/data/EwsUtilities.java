@@ -41,6 +41,7 @@ import microsoft.exchange.webservices.data.exceptions.FormatException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

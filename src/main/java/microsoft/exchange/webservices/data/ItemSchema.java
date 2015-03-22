@@ -28,6 +28,14 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.Importance;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.Sensitivity;
+import microsoft.exchange.webservices.data.properties.complex.ConversationId;
+import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.properties.complex.InternetMessageHeaderCollection;
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.properties.complex.MessageBody;
+import microsoft.exchange.webservices.data.properties.complex.MimeContent;
+import microsoft.exchange.webservices.data.properties.complex.StringList;
+import microsoft.exchange.webservices.data.properties.complex.UniqueBody;
 import microsoft.exchange.webservices.data.properties.definition.AttachmentsPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.ByteArrayPropertyDefinition;
@@ -301,7 +309,7 @@ public class ItemSchema extends ServiceObjectSchema {
    * Defines the MimeContent property.
    */
   public static final PropertyDefinition MimeContent =
-      new ComplexPropertyDefinition<MimeContent>(
+      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.properties.complex.MimeContent>(
           MimeContent.class,
           XmlElementNames.MimeContent, FieldUris.MimeContent, EnumSet.of(
           PropertyDefinitionFlags.CanSet,
@@ -628,7 +636,7 @@ public class ItemSchema extends ServiceObjectSchema {
    * Defines the ConversationId property.
    */
   public static final PropertyDefinition ConversationId =
-      new ComplexPropertyDefinition<ConversationId>(
+      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.properties.complex.ConversationId>(
           ConversationId.class,
           XmlElementNames.ConversationId, FieldUris.ConversationId, EnumSet
           .of(PropertyDefinitionFlags.CanFind),
@@ -643,7 +651,7 @@ public class ItemSchema extends ServiceObjectSchema {
    * Defines the UniqueBody property.
    */
   public static final PropertyDefinition UniqueBody =
-      new ComplexPropertyDefinition<UniqueBody>(
+      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.properties.complex.UniqueBody>(
           UniqueBody.class,
           XmlElementNames.UniqueBody, FieldUris.UniqueBody, EnumSet
           .of(PropertyDefinitionFlags.MustBeExplicitlyLoaded),

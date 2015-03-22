@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.Schema;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
+import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollection;
 import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.ByteArrayPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;

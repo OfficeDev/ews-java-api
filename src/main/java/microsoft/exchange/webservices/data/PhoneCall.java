@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.ConnectionFailureCause;
 import microsoft.exchange.webservices.data.enumerations.PhoneCallState;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 
 /**
  * Represents a phone call.

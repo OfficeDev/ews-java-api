@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.properties.complex.timeZones;
 
-import microsoft.exchange.webservices.data.ComplexProperty;
+import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;

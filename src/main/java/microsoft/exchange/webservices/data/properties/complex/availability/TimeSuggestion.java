@@ -23,14 +23,13 @@
 
 package microsoft.exchange.webservices.data.properties.complex.availability;
 
-import microsoft.exchange.webservices.data.ComplexProperty;
+import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ConflictType;
 import microsoft.exchange.webservices.data.enumerations.SuggestionQuality;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.properties.complex.availability.Conflict;
 
 import java.util.ArrayList;
 import java.util.Collection;

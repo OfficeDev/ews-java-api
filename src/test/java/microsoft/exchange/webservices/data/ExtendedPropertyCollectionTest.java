@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import java.util.ArrayList;
 
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.properties.complex.ExtendedPropertyCollection;
 import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
 import org.junit.Assert;
 import org.junit.Test;

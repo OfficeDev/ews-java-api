@@ -33,6 +33,11 @@ import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.properties.complex.ConversationId;
+import microsoft.exchange.webservices.data.properties.complex.ExtendedPropertyCollection;
+import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.properties.complex.ItemIdCollection;
+import microsoft.exchange.webservices.data.properties.complex.StringList;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
 
 import java.util.ArrayList;

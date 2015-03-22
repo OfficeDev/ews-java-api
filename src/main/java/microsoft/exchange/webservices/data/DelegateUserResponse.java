@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.properties.complex.DelegateUser;
 
 /**
  * Represents the response to an individual delegate user manipulation (add,

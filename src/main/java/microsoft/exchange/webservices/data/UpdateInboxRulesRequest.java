@@ -28,6 +28,7 @@ import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.UpdateInboxRulesException;
+import microsoft.exchange.webservices.data.properties.complex.RuleOperation;
 
 /**
  * Represents a UpdateInboxRulesRequest request.

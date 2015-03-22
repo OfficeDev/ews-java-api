@@ -26,6 +26,11 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.Sensitivity;
+import microsoft.exchange.webservices.data.properties.complex.AttachmentCollection;
+import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
+import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollection;
+import microsoft.exchange.webservices.data.properties.complex.InternetMessageHeaderCollection;
+import microsoft.exchange.webservices.data.properties.complex.MessageBody;
 
 /**
  * Represents the base class for accept, tentatively accept and decline response

@@ -42,6 +42,18 @@ import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.properties.complex.Attachment;
+import microsoft.exchange.webservices.data.properties.complex.AttachmentCollection;
+import microsoft.exchange.webservices.data.properties.complex.ConversationId;
+import microsoft.exchange.webservices.data.properties.complex.ExtendedPropertyCollection;
+import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.properties.complex.InternetMessageHeaderCollection;
+import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.properties.complex.MessageBody;
+import microsoft.exchange.webservices.data.properties.complex.MimeContent;
+import microsoft.exchange.webservices.data.properties.complex.StringList;
+import microsoft.exchange.webservices.data.properties.complex.UniqueBody;
 import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
 
