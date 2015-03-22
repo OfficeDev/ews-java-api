@@ -35,7 +35,7 @@ import java.util.Date;
 /**
  * Represents a collection of notification events.
  */
-final class GetStreamingEventsResults {
+public final class GetStreamingEventsResults {
 
   /**
    * Structure to track a subscription and its associated notification events.
@@ -63,7 +63,7 @@ final class GetStreamingEventsResults {
    * Initializes a new instance of the <see cref=
    * "GetStreamingEventsResults"/> class.
    */
-  protected GetStreamingEventsResults() {
+  public GetStreamingEventsResults() {
   }
 
   /**
@@ -72,7 +72,7 @@ final class GetStreamingEventsResults {
    * @param reader The reader.
    * @throws Exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
         XmlElementNames.Notification);
 

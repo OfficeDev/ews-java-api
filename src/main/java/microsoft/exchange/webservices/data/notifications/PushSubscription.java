@@ -36,7 +36,7 @@ public final class PushSubscription extends SubscriptionBase {
    * @param service the service
    * @throws Exception the exception
    */
-  protected PushSubscription(ExchangeService service) throws Exception {
+  public PushSubscription(ExchangeService service) throws Exception {
     super(service);
   }
 }

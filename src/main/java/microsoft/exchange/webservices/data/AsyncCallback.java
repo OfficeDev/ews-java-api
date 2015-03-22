@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.concurrent.Future;
 
-abstract class AsyncCallback extends AbstractAsyncCallback {
+public abstract class AsyncCallback extends AbstractAsyncCallback {
 
   AsyncCallback() {
 

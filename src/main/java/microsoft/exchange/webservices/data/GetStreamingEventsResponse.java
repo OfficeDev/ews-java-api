@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * Represents the response to a subscription event retrieval operation.
  */
-final class GetStreamingEventsResponse extends ServiceResponse {
+public final class GetStreamingEventsResponse extends ServiceResponse {
 
   private GetStreamingEventsResults results = new GetStreamingEventsResults();
   private HangingServiceRequestBase request;
@@ -125,7 +125,7 @@ final class GetStreamingEventsResponse extends ServiceResponse {
   /**
    * Gets event results from subscription.
    */
-  protected GetStreamingEventsResults getResults() {
+  public GetStreamingEventsResults getResults() {
     return this.results;
   }
 
@@ -134,7 +134,7 @@ final class GetStreamingEventsResponse extends ServiceResponse {
   /**
    * Gets the error subscription ids.
    */
-  protected List<String> getErrorSubscriptionIds() {
+  public List<String> getErrorSubscriptionIds() {
     return this.errorSubscriptionIds;
   }
 

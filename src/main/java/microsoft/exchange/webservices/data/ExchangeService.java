@@ -1866,7 +1866,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param subscriptionId the subscription id
    * @throws Exception the exception
    */
-  protected void unsubscribe(String subscriptionId) throws Exception {
+  public void unsubscribe(String subscriptionId) throws Exception {
 
     this.buildUnsubscribeRequest(subscriptionId).execute();
   }
@@ -1881,7 +1881,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @return An IAsyncResult that references the asynchronous request.
    * @throws Exception
    */
-  protected IAsyncResult beginUnsubscribe(AsyncCallback callback, Object state, String subscriptionId)
+  public IAsyncResult beginUnsubscribe(AsyncCallback callback, Object state, String subscriptionId)
       throws Exception {
     return this.buildUnsubscribeRequest(subscriptionId).beginExecute(
         callback, null);
@@ -1893,7 +1893,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param asyncResult An IAsyncResult that references the asynchronous request.
    * @throws Exception
    */
-  protected void endUnsubscribe(IAsyncResult asyncResult) throws Exception {
+  public void endUnsubscribe(IAsyncResult asyncResult) throws Exception {
     UnsubscribeRequest request = AsyncRequestResult.extractServiceRequest(this, asyncResult);
 
     request.endExecute(asyncResult);
@@ -1927,7 +1927,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * the subscription.
    * @throws Exception the exception
    */
-  protected GetEventsResults getEvents(String subscriptionId, String waterMark)
+  public GetEventsResults getEvents(String subscriptionId, String waterMark)
       throws Exception {
 
     return this.buildGetEventsRequest(subscriptionId, waterMark).execute()
@@ -1946,8 +1946,8 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @return An IAsynResult that references the asynchronous request
    * @throws Exception
    */
-  protected IAsyncResult beginGetEvents(AsyncCallback callback, Object state,
-      String subscriptionId, String watermark) throws Exception {
+  public IAsyncResult beginGetEvents(AsyncCallback callback, Object state, String subscriptionId,
+      String watermark) throws Exception {
     return this.buildGetEventsRequest(subscriptionId, watermark)
         .beginExecute(callback, null);
   }
@@ -1961,7 +1961,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * the subscription.
    * @throws Exception
    */
-  protected GetEventsResults endGetEvents(IAsyncResult asyncResult) throws Exception {
+  public GetEventsResults endGetEvents(IAsyncResult asyncResult) throws Exception {
     GetEventsRequest request = AsyncRequestResult.extractServiceRequest(this, asyncResult);
 
     return request.endExecute(asyncResult).getResponseAtIndex(0).getResults();

@@ -33,7 +33,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Defines the GetStreamingEventsRequest class.
  */
-class GetStreamingEventsRequest extends HangingServiceRequestBase<GetStreamingEventsResponse> {
+public class GetStreamingEventsRequest extends HangingServiceRequestBase<GetStreamingEventsResponse> {
 
   protected final static int HeartbeatFrequencyDefault = 45000; ////45s in ms
   private static int heartbeatFrequency = HeartbeatFrequencyDefault;
@@ -50,8 +50,7 @@ class GetStreamingEventsRequest extends HangingServiceRequestBase<GetStreamingEv
    * @param connectionTimeout    The connectionTimeout
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException
    */
-  protected GetStreamingEventsRequest(ExchangeService service,
-      IHandleResponseObject serviceObjectHandler,
+  public GetStreamingEventsRequest(ExchangeService service, IHandleResponseObject serviceObjectHandler,
       Iterable<String> subscriptionIds, int connectionTimeout)
       throws ServiceVersionException {
     super(service, serviceObjectHandler,

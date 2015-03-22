@@ -100,7 +100,7 @@ public final class GetEventsResults {
   /**
    * Initializes a new instance.
    */
-  protected GetEventsResults() {
+  public GetEventsResults() {
   }
 
   /**
@@ -109,7 +109,7 @@ public final class GetEventsResults {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
         XmlElementNames.Notification);
 

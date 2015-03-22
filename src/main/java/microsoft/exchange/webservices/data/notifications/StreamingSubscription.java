@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
  */
 public final class StreamingSubscription extends SubscriptionBase {
 
-  protected StreamingSubscription(ExchangeService service) throws Exception {
+  public StreamingSubscription(ExchangeService service) throws Exception {
     super(service);
   }
 

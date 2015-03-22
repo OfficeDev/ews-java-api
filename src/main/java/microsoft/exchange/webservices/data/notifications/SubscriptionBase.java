@@ -100,7 +100,7 @@ public abstract class SubscriptionBase {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     this.id = reader.readElementValue(XmlNamespace.Messages,
         XmlElementNames.SubscriptionId);
     if (this.getUsesWatermark()) {

@@ -42,7 +42,7 @@ public final class PullSubscription extends SubscriptionBase {
    * @param service the service
    * @throws Exception the exception
    */
-  protected PullSubscription(ExchangeService service) throws Exception {
+  public PullSubscription(ExchangeService service) throws Exception {
     super(service);
   }
 
