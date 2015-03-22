@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core.serviceObjects.schemas;
 
 import microsoft.exchange.webservices.data.attributes.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;

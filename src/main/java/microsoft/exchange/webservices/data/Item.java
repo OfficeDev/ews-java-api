@@ -30,6 +30,8 @@ import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.ItemSchema;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.enumerations.AffectedTaskOccurrence;
 import microsoft.exchange.webservices.data.enumerations.ConflictResolutionMode;
 import microsoft.exchange.webservices.data.enumerations.DeleteMode;

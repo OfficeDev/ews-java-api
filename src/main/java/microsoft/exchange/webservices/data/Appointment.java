@@ -29,6 +29,8 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.AppointmentSchema;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.enumerations.AppointmentType;
 import microsoft.exchange.webservices.data.enumerations.ConflictResolutionMode;
 import microsoft.exchange.webservices.data.enumerations.DeleteMode;

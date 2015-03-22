@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core.responses;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.ServiceObjectSchema;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ServiceError;

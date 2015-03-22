@@ -24,6 +24,10 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.CalendarResponseObjectSchema;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.EmailMessageSchema;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.ItemSchema;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.Sensitivity;
 import microsoft.exchange.webservices.data.properties.complex.AttachmentCollection;

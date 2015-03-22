@@ -23,8 +23,8 @@
 
 package microsoft.exchange.webservices.data.core.serviceObjects.folders;
 
-import microsoft.exchange.webservices.data.SearchFolderSchema;
-import microsoft.exchange.webservices.data.ServiceObjectSchema;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.SearchFolderSchema;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;

@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.core.serviceObjects.folders;
 
-import microsoft.exchange.webservices.data.FolderSchema;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.FolderSchema;
 import microsoft.exchange.webservices.data.Item;
-import microsoft.exchange.webservices.data.ServiceObjectSchema;
+import microsoft.exchange.webservices.data.core.serviceObjects.schemas.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
