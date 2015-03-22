@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.interfaces.IFunction;
+import microsoft.exchange.webservices.data.util.Base64EncoderStream;
 
 import java.util.Date;
 import java.util.UUID;

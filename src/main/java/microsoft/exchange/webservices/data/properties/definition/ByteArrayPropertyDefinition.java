@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.properties.definition;
 
-import microsoft.exchange.webservices.data.Base64EncoderStream;
+import microsoft.exchange.webservices.data.util.Base64EncoderStream;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 

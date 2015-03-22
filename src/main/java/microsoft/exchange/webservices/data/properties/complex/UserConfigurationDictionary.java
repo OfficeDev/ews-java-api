@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.properties.complex;
 
-import microsoft.exchange.webservices.data.Base64EncoderStream;
+import microsoft.exchange.webservices.data.util.Base64EncoderStream;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
@@ -36,7 +36,6 @@ import microsoft.exchange.webservices.data.enumerations.UserConfigurationDiction
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.util.DateTimeUtils;
 
 import javax.xml.stream.XMLStreamException;

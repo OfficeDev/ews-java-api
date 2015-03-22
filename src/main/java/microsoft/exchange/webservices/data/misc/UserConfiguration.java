@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.Base64EncoderStream;
+import microsoft.exchange.webservices.data.util.Base64EncoderStream;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
