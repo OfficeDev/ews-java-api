@@ -21,8 +21,14 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.notifications;
 
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.GetStreamingEventsRequest;
+import microsoft.exchange.webservices.data.GetStreamingEventsResponse;
+import microsoft.exchange.webservices.data.HangingRequestDisconnectEventArgs;
+import microsoft.exchange.webservices.data.HangingServiceRequestBase;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceError;
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
@@ -41,7 +47,7 @@ import java.util.Map;
  * Represents a connection to an ongoing stream of events.
  */
 public final class StreamingSubscriptionConnection implements Closeable,
-    HangingServiceRequestBase.IHandleResponseObject,
+                                                              HangingServiceRequestBase.IHandleResponseObject,
     HangingServiceRequestBase.IHangingRequestDisconnectHandler {
 
   /**

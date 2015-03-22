@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.notifications;
 
 /**
  * Provides data to a StreamingSubscriptionConnection's

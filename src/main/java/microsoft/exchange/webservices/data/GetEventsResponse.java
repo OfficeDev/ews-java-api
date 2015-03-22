@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.notifications.GetEventsResults;
+
 /**
  * Represents the response to a subscription event retrieval operation.
  */

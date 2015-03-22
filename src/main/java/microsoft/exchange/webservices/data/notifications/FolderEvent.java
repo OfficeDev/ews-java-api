@@ -21,30 +21,37 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.notifications;
 
+import microsoft.exchange.webservices.data.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.EventType;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
 
 import java.util.Date;
 
 /**
- * Represents an event that applies to an item.
+ * Represents an event that applies to a folder.
  */
-public final class ItemEvent extends NotificationEvent {
+public class FolderEvent extends NotificationEvent {
 
   /**
-   * Id of the item this event applies to.
+   * The folder id.
    */
-  private ItemId itemId;
+  private FolderId folderId;
 
   /**
-   * Id of the item that moved or copied. This is only meaningful when
-   * EventType is equal to either EventType.Moved or EventType.Copied. For all
-   * other event types, it's null.
+   * The old folder id.
    */
-  private ItemId oldItemId;
+  private FolderId oldFolderId;
+
+  /**
+   * The new number of unread messages. This is is only meaningful when
+   * EventType is equal to EventType.Modified. For all other event types, it's
+   * null.
+   */
+  private int unreadCount;
 
   /**
    * Initializes a new instance.
@@ -52,7 +59,7 @@ public final class ItemEvent extends NotificationEvent {
    * @param eventType the event type
    * @param timestamp the timestamp
    */
-  protected ItemEvent(EventType eventType, Date timestamp) {
+  protected FolderEvent(EventType eventType, Date timestamp) {
     super(eventType, timestamp);
   }
 
@@ -66,28 +73,36 @@ public final class ItemEvent extends NotificationEvent {
       throws Exception {
     super.internalLoadFromXml(reader);
 
-    this.itemId = new ItemId();
-    this.itemId.loadFromXml(reader, reader.getLocalName());
+    this.folderId = new FolderId();
+    this.folderId.loadFromXml(reader, reader.getLocalName());
 
     reader.read();
 
     setParentFolderId(new FolderId());
-
     getParentFolderId().loadFromXml(reader, XmlElementNames.ParentFolderId);
 
-    EventType eventType = getEventType();
-    switch (eventType) {
+    switch (getEventType()) {
       case Moved:
       case Copied:
         reader.read();
 
-        this.oldItemId = new ItemId();
-        this.oldItemId.loadFromXml(reader, reader.getLocalName());
+        this.oldFolderId = new FolderId();
+        this.oldFolderId.loadFromXml(reader, reader.getLocalName());
 
         reader.read();
 
-        setOldParentFolderId(new FolderId());
-        getOldParentFolderId().loadFromXml(reader, reader.getLocalName());
+        setParentFolderId(new FolderId());
+        getParentFolderId().loadFromXml(reader, reader.getLocalName());
+        break;
+
+      case Modified:
+        reader.read();
+        if (reader.isStartElement()) {
+          reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
+              XmlElementNames.UnreadCount);
+          String str = reader.readValue();
+          this.unreadCount = Integer.parseInt(str);
+        }
         break;
 
       default:
@@ -96,23 +111,34 @@ public final class ItemEvent extends NotificationEvent {
   }
 
   /**
-   * Gets the Id of the item this event applies to.
+   * Gets the Id of the folder this event applies to.
    *
-   * @return itemId
+   * @return folderId
    */
-  public ItemId getItemId() {
-    return itemId;
+  public FolderId getFolderId() {
+    return folderId;
   }
 
   /**
-   * Gets the Id of the item that was moved or copied. OldItemId is only
+   * gets the Id of the folder that was moved or copied. OldFolderId is only
    * meaningful when EventType is equal to either EventType.Moved or
-   * EventType.Copied. For all other event types, OldItemId is null.
+   * EventType.Copied. For all other event types, OldFolderId is null.
    *
-   * @return the old item id
+   * @return oldFolderId
    */
-  public ItemId getOldItemId() {
-    return oldItemId;
+  public FolderId getOldFolderId() {
+    return oldFolderId;
+  }
+
+  /**
+   * Gets the new number of unread messages. This is is only meaningful when
+   * EventType is equal to EventType.Modified. For all other event types,
+   * UnreadCount is null.
+   *
+   * @return unreadCount
+   */
+  public int getUnreadCount() {
+    return unreadCount;
   }
 
 }
