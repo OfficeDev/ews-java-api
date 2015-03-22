@@ -21,8 +21,10 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core.serviceObjects.responseObjects;
 
+import microsoft.exchange.webservices.data.EmailMessage;
+import microsoft.exchange.webservices.data.Item;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;

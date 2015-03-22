@@ -21,57 +21,30 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core.serviceObjects.responseObjects;
 
+import microsoft.exchange.webservices.data.Item;
+import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.responses.MeetingResponse;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 
 /**
- * Represents a meeting acceptance message.
+ * Represents a meeting declination message.
  */
-public final class AcceptMeetingInvitationMessage extends
+@ServiceObjectDefinition(xmlElementName = XmlElementNames.DeclineItem, returnedByServer = false)
+public final class DeclineMeetingInvitationMessage extends
     CalendarResponseMessage<MeetingResponse> {
 
   /**
-   * The tentative.
-   */
-  private boolean tentative;
-
-  /**
-   * Initializes a new instance of the AcceptMeetingInvitationMessage class.
+   * Initializes a new instance of the DeclineMeetingInvitationMessage class.
    *
    * @param referenceItem the reference item
-   * @param tentative     the tentative
    * @throws Exception the exception
    */
-  public AcceptMeetingInvitationMessage(Item referenceItem, boolean tentative) throws Exception {
+  public DeclineMeetingInvitationMessage(Item referenceItem)
+      throws Exception {
     super(referenceItem);
-    this.tentative = tentative;
-  }
-
-  /**
-   * This methods lets subclasses of ServiceObject override the default
-   * mechanism by which the XML element name associated with their type is
-   * retrieved.
-   *
-   * @return The XML element name associated with this type. If this method
-   * returns null or empty, the XML element name associated with this
-   * type is determined by the EwsObjectDefinition attribute that
-   * decorates the type, if present.
-   * <p/>
-   * Item and folder classes that can be returned by EWS MUST rely on
-   * the EwsObjectDefinition attribute for XML element name
-   * determination.
-   */
-  @Override public String getXmlElementName() {
-    // getXmlElementOverride is pvt and getXmlElementName returns
-    // getXmlElementOverride
-    if (this.tentative) {
-      return XmlElementNames.TentativelyAcceptItem;
-    } else {
-      return XmlElementNames.AcceptItem;
-    }
   }
 
   /**
@@ -82,16 +55,6 @@ public final class AcceptMeetingInvitationMessage extends
    */
   @Override public ExchangeVersion getMinimumRequiredServerVersion() {
     return ExchangeVersion.Exchange2007_SP1;
-  }
-
-  /**
-   * Gets the tentative.
-   *
-   * @return Gets a value indicating whether the associated meeting is
-   * tentatively accepted.
-   */
-  public boolean getTentative() {
-    return this.tentative;
   }
 
 }

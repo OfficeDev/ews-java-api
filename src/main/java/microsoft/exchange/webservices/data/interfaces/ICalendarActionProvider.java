@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.AcceptMeetingInvitationMessage;
+import microsoft.exchange.webservices.data.core.serviceObjects.responseObjects.AcceptMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
-import microsoft.exchange.webservices.data.DeclineMeetingInvitationMessage;
+import microsoft.exchange.webservices.data.core.serviceObjects.responseObjects.DeclineMeetingInvitationMessage;
 
 /**
  * Interface defintion of a group of methods that are common to items that

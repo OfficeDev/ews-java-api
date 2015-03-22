@@ -23,10 +23,10 @@
 
 package microsoft.exchange.webservices.data.core.requests;
 
-import microsoft.exchange.webservices.data.AcceptMeetingInvitationMessage;
+import microsoft.exchange.webservices.data.core.serviceObjects.responseObjects.AcceptMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.Appointment;
 import microsoft.exchange.webservices.data.core.serviceObjects.schemas.AppointmentSchema;
-import microsoft.exchange.webservices.data.DeclineMeetingInvitationMessage;
+import microsoft.exchange.webservices.data.core.serviceObjects.responseObjects.DeclineMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.MeetingMessage;
 import microsoft.exchange.webservices.data.core.serviceObjects.schemas.MeetingRequestSchema;
