@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.Conversation;
 import microsoft.exchange.webservices.data.Folder;
 import microsoft.exchange.webservices.data.Item;
 import microsoft.exchange.webservices.data.OutParam;
-import microsoft.exchange.webservices.data.ServiceObject;
+import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.requests.ApplyConversationActionRequest;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;

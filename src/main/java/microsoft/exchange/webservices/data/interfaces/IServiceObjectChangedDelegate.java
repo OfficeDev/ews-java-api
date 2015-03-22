@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.ServiceObject;
+import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
 
 /**
  * The Interface ServiceObjectChangedDelegateInterface.

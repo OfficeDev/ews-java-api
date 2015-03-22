@@ -21,8 +21,23 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core.serviceObjects;
 
+import microsoft.exchange.webservices.data.Appointment;
+import microsoft.exchange.webservices.data.CalendarFolder;
+import microsoft.exchange.webservices.data.Contact;
+import microsoft.exchange.webservices.data.ContactGroup;
+import microsoft.exchange.webservices.data.ContactsFolder;
+import microsoft.exchange.webservices.data.Conversation;
+import microsoft.exchange.webservices.data.EmailMessage;
+import microsoft.exchange.webservices.data.Folder;
+import microsoft.exchange.webservices.data.Item;
+import microsoft.exchange.webservices.data.MeetingCancellation;
+import microsoft.exchange.webservices.data.MeetingMessage;
+import microsoft.exchange.webservices.data.PostItem;
+import microsoft.exchange.webservices.data.SearchFolder;
+import microsoft.exchange.webservices.data.Task;
+import microsoft.exchange.webservices.data.TasksFolder;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.requests.MeetingRequest;

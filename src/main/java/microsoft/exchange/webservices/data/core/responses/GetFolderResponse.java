@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.Folder;
 import microsoft.exchange.webservices.data.core.PropertySet;
-import microsoft.exchange.webservices.data.ServiceObject;
+import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
 

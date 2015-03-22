@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
 import microsoft.exchange.webservices.data.enumerations.AffectedTaskOccurrence;
 import microsoft.exchange.webservices.data.enumerations.DeleteMode;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;

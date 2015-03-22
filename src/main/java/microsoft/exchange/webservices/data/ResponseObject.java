@@ -30,6 +30,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.PropertySet;
+import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
 import microsoft.exchange.webservices.data.enumerations.AffectedTaskOccurrence;
 import microsoft.exchange.webservices.data.enumerations.DeleteMode;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
@@ -47,8 +48,7 @@ import java.util.List;
  * @param <TMessage> the generic type
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
-public abstract class ResponseObject<TMessage extends EmailMessage> extends
-    ServiceObject {
+public abstract class ResponseObject<TMessage extends EmailMessage> extends ServiceObject {
 
   /**
    * The reference item.

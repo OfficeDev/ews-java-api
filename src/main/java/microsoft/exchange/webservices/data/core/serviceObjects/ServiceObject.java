@@ -21,8 +21,10 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core.serviceObjects;
 
+import microsoft.exchange.webservices.data.OutParam;
+import microsoft.exchange.webservices.data.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;

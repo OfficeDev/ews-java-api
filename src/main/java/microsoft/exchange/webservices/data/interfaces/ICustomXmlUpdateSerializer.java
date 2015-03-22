@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.interfaces;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.ServiceObject;
+import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
