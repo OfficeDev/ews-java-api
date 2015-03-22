@@ -34,6 +34,7 @@ import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ArgumentOutOfRangeException;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.properties.complex.recurrence.DayOfTheWeekCollection;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.*;
