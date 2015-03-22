@@ -116,7 +116,7 @@ public class EwsUtilities {
   /**
    * The Constant WSSecuritySecExtNamespacePrefix.
    */
-  protected static final String WSSecuritySecExtNamespacePrefix = "wsse";
+  public static final String WSSecuritySecExtNamespacePrefix = "wsse";
 
   /**
    * The Constant EwsTypesNamespace.
@@ -181,7 +181,7 @@ public class EwsUtilities {
 
   public static final String WSSecurityUtilityNamespace =
       "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";
-  protected static final String WSSecuritySecExtNamespace =
+  public static final String WSSecuritySecExtNamespace =
       "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
 
   /**

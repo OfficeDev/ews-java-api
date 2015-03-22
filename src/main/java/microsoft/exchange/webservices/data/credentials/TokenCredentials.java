@@ -52,8 +52,7 @@ public final class TokenCredentials extends WSSecurityBasedCredentials {
    * @param request The request.
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
-  @Override
-  protected void prepareWebRequest(HttpWebRequest request)
+  @Override public void prepareWebRequest(HttpWebRequest request)
       throws URISyntaxException {
     this.setEwsUrl(request.getUrl().toURI());
   }

@@ -138,8 +138,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
    * This method is called to pre-authenticate credentials before a service
    * request is made.
    */
-  @Override
-  protected void preAuthenticate() {
+  @Override public void preAuthenticate() {
     // Nothing special to do here.
   }
 
@@ -170,9 +169,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
    * @param webMethodName The Web method being called.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
-  @Override
-  protected void serializeExtraSoapHeaders(XMLStreamWriter writer,
-      String webMethodName) throws XMLStreamException {
+  @Override public void serializeExtraSoapHeaders(XMLStreamWriter writer, String webMethodName) throws XMLStreamException {
     this.serializeWSAddressingHeaders(writer, webMethodName);
     this.serializeWSSecurityHeaders(writer);
   }

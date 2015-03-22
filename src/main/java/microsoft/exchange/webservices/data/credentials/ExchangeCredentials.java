@@ -78,7 +78,7 @@ public abstract class ExchangeCredentials {
    * This method is called to pre-authenticate credentials before a service
    * request is made.
    */
-  protected void preAuthenticate() {
+  public void preAuthenticate() {
     // do nothing by default.
   }
 
@@ -89,7 +89,7 @@ public abstract class ExchangeCredentials {
    * @param client The request.
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
-  protected void prepareWebRequest(HttpWebRequest client)
+  public void prepareWebRequest(HttpWebRequest client)
       throws URISyntaxException {
     // do nothing by default.
   }
@@ -114,8 +114,7 @@ public abstract class ExchangeCredentials {
    * @param webMethodName The Web method being called.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
-  protected void serializeExtraSoapHeaders(XMLStreamWriter writer,
-      String webMethodName) throws XMLStreamException {
+  public void serializeExtraSoapHeaders(XMLStreamWriter writer, String webMethodName) throws XMLStreamException {
     // do nothing by default.
   }
 

@@ -132,8 +132,7 @@ public final class WebCredentials extends ExchangeCredentials {
    *
    * @param request The request.
    */
-  @Override
-  protected void prepareWebRequest(HttpWebRequest request) {
+  @Override public void prepareWebRequest(HttpWebRequest request) {
     if (useDefaultCredentials) {
       request.setUseDefaultCredentials(true);
     } else {
