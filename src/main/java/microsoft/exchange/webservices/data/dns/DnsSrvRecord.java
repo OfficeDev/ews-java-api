@@ -21,7 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.dns;
+
+import microsoft.exchange.webservices.data.DnsException;
 
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;

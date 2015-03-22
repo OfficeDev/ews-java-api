@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * Class that holds all constants.
  */
-class EWSConstants {
+public class EWSConstants {
         /*
          * Represents SRV record.
 	 */

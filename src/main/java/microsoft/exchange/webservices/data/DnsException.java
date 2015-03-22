@@ -38,7 +38,7 @@ public class DnsException extends Exception {
    *
    * @param exceptionMessage the exception message
    */
-  protected DnsException(String exceptionMessage) {
+  public DnsException(String exceptionMessage) {
     super(exceptionMessage);
   }
 }

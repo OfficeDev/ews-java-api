@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.autodiscover;
 
-import microsoft.exchange.webservices.data.DnsClient;
+import microsoft.exchange.webservices.data.dns.DnsClient;
 import microsoft.exchange.webservices.data.DnsException;
-import microsoft.exchange.webservices.data.DnsSrvRecord;
+import microsoft.exchange.webservices.data.dns.DnsSrvRecord;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.TraceFlags;
 
