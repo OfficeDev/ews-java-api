@@ -283,7 +283,7 @@ public class GroupMember extends ComplexProperty implements IComplexPropertyChan
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.key = reader.readAttributeValue(String.class,
         XmlAttributeNames.Key);
@@ -296,7 +296,7 @@ public class GroupMember extends ComplexProperty implements IComplexPropertyChan
    * @return True if element was read.
    * @throws Exception the exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.Status)) {
 
@@ -321,7 +321,7 @@ public class GroupMember extends ComplexProperty implements IComplexPropertyChan
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     // if this.key is null or empty, writer skips the attribute
     writer.writeAttributeValue(XmlAttributeNames.Key, this.key);
@@ -333,7 +333,7 @@ public class GroupMember extends ComplexProperty implements IComplexPropertyChan
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     // No need to write member Status back to server
     // Write only AddressInformation container element

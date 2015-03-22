@@ -81,7 +81,7 @@ public class SetRuleOperation extends RuleOperation {
    * @return True if element was read.
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.Rule)) {
       this.rule = new Rule();
@@ -98,7 +98,7 @@ public class SetRuleOperation extends RuleOperation {
    * @param writer The writer.
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.rule.writeToXml(writer, XmlElementNames.Rule);
   }
@@ -116,8 +116,7 @@ public class SetRuleOperation extends RuleOperation {
   /**
    * Gets the Xml element name of the SetRuleOperation object.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.SetRuleOperation;
   }
 }

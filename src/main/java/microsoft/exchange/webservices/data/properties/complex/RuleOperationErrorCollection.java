@@ -34,7 +34,7 @@ public final class RuleOperationErrorCollection extends ComplexPropertyCollectio
    * Initializes a new instance of the
    * <see cref="RuleOperationErrorCollection"/> class.
    */
-  protected RuleOperationErrorCollection() {
+  public RuleOperationErrorCollection() {
     super();
   }
 

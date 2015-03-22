@@ -79,7 +79,7 @@ public class TimeZonePeriod extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.id = reader.readAttributeValue(XmlAttributeNames.Id);
     this.name = reader.readAttributeValue(XmlAttributeNames.Name);
@@ -93,7 +93,7 @@ public class TimeZonePeriod extends ComplexProperty {
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.Bias, EwsUtilities
         .getTimeSpanToXSDuration(this.bias));

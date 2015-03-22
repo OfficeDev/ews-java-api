@@ -74,7 +74,7 @@ public final class Suggestion extends ComplexProperty {
    * @throws Exception                           the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException,
       Exception {
     if (reader.getLocalName().equals(XmlElementNames.Date)) {

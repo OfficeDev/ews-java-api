@@ -143,7 +143,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
    * @return True if element was read.
    * @throws Exception the exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName()
         .equalsIgnoreCase(XmlElementNames.EmailAddress)) {
@@ -165,7 +165,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeElementValue(XmlNamespace.Types,
         XmlElementNames.EmailAddress, this.address);

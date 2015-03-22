@@ -443,7 +443,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @param dt the date
    * @return String representation of DateTime in yyyy-MM-ddTHH:mm:ssZ format.
    */
-  protected String convertDateTimeToUniversalDateTimeString(Date dt) {
+  public String convertDateTimeToUniversalDateTimeString(Date dt) {
     String utcPattern = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     DateFormat utcFormatter = new SimpleDateFormat(utcPattern);
     utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));

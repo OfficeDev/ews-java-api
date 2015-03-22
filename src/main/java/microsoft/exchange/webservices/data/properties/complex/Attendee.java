@@ -122,7 +122,7 @@ public final class Attendee extends EmailAddress {
    * @return True if element was read.
    * @throws Exception the exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.Mailbox)) {
       this.loadFromXml(reader, reader.getLocalName());
@@ -147,7 +147,7 @@ public final class Attendee extends EmailAddress {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeStartElement(this.getNamespace(), XmlElementNames.Mailbox);
     super.writeElementsToXml(writer);

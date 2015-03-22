@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data;
  *
  * @param <T> the generic type
  */
-interface ILazyMember<T> {
+public interface ILazyMember<T> {
 
   /**
    * Creates the instance.

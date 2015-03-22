@@ -77,7 +77,7 @@ public final class ExtendedProperty extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
 
     if (reader.getLocalName().equals(XmlElementNames.ExtendedFieldURI)) {
@@ -115,7 +115,7 @@ public final class ExtendedProperty extends ComplexProperty {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     this.getPropertyDefinition().writeToXml(writer);
 

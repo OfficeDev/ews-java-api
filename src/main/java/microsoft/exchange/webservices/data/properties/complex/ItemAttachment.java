@@ -100,8 +100,7 @@ public class ItemAttachment extends Attachment implements IServiceObjectChangedD
    *
    * @return The XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.ItemAttachment;
   }
 
@@ -113,7 +112,7 @@ public class ItemAttachment extends Attachment implements IServiceObjectChangedD
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     boolean result = super.tryReadElementFromXml(reader);
 
@@ -140,7 +139,7 @@ public class ItemAttachment extends Attachment implements IServiceObjectChangedD
    *               <p/>
    *               True if element was read.
    */
-  protected boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception {
+  public boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception {
     // update the attachment id.
     super.tryReadElementFromXml(reader);
 
@@ -170,7 +169,7 @@ public class ItemAttachment extends Attachment implements IServiceObjectChangedD
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     super.writeElementsToXml(writer);
     try {

@@ -1427,7 +1427,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @param additionalProperties the additional properties
    * @throws Exception the exception
    */
-  protected void getAttachment(Attachment attachment, BodyType bodyType,
+  public void getAttachment(Attachment attachment, BodyType bodyType,
       Iterable<PropertyDefinitionBase> additionalProperties)
       throws Exception {
 
@@ -1448,8 +1448,8 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
-  protected ServiceResponseCollection<CreateAttachmentResponse> createAttachments(
-      String parentItemId, Iterable<Attachment> attachments)
+  public ServiceResponseCollection<CreateAttachmentResponse> createAttachments(String parentItemId,
+      Iterable<Attachment> attachments)
       throws ServiceResponseException, Exception {
     CreateAttachmentRequest request = new CreateAttachmentRequest(this,
         ServiceErrorHandling.ReturnErrors);
@@ -1473,7 +1473,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @throws ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
-  protected ServiceResponseCollection<DeleteAttachmentResponse> deleteAttachments(
+  public ServiceResponseCollection<DeleteAttachmentResponse> deleteAttachments(
       Iterable<Attachment> attachments) throws ServiceResponseException,
       Exception {
     DeleteAttachmentRequest request = new DeleteAttachmentRequest(this,

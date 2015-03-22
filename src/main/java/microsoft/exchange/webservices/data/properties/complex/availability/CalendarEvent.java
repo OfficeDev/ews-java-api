@@ -107,7 +107,7 @@ public final class CalendarEvent extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.StartTime)) {
       this.startTime = reader

@@ -25,8 +25,7 @@ package microsoft.exchange.webservices.data.properties.complex;
 
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.TimeChange;
+import microsoft.exchange.webservices.data.EwsUtilities;;
 import microsoft.exchange.webservices.data.TimeSpan;
 import microsoft.exchange.webservices.data.XmlAttributeNames;
 import microsoft.exchange.webservices.data.XmlElementNames;
@@ -102,7 +101,7 @@ public final class MeetingTimeZone extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.BaseOffset)) {
       this.baseOffset = EwsUtilities.getXSDurationToTimeSpan(reader.readElementValue());
@@ -127,7 +126,7 @@ public final class MeetingTimeZone extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.name = reader.readAttributeValue(XmlAttributeNames.TimeZoneName);
   }
@@ -139,7 +138,7 @@ public final class MeetingTimeZone extends ComplexProperty {
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.TimeZoneName, this
         .getName());
@@ -152,7 +151,7 @@ public final class MeetingTimeZone extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     if (this.baseOffset != null) {
       writer.writeElementValue(XmlNamespace.Types,

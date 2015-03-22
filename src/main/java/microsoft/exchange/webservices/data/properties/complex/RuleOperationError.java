@@ -97,7 +97,7 @@ public final class RuleOperationError extends ComplexProperty implements Iterabl
    * @throws Exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.OperationIndex)) {
       this.operationIndex = reader.readElementValue(Integer.class);

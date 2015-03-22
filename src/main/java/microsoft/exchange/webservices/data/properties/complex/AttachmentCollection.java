@@ -259,7 +259,7 @@ public final class AttachmentCollection extends ComplexPropertyCollection<Attach
    *
    * @throws Exception the exception
    */
-  protected void save() throws Exception {
+  public void save() throws Exception {
     ArrayList<Attachment> attachments =
         new ArrayList<Attachment>();
 
@@ -324,7 +324,7 @@ public final class AttachmentCollection extends ComplexPropertyCollection<Attach
    * @return True if attachment adds or deletes haven't been processed yet.
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
    */
-  protected boolean hasUnprocessedChanges() throws ServiceLocalException {
+  public boolean hasUnprocessedChanges() throws ServiceLocalException {
     // Any new attachments?
     for (Attachment attachment : this) {
       if (attachment.isNew()) {
@@ -365,8 +365,7 @@ public final class AttachmentCollection extends ComplexPropertyCollection<Attach
    * Disables the change log clearing mechanism. Attachment collections are
    * saved separately from the items they belong to.
    */
-  @Override
-  protected void clearChangeLog() {
+  @Override public void clearChangeLog() {
     // Do nothing
   }
 

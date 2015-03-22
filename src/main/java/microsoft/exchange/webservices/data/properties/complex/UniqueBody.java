@@ -53,7 +53,7 @@ public final class UniqueBody extends ComplexProperty {
   /**
    * Initializes a new instance.
    */
-  protected UniqueBody() {
+  public UniqueBody() {
   }
 
   /**
@@ -75,7 +75,7 @@ public final class UniqueBody extends ComplexProperty {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.bodyType = reader.readAttributeValue(BodyType.class,
         XmlAttributeNames.BodyType);
@@ -88,7 +88,7 @@ public final class UniqueBody extends ComplexProperty {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlDeserializationException  the service xml deserialization exception
    */
-  protected void readTextValueFromXml(EwsServiceXmlReader reader)
+  public void readTextValueFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException {
     this.text = reader.readValue();
   }
@@ -99,7 +99,7 @@ public final class UniqueBody extends ComplexProperty {
    * @param writer the writer
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.BodyType, this.bodyType);
   }
@@ -110,7 +110,7 @@ public final class UniqueBody extends ComplexProperty {
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     if (!(this.text == null || this.text.isEmpty())) {
       writer.writeValue(this.text, XmlElementNames.UniqueBody);

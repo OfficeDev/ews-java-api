@@ -878,7 +878,7 @@ public class EwsUtilities {
    * @param date the date
    * @return String representation of DateTime.
    */
-  static String dateTimeToXSDate(Date date) {
+  public static String dateTimeToXSDate(Date date) {
     String format = "yyyy-MM-dd'Z'";
     DateFormat utcFormatter = new SimpleDateFormat(format);
     utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));

@@ -58,7 +58,7 @@ final class PhoneCallId extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.id = reader.readAttributeValue(XmlAttributeNames.Id);
   }
@@ -70,7 +70,7 @@ final class PhoneCallId extends ComplexProperty {
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.Id, this.id);
   }

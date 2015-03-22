@@ -30,7 +30,7 @@ import java.util.*;
  *
  * @param <TKey> The type of key
  */
-class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
+public class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 
   /**
    * The items.
@@ -95,7 +95,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
    *
    * @return the added items
    */
-  protected Iterable<TKey> getAddedItems() {
+  public Iterable<TKey> getAddedItems() {
     return this.addedItems;
   }
 
@@ -104,7 +104,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
    *
    * @return the removed items
    */
-  protected Iterable<TKey> getRemovedItems() {
+  public Iterable<TKey> getRemovedItems() {
     return this.removedItems;
   }
 
@@ -113,7 +113,7 @@ class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
    *
    * @return the modified items
    */
-  protected Iterable<TKey> getModifiedItems() {
+  public Iterable<TKey> getModifiedItems() {
     return this.modifiedItems;
   }
 

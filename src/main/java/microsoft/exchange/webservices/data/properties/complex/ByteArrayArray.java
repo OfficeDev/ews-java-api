@@ -37,7 +37,7 @@ public class ByteArrayArray extends ComplexProperty {
   final static String ItemXmlElementName = "Base64Binary";
   private List<byte[]> content = new ArrayList<byte[]>();
 
-  ByteArrayArray() {
+  public ByteArrayArray() {
   }
 
   /**
@@ -50,8 +50,7 @@ public class ByteArrayArray extends ComplexProperty {
   /**
    * Tries to read element from XML.
    */
-
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
 
     if (reader.getLocalName().equalsIgnoreCase(
@@ -67,8 +66,7 @@ public class ByteArrayArray extends ComplexProperty {
   /**
    * The Writer
    */
-
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     for (byte[] item : this.content) {
       writer.writeStartElement(XmlNamespace.Types,

@@ -86,7 +86,7 @@ public final class ManagedFolderInformation extends ComplexProperty {
   /**
    * Initializes a new instance of the ManagedFolderInformation class.
    */
-  protected ManagedFolderInformation() {
+  public ManagedFolderInformation() {
     super();
   }
 
@@ -97,7 +97,7 @@ public final class ManagedFolderInformation extends ComplexProperty {
    * @return True if element was read.
    * @throws Exception the exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.CanDelete)) {
       this.canDelete = reader.readValue(Boolean.class);

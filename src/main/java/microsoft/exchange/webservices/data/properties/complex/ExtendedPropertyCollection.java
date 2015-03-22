@@ -130,8 +130,7 @@ public final class ExtendedPropertyCollection extends ComplexPropertyCollection<
    * @param value              The value.
    * @throws Exception the exception
    */
-  protected void setExtendedProperty(
-      ExtendedPropertyDefinition propertyDefinition, Object value)
+  public void setExtendedProperty(ExtendedPropertyDefinition propertyDefinition, Object value)
       throws Exception {
     ExtendedProperty extendedProperty = this
         .getOrAddExtendedProperty(propertyDefinition);
@@ -146,8 +145,7 @@ public final class ExtendedPropertyCollection extends ComplexPropertyCollection<
    * was successfully removed from the collection, false otherwise.
    * @throws Exception the exception
    */
-  protected boolean removeExtendedProperty(
-      ExtendedPropertyDefinition propertyDefinition) throws Exception {
+  public boolean removeExtendedProperty(ExtendedPropertyDefinition propertyDefinition) throws Exception {
     EwsUtilities.validateParam(propertyDefinition, "propertyDefinition");
 
     ExtendedProperty extendedProperty = null;
@@ -191,8 +189,7 @@ public final class ExtendedPropertyCollection extends ComplexPropertyCollection<
    * @return True if property exists in collection.
    * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
-  protected <T> boolean tryGetValue(Class<T> cls,
-      ExtendedPropertyDefinition propertyDefinition,
+  public <T> boolean tryGetValue(Class<T> cls, ExtendedPropertyDefinition propertyDefinition,
       OutParam<T> propertyValueOut) throws ArgumentException {
     ExtendedProperty extendedProperty = null;
     OutParam<ExtendedProperty> extendedPropertyOut =

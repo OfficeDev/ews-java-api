@@ -181,8 +181,7 @@ public class Folder extends ServiceObject {
    *
    * @return Xml element name
    */
-  @Override
-  protected String getSetFieldXmlElementName() {
+  @Override public String getSetFieldXmlElementName() {
     return XmlElementNames.SetFolderField;
   }
 
@@ -191,8 +190,7 @@ public class Folder extends ServiceObject {
    *
    * @return Xml element name
    */
-  @Override
-  protected String getDeleteFieldXmlElementName() {
+  @Override public String getDeleteFieldXmlElementName() {
     return XmlElementNames.DeleteFolderField;
   }
 

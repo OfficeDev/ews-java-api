@@ -37,7 +37,7 @@ public final class AttendeeCollection extends ComplexPropertyCollection<Attendee
   /**
    * Initializes a new instance of the AttendeeCollection class.
    */
-  protected AttendeeCollection() {
+  public AttendeeCollection() {
     super();
   }
 

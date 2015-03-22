@@ -314,7 +314,7 @@ public class Item extends ServiceObject {
    *
    * @return the parent attachment
    */
-  protected ItemAttachment getParentAttachment() {
+  public ItemAttachment getParentAttachment() {
     return this.parentAttachment;
   }
 
@@ -324,7 +324,7 @@ public class Item extends ServiceObject {
    * @return the root item id
    * @throws ServiceLocalException the service local exception
    */
-  protected ItemId getRootItemId() throws ServiceLocalException {
+  public ItemId getRootItemId() throws ServiceLocalException {
 
     if (this.isAttachment()) {
       return this.getParentAttachment().getOwner().getRootItemId();

@@ -141,9 +141,7 @@ public abstract class ComplexPropertyCollection
    * @param xmlNamespace     The XML namespace.
    * @param localElementName Name of the local element.
    */
-  @Override
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      XmlNamespace xmlNamespace,
+  @Override public void loadFromXml(EwsServiceXmlReader reader, XmlNamespace xmlNamespace,
       String localElementName) throws Exception {
     reader.ensureCurrentNodeIsStartElement(xmlNamespace,
         localElementName);
@@ -176,8 +174,7 @@ public abstract class ComplexPropertyCollection
    * @param xmlNamespace   The XML namespace.
    * @param xmlElementName Name of the XML element.
    */
-
-  protected void updateFromXml(
+  public void updateFromXml(
       EwsServiceXmlReader reader,
       XmlNamespace xmlNamespace,
       String xmlElementName) throws Exception {
@@ -210,9 +207,7 @@ public abstract class ComplexPropertyCollection
    * @param xmlNamespace   The XML namespace.
    * @param xmlElementName Name of the XML element.
    */
-  @Override
-  protected void writeToXml(EwsServiceXmlWriter writer,
-      XmlNamespace xmlNamespace,
+  @Override public void writeToXml(EwsServiceXmlWriter writer, XmlNamespace xmlNamespace,
       String xmlElementName) throws Exception {
     if (this.shouldWriteToXml()) {
       super.writeToXml(
@@ -227,7 +222,7 @@ public abstract class ComplexPropertyCollection
    *
    * @return True if collection contains at least one element.
    */
-  protected boolean shouldWriteToXml() {
+  public boolean shouldWriteToXml() {
     //Only write collection if it has at least one element.
     return this.getCount() > 0;
   }
@@ -239,7 +234,7 @@ public abstract class ComplexPropertyCollection
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     for (TComplexProperty complexProperty : this) {
       complexProperty.writeToXml(writer, this
@@ -250,8 +245,7 @@ public abstract class ComplexPropertyCollection
   /**
    * Clears the change log.
    */
-  @Override
-  protected void clearChangeLog() {
+  @Override public void clearChangeLog() {
     this.removedItems.clear();
     this.addedItems.clear();
     this.modifiedItems.clear();
@@ -273,7 +267,7 @@ public abstract class ComplexPropertyCollection
    *
    * @return The items.
    */
-  protected List<TComplexProperty> getItems() {
+  public List<TComplexProperty> getItems() {
     return this.items;
   }
 

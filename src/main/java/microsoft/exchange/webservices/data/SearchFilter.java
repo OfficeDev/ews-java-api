@@ -68,7 +68,7 @@ public abstract class SearchFilter extends ComplexProperty {
    * @return SearchFilter
    * @throws Exception the exception
    */
-  protected static SearchFilter loadFromXml(EwsServiceXmlReader reader)
+  public static SearchFilter loadFromXml(EwsServiceXmlReader reader)
       throws Exception {
     reader.ensureCurrentNodeIsStartElement();
 
@@ -132,7 +132,7 @@ public abstract class SearchFilter extends ComplexProperty {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     super.writeToXml(writer, this.getXmlElementName());
   }
 
@@ -225,7 +225,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
       boolean result = super.tryReadElementFromXml(reader);
 
@@ -246,7 +246,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected void readAttributesFromXml(EwsServiceXmlReader reader)
+    public void readAttributesFromXml(EwsServiceXmlReader reader)
         throws Exception {
 
       super.readAttributesFromXml(reader);
@@ -274,7 +274,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
      */
     @Override
-    protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+    public void writeAttributesToXml(EwsServiceXmlWriter writer)
         throws ServiceXmlSerializationException {
       super.writeAttributesToXml(writer);
 
@@ -292,7 +292,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws ServiceXmlSerializationException    the service xml serialization exception
      */
     @Override
-    protected void writeElementsToXml(EwsServiceXmlWriter writer)
+    public void writeElementsToXml(EwsServiceXmlWriter writer)
         throws XMLStreamException, ServiceXmlSerializationException {
       super.writeElementsToXml(writer);
 
@@ -395,7 +395,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @return XML element name
      */
     @Override
-    protected String getXmlElementName() {
+    public String getXmlElementName() {
       return XmlElementNames.Excludes;
     }
 
@@ -407,7 +407,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
       boolean result = super.tryReadElementFromXml(reader);
 
@@ -430,7 +430,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws ServiceXmlSerializationException    the service xml serialization exception
      */
     @Override
-    protected void writeElementsToXml(EwsServiceXmlWriter writer)
+    public void writeElementsToXml(EwsServiceXmlWriter writer)
         throws XMLStreamException, ServiceXmlSerializationException {
       super.writeElementsToXml(writer);
 
@@ -851,7 +851,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
       this.searchFilter = SearchFilter.loadFromXml(reader);
       return true;
@@ -864,7 +864,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected void writeElementsToXml(EwsServiceXmlWriter writer)
+    public void writeElementsToXml(EwsServiceXmlWriter writer)
         throws Exception {
       this.searchFilter.writeToXml(writer);
     }
@@ -969,7 +969,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
       OutParam<PropertyDefinitionBase> outParam =
           new OutParam<PropertyDefinitionBase>();
@@ -986,7 +986,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
      */
     @Override
-    protected void writeElementsToXml(EwsServiceXmlWriter writer)
+    public void writeElementsToXml(EwsServiceXmlWriter writer)
         throws XMLStreamException, ServiceXmlSerializationException {
       this.propertyDefinition.writeToXml(writer);
     }
@@ -1096,7 +1096,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
       boolean result = super.tryReadElementFromXml(reader);
 
@@ -1139,7 +1139,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws ServiceXmlSerializationException    the service xml serialization exception
      */
     @Override
-    protected void writeElementsToXml(EwsServiceXmlWriter writer)
+    public void writeElementsToXml(EwsServiceXmlWriter writer)
         throws XMLStreamException, ServiceXmlSerializationException {
       super.writeElementsToXml(writer);
 
@@ -1317,7 +1317,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
 
       this.add(SearchFilter.loadFromXml(reader));
@@ -1331,7 +1331,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected void writeElementsToXml(EwsServiceXmlWriter writer)
+    public void writeElementsToXml(EwsServiceXmlWriter writer)
         throws Exception {
       for (SearchFilter searchFilter : this.searchFilters) {
         searchFilter.writeToXml(writer);
@@ -1344,8 +1344,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * @param writer the writer
      * @throws Exception the exception
      */
-    @Override
-    protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+    @Override public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
       // If there is only one filter in the collection, which developers
       // tend
       // to do,

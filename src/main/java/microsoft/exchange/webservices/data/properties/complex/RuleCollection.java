@@ -49,7 +49,7 @@ public final class RuleCollection extends ComplexProperty implements Iterable<Ru
   /**
    * Initializes a new instance of the RuleCollection class.
    */
-  protected RuleCollection() {
+  public RuleCollection() {
     super();
     this.rules = new ArrayList<Rule>();
   }
@@ -64,7 +64,7 @@ public final class RuleCollection extends ComplexProperty implements Iterable<Ru
     return this.outlookRuleBlobExists;
   }
 
-  protected void setOutlookRuleBlobExists(boolean value) {
+  public void setOutlookRuleBlobExists(boolean value) {
     this.outlookRuleBlobExists = value;
   }
 
@@ -100,7 +100,7 @@ public final class RuleCollection extends ComplexProperty implements Iterable<Ru
    * @throws Exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.isStartElement(XmlNamespace.Types, XmlElementNames.Rule)) {
       Rule rule = new Rule();

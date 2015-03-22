@@ -79,7 +79,7 @@ public final class DeleteRuleOperation extends RuleOperation {
    * @param writer The writer.
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     writer.writeElementValue(XmlNamespace.Types,
         XmlElementNames.RuleId, this.getRuleId());
@@ -96,8 +96,7 @@ public final class DeleteRuleOperation extends RuleOperation {
   /**
    * Gets the Xml element name of the DeleteRuleOperation object.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.DeleteRuleOperation;
 
   }

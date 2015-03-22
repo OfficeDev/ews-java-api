@@ -152,7 +152,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
    * @throws Exception the exception
    */
   @Override
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.name = reader.readAttributeValue(XmlAttributeNames.Name);
     this.id = reader.readAttributeValue(XmlAttributeNames.Id);
@@ -172,7 +172,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     // The Name attribute is only supported in Exchange 2010 and above.
     if (writer.getService().getRequestedServerVersion() != ExchangeVersion.Exchange2007_SP1) {
@@ -190,7 +190,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.Periods)) {
       do {
@@ -263,7 +263,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     // We only emit the full time zone definition against Exchange 2010
     // servers and above.

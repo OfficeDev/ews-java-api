@@ -142,8 +142,7 @@ public class Conversation extends ServiceObject {
    *
    * @return XML element name
    */
-  @Override
-  protected String getDeleteFieldXmlElementName() {
+  @Override public String getDeleteFieldXmlElementName() {
     throw new UnsupportedOperationException();
   }
 
@@ -153,8 +152,7 @@ public class Conversation extends ServiceObject {
    *
    * @return XML element name
    */
-  @Override
-  protected String getSetFieldXmlElementName() {
+  @Override public String getSetFieldXmlElementName() {
     throw new UnsupportedOperationException();
   }
 

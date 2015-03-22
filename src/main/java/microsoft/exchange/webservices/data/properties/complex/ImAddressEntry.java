@@ -91,7 +91,7 @@ public final class ImAddressEntry extends DictionaryEntryProperty<ImAddressKey> 
    * @throws ServiceXmlDeserializationException  the service xml deserialization exception
    */
   @Override
-  protected void readTextValueFromXml(EwsServiceXmlReader reader)
+  public void readTextValueFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException {
     this.imAddress = reader.readValue();
   }
@@ -102,7 +102,7 @@ public final class ImAddressEntry extends DictionaryEntryProperty<ImAddressKey> 
    * @param writer The writer.
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeValue(this.imAddress, XmlElementNames.ImAddress);
   }

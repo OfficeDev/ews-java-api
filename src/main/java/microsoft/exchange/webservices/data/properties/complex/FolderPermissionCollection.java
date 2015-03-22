@@ -150,7 +150,7 @@ public final class FolderPermissionCollection extends ComplexPropertyCollection<
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeStartElement(XmlNamespace.Types, this
         .getInnerCollectionXmlElementName());

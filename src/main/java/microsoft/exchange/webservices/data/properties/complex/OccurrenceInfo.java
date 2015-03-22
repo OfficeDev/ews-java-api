@@ -58,7 +58,7 @@ public final class OccurrenceInfo extends ComplexProperty {
   /**
    * Initializes a new instance of the OccurrenceInfo class.
    */
-  protected OccurrenceInfo() {
+  public OccurrenceInfo() {
   }
 
   /**
@@ -68,7 +68,7 @@ public final class OccurrenceInfo extends ComplexProperty {
    * @return true, if successful
    * @throws Exception the exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.ItemId)) {
 

@@ -179,8 +179,7 @@ public final class PhysicalAddressEntry extends DictionaryEntryProperty<Physical
   /**
    * Clears the change log.
    */
-  @Override
-  protected void clearChangeLog() {
+  @Override public void clearChangeLog() {
     this.propertyBag.clearChangeLog();
   }
 
@@ -192,7 +191,7 @@ public final class PhysicalAddressEntry extends DictionaryEntryProperty<Physical
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (PhysicalAddressSchema.getXmlElementNames().contains(
         reader.getLocalName())) {
@@ -212,7 +211,7 @@ public final class PhysicalAddressEntry extends DictionaryEntryProperty<Physical
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     for (String xmlElementName : PhysicalAddressSchema.getXmlElementNames()) {
       writer.writeElementValue(XmlNamespace.Types, xmlElementName,

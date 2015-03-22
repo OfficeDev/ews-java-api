@@ -33,7 +33,7 @@ package microsoft.exchange.webservices.data;
  *            we need to rethink this. Each lazy member holds the actual member
  *            and a delegate. That can turn into a whole lot of overhead
  */
-class LazyMember<T> {
+public class LazyMember<T> {
 
   /**
    * The lazy member.

@@ -377,7 +377,7 @@ public final class GroupMemberCollection extends ComplexPropertyCollection<Group
   /**
    * Clears the change log.
    */
-  protected void clearChangeLog() {
+  public void clearChangeLog() {
     super.clearChangeLog();
     this.collectionIsCleared = false;
   }

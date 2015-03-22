@@ -61,7 +61,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    *
    * @return the namespace.
    */
-  protected XmlNamespace getNamespace() {
+  public XmlNamespace getNamespace() {
     return xmlNamespace;
   }
 
@@ -70,7 +70,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    *
    * @param xmlNamespace the namespace.
    */
-  protected void setNamespace(XmlNamespace xmlNamespace) {
+  public void setNamespace(XmlNamespace xmlNamespace) {
     this.xmlNamespace = xmlNamespace;
   }
 
@@ -93,7 +93,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param value The value.
    * @return true, if successful
    */
-  protected <T> boolean canSetFieldValue(T field, T value) {
+  public <T> boolean canSetFieldValue(T field, T value) {
     boolean applyChange;
     if (field == null) {
       applyChange = value != null;
@@ -111,7 +111,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
   /**
    * Clears the change log.
    */
-  protected void clearChangeLog() {
+  public void clearChangeLog() {
   }
 
   /**
@@ -120,7 +120,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param reader The reader.
    * @throws Exception the exception
    */
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
   }
 
@@ -130,7 +130,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param reader The reader.
    * @throws Exception the exception
    */
-  protected void readTextValueFromXml(EwsServiceXmlReader reader)
+  public void readTextValueFromXml(EwsServiceXmlReader reader)
       throws Exception {
   }
 
@@ -141,7 +141,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @return True if element was read.
    * @throws Exception the exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     return false;
   }
@@ -152,7 +152,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param reader The reader.
    *               True if element was read.
    */
-  protected boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception {
+  public boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception {
     return false;
   }
 
@@ -162,7 +162,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param writer The writer.
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
   }
 
@@ -172,7 +172,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param writer The writer.
    * @throws Exception the exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
   }
 
@@ -184,8 +184,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param xmlElementName Name of the XML element.
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader, XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
 
 		/*reader.ensureCurrentNodeIsStartElement(xmlNamespace, xmlElementName);
                 this.readAttributesFromXml(reader);
@@ -232,7 +231,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param xmlNamespace   The XML namespace.
    * @param xmlElementName Name of the XML element.
    */
-  protected void updateFromXml(
+  public void updateFromXml(
       EwsServiceXmlReader reader,
       XmlNamespace xmlNamespace,
       String xmlElementName) throws Exception {
@@ -322,8 +321,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param xmlElementName Name of the XML element.
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer,
-      XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer, XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
     writer.writeStartElement(xmlNamespace, xmlElementName);
     this.writeAttributesToXml(writer);
     this.writeElementsToXml(writer);
@@ -362,8 +360,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    *
    * @param change change event
    */
-  protected void removeChangeEvent(
-      IComplexPropertyChangedDelegate change) {
+  public void removeChangeEvent(IComplexPropertyChangedDelegate change) {
     onChangeList.remove(change);
   }
 

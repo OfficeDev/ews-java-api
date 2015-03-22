@@ -36,7 +36,7 @@ public final class InternetMessageHeaderCollection extends ComplexPropertyCollec
    * Initializes a new instance of the "InternetMessageHeaderCollection"
    * class.
    */
-  protected InternetMessageHeaderCollection() {
+  public InternetMessageHeaderCollection() {
     super();
   }
 

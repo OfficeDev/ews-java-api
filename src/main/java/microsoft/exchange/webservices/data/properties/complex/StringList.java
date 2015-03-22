@@ -70,7 +70,7 @@ public class StringList extends ComplexProperty implements Iterable<String> {
    *
    * @param itemXmlElementName Name of the item XML element.
    */
-  protected StringList(String itemXmlElementName) {
+  public StringList(String itemXmlElementName) {
     this.itemXmlElementName = itemXmlElementName;
   }
 
@@ -83,7 +83,7 @@ public class StringList extends ComplexProperty implements Iterable<String> {
    * @throws ServiceXmlDeserializationException  the service xml deserialization exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException {
     boolean returnValue = false;
     if (reader.getLocalName().equals(this.itemXmlElementName)) {
@@ -108,7 +108,7 @@ public class StringList extends ComplexProperty implements Iterable<String> {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     for (String item : this.items) {
       writer.writeStartElement(XmlNamespace.Types,

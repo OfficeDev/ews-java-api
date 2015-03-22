@@ -122,7 +122,7 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
    * @throws Exception throws Exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.Bias)) {
       this.delta = new TimeSpan((long)
@@ -156,7 +156,7 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Bias,
         (int) this.delta.getMinutes());

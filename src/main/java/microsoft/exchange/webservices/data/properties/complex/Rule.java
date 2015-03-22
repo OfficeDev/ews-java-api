@@ -222,7 +222,7 @@ public final class Rule extends ComplexProperty {
    * @throws Exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader
+  public boolean tryReadElementFromXml(EwsServiceXmlReader
       reader) throws Exception {
 
     if (reader.getLocalName().equals(XmlElementNames.DisplayName)) {
@@ -264,7 +264,7 @@ public final class Rule extends ComplexProperty {
    * @throws Exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     if (!(getId() == null || getId().isEmpty())) {
       writer.writeElementValue(

@@ -81,7 +81,7 @@ public final class CreateRuleOperation extends RuleOperation {
    * @throws Exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.getRule().writeToXml(writer, XmlElementNames.Rule);
   }
@@ -99,8 +99,7 @@ public final class CreateRuleOperation extends RuleOperation {
   /**
    * Gets the Xml element name of the CreateRuleOperation object.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
 
     return XmlElementNames.CreateRuleOperation;
   }

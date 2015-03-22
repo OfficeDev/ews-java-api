@@ -177,8 +177,7 @@ public class MapiTypeConverter {
    * @return Array of objects.
    * @throws Exception the exception
    */
-  protected static List<Object> convertToValue(MapiPropertyType mapiPropType,
-      Iterator<String> strings) throws Exception {
+  public static List<Object> convertToValue(MapiPropertyType mapiPropType, Iterator<String> strings) throws Exception {
     EwsUtilities.validateParam(strings, "strings");
 
     MapiTypeConverterMapEntry typeConverter = getMapiTypeConverterMap()
@@ -204,8 +203,7 @@ public class MapiTypeConverter {
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException                  the service xml deserialization exception
    * @throws microsoft.exchange.webservices.data.exceptions.FormatException the format exception
    */
-  protected static Object convertToValue(MapiPropertyType mapiPropType,
-      String stringValue) throws ServiceXmlDeserializationException, FormatException {
+  public static Object convertToValue(MapiPropertyType mapiPropType, String stringValue) throws ServiceXmlDeserializationException, FormatException {
     return getMapiTypeConverterMap().get(mapiPropType).convertToValue(
         stringValue);
 
@@ -218,8 +216,7 @@ public class MapiTypeConverter {
    * @param value        the value
    * @return String value.
    */
-  protected static String convertToString(MapiPropertyType mapiPropType,
-      Object value) {
+  public static String convertToString(MapiPropertyType mapiPropType, Object value) {
                 /*
 		 * if(! (value instanceof FuncInterface<?,?>)){ return null; }
 		 */
@@ -235,7 +232,7 @@ public class MapiTypeConverter {
    * @return the object
    * @throws Exception the exception
    */
-  protected static Object changeType(MapiPropertyType mapiType, Object value)
+  public static Object changeType(MapiPropertyType mapiType, Object value)
       throws Exception {
     EwsUtilities.validateParam(value, "value");
 
@@ -266,7 +263,7 @@ public class MapiTypeConverter {
    * @param mapiType the mapi type
    * @return true, if is array type
    */
-  protected static boolean isArrayType(MapiPropertyType mapiType) {
+  public static boolean isArrayType(MapiPropertyType mapiType) {
     return getMapiTypeConverterMap().get(mapiType).getIsArray();
   }
 

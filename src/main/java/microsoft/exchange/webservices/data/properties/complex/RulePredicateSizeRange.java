@@ -94,7 +94,7 @@ public final class RulePredicateSizeRange extends ComplexProperty {
    * @return True if element was read.
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
 
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.MinimumSize)) {
@@ -115,7 +115,7 @@ public final class RulePredicateSizeRange extends ComplexProperty {
    * @param writer The writer.
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     if (this.getMinimumSize() != null) {
       writer.writeElementValue(XmlNamespace.Types,

@@ -93,7 +93,7 @@ public final class RulePredicateDateRange extends ComplexProperty {
    * @return True if element was read.
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader
+  public boolean tryReadElementFromXml(EwsServiceXmlReader
       reader) throws Exception {
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.StartDateTime)) {
       this.start = reader.readElementValueAsDateTime();
@@ -112,7 +112,7 @@ public final class RulePredicateDateRange extends ComplexProperty {
    * @param writer The writer.
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     if (this.getStart() != null) {
       writer.writeElementValue(XmlNamespace.Types,

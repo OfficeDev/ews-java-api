@@ -59,7 +59,7 @@ abstract class AbsoluteMonthTransition extends TimeZoneTransition {
    * @throws Exception throws Exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (super.tryReadElementFromXml(reader)) {
       return true;
@@ -89,7 +89,7 @@ abstract class AbsoluteMonthTransition extends TimeZoneTransition {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     super.writeElementsToXml(writer);
 

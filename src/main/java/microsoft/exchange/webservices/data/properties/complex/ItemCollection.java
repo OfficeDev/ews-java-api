@@ -55,7 +55,7 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
   /**
    * Initializes a new instance of the "ItemCollection&lt;TItem&gt;" class.
    */
-  protected ItemCollection() {
+  public ItemCollection() {
     super();
   }
 

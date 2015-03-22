@@ -103,7 +103,7 @@ public final class RuleError extends ComplexProperty {
    * @throws Exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.FieldURI)) {
       this.ruleProperty = reader.readElementValue(RuleProperty.class);

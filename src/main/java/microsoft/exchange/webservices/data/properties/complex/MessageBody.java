@@ -110,7 +110,7 @@ public final class MessageBody extends ComplexProperty {
    * @param reader The reader.
    * @throws Exception the exception
    */
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.bodyType = reader.readAttributeValue(BodyType.class,
         XmlAttributeNames.BodyType);
@@ -124,7 +124,7 @@ public final class MessageBody extends ComplexProperty {
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
    */
   @Override
-  protected void readTextValueFromXml(EwsServiceXmlReader reader)
+  public void readTextValueFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException {
     if (log.isDebugEnabled()) {
        log.debug("Reading text value from XML. BodyType = " + this.getBodyType() +
@@ -144,7 +144,7 @@ public final class MessageBody extends ComplexProperty {
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.BodyType, this
         .getBodyType());
@@ -157,7 +157,7 @@ public final class MessageBody extends ComplexProperty {
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     if (null != this.text && !this.text.isEmpty()) {
       writer.writeValue(this.getText(), XmlElementNames.Body);

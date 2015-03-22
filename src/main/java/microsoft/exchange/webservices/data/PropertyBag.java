@@ -348,7 +348,7 @@ public class PropertyBag implements IComplexPropertyChanged,
    * operation that changes the state of this property bag is performed (e.g.
    * adding or removing a property).
    */
-  protected void changed() {
+  public void changed() {
     this.isDirty = true;
     this.getOwner().changed();
   }

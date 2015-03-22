@@ -66,7 +66,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   /**
    * Initializes a new instance of "UserConfigurationDictionary" class.
    */
-  protected UserConfigurationDictionary() {
+  public UserConfigurationDictionary() {
     super();
     this.dictionary = new HashMap<Object, Object>();
   }
@@ -203,7 +203,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    *
    * @return the checks if is dirty
    */
-  protected boolean getIsDirty() {
+  public boolean getIsDirty() {
     return this.isDirty;
   }
 
@@ -212,7 +212,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    *
    * @param value the new checks if is dirty
    */
-  protected void setIsDirty(boolean value) {
+  public void setIsDirty(boolean value) {
     this.isDirty = value;
   }
 
@@ -232,7 +232,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     EwsUtilities.EwsAssert(writer != null, "UserConfigurationDictionary.WriteElementsToXml", "writer is null");
     Iterator<Entry<Object, Object>> it = this.dictionary.entrySet()
@@ -424,9 +424,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * @param xmlNamespace The dictionary's XML namespace.
    * @param xmlElementName Name of the XML element
    * representing the dictionary.
-   */
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
+   */ public void loadFromXml(EwsServiceXmlReader reader, XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
     super.loadFromXml(reader, xmlNamespace, xmlElementName);
 
     this.isDirty = false;
@@ -445,7 +443,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * @param reader The reader.
    * @return True if element was read.
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     reader.ensureCurrentNodeIsStartElement(this.getNamespace(),
         XmlElementNames.DictionaryEntry);

@@ -97,7 +97,7 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
    * @throws Exception throws Exception
    */
   @Override
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.key = reader.readAttributeValue(instance,
         XmlAttributeNames.Key);
@@ -110,7 +110,7 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
    * @throws ServiceXmlSerializationException throws ServiceXmlSerializationException
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.Key, this.getKey());
   }

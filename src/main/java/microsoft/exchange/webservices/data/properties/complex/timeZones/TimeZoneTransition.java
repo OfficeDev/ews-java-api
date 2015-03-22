@@ -113,7 +113,7 @@ public class TimeZoneTransition extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.To)) {
       String targetKind = reader
@@ -152,7 +152,7 @@ public class TimeZoneTransition extends ComplexProperty {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     writer.writeStartElement(XmlNamespace.Types, XmlElementNames.To);
 

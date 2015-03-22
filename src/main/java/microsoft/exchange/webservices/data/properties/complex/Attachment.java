@@ -116,7 +116,7 @@ public abstract class Attachment extends ComplexProperty {
    * @param value The value.
    * @return true, if successful
    */
-  protected <T> boolean canSetFieldValue(T field, T value) {
+  public <T> boolean canSetFieldValue(T field, T value) {
     this.throwIfThisIsNotNew();
     return super.canSetFieldValue(field, value);
   }
@@ -278,7 +278,7 @@ public abstract class Attachment extends ComplexProperty {
    *
    * @return true, if is new
    */
-  protected boolean isNew() {
+  public boolean isNew() {
     return (this.getId() == null || this.getId().isEmpty());
   }
 
@@ -287,7 +287,7 @@ public abstract class Attachment extends ComplexProperty {
    *
    * @return the owner
    */
-  protected Item getOwner() {
+  public Item getOwner() {
     return this.owner;
   }
 
@@ -296,7 +296,7 @@ public abstract class Attachment extends ComplexProperty {
    *
    * @return XML element name.
    */
-  abstract String getXmlElementName();
+  public abstract String getXmlElementName();
 
   /**
    * Tries to read element from XML.
@@ -306,7 +306,7 @@ public abstract class Attachment extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
 
     try {
@@ -375,7 +375,7 @@ public abstract class Attachment extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Name, this
         .getName());

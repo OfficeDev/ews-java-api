@@ -39,7 +39,7 @@ public final class EmailAddressCollection extends ComplexPropertyCollection<Emai
   /**
    * Initializes a new instance.
    */
-  protected EmailAddressCollection() {
+  public EmailAddressCollection() {
     this(XmlElementNames.Mailbox);
   }
 
@@ -186,7 +186,7 @@ public final class EmailAddressCollection extends ComplexPropertyCollection<Emai
    * @return Always true, even if the collection is empty.
    */
   @Override
-  protected boolean shouldWriteToXml() {
+  public boolean shouldWriteToXml() {
     return true;
   }
 }

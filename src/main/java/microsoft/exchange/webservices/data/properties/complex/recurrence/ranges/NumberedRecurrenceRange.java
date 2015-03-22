@@ -89,7 +89,7 @@ public final class NumberedRecurrenceRange extends RecurrenceRange {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     super.writeElementsToXml(writer);
 
@@ -107,7 +107,7 @@ public final class NumberedRecurrenceRange extends RecurrenceRange {
    * @return True if element was read
    * @throws Exception the exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (super.tryReadElementFromXml(reader)) {
       return true;

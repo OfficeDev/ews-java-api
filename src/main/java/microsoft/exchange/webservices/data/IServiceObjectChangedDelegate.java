@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Interface ServiceObjectChangedDelegateInterface.
  */
-interface IServiceObjectChangedDelegate {
+public interface IServiceObjectChangedDelegate {
 
   /**
    * Service object changed.

@@ -67,7 +67,7 @@ final class WorkingPeriod extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.DayOfWeek)) {
       EwsUtilities.parseEnumValueList(DayOfTheWeek.class, this.daysOfWeek, reader.readElementValue(), ' ');

@@ -41,7 +41,7 @@ public abstract class RuleOperation extends ComplexProperty {
   /**
    * Gets the XML element name of the rule operation.
    */
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     return this.xmlElementName;
   }
 }

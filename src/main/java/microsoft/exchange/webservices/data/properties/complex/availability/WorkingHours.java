@@ -76,7 +76,7 @@ public final class WorkingHours extends ComplexProperty {
    * @throws Exception throws Exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.TimeZone)) {
       LegacyAvailabilityTimeZone legacyTimeZone =

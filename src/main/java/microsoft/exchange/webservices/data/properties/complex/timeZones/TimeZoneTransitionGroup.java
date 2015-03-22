@@ -106,7 +106,7 @@ public class TimeZoneTransitionGroup extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.id = reader.readAttributeValue(XmlAttributeNames.Id);
   }
@@ -118,7 +118,7 @@ public class TimeZoneTransitionGroup extends ComplexProperty {
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.Id, this.id);
   }
@@ -131,7 +131,7 @@ public class TimeZoneTransitionGroup extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     reader.ensureCurrentNodeIsStartElement();
 
@@ -156,7 +156,7 @@ public class TimeZoneTransitionGroup extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     for (TimeZoneTransition transition : this.transitions) {
       transition.writeToXml(writer);

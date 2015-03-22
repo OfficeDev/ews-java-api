@@ -39,7 +39,7 @@ import java.util.Date;
 /**
  * Represents a change of time for a time zone.
  */
-final class TimeChange extends ComplexProperty {
+public final class TimeChange extends ComplexProperty {
 
   /**
    * The time zone name.
@@ -200,7 +200,7 @@ final class TimeChange extends ComplexProperty {
    * @throws Exception throws Exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
 
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.Offset)) {
@@ -236,7 +236,7 @@ final class TimeChange extends ComplexProperty {
    * @throws Exception throws Exception
    */
   @Override
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.timeZoneName = reader
         .readAttributeValue(XmlAttributeNames.TimeZoneName);
@@ -248,7 +248,7 @@ final class TimeChange extends ComplexProperty {
    * @param writer accepts EwsServiceXmlWriter
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer) {
+  public void writeAttributesToXml(EwsServiceXmlWriter writer) {
     try {
       writer.writeAttributeValue(XmlAttributeNames.TimeZoneName,
           this.timeZoneName);
@@ -264,7 +264,7 @@ final class TimeChange extends ComplexProperty {
    * @throws Exception throws Exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     if (this.offset != null) {
       writer.writeElementValue(XmlNamespace.Types,

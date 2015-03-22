@@ -313,7 +313,7 @@ public final class RuleActions extends ComplexProperty {
    * @throws Exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader
+  public boolean tryReadElementFromXml(EwsServiceXmlReader
       reader) throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.CopyToFolder)) {
       reader.readStartElement(XmlNamespace.NotSpecified,
@@ -386,7 +386,7 @@ public final class RuleActions extends ComplexProperty {
    * @throws Exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     if (this.getAssignCategories().getSize() > 0) {
       this.getAssignCategories().writeToXml(writer,
@@ -494,7 +494,6 @@ public final class RuleActions extends ComplexProperty {
    * Convert the SMS recipient list from
    * EmailAddressCollection type to MobilePhone collection type.
    *
-   * @param Recipient list in EmailAddressCollection type.
    * @return A MobilePhone collection object
    * containing all SMS recipient in MobilePhone type.
    */
@@ -514,7 +513,6 @@ public final class RuleActions extends ComplexProperty {
    * Convert the SMS recipient list from MobilePhone
    * collection type to EmailAddressCollection type.
    *
-   * @param Recipient list in a MobilePhone collection type.
    * @return An EmailAddressCollection object
    * containing recipients with "MOBILE" address type.
    */

@@ -50,7 +50,7 @@ public final class FolderId extends ServiceId {
   /**
    * Initializes a new instance.
    */
-  protected FolderId() {
+  public FolderId() {
     super();
   }
 
@@ -132,7 +132,7 @@ public final class FolderId extends ServiceId {
    * @param version the version
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException the service version exception
    */
-  protected void validate(ExchangeVersion version)
+  public void validate(ExchangeVersion version)
       throws ServiceVersionException {
     // The FolderName property is a WellKnownFolderName, an enumeration
     // type. If the property

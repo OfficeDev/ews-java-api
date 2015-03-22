@@ -158,7 +158,7 @@ public abstract class DictionaryProperty
   /**
    * Clears the change log.
    */
-  protected void clearChangeLog() {
+  public void clearChangeLog() {
     this.addedEntries.clear();
     this.removedEntries.clear();
     this.modifiedEntries.clear();
@@ -278,9 +278,7 @@ public abstract class DictionaryProperty
    * @param xmlElementName Name of the XML element.
    * @throws Exception
    */
-  @Override
-  protected void writeToXml(EwsServiceXmlWriter writer,
-      XmlNamespace xmlNamespace,
+  @Override public void writeToXml(EwsServiceXmlWriter writer, XmlNamespace xmlNamespace,
       String xmlElementName) throws Exception {
     //  Only write collection if it has at least one element.
     if (this.entries.size() > 0) {
@@ -297,7 +295,7 @@ public abstract class DictionaryProperty
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     for (Entry<TKey, TEntry> keyValuePair : this.entries.entrySet()) {
       keyValuePair.getValue().writeToXml(writer,

@@ -152,7 +152,7 @@ public final class DelegateUser extends ComplexProperty {
    * @return true, if successful
    * @throws Exception the exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.UserId)) {
 
@@ -187,7 +187,7 @@ public final class DelegateUser extends ComplexProperty {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.getUserId().writeToXml(writer, XmlElementNames.UserId);
     this.getPermissions().writeToXml(writer,
@@ -231,7 +231,7 @@ public final class DelegateUser extends ComplexProperty {
   /**
    * Validates this instance for UpdateDelegate.
    */
-  protected void validateUpdateDelegate() throws Exception {
+  public void validateUpdateDelegate() throws Exception {
     {
       this.permissions.validateUpdateDelegate();
     }

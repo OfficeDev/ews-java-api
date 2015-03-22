@@ -101,7 +101,7 @@ public abstract class RecurrenceRange extends ComplexProperty {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     Date d = this.startDate;
     DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -123,7 +123,7 @@ public abstract class RecurrenceRange extends ComplexProperty {
    * @throws java.text.ParseException            the parse exception
    * @throws Exception                           the exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, InstantiationException,
       IllegalAccessException, XMLStreamException, ParseException,
       Exception {

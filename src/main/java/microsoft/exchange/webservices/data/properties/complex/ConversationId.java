@@ -34,7 +34,7 @@ public class ConversationId extends ServiceId {
   /**
    * Initializes a new instance of the ConversationId class.
    */
-  ConversationId() {
+  public ConversationId() {
     super();
   }
 

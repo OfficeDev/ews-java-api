@@ -106,7 +106,7 @@ public final class LegacyAvailabilityTimeZone extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.Bias)) {
       this.bias = new TimeSpan((long)
@@ -134,7 +134,7 @@ public final class LegacyAvailabilityTimeZone extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeElementValue(
         XmlNamespace.Types,

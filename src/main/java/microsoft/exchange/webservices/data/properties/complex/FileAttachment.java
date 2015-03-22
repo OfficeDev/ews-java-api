@@ -80,7 +80,7 @@ public final class FileAttachment extends Attachment {
    *
    * @return XML element name
    */
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     return XmlElementNames.FileAttachment;
   }
 
@@ -105,7 +105,7 @@ public final class FileAttachment extends Attachment {
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     boolean result = super.tryReadElementFromXml(reader);
 
@@ -150,7 +150,7 @@ public final class FileAttachment extends Attachment {
    * @return true if element was read
    */
   @Override
-  protected boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception {
+  public boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception {
     return super.tryReadElementFromXml(reader);
   }
 
@@ -162,7 +162,7 @@ public final class FileAttachment extends Attachment {
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     super.writeElementsToXml(writer);
     // ExchangeVersion ev=writer.getService().getRequestedServerVersion();

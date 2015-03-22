@@ -78,7 +78,7 @@ public final class DeleteAttachmentResponse extends ServiceResponse {
    *
    * @return the attachment
    */
-  protected Attachment getAttachment() {
+  public Attachment getAttachment() {
     return this.attachment;
   }
 }

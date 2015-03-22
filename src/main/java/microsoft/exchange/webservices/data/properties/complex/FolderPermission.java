@@ -753,7 +753,7 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
    * @return True if element was read.
    * @throws Exception the exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.UserId)) {
       this.userId = new UserId();
@@ -811,8 +811,7 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
    * @param xmlElementName the xml element name
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader, XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
     super.loadFromXml(reader, xmlNamespace, xmlElementName);
 
     this.AdjustPermissionLevel();

@@ -59,7 +59,7 @@ public final class InternetMessageHeader extends ComplexProperty {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.name = reader.readAttributeValue(XmlAttributeNames.HeaderName);
   }
@@ -71,7 +71,7 @@ public final class InternetMessageHeader extends ComplexProperty {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
    */
-  protected void readTextValueFromXml(EwsServiceXmlReader reader)
+  public void readTextValueFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException {
     this.value = reader.readValue();
   }
@@ -82,7 +82,7 @@ public final class InternetMessageHeader extends ComplexProperty {
    * @param writer the writer
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.HeaderName, this.name);
   }
@@ -93,7 +93,7 @@ public final class InternetMessageHeader extends ComplexProperty {
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeValue(this.value, this.name);
   }

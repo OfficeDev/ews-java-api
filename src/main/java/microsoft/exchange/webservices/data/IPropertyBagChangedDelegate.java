@@ -29,7 +29,7 @@ package microsoft.exchange.webservices.data;
  * @param <TKey> the generic type
  */
 
-interface IPropertyBagChangedDelegate<TKey> {
+public interface IPropertyBagChangedDelegate<TKey> {
   /**
    * Property bag changed.
    *

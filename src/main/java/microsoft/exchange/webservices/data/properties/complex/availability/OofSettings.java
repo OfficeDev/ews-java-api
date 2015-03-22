@@ -111,7 +111,7 @@ public final class OofSettings extends ComplexProperty implements ISelfValidate 
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.OofState)) {
       this.state = reader.readValue(OofState.class);
@@ -144,7 +144,7 @@ public final class OofSettings extends ComplexProperty implements ISelfValidate 
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     super.writeElementsToXml(writer);
 

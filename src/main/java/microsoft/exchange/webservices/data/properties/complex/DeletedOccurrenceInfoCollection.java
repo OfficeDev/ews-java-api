@@ -36,7 +36,7 @@ public final class DeletedOccurrenceInfoCollection extends ComplexPropertyCollec
   /**
    * Initializes a new instance of the OccurrenceInfoCollection class.
    */
-  protected DeletedOccurrenceInfoCollection() {
+  public DeletedOccurrenceInfoCollection() {
   }
 
   /**

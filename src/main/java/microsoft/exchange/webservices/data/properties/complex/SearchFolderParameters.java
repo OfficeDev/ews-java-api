@@ -59,7 +59,7 @@ public final class SearchFolderParameters extends ComplexProperty implements ICo
   /**
    * Initializes a new instance of the SearchFolderParameters class.
    */
-  protected SearchFolderParameters() {
+  public SearchFolderParameters() {
     super();
     this.rootFolderIds.addOnChangeEvent(this);
   }
@@ -91,7 +91,7 @@ public final class SearchFolderParameters extends ComplexProperty implements ICo
    * @throws Exception the exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equalsIgnoreCase(
         XmlElementNames.BaseFolderIds)) {
@@ -115,7 +115,7 @@ public final class SearchFolderParameters extends ComplexProperty implements ICo
    * @throws Exception the exception
    */
   @Override
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.traversal = reader.readAttributeValue(SearchFolderTraversal.class,
         XmlAttributeNames.Traversal);
@@ -128,7 +128,7 @@ public final class SearchFolderParameters extends ComplexProperty implements ICo
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.Traversal, this.traversal);
   }
@@ -140,7 +140,7 @@ public final class SearchFolderParameters extends ComplexProperty implements ICo
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     if (this.searchFilter != null) {
       writer.writeStartElement(XmlNamespace.Types,

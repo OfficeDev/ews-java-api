@@ -289,7 +289,7 @@ public class EmailAddress extends ComplexProperty implements ISearchStringProvid
    * @return true
    * @throws Exception throws Exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     try {
       if (reader.getLocalName().equals(XmlElementNames.Name)) {
@@ -327,7 +327,7 @@ public class EmailAddress extends ComplexProperty implements ISearchStringProvid
    * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Name, this
         .getName());

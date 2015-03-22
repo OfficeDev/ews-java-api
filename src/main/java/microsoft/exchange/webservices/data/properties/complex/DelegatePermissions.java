@@ -229,7 +229,7 @@ public final class DelegatePermissions extends ComplexProperty {
    * @return Returns true if element was read.
    * @throws Exception the exception
    */
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     DelegateFolderPermission delegateFolderPermission = null;
 
@@ -250,7 +250,7 @@ public final class DelegatePermissions extends ComplexProperty {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.writePermissionToXml(writer,
         XmlElementNames.CalendarFolderPermissionLevel);

@@ -63,8 +63,7 @@ public final class AcceptMeetingInvitationMessage extends
    * the EwsObjectDefinition attribute for XML element name
    * determination.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     // getXmlElementOverride is pvt and getXmlElementName returns
     // getXmlElementOverride
     if (this.tentative) {

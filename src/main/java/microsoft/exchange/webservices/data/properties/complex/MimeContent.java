@@ -73,7 +73,7 @@ public final class MimeContent extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.characterSet = reader.readAttributeValue(String.class,
         XmlAttributeNames.CharacterSet);
@@ -87,7 +87,7 @@ public final class MimeContent extends ComplexProperty {
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
    */
   @Override
-  protected void readTextValueFromXml(EwsServiceXmlReader reader)
+  public void readTextValueFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException {
     this.content = Base64EncoderStream.decode(reader.readValue());
   }
@@ -99,7 +99,7 @@ public final class MimeContent extends ComplexProperty {
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.CharacterSet,
         this.characterSet);
@@ -111,7 +111,7 @@ public final class MimeContent extends ComplexProperty {
    * @param writer the writer
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException {
     if (this.content != null && this.content.length > 0) {
       writer.writeBase64ElementValue(this.content);

@@ -32,7 +32,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Interface defined for properties that produce their own update serialization.
  */
-interface ICustomXmlUpdateSerializer {
+public interface ICustomXmlUpdateSerializer {
 
   /**
    * Writes the update to XML.

@@ -30,7 +30,7 @@ public final class ItemIdCollection extends ComplexPropertyCollection<ItemId> {
   /**
    * Initializes a new instance of the <see cref="ItemIdCollection"/> class.
    */
-  protected ItemIdCollection() {
+  public ItemIdCollection() {
     super();
   }
 

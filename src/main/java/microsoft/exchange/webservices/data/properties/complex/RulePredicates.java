@@ -700,7 +700,7 @@ public final class RulePredicates extends ComplexProperty {
    * @throws Exception
    */
   @Override
-  protected boolean tryReadElementFromXml(EwsServiceXmlReader
+  public boolean tryReadElementFromXml(EwsServiceXmlReader
       reader) throws Exception {
 
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.Categories)) {
@@ -826,7 +826,7 @@ public final class RulePredicates extends ComplexProperty {
    * @throws Exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     if (this.getCategories().getSize() > 0) {
       this.getCategories().writeToXml(writer, XmlElementNames.Categories);

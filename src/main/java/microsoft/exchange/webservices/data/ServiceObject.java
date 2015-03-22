@@ -127,7 +127,7 @@ public abstract class ServiceObject {
    *
    * @return The XML element name associated with this type.
    */
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     if (this.isNullOrEmpty(this.xmlElementName)) {
       this.xmlElementName = this.getXmlElementNameOverride();
       if (this.isNullOrEmpty(this.xmlElementName)) {
@@ -163,7 +163,7 @@ public abstract class ServiceObject {
    *
    * @return String
    */
-  protected String getSetFieldXmlElementName() {
+  public String getSetFieldXmlElementName() {
     return XmlElementNames.SetItemField;
   }
 
@@ -172,7 +172,7 @@ public abstract class ServiceObject {
    *
    * @return String
    */
-  protected String getDeleteFieldXmlElementName() {
+  public String getDeleteFieldXmlElementName() {
     return XmlElementNames.DeleteItemField;
   }
 
@@ -206,7 +206,7 @@ public abstract class ServiceObject {
    *
    * @return the property bag
    */
-  protected PropertyBag getPropertyBag() {
+  public PropertyBag getPropertyBag() {
     return this.propertyBag;
   }
 
@@ -254,8 +254,7 @@ public abstract class ServiceObject {
    * @param clearPropertyBag the clear property bag
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      boolean clearPropertyBag) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader, boolean clearPropertyBag) throws Exception {
 
     this.getPropertyBag().loadFromXml(reader, clearPropertyBag,
         null, // propertySet
@@ -299,7 +298,7 @@ public abstract class ServiceObject {
   /**
    * Clear change log.
    */
-  protected void clearChangeLog() {
+  public void clearChangeLog() {
 
     this.getPropertyBag().clearChangeLog();
   }
@@ -312,7 +311,7 @@ public abstract class ServiceObject {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
 
     this.getPropertyBag().writeToXml(writer);
   }

@@ -76,7 +76,7 @@ public final class EmailAddressEntry extends DictionaryEntryProperty<EmailAddres
    * @throws Exception throws Exception
    */
   @Override
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     super.readAttributesFromXml(reader);
     this.getEmailAddress().setName(
@@ -104,7 +104,7 @@ public final class EmailAddressEntry extends DictionaryEntryProperty<EmailAddres
    * @throws Exception the exception
    */
   @Override
-  protected void readTextValueFromXml(EwsServiceXmlReader reader)
+  public void readTextValueFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.getEmailAddress().setAddress(reader.readValue());
   }
@@ -116,7 +116,7 @@ public final class EmailAddressEntry extends DictionaryEntryProperty<EmailAddres
    * @throws ServiceXmlSerializationException throws ServiceXmlSerializationException
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     super.writeAttributesToXml(writer);
     if (writer.getService().getRequestedServerVersion().ordinal() >
@@ -140,7 +140,7 @@ public final class EmailAddressEntry extends DictionaryEntryProperty<EmailAddres
    * @throws ServiceXmlSerializationException throws ServiceXmlSerializationException
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
+  public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeValue(this.getEmailAddress().getAddress(),
         XmlElementNames.EmailAddress);

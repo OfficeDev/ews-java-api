@@ -31,7 +31,7 @@ import java.util.Date;
 /**
  * Represents time.
  */
-final class Time {
+public final class Time {
 
   /**
    * The hours.
@@ -78,7 +78,7 @@ final class Time {
    * @param dateTime the date time
    * @throws ArgumentException the argument exception
    */
-  protected Time(Date dateTime) throws ArgumentException {
+  public Time(Date dateTime) throws ArgumentException {
     if (dateTime != null) {
       Calendar cal = Calendar.getInstance();
       cal.setTime(dateTime);
@@ -108,7 +108,7 @@ final class Time {
    * @return String in XML Schema time format
    */
 
-  protected String toXSTime() {
+  public String toXSTime() {
     return String.format("%s,%s,%s,%s", "{0:00}:{1:00}:{2:00}",
         this.getHours(), this
             .getMinutes(), this.getSeconds());
