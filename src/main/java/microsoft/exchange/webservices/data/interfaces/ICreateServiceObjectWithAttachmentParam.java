@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
 /**
  * The Interface ICreateServiceObjectWithAttachmentParam.
  */
-interface ICreateServiceObjectWithAttachmentParam {
+public interface ICreateServiceObjectWithAttachmentParam {
 
   /**
    * Creates the service object with attachment param.

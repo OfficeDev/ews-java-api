@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 /**
  * Indicates that a complex property changed.
  */
-interface IComplexPropertyChanged {
+public interface IComplexPropertyChanged {
   /**
    * Indicates that a complex property changed.
    *

@@ -29,7 +29,7 @@ package microsoft.exchange.webservices.data.interfaces;
  * @param <T>       the generic type
  * @param <TResult> the generic type
  */
-interface IFunc<T, TResult> {
+public interface IFunc<T, TResult> {
 
   /**
    * Func.

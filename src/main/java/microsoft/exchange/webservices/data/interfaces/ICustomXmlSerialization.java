@@ -28,7 +28,7 @@ import javax.xml.stream.XMLStreamWriter;
 /**
  * The Interface CustomXmlSerializationInterface.
  */
-interface ICustomXmlSerialization {
+public interface ICustomXmlSerialization {
 
   /**
    * Custom xml serialization.

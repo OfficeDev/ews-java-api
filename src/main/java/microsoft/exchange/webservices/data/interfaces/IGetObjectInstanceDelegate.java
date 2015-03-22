@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.ServiceObject;
  *
  * @param <T> the generic type
  */
-interface IGetObjectInstanceDelegate<T extends ServiceObject> {
+public interface IGetObjectInstanceDelegate<T extends ServiceObject> {
 
   /**
    * Gets the object instance delegate.

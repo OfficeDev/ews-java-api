@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.ExchangeService;
 /**
  * The Interface ICreateServiceObjectWithServiceParam.
  */
-interface ICreateServiceObjectWithServiceParam {
+public interface ICreateServiceObjectWithServiceParam {
 
   /**
    * Creates the service object with service param.

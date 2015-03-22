@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.interfaces;
 /**
  * The Interface IDisposable.
  */
-interface IDisposable {
+public interface IDisposable {
 
   /**
    * Dispose.

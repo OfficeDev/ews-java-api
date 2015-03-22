@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
  *
  * @param <T> The type of the object to compare.
  */
-interface IPredicate<T> {
+public interface IPredicate<T> {
 
   /**
    * Represents the method that defines a

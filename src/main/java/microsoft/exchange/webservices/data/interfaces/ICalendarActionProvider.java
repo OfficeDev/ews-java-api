@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.DeclineMeetingInvitationMessage;
  * Interface defintion of a group of methods that are common to items that
  * return CalendarActionResults.
  */
-interface ICalendarActionProvider {
+public interface ICalendarActionProvider {
 
   /**
    * Implements the Accept method.
