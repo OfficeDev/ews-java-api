@@ -60,7 +60,7 @@ public final class GetEventsResponse extends ServiceResponse {
    *
    * @return the results.
    */
-  protected GetEventsResults getResults() {
+  public GetEventsResults getResults() {
     return results;
   }
 

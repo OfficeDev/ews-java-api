@@ -923,7 +923,7 @@ public class EwsXmlReader {
    * @throws ServiceXmlDeserializationException
    * @throws java.io.FileNotFoundException
    */
-  protected XMLEventReader getXmlReaderForNode()
+  public XMLEventReader getXmlReaderForNode()
       throws FileNotFoundException, ServiceXmlDeserializationException, XMLStreamException {
     return readSubtree(); //this.xmlReader.ReadSubtree();
   }

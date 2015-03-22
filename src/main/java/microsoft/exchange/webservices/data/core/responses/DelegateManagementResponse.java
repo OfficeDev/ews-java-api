@@ -117,7 +117,7 @@ public class DelegateManagementResponse extends ServiceResponse {
    *
    * @return the delegate user responses
    */
-  protected Collection<DelegateUserResponse> getDelegateUserResponses() {
+  public Collection<DelegateUserResponse> getDelegateUserResponses() {
     return this.delegateUserResponses;
   }
 }

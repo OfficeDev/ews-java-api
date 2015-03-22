@@ -81,7 +81,7 @@ public final class GetDelegateResponse extends DelegateManagementResponse {
    *
    * @return the meeting requests delivery scope
    */
-  protected MeetingRequestsDeliveryScope getMeetingRequestsDeliveryScope() {
+  public MeetingRequestsDeliveryScope getMeetingRequestsDeliveryScope() {
     return this.meetingRequestsDeliveryScope;
   }
 }

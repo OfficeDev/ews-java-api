@@ -70,7 +70,7 @@ public final class GetInboxRulesResponse extends ServiceResponse {
   /**
    * Gets the rule collection in the response.
    */
-  protected RuleCollection getRules() {
+  public RuleCollection getRules() {
     return this.ruleCollection;
   }
 }

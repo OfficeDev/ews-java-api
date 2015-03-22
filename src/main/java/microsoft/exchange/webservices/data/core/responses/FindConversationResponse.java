@@ -50,7 +50,7 @@ public final class FindConversationResponse extends ServiceResponse {
   /**
    * Gets the results of the operation.
    */
-  protected Collection<Conversation> getConversations() {
+  public Collection<Conversation> getConversations() {
 
     return this.conversations;
 

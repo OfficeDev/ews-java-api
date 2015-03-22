@@ -154,7 +154,7 @@ public final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
   /**
    * Gets the return value.
    */
-  protected Document getReturnValue() {
+  public Document getReturnValue() {
     return returnValue;
   }
 
