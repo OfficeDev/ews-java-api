@@ -29,6 +29,7 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.misc.SoapFaultDetails;
 import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.IndexedPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;

@@ -37,6 +37,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.exceptions.XmlException;
+import microsoft.exchange.webservices.data.misc.SoapFaultDetails;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.ws.http.HTTPException;

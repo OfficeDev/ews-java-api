@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.misc.UserConfiguration;
 import microsoft.exchange.webservices.data.properties.complex.FolderId;
 
 /**
@@ -131,8 +132,8 @@ class DeleteUserConfigurationRequest extends
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     // Write UserConfiguationName element
-    UserConfiguration.writeUserConfigurationNameToXml(writer,
-        XmlNamespace.Messages, this.name, this.parentFolderId);
+    UserConfiguration
+        .writeUserConfigurationNameToXml(writer, XmlNamespace.Messages, this.name, this.parentFolderId);
   }
 
   /**

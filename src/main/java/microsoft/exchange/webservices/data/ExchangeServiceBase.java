@@ -32,6 +32,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.interfaces.ICustomXmlSerialization;
 import microsoft.exchange.webservices.data.interfaces.ITraceListener;
+import microsoft.exchange.webservices.data.misc.EwsTraceListener;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;

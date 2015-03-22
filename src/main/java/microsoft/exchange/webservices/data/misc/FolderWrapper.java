@@ -21,28 +21,44 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.Folder;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.misc.AbstractFolderIdWrapper;
 
 /**
- * Represents an item Id provided by a ItemId object.
+ * Represents a folder Id provided by a Folder object.
  */
-class ItemIdWrapper extends AbstractItemIdWrapper {
+class FolderWrapper extends AbstractFolderIdWrapper {
 
   /**
-   * The ItemId object providing the Id.
+   * The Folder object providing the Id.
    */
-  private ItemId itemId;
+  private Folder folder;
 
   /**
-   * Initializes a new instance of ItemIdWrapper.
+   * Initializes a new instance of FolderWrapper.
    *
-   * @param itemId the item id
+   * @param folder the folder
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
-  protected ItemIdWrapper(ItemId itemId) {
-    EwsUtilities.EwsAssert(itemId != null, "ItemIdWrapper.ctor", "itemId is null");
-    this.itemId = itemId;
+  protected FolderWrapper(Folder folder) throws ServiceLocalException {
+    EwsUtilities.EwsAssert(folder != null, "FolderWrapper.ctor", "folder is null");
+    EwsUtilities.EwsAssert(!folder.isNew(), "FolderWrapper.ctor",
+        "folder does not have an Id");
+    this.folder = folder;
+  }
+
+  /**
+   * Obtains the Folder object associated with the wrapper.
+   *
+   * @return The Folder object associated with the wrapper
+   */
+  public Folder getFolder() {
+    return this.folder;
   }
 
   /**
@@ -51,9 +67,7 @@ class ItemIdWrapper extends AbstractItemIdWrapper {
    * @param writer the writer
    * @throws Exception the exception
    */
-  @Override
   protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
-    this.itemId.writeToXml(writer);
+    this.folder.getId().writeToXml(writer);
   }
-
 }

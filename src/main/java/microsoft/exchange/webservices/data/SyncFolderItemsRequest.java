@@ -30,6 +30,7 @@ import microsoft.exchange.webservices.data.enumerations.SyncFolderItemsScope;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.misc.ItemIdWrapperList;
 import microsoft.exchange.webservices.data.properties.complex.FolderId;
 
 /**

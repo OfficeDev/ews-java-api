@@ -31,6 +31,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceRequestException;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exceptions.XmlException;
+import microsoft.exchange.webservices.data.misc.HangingTraceStream;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.ByteArrayOutputStream;

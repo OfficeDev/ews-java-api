@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.properties.complex;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.Time;
+import microsoft.exchange.webservices.data.misc.Time;
 import microsoft.exchange.webservices.data.TimeSpan;
 import microsoft.exchange.webservices.data.XmlAttributeNames;
 import microsoft.exchange.webservices.data.XmlElementNames;

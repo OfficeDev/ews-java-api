@@ -21,8 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc;
 
+import microsoft.exchange.webservices.data.DelegateUserResponse;
 import microsoft.exchange.webservices.data.enumerations.MeetingRequestsDeliveryScope;
 
 import java.util.ArrayList;

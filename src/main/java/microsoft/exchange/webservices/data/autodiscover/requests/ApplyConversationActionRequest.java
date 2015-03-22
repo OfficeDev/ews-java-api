@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover.requests;
 
-import microsoft.exchange.webservices.data.ConversationAction;
+import microsoft.exchange.webservices.data.misc.ConversationAction;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.ExchangeService;

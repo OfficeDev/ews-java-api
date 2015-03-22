@@ -21,8 +21,11 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc;
 
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.IFunctions;
+import microsoft.exchange.webservices.data.LazyMember;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ArgumentNullException;
 import microsoft.exchange.webservices.data.exceptions.FormatException;

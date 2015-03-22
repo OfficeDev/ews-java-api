@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.misc.ExpandGroupResults;
+
 /**
  * Represents the response to a group expansion operation.
  */

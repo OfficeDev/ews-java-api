@@ -21,26 +21,31 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc;
+
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.misc.AbstractItemIdWrapper;
+import microsoft.exchange.webservices.data.properties.complex.ItemId;
 
 /**
- * Represents the abstraction of an item Id.
+ * Represents an item Id provided by a ItemId object.
  */
-abstract class AbstractItemIdWrapper {
+class ItemIdWrapper extends AbstractItemIdWrapper {
 
   /**
-   * Initializes a new instance of the class.
+   * The ItemId object providing the Id.
    */
-  protected AbstractItemIdWrapper() {
-  }
+  private ItemId itemId;
 
   /**
-   * Obtains the ItemBase object associated with the wrapper.
+   * Initializes a new instance of ItemIdWrapper.
    *
-   * @return The ItemBase object associated with the wrapper
+   * @param itemId the item id
    */
-  public Item getItem() {
-    return null;
+  protected ItemIdWrapper(ItemId itemId) {
+    EwsUtilities.EwsAssert(itemId != null, "ItemIdWrapper.ctor", "itemId is null");
+    this.itemId = itemId;
   }
 
   /**
@@ -49,6 +54,9 @@ abstract class AbstractItemIdWrapper {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected abstract void writeToXml(EwsServiceXmlWriter writer)
-      throws Exception;
+  @Override
+  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+    this.itemId.writeToXml(writer);
+  }
+
 }

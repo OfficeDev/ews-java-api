@@ -21,40 +21,29 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.Item;
 
 /**
- * Represents a folder Id provided by a Folder object.
+ * Represents the abstraction of an item Id.
  */
-class FolderWrapper extends AbstractFolderIdWrapper {
+abstract class AbstractItemIdWrapper {
 
   /**
-   * The Folder object providing the Id.
+   * Initializes a new instance of the class.
    */
-  private Folder folder;
-
-  /**
-   * Initializes a new instance of FolderWrapper.
-   *
-   * @param folder the folder
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
-   */
-  protected FolderWrapper(Folder folder) throws ServiceLocalException {
-    EwsUtilities.EwsAssert(folder != null, "FolderWrapper.ctor", "folder is null");
-    EwsUtilities.EwsAssert(!folder.isNew(), "FolderWrapper.ctor",
-        "folder does not have an Id");
-    this.folder = folder;
+  protected AbstractItemIdWrapper() {
   }
 
   /**
-   * Obtains the Folder object associated with the wrapper.
+   * Obtains the ItemBase object associated with the wrapper.
    *
-   * @return The Folder object associated with the wrapper
+   * @return The ItemBase object associated with the wrapper
    */
-  public Folder getFolder() {
-    return this.folder;
+  public Item getItem() {
+    return null;
   }
 
   /**
@@ -63,7 +52,6 @@ class FolderWrapper extends AbstractFolderIdWrapper {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
-    this.folder.getId().writeToXml(writer);
-  }
+  protected abstract void writeToXml(EwsServiceXmlWriter writer)
+      throws Exception;
 }

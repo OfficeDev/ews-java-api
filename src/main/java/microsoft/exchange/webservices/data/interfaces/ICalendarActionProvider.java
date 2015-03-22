@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.interfaces;
 
 import microsoft.exchange.webservices.data.AcceptMeetingInvitationMessage;
-import microsoft.exchange.webservices.data.CalendarActionResults;
+import microsoft.exchange.webservices.data.misc.CalendarActionResults;
 import microsoft.exchange.webservices.data.DeclineMeetingInvitationMessage;
 
 /**
