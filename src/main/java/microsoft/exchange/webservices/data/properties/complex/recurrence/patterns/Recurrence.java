@@ -24,15 +24,15 @@
 package microsoft.exchange.webservices.data.properties.complex.recurrence.patterns;
 
 import microsoft.exchange.webservices.data.ComplexProperty;
-import microsoft.exchange.webservices.data.EndDateRecurrenceRange;
+import microsoft.exchange.webservices.data.properties.complex.recurrence.ranges.EndDateRecurrenceRange;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.ExchangeService;
 import microsoft.exchange.webservices.data.IComplexPropertyChangedDelegate;
-import microsoft.exchange.webservices.data.NoEndRecurrenceRange;
-import microsoft.exchange.webservices.data.NumberedRecurrenceRange;
-import microsoft.exchange.webservices.data.RecurrenceRange;
+import microsoft.exchange.webservices.data.properties.complex.recurrence.ranges.NoEndRecurrenceRange;
+import microsoft.exchange.webservices.data.properties.complex.recurrence.ranges.NumberedRecurrenceRange;
+import microsoft.exchange.webservices.data.properties.complex.recurrence.ranges.RecurrenceRange;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;

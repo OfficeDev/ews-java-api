@@ -21,8 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.complex.recurrence.ranges;
 
+import microsoft.exchange.webservices.data.ComplexProperty;
+import microsoft.exchange.webservices.data.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
