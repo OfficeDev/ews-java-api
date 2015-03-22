@@ -44,8 +44,7 @@ import java.util.List;
  * Represents a response object created to remove a calendar item from a meeting
  * cancellation.
  */
-@ServiceObjectDefinition(xmlElementName = XmlElementNames.RemoveItem, returnedByServer = false)
-class RemoveFromCalendar extends ServiceObject {
+@ServiceObjectDefinition(xmlElementName = XmlElementNames.RemoveItem, returnedByServer = false) public class RemoveFromCalendar extends ServiceObject {
 
   /**
    * The reference item.
@@ -58,7 +57,7 @@ class RemoveFromCalendar extends ServiceObject {
    * @param referenceItem The reference item
    * @throws Exception the exception
    */
-  RemoveFromCalendar(Item referenceItem) throws Exception {
+  public RemoveFromCalendar(Item referenceItem) throws Exception {
     super(referenceItem.getService());
 
     referenceItem.throwIfThisIsNew();
@@ -120,8 +119,7 @@ class RemoveFromCalendar extends ServiceObject {
    * this operation.
    * @throws Exception the exception
    */
-  protected List<Item> internalCreate(FolderId parentFolderId,
-      MessageDisposition messageDisposition) throws Exception {
+  public List<Item> internalCreate(FolderId parentFolderId, MessageDisposition messageDisposition) throws Exception {
     ((ItemId) this.getPropertyBag().getObjectFromPropertyDefinition(
         ResponseObjectSchema.ReferenceItemId))
         .assign(this.referenceItem.getId());

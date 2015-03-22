@@ -46,7 +46,7 @@ public final class CancelMeetingMessage extends
    * @param referenceItem the reference item
    * @throws Exception the exception
    */
-  protected CancelMeetingMessage(Item referenceItem) throws Exception {
+  public CancelMeetingMessage(Item referenceItem) throws Exception {
     super(referenceItem);
   }
 

@@ -42,7 +42,7 @@ import microsoft.exchange.webservices.data.properties.complex.ItemId;
  * Represents a response object created to supress read receipts for an item.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.SuppressReadReceipt, returnedByServer = false)
-final class SuppressReadReceipt extends ServiceObject {
+public final class SuppressReadReceipt extends ServiceObject {
 
   /**
    * The reference item.
@@ -55,7 +55,7 @@ final class SuppressReadReceipt extends ServiceObject {
    * @param referenceItem the reference item
    * @throws Exception the exception
    */
-  protected SuppressReadReceipt(Item referenceItem) throws Exception {
+  public SuppressReadReceipt(Item referenceItem) throws Exception {
     super(referenceItem.getService());
 
     referenceItem.throwIfThisIsNew();
@@ -112,8 +112,7 @@ final class SuppressReadReceipt extends ServiceObject {
    * @param messageDisposition the message disposition
    * @throws Exception the exception
    */
-  protected void internalCreate(FolderId parentFolderId,
-      MessageDisposition messageDisposition) throws Exception {
+  public void internalCreate(FolderId parentFolderId, MessageDisposition messageDisposition) throws Exception {
     ((ItemId) this.getPropertyBag().getObjectFromPropertyDefinition(
         ResponseObjectSchema.ReferenceItemId))
         .assign(this.referenceItem.getId());

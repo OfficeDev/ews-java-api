@@ -55,7 +55,7 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
    * @param responseType  the response type
    * @throws Exception the exception
    */
-  ResponseMessage(Item referenceItem, ResponseMessageType responseType)
+  public ResponseMessage(Item referenceItem, ResponseMessageType responseType)
       throws Exception {
     super(referenceItem);
     this.responseType = responseType;
