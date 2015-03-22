@@ -65,32 +65,32 @@ public class EwsUtilities {
   /**
    * The Constant XSFalse.
    */
-  protected static final String XSFalse = "false";
+  public static final String XSFalse = "false";
 
   /**
    * The Constant XSTrue.
    */
-  protected static final String XSTrue = "true";
+  public static final String XSTrue = "true";
 
   /**
    * The Constant EwsTypesNamespacePrefix.
    */
-  protected static final String EwsTypesNamespacePrefix = "t";
+  public static final String EwsTypesNamespacePrefix = "t";
 
   /**
    * The Constant EwsMessagesNamespacePrefix.
    */
-  protected static final String EwsMessagesNamespacePrefix = "m";
+  public static final String EwsMessagesNamespacePrefix = "m";
 
   /**
    * The Constant EwsErrorsNamespacePrefix.
    */
-  protected static final String EwsErrorsNamespacePrefix = "e";
+  public static final String EwsErrorsNamespacePrefix = "e";
 
   /**
    * The Constant EwsSoapNamespacePrefix.
    */
-  protected static final String EwsSoapNamespacePrefix = "soap";
+  public static final String EwsSoapNamespacePrefix = "soap";
 
   /**
    * The Constant EwsXmlSchemaInstanceNamespacePrefix.
@@ -100,12 +100,12 @@ public class EwsUtilities {
   /**
    * The Constant PassportSoapFaultNamespacePrefix.
    */
-  protected static final String PassportSoapFaultNamespacePrefix = "psf";
+  public static final String PassportSoapFaultNamespacePrefix = "psf";
 
   /**
    * The Constant WSTrustFebruary2005NamespacePrefix.
    */
-  protected static final String WSTrustFebruary2005NamespacePrefix = "wst";
+  public static final String WSTrustFebruary2005NamespacePrefix = "wst";
 
   /**
    * The Constant WSAddressingNamespacePrefix.
@@ -130,31 +130,31 @@ public class EwsUtilities {
   /**
    * The Constant EwsTypesNamespace.
    */
-  protected static final String EwsTypesNamespace =
+  public static final String EwsTypesNamespace =
       "http://schemas.microsoft.com/exchange/services/2006/types";
 
   /**
    * The Constant EwsMessagesNamespace.
    */
-  protected static final String EwsMessagesNamespace =
+  public static final String EwsMessagesNamespace =
       "http://schemas.microsoft.com/exchange/services/2006/messages";
 
   /**
    * The Constant EwsErrorsNamespace.
    */
-  protected static final String EwsErrorsNamespace =
+  public static final String EwsErrorsNamespace =
       "http://schemas.microsoft.com/exchange/services/2006/errors";
 
   /**
    * The Constant EwsSoapNamespace.
    */
-  protected static final String EwsSoapNamespace =
+  public static final String EwsSoapNamespace =
       "http://schemas.xmlsoap.org/soap/envelope/";
 
   /**
    * The Constant EwsSoap12Namespace.
    */
-  protected static final String EwsSoap12Namespace =
+  public static final String EwsSoap12Namespace =
       "http://www.w3.org/2003/05/soap-envelope";
 
   /**
@@ -166,13 +166,13 @@ public class EwsUtilities {
   /**
    * The Constant PassportSoapFaultNamespace.
    */
-  protected static final String PassportSoapFaultNamespace =
+  public static final String PassportSoapFaultNamespace =
       "http://schemas.microsoft.com/Passport/SoapServices/SOAPFault";
 
   /**
    * The Constant WSTrustFebruary2005Namespace.
    */
-  protected static final String WSTrustFebruary2005Namespace =
+  public static final String WSTrustFebruary2005Namespace =
       "http://schemas.xmlsoap.org/ws/2005/02/trust";
 
   /**
@@ -211,7 +211,7 @@ public class EwsUtilities {
    * @param source The source stream.
    * @param target The target stream.
    */
-  protected static void copyStream(ByteArrayOutputStream source, ByteArrayOutputStream target)
+  public static void copyStream(ByteArrayOutputStream source, ByteArrayOutputStream target)
       throws Exception {
     // See if this is a MemoryStream -- we can use WriteTo.
 
@@ -325,7 +325,7 @@ public class EwsUtilities {
   /**
    * Dictionary of enum type to enum-value-to-schema-name maps.
    */
-  protected static LazyMember<Map<Class<?>, Map<String, String>>>
+  public static LazyMember<Map<Class<?>, Map<String, String>>>
       enumToSchemaDictionaries =
       new LazyMember<Map<Class<?>, Map<String, String>>>(
           new ILazyMember<Map<Class<?>, Map<String, String>>>() {
@@ -348,7 +348,7 @@ public class EwsUtilities {
   /**
    * Regular expression for legal domain names.
    */
-  protected static final String DomainRegex = "^[-a-zA-Z0-9_.]+$";
+  public static final String DomainRegex = "^[-a-zA-Z0-9_.]+$";
 
   /**
    * Asserts that the specified condition if true.
@@ -430,7 +430,7 @@ public class EwsUtilities {
    * @return the t service object
    * @throws Exception the exception
    */
-  protected static <TServiceObject extends ServiceObject>
+  public static <TServiceObject extends ServiceObject>
   TServiceObject createEwsObjectFromXmlElementName(
       Class<?> itemClass, ExchangeService service, String xmlElementName)
       throws Exception {
@@ -466,7 +466,7 @@ public class EwsUtilities {
    * @return the item
    * @throws Exception the exception
    */
-  protected static Item createItemFromItemClass(
+  public static Item createItemFromItemClass(
       ItemAttachment itemAttachment, Class<?> itemClass, boolean isNew)
       throws Exception {
     ICreateServiceObjectWithAttachmentParam creationDelegate;
@@ -493,7 +493,7 @@ public class EwsUtilities {
    * @return the item
    * @throws Exception the exception
    */
-  protected static Item createItemFromXmlElementName(
+  public static Item createItemFromXmlElementName(
       ItemAttachment itemAttachment, String xmlElementName)
       throws Exception {
     Class<?> itemClass;
@@ -512,7 +512,7 @@ public class EwsUtilities {
   /**
    *
    */
-  protected static Class<?> getItemTypeFromXmlElementName(String xmlElementName) {
+  public static Class<?> getItemTypeFromXmlElementName(String xmlElementName) {
     return EwsUtilities.serviceObjectInfo.getMember().getXmlElementNameToServiceObjectClassMap()
         .get(xmlElementName).getClass();
   }
@@ -572,7 +572,7 @@ public class EwsUtilities {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws java.io.IOException                 Signals that an I/O exception has occurred.
    */
-  protected static String formatLogMessage(String entryKind, String logEntry)
+  public static String formatLogMessage(String entryKind, String logEntry)
       throws XMLStreamException, IOException {
     ByteArrayOutputStream outStream = new ByteArrayOutputStream();
     XMLOutputFactory factory = XMLOutputFactory.newInstance();
@@ -603,7 +603,7 @@ public class EwsUtilities {
    * @return the string
    * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
    */
-  protected static String formatHttpResponseHeaders(HttpWebRequest response)
+  public static String formatHttpResponseHeaders(HttpWebRequest response)
       throws EWSHttpException {
     StringBuilder sb = new StringBuilder();
     sb.append(String.format("%d %s\n", response.getResponseCode(), response
@@ -620,7 +620,7 @@ public class EwsUtilities {
    *
    * @param request The HTTP request.
    */
-  protected static String formatHttpRequestHeaders(HttpWebRequest request)
+  public static String formatHttpRequestHeaders(HttpWebRequest request)
       throws URISyntaxException, EWSHttpException {
     StringBuilder sb = new StringBuilder();
     sb.append(
@@ -656,7 +656,7 @@ public class EwsUtilities {
    * @param stream       The memory stream.
    * @return XML log entry as a string.
    */
-  protected static String formatLogMessageWithXmlContent(String traceTypeStr,
+  public static String formatLogMessageWithXmlContent(String traceTypeStr,
       ByteArrayOutputStream stream) {
     try {
       return formatLogMessage(traceTypeStr, stream.toString());
@@ -672,7 +672,7 @@ public class EwsUtilities {
    * @param value Bool value.
    * @return String representing bool value in XML Schema.
    */
-  protected static String boolToXSBool(Boolean value) {
+  public static String boolToXSBool(Boolean value) {
     return value ? EwsUtilities.XSTrue : EwsUtilities.XSFalse;
   }
 
@@ -685,7 +685,7 @@ public class EwsUtilities {
    * @param value      the value
    * @param separators the separators
    */
-  protected static <T extends Enum<?>> void parseEnumValueList(Class<T> c,
+  public static <T extends Enum<?>> void parseEnumValueList(Class<T> c,
       List<T> list, String value, char... separators) {
     EwsUtilities.EwsAssert(c.isEnum(), "EwsUtilities.ParseEnumValueList",
         "T is not an enum type.");
@@ -718,7 +718,7 @@ public class EwsUtilities {
    * @param value The enum value to be serialized
    * @return String representation of enum to be used in the protocol
    */
-  protected static String serializeEnum(Object value) {
+  public static String serializeEnum(Object value) {
     Map<String, String> enumToStringDict;
     String strValue = value.toString();
     if (enumToSchemaDictionaries.getMember().
@@ -745,7 +745,7 @@ public class EwsUtilities {
    * @throws IllegalAccessException   the illegal access exception
    * @throws java.text.ParseException the parse exception
    */
-  protected static <T> T parse(Class<T> cls, String value)
+  public static <T> T parse(Class<T> cls, String value)
       throws InstantiationException, IllegalAccessException,
       ParseException {
 
@@ -838,7 +838,7 @@ public class EwsUtilities {
    * @param paramName  the param name
    * @throws Exception the exception
    */
-  protected static void validateParamCollection(EventType[] eventTypes,
+  public static void validateParamCollection(EventType[] eventTypes,
       String paramName) throws Exception {
 
     validateParam(eventTypes, paramName);
@@ -883,7 +883,7 @@ public class EwsUtilities {
    * @param date the date
    * @return String representation of DateTime.
    */
-  protected static String dateTimeToXSDateTime(Date date) {
+  public static String dateTimeToXSDateTime(Date date) {
     String format = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     DateFormat utcFormatter = new SimpleDateFormat(format);
     utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -899,7 +899,7 @@ public class EwsUtilities {
    * @param timeOffset structure to convert
    * @return xs:duration formatted string
    */
-  protected static String getTimeSpanToXSDuration(TimeSpan timeOffset) {
+  public static String getTimeSpanToXSDuration(TimeSpan timeOffset) {
 
 		/*
 		 * SimpleDateFormat dateformatter = new SimpleDateFormat("dd:HH:mm:ss");
@@ -930,7 +930,7 @@ public class EwsUtilities {
    * @param xsDuration xs:duration string to convert
    * @return System.TimeSpan structure
    */
-  protected static TimeSpan getXSDurationToTimeSpan(String xsDuration) {
+  public static TimeSpan getXSDurationToTimeSpan(String xsDuration) {
     // TODO: Need to check whether this should be the equivalent or not
     Pattern timeSpanParser = Pattern.compile("-P");
     Matcher m = timeSpanParser.matcher(xsDuration);
@@ -1034,7 +1034,7 @@ public class EwsUtilities {
    * @param xsDuration xs:duration string to convert
    * @return System.TimeSpan structure
    */
-  protected static TimeSpan getXSDurationToTimeSpanValue(String xsDuration) {
+  public static TimeSpan getXSDurationToTimeSpanValue(String xsDuration) {
     // TODO: Need to check whether this should be the equivalent or not
     Pattern timeSpanParser = Pattern.compile("-P");
     Matcher m = timeSpanParser.matcher(xsDuration);
@@ -1164,7 +1164,7 @@ public class EwsUtilities {
    * @param paramName Name of the param.
    * @throws Exception the exception
    */
-  protected static void validateParamAllowNull(Object param, String paramName)
+  public static void validateParamAllowNull(Object param, String paramName)
       throws Exception {
     if (param instanceof ISelfValidate) {
       ISelfValidate selfValidate = (ISelfValidate) param;
@@ -1247,7 +1247,7 @@ public class EwsUtilities {
    * @throws microsoft.exchange.webservices.data.ArgumentException
    * @throws microsoft.exchange.webservices.data.ServiceLocalException
    */
-  protected static void validateNonBlankStringParamAllowNull(String param,
+  public static void validateNonBlankStringParamAllowNull(String param,
       String paramName) throws ArgumentException, ServiceLocalException {
     if (param != null) {
       // Non-empty string has at least one character
@@ -1275,7 +1275,7 @@ public class EwsUtilities {
    * @throws ArgumentException
    * @throws ServiceLocalException
    */
-  protected static void validateNonBlankStringParam(String param,
+  public static void validateNonBlankStringParam(String param,
       String paramName) throws ArgumentNullException, ArgumentException, ServiceLocalException {
     if (param == null) {
       throw new ArgumentNullException(paramName);
@@ -1291,7 +1291,7 @@ public class EwsUtilities {
    * @param requestVersion the request version
    * @throws microsoft.exchange.webservices.data.ServiceVersionException the service version exception
    */
-  protected static void validateEnumVersionValue(Enum<?> enumValue,
+  public static void validateEnumVersionValue(Enum<?> enumValue,
       ExchangeVersion requestVersion) throws ServiceVersionException {
     Map<String, ExchangeVersion> enumVersionDict = enumVersionDictionaries
         .getMember().get(enumValue.getClass());
@@ -1319,7 +1319,7 @@ public class EwsUtilities {
    * @throws ServiceVersionException Raised if this service object type requires a later version
    *                                 of Exchange.
    */
-  protected static void validateServiceObjectVersion(
+  public static void validateServiceObjectVersion(
       ServiceObject serviceObject, ExchangeVersion requestVersion)
       throws ServiceVersionException {
     ExchangeVersion minimumRequiredServerVersion = serviceObject
@@ -1342,7 +1342,7 @@ public class EwsUtilities {
    * @param propertyName         The property name
    * @throws ServiceVersionException The service version exception
    */
-  protected static void validatePropertyVersion(
+  public static void validatePropertyVersion(
       ExchangeService service,
       ExchangeVersion minimumServerVersion,
       String propertyName) throws ServiceVersionException {
@@ -1363,7 +1363,7 @@ public class EwsUtilities {
    * @param methodName           the method name
    * @throws ServiceVersionException the service version exception
    */
-  protected static void validateMethodVersion(ExchangeService service,
+  public static void validateMethodVersion(ExchangeService service,
       ExchangeVersion minimumServerVersion, String methodName)
       throws ServiceVersionException {
     if (service.getRequestedServerVersion().ordinal() <
@@ -1384,7 +1384,7 @@ public class EwsUtilities {
    * @param className            Name of the class.
    * @throws ServiceVersionException
    */
-  protected static void validateClassVersion(
+  public static void validateClassVersion(
       ExchangeService service,
       ExchangeVersion minimumServerVersion,
       String className) throws ServiceVersionException {
@@ -1468,7 +1468,7 @@ public class EwsUtilities {
    * @param objects The objects.
    * @return Count of objects in iterator.
    */
-  protected static <T> int getEnumeratedObjectCount(Iterator<T> objects) {
+  public static <T> int getEnumeratedObjectCount(Iterator<T> objects) {
     int count = 0;
     while (objects != null && objects.hasNext()) {
       Object obj = objects.next();
@@ -1485,7 +1485,7 @@ public class EwsUtilities {
    * @param index   the index
    * @return the enumerated object at
    */
-  protected static <T> Object getEnumeratedObjectAt(Iterable<T> objects,
+  public static <T> Object getEnumeratedObjectAt(Iterable<T> objects,
       int index) {
     int count = 0;
     for (Object obj : objects) {
@@ -1506,7 +1506,7 @@ public class EwsUtilities {
    * @return Count of characters that match condition expressed by predicate.
    * @throws ServiceLocalException
    */
-  protected static int countMatchingChars(String str,
+  public static int countMatchingChars(String str,
       IPredicate<Character> charPredicate) throws ServiceLocalException {
     int count = 0;
     for (int i = 0; i < str.length(); i++) {
@@ -1529,7 +1529,7 @@ public class EwsUtilities {
    * the conditions defined by the specified predicate; otherwise, false.
    * @throws ServiceLocalException
    */
-  protected static <T> boolean trueForAll(Iterable<T> collection,
+  public static <T> boolean trueForAll(Iterable<T> collection,
       IPredicate<T> predicate) throws ServiceLocalException {
     for (T entry : collection) {
       if (!predicate.predicate(entry)) {
@@ -1547,7 +1547,7 @@ public class EwsUtilities {
    * @param collection The collection.
    * @param action     The action to apply.
    */
-  protected static <T> void forEach(Iterable<T> collection, IAction<T> action) {
+  public static <T> void forEach(Iterable<T> collection, IAction<T> action) {
     for (T entry : collection) {
       action.action(entry);
     }

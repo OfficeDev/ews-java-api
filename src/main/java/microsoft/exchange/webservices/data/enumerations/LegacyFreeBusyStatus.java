@@ -72,7 +72,7 @@ public enum LegacyFreeBusyStatus {
     this.busyStatus = busyStatus;
   }
 
-  int getBusyStatus() {
+  public int getBusyStatus() {
     return busyStatus;
   }
 

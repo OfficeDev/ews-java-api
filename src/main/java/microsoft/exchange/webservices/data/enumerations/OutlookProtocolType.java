@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.enumerations;
 /**
  * Defines supported Outlook protocls.
  */
-enum OutlookProtocolType {
+public enum OutlookProtocolType {
 
   // The Remote Procedure Call (RPC) protocol.
   /**

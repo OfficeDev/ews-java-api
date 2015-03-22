@@ -122,7 +122,7 @@ public enum XmlNamespace {
    *
    * @return the name space uri
    */
-  protected String getNameSpaceUri() {
+  public String getNameSpaceUri() {
     return this.nameSpaceUri;
   }
 
@@ -131,7 +131,7 @@ public enum XmlNamespace {
    *
    * @return the name space prefix
    */
-  protected String getNameSpacePrefix() {
+  public String getNameSpacePrefix() {
     return this.prefix;
   }
 }
