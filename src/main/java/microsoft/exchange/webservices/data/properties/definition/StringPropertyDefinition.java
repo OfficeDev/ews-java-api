@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.definition;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
@@ -29,19 +29,19 @@ import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import java.util.EnumSet;
 
 /**
- * Represents byte array property definition.
+ * Represents String property definition.
  */
-final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
+class StringPropertyDefinition extends TypedPropertyDefinition {
 
   /**
-   * Initializes a new instance.
+   * Initializes a new instance of the "StringPropertyDefinition" class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected ByteArrayPropertyDefinition(String xmlElementName, String uri,
+  protected StringPropertyDefinition(String xmlElementName, String uri,
       EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
@@ -49,24 +49,12 @@ final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
   /**
    * Parses the specified value.
    *
-   * @param value accepts String
-   * @return value
+   * @param value The value.
+   * @return Typed value.
    */
   @Override
   protected Object parse(String value) {
-    return Base64EncoderStream.decode(value);
-    // return null;
-  }
-
-  /**
-   * Converts byte array property to a string.
-   *
-   * @param value accepts Object
-   * @return value
-   */
-  @Override
-  protected String toString(Object value) {
-    return Base64EncoderStream.encode((byte[]) value);
+    return value;
   }
 
   /**
@@ -84,8 +72,7 @@ final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
    * Gets the property type.
    */
   @Override
-  public Class<Byte> getType() {
-    return Byte.class;
+  public Class<String> getType() {
+    return String.class;
   }
-
 }

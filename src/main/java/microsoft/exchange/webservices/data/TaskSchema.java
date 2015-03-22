@@ -28,6 +28,16 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.TaskMode;
 import microsoft.exchange.webservices.data.enumerations.TaskStatus;
+import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.DateTimePropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.DoublePropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.GenericPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.IntPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.RecurrencePropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.StringPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.TaskDelegationStatePropertyDefinition;
 
 import java.util.EnumSet;
 

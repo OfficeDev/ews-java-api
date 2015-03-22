@@ -21,72 +21,98 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.definition;
 
+import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 
+import java.text.ParseException;
 import java.util.EnumSet;
 
 /**
- * Represents Boolean property definition.
+ * Represents generic property definition.
+ *
+ * @param <TPropertyValue> Property type.
  */
-final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
+class GenericPropertyDefinition<TPropertyValue> extends
+    TypedPropertyDefinition {
+
+  private Class<TPropertyValue> instance;
 
   /**
-   * Initializes a new instance.
+   * Initializes a new instance of the "GenericPropertyDefinition&lt;T&gt;"
+   * class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.
    * @param version        The version.
    */
-  protected BoolPropertyDefinition(String xmlElementName, String uri,
+  protected GenericPropertyDefinition(Class<TPropertyValue> cls,
+      String xmlElementName, String uri,
       ExchangeVersion version) {
-    super(Boolean.class, xmlElementName, uri, version);
+    super(xmlElementName, uri, version);
+    this.instance = cls;
   }
 
   /**
-   * Initializes a new instance.
+   * Initializes a new instance of the "GenericPropertyDefinition&lt;T&gt;"
+   * class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected BoolPropertyDefinition(String xmlElementName, String uri,
+  protected GenericPropertyDefinition(Class<TPropertyValue> cls,
+      String xmlElementName, String uri,
       EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
-    super(Boolean.class, xmlElementName, uri, flags, version);
+    super(xmlElementName, uri, flags, version);
+    this.instance = cls;
   }
 
   /**
-   * Initializes a new instance.
+   * Initializes a new instance of the GenericPropertyDefinition class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.
    * @param flags          The flags.
    * @param version        The version.
-   * @param isNullable     Indicates that this property definition is for a nullable
-   *                       property.
+   * @param isNullable     if set to true, property value is nullable.
    */
-  protected BoolPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
+  protected GenericPropertyDefinition(
+      Class<TPropertyValue> cls,
+      String xmlElementName,
+      String uri,
+      EnumSet<PropertyDefinitionFlags> flags,
+      ExchangeVersion version,
       boolean isNullable) {
-    super(Boolean.class, xmlElementName, uri, flags, version, isNullable);
+    super(xmlElementName, uri, flags, version, isNullable);
+    this.instance = cls;
   }
 
+
   /**
-   * Convert instance to string.
+   * Parses the specified value.
    *
-   * @param value The value.
-   * @return String representation of property value.
+   * @param value The value
+   * @return Double value from parsed value.
+   * @throws java.text.ParseException
+   * @throws IllegalAccessException
+   * @throws InstantiationException
    */
   @Override
+  protected Object parse(String value) throws InstantiationException,
+      IllegalAccessException, ParseException {
+
+    return EwsUtilities.parse(instance, value);
+  }
+
   /**
-   * Convert instance to string.
-   * @param value The value.
-   * @return String representation of Boolean property.
+   * Gets the property type.
    */
-  protected String toString(Object value) {
-    return EwsUtilities.boolToXSBool((Boolean) value);
+  @Override
+  public Class<TPropertyValue> getType() {
+    return instance;
   }
 }

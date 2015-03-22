@@ -21,8 +21,11 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.definition;
 
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.XmlAttributeNames;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 /**

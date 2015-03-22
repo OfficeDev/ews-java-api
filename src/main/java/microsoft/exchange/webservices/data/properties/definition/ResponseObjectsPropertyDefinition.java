@@ -21,32 +21,34 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.definition;
 
-import microsoft.exchange.webservices.data.enumerations.EffectiveRights;
+import microsoft.exchange.webservices.data.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.PropertyBag;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumerations.ResponseActions;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 
 import java.util.EnumSet;
 
 /**
- * Represents effective rights property definition.
+ * Represents response object property defintion.
  */
-final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
+public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
 
   /**
-   * Initializes a new instance of the EffectiveRightsPropertyDefinition.
+   * Initializes a new instance of the ResponseObjectsPropertyDefinition
+   * class.
    *
    * @param xmlElementName the xml element name
    * @param uri            the uri
-   * @param flags          the flags
    * @param version        the version
    */
-  protected EffectiveRightsPropertyDefinition(String xmlElementName,
-      String uri, EnumSet<PropertyDefinitionFlags> flags,
-      ExchangeVersion version) {
-    super(xmlElementName, uri, flags, version);
+  protected ResponseObjectsPropertyDefinition(String xmlElementName,
+      String uri, ExchangeVersion version) {
+    super(xmlElementName, uri, version);
 
   }
 
@@ -57,10 +59,10 @@ final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
    * @param propertyBag the property bag
    * @throws Exception the exception
    */
-  protected void loadPropertyValueFromXml(EwsServiceXmlReader reader,
+  protected final void loadPropertyValueFromXml(EwsServiceXmlReader reader,
       PropertyBag propertyBag) throws Exception {
-    EnumSet<EffectiveRights> value = EnumSet.noneOf(EffectiveRights.class);
-    value.add(EffectiveRights.None);
+    EnumSet<ResponseActions> value = EnumSet.noneOf(ResponseActions.class);
+    value.add(ResponseActions.None);
 
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types, this
         .getXmlElement());
@@ -71,51 +73,55 @@ final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
 
         if (reader.isStartElement()) {
 
-          if (reader.getLocalName().equals(
-              XmlElementNames.CreateAssociated)) {
+          if (reader.getLocalName()
+              .equals(XmlElementNames.AcceptItem)) {
 
-            if (reader.readElementValue(Boolean.class)) {
-              value.add(EffectiveRights.CreateAssociated);
-            }
+            value.add(ResponseActions.Accept);
           } else if (reader.getLocalName().equals(
-              XmlElementNames.CreateContents)) {
+              XmlElementNames.TentativelyAcceptItem)) {
 
-            if (reader.readElementValue(Boolean.class)) {
-              value.add(EffectiveRights.CreateContents);
-            }
+            value.add(ResponseActions.TentativelyAccept);
           } else if (reader.getLocalName().equals(
-              XmlElementNames.CreateHierarchy)) {
+              XmlElementNames.DeclineItem)) {
 
-            if (reader.readElementValue(Boolean.class)) {
-              value.add(EffectiveRights.CreateHierarchy);
-            }
+            value.add(ResponseActions.Decline);
           } else if (reader.getLocalName().equals(
-              XmlElementNames.Delete)) {
+              XmlElementNames.ReplyToItem)) {
 
-            if (reader.readElementValue(Boolean.class)) {
-              value.add(EffectiveRights.Delete);
-            }
+            value.add(ResponseActions.Reply);
           } else if (reader.getLocalName().equals(
-              XmlElementNames.Modify)) {
+              XmlElementNames.ForwardItem)) {
 
-            if (reader.readElementValue(Boolean.class)) {
-              value.add(EffectiveRights.Modify);
-            }
-          } else if (reader.getLocalName().equals(XmlElementNames.Read)) {
-            if (reader.readElementValue(Boolean.class)) {
-              value.add(EffectiveRights.Read);
-            } else if (reader.getLocalName().equals(XmlElementNames.ViewPrivateItems)) {
-              if (reader.readElementValue(Boolean.class)) {
-                value.add(EffectiveRights.ViewPrivateItems);
-              }
-            }
+            value.add(ResponseActions.Forward);
+          } else if (reader.getLocalName().equals(
+              XmlElementNames.ReplyAllToItem)) {
 
+            value.add(ResponseActions.ReplyAll);
+          } else if (reader.getLocalName().equals(
+              XmlElementNames.CancelCalendarItem)) {
+
+            value.add(ResponseActions.Cancel);
+          } else if (reader.getLocalName().equals(
+              XmlElementNames.RemoveItem)) {
+
+            value.add(ResponseActions.RemoveFromCalendar);
+          } else if (reader.getLocalName().equals(
+              XmlElementNames.SuppressReadReceipt)) {
+
+            value.add(ResponseActions.SuppressReadReceipt);
+          } else if (reader.getLocalName().equals(
+              XmlElementNames.PostReplyItem)) {
+
+            value.add(ResponseActions.PostReply);
           }
         }
 
       } while (!reader.isEndElement(XmlNamespace.Types, this
           .getXmlElement()));
+    } else {
+      reader.read();
     }
+
     propertyBag.setObjectFromPropertyDefinition(this, value);
   }
 
@@ -128,14 +134,23 @@ final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
    */
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
       PropertyBag propertyBag, boolean isUpdateOperation) {
-    // EffectiveRights is a read-only property, no need to implement this.
+    // ResponseObjects is a read-only property, no need to implement this.
+  }
+
+  /**
+   * Gets a value indicating whether this property
+   * definition is for a nullable type (ref, int?, bool?...).
+   */
+  @Override
+  protected boolean isNullable() {
+    return false;
   }
 
   /**
    * Gets the property type.
    */
   @Override
-  public Class<EffectiveRights> getType() {
-    return EffectiveRights.class;
+  public Class<ResponseActions> getType() {
+    return ResponseActions.class;
   }
 }

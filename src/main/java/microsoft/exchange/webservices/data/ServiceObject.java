@@ -32,6 +32,9 @@ import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
 import microsoft.exchange.webservices.data.exceptions.NotSupportedException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
+import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
 
 import java.util.ArrayList;
 import java.util.Collection;

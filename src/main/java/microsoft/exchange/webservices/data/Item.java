@@ -42,6 +42,8 @@ import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
 
 import java.util.ArrayList;
 import java.util.Date;

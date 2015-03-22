@@ -21,8 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.definition;
 
+import microsoft.exchange.webservices.data.ComplexProperty;
+import microsoft.exchange.webservices.data.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.ICreateComplexPropertyDelegate;
+import microsoft.exchange.webservices.data.PropertyBag;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;

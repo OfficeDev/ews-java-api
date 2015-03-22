@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.exceptions.InvalidOrUnsupportedTimeZoneDefinitionException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.properties.definition.TimeZoneDefinition;
 
 import java.util.ArrayList;
 import java.util.List;

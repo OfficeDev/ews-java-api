@@ -29,6 +29,19 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.ContainedPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.DateTimePropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.GenericPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.IntPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.MeetingTimeZonePropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.RecurrencePropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.StartTimeZonePropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.StringPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.TimeSpanPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.TimeZonePropertyDefinition;
 
 import java.util.EnumSet;
 

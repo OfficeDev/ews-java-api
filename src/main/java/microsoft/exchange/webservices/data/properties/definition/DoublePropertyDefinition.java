@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.definition;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
@@ -29,50 +29,22 @@ import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import java.util.EnumSet;
 
 /**
- * Represents Integer property defintion.
+ * Represents double-precision floating point property definition.
  */
-class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
+final class DoublePropertyDefinition extends
+    GenericPropertyDefinition<Double> {
 
   /**
-   * Initializes a new instance of the "IntPropertyDefinition" class.
-   *
-   * @param xmlElementName Name of the XML element.
-   * @param uri            The URI.
-   * @param version        The version.
-   */
-  protected IntPropertyDefinition(String xmlElementName, String uri,
-      ExchangeVersion version) {
-    super(Integer.class, xmlElementName, uri, version);
-  }
-
-  /**
-   * Initializes a new instance of the "IntPropertyDefinition" class.
+   * Initializes a new instance of the "DoublePropertyDefinition" class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected IntPropertyDefinition(String xmlElementName, String uri,
+  protected DoublePropertyDefinition(String xmlElementName, String uri,
       EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
-    super(Integer.class, xmlElementName, uri, flags, version);
+    super(Double.class, xmlElementName, uri, flags, version);
   }
-
-  /**
-   * Initializes a new instance of the "IntPropertyDefinition" class.
-   *
-   * @param xmlElementName Name of the XML element.
-   * @param uri            The URI.
-   * @param flags          The flags.
-   * @param version        The version.
-   * @param isNullable     Indicates that this property definition is for a nullable
-   *                       property.
-   */
-  protected IntPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
-      boolean isNullable) {
-    super(Integer.class, xmlElementName, uri, flags, version, isNullable);
-  }
-
 
 }

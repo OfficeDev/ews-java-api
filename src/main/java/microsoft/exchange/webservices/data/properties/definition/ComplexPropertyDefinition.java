@@ -21,8 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.definition;
 
+import microsoft.exchange.webservices.data.ComplexProperty;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.ICreateComplexPropertyDelegate;
+import microsoft.exchange.webservices.data.IOwnedProperty;
+import microsoft.exchange.webservices.data.ServiceObject;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 
@@ -40,8 +45,7 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
   /**
    * The property creation delegate.
    */
-  private ICreateComplexPropertyDelegate
-      <TComplexProperty> propertyCreationDelegate;
+  private ICreateComplexPropertyDelegate<TComplexProperty> propertyCreationDelegate;
 
   /**
    * Initializes a new instance.

@@ -21,53 +21,58 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.definition;
 
+import microsoft.exchange.webservices.data.ComplexProperty;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.Folder;
+import microsoft.exchange.webservices.data.FolderPermissionCollection;
+import microsoft.exchange.webservices.data.ServiceObject;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 
 import java.util.EnumSet;
 
 /**
- * Represents TimeSpan property definition.
+ * Represents permission set property definition.
  */
-class TimeSpanPropertyDefinition extends GenericPropertyDefinition<TimeSpan> {
-
+class PermissionSetPropertyDefinition extends ComplexPropertyDefinitionBase {
 
   /**
-   * Initializes a new instance of the "TimeSpanPropertyDefinition" class.
+   * Initializes a new instance of the PermissionSetPropertyDefinition class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected TimeSpanPropertyDefinition(String xmlElementName, String uri,
+  protected PermissionSetPropertyDefinition(String xmlElementName, String uri,
       EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
-    super(TimeSpan.class, xmlElementName, uri, flags, version);
+    super(xmlElementName, uri, flags, version);
   }
 
   /**
-   * Parses the specified value.
+   * Creates the property instance.
    *
-   * @param value The value.
-   * @return Typed value.
+   * @param owner The owner.
+   * @return ComplexProperty.
    */
   @Override
-  protected Object parse(String value) {
+  protected ComplexProperty createPropertyInstance(ServiceObject owner) {
+    Folder folder = (Folder) owner;
 
-    return EwsUtilities.getXSDurationToTimeSpanValue(value);
+    EwsUtilities.EwsAssert(folder != null, "PermissionCollectionPropertyDefinition.CreatePropertyInstance",
+                           "The owner parameter is not of type Folder or a derived class.");
 
+    return new FolderPermissionCollection(folder);
   }
 
   /**
-   * Convert instance to string.
-   *
-   * @param value The value.
-   * @return String representation of property value.
+   * Gets the property type.
    */
   @Override
-  protected String toString(Object value) {
-    return EwsUtilities.getTimeSpanToXSDuration((TimeSpan) value);
+  public Class<FolderPermissionCollection> getType() {
+    return FolderPermissionCollection.class;
   }
 }
+

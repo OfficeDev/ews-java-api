@@ -21,8 +21,11 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.definition;
 
+import microsoft.exchange.webservices.data.AttachmentCollection;
+import microsoft.exchange.webservices.data.ICreateComplexPropertyDelegate;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 

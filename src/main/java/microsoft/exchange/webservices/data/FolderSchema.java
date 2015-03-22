@@ -26,6 +26,12 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.Schema;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.EffectiveRightsPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.IntPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PermissionSetPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.StringPropertyDefinition;
 
 import java.util.EnumSet;
 

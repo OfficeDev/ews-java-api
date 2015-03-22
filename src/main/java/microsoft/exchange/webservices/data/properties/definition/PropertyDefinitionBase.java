@@ -21,8 +21,14 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.definition;
 
+import microsoft.exchange.webservices.data.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.OutParam;
+import microsoft.exchange.webservices.data.ServiceObjectSchema;
+import microsoft.exchange.webservices.data.XmlAttributeNames;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
@@ -55,8 +61,7 @@ public abstract class PropertyDefinitionBase {
     String strLocalName = reader.getLocalName();
     if (strLocalName.equals(XmlElementNames.FieldURI)) {
       PropertyDefinitionBase p = ServiceObjectSchema
-          .findPropertyDefinition(reader
-              .readAttributeValue(XmlAttributeNames.FieldURI));
+          .findPropertyDefinition(reader.readAttributeValue(XmlAttributeNames.FieldURI));
       propertyDefinition.setParam(p);
       return true;
     } else if (strLocalName.equals(XmlElementNames.IndexedFieldURI)) {

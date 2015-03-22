@@ -27,6 +27,7 @@ import microsoft.exchange.webservices.data.enumerations.BodyType;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
 
 import java.util.Date;
 

@@ -28,6 +28,17 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.Importance;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.Sensitivity;
+import microsoft.exchange.webservices.data.properties.definition.AttachmentsPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.ByteArrayPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.DateTimePropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.EffectiveRightsPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.GenericPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.IntPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.ResponseObjectsPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.StringPropertyDefinition;
 
 import java.util.EnumSet;
 
@@ -236,8 +247,7 @@ public class ItemSchema extends ServiceObjectSchema {
   /**
    * Defines the Id property.
    */
-  public static final PropertyDefinition Id = new
-      ComplexPropertyDefinition<ItemId>(
+  public static final PropertyDefinition Id = new ComplexPropertyDefinition<ItemId>(
       ItemId.class,
       XmlElementNames.ItemId, FieldUris.ItemId, EnumSet
       .of(PropertyDefinitionFlags.CanFind),
@@ -268,8 +278,7 @@ public class ItemSchema extends ServiceObjectSchema {
   /**
    * Defines the ItemClass property.
    */
-  public static final PropertyDefinition ItemClass = new
-      StringPropertyDefinition(
+  public static final PropertyDefinition ItemClass = new StringPropertyDefinition(
       XmlElementNames.ItemClass, FieldUris.ItemClass, EnumSet.of(
       PropertyDefinitionFlags.CanSet,
       PropertyDefinitionFlags.CanUpdate,

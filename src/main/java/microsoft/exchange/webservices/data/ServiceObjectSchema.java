@@ -27,6 +27,10 @@ import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.IndexedPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

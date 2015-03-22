@@ -30,6 +30,8 @@ import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinitionBase;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -291,8 +293,7 @@ class PropertyBag implements IComplexPropertyChanged,
           .hasFlag(PropertyDefinitionFlags.AutoInstantiateOnRead)) {
         EwsUtilities
             .EwsAssert(
-                propertyDefinition instanceof
-                    ComplexPropertyDefinitionBase,
+                propertyDefinition instanceof ComplexPropertyDefinitionBase,
                 "PropertyBag.get_this[]",
                 "propertyDefinition is " +
                     "marked with AutoInstantiateOnRead " +

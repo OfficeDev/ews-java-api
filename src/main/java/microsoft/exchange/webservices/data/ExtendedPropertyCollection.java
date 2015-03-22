@@ -28,6 +28,8 @@ import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;

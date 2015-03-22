@@ -28,6 +28,13 @@ import microsoft.exchange.webservices.data.enumerations.ConversationFlagStatus;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.Importance;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.DateTimePropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.GenericPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.IntPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.StringPropertyDefinition;
 
 import java.util.EnumSet;
 
@@ -204,8 +211,7 @@ public class ConversationSchema extends ServiceObjectSchema {
   /**
    * Defines the Id property.
    */
-  public static final PropertyDefinition Id = new
-      ComplexPropertyDefinition<ConversationId>(
+  public static final PropertyDefinition Id = new ComplexPropertyDefinition<ConversationId>(
       ConversationId.class,
       XmlElementNames.ConversationId, FieldUris.ConversationId, EnumSet
       .of(PropertyDefinitionFlags.CanFind),

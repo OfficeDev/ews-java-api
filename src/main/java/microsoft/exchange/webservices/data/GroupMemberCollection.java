@@ -29,6 +29,8 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.properties.definition.GroupMemberPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.Iterator;

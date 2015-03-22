@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.definition;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
@@ -29,50 +29,50 @@ import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import java.util.EnumSet;
 
 /**
- * Represents String property definition.
+ * Represents Integer property defintion.
  */
-class StringPropertyDefinition extends TypedPropertyDefinition {
+class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
 
   /**
-   * Initializes a new instance of the "StringPropertyDefinition" class.
+   * Initializes a new instance of the "IntPropertyDefinition" class.
+   *
+   * @param xmlElementName Name of the XML element.
+   * @param uri            The URI.
+   * @param version        The version.
+   */
+  protected IntPropertyDefinition(String xmlElementName, String uri,
+      ExchangeVersion version) {
+    super(Integer.class, xmlElementName, uri, version);
+  }
+
+  /**
+   * Initializes a new instance of the "IntPropertyDefinition" class.
    *
    * @param xmlElementName Name of the XML element.
    * @param uri            The URI.
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected StringPropertyDefinition(String xmlElementName, String uri,
+  protected IntPropertyDefinition(String xmlElementName, String uri,
       EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
-    super(xmlElementName, uri, flags, version);
+    super(Integer.class, xmlElementName, uri, flags, version);
   }
 
   /**
-   * Parses the specified value.
+   * Initializes a new instance of the "IntPropertyDefinition" class.
    *
-   * @param value The value.
-   * @return Typed value.
+   * @param xmlElementName Name of the XML element.
+   * @param uri            The URI.
+   * @param flags          The flags.
+   * @param version        The version.
+   * @param isNullable     Indicates that this property definition is for a nullable
+   *                       property.
    */
-  @Override
-  protected Object parse(String value) {
-    return value;
+  protected IntPropertyDefinition(String xmlElementName, String uri,
+      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
+      boolean isNullable) {
+    super(Integer.class, xmlElementName, uri, flags, version, isNullable);
   }
 
-  /**
-   * Gets a value indicating whether this property definition is for a
-   * nullable type (ref, int?, bool?...).
-   *
-   * @return True
-   */
-  @Override
-  protected boolean isNullable() {
-    return true;
-  }
 
-  /**
-   * Gets the property type.
-   */
-  @Override
-  public Class<String> getType() {
-    return String.class;
-  }
 }

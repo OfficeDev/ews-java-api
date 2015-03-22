@@ -28,6 +28,8 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumerations.MeetingRequestType;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.properties.definition.GenericPropertyDefinition;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
 
 import java.util.EnumSet;
 

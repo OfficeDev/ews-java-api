@@ -33,6 +33,7 @@ import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
 
 import java.util.ArrayList;
 import java.util.Date;
