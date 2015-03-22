@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core.serviceObjects.items;
 
 import microsoft.exchange.webservices.data.attributes.Attachable;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;

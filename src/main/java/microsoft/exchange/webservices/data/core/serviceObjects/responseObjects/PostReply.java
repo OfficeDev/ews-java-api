@@ -23,8 +23,8 @@
 
 package microsoft.exchange.webservices.data.core.serviceObjects.responseObjects;
 
-import microsoft.exchange.webservices.data.Item;
-import microsoft.exchange.webservices.data.PostItem;
+import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
+import microsoft.exchange.webservices.data.core.serviceObjects.items.PostItem;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.PropertySet;

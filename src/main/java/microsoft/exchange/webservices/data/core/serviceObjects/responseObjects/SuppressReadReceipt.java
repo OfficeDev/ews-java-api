@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.serviceObjects.responseObjects;
 
-import microsoft.exchange.webservices.data.Item;
+import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;

@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.Item;
+import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
 
 /**
  * Represents the abstraction of an item Id.

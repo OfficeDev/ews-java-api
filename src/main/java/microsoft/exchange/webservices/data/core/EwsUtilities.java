@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.Item;
+import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
 import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
 import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObjectInfo;
 import microsoft.exchange.webservices.data.TimeSpan;

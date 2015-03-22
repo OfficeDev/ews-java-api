@@ -21,14 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.requests;
+package microsoft.exchange.webservices.data.core.serviceObjects.items;
 
 import microsoft.exchange.webservices.data.core.serviceObjects.responseObjects.AcceptMeetingInvitationMessage;
-import microsoft.exchange.webservices.data.Appointment;
 import microsoft.exchange.webservices.data.core.serviceObjects.schemas.AppointmentSchema;
 import microsoft.exchange.webservices.data.core.serviceObjects.responseObjects.DeclineMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.MeetingMessage;
 import microsoft.exchange.webservices.data.core.serviceObjects.schemas.MeetingRequestSchema;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.serviceObjects.schemas.ServiceObjectSchema;

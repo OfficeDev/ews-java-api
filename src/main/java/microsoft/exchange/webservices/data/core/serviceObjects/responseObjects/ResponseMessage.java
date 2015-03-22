@@ -23,8 +23,8 @@
 
 package microsoft.exchange.webservices.data.core.serviceObjects.responseObjects;
 
-import microsoft.exchange.webservices.data.EmailMessage;
-import microsoft.exchange.webservices.data.Item;
+import microsoft.exchange.webservices.data.core.serviceObjects.items.EmailMessage;
+import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.serviceObjects.schemas.EmailMessageSchema;

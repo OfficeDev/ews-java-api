@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.core.serviceObjects.responseObjects;
 
-import microsoft.exchange.webservices.data.Item;
+import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.core.responses.MeetingResponse;
+import microsoft.exchange.webservices.data.core.serviceObjects.items.MeetingResponse;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 
 /**

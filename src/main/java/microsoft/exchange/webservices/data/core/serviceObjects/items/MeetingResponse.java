@@ -21,10 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.responses;
+package microsoft.exchange.webservices.data.core.serviceObjects.items;
 
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.MeetingMessage;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;

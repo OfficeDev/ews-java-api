@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.search;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.Item;
+import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
 
 import java.util.ArrayList;
 import java.util.Collection;
