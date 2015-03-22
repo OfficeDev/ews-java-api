@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.ExchangeServiceBase;
 import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;

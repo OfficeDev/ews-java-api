@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.responses;
 
-import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.Item;
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 

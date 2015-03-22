@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.AsyncCallback;
 import microsoft.exchange.webservices.data.AsyncExecutor;
 import microsoft.exchange.webservices.data.AsyncRequestResult;
 import microsoft.exchange.webservices.data.CallableMethod;
-import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.WebAsyncCallStateAnchor;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;

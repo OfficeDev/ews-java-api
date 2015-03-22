@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.properties.complex.recurrence.ranges;
 
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
 
 import java.util.Date;

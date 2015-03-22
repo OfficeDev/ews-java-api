@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 import microsoft.exchange.webservices.data.core.requests.ServiceRequestBase;
 import microsoft.exchange.webservices.data.core.requests.SimpleServiceRequestBase;

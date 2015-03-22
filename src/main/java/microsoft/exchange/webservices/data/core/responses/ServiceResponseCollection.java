@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.responses;
 
-import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 
 import java.util.Enumeration;

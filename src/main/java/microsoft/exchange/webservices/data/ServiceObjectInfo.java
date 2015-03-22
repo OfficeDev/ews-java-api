@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.requests.MeetingRequest;
 import microsoft.exchange.webservices.data.core.responses.MeetingResponse;
 import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithAttachmentParam;

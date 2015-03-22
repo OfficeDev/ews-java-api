@@ -24,9 +24,9 @@
 package microsoft.exchange.webservices.data.properties.complex;
 
 import microsoft.exchange.webservices.data.util.Base64EncoderStream;
-import microsoft.exchange.webservices.data.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.XmlAttributeNames;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 

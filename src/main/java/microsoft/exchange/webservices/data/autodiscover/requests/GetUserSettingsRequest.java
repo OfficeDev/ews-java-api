@@ -24,15 +24,15 @@
 package microsoft.exchange.webservices.data.autodiscover.requests;
 
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
-import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.EwsXmlReader;
-import microsoft.exchange.webservices.data.ExchangeServiceBase;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.EwsXmlReader;
+import microsoft.exchange.webservices.data.core.ExchangeServiceBase;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.responses.AutodiscoverResponse;

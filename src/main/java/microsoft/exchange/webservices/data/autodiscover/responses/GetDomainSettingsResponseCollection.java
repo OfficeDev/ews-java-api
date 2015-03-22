@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover.responses;
 
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverResponseCollection;
 
 /**

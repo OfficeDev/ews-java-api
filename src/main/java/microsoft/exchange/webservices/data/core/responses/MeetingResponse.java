@@ -23,10 +23,10 @@
 
 package microsoft.exchange.webservices.data.core.responses;
 
-import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.MeetingMessage;
-import microsoft.exchange.webservices.data.PropertySet;
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.PropertySet;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;

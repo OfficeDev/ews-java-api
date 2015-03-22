@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.enumerations;
 
-import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
 
 /**
  * Defines the namespaces as used by the EwsXmlReader, EwsServiceXmlReader, and

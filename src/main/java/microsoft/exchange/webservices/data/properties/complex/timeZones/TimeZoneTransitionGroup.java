@@ -24,12 +24,12 @@
 package microsoft.exchange.webservices.data.properties.complex.timeZones;
 
 import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
-import microsoft.exchange.webservices.data.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.TimeSpan;
-import microsoft.exchange.webservices.data.XmlAttributeNames;
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.XmlAttributeNames;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.exceptions.InvalidOrUnsupportedTimeZoneDefinitionException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;

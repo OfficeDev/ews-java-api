@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.SimplePropertyBag;
+import microsoft.exchange.webservices.data.core.SimplePropertyBag;
 
 /**
  * The Interface PropertyBagChangedDelegateInterface.

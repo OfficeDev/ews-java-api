@@ -23,14 +23,13 @@
 
 package microsoft.exchange.webservices.data.properties.complex;
 
-import microsoft.exchange.webservices.data.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.DelegateFolderPermissionLevel;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.HashMap;

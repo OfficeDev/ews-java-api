@@ -21,8 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core;
 
+import microsoft.exchange.webservices.data.Item;
+import microsoft.exchange.webservices.data.ServiceObject;
+import microsoft.exchange.webservices.data.ServiceObjectInfo;
+import microsoft.exchange.webservices.data.TimeSpan;
 import microsoft.exchange.webservices.data.attributes.EwsEnum;
 import microsoft.exchange.webservices.data.attributes.RequiredServerVersion;
 import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;

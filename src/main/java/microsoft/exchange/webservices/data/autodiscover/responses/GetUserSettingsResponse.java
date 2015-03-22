@@ -23,12 +23,12 @@
 
 package microsoft.exchange.webservices.data.autodiscover.responses;
 
-import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.EwsXmlReader;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.OutParam;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
-import microsoft.exchange.webservices.data.XmlAttributeNames;
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.XmlAttributeNames;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.XmlNodeType;
 import microsoft.exchange.webservices.data.autodiscover.AlternateMailboxCollection;

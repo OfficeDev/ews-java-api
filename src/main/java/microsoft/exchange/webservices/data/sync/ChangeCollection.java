@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.sync;
 
-import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
 
 import java.util.ArrayList;
 import java.util.Iterator;

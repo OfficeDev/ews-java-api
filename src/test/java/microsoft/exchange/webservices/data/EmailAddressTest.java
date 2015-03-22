@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
 import org.junit.Assert;
 import org.junit.Test;

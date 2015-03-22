@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.properties.complex;
 
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 
 /**
  * Represents a collection of rule operation errors.

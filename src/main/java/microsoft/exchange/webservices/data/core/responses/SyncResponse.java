@@ -23,11 +23,11 @@
 
 package microsoft.exchange.webservices.data.core.responses;
 
-import microsoft.exchange.webservices.data.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.PropertySet;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.ServiceObject;
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.ChangeType;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;

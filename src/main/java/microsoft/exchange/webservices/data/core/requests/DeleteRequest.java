@@ -23,10 +23,10 @@
 
 package microsoft.exchange.webservices.data.core.requests;
 
-import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
-import microsoft.exchange.webservices.data.XmlAttributeNames;
+import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.enumerations.DeleteMode;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;

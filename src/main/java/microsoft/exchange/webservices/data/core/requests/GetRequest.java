@@ -23,10 +23,10 @@
 
 package microsoft.exchange.webservices.data.core.requests;
 
-import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.PropertySet;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.ServiceObject;
 import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;

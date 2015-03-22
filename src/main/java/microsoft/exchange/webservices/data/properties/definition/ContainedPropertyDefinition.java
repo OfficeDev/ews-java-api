@@ -24,10 +24,10 @@
 package microsoft.exchange.webservices.data.properties.definition;
 
 import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
-import microsoft.exchange.webservices.data.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.PropertyBag;
+import microsoft.exchange.webservices.data.core.PropertyBag;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;

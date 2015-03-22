@@ -24,13 +24,13 @@
 package microsoft.exchange.webservices.data.properties.complex.availability;
 
 import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
-import microsoft.exchange.webservices.data.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 import microsoft.exchange.webservices.data.misc.availability.OofReply;
 import microsoft.exchange.webservices.data.misc.availability.TimeWindow;
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.OofExternalAudience;
 import microsoft.exchange.webservices.data.enumerations.OofState;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;

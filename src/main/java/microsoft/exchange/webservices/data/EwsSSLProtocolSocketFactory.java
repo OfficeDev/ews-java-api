@@ -78,7 +78,7 @@ import java.security.NoSuchAlgorithmException;
  * </p>
  */
 
-class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
+public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
 
   /**
    * The SSL Context.

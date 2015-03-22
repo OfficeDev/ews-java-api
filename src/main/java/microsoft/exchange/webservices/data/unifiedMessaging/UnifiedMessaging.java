@@ -24,8 +24,8 @@
 package microsoft.exchange.webservices.data.unifiedMessaging;
 
 import microsoft.exchange.webservices.data.core.requests.DisconnectPhoneCallRequest;
-import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.requests.GetPhoneCallRequest;
 import microsoft.exchange.webservices.data.core.responses.GetPhoneCallResponse;
 import microsoft.exchange.webservices.data.core.requests.PlayOnPhoneRequest;

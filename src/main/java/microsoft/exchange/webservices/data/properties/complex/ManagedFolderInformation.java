@@ -23,10 +23,9 @@
 
 package microsoft.exchange.webservices.data.properties.complex;
 
-import microsoft.exchange.webservices.data.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.OutParam;
-import microsoft.exchange.webservices.data.XmlElementNames;
-import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 
 /**
  * Represents information for a managed folder.

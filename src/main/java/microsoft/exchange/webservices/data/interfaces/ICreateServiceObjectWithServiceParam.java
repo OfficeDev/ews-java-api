@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.core.ExchangeService;
 
 /**
  * The Interface ICreateServiceObjectWithServiceParam.

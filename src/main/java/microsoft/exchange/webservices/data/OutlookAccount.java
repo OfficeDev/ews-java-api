@@ -27,6 +27,8 @@ import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.autodiscover.AlternateMailbox;
 import microsoft.exchange.webservices.data.autodiscover.AlternateMailboxCollection;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
+import microsoft.exchange.webservices.data.core.EwsXmlReader;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverResponseType;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.OutlookProtocolType;

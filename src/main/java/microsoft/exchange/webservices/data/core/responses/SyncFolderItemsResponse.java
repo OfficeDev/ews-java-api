@@ -24,8 +24,8 @@
 package microsoft.exchange.webservices.data.core.responses;
 
 import microsoft.exchange.webservices.data.Item;
-import microsoft.exchange.webservices.data.PropertySet;
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.PropertySet;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.sync.ItemChange;
 
 /**

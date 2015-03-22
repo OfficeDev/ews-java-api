@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.notifications;
 
-import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.core.ExchangeService;
 
 /**
  * Represents a push subscriptions..

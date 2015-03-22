@@ -32,9 +32,9 @@ import microsoft.exchange.webservices.data.autodiscover.requests.AutodiscoverReq
 import microsoft.exchange.webservices.data.ConfigurationSettingsBase;
 import microsoft.exchange.webservices.data.enumerations.DomainSettingName;
 import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
-import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.EwsXmlReader;
-import microsoft.exchange.webservices.data.ExchangeServiceBase;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.EwsXmlReader;
+import microsoft.exchange.webservices.data.core.ExchangeServiceBase;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.exceptions.FormatException;
 import microsoft.exchange.webservices.data.autodiscover.requests.GetDomainSettingsRequest;

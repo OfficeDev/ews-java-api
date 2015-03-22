@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.core.requests.ServiceRequestBase;
 import microsoft.exchange.webservices.data.enumerations.BasePropertySet;

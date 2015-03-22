@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.Appointment;
-import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.Item;
 import microsoft.exchange.webservices.data.MeetingCancellation;
 import microsoft.exchange.webservices.data.core.requests.MeetingRequest;

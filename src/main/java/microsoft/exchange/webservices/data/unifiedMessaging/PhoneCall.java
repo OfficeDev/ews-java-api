@@ -23,10 +23,10 @@
 
 package microsoft.exchange.webservices.data.unifiedMessaging;
 
-import microsoft.exchange.webservices.data.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ConnectionFailureCause;
 import microsoft.exchange.webservices.data.enumerations.PhoneCallState;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;

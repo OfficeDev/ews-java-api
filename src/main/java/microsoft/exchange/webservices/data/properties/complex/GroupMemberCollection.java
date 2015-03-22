@@ -25,11 +25,11 @@ package microsoft.exchange.webservices.data.properties.complex;
 
 import microsoft.exchange.webservices.data.Contact;
 import microsoft.exchange.webservices.data.ContactGroupSchema;
-import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.interfaces.ICustomXmlUpdateSerializer;
 import microsoft.exchange.webservices.data.ServiceObject;
-import microsoft.exchange.webservices.data.XmlElementNames;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.EmailAddressKey;
 import microsoft.exchange.webservices.data.enumerations.MailboxType;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
