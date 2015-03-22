@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.properties.complex.availability;
 
 import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.LegacyAvailabilityTimeZone;
+import microsoft.exchange.webservices.data.misc.availability.LegacyAvailabilityTimeZone;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;

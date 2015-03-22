@@ -21,8 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc.availability;
 
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.GetUserAvailabilityRequest;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.FreeBusyViewType;
 import microsoft.exchange.webservices.data.enumerations.SuggestionQuality;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;

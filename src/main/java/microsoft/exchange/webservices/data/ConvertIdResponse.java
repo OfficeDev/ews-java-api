@@ -25,6 +25,10 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.misc.idConversion.AlternateId;
+import microsoft.exchange.webservices.data.misc.idConversion.AlternateIdBase;
+import microsoft.exchange.webservices.data.misc.idConversion.AlternatePublicFolderId;
+import microsoft.exchange.webservices.data.misc.idConversion.AlternatePublicFolderItemId;
 
 /**
  * Represents the response to an individual Id conversion operation.

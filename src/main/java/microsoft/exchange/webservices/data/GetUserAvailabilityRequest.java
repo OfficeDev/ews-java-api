@@ -27,6 +27,11 @@ import microsoft.exchange.webservices.data.enumerations.AvailabilityData;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceError;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.misc.availability.AttendeeInfo;
+import microsoft.exchange.webservices.data.misc.availability.AvailabilityOptions;
+import microsoft.exchange.webservices.data.misc.availability.GetUserAvailabilityResults;
+import microsoft.exchange.webservices.data.misc.availability.LegacyAvailabilityTimeZone;
+import microsoft.exchange.webservices.data.misc.availability.TimeWindow;
 
 /**
  * Represents a GetUserAvailability request.
