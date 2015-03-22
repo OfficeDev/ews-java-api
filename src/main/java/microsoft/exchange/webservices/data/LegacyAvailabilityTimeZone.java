@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.properties.definition.TimeZoneDefinition;
+import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition;
 
 import java.util.UUID;
 

@@ -21,11 +21,16 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.complex.timeZones;
 
+import microsoft.exchange.webservices.data.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.properties.definition.TimeZoneDefinition;
+import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneTransition;
+import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneTransitionGroup;
+import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition;
 
 import javax.xml.stream.XMLStreamException;
 import java.text.ParseException;
