@@ -257,7 +257,7 @@ public class SoapFaultDetails {
    *
    * @return the fault string
    */
-  protected String getFaultString() {
+  public String getFaultString() {
     return faultString;
   }
 
@@ -293,7 +293,7 @@ public class SoapFaultDetails {
    *
    * @return the response code
    */
-  protected ServiceError getResponseCode() {
+  public ServiceError getResponseCode() {
     return responseCode;
   }
 
@@ -401,7 +401,7 @@ public class SoapFaultDetails {
    *
    * @return the error details
    */
-  protected Map<String, String> getErrorDetails() {
+  public Map<String, String> getErrorDetails() {
     return errorDetails;
   }
 

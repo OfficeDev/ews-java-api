@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 /**
  * Represents the abstraction of a folder Id.
  */
-abstract class AbstractFolderIdWrapper {
+public abstract class AbstractFolderIdWrapper {
 
   /**
    * Obtains the Folder object associated with the wrapper.

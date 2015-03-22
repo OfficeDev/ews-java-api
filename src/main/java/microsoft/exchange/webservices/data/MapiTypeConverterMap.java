@@ -31,7 +31,7 @@ import java.util.HashMap;
 /**
  * The Class MapiTypeConverterMap.
  */
-class MapiTypeConverterMap extends
+public class MapiTypeConverterMap extends
     HashMap<MapiPropertyType, MapiTypeConverterMapEntry> {
 
   /**

@@ -68,7 +68,7 @@ public final class ImpersonatedUserId {
    * @param writer The writer
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     if (this.id == null || this.id.isEmpty()) {
       throw new Exception("The Id property must be set.");
     }

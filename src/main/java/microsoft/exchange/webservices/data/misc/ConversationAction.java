@@ -25,7 +25,6 @@ package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.FolderIdWrapper;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ConversationActionType;
 import microsoft.exchange.webservices.data.enumerations.DeleteMode;
@@ -69,7 +68,7 @@ public class ConversationAction {
   /**
    * Sets conversation action
    */
-  protected void setAction(ConversationActionType value) {
+  public void setAction(ConversationActionType value) {
     this.action = value;
   }
 
@@ -85,7 +84,7 @@ public class ConversationAction {
   /**
    * Sets conversation id
    */
-  protected void setConversationId(ConversationId value) {
+  public void setConversationId(ConversationId value) {
     this.conversationId = value;
   }
 
@@ -101,7 +100,7 @@ public class ConversationAction {
   /**
    * Sets ProcessRightAway
    */
-  protected void setProcessRightAway(boolean value) {
+  public void setProcessRightAway(boolean value) {
     this.processRightAway = value;
   }
 
@@ -118,7 +117,7 @@ public class ConversationAction {
   /**
    * Sets conversation categories for Always Categorize actions
    */
-  protected void setCategories(StringList value) {
+  public void setCategories(StringList value) {
     this.categories = value;
   }
 
@@ -134,7 +133,7 @@ public class ConversationAction {
   /**
    * Sets Enable Always Delete value for Always Delete action
    */
-  protected void setEnableAlwaysDelete(boolean value) {
+  public void setEnableAlwaysDelete(boolean value) {
     this.enableAlwaysDelete = value;
   }
 
@@ -150,7 +149,7 @@ public class ConversationAction {
   /**
    * IsRead
    */
-  protected void setIsRead(Boolean value) {
+  public void setIsRead(Boolean value) {
     this.isRead = value;
   }
 
@@ -166,7 +165,7 @@ public class ConversationAction {
   /**
    * DeleteType
    */
-  protected void setDeleteType(DeleteMode value) {
+  public void setDeleteType(DeleteMode value) {
     this.deleteType = value;
   }
 
@@ -186,7 +185,7 @@ public class ConversationAction {
    * one time action to determine the items
    * on which to take the action.
    */
-  protected void setConversationLastSyncTime(Date value) {
+  public void setConversationLastSyncTime(Date value) {
     this.conversationLastSyncTime = value;
   }
 
@@ -202,7 +201,7 @@ public class ConversationAction {
   /**
    * Sets folder id ContextFolder
    */
-  protected void setContextFolderId(FolderIdWrapper value) {
+  public void setContextFolderId(FolderIdWrapper value) {
     this.contextFolderId = value;
   }
 
@@ -218,7 +217,7 @@ public class ConversationAction {
   /**
    * Sets folder id for Move action
    */
-  protected void setDestinationFolderId(FolderIdWrapper value) {
+  public void setDestinationFolderId(FolderIdWrapper value) {
     this.moveFolderId = value;
   }
 

@@ -96,7 +96,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
    * Test switch to log all bytes that come across the wire.
    * Helpful when parsing fails before certain bytes hit the trace logs.
    */
-  protected static boolean LogAllWireBytes = false;
+  public static boolean LogAllWireBytes = false;
 
   /**
    * Callback delegate to handle response objects

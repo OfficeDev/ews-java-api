@@ -52,7 +52,7 @@ public final class ExpandGroupResults implements Iterable<EmailAddress> {
   /**
    * Initializes a new instance of the class.
    */
-  protected ExpandGroupResults() {
+  public ExpandGroupResults() {
   }
 
   /**
@@ -91,7 +91,7 @@ public final class ExpandGroupResults implements Iterable<EmailAddress> {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
         XmlElementNames.DLExpansion);
     if (!reader.isEmptyElement()) {

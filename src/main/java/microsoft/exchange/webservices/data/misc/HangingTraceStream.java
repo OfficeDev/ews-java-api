@@ -36,7 +36,7 @@ import java.io.InputStream;
  * A stream that traces everything it returns from its Read() call.
  * That trace may be retrieved at the end of the stream.
  */
-class HangingTraceStream extends InputStream {
+public class HangingTraceStream extends InputStream {
 
   private InputStream underlyingStream;
   private ExchangeService service;
@@ -48,7 +48,7 @@ class HangingTraceStream extends InputStream {
    * @param stream  The stream.
    * @param service the service.
    */
-  protected HangingTraceStream(InputStream stream, ExchangeService service) {
+  public HangingTraceStream(InputStream stream, ExchangeService service) {
     this.underlyingStream = stream;
     this.service = service;
 
@@ -142,7 +142,7 @@ class HangingTraceStream extends InputStream {
    *
    * @param responsecopy a copy of response
    */
-  protected void setResponseCopy(ByteArrayOutputStream responseCopy) {
+  public void setResponseCopy(ByteArrayOutputStream responseCopy) {
     this.responseCopy = responseCopy;
   }
 

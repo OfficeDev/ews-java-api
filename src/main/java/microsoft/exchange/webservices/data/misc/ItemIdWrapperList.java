@@ -25,7 +25,6 @@ package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.Item;
-import microsoft.exchange.webservices.data.ItemWrapper;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.properties.complex.ItemId;
@@ -37,7 +36,7 @@ import java.util.List;
 /**
  * Represents a list a abstracted item Ids.
  */
-class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
+public class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
 
   /**
    * The item ids.
@@ -48,7 +47,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
   /**
    * Initializes a new instance of the class.
    */
-  protected ItemIdWrapperList() {
+  public ItemIdWrapperList() {
   }
 
   /**
@@ -68,7 +67,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
    * @param items the items
    * @throws ServiceLocalException the service local exception
    */
-  protected void addRangeItem(Iterable<Item> items)
+  public void addRangeItem(Iterable<Item> items)
       throws ServiceLocalException {
     for (Item item : items) {
       this.add(item);
@@ -80,7 +79,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
    *
    * @param itemIds the item ids
    */
-  protected void addRange(Iterable<ItemId> itemIds) {
+  public void addRange(Iterable<ItemId> itemIds) {
     for (ItemId itemId : itemIds) {
       this.add(itemId);
     }
@@ -104,8 +103,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
    * @param xmlElementName the xml element name
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer,
-      XmlNamespace ewsNamesapce, String xmlElementName) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer, XmlNamespace ewsNamesapce, String xmlElementName) throws Exception {
     if (this.getCount() > 0) {
       writer.writeStartElement(ewsNamesapce, xmlElementName);
 
@@ -122,7 +120,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
    *
    * @return the count
    */
-  protected int getCount() {
+  public int getCount() {
     return this.itemIds.size();
   }
 
@@ -132,7 +130,7 @@ class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
    * @param i the i
    * @return the item id wrapper list
    */
-  protected Item getItemIdWrapperList(int i) {
+  public Item getItemIdWrapperList(int i) {
     return this.itemIds.get(i).getItem();
   }
 

@@ -285,9 +285,8 @@ public abstract class ServiceObject {
    * @param summaryPropertiesOnly the summary properties only
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      boolean clearPropertyBag, PropertySet requestedPropertySet,
-      boolean summaryPropertiesOnly) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader, boolean clearPropertyBag,
+      PropertySet requestedPropertySet, boolean summaryPropertiesOnly) throws Exception {
 
     this.getPropertyBag().loadFromXml(reader, clearPropertyBag,
         requestedPropertySet, summaryPropertiesOnly);

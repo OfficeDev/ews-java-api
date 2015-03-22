@@ -51,8 +51,7 @@ public final class DelegateInformation {
    * @param delegateUserResponses       the delegate user responses
    * @param meetingReqestsDeliveryScope the meeting reqests delivery scope
    */
-  protected DelegateInformation(
-      List<DelegateUserResponse> delegateUserResponses,
+  public DelegateInformation(List<DelegateUserResponse> delegateUserResponses,
       MeetingRequestsDeliveryScope meetingReqestsDeliveryScope) {
     this.delegateUserResponses = new ArrayList<DelegateUserResponse>(
         delegateUserResponses);

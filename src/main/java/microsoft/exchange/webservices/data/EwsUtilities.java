@@ -540,8 +540,7 @@ public class EwsUtilities {
    * @param items   the items
    * @return A TItem instance or null if no instance of TItem could be found.
    */
-  static <TItem extends Item> TItem findFirstItemOfType(Class<TItem> cls,
-      Iterable<Item> items) {
+  public static <TItem extends Item> TItem findFirstItemOfType(Class<TItem> cls, Iterable<Item> items) {
     for (Item item : items) {
       // We're looking for an exact class match here.
       if (item.getClass().equals(cls)) {

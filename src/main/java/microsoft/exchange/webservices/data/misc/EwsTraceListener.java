@@ -30,12 +30,12 @@ import org.apache.commons.logging.LogFactory;
 /**
  * EwsTraceListener logs request/responses.
  */
-class EwsTraceListener implements ITraceListener {
+public class EwsTraceListener implements ITraceListener {
 
   private final Log log = LogFactory.getLog(EwsTraceListener.class);
 
 
-  protected EwsTraceListener() {
+  public EwsTraceListener() {
   }
 
   /**

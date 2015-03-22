@@ -33,7 +33,7 @@ import microsoft.exchange.webservices.data.properties.complex.FolderId;
 /**
  * Represents a folder Id provided by a FolderId object.
  */
-class FolderIdWrapper extends AbstractFolderIdWrapper {
+public class FolderIdWrapper extends AbstractFolderIdWrapper {
 
   /**
    * The FolderId object providing the Id.
@@ -45,7 +45,7 @@ class FolderIdWrapper extends AbstractFolderIdWrapper {
    *
    * @param folderId the folder id
    */
-  protected FolderIdWrapper(FolderId folderId) {
+  public FolderIdWrapper(FolderId folderId) {
     EwsUtilities.EwsAssert(folderId != null, "FolderIdWrapper.ctor", "folderId is null");
     this.folderId = folderId;
   }
@@ -56,7 +56,7 @@ class FolderIdWrapper extends AbstractFolderIdWrapper {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer)
+  public void writeToXml(EwsServiceXmlWriter writer)
       throws Exception {
     this.folderId.writeToXml(writer);
   }

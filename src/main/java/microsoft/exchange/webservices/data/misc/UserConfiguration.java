@@ -172,9 +172,8 @@ public class UserConfiguration {
    * @param parentFolderId The Id of the folder containing the user configuration.
    * @throws Exception the exception
    */
-  protected static void writeUserConfigurationNameToXml(
-      EwsServiceXmlWriter writer, XmlNamespace xmlNamespace, String name,
-      FolderId parentFolderId) throws Exception {
+  public static void writeUserConfigurationNameToXml(EwsServiceXmlWriter writer, XmlNamespace xmlNamespace,
+      String name, FolderId parentFolderId) throws Exception {
     EwsUtilities.EwsAssert(writer != null,
         "UserConfiguration.WriteUserConfigurationNameToXml",
         "writer is null");
@@ -202,8 +201,7 @@ public class UserConfiguration {
    * @param requestedProperties The properties requested for this user configuration.
    * @throws Exception the exception
    */
-  protected UserConfiguration(ExchangeService service,
-      EnumSet<UserConfigurationProperties> requestedProperties)
+  public UserConfiguration(ExchangeService service, EnumSet<UserConfigurationProperties> requestedProperties)
       throws Exception {
     EwsUtilities.validateParam(service, "service");
 
@@ -233,7 +231,7 @@ public class UserConfiguration {
    *
    * @param value the new name
    */
-  protected void setName(String value) {
+  public void setName(String value) {
     this.name = value;
   }
 
@@ -251,7 +249,7 @@ public class UserConfiguration {
    *
    * @param value the new parent folder id
    */
-  protected void setParentFolderId(FolderId value) {
+  public void setParentFolderId(FolderId value) {
     this.parentFolderId = value;
   }
 
@@ -478,8 +476,7 @@ public class UserConfiguration {
    * @param xmlElementName Name of the XML element.
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer,
-      XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer, XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
     EwsUtilities.EwsAssert(writer != null, "UserConfiguration.WriteToXml",
         "writer is null");
     EwsUtilities.EwsAssert(xmlElementName != null,
@@ -586,7 +583,7 @@ public class UserConfiguration {
    * @param reader The reader.
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     EwsUtilities.EwsAssert(reader != null, "UserConfiguration.LoadFromXml",
         "reader is null");
 

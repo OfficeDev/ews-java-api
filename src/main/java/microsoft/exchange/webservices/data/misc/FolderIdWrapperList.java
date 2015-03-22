@@ -25,7 +25,6 @@ package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.Folder;
-import microsoft.exchange.webservices.data.FolderWrapper;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
@@ -39,7 +38,7 @@ import java.util.List;
 /**
  * Represents a list a abstracted folder Ids.
  */
-class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
+public class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
 
   /**
    * The ids.
@@ -53,7 +52,7 @@ class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
    * @param folder the folder
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
-  protected void add(Folder folder) throws ServiceLocalException {
+  public void add(Folder folder) throws ServiceLocalException {
     this.ids.add(new FolderWrapper(folder));
   }
 
@@ -77,7 +76,7 @@ class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
    *
    * @param folderId the folder id
    */
-  protected void add(FolderId folderId) {
+  public void add(FolderId folderId) {
     this.ids.add(new FolderIdWrapper(folderId));
   }
 
@@ -86,7 +85,7 @@ class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
    *
    * @param folderIds the folder ids
    */
-  protected void addRangeFolderId(Iterable<FolderId> folderIds) {
+  public void addRangeFolderId(Iterable<FolderId> folderIds) {
     if (folderIds != null) {
       for (FolderId folderId : folderIds) {
         this.add(folderId);
@@ -102,8 +101,7 @@ class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
    * @param xmlElementName the xml element name
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer,
-      XmlNamespace ewsNamesapce, String xmlElementName) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer, XmlNamespace ewsNamesapce, String xmlElementName) throws Exception {
     if (this.getCount() > 0) {
       writer.writeStartElement(ewsNamesapce, xmlElementName);
 
@@ -120,7 +118,7 @@ class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
    *
    * @return the count
    */
-  protected int getCount() {
+  public int getCount() {
     return this.ids.size();
   }
 
@@ -132,7 +130,7 @@ class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
    * @param i the i
    * @return the index
    */
-  protected AbstractFolderIdWrapper getFolderIdWrapperList(int i) {
+  public AbstractFolderIdWrapper getFolderIdWrapperList(int i) {
     return this.ids.get(i);
   }
 
@@ -142,7 +140,7 @@ class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
    * @param version the version
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException the service version exception
    */
-  protected void validate(ExchangeVersion version)
+  public void validate(ExchangeVersion version)
       throws ServiceVersionException {
     for (AbstractFolderIdWrapper folderIdWrapper : this.ids) {
       folderIdWrapper.validate(version);

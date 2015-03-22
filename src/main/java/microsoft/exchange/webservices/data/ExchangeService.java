@@ -3342,7 +3342,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param userConfiguration the user configuration
    * @throws Exception the exception
    */
-  protected void createUserConfiguration(UserConfiguration userConfiguration)
+  public void createUserConfiguration(UserConfiguration userConfiguration)
       throws Exception {
     EwsUtilities.validateParam(userConfiguration, "userConfiguration");
 
@@ -3361,7 +3361,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param parentFolderId the parent folder id
    * @throws Exception the exception
    */
-  protected void deleteUserConfiguration(String name, FolderId parentFolderId)
+  public void deleteUserConfiguration(String name, FolderId parentFolderId)
       throws Exception {
     EwsUtilities.validateParam(name, "name");
     EwsUtilities.validateParam(parentFolderId, "parentFolderId");
@@ -3383,8 +3383,8 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @return the user configuration
    * @throws Exception the exception
    */
-  protected UserConfiguration getUserConfiguration(String name,
-      FolderId parentFolderId, UserConfigurationProperties properties)
+  public UserConfiguration getUserConfiguration(String name, FolderId parentFolderId,
+      UserConfigurationProperties properties)
       throws Exception {
     EwsUtilities.validateParam(name, "name");
     EwsUtilities.validateParam(parentFolderId, "parentFolderId");
@@ -3406,8 +3406,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param properties        the properties
    * @throws Exception the exception
    */
-  protected void loadPropertiesForUserConfiguration(
-      UserConfiguration userConfiguration,
+  public void loadPropertiesForUserConfiguration(UserConfiguration userConfiguration,
       UserConfigurationProperties properties) throws Exception {
     EwsUtilities.EwsAssert(userConfiguration != null,
         "ExchangeService.LoadPropertiesForUserConfiguration",
@@ -3428,7 +3427,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param userConfiguration the user configuration
    * @throws Exception the exception
    */
-  protected void updateUserConfiguration(UserConfiguration userConfiguration)
+  public void updateUserConfiguration(UserConfiguration userConfiguration)
       throws Exception {
     EwsUtilities.validateParam(userConfiguration, "userConfiguration");
     UpdateUserConfigurationRequest request = new UpdateUserConfigurationRequest(
