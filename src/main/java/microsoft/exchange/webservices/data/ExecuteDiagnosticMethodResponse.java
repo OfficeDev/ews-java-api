@@ -42,7 +42,7 @@ import java.util.Iterator;
 /**
  * Represents the response to a ExecuteDiagnosticMethod operation
  */
-final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
+public final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
 
 
   /**
@@ -50,7 +50,7 @@ final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
    *
    * @param service The service
    */
-  protected ExecuteDiagnosticMethodResponse(ExchangeService service) {
+  public ExecuteDiagnosticMethodResponse(ExchangeService service) {
     super();
     EwsUtilities.EwsAssert(service != null, "ExecuteDiagnosticMethodResponse.ctor", "service is null");
   }

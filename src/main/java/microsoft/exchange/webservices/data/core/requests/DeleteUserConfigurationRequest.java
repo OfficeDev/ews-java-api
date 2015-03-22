@@ -37,7 +37,7 @@ import microsoft.exchange.webservices.data.properties.complex.FolderId;
 /**
  * Represents a DeleteUserConfiguration request.
  */
-class DeleteUserConfigurationRequest extends
+public class DeleteUserConfigurationRequest extends
     MultiResponseServiceRequest<ServiceResponse> {
 
   /**
@@ -102,8 +102,7 @@ class DeleteUserConfigurationRequest extends
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.DeleteUserConfiguration;
   }
 
@@ -147,7 +146,7 @@ class DeleteUserConfigurationRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected DeleteUserConfigurationRequest(ExchangeService service)
+  public DeleteUserConfigurationRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }
@@ -166,7 +165,7 @@ class DeleteUserConfigurationRequest extends
    *
    * @param name the new name
    */
-  protected void setName(String name) {
+  public void setName(String name) {
     this.name = name;
   }
 
@@ -185,7 +184,7 @@ class DeleteUserConfigurationRequest extends
    *
    * @param parentFolderId the new parent folder id
    */
-  protected void setParentFolderId(FolderId parentFolderId) {
+  public void setParentFolderId(FolderId parentFolderId) {
     this.parentFolderId = parentFolderId;
   }
 }

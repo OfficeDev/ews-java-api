@@ -86,8 +86,7 @@ abstract class CreateItemRequestBase<TServiceObject extends ServiceObject,
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.CreateItem;
   }
 

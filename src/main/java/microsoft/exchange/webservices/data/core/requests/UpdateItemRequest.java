@@ -47,7 +47,7 @@ import java.util.List;
 /**
  * The Class UpdateItemRequest.
  */
-final class UpdateItemRequest extends
+public final class UpdateItemRequest extends
     MultiResponseServiceRequest<UpdateItemResponse> {
 
   /**
@@ -83,8 +83,7 @@ final class UpdateItemRequest extends
    * @param errorHandlingMode the error handling mode
    * @throws Exception
    */
-  protected UpdateItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public UpdateItemRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -135,8 +134,7 @@ final class UpdateItemRequest extends
    * @see
    * microsoft.exchange.webservices.ServiceRequestBase#getXmlElementName()
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.UpdateItem;
   }
 

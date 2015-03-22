@@ -44,8 +44,7 @@ public final class GetUserConfigurationResponse extends ServiceResponse {
    *
    * @param userConfiguration the user configuration
    */
-  protected GetUserConfigurationResponse(
-      UserConfiguration userConfiguration) {
+  public GetUserConfigurationResponse(UserConfiguration userConfiguration) {
     super();
     EwsUtilities.EwsAssert(userConfiguration != null, "GetUserConfigurationResponse.ctor",
                            "userConfiguration is null");

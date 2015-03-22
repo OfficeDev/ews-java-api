@@ -39,7 +39,7 @@ import microsoft.exchange.webservices.data.properties.complex.RuleOperation;
 /**
  * Represents a UpdateInboxRulesRequest request.
  */
-final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<UpdateInboxRulesResponse> {
+public final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<UpdateInboxRulesResponse> {
   /**
    * The smtp address of the mailbox from which to get the inbox rules.
    */
@@ -61,7 +61,7 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<UpdateInbox
    *
    * @param service The service.
    */
-  protected UpdateInboxRulesRequest(ExchangeService service)
+  public UpdateInboxRulesRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -71,8 +71,7 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<UpdateInbox
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.UpdateInboxRules;
   }
 
@@ -165,7 +164,7 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<UpdateInbox
    * @throws Exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
    */
-  protected UpdateInboxRulesResponse execute()
+  public UpdateInboxRulesResponse execute()
       throws ServiceLocalException, Exception {
     UpdateInboxRulesResponse serviceResponse =
         (UpdateInboxRulesResponse) this.internalExecute();
@@ -186,7 +185,7 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<UpdateInbox
   /**
    * Sets the address of the mailbox in which to update the inbox rules.
    */
-  protected void setMailboxSmtpAddress(String value) {
+  public void setMailboxSmtpAddress(String value) {
     this.mailboxSmtpAddress = value;
   }
 
@@ -202,7 +201,7 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<UpdateInbox
    * Sets a value indicating whether or not to
    * remove OutlookRuleBlob from the rule collection.
    */
-  protected void setRemoveOutlookRuleBlob(boolean value) {
+  public void setRemoveOutlookRuleBlob(boolean value) {
     this.removeOutlookRuleBlob = value;
   }
 
@@ -217,7 +216,7 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<UpdateInbox
   /**
    * Sets the RuleOperation collection.
    */
-  protected void setInboxRuleOperations(Iterable<RuleOperation> value) {
+  public void setInboxRuleOperations(Iterable<RuleOperation> value) {
     this.inboxRuleOperations = value;
   }
 

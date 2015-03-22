@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.misc.NameResolutionCollection;
 /**
  * Represents the response to a name resolution operation.
  */
-final class ResolveNamesResponse extends ServiceResponse {
+public final class ResolveNamesResponse extends ServiceResponse {
 
   /**
    * The resolutions.
@@ -42,7 +42,7 @@ final class ResolveNamesResponse extends ServiceResponse {
    *
    * @param service the service
    */
-  protected ResolveNamesResponse(ExchangeService service) {
+  public ResolveNamesResponse(ExchangeService service) {
     super();
     EwsUtilities.EwsAssert(service != null, "ResolveNamesResponse.ctor", "service is null");
 

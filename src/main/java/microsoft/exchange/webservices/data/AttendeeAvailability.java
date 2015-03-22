@@ -62,7 +62,7 @@ public final class AttendeeAvailability extends ServiceResponse {
   /**
    * Initializes a new instance of the AttendeeAvailability class.
    */
-  protected AttendeeAvailability() {
+  public AttendeeAvailability() {
     super();
   }
 
@@ -73,8 +73,7 @@ public final class AttendeeAvailability extends ServiceResponse {
    * @param viewType the view type
    * @throws Exception the exception
    */
-  protected void loadFreeBusyViewFromXml(EwsServiceXmlReader reader,
-      FreeBusyViewType viewType) throws Exception {
+  public void loadFreeBusyViewFromXml(EwsServiceXmlReader reader, FreeBusyViewType viewType) throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
         XmlElementNames.FreeBusyView);
 

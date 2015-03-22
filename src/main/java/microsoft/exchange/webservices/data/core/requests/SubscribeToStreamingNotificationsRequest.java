@@ -34,7 +34,7 @@ import microsoft.exchange.webservices.data.notifications.StreamingSubscription;
 /**
  * Defines the SubscribeToStreamingNotificationsRequest class.
  */
-class SubscribeToStreamingNotificationsRequest extends
+public class SubscribeToStreamingNotificationsRequest extends
     SubscribeRequest<StreamingSubscription> {
 
   /**
@@ -44,7 +44,7 @@ class SubscribeToStreamingNotificationsRequest extends
    * @param service The service
    * @throws Exception
    */
-  protected SubscribeToStreamingNotificationsRequest(ExchangeService service)
+  public SubscribeToStreamingNotificationsRequest(ExchangeService service)
       throws Exception {
     super(service);
   }

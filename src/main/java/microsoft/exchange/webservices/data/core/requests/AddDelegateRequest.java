@@ -39,7 +39,7 @@ import java.util.List;
 /**
  * Represents an AddDelegate request.
  */
-class AddDelegateRequest extends
+public class AddDelegateRequest extends
     DelegateManagementRequestBase<DelegateManagementResponse> {
 
   /**
@@ -58,7 +58,7 @@ class AddDelegateRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected AddDelegateRequest(ExchangeService service)
+  public AddDelegateRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -115,8 +115,7 @@ class AddDelegateRequest extends
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.AddDelegate;
   }
 

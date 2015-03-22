@@ -109,7 +109,7 @@ abstract class GetFolderRequestBase<TResponse extends ServiceResponse> extends G
    *
    * @return XML element name
    */
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     return XmlElementNames.GetFolder;
   }
 

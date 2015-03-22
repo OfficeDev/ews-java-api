@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 /**
  * Represents a CreateItem request for a response object.
  */
-final class CreateResponseObjectRequest extends
+public final class CreateResponseObjectRequest extends
     CreateItemRequestBase<ServiceObject, CreateResponseObjectResponse> {
 
   /**
@@ -42,8 +42,7 @@ final class CreateResponseObjectRequest extends
    * @param errorHandlingMode Indicates how errors should be handled.
    * @throws Exception
    */
-  CreateResponseObjectRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public CreateResponseObjectRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }

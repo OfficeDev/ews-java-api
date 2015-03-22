@@ -41,7 +41,7 @@ public final class CreateAttachmentResponse extends ServiceResponse {
    *
    * @param attachment the attachment
    */
-  protected CreateAttachmentResponse(Attachment attachment) {
+  public CreateAttachmentResponse(Attachment attachment) {
     super();
     EwsUtilities.EwsAssert(attachment != null, "CreateAttachmentResponse.ctor", "attachment is null");
 

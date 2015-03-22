@@ -154,7 +154,7 @@ public abstract class MultiResponseServiceRequest<TResponse extends ServiceRespo
    * @return Service response collection.
    * @throws Exception the exception
    */
-  protected ServiceResponseCollection<TResponse> execute() throws Exception {
+  public ServiceResponseCollection<TResponse> execute() throws Exception {
     ServiceResponseCollection<TResponse> serviceResponses =
         (ServiceResponseCollection<TResponse>) this
             .internalExecute();
@@ -176,7 +176,7 @@ public abstract class MultiResponseServiceRequest<TResponse extends ServiceRespo
    * @param asyncResult The async result
    * @return Service response collection.
    */
-  protected ServiceResponseCollection<TResponse> endExecute(IAsyncResult asyncResult) throws Exception {
+  public ServiceResponseCollection<TResponse> endExecute(IAsyncResult asyncResult) throws Exception {
     ServiceResponseCollection<TResponse> serviceResponses =
         (ServiceResponseCollection<TResponse>) this.endInternalExecute(asyncResult);
 

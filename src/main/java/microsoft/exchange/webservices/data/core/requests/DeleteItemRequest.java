@@ -40,7 +40,7 @@ import microsoft.exchange.webservices.data.misc.ItemIdWrapperList;
 /**
  * Represents a DeleteItem request.
  */
-final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
+public final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
 
   /**
    * The item ids.
@@ -64,8 +64,7 @@ final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
    * @param errorHandlingMode the error handling mode
    * @throws Exception
    */
-  DeleteItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public DeleteItemRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -109,8 +108,7 @@ final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.DeleteItem;
   }
 
@@ -186,7 +184,7 @@ final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
    *
    * @return the item ids
    */
-  ItemIdWrapperList getItemIds() {
+  public ItemIdWrapperList getItemIds() {
     return this.itemIds;
   }
 
@@ -204,8 +202,7 @@ final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
    *
    * @param affectedTaskOccurrences the new affected task occurrences
    */
-  void setAffectedTaskOccurrences(
-      AffectedTaskOccurrence affectedTaskOccurrences) {
+  public void setAffectedTaskOccurrences(AffectedTaskOccurrence affectedTaskOccurrences) {
     this.affectedTaskOccurrences = affectedTaskOccurrences;
   }
 
@@ -223,7 +220,7 @@ final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
    *
    * @param sendCancellationsMode the new send cancellations mode
    */
-  void setSendCancellationsMode(SendCancellationsMode sendCancellationsMode) {
+  public void setSendCancellationsMode(SendCancellationsMode sendCancellationsMode) {
     this.sendCancellationsMode = sendCancellationsMode;
   }
 

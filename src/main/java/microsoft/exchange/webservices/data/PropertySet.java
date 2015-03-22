@@ -445,8 +445,7 @@ public final class PropertySet implements ISelfValidate,
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
-  protected static void writeAdditionalPropertiesToXml(
-      EwsServiceXmlWriter writer,
+  public static void writeAdditionalPropertiesToXml(EwsServiceXmlWriter writer,
       Iterator<PropertyDefinitionBase> propertyDefinitions)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeStartElement(XmlNamespace.Types,

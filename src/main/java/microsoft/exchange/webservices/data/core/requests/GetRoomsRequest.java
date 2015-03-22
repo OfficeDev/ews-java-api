@@ -35,7 +35,7 @@ import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
 /**
  * Represents a GetRooms request.
  */
-final class GetRoomsRequest extends SimpleServiceRequestBase<GetRoomsResponse> {
+public final class GetRoomsRequest extends SimpleServiceRequestBase<GetRoomsResponse> {
 
   /**
    * Represents a GetRooms request.
@@ -43,7 +43,7 @@ final class GetRoomsRequest extends SimpleServiceRequestBase<GetRoomsResponse> {
    * @param service the service
    * @throws Exception
    */
-  protected GetRoomsRequest(ExchangeService service)
+  public GetRoomsRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -53,8 +53,7 @@ final class GetRoomsRequest extends SimpleServiceRequestBase<GetRoomsResponse> {
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.GetRoomsRequest;
   }
 
@@ -108,7 +107,7 @@ final class GetRoomsRequest extends SimpleServiceRequestBase<GetRoomsResponse> {
    * @return Service response.
    * @throws Exception the exception
    */
-  protected GetRoomsResponse execute() throws Exception {
+  public GetRoomsResponse execute() throws Exception {
     GetRoomsResponse serviceResponse = (GetRoomsResponse) this
         .internalExecute();
     serviceResponse.throwIfNecessary();
@@ -129,7 +128,7 @@ final class GetRoomsRequest extends SimpleServiceRequestBase<GetRoomsResponse> {
    *
    * @param value the new room list
    */
-  protected void setRoomList(EmailAddress value) {
+  public void setRoomList(EmailAddress value) {
     this.roomList = value;
   }
 

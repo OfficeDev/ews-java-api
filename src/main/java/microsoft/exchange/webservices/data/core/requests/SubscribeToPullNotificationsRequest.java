@@ -38,7 +38,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a "pull" Subscribe request.
  */
-class SubscribeToPullNotificationsRequest extends
+public class SubscribeToPullNotificationsRequest extends
     SubscribeRequest<PullSubscription> {
 
   /**
@@ -52,7 +52,7 @@ class SubscribeToPullNotificationsRequest extends
    * @param service the service
    * @throws Exception the exception
    */
-  protected SubscribeToPullNotificationsRequest(ExchangeService service)
+  public SubscribeToPullNotificationsRequest(ExchangeService service)
       throws Exception {
 
     super(service);

@@ -40,7 +40,7 @@ import microsoft.exchange.webservices.data.properties.complex.FolderId;
 /**
  * Represents a SendItem request.
  */
-final class SendItemRequest extends
+public final class SendItemRequest extends
     MultiResponseServiceRequest<ServiceResponse> {
 
   /**
@@ -97,8 +97,7 @@ final class SendItemRequest extends
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.SendItem;
   }
 
@@ -182,8 +181,7 @@ final class SendItemRequest extends
    * @param errorHandlingMode the error handling mode
    * @throws Exception
    */
-  protected SendItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public SendItemRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }

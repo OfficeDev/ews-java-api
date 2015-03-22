@@ -42,7 +42,7 @@ public final class SuggestionsResponse extends ServiceResponse {
   /**
    * Initializes a new instance of the SuggestionsResponse class.
    */
-  protected SuggestionsResponse() {
+  public SuggestionsResponse() {
     super();
   }
 
@@ -52,7 +52,7 @@ public final class SuggestionsResponse extends ServiceResponse {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadSuggestedDaysFromXml(EwsServiceXmlReader reader)
+  public void loadSuggestedDaysFromXml(EwsServiceXmlReader reader)
       throws Exception {
     reader.readStartElement(XmlNamespace.Messages,
         XmlElementNames.SuggestionDayResultArray);

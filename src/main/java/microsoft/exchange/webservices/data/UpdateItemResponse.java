@@ -56,7 +56,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
    *
    * @param item the item
    */
-  protected UpdateItemResponse(Item item) {
+  public UpdateItemResponse(Item item) {
     super();
     EwsUtilities.EwsAssert(item != null, "UpdateItemResponse.ctor", "item is null");
     this.item = item;

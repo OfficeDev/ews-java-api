@@ -67,7 +67,7 @@ public final class FindItemResponse
    * @param isGrouped   if set to true if grouped.
    * @param propertySet The property Set
    */
-  protected FindItemResponse(boolean isGrouped, PropertySet propertySet) {
+  public FindItemResponse(boolean isGrouped, PropertySet propertySet) {
     super();
     this.isGrouped = isGrouped;
     this.propertySet = propertySet;

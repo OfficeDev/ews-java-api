@@ -39,7 +39,7 @@ public final class DeclineMeetingInvitationMessage extends
    * @param referenceItem the reference item
    * @throws Exception the exception
    */
-  protected DeclineMeetingInvitationMessage(Item referenceItem)
+  public DeclineMeetingInvitationMessage(Item referenceItem)
       throws Exception {
     super(referenceItem);
   }

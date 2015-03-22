@@ -126,8 +126,7 @@ public class SearchFolder extends Folder {
    *
    * @throws Exception the exception
    */
-  @Override
-  protected void validate() throws Exception {
+  @Override public void validate() throws Exception {
     super.validate();
     if (this.getSearchParameters() != null) {
       this.getSearchParameters().validate();

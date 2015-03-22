@@ -119,8 +119,7 @@ abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.Subscribe;
   }
 

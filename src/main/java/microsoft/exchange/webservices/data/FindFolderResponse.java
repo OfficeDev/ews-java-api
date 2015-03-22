@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.search.FindFoldersResults;
 /**
  * Represents the response to a folder search operation.
  */
-final class FindFolderResponse extends ServiceResponse {
+public final class FindFolderResponse extends ServiceResponse {
 
   /**
    * The results.
@@ -97,7 +97,7 @@ final class FindFolderResponse extends ServiceResponse {
    *
    * @param propertySet The property set from, the request.
    */
-  protected FindFolderResponse(PropertySet propertySet) {
+  public FindFolderResponse(PropertySet propertySet) {
     super();
     this.propertySet = propertySet;
 

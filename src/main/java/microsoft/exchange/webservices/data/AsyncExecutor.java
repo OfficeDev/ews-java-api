@@ -25,10 +25,10 @@ package microsoft.exchange.webservices.data;
 
 import java.util.concurrent.*;
 
-class AsyncExecutor extends ThreadPoolExecutor implements ExecutorService {
+public class AsyncExecutor extends ThreadPoolExecutor implements ExecutorService {
   final static ArrayBlockingQueue<Runnable> queue = new ArrayBlockingQueue<Runnable>(1);
 
-  AsyncExecutor() {
+  public AsyncExecutor() {
     super(1, 5, 10, TimeUnit.SECONDS, queue);
   }
 

@@ -100,7 +100,7 @@ public abstract class MoveCopyItemRequest<TResponse extends ServiceResponse>
    *
    * @return the item ids
    */
-  protected ItemIdWrapperList getItemIds() {
+  public ItemIdWrapperList getItemIds() {
     return this.itemIds;
   }
 
@@ -108,7 +108,7 @@ public abstract class MoveCopyItemRequest<TResponse extends ServiceResponse>
     return this.newItemIds;
   }
 
-  protected void setReturnNewItemIds(Boolean value) {
+  public void setReturnNewItemIds(Boolean value) {
     this.newItemIds = value;
   }
 }

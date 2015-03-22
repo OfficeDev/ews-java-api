@@ -50,7 +50,7 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
   /**
    * Initializes a new instance.
    */
-  protected ServiceResponseCollection() {
+  public ServiceResponseCollection() {
 
   }
 
@@ -59,7 +59,7 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
    *
    * @param response The response.
    */
-  protected void add(TResponse response) {
+  public void add(TResponse response) {
 
     EwsUtilities.EwsAssert(response != null, "EwsResponseList.Add", "response is null");
     if (response.getResult().ordinal() > this.overallResult.ordinal()) {

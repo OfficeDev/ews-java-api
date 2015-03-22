@@ -31,14 +31,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-class ByteArrayOSRequestEntity extends BasicHttpEntity {
+public class ByteArrayOSRequestEntity extends BasicHttpEntity {
 
   private ByteArrayOutputStream os = null;
 
   /**
    * Constructor for ByteArrayOSRequestEntity.
    */
-  ByteArrayOSRequestEntity(OutputStream os) {
+  public ByteArrayOSRequestEntity(OutputStream os) {
     super();
     this.os = (ByteArrayOutputStream) os;
   }

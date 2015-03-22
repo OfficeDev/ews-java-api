@@ -24,14 +24,13 @@
 package microsoft.exchange.webservices.data.core.requests;
 
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.GetItemRequestBase;
 import microsoft.exchange.webservices.data.GetItemResponse;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 
 /**
  * Represents an abstract GetItem request.
  */
-final class GetItemRequest extends GetItemRequestBase<GetItemResponse> {
+public final class GetItemRequest extends GetItemRequestBase<GetItemResponse> {
 
   /**
    * Initializes a new instance of the class.
@@ -40,8 +39,7 @@ final class GetItemRequest extends GetItemRequestBase<GetItemResponse> {
    * @param errorHandlingMode the error handling mode
    * @throws Exception
    */
-  protected GetItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public GetItemRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }

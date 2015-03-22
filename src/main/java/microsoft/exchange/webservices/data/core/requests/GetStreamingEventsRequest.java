@@ -69,8 +69,7 @@ public class GetStreamingEventsRequest extends HangingServiceRequestBase<GetStre
    *
    * @return XmlElementNames
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.GetStreamingEvents;
   }
 

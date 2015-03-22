@@ -41,7 +41,7 @@ public final class PlayOnPhoneResponse extends ServiceResponse {
    *
    * @param service the service
    */
-  protected PlayOnPhoneResponse(ExchangeService service) {
+  public PlayOnPhoneResponse(ExchangeService service) {
     super();
     EwsUtilities.EwsAssert(service != null, "PlayOnPhoneResponse.ctor", "service is null");
 

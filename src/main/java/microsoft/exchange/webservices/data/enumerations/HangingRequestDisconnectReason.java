@@ -21,47 +21,30 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
-
-import microsoft.exchange.webservices.data.misc.ExpandGroupResults;
+package microsoft.exchange.webservices.data.enumerations;
 
 /**
- * Represents the response to a group expansion operation.
+ * Enumeration of reasons that a hanging request may disconnect.
  */
-public final class ExpandGroupResponse extends ServiceResponse {
+public enum HangingRequestDisconnectReason {
 
   /**
-   * AD or store group members.
+   * The server cleanly closed the connection.
    */
-  private ExpandGroupResults members = new ExpandGroupResults();
+  Clean,
 
   /**
-   * Initializes a new instance of the class.
+   * The client closed the connection.
    */
-  public ExpandGroupResponse() {
-    super();
-  }
+  UserInitiated,
 
   /**
-   * Gets a list of the group's members.
-   *
-   * @return the members
+   * The connection timed out do to a lack of a heartbeat received.
    */
-  public ExpandGroupResults getMembers() {
-    return this.members;
-  }
+  Timeout,
 
   /**
-   * Reads response elements from XML.
-   *
-   * @param reader the reader
-   * @throws Exception the exception
+   * An exception occurred on the connection
    */
-  @Override
-  protected void readElementsFromXml(EwsServiceXmlReader reader)
-      throws Exception {
-    super.readElementsFromXml(reader);
-    this.getMembers().loadFromXml(reader);
-  }
-
+  Exception
 }

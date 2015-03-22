@@ -131,8 +131,7 @@ public class Task extends Item {
    * @param isUpdateOperation the is update operation
    * @return if a time zone SOAP header should be emitted; otherwise, .
    */
-  @Override
-  protected boolean getIsTimeZoneHeaderRequired(boolean isUpdateOperation) {
+  @Override public boolean getIsTimeZoneHeaderRequired(boolean isUpdateOperation) {
     return true;
   }
 

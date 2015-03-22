@@ -36,7 +36,7 @@ public final class SyncFolderHierarchyResponse extends
    *
    * @param propertySet the property set
    */
-  protected SyncFolderHierarchyResponse(PropertySet propertySet) {
+  public SyncFolderHierarchyResponse(PropertySet propertySet) {
     super(propertySet);
   }
 

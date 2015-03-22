@@ -45,7 +45,7 @@ import java.util.Map;
 /**
  * Represents a ResolveNames request.
  */
-final class ResolveNamesRequest extends
+public final class ResolveNamesRequest extends
     MultiResponseServiceRequest<ResolveNamesResponse> {
 
   /**
@@ -133,8 +133,7 @@ final class ResolveNamesRequest extends
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.ResolveNames;
   }
 
@@ -164,7 +163,7 @@ final class ResolveNamesRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected ResolveNamesRequest(ExchangeService service)
+  public ResolveNamesRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }

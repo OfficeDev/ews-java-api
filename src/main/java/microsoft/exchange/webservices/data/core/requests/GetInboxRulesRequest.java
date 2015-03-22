@@ -38,7 +38,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a GetInboxRules request.
  */
-final class GetInboxRulesRequest extends SimpleServiceRequestBase<GetInboxRulesResponse> {
+public final class GetInboxRulesRequest extends SimpleServiceRequestBase<GetInboxRulesResponse> {
 
   /**
    * The smtp address of the mailbox from which to get the inbox rules.
@@ -51,7 +51,7 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase<GetInboxRulesR
    * @param service The service.
    * @throws Exception
    */
-  protected GetInboxRulesRequest(ExchangeService service) throws Exception {
+  public GetInboxRulesRequest(ExchangeService service) throws Exception {
     super(service);
   }
 
@@ -68,7 +68,7 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase<GetInboxRulesR
   /**
    * sets the address of the mailbox from which to get the inbox rules.
    */
-  protected void setmailboxSmtpAddress(String value) {
+  public void setmailboxSmtpAddress(String value) {
     this.mailboxSmtpAddress = value;
   }
 
@@ -77,8 +77,7 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase<GetInboxRulesR
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.GetInboxRules;
   }
 
@@ -139,7 +138,7 @@ final class GetInboxRulesRequest extends SimpleServiceRequestBase<GetInboxRulesR
    * @throws Exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
    */
-  protected GetInboxRulesResponse execute()
+  public GetInboxRulesResponse execute()
       throws ServiceLocalException, Exception {
     GetInboxRulesResponse serviceResponse =
         (GetInboxRulesResponse) this.internalExecute();

@@ -496,8 +496,7 @@ public class Item extends ServiceObject {
    *
    * @throws Exception the exception
    */
-  @Override
-  protected void validate() throws Exception {
+  @Override public void validate() throws Exception {
     super.validate();
     this.getAttachments().validate();
   }
@@ -512,7 +511,7 @@ public class Item extends ServiceObject {
    * @return true if a time zone SOAP header should be emitted;
    * otherwise,false
    */
-  protected boolean getIsTimeZoneHeaderRequired(boolean isUpdateOperation)
+  public boolean getIsTimeZoneHeaderRequired(boolean isUpdateOperation)
       throws Exception {
     // Starting E14SP2, attachment will be sent along with CreateItem
     // requests.

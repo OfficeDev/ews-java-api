@@ -58,8 +58,7 @@ public final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase<S
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.DisconnectPhoneCall;
   }
 

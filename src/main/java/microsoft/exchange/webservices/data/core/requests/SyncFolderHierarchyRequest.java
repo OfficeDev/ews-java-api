@@ -38,7 +38,7 @@ import microsoft.exchange.webservices.data.properties.complex.FolderId;
 /**
  * Represents a SyncFolderHierarchy request.
  */
-class SyncFolderHierarchyRequest extends
+public class SyncFolderHierarchyRequest extends
     MultiResponseServiceRequest<SyncFolderHierarchyResponse> {
 
   /**
@@ -62,7 +62,7 @@ class SyncFolderHierarchyRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected SyncFolderHierarchyRequest(ExchangeService service)
+  public SyncFolderHierarchyRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }
@@ -95,8 +95,7 @@ class SyncFolderHierarchyRequest extends
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.SyncFolderHierarchy;
   }
 

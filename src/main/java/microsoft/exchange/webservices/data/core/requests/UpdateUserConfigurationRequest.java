@@ -95,8 +95,7 @@ public class UpdateUserConfigurationRequest extends
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.UpdateUserConfiguration;
   }
 
@@ -140,7 +139,7 @@ public class UpdateUserConfigurationRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected UpdateUserConfigurationRequest(ExchangeService service)
+  public UpdateUserConfigurationRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }

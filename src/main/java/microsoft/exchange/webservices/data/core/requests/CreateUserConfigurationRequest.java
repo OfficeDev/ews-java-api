@@ -36,7 +36,7 @@ import microsoft.exchange.webservices.data.misc.UserConfiguration;
 /**
  * Represents a CreateUserConfiguration request.
  */
-class CreateUserConfigurationRequest extends
+public class CreateUserConfigurationRequest extends
     MultiResponseServiceRequest<ServiceResponse> {
 
   /**
@@ -93,8 +93,7 @@ class CreateUserConfigurationRequest extends
    *
    * @return XML element name,
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.CreateUserConfiguration;
   }
 
@@ -139,7 +138,7 @@ class CreateUserConfigurationRequest extends
    * @param service The service.
    * @throws Exception
    */
-  protected CreateUserConfigurationRequest(ExchangeService service)
+  public CreateUserConfigurationRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }

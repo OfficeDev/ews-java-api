@@ -49,7 +49,7 @@ public final class GetItemResponse extends ServiceResponse implements
    * @param item        the item
    * @param propertySet the property set
    */
-  protected GetItemResponse(Item item, PropertySet propertySet) {
+  public GetItemResponse(Item item, PropertySet propertySet) {
     super();
     this.item = item;
     this.propertySet = propertySet;

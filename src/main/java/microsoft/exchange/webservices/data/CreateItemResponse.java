@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 /**
  * Represents the response to an individual item creation operation.
  */
-final class CreateItemResponse extends CreateItemResponseBase {
+public final class CreateItemResponse extends CreateItemResponseBase {
 
   /**
    * The item.
@@ -53,7 +53,7 @@ final class CreateItemResponse extends CreateItemResponseBase {
    *
    * @param item The item.
    */
-  protected CreateItemResponse(Item item) {
+  public CreateItemResponse(Item item) {
     super();
     this.item = item;
   }

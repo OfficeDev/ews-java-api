@@ -35,7 +35,7 @@ import java.util.Collection;
 /**
  * Represents the response to a GetServerTimeZones request.
  */
-class GetServerTimeZonesResponse extends ServiceResponse {
+public class GetServerTimeZonesResponse extends ServiceResponse {
 
   /**
    * The time zones.
@@ -46,7 +46,7 @@ class GetServerTimeZonesResponse extends ServiceResponse {
   /**
    * Initializes a new instance of the class.
    */
-  protected GetServerTimeZonesResponse() {
+  public GetServerTimeZonesResponse() {
     super();
   }
 

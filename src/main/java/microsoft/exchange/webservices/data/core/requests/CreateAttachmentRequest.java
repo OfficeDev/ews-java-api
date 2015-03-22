@@ -43,7 +43,7 @@ import java.util.ListIterator;
  * Represents a CreateAttachment request.
  */
 
-final class CreateAttachmentRequest extends
+public final class CreateAttachmentRequest extends
     MultiResponseServiceRequest<CreateAttachmentResponse> {
 
   /**
@@ -72,8 +72,7 @@ final class CreateAttachmentRequest extends
    * @param errorHandlingMode the error handling mode
    * @throws Exception
    */
-  protected CreateAttachmentRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public CreateAttachmentRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -104,8 +103,7 @@ final class CreateAttachmentRequest extends
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.CreateAttachment;
   }
 

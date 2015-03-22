@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
-import microsoft.exchange.webservices.data.core.requests.HangingRequestDisconnectReason;
+import microsoft.exchange.webservices.data.enumerations.HangingRequestDisconnectReason;
 import microsoft.exchange.webservices.data.core.requests.HangingServiceRequestBase;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.notifications.GetStreamingEventsResults;
@@ -61,7 +61,7 @@ public final class GetStreamingEventsResponse extends ServiceResponse {
    * @param request The request
    *                Request to disconnect when we get a close message.
    */
-  protected GetStreamingEventsResponse(HangingServiceRequestBase request) {
+  public GetStreamingEventsResponse(HangingServiceRequestBase request) {
     super();
     List<String> string = new ArrayList<String>();
     this.setErrorSubscriptionIds(string);

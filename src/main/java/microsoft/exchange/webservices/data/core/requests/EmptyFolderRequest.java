@@ -39,7 +39,7 @@ import microsoft.exchange.webservices.data.misc.FolderIdWrapperList;
 /**
  * Represents an EmptyFolder request.
  */
-final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
+public final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
 
   private FolderIdWrapperList folderIds = new FolderIdWrapperList();
   private boolean deleteSubFolders;
@@ -51,8 +51,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
    * @param errorHandlingMode Indicates how errors should be handled.
    * @throws Exception
    */
-  protected EmptyFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public EmptyFolderRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -99,8 +98,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.EmptyFolder;
   }
 
@@ -169,7 +167,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
    *
    * @return The folder ids.
    */
-  protected FolderIdWrapperList getFolderIds() {
+  public FolderIdWrapperList getFolderIds() {
     return this.folderIds;
   }
 
@@ -191,7 +189,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
    * @value true if empty folder should also
    * delete sub folders, otherwise false.
    */
-  protected void setDeleteSubFolders(boolean value) {
+  public void setDeleteSubFolders(boolean value) {
     this.deleteSubFolders = value;
   }
 

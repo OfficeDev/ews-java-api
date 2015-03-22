@@ -32,13 +32,13 @@ import java.util.List;
 /**
  * Represents the response to a Conversation search operation.
  */
-final class FindConversationResponse extends ServiceResponse {
+public final class FindConversationResponse extends ServiceResponse {
   List<Conversation> conversations = new ArrayList<Conversation>();
 
   /**
    * Initializes a new instance of the FindConversationResponse class.
    */
-  protected FindConversationResponse() {
+  public FindConversationResponse() {
     super();
   }
 

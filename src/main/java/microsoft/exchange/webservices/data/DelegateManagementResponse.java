@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * Represents the response to a delegate managent-related operation.
  */
-class DelegateManagementResponse extends ServiceResponse {
+public class DelegateManagementResponse extends ServiceResponse {
 
   /**
    * The read delegate users.
@@ -57,8 +57,7 @@ class DelegateManagementResponse extends ServiceResponse {
    * @param readDelegateUsers the read delegate users
    * @param delegateUsers     the delegate users
    */
-  protected DelegateManagementResponse(boolean readDelegateUsers,
-      List<DelegateUser> delegateUsers) {
+  public DelegateManagementResponse(boolean readDelegateUsers, List<DelegateUser> delegateUsers) {
     super();
     this.readDelegateUsers = readDelegateUsers;
     this.delegateUsers = delegateUsers;

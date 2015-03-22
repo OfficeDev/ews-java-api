@@ -39,7 +39,7 @@ import microsoft.exchange.webservices.data.search.filters.SearchFilter;
 /**
  * Represents a request to a Find Conversation operation
  */
-final class FindConversationRequest extends SimpleServiceRequestBase<FindConversationResponse> {
+public final class FindConversationRequest extends SimpleServiceRequestBase<FindConversationResponse> {
 
 
   private ConversationIndexedItemView view;
@@ -49,7 +49,7 @@ final class FindConversationRequest extends SimpleServiceRequestBase<FindConvers
   /**
    * @throws Exception
    */
-  protected FindConversationRequest(ExchangeService service)
+  public FindConversationRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -62,7 +62,7 @@ final class FindConversationRequest extends SimpleServiceRequestBase<FindConvers
     return this.view;
   }
 
-  protected void setIndexedItemView(ConversationIndexedItemView value) {
+  public void setIndexedItemView(ConversationIndexedItemView value) {
     this.view = value;
   }
 
@@ -76,7 +76,7 @@ final class FindConversationRequest extends SimpleServiceRequestBase<FindConvers
     return this.searchFilter;
   }
 
-  protected void setConversationViewFilter(SearchFilter.IsEqualTo value) {
+  public void setConversationViewFilter(SearchFilter.IsEqualTo value) {
     this.searchFilter = value;
 
   }
@@ -88,7 +88,7 @@ final class FindConversationRequest extends SimpleServiceRequestBase<FindConvers
     return this.folderId;
   }
 
-  protected void setFolderId(FolderIdWrapper value) {
+  public void setFolderId(FolderIdWrapper value) {
     this.folderId = value;
   }
 
@@ -162,8 +162,7 @@ final class FindConversationRequest extends SimpleServiceRequestBase<FindConvers
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.FindConversation;
   }
 
@@ -194,7 +193,7 @@ final class FindConversationRequest extends SimpleServiceRequestBase<FindConvers
    * @throws Exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
    */
-  protected FindConversationResponse execute()
+  public FindConversationResponse execute()
       throws ServiceLocalException, Exception {
     FindConversationResponse serviceResponse =
         (FindConversationResponse) this.internalExecute();

@@ -233,8 +233,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    *
    * @throws Exception
    */
-  @Override
-  protected void validate() throws Exception {
+  @Override public void validate() throws Exception {
     super.validate();
 
     //  PS # 250452: Make sure that if we're

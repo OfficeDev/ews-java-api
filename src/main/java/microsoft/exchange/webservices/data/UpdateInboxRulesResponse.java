@@ -39,7 +39,7 @@ public final class UpdateInboxRulesResponse extends ServiceResponse {
   /**
    * Initializes a new instance of the UpdateInboxRulesResponse class.
    */
-  protected UpdateInboxRulesResponse() {
+  public UpdateInboxRulesResponse() {
     super();
     this.errors = new RuleOperationErrorCollection();
   }

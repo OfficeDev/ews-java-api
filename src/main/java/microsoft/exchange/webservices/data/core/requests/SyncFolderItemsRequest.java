@@ -42,7 +42,7 @@ import microsoft.exchange.webservices.data.properties.complex.FolderId;
 /**
  * Represents a SyncFolderItems request.
  */
-class SyncFolderItemsRequest extends
+public class SyncFolderItemsRequest extends
     MultiResponseServiceRequest<SyncFolderItemsResponse> {
 
   /**
@@ -81,7 +81,7 @@ class SyncFolderItemsRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected SyncFolderItemsRequest(ExchangeService service)
+  public SyncFolderItemsRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }
@@ -114,8 +114,7 @@ class SyncFolderItemsRequest extends
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.SyncFolderItems;
   }
 

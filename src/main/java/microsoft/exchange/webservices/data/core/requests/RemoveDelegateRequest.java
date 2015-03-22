@@ -38,7 +38,7 @@ import java.util.List;
 /**
  * Represents a RemoveDelete request.
  */
-class RemoveDelegateRequest extends
+public class RemoveDelegateRequest extends
     DelegateManagementRequestBase<DelegateManagementResponse> {
 
   /**
@@ -52,7 +52,7 @@ class RemoveDelegateRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected RemoveDelegateRequest(ExchangeService service)
+  public RemoveDelegateRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -104,8 +104,7 @@ class RemoveDelegateRequest extends
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.RemoveDelegate;
   }
 

@@ -103,7 +103,7 @@ abstract class MoveCopyFolderRequest<TResponse extends ServiceResponse> extends
    *
    * @return The folder ids.
    */
-  protected FolderIdWrapperList getFolderIds() {
+  public FolderIdWrapperList getFolderIds() {
     return this.folderIds;
   }
 

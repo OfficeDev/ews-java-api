@@ -72,7 +72,7 @@ public final class GetUserAvailabilityRequest extends SimpleServiceRequestBase<G
    * @param service the service
    * @throws Exception
    */
-  protected GetUserAvailabilityRequest(ExchangeService service)
+  public GetUserAvailabilityRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -82,8 +82,7 @@ public final class GetUserAvailabilityRequest extends SimpleServiceRequestBase<G
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.GetUserAvailabilityRequest;
   }
 
@@ -242,7 +241,7 @@ public final class GetUserAvailabilityRequest extends SimpleServiceRequestBase<G
    * @return Service response.
    * @throws Exception the exception
    */
-  protected GetUserAvailabilityResults execute() throws Exception {
+  public GetUserAvailabilityResults execute() throws Exception {
     return (GetUserAvailabilityResults) this.internalExecute();
   }
 

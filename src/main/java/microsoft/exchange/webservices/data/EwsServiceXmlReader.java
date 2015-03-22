@@ -53,7 +53,7 @@ public class EwsServiceXmlReader extends EwsXmlReader {
    * @param service the service
    * @throws Exception
    */
-  protected EwsServiceXmlReader(InputStream stream, ExchangeService service)
+  public EwsServiceXmlReader(InputStream stream, ExchangeService service)
       throws Exception {
     super(stream);
     this.service = service;

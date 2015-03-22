@@ -43,8 +43,7 @@ public final class AcceptMeetingInvitationMessage extends
    * @param tentative     the tentative
    * @throws Exception the exception
    */
-  protected AcceptMeetingInvitationMessage(Item referenceItem,
-      boolean tentative) throws Exception {
+  public AcceptMeetingInvitationMessage(Item referenceItem, boolean tentative) throws Exception {
     super(referenceItem);
     this.tentative = tentative;
   }

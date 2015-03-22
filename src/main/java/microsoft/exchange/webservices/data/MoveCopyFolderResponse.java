@@ -43,7 +43,7 @@ public final class MoveCopyFolderResponse extends ServiceResponse implements
   /**
    * Initializes a new instance of the MoveCopyFolderResponse class.
    */
-  protected MoveCopyFolderResponse() {
+  public MoveCopyFolderResponse() {
     super();
   }
 

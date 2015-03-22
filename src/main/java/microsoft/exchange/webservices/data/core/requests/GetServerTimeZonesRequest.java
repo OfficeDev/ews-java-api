@@ -108,8 +108,7 @@ class GetServerTimeZonesRequest extends
    *
    * @return XML element name,
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.GetServerTimeZones;
   }
 

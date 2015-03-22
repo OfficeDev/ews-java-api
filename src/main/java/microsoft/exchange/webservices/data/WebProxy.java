@@ -88,7 +88,7 @@ public class WebProxy {
    *
    * @return the host
    */
-  protected String getHost() {
+  public String getHost() {
     return this.host;
   }
 
@@ -97,7 +97,7 @@ public class WebProxy {
    *
    * @return the port
    */
-  protected int getPort() {
+  public int getPort() {
     return this.port;
   }
 

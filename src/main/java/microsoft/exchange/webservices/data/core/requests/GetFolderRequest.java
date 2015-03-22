@@ -24,14 +24,13 @@
 package microsoft.exchange.webservices.data.core.requests;
 
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.GetFolderRequestBase;
 import microsoft.exchange.webservices.data.GetFolderResponse;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 
 /**
  * Represents a GetFolder request.
  */
-final class GetFolderRequest extends GetFolderRequestBase<GetFolderResponse> {
+public final class GetFolderRequest extends GetFolderRequestBase<GetFolderResponse> {
 
   // private FolderIdWrapperList folderIds = new FolderIdWrapperList();
 
@@ -42,8 +41,7 @@ final class GetFolderRequest extends GetFolderRequestBase<GetFolderResponse> {
    * @param errorHandlingMode Indicates how errors should be handled.
    * @throws Exception
    */
-  protected GetFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public GetFolderRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }

@@ -38,7 +38,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Defines the ExecuteDiagnosticMethodRequest class.
  */
-final class ExecuteDiagnosticMethodRequest extends
+public final class ExecuteDiagnosticMethodRequest extends
     MultiResponseServiceRequest<ExecuteDiagnosticMethodResponse> {
 
   private Node xmlNode;
@@ -49,7 +49,7 @@ final class ExecuteDiagnosticMethodRequest extends
    *
    * @throws Exception
    */
-  protected ExecuteDiagnosticMethodRequest(ExchangeService service)
+  public ExecuteDiagnosticMethodRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }
@@ -59,8 +59,7 @@ final class ExecuteDiagnosticMethodRequest extends
    *
    * @return XmlElementNames
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.ExecuteDiagnosticMethod;
   }
 
@@ -119,7 +118,7 @@ final class ExecuteDiagnosticMethodRequest extends
   /**
    * Sets the verb of the method to execute.
    */
-  protected void setVerb(String value) {
+  public void setVerb(String value) {
     this.verb = value;
   }
 
@@ -133,7 +132,7 @@ final class ExecuteDiagnosticMethodRequest extends
   /**
    * Sets the parameter to the executing method.
    */
-  protected void setParameter(Node value) {
+  public void setParameter(Node value) {
     this.xmlNode = value;
   }
 

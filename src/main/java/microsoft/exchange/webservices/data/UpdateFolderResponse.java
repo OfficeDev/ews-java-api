@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate
 /**
  * Represents response to UpdateFolder request.
  */
-final class UpdateFolderResponse extends ServiceResponse implements
+public final class UpdateFolderResponse extends ServiceResponse implements
                                                          IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
@@ -42,7 +42,7 @@ final class UpdateFolderResponse extends ServiceResponse implements
    *
    * @param folder The folder
    */
-  protected UpdateFolderResponse(Folder folder) {
+  public UpdateFolderResponse(Folder folder) {
     super();
     EwsUtilities.EwsAssert(folder != null, "UpdateFolderResponse.ctor", "folder is null");
 

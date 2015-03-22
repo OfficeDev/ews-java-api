@@ -139,8 +139,7 @@ public class Folder extends ServiceObject {
    *
    * @throws Exception the exception
    */
-  @Override
-  protected void validate() throws Exception {
+  @Override public void validate() throws Exception {
     super.validate();
 
     // Validate folder permissions

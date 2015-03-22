@@ -41,7 +41,7 @@ import java.util.EnumSet;
 /**
  * The Class GetUserConfigurationRequest.
  */
-class GetUserConfigurationRequest extends
+public class GetUserConfigurationRequest extends
     MultiResponseServiceRequest<GetUserConfigurationResponse> {
 
   /**
@@ -128,8 +128,7 @@ class GetUserConfigurationRequest extends
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.GetUserConfiguration;
   }
 
@@ -181,7 +180,7 @@ class GetUserConfigurationRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected GetUserConfigurationRequest(ExchangeService service)
+  public GetUserConfigurationRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }
@@ -200,7 +199,7 @@ class GetUserConfigurationRequest extends
    *
    * @param name the new name
    */
-  protected void setName(String name) {
+  public void setName(String name) {
     this.name = name;
   }
 
@@ -218,7 +217,7 @@ class GetUserConfigurationRequest extends
    *
    * @param parentFolderId the new parent folder id
    */
-  protected void setParentFolderId(FolderId parentFolderId) {
+  public void setParentFolderId(FolderId parentFolderId) {
     this.parentFolderId = parentFolderId;
   }
 
@@ -237,7 +236,7 @@ class GetUserConfigurationRequest extends
    *
    * @param userConfiguration the new user configuration
    */
-  protected void setUserConfiguration(UserConfiguration userConfiguration) {
+  public void setUserConfiguration(UserConfiguration userConfiguration) {
     this.userConfiguration = userConfiguration;
     this.name = this.userConfiguration.getName();
     this.parentFolderId = this.userConfiguration.getParentFolderId();
@@ -257,8 +256,7 @@ class GetUserConfigurationRequest extends
    *
    * @param properties the new properties
    */
-  protected void setProperties(
-      EnumSet<UserConfigurationProperties> properties) {
+  public void setProperties(EnumSet<UserConfigurationProperties> properties) {
     this.properties = properties;
   }
 

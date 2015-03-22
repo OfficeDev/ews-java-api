@@ -309,7 +309,7 @@ public class MeetingRequestSchema extends MeetingMessageSchema {
   /**
    * This must be after the declaration of property definitions.
    */
-  protected static final MeetingRequestSchema Instance =
+  public static final MeetingRequestSchema Instance =
       new MeetingRequestSchema();
 
   /**

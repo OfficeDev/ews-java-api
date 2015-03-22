@@ -28,6 +28,7 @@ import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.ExchangeService;
 import microsoft.exchange.webservices.data.HangingRequestDisconnectEventArgs;
 import microsoft.exchange.webservices.data.XmlNodeType;
+import microsoft.exchange.webservices.data.enumerations.HangingRequestDisconnectReason;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
@@ -50,32 +51,6 @@ import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
-/**
- * Enumeration of reasons that a hanging request may disconnect.
- */
-enum HangingRequestDisconnectReason {
-
-  /**
-   * The server cleanly closed the connection.
-   */
-  Clean,
-
-  /**
-   * The client closed the connection.
-   */
-  UserInitiated,
-
-  /**
-   * The connection timed out do to a lack of a heartbeat received.
-   */
-  Timeout,
-
-  /**
-   * An exception occurred on the connection
-   */
-  Exception
-}
 
 
 /**
@@ -331,8 +306,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
    * @param reason    The reason.
    * @param exception The exception.
    */
-  protected void disconnect(HangingRequestDisconnectReason reason,
-      Exception exception) {
+  public void disconnect(HangingRequestDisconnectReason reason, Exception exception) {
     if (this.isConnected()) {
       try {
         this.response.close();

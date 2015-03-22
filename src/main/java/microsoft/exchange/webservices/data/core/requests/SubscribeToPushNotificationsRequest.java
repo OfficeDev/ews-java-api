@@ -40,7 +40,7 @@ import java.net.URI;
 /**
  * The Class SubscribeToPushNotificationsRequest.
  */
-class SubscribeToPushNotificationsRequest extends
+public class SubscribeToPushNotificationsRequest extends
     SubscribeRequest<PushSubscription> {
 
   /**
@@ -59,7 +59,7 @@ class SubscribeToPushNotificationsRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected SubscribeToPushNotificationsRequest(ExchangeService service)
+  public SubscribeToPushNotificationsRequest(ExchangeService service)
       throws Exception {
     super(service);
   }

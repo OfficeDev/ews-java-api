@@ -41,7 +41,7 @@ import java.io.InputStreamReader;
  * If ever there comes a time we need to deal with multi-response streams with user-generated
  * content, we will need to tackle that parsing problem separately.
  */
-class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
+public class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
 
   /**
    * Initializes a new instance of the
@@ -65,8 +65,7 @@ class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
    * wrapped around the input stream.
    * @throws Exception
    */
-  protected static EwsServiceMultiResponseXmlReader create(InputStream stream,
-      ExchangeService service) throws Exception {
+  public static EwsServiceMultiResponseXmlReader create(InputStream stream, ExchangeService service) throws Exception {
     EwsServiceMultiResponseXmlReader reader =
         new EwsServiceMultiResponseXmlReader(stream, service);
     return reader;

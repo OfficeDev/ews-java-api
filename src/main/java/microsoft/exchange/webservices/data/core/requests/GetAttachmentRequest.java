@@ -45,7 +45,7 @@ import java.util.List;
 /**
  * Represents a GetAttachment request.
  */
-final class GetAttachmentRequest extends
+public final class GetAttachmentRequest extends
     MultiResponseServiceRequest<GetAttachmentResponse> {
 
   /**
@@ -71,8 +71,7 @@ final class GetAttachmentRequest extends
    * @param errorHandlingMode Indicates how errors should be handled.
    * @throws Exception
    */
-  GetAttachmentRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public GetAttachmentRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -121,8 +120,7 @@ final class GetAttachmentRequest extends
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.GetAttachment;
   }
 

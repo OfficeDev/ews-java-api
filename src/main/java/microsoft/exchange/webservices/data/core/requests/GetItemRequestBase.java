@@ -110,7 +110,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends Get
    *
    * @return XML element name
    */
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     return XmlElementNames.GetItem;
   }
 

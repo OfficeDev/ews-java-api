@@ -70,7 +70,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    * @param parentAttachment The parent attachment
    * @throws Exception throws Exception
    */
-  protected MeetingRequest(ItemAttachment parentAttachment) throws Exception {
+  public MeetingRequest(ItemAttachment parentAttachment) throws Exception {
     super(parentAttachment);
   }
 
@@ -80,7 +80,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    * @param service EWS service to which this object belongs.
    * @throws Exception throws Exception
    */
-  protected MeetingRequest(ExchangeService service) throws Exception {
+  public MeetingRequest(ExchangeService service) throws Exception {
     super(service);
   }
 

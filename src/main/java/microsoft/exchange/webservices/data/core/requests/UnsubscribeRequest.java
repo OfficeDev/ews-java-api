@@ -39,7 +39,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * The Class UnsubscribeRequest.
  */
-class UnsubscribeRequest extends MultiResponseServiceRequest<ServiceResponse> {
+public class UnsubscribeRequest extends MultiResponseServiceRequest<ServiceResponse> {
 
   /**
    * The subscription id.
@@ -52,7 +52,7 @@ class UnsubscribeRequest extends MultiResponseServiceRequest<ServiceResponse> {
    * @param service the service
    * @throws Exception
    */
-  protected UnsubscribeRequest(ExchangeService service)
+  public UnsubscribeRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }
@@ -85,8 +85,7 @@ class UnsubscribeRequest extends MultiResponseServiceRequest<ServiceResponse> {
    *
    * @return Xml element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.Unsubscribe;
   }
 

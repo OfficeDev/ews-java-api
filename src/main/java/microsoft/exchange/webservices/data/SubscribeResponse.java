@@ -34,7 +34,7 @@ import javax.xml.stream.XMLStreamException;
  *
  * @param <TSubscription> Subscription type
  */
-final class SubscribeResponse<TSubscription extends SubscriptionBase> extends
+public final class SubscribeResponse<TSubscription extends SubscriptionBase> extends
     ServiceResponse {
 
   /**
@@ -48,7 +48,7 @@ final class SubscribeResponse<TSubscription extends SubscriptionBase> extends
    *
    * @param subscription The Subscription
    */
-  protected SubscribeResponse(TSubscription subscription) {
+  public SubscribeResponse(TSubscription subscription) {
     super();
     EwsUtilities.EwsAssert(subscription != null, "SubscribeResponse.ctor", "subscription is null");
     this.subscription = subscription;

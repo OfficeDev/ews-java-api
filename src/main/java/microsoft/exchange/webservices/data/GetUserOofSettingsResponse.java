@@ -38,7 +38,7 @@ public class GetUserOofSettingsResponse extends ServiceResponse {
   /**
    * Initializes a new instance of the class.
    */
-  protected GetUserOofSettingsResponse() {
+  public GetUserOofSettingsResponse() {
     super();
   }
 
@@ -56,7 +56,7 @@ public class GetUserOofSettingsResponse extends ServiceResponse {
    *
    * @param value the new oof settings
    */
-  protected void setOofSettings(OofSettings value) {
+  public void setOofSettings(OofSettings value) {
     this.oofSettings = value;
   }
 

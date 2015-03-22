@@ -33,7 +33,7 @@ public class GetPasswordExpirationDateResponse extends ServiceResponse {
   /**
    * Initializes a new instance of the GetPasswordExpirationDateResponse class.
    */
-  protected GetPasswordExpirationDateResponse() {
+  public GetPasswordExpirationDateResponse() {
     super();
   }
 

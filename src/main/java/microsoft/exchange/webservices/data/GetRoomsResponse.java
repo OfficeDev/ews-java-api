@@ -32,7 +32,7 @@ import java.util.Collection;
 /**
  * Represents the response to a GetRooms operation.
  */
-final class GetRoomsResponse extends ServiceResponse {
+public final class GetRoomsResponse extends ServiceResponse {
 
   /**
    * The rooms.
@@ -42,7 +42,7 @@ final class GetRoomsResponse extends ServiceResponse {
   /**
    * Initializes a new instance of the class.
    */
-  protected GetRoomsResponse() {
+  public GetRoomsResponse() {
     super();
   }
 

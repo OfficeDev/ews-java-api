@@ -43,7 +43,7 @@ import java.util.List;
 /**
  * Represents a ConvertId request.
  */
-final class ConvertIdRequest extends
+public final class ConvertIdRequest extends
     MultiResponseServiceRequest<ConvertIdResponse> {
 
   /**
@@ -63,8 +63,7 @@ final class ConvertIdRequest extends
    * @param errorHandlingMode the error handling mode
    * @throws Exception
    */
-  protected ConvertIdRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public ConvertIdRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -117,8 +116,7 @@ final class ConvertIdRequest extends
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.ConvertId;
   }
 

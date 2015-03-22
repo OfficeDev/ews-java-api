@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.properties.complex.RuleCollection;
 /**
  * Represents the response to a GetInboxRules operation.
  */
-final class GetInboxRulesResponse extends ServiceResponse {
+public final class GetInboxRulesResponse extends ServiceResponse {
   /**
    * Rule collection.
    */
@@ -39,7 +39,7 @@ final class GetInboxRulesResponse extends ServiceResponse {
    * Initializes a new instance of the
    * <see cref="GetInboxRulesResponse"/> class.
    */
-  protected GetInboxRulesResponse() {
+  public GetInboxRulesResponse() {
     super();
     this.ruleCollection = new RuleCollection();
   }

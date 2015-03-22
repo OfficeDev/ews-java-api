@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.notifications.GetEventsResults;
 /**
  * Represents the response to a subscription event retrieval operation.
  */
-final class GetEventsResponse extends ServiceResponse {
+public final class GetEventsResponse extends ServiceResponse {
 
   /**
    * The results.
@@ -38,7 +38,7 @@ final class GetEventsResponse extends ServiceResponse {
   /**
    * Initializes a new instance.
    */
-  protected GetEventsResponse() {
+  public GetEventsResponse() {
     super();
   }
 

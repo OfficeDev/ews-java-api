@@ -71,7 +71,7 @@ public final class ExchangeServerInfo {
    * @return ExchangeServerInfo
    * @throws Exception the exception
    */
-  protected static ExchangeServerInfo parse(EwsServiceXmlReader reader)
+  public static ExchangeServerInfo parse(EwsServiceXmlReader reader)
       throws Exception {
     EwsUtilities.EwsAssert(reader.hasAttributes(), "ExchangeServerVersion.Parse",
                            "Current element doesn't have attributes");

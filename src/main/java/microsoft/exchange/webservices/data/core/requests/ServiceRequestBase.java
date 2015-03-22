@@ -77,7 +77,7 @@ public abstract class ServiceRequestBase<T> {
    *
    * @return XML element name
    */
-  protected abstract String getXmlElementName();
+  public abstract String getXmlElementName();
 
   /**
    * Gets the name of the response XML element.

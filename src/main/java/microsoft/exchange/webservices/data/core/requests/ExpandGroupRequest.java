@@ -83,8 +83,7 @@ public class ExpandGroupRequest extends
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.ExpandDL;
   }
 
@@ -139,7 +138,7 @@ public class ExpandGroupRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected ExpandGroupRequest(ExchangeService service)
+  public ExpandGroupRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }

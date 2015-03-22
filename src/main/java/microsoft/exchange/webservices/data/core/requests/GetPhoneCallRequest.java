@@ -58,8 +58,7 @@ public final class GetPhoneCallRequest extends SimpleServiceRequestBase<GetPhone
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.GetPhoneCall;
   }
 

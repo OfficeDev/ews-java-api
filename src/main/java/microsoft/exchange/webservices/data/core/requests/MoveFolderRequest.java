@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 /**
  * Represents a MoveFolder request.
  */
-class MoveFolderRequest extends MoveCopyFolderRequest<MoveCopyFolderResponse> {
+public class MoveFolderRequest extends MoveCopyFolderRequest<MoveCopyFolderResponse> {
 
   /**
    * Initializes a new instance of the MoveFolderRequest class.
@@ -41,8 +41,7 @@ class MoveFolderRequest extends MoveCopyFolderRequest<MoveCopyFolderResponse> {
    * @param errorHandlingMode Indicates how errors should be handled.
    * @throws Exception
    */
-  protected MoveFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public MoveFolderRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -65,8 +64,7 @@ class MoveFolderRequest extends MoveCopyFolderRequest<MoveCopyFolderResponse> {
    *
    * @return Xml element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.MoveFolder;
   }
 

@@ -250,8 +250,7 @@ public class Contact extends Item {
    * @throws ServiceVersionException the service version exception
    * @throws Exception               the exception
    */
-  @Override
-  protected void validate() throws ServiceVersionException, Exception {
+  @Override public void validate() throws ServiceVersionException, Exception {
     super.validate();
 
     Object fileAsMapping;

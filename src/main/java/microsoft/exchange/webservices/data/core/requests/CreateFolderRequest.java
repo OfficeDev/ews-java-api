@@ -37,7 +37,7 @@ import java.util.Collection;
 /**
  * Represents a CreateFolder request.
  */
-final class CreateFolderRequest extends CreateRequest<Folder, ServiceResponse> {
+public final class CreateFolderRequest extends CreateRequest<Folder, ServiceResponse> {
 
   /**
    * Initializes a new instance of the CreateFolderRequest class.
@@ -46,8 +46,7 @@ final class CreateFolderRequest extends CreateRequest<Folder, ServiceResponse> {
    * @param errorHandlingMode Indicates how errors should be handled.
    * @throws Exception
    */
-  protected CreateFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public CreateFolderRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -87,8 +86,7 @@ final class CreateFolderRequest extends CreateRequest<Folder, ServiceResponse> {
    *
    * @return Xml element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.CreateFolder;
   }
 

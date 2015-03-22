@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * Represents the response to an individual folder creation operation.
  */
-final class CreateFolderResponse extends ServiceResponse implements
+public final class CreateFolderResponse extends ServiceResponse implements
                                                          IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
@@ -44,7 +44,7 @@ final class CreateFolderResponse extends ServiceResponse implements
    *
    * @param folder The folder.
    */
-  CreateFolderResponse(Folder folder) {
+  public CreateFolderResponse(Folder folder) {
     super();
     this.folder = folder;
   }

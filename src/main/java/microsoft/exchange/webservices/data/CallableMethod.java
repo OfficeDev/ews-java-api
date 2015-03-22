@@ -34,7 +34,7 @@ import java.util.concurrent.Callable;
 public class CallableMethod implements Callable<Object> {
   HttpWebRequest request;
 
-  CallableMethod(HttpWebRequest request) {
+  public CallableMethod(HttpWebRequest request) {
     this.request = request;
   }
 

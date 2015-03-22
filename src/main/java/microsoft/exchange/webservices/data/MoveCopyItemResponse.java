@@ -41,7 +41,7 @@ public final class MoveCopyItemResponse extends ServiceResponse implements
   /**
    * Represents a response to a Move or Copy operation.
    */
-  protected MoveCopyItemResponse() {
+  public MoveCopyItemResponse() {
     super();
   }
 

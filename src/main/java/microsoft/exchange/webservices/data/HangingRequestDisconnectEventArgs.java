@@ -1,6 +1,6 @@
 package microsoft.exchange.webservices.data;
 
-import microsoft.exchange.webservices.data.core.requests.HangingRequestDisconnectReason;
+import microsoft.exchange.webservices.data.enumerations.HangingRequestDisconnectReason;
 
 /**
  * Represents a collection of arguments for the
@@ -16,9 +16,7 @@ public final class HangingRequestDisconnectEventArgs {
    * @param reason    The reason.
    * @param exception The exception.
    */
-  protected HangingRequestDisconnectEventArgs(
-      HangingRequestDisconnectReason reason,
-      Exception exception) {
+  public HangingRequestDisconnectEventArgs(HangingRequestDisconnectReason reason, Exception exception) {
     this.reason = reason;
     this.exception = exception;
   }

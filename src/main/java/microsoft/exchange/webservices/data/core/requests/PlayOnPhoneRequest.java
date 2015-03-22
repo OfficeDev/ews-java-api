@@ -63,8 +63,7 @@ public final class PlayOnPhoneRequest extends SimpleServiceRequestBase<PlayOnPho
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.PlayOnPhone;
   }
 

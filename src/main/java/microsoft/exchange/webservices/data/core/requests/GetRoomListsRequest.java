@@ -33,7 +33,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 /**
  * Represents a GetRoomList request.
  */
-final class GetRoomListsRequest extends SimpleServiceRequestBase<GetRoomListsResponse> {
+public final class GetRoomListsRequest extends SimpleServiceRequestBase<GetRoomListsResponse> {
 
   /**
    * Initializes a new instance of the class.
@@ -41,7 +41,7 @@ final class GetRoomListsRequest extends SimpleServiceRequestBase<GetRoomListsRes
    * @param service the service
    * @throws Exception
    */
-  protected GetRoomListsRequest(ExchangeService service)
+  public GetRoomListsRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -51,8 +51,7 @@ final class GetRoomListsRequest extends SimpleServiceRequestBase<GetRoomListsRes
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.GetRoomListsRequest;
   }
 
@@ -103,7 +102,7 @@ final class GetRoomListsRequest extends SimpleServiceRequestBase<GetRoomListsRes
    * @return Service response
    * @throws Exception the exception
    */
-  protected GetRoomListsResponse execute() throws Exception {
+  public GetRoomListsResponse execute() throws Exception {
     GetRoomListsResponse serviceResponse = (GetRoomListsResponse) this
         .internalExecute();
     serviceResponse.throwIfNecessary();

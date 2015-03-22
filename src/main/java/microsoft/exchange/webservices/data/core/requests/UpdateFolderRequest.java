@@ -40,7 +40,7 @@ import java.util.ArrayList;
 /**
  * Represents an UpdateFolder request.
  */
-final class UpdateFolderRequest extends
+public final class UpdateFolderRequest extends
     MultiResponseServiceRequest<ServiceResponse> {
 
   /**
@@ -55,8 +55,7 @@ final class UpdateFolderRequest extends
    * @param errorHandlingMode Indicates how errors should be handled.
    * @throws Exception
    */
-  protected UpdateFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public UpdateFolderRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -100,8 +99,7 @@ final class UpdateFolderRequest extends
    *
    * @return Xml element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.UpdateFolder;
   }
 

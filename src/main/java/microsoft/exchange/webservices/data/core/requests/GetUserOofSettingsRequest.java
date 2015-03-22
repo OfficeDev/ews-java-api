@@ -41,7 +41,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a GetUserOofSettings request.
  */
-final class GetUserOofSettingsRequest extends SimpleServiceRequestBase<GetUserOofSettingsResponse> {
+public final class GetUserOofSettingsRequest extends SimpleServiceRequestBase<GetUserOofSettingsResponse> {
 
   /**
    * The smtp address.
@@ -53,8 +53,7 @@ final class GetUserOofSettingsRequest extends SimpleServiceRequestBase<GetUserOo
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.GetUserOofSettingsRequest;
   }
 
@@ -139,7 +138,7 @@ final class GetUserOofSettingsRequest extends SimpleServiceRequestBase<GetUserOo
    * @param service the service
    * @throws Exception
    */
-  protected GetUserOofSettingsRequest(ExchangeService service)
+  public GetUserOofSettingsRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -150,7 +149,7 @@ final class GetUserOofSettingsRequest extends SimpleServiceRequestBase<GetUserOo
    * @return Service response.
    * @throws Exception the exception
    */
-  protected GetUserOofSettingsResponse execute() throws Exception {
+  public GetUserOofSettingsResponse execute() throws Exception {
     GetUserOofSettingsResponse serviceResponse =
         (GetUserOofSettingsResponse) this
             .internalExecute();
@@ -172,7 +171,7 @@ final class GetUserOofSettingsRequest extends SimpleServiceRequestBase<GetUserOo
    *
    * @param smtpAddress the new smtp address
    */
-  protected void setSmtpAddress(String smtpAddress) {
+  public void setSmtpAddress(String smtpAddress) {
     this.smtpAddress = smtpAddress;
   }
 

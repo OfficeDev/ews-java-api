@@ -123,8 +123,7 @@ public final class ApplyConversationActionRequest extends MultiResponseServiceRe
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.ApplyConversationAction;
   }
 

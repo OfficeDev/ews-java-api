@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 /**
  * Represents a GetItem request specialized to return ServiceResponse.
  */
-final class GetItemRequestForLoad extends GetItemRequestBase<ServiceResponse> {
+public final class GetItemRequestForLoad extends GetItemRequestBase<ServiceResponse> {
 
   /**
    * Initializes a new instance of the class.
@@ -40,8 +40,7 @@ final class GetItemRequestForLoad extends GetItemRequestBase<ServiceResponse> {
    * @param errorHandlingMode the error handling mode
    * @throws Exception
    */
-  protected GetItemRequestForLoad(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public GetItemRequestForLoad(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }

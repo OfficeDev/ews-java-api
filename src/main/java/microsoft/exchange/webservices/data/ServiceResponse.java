@@ -96,8 +96,7 @@ public class ServiceResponse {
    * @param xmlElementName the xml element name
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      String xmlElementName)
+  public void loadFromXml(EwsServiceXmlReader reader, String xmlElementName)
       throws Exception {
     if (!reader.isStartElement(XmlNamespace.Messages, xmlElementName)) {
       reader.readStartElement(XmlNamespace.Messages, xmlElementName);

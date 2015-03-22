@@ -41,7 +41,7 @@ public final class GetPhoneCallResponse extends ServiceResponse {
    *
    * @param service the service
    */
-  protected GetPhoneCallResponse(ExchangeService service) {
+  public GetPhoneCallResponse(ExchangeService service) {
     super();
     EwsUtilities.EwsAssert(service != null, "GetPhoneCallResponse.ctor", "service is null");
 

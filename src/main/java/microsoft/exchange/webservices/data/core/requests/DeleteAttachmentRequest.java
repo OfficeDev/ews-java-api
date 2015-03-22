@@ -44,7 +44,7 @@ import java.util.List;
 /**
  * The Class DeleteAttachmentRequest.
  */
-final class DeleteAttachmentRequest extends
+public final class DeleteAttachmentRequest extends
     MultiResponseServiceRequest<DeleteAttachmentResponse> {
 
   /**
@@ -59,8 +59,7 @@ final class DeleteAttachmentRequest extends
    * @param errorHandlingMode the error handling mode
    * @throws Exception
    */
-  protected DeleteAttachmentRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public DeleteAttachmentRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -113,8 +112,7 @@ final class DeleteAttachmentRequest extends
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.DeleteAttachment;
   }
 

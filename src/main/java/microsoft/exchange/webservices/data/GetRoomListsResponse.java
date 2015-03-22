@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollec
 /**
  * Represents the response to a GetRoomLists operation.
  */
-final class GetRoomListsResponse extends ServiceResponse {
+public final class GetRoomListsResponse extends ServiceResponse {
 
   /**
    * The room lists.
@@ -40,7 +40,7 @@ final class GetRoomListsResponse extends ServiceResponse {
   /**
    * Represents the response to a GetRoomLists operation.
    */
-  protected GetRoomListsResponse() {
+  public GetRoomListsResponse() {
     super();
   }
 

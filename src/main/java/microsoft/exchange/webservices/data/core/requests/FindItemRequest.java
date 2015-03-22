@@ -36,7 +36,7 @@ import microsoft.exchange.webservices.data.search.Grouping;
  *
  * @param <TItem> The type of the item.
  */
-final class FindItemRequest<TItem extends Item> extends
+public final class FindItemRequest<TItem extends Item> extends
     FindRequest<FindItemResponse<TItem>> {
 
   /**
@@ -51,8 +51,7 @@ final class FindItemRequest<TItem extends Item> extends
    * @param errorHandlingMode Indicates how errors should be handled.
    * @throws Exception
    */
-  protected FindItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public FindItemRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -76,8 +75,7 @@ final class FindItemRequest<TItem extends Item> extends
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.FindItem;
   }
 

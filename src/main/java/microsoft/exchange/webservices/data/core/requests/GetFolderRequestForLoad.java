@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 /**
  * Represents a GetFolder request specialized to return ServiceResponse.
  */
-final class GetFolderRequestForLoad extends
+public final class GetFolderRequestForLoad extends
     GetFolderRequestBase<ServiceResponse> {
 
   /**
@@ -41,8 +41,7 @@ final class GetFolderRequestForLoad extends
    * @param throwonerror    the throwonerror
    * @throws Exception
    */
-  protected GetFolderRequestForLoad(ExchangeService exchangeService,
-      ServiceErrorHandling throwonerror) throws Exception {
+  public GetFolderRequestForLoad(ExchangeService exchangeService, ServiceErrorHandling throwonerror) throws Exception {
     super(exchangeService, throwonerror);
   }
 

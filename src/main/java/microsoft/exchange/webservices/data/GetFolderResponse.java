@@ -49,7 +49,7 @@ public final class GetFolderResponse extends ServiceResponse implements
    * @param folder      The folder.
    * @param propertySet The property set from the request.
    */
-  protected GetFolderResponse(Folder folder, PropertySet propertySet) {
+  public GetFolderResponse(Folder folder, PropertySet propertySet) {
     super();
     this.folder = folder;
     this.propertySet = propertySet;

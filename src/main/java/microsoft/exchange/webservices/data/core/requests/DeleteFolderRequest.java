@@ -36,7 +36,7 @@ import microsoft.exchange.webservices.data.misc.FolderIdWrapperList;
 /**
  * Represents a DeleteFolder request.
  */
-final class DeleteFolderRequest extends DeleteRequest<ServiceResponse> {
+public final class DeleteFolderRequest extends DeleteRequest<ServiceResponse> {
 
   /**
    * The folder ids.
@@ -50,8 +50,7 @@ final class DeleteFolderRequest extends DeleteRequest<ServiceResponse> {
    * @param errorHandlingMode the error handling mode
    * @throws Exception
    */
-  protected DeleteFolderRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public DeleteFolderRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -97,8 +96,7 @@ final class DeleteFolderRequest extends DeleteRequest<ServiceResponse> {
    *
    * @return Xml element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.DeleteFolder;
   }
 
@@ -152,7 +150,7 @@ final class DeleteFolderRequest extends DeleteRequest<ServiceResponse> {
    *
    * @return The folder ids.
    */
-  protected FolderIdWrapperList getFolderIds() {
+  public FolderIdWrapperList getFolderIds() {
     return this.folderIds;
   }
 

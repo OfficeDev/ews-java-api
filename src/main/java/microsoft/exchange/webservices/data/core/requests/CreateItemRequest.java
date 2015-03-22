@@ -35,7 +35,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 /**
  * Represents a CreateItem request.
  */
-final class CreateItemRequest extends
+public final class CreateItemRequest extends
     CreateItemRequestBase<Item, ServiceResponse> {
 
   /**
@@ -45,8 +45,7 @@ final class CreateItemRequest extends
    * @param errorHandlingMode Indicates how errors should be handled.
    * @throws Exception
    */
-  protected CreateItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public CreateItemRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }

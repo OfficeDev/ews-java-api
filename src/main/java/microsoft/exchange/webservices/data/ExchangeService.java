@@ -1368,8 +1368,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @return the t item
    * @throws Exception the exception
    */
-  protected <TItem extends Item> TItem bindToItem(Class<TItem> c,
-      ItemId itemId, PropertySet propertySet) throws Exception {
+  public <TItem extends Item> TItem bindToItem(Class<TItem> c, ItemId itemId, PropertySet propertySet) throws Exception {
     Item result = this.bindToItem(itemId, propertySet);
     if (c.isAssignableFrom(result.getClass())) {
       return (TItem) result;
@@ -2192,8 +2191,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
     }
 
     EwsUtilities.validateParamCollection(eventTypes, "eventTypes");
-    SubscribeToPushNotificationsRequest request = new SubscribeToPushNotificationsRequest(
-        this);
+    SubscribeToPushNotificationsRequest request = new SubscribeToPushNotificationsRequest(this);
 
     if (folderIds != null) {
       request.getFolderIds().addRangeFolderId(folderIds);
@@ -2605,8 +2603,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
     // allowed
     EwsUtilities.validateParam(propertySet, "propertySet");
 
-    SyncFolderHierarchyRequest request = new SyncFolderHierarchyRequest(
-        this);
+    SyncFolderHierarchyRequest request = new SyncFolderHierarchyRequest(this);
 
     request.setPropertySet(propertySet);
     request.setSyncFolderId(syncFolderId);
@@ -2677,8 +2674,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
     EwsUtilities.validateParam(timeWindow, "timeWindow");
     EwsUtilities.validateParam(options, "options");
 
-    GetUserAvailabilityRequest request = new GetUserAvailabilityRequest(
-        this);
+    GetUserAvailabilityRequest request = new GetUserAvailabilityRequest(this);
 
     request.setAttendees(attendees);
     request.setTimeWindow(timeWindow);
@@ -3440,8 +3436,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
     EwsUtilities.validateParam(name, "name");
     EwsUtilities.validateParam(parentFolderId, "parentFolderId");
 
-    GetUserConfigurationRequest request = new GetUserConfigurationRequest(
-        this);
+    GetUserConfigurationRequest request = new GetUserConfigurationRequest(this);
 
     request.setName(name);
     request.setParentFolderId(parentFolderId);
@@ -3481,8 +3476,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   public void updateUserConfiguration(UserConfiguration userConfiguration)
       throws Exception {
     EwsUtilities.validateParam(userConfiguration, "userConfiguration");
-    UpdateUserConfigurationRequest request = new UpdateUserConfigurationRequest(
-        this);
+    UpdateUserConfigurationRequest request = new UpdateUserConfigurationRequest(this);
 
     request.setUserConfiguration(userConfiguration);
 
@@ -3743,8 +3737,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    */
   protected Document executeDiagnosticMethod(String verb, Node parameter)
       throws Exception {
-    ExecuteDiagnosticMethodRequest request = new ExecuteDiagnosticMethodRequest(
-        this);
+    ExecuteDiagnosticMethodRequest request = new ExecuteDiagnosticMethodRequest(this);
     request.setVerb(verb);
     request.setParameter(parameter);
 
@@ -3799,7 +3792,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @throws ServiceLocalException       the service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
-  protected HttpWebRequest prepareHttpWebRequest()
+  public HttpWebRequest prepareHttpWebRequest()
       throws ServiceLocalException, URISyntaxException {
     try {
       this.url = this.adjustServiceUriFromCredentials(this.getUrl());
@@ -3817,9 +3810,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param webException    The web exception
    * @throws Exception
    */
-  @Override
-  protected void processHttpErrorResponse(HttpWebRequest httpWebResponse,
-      Exception webException) throws Exception {
+  @Override public void processHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException) throws Exception {
     this.internalProcessHttpErrorResponse(httpWebResponse, webException,
         TraceFlags.EwsResponseHttpHeaders, TraceFlags.EwsResponse);
   }

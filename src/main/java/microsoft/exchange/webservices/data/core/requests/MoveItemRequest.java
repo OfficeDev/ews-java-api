@@ -41,8 +41,7 @@ public class MoveItemRequest extends MoveCopyItemRequest<MoveCopyItemResponse> {
    * @param errorHandlingMode the error handling mode
    * @throws Exception
    */
-  MoveItemRequest(ExchangeService service,
-      ServiceErrorHandling errorHandlingMode)
+  public MoveItemRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
   }
@@ -65,8 +64,7 @@ public class MoveItemRequest extends MoveCopyItemRequest<MoveCopyItemResponse> {
    *
    * @return XML element name,
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.MoveItem;
   }
 

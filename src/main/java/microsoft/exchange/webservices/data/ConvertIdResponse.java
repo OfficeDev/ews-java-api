@@ -43,7 +43,7 @@ public final class ConvertIdResponse extends ServiceResponse {
   /**
    * Initializes a new instance of the class.
    */
-  protected ConvertIdResponse() {
+  public ConvertIdResponse() {
     super();
   }
 

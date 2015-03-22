@@ -29,8 +29,7 @@ import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 /**
  * Represents response to generic Create request.
  */
-@EditorBrowsable(state = EditorBrowsableState.Never)
-final class CreateResponseObjectResponse extends CreateItemResponseBase {
+@EditorBrowsable(state = EditorBrowsableState.Never) public final class CreateResponseObjectResponse extends CreateItemResponseBase {
 
   /**
    * Gets Item instance.
@@ -57,7 +56,7 @@ final class CreateResponseObjectResponse extends CreateItemResponseBase {
   /**
    * Initializes a new instance of the CreateResponseObjectResponse class.
    */
-  protected CreateResponseObjectResponse() {
+  public CreateResponseObjectResponse() {
     super();
   }
 

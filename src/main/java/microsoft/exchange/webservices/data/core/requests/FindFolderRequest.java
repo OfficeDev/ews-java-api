@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 /**
  * Represents a FindFolder request.
  */
-final class FindFolderRequest extends FindRequest<FindFolderResponse> {
+public final class FindFolderRequest extends FindRequest<FindFolderResponse> {
 
   /**
    * Initializes a new instance of the FindFolderRequest class.
@@ -41,8 +41,7 @@ final class FindFolderRequest extends FindRequest<FindFolderResponse> {
    * @param errorHandlingMode Indicates how errors should be handled.
    * @throws Exception
    */
-  protected FindFolderRequest(ExchangeService exchangeService,
-      ServiceErrorHandling errorHandlingMode)
+  public FindFolderRequest(ExchangeService exchangeService, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(exchangeService, errorHandlingMode);
   }
@@ -65,8 +64,7 @@ final class FindFolderRequest extends FindRequest<FindFolderResponse> {
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.FindFolder;
   }
 

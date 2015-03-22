@@ -43,7 +43,7 @@ import java.util.concurrent.Future;
 /**
  * Defines the SimpleServiceRequestBase class.
  */
-abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> {
+public abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> {
 
   private static final Log log = LogFactory.getLog(SimpleServiceRequestBase.class);
 
@@ -99,7 +99,7 @@ abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> {
    * @param state    An object that contains state information for this request.
    * @return An IAsyncResult that references the asynchronous request.
    */
-  protected AsyncRequestResult beginExecute(AsyncCallback callback, Object state) throws Exception {
+  public AsyncRequestResult beginExecute(AsyncCallback callback, Object state) throws Exception {
     this.validate();
 
     HttpWebRequest request = this.buildEwsHttpWebRequest();

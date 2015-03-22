@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 /**
  * The Class GetDelegateResponse.
  */
-final class GetDelegateResponse extends DelegateManagementResponse {
+public final class GetDelegateResponse extends DelegateManagementResponse {
 
   /**
    * Represents the response to a delegate user retrieval operation.
@@ -43,7 +43,7 @@ final class GetDelegateResponse extends DelegateManagementResponse {
    *
    * @param readDelegateUsers the read delegate users
    */
-  protected GetDelegateResponse(boolean readDelegateUsers) {
+  public GetDelegateResponse(boolean readDelegateUsers) {
     super(readDelegateUsers, null);
   }
 

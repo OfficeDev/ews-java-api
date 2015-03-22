@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.properties.complex.Attachment;
 /**
  * Represents the response to an individual attachment retrieval request.
  */
-final class GetAttachmentResponse extends ServiceResponse {
+public final class GetAttachmentResponse extends ServiceResponse {
 
   /**
    * The attachment.
@@ -41,7 +41,7 @@ final class GetAttachmentResponse extends ServiceResponse {
    *
    * @param attachment the attachment
    */
-  protected GetAttachmentResponse(Attachment attachment) {
+  public GetAttachmentResponse(Attachment attachment) {
     super();
     EwsUtilities.EwsAssert(attachment != null, "GetAttachmentResponse.ctor", "attachment is null");
 

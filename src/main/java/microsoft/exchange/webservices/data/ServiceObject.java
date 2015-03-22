@@ -324,7 +324,7 @@ public abstract class ServiceObject {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeToXmlForUpdate(EwsServiceXmlWriter writer)
+  public void writeToXmlForUpdate(EwsServiceXmlWriter writer)
       throws Exception {
 
     this.getPropertyBag().writeToXmlForUpdate(writer);

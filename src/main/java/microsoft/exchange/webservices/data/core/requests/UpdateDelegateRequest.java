@@ -58,7 +58,7 @@ public class UpdateDelegateRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected UpdateDelegateRequest(ExchangeService service)
+  public UpdateDelegateRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -129,8 +129,7 @@ public class UpdateDelegateRequest extends
    *
    * @return Xml element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.UpdateDelegate;
   }
 

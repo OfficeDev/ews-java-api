@@ -49,7 +49,7 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
    *
    * @throws Exception
    */
-  protected GetPasswordExpirationDateRequest(ExchangeService service) throws Exception {
+  public GetPasswordExpirationDateRequest(ExchangeService service) throws Exception {
     super(service);
   }
 
@@ -61,7 +61,7 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
    * Gets the name of the XML Element.
    * returns XML element name
    */
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     return XmlElementNames.GetPasswordExpirationDateRequest;
   }
 
@@ -97,7 +97,7 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
    *
    * @return Service response.
    */
-  protected GetPasswordExpirationDateResponse execute() throws Exception {
+  public GetPasswordExpirationDateResponse execute() throws Exception {
     GetPasswordExpirationDateResponse serviceResponse =
         (GetPasswordExpirationDateResponse) this.internalExecute();
     serviceResponse.throwIfNecessary();
@@ -113,7 +113,7 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
     return this.mailboxSmtpAddress;
   }
 
-  protected void setMailboxSmtpAddress(String mailboxSmtpAddress) {
+  public void setMailboxSmtpAddress(String mailboxSmtpAddress) {
     this.mailboxSmtpAddress = mailboxSmtpAddress;
   }
 

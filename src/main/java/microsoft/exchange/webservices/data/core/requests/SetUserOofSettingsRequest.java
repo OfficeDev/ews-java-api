@@ -36,7 +36,7 @@ import microsoft.exchange.webservices.data.properties.complex.availability.OofSe
 /**
  * Represents a SetUserOofSettings request.
  */
-final class SetUserOofSettingsRequest extends SimpleServiceRequestBase<ServiceResponse> {
+public final class SetUserOofSettingsRequest extends SimpleServiceRequestBase<ServiceResponse> {
 
   /**
    * The smtp address.
@@ -53,8 +53,7 @@ final class SetUserOofSettingsRequest extends SimpleServiceRequestBase<ServiceRe
    *
    * @return XML element name.
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.SetUserOofSettingsRequest;
   }
 
@@ -126,7 +125,7 @@ final class SetUserOofSettingsRequest extends SimpleServiceRequestBase<ServiceRe
    * @param service the service
    * @throws Exception
    */
-  protected SetUserOofSettingsRequest(ExchangeService service)
+  public SetUserOofSettingsRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -137,7 +136,7 @@ final class SetUserOofSettingsRequest extends SimpleServiceRequestBase<ServiceRe
    * @return Service response
    * @throws Exception the exception
    */
-  protected ServiceResponse execute() throws Exception {
+  public ServiceResponse execute() throws Exception {
     ServiceResponse serviceResponse = (ServiceResponse) this
         .internalExecute();
     serviceResponse.throwIfNecessary();

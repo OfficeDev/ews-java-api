@@ -38,7 +38,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * GetEvents request.
  */
-class GetEventsRequest extends MultiResponseServiceRequest<GetEventsResponse> {
+public class GetEventsRequest extends MultiResponseServiceRequest<GetEventsResponse> {
 
   /**
    * The subscription id.
@@ -56,7 +56,7 @@ class GetEventsRequest extends MultiResponseServiceRequest<GetEventsResponse> {
    * @param service the service
    * @throws Exception
    */
-  protected GetEventsRequest(ExchangeService service)
+  public GetEventsRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }
@@ -89,8 +89,7 @@ class GetEventsRequest extends MultiResponseServiceRequest<GetEventsResponse> {
    *
    * @return XML element name
    */
-  @Override
-  protected String getXmlElementName() {
+  @Override public String getXmlElementName() {
     return XmlElementNames.GetEvents;
   }
 
