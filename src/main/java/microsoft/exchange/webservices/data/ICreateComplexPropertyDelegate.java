@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data;
  *
  * @param <TComplexProperty> Type that extends ComplexProperty
  */
-interface ICreateComplexPropertyDelegate
+public interface ICreateComplexPropertyDelegate
     <TComplexProperty extends ComplexProperty> {
 
   /**

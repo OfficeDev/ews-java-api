@@ -107,8 +107,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    *
    * @return always true
    */
-  @Override
-  protected boolean isNullable() {
+  @Override public boolean isNullable() {
     return this.isNullable;
   }
 
@@ -129,9 +128,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    * @param propertyBag The property bag.
    * @throws Exception the exception
    */
-  @Override
-  protected void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+  @Override public void loadPropertyValueFromXml(EwsServiceXmlReader reader, PropertyBag propertyBag) throws Exception {
     String value = reader.readElementValue(XmlNamespace.Types, this
         .getXmlElement());
 
@@ -151,9 +148,8 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException                          the service xml serialization exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
-  @Override
-  protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+  @Override public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
+      boolean isUpdateOperation)
       throws XMLStreamException, ServiceXmlSerializationException, ServiceLocalException {
     Object value = propertyBag.getObjectFromPropertyDefinition(this);
 

@@ -38,7 +38,7 @@ import java.util.EnumSet;
 /**
  * Represents abstract complex property definition.
  */
-abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
+public abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
 
   /**
    * Initializes a new instance.
@@ -83,8 +83,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
    * @param owner The owner.
    * @return ComplexProperty.
    */
-  protected abstract ComplexProperty createPropertyInstance(
-      ServiceObject owner);
+  public abstract ComplexProperty createPropertyInstance(ServiceObject owner);
 
   /**
    * Internals the load from XML.
@@ -153,9 +152,7 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
    * @param propertyBag The property bag.
    * @throws Exception the exception
    */
-  @Override
-  protected void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+  @Override public void loadPropertyValueFromXml(EwsServiceXmlReader reader, PropertyBag propertyBag) throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types, this
         .getXmlElement());
 
@@ -174,9 +171,8 @@ abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
    * @param isUpdateOperation Indicates whether the context is an update operation.
    * @throws Exception the exception
    */
-  @Override
-  protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+  @Override public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
+      boolean isUpdateOperation)
       throws Exception {
     ComplexProperty complexProperty = (ComplexProperty) propertyBag
         .getObjectFromPropertyDefinition(this);

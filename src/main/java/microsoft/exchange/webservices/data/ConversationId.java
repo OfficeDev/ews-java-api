@@ -77,7 +77,7 @@ public class ConversationId extends ServiceId {
    * @return XML element name.
    */
   @Override
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     return XmlElementNames.ConversationId;
   }
 

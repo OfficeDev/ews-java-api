@@ -33,7 +33,7 @@ import java.util.EnumSet;
 /**
  * Represents TimeSpan property definition.
  */
-class TimeSpanPropertyDefinition extends GenericPropertyDefinition<TimeSpan> {
+public class TimeSpanPropertyDefinition extends GenericPropertyDefinition<TimeSpan> {
 
 
   /**
@@ -44,8 +44,8 @@ class TimeSpanPropertyDefinition extends GenericPropertyDefinition<TimeSpan> {
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected TimeSpanPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+  public TimeSpanPropertyDefinition(String xmlElementName, String uri, EnumSet<PropertyDefinitionFlags> flags,
+      ExchangeVersion version) {
     super(TimeSpan.class, xmlElementName, uri, flags, version);
   }
 

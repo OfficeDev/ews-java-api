@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceValidationException
 /**
  * The Interface ISelfValidate.
  */
-interface ISelfValidate {
+public interface ISelfValidate {
 
   /**
    * Validate.

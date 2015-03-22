@@ -97,7 +97,7 @@ public abstract class ServiceObjectPropertyDefinition extends
    *
    * @return The URI of the property definition.
    */
-  protected String getUri() {
+  public String getUri() {
     return uri;
   }
 }

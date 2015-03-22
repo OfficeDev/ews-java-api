@@ -28,7 +28,7 @@ import java.util.Date;
 /**
  * Represents recurrence range with no end date.
  */
-final class NoEndRecurrenceRange extends RecurrenceRange {
+public final class NoEndRecurrenceRange extends RecurrenceRange {
 
   /**
    * Initializes a new instance.
@@ -61,7 +61,7 @@ final class NoEndRecurrenceRange extends RecurrenceRange {
    * @param recurrence the new up recurrence
    * @throws Exception the exception
    */
-  protected void setupRecurrence(Recurrence recurrence) throws Exception {
+  public void setupRecurrence(Recurrence recurrence) throws Exception {
     super.setupRecurrence(recurrence);
 
     recurrence.neverEnds();

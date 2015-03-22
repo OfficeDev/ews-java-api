@@ -33,7 +33,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents the base class for all time zone transitions.
  */
-class TimeZoneTransition extends ComplexProperty {
+public class TimeZoneTransition extends ComplexProperty {
 
   /**
    * The Period target.
@@ -69,8 +69,7 @@ class TimeZoneTransition extends ComplexProperty {
    * @return A TimeZonePeriodTransition instance.
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
-  protected static TimeZoneTransition create(
-      TimeZoneDefinition timeZoneDefinition, String xmlElementName)
+  public static TimeZoneTransition create(TimeZoneDefinition timeZoneDefinition, String xmlElementName)
       throws ServiceLocalException {
     if (xmlElementName.equals(XmlElementNames.AbsoluteDateTransition)) {
       return new AbsoluteDateTransition(timeZoneDefinition);
@@ -170,7 +169,7 @@ class TimeZoneTransition extends ComplexProperty {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     this.loadFromXml(reader, this.getXmlElementName());
   }
 
@@ -180,7 +179,7 @@ class TimeZoneTransition extends ComplexProperty {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     this.writeToXml(writer, this.getXmlElementName());
   }
 
@@ -212,8 +211,7 @@ class TimeZoneTransition extends ComplexProperty {
    * @param timeZoneDefinition the time zone definition
    * @param targetPeriod       the target period
    */
-  protected TimeZoneTransition(TimeZoneDefinition timeZoneDefinition,
-      TimeZonePeriod targetPeriod) {
+  public TimeZoneTransition(TimeZoneDefinition timeZoneDefinition, TimeZonePeriod targetPeriod) {
     this(timeZoneDefinition);
     this.targetPeriod = targetPeriod;
   }
@@ -232,7 +230,7 @@ class TimeZoneTransition extends ComplexProperty {
    *
    * @return the target group
    */
-  protected TimeZoneTransitionGroup getTargetGroup() {
+  public TimeZoneTransitionGroup getTargetGroup() {
     return this.targetGroup;
   }
 

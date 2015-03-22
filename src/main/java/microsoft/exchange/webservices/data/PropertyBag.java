@@ -39,7 +39,7 @@ import java.util.Map.Entry;
 /**
  * Represents a property bag keyed on PropertyDefinition objects.
  */
-class PropertyBag implements IComplexPropertyChanged,
+public class PropertyBag implements IComplexPropertyChanged,
     IComplexPropertyChangedDelegate {
 
   /**
@@ -122,7 +122,7 @@ class PropertyBag implements IComplexPropertyChanged,
    *
    * @return The owner of this bag.
    */
-  protected ServiceObject getOwner() {
+  public ServiceObject getOwner() {
     return this.owner;
   }
 
@@ -371,8 +371,7 @@ class PropertyBag implements IComplexPropertyChanged,
    * @param propertyValueOutParam If the method succeeds, contains the value of the property.
    * @return True if the value could be retrieved, false otherwise.
    */
-  protected boolean tryGetValue(PropertyDefinition propertyDefinition,
-      OutParam<Object> propertyValueOutParam) {
+  public boolean tryGetValue(PropertyDefinition propertyDefinition, OutParam<Object> propertyValueOutParam) {
     if (this.properties.containsKey(propertyDefinition)) {
       propertyValueOutParam.setParam(this.properties
           .get(propertyDefinition));
@@ -743,8 +742,7 @@ class PropertyBag implements IComplexPropertyChanged,
    *                               property hasn't been assigned or loaded, raised for set if
    *                               property cannot be updated or deleted.
    */
-  protected Object getObjectFromPropertyDefinition(
-      PropertyDefinition propertyDefinition)
+  public Object getObjectFromPropertyDefinition(PropertyDefinition propertyDefinition)
       throws ServiceLocalException {
     ServiceLocalException serviceException = null;
     OutParam<ServiceLocalException> serviceExceptionOut =
@@ -767,8 +765,7 @@ class PropertyBag implements IComplexPropertyChanged,
    * @param object             An object representing the value of the property.
    * @throws Exception the exception
    */
-  protected void setObjectFromPropertyDefinition(
-      PropertyDefinition propertyDefinition, Object object)
+  public void setObjectFromPropertyDefinition(PropertyDefinition propertyDefinition, Object object)
       throws Exception {
     if (propertyDefinition.getVersion().ordinal() > this.getOwner()
         .getService().getRequestedServerVersion().ordinal()) {

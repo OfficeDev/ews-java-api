@@ -76,7 +76,7 @@ public final class AppointmentOccurrenceId extends ItemId {
    * @return XML element name
    */
   @Override
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     return XmlElementNames.OccurrenceItemId;
   }
 
@@ -86,7 +86,7 @@ public final class AppointmentOccurrenceId extends ItemId {
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.RecurringMasterId, this
         .getUniqueId());

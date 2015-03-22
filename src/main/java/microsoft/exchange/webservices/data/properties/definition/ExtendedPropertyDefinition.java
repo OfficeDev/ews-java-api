@@ -109,7 +109,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
   /**
    * Initializes a new instance.
    */
-  protected ExtendedPropertyDefinition() {
+  public ExtendedPropertyDefinition() {
     super();
     this.mapiType = MapiPropertyType.String;
   }
@@ -318,7 +318,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
    * @param reader The reader.
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     String attributeValue;
 
     attributeValue = reader

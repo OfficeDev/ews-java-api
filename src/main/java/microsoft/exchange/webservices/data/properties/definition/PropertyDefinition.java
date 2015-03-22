@@ -117,7 +117,7 @@ public abstract class PropertyDefinition extends
    * @param flag The flag.
    * @return true if the specified flag is set; otherwise, false.
    */
-  protected boolean hasFlag(PropertyDefinitionFlags flag) {
+  public boolean hasFlag(PropertyDefinitionFlags flag) {
     return this.hasFlag(flag, null);
   }
 
@@ -127,8 +127,7 @@ public abstract class PropertyDefinition extends
    * @param flag The flag.
    * @return true if the specified flag is set; otherwise, false.
    */
-  protected boolean hasFlag(PropertyDefinitionFlags flag,
-      ExchangeVersion version) {
+  public boolean hasFlag(PropertyDefinitionFlags flag, ExchangeVersion version) {
     return this.flags.contains(flag);
   }
 
@@ -148,7 +147,7 @@ public abstract class PropertyDefinition extends
    * (currently) solely to help the API register the MeetingTimeZone
    * property definition that is internal.
    */
-  protected List<PropertyDefinition> getAssociatedInternalProperties() {
+  public List<PropertyDefinition> getAssociatedInternalProperties() {
     List<PropertyDefinition> properties = new
         ArrayList<PropertyDefinition>();
     this.registerAssociatedInternalProperties(properties);
@@ -170,7 +169,7 @@ public abstract class PropertyDefinition extends
    *
    * @return always true
    */
-  protected boolean isNullable() {
+  public boolean isNullable() {
     return true;
   }
 
@@ -187,8 +186,7 @@ public abstract class PropertyDefinition extends
    * @throws ServiceVersionException             the service version exception
    * @throws Exception                           the exception
    */
-  protected abstract void loadPropertyValueFromXml(
-      EwsServiceXmlReader reader, PropertyBag propertyBag)
+  public abstract void loadPropertyValueFromXml(EwsServiceXmlReader reader, PropertyBag propertyBag)
       throws ServiceXmlDeserializationException, XMLStreamException,
       InstantiationException, IllegalAccessException, ServiceObjectPropertyException, ServiceVersionException, Exception;
 
@@ -206,8 +204,8 @@ public abstract class PropertyDefinition extends
    * @throws ServiceValidationException          the service validation exception
    * @throws Exception                           the exception
    */
-  protected abstract void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+  public abstract void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
+      boolean isUpdateOperation)
       throws XMLStreamException, ServiceXmlSerializationException, ServiceLocalException, InstantiationException,
       IllegalAccessException, ServiceValidationException, Exception;
 
@@ -216,7 +214,7 @@ public abstract class PropertyDefinition extends
    *
    * @return The name of the XML element.
    */
-  protected String getXmlElement() {
+  public String getXmlElement() {
     return this.xmlElementName;
   }
 
@@ -238,7 +236,7 @@ public abstract class PropertyDefinition extends
    *
    * @param name name of the property
    */
-  protected void setName(String name) {
+  public void setName(String name) {
     this.name = name;
   }
 

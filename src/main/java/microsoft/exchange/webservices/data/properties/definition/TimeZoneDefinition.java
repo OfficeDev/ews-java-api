@@ -73,12 +73,12 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
   /**
    * The name.
    */
-  protected String name;
+  public String name;
 
   /**
    * The id.
    */
-  protected String id;
+  public String id;
 
   /**
    * The periods.
@@ -126,7 +126,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
   /**
    * Initializes a new instance of the TimeZoneDefinition class.
    */
-  protected TimeZoneDefinition() {
+  public TimeZoneDefinition() {
     super();
   }
 
@@ -255,7 +255,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     this.loadFromXml(reader, XmlElementNames.TimeZoneDefinition);
     Collections.sort(this.transitions, new TimeZoneDefinition());
   }
@@ -392,7 +392,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
    *
    * @param id the new id
    */
-  protected void setId(String id) {
+  public void setId(String id) {
     this.id = id;
   }
 
@@ -401,7 +401,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
    *
    * @return A TimeZoneTransitionGroup.
    */
-  protected Map<String, TimeZonePeriod> getPeriods() {
+  public Map<String, TimeZonePeriod> getPeriods() {
     return this.periods;
   }
 
@@ -411,7 +411,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
    *
    * @return the transition groups
    */
-  protected Map<String, TimeZoneTransitionGroup> getTransitionGroups() {
+  public Map<String, TimeZoneTransitionGroup> getTransitionGroups() {
     return this.transitionGroups;
   }
 
@@ -422,7 +422,7 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
    * @param xmlElementName accepts String
    * @throws Exception throws Exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
+  public void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
       throws Exception {
     this.writeToXml(writer, this.getNamespace(), xmlElementName);
   }

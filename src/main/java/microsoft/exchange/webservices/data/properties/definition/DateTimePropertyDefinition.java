@@ -38,7 +38,7 @@ import java.util.EnumSet;
 /**
  * Represents DateTime property definition.
  */
-class DateTimePropertyDefinition extends PropertyDefinition {
+public class DateTimePropertyDefinition extends PropertyDefinition {
 
   /**
    * The is nullable.
@@ -52,8 +52,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    * @param uri            the uri
    * @param version        the version
    */
-  protected DateTimePropertyDefinition(String xmlElementName, String uri,
-      ExchangeVersion version) {
+  public DateTimePropertyDefinition(String xmlElementName, String uri, ExchangeVersion version) {
     super(xmlElementName, uri, version);
   }
 
@@ -65,8 +64,8 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    * @param flags          the flags
    * @param version        the version
    */
-  protected DateTimePropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+  public DateTimePropertyDefinition(String xmlElementName, String uri, EnumSet<PropertyDefinitionFlags> flags,
+      ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
 
@@ -79,9 +78,8 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    * @param version        the version
    * @param isNullable     the is nullable
    */
-  protected DateTimePropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
-      boolean isNullable) {
+  public DateTimePropertyDefinition(String xmlElementName, String uri, EnumSet<PropertyDefinitionFlags> flags,
+      ExchangeVersion version, boolean isNullable) {
     super(xmlElementName, uri, flags, version);
     this.isNullable = isNullable;
   }
@@ -93,7 +91,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    * @param propertyBag the property bag
    * @throws Exception the exception
    */
-  protected void loadPropertyValueFromXml(EwsServiceXmlReader reader, PropertyBag propertyBag)
+  public void loadPropertyValueFromXml(EwsServiceXmlReader reader, PropertyBag propertyBag)
       throws Exception {
     String value = reader.readElementValue(XmlNamespace.Types, getXmlElement());
     propertyBag.setObjectFromPropertyDefinition(this, DateTimeUtils.convertDateTimeStringToDate(value));
@@ -108,8 +106,8 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    * @param isUpdateOperation accepts boolean whether the context is an update operation.
    * @throws Exception throws Exception
    */
-  protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+  public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
+      boolean isUpdateOperation)
       throws Exception {
     Object value = propertyBag.getObjectFromPropertyDefinition(this);
 
@@ -131,7 +129,7 @@ class DateTimePropertyDefinition extends PropertyDefinition {
    *
    * @return true, if is nullable
    */
-  protected boolean isNullable() {
+  public boolean isNullable() {
     return isNullable;
   }
 

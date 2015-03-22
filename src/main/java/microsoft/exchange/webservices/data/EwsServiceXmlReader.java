@@ -38,7 +38,7 @@ import java.util.TimeZone;
 /**
  * XML reader.
  */
-class EwsServiceXmlReader extends EwsXmlReader {
+public class EwsServiceXmlReader extends EwsXmlReader {
 
   /**
    * The service.

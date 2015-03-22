@@ -40,7 +40,7 @@ import java.util.List;
 /**
  * Represents a property definition for properties of type TimeZoneInfo.
  */
-class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
+public class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
 
   /**
    * Initializes a new instance of the StartTimeZonePropertyDefinition
@@ -51,9 +51,8 @@ class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
    * @param flags          the flags
    * @param version        the version
    */
-  protected StartTimeZonePropertyDefinition(String xmlElementName,
-      String uri, EnumSet<PropertyDefinitionFlags> flags,
-      ExchangeVersion version) {
+  public StartTimeZonePropertyDefinition(String xmlElementName, String uri,
+      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
 
@@ -77,8 +76,8 @@ class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
    * @param isUpdateOperation the is update operation
    * @throws Exception the exception
    */
-  protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+  public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
+      boolean isUpdateOperation)
       throws Exception {
     Object value = propertyBag.getObjectFromPropertyDefinition(this);
 
@@ -105,7 +104,7 @@ class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer)
+  public void writeToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     if (writer.getService().getRequestedServerVersion() == ExchangeVersion.Exchange2007_SP1) {
       AppointmentSchema.MeetingTimeZone.writeToXml(writer);
@@ -122,9 +121,7 @@ class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
    * @return <c>true</c> if the specified
    * flag is set; otherwise, <c>false</c>.
    */
-  @Override
-  protected boolean hasFlag(PropertyDefinitionFlags flag,
-      ExchangeVersion version) {
+  @Override public boolean hasFlag(PropertyDefinitionFlags flag, ExchangeVersion version) {
     if (version != null && (version == ExchangeVersion.Exchange2007_SP1)) {
       return AppointmentSchema.MeetingTimeZone.hasFlag(flag, version);
     } else {

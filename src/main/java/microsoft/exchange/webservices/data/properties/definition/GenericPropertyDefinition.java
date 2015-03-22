@@ -35,7 +35,7 @@ import java.util.EnumSet;
  *
  * @param <TPropertyValue> Property type.
  */
-class GenericPropertyDefinition<TPropertyValue> extends
+public class GenericPropertyDefinition<TPropertyValue> extends
     TypedPropertyDefinition {
 
   private Class<TPropertyValue> instance;
@@ -48,8 +48,7 @@ class GenericPropertyDefinition<TPropertyValue> extends
    * @param uri            The URI.
    * @param version        The version.
    */
-  protected GenericPropertyDefinition(Class<TPropertyValue> cls,
-      String xmlElementName, String uri,
+  public GenericPropertyDefinition(Class<TPropertyValue> cls, String xmlElementName, String uri,
       ExchangeVersion version) {
     super(xmlElementName, uri, version);
     this.instance = cls;
@@ -64,8 +63,7 @@ class GenericPropertyDefinition<TPropertyValue> extends
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected GenericPropertyDefinition(Class<TPropertyValue> cls,
-      String xmlElementName, String uri,
+  public GenericPropertyDefinition(Class<TPropertyValue> cls, String xmlElementName, String uri,
       EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
     this.instance = cls;

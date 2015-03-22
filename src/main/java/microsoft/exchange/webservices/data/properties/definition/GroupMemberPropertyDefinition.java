@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationExc
 /**
  * Represents the definition of the GroupMember property.
  */
-final class GroupMemberPropertyDefinition extends
+public final class GroupMemberPropertyDefinition extends
     ServiceObjectPropertyDefinition {
 
   // / FieldUri of IndexedFieldURI for a group member.
@@ -61,7 +61,7 @@ final class GroupMemberPropertyDefinition extends
    * Initializes a new instance of the GroupMemberPropertyDefinition class
    * without key.
    */
-  protected GroupMemberPropertyDefinition() {
+  public GroupMemberPropertyDefinition() {
     super(FIELDURI);
   }
 

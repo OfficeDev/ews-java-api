@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * Represents a group of time zone period transitions.
  */
-class TimeZoneTransitionGroup extends ComplexProperty {
+public class TimeZoneTransitionGroup extends ComplexProperty {
 
   /**
    * The time zone definition.
@@ -79,7 +79,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     this.loadFromXml(reader, XmlElementNames.TransitionsGroup);
   }
 
@@ -89,7 +89,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     this.writeToXml(writer, XmlElementNames.TransitionsGroup);
   }
 
@@ -379,7 +379,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
    *
    * @param timeZoneDefinition the time zone definition
    */
-  protected TimeZoneTransitionGroup(TimeZoneDefinition timeZoneDefinition) {
+  public TimeZoneTransitionGroup(TimeZoneDefinition timeZoneDefinition) {
     super();
     this.timeZoneDefinition = timeZoneDefinition;
   }
@@ -390,8 +390,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
    * @param timeZoneDefinition the time zone definition
    * @param id                 the id
    */
-  protected TimeZoneTransitionGroup(TimeZoneDefinition timeZoneDefinition,
-      String id) {
+  public TimeZoneTransitionGroup(TimeZoneDefinition timeZoneDefinition, String id) {
     this(timeZoneDefinition);
     this.id = id;
   }
@@ -401,7 +400,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
    *
    * @return the id
    */
-  protected String getId() {
+  public String getId() {
     return this.id;
   }
 
@@ -419,7 +418,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
    *
    * @return the transitions
    */
-  protected List<TimeZoneTransition> getTransitions() {
+  public List<TimeZoneTransition> getTransitions() {
     return this.transitions;
   }
 }

@@ -215,7 +215,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param xmlElementName Name of the XML element.
    * @throws Exception
    */
-  protected void updateFromXml(EwsServiceXmlReader reader, String xmlElementName) throws Exception {
+  public void updateFromXml(EwsServiceXmlReader reader, String xmlElementName) throws Exception {
     this.updateFromXml(reader, this.getNamespace(), xmlElementName);
   }
 
@@ -303,8 +303,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param xmlElementName Name of the XML element.
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      String xmlElementName)
+  public void loadFromXml(EwsServiceXmlReader reader, String xmlElementName)
       throws Exception {
     this.loadFromXml(reader, this.getNamespace(), xmlElementName);
   }
@@ -332,7 +331,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    * @param xmlElementName Name of the XML element.
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
+  public void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
       throws Exception {
     this.writeToXml(writer, this.getNamespace(), xmlElementName);
   }

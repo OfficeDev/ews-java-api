@@ -121,9 +121,7 @@ public abstract class ComplexPropertyCollection
    * @param reader           The reader.
    * @param localElementName Name of the local element.
    */
-  @Override
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      String localElementName) throws Exception {
+  @Override public void loadFromXml(EwsServiceXmlReader reader, String localElementName) throws Exception {
     this.loadFromXml(
         reader,
         XmlNamespace.Types,

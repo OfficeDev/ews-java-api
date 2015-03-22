@@ -90,7 +90,7 @@ public final class FolderId extends ServiceId {
    *
    * @return XML element name
    */
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     if (this.getFolderName() != null) {
       return XmlElementNames.DistinguishedFolderId;
     } else {
@@ -104,7 +104,7 @@ public final class FolderId extends ServiceId {
    * @param writer the writer
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     if (this.getFolderName() != null) {
       writer.writeAttributeValue(XmlAttributeNames.Id, this

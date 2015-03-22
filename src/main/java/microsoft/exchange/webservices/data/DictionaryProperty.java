@@ -239,8 +239,7 @@ public abstract class DictionaryProperty
    * @param localElementName the local element name
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      String localElementName) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader, String localElementName) throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
         localElementName);
 

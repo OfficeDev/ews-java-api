@@ -31,7 +31,7 @@ import java.util.EnumSet;
 /**
  * Represents String property definition.
  */
-class StringPropertyDefinition extends TypedPropertyDefinition {
+public class StringPropertyDefinition extends TypedPropertyDefinition {
 
   /**
    * Initializes a new instance of the "StringPropertyDefinition" class.
@@ -41,8 +41,8 @@ class StringPropertyDefinition extends TypedPropertyDefinition {
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected StringPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+  public StringPropertyDefinition(String xmlElementName, String uri, EnumSet<PropertyDefinitionFlags> flags,
+      ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
 
@@ -63,8 +63,7 @@ class StringPropertyDefinition extends TypedPropertyDefinition {
    *
    * @return True
    */
-  @Override
-  protected boolean isNullable() {
+  @Override public boolean isNullable() {
     return true;
   }
 

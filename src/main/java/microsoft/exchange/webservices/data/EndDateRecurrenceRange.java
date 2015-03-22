@@ -34,7 +34,7 @@ import java.util.Date;
 /**
  * Represents recurrent range with an end date.
  */
-final class EndDateRecurrenceRange extends RecurrenceRange {
+public final class EndDateRecurrenceRange extends RecurrenceRange {
 
   /**
    * The end date.
@@ -74,7 +74,7 @@ final class EndDateRecurrenceRange extends RecurrenceRange {
    * @param recurrence the new up recurrence
    * @throws Exception the exception
    */
-  protected void setupRecurrence(Recurrence recurrence) throws Exception {
+  public void setupRecurrence(Recurrence recurrence) throws Exception {
     super.setupRecurrence(recurrence);
     recurrence.setEndDate(this.endDate);
   }

@@ -36,7 +36,7 @@ import java.util.Date;
  * Represents a time zone period transition that occurs on a fixed (absolute)
  * date.
  */
-class AbsoluteDateTransition extends TimeZoneTransition {
+public class AbsoluteDateTransition extends TimeZoneTransition {
 
   /**
    * The date time.
@@ -120,7 +120,7 @@ class AbsoluteDateTransition extends TimeZoneTransition {
    *
    * @return the date time
    */
-  protected Date getDateTime() {
+  public Date getDateTime() {
     return dateTime;
   }
 

@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.properties.definition.TimeZoneDefinit
 /**
  * Represents a time zone in which a meeting is defined.
  */
-final class MeetingTimeZone extends ComplexProperty {
+public final class MeetingTimeZone extends ComplexProperty {
 
   /**
    * The name.
@@ -57,7 +57,7 @@ final class MeetingTimeZone extends ComplexProperty {
    *
    * @param timeZone The time zone used to initialize this instance.
    */
-  protected MeetingTimeZone(TimeZoneDefinition timeZone) {
+  public MeetingTimeZone(TimeZoneDefinition timeZone) {
     // Unfortunately, MeetingTimeZone does not support all the time
     // transition types
     // supported by TimeZoneInfo. That leaves us unable to accurately
@@ -166,7 +166,7 @@ final class MeetingTimeZone extends ComplexProperty {
    *
    * @return the time zone
    */
-  protected TimeZoneDefinition toTimeZoneInfo() {
+  public TimeZoneDefinition toTimeZoneInfo() {
     TimeZoneDefinition result = null;
 
     try {

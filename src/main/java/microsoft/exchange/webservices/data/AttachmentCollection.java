@@ -55,7 +55,7 @@ public final class AttachmentCollection extends
   /**
    * Initializes a new instance of AttachmentCollection.
    */
-  protected AttachmentCollection() {
+  public AttachmentCollection() {
     super();
   }
 

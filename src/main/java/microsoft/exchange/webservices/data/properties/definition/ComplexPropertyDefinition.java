@@ -38,7 +38,7 @@ import java.util.EnumSet;
  *
  * @param <TComplexProperty> The type of the complex property.
  */
-class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
+public class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
     extends ComplexPropertyDefinitionBase {
 
   private Class<TComplexProperty> instance;
@@ -55,7 +55,7 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
    * @param version                  The version.
    * @param propertyCreationDelegate Delegate used to create instances of ComplexProperty.
    */
-  protected ComplexPropertyDefinition(
+  public ComplexPropertyDefinition(
       Class<TComplexProperty> cls,
       String xmlElementName,
       EnumSet<PropertyDefinitionFlags> flags,
@@ -78,7 +78,7 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
    * @param version                  The version.
    * @param propertyCreationDelegate Delegate used to create instances of ComplexProperty.
    */
-  protected ComplexPropertyDefinition(
+  public ComplexPropertyDefinition(
       Class<TComplexProperty> cls,
       String xmlElementName,
       String uri,
@@ -90,12 +90,8 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
     this.propertyCreationDelegate = propertyCreationDelegate;
   }
 
-  protected ComplexPropertyDefinition(
-      String xmlElementName,
-      String uri,
-      ExchangeVersion version,
-      ICreateComplexPropertyDelegate<TComplexProperty>
-          propertyCreationDelegate) {
+  public ComplexPropertyDefinition(String xmlElementName, String uri, ExchangeVersion version,
+      ICreateComplexPropertyDelegate<TComplexProperty> propertyCreationDelegate) {
     super(xmlElementName, uri, version);
     this.propertyCreationDelegate = propertyCreationDelegate;
   }
@@ -109,14 +105,9 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
    * @param version                  the version
    * @param propertyCreationDelegate the property creation delegate
    */
-  protected ComplexPropertyDefinition(
-      Class<TComplexProperty> cls,
-      String xmlElementName,
-      String uri,
-      EnumSet<PropertyDefinitionFlags> flags,
-      ExchangeVersion version,
-      ICreateComplexPropertyDelegate<TComplexProperty>
-          propertyCreationDelegate) {
+  public ComplexPropertyDefinition(Class<TComplexProperty> cls, String xmlElementName, String uri,
+      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
+      ICreateComplexPropertyDelegate<TComplexProperty> propertyCreationDelegate) {
     super(xmlElementName, uri, flags, version);
     this.instance = cls;
     this.propertyCreationDelegate = propertyCreationDelegate;
@@ -149,8 +140,7 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
    * @param owner The owner.
    * @return ComplexProperty instance.
    */
-  @Override
-  protected ComplexProperty createPropertyInstance(ServiceObject owner) {
+  @Override public ComplexProperty createPropertyInstance(ServiceObject owner) {
     TComplexProperty complexProperty = this.propertyCreationDelegate
         .createComplexProperty();
     if (complexProperty instanceof IOwnedProperty) {

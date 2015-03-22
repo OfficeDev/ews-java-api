@@ -46,7 +46,7 @@ public final class IndexedPropertyDefinition extends
    * @param uri   The FieldURI attribute of the IndexedFieldURI element.
    * @param index The Index attribute of the IndexedFieldURI element.
    */
-  protected IndexedPropertyDefinition(String uri, String index) {
+  public IndexedPropertyDefinition(String uri, String index) {
     super(uri);
     this.index = index;
   }

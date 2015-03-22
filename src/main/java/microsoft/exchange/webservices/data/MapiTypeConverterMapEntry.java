@@ -40,7 +40,7 @@ import java.util.UUID;
 /**
  * Represents an entry in the MapiTypeConverter map.
  */
-class MapiTypeConverterMapEntry {
+public class MapiTypeConverterMapEntry {
 
   /**
    * Map CLR types used for MAPI properties to matching default values.
@@ -101,7 +101,7 @@ class MapiTypeConverterMapEntry {
    *             is done by calling Convert.ChangeType Instances may override
    *             this behavior.
    */
-  protected MapiTypeConverterMapEntry(Class<?> type) {
+  public MapiTypeConverterMapEntry(Class<?> type) {
     EwsUtilities.EwsAssert(defaultValueMap.getMember().containsKey(type), "MapiTypeConverterMapEntry ctor",
                            "No default value entry for type " + type.getName());
 
@@ -124,7 +124,7 @@ class MapiTypeConverterMapEntry {
    * @return New value.
    * @throws Exception the exception
    */
-  protected Object changeType(Object value) throws Exception {
+  public Object changeType(Object value) throws Exception {
     if (this.getIsArray()) {
       this.validateValueAsArray(value);
       return value;
@@ -166,7 +166,7 @@ class MapiTypeConverterMapEntry {
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException                  the service xml deserialization exception
    * @throws microsoft.exchange.webservices.data.exceptions.FormatException the format exception
    */
-  protected Object convertToValue(String stringValue)
+  public Object convertToValue(String stringValue)
       throws ServiceXmlDeserializationException, FormatException {
     try {
       return this.getParse().func(stringValue);
@@ -189,7 +189,7 @@ class MapiTypeConverterMapEntry {
    * @throws microsoft.exchange.webservices.data.exceptions.FormatException
    * @throws ServiceXmlDeserializationException
    */
-  protected Object ConvertToValueOrDefault(String stringValue)
+  public Object ConvertToValueOrDefault(String stringValue)
       throws ServiceXmlDeserializationException, FormatException {
     return (stringValue == null || stringValue.isEmpty()) ?
         this.getDefaultValue() :
@@ -244,7 +244,7 @@ class MapiTypeConverterMapEntry {
    * @return the type
    */
 
-  protected Class<?> getType() {
+  public Class<?> getType() {
     return this.type;
   }
 
@@ -253,7 +253,7 @@ class MapiTypeConverterMapEntry {
    *
    * @param cls the new type
    */
-  protected void setType(Class<?> cls) {
+  public void setType(Class<?> cls) {
     type = cls;
   }
 
@@ -262,7 +262,7 @@ class MapiTypeConverterMapEntry {
    *
    * @return the checks if is array
    */
-  protected boolean getIsArray() {
+  public boolean getIsArray() {
     return isArray;
 
   }

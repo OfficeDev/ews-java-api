@@ -75,9 +75,7 @@ public final class ExtendedPropertyCollection extends
    * @param localElementName Name of the local element.
    * @throws Exception the exception
    */
-  @Override
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      String localElementName) throws Exception {
+  @Override public void loadFromXml(EwsServiceXmlReader reader, String localElementName) throws Exception {
     ExtendedProperty extendedProperty = new ExtendedProperty();
     extendedProperty.loadFromXml(reader, reader.getLocalName());
     this.internalAdd(extendedProperty);
@@ -90,8 +88,7 @@ public final class ExtendedPropertyCollection extends
    * @param xmlElementName Name of the XML element.
    * @throws Exception the exception
    */
-  @Override
-  protected void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
+  @Override public void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
       throws Exception {
     for (ExtendedProperty extendedProperty : this) {
       extendedProperty.writeToXml(writer,

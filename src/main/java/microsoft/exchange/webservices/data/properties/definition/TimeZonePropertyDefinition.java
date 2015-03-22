@@ -38,7 +38,7 @@ import java.util.TimeZone;
 /**
  * Represents a property definition for properties of type TimeZoneInfo.
  */
-class TimeZonePropertyDefinition extends PropertyDefinition {
+public class TimeZonePropertyDefinition extends PropertyDefinition {
 
   /**
    * Initializes a new instance of the TimeZonePropertyDefinition class.
@@ -48,8 +48,8 @@ class TimeZonePropertyDefinition extends PropertyDefinition {
    * @param flags          the flags
    * @param version        the version
    */
-  protected TimeZonePropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+  public TimeZonePropertyDefinition(String xmlElementName, String uri, EnumSet<PropertyDefinitionFlags> flags,
+      ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
 
@@ -60,8 +60,7 @@ class TimeZonePropertyDefinition extends PropertyDefinition {
    * @param propertyBag the property bag
    * @throws Exception the exception
    */
-  protected void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+  public void loadPropertyValueFromXml(EwsServiceXmlReader reader, PropertyBag propertyBag) throws Exception {
     TimeZoneDefinition timeZoneDefinition = new TimeZoneDefinition();
     timeZoneDefinition.loadFromXml(reader, this.getXmlElement());
     propertyBag.setObjectFromPropertyDefinition(this, timeZoneDefinition);
@@ -78,8 +77,8 @@ class TimeZonePropertyDefinition extends PropertyDefinition {
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException                          the service xml serialization exception
    * @throws Exception                                                 the exception
    */
-  protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+  public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
+      boolean isUpdateOperation)
       throws ServiceLocalException, XMLStreamException, ServiceXmlSerializationException, Exception {
     TimeZoneDefinition timeZoneDefinition = (TimeZoneDefinition) propertyBag
         .getObjectFromPropertyDefinition(this);

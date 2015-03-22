@@ -33,7 +33,7 @@ import java.util.EnumSet;
 /**
  * Represents a task delegation property definition.
  */
-final class TaskDelegationStatePropertyDefinition extends
+public final class TaskDelegationStatePropertyDefinition extends
     GenericPropertyDefinition<TaskDelegationState> {
   /**
    * The No match.
@@ -64,9 +64,8 @@ final class TaskDelegationStatePropertyDefinition extends
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected TaskDelegationStatePropertyDefinition(String xmlElementName,
-      String uri, EnumSet<PropertyDefinitionFlags> flags,
-      ExchangeVersion version) {
+  public TaskDelegationStatePropertyDefinition(String xmlElementName, String uri,
+      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
     super(TaskDelegationState.class, xmlElementName, uri, flags, version);
   }
 

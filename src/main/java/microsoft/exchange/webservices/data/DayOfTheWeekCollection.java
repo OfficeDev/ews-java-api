@@ -85,8 +85,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
    * @param xmlElementName Name of the XML element.
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      String xmlElementName)
+  public void loadFromXml(EwsServiceXmlReader reader, String xmlElementName)
       throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
         xmlElementName);
@@ -101,8 +100,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
-  @Override
-  protected void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
+  @Override public void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
       throws XMLStreamException, ServiceXmlSerializationException {
     String daysOfWeekAsString = this.toString(" ");
 

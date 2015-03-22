@@ -230,14 +230,14 @@ public abstract class ServiceObjectSchema implements
    * @param uri The URI.
    * @return Property definition.
    */
-  protected static PropertyDefinitionBase findPropertyDefinition(String uri) {
+  public static PropertyDefinitionBase findPropertyDefinition(String uri) {
     return ServiceObjectSchema.allSchemaProperties.getMember().get(uri);
   }
 
   /**
    * Initialize schema property names.
    */
-  protected static void initializeSchemaPropertyNames() {
+  public static void initializeSchemaPropertyNames() {
     synchronized (lockObject) {
       for (Class<?> type : ServiceObjectSchema.allSchemaTypes.getMember()) {
         Field[] fields = type.getDeclaredFields();

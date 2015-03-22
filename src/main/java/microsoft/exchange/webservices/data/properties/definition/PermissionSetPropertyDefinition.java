@@ -36,7 +36,7 @@ import java.util.EnumSet;
 /**
  * Represents permission set property definition.
  */
-class PermissionSetPropertyDefinition extends ComplexPropertyDefinitionBase {
+public class PermissionSetPropertyDefinition extends ComplexPropertyDefinitionBase {
 
   /**
    * Initializes a new instance of the PermissionSetPropertyDefinition class.
@@ -46,7 +46,7 @@ class PermissionSetPropertyDefinition extends ComplexPropertyDefinitionBase {
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected PermissionSetPropertyDefinition(String xmlElementName, String uri,
+  public PermissionSetPropertyDefinition(String xmlElementName, String uri,
       EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
@@ -57,8 +57,7 @@ class PermissionSetPropertyDefinition extends ComplexPropertyDefinitionBase {
    * @param owner The owner.
    * @return ComplexProperty.
    */
-  @Override
-  protected ComplexProperty createPropertyInstance(ServiceObject owner) {
+  @Override public ComplexProperty createPropertyInstance(ServiceObject owner) {
     Folder folder = (Folder) owner;
 
     EwsUtilities.EwsAssert(folder != null, "PermissionCollectionPropertyDefinition.CreatePropertyInstance",

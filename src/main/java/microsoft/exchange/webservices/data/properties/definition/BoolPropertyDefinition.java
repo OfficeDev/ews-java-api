@@ -32,7 +32,7 @@ import java.util.EnumSet;
 /**
  * Represents Boolean property definition.
  */
-final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
+public final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
 
   /**
    * Initializes a new instance.
@@ -41,7 +41,7 @@ final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
    * @param uri            The URI.
    * @param version        The version.
    */
-  protected BoolPropertyDefinition(String xmlElementName, String uri,
+  public BoolPropertyDefinition(String xmlElementName, String uri,
       ExchangeVersion version) {
     super(Boolean.class, xmlElementName, uri, version);
   }
@@ -54,8 +54,8 @@ final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected BoolPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+  public BoolPropertyDefinition(String xmlElementName, String uri, EnumSet<PropertyDefinitionFlags> flags,
+      ExchangeVersion version) {
     super(Boolean.class, xmlElementName, uri, flags, version);
   }
 
@@ -69,7 +69,7 @@ final class BoolPropertyDefinition extends GenericPropertyDefinition<Boolean> {
    * @param isNullable     Indicates that this property definition is for a nullable
    *                       property.
    */
-  protected BoolPropertyDefinition(String xmlElementName, String uri,
+  public BoolPropertyDefinition(String xmlElementName, String uri,
       EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
       boolean isNullable) {
     super(Boolean.class, xmlElementName, uri, flags, version, isNullable);

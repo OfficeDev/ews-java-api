@@ -31,7 +31,7 @@ import java.util.EnumSet;
 /**
  * Represents Integer property defintion.
  */
-class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
+public class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
 
   /**
    * Initializes a new instance of the "IntPropertyDefinition" class.
@@ -40,8 +40,7 @@ class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
    * @param uri            The URI.
    * @param version        The version.
    */
-  protected IntPropertyDefinition(String xmlElementName, String uri,
-      ExchangeVersion version) {
+  public IntPropertyDefinition(String xmlElementName, String uri, ExchangeVersion version) {
     super(Integer.class, xmlElementName, uri, version);
   }
 
@@ -53,8 +52,8 @@ class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected IntPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
+  public IntPropertyDefinition(String xmlElementName, String uri, EnumSet<PropertyDefinitionFlags> flags,
+      ExchangeVersion version) {
     super(Integer.class, xmlElementName, uri, flags, version);
   }
 
@@ -68,9 +67,8 @@ class IntPropertyDefinition extends GenericPropertyDefinition<Integer> {
    * @param isNullable     Indicates that this property definition is for a nullable
    *                       property.
    */
-  protected IntPropertyDefinition(String xmlElementName, String uri,
-      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
-      boolean isNullable) {
+  public IntPropertyDefinition(String xmlElementName, String uri, EnumSet<PropertyDefinitionFlags> flags,
+      ExchangeVersion version, boolean isNullable) {
     super(Integer.class, xmlElementName, uri, flags, version, isNullable);
   }
 

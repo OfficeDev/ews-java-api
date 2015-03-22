@@ -52,7 +52,7 @@ public final class FolderPermissionCollection extends
    *
    * @param owner the owner
    */
-  protected FolderPermissionCollection(Folder owner) {
+  public FolderPermissionCollection(Folder owner) {
     super();
     this.isCalendarFolder = owner instanceof CalendarFolder;
   }
@@ -96,9 +96,7 @@ public final class FolderPermissionCollection extends
    * @param localElementName the local element name
    * @throws Exception the exception
    */
-  @Override
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      String localElementName) throws Exception {
+  @Override public void loadFromXml(EwsServiceXmlReader reader, String localElementName) throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
         localElementName);
 

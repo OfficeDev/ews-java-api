@@ -61,9 +61,7 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
    * @param localElementName Name of the local element.
    * @throws Exception the exception
    */
-  @Override
-  protected void loadFromXml(EwsServiceXmlReader reader,
-      String localElementName) throws Exception {
+  @Override public void loadFromXml(EwsServiceXmlReader reader, String localElementName) throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
         localElementName);
     if (!reader.isEmptyElement()) {

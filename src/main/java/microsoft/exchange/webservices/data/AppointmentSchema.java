@@ -714,7 +714,7 @@ public class AppointmentSchema extends ItemSchema {
   /**
    * The Constant MeetingTimeZone.
    */
-  protected static final PropertyDefinition MeetingTimeZone =
+  public static final PropertyDefinition MeetingTimeZone =
       new MeetingTimeZonePropertyDefinition(
           XmlElementNames.MeetingTimeZone, FieldUris.MeetingTimeZone, EnumSet
           .of(PropertyDefinitionFlags.CanSet,

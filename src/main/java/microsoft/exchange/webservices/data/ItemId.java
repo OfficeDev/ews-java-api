@@ -31,7 +31,7 @@ public class ItemId extends ServiceId {
   /**
    * Initializes a new instance.
    */
-  protected ItemId() {
+  public ItemId() {
     super();
   }
 
@@ -62,7 +62,7 @@ public class ItemId extends ServiceId {
    * @return XML element name.
    */
   @Override
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     return XmlElementNames.ItemId;
   }
 }

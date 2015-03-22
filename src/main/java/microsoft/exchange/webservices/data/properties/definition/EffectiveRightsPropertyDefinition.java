@@ -37,7 +37,7 @@ import java.util.EnumSet;
 /**
  * Represents effective rights property definition.
  */
-final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
+public final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
 
   /**
    * Initializes a new instance of the EffectiveRightsPropertyDefinition.
@@ -47,9 +47,8 @@ final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
    * @param flags          the flags
    * @param version        the version
    */
-  protected EffectiveRightsPropertyDefinition(String xmlElementName,
-      String uri, EnumSet<PropertyDefinitionFlags> flags,
-      ExchangeVersion version) {
+  public EffectiveRightsPropertyDefinition(String xmlElementName, String uri,
+      EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
 
   }
@@ -61,8 +60,7 @@ final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
    * @param propertyBag the property bag
    * @throws Exception the exception
    */
-  protected void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+  public void loadPropertyValueFromXml(EwsServiceXmlReader reader, PropertyBag propertyBag) throws Exception {
     EnumSet<EffectiveRights> value = EnumSet.noneOf(EffectiveRights.class);
     value.add(EffectiveRights.None);
 
@@ -130,8 +128,8 @@ final class EffectiveRightsPropertyDefinition extends PropertyDefinition {
    * @param propertyBag       the property bag
    * @param isUpdateOperation the is update operation
    */
-  protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation) {
+  public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
+      boolean isUpdateOperation) {
     // EffectiveRights is a read-only property, no need to implement this.
   }
 

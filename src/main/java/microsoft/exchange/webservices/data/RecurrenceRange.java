@@ -37,7 +37,7 @@ import java.util.Date;
 /**
  * Represents recurrence range with start and end dates.
  */
-abstract class RecurrenceRange extends ComplexProperty {
+public abstract class RecurrenceRange extends ComplexProperty {
 
   /**
    * The start date.
@@ -84,7 +84,7 @@ abstract class RecurrenceRange extends ComplexProperty {
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
    * @throws Exception                  the exception
    */
-  protected void setupRecurrence(Recurrence recurrence)
+  public void setupRecurrence(Recurrence recurrence)
       throws InstantiationException, IllegalAccessException, ServiceValidationException, Exception {
     recurrence.setStartDate(this.getStartDate());
   }

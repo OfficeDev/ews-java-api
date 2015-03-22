@@ -46,8 +46,7 @@ public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
    * @param uri            the uri
    * @param version        the version
    */
-  protected ResponseObjectsPropertyDefinition(String xmlElementName,
-      String uri, ExchangeVersion version) {
+  public ResponseObjectsPropertyDefinition(String xmlElementName, String uri, ExchangeVersion version) {
     super(xmlElementName, uri, version);
 
   }
@@ -59,8 +58,7 @@ public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
    * @param propertyBag the property bag
    * @throws Exception the exception
    */
-  protected final void loadPropertyValueFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
+  public final void loadPropertyValueFromXml(EwsServiceXmlReader reader, PropertyBag propertyBag) throws Exception {
     EnumSet<ResponseActions> value = EnumSet.noneOf(ResponseActions.class);
     value.add(ResponseActions.None);
 
@@ -132,8 +130,8 @@ public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
    * @param propertyBag       the property bag
    * @param isUpdateOperation the is update operation
    */
-  protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation) {
+  public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
+      boolean isUpdateOperation) {
     // ResponseObjects is a read-only property, no need to implement this.
   }
 
@@ -141,8 +139,7 @@ public class ResponseObjectsPropertyDefinition extends PropertyDefinition {
    * Gets a value indicating whether this property
    * definition is for a nullable type (ref, int?, bool?...).
    */
-  @Override
-  protected boolean isNullable() {
+  @Override public boolean isNullable() {
     return false;
   }
 

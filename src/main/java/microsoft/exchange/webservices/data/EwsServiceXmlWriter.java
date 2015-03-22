@@ -307,8 +307,7 @@ public class EwsServiceXmlWriter implements IDisposable {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
-  protected void writeElementValue(XmlNamespace xmlNamespace,
-      String localName, String displayName, Object value)
+  public void writeElementValue(XmlNamespace xmlNamespace, String localName, String displayName, Object value)
       throws XMLStreamException, ServiceXmlSerializationException {
     String stringValue = null;
     OutParam<String> strOut = new OutParam<String>();

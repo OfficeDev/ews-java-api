@@ -32,7 +32,7 @@ import java.util.Date;
 /**
  * The Class NumberedRecurrenceRange.
  */
-final class NumberedRecurrenceRange extends RecurrenceRange {
+public final class NumberedRecurrenceRange extends RecurrenceRange {
 
   /**
    * The number of occurrences.
@@ -73,7 +73,7 @@ final class NumberedRecurrenceRange extends RecurrenceRange {
    * @param recurrence the new up recurrence
    * @throws Exception the exception
    */
-  protected void setupRecurrence(Recurrence recurrence) throws Exception {
+  public void setupRecurrence(Recurrence recurrence) throws Exception {
     super.setupRecurrence(recurrence);
     recurrence.setNumberOfOccurrences(this.numberOfOccurrences);
   }

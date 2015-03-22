@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationExc
 /**
  * Represents a time zone period as defined in the EWS schema.
  */
-class TimeZonePeriod extends ComplexProperty {
+public class TimeZonePeriod extends ComplexProperty {
 
   /**
    * The Constant StandardPeriodId.
@@ -100,7 +100,7 @@ class TimeZonePeriod extends ComplexProperty {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     this.loadFromXml(reader, XmlElementNames.Period);
   }
 
@@ -110,14 +110,14 @@ class TimeZonePeriod extends ComplexProperty {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     this.writeToXml(writer, XmlElementNames.Period);
   }
 
   /**
    * Initializes a new instance of the TimeZonePeriod class.
    */
-  protected TimeZonePeriod() {
+  public TimeZonePeriod() {
     super();
   }
 
@@ -172,7 +172,7 @@ class TimeZonePeriod extends ComplexProperty {
    *
    * @return the id
    */
-  protected String getId() {
+  public String getId() {
     return id;
   }
 

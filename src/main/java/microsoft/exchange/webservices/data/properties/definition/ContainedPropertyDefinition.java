@@ -39,7 +39,7 @@ import java.util.EnumSet;
  *
  * @param <TComplexProperty> The type of the complex property.
  */
-class ContainedPropertyDefinition<TComplexProperty extends ComplexProperty>
+public class ContainedPropertyDefinition<TComplexProperty extends ComplexProperty>
     extends ComplexPropertyDefinition<TComplexProperty> {
 
   /**
@@ -57,15 +57,9 @@ class ContainedPropertyDefinition<TComplexProperty extends ComplexProperty>
    * @param version                  The version.
    * @param propertyCreationDelegate Delegate used to create instances of ComplexProperty.
    */
-  protected ContainedPropertyDefinition(
-      Class<TComplexProperty> cls,
-      String xmlElementName,
-      String uri,
-      String containedXmlElementName,
-      EnumSet<PropertyDefinitionFlags> flags,
-      ExchangeVersion version,
-      ICreateComplexPropertyDelegate<TComplexProperty>
-          propertyCreationDelegate) {
+  public ContainedPropertyDefinition(Class<TComplexProperty> cls, String xmlElementName, String uri,
+      String containedXmlElementName, EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version,
+      ICreateComplexPropertyDelegate<TComplexProperty> propertyCreationDelegate) {
     super(cls, xmlElementName, uri, flags, version,
         propertyCreationDelegate);
     this.containedXmlElementName = containedXmlElementName;
@@ -97,9 +91,8 @@ class ContainedPropertyDefinition<TComplexProperty extends ComplexProperty>
    * @param isUpdateOperation the is update operation
    * @throws Exception the exception
    */
-  @Override
-  protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
-      PropertyBag propertyBag, boolean isUpdateOperation)
+  @Override public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
+      boolean isUpdateOperation)
       throws Exception {
 
     Object o = propertyBag.getObjectFromPropertyDefinition(this);

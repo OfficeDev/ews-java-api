@@ -43,7 +43,7 @@ public abstract class ServiceId extends ComplexProperty {
   /**
    * Initializes a new instance.
    */
-  protected ServiceId() {
+  public ServiceId() {
     super();
   }
 
@@ -53,7 +53,7 @@ public abstract class ServiceId extends ComplexProperty {
    * @param uniqueId The unique id.
    * @throws Exception the exception
    */
-  protected ServiceId(String uniqueId) throws Exception {
+  public ServiceId(String uniqueId) throws Exception {
     this();
     EwsUtilities.validateParam(uniqueId, "uniqueId");
     this.uniqueId = uniqueId;
@@ -66,7 +66,7 @@ public abstract class ServiceId extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected void readAttributesFromXml(EwsServiceXmlReader reader)
+  public void readAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.uniqueId = reader.readAttributeValue(XmlAttributeNames.Id);
     this.changeKey = reader.readAttributeValue(XmlAttributeNames.ChangeKey);
@@ -80,7 +80,7 @@ public abstract class ServiceId extends ComplexProperty {
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
-  protected void writeAttributesToXml(EwsServiceXmlWriter writer)
+  public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     writer.writeAttributeValue(XmlAttributeNames.Id, this.getUniqueId());
     writer.writeAttributeValue(XmlAttributeNames.ChangeKey, this
@@ -92,7 +92,7 @@ public abstract class ServiceId extends ComplexProperty {
    *
    * @return XML element name.
    */
-  protected abstract String getXmlElementName();
+  public abstract String getXmlElementName();
 
   /**
    * Writes to XML.
@@ -100,7 +100,7 @@ public abstract class ServiceId extends ComplexProperty {
    * @param writer The writer.
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     this.writeToXml(writer, this.getXmlElementName());
   }
 
@@ -109,7 +109,7 @@ public abstract class ServiceId extends ComplexProperty {
    *
    * @param source The source.
    */
-  protected void assign(ServiceId source) {
+  public void assign(ServiceId source) {
     this.uniqueId = source.getUniqueId();
     this.changeKey = source.getChangeKey();
   }
@@ -119,7 +119,7 @@ public abstract class ServiceId extends ComplexProperty {
    *
    * @return true if this instance is valid; otherwise,false
    */
-  protected boolean isValid() {
+  public boolean isValid() {
     return (null != this.uniqueId && !this.uniqueId.isEmpty());
   }
 
@@ -137,7 +137,7 @@ public abstract class ServiceId extends ComplexProperty {
    *
    * @param uniqueId unique Id of the Exchange object.
    */
-  protected void setUniqueId(String uniqueId) {
+  public void setUniqueId(String uniqueId) {
     this.uniqueId = uniqueId;
   }
 
@@ -157,7 +157,7 @@ public abstract class ServiceId extends ComplexProperty {
    *
    * @param changeKey change key associated with the Exchange object.
    */
-  protected void setChangeKey(String changeKey) {
+  public void setChangeKey(String changeKey) {
     this.changeKey = changeKey;
   }
 

@@ -40,7 +40,7 @@ import java.util.UUID;
 /**
  * Utility class to convert between MAPI Property type values and strings.
  */
-class MapiTypeConverter {
+public class MapiTypeConverter {
 
   private static final IFunction<String, Object> DATE_TIME_PARSER = new IFunction<String, Object>() {
     public Object func(final String s) {
@@ -275,7 +275,7 @@ class MapiTypeConverter {
    *
    * @return the mapi type converter map
    */
-  protected static Map<MapiPropertyType, MapiTypeConverterMapEntry>
+  public static Map<MapiPropertyType, MapiTypeConverterMapEntry>
   getMapiTypeConverterMap() {
 
     return MAPI_TYPE_CONVERTER_MAP.getMember();

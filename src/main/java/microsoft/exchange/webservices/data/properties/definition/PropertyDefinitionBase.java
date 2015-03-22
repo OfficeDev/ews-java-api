@@ -55,7 +55,7 @@ public abstract class PropertyDefinitionBase {
    * @return True if property was loaded.
    * @throws Exception the exception
    */
-  protected static boolean tryLoadFromXml(EwsServiceXmlReader reader,
+  public static boolean tryLoadFromXml(EwsServiceXmlReader reader,
       OutParam<PropertyDefinitionBase> propertyDefinition)
       throws Exception {
     String strLocalName = reader.getLocalName();
@@ -120,7 +120,7 @@ public abstract class PropertyDefinitionBase {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer)
+  public void writeToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
     writer.writeStartElement(XmlNamespace.Types, this.getXmlElementName());
     this.writeAttributesToXml(writer);

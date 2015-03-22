@@ -32,7 +32,7 @@ import java.util.EnumSet;
 /**
  * Represents byte array property definition.
  */
-final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
+public final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
 
   /**
    * Initializes a new instance.
@@ -42,7 +42,7 @@ final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
    * @param flags          The flags.
    * @param version        The version.
    */
-  protected ByteArrayPropertyDefinition(String xmlElementName, String uri,
+  public ByteArrayPropertyDefinition(String xmlElementName, String uri,
       EnumSet<PropertyDefinitionFlags> flags, ExchangeVersion version) {
     super(xmlElementName, uri, flags, version);
   }
@@ -76,8 +76,7 @@ final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
    *
    * @return True
    */
-  @Override
-  protected boolean isNullable() {
+  @Override public boolean isNullable() {
     return true;
   }
 

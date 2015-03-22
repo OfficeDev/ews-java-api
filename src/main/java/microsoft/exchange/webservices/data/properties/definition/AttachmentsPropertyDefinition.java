@@ -63,9 +63,7 @@ public final class AttachmentsPropertyDefinition extends
    * @param version Requested version.
    * @return true/false if the specified flag is set,otherwise false.
    */
-  @Override
-  protected boolean hasFlag(PropertyDefinitionFlags flag,
-      ExchangeVersion version) {
+  @Override public boolean hasFlag(PropertyDefinitionFlags flag, ExchangeVersion version) {
     if (version != null
         && this.getVersion()
         .compareTo(ExchangeVersion.Exchange2010_SP2) >= 0) {
