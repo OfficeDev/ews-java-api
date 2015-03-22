@@ -37,7 +37,7 @@ import java.util.EnumSet;
 /**
  * Represents ResponseObject schema definition.
  */
-class ResponseObjectSchema extends ServiceObjectSchema {
+public class ResponseObjectSchema extends ServiceObjectSchema {
 
   /**
    * The Reference item id.
@@ -73,7 +73,7 @@ class ResponseObjectSchema extends ServiceObjectSchema {
   /**
    * This must be declared after the property definitions.
    */
-  protected static final ResponseObjectSchema Instance =
+  public static final ResponseObjectSchema Instance =
       new ResponseObjectSchema();
 
   /**

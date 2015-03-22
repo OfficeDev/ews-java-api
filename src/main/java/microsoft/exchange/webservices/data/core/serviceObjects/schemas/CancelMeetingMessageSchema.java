@@ -36,7 +36,7 @@ import java.util.EnumSet;
 /**
  * Represents a meeting cancellation message.
  */
-class CancelMeetingMessageSchema extends ServiceObjectSchema {
+public class CancelMeetingMessageSchema extends ServiceObjectSchema {
 
   /**
    * The Constant Body.
@@ -56,7 +56,7 @@ class CancelMeetingMessageSchema extends ServiceObjectSchema {
   /**
    * This must be declared after the property definitions.
    */
-  static final CancelMeetingMessageSchema Instance =
+  public static final CancelMeetingMessageSchema Instance =
       new CancelMeetingMessageSchema();
 
   /**

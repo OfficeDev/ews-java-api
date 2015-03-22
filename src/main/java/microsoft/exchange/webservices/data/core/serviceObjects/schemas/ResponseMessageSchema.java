@@ -26,12 +26,12 @@ package microsoft.exchange.webservices.data.core.serviceObjects.schemas;
 /**
  * Represents ResponseMessage schema definition.
  */
-class ResponseMessageSchema extends ServiceObjectSchema {
+public class ResponseMessageSchema extends ServiceObjectSchema {
 
   /**
    * This must be declared after the property definitions.
    */
-  static final ResponseMessageSchema Instance = new ResponseMessageSchema();
+  public static final ResponseMessageSchema Instance = new ResponseMessageSchema();
 
   /**
    * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN

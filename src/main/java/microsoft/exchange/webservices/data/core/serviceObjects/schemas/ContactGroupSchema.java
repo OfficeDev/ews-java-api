@@ -81,7 +81,7 @@ public class ContactGroupSchema extends ItemSchema {
   /**
    * The Constant Instance.
    */
-  protected static final ContactGroupSchema Instance =
+  public static final ContactGroupSchema Instance =
       new ContactGroupSchema();
 
 

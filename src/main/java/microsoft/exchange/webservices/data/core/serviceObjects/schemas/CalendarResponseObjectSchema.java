@@ -26,13 +26,13 @@ package microsoft.exchange.webservices.data.core.serviceObjects.schemas;
 /**
  * Represents the schema for CalendarResponseObject.
  */
-class CalendarResponseObjectSchema extends ServiceObjectSchema {
+public class CalendarResponseObjectSchema extends ServiceObjectSchema {
 
   // This must be declared after the property definitions
   /**
    * The Constant Instance.
    */
-  static final CalendarResponseObjectSchema Instance =
+  public static final CalendarResponseObjectSchema Instance =
       new CalendarResponseObjectSchema();
 
   /**

@@ -605,7 +605,7 @@ public class ConversationSchema extends ServiceObjectSchema {
   /**
    * This must be declared after the property definitions
    */
-  protected static final ConversationSchema Instance =
+  public static final ConversationSchema Instance =
       new ConversationSchema();
 
   /**

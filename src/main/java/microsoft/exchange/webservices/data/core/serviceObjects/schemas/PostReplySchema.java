@@ -26,13 +26,13 @@ package microsoft.exchange.webservices.data.core.serviceObjects.schemas;
 /**
  * Represents PostReply schema definition.
  */
-final class PostReplySchema extends ServiceObjectSchema {
+public final class PostReplySchema extends ServiceObjectSchema {
 
   // This must be declared after the property definitions
   /**
    * The Constant Instance.
    */
-  static final PostReplySchema Instance = new PostReplySchema();
+  public static final PostReplySchema Instance = new PostReplySchema();
 
   /**
    * Registers properties.

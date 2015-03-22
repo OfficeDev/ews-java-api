@@ -827,7 +827,7 @@ public class AppointmentSchema extends ItemSchema {
   /**
    * The Constant Instance.
    */
-  protected static final AppointmentSchema Instance = new AppointmentSchema();
+  public static final AppointmentSchema Instance = new AppointmentSchema();
 
   /**
    * Registers properties.

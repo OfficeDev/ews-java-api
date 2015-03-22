@@ -1189,7 +1189,7 @@ public class ContactSchema extends ItemSchema {
   /**
    * The Constant Instance.
    */
-  protected static final ContactSchema Instance = new ContactSchema();
+  public static final ContactSchema Instance = new ContactSchema();
 
   /**
    * Registers properties.

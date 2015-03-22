@@ -376,7 +376,7 @@ public class EmailMessageSchema extends ItemSchema {
   /**
    * The Constant Instance.
    */
-  protected static final EmailMessageSchema Instance =
+  public static final EmailMessageSchema Instance =
       new EmailMessageSchema();
 
   /**

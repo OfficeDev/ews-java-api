@@ -421,7 +421,7 @@ public class TaskSchema extends ItemSchema {
   /**
    * This must be declared after the property definitions.
    */
-  protected static final TaskSchema Instance = new TaskSchema();
+  public static final TaskSchema Instance = new TaskSchema();
 
   /**
    * This must be declared after the property definitions.

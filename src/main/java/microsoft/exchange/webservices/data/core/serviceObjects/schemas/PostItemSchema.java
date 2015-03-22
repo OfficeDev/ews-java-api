@@ -102,7 +102,7 @@ public final class PostItemSchema extends ItemSchema {
   /**
    * The Constant Instance.
    */
-  protected static final PostItemSchema Instance = new PostItemSchema();
+  public static final PostItemSchema Instance = new PostItemSchema();
 
   /**
    * Registers properties.
