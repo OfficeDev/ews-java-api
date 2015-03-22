@@ -57,7 +57,7 @@ public class UpdateInboxRulesException extends ServiceRemoteException {
    * @param serviceResponse The rule operation service response.
    * @param ruleOperations  The original operations.
    */
-  protected UpdateInboxRulesException(UpdateInboxRulesResponse serviceResponse,
+  public UpdateInboxRulesException(UpdateInboxRulesResponse serviceResponse,
       Iterable<RuleOperation> ruleOperations) {
     super();
     this.serviceResponse = serviceResponse;

@@ -113,7 +113,7 @@ public final class RuleOperationError extends
   /**
    * Set operation property by the index of a given opeation enumerator.
    */
-  protected void setOperationByIndex(Iterator<RuleOperation> operations) {
+  public void setOperationByIndex(Iterator<RuleOperation> operations) {
     for (int i = 0; i <= this.operationIndex; i++) {
       operations.next();
     }

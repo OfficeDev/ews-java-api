@@ -51,9 +51,7 @@ public final class DeleteAttachmentException extends
    * @param serviceResponses The list of responses to be associated with this exception.
    * @param message          The message that describes the error.
    */
-  protected DeleteAttachmentException(
-      ServiceResponseCollection<DeleteAttachmentResponse>
-          serviceResponses,
+  public DeleteAttachmentException(ServiceResponseCollection<DeleteAttachmentResponse> serviceResponses,
       String message) {
     // super(serviceResponses, message);
     super(message);

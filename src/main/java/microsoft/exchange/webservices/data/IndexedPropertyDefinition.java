@@ -104,8 +104,7 @@ public final class IndexedPropertyDefinition extends
    *
    * @return The property definition's printable name.
    */
-  @Override
-  protected String getPrintableName() {
+  @Override public String getPrintableName() {
     return String.format("%s:%s", this.getUri(), this.getIndex());
   }
 

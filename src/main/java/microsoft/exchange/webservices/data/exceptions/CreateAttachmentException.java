@@ -51,9 +51,7 @@ public final class CreateAttachmentException extends
    * @param serviceResponses the service responses
    * @param message          the message
    */
-  protected CreateAttachmentException(
-      ServiceResponseCollection<CreateAttachmentResponse>
-          serviceResponses,
+  public CreateAttachmentException(ServiceResponseCollection<CreateAttachmentResponse> serviceResponses,
       String message) {
     // super(serviceResponses,message);
     super(message);

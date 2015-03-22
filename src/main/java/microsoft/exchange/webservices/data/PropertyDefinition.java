@@ -243,8 +243,7 @@ public abstract class PropertyDefinition extends
    *
    * @return The property definition's printable name.
    */
-  @Override
-  protected String getPrintableName() {
+  @Override public String getPrintableName() {
     return this.getName();
   }
 }

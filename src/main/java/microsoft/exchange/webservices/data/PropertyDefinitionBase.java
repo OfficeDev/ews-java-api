@@ -101,7 +101,7 @@ public abstract class PropertyDefinitionBase {
    *
    * @return The property definition's printable name.
    */
-  protected abstract String getPrintableName();
+  public abstract String getPrintableName();
 
   /**
    * Gets the type of the property.

@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 /**
  * Represents the response to a UpdateInboxRulesResponse operation.
  */
-final class UpdateInboxRulesResponse extends ServiceResponse {
+public final class UpdateInboxRulesResponse extends ServiceResponse {
 
   /**
    * Rule operation error collection.
@@ -69,7 +69,7 @@ final class UpdateInboxRulesResponse extends ServiceResponse {
   /**
    * Gets the rule operation errors in the response.
    */
-  protected RuleOperationErrorCollection getErrors() {
+  public RuleOperationErrorCollection getErrors() {
     return this.errors;
   }
 }

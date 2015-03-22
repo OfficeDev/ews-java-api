@@ -106,8 +106,7 @@ final class GroupMemberPropertyDefinition extends
    *
    * @return The property definition's printable name.
    */
-  @Override
-  protected String getPrintableName() {
+  @Override public String getPrintableName() {
     return String.format("%s:%s", FIELDURI, this.key);
   }
 

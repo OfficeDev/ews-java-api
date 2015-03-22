@@ -383,8 +383,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
    *
    * @return The property definition's printable name.
    */
-  @Override
-  protected String getPrintableName() {
+  @Override public String getPrintableName() {
     StringBuilder sb = new StringBuilder();
     sb.append("{");
     sb.append(formatField(NameFieldName, this.getName()));
