@@ -64,7 +64,7 @@ public final class WorkingHours extends ComplexProperty {
   /**
    * Instantiates a new working hours.
    */
-  protected WorkingHours() {
+  public WorkingHours() {
     super();
   }
 

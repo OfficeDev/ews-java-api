@@ -58,7 +58,7 @@ public final class CalendarEvent extends ComplexProperty {
   /**
    * Initializes a new instance of the CalendarEvent class.
    */
-  protected CalendarEvent() {
+  public CalendarEvent() {
     super();
   }
 

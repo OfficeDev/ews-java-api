@@ -60,7 +60,7 @@ public final class Suggestion extends ComplexProperty {
   /**
    * Initializes a new instance of the Suggestion class.
    */
-  protected Suggestion() {
+  public Suggestion() {
     super();
   }
 

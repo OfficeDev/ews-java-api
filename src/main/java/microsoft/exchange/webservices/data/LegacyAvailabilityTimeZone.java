@@ -32,7 +32,7 @@ import java.util.UUID;
 /**
  * Represents a time zone as used by GetUserAvailabilityRequest.
  */
-final class LegacyAvailabilityTimeZone extends ComplexProperty {
+public final class LegacyAvailabilityTimeZone extends ComplexProperty {
 
   /**
    * The bias.
@@ -52,7 +52,7 @@ final class LegacyAvailabilityTimeZone extends ComplexProperty {
   /**
    * Initializes a new instance of the LegacyAvailabilityTimeZone class.
    */
-  protected LegacyAvailabilityTimeZone() {
+  public LegacyAvailabilityTimeZone() {
     super();
     this.bias = new TimeSpan(0);
     // If there are no adjustment rules (which is the
@@ -82,7 +82,7 @@ final class LegacyAvailabilityTimeZone extends ComplexProperty {
    *
    * @return the time zone
    */
-  protected TimeZoneDefinition toTimeZoneInfo() {
+  public TimeZoneDefinition toTimeZoneInfo() {
 
 		/*NumberFormat formatter = new DecimalFormat("00");
 		String timeZoneId = this.bias.isNegative() ? "GMT+"+formatter.

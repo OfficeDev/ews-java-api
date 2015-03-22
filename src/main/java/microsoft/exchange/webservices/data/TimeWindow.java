@@ -49,7 +49,7 @@ public class TimeWindow implements ISelfValidate {
   /**
    * Initializes a new instance of the "TimeWindow" class.
    */
-  protected TimeWindow() {
+  public TimeWindow() {
   }
 
   /**
@@ -106,7 +106,7 @@ public class TimeWindow implements ISelfValidate {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
+  public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
         XmlElementNames.Duration);
 
@@ -169,7 +169,7 @@ public class TimeWindow implements ISelfValidate {
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
+  public void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
       throws XMLStreamException, ServiceXmlSerializationException {
     TimeWindow.writeToXml(writer, xmlElementName, this.startTime,
         this.endTime);
