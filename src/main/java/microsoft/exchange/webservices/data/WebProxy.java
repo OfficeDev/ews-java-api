@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.credentials.WebProxyCredentials;
+
 /**
  * WebProxy is used for setting proxy details for proxy authentication schemes such as
  * basic, digest, NTLM, and Kerberos authentication.

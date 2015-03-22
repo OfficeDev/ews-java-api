@@ -21,7 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.credentials;
+
+import microsoft.exchange.webservices.data.HttpWebRequest;
 
 /**
  * WebCredentials is used for password-based authentication schemes such as

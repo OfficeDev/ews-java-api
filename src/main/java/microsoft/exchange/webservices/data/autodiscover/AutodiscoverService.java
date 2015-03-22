@@ -56,7 +56,7 @@ import microsoft.exchange.webservices.data.ServiceValidationException;
 import microsoft.exchange.webservices.data.ServiceVersionException;
 import microsoft.exchange.webservices.data.TraceFlags;
 import microsoft.exchange.webservices.data.UserSettingName;
-import microsoft.exchange.webservices.data.WSSecurityBasedCredentials;
+import microsoft.exchange.webservices.data.credentials.WSSecurityBasedCredentials;
 import microsoft.exchange.webservices.data.XmlNodeType;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
