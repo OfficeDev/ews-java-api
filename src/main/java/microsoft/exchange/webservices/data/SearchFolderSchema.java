@@ -75,7 +75,7 @@ public class SearchFolderSchema extends FolderSchema {
   /**
    * The Constant Instance.
    */
-  static final SearchFolderSchema Instance = new SearchFolderSchema();
+  public static final SearchFolderSchema Instance = new SearchFolderSchema();
 
   /**
    * Registers properties.

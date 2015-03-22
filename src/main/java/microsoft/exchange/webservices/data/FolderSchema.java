@@ -226,7 +226,7 @@ public class FolderSchema extends ServiceObjectSchema {
   /**
    * This must be declared after the property definitions.
    */
-  protected static final FolderSchema Instance = new FolderSchema();
+  public static final FolderSchema Instance = new FolderSchema();
 
   /**
    * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
