@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core.requests;
 
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.GetFolderResponse;
+import microsoft.exchange.webservices.data.core.responses.GetFolderResponse;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 
 /**

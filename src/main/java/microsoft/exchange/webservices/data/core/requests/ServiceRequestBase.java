@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.ExchangeServerInfo;
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.ServiceResponse;
+import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
 import microsoft.exchange.webservices.data.XmlAttributeNames;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.XmlNodeType;

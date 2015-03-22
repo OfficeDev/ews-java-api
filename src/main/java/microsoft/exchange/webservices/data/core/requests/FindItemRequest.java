@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core.requests;
 
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.FindItemResponse;
+import microsoft.exchange.webservices.data.core.responses.FindItemResponse;
 import microsoft.exchange.webservices.data.Item;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;

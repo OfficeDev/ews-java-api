@@ -26,8 +26,8 @@ package microsoft.exchange.webservices.data.exceptions;
 import microsoft.exchange.webservices.data.properties.complex.RuleOperation;
 import microsoft.exchange.webservices.data.properties.complex.RuleOperationError;
 import microsoft.exchange.webservices.data.properties.complex.RuleOperationErrorCollection;
-import microsoft.exchange.webservices.data.ServiceResponse;
-import microsoft.exchange.webservices.data.UpdateInboxRulesResponse;
+import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
+import microsoft.exchange.webservices.data.core.responses.UpdateInboxRulesResponse;
 import microsoft.exchange.webservices.data.enumerations.ServiceError;
 
 /**

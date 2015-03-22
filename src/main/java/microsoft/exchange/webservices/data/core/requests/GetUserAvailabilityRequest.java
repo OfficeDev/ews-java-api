@@ -23,12 +23,12 @@
 
 package microsoft.exchange.webservices.data.core.requests;
 
-import microsoft.exchange.webservices.data.AttendeeAvailability;
+import microsoft.exchange.webservices.data.core.responses.AttendeeAvailability;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.ServiceResponseCollection;
-import microsoft.exchange.webservices.data.SuggestionsResponse;
+import microsoft.exchange.webservices.data.core.responses.ServiceResponseCollection;
+import microsoft.exchange.webservices.data.core.responses.SuggestionsResponse;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.AvailabilityData;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;

@@ -34,7 +34,7 @@ import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceRemoteException;
 import microsoft.exchange.webservices.data.exceptions.ServiceRequestException;
-import microsoft.exchange.webservices.data.ServiceResponse;
+import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;

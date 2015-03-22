@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.core.requests;
 
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.SubscribeResponse;
+import microsoft.exchange.webservices.data.core.responses.SubscribeResponse;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;

@@ -23,11 +23,11 @@
 
 package microsoft.exchange.webservices.data.core.requests;
 
-import microsoft.exchange.webservices.data.CreateItemResponse;
+import microsoft.exchange.webservices.data.core.responses.CreateItemResponse;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.ExchangeService;
 import microsoft.exchange.webservices.data.Item;
-import microsoft.exchange.webservices.data.ServiceResponse;
+import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;

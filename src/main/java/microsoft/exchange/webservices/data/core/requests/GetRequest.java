@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.ExchangeService;
 import microsoft.exchange.webservices.data.PropertySet;
 import microsoft.exchange.webservices.data.ServiceObject;
-import microsoft.exchange.webservices.data.ServiceResponse;
+import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;

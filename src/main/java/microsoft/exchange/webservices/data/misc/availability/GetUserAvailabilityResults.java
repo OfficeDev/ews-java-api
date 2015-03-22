@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.misc.availability;
 
-import microsoft.exchange.webservices.data.AttendeeAvailability;
-import microsoft.exchange.webservices.data.ServiceResponseCollection;
-import microsoft.exchange.webservices.data.SuggestionsResponse;
+import microsoft.exchange.webservices.data.core.responses.AttendeeAvailability;
+import microsoft.exchange.webservices.data.core.responses.ServiceResponseCollection;
+import microsoft.exchange.webservices.data.core.responses.SuggestionsResponse;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
 import microsoft.exchange.webservices.data.properties.complex.availability.Suggestion;
 

@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.Item;
 import microsoft.exchange.webservices.data.MeetingCancellation;
 import microsoft.exchange.webservices.data.core.requests.MeetingRequest;
-import microsoft.exchange.webservices.data.MeetingResponse;
+import microsoft.exchange.webservices.data.core.responses.MeetingResponse;
 
 /**
  * Represents the results of an action performed on a calendar item or meeting

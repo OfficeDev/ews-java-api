@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.requests;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.GetAttachmentResponse;
+import microsoft.exchange.webservices.data.core.responses.GetAttachmentResponse;
 import microsoft.exchange.webservices.data.PropertySet;
 import microsoft.exchange.webservices.data.XmlAttributeNames;
 import microsoft.exchange.webservices.data.XmlElementNames;

@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.exceptions;
 
-import microsoft.exchange.webservices.data.ServiceResponse;
+import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
 import microsoft.exchange.webservices.data.enumerations.ServiceError;
 
 /**

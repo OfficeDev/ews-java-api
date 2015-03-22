@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.ExchangeService;
 import microsoft.exchange.webservices.data.LazyMember;
 import microsoft.exchange.webservices.data.PropertySet;
-import microsoft.exchange.webservices.data.ResolveNamesResponse;
+import microsoft.exchange.webservices.data.core.responses.ResolveNamesResponse;
 import microsoft.exchange.webservices.data.XmlAttributeNames;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;

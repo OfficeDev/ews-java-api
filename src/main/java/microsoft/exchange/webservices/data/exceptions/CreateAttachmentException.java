@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.exceptions;
 
-import microsoft.exchange.webservices.data.CreateAttachmentResponse;
+import microsoft.exchange.webservices.data.core.responses.CreateAttachmentResponse;
 import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.ServiceResponseCollection;
+import microsoft.exchange.webservices.data.core.responses.ServiceResponseCollection;
 
 /**
  * Represents an error that occurs when a call to the CreateAttachment web
