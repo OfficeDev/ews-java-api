@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.security;
 
 import javax.xml.bind.ValidationEventHandler;
 import javax.xml.stream.XMLInputFactory;

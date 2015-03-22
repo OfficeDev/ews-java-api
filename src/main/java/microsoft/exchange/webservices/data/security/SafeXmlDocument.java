@@ -21,8 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.security;
 
+import microsoft.exchange.webservices.data.XmlNameTable;
 import microsoft.exchange.webservices.data.exceptions.NotSupportedException;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
