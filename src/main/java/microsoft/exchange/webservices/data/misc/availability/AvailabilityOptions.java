@@ -94,7 +94,7 @@ public final class AvailabilityOptions {
    * @param timeWindow the time window
    * @throws Exception the exception
    */
-  protected void validate(long timeWindow) throws Exception {
+  public void validate(long timeWindow) throws Exception {
     if (this.mergedFreeBusyInterval > timeWindow) {
       throw new IllegalArgumentException(
           "MergedFreeBusyInterval must be smaller than the specified time window.");
@@ -110,8 +110,7 @@ public final class AvailabilityOptions {
    * @param request the request
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer,
-      GetUserAvailabilityRequest request) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer, GetUserAvailabilityRequest request) throws Exception {
     if (request.isFreeBusyViewRequested()) {
       writer.writeStartElement(XmlNamespace.Types,
           XmlElementNames.FreeBusyViewOptions);

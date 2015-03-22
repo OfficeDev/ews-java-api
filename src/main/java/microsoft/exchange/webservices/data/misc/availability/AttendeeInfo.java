@@ -99,7 +99,7 @@ public final class AttendeeInfo implements ISelfValidate {
    * @param writer the writer
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     writer.writeStartElement(XmlNamespace.Types,
         XmlElementNames.MailboxData);
 

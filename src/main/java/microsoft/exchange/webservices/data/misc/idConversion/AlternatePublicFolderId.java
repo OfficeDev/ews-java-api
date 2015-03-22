@@ -38,7 +38,7 @@ public class AlternatePublicFolderId extends AlternateIdBase {
   /**
    * Name of schema type used for AlternatePublicFolderId element.
    */
-  protected final static String SchemaTypeName =
+  public final static String SchemaTypeName =
       "AlternatePublicFolderIdType";
 
   private String folderId;
@@ -110,8 +110,7 @@ public class AlternatePublicFolderId extends AlternateIdBase {
    * @param reader the reader
    * @throws Exception the exception
    */
-  @Override
-  protected void loadAttributesFromXml(EwsServiceXmlReader reader)
+  @Override public void loadAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     super.loadAttributesFromXml(reader);
     this.setFolderId(reader.readAttributeValue(XmlAttributeNames.FolderId));

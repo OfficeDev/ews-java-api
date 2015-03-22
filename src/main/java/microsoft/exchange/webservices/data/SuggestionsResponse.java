@@ -32,7 +32,7 @@ import java.util.Collection;
 /**
  * Represents the base response class to subscription creation operations.
  */
-final class SuggestionsResponse extends ServiceResponse {
+public final class SuggestionsResponse extends ServiceResponse {
 
   /**
    * The day suggestions.
@@ -77,7 +77,7 @@ final class SuggestionsResponse extends ServiceResponse {
    *
    * @return the suggestions
    */
-  protected Collection<Suggestion> getSuggestions() {
+  public Collection<Suggestion> getSuggestions() {
     return this.daySuggestions;
   }
 }

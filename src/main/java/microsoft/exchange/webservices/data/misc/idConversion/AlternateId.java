@@ -39,7 +39,7 @@ public class AlternateId extends AlternateIdBase {
   /**
    * Name of schema type used for AlternateId.
    */
-  protected final static String SchemaTypeName = "AlternateIdType";
+  public final static String SchemaTypeName = "AlternateIdType";
 
   /**
    * Id.
@@ -184,8 +184,7 @@ public class AlternateId extends AlternateIdBase {
    * @param reader the reader
    * @throws Exception// the exception
    */
-  @Override
-  protected void loadAttributesFromXml(EwsServiceXmlReader reader)
+  @Override public void loadAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     super.loadAttributesFromXml(reader);
 

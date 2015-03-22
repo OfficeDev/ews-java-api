@@ -101,7 +101,7 @@ public abstract class AlternateIdBase implements ISelfValidate {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadAttributesFromXml(EwsServiceXmlReader reader)
+  public void loadAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     this.setFormat(reader.readAttributeValue(IdFormat.class,
         XmlAttributeNames.Format));
@@ -114,7 +114,7 @@ public abstract class AlternateIdBase implements ISelfValidate {
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer)
+  public void writeToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     writer.writeStartElement(XmlNamespace.Types, this.getXmlElementName());
     this.writeAttributesToXml(writer);

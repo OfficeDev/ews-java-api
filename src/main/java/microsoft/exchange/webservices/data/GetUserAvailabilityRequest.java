@@ -36,7 +36,7 @@ import microsoft.exchange.webservices.data.misc.availability.TimeWindow;
 /**
  * Represents a GetUserAvailability request.
  */
-final class GetUserAvailabilityRequest extends SimpleServiceRequestBase<GetUserAvailabilityResults> {
+public final class GetUserAvailabilityRequest extends SimpleServiceRequestBase<GetUserAvailabilityResults> {
 
   /**
    * The attendees.
@@ -85,7 +85,7 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase<GetUserA
    *
    * @return true, if is free busy view requested
    */
-  protected boolean isFreeBusyViewRequested() {
+  public boolean isFreeBusyViewRequested() {
     return this.requestedData == AvailabilityData.FreeBusy ||
         this.requestedData == AvailabilityData.
             FreeBusyAndSuggestions;
@@ -96,7 +96,7 @@ final class GetUserAvailabilityRequest extends SimpleServiceRequestBase<GetUserA
    *
    * @return true, if is suggestions view requested
    */
-  protected boolean isSuggestionsViewRequested() {
+  public boolean isSuggestionsViewRequested() {
     return this.requestedData == AvailabilityData.Suggestions ||
         this.requestedData == AvailabilityData.
             FreeBusyAndSuggestions;

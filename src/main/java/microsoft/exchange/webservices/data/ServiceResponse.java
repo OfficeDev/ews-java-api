@@ -270,7 +270,7 @@ public class ServiceResponse {
    *
    * @throws ServiceResponseException the service response exception
    */
-  protected void throwIfNecessary() throws ServiceResponseException {
+  public void throwIfNecessary() throws ServiceResponseException {
     this.internalThrowIfNecessary();
   }
 

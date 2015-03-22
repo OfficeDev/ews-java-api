@@ -50,7 +50,7 @@ public final class GetUserAvailabilityResults {
   /**
    * Initializes a new instance of the GetUserAvailabilityResults class.
    */
-  protected GetUserAvailabilityResults() {
+  public GetUserAvailabilityResults() {
   }
 
   /**
@@ -58,7 +58,7 @@ public final class GetUserAvailabilityResults {
    *
    * @return the suggestions response
    */
-  protected SuggestionsResponse getSuggestionsResponse() {
+  public SuggestionsResponse getSuggestionsResponse() {
     return this.suggestionsResponse;
   }
 
@@ -67,7 +67,7 @@ public final class GetUserAvailabilityResults {
    *
    * @param value the new suggestions response
    */
-  protected void setSuggestionsResponse(SuggestionsResponse value) {
+  public void setSuggestionsResponse(SuggestionsResponse value) {
     this.suggestionsResponse = value;
   }
 
@@ -87,8 +87,7 @@ public final class GetUserAvailabilityResults {
    *
    * @param value the new attendees availability
    */
-  protected void setAttendeesAvailability(
-      ServiceResponseCollection<AttendeeAvailability> value) {
+  public void setAttendeesAvailability(ServiceResponseCollection<AttendeeAvailability> value) {
     this.attendeesAvailability = value;
   }
 

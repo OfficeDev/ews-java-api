@@ -184,7 +184,7 @@ public class TimeWindow implements ISelfValidate {
    *
    * @return the duration
    */
-  protected long getDuration() {
+  public long getDuration() {
     return this.endTime.getTime() - this.startTime.getTime();
   }
 
