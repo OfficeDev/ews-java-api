@@ -55,6 +55,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceRemoteException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.properties.complex.availability.OofSettings;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
 import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition;
 import org.w3c.dom.Document;

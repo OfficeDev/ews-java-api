@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.FreeBusyViewType;
 import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.properties.complex.availability.CalendarEvent;
+import microsoft.exchange.webservices.data.properties.complex.availability.WorkingHours;
 
 import java.util.ArrayList;
 import java.util.Collection;

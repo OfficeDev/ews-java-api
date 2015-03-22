@@ -21,8 +21,16 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.complex.availability;
 
+import microsoft.exchange.webservices.data.ComplexProperty;
+import microsoft.exchange.webservices.data.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.ISelfValidate;
+import microsoft.exchange.webservices.data.OofReply;
+import microsoft.exchange.webservices.data.TimeWindow;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.OofExternalAudience;
 import microsoft.exchange.webservices.data.enumerations.OofState;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
@@ -34,8 +42,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a user's Out of Office (OOF) settings.
  */
-public final class OofSettings extends
-    ComplexProperty implements ISelfValidate {
+public final class OofSettings extends ComplexProperty implements ISelfValidate {
 
   /**
    * The state.
