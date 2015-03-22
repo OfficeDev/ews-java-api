@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.search;
 
-import microsoft.exchange.webservices.data.Folder;
+import microsoft.exchange.webservices.data.core.serviceObjects.folders.Folder;
 
 import java.util.ArrayList;
 import java.util.Iterator;

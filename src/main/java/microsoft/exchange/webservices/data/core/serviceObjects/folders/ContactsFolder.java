@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core.serviceObjects.folders;
 
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.ExchangeService;
@@ -32,83 +32,84 @@ import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.properties.complex.FolderId;
 
 /**
- * Represents a folder containing task items.
+ * Represents a folder containing contacts.
  */
-@ServiceObjectDefinition(xmlElementName = XmlElementNames.TasksFolder)
-public class TasksFolder extends Folder {
+@ServiceObjectDefinition(xmlElementName = XmlElementNames.ContactsFolder)
+public class ContactsFolder extends Folder {
 
   /**
-   * Initializes an unsaved local instance of the class.
+   * Initializes an unsaved local instance of the class.To bind to an
+   * existing contacts folder, use ContactsFolder.Bind() instead.
    *
    * @param service the service
    * @throws Exception the exception
    */
-  public TasksFolder(ExchangeService service) throws Exception {
+  public ContactsFolder(ExchangeService service) throws Exception {
     super(service);
   }
 
   /**
-   * Binds to an existing tasks folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * Binds to an existing contacts folder and loads the specified set of
+   * properties.
    *
    * @param service     the service
    * @param id          the id
    * @param propertySet the property set
-   * @return A TasksFolder instance representing the task folder corresponding
-   * to the specified Id.
+   * @return A ContactsFolder instance representing the contacts folder
+   * corresponding to the specified Id.
    * @throws Exception the exception
    */
-  public static TasksFolder bind(ExchangeService service, FolderId id,
+  public static ContactsFolder bind(ExchangeService service, FolderId id,
       PropertySet propertySet) throws Exception {
-    return service.bindToFolder(TasksFolder.class, id, propertySet);
+    return service.bindToFolder(ContactsFolder.class, id, propertySet);
   }
 
   /**
-   * Binds to an existing tasks folder and loads its first class properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing contacts folder and loads its first class
+   * properties.
    *
    * @param service the service
    * @param id      the id
-   * @return A TasksFolder instance representing the task folder corresponding
-   * to the specified Id.
+   * @return A ContactsFolder instance representing the contacts folder
+   * corresponding to the specified Id.
    * @throws Exception the exception
    */
-  public static TasksFolder bind(ExchangeService service, FolderId id)
+  public static ContactsFolder bind(ExchangeService service, FolderId id)
       throws Exception {
-    return TasksFolder.bind(service, id, PropertySet
+    return ContactsFolder.bind(service, id, PropertySet
         .getFirstClassProperties());
   }
 
   /**
-   * Binds to an existing tasks folder and loads specified set of properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing contacts folder and loads the specified set of
+   * properties.
    *
    * @param service     the service
    * @param name        the name
    * @param propertySet the property set
-   * @return A TasksFolder instance representing the tasks folder with the
-   * specified name.
+   * @return A ContactsFolder instance representing the contacts folder
+   * corresponding to the specified name.
    * @throws Exception the exception
    */
-  public static TasksFolder bind(ExchangeService service,
+  public static ContactsFolder bind(ExchangeService service,
       WellKnownFolderName name, PropertySet propertySet)
       throws Exception {
-    return TasksFolder.bind(service, new FolderId(name), propertySet);
+    return ContactsFolder.bind(service, new FolderId(name), propertySet);
   }
 
   /**
-   * Binds to an existing tasks folder and loads its first class properties.
-   * Calling this method results in a call to EWS.
+   * Binds to an existing contacts folder and loads its first class
+   * properties.
    *
    * @param service the service
    * @param name    the name
-   * @return A TasksFolder instance representing the tasks folder with the
-   * specified name.
+   * @return A ContactsFolder instance representing the contacts folder
+   * corresponding to the specified name.
    * @throws Exception the exception
    */
-  public static TasksFolder bind(ExchangeService service,
+  public static ContactsFolder bind(ExchangeService service,
       WellKnownFolderName name) throws Exception {
-    return TasksFolder.bind(service, new FolderId(name), PropertySet
+    return ContactsFolder.bind(service, new FolderId(name), PropertySet
         .getFirstClassProperties());
   }
 

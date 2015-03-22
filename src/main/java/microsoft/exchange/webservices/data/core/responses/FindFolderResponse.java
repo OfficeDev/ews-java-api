@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.core.responses;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.Folder;
+import microsoft.exchange.webservices.data.core.serviceObjects.folders.Folder;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;

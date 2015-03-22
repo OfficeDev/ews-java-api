@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.requests;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.Folder;
+import microsoft.exchange.webservices.data.core.serviceObjects.folders.Folder;
 import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
 import microsoft.exchange.webservices.data.core.responses.UpdateFolderResponse;
 import microsoft.exchange.webservices.data.core.XmlElementNames;

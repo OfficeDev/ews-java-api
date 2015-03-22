@@ -23,11 +23,10 @@
 
 package microsoft.exchange.webservices.data.sync;
 
-import microsoft.exchange.webservices.data.Folder;
+import microsoft.exchange.webservices.data.core.serviceObjects.folders.Folder;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.properties.complex.FolderId;
 import microsoft.exchange.webservices.data.properties.complex.ServiceId;
-import microsoft.exchange.webservices.data.sync.Change;
 
 /**
  * Represents a change on a folder as returned by a synchronization operation.

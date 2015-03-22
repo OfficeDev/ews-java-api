@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.Folder;
+import microsoft.exchange.webservices.data.core.serviceObjects.folders.Folder;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 /**

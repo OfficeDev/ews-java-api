@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.Appointment;
 import microsoft.exchange.webservices.data.AsyncCallback;
 import microsoft.exchange.webservices.data.AsyncRequestResult;
 import microsoft.exchange.webservices.data.Conversation;
-import microsoft.exchange.webservices.data.Folder;
+import microsoft.exchange.webservices.data.core.serviceObjects.folders.Folder;
 import microsoft.exchange.webservices.data.Item;
 import microsoft.exchange.webservices.data.OutParam;
 import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
