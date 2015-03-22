@@ -23,13 +23,15 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
+
 import java.util.List;
 
 /**
  * Represents the response to an individual folder retrieval operation.
  */
 public final class GetFolderResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                             IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The folder.

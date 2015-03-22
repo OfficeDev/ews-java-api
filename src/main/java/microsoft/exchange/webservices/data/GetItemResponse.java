@@ -23,13 +23,15 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
+
 import java.util.List;
 
 /**
  * Represents a response to an individual item retrieval operation.
  */
 public final class GetItemResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                           IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The item.

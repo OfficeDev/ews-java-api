@@ -21,19 +21,19 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
+
+import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 
 /**
- * ITraceListener handles message tracing.
+ * Indicates that a complex property changed.
  */
-public interface ITraceListener {
-
+interface IComplexPropertyChanged {
   /**
-   * Handles a trace message.
+   * Indicates that a complex property changed.
    *
-   * @param traceType    Type of trace message.
-   * @param traceMessage The trace message.
+   * @param complexProperty Complex property.
    */
-  void trace(String traceType, String traceMessage);
+  void complexPropertyChanged(ComplexProperty complexProperty);
 
 }

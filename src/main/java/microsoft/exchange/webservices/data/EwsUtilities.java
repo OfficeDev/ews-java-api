@@ -41,6 +41,12 @@ import microsoft.exchange.webservices.data.exceptions.FormatException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.interfaces.IAction;
+import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithAttachmentParam;
+import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithServiceParam;
+import microsoft.exchange.webservices.data.interfaces.ILazyMember;
+import microsoft.exchange.webservices.data.interfaces.IPredicate;
+import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
 
 import java.io.ByteArrayInputStream;

@@ -26,14 +26,13 @@ package microsoft.exchange.webservices.data.properties.complex;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.IServiceObjectChangedDelegate;
+import microsoft.exchange.webservices.data.interfaces.IServiceObjectChangedDelegate;
 import microsoft.exchange.webservices.data.Item;
 import microsoft.exchange.webservices.data.ServiceObject;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.BodyType;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
-import microsoft.exchange.webservices.data.properties.complex.Attachment;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
 
 import java.util.ArrayList;

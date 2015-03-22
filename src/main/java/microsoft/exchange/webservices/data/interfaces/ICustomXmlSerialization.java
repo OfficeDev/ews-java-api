@@ -21,21 +21,20 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import javax.xml.stream.XMLStreamWriter;
 
 /**
- * The Interface GetPropertyDefinitionCallbackInterface.
+ * The Interface CustomXmlSerializationInterface.
  */
-interface IGetPropertyDefinitionCallback {
+interface ICustomXmlSerialization {
 
   /**
-   * Gets the property definition callback.
+   * Custom xml serialization.
    *
-   * @param version the version
-   * @return the property definition callback
+   * @param writer the writer
    */
-  PropertyDefinition getPropertyDefinitionCallback(ExchangeVersion version);
+  void CustomXmlSerialization(XMLStreamWriter writer);
+
 }

@@ -28,6 +28,7 @@ import microsoft.exchange.webservices.data.enumerations.ConversationFlagStatus;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.Importance;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.properties.complex.ConversationId;
 import microsoft.exchange.webservices.data.properties.complex.ItemIdCollection;
 import microsoft.exchange.webservices.data.properties.complex.StringList;

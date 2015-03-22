@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.properties.definition;
 
 import microsoft.exchange.webservices.data.properties.complex.AttachmentCollection;
-import microsoft.exchange.webservices.data.ICreateComplexPropertyDelegate;
+import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;

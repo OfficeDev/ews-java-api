@@ -55,6 +55,10 @@ import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceRemoteException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
+import microsoft.exchange.webservices.data.interfaces.IAutodiscoverRedirectionUrl;
+import microsoft.exchange.webservices.data.interfaces.IFileAttachmentContentHandler;
+import microsoft.exchange.webservices.data.interfaces.IPredicate;
 import microsoft.exchange.webservices.data.properties.complex.Attachment;
 import microsoft.exchange.webservices.data.properties.complex.ConversationId;
 import microsoft.exchange.webservices.data.properties.complex.DelegateUser;
@@ -80,8 +84,7 @@ import java.util.*;
 /**
  * Represents a binding to the Exchange Web Services.
  */
-public final class ExchangeService extends ExchangeServiceBase implements
-    IAutodiscoverRedirectionUrl {
+public final class ExchangeService extends ExchangeServiceBase implements IAutodiscoverRedirectionUrl {
 
   /**
    * The url.

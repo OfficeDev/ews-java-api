@@ -21,20 +21,15 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
 /**
- * The Interface ICreateServiceObjectWithServiceParam.
+ * The Interface IDisposable.
  */
-interface ICreateServiceObjectWithServiceParam {
+interface IDisposable {
 
   /**
-   * Creates the service object with service param.
-   *
-   * @param srv the srv
-   * @return the object
-   * @throws Exception the exception
+   * Dispose.
    */
-  Object createServiceObjectWithServiceParam(ExchangeService srv)
-      throws Exception;
+  void dispose();
 }

@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ import java.util.List;
  * operations.
  */
 public final class MoveCopyFolderResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                                  IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The folder.

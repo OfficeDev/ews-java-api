@@ -21,21 +21,27 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
-import java.util.concurrent.Future;
+import microsoft.exchange.webservices.data.ServiceObject;
 
 /**
- * Represents the stauts of Asynchronous operation.
+ * Complex properties that implement that interface are owned by an instance of
+ * EwsObject. For this reason, they also cannot be shared.
  */
+public interface IOwnedProperty {
 
-public interface IAsyncResult extends Future<Object> {
+  /**
+   * Gets the owner.
+   *
+   * @return The owner.
+   */
+  ServiceObject getOwner();
 
-  public Object getAsyncState();
-
-  public WaitHandle getAsyncWaitHanle();
-
-  public boolean getCompleteSynchronously();
-
-  public boolean getIsCompleted();
+  /**
+   * Sets the owner.
+   *
+   * @param obj The owner.
+   */
+  void setOwner(ServiceObject obj);
 }

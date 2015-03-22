@@ -21,23 +21,21 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
-
-import java.io.OutputStream;
+package microsoft.exchange.webservices.data.interfaces;
 
 /**
- * Defines a file attachment content handler. Application can implement
- * IFileAttachmentContentHandler /// to provide a stream in which the content of
- * file attachment should be written.
+ * The Interface Func.
+ *
+ * @param <T>       the generic type
+ * @param <TResult> the generic type
  */
-public interface IFileAttachmentContentHandler {
+interface IFunc<T, TResult> {
 
   /**
-   * Provides a stream to which the content of the attachment with the
-   * specified Id should be written.
+   * Func.
    *
-   * @param attachmentId The Id of the attachment that is being loaded.
-   * @return A Stream to which the content of the attachment will be written.
+   * @param arg the arg
+   * @return the t result
    */
-  OutputStream getOutputStream(String attachmentId);
+  TResult func(T arg);
 }

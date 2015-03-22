@@ -25,8 +25,8 @@ package microsoft.exchange.webservices.data.properties.complex;
 
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.ILazyMember;
-import microsoft.exchange.webservices.data.IPropertyBagChangedDelegate;
+import microsoft.exchange.webservices.data.interfaces.ILazyMember;
+import microsoft.exchange.webservices.data.interfaces.IPropertyBagChangedDelegate;
 import microsoft.exchange.webservices.data.LazyMember;
 import microsoft.exchange.webservices.data.ServiceObject;
 import microsoft.exchange.webservices.data.SimplePropertyBag;
@@ -35,7 +35,6 @@ import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.PhysicalAddressKey;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.properties.complex.DictionaryEntryProperty;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;

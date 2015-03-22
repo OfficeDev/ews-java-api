@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.MapiPropertyType;
 import microsoft.exchange.webservices.data.exceptions.FormatException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.interfaces.IFunction;
+import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 
 import java.text.DateFormat;
 import java.text.ParseException;

@@ -21,19 +21,24 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
+
+import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
 
 /**
- * The Interface ILazyMember.
- *
- * @param <T> the generic type
+ * The Interface ICreateServiceObjectWithAttachmentParam.
  */
-public interface ILazyMember<T> {
+interface ICreateServiceObjectWithAttachmentParam {
 
   /**
-   * Creates the instance.
+   * Creates the service object with attachment param.
    *
-   * @return the t
+   * @param itemAttachment the item attachment
+   * @param isNew          the is new
+   * @return the object
+   * @throws Exception the exception
    */
-  T createInstance();
+  Object createServiceObjectWithAttachmentParam(
+      ItemAttachment itemAttachment, boolean isNew) throws Exception;
+
 }

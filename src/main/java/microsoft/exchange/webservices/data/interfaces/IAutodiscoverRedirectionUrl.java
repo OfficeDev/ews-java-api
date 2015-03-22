@@ -21,21 +21,23 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
+
+import microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException;
 
 /**
- * The Interface Func.
- *
- * @param <T>       the generic type
- * @param <TResult> the generic type
+ * Defines a delegate that is used by the AutodiscoverService to ask whether a
+ * redirectionUrl can be used.
  */
-interface IFunc<T, TResult> {
+public interface IAutodiscoverRedirectionUrl {
 
   /**
-   * Func.
+   * Autodiscover redirection url validation callback.
    *
-   * @param arg the arg
-   * @return the t result
+   * @param redirectionUrl the redirection url
+   * @return true, if successful
+   * @throws microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException the autodiscover local exception
    */
-  TResult func(T arg);
+  boolean autodiscoverRedirectionUrlValidationCallback(
+      String redirectionUrl) throws AutodiscoverLocalException;
 }

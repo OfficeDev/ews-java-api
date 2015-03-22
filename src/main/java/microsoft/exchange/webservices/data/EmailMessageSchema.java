@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.Schema;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
 import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollection;
 import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
@@ -144,8 +145,7 @@ public class EmailMessageSchema extends ItemSchema {
               PropertyDefinitionFlags.CanUpdate,
               PropertyDefinitionFlags.CanDelete),
           ExchangeVersion.Exchange2007_SP1,
-          new ICreateComplexPropertyDelegate
-              <EmailAddressCollection>() {
+          new ICreateComplexPropertyDelegate<EmailAddressCollection>() {
             @Override
             public EmailAddressCollection createComplexProperty() {
               return new EmailAddressCollection();

@@ -21,15 +21,21 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
+
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
 
 /**
- * The Interface IDisposable.
+ * The Interface GetPropertyDefinitionCallbackInterface.
  */
-interface IDisposable {
+interface IGetPropertyDefinitionCallback {
 
   /**
-   * Dispose.
+   * Gets the property definition callback.
+   *
+   * @param version the version
+   * @return the property definition callback
    */
-  void dispose();
+  PropertyDefinition getPropertyDefinitionCallback(ExchangeVersion version);
 }

@@ -28,6 +28,7 @@ import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
 
 /**
  * Represents a service request that can have multiple responses.

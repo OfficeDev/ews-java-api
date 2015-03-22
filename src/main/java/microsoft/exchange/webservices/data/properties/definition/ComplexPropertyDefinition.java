@@ -25,8 +25,8 @@ package microsoft.exchange.webservices.data.properties.definition;
 
 import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.IOwnedProperty;
+import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
+import microsoft.exchange.webservices.data.interfaces.IOwnedProperty;
 import microsoft.exchange.webservices.data.ServiceObject;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;

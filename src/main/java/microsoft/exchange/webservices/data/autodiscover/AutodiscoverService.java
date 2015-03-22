@@ -45,9 +45,9 @@ import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSetting
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponseCollection;
 import microsoft.exchange.webservices.data.HttpClientWebRequest;
 import microsoft.exchange.webservices.data.HttpWebRequest;
-import microsoft.exchange.webservices.data.IAutodiscoverRedirectionUrl;
-import microsoft.exchange.webservices.data.IFuncDelegate;
-import microsoft.exchange.webservices.data.IFunctionDelegate;
+import microsoft.exchange.webservices.data.interfaces.IAutodiscoverRedirectionUrl;
+import microsoft.exchange.webservices.data.interfaces.IFuncDelegate;
+import microsoft.exchange.webservices.data.interfaces.IFunctionDelegate;
 import microsoft.exchange.webservices.data.exceptions.MaximumRedirectionHopsExceededException;
 import microsoft.exchange.webservices.data.OutParam;
 import microsoft.exchange.webservices.data.OutlookConfigurationSettings;

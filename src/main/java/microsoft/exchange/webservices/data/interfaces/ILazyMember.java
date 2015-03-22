@@ -21,20 +21,19 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
-
-import javax.xml.stream.XMLStreamWriter;
+package microsoft.exchange.webservices.data.interfaces;
 
 /**
- * The Interface CustomXmlSerializationInterface.
+ * The Interface ILazyMember.
+ *
+ * @param <T> the generic type
  */
-interface ICustomXmlSerialization {
+public interface ILazyMember<T> {
 
   /**
-   * Custom xml serialization.
+   * Creates the instance.
    *
-   * @param writer the writer
+   * @return the t
    */
-  void CustomXmlSerialization(XMLStreamWriter writer);
-
+  T createInstance();
 }

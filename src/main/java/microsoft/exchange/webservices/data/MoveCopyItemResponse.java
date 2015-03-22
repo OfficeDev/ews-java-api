@@ -23,13 +23,15 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
+
 import java.util.List;
 
 /**
  * Represents a response to a Move or Copy operation.
  */
 public final class MoveCopyItemResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                                IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The item.

@@ -21,29 +21,22 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.ExchangeService;
 
 /**
- * The Interface IPredicate.
- *
- * @param <T> The type of the object to compare.
+ * The Interface ICreateServiceObjectWithServiceParam.
  */
-interface IPredicate<T> {
+interface ICreateServiceObjectWithServiceParam {
 
   /**
-   * Represents the method that defines a
-   * set of criteria and determines whether
-   * the specified object meets those criteria.
+   * Creates the service object with service param.
    *
-   * @param obj The object to compare against
-   *            the criteria defined within the method represented
-   *            by this delegate.
-   * @return true if obj meets the criteria
-   * defined within the method represented by this
-   * delegate; otherwise, false.
-   * @throws ServiceLocalException
+   * @param srv the srv
+   * @return the object
+   * @throws Exception the exception
    */
-  boolean predicate(T obj) throws ServiceLocalException;
+  Object createServiceObjectWithServiceParam(ExchangeService srv)
+      throws Exception;
 }

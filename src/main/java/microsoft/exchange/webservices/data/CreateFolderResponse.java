@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
+import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ import java.util.List;
  * Represents the response to an individual folder creation operation.
  */
 final class CreateFolderResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                         IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The folder.

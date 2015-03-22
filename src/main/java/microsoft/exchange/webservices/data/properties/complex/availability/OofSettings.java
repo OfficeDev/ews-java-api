@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.ISelfValidate;
+import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 import microsoft.exchange.webservices.data.OofReply;
 import microsoft.exchange.webservices.data.TimeWindow;
 import microsoft.exchange.webservices.data.XmlElementNames;

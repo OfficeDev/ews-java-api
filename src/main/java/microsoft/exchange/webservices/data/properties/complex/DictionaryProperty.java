@@ -25,8 +25,8 @@ package microsoft.exchange.webservices.data.properties.complex;
 
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.IComplexPropertyChangedDelegate;
-import microsoft.exchange.webservices.data.ICustomXmlUpdateSerializer;
+import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
+import microsoft.exchange.webservices.data.interfaces.ICustomXmlUpdateSerializer;
 import microsoft.exchange.webservices.data.ServiceObject;
 import microsoft.exchange.webservices.data.XmlAttributeNames;
 import microsoft.exchange.webservices.data.XmlElementNames;

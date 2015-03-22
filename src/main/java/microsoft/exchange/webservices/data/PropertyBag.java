@@ -30,6 +30,11 @@ import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChanged;
+import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
+import microsoft.exchange.webservices.data.interfaces.ICustomXmlUpdateSerializer;
+import microsoft.exchange.webservices.data.interfaces.IOwnedProperty;
+import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinitionBase;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
@@ -40,8 +45,7 @@ import java.util.Map.Entry;
 /**
  * Represents a property bag keyed on PropertyDefinition objects.
  */
-public class PropertyBag implements IComplexPropertyChanged,
-    IComplexPropertyChangedDelegate {
+public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyChangedDelegate {
 
   /**
    * The owner.

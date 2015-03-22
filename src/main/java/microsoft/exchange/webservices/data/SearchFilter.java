@@ -32,6 +32,8 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
+import microsoft.exchange.webservices.data.interfaces.ISearchStringProvider;
 import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
 
@@ -787,8 +789,7 @@ public abstract class SearchFilter extends ComplexProperty {
    * Represents a search filter that negates another. Applications can use
    * NotFilter to define conditions such as "NOT(other filter)".
    */
-  public static class Not extends SearchFilter implements
-      IComplexPropertyChangedDelegate {
+  public static class Not extends SearchFilter implements IComplexPropertyChangedDelegate {
 
     /**
      * The search filter.

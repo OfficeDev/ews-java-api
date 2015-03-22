@@ -21,19 +21,21 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
+import microsoft.exchange.webservices.data.SimplePropertyBag;
 
 /**
- * Indicates that a complex property changed.
+ * The Interface PropertyBagChangedDelegateInterface.
+ *
+ * @param <TKey> the generic type
  */
-interface IComplexPropertyChanged {
-  /**
-   * Indicates that a complex property changed.
-   *
-   * @param complexProperty Complex property.
-   */
-  void complexPropertyChanged(ComplexProperty complexProperty);
 
+public interface IPropertyBagChangedDelegate<TKey> {
+  /**
+   * Property bag changed.
+   *
+   * @param simplePropertyBag the simple property bag
+   */
+  void propertyBagChanged(SimplePropertyBag<TKey> simplePropertyBag);
 }

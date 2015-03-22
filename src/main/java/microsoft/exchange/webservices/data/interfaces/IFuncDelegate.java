@@ -21,17 +21,22 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
+
+import microsoft.exchange.webservices.data.exceptions.FormatException;
 
 /**
- * Interface defined for types that can produce a string representation for use
- * in search filters.
+ * The Interface FuncDelegate.
+ *
+ * @param <TResult> the generic type
  */
-public interface ISearchStringProvider {
+public interface IFuncDelegate<TResult> {
+
   /**
-   * Get a string representation for using this instance in a search filter.
+   * Func.
    *
-   * @return String representation of instance.
+   * @return the t result
+   * @throws microsoft.exchange.webservices.data.exceptions.FormatException the format exception
    */
-  String getSearchString();
+  TResult func() throws FormatException;
 }

@@ -27,6 +27,7 @@ import microsoft.exchange.webservices.data.enumerations.AggregateType;
 import microsoft.exchange.webservices.data.enumerations.SortDirection;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
 
 import javax.xml.stream.XMLStreamException;

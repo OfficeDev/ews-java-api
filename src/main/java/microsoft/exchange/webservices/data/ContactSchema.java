@@ -29,6 +29,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.FileAsMapping;
 import microsoft.exchange.webservices.data.enumerations.PhysicalAddressIndex;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.properties.complex.ByteArrayArray;
 import microsoft.exchange.webservices.data.properties.complex.CompleteName;
 import microsoft.exchange.webservices.data.properties.complex.EmailAddress;

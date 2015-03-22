@@ -21,21 +21,17 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
 /**
- * The Interface IAction.
- *
- * @param <T> The type of the parameter of the
- *            method that this delegate encapsulates.
+ * Interface defined for types that can produce a string representation for use
+ * in search filters.
  */
-public interface IAction<T> {
-
+public interface ISearchStringProvider {
   /**
-   * Encapsulates a method that takes a single parameter and does not return a
-   * value.
+   * Get a string representation for using this instance in a search filter.
    *
-   * @param obj The parameter of the method that this delegate encapsulates.
+   * @return String representation of instance.
    */
-  void action(T obj);
+  String getSearchString();
 }

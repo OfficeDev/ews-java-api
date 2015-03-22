@@ -21,22 +21,23 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
+import microsoft.exchange.webservices.data.WaitHandle;
+
+import java.util.concurrent.Future;
 
 /**
- * Used to create instances of ComplexProperty.
- *
- * @param <TComplexProperty> Type that extends ComplexProperty
+ * Represents the stauts of Asynchronous operation.
  */
-public interface ICreateComplexPropertyDelegate
-    <TComplexProperty extends ComplexProperty> {
 
-  /**
-   * used to create instances of ComplexProperty.
-   *
-   * @return Complex property instance
-   */
-  TComplexProperty createComplexProperty();
+public interface IAsyncResult extends Future<Object> {
+
+  public Object getAsyncState();
+
+  public WaitHandle getAsyncWaitHanle();
+
+  public boolean getCompleteSynchronously();
+
+  public boolean getIsCompleted();
 }

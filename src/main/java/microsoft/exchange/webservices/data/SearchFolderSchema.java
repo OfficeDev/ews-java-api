@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.Schema;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.properties.complex.SearchFolderParameters;
 import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
@@ -62,8 +63,7 @@ public class SearchFolderSchema extends FolderSchema {
               PropertyDefinitionFlags.CanUpdate,
               PropertyDefinitionFlags.AutoInstantiateOnRead),
           ExchangeVersion.Exchange2007_SP1,
-          new ICreateComplexPropertyDelegate
-              <SearchFolderParameters>() {
+          new ICreateComplexPropertyDelegate<SearchFolderParameters>() {
             @Override
             public SearchFolderParameters createComplexProperty() {
               return new SearchFolderParameters();

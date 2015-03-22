@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ import java.util.List;
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 abstract class CreateItemResponseBase extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                              IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The items.

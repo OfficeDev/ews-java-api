@@ -21,23 +21,20 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
+
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 
 /**
- * The Interface GetObjectInstanceDelegateInterface.
- *
- * @param <T> the generic type
+ * The Interface ISelfValidate.
  */
-interface IGetObjectInstanceDelegate<T extends ServiceObject> {
+public interface ISelfValidate {
 
   /**
-   * Gets the object instance delegate.
+   * Validate.
    *
-   * @param service        the service
-   * @param xmlElementName the xml element name
-   * @return the object instance delegate
-   * @throws Exception the exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
+   * @throws Exception                  the exception
    */
-  T getObjectInstanceDelegate(ExchangeService service, String xmlElementName)
-      throws Exception;
+  void validate() throws ServiceValidationException, Exception;
 }

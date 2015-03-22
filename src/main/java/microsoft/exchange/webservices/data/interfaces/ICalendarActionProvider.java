@@ -21,7 +21,11 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
+
+import microsoft.exchange.webservices.data.AcceptMeetingInvitationMessage;
+import microsoft.exchange.webservices.data.CalendarActionResults;
+import microsoft.exchange.webservices.data.DeclineMeetingInvitationMessage;
 
 /**
  * Interface defintion of a group of methods that are common to items that

@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceRequestException;
+import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

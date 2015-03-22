@@ -21,23 +21,22 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException;
+import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 
 /**
- * Defines a delegate that is used by the AutodiscoverService to ask whether a
- * redirectionUrl can be used.
+ * Used to create instances of ComplexProperty.
+ *
+ * @param <TComplexProperty> Type that extends ComplexProperty
  */
-public interface IAutodiscoverRedirectionUrl {
+public interface ICreateComplexPropertyDelegate
+    <TComplexProperty extends ComplexProperty> {
 
   /**
-   * Autodiscover redirection url validation callback.
+   * used to create instances of ComplexProperty.
    *
-   * @param redirectionUrl the redirection url
-   * @return true, if successful
-   * @throws microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException the autodiscover local exception
+   * @return Complex property instance
    */
-  boolean autodiscoverRedirectionUrlValidationCallback(
-      String redirectionUrl) throws AutodiscoverLocalException;
+  TComplexProperty createComplexProperty();
 }

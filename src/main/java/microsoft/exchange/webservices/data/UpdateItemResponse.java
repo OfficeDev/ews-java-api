@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -33,7 +34,7 @@ import javax.xml.stream.XMLStreamException;
  * The Class UpdateItemResponse.
  */
 public final class UpdateItemResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                              IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * Represents the response to an individual item update operation.

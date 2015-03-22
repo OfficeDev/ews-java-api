@@ -21,18 +21,19 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
+
+import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 
 /**
- * The Interface ServiceObjectChangedDelegateInterface.
+ * The Interface ComplexPropertyChangedDelegateInterface.
  */
-public interface IServiceObjectChangedDelegate {
+public interface IComplexPropertyChangedDelegate {
 
   /**
-   * Service object changed.
+   * Complex property changed.
    *
-   * @param serviceObject the service object
+   * @param complexProperty the complex property
    */
-  void serviceObjectChanged(ServiceObject serviceObject);
-
+  void complexPropertyChanged(ComplexProperty complexProperty);
 }

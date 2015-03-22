@@ -28,6 +28,8 @@ import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSetting
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.interfaces.IFunc;
+import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 
 import java.util.HashMap;
 import java.util.List;

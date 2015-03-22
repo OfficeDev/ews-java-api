@@ -21,19 +21,11 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
 /**
- * The Interface PropertyBagChangedDelegateInterface.
- *
- * @param <TKey> the generic type
+ * The Interface DateTimePropertyDefinitionInterface.
  */
+interface IDateTimePropertyDefinition {
 
-public interface IPropertyBagChangedDelegate<TKey> {
-  /**
-   * Property bag changed.
-   *
-   * @param simplePropertyBag the simple property bag
-   */
-  void propertyBagChanged(SimplePropertyBag<TKey> simplePropertyBag);
 }

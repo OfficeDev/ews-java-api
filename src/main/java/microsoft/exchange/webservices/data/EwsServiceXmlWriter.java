@@ -25,6 +25,8 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.interfaces.IDisposable;
+import microsoft.exchange.webservices.data.interfaces.ISearchStringProvider;
 import org.w3c.dom.*;
 
 import javax.xml.stream.XMLOutputFactory;

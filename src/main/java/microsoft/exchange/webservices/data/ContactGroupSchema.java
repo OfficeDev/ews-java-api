@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.Schema;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.properties.complex.GroupMemberCollection;
 import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
@@ -67,8 +68,7 @@ public class ContactGroupSchema extends ItemSchema {
               PropertyDefinitionFlags.CanSet,
               PropertyDefinitionFlags.CanUpdate),
           ExchangeVersion.Exchange2010,
-          new ICreateComplexPropertyDelegate
-              <GroupMemberCollection>() {
+          new ICreateComplexPropertyDelegate<GroupMemberCollection>() {
             @Override
             public GroupMemberCollection createComplexProperty() {
               return new GroupMemberCollection();

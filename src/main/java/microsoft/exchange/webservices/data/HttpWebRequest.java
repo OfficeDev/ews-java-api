@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
+import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
 import org.apache.http.HttpException;
 
 import java.io.*;

@@ -29,6 +29,7 @@ import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverResponseType;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 
 import javax.xml.stream.XMLStreamException;
 import java.net.URI;

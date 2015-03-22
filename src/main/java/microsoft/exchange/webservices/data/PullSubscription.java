@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
+
 /**
  * Represents a pull subscription.
  */

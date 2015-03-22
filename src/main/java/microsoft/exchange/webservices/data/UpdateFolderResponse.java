@@ -24,12 +24,13 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
+import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
 
 /**
  * Represents response to UpdateFolder request.
  */
 final class UpdateFolderResponse extends ServiceResponse implements
-    IGetObjectInstanceDelegate<ServiceObject> {
+                                                         IGetObjectInstanceDelegate<ServiceObject> {
 
   /**
    * The folder.

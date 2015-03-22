@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.properties.complex;
 
 import microsoft.exchange.webservices.data.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.IComplexPropertyChangedDelegate;
+import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
 import microsoft.exchange.webservices.data.SearchFilter;
 import microsoft.exchange.webservices.data.XmlAttributeNames;
 import microsoft.exchange.webservices.data.XmlElementNames;
@@ -33,8 +33,6 @@ import microsoft.exchange.webservices.data.enumerations.SearchFolderTraversal;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
-import microsoft.exchange.webservices.data.properties.complex.FolderIdCollection;
 
 /**
  * Represents the parameters associated with a search folder.

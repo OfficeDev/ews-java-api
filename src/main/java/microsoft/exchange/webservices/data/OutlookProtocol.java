@@ -31,6 +31,8 @@ import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.OutlookProtocolType;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.interfaces.IFunc;
+import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 
 import java.util.ArrayList;
 import java.util.HashMap;

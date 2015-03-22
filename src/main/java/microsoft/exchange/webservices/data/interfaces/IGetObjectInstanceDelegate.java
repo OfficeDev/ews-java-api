@@ -21,19 +21,26 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
+import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.ServiceObject;
 
 /**
- * The Interface ComplexPropertyChangedDelegateInterface.
+ * The Interface GetObjectInstanceDelegateInterface.
+ *
+ * @param <T> the generic type
  */
-public interface IComplexPropertyChangedDelegate {
+interface IGetObjectInstanceDelegate<T extends ServiceObject> {
 
   /**
-   * Complex property changed.
+   * Gets the object instance delegate.
    *
-   * @param complexProperty the complex property
+   * @param service        the service
+   * @param xmlElementName the xml element name
+   * @return the object instance delegate
+   * @throws Exception the exception
    */
-  void complexPropertyChanged(ComplexProperty complexProperty);
+  T getObjectInstanceDelegate(ExchangeService service, String xmlElementName)
+      throws Exception;
 }

@@ -21,25 +21,23 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
+
+import java.io.OutputStream;
 
 /**
- * Complex properties that implement that interface are owned by an instance of
- * EwsObject. For this reason, they also cannot be shared.
+ * Defines a file attachment content handler. Application can implement
+ * IFileAttachmentContentHandler /// to provide a stream in which the content of
+ * file attachment should be written.
  */
-public interface IOwnedProperty {
+public interface IFileAttachmentContentHandler {
 
   /**
-   * Gets the owner.
+   * Provides a stream to which the content of the attachment with the
+   * specified Id should be written.
    *
-   * @return The owner.
+   * @param attachmentId The Id of the attachment that is being loaded.
+   * @return A Stream to which the content of the attachment will be written.
    */
-  ServiceObject getOwner();
-
-  /**
-   * Sets the owner.
-   *
-   * @param obj The owner.
-   */
-  void setOwner(ServiceObject obj);
+  OutputStream getOutputStream(String attachmentId);
 }

@@ -30,6 +30,8 @@ import microsoft.exchange.webservices.data.exceptions.AccountIsLockedException;
 import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.interfaces.ICustomXmlSerialization;
+import microsoft.exchange.webservices.data.interfaces.ITraceListener;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;

@@ -21,22 +21,29 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.exceptions.FormatException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 /**
- * The Interface FuncDelegate.
+ * The Interface IPredicate.
  *
- * @param <TResult> the generic type
+ * @param <T> The type of the object to compare.
  */
-public interface IFuncDelegate<TResult> {
+interface IPredicate<T> {
 
   /**
-   * Func.
+   * Represents the method that defines a
+   * set of criteria and determines whether
+   * the specified object meets those criteria.
    *
-   * @return the t result
-   * @throws microsoft.exchange.webservices.data.exceptions.FormatException the format exception
+   * @param obj The object to compare against
+   *            the criteria defined within the method represented
+   *            by this delegate.
+   * @return true if obj meets the criteria
+   * defined within the method represented by this
+   * delegate; otherwise, false.
+   * @throws ServiceLocalException
    */
-  TResult func() throws FormatException;
+  boolean predicate(T obj) throws ServiceLocalException;
 }

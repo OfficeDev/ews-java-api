@@ -28,6 +28,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.TaskMode;
 import microsoft.exchange.webservices.data.enumerations.TaskStatus;
+import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.properties.complex.StringList;
 import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
 import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;

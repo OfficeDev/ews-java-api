@@ -30,6 +30,7 @@ import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumerations.MeetingRequestType;
 import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.interfaces.ICalendarActionProvider;
 import microsoft.exchange.webservices.data.properties.complex.AttendeeCollection;
 import microsoft.exchange.webservices.data.properties.complex.DeletedOccurrenceInfoCollection;
 import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
@@ -49,8 +50,7 @@ import java.util.Date;
  * requests are defined in the MeetingRequestSchema class.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.MeetingRequest)
-public class MeetingRequest extends MeetingMessage implements
-    ICalendarActionProvider {
+public class MeetingRequest extends MeetingMessage implements ICalendarActionProvider {
 
   /**
    * Initializes a new instance of the class.

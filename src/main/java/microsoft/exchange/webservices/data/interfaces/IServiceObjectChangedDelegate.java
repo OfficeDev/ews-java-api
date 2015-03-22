@@ -21,24 +21,20 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.ServiceObject;
 
 /**
- * The Interface ICreateServiceObjectWithAttachmentParam.
+ * The Interface ServiceObjectChangedDelegateInterface.
  */
-interface ICreateServiceObjectWithAttachmentParam {
+public interface IServiceObjectChangedDelegate {
 
   /**
-   * Creates the service object with attachment param.
+   * Service object changed.
    *
-   * @param itemAttachment the item attachment
-   * @param isNew          the is new
-   * @return the object
-   * @throws Exception the exception
+   * @param serviceObject the service object
    */
-  Object createServiceObjectWithAttachmentParam(
-      ItemAttachment itemAttachment, boolean isNew) throws Exception;
+  void serviceObjectChanged(ServiceObject serviceObject);
 
 }

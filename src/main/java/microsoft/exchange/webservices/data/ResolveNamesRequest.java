@@ -28,6 +28,7 @@ import microsoft.exchange.webservices.data.enumerations.ResolveNameSearchLocatio
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 
 import java.util.HashMap;
 import java.util.Map;
