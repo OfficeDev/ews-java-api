@@ -25,11 +25,12 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.unifiedMessaging.PhoneCallId;
 
 /**
  * Represents a GetPhoneCall request.
  */
-final class GetPhoneCallRequest extends SimpleServiceRequestBase<GetPhoneCallResponse> {
+public final class GetPhoneCallRequest extends SimpleServiceRequestBase<GetPhoneCallResponse> {
 
   /**
    * The id.
@@ -42,7 +43,7 @@ final class GetPhoneCallRequest extends SimpleServiceRequestBase<GetPhoneCallRes
    * @param service the service
    * @throws Exception
    */
-  protected GetPhoneCallRequest(ExchangeService service)
+  public GetPhoneCallRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -107,7 +108,7 @@ final class GetPhoneCallRequest extends SimpleServiceRequestBase<GetPhoneCallRes
    * @return Service response.
    * @throws Exception the exception
    */
-  protected GetPhoneCallResponse execute() throws Exception {
+  public GetPhoneCallResponse execute() throws Exception {
     GetPhoneCallResponse serviceResponse = (GetPhoneCallResponse) this
         .internalExecute();
     serviceResponse.throwIfNecessary();
@@ -128,7 +129,7 @@ final class GetPhoneCallRequest extends SimpleServiceRequestBase<GetPhoneCallRes
    *
    * @param id the new id
    */
-  protected void setId(PhoneCallId id) {
+  public void setId(PhoneCallId id) {
     this.id = id;
   }
 

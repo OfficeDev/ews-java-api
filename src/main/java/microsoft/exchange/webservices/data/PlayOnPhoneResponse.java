@@ -24,11 +24,12 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.unifiedMessaging.PhoneCallId;
 
 /**
  * Represents the response to a PlayOnPhone operation.
  */
-final class PlayOnPhoneResponse extends ServiceResponse {
+public final class PlayOnPhoneResponse extends ServiceResponse {
 
   /**
    * The phone call id.
@@ -69,7 +70,7 @@ final class PlayOnPhoneResponse extends ServiceResponse {
    *
    * @return the phone call id
    */
-  protected PhoneCallId getPhoneCallId() {
+  public PhoneCallId getPhoneCallId() {
     return phoneCallId;
   }
 

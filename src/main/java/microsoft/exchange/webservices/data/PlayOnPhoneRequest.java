@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.properties.complex.ItemId;
 /**
  * Represents a PlayOnPhone request.
  */
-final class PlayOnPhoneRequest extends SimpleServiceRequestBase<PlayOnPhoneResponse> {
+public final class PlayOnPhoneRequest extends SimpleServiceRequestBase<PlayOnPhoneResponse> {
 
   /**
    * The item id.
@@ -48,7 +48,7 @@ final class PlayOnPhoneRequest extends SimpleServiceRequestBase<PlayOnPhoneRespo
    * @param service the service
    * @throws Exception
    */
-  protected PlayOnPhoneRequest(ExchangeService service)
+  public PlayOnPhoneRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -117,7 +117,7 @@ final class PlayOnPhoneRequest extends SimpleServiceRequestBase<PlayOnPhoneRespo
    * @return Service response.
    * @throws Exception the exception
    */
-  protected PlayOnPhoneResponse execute() throws Exception {
+  public PlayOnPhoneResponse execute() throws Exception {
     PlayOnPhoneResponse serviceResponse = (PlayOnPhoneResponse) this
         .internalExecute();
     serviceResponse.throwIfNecessary();
@@ -138,7 +138,7 @@ final class PlayOnPhoneRequest extends SimpleServiceRequestBase<PlayOnPhoneRespo
    *
    * @param itemId the new item id
    */
-  protected void setItemId(ItemId itemId) {
+  public void setItemId(ItemId itemId) {
     this.itemId = itemId;
   }
 
@@ -156,7 +156,7 @@ final class PlayOnPhoneRequest extends SimpleServiceRequestBase<PlayOnPhoneRespo
    *
    * @param dialString the new dial string
    */
-  protected void setDialString(String dialString) {
+  public void setDialString(String dialString) {
     this.dialString = dialString;
   }
 

@@ -24,11 +24,12 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.unifiedMessaging.PhoneCall;
 
 /**
  * Represents the response to a GetPhoneCall operation.
  */
-final class GetPhoneCallResponse extends ServiceResponse {
+public final class GetPhoneCallResponse extends ServiceResponse {
 
   /**
    * The phone call.
@@ -69,7 +70,7 @@ final class GetPhoneCallResponse extends ServiceResponse {
    *
    * @return the phone call
    */
-  protected PhoneCall getPhoneCall() {
+  public PhoneCall getPhoneCall() {
     return phoneCall;
   }
 

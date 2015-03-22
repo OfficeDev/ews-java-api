@@ -25,11 +25,12 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.unifiedMessaging.PhoneCallId;
 
 /**
  * Represents a DisconnectPhoneCall request.
  */
-final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase<ServiceResponse> {
+public final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase<ServiceResponse> {
 
   /**
    * The id.
@@ -42,7 +43,7 @@ final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase<ServiceR
    * @param service the service
    * @throws Exception
    */
-  protected DisconnectPhoneCallRequest(ExchangeService service)
+  public DisconnectPhoneCallRequest(ExchangeService service)
       throws Exception {
     super(service);
   }
@@ -108,7 +109,7 @@ final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase<ServiceR
    * @return Service response.
    * @throws Exception the exception
    */
-  protected ServiceResponse execute() throws Exception {
+  public ServiceResponse execute() throws Exception {
     ServiceResponse serviceResponse = (ServiceResponse) this
         .internalExecute();
     serviceResponse.throwIfNecessary();
@@ -129,7 +130,7 @@ final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase<ServiceR
    *
    * @param id the new id
    */
-  protected void setId(PhoneCallId id) {
+  public void setId(PhoneCallId id) {
     this.id = id;
   }
 

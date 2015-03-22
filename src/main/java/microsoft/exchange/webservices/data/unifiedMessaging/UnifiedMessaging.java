@@ -28,8 +28,6 @@ import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.ExchangeService;
 import microsoft.exchange.webservices.data.GetPhoneCallRequest;
 import microsoft.exchange.webservices.data.GetPhoneCallResponse;
-import microsoft.exchange.webservices.data.PhoneCall;
-import microsoft.exchange.webservices.data.PhoneCallId;
 import microsoft.exchange.webservices.data.PlayOnPhoneRequest;
 import microsoft.exchange.webservices.data.PlayOnPhoneResponse;
 import microsoft.exchange.webservices.data.properties.complex.ItemId;
@@ -49,7 +47,7 @@ public final class UnifiedMessaging {
    *
    * @param service the service
    */
-  protected UnifiedMessaging(ExchangeService service) {
+  public UnifiedMessaging(ExchangeService service) {
     this.service = service;
   }
 

@@ -21,8 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.unifiedMessaging;
 
+import microsoft.exchange.webservices.data.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.ExchangeService;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ConnectionFailureCause;
 import microsoft.exchange.webservices.data.enumerations.PhoneCallState;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
@@ -78,7 +82,7 @@ public final class PhoneCall extends ComplexProperty {
    *
    * @param service the service
    */
-  protected PhoneCall(ExchangeService service) {
+  public PhoneCall(ExchangeService service) {
     EwsUtilities.EwsAssert(service != null, "PhoneCall.ctor", "service is null");
 
     this.service = service;
