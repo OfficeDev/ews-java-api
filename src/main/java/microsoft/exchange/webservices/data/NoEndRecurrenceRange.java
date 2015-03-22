@@ -53,7 +53,7 @@ public final class NoEndRecurrenceRange extends RecurrenceRange {
    *
    * @return The name of the XML element
    */
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     return XmlElementNames.NoEndRecurrence;
   }
 

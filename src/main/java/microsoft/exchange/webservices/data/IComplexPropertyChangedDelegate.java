@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data;
 /**
  * The Interface ComplexPropertyChangedDelegateInterface.
  */
-interface IComplexPropertyChangedDelegate {
+public interface IComplexPropertyChangedDelegate {
 
   /**
    * Complex property changed.

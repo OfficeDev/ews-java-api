@@ -347,8 +347,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
    *
    * @param change change event
    */
-  protected void addOnChangeEvent(
-      IComplexPropertyChangedDelegate change) {
+  public void addOnChangeEvent(IComplexPropertyChangedDelegate change) {
     onChangeList.add(change);
   }
 

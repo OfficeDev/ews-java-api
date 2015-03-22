@@ -73,7 +73,7 @@ public abstract class Recurrence extends ComplexProperty {
   /**
    * Initializes a new instance.
    */
-  protected Recurrence() {
+  public Recurrence() {
     super();
   }
 
@@ -82,7 +82,7 @@ public abstract class Recurrence extends ComplexProperty {
    *
    * @param startDate the start date
    */
-  protected Recurrence(Date startDate) {
+  public Recurrence(Date startDate) {
     this();
     this.startDate = startDate;
   }
@@ -92,14 +92,14 @@ public abstract class Recurrence extends ComplexProperty {
    *
    * @return the xml element name
    */
-  protected abstract String getXmlElementName();
+  public abstract String getXmlElementName();
 
   /**
    * Gets a value indicating whether this instance is regeneration pattern.
    *
    * @return true, if is regeneration pattern
    */
-  protected boolean isRegenerationPattern() {
+  public boolean isRegenerationPattern() {
     return false;
   }
 
@@ -112,7 +112,7 @@ public abstract class Recurrence extends ComplexProperty {
    * @throws ServiceValidationException          the service validation exception
    * @throws Exception                           the exception
    */
-  protected void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
+  public void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException,
       ServiceValidationException, Exception {
   }
@@ -124,7 +124,7 @@ public abstract class Recurrence extends ComplexProperty {
    * @throws Exception the exception
    */
   @Override
-  protected final void writeElementsToXml(EwsServiceXmlWriter writer)
+  public final void writeElementsToXml(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeStartElement(XmlNamespace.Types, this.getXmlElementName());
     this.internalWritePropertiesToXml(writer);
@@ -159,7 +159,7 @@ public abstract class Recurrence extends ComplexProperty {
    * @return Property value
    * @throws ServiceValidationException the service validation exception
    */
-  protected <T> T getFieldValueOrThrowIfNull(Class<T> cls, Object value,
+  public <T> T getFieldValueOrThrowIfNull(Class<T> cls, Object value,
       String name) throws ServiceValidationException {
     if (value != null) {
       return (T) value;
@@ -218,7 +218,7 @@ public abstract class Recurrence extends ComplexProperty {
    * @throws Exception
    */
   @Override
-  protected void internalValidate() throws Exception {
+  public void internalValidate() throws Exception {
     super.internalValidate();
 
     if (this.startDate == null) {
@@ -298,7 +298,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @return the xml element name
      */
     @Override
-    protected String getXmlElementName() {
+    public String getXmlElementName() {
       return XmlElementNames.DailyRecurrence;
     }
 
@@ -358,7 +358,7 @@ public abstract class Recurrence extends ComplexProperty {
      *
      * @return the xml element name
      */
-    protected String getXmlElementName() {
+    public String getXmlElementName() {
       return XmlElementNames.DailyRegeneration;
     }
 
@@ -368,7 +368,7 @@ public abstract class Recurrence extends ComplexProperty {
      *
      * @return true, if is regeneration pattern
      */
-    protected boolean isRegenerationPattern() {
+    public boolean isRegenerationPattern() {
       return true;
     }
 
@@ -391,7 +391,7 @@ public abstract class Recurrence extends ComplexProperty {
     /**
      * Initializes a new instance of the IntervalPattern class.
      */
-    protected IntervalPattern() {
+    public IntervalPattern() {
       super();
     }
 
@@ -402,7 +402,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @param interval  The number of days between each occurrence.
      * @throws ArgumentOutOfRangeException the argument out of range exception
      */
-    protected IntervalPattern(Date startDate, int interval)
+    public IntervalPattern(Date startDate, int interval)
         throws ArgumentOutOfRangeException {
 
       super(startDate);
@@ -423,7 +423,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception                           the exception
      */
     @Override
-    protected void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
+    public void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
         throws XMLStreamException, ServiceXmlSerializationException,
         ServiceValidationException, Exception {
       super.internalWritePropertiesToXml(writer);
@@ -440,7 +440,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
       if (super.tryReadElementFromXml(reader)) {
         return true;
@@ -529,7 +529,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @see microsoft.exchange.webservices.Recurrence#getXmlElementName()
      */
     @Override
-    protected String getXmlElementName() {
+    public String getXmlElementName() {
       return XmlElementNames.AbsoluteMonthlyRecurrence;
     }
 
@@ -540,7 +540,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
+    public void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
         throws Exception {
       super.internalWritePropertiesToXml(writer);
 
@@ -556,7 +556,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
       if (super.tryReadElementFromXml(reader)) {
         return true;
@@ -576,7 +576,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception
      */
     @Override
-    protected void internalValidate() throws Exception {
+    public void internalValidate() throws Exception {
       super.internalValidate();
 
       if (this.dayOfMonth == null) {
@@ -652,7 +652,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @return the xml element name
      */
     @Override
-    protected String getXmlElementName() {
+    public String getXmlElementName() {
       return XmlElementNames.MonthlyRegeneration;
     }
 
@@ -663,7 +663,7 @@ public abstract class Recurrence extends ComplexProperty {
      *
      * @return true, if is regeneration pattern
      */
-    protected boolean isRegenerationPattern() {
+    public boolean isRegenerationPattern() {
       return true;
     }
   }
@@ -719,7 +719,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @return the xml element name
      */
     @Override
-    protected String getXmlElementName() {
+    public String getXmlElementName() {
       return XmlElementNames.RelativeMonthlyRecurrence;
     }
 
@@ -730,7 +730,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
+    public void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
         throws Exception {
       super.internalWritePropertiesToXml(writer);
 
@@ -751,7 +751,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
       if (super.tryReadElementFromXml(reader)) {
         return true;
@@ -780,7 +780,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception
      */
     @Override
-    protected void internalValidate() throws Exception {
+    public void internalValidate() throws Exception {
       super.internalValidate();
 
       if (this.dayOfTheWeek == null) {
@@ -874,7 +874,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @return the xml element name
      */
     @Override
-    protected String getXmlElementName() {
+    public String getXmlElementName() {
       return XmlElementNames.RelativeYearlyRecurrence;
     }
 
@@ -885,7 +885,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
+    public void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
         throws Exception {
       super.internalWritePropertiesToXml(writer);
 
@@ -907,7 +907,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
       if (super.tryReadElementFromXml(reader)) {
         return true;
@@ -966,7 +966,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception
      */
     @Override
-    protected void internalValidate() throws Exception {
+    public void internalValidate() throws Exception {
       super.internalValidate();
 
       if (this.dayOfTheWeekIndex == null) {
@@ -1125,7 +1125,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @return the xml element name
      */
     @Override
-    protected String getXmlElementName() {
+    public String getXmlElementName() {
       return XmlElementNames.WeeklyRecurrence;
     }
 
@@ -1136,7 +1136,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
+    public void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
         throws Exception {
       super.internalWritePropertiesToXml(writer);
 
@@ -1164,7 +1164,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
       if (super.tryReadElementFromXml(reader)) {
         return true;
@@ -1193,7 +1193,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception
      */
     @Override
-    protected void internalValidate() throws Exception {
+    public void internalValidate() throws Exception {
       super.internalValidate();
 
       if (this.getDaysOfTheWeek().getCount() == 0) {
@@ -1276,7 +1276,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @return the xml element name
      */
     @Override
-    protected String getXmlElementName() {
+    public String getXmlElementName() {
       return XmlElementNames.WeeklyRegeneration;
     }
 
@@ -1287,7 +1287,7 @@ public abstract class Recurrence extends ComplexProperty {
      *
      * @return true, if is regeneration pattern
      */
-    protected boolean isRegenerationPattern() {
+    public boolean isRegenerationPattern() {
       return true;
     }
   }
@@ -1338,7 +1338,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @return the xml element name
      */
     @Override
-    protected String getXmlElementName() {
+    public String getXmlElementName() {
       return XmlElementNames.AbsoluteYearlyRecurrence;
     }
 
@@ -1349,7 +1349,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
+    public void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
         throws Exception {
       super.internalWritePropertiesToXml(writer);
 
@@ -1368,7 +1368,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception the exception
      */
     @Override
-    protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
+    public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
         throws Exception {
       if (super.tryReadElementFromXml(reader)) {
         return true;
@@ -1394,7 +1394,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws Exception
      */
     @Override
-    protected void internalValidate() throws Exception {
+    public void internalValidate() throws Exception {
       super.internalValidate();
 
       if (this.month == null) {
@@ -1482,7 +1482,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @return the xml element name
      */
     @Override
-    protected String getXmlElementName() {
+    public String getXmlElementName() {
       return XmlElementNames.YearlyRegeneration;
     }
 
@@ -1492,7 +1492,7 @@ public abstract class Recurrence extends ComplexProperty {
      *
      * @return true, if is regeneration pattern
      */
-    protected boolean isRegenerationPattern() {
+    public boolean isRegenerationPattern() {
       return true;
     }
 

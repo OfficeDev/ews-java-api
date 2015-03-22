@@ -65,7 +65,7 @@ public final class EndDateRecurrenceRange extends RecurrenceRange {
    *
    * @return The name of the XML element
    */
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     return XmlElementNames.EndDateRecurrence;
   }
 

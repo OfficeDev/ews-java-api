@@ -141,7 +141,7 @@ public abstract class RecurrenceRange extends ComplexProperty {
    *
    * @return recurrence
    */
-  protected abstract String getXmlElementName();
+  public abstract String getXmlElementName();
 
   /**
    * Gets or sets the recurrence.

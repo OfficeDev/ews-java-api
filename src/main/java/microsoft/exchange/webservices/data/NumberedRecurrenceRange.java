@@ -64,7 +64,7 @@ public final class NumberedRecurrenceRange extends RecurrenceRange {
    *
    * @return The name of the XML element
    */
-  protected String getXmlElementName() {
+  public String getXmlElementName() {
     return XmlElementNames.NumberedRecurrence;
   }
 
