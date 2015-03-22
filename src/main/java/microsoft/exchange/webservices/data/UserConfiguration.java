@@ -23,6 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.UserConfigurationProperties;
+import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 import java.util.EnumSet;
 
@@ -128,8 +133,7 @@ public class UserConfiguration {
   private static void writeByteArrayToXml(EwsServiceXmlWriter writer,
       byte[] byteArray, String xmlElementName) throws XMLStreamException,
       ServiceXmlSerializationException {
-    EwsUtilities.EwsAssert(writer != null,
-        "UserConfiguration.WriteByteArrayToXml", "writer is null");
+    EwsUtilities.EwsAssert(writer != null, "UserConfiguration.WriteByteArrayToXml", "writer is null");
     EwsUtilities.EwsAssert(xmlElementName != null,
         "UserConfiguration.WriteByteArrayToXml",
         "xmlElementName is null");

@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents a rule that automatically handles incoming messages.
  * A rule consists of a set of conditions

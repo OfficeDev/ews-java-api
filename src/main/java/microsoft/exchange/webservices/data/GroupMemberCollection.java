@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.EmailAddressKey;
+import microsoft.exchange.webservices.data.enumerations.MailboxType;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 import java.util.Iterator;
 import java.util.List;

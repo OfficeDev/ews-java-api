@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.IdFormat;
+
 /**
  * Represents the Id of a public folder expressed in a specific format.
  */

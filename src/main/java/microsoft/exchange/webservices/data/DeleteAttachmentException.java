@@ -53,9 +53,8 @@ public final class DeleteAttachmentException extends
       String message) {
     // super(serviceResponses, message);
     super(message);
-    EwsUtilities.EwsAssert(serviceResponses != null,
-        "MultiServiceResponseException.ctor",
-        "serviceResponses is null");
+    EwsUtilities
+        .EwsAssert(serviceResponses != null, "MultiServiceResponseException.ctor", "serviceResponses is null");
 
     this.responses = serviceResponses;
   }

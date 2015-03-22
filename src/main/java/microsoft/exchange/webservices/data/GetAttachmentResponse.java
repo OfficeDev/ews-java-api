@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents the response to an individual attachment retrieval request.
  */
@@ -40,8 +42,7 @@ final class GetAttachmentResponse extends ServiceResponse {
    */
   protected GetAttachmentResponse(Attachment attachment) {
     super();
-    EwsUtilities.EwsAssert(attachment != null,
-        "GetAttachmentResponse.ctor", "attachment is null");
+    EwsUtilities.EwsAssert(attachment != null, "GetAttachmentResponse.ctor", "attachment is null");
 
     this.attachment = attachment;
   }

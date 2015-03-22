@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents the response to a GetPhoneCall operation.
  */
@@ -40,8 +42,7 @@ final class GetPhoneCallResponse extends ServiceResponse {
    */
   protected GetPhoneCallResponse(ExchangeService service) {
     super();
-    EwsUtilities.EwsAssert(service != null, "GetPhoneCallResponse.ctor",
-        "service is null");
+    EwsUtilities.EwsAssert(service != null, "GetPhoneCallResponse.ctor", "service is null");
 
     this.phoneCall = new PhoneCall(service);
   }

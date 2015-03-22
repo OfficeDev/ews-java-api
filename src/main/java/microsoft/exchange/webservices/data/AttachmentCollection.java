@@ -24,6 +24,9 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 
 import java.io.File;
 import java.io.InputStream;
@@ -67,9 +70,8 @@ public final class AttachmentCollection extends
    */
   public void setOwner(ServiceObject value) {
     Item item = (Item) value;
-    EwsUtilities.EwsAssert(item != null,
-        "AttachmentCollection.IOwnedProperty.set_Owner",
-        "value is not a descendant of ItemBase");
+    EwsUtilities.EwsAssert(item != null, "AttachmentCollection.IOwnedProperty.set_Owner",
+                           "value is not a descendant of ItemBase");
 
     this.owner = item;
   }

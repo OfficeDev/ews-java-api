@@ -24,6 +24,9 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 
 import javax.xml.stream.XMLStreamException;
 

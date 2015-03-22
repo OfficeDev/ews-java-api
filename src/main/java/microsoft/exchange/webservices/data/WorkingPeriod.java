@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,8 +66,7 @@ final class WorkingPeriod extends ComplexProperty {
   protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.DayOfWeek)) {
-      EwsUtilities.parseEnumValueList(DayOfTheWeek.class,
-          this.daysOfWeek, reader.readElementValue(), ' ');
+      EwsUtilities.parseEnumValueList(DayOfTheWeek.class, this.daysOfWeek, reader.readElementValue(), ' ');
       return true;
     } else if (reader.getLocalName().equals(
         XmlElementNames.StartTimeInMinutes)) {

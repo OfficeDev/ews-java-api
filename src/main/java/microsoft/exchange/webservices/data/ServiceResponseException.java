@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceError;
+
 /**
  * Represents a remote service exception that has a single response.
  */

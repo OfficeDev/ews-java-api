@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ConnectionFailureCause;
+import microsoft.exchange.webservices.data.enumerations.PhoneCallState;
+
 /**
  * Represents a phone call.
  */
@@ -74,8 +77,7 @@ public final class PhoneCall extends ComplexProperty {
    * @param service the service
    */
   protected PhoneCall(ExchangeService service) {
-    EwsUtilities.EwsAssert(service != null, "PhoneCall.ctor",
-        "service is null");
+    EwsUtilities.EwsAssert(service != null, "PhoneCall.ctor", "service is null");
 
     this.service = service;
     this.state = PhoneCallState.Connecting;

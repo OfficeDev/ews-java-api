@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.autodiscover;
 
 import microsoft.exchange.webservices.data.autodiscover.responses.AutodiscoverResponse;
 import microsoft.exchange.webservices.data.EwsXmlReader;
-import microsoft.exchange.webservices.data.XmlNamespace;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.XmlNodeType;
 
 import java.util.ArrayList;

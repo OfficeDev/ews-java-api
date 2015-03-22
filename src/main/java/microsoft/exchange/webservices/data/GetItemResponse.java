@@ -51,8 +51,7 @@ public final class GetItemResponse extends ServiceResponse implements
     super();
     this.item = item;
     this.propertySet = propertySet;
-    EwsUtilities.EwsAssert(this.propertySet != null,
-        "GetItemResponse.ctor", "PropertySet should not be null");
+    EwsUtilities.EwsAssert(this.propertySet != null, "GetItemResponse.ctor", "PropertySet should not be null");
   }
 
   /**

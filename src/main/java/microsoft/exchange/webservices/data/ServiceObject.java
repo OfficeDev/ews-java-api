@@ -24,6 +24,10 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.enumerations.AffectedTaskOccurrence;
+import microsoft.exchange.webservices.data.enumerations.DeleteMode;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -128,14 +132,9 @@ public abstract class ServiceObject {
       }
     }
     EwsUtilities
-        .EwsAssert(
-            !isNullOrEmpty(this.xmlElementName),
-            "EwsObject.GetXmlElementName",
-            String
-                .format(
-                    "The class %s does not have an " +
-                        "associated XML element name.",
-                    this.getClass().getName()));
+        .EwsAssert(!isNullOrEmpty(this.xmlElementName), "EwsObject.GetXmlElementName", String
+                       .format("The class %s does not have an " + "associated XML element name.",
+                               this.getClass().getName()));
 
     return this.xmlElementName;
   }

@@ -24,6 +24,9 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.ChangeType;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 
 /**
  * Represents the base response class for synchronuization operations.
@@ -54,8 +57,7 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
   protected SyncResponse(PropertySet propertySet) {
     super();
     this.propertySet = propertySet;
-    EwsUtilities.EwsAssert(this.propertySet != null, "SyncResponse.ctor",
-        "PropertySet should not be null");
+    EwsUtilities.EwsAssert(this.propertySet != null, "SyncResponse.ctor", "PropertySet should not be null");
   }
 
   /**

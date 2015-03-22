@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 
 /**
@@ -54,8 +56,7 @@ abstract class AbsoluteMonthTransition extends TimeZoneTransition {
       return true;
     } else {
       if (reader.getLocalName().equals(XmlElementNames.TimeOffset)) {
-        this.timeOffset = EwsUtilities.getXSDurationToTimeSpan(reader
-            .readElementValue());
+        this.timeOffset = EwsUtilities.getXSDurationToTimeSpan(reader.readElementValue());
         return true;
       } else if (reader.getLocalName().equals(XmlElementNames.Month)) {
         this.month = reader.readElementValue(Integer.class);

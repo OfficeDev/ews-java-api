@@ -23,6 +23,12 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.FolderPermissionLevel;
+import microsoft.exchange.webservices.data.enumerations.FolderPermissionReadAccess;
+import microsoft.exchange.webservices.data.enumerations.PermissionScope;
+import microsoft.exchange.webservices.data.enumerations.StandardUser;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

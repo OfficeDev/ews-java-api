@@ -24,6 +24,10 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.Schema;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
+import microsoft.exchange.webservices.data.enumerations.MeetingRequestType;
+import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 
 import java.util.EnumSet;
 
@@ -54,7 +58,7 @@ public class MeetingRequestSchema extends MeetingMessageSchema {
    * Defines the MeetingRequestType property.
    */
   public static final PropertyDefinition MeetingRequestType =
-      new GenericPropertyDefinition<MeetingRequestType>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.MeetingRequestType>(
           MeetingRequestType.class,
           XmlElementNames.MeetingRequestType, FieldUris.MeetingRequestType,
           ExchangeVersion.Exchange2007_SP1);
@@ -63,7 +67,7 @@ public class MeetingRequestSchema extends MeetingMessageSchema {
    * Defines the IntendedFreeBusyStatus property.
    */
   public static final PropertyDefinition IntendedFreeBusyStatus =
-      new GenericPropertyDefinition<LegacyFreeBusyStatus>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus>(
           LegacyFreeBusyStatus.class,
           XmlElementNames.IntendedFreeBusyStatus,
           FieldUris.IntendedFreeBusyStatus, EnumSet

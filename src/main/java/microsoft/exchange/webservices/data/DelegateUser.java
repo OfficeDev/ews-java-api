@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.StandardUser;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents a delegate user.
  */

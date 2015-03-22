@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents the response to an individual delegate user manipulation (add,
  * remove, update) operation.

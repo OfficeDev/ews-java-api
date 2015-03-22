@@ -23,6 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.BodyType;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,8 +75,7 @@ final class GetAttachmentRequest extends
   @Override
   protected void validate() throws Exception {
     super.validate();
-    EwsUtilities.validateParamCollection(this.getAttachments().iterator(),
-        "Attachments");
+    EwsUtilities.validateParamCollection(this.getAttachments().iterator(), "Attachments");
     for (int i = 0; i < this.getAdditionalProperties().size(); i++) {
       EwsUtilities.validateParam(this.getAdditionalProperties().get(i),
           String.format("AdditionalProperties[%d]", i));

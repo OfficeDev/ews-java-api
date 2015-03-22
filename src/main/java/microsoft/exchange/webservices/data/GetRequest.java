@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
+
 /**
  * Represents an abstract Get request.
  *

@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents an abstract Move/Copy request.
  *
@@ -45,8 +48,7 @@ abstract class MoveCopyRequest<TServiceObject extends ServiceObject,
    */
   @Override
   protected void validate() throws Exception {
-    EwsUtilities.validateParam(this.getDestinationFolderId(),
-        "DestinationFolderId");
+    EwsUtilities.validateParam(this.getDestinationFolderId(), "DestinationFolderId");
     this.getDestinationFolderId().validate(
         this.getService().getRequestedServerVersion());
   }

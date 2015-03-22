@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.RequiredServerVersion;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 
 /**
  * Represents a Contact Group. Properties available on contact groups are

@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
+
 import java.util.Date;
 
 /**

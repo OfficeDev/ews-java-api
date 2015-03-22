@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.MeetingAttendeeType;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents information about an attendee for which to request availability
  * information.

@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.MeetingRequestsDeliveryScope;
+import microsoft.exchange.webservices.data.enumerations.ServiceError;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * The Class GetDelegateResponse.
  */

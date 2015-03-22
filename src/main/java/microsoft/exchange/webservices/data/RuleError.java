@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.RuleErrorCode;
+import microsoft.exchange.webservices.data.enumerations.RuleProperty;
+
 /**
  * Defines the RuleError class.
  */

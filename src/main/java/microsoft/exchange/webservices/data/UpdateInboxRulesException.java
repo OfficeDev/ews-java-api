@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceError;
+
 /**
  * Represents an exception thrown when an error occurs as a result of calling
  * the UpdateInboxRules operation.

@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.DeleteMode;
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+
 /**
  * Represents an abstract Delete request.
  *

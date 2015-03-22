@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.io.*;
 
 /**
@@ -181,8 +184,8 @@ public final class FileAttachment extends Attachment {
     } else if (this.content != null) {
       writer.writeBase64ElementValue(this.content);
     } else {
-      EwsUtilities.EwsAssert(false, "FileAttachment.WriteElementsToXml",
-          "The attachment's content is not set.");
+      EwsUtilities
+          .EwsAssert(false, "FileAttachment.WriteElementsToXml", "The attachment's content is not set.");
     }
 
     writer.writeEndElement();

@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceResult;
+
 /**
  * Represents the response to an individual item creation operation.
  */

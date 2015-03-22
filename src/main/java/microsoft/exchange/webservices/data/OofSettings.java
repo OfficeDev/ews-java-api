@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.OofExternalAudience;
+import microsoft.exchange.webservices.data.enumerations.OofState;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 
 /**

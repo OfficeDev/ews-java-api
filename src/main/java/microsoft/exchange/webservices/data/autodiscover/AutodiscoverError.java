@@ -24,11 +24,11 @@
 package microsoft.exchange.webservices.data.autodiscover;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
-import microsoft.exchange.webservices.data.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.EwsXmlReader;
 import microsoft.exchange.webservices.data.XmlAttributeNames;
 import microsoft.exchange.webservices.data.XmlElementNames;
-import microsoft.exchange.webservices.data.XmlNamespace;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.XmlNodeType;
 
 /**

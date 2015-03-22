@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceResult;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 
 /**
@@ -53,8 +56,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
    */
   protected UpdateItemResponse(Item item) {
     super();
-    EwsUtilities.EwsAssert(item != null, "UpdateItemResponse.ctor",
-        "item is null");
+    EwsUtilities.EwsAssert(item != null, "UpdateItemResponse.ctor", "item is null");
     this.item = item;
   }
 

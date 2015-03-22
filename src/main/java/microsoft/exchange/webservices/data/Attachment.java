@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.BodyType;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.util.Date;
 
 /**
@@ -213,8 +217,7 @@ public abstract class Attachment extends ComplexProperty {
    * @throws ServiceVersionException throws ServiceVersionException
    */
   public int getSize() throws ServiceVersionException {
-    EwsUtilities.validatePropertyVersion(this.getOwner().getService(),
-        ExchangeVersion.Exchange2010, "Size");
+    EwsUtilities.validatePropertyVersion(this.getOwner().getService(), ExchangeVersion.Exchange2010, "Size");
     return this.size;
   }
 

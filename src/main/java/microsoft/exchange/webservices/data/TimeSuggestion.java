@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ConflictType;
+import microsoft.exchange.webservices.data.enumerations.SuggestionQuality;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -110,18 +114,11 @@ public final class TimeSuggestion extends ComplexProperty {
               conflict = new Conflict(ConflictType.GroupConflict);
             } else {
               EwsUtilities
-                  .EwsAssert(
-                      false,
-                      "TimeSuggestion." +
-                          "TryReadElementFromXml",
-                      String
-                          .format(
-                              "The %s element name " +
-                                  "does not map " +
-                                  "to any AttendeeConflict " +
-                                  "descendant.",
-                              reader
-                                  .getLocalName()));
+                  .EwsAssert(false, "TimeSuggestion." + "TryReadElementFromXml",
+                             String.format("The %s element name " +
+                                           "does not map " +
+                                           "to any AttendeeConflict " +
+                                           "descendant.", reader.getLocalName()));
 
               // The following line to please the compiler
             }

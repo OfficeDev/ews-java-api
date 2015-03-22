@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.BodyType;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,8 +108,7 @@ public class ItemAttachment extends Attachment implements
     boolean result = super.tryReadElementFromXml(reader);
 
     if (!result) {
-      this.item = EwsUtilities.createItemFromXmlElementName(this, reader
-          .getLocalName());
+      this.item = EwsUtilities.createItemFromXmlElementName(this, reader.getLocalName());
 
       if (this.item != null) {
         try {

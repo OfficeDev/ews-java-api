@@ -24,6 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -68,8 +70,7 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
 
         if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
           TItem item = EwsUtilities
-              .createEwsObjectFromXmlElementName(Item.class,
-                  reader.getService(), reader.getLocalName());
+              .createEwsObjectFromXmlElementName(Item.class, reader.getService(), reader.getLocalName());
 
           if (item == null) {
             reader.skipCurrentElement();

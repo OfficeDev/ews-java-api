@@ -23,6 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents an abstract GetItem request.
  *
@@ -57,8 +62,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
    */
   protected void validate() throws ServiceLocalException, Exception {
     super.validate();
-    EwsUtilities.validateParamCollection(this.getItemIds().iterator(),
-        "ItemIds");
+    EwsUtilities.validateParamCollection(this.getItemIds().iterator(), "ItemIds");
   }
 
   /**

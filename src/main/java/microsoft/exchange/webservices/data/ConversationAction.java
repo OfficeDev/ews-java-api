@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ConversationActionType;
+import microsoft.exchange.webservices.data.enumerations.DeleteMode;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.util.Date;
 
 /**

@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -54,8 +56,7 @@ public final class NameResolutionCollection implements
    * @param service the service
    */
   protected NameResolutionCollection(ExchangeService service) {
-    EwsUtilities.EwsAssert(service != null, "NameResolutionSet.ctor",
-        "service is null.");
+    EwsUtilities.EwsAssert(service != null, "NameResolutionSet.ctor", "service is null.");
     this.service = service;
   }
 

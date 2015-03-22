@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.Importance;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -471,8 +474,7 @@ public final class RuleActions extends ComplexProperty {
   @Override
   protected void internalValidate() throws Exception {
     super.internalValidate();
-    EwsUtilities.validateParam(this.forwardAsAttachmentToRecipients,
-        "ForwardAsAttachmentToRecipients");
+    EwsUtilities.validateParam(this.forwardAsAttachmentToRecipients, "ForwardAsAttachmentToRecipients");
     EwsUtilities.validateParam(this.forwardToRecipients,
         "ForwardToRecipients");
     EwsUtilities.validateParam(this.redirectToRecipients,

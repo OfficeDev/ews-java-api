@@ -25,6 +25,20 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.Attachable;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.enumerations.AffectedTaskOccurrence;
+import microsoft.exchange.webservices.data.enumerations.ConflictResolutionMode;
+import microsoft.exchange.webservices.data.enumerations.DeleteMode;
+import microsoft.exchange.webservices.data.enumerations.EffectiveRights;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.Importance;
+import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
+import microsoft.exchange.webservices.data.enumerations.ResponseActions;
+import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
+import microsoft.exchange.webservices.data.enumerations.SendInvitationsMode;
+import microsoft.exchange.webservices.data.enumerations.SendInvitationsOrCancellationsMode;
+import microsoft.exchange.webservices.data.enumerations.Sensitivity;
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -63,8 +77,7 @@ public class Item extends ServiceObject {
    */
   protected Item(ItemAttachment parentAttachment) throws Exception {
     this(parentAttachment.getOwner().getService());
-    EwsUtilities.EwsAssert(parentAttachment != null, "Item.ctor",
-        "parentAttachment is null");
+    EwsUtilities.EwsAssert(parentAttachment != null, "Item.ctor", "parentAttachment is null");
 
     this.parentAttachment = parentAttachment;
   }

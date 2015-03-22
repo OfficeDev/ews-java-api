@@ -24,6 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.ChangeType;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 
 /**
  * Represents a change as returned by a synchronization operation.

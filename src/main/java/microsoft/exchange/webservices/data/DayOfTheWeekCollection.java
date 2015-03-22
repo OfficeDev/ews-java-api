@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 
 import java.util.ArrayList;
@@ -85,8 +88,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
       throws Exception {
     reader.ensureCurrentNodeIsStartElement(XmlNamespace.Types,
         xmlElementName);
-    EwsUtilities.parseEnumValueList(DayOfTheWeek.class, this.items, reader
-        .readElementValue(), ' ');
+    EwsUtilities.parseEnumValueList(DayOfTheWeek.class, this.items, reader.readElementValue(), ' ');
   }
 
   /**

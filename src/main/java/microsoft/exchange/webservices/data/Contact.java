@@ -25,6 +25,10 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.Attachable;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.enumerations.ContactSource;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.FileAsMapping;
+import microsoft.exchange.webservices.data.enumerations.PhysicalAddressIndex;
 
 import java.io.File;
 import java.io.InputStream;
@@ -123,8 +127,7 @@ public class Contact extends Item {
    * @throws Exception the exception
    */
   public void setContactPicture(byte[] content) throws Exception {
-    EwsUtilities.validateMethodVersion(this.getService(),
-        ExchangeVersion.Exchange2010, "SetContactPicture");
+    EwsUtilities.validateMethodVersion(this.getService(), ExchangeVersion.Exchange2010, "SetContactPicture");
 
     internalRemoveContactPicture();
     FileAttachment fileAttachment = getAttachments().addFileAttachment(

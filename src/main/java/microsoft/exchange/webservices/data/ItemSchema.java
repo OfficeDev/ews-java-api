@@ -24,6 +24,10 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.Schema;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.Importance;
+import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumerations.Sensitivity;
 
 import java.util.EnumSet;
 
@@ -319,7 +323,7 @@ public class ItemSchema extends ServiceObjectSchema {
    * Defines the Sensitivity property.
    */
   public static final PropertyDefinition Sensitivity =
-      new GenericPropertyDefinition<Sensitivity>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.Sensitivity>(
           Sensitivity.class,
           XmlElementNames.Sensitivity, FieldUris.Sensitivity, EnumSet.of(
           PropertyDefinitionFlags.CanSet,
@@ -372,7 +376,7 @@ public class ItemSchema extends ServiceObjectSchema {
    * Defines the Importance property.
    */
   public static final PropertyDefinition Importance =
-      new GenericPropertyDefinition<Importance>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.Importance>(
           Importance.class,
           XmlElementNames.Importance, FieldUris.Importance, EnumSet.of(
           PropertyDefinitionFlags.CanSet,

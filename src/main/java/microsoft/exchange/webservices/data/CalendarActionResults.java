@@ -56,8 +56,7 @@ public final class CalendarActionResults {
    * @param items the items
    */
   CalendarActionResults(Iterable<Item> items) {
-    this.appointment = EwsUtilities.findFirstItemOfType(Appointment.class,
-        items);
+    this.appointment = EwsUtilities.findFirstItemOfType(Appointment.class, items);
     this.meetingRequest = EwsUtilities.findFirstItemOfType(
         MeetingRequest.class, items);
     this.meetingResponse = EwsUtilities.findFirstItemOfType(

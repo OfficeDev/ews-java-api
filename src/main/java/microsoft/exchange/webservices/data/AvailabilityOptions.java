@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.FreeBusyViewType;
+import microsoft.exchange.webservices.data.enumerations.SuggestionQuality;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.util.Date;
 
 /**
@@ -92,8 +96,7 @@ public final class AvailabilityOptions {
           "MergedFreeBusyInterval must be smaller than the specified time window.");
     }
 
-    EwsUtilities.validateParamAllowNull(this.detailedSuggestionsWindow,
-        "DetailedSuggestionsWindow");
+    EwsUtilities.validateParamAllowNull(this.detailedSuggestionsWindow, "DetailedSuggestionsWindow");
   }
 
   /**

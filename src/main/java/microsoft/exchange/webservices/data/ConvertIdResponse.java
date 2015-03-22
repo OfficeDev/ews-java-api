@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents the response to an individual Id conversion operation.
  */
@@ -79,8 +81,7 @@ public final class ConvertIdResponse extends ServiceResponse {
     } else {
       EwsUtilities
           .EwsAssert(false, "ConvertIdResponse.ReadElementsFromXml",
-              String.format("Unknown alternate Id class: %s",
-                  alternateIdClass));
+                     String.format("Unknown alternate Id class: %s", alternateIdClass));
     }
 
     this.convertedId.loadAttributesFromXml(reader);

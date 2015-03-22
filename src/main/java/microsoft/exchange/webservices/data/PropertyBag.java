@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.BasePropertySet;
+import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -93,8 +97,7 @@ class PropertyBag implements IComplexPropertyChanged,
    * @param owner The owner of the bag.
    */
   protected PropertyBag(ServiceObject owner) {
-    EwsUtilities.EwsAssert(owner != null, "PropertyBag.ctor",
-        "owner is null");
+    EwsUtilities.EwsAssert(owner != null, "PropertyBag.ctor", "owner is null");
 
     this.owner = owner;
   }

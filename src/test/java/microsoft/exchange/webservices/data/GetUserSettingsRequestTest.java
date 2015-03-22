@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.requests.GetUserSettingsRequest;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import org.hamcrest.core.IsNot;
 import org.hamcrest.core.IsNull;
 import org.junit.Assert;

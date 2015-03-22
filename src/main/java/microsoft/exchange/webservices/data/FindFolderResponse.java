@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents the response to a folder search operation.
  */
@@ -67,8 +69,7 @@ final class FindFolderResponse extends ServiceResponse {
 
         if (reader.getNodeType().nodeType == XmlNodeType.START_ELEMENT) {
           Folder folder = EwsUtilities
-              .createEwsObjectFromXmlElementName(Folder.class,
-                  reader.getService(), reader.getLocalName());
+              .createEwsObjectFromXmlElementName(Folder.class, reader.getService(), reader.getLocalName());
 
           if (folder == null) {
             reader.skipCurrentElement();

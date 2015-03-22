@@ -25,6 +25,9 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.autodiscover.UserSettingError;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
+import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.enumerations.AutodiscoverResponseType;
+import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 
 import javax.xml.stream.XMLStreamException;
 import java.net.URI;
@@ -174,11 +177,9 @@ public final class OutlookConfigurationSettings extends ConfigurationSettingsBas
           response.setRedirectTarget(this.getRedirectTarget());
           break;
         default:
-          EwsUtilities.EwsAssert(
-              false,
-              "OutlookConfigurationSettings.ConvertSettings",
-              "An unexpected error has occured. " +
-                  "This code path should never be reached.");
+          EwsUtilities.EwsAssert(false, "OutlookConfigurationSettings.ConvertSettings",
+                                 "An unexpected error has occured. "
+                                 + "This code path should never be reached.");
           break;
       }
     }

@@ -97,10 +97,8 @@ class MapiTypeConverterMapEntry {
    *             this behavior.
    */
   protected MapiTypeConverterMapEntry(Class<?> type) {
-    EwsUtilities.EwsAssert(
-        defaultValueMap.getMember().containsKey(type),
-        "MapiTypeConverterMapEntry ctor",
-        "No default value entry for type " + type.getName());
+    EwsUtilities.EwsAssert(defaultValueMap.getMember().containsKey(type), "MapiTypeConverterMapEntry ctor",
+                           "No default value entry for type " + type.getName());
 
     this.type = type;
     this.convertToString = IFunctions.ToString.INSTANCE;

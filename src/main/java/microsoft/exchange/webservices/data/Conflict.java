@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ConflictType;
+import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
+
 /**
  * Represents a conflict in a meeting time suggestion.
  */

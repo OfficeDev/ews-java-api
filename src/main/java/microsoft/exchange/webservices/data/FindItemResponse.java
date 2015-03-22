@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,8 +68,8 @@ public final class FindItemResponse
     this.isGrouped = isGrouped;
     this.propertySet = propertySet;
 
-    EwsUtilities.EwsAssert(this.propertySet != null,
-        "FindItemResponse.ctor", "PropertySet should not be null");
+    EwsUtilities
+        .EwsAssert(this.propertySet != null, "FindItemResponse.ctor", "PropertySet should not be null");
   }
 
   /**

@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 
 /**
  * Represents response to generic Create request.
@@ -43,8 +44,7 @@ final class CreateResponseObjectResponse extends CreateItemResponseBase {
   protected Item getObjectInstance(ExchangeService service,
       String xmlElementName) throws Exception {
     try {
-      return EwsUtilities.createEwsObjectFromXmlElementName(Item.class,
-          service, xmlElementName);
+      return EwsUtilities.createEwsObjectFromXmlElementName(Item.class, service, xmlElementName);
     } catch (InstantiationException e) {
       e.printStackTrace();
       return null;

@@ -24,6 +24,9 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.UserConfigurationDictionaryObjectType;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.util.DateTimeUtils;
 
 import javax.xml.stream.XMLStreamException;
@@ -222,9 +225,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
-    EwsUtilities.EwsAssert(writer != null,
-        "UserConfigurationDictionary.WriteElementsToXml",
-        "writer is null");
+    EwsUtilities.EwsAssert(writer != null, "UserConfigurationDictionary.WriteElementsToXml", "writer is null");
     Iterator<Entry<Object, Object>> it = this.dictionary.entrySet()
         .iterator();
     while (it.hasNext()) {

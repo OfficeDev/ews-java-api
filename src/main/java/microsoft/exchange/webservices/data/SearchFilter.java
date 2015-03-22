@@ -24,6 +24,11 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.ComparisonMode;
+import microsoft.exchange.webservices.data.enumerations.ContainmentMode;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.LogicalOperator;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;

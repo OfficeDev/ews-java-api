@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceResult;
+
 /**
  * Represents response to UpdateFolder request.
  */
@@ -41,8 +43,7 @@ final class UpdateFolderResponse extends ServiceResponse implements
    */
   protected UpdateFolderResponse(Folder folder) {
     super();
-    EwsUtilities.EwsAssert(folder != null, "UpdateFolderResponse.ctor",
-        "folder is null");
+    EwsUtilities.EwsAssert(folder != null, "UpdateFolderResponse.ctor", "folder is null");
 
     this.folder = folder;
   }

@@ -24,6 +24,13 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.enumerations.AffectedTaskOccurrence;
+import microsoft.exchange.webservices.data.enumerations.DeleteMode;
+import microsoft.exchange.webservices.data.enumerations.EffectiveRights;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 
 import java.util.ArrayList;
 import java.util.EnumSet;

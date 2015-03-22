@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.net.URI;

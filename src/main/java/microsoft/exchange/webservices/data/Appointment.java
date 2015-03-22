@@ -25,6 +25,17 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.Attachable;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.enumerations.AppointmentType;
+import microsoft.exchange.webservices.data.enumerations.ConflictResolutionMode;
+import microsoft.exchange.webservices.data.enumerations.DeleteMode;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
+import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
+import microsoft.exchange.webservices.data.enumerations.ResponseMessageType;
+import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
+import microsoft.exchange.webservices.data.enumerations.SendInvitationsMode;
+import microsoft.exchange.webservices.data.enumerations.SendInvitationsOrCancellationsMode;
+import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 
 import java.util.ArrayList;
 import java.util.Date;

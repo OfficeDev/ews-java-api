@@ -53,8 +53,7 @@ public final class MoveCopyItemResponse extends ServiceResponse implements
    */
   private Item getObjectInstance(ExchangeService service,
       String xmlElementName) throws Exception {
-    return EwsUtilities.createEwsObjectFromXmlElementName(Item.class,
-        service, xmlElementName);
+    return EwsUtilities.createEwsObjectFromXmlElementName(Item.class, service, xmlElementName);
   }
 
   /**

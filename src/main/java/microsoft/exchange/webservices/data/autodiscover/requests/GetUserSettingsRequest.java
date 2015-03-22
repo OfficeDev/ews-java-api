@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover.requests;
 
-import microsoft.exchange.webservices.data.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.EwsXmlReader;
@@ -31,9 +31,9 @@ import microsoft.exchange.webservices.data.ExchangeServiceBase;
 import microsoft.exchange.webservices.data.ServiceLocalException;
 import microsoft.exchange.webservices.data.ServiceValidationException;
 import microsoft.exchange.webservices.data.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.UserSettingName;
+import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.XmlElementNames;
-import microsoft.exchange.webservices.data.XmlNamespace;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.responses.AutodiscoverResponse;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponseCollection;

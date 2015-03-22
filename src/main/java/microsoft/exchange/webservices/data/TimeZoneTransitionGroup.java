@@ -129,9 +129,9 @@ class TimeZoneTransitionGroup extends ComplexProperty {
 
     transition.loadFromXml(reader);
 
-    EwsUtilities.EwsAssert(transition.getTargetPeriod() != null,
-        "TimeZoneTransitionGroup.TryReadElementFromXml",
-        "The transition's target period is null.");
+    EwsUtilities
+        .EwsAssert(transition.getTargetPeriod() != null, "TimeZoneTransitionGroup.TryReadElementFromXml",
+                   "The transition's target period is null.");
 
     this.transitions.add(transition);
 

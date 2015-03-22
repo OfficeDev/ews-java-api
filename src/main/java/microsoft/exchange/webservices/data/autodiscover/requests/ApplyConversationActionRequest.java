@@ -27,12 +27,12 @@ import microsoft.exchange.webservices.data.ConversationAction;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.MultiResponseServiceRequest;
-import microsoft.exchange.webservices.data.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.ServiceResponse;
 import microsoft.exchange.webservices.data.XmlElementNames;
-import microsoft.exchange.webservices.data.XmlNamespace;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 
 import java.util.ArrayList;
 import java.util.List;

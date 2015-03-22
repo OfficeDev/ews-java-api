@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents the response to an individual attachment deletion operation.
  */
@@ -40,8 +42,7 @@ public final class DeleteAttachmentResponse extends ServiceResponse {
    */
   protected DeleteAttachmentResponse(Attachment attachment) {
     super();
-    EwsUtilities.EwsAssert(attachment != null,
-        "DeleteAttachmentResponse.ctor", "attachment is null");
+    EwsUtilities.EwsAssert(attachment != null, "DeleteAttachmentResponse.ctor", "attachment is null");
 
     this.attachment = attachment;
   }

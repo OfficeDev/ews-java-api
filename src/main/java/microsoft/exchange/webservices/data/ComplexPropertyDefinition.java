@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+
 import java.util.EnumSet;
 
 /**
@@ -57,9 +60,8 @@ class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
           propertyCreationDelegate) {
     super(xmlElementName, flags, version);
     this.instance = cls;
-    EwsUtilities.EwsAssert(propertyCreationDelegate != null,
-        "ComplexPropertyDefinition ctor",
-        "CreateComplexPropertyDelegate cannot be null");
+    EwsUtilities.EwsAssert(propertyCreationDelegate != null, "ComplexPropertyDefinition ctor",
+                           "CreateComplexPropertyDelegate cannot be null");
 
     this.propertyCreationDelegate = propertyCreationDelegate;
   }

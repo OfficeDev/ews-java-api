@@ -63,8 +63,7 @@ public final class ChangeCollection<TChange extends Change> implements
    * @param change the change
    */
   protected void add(TChange change) {
-    EwsUtilities.EwsAssert(change != null, "ChangeList.Add",
-        "change is null");
+    EwsUtilities.EwsAssert(change != null, "ChangeList.Add", "change is null");
     this.changes.add(change);
   }
 

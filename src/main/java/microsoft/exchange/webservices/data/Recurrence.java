@@ -24,6 +24,12 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
+import microsoft.exchange.webservices.data.enumerations.DayOfTheWeekIndex;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.Month;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.*;
@@ -1123,10 +1129,9 @@ public abstract class Recurrence extends ComplexProperty {
           XmlElementNames.DaysOfWeek);
       if (this.firstDayOfWeek != null) {
 
-        EwsUtilities.validatePropertyVersion(
-            (ExchangeService) writer.getService(),
-            ExchangeVersion.Exchange2010_SP1,
-            "FirstDayOfWeek");
+        EwsUtilities
+            .validatePropertyVersion((ExchangeService) writer.getService(), ExchangeVersion.Exchange2010_SP1,
+                                     "FirstDayOfWeek");
 
         writer.writeElementValue(
             XmlNamespace.Types,

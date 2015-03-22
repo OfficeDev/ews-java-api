@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents a time zone in which a meeting is defined.
  */
@@ -93,8 +95,7 @@ final class MeetingTimeZone extends ComplexProperty {
   protected boolean tryReadElementFromXml(EwsServiceXmlReader reader)
       throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.BaseOffset)) {
-      this.baseOffset = EwsUtilities.getXSDurationToTimeSpan(reader
-          .readElementValue());
+      this.baseOffset = EwsUtilities.getXSDurationToTimeSpan(reader.readElementValue());
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.Standard)) {
       this.standard = new TimeChange();

@@ -25,6 +25,14 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.Attachable;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.enumerations.AffectedTaskOccurrence;
+import microsoft.exchange.webservices.data.enumerations.ConflictResolutionMode;
+import microsoft.exchange.webservices.data.enumerations.DeleteMode;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
+import microsoft.exchange.webservices.data.enumerations.TaskDelegationState;
+import microsoft.exchange.webservices.data.enumerations.TaskMode;
+import microsoft.exchange.webservices.data.enumerations.TaskStatus;
 
 import java.util.Date;
 

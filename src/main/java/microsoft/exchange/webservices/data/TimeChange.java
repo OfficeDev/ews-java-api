@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -194,8 +196,7 @@ final class TimeChange extends ComplexProperty {
       throws Exception {
 
     if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.Offset)) {
-      this.offset = EwsUtilities.getXSDurationToTimeSpan(reader
-          .readElementValue());
+      this.offset = EwsUtilities.getXSDurationToTimeSpan(reader.readElementValue());
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(
         XmlElementNames.RelativeYearlyRecurrence)) {

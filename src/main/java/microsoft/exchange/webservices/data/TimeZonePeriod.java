@@ -74,8 +74,7 @@ class TimeZonePeriod extends ComplexProperty {
       throws Exception {
     this.id = reader.readAttributeValue(XmlAttributeNames.Id);
     this.name = reader.readAttributeValue(XmlAttributeNames.Name);
-    this.bias = EwsUtilities.getXSDurationToTimeSpan(reader
-        .readAttributeValue(XmlAttributeNames.Bias));
+    this.bias = EwsUtilities.getXSDurationToTimeSpan(reader.readAttributeValue(XmlAttributeNames.Bias));
   }
 
   /**

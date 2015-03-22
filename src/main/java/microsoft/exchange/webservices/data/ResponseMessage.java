@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.ResponseMessageType;
+
 /**
  * The Class ResponseMessage.
  */
@@ -87,10 +90,8 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
     } else if (this.responseType == ResponseMessageType.Forward) {
       return XmlElementNames.ForwardItem;
     } else {
-      EwsUtilities.EwsAssert(false,
-          "ResponseMessage.GetXmlElementNameOverride",
-          "An unexpected value for responseType " +
-              "could not be handled.");
+      EwsUtilities.EwsAssert(false, "ResponseMessage.GetXmlElementNameOverride",
+                             "An unexpected value for responseType " + "could not be handled.");
       return null; // Because the compiler wants it
     }
 

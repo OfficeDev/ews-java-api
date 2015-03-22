@@ -23,6 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
+import microsoft.exchange.webservices.data.enumerations.DayOfTheWeekIndex;
+import microsoft.exchange.webservices.data.enumerations.Month;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 
 /**

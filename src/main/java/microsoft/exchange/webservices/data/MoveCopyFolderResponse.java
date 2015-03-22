@@ -54,8 +54,7 @@ public final class MoveCopyFolderResponse extends ServiceResponse implements
    */
   private Folder getObjectInstance(ExchangeService service,
       String xmlElementName) throws Exception {
-    return EwsUtilities.createEwsObjectFromXmlElementName(Folder.class,
-        service, xmlElementName);
+    return EwsUtilities.createEwsObjectFromXmlElementName(Folder.class, service, xmlElementName);
   }
 
   /**

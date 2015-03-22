@@ -26,6 +26,10 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverError;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
+import microsoft.exchange.webservices.data.enumerations.AutodiscoverResponseType;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.UserSettingName;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 
 import java.net.URI;
 import java.util.List;

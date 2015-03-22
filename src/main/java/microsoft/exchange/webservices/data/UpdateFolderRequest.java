@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.util.ArrayList;
 
 /**
@@ -58,8 +62,7 @@ final class UpdateFolderRequest extends
   @Override
   protected void validate() throws ServiceLocalException, Exception {
     super.validate();
-    EwsUtilities.validateParamCollection(this
-        .getFolders().iterator(), "Folders");
+    EwsUtilities.validateParamCollection(this.getFolders().iterator(), "Folders");
     for (int i = 0; i < this.getFolders().size(); i++) {
       Folder folder = this.getFolders().get(i);
 

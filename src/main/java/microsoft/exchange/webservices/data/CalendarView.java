@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ItemTraversal;
+import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
+
 import java.util.Date;
 
 /**

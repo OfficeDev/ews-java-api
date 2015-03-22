@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceError;
+
 /**
  * Represents the response to a name resolution operation.
  */
@@ -40,8 +42,7 @@ final class ResolveNamesResponse extends ServiceResponse {
    */
   protected ResolveNamesResponse(ExchangeService service) {
     super();
-    EwsUtilities.EwsAssert(service != null, "ResolveNamesResponse.ctor",
-        "service is null");
+    EwsUtilities.EwsAssert(service != null, "ResolveNamesResponse.ctor", "service is null");
 
     this.resolutions = new NameResolutionCollection(service);
   }

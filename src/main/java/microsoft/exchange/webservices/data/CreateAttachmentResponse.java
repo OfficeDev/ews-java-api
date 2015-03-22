@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents the response to an individual attachment creation operation.
  */
@@ -40,8 +42,7 @@ public final class CreateAttachmentResponse extends ServiceResponse {
    */
   protected CreateAttachmentResponse(Attachment attachment) {
     super();
-    EwsUtilities.EwsAssert(attachment != null,
-        "CreateAttachmentResponse.ctor", "attachment is null");
+    EwsUtilities.EwsAssert(attachment != null, "CreateAttachmentResponse.ctor", "attachment is null");
 
     this.attachment = attachment;
   }

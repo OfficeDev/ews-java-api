@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ItemTraversal;
+import microsoft.exchange.webservices.data.enumerations.OffsetBasePoint;
+import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
+
 import javax.xml.stream.XMLStreamException;
 
 /**
@@ -72,8 +76,7 @@ public final class ItemView extends PagedView {
       throws ServiceVersionException, ServiceValidationException {
     super.internalValidate(request);
 
-    EwsUtilities.validateEnumVersionValue(this.traversal, request
-        .getService().getRequestedServerVersion());
+    EwsUtilities.validateEnumVersionValue(this.traversal, request.getService().getRequestedServerVersion());
   }
 
   /**

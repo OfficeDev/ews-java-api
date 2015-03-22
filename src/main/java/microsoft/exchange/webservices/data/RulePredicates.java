@@ -23,6 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.FlaggedForAction;
+import microsoft.exchange.webservices.data.enumerations.Importance;
+import microsoft.exchange.webservices.data.enumerations.Sensitivity;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents the set of conditions and exceptions available for a rule.
  */

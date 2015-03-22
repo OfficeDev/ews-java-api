@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 
 /**
@@ -184,8 +186,7 @@ public class Mailbox extends ComplexProperty implements ISearchStringProvider {
       throws ServiceValidationException, Exception {
     super.internalValidate();
 
-    EwsUtilities.validateNonBlankStringParamAllowNull(
-        this.getAddress(), "address");
+    EwsUtilities.validateNonBlankStringParamAllowNull(this.getAddress(), "address");
     EwsUtilities.validateNonBlankStringParamAllowNull(
         this.getRoutingType(), "routingType");
   }

@@ -24,6 +24,11 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.enumerations.AffectedTaskOccurrence;
+import microsoft.exchange.webservices.data.enumerations.DeleteMode;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
+import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
 
 /**
  * Represents a response object created to supress read receipts for an item.

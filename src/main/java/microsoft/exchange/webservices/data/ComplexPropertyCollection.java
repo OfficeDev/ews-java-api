@@ -24,6 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -95,13 +97,12 @@ public abstract class ComplexPropertyCollection
    * @param complexProperty The complex property.
    */
   protected void itemChanged(ComplexProperty complexProperty) {
-    EwsUtilities.EwsAssert(complexProperty instanceof ComplexProperty,
-        "ComplexPropertyCollection.ItemChanged", String.format(
-            "ComplexPropertyCollection." +
-                "ItemChanged: the type of " +
-                "the complexProperty argument " +
-                "(%s) is not supported.",
-            complexProperty.getClass().getName()));
+    EwsUtilities
+        .EwsAssert(complexProperty instanceof ComplexProperty, "ComplexPropertyCollection.ItemChanged",
+                   String.format("ComplexPropertyCollection." +
+                                 "ItemChanged: the type of " +
+                                 "the complexProperty argument " +
+                                 "(%s) is not supported.", complexProperty.getClass().getName()));
 
     TComplexProperty property = (TComplexProperty) complexProperty;
     if (!this.addedItems.contains(property)) {

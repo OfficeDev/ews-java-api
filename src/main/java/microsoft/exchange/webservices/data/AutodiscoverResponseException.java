@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
+
 /**
  * Represents an exception from an autodiscover error response.
  */

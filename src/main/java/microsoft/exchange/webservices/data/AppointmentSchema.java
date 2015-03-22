@@ -24,6 +24,11 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.Schema;
+import microsoft.exchange.webservices.data.enumerations.AppointmentType;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
+import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
+import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 
 import java.util.EnumSet;
 
@@ -327,7 +332,7 @@ public class AppointmentSchema extends ItemSchema {
    * The Constant LegacyFreeBusyStatus.
    */
   public static final PropertyDefinition LegacyFreeBusyStatus =
-      new GenericPropertyDefinition<LegacyFreeBusyStatus>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus>(
           LegacyFreeBusyStatus.class,
           XmlElementNames.LegacyFreeBusyStatus,
           FieldUris.LegacyFreeBusyStatus, EnumSet.of(
@@ -419,7 +424,7 @@ public class AppointmentSchema extends ItemSchema {
    * The Constant AppointmentType.
    */
   public static final PropertyDefinition AppointmentType =
-      new GenericPropertyDefinition<AppointmentType>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.AppointmentType>(
           AppointmentType.class,
           XmlElementNames.CalendarItemType, FieldUris.CalendarItemType,
           EnumSet.of(PropertyDefinitionFlags.CanFind),

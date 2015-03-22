@@ -23,6 +23,13 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ConflictResolutionMode;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
+import microsoft.exchange.webservices.data.enumerations.SendInvitationsOrCancellationsMode;
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,8 +86,7 @@ final class UpdateItemRequest extends
   @Override
   protected void validate() throws ServiceLocalException, Exception {
     super.validate();
-    EwsUtilities.validateParamCollection(this.getItems().iterator(),
-        "Items");
+    EwsUtilities.validateParamCollection(this.getItems().iterator(), "Items");
     for (int i = 0; i < this.getItems().size(); i++) {
       if ((this.getItems().get(i) == null) ||
           this.getItems().get(i).isNew()) {

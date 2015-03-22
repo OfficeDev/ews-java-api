@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+
 /**
  * Represents a property definition for a service object.
  */
@@ -80,8 +82,8 @@ public abstract class ServiceObjectPropertyDefinition extends
    */
   protected ServiceObjectPropertyDefinition(String uri) {
     super();
-    EwsUtilities.EwsAssert(!(uri == null || uri.isEmpty()),
-        "ServiceObjectPropertyDefinition.ctor", "uri is null or empty");
+    EwsUtilities.EwsAssert(!(uri == null || uri.isEmpty()), "ServiceObjectPropertyDefinition.ctor",
+                           "uri is null or empty");
     this.uri = uri;
   }
 

@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceResult;
+
 import java.util.List;
 
 /**
@@ -59,8 +61,7 @@ final class CreateFolderResponse extends ServiceResponse implements
     if (this.folder != null) {
       return this.folder;
     } else {
-      return EwsUtilities.createEwsObjectFromXmlElementName(Folder.class,
-          service, xmlElementName);
+      return EwsUtilities.createEwsObjectFromXmlElementName(Folder.class, service, xmlElementName);
     }
   }
 

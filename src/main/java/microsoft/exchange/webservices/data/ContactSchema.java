@@ -24,6 +24,11 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.Schema;
+import microsoft.exchange.webservices.data.enumerations.ContactSource;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.FileAsMapping;
+import microsoft.exchange.webservices.data.enumerations.PhysicalAddressIndex;
+import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 
 import java.util.EnumSet;
 
@@ -319,7 +324,7 @@ public class ContactSchema extends ItemSchema {
    * Defines the FileAsMapping property.
    */
   public static final PropertyDefinition FileAsMapping =
-      new GenericPropertyDefinition<FileAsMapping>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.FileAsMapping>(
           FileAsMapping.class,
           XmlElementNames.FileAsMapping, FieldUris.FileAsMapping, EnumSet.of(
           PropertyDefinitionFlags.CanSet,
@@ -558,7 +563,7 @@ public class ContactSchema extends ItemSchema {
    * Defines the ContactSource property.
    */
   public static final PropertyDefinition ContactSource =
-      new GenericPropertyDefinition<ContactSource>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.ContactSource>(
           ContactSource.class,
           XmlElementNames.ContactSource, FieldUris.ContactSource, EnumSet
           .of(PropertyDefinitionFlags.CanFind),

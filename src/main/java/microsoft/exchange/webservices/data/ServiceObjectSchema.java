@@ -24,6 +24,9 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -135,19 +138,12 @@ public abstract class ServiceObjectSchema implements
                 existingPropertyDefinition = propDefDictionary
                     .get(propertyDefinition.getUri());
                 EwsUtilities
-                    .EwsAssert(
-                        existingPropertyDefinition ==
-                            propertyDefinition,
-                        "Schema.allSchemaProperties." +
-                            "delegate",
-                        String
-                            .format(
-                                "There are at least " +
-                                    "two distinct property " +
-                                    "definitions with the" +
-                                    " following URI: %s",
-                                propertyDefinition
-                                    .getUri()));
+                    .EwsAssert(existingPropertyDefinition == propertyDefinition,
+                               "Schema.allSchemaProperties." + "delegate",
+                               String.format("There are at least " +
+                                             "two distinct property " +
+                                             "definitions with the" +
+                                             " following URI: %s", propertyDefinition.getUri()));
               } else {
                 propDefDictionary.put(propertyDefinition
                     .getUri(), propertyDefinition);

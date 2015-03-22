@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+
 /**
  * Represents a GetFolder request.
  */

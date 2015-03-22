@@ -26,6 +26,10 @@ package microsoft.exchange.webservices.data;
 /**
  * Represents a DeleteAttachment request.
  */
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,8 +64,7 @@ final class DeleteAttachmentRequest extends
   protected void validate() {
     try {
       super.validate();
-      EwsUtilities.validateParamCollection(this.getAttachments()
-          .iterator(), "Attachments");
+      EwsUtilities.validateParamCollection(this.getAttachments().iterator(), "Attachments");
       for (int i = 0; i < this.attachments.size(); i++) {
         EwsUtilities.validateParam(this.attachments.get(i).getId(),
             String.format("Attachment[%d].Id ", i));

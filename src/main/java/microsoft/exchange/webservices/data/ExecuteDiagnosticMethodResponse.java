@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -51,9 +52,7 @@ final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
    */
   protected ExecuteDiagnosticMethodResponse(ExchangeService service) {
     super();
-    EwsUtilities.EwsAssert(service != null,
-        "ExecuteDiagnosticMethodResponse.ctor",
-        "service is null");
+    EwsUtilities.EwsAssert(service != null, "ExecuteDiagnosticMethodResponse.ctor", "service is null");
   }
 
   /**

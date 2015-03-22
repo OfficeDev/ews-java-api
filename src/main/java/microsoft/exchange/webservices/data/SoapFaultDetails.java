@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceError;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 import java.util.HashMap;
 import java.util.Map;
@@ -204,8 +207,7 @@ public class SoapFaultDetails {
     // namespaces (types namespace for E12, errors namespace in E14). To
     // avoid this problem, the parser will match the namespace from the
     // start and end elements.
-    XmlNamespace elementNS = EwsUtilities.getNamespaceFromUri(reader
-        .getNamespaceUri());
+    XmlNamespace elementNS = EwsUtilities.getNamespaceFromUri(reader.getNamespaceUri());
 
     if (!reader.isEmptyElement()) {
       do {

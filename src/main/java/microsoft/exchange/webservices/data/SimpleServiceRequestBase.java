@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

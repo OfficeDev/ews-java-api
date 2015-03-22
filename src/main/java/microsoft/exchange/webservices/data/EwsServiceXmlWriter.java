@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import org.w3c.dom.*;
 
 import javax.xml.stream.XMLOutputFactory;

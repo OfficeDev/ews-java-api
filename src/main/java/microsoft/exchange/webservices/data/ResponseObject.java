@@ -28,6 +28,12 @@ package microsoft.exchange.webservices.data;
  *
  */
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.enumerations.AffectedTaskOccurrence;
+import microsoft.exchange.webservices.data.enumerations.DeleteMode;
+import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
+import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
+import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 
 import java.util.List;
 
@@ -53,8 +59,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
    */
   protected ResponseObject(Item referenceItem) throws Exception {
     super(referenceItem.getService());
-    EwsUtilities.EwsAssert(referenceItem != null, "ResponseObject.ctor",
-        "referenceItem is null");
+    EwsUtilities.EwsAssert(referenceItem != null, "ResponseObject.ctor", "referenceItem is null");
     referenceItem.throwIfThisIsNew();
     this.referenceItem = referenceItem;
   }

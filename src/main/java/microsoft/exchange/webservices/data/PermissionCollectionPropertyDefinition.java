@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+
 import java.util.EnumSet;
 
 /**
@@ -53,10 +56,8 @@ class PermissionSetPropertyDefinition extends ComplexPropertyDefinitionBase {
   protected ComplexProperty createPropertyInstance(ServiceObject owner) {
     Folder folder = (Folder) owner;
 
-    EwsUtilities.EwsAssert(
-        folder != null,
-        "PermissionCollectionPropertyDefinition.CreatePropertyInstance",
-        "The owner parameter is not of type Folder or a derived class.");
+    EwsUtilities.EwsAssert(folder != null, "PermissionCollectionPropertyDefinition.CreatePropertyInstance",
+                           "The owner parameter is not of type Folder or a derived class.");
 
     return new FolderPermissionCollection(folder);
   }

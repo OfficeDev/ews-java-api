@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
+import microsoft.exchange.webservices.data.enumerations.SendInvitationsMode;
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+
 import java.util.Collection;
 
 /**

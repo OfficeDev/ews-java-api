@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 import javax.xml.stream.XMLStreamException;
 
 /**
@@ -45,8 +49,7 @@ class GetServerTimeZonesRequest extends
   protected void validate() throws Exception {
     super.validate();
     if (this.ids != null) {
-      EwsUtilities.validateParamCollection(this.getIds().iterator(),
-          "Ids");
+      EwsUtilities.validateParamCollection(this.getIds().iterator(), "Ids");
     }
   }
 

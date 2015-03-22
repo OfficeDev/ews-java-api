@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+
 /**
  * Represents a folder Id provided by a FolderId object.
  */
@@ -39,8 +41,7 @@ class FolderIdWrapper extends AbstractFolderIdWrapper {
    * @param folderId the folder id
    */
   protected FolderIdWrapper(FolderId folderId) {
-    EwsUtilities.EwsAssert(folderId != null, "FolderIdWrapper.ctor",
-        "folderId is null");
+    EwsUtilities.EwsAssert(folderId != null, "FolderIdWrapper.ctor", "folderId is null");
     this.folderId = folderId;
   }
 

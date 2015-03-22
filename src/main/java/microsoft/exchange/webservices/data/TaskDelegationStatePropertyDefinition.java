@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumerations.TaskDelegationState;
+
 import java.util.EnumSet;
 
 /**
@@ -106,11 +110,10 @@ final class TaskDelegationStatePropertyDefinition extends
       case Accepted:
         return TaskDelegationState.Declined;
       default:
-        EwsUtilities.EwsAssert(false,
-            "TaskDelegationStatePropertyDefinition.Parse", String
-                .format("TaskDelegationStatePropertyDefinition." +
-                    "Parse():" +
-                    " value %s cannot be handled.", value));
+        EwsUtilities.EwsAssert(false, "TaskDelegationStatePropertyDefinition.Parse",
+                               String.format("TaskDelegationStatePropertyDefinition." +
+                                             "Parse():" +
+                                             " value %s cannot be handled.", value));
 
         return null; // To keep the compiler happy
     }

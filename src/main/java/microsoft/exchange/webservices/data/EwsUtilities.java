@@ -25,6 +25,15 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EwsEnum;
 import microsoft.exchange.webservices.data.attributes.RequiredServerVersion;
+import microsoft.exchange.webservices.data.enumerations.EventType;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.FileAsMapping;
+import microsoft.exchange.webservices.data.enumerations.ItemTraversal;
+import microsoft.exchange.webservices.data.enumerations.MailboxType;
+import microsoft.exchange.webservices.data.enumerations.MeetingRequestsDeliveryScope;
+import microsoft.exchange.webservices.data.enumerations.RuleProperty;
+import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -592,7 +601,7 @@ public class EwsUtilities {
    *
    * @param response the response
    * @return the string
-   * @throws EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
    */
   protected static String formatHttpResponseHeaders(HttpWebRequest response)
       throws EWSHttpException {
@@ -1123,7 +1132,7 @@ public class EwsUtilities {
    *
    * @param emailAddress The email address.
    * @return Domain name.
-   * @throws FormatException the format exception
+   * @throws microsoft.exchange.webservices.data.FormatException the format exception
    */
   public static String domainFromEmailAddress(String emailAddress)
       throws FormatException {
@@ -1235,8 +1244,8 @@ public class EwsUtilities {
    *
    * @param param     The string parameter.
    * @param paramName Name of the parameter.
-   * @throws ArgumentException
-   * @throws ServiceLocalException
+   * @throws microsoft.exchange.webservices.data.ArgumentException
+   * @throws microsoft.exchange.webservices.data.ServiceLocalException
    */
   protected static void validateNonBlankStringParamAllowNull(String param,
       String paramName) throws ArgumentException, ServiceLocalException {
@@ -1262,7 +1271,7 @@ public class EwsUtilities {
    *
    * @param param     The string parameter.
    * @param paramName Name of the parameter.
-   * @throws ArgumentNullException
+   * @throws microsoft.exchange.webservices.data.ArgumentNullException
    * @throws ArgumentException
    * @throws ServiceLocalException
    */
@@ -1280,7 +1289,7 @@ public class EwsUtilities {
    *
    * @param enumValue      the enum value
    * @param requestVersion the request version
-   * @throws ServiceVersionException the service version exception
+   * @throws microsoft.exchange.webservices.data.ServiceVersionException the service version exception
    */
   protected static void validateEnumVersionValue(Enum<?> enumValue,
       ExchangeVersion requestVersion) throws ServiceVersionException {

@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumerations.ServiceResult;
+import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+
 /**
  * Represents a service request that can have multiple responses.
  *
@@ -147,10 +151,9 @@ public abstract class MultiResponseServiceRequest<TResponse extends ServiceRespo
             .internalExecute();
 
     if (this.errorHandlingMode == ServiceErrorHandling.ThrowOnError) {
-      EwsUtilities.EwsAssert(serviceResponses.getCount() == 1,
-          "MultiResponseServiceRequest.Execute",
-          "ServiceErrorHandling.ThrowOnError " + "error handling " +
-              "is only valid for singleton request");
+      EwsUtilities.EwsAssert(serviceResponses.getCount() == 1, "MultiResponseServiceRequest.Execute",
+                             "ServiceErrorHandling.ThrowOnError " + "error handling " +
+                             "is only valid for singleton request");
 
       serviceResponses.getResponseAtIndex(0).throwIfNecessary();
     }
