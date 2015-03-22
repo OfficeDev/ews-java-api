@@ -24,8 +24,8 @@
 package microsoft.exchange.webservices.data.core.requests;
 
 import microsoft.exchange.webservices.data.EWSConstants;
-import microsoft.exchange.webservices.data.WebAsyncCallStateAnchor;
-import microsoft.exchange.webservices.data.WebProxy;
+import microsoft.exchange.webservices.data.core.WebAsyncCallStateAnchor;
+import microsoft.exchange.webservices.data.core.WebProxy;
 import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
 import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
 import org.apache.http.HttpException;

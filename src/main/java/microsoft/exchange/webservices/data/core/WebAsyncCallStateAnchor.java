@@ -21,11 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 import microsoft.exchange.webservices.data.core.requests.ServiceRequestBase;
+import microsoft.exchange.webservices.data.misc.AsyncCallback;
 
 public class WebAsyncCallStateAnchor {
 

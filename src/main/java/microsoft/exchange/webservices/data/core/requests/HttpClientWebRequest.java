@@ -23,8 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.requests;
 
-import microsoft.exchange.webservices.data.ByteArrayOSRequestEntity;
-import microsoft.exchange.webservices.data.WebProxy;
+import microsoft.exchange.webservices.data.core.WebProxy;
 import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;

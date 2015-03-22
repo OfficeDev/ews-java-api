@@ -24,12 +24,12 @@
 package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.core.serviceObjects.items.Appointment;
-import microsoft.exchange.webservices.data.AsyncCallback;
-import microsoft.exchange.webservices.data.AsyncRequestResult;
+import microsoft.exchange.webservices.data.misc.AsyncCallback;
+import microsoft.exchange.webservices.data.misc.AsyncRequestResult;
 import microsoft.exchange.webservices.data.core.serviceObjects.items.Conversation;
 import microsoft.exchange.webservices.data.core.serviceObjects.folders.Folder;
 import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
-import microsoft.exchange.webservices.data.OutParam;
+import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.requests.ApplyConversationActionRequest;

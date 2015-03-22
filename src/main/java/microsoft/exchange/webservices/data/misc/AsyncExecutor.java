@@ -21,36 +21,27 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc;
 
-/**
- * The Class Param.
- *
- * @param <T> the generic type
- */
-abstract class Param<T> {
+import java.util.concurrent.*;
 
-  /**
-   * The param.
-   */
-  private T param;
+public class AsyncExecutor extends ThreadPoolExecutor implements ExecutorService {
+  final static ArrayBlockingQueue<Runnable> queue = new ArrayBlockingQueue<Runnable>(1);
 
-  /**
-   * Gets the param.
-   *
-   * @return the param
-   */
-  public T getParam() {
-    return param;
+  public AsyncExecutor() {
+    super(1, 5, 10, TimeUnit.SECONDS, queue);
   }
 
-  /**
-   * Sets the param.
-   *
-   * @param param the new param
-   */
-  public void setParam(T param) {
-    this.param = param;
+  public <T> Future<T> submit(Callable<T> task, AsyncCallback callback) {
+    if (task == null) {
+      throw new NullPointerException();
+    }
+    RunnableFuture<T> ftask = newTaskFor(task);
+    execute(ftask);
+    if (callback != null) {
+      callback.setTask(ftask);
+    }
+    new Thread(callback).start();
+    return ftask;
   }
-
 }

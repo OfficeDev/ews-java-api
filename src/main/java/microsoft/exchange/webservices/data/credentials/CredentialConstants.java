@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.credentials;
 
 //These constants needs to be defined as per user configurations.
 public interface CredentialConstants {

@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.core.PropertyBag;
 import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
 import microsoft.exchange.webservices.data.properties.complex.recurrence.ranges.RecurrenceRange;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.XmlNodeType;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;

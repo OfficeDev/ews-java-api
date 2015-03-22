@@ -23,12 +23,12 @@
 
 package microsoft.exchange.webservices.data.core.requests;
 
-import microsoft.exchange.webservices.data.AsyncCallback;
-import microsoft.exchange.webservices.data.AsyncExecutor;
-import microsoft.exchange.webservices.data.AsyncRequestResult;
-import microsoft.exchange.webservices.data.CallableMethod;
+import microsoft.exchange.webservices.data.misc.AsyncCallback;
+import microsoft.exchange.webservices.data.misc.AsyncExecutor;
+import microsoft.exchange.webservices.data.misc.AsyncRequestResult;
+import microsoft.exchange.webservices.data.misc.CallableMethod;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.WebAsyncCallStateAnchor;
+import microsoft.exchange.webservices.data.core.WebAsyncCallStateAnchor;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceRequestException;

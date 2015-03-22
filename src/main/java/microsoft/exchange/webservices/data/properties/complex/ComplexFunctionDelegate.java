@@ -21,18 +21,11 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.complex;
 
-/**
- * The Class OutParam.
- *
- * @param <T> the generic type
- */
-public class OutParam<T> extends Param<T> {
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 
-  /**
-   * Instantiates a new out param.
-   */
-  public OutParam() {
-  }
+public interface ComplexFunctionDelegate<T1 extends EwsServiceXmlReader> {
+
+  Boolean func(T1 arg1) throws Exception;
 }

@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.serviceObjects.items;
 
-import microsoft.exchange.webservices.data.TimeSpan;
+import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.attributes.Attachable;
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.EwsUtilities;

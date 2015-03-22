@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.notifications;
 
-import microsoft.exchange.webservices.data.AsyncCallback;
+import microsoft.exchange.webservices.data.misc.AsyncCallback;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
 

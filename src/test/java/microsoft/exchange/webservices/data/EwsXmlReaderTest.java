@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

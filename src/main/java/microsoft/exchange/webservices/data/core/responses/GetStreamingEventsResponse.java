@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.core.responses;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.XmlNodeType;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumerations.HangingRequestDisconnectReason;
 import microsoft.exchange.webservices.data.core.requests.HangingServiceRequestBase;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;

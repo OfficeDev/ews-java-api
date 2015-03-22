@@ -21,25 +21,16 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc;
 
 import java.util.concurrent.Future;
 
-public abstract class AsyncCallback extends AbstractAsyncCallback {
+public class AsyncCallbackImplementation extends AsyncCallback {
 
-  AsyncCallback() {
-
+  @Override
+  public Object processMe(Future<?> task) {
+    System.out.println("In Async Callback" + task.isDone());
+    return null;
   }
-
-  void setTask(Future<?> task) {
-
-    this.task = task;
-  }
-
-  Future<?> getTask() {
-    return this.task;
-  }
-
-
 
 }

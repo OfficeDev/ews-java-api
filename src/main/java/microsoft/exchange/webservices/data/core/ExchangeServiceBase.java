@@ -23,9 +23,6 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.CookieProcessingTargetAuthenticationStrategy;
-import microsoft.exchange.webservices.data.EwsSSLProtocolSocketFactory;
-import microsoft.exchange.webservices.data.WebProxy;
 import microsoft.exchange.webservices.data.core.requests.HttpClientWebRequest;
 import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 import microsoft.exchange.webservices.data.credentials.ExchangeCredentials;

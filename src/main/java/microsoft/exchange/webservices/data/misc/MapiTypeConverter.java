@@ -24,9 +24,7 @@
 package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.IFunctions;
 import microsoft.exchange.webservices.data.core.LazyMember;
-import microsoft.exchange.webservices.data.MapiTypeConverterMap;
 import microsoft.exchange.webservices.data.enumerations.MapiPropertyType;
 import microsoft.exchange.webservices.data.exceptions.FormatException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;

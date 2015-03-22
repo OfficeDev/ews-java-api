@@ -21,22 +21,11 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.enumerations.MapiPropertyType;
-import microsoft.exchange.webservices.data.misc.MapiTypeConverterMapEntry;
+import java.util.concurrent.Future;
 
-import java.util.HashMap;
-
-/**
- * The Class MapiTypeConverterMap.
- */
-public class MapiTypeConverterMap extends
-    HashMap<MapiPropertyType, MapiTypeConverterMapEntry> {
-
-  /**
-   * Constant serialized ID used for compatibility.
-   */
-  private static final long serialVersionUID = 1L;
+public interface Callback<T> {
+  T processMe(Future<?> task);
 
 }

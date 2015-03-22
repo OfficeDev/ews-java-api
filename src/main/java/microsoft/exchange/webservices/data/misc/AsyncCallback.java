@@ -21,43 +21,25 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.core.requests.HttpClientWebRequest;
-import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
-import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
-import microsoft.exchange.webservices.data.exceptions.HttpErrorException;
+import java.util.concurrent.Future;
 
-import java.io.IOException;
-import java.util.concurrent.Callable;
+public abstract class AsyncCallback extends AbstractAsyncCallback {
 
-public class CallableMethod implements Callable<Object> {
-  HttpWebRequest request;
+  AsyncCallback() {
 
-  public CallableMethod(HttpWebRequest request) {
-    this.request = request;
   }
 
-  protected HttpClientWebRequest executeMethod() throws EWSHttpException, HttpErrorException, IOException {
+  void setTask(Future<?> task) {
 
-    request.executeRequest();
-    return (HttpClientWebRequest) request;
+    this.task = task;
   }
 
-  public HttpWebRequest call() {
-
-    try {
-      return executeMethod();
-    } catch (EWSHttpException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (HttpErrorException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    return request;
+  Future<?> getTask() {
+    return this.task;
   }
+
+
+
 }

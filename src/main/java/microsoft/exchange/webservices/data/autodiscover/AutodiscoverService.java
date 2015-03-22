@@ -49,7 +49,7 @@ import microsoft.exchange.webservices.data.interfaces.IAutodiscoverRedirectionUr
 import microsoft.exchange.webservices.data.interfaces.IFuncDelegate;
 import microsoft.exchange.webservices.data.interfaces.IFunctionDelegate;
 import microsoft.exchange.webservices.data.exceptions.MaximumRedirectionHopsExceededException;
-import microsoft.exchange.webservices.data.OutParam;
+import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.autodiscover.configurationSettings.outlook.OutlookConfigurationSettings;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
@@ -57,7 +57,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.credentials.WSSecurityBasedCredentials;
-import microsoft.exchange.webservices.data.XmlNodeType;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

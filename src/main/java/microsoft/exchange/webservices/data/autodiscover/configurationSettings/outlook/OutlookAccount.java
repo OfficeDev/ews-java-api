@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover.configurationSettings.outlook;
 
-import microsoft.exchange.webservices.data.XmlNodeType;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.autodiscover.AlternateMailbox;
 import microsoft.exchange.webservices.data.autodiscover.AlternateMailboxCollection;

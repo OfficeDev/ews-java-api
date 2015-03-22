@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.misc.IFunctions;
 import microsoft.exchange.webservices.data.util.Base64EncoderStream;
 import org.apache.commons.codec.binary.StringUtils;
 import org.junit.Assert;

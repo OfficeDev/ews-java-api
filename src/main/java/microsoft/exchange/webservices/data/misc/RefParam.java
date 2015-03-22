@@ -21,50 +21,23 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc;
 
-import org.apache.http.Header;
-import org.apache.http.entity.BasicHttpEntity;
-import org.apache.http.message.BasicHeader;
+import microsoft.exchange.webservices.data.misc.Param;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
-public class ByteArrayOSRequestEntity extends BasicHttpEntity {
-
-  private ByteArrayOutputStream os = null;
+/**
+ * The Class RefParam.
+ *
+ * @param <T> the generic type
+ */
+public class RefParam<T> extends Param<T> {
 
   /**
-   * Constructor for ByteArrayOSRequestEntity.
+   * Instantiates a new ref param.
+   *
+   * @param param the param
    */
-  public ByteArrayOSRequestEntity(OutputStream os) {
-    super();
-    this.os = (ByteArrayOutputStream) os;
-  }
-
-  @Override
-  public long getContentLength() {
-    return os.size();
-  }
-
-  @Override
-  public Header getContentType() {
-    return new BasicHeader("Content-Type", "text/xml; charset=utf-8");
-  }
-
-  @Override
-  public boolean isRepeatable() {
-    return true;
-  }
-
-  @Override
-  public void writeTo(OutputStream out) throws IOException {
-    os.writeTo(out);
-  }
-
-  @Override
-  public boolean isStreaming() {
-    return false;
+  public RefParam(T param) {
+    this.setParam(param);
   }
 }
