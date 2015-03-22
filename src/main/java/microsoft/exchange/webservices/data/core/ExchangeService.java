@@ -241,8 +241,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * "creation" of the response object.
    * @throws Exception the exception
    */
-  protected List<Item> internalCreateResponseObject(
-      ServiceObject responseObject, FolderId parentFolderId,
+  public List<Item> internalCreateResponseObject(ServiceObject responseObject, FolderId parentFolderId,
       MessageDisposition messageDisposition) throws Exception {
     CreateResponseObjectRequest request = new CreateResponseObjectRequest(
         this, ServiceErrorHandling.ThrowOnError);
@@ -265,7 +264,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param parentFolderId The parent folder Id
    * @throws Exception the exception
    */
-  protected void createFolder(Folder folder, FolderId parentFolderId)
+  public void createFolder(Folder folder, FolderId parentFolderId)
       throws Exception {
     CreateFolderRequest request = new CreateFolderRequest(this,
         ServiceErrorHandling.ThrowOnError);
@@ -283,7 +282,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param folder The folder.
    * @throws Exception the exception
    */
-  protected void updateFolder(Folder folder) throws Exception {
+  public void updateFolder(Folder folder) throws Exception {
     UpdateFolderRequest request = new UpdateFolderRequest(this,
         ServiceErrorHandling.ThrowOnError);
 
@@ -300,7 +299,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @return the folder
    * @throws Exception the exception
    */
-  protected Folder copyFolder(FolderId folderId, FolderId destinationFolderId)
+  public Folder copyFolder(FolderId folderId, FolderId destinationFolderId)
       throws Exception {
     CopyFolderRequest request = new CopyFolderRequest(this,
         ServiceErrorHandling.ThrowOnError);
@@ -322,7 +321,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @return the folder
    * @throws Exception the exception
    */
-  protected Folder moveFolder(FolderId folderId, FolderId destinationFolderId)
+  public Folder moveFolder(FolderId folderId, FolderId destinationFolderId)
       throws Exception {
     MoveFolderRequest request = new MoveFolderRequest(this,
         ServiceErrorHandling.ThrowOnError);
@@ -453,8 +452,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param propertySet The property set
    * @throws Exception the exception
    */
-  protected void loadPropertiesForFolder(Folder folder,
-      PropertySet propertySet) throws Exception {
+  public void loadPropertiesForFolder(Folder folder, PropertySet propertySet) throws Exception {
     EwsUtilities.validateParam(folder, "folder");
     EwsUtilities.validateParam(propertySet, "propertySet");
 
@@ -470,12 +468,13 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   /**
    * Binds to a folder.
    *
+   *
    * @param folderId    the folder id
    * @param propertySet the property set
    * @return Folder
    * @throws Exception the exception
    */
-  protected Folder bindToFolder(FolderId folderId, PropertySet propertySet)
+  public Folder bindToFolder(FolderId folderId, PropertySet propertySet)
       throws Exception {
     EwsUtilities.validateParam(folderId, "folderId");
     EwsUtilities.validateParam(propertySet, "propertySet");
@@ -503,8 +502,8 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @return Folder
    * @throws Exception the exception
    */
-  protected <TFolder extends Folder> TFolder bindToFolder(Class<TFolder> cls,
-      FolderId folderId, PropertySet propertySet) throws Exception {
+  public <TFolder extends Folder> TFolder bindToFolder(Class<TFolder> cls, FolderId folderId,
+      PropertySet propertySet) throws Exception {
     Folder result = this.bindToFolder(folderId, propertySet);
 
     if (cls.isAssignableFrom(result.getClass())) {
@@ -523,7 +522,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param deleteMode The delete mode
    * @throws Exception the exception
    */
-  protected void deleteFolder(FolderId folderId, DeleteMode deleteMode)
+  public void deleteFolder(FolderId folderId, DeleteMode deleteMode)
       throws Exception {
     EwsUtilities.validateParam(folderId, "folderId");
 
@@ -545,8 +544,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *                         folders.
    * @throws Exception the exception
    */
-  protected void emptyFolder(FolderId folderId, DeleteMode deleteMode,
-      boolean deleteSubFolders) throws Exception {
+  public void emptyFolder(FolderId folderId, DeleteMode deleteMode, boolean deleteSubFolders) throws Exception {
     EwsUtilities.validateParam(folderId, "folderId");
 
     EmptyFolderRequest request = new EmptyFolderRequest(this,
@@ -637,8 +635,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param sendInvitationsMode the send invitations mode
    * @throws Exception the exception
    */
-  protected void createItem(Item item, FolderId parentFolderId,
-      MessageDisposition messageDisposition,
+  public void createItem(Item item, FolderId parentFolderId, MessageDisposition messageDisposition,
       SendInvitationsMode sendInvitationsMode) throws Exception {
     ArrayList<Item> items = new ArrayList<Item>();
     items.add(item);
@@ -741,11 +738,8 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * of the specified item Ids.
    * @throws Exception the exception
    */
-  protected Item updateItem(
-      Item item,
-      FolderId savedItemsDestinationFolderId,
-      ConflictResolutionMode conflictResolution,
-      MessageDisposition messageDisposition,
+  public Item updateItem(Item item, FolderId savedItemsDestinationFolderId,
+      ConflictResolutionMode conflictResolution, MessageDisposition messageDisposition,
       SendInvitationsOrCancellationsMode sendInvitationsOrCancellationsMode)
       throws Exception {
     List<Item> itemIdArray = new ArrayList<Item>();
@@ -767,7 +761,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param savedCopyDestinationFolderId the saved copy destination folder id
    * @throws Exception the exception
    */
-  protected void sendItem(Item item, FolderId savedCopyDestinationFolderId)
+  public void sendItem(Item item, FolderId savedCopyDestinationFolderId)
       throws Exception {
     SendItemRequest request = new SendItemRequest(this,
         ServiceErrorHandling.ThrowOnError);
@@ -852,7 +846,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @return The copy of the item.
    * @throws Exception the exception
    */
-  protected Item copyItem(ItemId itemId, FolderId destinationFolderId)
+  public Item copyItem(ItemId itemId, FolderId destinationFolderId)
       throws Exception {
     List<ItemId> itemIdArray = new ArrayList<ItemId>();
     itemIdArray.add(itemId);
@@ -932,7 +926,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * the specified item Ids.
    * @throws Exception the exception
    */
-  protected Item moveItem(ItemId itemId, FolderId destinationFolderId)
+  public Item moveItem(ItemId itemId, FolderId destinationFolderId)
       throws Exception {
     List<ItemId> itemIdArray = new ArrayList<ItemId>();
     itemIdArray.add(itemId);
@@ -957,10 +951,9 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @return Service response collection.
    * @throws Exception the exception
    */
-  protected <TItem extends Item> ServiceResponseCollection<FindItemResponse<TItem>> findItems(
-      Iterable<FolderId> parentFolderIds, SearchFilter searchFilter,
-      String queryString, ViewBase view, Grouping groupBy,
-      ServiceErrorHandling errorHandlingMode) throws Exception {
+  public <TItem extends Item> ServiceResponseCollection<FindItemResponse<TItem>> findItems(
+      Iterable<FolderId> parentFolderIds, SearchFilter searchFilter, String queryString, ViewBase view,
+      Grouping groupBy, ServiceErrorHandling errorHandlingMode) throws Exception {
     EwsUtilities.validateParamCollection(parentFolderIds.iterator(),
         "parentFolderIds");
     EwsUtilities.validateParam(view, "view");
@@ -1311,9 +1304,8 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * specified items.
    * @throws Exception the exception
    */
-  ServiceResponseCollection<ServiceResponse> internalLoadPropertiesForItems(
-      Iterable<Item> items, PropertySet propertySet,
-      ServiceErrorHandling errorHandling) throws Exception {
+  public ServiceResponseCollection<ServiceResponse> internalLoadPropertiesForItems(Iterable<Item> items,
+      PropertySet propertySet, ServiceErrorHandling errorHandling) throws Exception {
     GetItemRequestForLoad request = new GetItemRequestForLoad(this,
         errorHandling);
     // return null;
@@ -1370,7 +1362,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * specified item Ids.
    * @throws Exception the exception
    */
-  protected Item bindToItem(ItemId itemId, PropertySet propertySet)
+  public Item bindToItem(ItemId itemId, PropertySet propertySet)
       throws Exception {
     EwsUtilities.validateParam(itemId, "itemId");
     EwsUtilities.validateParam(propertySet, "propertySet");
@@ -1462,8 +1454,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param affectedTaskOccurrences the affected task occurrences
    * @throws Exception the exception
    */
-  protected void deleteItem(ItemId itemId, DeleteMode deleteMode,
-      SendCancellationsMode sendCancellationsMode,
+  public void deleteItem(ItemId itemId, DeleteMode deleteMode, SendCancellationsMode sendCancellationsMode,
       AffectedTaskOccurrence affectedTaskOccurrences) throws Exception {
     List<ItemId> itemIdArray = new ArrayList<ItemId>();
     itemIdArray.add(itemId);

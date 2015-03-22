@@ -106,8 +106,7 @@ public final class PostItem extends Item {
    *
    * @return The schema associated with this type of object.
    */
-  @Override
-  protected ServiceObjectSchema getSchema() {
+  @Override public ServiceObjectSchema getSchema() {
     return PostItemSchema.Instance;
   }
 
@@ -116,8 +115,7 @@ public final class PostItem extends Item {
    *
    * @return The schema associated with this type of object.
    */
-  @Override
-  protected ExchangeVersion getMinimumRequiredServerVersion() {
+  @Override public ExchangeVersion getMinimumRequiredServerVersion() {
     return ExchangeVersion.Exchange2007_SP1;
   }
 

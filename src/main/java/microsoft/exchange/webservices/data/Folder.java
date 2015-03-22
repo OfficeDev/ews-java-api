@@ -163,8 +163,7 @@ public class Folder extends ServiceObject {
    *
    * @return The schema associated with this type of object.
    */
-  @Override
-  protected ServiceObjectSchema getSchema() {
+  @Override public ServiceObjectSchema getSchema() {
     return FolderSchema.Instance;
   }
 
@@ -174,8 +173,7 @@ public class Folder extends ServiceObject {
    * @return Earliest Exchange version in which this service object type is
    * supported.
    */
-  @Override
-  protected ExchangeVersion getMinimumRequiredServerVersion() {
+  @Override public ExchangeVersion getMinimumRequiredServerVersion() {
     return ExchangeVersion.Exchange2007_SP1;
   }
 
@@ -184,8 +182,7 @@ public class Folder extends ServiceObject {
    *
    * @return Xml element name
    */
-  @Override
-  protected String getChangeXmlElementName() {
+  @Override public String getChangeXmlElementName() {
     return XmlElementNames.FolderChange;
   }
 
@@ -568,8 +565,7 @@ public class Folder extends ServiceObject {
    *
    * @return the id property definition
    */
-  @Override
-  protected PropertyDefinition getIdPropertyDefinition() {
+  @Override public PropertyDefinition getIdPropertyDefinition() {
     return FolderSchema.Id;
   }
 

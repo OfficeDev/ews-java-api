@@ -58,8 +58,7 @@ public abstract class CalendarResponseMessage<TMessage extends EmailMessage>
    *
    * @return The schema associated with this type of object.
    */
-  @Override
-  protected ServiceObjectSchema getSchema() {
+  @Override public ServiceObjectSchema getSchema() {
     return CalendarResponseObjectSchema.Instance;
   }
 

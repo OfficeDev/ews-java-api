@@ -111,7 +111,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    *
    * @param owner The owner of the bag.
    */
-  protected PropertyBag(ServiceObject owner) {
+  public PropertyBag(ServiceObject owner) {
     EwsUtilities.EwsAssert(owner != null, "PropertyBag.ctor", "owner is null");
 
     this.owner = owner;
@@ -122,7 +122,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    *
    * @return A Map holding the bag's properties.
    */
-  protected Map<PropertyDefinition, Object> getProperties() {
+  public Map<PropertyDefinition, Object> getProperties() {
     return this.properties;
   }
 
@@ -140,7 +140,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    *
    * @return True if the bag has pending changes, false otherwise.
    */
-  protected boolean getIsDirty() {
+  public boolean getIsDirty() {
     int changes = this.modifiedProperties.size() +
         this.deletedProperties.size() + this.addedProperties.size();
     return changes > 0 || this.isDirty;
@@ -167,7 +167,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    * @param propertyDefinition the property definition
    * @return true, if is property loaded
    */
-  protected boolean isPropertyLoaded(PropertyDefinition propertyDefinition) {
+  public boolean isPropertyLoaded(PropertyDefinition propertyDefinition) {
     // Is the property loaded?
     if (this.loadedProperties.contains(propertyDefinition)) {
       return true;
@@ -215,7 +215,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    * @return true if the specified property has been updated; otherwise,
    * false.
    */
-  protected boolean isPropertyUpdated(PropertyDefinition propertyDefinition) {
+  public boolean isPropertyUpdated(PropertyDefinition propertyDefinition) {
     return this.modifiedProperties.contains(propertyDefinition) ||
         this.addedProperties.contains(propertyDefinition);
   }
@@ -245,8 +245,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    * @return True if property was retrieved.
    * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
-  protected <T> boolean tryGetPropertyType(Class<T> cls,
-      PropertyDefinition propertyDefinition,
+  public <T> boolean tryGetPropertyType(Class<T> cls, PropertyDefinition propertyDefinition,
       OutParam<T> propertyValue) throws ArgumentException {
     // Verify that the type parameter and
     //property definition's type are compatible.
@@ -367,7 +366,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    * @param propertyDefinition The property to check against.
    * @return True if the specified property is in the bag, false otherwise.
    */
-  protected boolean contains(PropertyDefinition propertyDefinition) {
+  public boolean contains(PropertyDefinition propertyDefinition) {
     return this.properties.containsKey(propertyDefinition);
   }
 
@@ -449,7 +448,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
   /**
    * Clears the bag's change log.
    */
-  protected void clearChangeLog() {
+  public void clearChangeLog() {
     this.deletedProperties.clear();
     this.modifiedProperties.clear();
     this.addedProperties.clear();
@@ -478,8 +477,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    * @param onlySummaryPropertiesRequested Indicates whether summary or full properties were requested.
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader, boolean clear,
-      PropertySet requestedPropertySet,
+  public void loadFromXml(EwsServiceXmlReader reader, boolean clear, PropertySet requestedPropertySet,
       boolean onlySummaryPropertiesRequested) throws Exception {
     if (clear) {
       this.clear();
@@ -528,7 +526,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    * @param writer The writer to write the properties to.
    * @throws Exception the exception
    */
-  protected void writeToXml(EwsServiceXmlWriter writer) throws Exception {
+  public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
     writer.writeStartElement(XmlNamespace.Types, this.getOwner()
         .getXmlElementName());
 
@@ -559,7 +557,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    * @param writer The writer to write the updates to.
    * @throws Exception the exception
    */
-  protected void writeToXmlForUpdate(EwsServiceXmlWriter writer)
+  public void writeToXmlForUpdate(EwsServiceXmlWriter writer)
       throws Exception {
     writer.writeStartElement(XmlNamespace.Types, this.getOwner()
         .getChangeXmlElementName());
@@ -595,7 +593,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    * @return True if an UpdateItem/UpdateFolder call is necessary, false
    * otherwise.
    */
-  protected boolean getIsUpdateCallNecessary() {
+  public boolean getIsUpdateCallNecessary() {
     List<PropertyDefinition> propertyDefinitions =
         new ArrayList<PropertyDefinition>();
     propertyDefinitions.addAll(this.addedProperties);
@@ -711,7 +709,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    *
    * @throws Exception the exception
    */
-  protected void validate() throws Exception {
+  public void validate() throws Exception {
     for (PropertyDefinition propertyDefinition : this.addedProperties) {
       this.validatePropertyValue(propertyDefinition);
     }

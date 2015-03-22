@@ -387,7 +387,7 @@ public abstract class ServiceObjectSchema implements
    *
    * @return the first class properties
    */
-  protected List<PropertyDefinition> getFirstClassProperties() {
+  public List<PropertyDefinition> getFirstClassProperties() {
     return this.firstClassProperties;
   }
 
@@ -397,7 +397,7 @@ public abstract class ServiceObjectSchema implements
    *
    * @return the first class summary properties
    */
-  protected List<PropertyDefinition> getFirstClassSummaryProperties() {
+  public List<PropertyDefinition> getFirstClassSummaryProperties() {
     return this.firstClassSummaryProperties;
   }
 
@@ -408,7 +408,7 @@ public abstract class ServiceObjectSchema implements
    * @param propertyDefinitionOutParam The property definition.
    * @return True if property definition exists.
    */
-  protected boolean tryGetPropertyDefinition(String xmlElementName,
+  public boolean tryGetPropertyDefinition(String xmlElementName,
       OutParam<PropertyDefinition> propertyDefinitionOutParam) {
     if (this.properties.containsKey(xmlElementName)) {
       propertyDefinitionOutParam.setParam(this.properties

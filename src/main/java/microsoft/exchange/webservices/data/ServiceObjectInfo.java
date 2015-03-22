@@ -41,7 +41,7 @@ import java.util.Map;
  * ServiceObject type as well as how to map from a ServiceObject type to
  * appropriate constructors.
  */
-class ServiceObjectInfo {
+public class ServiceObjectInfo {
 
   /**
    * The service object constructors with attachment param.
@@ -63,7 +63,7 @@ class ServiceObjectInfo {
   /**
    * Default constructor.
    */
-  protected ServiceObjectInfo() {
+  public ServiceObjectInfo() {
     this.xmlElementNameToServiceObjectClassMap =
         new HashMap<String, Class<?>>();
     this.serviceObjectConstructorsWithServiceParam =
@@ -334,7 +334,7 @@ class ServiceObjectInfo {
    *
    * @return the xml element name to service object class map
    */
-  protected Map<String, Class<?>> getXmlElementNameToServiceObjectClassMap() {
+  public Map<String, Class<?>> getXmlElementNameToServiceObjectClassMap() {
     return this.xmlElementNameToServiceObjectClassMap;
   }
 
@@ -345,7 +345,7 @@ class ServiceObjectInfo {
    *
    * @return the service object constructors with service param
    */
-  protected Map<Class<?>, ICreateServiceObjectWithServiceParam>
+  public Map<Class<?>, ICreateServiceObjectWithServiceParam>
   getServiceObjectConstructorsWithServiceParam() {
     return this.serviceObjectConstructorsWithServiceParam;
   }
@@ -357,7 +357,7 @@ class ServiceObjectInfo {
    *
    * @return the service object constructors with attachment param
    */
-  protected Map<Class<?>, ICreateServiceObjectWithAttachmentParam>
+  public Map<Class<?>, ICreateServiceObjectWithAttachmentParam>
   getServiceObjectConstructorsWithAttachmentParam() {
     return this.serviceObjectConstructorsWithAttachmentParam;
   }

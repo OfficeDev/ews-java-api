@@ -80,8 +80,7 @@ public final class AcceptMeetingInvitationMessage extends
    * @return Earliest Exchange version in which this service object type is
    * supported.
    */
-  @Override
-  protected ExchangeVersion getMinimumRequiredServerVersion() {
+  @Override public ExchangeVersion getMinimumRequiredServerVersion() {
     return ExchangeVersion.Exchange2007_SP1;
   }
 

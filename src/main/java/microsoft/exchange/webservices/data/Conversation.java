@@ -72,8 +72,7 @@ public class Conversation extends ServiceObject {
    *
    * @return The schema associated with this type of object.
    */
-  @Override
-  protected ServiceObjectSchema getSchema() {
+  @Override public ServiceObjectSchema getSchema() {
     return ConversationSchema.Instance;
   }
 
@@ -83,8 +82,7 @@ public class Conversation extends ServiceObject {
    * @return Earliest Exchange version in which
    * this service object type is supported.
    */
-  @Override
-  protected ExchangeVersion getMinimumRequiredServerVersion() {
+  @Override public ExchangeVersion getMinimumRequiredServerVersion() {
     return ExchangeVersion.Exchange2010_SP1;
   }
 
@@ -93,8 +91,7 @@ public class Conversation extends ServiceObject {
    *
    * @return A PropertyDefinition instance.
    */
-  @Override
-  protected PropertyDefinition getIdPropertyDefinition() {
+  @Override public PropertyDefinition getIdPropertyDefinition() {
     return ConversationSchema.Id;
   }
 
@@ -134,8 +131,7 @@ public class Conversation extends ServiceObject {
    *
    * @return XML element name
    */
-  @Override
-  protected String getChangeXmlElementName() {
+  @Override public String getChangeXmlElementName() {
     throw new UnsupportedOperationException();
   }
 

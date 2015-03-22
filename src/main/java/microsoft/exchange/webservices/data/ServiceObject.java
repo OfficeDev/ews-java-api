@@ -79,7 +79,7 @@ public abstract class ServiceObject {
   /**
    * Triggers dispatch of the change event.
    */
-  protected void changed() {
+  public void changed() {
 
     for (IServiceObjectChangedDelegate change : this.onChange) {
       change.serviceObjectChanged(this);
@@ -162,7 +162,7 @@ public abstract class ServiceObject {
    *
    * @return the change xml element name
    */
-  protected String getChangeXmlElementName() {
+  public String getChangeXmlElementName() {
     return XmlElementNames.ItemChange;
   }
 
@@ -246,14 +246,14 @@ public abstract class ServiceObject {
    *
    * @return the schema
    */
-  protected abstract ServiceObjectSchema getSchema();
+  public abstract ServiceObjectSchema getSchema();
 
   /**
    * Gets the minimum required server version.
    *
    * @return the minimum required server version
    */
-  protected abstract ExchangeVersion getMinimumRequiredServerVersion();
+  public abstract ExchangeVersion getMinimumRequiredServerVersion();
 
   /**
    * Loads service object from XML.
@@ -306,7 +306,6 @@ public abstract class ServiceObject {
    * Clear change log.
    */
   public void clearChangeLog() {
-
     this.getPropertyBag().clearChangeLog();
   }
 
@@ -319,7 +318,6 @@ public abstract class ServiceObject {
    * @throws Exception the exception
    */
   public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
-
     this.getPropertyBag().writeToXml(writer);
   }
 
@@ -333,7 +331,6 @@ public abstract class ServiceObject {
    */
   public void writeToXmlForUpdate(EwsServiceXmlWriter writer)
       throws Exception {
-
     this.getPropertyBag().writeToXmlForUpdate(writer);
   }
 
@@ -533,7 +530,7 @@ public abstract class ServiceObject {
    *
    * @return the id property definition
    */
-  protected PropertyDefinition getIdPropertyDefinition() {
+  public PropertyDefinition getIdPropertyDefinition() {
     return null;
   }
 
@@ -585,7 +582,6 @@ public abstract class ServiceObject {
    * @return true, if is dirty
    */
   public boolean isDirty() {
-
     return this.getPropertyBag().getIsDirty();
 
   }

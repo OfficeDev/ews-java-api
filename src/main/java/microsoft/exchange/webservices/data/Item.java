@@ -141,8 +141,7 @@ public class Item extends ServiceObject {
    *
    * @return The schema associated with this type of object.
    */
-  @Override
-  protected ServiceObjectSchema getSchema() {
+  @Override public ServiceObjectSchema getSchema() {
     return ItemSchema.getInstance();
   }
 
@@ -152,8 +151,7 @@ public class Item extends ServiceObject {
    * @return Earliest Exchange version in which this service object type is
    * supported.
    */
-  @Override
-  protected ExchangeVersion getMinimumRequiredServerVersion() {
+  @Override public ExchangeVersion getMinimumRequiredServerVersion() {
 
     return ExchangeVersion.Exchange2007_SP1;
   }
@@ -174,7 +172,7 @@ public class Item extends ServiceObject {
    *
    * @return A PropertyDefinition instance.
    */
-  protected PropertyDefinition getIdPropertyDefinition() {
+  public PropertyDefinition getIdPropertyDefinition() {
     return ItemSchema.Id;
   }
 
@@ -307,7 +305,7 @@ public class Item extends ServiceObject {
    *
    * @throws ServiceLocalException
    */
-  protected boolean hasUnprocessedAttachmentChanges()
+  public boolean hasUnprocessedAttachmentChanges()
       throws ServiceLocalException {
     return this.getAttachments().hasUnprocessedChanges();
 

@@ -73,8 +73,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends
    *
    * @return The schema associated with this type of object.
    */
-  @Override
-  protected ServiceObjectSchema getSchema() {
+  @Override public ServiceObjectSchema getSchema() {
     return ResponseObjectSchema.Instance;
   }
 
