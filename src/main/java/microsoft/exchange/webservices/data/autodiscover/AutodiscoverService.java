@@ -43,8 +43,8 @@ import microsoft.exchange.webservices.data.autodiscover.responses.GetDomainSetti
 import microsoft.exchange.webservices.data.autodiscover.requests.GetUserSettingsRequest;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponseCollection;
-import microsoft.exchange.webservices.data.HttpClientWebRequest;
-import microsoft.exchange.webservices.data.HttpWebRequest;
+import microsoft.exchange.webservices.data.core.requests.HttpClientWebRequest;
+import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 import microsoft.exchange.webservices.data.interfaces.IAutodiscoverRedirectionUrl;
 import microsoft.exchange.webservices.data.interfaces.IFuncDelegate;
 import microsoft.exchange.webservices.data.interfaces.IFunctionDelegate;

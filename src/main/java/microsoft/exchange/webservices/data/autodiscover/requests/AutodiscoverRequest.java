@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.EwsXmlReader;
 import microsoft.exchange.webservices.data.ExchangeServerInfo;
-import microsoft.exchange.webservices.data.HttpWebRequest;
+import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceRemoteException;
 import microsoft.exchange.webservices.data.exceptions.ServiceRequestException;

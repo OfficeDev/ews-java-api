@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.Appointment;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.Item;
 import microsoft.exchange.webservices.data.MeetingCancellation;
-import microsoft.exchange.webservices.data.MeetingRequest;
+import microsoft.exchange.webservices.data.core.requests.MeetingRequest;
 import microsoft.exchange.webservices.data.MeetingResponse;
 
 /**

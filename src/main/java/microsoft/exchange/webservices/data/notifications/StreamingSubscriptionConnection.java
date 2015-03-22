@@ -25,10 +25,10 @@ package microsoft.exchange.webservices.data.notifications;
 
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.GetStreamingEventsRequest;
+import microsoft.exchange.webservices.data.core.requests.GetStreamingEventsRequest;
 import microsoft.exchange.webservices.data.GetStreamingEventsResponse;
 import microsoft.exchange.webservices.data.HangingRequestDisconnectEventArgs;
-import microsoft.exchange.webservices.data.HangingServiceRequestBase;
+import microsoft.exchange.webservices.data.core.requests.HangingServiceRequestBase;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceError;
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;

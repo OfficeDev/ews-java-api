@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.core.requests.HangingRequestDisconnectReason;
+import microsoft.exchange.webservices.data.core.requests.HangingServiceRequestBase;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.notifications.GetStreamingEventsResults;
 

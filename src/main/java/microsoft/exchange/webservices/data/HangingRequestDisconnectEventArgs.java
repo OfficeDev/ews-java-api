@@ -1,5 +1,7 @@
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.core.requests.HangingRequestDisconnectReason;
+
 /**
  * Represents a collection of arguments for the
  * HangingServiceRequestBase.HangingRequestDisconnectHandler

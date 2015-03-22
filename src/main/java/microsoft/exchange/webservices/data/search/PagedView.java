@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.search;
 
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.ServiceRequestBase;
+import microsoft.exchange.webservices.data.core.requests.ServiceRequestBase;
 import microsoft.exchange.webservices.data.XmlAttributeNames;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;

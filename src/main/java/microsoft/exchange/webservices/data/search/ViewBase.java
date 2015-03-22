@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.search;
 
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.PropertySet;
-import microsoft.exchange.webservices.data.ServiceRequestBase;
+import microsoft.exchange.webservices.data.core.requests.ServiceRequestBase;
 import microsoft.exchange.webservices.data.XmlAttributeNames;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
@@ -34,7 +34,6 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.search.Grouping;
 
 import javax.xml.stream.XMLStreamException;
 

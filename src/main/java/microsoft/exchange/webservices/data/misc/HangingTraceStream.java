@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.ExchangeService;
-import microsoft.exchange.webservices.data.HangingServiceRequestBase;
+import microsoft.exchange.webservices.data.core.requests.HangingServiceRequestBase;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 
 import javax.xml.stream.XMLStreamException;

@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.credentials;
 
 import microsoft.exchange.webservices.data.EwsUtilities;
-import microsoft.exchange.webservices.data.HttpWebRequest;
+import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 
 import java.net.URISyntaxException;
 

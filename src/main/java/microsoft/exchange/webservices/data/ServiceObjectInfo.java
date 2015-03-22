@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.core.requests.MeetingRequest;
 import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithAttachmentParam;
 import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithServiceParam;
 import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;

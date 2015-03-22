@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.credentials;
 
-import microsoft.exchange.webservices.data.HttpWebRequest;
+import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 
 /**
  * WebCredentials is used for password-based authentication schemes such as
