@@ -42,7 +42,7 @@ public final class ItemChange extends Change {
   /**
    * Initializes a new instance of ItemChange.
    */
-  protected ItemChange() {
+  public ItemChange() {
     super();
   }
 
@@ -51,8 +51,7 @@ public final class ItemChange extends Change {
    *
    * @return A ItemId.
    */
-  @Override
-  protected ServiceId createId() {
+  @Override public ServiceId createId() {
     return new ItemId();
   }
 
@@ -84,7 +83,7 @@ public final class ItemChange extends Change {
    *
    * @param isRead the new checks if is read
    */
-  protected void setIsRead(boolean isRead) {
+  public void setIsRead(boolean isRead) {
     this.isRead = isRead;
   }
 

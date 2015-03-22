@@ -539,7 +539,7 @@ public abstract class ServiceObject {
    * @return the id
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
-  protected ServiceId getId() throws ServiceLocalException {
+  public ServiceId getId() throws ServiceLocalException {
     PropertyDefinition idPropertyDefinition = this
         .getIdPropertyDefinition();
 

@@ -56,7 +56,7 @@ public final class ChangeCollection<TChange extends Change> implements
   /**
    * Initializes a new instance of the class.
    */
-  protected ChangeCollection() {
+  public ChangeCollection() {
   }
 
   /**
@@ -64,7 +64,7 @@ public final class ChangeCollection<TChange extends Change> implements
    *
    * @param change the change
    */
-  protected void add(TChange change) {
+  public void add(TChange change) {
     EwsUtilities.EwsAssert(change != null, "ChangeList.Add", "change is null");
     this.changes.add(change);
   }
@@ -106,7 +106,7 @@ public final class ChangeCollection<TChange extends Change> implements
    *
    * @param syncState the new sync state
    */
-  protected void setSyncState(String syncState) {
+  public void setSyncState(String syncState) {
     this.syncState = syncState;
   }
 
@@ -124,7 +124,7 @@ public final class ChangeCollection<TChange extends Change> implements
    *
    * @param moreChangesAvailable the new more changes available
    */
-  protected void setMoreChangesAvailable(boolean moreChangesAvailable) {
+  public void setMoreChangesAvailable(boolean moreChangesAvailable) {
     this.moreChangesAvailable = moreChangesAvailable;
   }
 

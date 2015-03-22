@@ -36,7 +36,7 @@ public final class FolderChange extends Change {
   /**
    * Initializes a new instance of FolderChange.
    */
-  protected FolderChange() {
+  public FolderChange() {
     super();
   }
 
@@ -45,8 +45,7 @@ public final class FolderChange extends Change {
    *
    * @return A FolderId.
    */
-  @Override
-  protected ServiceId createId() {
+  @Override public ServiceId createId() {
     return new FolderId();
   }
 

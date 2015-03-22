@@ -62,7 +62,7 @@ public abstract class Change {
    *
    * @return the service id
    */
-  protected abstract ServiceId createId();
+  public abstract ServiceId createId();
 
   /**
    * Gets the type of the change.
@@ -78,7 +78,7 @@ public abstract class Change {
    *
    * @param changeType the new change type
    */
-  protected void setChangeType(ChangeType changeType) {
+  public void setChangeType(ChangeType changeType) {
     this.changeType = changeType;
   }
 
@@ -87,7 +87,7 @@ public abstract class Change {
    *
    * @return the service object
    */
-  protected ServiceObject getServiceObject() {
+  public ServiceObject getServiceObject() {
     return this.serviceObject;
   }
 
@@ -96,7 +96,7 @@ public abstract class Change {
    *
    * @param serviceObject the new service object
    */
-  protected void setServiceObject(ServiceObject serviceObject) {
+  public void setServiceObject(ServiceObject serviceObject) {
     this.serviceObject = serviceObject;
   }
 
@@ -106,7 +106,7 @@ public abstract class Change {
    * @return the id
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
-  protected ServiceId getId() throws ServiceLocalException {
+  public ServiceId getId() throws ServiceLocalException {
     return this.getServiceObject() != null ? this.getServiceObject()
         .getId() : this.id;
   }
@@ -116,7 +116,7 @@ public abstract class Change {
    *
    * @param id the new id
    */
-  protected void setId(ServiceId id) {
+  public void setId(ServiceId id) {
     this.id = id;
   }
 }
