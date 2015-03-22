@@ -27,6 +27,7 @@ import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.search.filters.SearchFilter;
 
 /**
  * Represents a folder containing appointments.

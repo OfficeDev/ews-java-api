@@ -21,8 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.search.filters;
 
+import microsoft.exchange.webservices.data.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.OutParam;
+import microsoft.exchange.webservices.data.XmlAttributeNames;
+import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.ComparisonMode;
 import microsoft.exchange.webservices.data.enumerations.ContainmentMode;

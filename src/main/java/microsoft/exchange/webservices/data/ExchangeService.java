@@ -74,6 +74,7 @@ import microsoft.exchange.webservices.data.properties.complex.UserId;
 import microsoft.exchange.webservices.data.properties.complex.availability.OofSettings;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
 import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition;
+import microsoft.exchange.webservices.data.search.filters.SearchFilter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
