@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 /**
  * Represents a property definition for a service object.

@@ -27,6 +27,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.UserConfigurationProperties;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 import java.util.EnumSet;
 
@@ -59,7 +60,7 @@ class GetUserConfigurationRequest extends
   /**
    * Validate request.
    *
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    * @throws Exception                                                 the exception
    */
   @Override

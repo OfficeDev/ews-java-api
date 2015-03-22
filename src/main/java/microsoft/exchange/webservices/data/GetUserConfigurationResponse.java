@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+
 import javax.xml.stream.XMLStreamException;
 
 /**
@@ -57,14 +60,13 @@ public final class GetUserConfigurationResponse extends ServiceResponse {
    * @throws javax.xml.stream.XMLStreamException                       the xML stream exception
    * @throws InstantiationException                                    the instantiation exception
    * @throws IllegalAccessException                                    the illegal access exception
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    * @throws Exception                                                 the exception
    */
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException,
-      ServiceLocalException, Exception {
+      InstantiationException, IllegalAccessException, ServiceLocalException, Exception {
     super.readElementsFromXml(reader);
     this.userConfiguration.loadFromXml(reader);
   }

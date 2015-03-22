@@ -24,6 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.MapiPropertyType;
+import microsoft.exchange.webservices.data.exceptions.FormatException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -199,12 +201,11 @@ class MapiTypeConverter {
    * @param mapiPropType the mapi prop type
    * @param stringValue  the string value
    * @return the object
-   * @throws ServiceXmlDeserializationException                  the service xml deserialization exception
-   * @throws microsoft.exchange.webservices.data.FormatException the format exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException                  the service xml deserialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.FormatException the format exception
    */
   protected static Object convertToValue(MapiPropertyType mapiPropType,
-      String stringValue) throws ServiceXmlDeserializationException,
-      FormatException {
+      String stringValue) throws ServiceXmlDeserializationException, FormatException {
     return getMapiTypeConverterMap().get(mapiPropType).convertToValue(
         stringValue);
 

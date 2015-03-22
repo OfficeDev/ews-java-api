@@ -28,6 +28,8 @@ import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
 import microsoft.exchange.webservices.data.enumerations.SyncFolderItemsScope;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 
 /**
  * Represents a SyncFolderItems request.
@@ -299,7 +301,7 @@ class SyncFolderItemsRequest extends
    * Sets the max changes returned.
    *
    * @param maxChangesReturned the new max changes returned
-   * @throws microsoft.exchange.webservices.data.ArgumentException the argument exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException the argument exception
    */
   public void setMaxChangesReturned(int maxChangesReturned)
       throws ArgumentException {

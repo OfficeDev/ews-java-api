@@ -21,14 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * Represents an error that occurs when the XML for a response cannot be
- * deserialized.
+ * Defines DnsException class.
  */
-public final class ServiceXmlDeserializationException extends
-    ServiceLocalException {
+public class DnsException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -36,30 +34,11 @@ public final class ServiceXmlDeserializationException extends
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceXmlDeserializationException Constructor.
-   */
-  public ServiceXmlDeserializationException() {
-    super();
-  }
-
-  /**
-   * ServiceXmlDeserializationException Constructor.
+   * Instantiates a new dns exception.
    *
-   * @param message the message
+   * @param exceptionMessage the exception message
    */
-  public ServiceXmlDeserializationException(String message) {
-    super(message);
+  public DnsException(String exceptionMessage) {
+    super(exceptionMessage);
   }
-
-  /**
-   * ServiceXmlDeserializationException Constructor.
-   *
-   * @param message        the message
-   * @param innerException the inner exception
-   */
-  public ServiceXmlDeserializationException(String message,
-      Exception innerException) {
-    super(message, innerException);
-  }
-
 }

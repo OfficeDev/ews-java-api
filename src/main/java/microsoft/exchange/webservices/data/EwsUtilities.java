@@ -34,6 +34,13 @@ import microsoft.exchange.webservices.data.enumerations.MeetingRequestsDeliveryS
 import microsoft.exchange.webservices.data.enumerations.RuleProperty;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.ArgumentNullException;
+import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
+import microsoft.exchange.webservices.data.exceptions.FormatException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -601,7 +608,7 @@ public class EwsUtilities {
    *
    * @param response the response
    * @return the string
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   public static String formatHttpResponseHeaders(HttpWebRequest response)
       throws EWSHttpException {
@@ -1132,7 +1139,7 @@ public class EwsUtilities {
    *
    * @param emailAddress The email address.
    * @return Domain name.
-   * @throws microsoft.exchange.webservices.data.FormatException the format exception
+   * @throws microsoft.exchange.webservices.data.exceptions.FormatException the format exception
    */
   public static String domainFromEmailAddress(String emailAddress)
       throws FormatException {
@@ -1244,8 +1251,8 @@ public class EwsUtilities {
    *
    * @param param     The string parameter.
    * @param paramName Name of the parameter.
-   * @throws microsoft.exchange.webservices.data.ArgumentException
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
    */
   public static void validateNonBlankStringParamAllowNull(String param,
       String paramName) throws ArgumentException, ServiceLocalException {
@@ -1271,7 +1278,7 @@ public class EwsUtilities {
    *
    * @param param     The string parameter.
    * @param paramName Name of the parameter.
-   * @throws microsoft.exchange.webservices.data.ArgumentNullException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentNullException
    * @throws ArgumentException
    * @throws ServiceLocalException
    */
@@ -1289,7 +1296,7 @@ public class EwsUtilities {
    *
    * @param enumValue      the enum value
    * @param requestVersion the request version
-   * @throws microsoft.exchange.webservices.data.ServiceVersionException the service version exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException the service version exception
    */
   public static void validateEnumVersionValue(Enum<?> enumValue,
       ExchangeVersion requestVersion) throws ServiceVersionException {
@@ -1404,7 +1411,8 @@ public class EwsUtilities {
    * @param paramName  Parameter name.
    * @throws ArgumentException
    */
-  public static void validateDomainNameAllowNull(String domainName, String paramName) throws ArgumentException {
+  public static void validateDomainNameAllowNull(String domainName, String paramName) throws
+                                                                                      ArgumentException {
     if (domainName != null) {
       Pattern domainNamePattern = Pattern.compile(DomainRegex);
       Matcher domainNameMatcher = domainNamePattern.matcher(domainName);

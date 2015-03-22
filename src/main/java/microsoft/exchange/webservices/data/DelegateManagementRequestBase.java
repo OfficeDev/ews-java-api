@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 /**
  * Represents an abstract delegate management request.
@@ -52,7 +53,7 @@ abstract class DelegateManagementRequestBase<TResponse extends DelegateManagemen
   /**
    * Validate request.
    *
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    * @throws Exception                                                 the exception
    */
   @Override

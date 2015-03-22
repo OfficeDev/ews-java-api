@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.EventType;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
@@ -142,8 +144,7 @@ abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   protected abstract void internalWriteElementsToXml(
-      EwsServiceXmlWriter writer) throws XMLStreamException,
-      ServiceXmlSerializationException;
+      EwsServiceXmlWriter writer) throws XMLStreamException, ServiceXmlSerializationException;
 
   /**
    * Writes XML elements.

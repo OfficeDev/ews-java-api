@@ -23,6 +23,11 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.ArgumentNullException;
+import microsoft.exchange.webservices.data.exceptions.FormatException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -158,8 +163,8 @@ class MapiTypeConverterMapEntry {
    *
    * @param stringValue String to convert to a value.
    * @return value
-   * @throws ServiceXmlDeserializationException                  the service xml deserialization exception
-   * @throws microsoft.exchange.webservices.data.FormatException the format exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException                  the service xml deserialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.FormatException the format exception
    */
   protected Object convertToValue(String stringValue)
       throws ServiceXmlDeserializationException, FormatException {
@@ -181,7 +186,7 @@ class MapiTypeConverterMapEntry {
    *
    * @param stringValue to convert to a value.
    * @return Value.
-   * @throws microsoft.exchange.webservices.data.FormatException
+   * @throws microsoft.exchange.webservices.data.exceptions.FormatException
    * @throws ServiceXmlDeserializationException
    */
   protected Object ConvertToValueOrDefault(String stringValue)
@@ -195,8 +200,8 @@ class MapiTypeConverterMapEntry {
    * Validates array value.
    *
    * @param value the value
-   * @throws microsoft.exchange.webservices.data.ArgumentException     the argument exception
-   * @throws microsoft.exchange.webservices.data.ArgumentNullException the argument exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException     the argument exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentNullException the argument exception
    */
   private void validateValueAsArray(Object value) throws ArgumentException, ArgumentNullException {
     if (value == null) {

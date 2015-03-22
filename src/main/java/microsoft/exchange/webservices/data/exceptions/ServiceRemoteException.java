@@ -21,14 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
-
-import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * Represents an exception from an autodiscover error response.
+ * Represents an error that occurs when a service operation fails remotely.
  */
-public class AutodiscoverResponseException extends ServiceRemoteException {
+public class ServiceRemoteException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -36,27 +34,28 @@ public class AutodiscoverResponseException extends ServiceRemoteException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Error code when Autodiscover service operation failed remotely.
+   * ServiceRemoteException Constructor.
    */
-  private AutodiscoverErrorCode errorCode;
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param errorCode the error code
-   * @param message   the message
-   */
-  public AutodiscoverResponseException(AutodiscoverErrorCode errorCode, String message) {
-    super(message);
-    this.errorCode = errorCode;
+  public ServiceRemoteException() {
+    super();
   }
 
   /**
-   * Gets the ErrorCode for the exception.
+   * ServiceRemoteException Constructor.
    *
-   * @return the error code
+   * @param message the message
    */
-  public AutodiscoverErrorCode getErrorCode() {
-    return this.errorCode;
+  public ServiceRemoteException(String message) {
+    super(message);
+  }
+
+  /**
+   * ServiceRemoteException Constructor.
+   *
+   * @param message        the message
+   * @param innerException the inner exception
+   */
+  public ServiceRemoteException(String message, Exception innerException) {
+    super(message, innerException);
   }
 }

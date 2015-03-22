@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.UpdateInboxRulesException;
 
 /**
  * Represents a UpdateInboxRulesRequest request.
@@ -154,7 +156,7 @@ final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<UpdateInbox
    *
    * @return Service response.
    * @throws Exception
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
    */
   protected UpdateInboxRulesResponse execute()
       throws ServiceLocalException, Exception {

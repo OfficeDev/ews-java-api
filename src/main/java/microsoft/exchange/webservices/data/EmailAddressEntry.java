@@ -28,6 +28,7 @@ import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.EmailAddressKey;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.MailboxType;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 /**
  * Represents an entry of an EmailAddressDictionary.

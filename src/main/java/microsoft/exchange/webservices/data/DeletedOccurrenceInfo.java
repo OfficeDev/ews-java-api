@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+
 import javax.xml.stream.XMLStreamException;
 import java.util.Date;
 

@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
@@ -147,7 +148,7 @@ public final class FindItemResponse
    * @param propertySet     The property set
    * @param destinationList The list in which to add the read items.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
    * @throws Exception                           the exception
    */
   private void internalReadItemsFromXml(EwsServiceXmlReader reader,

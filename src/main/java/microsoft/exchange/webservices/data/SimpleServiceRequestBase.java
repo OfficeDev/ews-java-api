@@ -24,6 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceRequestException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -50,7 +52,7 @@ abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> {
    * Executes this request.
    *
    * @throws Exception
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
    */
   protected T internalExecute() throws ServiceLocalException, Exception {
     HttpWebRequest response = null;

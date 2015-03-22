@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.DefaultExtendedPropertySet;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.MapiPropertyType;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import java.util.UUID;
 
@@ -277,7 +278,7 @@ public final class ExtendedPropertyDefinition extends PropertyDefinitionBase {
    * Writes the attributes to XML.
    *
    * @param writer The writer.
-   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)

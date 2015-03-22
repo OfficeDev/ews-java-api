@@ -21,12 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * Exception class for banned xml parsing
+ * Represents an error that occurs when a request cannot be handled due to a
+ * service version mismatch.
  */
-class XmlDtdException extends XmlException {
+public final class ServiceVersionException extends ServiceLocalException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,11 +35,29 @@ class XmlDtdException extends XmlException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Gets the xml exception message.
+   * Initializes a new instance of the class.
    */
-
-  @Override
-  public String getMessage() {
-    return "For security reasons DTD is prohibited in this XML document.";
+  public ServiceVersionException() {
+    super();
   }
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param message the message
+   */
+  public ServiceVersionException(String message) {
+    super(message);
+  }
+
+  /**
+   * Instantiates a new service version exception.
+   *
+   * @param message        the message
+   * @param innerException the inner exception
+   */
+  public ServiceVersionException(String message, Exception innerException) {
+    super(message, innerException);
+  }
+
 }

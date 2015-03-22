@@ -25,6 +25,10 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ItemTraversal;
 import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import java.util.Date;
 
@@ -123,8 +127,8 @@ public final class CalendarView extends ViewBase {
    * Validate instance.
    *
    * @param request the request
-   * @throws ServiceVersionException    the service version exception
-   * @throws ServiceValidationException the service validation exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException    the service version exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
    */
   protected void internalValidate(ServiceRequestBase request)
       throws ServiceVersionException, ServiceValidationException {

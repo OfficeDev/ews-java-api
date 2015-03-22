@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+
 /**
  * Represents a folder Id provided by a Folder object.
  */
@@ -37,7 +39,7 @@ class FolderWrapper extends AbstractFolderIdWrapper {
    * Initializes a new instance of FolderWrapper.
    *
    * @param folder the folder
-   * @throws ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
   protected FolderWrapper(Folder folder) throws ServiceLocalException {
     EwsUtilities.EwsAssert(folder != null, "FolderWrapper.ctor", "folder is null");

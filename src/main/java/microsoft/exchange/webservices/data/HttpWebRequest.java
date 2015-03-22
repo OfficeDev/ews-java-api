@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
 import org.apache.http.HttpException;
 
 import java.io.*;
@@ -473,7 +474,7 @@ public abstract class HttpWebRequest {
    * Gets the error stream.
    *
    * @return the error stream
-   * @throws EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   public abstract InputStream getErrorStream() throws EWSHttpException;
 
@@ -481,7 +482,7 @@ public abstract class HttpWebRequest {
    * Gets the output stream.
    *
    * @return the output stream
-   * @throws EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   public abstract OutputStream getOutputStream() throws EWSHttpException;
 
@@ -524,7 +525,7 @@ public abstract class HttpWebRequest {
    * Gets the response code.
    *
    * @return the response code
-   * @throws EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   public abstract int getResponseCode() throws EWSHttpException;
 
@@ -532,7 +533,7 @@ public abstract class HttpWebRequest {
    * Gets the response message.
    *
    * @return the response message
-   * @throws EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   public abstract String getResponseText() throws EWSHttpException;
 
@@ -541,7 +542,7 @@ public abstract class HttpWebRequest {
    *
    * @param headerName the header name
    * @return the response header field
-   * @throws EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   public abstract String getResponseHeaderField(String headerName)
       throws EWSHttpException;

@@ -25,6 +25,8 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.EnumSet;
@@ -68,15 +70,14 @@ class TimeZonePropertyDefinition extends PropertyDefinition {
    * @param writer            the writer
    * @param propertyBag       the property bag
    * @param isUpdateOperation the is update operation
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    * @throws javax.xml.stream.XMLStreamException                       the xML stream exception
-   * @throws ServiceXmlSerializationException                          the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException                          the service xml serialization exception
    * @throws Exception                                                 the exception
    */
   protected void writePropertyValueToXml(EwsServiceXmlWriter writer,
       PropertyBag propertyBag, boolean isUpdateOperation)
-      throws ServiceLocalException, XMLStreamException,
-      ServiceXmlSerializationException, Exception {
+      throws ServiceLocalException, XMLStreamException, ServiceXmlSerializationException, Exception {
     TimeZoneDefinition timeZoneDefinition = (TimeZoneDefinition) propertyBag
         .getObjectFromPropertyDefinition(this);
 

@@ -21,7 +21,11 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
+
+import microsoft.exchange.webservices.data.CreateAttachmentResponse;
+import microsoft.exchange.webservices.data.EwsUtilities;
+import microsoft.exchange.webservices.data.ServiceResponseCollection;
 
 /**
  * Represents an error that occurs when a call to the CreateAttachment web

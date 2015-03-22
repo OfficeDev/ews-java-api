@@ -48,6 +48,13 @@ import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.enumerations.UserConfigurationProperties;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
+import microsoft.exchange.webservices.data.exceptions.AccountIsLockedException;
+import microsoft.exchange.webservices.data.exceptions.ArgumentOutOfRangeException;
+import microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceRemoteException;
+import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -1423,7 +1430,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    * @param parentItemId the parent item id
    * @param attachments  the attachments
    * @return Service response collection.
-   * @throws ServiceResponseException the service response exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
   protected ServiceResponseCollection<CreateAttachmentResponse> createAttachments(
@@ -3460,7 +3467,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
    *
    * @param redirectionUrl the redirection url
    * @return Returns true.
-   * @throws AutodiscoverLocalException the autodiscover local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException the autodiscover local exception
    */
   private boolean defaultAutodiscoverRedirectionUrlValidationCallback(
       String redirectionUrl) throws AutodiscoverLocalException {
@@ -3595,8 +3602,7 @@ public final class ExchangeService extends ExchangeServiceBase implements
   }
 
   private URI getEwsUrlFromResponse(GetUserSettingsResponse response,
-      boolean isExternal) throws URISyntaxException,
-      AutodiscoverLocalException {
+      boolean isExternal) throws URISyntaxException, AutodiscoverLocalException {
     String uriString;
 
     // Bug E14:59063 -- Figure out which URL to use: Internal or External.

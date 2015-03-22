@@ -21,12 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * The Class FormatException.
+ * Represents an error that occurs when a date and time cannot be converted from
+ * one time zone to another.
  */
-public class FormatException extends Exception {
+public class TimeZoneConversionException extends ServiceLocalException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,42 +35,30 @@ public class FormatException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new format exception.
+   * ServiceLocalException Constructor.
    */
-  public FormatException() {
+  public TimeZoneConversionException() {
     super();
-
   }
 
   /**
-   * Instantiates a new format exception.
+   * ServiceLocalException Constructor.
    *
-   * @param arg0 the arg0
-   * @param arg1 the arg1
+   * @param message the message
    */
-  public FormatException(final String arg0, final Throwable arg1) {
-    super(arg0, arg1);
-
+  public TimeZoneConversionException(String message) {
+    super(message);
   }
 
   /**
-   * Instantiates a new format exception.
+   * ServiceLocalException Constructor.
    *
-   * @param arg0 the arg0
+   * @param message        the message
+   * @param innerException the inner exception
    */
-  public FormatException(final String arg0) {
-    super(arg0);
-
-  }
-
-  /**
-   * Instantiates a new format exception.
-   *
-   * @param arg0 the arg0
-   */
-  public FormatException(final Throwable arg0) {
-    super(arg0);
-
+  public TimeZoneConversionException(String message,
+      Exception innerException) {
+    super(message, innerException);
   }
 
 }

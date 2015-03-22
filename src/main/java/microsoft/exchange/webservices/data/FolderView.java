@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.FolderTraversal;
 import microsoft.exchange.webservices.data.enumerations.OffsetBasePoint;
 import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 /**
  * Represents the view settings in a folder search operation.

@@ -21,12 +21,14 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * The Class ArgumentException.
+ * Represents an error that occurs when the XML for a response cannot be
+ * deserialized.
  */
-public class ArgumentException extends Exception {
+public final class ServiceXmlDeserializationException extends
+    ServiceLocalException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,21 +36,19 @@ public class ArgumentException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new argument exception.
+   * ServiceXmlDeserializationException Constructor.
    */
-  public ArgumentException() {
+  public ServiceXmlDeserializationException() {
     super();
-
   }
 
   /**
-   * Instantiates a new argument exception.
+   * ServiceXmlDeserializationException Constructor.
    *
-   * @param arg0 the arg0
+   * @param message the message
    */
-  public ArgumentException(final String arg0) {
-    super(arg0);
-
+  public ServiceXmlDeserializationException(String message) {
+    super(message);
   }
 
   /**
@@ -57,22 +57,9 @@ public class ArgumentException extends Exception {
    * @param message        the message
    * @param innerException the inner exception
    */
-  public ArgumentException(String message, Exception innerException) {
+  public ServiceXmlDeserializationException(String message,
+      Exception innerException) {
     super(message, innerException);
-  }
-
-  /**
-   * Initializes a new instance of the System.
-   * ArgumentException class with a specified
-   * error message and the name of the
-   * parameter that causes this exception.
-   *
-   * @param message   The error message that explains the reason for the exception.
-   * @param paramName The name of the parameter that caused the current exception.
-   */
-  public ArgumentException(String message, String paramName) {
-    super(message + " Parameter that caused " +
-        "the current exception :" + paramName);
   }
 
 }

@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.EnumSet;
@@ -96,7 +97,7 @@ class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition {
    *
    * @param writer the writer
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    */
   protected void writeToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {

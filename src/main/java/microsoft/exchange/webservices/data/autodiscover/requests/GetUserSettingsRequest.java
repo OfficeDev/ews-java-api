@@ -28,9 +28,9 @@ import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.EwsXmlReader;
 import microsoft.exchange.webservices.data.ExchangeServiceBase;
-import microsoft.exchange.webservices.data.ServiceLocalException;
-import microsoft.exchange.webservices.data.ServiceValidationException;
-import microsoft.exchange.webservices.data.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
@@ -70,7 +70,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    *
    * @param service the service
    * @param url     the url
-   * @throws microsoft.exchange.webservices.data.ServiceValidationException
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException
    */
   public GetUserSettingsRequest(AutodiscoverService service, URI url) throws ServiceValidationException {
     this(service, url, false);
@@ -128,7 +128,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    * Executes this instance.
    *
    * @return the gets the user settings response collection
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    * @throws Exception                                                 the exception
    */
   public GetUserSettingsResponseCollection execute()
@@ -201,7 +201,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    * Writes the attributes to XML.
    *
    * @param writer The writer.
-   * @throws microsoft.exchange.webservices.data.ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)

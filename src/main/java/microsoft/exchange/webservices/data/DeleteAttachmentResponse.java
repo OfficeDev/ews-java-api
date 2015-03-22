@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 /**
  * Represents the response to an individual attachment deletion operation.
@@ -51,7 +52,7 @@ public final class DeleteAttachmentResponse extends ServiceResponse {
    * Reads response elements from XML.
    *
    * @param reader the reader
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    * @throws Exception                                                 the exception
    */
   @Override

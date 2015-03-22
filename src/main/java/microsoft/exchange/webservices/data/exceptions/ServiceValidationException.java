@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * Represents an error that occurs when a service operation fails remotely.
+ * Represents an error that occurs when a validation check fails.
  */
-public class ServiceRemoteException extends Exception {
+public final class ServiceValidationException extends ServiceLocalException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,28 +34,31 @@ public class ServiceRemoteException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceRemoteException Constructor.
+   * ServiceValidationException Constructor.
    */
-  public ServiceRemoteException() {
+  public ServiceValidationException() {
     super();
   }
 
   /**
-   * ServiceRemoteException Constructor.
+   * ServiceValidationException Constructor.
    *
    * @param message the message
    */
-  public ServiceRemoteException(String message) {
+  public ServiceValidationException(String message) {
     super(message);
   }
 
   /**
-   * ServiceRemoteException Constructor.
+   * Instantiates a new service validation exception.
    *
    * @param message        the message
    * @param innerException the inner exception
    */
-  public ServiceRemoteException(String message, Exception innerException) {
+  public ServiceValidationException(String message,
+      Exception innerException) {
     super(message, innerException);
+
   }
+
 }

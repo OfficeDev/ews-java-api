@@ -30,6 +30,9 @@ import microsoft.exchange.webservices.data.enumerations.DeleteMode;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.Importance;
 import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -327,7 +330,7 @@ public class Conversation extends ServiceObject {
    * @param deleteMode      The deletion mode.
    * @throws Exception
    * @throws IndexOutOfBoundsException
-   * @throws ServiceResponseException
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceResponseException
    */
   public void deleteItems(FolderId contextFolderId, DeleteMode deleteMode)
       throws ServiceResponseException, IndexOutOfBoundsException, Exception {

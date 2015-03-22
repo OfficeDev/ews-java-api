@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 /**
  * Represents an EmptyFolder request.
@@ -134,7 +136,7 @@ final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
    * Writes XML attributes.
    *
    * @param writer The writer.
-   * @throws ServiceXmlSerializationException
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)

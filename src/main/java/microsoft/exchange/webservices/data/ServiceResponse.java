@@ -26,6 +26,9 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.ServiceError;
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
@@ -226,7 +229,7 @@ public class ServiceResponse {
    * Reads response elements from XML.
    *
    * @param reader The reader.
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws InstantiationException              the instantiation exception
    * @throws IllegalAccessException              the illegal access exception
@@ -235,8 +238,7 @@ public class ServiceResponse {
    */
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException,
-      ServiceLocalException, Exception {
+      InstantiationException, IllegalAccessException, ServiceLocalException, Exception {
   }
 
   /**

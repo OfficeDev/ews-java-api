@@ -21,13 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * Represents an error that occurs when a request cannot be handled due to a
- * service version mismatch.
+ * Represents an exception that is thrown when the Autodiscover service could
+ * not be contacted.
  */
-public final class ServiceVersionException extends ServiceLocalException {
+public class AutodiscoverLocalException extends ServiceLocalException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -37,7 +37,7 @@ public final class ServiceVersionException extends ServiceLocalException {
   /**
    * Initializes a new instance of the class.
    */
-  public ServiceVersionException() {
+  public AutodiscoverLocalException() {
     super();
   }
 
@@ -46,18 +46,18 @@ public final class ServiceVersionException extends ServiceLocalException {
    *
    * @param message the message
    */
-  public ServiceVersionException(String message) {
+  public AutodiscoverLocalException(String message) {
     super(message);
   }
 
   /**
-   * Instantiates a new service version exception.
+   * Initializes a new instance of the class.
    *
    * @param message        the message
    * @param innerException the inner exception
    */
-  public ServiceVersionException(String message, Exception innerException) {
+  public AutodiscoverLocalException(String message,
+      Exception innerException) {
     super(message, innerException);
   }
-
 }

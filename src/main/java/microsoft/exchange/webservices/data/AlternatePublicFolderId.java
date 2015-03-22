@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.IdFormat;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 /**
  * Represents the Id of a public folder expressed in a specific format.
@@ -89,7 +90,7 @@ public class AlternatePublicFolderId extends AlternateIdBase {
    * Writes the attributes to XML.
    *
    * @param writer the writer
-   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)

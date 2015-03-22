@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.DeleteMode;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 /**
  * Represents an abstract Delete request.
@@ -56,7 +57,7 @@ abstract class DeleteRequest<TResponse extends ServiceResponse> extends
    * Writes XML attributes.
    *
    * @param writer The writer.
-   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)

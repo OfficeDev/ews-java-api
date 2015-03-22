@@ -24,6 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
@@ -99,7 +101,7 @@ public class StringList extends ComplexProperty implements Iterable<String> {
    * Writes elements to XML.
    *
    * @param writer accepts EwsServiceXmlWriter
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
   @Override

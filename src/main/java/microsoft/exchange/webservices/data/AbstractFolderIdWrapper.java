@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 
 /**
  * Represents the abstraction of a folder Id.
@@ -58,7 +59,7 @@ abstract class AbstractFolderIdWrapper {
    * Validates folderId against specified version.
    *
    * @param version the version
-   * @throws ServiceVersionException the service version exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException the service version exception
    */
   protected void validate(ExchangeVersion version)
       throws ServiceVersionException {

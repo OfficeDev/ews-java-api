@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+
 /**
  * Represents a change on a folder as returned by a synchronization operation.
  */
@@ -61,7 +63,7 @@ public final class FolderChange extends Change {
    * retrieve the Id of the folder that was deleted.
    *
    * @return the folder id
-   * @throws ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
   public FolderId getFolderId() throws ServiceLocalException {
     return (FolderId) this.getId();

@@ -25,6 +25,9 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -59,8 +62,7 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
 
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
-      throws XMLStreamException, ServiceXmlSerializationException,
-      ServiceLocalException, InstantiationException,
+      throws XMLStreamException, ServiceXmlSerializationException, ServiceLocalException, InstantiationException,
       IllegalAccessException, ServiceValidationException, Exception {
     writer.writeElementValue(XmlNamespace.Messages,
         XmlElementNames.MailboxSmtpAddress,

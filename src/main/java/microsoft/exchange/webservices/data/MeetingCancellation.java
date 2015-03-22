@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 /**
  * Represents a meeting cancellation message. Properties available on meeting

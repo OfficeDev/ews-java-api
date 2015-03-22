@@ -28,6 +28,7 @@ import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSetting
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverResponseType;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.net.URI;

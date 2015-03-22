@@ -21,9 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
-public class XmlException extends Exception {
+/**
+ * Exception class for banned xml parsing
+ */
+class XmlDtdException extends XmlException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -31,30 +34,11 @@ public class XmlException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new argument exception.
+   * Gets the xml exception message.
    */
-  public XmlException() {
-    super();
 
-  }
-
-  /**
-   * Instantiates a new argument exception.
-   *
-   * @param arg0 the arg0
-   */
-  public XmlException(final String arg0) {
-    super(arg0);
-
-  }
-
-  /**
-   * ServiceXmlDeserializationException Constructor.
-   *
-   * @param message        the message
-   * @param innerException the inner exception
-   */
-  public XmlException(String message, Exception innerException) {
-    super(message, innerException);
+  @Override
+  public String getMessage() {
+    return "For security reasons DTD is prohibited in this XML document.";
   }
 }

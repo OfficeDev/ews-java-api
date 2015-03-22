@@ -29,6 +29,9 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.*;
@@ -530,8 +533,7 @@ public final class PropertySet implements ISelfValidate,
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   protected void writeToXml(EwsServiceXmlWriter writer,
-      ServiceObjectType serviceObjectType) throws XMLStreamException,
-      ServiceXmlSerializationException {
+      ServiceObjectType serviceObjectType) throws XMLStreamException, ServiceXmlSerializationException {
     writer
         .writeStartElement(
             XmlNamespace.Messages,

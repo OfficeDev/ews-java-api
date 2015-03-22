@@ -30,6 +30,10 @@ import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.Month;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.ArgumentOutOfRangeException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.*;
@@ -402,8 +406,8 @@ public abstract class Recurrence extends ComplexProperty {
      *
      * @param writer the writer
      * @throws javax.xml.stream.XMLStreamException the xML stream exception
-     * @throws ServiceXmlSerializationException    the service xml serialization exception
-     * @throws ServiceValidationException          the service validation exception
+     * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
+     * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException          the service validation exception
      * @throws Exception                           the exception
      */
     @Override
@@ -496,7 +500,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @param startDate  the start date
      * @param interval   the interval
      * @param dayOfMonth the day of month
-     * @throws ArgumentOutOfRangeException the argument out of range exception
+     * @throws microsoft.exchange.webservices.data.exceptions.ArgumentOutOfRangeException the argument out of range exception
      */
     public MonthlyPattern(Date startDate, int interval, int dayOfMonth)
         throws ArgumentOutOfRangeException {
@@ -1026,7 +1030,7 @@ public abstract class Recurrence extends ComplexProperty {
      * Gets the month.
      *
      * @return the month
-     * @throws ServiceValidationException the service validation exception
+     * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
      */
     public Month getMonth() throws ServiceValidationException {
 

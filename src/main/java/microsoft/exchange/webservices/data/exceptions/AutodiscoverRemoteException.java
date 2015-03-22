@@ -21,13 +21,15 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
+
+import microsoft.exchange.webservices.data.autodiscover.AutodiscoverError;
 
 /**
- * Represents an error that occurs when a date and time cannot be converted from
- * one time zone to another.
+ * Represents an exception that is thrown when the Autodiscover service returns
+ * an error.
  */
-public class TimeZoneConversionException extends ServiceLocalException {
+public class AutodiscoverRemoteException extends ServiceRemoteException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -35,30 +37,50 @@ public class TimeZoneConversionException extends ServiceLocalException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceLocalException Constructor.
+   * The error.
    */
-  public TimeZoneConversionException() {
+  private AutodiscoverError error;
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param error the error
+   */
+  public AutodiscoverRemoteException(AutodiscoverError error) {
     super();
+    this.error = error;
   }
 
   /**
-   * ServiceLocalException Constructor.
+   * Initializes a new instance of the class.
    *
    * @param message the message
+   * @param error   the error
    */
-  public TimeZoneConversionException(String message) {
+  public AutodiscoverRemoteException(String message, AutodiscoverError error) {
     super(message);
+    this.error = error;
   }
 
   /**
-   * ServiceLocalException Constructor.
+   * Initializes a new instance of the class.
    *
    * @param message        the message
+   * @param error          the error
    * @param innerException the inner exception
    */
-  public TimeZoneConversionException(String message,
+  public AutodiscoverRemoteException(String message, AutodiscoverError error,
       Exception innerException) {
     super(message, innerException);
+    this.error = error;
   }
 
+  /**
+   * Gets the error. <value>The error.</value>
+   *
+   * @return the error
+   */
+  public AutodiscoverError getError() {
+    return this.error;
+  }
 }

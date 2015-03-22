@@ -21,32 +21,55 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
-
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * User: nwoodham Date: 3/8/11 Time: 5:30 PM
+ * The Class FormatException.
  */
-public class HttpErrorException extends Exception {
+public class FormatException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 
-  private final int code;
-
-  public HttpErrorException() {
+  /**
+   * Instantiates a new format exception.
+   */
+  public FormatException() {
     super();
-    this.code = 0;
+
   }
 
-  public HttpErrorException(String message, int code) {
-    super(message);
-    this.code = code;
+  /**
+   * Instantiates a new format exception.
+   *
+   * @param arg0 the arg0
+   * @param arg1 the arg1
+   */
+  public FormatException(final String arg0, final Throwable arg1) {
+    super(arg0, arg1);
+
   }
 
-  public int getHttpErrorCode() {
-    return this.code;
+  /**
+   * Instantiates a new format exception.
+   *
+   * @param arg0 the arg0
+   */
+  public FormatException(final String arg0) {
+    super(arg0);
+
   }
+
+  /**
+   * Instantiates a new format exception.
+   *
+   * @param arg0 the arg0
+   */
+  public FormatException(final Throwable arg0) {
+    super(arg0);
+
+  }
+
 }

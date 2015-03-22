@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
@@ -182,7 +184,7 @@ public final class ExtendedPropertyCollection extends
    * @param propertyDefinition The property definition.
    * @param propertyValueOut   The property value.
    * @return True if property exists in collection.
-   * @throws microsoft.exchange.webservices.data.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
   protected <T> boolean tryGetValue(Class<T> cls,
       ExtendedPropertyDefinition propertyDefinition,
@@ -262,8 +264,7 @@ public final class ExtendedPropertyCollection extends
    */
   @Override
   public boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject) throws XMLStreamException,
-      ServiceXmlSerializationException {
+      ServiceObject ewsObject) throws XMLStreamException, ServiceXmlSerializationException {
     for (ExtendedProperty extendedProperty : this.getItems()) {
       writer.writeStartElement(XmlNamespace.Types, ewsObject
           .getDeleteFieldXmlElementName());

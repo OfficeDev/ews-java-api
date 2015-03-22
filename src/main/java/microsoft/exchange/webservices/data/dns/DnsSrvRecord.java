@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.dns;
 
-import microsoft.exchange.webservices.data.DnsException;
+import microsoft.exchange.webservices.data.exceptions.DnsException;
 
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
@@ -102,7 +102,7 @@ public class DnsSrvRecord extends DnsRecord {
    * Initializes a new instance of the DnsSrvRecord class.
    *
    * @param srvRecord srvRecord that is fetched from JNDI
-   * @throws microsoft.exchange.webservices.data.DnsException the dns exception
+   * @throws microsoft.exchange.webservices.data.exceptions.DnsException the dns exception
    */
   protected void load(String srvRecord) throws DnsException {
     super.load(null);

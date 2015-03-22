@@ -25,6 +25,8 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -46,7 +48,7 @@ class GetStreamingEventsRequest extends HangingServiceRequestBase<GetStreamingEv
    * @param serviceObjectHandler The serviceObjectHandler
    * @param subscriptionIds      The subscriptionIds
    * @param connectionTimeout    The connectionTimeout
-   * @throws microsoft.exchange.webservices.data.ServiceVersionException
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException
    */
   protected GetStreamingEventsRequest(ExchangeService service,
       IHandleResponseObject serviceObjectHandler,

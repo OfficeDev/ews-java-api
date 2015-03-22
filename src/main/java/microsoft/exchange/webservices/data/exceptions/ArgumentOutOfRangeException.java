@@ -21,13 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * Represents an exception that is thrown when the Autodiscover service could
- * not be contacted.
+ * The Class ArgumentOutOfRangeException.
  */
-public class AutodiscoverLocalException extends ServiceLocalException {
+public class ArgumentOutOfRangeException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -35,29 +34,30 @@ public class AutodiscoverLocalException extends ServiceLocalException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Initializes a new instance of the class.
+   * Instantiates a new argument out of range exception.
    */
-  public AutodiscoverLocalException() {
+  public ArgumentOutOfRangeException() {
     super();
+
   }
 
   /**
-   * Initializes a new instance of the class.
+   * Instantiates a new argument out of range exception.
    *
-   * @param message the message
+   * @param arg0 the arg0
    */
-  public AutodiscoverLocalException(String message) {
-    super(message);
+  public ArgumentOutOfRangeException(final String arg0) {
+    super(arg0);
+
   }
 
   /**
-   * Initializes a new instance of the class.
+   * Instantiates a new argument out of range exception.
    *
-   * @param message        the message
-   * @param innerException the inner exception
+   * @param arg0 the arg0
+   * @param arg1 the arg1
    */
-  public AutodiscoverLocalException(String message,
-      Exception innerException) {
-    super(message, innerException);
+  public ArgumentOutOfRangeException(final String arg0, final String arg1) {
+
   }
 }

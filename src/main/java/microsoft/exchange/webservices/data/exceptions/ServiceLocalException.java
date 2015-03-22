@@ -21,12 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * The Class ArgumentOutOfRangeException.
+ * Represents an error that occurs when a service operation fails locally (e.g.
+ * validation error).
  */
-public class ArgumentOutOfRangeException extends Exception {
+public class ServiceLocalException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,30 +35,29 @@ public class ArgumentOutOfRangeException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new argument out of range exception.
+   * ServiceLocalException Constructor.
    */
-  public ArgumentOutOfRangeException() {
+  public ServiceLocalException() {
     super();
-
   }
 
   /**
-   * Instantiates a new argument out of range exception.
+   * ServiceLocalException Constructor.
    *
-   * @param arg0 the arg0
+   * @param message the message
    */
-  public ArgumentOutOfRangeException(final String arg0) {
-    super(arg0);
-
+  public ServiceLocalException(String message) {
+    super(message);
   }
 
   /**
-   * Instantiates a new argument out of range exception.
+   * ServiceLocalException Constructor.
    *
-   * @param arg0 the arg0
-   * @param arg1 the arg1
+   * @param message        the message
+   * @param innerException the inner exception
    */
-  public ArgumentOutOfRangeException(final String arg0, final String arg1) {
-
+  public ServiceLocalException(String message, Exception innerException) {
+    super(message, innerException);
   }
+
 }

@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+
 /**
  * Represents a change on an item as returned by a synchronization operation.
  */
@@ -86,7 +88,7 @@ public final class ItemChange extends Change {
    * Gets the Id of the item the change applies to.
    *
    * @return the item id
-   * @throws ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
   public ItemId getItemId() throws ServiceLocalException {
     return (ItemId) this.getId();

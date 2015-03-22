@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -79,7 +80,7 @@ class AbsoluteDayOfMonthTransition extends AbsoluteMonthTransition {
    * Writes elements to XML.
    *
    * @param writer the writer
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    */
   @Override

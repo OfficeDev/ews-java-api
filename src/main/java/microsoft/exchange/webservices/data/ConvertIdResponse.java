@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 /**
  * Represents the response to an individual Id conversion operation.
@@ -53,8 +54,7 @@ public final class ConvertIdResponse extends ServiceResponse {
    */
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
-      throws InstantiationException, IllegalAccessException,
-      ServiceLocalException, Exception {
+      throws InstantiationException, IllegalAccessException, ServiceLocalException, Exception {
     super.readElementsFromXml(reader);
     reader.readStartElement(XmlNamespace.Messages,
         XmlElementNames.AlternateId);

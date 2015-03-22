@@ -26,6 +26,10 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.BasePropertySet;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -228,7 +232,7 @@ class PropertyBag implements IComplexPropertyChanged,
    * @param propertyDefinition The property definition.
    * @param propertyValue      The property value.
    * @return True if property was retrieved.
-   * @throws ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
   protected <T> boolean tryGetPropertyType(Class<T> cls,
       PropertyDefinition propertyDefinition,

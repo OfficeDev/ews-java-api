@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.ImAddressKey;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -95,7 +97,7 @@ public final class ImAddressEntry extends
    * Writes elements to XML.
    *
    * @param writer The writer.
-   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {

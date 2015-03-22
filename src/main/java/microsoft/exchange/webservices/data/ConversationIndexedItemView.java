@@ -26,6 +26,9 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.OffsetBasePoint;
 import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 

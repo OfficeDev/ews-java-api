@@ -25,6 +25,8 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 /**
  * Represents a request to a Find Conversation operation
@@ -87,7 +89,7 @@ final class FindConversationRequest extends SimpleServiceRequestBase<FindConvers
    * Validate request.
    *
    * @throws Exception
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
    */
   @Override
   protected void validate() throws ServiceLocalException, Exception {
@@ -182,7 +184,7 @@ final class FindConversationRequest extends SimpleServiceRequestBase<FindConvers
    *
    * @return Service response.
    * @throws Exception
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
    */
   protected FindConversationResponse execute()
       throws ServiceLocalException, Exception {

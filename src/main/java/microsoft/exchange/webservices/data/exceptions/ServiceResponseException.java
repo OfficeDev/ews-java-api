@@ -21,8 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
+import microsoft.exchange.webservices.data.ServiceResponse;
 import microsoft.exchange.webservices.data.enumerations.ServiceError;
 
 /**

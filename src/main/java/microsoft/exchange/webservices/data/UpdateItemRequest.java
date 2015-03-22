@@ -29,6 +29,9 @@ import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
 import microsoft.exchange.webservices.data.enumerations.SendInvitationsOrCancellationsMode;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import java.util.ArrayList;
 import java.util.List;

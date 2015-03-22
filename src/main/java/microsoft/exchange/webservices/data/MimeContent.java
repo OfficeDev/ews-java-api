@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+
 import javax.xml.stream.XMLStreamException;
 
 /**
@@ -76,7 +79,7 @@ public final class MimeContent extends ComplexProperty {
    *
    * @param reader the reader
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
    */
   @Override
   protected void readTextValueFromXml(EwsServiceXmlReader reader)

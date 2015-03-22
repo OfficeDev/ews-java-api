@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.FormatException;
+
 /**
  * The Interface FuncDelegate.
  *
@@ -34,7 +36,7 @@ public interface IFuncDelegate<TResult> {
    * Func.
    *
    * @return the t result
-   * @throws FormatException the format exception
+   * @throws microsoft.exchange.webservices.data.exceptions.FormatException the format exception
    */
   TResult func() throws FormatException;
 }

@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 /**
  * Represents an abstract Get request.
@@ -57,7 +58,7 @@ abstract class GetRequest<TServiceObject extends ServiceObject,
   /**
    * Validate request.
    *
-   * @throws ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    * @throws Exception             the exception
    */
   protected void validate() throws ServiceLocalException, Exception {

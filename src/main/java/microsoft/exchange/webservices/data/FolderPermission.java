@@ -28,6 +28,8 @@ import microsoft.exchange.webservices.data.enumerations.FolderPermissionReadAcce
 import microsoft.exchange.webservices.data.enumerations.PermissionScope;
 import microsoft.exchange.webservices.data.enumerations.StandardUser;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -419,7 +421,7 @@ public final class FolderPermission extends ComplexProperty implements
    *
    * @param isCalendarFolder the is calendar folder
    * @param permissionIndex  the permission index
-   * @throws ServiceValidationException the service validation exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
    * @throws ServiceLocalException      the service local exception
    */
   void validate(boolean isCalendarFolder, int permissionIndex)
@@ -697,7 +699,7 @@ public final class FolderPermission extends ComplexProperty implements
    * Sets the permission level.
    *
    * @param value the new permission level
-   * @throws ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
   public void setPermissionLevel(FolderPermissionLevel value)
       throws ServiceLocalException {

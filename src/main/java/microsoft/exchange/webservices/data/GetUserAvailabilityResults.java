@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+
 import java.util.Collection;
 
 /**
@@ -91,7 +93,7 @@ public final class GetUserAvailabilityResults {
    * period.
    *
    * @return the suggestions
-   * @throws microsoft.exchange.webservices.data.ServiceResponseException the service response exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceResponseException the service response exception
    */
   public Collection<Suggestion> getSuggestions()
       throws ServiceResponseException {

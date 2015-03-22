@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -132,11 +133,10 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
    * @param ewsObject The ews object.
    * @return True if update XML was written.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    */
   protected boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject) throws XMLStreamException,
-      ServiceXmlSerializationException {
+      ServiceObject ewsObject) throws XMLStreamException, ServiceXmlSerializationException {
     return false;
   }
 

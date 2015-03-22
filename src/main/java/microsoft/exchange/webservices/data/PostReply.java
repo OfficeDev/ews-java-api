@@ -30,6 +30,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
 import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
+import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
 
 import java.util.List;
 

@@ -23,20 +23,20 @@
 
 package microsoft.exchange.webservices.data.autodiscover;
 
-import microsoft.exchange.webservices.data.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverEndpoints;
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
-import microsoft.exchange.webservices.data.AutodiscoverLocalException;
-import microsoft.exchange.webservices.data.AutodiscoverRemoteException;
+import microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException;
+import microsoft.exchange.webservices.data.exceptions.AutodiscoverRemoteException;
 import microsoft.exchange.webservices.data.autodiscover.requests.AutodiscoverRequest;
 import microsoft.exchange.webservices.data.ConfigurationSettingsBase;
 import microsoft.exchange.webservices.data.enumerations.DomainSettingName;
-import microsoft.exchange.webservices.data.EWSHttpException;
+import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.EwsXmlReader;
 import microsoft.exchange.webservices.data.ExchangeServiceBase;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.FormatException;
+import microsoft.exchange.webservices.data.exceptions.FormatException;
 import microsoft.exchange.webservices.data.autodiscover.requests.GetDomainSettingsRequest;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetDomainSettingsResponse;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetDomainSettingsResponseCollection;
@@ -48,12 +48,12 @@ import microsoft.exchange.webservices.data.HttpWebRequest;
 import microsoft.exchange.webservices.data.IAutodiscoverRedirectionUrl;
 import microsoft.exchange.webservices.data.IFuncDelegate;
 import microsoft.exchange.webservices.data.IFunctionDelegate;
-import microsoft.exchange.webservices.data.MaximumRedirectionHopsExceededException;
+import microsoft.exchange.webservices.data.exceptions.MaximumRedirectionHopsExceededException;
 import microsoft.exchange.webservices.data.OutParam;
 import microsoft.exchange.webservices.data.OutlookConfigurationSettings;
-import microsoft.exchange.webservices.data.ServiceLocalException;
-import microsoft.exchange.webservices.data.ServiceValidationException;
-import microsoft.exchange.webservices.data.ServiceVersionException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.credentials.WSSecurityBasedCredentials;
@@ -216,7 +216,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    *
    * @param redirectionUrl the redirection url
    * @return Returns true.
-   * @throws microsoft.exchange.webservices.data.AutodiscoverLocalException the autodiscover local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException the autodiscover local exception
    */
   private boolean defaultAutodiscoverRedirectionUrlValidationCallback(
       String redirectionUrl) throws AutodiscoverLocalException {
@@ -373,10 +373,10 @@ public final class AutodiscoverService extends ExchangeServiceBase
    *
    * @param domainName the domain name
    * @return A valid SSL-enabled redirection URL. (May be null).
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException                                the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException                                the service local exception
    * @throws java.net.URISyntaxException                          the uRI syntax exception
    */
   private URI getRedirectUrl(String domainName)
@@ -440,7 +440,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @return True if a valid redirection URL was found.
    * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   private boolean tryGetRedirectionResponse(HttpWebRequest request,
       OutParam<URI> redirectUrl) throws XMLStreamException, IOException,
@@ -1576,7 +1576,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    *
    * @param request the request
    * @return Endpoints enabled.
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   private EnumSet<AutodiscoverEndpoints> getEndpointsFromHttpWebResponse(
       HttpWebRequest request) throws EWSHttpException {
@@ -1623,7 +1623,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @param memoryStream the memory stream
    * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   public void traceResponse(HttpWebRequest request, ByteArrayOutputStream memoryStream) throws XMLStreamException,
       IOException, EWSHttpException {
@@ -1707,7 +1707,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
   /**
    * Initializes a new instance of the "AutodiscoverService" class.
    *
-   * @throws microsoft.exchange.webservices.data.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
   public AutodiscoverService() throws ArgumentException {
     this(ExchangeVersion.Exchange2010);
@@ -1717,7 +1717,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * Initializes a new instance of the "AutodiscoverService" class.
    *
    * @param requestedServerVersion The requested server version.
-   * @throws microsoft.exchange.webservices.data.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
   public AutodiscoverService(ExchangeVersion requestedServerVersion)
       throws ArgumentException {
@@ -1729,7 +1729,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    *
    * @param domain The domain that will be used to determine the URL of the
    *               service.
-   * @throws microsoft.exchange.webservices.data.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
   public AutodiscoverService(String domain) throws ArgumentException {
     this(null, domain);
@@ -1741,7 +1741,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @param domain                 The domain that will be used to determine the URL of the
    *                               service.
    * @param requestedServerVersion The requested server version.
-   * @throws microsoft.exchange.webservices.data.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
   public AutodiscoverService(String domain,
       ExchangeVersion requestedServerVersion) throws ArgumentException {
@@ -1752,7 +1752,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * Initializes a new instance of the "AutodiscoverService" class.
    *
    * @param url The URL of the service.
-   * @throws microsoft.exchange.webservices.data.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
   public AutodiscoverService(URI url) throws ArgumentException {
     this(url, url.getHost());
@@ -1763,7 +1763,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    *
    * @param url                    The URL of the service.
    * @param requestedServerVersion The requested server version.
-   * @throws microsoft.exchange.webservices.data.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
   public AutodiscoverService(URI url,
       ExchangeVersion requestedServerVersion) throws ArgumentException {
@@ -1776,7 +1776,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @param url    The URL of the service.
    * @param domain The domain that will be used to determine the URL of the
    *               service.
-   * @throws microsoft.exchange.webservices.data.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
   public AutodiscoverService(URI url, String domain)
       throws ArgumentException {
@@ -1794,7 +1794,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @param domain                 The domain that will be used to determine the URL of the
    *                               service.
    * @param requestedServerVersion The requested server version.
-   * @throws microsoft.exchange.webservices.data.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
   public AutodiscoverService(URI url, String domain,
       ExchangeVersion requestedServerVersion) throws ArgumentException {
@@ -2040,7 +2040,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * name is used to automatically determine the Autodiscover service URL.
    *
    * @param value the new domain
-   * @throws microsoft.exchange.webservices.data.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
    */
   public void setDomain(String value) throws ArgumentException {
     EwsUtilities.validateDomainNameAllowNull(value, "Domain");

@@ -27,6 +27,7 @@ import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.ChangeType;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 /**
  * Represents the base response class for synchronuization operations.

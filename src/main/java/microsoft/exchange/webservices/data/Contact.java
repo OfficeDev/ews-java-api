@@ -29,6 +29,9 @@ import microsoft.exchange.webservices.data.enumerations.ContactSource;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.FileAsMapping;
 import microsoft.exchange.webservices.data.enumerations.PhysicalAddressIndex;
+import microsoft.exchange.webservices.data.exceptions.PropertyException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 
 import java.io.File;
 import java.io.InputStream;

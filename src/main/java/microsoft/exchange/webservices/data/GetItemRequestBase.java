@@ -27,6 +27,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 /**
  * Represents an abstract GetItem request.
@@ -57,7 +58,7 @@ abstract class GetItemRequestBase<TResponse extends ServiceResponse> extends
   /**
    * Validate request.
    *
-   * @throws ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    * @throws Exception             the exception
    */
   protected void validate() throws ServiceLocalException, Exception {

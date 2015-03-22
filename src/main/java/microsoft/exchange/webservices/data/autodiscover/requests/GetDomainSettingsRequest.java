@@ -28,9 +28,9 @@ import microsoft.exchange.webservices.data.enumerations.DomainSettingName;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.ServiceLocalException;
-import microsoft.exchange.webservices.data.ServiceValidationException;
-import microsoft.exchange.webservices.data.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
@@ -107,7 +107,7 @@ public class GetDomainSettingsRequest extends AutodiscoverRequest {
    * Executes this instance.
    *
    * @return the gets the domain settings response collection
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    * @throws Exception                                                 the exception
    */
   public GetDomainSettingsResponseCollection execute()
@@ -180,7 +180,7 @@ public class GetDomainSettingsRequest extends AutodiscoverRequest {
    * Writes the attributes to XML.
    *
    * @param writer The writer.
-   * @throws microsoft.exchange.webservices.data.ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)

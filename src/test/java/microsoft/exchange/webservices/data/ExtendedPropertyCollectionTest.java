@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import java.util.ArrayList;
 
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
+import microsoft.exchange.webservices.data.exceptions.HttpErrorException;
+
 import java.io.IOException;
 import java.util.concurrent.Callable;
 

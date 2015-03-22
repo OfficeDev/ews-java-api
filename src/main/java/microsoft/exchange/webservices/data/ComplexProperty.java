@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -371,7 +373,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
   /**
    * Implements ISelfValidate.validate. Validates this instance.
    *
-   * @throws ServiceValidationException the service validation exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
    * @throws Exception                  the exception
    */
   public void validate() throws ServiceValidationException, Exception {
@@ -381,7 +383,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
   /**
    * Validates this instance.
    *
-   * @throws ServiceValidationException the service validation exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
    * @throws Exception
    */
   protected void internalValidate() throws ServiceValidationException, Exception {

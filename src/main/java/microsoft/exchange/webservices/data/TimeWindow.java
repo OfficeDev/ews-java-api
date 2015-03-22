@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.text.DateFormat;
@@ -150,8 +151,7 @@ public class TimeWindow implements ISelfValidate {
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   protected void writeToXmlUnscopedDatesOnly(EwsServiceXmlWriter writer,
-      String xmlElementName) throws XMLStreamException,
-      ServiceXmlSerializationException {
+      String xmlElementName) throws XMLStreamException, ServiceXmlSerializationException {
     final String DateOnlyFormat = "yyyy-MM-dd'T'00:00:00";
 
     DateFormat formatter = new SimpleDateFormat(DateOnlyFormat);

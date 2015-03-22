@@ -27,6 +27,7 @@ import microsoft.exchange.webservices.data.enumerations.BodyType;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
@@ -141,7 +142,7 @@ final class GetAttachmentRequest extends
    *
    * @param writer The writer
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)

@@ -25,6 +25,8 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.SortDirection;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.*;
@@ -158,7 +160,7 @@ public final class OrderByCollection implements
    * @param writer         the writer
    * @param xmlElementName the xml element name
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    */
   protected void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
       throws XMLStreamException, ServiceXmlSerializationException {

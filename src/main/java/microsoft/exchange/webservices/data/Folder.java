@@ -31,6 +31,8 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
+import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -727,7 +729,7 @@ public class Folder extends ServiceObject {
    * user has on the folder.
    *
    * @return the effective rights
-   * @throws ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
   public EnumSet<EffectiveRights> getEffectiveRights() throws ServiceLocalException {
     return (EnumSet<EffectiveRights>) this.getPropertyBag()

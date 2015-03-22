@@ -26,6 +26,9 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.EmailAddressKey;
 import microsoft.exchange.webservices.data.enumerations.MailboxType;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.Iterator;

@@ -28,6 +28,10 @@ import microsoft.exchange.webservices.data.enumerations.AffectedTaskOccurrence;
 import microsoft.exchange.webservices.data.enumerations.DeleteMode;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
+import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
+import microsoft.exchange.webservices.data.exceptions.NotSupportedException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -72,7 +76,7 @@ public abstract class ServiceObject {
    * Throws exception if this is a new service object.
    *
    * @throws InvalidOperationException the invalid operation exception
-   * @throws ServiceLocalException     the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException     the service local exception
    */
   protected void throwIfThisIsNew() throws InvalidOperationException,
       ServiceLocalException {
@@ -85,7 +89,7 @@ public abstract class ServiceObject {
   /**
    * Throws exception if this is not a new service object.
    *
-   * @throws InvalidOperationException the invalid operation exception
+   * @throws microsoft.exchange.webservices.data.exceptions.InvalidOperationException the invalid operation exception
    * @throws ServiceLocalException     the service local exception
    */
   protected void throwIfThisIsNotNew() throws InvalidOperationException,
@@ -527,7 +531,7 @@ public abstract class ServiceObject {
    * Gets the id.
    *
    * @return the id
-   * @throws ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
   protected ServiceId getId() throws ServiceLocalException {
     PropertyDefinition idPropertyDefinition = this

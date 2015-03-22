@@ -24,6 +24,8 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -54,7 +56,6 @@ public interface IFunctionDelegate<T1 extends List<?>, T2 extends List<?>, TResu
    * @throws Exception                           the exception
    */
   TResult func(T1 arg1, T2 arg2, ExchangeVersion arg3, URI arg4)
-      throws AutodiscoverLocalException, XMLStreamException, IOException,
-      ServiceLocalException, Exception;
+      throws AutodiscoverLocalException, XMLStreamException, IOException, ServiceLocalException, Exception;
 
 }

@@ -25,6 +25,8 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 /**
  * Represents the Id of a folder.
@@ -100,7 +102,7 @@ public final class FolderId extends ServiceId {
    * Writes attributes to XML.
    *
    * @param writer the writer
-   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
@@ -124,7 +126,7 @@ public final class FolderId extends ServiceId {
    * Validates FolderId against a specified request version.
    *
    * @param version the version
-   * @throws ServiceVersionException the service version exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException the service version exception
    */
   protected void validate(ExchangeVersion version)
       throws ServiceVersionException {

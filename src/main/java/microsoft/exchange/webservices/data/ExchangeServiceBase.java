@@ -26,6 +26,10 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.credentials.ExchangeCredentials;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
+import microsoft.exchange.webservices.data.exceptions.AccountIsLockedException;
+import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;
@@ -253,7 +257,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @param acceptGzipEncoding If true, ask server for GZip compressed content.
    * @param allowAutoRedirect  If true, redirection responses will be automatically followed.
    * @return An initialised instance of HttpWebRequest.
-   * @throws ServiceLocalException       the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException       the service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
   protected HttpWebRequest prepareHttpWebRequestForUrl(URI url, boolean acceptGzipEncoding,
@@ -399,7 +403,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param traceType Kind of trace entry.
    * @param request   The request
-   * @throws microsoft.exchange.webservices.data.EWSHttpException
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException
    * @throws java.net.URISyntaxException
    * @throws java.io.IOException
    * @throws javax.xml.stream.XMLStreamException
@@ -421,7 +425,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @param request   The HttpRequest object.
    * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   private void traceHttpResponseHeaders(TraceFlags traceType, HttpWebRequest request)
       throws XMLStreamException, IOException, EWSHttpException {
@@ -458,7 +462,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   /**
    * Validates this instance.
    *
-   * @throws ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
   public void validate() throws ServiceLocalException {
     // E14:302056 -- Allow clients to add HTTP request headers with 'X-' prefix but no others.
@@ -805,7 +809,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param traceType kind of trace entry
    * @param request   The request
-   * @throws microsoft.exchange.webservices.data.EWSHttpException
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException
    * @throws java.io.IOException
    * @throws javax.xml.stream.XMLStreamException
    */

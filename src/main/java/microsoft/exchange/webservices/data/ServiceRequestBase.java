@@ -27,6 +27,16 @@ import microsoft.exchange.webservices.data.enumerations.DateTimePrecision;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
+import microsoft.exchange.webservices.data.exceptions.HttpErrorException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceRequestException;
+import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exceptions.XmlException;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.ws.http.HTTPException;
@@ -88,7 +98,7 @@ abstract class ServiceRequestBase<T> {
    *
    * @param writer The writer.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    * @throws ServiceLocalException               the service local exception
    * @throws InstantiationException              the instantiation exception
    * @throws IllegalAccessException              the illegal access exception
@@ -130,7 +140,7 @@ abstract class ServiceRequestBase<T> {
    * Writes XML attributes. Subclass will override if it has XML attributes.
    *
    * @param writer The writer.
-   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
@@ -293,7 +303,7 @@ abstract class ServiceRequestBase<T> {
    * @param request HttpWebRequest object from which response stream can be read.
    * @return ResponseStream
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   protected static InputStream getResponseStream(HttpWebRequest request)
       throws IOException, EWSHttpException {
@@ -322,7 +332,7 @@ abstract class ServiceRequestBase<T> {
    * @param memoryStream The response content in a MemoryStream.
    * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   protected void traceResponse(HttpWebRequest request,
       ByteArrayOutputStream memoryStream) throws XMLStreamException,
@@ -348,7 +358,7 @@ abstract class ServiceRequestBase<T> {
    *
    * @param request the request
    * @return the response error stream
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
    */
   private static InputStream getResponseErrorStream(HttpWebRequest request)

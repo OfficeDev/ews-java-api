@@ -21,13 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * Represents an error that occurs when a service operation fails locally (e.g.
- * validation error).
+ * The Class ServiceRequestException.
  */
-public class ServiceLocalException extends Exception {
+public class ServiceRequestException extends ServiceRemoteException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -35,29 +34,28 @@ public class ServiceLocalException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceLocalException Constructor.
+   * ServiceRequestException Constructor.
    */
-  public ServiceLocalException() {
+  public ServiceRequestException() {
     super();
   }
 
   /**
-   * ServiceLocalException Constructor.
+   * ServiceRequestException Constructor.
    *
    * @param message the message
    */
-  public ServiceLocalException(String message) {
+  public ServiceRequestException(String message) {
     super(message);
   }
 
   /**
-   * ServiceLocalException Constructor.
+   * ServiceRequestException Constructor.
    *
    * @param message        the message
    * @param innerException the inner exception
    */
-  public ServiceLocalException(String message, Exception innerException) {
+  public ServiceRequestException(String message, Exception innerException) {
     super(message, innerException);
   }
-
 }

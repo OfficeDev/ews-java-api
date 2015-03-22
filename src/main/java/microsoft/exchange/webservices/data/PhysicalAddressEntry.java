@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.PhysicalAddressKey;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
@@ -277,7 +278,7 @@ public final class PhysicalAddressEntry extends
    * @param ewsObject the ews object
    * @return True if update XML was written.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    */
   @Override
   protected boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,

@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException;
+
 /**
  * Defines a delegate that is used by the AutodiscoverService to ask whether a
  * redirectionUrl can be used.
@@ -34,7 +36,7 @@ public interface IAutodiscoverRedirectionUrl {
    *
    * @param redirectionUrl the redirection url
    * @return true, if successful
-   * @throws microsoft.exchange.webservices.data.AutodiscoverLocalException the autodiscover local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException the autodiscover local exception
    */
   boolean autodiscoverRedirectionUrlValidationCallback(
       String redirectionUrl) throws AutodiscoverLocalException;

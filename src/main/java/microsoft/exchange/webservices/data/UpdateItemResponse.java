@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -64,7 +65,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
    * Reads response elements from XML.
    *
    * @param reader the reader
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws InstantiationException              the instantiation exception
    * @throws IllegalAccessException              the illegal access exception

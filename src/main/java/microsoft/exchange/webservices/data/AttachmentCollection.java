@@ -27,6 +27,11 @@ import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
+import microsoft.exchange.webservices.data.exceptions.CreateAttachmentException;
+import microsoft.exchange.webservices.data.exceptions.DeleteAttachmentException;
+import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 
 import java.io.File;
 import java.io.InputStream;
@@ -309,7 +314,7 @@ public final class AttachmentCollection extends
    * Determines whether there are any unsaved attachment collection changes.
    *
    * @return True if attachment adds or deletes haven't been processed yet.
-   * @throws ServiceLocalException
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
    */
   protected boolean hasUnprocessedChanges() throws ServiceLocalException {
     // Any new attachments?

@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 
 /**
  * Represents a service request that can have multiple responses.

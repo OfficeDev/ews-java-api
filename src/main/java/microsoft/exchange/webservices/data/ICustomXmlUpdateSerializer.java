@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+
 import javax.xml.stream.XMLStreamException;
 
 /**
@@ -41,14 +44,13 @@ interface ICustomXmlUpdateSerializer {
    * @throws ServiceXmlSerializationException    the service xml serialization exception
    * @throws InstantiationException              the instantiation exception
    * @throws IllegalAccessException              the illegal access exception
-   * @throws ServiceValidationException          the service validation exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException          the service validation exception
    * @throws Exception                           the exception
    */
   boolean writeSetUpdateToXml(EwsServiceXmlWriter writer,
       ServiceObject ewsObject, PropertyDefinition propertyDefinition)
       throws XMLStreamException, ServiceXmlSerializationException,
-      InstantiationException, IllegalAccessException,
-      ServiceValidationException, Exception;
+      InstantiationException, IllegalAccessException, ServiceValidationException, Exception;
 
   /**
    * Writes the deletion update to XML.

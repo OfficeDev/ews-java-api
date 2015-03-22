@@ -37,7 +37,7 @@ public final class TokenCredentials extends WSSecurityBasedCredentials {
    * Initializes a new instance of the TokenCredentials class.
    *
    * @param securityToken The token.
-   * @throws microsoft.exchange.webservices.data.ArgumentNullException the argument null exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentNullException the argument null exception
    */
   public TokenCredentials(String securityToken) throws Exception {
     super(securityToken);

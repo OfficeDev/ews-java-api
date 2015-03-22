@@ -27,6 +27,9 @@ import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -52,7 +55,7 @@ public abstract class ViewBase {
    *
    * @param request The request using this view.
    * @throws ServiceValidationException the service validation exception
-   * @throws ServiceVersionException    the service version exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException    the service version exception
    */
   protected void internalValidate(ServiceRequestBase request)
       throws ServiceValidationException, ServiceVersionException {
@@ -87,7 +90,7 @@ public abstract class ViewBase {
    * @param writer  The Writer
    * @param groupBy The group by clause.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    */
   protected abstract void internalWriteSearchSettingsToXml(
       EwsServiceXmlWriter writer, Grouping groupBy)
@@ -130,7 +133,7 @@ public abstract class ViewBase {
    * Writes the attributes to XML.
    *
    * @param writer The writer.
-   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   protected abstract void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException;

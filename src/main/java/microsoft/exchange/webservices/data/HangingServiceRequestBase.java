@@ -24,6 +24,13 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceRequestException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exceptions.XmlException;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.ByteArrayOutputStream;
@@ -139,7 +146,7 @@ abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T> {
      * Callback delegate to handle asynchronous responses.
      *
      * @param response Response received from the server
-     * @throws microsoft.exchange.webservices.data.ArgumentException
+     * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
      */
     void handleResponseObject(Object response) throws ArgumentException;
   }

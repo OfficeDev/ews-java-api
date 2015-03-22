@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.ConversationActionType;
 import microsoft.exchange.webservices.data.enumerations.DeleteMode;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 
 import java.util.Date;
 

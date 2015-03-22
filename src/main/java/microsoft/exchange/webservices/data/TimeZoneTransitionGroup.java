@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.InvalidOrUnsupportedTimeZoneDefinitionException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -155,7 +159,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
   /**
    * Validates this transition group.
    *
-   * @throws microsoft.exchange.webservices.data.InvalidOrUnsupportedTimeZoneDefinitionException thrown when time zone definition is not valid.
+   * @throws microsoft.exchange.webservices.data.exceptions.InvalidOrUnsupportedTimeZoneDefinitionException thrown when time zone definition is not valid.
    */
   public void validate() throws ServiceLocalException {
     // There must be exactly one or two transitions in the group.
@@ -297,7 +301,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
    * Initializes the private members holding references to the transitions to
    * the Daylight and Standard periods.
    *
-   * @throws microsoft.exchange.webservices.data.InvalidOrUnsupportedTimeZoneDefinitionException thrown when time zone definition is not valid.
+   * @throws microsoft.exchange.webservices.data.exceptions.InvalidOrUnsupportedTimeZoneDefinitionException thrown when time zone definition is not valid.
    */
   private void initializeTransitions() throws ServiceLocalException {
     if (this.transitionToStandard == null) {
@@ -322,7 +326,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
    * Gets the transition to the Daylight period.
    *
    * @return the transition to daylight
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
   private TimeZoneTransition getTransitionToDaylight()
       throws ServiceLocalException {
@@ -334,7 +338,7 @@ class TimeZoneTransitionGroup extends ComplexProperty {
    * Gets the transition to the Standard period.
    *
    * @return the transition to standard
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    */
   private TimeZoneTransition getTransitionToStandard()
       throws ServiceLocalException {

@@ -30,6 +30,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
 import microsoft.exchange.webservices.data.enumerations.ResponseMessageType;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 import java.util.ArrayList;
 

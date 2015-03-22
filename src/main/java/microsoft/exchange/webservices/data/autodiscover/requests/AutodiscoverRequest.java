@@ -24,20 +24,20 @@
 package microsoft.exchange.webservices.data.autodiscover.requests;
 
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
-import microsoft.exchange.webservices.data.AutodiscoverResponseException;
-import microsoft.exchange.webservices.data.EWSHttpException;
+import microsoft.exchange.webservices.data.exceptions.AutodiscoverResponseException;
+import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
 import microsoft.exchange.webservices.data.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.EwsUtilities;
 import microsoft.exchange.webservices.data.EwsXmlReader;
 import microsoft.exchange.webservices.data.ExchangeServerInfo;
 import microsoft.exchange.webservices.data.HttpWebRequest;
-import microsoft.exchange.webservices.data.ServiceLocalException;
-import microsoft.exchange.webservices.data.ServiceRemoteException;
-import microsoft.exchange.webservices.data.ServiceRequestException;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exceptions.ServiceRemoteException;
+import microsoft.exchange.webservices.data.exceptions.ServiceRequestException;
 import microsoft.exchange.webservices.data.ServiceResponse;
-import microsoft.exchange.webservices.data.ServiceResponseException;
-import microsoft.exchange.webservices.data.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.SoapFaultDetails;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.XmlElementNames;
@@ -84,7 +84,7 @@ public abstract class AutodiscoverRequest {
    *
    * @param request the request
    * @return True if redirection response.
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   public static boolean isRedirectionResponse(HttpWebRequest request)
       throws EWSHttpException {
@@ -97,7 +97,7 @@ public abstract class AutodiscoverRequest {
   /**
    * Validates the request.
    *
-   * @throws microsoft.exchange.webservices.data.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
    * @throws Exception             the exception
    */
   protected void validate() throws ServiceLocalException, Exception {
@@ -328,7 +328,7 @@ public abstract class AutodiscoverRequest {
    * @return AutodiscoverResponse autodiscoverResponse object.
    * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   private AutodiscoverResponse createRedirectionResponse(
       HttpWebRequest httpWebResponse) throws XMLStreamException,
@@ -457,7 +457,7 @@ public abstract class AutodiscoverRequest {
    *
    * @param requestUrl Request URL.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    */
   protected void writeSoapRequest(URI requestUrl,
       EwsServiceXmlWriter writer) throws XMLStreamException, ServiceXmlSerializationException {
@@ -564,7 +564,7 @@ public abstract class AutodiscoverRequest {
    *
    * @param request the request
    * @return ResponseStream
-   * @throws microsoft.exchange.webservices.data.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
    */
   protected static InputStream getResponseStream(HttpWebRequest request)

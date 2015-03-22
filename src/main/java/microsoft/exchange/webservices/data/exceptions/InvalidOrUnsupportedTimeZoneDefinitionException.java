@@ -21,12 +21,17 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * Represents an error that occurs when a validation check fails.
+ * The Class InvalidOrUnsupportedTimeZoneDefinitionException.
+ *
+ * Thrown when time zone definition is not valid.
+ *
+ * @see microsoft.exchange.webservices.data.TimeZoneDefinition
+ * @see microsoft.exchange.webservices.data.TimeZoneTransitionGroup
  */
-public final class ServiceValidationException extends ServiceLocalException {
+public class InvalidOrUnsupportedTimeZoneDefinitionException extends ServiceLocalException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,31 +39,32 @@ public final class ServiceValidationException extends ServiceLocalException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceValidationException Constructor.
+   * Constructs an <code>InvalidOrUnsupportedTimeZoneDefinitionException</code> with no detail message.
    */
-  public ServiceValidationException() {
+  public InvalidOrUnsupportedTimeZoneDefinitionException() {
     super();
   }
 
   /**
-   * ServiceValidationException Constructor.
+   * Constructs an <code>InvalidOrUnsupportedTimeZoneDefinitionException</code> with the specified detail message.
    *
-   * @param message the message
+   * @param message the detail message.
    */
-  public ServiceValidationException(String message) {
+  public InvalidOrUnsupportedTimeZoneDefinitionException(String message) {
     super(message);
   }
 
   /**
-   * Instantiates a new service validation exception.
+   * Constructs a new exception with the specified detail message and cause.
    *
-   * @param message        the message
-   * @param innerException the inner exception
+   * @param message the detail message (which is saved for later retrieval by the {@link
+   *                Throwable#getMessage()} method).
+   * @param innerException   the cause (which is saved for later retrieval by the {@link Throwable#getCause()}
+   *                method).  (A <tt>null</tt> value is permitted, and indicates that the cause is nonexistent
+   *                or unknown.)
    */
-  public ServiceValidationException(String message,
-      Exception innerException) {
+  public InvalidOrUnsupportedTimeZoneDefinitionException(String message, Exception innerException) {
     super(message, innerException);
-
   }
 
 }

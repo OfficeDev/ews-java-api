@@ -26,6 +26,9 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.ItemTraversal;
 import microsoft.exchange.webservices.data.enumerations.OffsetBasePoint;
 import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -69,7 +72,7 @@ public final class ItemView extends PagedView {
    *
    * @param request the request
    * @throws ServiceVersionException    the service version exception
-   * @throws ServiceValidationException the service validation exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
    */
   @Override
   protected void internalValidate(ServiceRequestBase request)
@@ -83,7 +86,7 @@ public final class ItemView extends PagedView {
    * Writes the attributes to XML.
    *
    * @param writer the writer
-   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)

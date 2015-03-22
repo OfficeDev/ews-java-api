@@ -24,6 +24,9 @@
 package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.text.DateFormat;
@@ -78,12 +81,11 @@ abstract class RecurrenceRange extends ComplexProperty {
    * @param recurrence the new up recurrence
    * @throws InstantiationException     the instantiation exception
    * @throws IllegalAccessException     the illegal access exception
-   * @throws ServiceValidationException the service validation exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
    * @throws Exception                  the exception
    */
   protected void setupRecurrence(Recurrence recurrence)
-      throws InstantiationException, IllegalAccessException,
-      ServiceValidationException, Exception {
+      throws InstantiationException, IllegalAccessException, ServiceValidationException, Exception {
     recurrence.setStartDate(this.getStartDate());
   }
 

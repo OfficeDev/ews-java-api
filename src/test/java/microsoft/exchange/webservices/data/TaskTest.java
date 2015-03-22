@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsInstanceOf;
 import org.hamcrest.core.IsNot;

@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * The Class InvalidOperationException.
+ * The Class ArgumentNullException.
  */
-public class InvalidOperationException extends Exception {
+public class ArgumentNullException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,18 +34,41 @@ public class InvalidOperationException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new invalid operation exception.
+   * Instantiates a new argument null exception.
    */
-  public InvalidOperationException() {
+  public ArgumentNullException() {
+    super();
 
   }
 
   /**
-   * Instantiates a new invalid operation exception.
+   * Instantiates a new argument null exception.
    *
-   * @param strMessage the str message
+   * @param arg0 the arg0
+   * @param arg1 the arg1
    */
-  public InvalidOperationException(String strMessage) {
-    super(strMessage);
+  public ArgumentNullException(final String arg0, final Throwable arg1) {
+    super(arg0, arg1);
+
+  }
+
+  /**
+   * Instantiates a new argument null exception.
+   *
+   * @param arg0 the arg0
+   */
+  public ArgumentNullException(final String arg0) {
+    super(arg0);
+
+  }
+
+  /**
+   * Instantiates a new argument null exception.
+   *
+   * @param arg0 the arg0
+   */
+  public ArgumentNullException(final Throwable arg0) {
+    super(arg0);
+
   }
 }

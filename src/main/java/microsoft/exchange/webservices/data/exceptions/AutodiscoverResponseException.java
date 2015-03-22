@@ -21,15 +21,14 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
-import microsoft.exchange.webservices.data.autodiscover.AutodiscoverError;
+import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
 
 /**
- * Represents an exception that is thrown when the Autodiscover service returns
- * an error.
+ * Represents an exception from an autodiscover error response.
  */
-public class AutodiscoverRemoteException extends ServiceRemoteException {
+public class AutodiscoverResponseException extends ServiceRemoteException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -37,50 +36,27 @@ public class AutodiscoverRemoteException extends ServiceRemoteException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * The error.
+   * Error code when Autodiscover service operation failed remotely.
    */
-  private AutodiscoverError error;
+  private AutodiscoverErrorCode errorCode;
 
   /**
    * Initializes a new instance of the class.
    *
-   * @param error the error
+   * @param errorCode the error code
+   * @param message   the message
    */
-  public AutodiscoverRemoteException(AutodiscoverError error) {
-    super();
-    this.error = error;
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param message the message
-   * @param error   the error
-   */
-  public AutodiscoverRemoteException(String message, AutodiscoverError error) {
+  public AutodiscoverResponseException(AutodiscoverErrorCode errorCode, String message) {
     super(message);
-    this.error = error;
+    this.errorCode = errorCode;
   }
 
   /**
-   * Initializes a new instance of the class.
+   * Gets the ErrorCode for the exception.
    *
-   * @param message        the message
-   * @param error          the error
-   * @param innerException the inner exception
+   * @return the error code
    */
-  public AutodiscoverRemoteException(String message, AutodiscoverError error,
-      Exception innerException) {
-    super(message, innerException);
-    this.error = error;
-  }
-
-  /**
-   * Gets the error. <value>The error.</value>
-   *
-   * @return the error
-   */
-  public AutodiscoverError getError() {
-    return this.error;
+  public AutodiscoverErrorCode getErrorCode() {
+    return this.errorCode;
   }
 }

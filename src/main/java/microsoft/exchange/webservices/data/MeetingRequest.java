@@ -29,6 +29,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumerations.MeetingRequestType;
 import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 import java.util.Date;
 

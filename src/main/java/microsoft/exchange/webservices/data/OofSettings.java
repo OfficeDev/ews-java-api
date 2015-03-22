@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data;
 import microsoft.exchange.webservices.data.enumerations.OofExternalAudience;
 import microsoft.exchange.webservices.data.enumerations.OofState;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -73,7 +75,7 @@ public final class OofSettings extends
    * @param writer         The writer
    * @param xmlElementName Name of the xml element
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
    */
   private void serializeOofReply(OofReply oofReply,
       EwsServiceXmlWriter writer, String xmlElementName)

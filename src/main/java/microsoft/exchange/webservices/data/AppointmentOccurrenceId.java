@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+
 /**
  * Represents the Id of an occurrence of a recurring appointment.
  */

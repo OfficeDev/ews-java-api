@@ -21,51 +21,32 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
-import java.net.URI;
 
 /**
- * Represents an error that occurs when the account that is
- * being accessed is locked and requires user interaction to be unlocked.
+ * User: nwoodham Date: 3/8/11 Time: 5:30 PM
  */
-public class AccountIsLockedException extends ServiceRemoteException {
+public class HttpErrorException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 
-  private URI accountUnlockUrl;
+  private final int code;
 
-
-  /**
-   * Initializes a new instance of the AccountIsLockedException class.
-   *
-   * @param message          Error message text.
-   * @param accountUnlockUrl URL for client to visit to unlock account.
-   */
-  public AccountIsLockedException(String message, URI accountUnlockUrl,
-      Exception innerException) {
-
-    super(message, innerException);
-    this.setAccountUnlockUrl(accountUnlockUrl);
+  public HttpErrorException() {
+    super();
+    this.code = 0;
   }
 
-  /**
-   * Gets the URL of a web page where the user
-   * can navigate to unlock his or her account.
-   */
-  public URI getAccountUnlockUrl() {
-    return accountUnlockUrl;
+  public HttpErrorException(String message, int code) {
+    super(message);
+    this.code = code;
   }
 
-
-  /**
-   * Sets the URL of a web page where the
-   * user can navigate to unlock his or her account.
-   */
-  private void setAccountUnlockUrl(URI value) {
-    this.accountUnlockUrl = value;
+  public int getHttpErrorCode() {
+    return this.code;
   }
 }

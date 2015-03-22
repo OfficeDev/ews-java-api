@@ -21,7 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
+
+import microsoft.exchange.webservices.data.PropertyDefinitionBase;
 
 /**
  * Represents an error that occurs when an operation on a property fails.

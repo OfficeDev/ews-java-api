@@ -21,13 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
-/**
- * Represents an error that occurs when the XML for a request cannot be
- * serialized.
- */
-public class ServiceXmlSerializationException extends ServiceLocalException {
+public class NotSupportedException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -35,31 +31,19 @@ public class ServiceXmlSerializationException extends ServiceLocalException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceXmlSerializationException Constructor.
+   * Instantiates a new argument exception.
    */
-  public ServiceXmlSerializationException() {
+  public NotSupportedException() {
     super();
-  }
-
-  /**
-   * Instantiates a new service xml serialization exception.
-   *
-   * @param message the message
-   */
-  public ServiceXmlSerializationException(String message) {
-    super(message);
 
   }
 
   /**
-   * Instantiates a new service xml serialization exception.
+   * Instantiates a new NotSupported exception.
    *
-   * @param message        the message
-   * @param innerException the inner exception
+   * @param strMessage the str message
    */
-  public ServiceXmlSerializationException(String message,
-      Exception innerException) {
-    super(message, innerException);
+  public NotSupportedException(String strMessage) {
+    super(strMessage);
   }
-
 }

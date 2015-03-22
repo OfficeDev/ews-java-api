@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

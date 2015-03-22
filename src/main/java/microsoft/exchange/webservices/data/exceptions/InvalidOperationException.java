@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * Represents an error that occurs when an operation on a property fails.
+ * The Class InvalidOperationException.
  */
-public class PropertyException extends ServiceLocalException {
+public class InvalidOperationException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,58 +34,18 @@ public class PropertyException extends ServiceLocalException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * The name.
+   * Instantiates a new invalid operation exception.
    */
-  private String name;
+  public InvalidOperationException() {
 
-  /**
-   * Instantiates a new property exception.
-   */
-  public PropertyException() {
-    super();
   }
 
   /**
-   * Instantiates a new property exception.
+   * Instantiates a new invalid operation exception.
    *
-   * @param name the name
+   * @param strMessage the str message
    */
-  public PropertyException(String name) {
-    super();
-    this.name = name;
+  public InvalidOperationException(String strMessage) {
+    super(strMessage);
   }
-
-  /**
-   * Instantiates a new property exception.
-   *
-   * @param message the message
-   * @param name    the name
-   */
-  public PropertyException(String message, String name) {
-    super(message);
-    this.name = name;
-  }
-
-  /**
-   * Instantiates a new property exception.
-   *
-   * @param message        the message
-   * @param name           the name
-   * @param innerException the inner exception
-   */
-  public PropertyException(String message, String name,
-      Exception innerException) {
-    super(message, innerException);
-    this.name = name;
-  }
-
-  /**
-   * Gets the name.
-   *
-   * @return the name
-   */
-  public String getName() {
-    return name;
-  }
-
 }

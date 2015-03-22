@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+
 /**
  * The Interface ISelfValidate.
  */
@@ -31,7 +33,7 @@ interface ISelfValidate {
   /**
    * Validate.
    *
-   * @throws ServiceValidationException the service validation exception
+   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
    * @throws Exception                  the exception
    */
   void validate() throws ServiceValidationException, Exception;

@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data;
 
 import microsoft.exchange.webservices.data.enumerations.ServiceError;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.HashMap;
@@ -201,8 +202,7 @@ public class SoapFaultDetails {
    * @throws Exception                          the exception
    * @throws ServiceXmlDeserializationException the service xml deserialization exception
    */
-  private void parseMessageXml(EwsXmlReader reader) throws Exception,
-      ServiceXmlDeserializationException, Exception {
+  private void parseMessageXml(EwsXmlReader reader) throws Exception, ServiceXmlDeserializationException, Exception {
     // E14:172881: E12 and E14 return the MessageXml element in different
     // namespaces (types namespace for E12, errors namespace in E14). To
     // avoid this problem, the parser will match the namespace from the

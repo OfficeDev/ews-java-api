@@ -21,17 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.exceptions;
 
 /**
- * The Class InvalidOrUnsupportedTimeZoneDefinitionException.
- *
- * Thrown when time zone definition is not valid.
- *
- * @see microsoft.exchange.webservices.data.TimeZoneDefinition
- * @see microsoft.exchange.webservices.data.TimeZoneTransitionGroup
+ * The Class ArgumentException.
  */
-public class InvalidOrUnsupportedTimeZoneDefinitionException extends ServiceLocalException {
+public class ArgumentException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -39,32 +34,45 @@ public class InvalidOrUnsupportedTimeZoneDefinitionException extends ServiceLoca
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constructs an <code>InvalidOrUnsupportedTimeZoneDefinitionException</code> with no detail message.
+   * Instantiates a new argument exception.
    */
-  public InvalidOrUnsupportedTimeZoneDefinitionException() {
+  public ArgumentException() {
     super();
+
   }
 
   /**
-   * Constructs an <code>InvalidOrUnsupportedTimeZoneDefinitionException</code> with the specified detail message.
+   * Instantiates a new argument exception.
    *
-   * @param message the detail message.
+   * @param arg0 the arg0
    */
-  public InvalidOrUnsupportedTimeZoneDefinitionException(String message) {
-    super(message);
+  public ArgumentException(final String arg0) {
+    super(arg0);
+
   }
 
   /**
-   * Constructs a new exception with the specified detail message and cause.
+   * ServiceXmlDeserializationException Constructor.
    *
-   * @param message the detail message (which is saved for later retrieval by the {@link
-   *                Throwable#getMessage()} method).
-   * @param innerException   the cause (which is saved for later retrieval by the {@link Throwable#getCause()}
-   *                method).  (A <tt>null</tt> value is permitted, and indicates that the cause is nonexistent
-   *                or unknown.)
+   * @param message        the message
+   * @param innerException the inner exception
    */
-  public InvalidOrUnsupportedTimeZoneDefinitionException(String message, Exception innerException) {
+  public ArgumentException(String message, Exception innerException) {
     super(message, innerException);
+  }
+
+  /**
+   * Initializes a new instance of the System.
+   * ArgumentException class with a specified
+   * error message and the name of the
+   * parameter that causes this exception.
+   *
+   * @param message   The error message that explains the reason for the exception.
+   * @param paramName The name of the parameter that caused the current exception.
+   */
+  public ArgumentException(String message, String paramName) {
+    super(message + " Parameter that caused " +
+        "the current exception :" + paramName);
   }
 
 }
