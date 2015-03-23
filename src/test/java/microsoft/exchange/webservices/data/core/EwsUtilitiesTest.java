@@ -21,26 +21,28 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class EmailAddressTest {
-
+public class EwsUtilitiesTest {
   @Test
-  public void testEmailAddressToString() {
-    Assert.assertTrue(EwsUtilities.stringEquals(null, null));
-    EmailAddress address = new EmailAddress();
-    address.setAddress("ews@ews.com");
-    Assert.assertEquals(address.toString(), "ews@ews.com");
-    address.setName("ews");
-    Assert.assertEquals(address.toString(), "ews <ews@ews.com>");
+  public void testGetBuildVersion() {
+    Assert.assertEquals("Build version must be 0s", "0.0.0.0", EwsUtilities.getBuildVersion());
   }
 
+  @Test
+  public void testStringEquals() {
+    Assert.assertTrue(EwsUtilities.stringEquals(null, null));
+    Assert.assertTrue(EwsUtilities.stringEquals("x", "x"));
+
+    Assert.assertFalse(EwsUtilities.stringEquals(null, "x"));
+    Assert.assertFalse(EwsUtilities.stringEquals("x", null));
+    Assert.assertFalse(EwsUtilities.stringEquals("x", "X"));
+  }
 }

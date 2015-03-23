@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core;
 
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.doReturn;

@@ -21,46 +21,34 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.ExchangeServiceBase;
-import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
-import org.junit.BeforeClass;
+import microsoft.exchange.webservices.data.core.PropertyBag;
+import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
+import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.misc.OutParam;
+import microsoft.exchange.webservices.data.properties.definition.RecurrencePropertyDefinition;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-/**
- * A base class with "Common-Services"
- */
 @RunWith(JUnit4.class)
-public abstract class BaseTest {
+public class PropertyBagTest {
 
   /**
-   * Mock for the ExchangeServiceBase
-   */
-  protected static ExchangeServiceBase exchangeServiceBaseMock;
-
-  /**
-   * Mock for the ExchangeService
-   */
-  protected static ExchangeService exchangeServiceMock;
-
-  /**
-   * Setup Mocks
-   *
+   * Calling tryGetPropertyType with invalid data.
+   * Expecting exception
+   * 
    * @throws Exception
    */
-  @BeforeClass
-  public static final void setUpBaseClass() throws Exception {
-    // Mock up ExchangeServiceBase
-    exchangeServiceBaseMock = new ExchangeServiceBase() {
-      @Override
-      protected void processHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException)
-          throws Exception {
-        throw webException;
-      }
-    };
-    exchangeServiceMock = new ExchangeService();
+  @Test(expected=ArgumentException.class)
+  public void tryGetPropertyType() throws Exception{
+    ExchangeService es = new ExchangeService();
+    ServiceObject owner = new Item(es);
+    PropertyBag pb = new PropertyBag(owner);
+    pb.tryGetPropertyType(String.class, new RecurrencePropertyDefinition("test", "none", null, ExchangeVersion.Exchange2010_SP2), new OutParam<String>());
   }
 }

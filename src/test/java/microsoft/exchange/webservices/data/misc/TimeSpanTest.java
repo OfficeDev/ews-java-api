@@ -21,36 +21,44 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.misc;
 
-import java.util.ArrayList;
-
-import microsoft.exchange.webservices.data.exceptions.ArgumentException;
-import microsoft.exchange.webservices.data.misc.OutParam;
-import microsoft.exchange.webservices.data.properties.complex.ExtendedPropertyCollection;
-import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
-import org.junit.Assert;
+import microsoft.exchange.webservices.base.BaseTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+/**
+ * The Class TimeSpanTest.
+ */
 @RunWith(JUnit4.class)
-public class ExtendedPropertyCollectionTest {
-  
+public class TimeSpanTest extends BaseTest {
+
   /**
-   * Calling tryGetValue with invalid input
-   * expecting exception.
-   * 
-   * @throws Exception
+   * testTimeSpanToXSDuration
    */
-   @Test(expected=ArgumentException.class)
-   public void tryGetValue() throws Exception{
-     ExtendedPropertyCollection epc = new ExtendedPropertyCollection();
-     epc.setExtendedProperty(new ExtendedPropertyDefinition(), new ArrayList<Boolean>());
-     Class<String> cls = String.class;
-     ExtendedPropertyDefinition propertyDefinition = new ExtendedPropertyDefinition();
-     
-     OutParam<String> propertyValueOut = new OutParam<String>();
-     Assert.assertTrue(epc.tryGetValue(cls, propertyDefinition, propertyValueOut));
-   }
+  @Test
+  public void testTimeSpanToXSDuration() {
+    Calendar calendar = new GregorianCalendar(2008, Calendar.OCTOBER, 10);
+    timeSpanToXSDuration(calendar);
+  }
+
+  /**
+   * Time span to xs duration.
+   *
+   * @param timeSpan the time span
+   * @return the string
+   */
+  public String timeSpanToXSDuration(Calendar timeSpan) {
+    String offsetStr = (timeSpan.SECOND < 0) ? "-" : "";
+    String obj = String.format("%s %s %s %s %s ", offsetStr, Math
+            .abs(timeSpan.DAY_OF_MONTH), Math.abs(timeSpan.HOUR_OF_DAY),
+        Math.abs(timeSpan.MINUTE), Math.abs(timeSpan.SECOND) + "." +
+            Math.abs(timeSpan.MILLISECOND));
+
+    return obj;
+  }
 }

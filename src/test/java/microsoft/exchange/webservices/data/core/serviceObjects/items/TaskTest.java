@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.core.serviceObjects.items;
 
-import microsoft.exchange.webservices.data.core.serviceObjects.items.Task;
+import microsoft.exchange.webservices.base.BaseTest;
 import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsInstanceOf;

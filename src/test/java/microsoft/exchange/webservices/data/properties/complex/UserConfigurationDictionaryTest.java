@@ -21,11 +21,11 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.properties.complex;
 
+import microsoft.exchange.webservices.base.BaseTest;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.properties.complex.UserConfigurationDictionary;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
