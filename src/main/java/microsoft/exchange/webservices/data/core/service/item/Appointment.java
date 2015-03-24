@@ -65,7 +65,7 @@ import microsoft.exchange.webservices.data.property.complex.RecurringAppointment
 import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.Recurrence;
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -340,12 +340,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   public void forward(MessageBody bodyPrefix, EmailAddress... toRecipients)
       throws Exception {
     if (null != toRecipients) {
-      ArrayList<EmailAddress> list = new ArrayList<EmailAddress>();
-      for (EmailAddress email : toRecipients) {
-        list.add(email);
-      }
-
-      this.forward(bodyPrefix, list);
+      forward(bodyPrefix, Arrays.asList(toRecipients));
     }
   }
 

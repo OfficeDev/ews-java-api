@@ -185,7 +185,16 @@ import org.w3c.dom.Node;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Represents a binding to the Exchange Web Services.
@@ -1510,11 +1519,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
       Attachment[] attachments, BodyType bodyType,
       Iterable<PropertyDefinitionBase> additionalProperties)
       throws Exception {
-    List<Attachment> attList = new ArrayList<Attachment>();
-    for (Attachment attachment : attachments) {
-      attList.add(attachment);
-    }
-    return this.internalGetAttachments(attList, bodyType,
+    return this.internalGetAttachments(Arrays.asList(attachments), bodyType,
         additionalProperties, ServiceErrorHandling.ReturnErrors);
   }
 
@@ -3202,13 +3207,8 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   public Collection<DelegateUserResponse> addDelegates(Mailbox mailbox,
       MeetingRequestsDeliveryScope meetingRequestsDeliveryScope,
       DelegateUser... delegateUsers) throws Exception {
-    ArrayList<DelegateUser> delUser = new ArrayList<DelegateUser>();
-    for (DelegateUser user : delegateUsers) {
-      delUser.add(user);
-    }
-
-    return this
-        .addDelegates(mailbox, meetingRequestsDeliveryScope, delUser);
+    return addDelegates(mailbox, meetingRequestsDeliveryScope,
+                        Arrays.asList(delegateUsers));
   }
 
   /**
@@ -3256,13 +3256,8 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   public Collection<DelegateUserResponse> updateDelegates(Mailbox mailbox,
       MeetingRequestsDeliveryScope meetingRequestsDeliveryScope,
       DelegateUser... delegateUsers) throws Exception {
-
-    ArrayList<DelegateUser> delUser = new ArrayList<DelegateUser>();
-    for (DelegateUser user : delegateUsers) {
-      delUser.add(user);
-    }
     return this.updateDelegates(mailbox, meetingRequestsDeliveryScope,
-        delUser);
+        Arrays.asList(delegateUsers));
   }
 
   /**
@@ -3310,11 +3305,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    */
   public Collection<DelegateUserResponse> removeDelegates(Mailbox mailbox,
       UserId... userIds) throws Exception {
-    ArrayList<UserId> delUser = new ArrayList<UserId>();
-    for (UserId user : userIds) {
-      delUser.add(user);
-    }
-    return this.removeDelegates(mailbox, delUser);
+    return removeDelegates(mailbox, Arrays.asList(userIds));
   }
 
   /**
@@ -3357,11 +3348,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    */
   public DelegateInformation getDelegates(Mailbox mailbox,
       boolean includePermissions, UserId... userIds) throws Exception {
-    ArrayList<UserId> delUser = new ArrayList<UserId>();
-    for (UserId user : userIds) {
-      delUser.add(user);
-    }
-    return this.getDelegates(mailbox, includePermissions, delUser);
+    return this.getDelegates(mailbox, includePermissions, Arrays.asList(userIds));
   }
 
   /**

@@ -41,9 +41,8 @@ import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.MessageBody;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Represents a post item. Properties available on post item are defined in the
@@ -198,11 +197,7 @@ public final class PostItem extends Item {
    */
   public void forward(MessageBody bodyPrefix, EmailAddress... toRecipients)
       throws Exception {
-    List<EmailAddress> list = new ArrayList<EmailAddress>();
-    for (EmailAddress address : toRecipients) {
-      list.add(address);
-    }
-    this.forward(bodyPrefix, list);
+    forward(bodyPrefix, Arrays.asList(toRecipients));
   }
 
   /**

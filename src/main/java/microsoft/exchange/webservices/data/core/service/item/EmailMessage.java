@@ -46,7 +46,7 @@ import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.MessageBody;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Represents an e-mail message. Properties available on e-mail messages are
@@ -226,11 +226,7 @@ public class EmailMessage extends Item {
   public void forward(MessageBody bodyPrefix, EmailAddress... toRecipients)
       throws Exception {
     if (null != toRecipients) {
-      ArrayList<EmailAddress> list = new ArrayList<EmailAddress>();
-      for (EmailAddress email : toRecipients) {
-        list.add(email);
-      }
-      this.forward(bodyPrefix, list);
+      forward(bodyPrefix, Arrays.asList(toRecipients));
     }
   }
 

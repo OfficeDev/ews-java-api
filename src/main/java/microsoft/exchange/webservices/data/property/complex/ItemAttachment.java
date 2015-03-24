@@ -35,8 +35,7 @@ import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * Represents an item attachment.
@@ -201,13 +200,7 @@ public class ItemAttachment extends Attachment implements IServiceObjectChangedD
    */
   public void load(PropertyDefinitionBase... additionalProperties)
       throws Exception {
-    List<PropertyDefinitionBase> addProp =
-        new ArrayList<PropertyDefinitionBase>();
-
-    for (PropertyDefinitionBase addProperties1 : additionalProperties) {
-      addProp.add(addProperties1);
-    }
-    this.internalLoad(null /* bodyType */, addProp);
+    internalLoad(null /* bodyType */, Arrays.asList(additionalProperties));
   }
 
   /**
@@ -230,12 +223,7 @@ public class ItemAttachment extends Attachment implements IServiceObjectChangedD
    */
   public void load(BodyType bodyType,
       PropertyDefinitionBase... additionalProperties) throws Exception {
-    List<PropertyDefinitionBase> addProp =
-        new ArrayList<PropertyDefinitionBase>();
-    for (PropertyDefinitionBase addProperties1 : additionalProperties) {
-      addProp.add(addProperties1);
-    }
-    this.internalLoad(bodyType, addProp);
+    internalLoad(bodyType, Arrays.asList(additionalProperties));
   }
 
   /**
