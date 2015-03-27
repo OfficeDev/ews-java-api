@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.service.item.MeetingResponse;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 
 /**
  * Represents a meeting declination message.

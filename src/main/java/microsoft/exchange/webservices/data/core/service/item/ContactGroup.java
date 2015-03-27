@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.service.schema.ContactSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ContactGroupSchema;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
 import microsoft.exchange.webservices.data.property.complex.GroupMemberCollection;
 import microsoft.exchange.webservices.data.property.complex.ItemAttachment;

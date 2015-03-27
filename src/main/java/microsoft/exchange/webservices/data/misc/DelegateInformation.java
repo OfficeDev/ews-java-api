@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.core.response.DelegateUserResponse;
-import microsoft.exchange.webservices.data.enumerations.MeetingRequestsDeliveryScope;
+import microsoft.exchange.webservices.data.enumeration.MeetingRequestsDeliveryScope;
 
 import java.util.ArrayList;
 import java.util.Collection;

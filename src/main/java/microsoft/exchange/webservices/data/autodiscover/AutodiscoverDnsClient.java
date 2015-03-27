@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.dns.DnsClient;
 import microsoft.exchange.webservices.data.exception.DnsException;
 import microsoft.exchange.webservices.data.dns.DnsSrvRecord;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.enumerations.TraceFlags;
+import microsoft.exchange.webservices.data.enumeration.TraceFlags;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;

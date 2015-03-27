@@ -28,8 +28,8 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.property.complex.MeetingTimeZone;
 import microsoft.exchange.webservices.data.core.PropertyBag;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
 
 import java.util.EnumSet;
 

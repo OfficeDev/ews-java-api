@@ -27,10 +27,10 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.FlaggedForAction;
-import microsoft.exchange.webservices.data.enumerations.Importance;
-import microsoft.exchange.webservices.data.enumerations.Sensitivity;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.FlaggedForAction;
+import microsoft.exchange.webservices.data.enumeration.Importance;
+import microsoft.exchange.webservices.data.enumeration.Sensitivity;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 
 /**
  * Represents the set of conditions and exception available for a rule.

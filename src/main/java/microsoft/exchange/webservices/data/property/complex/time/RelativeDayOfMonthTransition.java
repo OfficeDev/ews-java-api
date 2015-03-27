@@ -26,8 +26,8 @@ package microsoft.exchange.webservices.data.property.complex.time;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.DayOfTheWeek;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;

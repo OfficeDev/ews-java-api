@@ -25,8 +25,8 @@ package microsoft.exchange.webservices.data.property.complex;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
-import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
-import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
+import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumeration.WellKnownFolderName;
 
 /**
  * Represents a collection of folder Ids.

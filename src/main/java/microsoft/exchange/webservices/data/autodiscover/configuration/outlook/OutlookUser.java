@@ -29,9 +29,9 @@ import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettings
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
-import microsoft.exchange.webservices.data.enumerations.UserSettingName;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumeration.UserSettingName;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.interfaces.IFunc;
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 

@@ -25,11 +25,11 @@ package microsoft.exchange.webservices.data.core.service.schema;
 
 import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.ContactSource;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.FileAsMapping;
-import microsoft.exchange.webservices.data.enumerations.PhysicalAddressIndex;
-import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumeration.ContactSource;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.FileAsMapping;
+import microsoft.exchange.webservices.data.enumeration.PhysicalAddressIndex;
+import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.ByteArrayArray;
 import microsoft.exchange.webservices.data.property.complex.CompleteName;
@@ -344,7 +344,7 @@ public class ContactSchema extends ItemSchema {
    * Defines the FileAsMapping property.
    */
   public static final PropertyDefinition FileAsMapping =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.FileAsMapping>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.FileAsMapping>(
           FileAsMapping.class,
           XmlElementNames.FileAsMapping, FieldUris.FileAsMapping, EnumSet.of(
           PropertyDefinitionFlags.CanSet,
@@ -583,7 +583,7 @@ public class ContactSchema extends ItemSchema {
    * Defines the ContactSource property.
    */
   public static final PropertyDefinition ContactSource =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.ContactSource>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.ContactSource>(
           ContactSource.class,
           XmlElementNames.ContactSource, FieldUris.ContactSource, EnumSet
           .of(PropertyDefinitionFlags.CanFind),

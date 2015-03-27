@@ -25,10 +25,10 @@ package microsoft.exchange.webservices.data.core.service.schema;
 
 import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.Importance;
-import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.enumerations.Sensitivity;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.Importance;
+import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumeration.Sensitivity;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.ConversationId;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
@@ -342,7 +342,7 @@ public class ItemSchema extends ServiceObjectSchema {
    * Defines the Sensitivity property.
    */
   public static final PropertyDefinition Sensitivity =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.Sensitivity>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.Sensitivity>(
           Sensitivity.class,
           XmlElementNames.Sensitivity, FieldUris.Sensitivity, EnumSet.of(
           PropertyDefinitionFlags.CanSet,
@@ -395,7 +395,7 @@ public class ItemSchema extends ServiceObjectSchema {
    * Defines the Importance property.
    */
   public static final PropertyDefinition Importance =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.Importance>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.Importance>(
           Importance.class,
           XmlElementNames.Importance, FieldUris.Importance, EnumSet.of(
           PropertyDefinitionFlags.CanSet,

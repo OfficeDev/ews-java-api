@@ -32,8 +32,8 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.service.schema.EmailMessageSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ItemSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ResponseObjectSchema;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.ResponseMessageType;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.ResponseMessageType;
 import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;
 import microsoft.exchange.webservices.data.property.complex.MessageBody;
 

@@ -29,8 +29,8 @@ import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.property.complex.MeetingTimeZone;
 import microsoft.exchange.webservices.data.core.PropertyBag;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 

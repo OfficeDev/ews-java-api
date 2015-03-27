@@ -29,8 +29,8 @@ import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDel
 import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
-import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 

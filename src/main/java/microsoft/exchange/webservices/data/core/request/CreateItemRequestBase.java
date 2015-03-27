@@ -30,9 +30,9 @@ import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.response.ServiceResponse;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
-import microsoft.exchange.webservices.data.enumerations.SendInvitationsMode;
-import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumeration.MessageDisposition;
+import microsoft.exchange.webservices.data.enumeration.SendInvitationsMode;
+import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import java.util.Collection;

@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
-import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;

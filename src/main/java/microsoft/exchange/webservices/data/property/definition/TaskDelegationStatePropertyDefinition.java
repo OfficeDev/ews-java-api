@@ -24,9 +24,9 @@
 package microsoft.exchange.webservices.data.property.definition;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.enumerations.TaskDelegationState;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumeration.TaskDelegationState;
 
 import java.util.EnumSet;
 

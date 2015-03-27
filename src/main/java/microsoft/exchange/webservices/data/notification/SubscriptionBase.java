@@ -28,8 +28,8 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
-import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 
 /**
  * Represents the base class for event subscriptions.

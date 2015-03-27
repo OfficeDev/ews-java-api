@@ -26,11 +26,11 @@ package microsoft.exchange.webservices.data.core.service.schema;
 import microsoft.exchange.webservices.data.core.service.item.Appointment;
 import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.AppointmentType;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
-import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
-import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumeration.AppointmentType;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus;
+import microsoft.exchange.webservices.data.enumeration.MeetingResponseType;
+import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;
 import microsoft.exchange.webservices.data.property.complex.DeletedOccurrenceInfoCollection;
@@ -354,7 +354,7 @@ public class AppointmentSchema extends ItemSchema {
    * The Constant LegacyFreeBusyStatus.
    */
   public static final PropertyDefinition LegacyFreeBusyStatus =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus>(
           LegacyFreeBusyStatus.class,
           XmlElementNames.LegacyFreeBusyStatus,
           FieldUris.LegacyFreeBusyStatus, EnumSet.of(
@@ -446,7 +446,7 @@ public class AppointmentSchema extends ItemSchema {
    * The Constant AppointmentType.
    */
   public static final PropertyDefinition AppointmentType =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumerations.AppointmentType>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.AppointmentType>(
           AppointmentType.class,
           XmlElementNames.CalendarItemType, FieldUris.CalendarItemType,
           EnumSet.of(PropertyDefinitionFlags.CanFind),

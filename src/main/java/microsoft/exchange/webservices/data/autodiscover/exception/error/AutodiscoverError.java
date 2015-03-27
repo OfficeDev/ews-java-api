@@ -24,11 +24,11 @@
 package microsoft.exchange.webservices.data.autodiscover.exception.error;
 
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
-import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 
 /**

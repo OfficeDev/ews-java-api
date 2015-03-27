@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.property.complex.RuleOperationError;
 import microsoft.exchange.webservices.data.property.complex.RuleOperationErrorCollection;
 import microsoft.exchange.webservices.data.core.response.ServiceResponse;
 import microsoft.exchange.webservices.data.core.response.UpdateInboxRulesResponse;
-import microsoft.exchange.webservices.data.enumerations.ServiceError;
+import microsoft.exchange.webservices.data.enumeration.ServiceError;
 
 /**
  * Represents an exception thrown when an error occurs as a result of calling

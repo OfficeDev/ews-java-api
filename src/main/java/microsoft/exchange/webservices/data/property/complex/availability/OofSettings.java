@@ -31,9 +31,9 @@ import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 import microsoft.exchange.webservices.data.misc.availability.OofReply;
 import microsoft.exchange.webservices.data.misc.availability.TimeWindow;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.OofExternalAudience;
-import microsoft.exchange.webservices.data.enumerations.OofState;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.OofExternalAudience;
+import microsoft.exchange.webservices.data.enumeration.OofState;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ArgumentException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 

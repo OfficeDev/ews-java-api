@@ -27,8 +27,8 @@ import microsoft.exchange.webservices.data.core.EwsServiceMultiResponseXmlReader
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
-import microsoft.exchange.webservices.data.enumerations.HangingRequestDisconnectReason;
-import microsoft.exchange.webservices.data.enumerations.TraceFlags;
+import microsoft.exchange.webservices.data.enumeration.HangingRequestDisconnectReason;
+import microsoft.exchange.webservices.data.enumeration.TraceFlags;
 import microsoft.exchange.webservices.data.exception.ArgumentException;
 import microsoft.exchange.webservices.data.exception.EWSHttpException;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;

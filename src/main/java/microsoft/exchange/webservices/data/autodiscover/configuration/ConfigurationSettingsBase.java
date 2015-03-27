@@ -28,10 +28,10 @@ import microsoft.exchange.webservices.data.autodiscover.exception.error.Autodisc
 import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponse;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.AutodiscoverResponseType;
-import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
-import microsoft.exchange.webservices.data.enumerations.UserSettingName;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.AutodiscoverResponseType;
+import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumeration.UserSettingName;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 
 import java.net.URI;
 import java.util.List;

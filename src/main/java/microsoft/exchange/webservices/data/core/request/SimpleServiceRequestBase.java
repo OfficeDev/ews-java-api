@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.misc.AsyncRequestResult;
 import microsoft.exchange.webservices.data.misc.CallableMethod;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.WebAsyncCallStateAnchor;
-import microsoft.exchange.webservices.data.enumerations.TraceFlags;
+import microsoft.exchange.webservices.data.enumeration.TraceFlags;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceRequestException;
 import microsoft.exchange.webservices.data.interfaces.IAsyncResult;

@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
+import microsoft.exchange.webservices.data.enumeration.DayOfTheWeek;
 
 import java.util.ArrayList;
 import java.util.List;

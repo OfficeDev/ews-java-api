@@ -30,9 +30,9 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
-import microsoft.exchange.webservices.data.enumerations.AutodiscoverResponseType;
-import microsoft.exchange.webservices.data.enumerations.UserSettingName;
+import microsoft.exchange.webservices.data.enumeration.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.enumeration.AutodiscoverResponseType;
+import microsoft.exchange.webservices.data.enumeration.UserSettingName;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 

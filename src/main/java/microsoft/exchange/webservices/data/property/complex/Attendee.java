@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
+import microsoft.exchange.webservices.data.enumeration.MeetingResponseType;
 
 import java.util.Date;
 

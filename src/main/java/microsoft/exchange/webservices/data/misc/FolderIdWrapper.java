@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 

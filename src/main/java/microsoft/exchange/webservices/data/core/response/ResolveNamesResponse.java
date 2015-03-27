@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.response;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.enumerations.ServiceError;
+import microsoft.exchange.webservices.data.enumeration.ServiceError;
 import microsoft.exchange.webservices.data.exception.ServiceResponseException;
 import microsoft.exchange.webservices.data.misc.NameResolutionCollection;
 

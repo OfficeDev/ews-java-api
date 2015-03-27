@@ -29,9 +29,9 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.misc.MapiTypeConverter;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.DefaultExtendedPropertySet;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.MapiPropertyType;
+import microsoft.exchange.webservices.data.enumeration.DefaultExtendedPropertySet;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.MapiPropertyType;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import java.util.UUID;

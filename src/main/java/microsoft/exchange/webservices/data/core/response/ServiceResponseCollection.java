@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core.response;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.enumerations.ServiceResult;
+import microsoft.exchange.webservices.data.enumeration.ServiceResult;
 
 import java.util.Enumeration;
 import java.util.Iterator;

@@ -24,8 +24,8 @@
 package microsoft.exchange.webservices.data.notification;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.enumerations.EventType;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.EventType;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 

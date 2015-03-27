@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.property.complex.availability;
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
+import microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus;
 
 import java.util.Date;
 

@@ -23,16 +23,16 @@
 
 package microsoft.exchange.webservices.data.autodiscover.request;
 
-import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
-import microsoft.exchange.webservices.data.enumerations.DomainSettingName;
+import microsoft.exchange.webservices.data.enumeration.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.enumeration.DomainSettingName;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
 import microsoft.exchange.webservices.data.autodiscover.response.GetDomainSettingsResponseCollection;

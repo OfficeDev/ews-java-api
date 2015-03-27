@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.property.complex;
 
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
-import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 
 /**
  * Represents a collection of Internet message headers.

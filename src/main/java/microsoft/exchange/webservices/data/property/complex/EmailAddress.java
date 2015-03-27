@@ -28,8 +28,8 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.interfaces.ISearchStringProvider;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.MailboxType;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.MailboxType;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 
 /**
  * Represents an e-mail address.

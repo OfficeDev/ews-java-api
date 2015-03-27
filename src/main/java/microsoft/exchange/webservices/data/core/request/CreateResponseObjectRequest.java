@@ -26,8 +26,8 @@ package microsoft.exchange.webservices.data.core.request;
 import microsoft.exchange.webservices.data.core.response.CreateResponseObjectResponse;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
 
 /**
  * Represents a CreateItem request for a response object.

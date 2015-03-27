@@ -29,10 +29,10 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.response.GetUserOofSettingsResponse;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.OofExternalAudience;
-import microsoft.exchange.webservices.data.enumerations.ServiceError;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.OofExternalAudience;
+import microsoft.exchange.webservices.data.enumeration.ServiceError;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.complex.availability.OofSettings;
 

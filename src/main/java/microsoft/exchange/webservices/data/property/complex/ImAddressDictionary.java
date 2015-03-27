@@ -25,8 +25,8 @@ package microsoft.exchange.webservices.data.property.complex;
 
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
-import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
-import microsoft.exchange.webservices.data.enumerations.ImAddressKey;
+import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumeration.ImAddressKey;
 
 /**
  * Represents a dictionary of Instant Messaging addresses.

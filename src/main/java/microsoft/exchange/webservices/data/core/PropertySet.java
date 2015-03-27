@@ -24,12 +24,12 @@
 package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.core.request.ServiceRequestBase;
-import microsoft.exchange.webservices.data.enumerations.BasePropertySet;
-import microsoft.exchange.webservices.data.enumerations.BodyType;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.enumerations.ServiceObjectType;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.BasePropertySet;
+import microsoft.exchange.webservices.data.enumeration.BodyType;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumeration.ServiceObjectType;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;

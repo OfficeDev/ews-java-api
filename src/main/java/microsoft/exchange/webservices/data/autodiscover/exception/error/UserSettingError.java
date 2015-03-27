@@ -23,10 +23,10 @@
 
 package microsoft.exchange.webservices.data.autodiscover.exception.error;
 
-import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.enumeration.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 
 /**

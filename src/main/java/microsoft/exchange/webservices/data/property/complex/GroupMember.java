@@ -31,11 +31,11 @@ import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDel
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attribute.RequiredServerVersion;
-import microsoft.exchange.webservices.data.enumerations.EmailAddressKey;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.MailboxType;
-import microsoft.exchange.webservices.data.enumerations.MemberStatus;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.EmailAddressKey;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.MailboxType;
+import microsoft.exchange.webservices.data.enumeration.MemberStatus;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 

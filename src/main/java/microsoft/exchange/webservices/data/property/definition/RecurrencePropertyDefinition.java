@@ -33,9 +33,9 @@ import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.R
 import microsoft.exchange.webservices.data.property.complex.recurrence.range.RecurrenceRange;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 
 import java.util.EnumSet;

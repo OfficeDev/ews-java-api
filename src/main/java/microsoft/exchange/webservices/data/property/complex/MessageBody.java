@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.BodyType;
+import microsoft.exchange.webservices.data.enumeration.BodyType;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import org.apache.commons.logging.Log;

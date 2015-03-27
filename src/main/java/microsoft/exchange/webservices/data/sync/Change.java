@@ -25,8 +25,8 @@ package microsoft.exchange.webservices.data.sync;
 
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
-import microsoft.exchange.webservices.data.enumerations.ChangeType;
-import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
+import microsoft.exchange.webservices.data.enumeration.ChangeType;
+import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.property.complex.ServiceId;
 

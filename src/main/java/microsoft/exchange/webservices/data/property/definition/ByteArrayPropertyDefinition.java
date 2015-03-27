@@ -24,8 +24,8 @@
 package microsoft.exchange.webservices.data.property.definition;
 
 import microsoft.exchange.webservices.data.util.Base64EncoderStream;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
 
 import java.util.EnumSet;
 

@@ -30,11 +30,11 @@ import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDel
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.FolderPermissionLevel;
-import microsoft.exchange.webservices.data.enumerations.FolderPermissionReadAccess;
-import microsoft.exchange.webservices.data.enumerations.PermissionScope;
-import microsoft.exchange.webservices.data.enumerations.StandardUser;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.FolderPermissionLevel;
+import microsoft.exchange.webservices.data.enumeration.FolderPermissionReadAccess;
+import microsoft.exchange.webservices.data.enumeration.PermissionScope;
+import microsoft.exchange.webservices.data.enumeration.StandardUser;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 

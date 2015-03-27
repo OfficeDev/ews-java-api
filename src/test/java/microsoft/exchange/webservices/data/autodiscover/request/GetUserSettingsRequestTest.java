@@ -27,7 +27,7 @@ package microsoft.exchange.webservices.data.autodiscover.request;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.base.BaseTest;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.exception.ArgumentException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;

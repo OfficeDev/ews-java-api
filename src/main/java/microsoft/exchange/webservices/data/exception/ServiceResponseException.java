@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.exception;
 
 import microsoft.exchange.webservices.data.core.response.ServiceResponse;
-import microsoft.exchange.webservices.data.enumerations.ServiceError;
+import microsoft.exchange.webservices.data.enumeration.ServiceError;
 
 /**
  * Represents a remote service exception that has a single response.

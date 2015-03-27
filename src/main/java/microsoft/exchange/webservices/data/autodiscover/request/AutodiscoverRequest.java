@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover.request;
 
-import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.enumeration.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverResponseException;
 import microsoft.exchange.webservices.data.exception.EWSHttpException;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
@@ -39,9 +39,9 @@ import microsoft.exchange.webservices.data.exception.ServiceResponseException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.SoapFaultDetails;
-import microsoft.exchange.webservices.data.enumerations.TraceFlags;
+import microsoft.exchange.webservices.data.enumeration.TraceFlags;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
