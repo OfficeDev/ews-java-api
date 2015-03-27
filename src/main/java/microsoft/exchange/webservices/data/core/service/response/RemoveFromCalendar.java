@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.service.items.Item;
 import microsoft.exchange.webservices.data.core.service.schemas.ResponseObjectSchema;
 import microsoft.exchange.webservices.data.core.service.schemas.ServiceObjectSchema;
-import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.AffectedTaskOccurrence;

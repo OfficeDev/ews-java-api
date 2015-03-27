@@ -131,7 +131,7 @@ abstract class CreateItemRequestBase<TServiceObject extends ServiceObject,
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer The writer.
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception

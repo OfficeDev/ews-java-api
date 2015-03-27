@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.service.schemas.ConversationSchema;
 import microsoft.exchange.webservices.data.core.service.schemas.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.misc.OutParam;
-import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;

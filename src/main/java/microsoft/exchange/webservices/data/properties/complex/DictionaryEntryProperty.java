@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
-import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
@@ -90,7 +90,7 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
   }
 
   /**
-   * Reads the attributes from XML.
+   * Reads the attribute from XML.
    *
    * @param reader accepts EwsServiceXmlReader
    * @throws Exception throws Exception
@@ -103,7 +103,7 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer accepts EwsServiceXmlWriter
    * @throws ServiceXmlSerializationException throws ServiceXmlSerializationException

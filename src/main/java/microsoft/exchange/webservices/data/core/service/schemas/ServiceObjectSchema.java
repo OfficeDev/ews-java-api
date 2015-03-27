@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core.service.schemas;
 
 import microsoft.exchange.webservices.data.misc.OutParam;
-import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.core.XmlElementNames;

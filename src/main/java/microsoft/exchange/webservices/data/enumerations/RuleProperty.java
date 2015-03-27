@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.enumerations;
 
-import microsoft.exchange.webservices.data.attributes.EwsEnum;
+import microsoft.exchange.webservices.data.attribute.EwsEnum;
 
 public enum RuleProperty {
   /**

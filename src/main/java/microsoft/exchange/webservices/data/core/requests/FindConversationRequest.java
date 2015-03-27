@@ -107,7 +107,7 @@ public final class FindConversationRequest extends SimpleServiceRequestBase<Find
 
 
   /**
-   * Writes XML attributes.
+   * Writes XML attribute.
    *
    * @param writer The writer.
    * @throws ServiceXmlSerializationException
@@ -120,7 +120,7 @@ public final class FindConversationRequest extends SimpleServiceRequestBase<Find
 
 
   /**
-   * Writes XML attributes.
+   * Writes XML attribute.
    *
    * @param writer The writer.
    * @throws Exception

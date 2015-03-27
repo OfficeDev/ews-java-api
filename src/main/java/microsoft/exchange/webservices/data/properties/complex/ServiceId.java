@@ -64,7 +64,7 @@ public abstract class ServiceId extends ComplexProperty {
   }
 
   /**
-   * Read attributes from XML.
+   * Read attribute from XML.
    *
    * @param reader The reader.
    * @throws Exception the exception
@@ -78,7 +78,7 @@ public abstract class ServiceId extends ComplexProperty {
   }
 
   /**
-   * Writes attributes to XML.
+   * Writes attribute to XML.
    *
    * @param writer The writer.
    * @throws ServiceXmlSerializationException the service xml serialization exception

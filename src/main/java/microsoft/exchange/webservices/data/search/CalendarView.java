@@ -63,7 +63,7 @@ public final class CalendarView extends ViewBase {
   private Date endDate;
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception

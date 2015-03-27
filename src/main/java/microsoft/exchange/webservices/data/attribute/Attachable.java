@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.attributes;
+package microsoft.exchange.webservices.data.attribute;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -29,9 +29,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The Interface Schema.
+ * The Interface Attachable.
  */
 @Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME) public @interface Schema {
+@Retention(RetentionPolicy.RUNTIME) public @interface Attachable {
 
 }

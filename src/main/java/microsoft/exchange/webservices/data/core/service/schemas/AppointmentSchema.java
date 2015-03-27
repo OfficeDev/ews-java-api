@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core.service.schemas;
 
 import microsoft.exchange.webservices.data.core.service.items.Appointment;
-import microsoft.exchange.webservices.data.attributes.Schema;
+import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.AppointmentType;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;

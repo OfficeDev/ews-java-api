@@ -1001,7 +1001,7 @@ public class EwsXmlReader {
 
 
   /**
-   * Gets a value indicating whether this instance has attributes.
+   * Gets a value indicating whether this instance has attribute.
    *
    * @return boolean
    */

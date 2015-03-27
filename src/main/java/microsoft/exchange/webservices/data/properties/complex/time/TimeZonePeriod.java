@@ -73,7 +73,7 @@ public class TimeZonePeriod extends ComplexProperty {
   private String id;
 
   /**
-   * Reads the attributes from XML.
+   * Reads the attribute from XML.
    *
    * @param reader the reader
    * @throws Exception the exception
@@ -87,7 +87,7 @@ public class TimeZonePeriod extends ComplexProperty {
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception

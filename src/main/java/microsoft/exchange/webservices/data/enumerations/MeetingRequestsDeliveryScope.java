@@ -23,8 +23,7 @@
 
 package microsoft.exchange.webservices.data.enumerations;
 
-import microsoft.exchange.webservices.data.attributes.RequiredServerVersion;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.attribute.RequiredServerVersion;
 
 /**
  * Defines how meeting requests are sent to delegates.

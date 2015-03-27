@@ -138,7 +138,7 @@ public final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
   }
 
   /**
-   * Writes XML attributes.
+   * Writes XML attribute.
    *
    * @param writer The writer.
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException

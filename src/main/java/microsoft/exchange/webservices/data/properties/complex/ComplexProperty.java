@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
 import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
-import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
@@ -114,7 +114,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
   }
 
   /**
-   * Reads the attributes from XML.
+   * Reads the attribute from XML.
    *
    * @param reader The reader.
    * @throws Exception the exception
@@ -156,7 +156,7 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer The writer.
    * @throws ServiceXmlSerializationException the service xml serialization exception

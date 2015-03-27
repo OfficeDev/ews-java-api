@@ -58,7 +58,7 @@ abstract class DeleteRequest<TResponse extends ServiceResponse> extends
   }
 
   /**
-   * Writes XML attributes.
+   * Writes XML attribute.
    *
    * @param writer The writer.
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception

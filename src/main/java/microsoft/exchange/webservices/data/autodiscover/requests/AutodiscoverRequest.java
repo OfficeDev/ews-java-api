@@ -728,7 +728,7 @@ public abstract class AutodiscoverRequest {
   protected abstract AutodiscoverResponse createServiceResponse();
 
   /**
-   * Writes attributes to request XML.
+   * Writes attribute to request XML.
    *
    * @param writer The writer.
    * @throws ServiceXmlSerializationException the service xml serialization exception

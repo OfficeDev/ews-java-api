@@ -23,9 +23,8 @@
 
 package microsoft.exchange.webservices.data.enumerations;
 
-import microsoft.exchange.webservices.data.attributes.EwsEnum;
-import microsoft.exchange.webservices.data.attributes.RequiredServerVersion;
-import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.attribute.EwsEnum;
+import microsoft.exchange.webservices.data.attribute.RequiredServerVersion;
 
 /**
  * Defines the way the FileAs property of a contact is automatically formatted.

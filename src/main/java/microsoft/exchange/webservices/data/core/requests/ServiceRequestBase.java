@@ -147,7 +147,7 @@ public abstract class ServiceRequestBase<T> {
   }
 
   /**
-   * Writes XML attributes. Subclass will override if it has XML attributes.
+   * Writes XML attribute. Subclass will override if it has XML attribute.
    *
    * @param writer The writer.
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception

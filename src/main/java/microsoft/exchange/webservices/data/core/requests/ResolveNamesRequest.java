@@ -179,7 +179,7 @@ public final class ResolveNamesRequest extends
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception
@@ -222,7 +222,7 @@ public final class ResolveNamesRequest extends
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer the writer
    * @throws Exception the exception

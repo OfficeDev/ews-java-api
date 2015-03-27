@@ -105,7 +105,7 @@ public final class MessageBody extends ComplexProperty {
   }
 
   /**
-   * Reads attributes from XML.
+   * Reads attribute from XML.
    *
    * @param reader The reader.
    * @throws Exception the exception
@@ -138,7 +138,7 @@ public final class MessageBody extends ComplexProperty {
   }
 
   /**
-   * Writes attributes to XML.
+   * Writes attribute to XML.
    *
    * @param writer The writer.
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception

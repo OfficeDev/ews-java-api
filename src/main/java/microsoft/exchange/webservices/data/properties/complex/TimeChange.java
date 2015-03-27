@@ -230,7 +230,7 @@ public final class TimeChange extends ComplexProperty {
   }
 
   /**
-   * Reads the attributes from XML.
+   * Reads the attribute from XML.
    *
    * @param reader accepts EwsServiceXmlReader
    * @throws Exception throws Exception
@@ -243,7 +243,7 @@ public final class TimeChange extends ComplexProperty {
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer accepts EwsServiceXmlWriter
    */

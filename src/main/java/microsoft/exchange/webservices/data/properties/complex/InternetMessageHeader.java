@@ -53,7 +53,7 @@ public final class InternetMessageHeader extends ComplexProperty {
   }
 
   /**
-   * Reads the attributes from XML.
+   * Reads the attribute from XML.
    *
    * @param reader the reader
    * @throws Exception the exception
@@ -76,7 +76,7 @@ public final class InternetMessageHeader extends ComplexProperty {
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer the writer
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception

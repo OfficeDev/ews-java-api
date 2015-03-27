@@ -34,7 +34,7 @@ import microsoft.exchange.webservices.data.properties.complex.recurrence.ranges.
 import microsoft.exchange.webservices.data.properties.complex.recurrence.ranges.NumberedRecurrenceRange;
 import microsoft.exchange.webservices.data.properties.complex.recurrence.ranges.RecurrenceRange;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
 import microsoft.exchange.webservices.data.enumerations.DayOfTheWeekIndex;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;

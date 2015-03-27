@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.autodiscover.configuration.outlook;
 
 import microsoft.exchange.webservices.data.security.XmlNodeType;
-import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.autodiscover.WebClientUrl;
 import microsoft.exchange.webservices.data.autodiscover.WebClientUrlCollection;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;

@@ -122,7 +122,7 @@ public final class SendItemRequest extends
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception

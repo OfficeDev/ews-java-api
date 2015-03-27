@@ -67,7 +67,7 @@ public class DnsClient {
       // Create initial context
       DirContext ictx = new InitialDirContext(env);
 
-      // Retrieve SRV record context attributes for the specified domain
+      // Retrieve SRV record context attribute for the specified domain
       Attributes contextAttributes = ictx.getAttributes(domain,
           new String[] {EWSConstants.SRVRECORD});
       if (contextAttributes != null) {

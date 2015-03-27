@@ -373,7 +373,7 @@ public class XmlAttributeNames {
    * The Constant IsArchive.
    */
   public static final String IsArchive = "IsArchive";
-  // xsi attributes
+  // xsi attribute
   /**
    * The Constant Nil.
    */

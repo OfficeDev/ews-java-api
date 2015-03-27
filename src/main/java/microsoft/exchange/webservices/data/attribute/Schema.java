@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.attributes;
+package microsoft.exchange.webservices.data.attribute;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -29,23 +29,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The Interface ServiceObjectDefinition.
+ * The Interface Schema.
  */
 @Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME) public @interface ServiceObjectDefinition {
+@Retention(RetentionPolicy.RUNTIME) public @interface Schema {
 
-  /**
-   * The name of the XML element.
-   *
-   * @return the string
-   */
-  String xmlElementName();
-
-  /**
-   * True if this ServiceObject can be returned by the server as an object,
-   * false otherwise.
-   *
-   * @return true, if successful
-   */
-  boolean returnedByServer() default true;
 }

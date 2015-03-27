@@ -74,7 +74,7 @@ public class GetDelegateRequest extends
   }
 
   /**
-   * Writes XML attributes.
+   * Writes XML attribute.
    *
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception

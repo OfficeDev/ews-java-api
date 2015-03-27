@@ -30,7 +30,7 @@ package microsoft.exchange.webservices.data.core.service.response;
 import microsoft.exchange.webservices.data.core.service.schemas.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.service.items.EmailMessage;
 import microsoft.exchange.webservices.data.core.service.items.Item;
-import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;

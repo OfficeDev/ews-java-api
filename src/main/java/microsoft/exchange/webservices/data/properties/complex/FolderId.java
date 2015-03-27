@@ -103,7 +103,7 @@ public final class FolderId extends ServiceId {
   }
 
   /**
-   * Writes attributes to XML.
+   * Writes attribute to XML.
    *
    * @param writer the writer
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception

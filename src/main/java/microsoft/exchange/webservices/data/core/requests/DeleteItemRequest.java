@@ -133,7 +133,7 @@ public final class DeleteItemRequest extends DeleteRequest<ServiceResponse> {
   }
 
   /**
-   * Writes XML attributes.
+   * Writes XML attribute.
    *
    * @param writer the writer
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception

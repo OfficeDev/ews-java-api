@@ -107,7 +107,7 @@ public final class SearchFolderParameters extends ComplexProperty implements ICo
   }
 
   /**
-   * Reads the attributes from XML.
+   * Reads the attribute from XML.
    *
    * @param reader the reader
    * @throws Exception the exception
@@ -120,7 +120,7 @@ public final class SearchFolderParameters extends ComplexProperty implements ICo
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer the writer
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception

@@ -27,8 +27,8 @@ import microsoft.exchange.webservices.data.core.service.response.CancelMeetingMe
 import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.core.service.schemas.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.misc.TimeSpan;
-import microsoft.exchange.webservices.data.attributes.Attachable;
-import microsoft.exchange.webservices.data.attributes.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.attribute.Attachable;
+import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;

@@ -56,7 +56,7 @@ public final class PhoneCallId extends ComplexProperty {
   }
 
   /**
-   * Reads attributes from XML.
+   * Reads attribute from XML.
    *
    * @param reader the reader
    * @throws Exception the exception
@@ -68,7 +68,7 @@ public final class PhoneCallId extends ComplexProperty {
   }
 
   /**
-   * Writes attributes to XML.
+   * Writes attribute to XML.
    *
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception

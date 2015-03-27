@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.service.schemas.EmailMessageSche
 import microsoft.exchange.webservices.data.core.service.schemas.ItemSchema;
 import microsoft.exchange.webservices.data.core.service.schemas.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.service.items.EmailMessage;
-import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.Sensitivity;
 import microsoft.exchange.webservices.data.properties.complex.AttachmentCollection;

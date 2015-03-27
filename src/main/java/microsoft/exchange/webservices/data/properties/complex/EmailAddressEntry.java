@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.EmailAddressKey;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
@@ -70,7 +70,7 @@ public final class EmailAddressEntry extends DictionaryEntryProperty<EmailAddres
   }
 
   /**
-   * Reads the attributes from XML.
+   * Reads the attribute from XML.
    *
    * @param reader accepts EwsServiceXmlReader
    * @throws Exception throws Exception
@@ -110,7 +110,7 @@ public final class EmailAddressEntry extends DictionaryEntryProperty<EmailAddres
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer accepts EwsServiceXmlWriter
    * @throws ServiceXmlSerializationException throws ServiceXmlSerializationException

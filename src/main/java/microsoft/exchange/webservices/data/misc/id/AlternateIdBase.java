@@ -85,7 +85,7 @@ public abstract class AlternateIdBase implements ISelfValidate {
   protected abstract String getXmlElementName();
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer the writer
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
@@ -96,7 +96,7 @@ public abstract class AlternateIdBase implements ISelfValidate {
   }
 
   /**
-   * Loads the attributes from XML.
+   * Loads the attribute from XML.
    *
    * @param reader the reader
    * @throws Exception the exception

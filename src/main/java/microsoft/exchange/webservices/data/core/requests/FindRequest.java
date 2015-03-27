@@ -129,7 +129,7 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
   }
 
   /**
-   * Writes XML attributes.
+   * Writes XML attribute.
    *
    * @param writer The Writer
    * @throws ServiceXmlSerializationException the service xml serialization exception

@@ -54,7 +54,7 @@ public final class ConversationIndexedItemView extends PagedView {
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer The writer.
    */

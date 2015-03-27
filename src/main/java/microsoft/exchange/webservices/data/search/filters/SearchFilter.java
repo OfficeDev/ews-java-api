@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.ComparisonMode;
 import microsoft.exchange.webservices.data.enumerations.ContainmentMode;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
@@ -275,7 +275,7 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Writes the attributes to XML.
+     * Writes the attribute to XML.
      *
      * @param writer the writer
      * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception

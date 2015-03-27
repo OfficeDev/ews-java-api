@@ -100,7 +100,7 @@ public class TimeZoneTransitionGroup extends ComplexProperty {
   }
 
   /**
-   * Reads the attributes from XML.
+   * Reads the attribute from XML.
    *
    * @param reader the reader
    * @throws Exception the exception
@@ -112,7 +112,7 @@ public class TimeZoneTransitionGroup extends ComplexProperty {
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param writer the writer
    * @throws ServiceXmlSerializationException the service xml serialization exception
@@ -124,7 +124,7 @@ public class TimeZoneTransitionGroup extends ComplexProperty {
   }
 
   /**
-   * Writes the attributes to XML.
+   * Writes the attribute to XML.
    *
    * @param reader the reader
    * @return true, if successful

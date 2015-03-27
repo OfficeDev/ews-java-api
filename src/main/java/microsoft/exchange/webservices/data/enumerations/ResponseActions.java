@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.enumerations;
 
 
-import microsoft.exchange.webservices.data.attributes.Flags;
+import microsoft.exchange.webservices.data.attribute.Flags;
 
 /**
  * Defines the response actions that can be taken on an item.
