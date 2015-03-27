@@ -28,14 +28,14 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollection;
-import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ByteArrayPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ContainedPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.StringPropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.EmailAddress;
+import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;
+import microsoft.exchange.webservices.data.property.definition.BoolPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ByteArrayPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ContainedPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.StringPropertyDefinition;
 
 import java.util.EnumSet;
 
@@ -389,7 +389,7 @@ public class EmailMessageSchema extends ItemSchema {
   }
 
   /**
-   * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
+   * Registers property. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
    * SCHEMA ORDER (i.e. the same order as they are defined in types.xsd)
    */
   @Override

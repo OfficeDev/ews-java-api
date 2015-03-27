@@ -49,20 +49,20 @@ import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
-import microsoft.exchange.webservices.data.properties.complex.Attachment;
-import microsoft.exchange.webservices.data.properties.complex.AttachmentCollection;
-import microsoft.exchange.webservices.data.properties.complex.ConversationId;
-import microsoft.exchange.webservices.data.properties.complex.ExtendedPropertyCollection;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.InternetMessageHeaderCollection;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
-import microsoft.exchange.webservices.data.properties.complex.MessageBody;
-import microsoft.exchange.webservices.data.properties.complex.MimeContent;
-import microsoft.exchange.webservices.data.properties.complex.StringList;
-import microsoft.exchange.webservices.data.properties.complex.UniqueBody;
-import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.Attachment;
+import microsoft.exchange.webservices.data.property.complex.AttachmentCollection;
+import microsoft.exchange.webservices.data.property.complex.ConversationId;
+import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.InternetMessageHeaderCollection;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.MessageBody;
+import microsoft.exchange.webservices.data.property.complex.MimeContent;
+import microsoft.exchange.webservices.data.property.complex.StringList;
+import microsoft.exchange.webservices.data.property.complex.UniqueBody;
+import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -108,12 +108,12 @@ public class Item extends ServiceObject {
 
   /**
    * Binds to an existing item, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
+   * specified set of property. Calling this method results in a call to
    * EWS.
    *
    * @param service     The service to use to bind to the item.
    * @param id          The Id of the item to bind to.
-   * @param propertySet The set of properties to load.
+   * @param propertySet The set of property to load.
    * @return An Item instance representing the item corresponding to the
    * specified Id.
    * @throws Exception the exception
@@ -125,7 +125,7 @@ public class Item extends ServiceObject {
 
   /**
    * Binds to an existing item, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
+   * specified set of property. Calling this method results in a call to
    * EWS.
    *
    * @param service The service to use to bind to the item.
@@ -1104,9 +1104,9 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets a list of extended properties defined on this item.
+   * Gets a list of extended property defined on this item.
    *
-   * @return the extended properties
+   * @return the extended property
    * @throws ServiceLocalException the service local exception
    */
   @Override

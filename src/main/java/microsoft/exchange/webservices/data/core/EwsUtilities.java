@@ -52,7 +52,7 @@ import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithSe
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 import microsoft.exchange.webservices.data.interfaces.IPredicate;
 import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

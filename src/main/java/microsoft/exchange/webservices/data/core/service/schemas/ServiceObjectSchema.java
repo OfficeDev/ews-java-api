@@ -33,11 +33,11 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
-import microsoft.exchange.webservices.data.properties.complex.ExtendedPropertyCollection;
-import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.IndexedPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
+import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
+import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.IndexedPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -121,7 +121,7 @@ public abstract class ServiceObjectSchema implements
       });
 
   /**
-   * Adds schema properties to dictionary.
+   * Adds schema property to dictionary.
    *
    * @param type              Schema type.
    * @param propDefDictionary The property definition dictionary.
@@ -159,7 +159,7 @@ public abstract class ServiceObjectSchema implements
                 propDefDictionary.put(propertyDefinition
                     .getUri(), propertyDefinition);
                 // The following is a "generic hack" to register
-                // properties that are not public and
+                // property that are not public and
                 // thus not returned by the above GetFields
                 // call. It is currently solely used to register
                 // the MeetingTimeZone property.
@@ -294,25 +294,25 @@ public abstract class ServiceObjectSchema implements
           });
 
   /**
-   * The properties.
+   * The property.
    */
   private Map<String, PropertyDefinition> properties =
       new HashMap<String, PropertyDefinition>();
 
   /**
-   * The visible properties.
+   * The visible property.
    */
   private List<PropertyDefinition> visibleProperties =
       new ArrayList<PropertyDefinition>();
 
   /**
-   * The first class properties.
+   * The first class property.
    */
   private List<PropertyDefinition> firstClassProperties =
       new ArrayList<PropertyDefinition>();
 
   /**
-   * The first class summary properties.
+   * The first class summary property.
    */
   private List<PropertyDefinition> firstClassSummaryProperties =
       new ArrayList<PropertyDefinition>();
@@ -378,25 +378,25 @@ public abstract class ServiceObjectSchema implements
 
 
   /**
-   * Registers properties.
+   * Registers property.
    */
   protected void registerProperties() {
   }
 
   /**
-   * Gets the list of first class properties for this service object type.
+   * Gets the list of first class property for this service object type.
    *
-   * @return the first class properties
+   * @return the first class property
    */
   public List<PropertyDefinition> getFirstClassProperties() {
     return this.firstClassProperties;
   }
 
   /**
-   * Gets the list of first class summary properties for this service object
+   * Gets the list of first class summary property for this service object
    * type.
    *
-   * @return the first class summary properties
+   * @return the first class summary property
    */
   public List<PropertyDefinition> getFirstClassSummaryProperties() {
     return this.firstClassSummaryProperties;

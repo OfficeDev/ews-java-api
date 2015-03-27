@@ -28,9 +28,9 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.properties.complex.GroupMemberCollection;
-import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.GroupMemberCollection;
+import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 import java.util.EnumSet;
 
@@ -95,12 +95,12 @@ public class ContactGroupSchema extends ItemSchema {
     super();
   }
 
-  //Registers properties.
+  //Registers property.
   // IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e.
   // the same order as they are defined in types.xsd)
 
   /**
-   * Registers properties.
+   * Registers property.
    * <p/>
    * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
    * same order as they are defined in types.xsd)

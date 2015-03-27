@@ -35,7 +35,7 @@ public final class PostReplySchema extends ServiceObjectSchema {
   public static final PostReplySchema Instance = new PostReplySchema();
 
   /**
-   * Registers properties.
+   * Registers property.
    * <p/>
    * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
    * same order as they are defined in types.xsd)

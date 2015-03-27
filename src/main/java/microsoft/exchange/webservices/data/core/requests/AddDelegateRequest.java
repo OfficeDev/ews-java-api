@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.MeetingRequestsDeliveryScope;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.properties.complex.DelegateUser;
+import microsoft.exchange.webservices.data.property.complex.DelegateUser;
 
 import java.util.ArrayList;
 import java.util.List;

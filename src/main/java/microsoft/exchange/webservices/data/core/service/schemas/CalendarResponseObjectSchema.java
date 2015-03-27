@@ -36,7 +36,7 @@ public class CalendarResponseObjectSchema extends ServiceObjectSchema {
       new CalendarResponseObjectSchema();
 
   /**
-   * Registers properties.
+   * Registers property.
    */
   // / IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
   // same order as they are defined in types.xsd)

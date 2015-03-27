@@ -39,9 +39,9 @@ import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
 import microsoft.exchange.webservices.data.exceptions.PropertyException;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
-import microsoft.exchange.webservices.data.properties.complex.UserConfigurationDictionary;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.UserConfigurationDictionary;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.EnumSet;
@@ -71,7 +71,7 @@ public class UserConfiguration {
           UserConfigurationProperties.XmlData);
 
   /**
-   * The No properties.
+   * The No property.
    */
   private final UserConfigurationProperties NoProperties =
       UserConfigurationProperties.values()[0];
@@ -112,12 +112,12 @@ public class UserConfiguration {
   private byte[] binaryData = null;
 
   /**
-   * The properties available for access.
+   * The property available for access.
    */
   private EnumSet<UserConfigurationProperties> propertiesAvailableForAccess;
 
   /**
-   * The updated properties.
+   * The updated property.
    */
   private EnumSet<UserConfigurationProperties> updatedProperties;
 
@@ -198,7 +198,7 @@ public class UserConfiguration {
    * Initializes a new instance of <see cref="UserConfiguration"/> class.
    *
    * @param service             The service to which the user configuration is bound.
-   * @param requestedProperties The properties requested for this user configuration.
+   * @param requestedProperties The property requested for this user configuration.
    * @throws Exception the exception
    */
   public UserConfiguration(ExchangeService service, EnumSet<UserConfigurationProperties> requestedProperties)
@@ -331,12 +331,12 @@ public class UserConfiguration {
 
   /**
    * Binds to an existing user configuration and loads the specified
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service        The service to which the user configuration is bound.
    * @param name           The name of the user configuration.
    * @param parentFolderId The Id of the folder containing the user configuration.
-   * @param properties     The properties to load.
+   * @param properties     The property to load.
    * @return A user configuration instance.
    * @throws IndexOutOfBoundsException the index out of bounds exception
    * @throws Exception                 the exception
@@ -353,12 +353,12 @@ public class UserConfiguration {
 
   /**
    * Binds to an existing user configuration and loads the specified
-   * properties.
+   * property.
    *
    * @param service          The service to which the user configuration is bound.
    * @param name             The name of the user configuration.
    * @param parentFolderName The name of the folder containing the user configuration.
-   * @param properties       The properties to load.
+   * @param properties       The property to load.
    * @return A user configuration instance.
    * @throws IndexOutOfBoundsException the index out of bounds exception
    * @throws Exception                 the exception
@@ -457,10 +457,10 @@ public class UserConfiguration {
   }
 
   /**
-   * Loads the specified properties on the user configuration. Calling this
+   * Loads the specified property on the user configuration. Calling this
    * method results in a call to EWS.
    *
-   * @param properties The properties to load.
+   * @param properties The property to load.
    * @throws Exception the exception
    */
   public void load(UserConfigurationProperties properties) throws Exception {
@@ -636,15 +636,15 @@ public class UserConfiguration {
   }
 
   /**
-   * Initializes properties.
+   * Initializes property.
    *
-   * @param requestedProperties The properties requested for this UserConfiguration.
+   * @param requestedProperties The property requested for this UserConfiguration.
    */
   // / InitializeProperties is called in 3 cases:
   // / . Create new object: From the UserConfiguration constructor.
   // / . Bind to existing object: Again from the constructor. The constructor
   // is called eventually by the GetUserConfiguration request.
-  // / . Refresh properties: From the Load method.
+  // / . Refresh property: From the Load method.
   private void initializeProperties(
       EnumSet<UserConfigurationProperties> requestedProperties) {
     this.itemId = null;
@@ -657,7 +657,7 @@ public class UserConfiguration {
   }
 
   /**
-   * Resets flags to indicate that properties haven't been modified.
+   * Resets flags to indicate that property haven't been modified.
    */
   private void resetIsDirty() {
     try {

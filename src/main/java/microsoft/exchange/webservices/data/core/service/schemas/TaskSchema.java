@@ -30,17 +30,17 @@ import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.TaskMode;
 import microsoft.exchange.webservices.data.enumerations.TaskStatus;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.properties.complex.StringList;
-import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.DateTimePropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.DoublePropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.GenericPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.IntPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.RecurrencePropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.StringPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.TaskDelegationStatePropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.StringList;
+import microsoft.exchange.webservices.data.property.definition.BoolPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.DateTimePropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.DoublePropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.GenericPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.IntPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.RecurrencePropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.StringPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.TaskDelegationStatePropertyDefinition;
 
 import java.util.EnumSet;
 

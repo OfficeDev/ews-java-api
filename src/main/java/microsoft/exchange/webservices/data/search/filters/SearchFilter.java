@@ -39,8 +39,8 @@ import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationE
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
 import microsoft.exchange.webservices.data.interfaces.ISearchStringProvider;
-import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
+import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
@@ -1079,7 +1079,7 @@ public abstract class SearchFilter extends ComplexProperty {
 
       if (this.otherPropertyDefinition == null && this.value == null) {
         throw new ServiceValidationException(
-            "Either the OtherPropertyDefinition or the Value properties must be set.");
+            "Either the OtherPropertyDefinition or the Value property must be set.");
       } else if (value != null) {
         // All objects implement Object.
         // Value types that don't implement Object must implement

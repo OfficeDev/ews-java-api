@@ -34,7 +34,7 @@ import microsoft.exchange.webservices.data.enumerations.UserConfigurationPropert
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.misc.UserConfiguration;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
 
 import java.util.EnumSet;
 
@@ -55,7 +55,7 @@ public class GetUserConfigurationRequest extends
   private FolderId parentFolderId;
 
   /**
-   * The properties.
+   * The property.
    */
   private EnumSet<UserConfigurationProperties> properties;
 
@@ -243,18 +243,18 @@ public class GetUserConfigurationRequest extends
   }
 
   /**
-   * Gets the properties.
+   * Gets the property.
    *
-   * @return the properties
+   * @return the property
    */
   protected EnumSet<UserConfigurationProperties> getProperties() {
     return this.properties;
   }
 
   /**
-   * Sets the properties.
+   * Sets the property.
    *
-   * @param properties the new properties
+   * @param properties the new property
    */
   public void setProperties(EnumSet<UserConfigurationProperties> properties) {
     this.properties = properties;

@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.core.requests.GetPhoneCallRequest;
 import microsoft.exchange.webservices.data.core.responses.GetPhoneCallResponse;
 import microsoft.exchange.webservices.data.core.requests.PlayOnPhoneRequest;
 import microsoft.exchange.webservices.data.core.responses.PlayOnPhoneResponse;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
 
 /**
  * Represents the Unified Messaging functionalities.

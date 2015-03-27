@@ -43,12 +43,12 @@ import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.properties.complex.ExtendedPropertyCollection;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.FolderPermissionCollection;
-import microsoft.exchange.webservices.data.properties.complex.ManagedFolderInformation;
-import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.FolderPermissionCollection;
+import microsoft.exchange.webservices.data.property.complex.ManagedFolderInformation;
+import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 import microsoft.exchange.webservices.data.search.FindFoldersResults;
 import microsoft.exchange.webservices.data.search.FindItemsResults;
 import microsoft.exchange.webservices.data.search.FolderView;
@@ -79,12 +79,12 @@ public class Folder extends ServiceObject {
 
   /**
    * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
+   * specified set of property. Calling this method results in a call to
    * EWS.
    *
    * @param service     The service to use to bind to the folder.
    * @param id          The Id of the folder to bind to.
-   * @param propertySet The set of properties to load.
+   * @param propertySet The set of property to load.
    * @return A Folder instance representing the folder corresponding to the
    * specified Id.
    * @throws Exception the exception
@@ -96,7 +96,7 @@ public class Folder extends ServiceObject {
 
   /**
    * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
+   * specified set of property. Calling this method results in a call to
    * EWS.
    *
    * @param service , The service to use to bind to the folder.
@@ -112,12 +112,12 @@ public class Folder extends ServiceObject {
 
   /**
    * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
+   * specified set of property. Calling this method results in a call to
    * EWS.
    *
    * @param service     The service to use to bind to the folder.
    * @param name        The name of the folder to bind to.
-   * @param propertySet The set of properties to load.
+   * @param propertySet The set of property to load.
    * @return A Folder instance representing the folder corresponding to the
    * specified Id.
    * @throws Exception the exception
@@ -130,7 +130,7 @@ public class Folder extends ServiceObject {
 
   /**
    * Binds to an existing folder, whatever its actual type is, and loads the
-   * specified set of properties. Calling this method results in a call to
+   * specified set of property. Calling this method results in a call to
    * EWS.
    *
    * @param service The service to use to bind to the folder.
@@ -209,9 +209,9 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Loads the specified set of properties on the object.
+   * Loads the specified set of property on the object.
    *
-   * @param propertySet The properties to load.
+   * @param propertySet The property to load.
    * @throws Exception the exception
    */
   @Override
@@ -604,7 +604,7 @@ public class Folder extends ServiceObject {
   /**
    * True if property was removed.
    *
-   * @return Extended properties collection.
+   * @return Extended property collection.
    * @throws Exception the exception
    */
   @Override
@@ -714,9 +714,9 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Gets a list of extended properties associated with the folder.
+   * Gets a list of extended property associated with the folder.
    *
-   * @return the extended properties for service
+   * @return the extended property for service
    * @throws ServiceLocalException the service local exception
    */
   // changed the name of method as another method with same name exists

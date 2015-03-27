@@ -41,16 +41,16 @@ import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.interfaces.ICalendarActionProvider;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
-import microsoft.exchange.webservices.data.properties.complex.AttendeeCollection;
-import microsoft.exchange.webservices.data.properties.complex.DeletedOccurrenceInfoCollection;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ItemCollection;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
-import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfo;
-import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfoCollection;
-import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
-import microsoft.exchange.webservices.data.properties.complex.time.TimeZoneDefinition;
+import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;
+import microsoft.exchange.webservices.data.property.complex.DeletedOccurrenceInfoCollection;
+import microsoft.exchange.webservices.data.property.complex.EmailAddress;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemCollection;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.OccurrenceInfo;
+import microsoft.exchange.webservices.data.property.complex.OccurrenceInfoCollection;
+import microsoft.exchange.webservices.data.property.complex.recurrence.patterns.Recurrence;
+import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 
 import java.util.Date;
 
@@ -84,11 +84,11 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Binds to an existing meeting response and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service     The service to use to bind to the meeting request.
    * @param id          The Id of the meeting request to bind to.
-   * @param propertySet The set of properties to load.
+   * @param propertySet The set of property to load.
    * @return A MeetingResponse instance representing the meeting request
    * corresponding to the specified Id.
    */
@@ -104,7 +104,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Binds to an existing meeting response and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service The service to use to bind to the meeting request.
    * @param id      The Id of the meeting request to bind to.

@@ -333,9 +333,9 @@ public class HttpClientWebRequest extends HttpWebRequest {
   }
 
   /**
-   * Gets the request properties.
+   * Gets the request property.
    *
-   * @return the request properties
+   * @return the request property
    * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
    */
   public Map<String, String> getRequestProperty() throws EWSHttpException {

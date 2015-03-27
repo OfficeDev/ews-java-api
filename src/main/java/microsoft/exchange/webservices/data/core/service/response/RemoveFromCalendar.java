@@ -35,8 +35,8 @@ import microsoft.exchange.webservices.data.enumerations.DeleteMode;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
 import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
 
 import java.util.List;
 
@@ -86,9 +86,9 @@ import java.util.List;
   }
 
   /**
-   * Loads the specified set of properties on the object.
+   * Loads the specified set of property on the object.
    *
-   * @param propertySet The properties to load.
+   * @param propertySet The property to load.
    */
   @Override
   protected void internalLoad(PropertySet propertySet) {

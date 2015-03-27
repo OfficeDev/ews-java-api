@@ -151,21 +151,21 @@ import microsoft.exchange.webservices.data.notification.GetEventsResults;
 import microsoft.exchange.webservices.data.notification.PullSubscription;
 import microsoft.exchange.webservices.data.notification.PushSubscription;
 import microsoft.exchange.webservices.data.notification.StreamingSubscription;
-import microsoft.exchange.webservices.data.properties.complex.Attachment;
-import microsoft.exchange.webservices.data.properties.complex.ConversationId;
-import microsoft.exchange.webservices.data.properties.complex.DelegateUser;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollection;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
-import microsoft.exchange.webservices.data.properties.complex.Mailbox;
-import microsoft.exchange.webservices.data.properties.complex.RuleCollection;
-import microsoft.exchange.webservices.data.properties.complex.RuleOperation;
-import microsoft.exchange.webservices.data.properties.complex.StringList;
-import microsoft.exchange.webservices.data.properties.complex.UserId;
-import microsoft.exchange.webservices.data.properties.complex.availability.OofSettings;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
-import microsoft.exchange.webservices.data.properties.complex.time.TimeZoneDefinition;
+import microsoft.exchange.webservices.data.property.complex.Attachment;
+import microsoft.exchange.webservices.data.property.complex.ConversationId;
+import microsoft.exchange.webservices.data.property.complex.DelegateUser;
+import microsoft.exchange.webservices.data.property.complex.EmailAddress;
+import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.Mailbox;
+import microsoft.exchange.webservices.data.property.complex.RuleCollection;
+import microsoft.exchange.webservices.data.property.complex.RuleOperation;
+import microsoft.exchange.webservices.data.property.complex.StringList;
+import microsoft.exchange.webservices.data.property.complex.UserId;
+import microsoft.exchange.webservices.data.property.complex.availability.OofSettings;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
+import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 import microsoft.exchange.webservices.data.search.CalendarView;
 import microsoft.exchange.webservices.data.search.ConversationIndexedItemView;
 import microsoft.exchange.webservices.data.search.FindFoldersResults;
@@ -446,7 +446,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Load specified properties for a folder.
+   * Load specified property for a folder.
    *
    * @param folder      The folder
    * @param propertySet The property set
@@ -1277,7 +1277,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Loads the properties of multiple items in a single call to EWS.
+   * Loads the property of multiple items in a single call to EWS.
    *
    * @param items       the items
    * @param propertySet the property set
@@ -1295,7 +1295,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Loads the properties of multiple items in a single call to EWS.
+   * Loads the property of multiple items in a single call to EWS.
    *
    * @param items         the items
    * @param propertySet   the property set
@@ -1470,7 +1470,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *
    * @param attachments          the attachments
    * @param bodyType             the body type
-   * @param additionalProperties the additional properties
+   * @param additionalProperties the additional property
    * @param errorHandling        the error handling
    * @throws Exception the exception
    */
@@ -1502,7 +1502,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *
    * @param attachments          the attachments
    * @param bodyType             the body type
-   * @param additionalProperties the additional properties
+   * @param additionalProperties the additional property
    * @return Service response collection.
    * @throws Exception
    */
@@ -1523,7 +1523,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *
    * @param attachment           the attachment
    * @param bodyType             the body type
-   * @param additionalProperties the additional properties
+   * @param additionalProperties the additional property
    * @throws Exception the exception
    */
   public void getAttachment(Attachment attachment, BodyType bodyType,
@@ -2409,7 +2409,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * results in a call to EWS.
    *
    * @param syncFolderId       The Id of the folder containing the items to synchronize with.
-   * @param propertySet        The set of properties to retrieve for synchronized items.
+   * @param propertySet        The set of property to retrieve for synchronized items.
    * @param ignoredItemIds     The optional list of item Ids that should be ignored.
    * @param maxChangesReturned The maximum number of changes that should be returned.
    * @param syncScope          The sync scope identifying items to include in the
@@ -2436,7 +2436,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param callback           The AsyncCallback delegate
    * @param state              An object that contains state information for this request
    * @param syncFolderId       The Id of the folder containing the items to synchronize with
-   * @param propertySet        The set of properties to retrieve for synchronized items.
+   * @param propertySet        The set of property to retrieve for synchronized items.
    * @param ignoredItemIds     The optional list of item Ids that should be ignored.
    * @param maxChangesReturned The maximum number of changes that should be returned.
    * @param syncScope          The sync scope identifying items to include in the
@@ -2474,7 +2474,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * Builds a request to synchronize the items of a specific folder.
    *
    * @param syncFolderId       The Id of the folder containing the items to synchronize with
-   * @param propertySet        The set of properties to retrieve for synchronized items.
+   * @param propertySet        The set of property to retrieve for synchronized items.
    * @param ignoredItemIds     The optional list of item Ids that should be ignored
    * @param maxChangesReturned The maximum number of changes that should be returned.
    * @param syncScope          The sync scope identifying items to include in the
@@ -2531,7 +2531,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param state        An object that contains state information for this request.
    * @param syncFolderId The Id of the folder containing the items to synchronize with.
    *                     A null value indicates the root folder of the mailbox.
-   * @param propertySet  The set of properties to retrieve for synchronized items.
+   * @param propertySet  The set of property to retrieve for synchronized items.
    * @param syncState    The optional sync state representing the point in time when to
    *                     start the synchronization.
    * @return An IAsyncResult that references the asynchronous request
@@ -2548,7 +2548,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * Synchronizes the entire folder hierarchy of the mailbox this Service is
    * connected to. Calling this method results in a call to EWS.
    *
-   * @param propertySet The set of properties to retrieve for synchronized items.
+   * @param propertySet The set of property to retrieve for synchronized items.
    * @param syncState   The optional sync state representing the point in time when to
    *                    start the synchronization.
    * @return A ChangeCollection containing a list of changes that occurred in
@@ -2571,7 +2571,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
 	 * @param state
 	 *            An object that contains state information for this request.
 	 * @param propertySet
-	 *            The set of properties to retrieve for synchronized items.
+	 *            The set of property to retrieve for synchronized items.
 	 * @param syncState
 	 *            The optional sync state representing the point in time when to
 	 *            start the synchronization.
@@ -2603,7 +2603,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *
    * @param syncFolderId The Id of the folder containing the items to synchronize with.
    *                     A null value indicates the root folder of the mailbox.
-   * @param propertySet  The set of properties to retrieve for synchronized items.
+   * @param propertySet  The set of property to retrieve for synchronized items.
    * @param syncState    The optional sync state representing the point in time when to
    *                     start the synchronization.
    * @return A request to synchronize the specified folder hierarchy of the
@@ -3442,7 +3442,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *
    * @param name           the name
    * @param parentFolderId the parent folder id
-   * @param properties     the properties
+   * @param properties     the property
    * @return the user configuration
    * @throws Exception the exception
    */
@@ -3462,10 +3462,10 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Loads the properties of the specified userConfiguration.
+   * Loads the property of the specified userConfiguration.
    *
    * @param userConfiguration the user configuration
-   * @param properties        the properties
+   * @param properties        the property
    * @throws Exception the exception
    */
   public void loadPropertiesForUserConfiguration(UserConfiguration userConfiguration,

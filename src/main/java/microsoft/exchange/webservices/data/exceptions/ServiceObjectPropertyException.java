@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.exceptions;
 
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 /**
  * Represents an error that occurs when an operation on a property fails.

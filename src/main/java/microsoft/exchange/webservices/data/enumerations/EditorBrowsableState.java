@@ -44,7 +44,7 @@ public enum EditorBrowsableState {
   //
   // Summary:
   // The property or method is a feature that only advanced users should see.
-  // An editor can either show or hide such properties.
+  // An editor can either show or hide such property.
   /**
    * The Advanced.
    */

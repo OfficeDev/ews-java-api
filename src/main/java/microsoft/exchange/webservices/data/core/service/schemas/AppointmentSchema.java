@@ -32,25 +32,25 @@ import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.properties.complex.AttendeeCollection;
-import microsoft.exchange.webservices.data.properties.complex.DeletedOccurrenceInfoCollection;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
-import microsoft.exchange.webservices.data.properties.complex.ItemCollection;
-import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfo;
-import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfoCollection;
-import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ContainedPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.DateTimePropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.GenericPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.IntPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.MeetingTimeZonePropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.RecurrencePropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.StartTimeZonePropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.StringPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.TimeSpanPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.TimeZonePropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;
+import microsoft.exchange.webservices.data.property.complex.DeletedOccurrenceInfoCollection;
+import microsoft.exchange.webservices.data.property.complex.EmailAddress;
+import microsoft.exchange.webservices.data.property.complex.ItemCollection;
+import microsoft.exchange.webservices.data.property.complex.OccurrenceInfo;
+import microsoft.exchange.webservices.data.property.complex.OccurrenceInfoCollection;
+import microsoft.exchange.webservices.data.property.definition.BoolPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ContainedPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.DateTimePropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.GenericPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.IntPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.MeetingTimeZonePropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.RecurrencePropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.StartTimeZonePropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.StringPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.TimeSpanPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.TimeZonePropertyDefinition;
 
 import java.util.EnumSet;
 
@@ -830,7 +830,7 @@ public class AppointmentSchema extends ItemSchema {
   public static final AppointmentSchema Instance = new AppointmentSchema();
 
   /**
-   * Registers properties.
+   * Registers property.
    * <p/>
    * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
    * same order as they are defined in types.xsd)

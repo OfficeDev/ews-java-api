@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.properties.complex.time.TimeZoneDefinition;
+import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;

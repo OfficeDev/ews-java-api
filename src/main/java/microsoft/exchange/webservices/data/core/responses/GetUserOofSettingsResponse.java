@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.responses;
 
-import microsoft.exchange.webservices.data.properties.complex.availability.OofSettings;
+import microsoft.exchange.webservices.data.property.complex.availability.OofSettings;
 
 /**
  * Represents response to GetUserOofSettings request.

@@ -34,8 +34,8 @@ import microsoft.exchange.webservices.data.core.service.schemas.ItemSchema;
 import microsoft.exchange.webservices.data.core.service.schemas.ResponseObjectSchema;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ResponseMessageType;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollection;
-import microsoft.exchange.webservices.data.properties.complex.MessageBody;
+import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;
+import microsoft.exchange.webservices.data.property.complex.MessageBody;
 
 /**
  * The Class ResponseMessage.

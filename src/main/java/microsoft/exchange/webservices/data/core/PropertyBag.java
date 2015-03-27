@@ -39,9 +39,9 @@ import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDel
 import microsoft.exchange.webservices.data.interfaces.ICustomXmlUpdateSerializer;
 import microsoft.exchange.webservices.data.interfaces.IOwnedProperty;
 import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
-import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
-import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinitionBase;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
+import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinitionBase;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -67,36 +67,36 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
   private boolean loading;
 
   /**
-   * The only summary properties requested.
+   * The only summary property requested.
    */
   private boolean onlySummaryPropertiesRequested;
 
   /**
-   * The loaded properties.
+   * The loaded property.
    */
   private List<PropertyDefinition> loadedProperties =
       new ArrayList<PropertyDefinition>();
 
   /**
-   * The properties.
+   * The property.
    */
   private Map<PropertyDefinition, Object> properties =
       new HashMap<PropertyDefinition, Object>();
 
   /**
-   * The deleted properties.
+   * The deleted property.
    */
   private Map<PropertyDefinition, Object> deletedProperties =
       new HashMap<PropertyDefinition, Object>();
 
   /**
-   * The modified properties.
+   * The modified property.
    */
   private List<PropertyDefinition> modifiedProperties =
       new ArrayList<PropertyDefinition>();
 
   /**
-   * The added properties.
+   * The added property.
    */
   private List<PropertyDefinition> addedProperties =
       new ArrayList<PropertyDefinition>();
@@ -118,9 +118,9 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
   }
 
   /**
-   * Gets a Map holding the bag's properties.
+   * Gets a Map holding the bag's property.
    *
-   * @return A Map holding the bag's properties.
+   * @return A Map holding the bag's property.
    */
   public Map<PropertyDefinition, Object> getProperties() {
     return this.properties;
@@ -189,7 +189,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
       return false;
     }
 
-    // If base property set is all first-class properties, use the
+    // If base property set is all first-class property, use the
     // appropriate list of
     // property definitions to see if this property was requested.
     // Otherwise, property had
@@ -333,7 +333,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
             return null;
           }
 
-          // Non-nullable properties (int, bool, etc.) must be
+          // Non-nullable property (int, bool, etc.) must be
           // assigned or loaded; cannot return null value.
           if (!propertyDefinition.isNullable()) {
             String errorMessage = this
@@ -468,13 +468,13 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
   }
 
   /**
-   * Loads properties from XML and inserts them in the bag.
+   * Loads property from XML and inserts them in the bag.
    *
-   * @param reader                         The reader from which to read the properties.
-   * @param clear                          Indicates whether the bag should be cleared before properties
+   * @param reader                         The reader from which to read the property.
+   * @param clear                          Indicates whether the bag should be cleared before property
    *                                       are loaded.
    * @param requestedPropertySet           The requested property set.
-   * @param onlySummaryPropertiesRequested Indicates whether summary or full properties were requested.
+   * @param onlySummaryPropertiesRequested Indicates whether summary or full property were requested.
    * @throws Exception the exception
    */
   public void loadFromXml(EwsServiceXmlReader reader, boolean clear, PropertySet requestedPropertySet,
@@ -521,9 +521,9 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
   }
 
   /**
-   * Writes the bag's properties to XML.
+   * Writes the bag's property to XML.
    *
-   * @param writer The writer to write the properties to.
+   * @param writer The writer to write the property to.
    * @throws Exception the exception
    */
   public void writeToXml(EwsServiceXmlWriter writer) throws Exception {
@@ -536,7 +536,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
       PropertyDefinition propertyDefinition = it.next();
       // The following test should not be necessary since the property bag
       // prevents
-      // properties to be set if they don't have the CanSet flag, but it
+      // property to be set if they don't have the CanSet flag, but it
       // doesn't hurt...
       if (propertyDefinition
           .hasFlag(PropertyDefinitionFlags.CanSet, writer.getService().getRequestedServerVersion())) {
@@ -635,7 +635,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
       PropertyDefinition propertyDefinition) throws Exception {
     // The following test should not be necessary since the property bag
     // prevents
-    // properties to be updated if they don't have the CanUpdate flag, but
+    // property to be updated if they don't have the CanUpdate flag, but
     // it
     // doesn't hurt...
     if (propertyDefinition.hasFlag(PropertyDefinitionFlags.CanUpdate)) {
@@ -682,7 +682,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
       throws Exception {
     // The following test should not be necessary since the property bag
     // prevents
-    // properties to be deleted (set to null) if they don't have the
+    // property to be deleted (set to null) if they don't have the
     // CanDelete flag,
     // but it doesn't hurt...
     if (propertyDefinition.hasFlag(PropertyDefinitionFlags.CanDelete)) {
@@ -795,7 +795,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
       }
 
       if (!this.getOwner().isNew()) {
-        // If owner is an item attachment, properties cannot be updated
+        // If owner is an item attachment, property cannot be updated
         // (EWS doesn't support updating item attachments)
 
         if ((this.getOwner() instanceof Item)) {

@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.service.schemas.CancelMeetingMessageSchema;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.properties.complex.MessageBody;
+import microsoft.exchange.webservices.data.property.complex.MessageBody;
 
 /**
  * Represents a meeting cancellation message.

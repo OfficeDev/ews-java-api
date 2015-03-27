@@ -59,7 +59,7 @@ public enum EffectiveRights {
    */
   Delete(8),
 
-  // The user can modify the properties of items and/or folders.
+  // The user can modify the property of items and/or folders.
   /**
    * The Modify.
    */

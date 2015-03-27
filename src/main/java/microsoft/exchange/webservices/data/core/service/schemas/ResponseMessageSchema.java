@@ -34,7 +34,7 @@ public class ResponseMessageSchema extends ServiceObjectSchema {
   public static final ResponseMessageSchema Instance = new ResponseMessageSchema();
 
   /**
-   * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
+   * Registers property. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
    * SCHEMA ORDER (i.e. the same order as they are defined in types.xsd)
    */
   @Override

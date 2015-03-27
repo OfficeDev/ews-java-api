@@ -40,12 +40,12 @@ import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
-import microsoft.exchange.webservices.data.properties.complex.ConversationId;
-import microsoft.exchange.webservices.data.properties.complex.ExtendedPropertyCollection;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.ItemIdCollection;
-import microsoft.exchange.webservices.data.properties.complex.StringList;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.ConversationId;
+import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.ItemIdCollection;
+import microsoft.exchange.webservices.data.property.complex.StringList;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,7 +53,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Represents a collection of Conversation related properties.
+ * Represents a collection of Conversation related property.
  * Properties available on this object are defined
  * in the ConversationSchema class.
  */
@@ -101,10 +101,10 @@ public class Conversation extends ServiceObject {
 
   /**
    * This method is not supported in this object.
-   * Loads the specified set of properties on the object.
+   * Loads the specified set of property on the object.
    *
    * @param propertySet The propertySet
-   *                    The properties to load.
+   *                    The property to load.
    */
   @Override
   protected void internalLoad(PropertySet propertySet) {
@@ -177,9 +177,9 @@ public class Conversation extends ServiceObject {
 
   /**
    * This method is not supported in this object.
-   * Gets the extended properties collection.
+   * Gets the extended property collection.
    *
-   * @return Extended properties collection.
+   * @return Extended property collection.
    */
   @Override
   protected ExtendedPropertyCollection getExtendedProperties() {

@@ -28,14 +28,14 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.ManagedFolderInformation;
-import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.EffectiveRightsPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.IntPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PermissionSetPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.StringPropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.ManagedFolderInformation;
+import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.EffectiveRightsPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.IntPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PermissionSetPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.StringPropertyDefinition;
 
 import java.util.EnumSet;
 
@@ -189,7 +189,7 @@ public class FolderSchema extends ServiceObjectSchema {
    * Defines the ManagedFolderInformation property.
    */
   public static final PropertyDefinition ManagedFolderInformation =
-      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.properties.complex.ManagedFolderInformation>(
+      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.property.complex.ManagedFolderInformation>(
           ManagedFolderInformation.class,
           XmlElementNames.ManagedFolderInformation,
           FieldUris.ManagedFolderInformation,
@@ -229,7 +229,7 @@ public class FolderSchema extends ServiceObjectSchema {
   public static final FolderSchema Instance = new FolderSchema();
 
   /**
-   * Registers properties. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
+   * Registers property. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
    * SCHEMA ORDER (i.e. the same order as they are defined in types.xsd)
    */
   @Override

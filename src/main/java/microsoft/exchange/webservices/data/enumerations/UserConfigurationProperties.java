@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.enumerations;
 
 /**
- * Identifies the user configuration properties to retrieve.
+ * Identifies the user configuration property to retrieve.
  */
 public enum UserConfigurationProperties {
 
@@ -52,7 +52,7 @@ public enum UserConfigurationProperties {
    */
   BinaryData(8),
 
-  // Retrieve all properties.
+  // Retrieve all property.
   /**
    * The All.
    */
@@ -61,21 +61,21 @@ public enum UserConfigurationProperties {
       UserConfigurationProperties.BinaryData);
 
   /**
-   * The config properties.
+   * The config property.
    */
   private int configProperties = 0;
 
   /**
-   * Instantiates a new user configuration properties.
+   * Instantiates a new user configuration property.
    *
-   * @param configProperties the config properties
+   * @param configProperties the config property
    */
   UserConfigurationProperties(int configProperties) {
     this.configProperties = configProperties;
   }
 
   /**
-   * Instantiates a new user configuration properties.
+   * Instantiates a new user configuration property.
    *
    * @param id         the id
    * @param dictionary the dictionary

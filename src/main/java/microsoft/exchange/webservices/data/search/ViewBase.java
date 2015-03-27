@@ -174,8 +174,8 @@ public abstract class ViewBase {
   }
 
   /**
-   * Gets the property set. PropertySet determines which properties will be
-   * loaded on found items. If PropertySet is null, all first class properties
+   * Gets the property set. PropertySet determines which property will be
+   * loaded on found items. If PropertySet is null, all first class property
    * are loaded on found items.
    *
    * @return the property set
@@ -185,8 +185,8 @@ public abstract class ViewBase {
   }
 
   /**
-   * Sets the property set. PropertySet determines which properties will be
-   * loaded on found items. If PropertySet is null, all first class properties
+   * Sets the property set. PropertySet determines which property will be
+   * loaded on found items. If PropertySet is null, all first class property
    * are loaded on found items.
    *
    * @param propertySet The property set

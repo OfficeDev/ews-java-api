@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.enumerations;
 
 /**
- * Defines the default sets of extended properties.
+ * Defines the default sets of extended property.
  */
 public enum DefaultExtendedPropertySet {
 

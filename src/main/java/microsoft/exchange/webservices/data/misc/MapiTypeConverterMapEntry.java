@@ -47,7 +47,7 @@ import java.util.UUID;
 public class MapiTypeConverterMapEntry {
 
   /**
-   * Map CLR types used for MAPI properties to matching default values.
+   * Map CLR types used for MAPI property to matching default values.
    */
   private static LazyMember<Map<Class<?>, Object>> defaultValueMap = new LazyMember<Map<Class<?>, Object>>(
       new ILazyMember<Map<Class<?>, Object>>() {

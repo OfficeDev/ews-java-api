@@ -552,9 +552,9 @@ public abstract class HttpWebRequest {
       throws EWSHttpException;
 
   /**
-   * Gets the request properties.
+   * Gets the request property.
    *
-   * @return the request properties
+   * @return the request property
    * @throws EWSHttpException the eWS http exception
    */
   public abstract Map<String, String> getRequestProperty()

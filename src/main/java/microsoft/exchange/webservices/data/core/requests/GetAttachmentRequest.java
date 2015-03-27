@@ -35,8 +35,8 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.properties.complex.Attachment;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
+import microsoft.exchange.webservices.data.property.complex.Attachment;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public final class GetAttachmentRequest extends
   private List<Attachment> attachments = new ArrayList<Attachment>();
 
   /**
-   * The additional properties.
+   * The additional property.
    */
   private List<PropertyDefinitionBase> additionalProperties =
       new ArrayList<PropertyDefinitionBase>();
@@ -206,9 +206,9 @@ public final class GetAttachmentRequest extends
   }
 
   /**
-   * Gets the additional properties.
+   * Gets the additional property.
    *
-   * @return the additional properties
+   * @return the additional property
    */
   public List<PropertyDefinitionBase> getAdditionalProperties() {
     return this.additionalProperties;

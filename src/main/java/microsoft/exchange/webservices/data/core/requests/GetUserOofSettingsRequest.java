@@ -34,7 +34,7 @@ import microsoft.exchange.webservices.data.enumerations.OofExternalAudience;
 import microsoft.exchange.webservices.data.enumerations.ServiceError;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.properties.complex.availability.OofSettings;
+import microsoft.exchange.webservices.data.property.complex.availability.OofSettings;
 
 import javax.xml.stream.XMLStreamException;
 

@@ -35,8 +35,8 @@ import microsoft.exchange.webservices.data.enumerations.DeleteMode;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
 import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
 
 /**
  * Represents a response object created to supress read receipts for an item.
@@ -82,7 +82,7 @@ public final class SuppressReadReceipt extends ServiceObject {
   }
 
   /**
-   * Loads the specified set of properties on the object.
+   * Loads the specified set of property on the object.
    *
    * @param propertySet the property set
    */

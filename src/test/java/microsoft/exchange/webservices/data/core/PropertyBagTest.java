@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.service.items.Item;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.misc.OutParam;
-import microsoft.exchange.webservices.data.properties.definition.RecurrencePropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.RecurrencePropertyDefinition;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

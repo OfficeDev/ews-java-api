@@ -33,9 +33,9 @@ import microsoft.exchange.webservices.data.core.service.schemas.ServiceObjectSch
 import microsoft.exchange.webservices.data.core.service.schemas.ContactGroupSchema;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
-import microsoft.exchange.webservices.data.properties.complex.GroupMemberCollection;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.GroupMemberCollection;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
 
 /**
  * Represents a Contact Group. Properties available on contact groups are
@@ -113,7 +113,7 @@ public class ContactGroup extends Item {
 
   /**
    * Binds to an existing contact group and loads the specified set of
-   * properties.Calling this method results in a call to EWS.
+   * property.Calling this method results in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
@@ -129,7 +129,7 @@ public class ContactGroup extends Item {
 
   /**
    * Binds to an existing contact group and loads the specified set of
-   * properties.Calling this method results in a call to EWS.
+   * property.Calling this method results in a call to EWS.
    *
    * @param service the service
    * @param id      the id

@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
 
 /**
  * Represents a folder containing task items.
@@ -49,7 +49,7 @@ public class TasksFolder extends Folder {
 
   /**
    * Binds to an existing tasks folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
@@ -64,7 +64,7 @@ public class TasksFolder extends Folder {
   }
 
   /**
-   * Binds to an existing tasks folder and loads its first class properties.
+   * Binds to an existing tasks folder and loads its first class property.
    * Calling this method results in a call to EWS.
    *
    * @param service the service
@@ -80,7 +80,7 @@ public class TasksFolder extends Folder {
   }
 
   /**
-   * Binds to an existing tasks folder and loads specified set of properties.
+   * Binds to an existing tasks folder and loads specified set of property.
    * Calling this method results in a call to EWS.
    *
    * @param service     the service
@@ -97,7 +97,7 @@ public class TasksFolder extends Folder {
   }
 
   /**
-   * Binds to an existing tasks folder and loads its first class properties.
+   * Binds to an existing tasks folder and loads its first class property.
    * Calling this method results in a call to EWS.
    *
    * @param service the service

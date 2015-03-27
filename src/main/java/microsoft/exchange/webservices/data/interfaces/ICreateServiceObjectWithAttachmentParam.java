@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 
 /**
  * The Interface ICreateServiceObjectWithAttachmentParam.

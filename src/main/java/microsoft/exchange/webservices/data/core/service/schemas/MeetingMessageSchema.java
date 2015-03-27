@@ -29,11 +29,11 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
-import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.GenericPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.definition.BoolPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.GenericPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 import java.util.EnumSet;
 
@@ -160,7 +160,7 @@ public class MeetingMessageSchema extends EmailMessageSchema {
   }
 
   /**
-   * Registers properties.
+   * Registers property.
    * <p/>
    * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
    * same order as they are defined in types.xsd)

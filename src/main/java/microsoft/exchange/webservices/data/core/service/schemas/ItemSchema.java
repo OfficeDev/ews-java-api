@@ -30,25 +30,25 @@ import microsoft.exchange.webservices.data.enumerations.Importance;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.Sensitivity;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.properties.complex.ConversationId;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.InternetMessageHeaderCollection;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
-import microsoft.exchange.webservices.data.properties.complex.MessageBody;
-import microsoft.exchange.webservices.data.properties.complex.MimeContent;
-import microsoft.exchange.webservices.data.properties.complex.StringList;
-import microsoft.exchange.webservices.data.properties.complex.UniqueBody;
-import microsoft.exchange.webservices.data.properties.definition.AttachmentsPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ByteArrayPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.DateTimePropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.EffectiveRightsPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.GenericPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.IntPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ResponseObjectsPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.StringPropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.ConversationId;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.InternetMessageHeaderCollection;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.MessageBody;
+import microsoft.exchange.webservices.data.property.complex.MimeContent;
+import microsoft.exchange.webservices.data.property.complex.StringList;
+import microsoft.exchange.webservices.data.property.complex.UniqueBody;
+import microsoft.exchange.webservices.data.property.definition.AttachmentsPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.BoolPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ByteArrayPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.DateTimePropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.EffectiveRightsPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.GenericPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.IntPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ResponseObjectsPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.StringPropertyDefinition;
 
 import java.util.EnumSet;
 
@@ -311,7 +311,7 @@ public class ItemSchema extends ServiceObjectSchema {
    * Defines the MimeContent property.
    */
   public static final PropertyDefinition MimeContent =
-      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.properties.complex.MimeContent>(
+      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.property.complex.MimeContent>(
           MimeContent.class,
           XmlElementNames.MimeContent, FieldUris.MimeContent, EnumSet.of(
           PropertyDefinitionFlags.CanSet,
@@ -638,7 +638,7 @@ public class ItemSchema extends ServiceObjectSchema {
    * Defines the ConversationId property.
    */
   public static final PropertyDefinition ConversationId =
-      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.properties.complex.ConversationId>(
+      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.property.complex.ConversationId>(
           ConversationId.class,
           XmlElementNames.ConversationId, FieldUris.ConversationId, EnumSet
           .of(PropertyDefinitionFlags.CanFind),
@@ -653,7 +653,7 @@ public class ItemSchema extends ServiceObjectSchema {
    * Defines the UniqueBody property.
    */
   public static final PropertyDefinition UniqueBody =
-      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.properties.complex.UniqueBody>(
+      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.property.complex.UniqueBody>(
           UniqueBody.class,
           XmlElementNames.UniqueBody, FieldUris.UniqueBody, EnumSet
           .of(PropertyDefinitionFlags.MustBeExplicitlyLoaded),
@@ -693,7 +693,7 @@ public class ItemSchema extends ServiceObjectSchema {
   }
 
   /**
-   * Registers properties.
+   * Registers property.
    * <p/>
    * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
    * same order as they are defined in types.xsd)

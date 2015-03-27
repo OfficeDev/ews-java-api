@@ -36,10 +36,10 @@ import microsoft.exchange.webservices.data.core.service.schemas.ServiceObjectSch
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ResponseMessageType;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
-import microsoft.exchange.webservices.data.properties.complex.MessageBody;
+import microsoft.exchange.webservices.data.property.complex.EmailAddress;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.MessageBody;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -75,7 +75,7 @@ public final class PostItem extends Item {
   }
 
   /**
-   * Binds to an existing post item and loads the specified set of properties.
+   * Binds to an existing post item and loads the specified set of property.
    * Calling this method results in a call to EWS.
    *
    * @param service     the service
@@ -91,7 +91,7 @@ public final class PostItem extends Item {
   }
 
   /**
-   * Binds to an existing post item and loads its first class properties.
+   * Binds to an existing post item and loads its first class property.
    * calling this method results in a call to EWS.
    *
    * @param service the service

@@ -39,19 +39,19 @@ import microsoft.exchange.webservices.data.enumerations.PhysicalAddressIndex;
 import microsoft.exchange.webservices.data.exceptions.PropertyException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
-import microsoft.exchange.webservices.data.properties.complex.Attachment;
-import microsoft.exchange.webservices.data.properties.complex.ByteArrayArray;
-import microsoft.exchange.webservices.data.properties.complex.CompleteName;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollection;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddressDictionary;
-import microsoft.exchange.webservices.data.properties.complex.FileAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ImAddressDictionary;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
-import microsoft.exchange.webservices.data.properties.complex.PhoneNumberDictionary;
-import microsoft.exchange.webservices.data.properties.complex.PhysicalAddressDictionary;
-import microsoft.exchange.webservices.data.properties.complex.StringList;
+import microsoft.exchange.webservices.data.property.complex.Attachment;
+import microsoft.exchange.webservices.data.property.complex.ByteArrayArray;
+import microsoft.exchange.webservices.data.property.complex.CompleteName;
+import microsoft.exchange.webservices.data.property.complex.EmailAddress;
+import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;
+import microsoft.exchange.webservices.data.property.complex.EmailAddressDictionary;
+import microsoft.exchange.webservices.data.property.complex.FileAttachment;
+import microsoft.exchange.webservices.data.property.complex.ImAddressDictionary;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.PhoneNumberDictionary;
+import microsoft.exchange.webservices.data.property.complex.PhysicalAddressDictionary;
+import microsoft.exchange.webservices.data.property.complex.StringList;
 
 import java.io.File;
 import java.io.InputStream;
@@ -92,7 +92,7 @@ public class Contact extends Item {
   }
 
   /**
-   * Binds to an existing contact and loads the specified set of properties.
+   * Binds to an existing contact and loads the specified set of property.
    * Calling this method results in a call to EWS.
    *
    * @param service     the service
@@ -108,7 +108,7 @@ public class Contact extends Item {
   }
 
   /**
-   * Binds to an existing contact and loads its first class properties.
+   * Binds to an existing contact and loads its first class property.
    * Calling this method results in a call to EWS.
    *
    * @param service the service

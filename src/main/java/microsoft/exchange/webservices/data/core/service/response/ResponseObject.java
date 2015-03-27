@@ -41,8 +41,8 @@ import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
 import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
 
 import java.util.List;
 
@@ -82,7 +82,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends Serv
   }
 
   /**
-   * Loads the specified set of properties on the object.
+   * Loads the specified set of property on the object.
    *
    * @param propertySet the property set
    */

@@ -65,10 +65,10 @@ public final class SyncFolderItemsResponse extends
 
   /**
    * Gets a value indicating whether this request returns full or summary
-   * properties. <value> <c>true</c> if summary properties only; otherwise,
+   * property. <value> <c>true</c> if summary property only; otherwise,
    * <c>false</c>. </value>
    *
-   * @return the summary properties only
+   * @return the summary property only
    */
   @Override
   protected boolean getSummaryPropertiesOnly() {

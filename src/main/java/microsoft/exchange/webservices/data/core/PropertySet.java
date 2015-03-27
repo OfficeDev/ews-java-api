@@ -35,16 +35,16 @@ import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.*;
 
 /**
- * Represents a set of item or folder properties. Property sets are used to
- * indicate what properties of an item or folder should be loaded when binding
- * to an existing item or folder or when loading an item or folder's properties.
+ * Represents a set of item or folder property. Property sets are used to
+ * indicate what property of an item or folder should be loaded when binding
+ * to an existing item or folder or when loading an item or folder's property.
  */
 public final class PropertySet implements ISelfValidate,
     Iterable<PropertyDefinitionBase> {
@@ -73,10 +73,10 @@ public final class PropertySet implements ISelfValidate,
 
   /**
    * Returns a predefined property set that includes the first class
-   * properties of an item or folder.
+   * property of an item or folder.
    *
    * @return A predefined property set that includes the first class
-   * properties of an item or folder.
+   * property of an item or folder.
    */
   public static PropertySet getFirstClassProperties() {
     return FirstClassProperties;
@@ -107,7 +107,7 @@ public final class PropertySet implements ISelfValidate,
   private BasePropertySet basePropertySet;
 
   /**
-   * The list of additional properties included in this property set.
+   * The list of additional property included in this property set.
    */
   private List<PropertyDefinitionBase> additionalProperties = new
       ArrayList<PropertyDefinitionBase>();
@@ -138,7 +138,7 @@ public final class PropertySet implements ISelfValidate,
    * Initializes a new instance of PropertySet.
    *
    * @param basePropertySet      The base property set to base the property set upon.
-   * @param additionalProperties Additional properties to include in the property set. Property
+   * @param additionalProperties Additional property to include in the property set. Property
    *                             definitions are available as static members from schema
    *                             classes (for example, EmailMessageSchema.Subject,
    *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
@@ -157,7 +157,7 @@ public final class PropertySet implements ISelfValidate,
    * Initializes a new instance of PropertySet.
    *
    * @param basePropertySet      The base property set to base the property set upon.
-   * @param additionalProperties Additional properties to include in the property set. Property
+   * @param additionalProperties Additional property to include in the property set. Property
    *                             definitions are available as static members from schema
    *                             classes (for example, EmailMessageSchema.Subject,
    *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
@@ -193,7 +193,7 @@ public final class PropertySet implements ISelfValidate,
    * Initializes a new instance of PropertySet based upon
    * BasePropertySet.IdOnly.
    *
-   * @param additionalProperties Additional properties to include in the property set. Property
+   * @param additionalProperties Additional property to include in the property set. Property
    *                             definitions are available as static members from schema
    *                             classes (for example, EmailMessageSchema.Subject,
    *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
@@ -206,7 +206,7 @@ public final class PropertySet implements ISelfValidate,
    * Initializes a new instance of PropertySet based upon
    * BasePropertySet.IdOnly.
    *
-   * @param additionalProperties Additional properties to include in the property set. Property
+   * @param additionalProperties Additional property to include in the property set. Property
    *                             definitions are available as static members from schema
    *                             classes (for example, EmailMessageSchema.Subject,
    *                             AppointmentSchema.Start, ContactSchema.GivenName, etc.)
@@ -244,16 +244,16 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Adds the specified properties to the property set.
+   * Adds the specified property to the property set.
    *
-   * @param properties The properties to add.
+   * @param properties The property to add.
    * @throws Exception the exception
    */
   public void addRange(Iterable<PropertyDefinitionBase> properties)
       throws Exception {
     this.throwIfReadonly();
     Iterator<PropertyDefinitionBase> property = properties.iterator();
-    EwsUtilities.validateParamCollection(property, "properties");
+    EwsUtilities.validateParamCollection(property, "property");
 
     for (Iterator<PropertyDefinitionBase> it = properties.iterator(); it
         .hasNext(); ) {
@@ -262,7 +262,7 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Remove all explicitly added properties from the property set.
+   * Remove all explicitly added property from the property set.
    */
   public void clear() {
     this.throwIfReadonly();
@@ -365,7 +365,7 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Gets the number of explicitly added properties in this set.
+   * Gets the number of explicitly added property in this set.
    *
    * @return the count
    */
@@ -438,7 +438,7 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Writes additonal properties to XML.
+   * Writes additonal property to XML.
    *
    * @param writer              The writer to write to.
    * @param propertyDefinitions The property definitions to write.
@@ -476,11 +476,11 @@ public final class PropertySet implements ISelfValidate,
   /**
    * Validates this property set instance for request to ensure that: 1.
    * Properties are valid for the request server version 2. If only summary
-   * properties are legal for this request (e.g. FindItem) then only summary
-   * properties were specified.
+   * property are legal for this request (e.g. FindItem) then only summary
+   * property were specified.
    *
    * @param request               The request.
-   * @param summaryPropertiesOnly if set to true then only summary properties are allowed.
+   * @param summaryPropertiesOnly if set to true then only summary property are allowed.
    * @throws ServiceVersionException    the service version exception
    * @throws ServiceValidationException the service validation exception
    */

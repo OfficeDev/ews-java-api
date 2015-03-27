@@ -31,8 +31,8 @@ import microsoft.exchange.webservices.data.core.service.response.RemoveFromCalen
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
 
 /**
  * Represents a meeting cancellation message. Properties available on meeting
@@ -64,12 +64,12 @@ public class MeetingCancellation extends MeetingMessage {
 
   /**
    * Binds to an existing meeting cancellation message and loads the specified
-   * set of properties. Calling this method results in a call to EWS.
+   * set of property. Calling this method results in a call to EWS.
    *
    * @param service     The service to use to bind to the meeting cancellation
    *                    message.
    * @param id          The Id of the meeting cancellation message to bind to.
-   * @param propertySet The set of properties to load.
+   * @param propertySet The set of property to load.
    * @return A MeetingCancellation instance representing the meeting
    * cancellation message corresponding to the specified Id.
    */
@@ -86,7 +86,7 @@ public class MeetingCancellation extends MeetingMessage {
 
   /**
    * Binds to an existing meeting cancellation message and loads the specified
-   * set of properties. Calling this method results in a call to EWS.
+   * set of property. Calling this method results in a call to EWS.
    *
    * @param service The service to use to bind to the meeting cancellation
    *                message.

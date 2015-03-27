@@ -33,7 +33,7 @@ import microsoft.exchange.webservices.data.core.responses.FindItemResponse;
 import microsoft.exchange.webservices.data.core.responses.ServiceResponseCollection;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.search.CalendarView;
 import microsoft.exchange.webservices.data.search.FindItemsResults;
 import microsoft.exchange.webservices.data.search.filters.SearchFilter;
@@ -46,7 +46,7 @@ public class CalendarFolder extends Folder {
 
   /**
    * Binds to an existing calendar folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
@@ -62,7 +62,7 @@ public class CalendarFolder extends Folder {
 
   /**
    * Binds to an existing calendar folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service the service
    * @param id      the id
@@ -78,7 +78,7 @@ public class CalendarFolder extends Folder {
 
   /**
    * Binds to an existing calendar folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service     the service
    * @param name        the name
@@ -95,7 +95,7 @@ public class CalendarFolder extends Folder {
 
   /**
    * Binds to an existing calendar folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service the service
    * @param name    the name

@@ -39,12 +39,12 @@ import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
 import microsoft.exchange.webservices.data.enumerations.ResponseMessageType;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollection;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
-import microsoft.exchange.webservices.data.properties.complex.MessageBody;
+import microsoft.exchange.webservices.data.property.complex.EmailAddress;
+import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.MessageBody;
 
 import java.util.ArrayList;
 
@@ -80,7 +80,7 @@ public class EmailMessage extends Item {
 
   /**
    * Binds to an existing e-mail message and loads the specified set of
-   * properties.Calling this method results in a call to EWS.
+   * property.Calling this method results in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
@@ -97,7 +97,7 @@ public class EmailMessage extends Item {
 
   /**
    * Binds to an existing e-mail message and loads its first class
-   * properties.Calling this method results in a call to EWS.
+   * property.Calling this method results in a call to EWS.
    *
    * @param service the service
    * @param id      the id

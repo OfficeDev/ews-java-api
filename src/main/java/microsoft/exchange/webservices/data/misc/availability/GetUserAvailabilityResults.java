@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.core.responses.AttendeeAvailability;
 import microsoft.exchange.webservices.data.core.responses.ServiceResponseCollection;
 import microsoft.exchange.webservices.data.core.responses.SuggestionsResponse;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
-import microsoft.exchange.webservices.data.properties.complex.availability.Suggestion;
+import microsoft.exchange.webservices.data.property.complex.availability.Suggestion;
 
 import java.util.Collection;
 

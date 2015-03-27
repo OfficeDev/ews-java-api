@@ -150,7 +150,7 @@ public class EwsServiceXmlReader extends EwsXmlReader {
    * @param getObjectInstanceDelegate the get object instance delegate
    * @param clearPropertyBag          the clear property bag
    * @param requestedPropertySet      the requested property set
-   * @param summaryPropertiesOnly     the summary properties only
+   * @param summaryPropertiesOnly     the summary property only
    * @return the list
    * @throws Exception the exception
    */

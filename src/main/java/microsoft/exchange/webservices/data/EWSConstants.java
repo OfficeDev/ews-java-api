@@ -49,12 +49,12 @@ public class EWSConstants {
    */
   public static final String DNSSERVERADDRESS = "dnsServerAddress";
 	/*
-	 * Represents the name of the properties file
+	 * Represents the name of the property file
 	 */
   /**
    * The Constant EWS_PROP_FILE.
    */
-  public static final String EWS_PROP_FILE = "ews.properties";
+  public static final String EWS_PROP_FILE = "ews.property";
 
   /**
    * The Constant HTTP_SCHEME.

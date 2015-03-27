@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.interfaces;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 /**
  * The Interface GetPropertyDefinitionCallbackInterface.

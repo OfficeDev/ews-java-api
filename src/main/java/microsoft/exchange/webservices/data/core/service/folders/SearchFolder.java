@@ -31,8 +31,8 @@ import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.SearchFolderParameters;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.SearchFolderParameters;
 
 /**
  * Represents a search folder.
@@ -42,7 +42,7 @@ public class SearchFolder extends Folder {
 
   /**
    * Binds to an existing search folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
@@ -57,7 +57,7 @@ public class SearchFolder extends Folder {
   }
 
   /**
-   * Binds to an existing search folder and loads its first class properties.
+   * Binds to an existing search folder and loads its first class property.
    * Calling this method results in a call to EWS.
    *
    * @param service the service
@@ -74,7 +74,7 @@ public class SearchFolder extends Folder {
 
   /**
    * Binds to an existing search folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service     the service
    * @param name        the name
@@ -91,7 +91,7 @@ public class SearchFolder extends Folder {
 
   /**
    * Binds to an existing search folder and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service the service
    * @param name    the name

@@ -44,7 +44,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.service.items.MeetingResponse;
 import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithAttachmentParam;
 import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithServiceParam;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.properties.complex.Attachment;
+import microsoft.exchange.webservices.data.property.complex.Attachment;
 
 /**
  * Represents the response to an individual attachment deletion operation.

@@ -31,24 +31,24 @@ import microsoft.exchange.webservices.data.enumerations.FileAsMapping;
 import microsoft.exchange.webservices.data.enumerations.PhysicalAddressIndex;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.properties.complex.ByteArrayArray;
-import microsoft.exchange.webservices.data.properties.complex.CompleteName;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddressCollection;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddressDictionary;
-import microsoft.exchange.webservices.data.properties.complex.ImAddressDictionary;
-import microsoft.exchange.webservices.data.properties.complex.PhoneNumberDictionary;
-import microsoft.exchange.webservices.data.properties.complex.PhysicalAddressDictionary;
-import microsoft.exchange.webservices.data.properties.complex.StringList;
-import microsoft.exchange.webservices.data.properties.definition.BoolPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ByteArrayPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ComplexPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.ContainedPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.DateTimePropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.GenericPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.IndexedPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.StringPropertyDefinition;
+import microsoft.exchange.webservices.data.property.complex.ByteArrayArray;
+import microsoft.exchange.webservices.data.property.complex.CompleteName;
+import microsoft.exchange.webservices.data.property.complex.EmailAddress;
+import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;
+import microsoft.exchange.webservices.data.property.complex.EmailAddressDictionary;
+import microsoft.exchange.webservices.data.property.complex.ImAddressDictionary;
+import microsoft.exchange.webservices.data.property.complex.PhoneNumberDictionary;
+import microsoft.exchange.webservices.data.property.complex.PhysicalAddressDictionary;
+import microsoft.exchange.webservices.data.property.complex.StringList;
+import microsoft.exchange.webservices.data.property.definition.BoolPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ByteArrayPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.ContainedPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.DateTimePropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.GenericPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.IndexedPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.StringPropertyDefinition;
 
 import java.util.EnumSet;
 
@@ -417,7 +417,7 @@ public class ContactSchema extends ItemSchema {
    * Defines the CompleteName property.
    */
   public static final PropertyDefinition CompleteName =
-      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.properties.complex.CompleteName>(
+      new ComplexPropertyDefinition<microsoft.exchange.webservices.data.property.complex.CompleteName>(
           CompleteName.class,
           XmlElementNames.CompleteName, FieldUris.CompleteName, EnumSet
           .of(PropertyDefinitionFlags.CanFind),
@@ -1192,7 +1192,7 @@ public class ContactSchema extends ItemSchema {
   public static final ContactSchema Instance = new ContactSchema();
 
   /**
-   * Registers properties.
+   * Registers property.
    * <p/>
    * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
    * same order as they are defined in types.xsd)

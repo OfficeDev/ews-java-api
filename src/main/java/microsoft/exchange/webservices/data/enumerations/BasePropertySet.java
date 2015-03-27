@@ -35,9 +35,9 @@ public enum BasePropertySet {
    */
   IdOnly("IdOnly"),
 
-  // Includes all the first class properties of items and folders.
+  // Includes all the first class property of items and folders.
   /**
-   * The First class properties.
+   * The First class property.
    */
   FirstClassProperties("AllProperties");
 

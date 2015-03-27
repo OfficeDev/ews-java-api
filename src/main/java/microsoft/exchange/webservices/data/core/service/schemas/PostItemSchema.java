@@ -27,8 +27,8 @@ import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.properties.definition.DateTimePropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.DateTimePropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 import java.util.EnumSet;
 
@@ -105,7 +105,7 @@ public final class PostItemSchema extends ItemSchema {
   public static final PostItemSchema Instance = new PostItemSchema();
 
   /**
-   * Registers properties.
+   * Registers property.
    * <p/>
    * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
    * same order as they are defined in types.xsd)

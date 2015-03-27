@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.responses;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.properties.complex.DelegateUser;
+import microsoft.exchange.webservices.data.property.complex.DelegateUser;
 
 /**
  * Represents the response to an individual delegate user manipulation (add,

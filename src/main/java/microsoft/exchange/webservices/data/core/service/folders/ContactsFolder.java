@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
 
 /**
  * Represents a folder containing contacts.
@@ -50,7 +50,7 @@ public class ContactsFolder extends Folder {
 
   /**
    * Binds to an existing contacts folder and loads the specified set of
-   * properties.
+   * property.
    *
    * @param service     the service
    * @param id          the id
@@ -66,7 +66,7 @@ public class ContactsFolder extends Folder {
 
   /**
    * Binds to an existing contacts folder and loads its first class
-   * properties.
+   * property.
    *
    * @param service the service
    * @param id      the id
@@ -82,7 +82,7 @@ public class ContactsFolder extends Folder {
 
   /**
    * Binds to an existing contacts folder and loads the specified set of
-   * properties.
+   * property.
    *
    * @param service     the service
    * @param name        the name
@@ -99,7 +99,7 @@ public class ContactsFolder extends Folder {
 
   /**
    * Binds to an existing contacts folder and loads its first class
-   * properties.
+   * property.
    *
    * @param service the service
    * @param name    the name

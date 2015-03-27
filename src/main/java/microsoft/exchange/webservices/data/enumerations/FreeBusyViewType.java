@@ -60,7 +60,7 @@ public enum FreeBusyViewType {
    */
   FreeBusy,
 
-  // Represents all the properties in FreeBusy with a stream of merged
+  // Represents all the property in FreeBusy with a stream of merged
   // free/busy availability information.
   /**
    * The Free busy merged.
@@ -69,7 +69,7 @@ public enum FreeBusyViewType {
 
   // Represents the legacy status information: free, busy, tentative, and OOF;
   // the start/end times of the
-  // appointments; and various properties of the appointment such as subject,
+  // appointments; and various property of the appointment such as subject,
   // location, and importance.
   // This requested view will return the maximum amount of information for
   // which the requesting user is privileged.
@@ -82,7 +82,7 @@ public enum FreeBusyViewType {
    */
   Detailed,
 
-  // Represents all the properties in Detailed with a stream of merged
+  // Represents all the property in Detailed with a stream of merged
   // free/busy availability
   // information. If only merged free/busy information is available, for
   // example if the mailbox exists on a computer

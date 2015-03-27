@@ -50,20 +50,20 @@ import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.interfaces.ICalendarActionProvider;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
-import microsoft.exchange.webservices.data.properties.complex.AppointmentOccurrenceId;
-import microsoft.exchange.webservices.data.properties.complex.AttendeeCollection;
-import microsoft.exchange.webservices.data.properties.complex.DeletedOccurrenceInfoCollection;
-import microsoft.exchange.webservices.data.properties.complex.EmailAddress;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ItemCollection;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
-import microsoft.exchange.webservices.data.properties.complex.MessageBody;
-import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfo;
-import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfoCollection;
-import microsoft.exchange.webservices.data.properties.complex.RecurringAppointmentMasterId;
-import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
-import microsoft.exchange.webservices.data.properties.complex.time.TimeZoneDefinition;
+import microsoft.exchange.webservices.data.property.complex.AppointmentOccurrenceId;
+import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;
+import microsoft.exchange.webservices.data.property.complex.DeletedOccurrenceInfoCollection;
+import microsoft.exchange.webservices.data.property.complex.EmailAddress;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemCollection;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.MessageBody;
+import microsoft.exchange.webservices.data.property.complex.OccurrenceInfo;
+import microsoft.exchange.webservices.data.property.complex.OccurrenceInfoCollection;
+import microsoft.exchange.webservices.data.property.complex.RecurringAppointmentMasterId;
+import microsoft.exchange.webservices.data.property.complex.recurrence.patterns.Recurrence;
+import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -105,7 +105,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
 
   /**
    * Binds to an existing appointment and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service     the service
    * @param id          the id
@@ -120,7 +120,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Binds to an existing appointment and loads its first class properties.
+   * Binds to an existing appointment and loads its first class property.
    * Calling this method results in a call to EWS.
    *
    * @param service the service
@@ -135,7 +135,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Binds to an existing appointment and loads its first class properties.
+   * Binds to an existing appointment and loads its first class property.
    * Calling this method results in a call to EWS.
    *
    * @param service           the service
@@ -152,7 +152,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Binds to an existing appointment and loads its first class properties.
+   * Binds to an existing appointment and loads its first class property.
    * Calling this method results in a call to EWS.
    *
    * @param service           the service
@@ -173,7 +173,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
 
   /**
    * Binds to the master appointment of a recurring series and loads its first
-   * class properties. Calling this method results in a call to EWS.
+   * class property. Calling this method results in a call to EWS.
    *
    * @param service      the service
    * @param occurrenceId the occurrence id
@@ -189,7 +189,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
 
   /**
    * Binds to the master appointment of a recurring series and loads its first
-   * class properties. Calling this method results in a call to EWS.
+   * class property. Calling this method results in a call to EWS.
    *
    * @param service      the service
    * @param occurrenceId the occurrence id
@@ -226,11 +226,11 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Determines whether properties defined with
+   * Determines whether property defined with
    * ScopedDateTimePropertyDefinition require custom time zone scoping.
    *
    * @return if this item type requires custom scoping for scoped date/time
-   * properties; otherwise, .
+   * property; otherwise, .
    */
   @Override
   protected boolean getIsCustomDateTimeScopingRequired() {
@@ -248,7 +248,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
     //  PS # 250452: Make sure that if we're
     //on the Exchange2007_SP1 schema version,
     // if any of the following
-    //  properties are set or updated:
+    //  property are set or updated:
     //      o   Start
     //      o   End
     //      o   IsAllDayEvent
@@ -273,7 +273,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
         //  If the property isn't in the property bag, throw....
         if (!this.getPropertyBag().contains(AppointmentSchema.StartTimeZone)) {
           throw new ServiceLocalException("StartTimeZone required when setting the Start, End, IsAllDayEvent, "
-                                          + "or Recurrence properties.  You must load or assign this property "
+                                          + "or Recurrence property.  You must load or assign this property "
                                           + "before attempting to update the appointment.");
           //getStartTimeZoneRequired());
         }

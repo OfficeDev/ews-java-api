@@ -34,9 +34,9 @@ import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.misc.SoapFaultDetails;
-import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.IndexedPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
+import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.IndexedPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
@@ -70,7 +70,7 @@ public class ServiceResponse {
   private Map<String, String> errorDetails = new HashMap<String, String>();
 
   /**
-   * The error properties.
+   * The error property.
    */
   private Collection<PropertyDefinitionBase> errorProperties =
       new ArrayList<PropertyDefinitionBase>();
@@ -360,7 +360,7 @@ public class ServiceResponse {
    * is ErrorInvalidPropertyForOperation, ErrorProperties will contain the
    * definition of the property that was invalid for the request.
    *
-   * @return the error properties
+   * @return the error property
    */
   public Collection<PropertyDefinitionBase> getErrorProperties() {
     return this.errorProperties;

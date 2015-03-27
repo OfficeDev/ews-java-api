@@ -793,7 +793,7 @@ public enum ServiceError {
 
   /**
    * One or more UserId parameters are invalid. Make sure that the
-   * PrimarySmtpAddress, Sid and DisplayName properties refer to the same user
+   * PrimarySmtpAddress, Sid and DisplayName property refer to the same user
    * when specified.
    */
   ErrorInvalidDelegateUserId,
@@ -1311,7 +1311,7 @@ public enum ServiceError {
   ErrorItemNotFound,
 
   // / <summary>
-  // / One or more of the properties requested for
+  // / One or more of the property requested for
   // /this item could not be retrieved.
   // / </summary>
   ErrorItemPropertyRequestFailed,
@@ -1604,7 +1604,7 @@ public enum ServiceError {
   ErrorNonPrimarySmtpAddress,
 
   // / <summary>
-  // / Custom properties cannot be specified using
+  // / Custom property cannot be specified using
   // /property tags. The GUID and Id/Name
   // / combination must be used instead.
   // / </summary>

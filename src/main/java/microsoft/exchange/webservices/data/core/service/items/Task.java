@@ -40,10 +40,10 @@ import microsoft.exchange.webservices.data.enumerations.TaskMode;
 import microsoft.exchange.webservices.data.enumerations.TaskStatus;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
-import microsoft.exchange.webservices.data.properties.complex.StringList;
-import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.StringList;
+import microsoft.exchange.webservices.data.property.complex.recurrence.patterns.Recurrence;
 
 import java.util.Date;
 
@@ -77,7 +77,7 @@ public class Task extends Item {
   }
 
   /**
-   * Binds to an existing task and loads the specified set of properties.
+   * Binds to an existing task and loads the specified set of property.
    * Calling this method results in a call to EWS.
    *
    * @param service     the service
@@ -93,7 +93,7 @@ public class Task extends Item {
   }
 
   /**
-   * Binds to an existing task and loads its first class properties. Calling
+   * Binds to an existing task and loads its first class property. Calling
    * this method results in a call to EWS.
    *
    * @param service the service

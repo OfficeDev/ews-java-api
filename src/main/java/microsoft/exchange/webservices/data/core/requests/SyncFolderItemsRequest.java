@@ -37,7 +37,7 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 import microsoft.exchange.webservices.data.misc.ItemIdWrapperList;
-import microsoft.exchange.webservices.data.properties.complex.FolderId;
+import microsoft.exchange.webservices.data.property.complex.FolderId;
 
 /**
  * Represents a SyncFolderItems request.
@@ -162,7 +162,7 @@ public class SyncFolderItemsRequest extends
               .name(), ExchangeVersion.Exchange2010));
     }
 
-    // SyncFolderItems can only handle summary properties
+    // SyncFolderItems can only handle summary property
     this.getPropertySet()
         .validateForRequest(this, true /* summaryPropertiesOnly */);
   }

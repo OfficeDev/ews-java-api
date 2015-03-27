@@ -34,8 +34,8 @@ import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
 
 import java.util.Date;
 
@@ -70,11 +70,11 @@ public class MeetingMessage extends EmailMessage {
 
   /**
    * Binds to an existing meeting message and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service     The service to use to bind to the meeting message.
    * @param id          The Id of the meeting message to bind to.
-   * @param propertySet The set of properties to load.
+   * @param propertySet The set of property to load.
    * @return A MeetingMessage instance representing the meeting message
    * corresponding to the specified Id.
    * @throws Exception the exception
@@ -86,7 +86,7 @@ public class MeetingMessage extends EmailMessage {
 
   /**
    * Binds to an existing meeting message and loads its first class
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service The service to use to bind to the meeting message.
    * @param id      The Id of the meeting message to bind to.

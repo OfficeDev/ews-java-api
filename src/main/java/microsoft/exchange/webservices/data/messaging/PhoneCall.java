@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ConnectionFailureCause;
 import microsoft.exchange.webservices.data.enumerations.PhoneCallState;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
+import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 
 /**
  * Represents a phone call.

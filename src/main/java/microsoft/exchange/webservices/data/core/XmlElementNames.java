@@ -3813,7 +3813,7 @@ public class XmlElementNames {
    */
   public static final String IsLessThanOrEqualTo = "IsLessThanOrEqualTo";
 
-  //Directory only contact properties
+  //Directory only contact property
   /**
    * The Constant PhoneticFullName.
    */

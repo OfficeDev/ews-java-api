@@ -27,12 +27,12 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 import javax.xml.stream.XMLStreamException;
 
 /**
- * Interface defined for properties that produce their own update serialization.
+ * Interface defined for property that produce their own update serialization.
  */
 public interface ICustomXmlUpdateSerializer {
 

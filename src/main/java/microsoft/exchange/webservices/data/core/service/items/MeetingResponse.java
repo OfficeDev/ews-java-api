@@ -28,8 +28,8 @@ import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.properties.complex.ItemAttachment;
-import microsoft.exchange.webservices.data.properties.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
 
 /**
  * Represents a response to a meeting request. Properties available on meeting
@@ -61,11 +61,11 @@ public class MeetingResponse extends MeetingMessage {
 
   /**
    * Binds to an existing meeting response and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service     The service to use to bind to the meeting response.
    * @param id          The Id of the meeting response to bind to.
-   * @param propertySet The set of properties to load.
+   * @param propertySet The set of property to load.
    * @return A MeetingResponse instance representing the meeting response
    * corresponding to the specified Id.
    */
@@ -81,7 +81,7 @@ public class MeetingResponse extends MeetingMessage {
 
   /**
    * Binds to an existing meeting response and loads the specified set of
-   * properties. Calling this method results in a call to EWS.
+   * property. Calling this method results in a call to EWS.
    *
    * @param service The service to use to bind to the meeting response.
    * @param id      The Id of the meeting response to bind to.

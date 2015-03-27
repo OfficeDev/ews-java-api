@@ -188,9 +188,9 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
 
   /**
    * Gets a value indicating whether this request returns full or summary
-   * properties.
+   * property.
    *
-   * @return the summary properties only
+   * @return the summary property only
    */
   protected abstract boolean getSummaryPropertiesOnly();
 

@@ -42,12 +42,12 @@ import microsoft.exchange.webservices.data.exceptions.NotSupportedException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
 import microsoft.exchange.webservices.data.interfaces.IServiceObjectChangedDelegate;
-import microsoft.exchange.webservices.data.properties.complex.ExtendedProperty;
-import microsoft.exchange.webservices.data.properties.complex.ExtendedPropertyCollection;
-import microsoft.exchange.webservices.data.properties.complex.ServiceId;
-import microsoft.exchange.webservices.data.properties.definition.ExtendedPropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinition;
-import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
+import microsoft.exchange.webservices.data.property.complex.ExtendedProperty;
+import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
+import microsoft.exchange.webservices.data.property.complex.ServiceId;
+import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -202,7 +202,7 @@ public abstract class ServiceObject {
   }
 
   /**
-   * Determines whether properties defined with
+   * Determines whether property defined with
    * ScopedDateTimePropertyDefinition require custom time zone scoping.
    *
    * @return boolean
@@ -291,7 +291,7 @@ public abstract class ServiceObject {
    * @param reader                the reader
    * @param clearPropertyBag      the clear property bag
    * @param requestedPropertySet  the requested property set
-   * @param summaryPropertiesOnly the summary properties only
+   * @param summaryPropertiesOnly the summary property only
    * @throws Exception the exception
    */
   public void loadFromXml(EwsServiceXmlReader reader, boolean clearPropertyBag,
@@ -336,7 +336,7 @@ public abstract class ServiceObject {
     this.getPropertyBag().writeToXmlForUpdate(writer);
   }
 
-  // / Loads the specified set of properties on the object.
+  // / Loads the specified set of property on the object.
 
   /**
    * Internal load.
@@ -361,7 +361,7 @@ public abstract class ServiceObject {
       SendCancellationsMode sendCancellationsMode,
       AffectedTaskOccurrence affectedTaskOccurrences) throws Exception;
 
-  // / Loads the specified set of properties. Calling this method results in a
+  // / Loads the specified set of property. Calling this method results in a
   // call to EWS.
 
   /**
@@ -374,7 +374,7 @@ public abstract class ServiceObject {
     this.internalLoad(propertySet);
   }
 
-  // Loads the first class properties. Calling this method results in a call
+  // Loads the first class property. Calling this method results in a call
   // to EWS.
 
   /**
@@ -588,12 +588,12 @@ public abstract class ServiceObject {
 
   }
 
-  // Gets the extended properties collection.
+  // Gets the extended property collection.
 
   /**
-   * Gets the extended properties.
+   * Gets the extended property.
    *
-   * @return the extended properties
+   * @return the extended property
    * @throws Exception the exception
    */
   protected ExtendedPropertyCollection getExtendedProperties()
