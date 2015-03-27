@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.autodiscover.requests;
 
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
-import microsoft.exchange.webservices.data.exceptions.AutodiscoverResponseException;
+import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverResponseException;
 import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;

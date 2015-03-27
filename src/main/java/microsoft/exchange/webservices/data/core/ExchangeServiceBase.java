@@ -228,7 +228,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     try {
       httpClient.close();
     } catch (IOException e) {
-      // Ignore exceptions while closing the HttpClient.
+      // Ignore exception while closing the HttpClient.
     }
   }
 

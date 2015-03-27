@@ -33,7 +33,7 @@ import microsoft.exchange.webservices.data.enumerations.Sensitivity;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 
 /**
- * Represents the set of conditions and exceptions available for a rule.
+ * Represents the set of conditions and exception available for a rule.
  */
 public final class RulePredicates extends ComplexProperty {
 

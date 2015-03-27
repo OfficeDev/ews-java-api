@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
-import microsoft.exchange.webservices.data.autodiscover.exceptions.DomainSettingError;
+import microsoft.exchange.webservices.data.autodiscover.exception.error.DomainSettingError;
 
 import java.util.ArrayList;
 import java.util.Collection;

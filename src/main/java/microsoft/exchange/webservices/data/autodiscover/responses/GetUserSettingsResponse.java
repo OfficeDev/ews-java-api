@@ -33,7 +33,7 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.autodiscover.AlternateMailboxCollection;
 import microsoft.exchange.webservices.data.autodiscover.ProtocolConnectionCollection;
-import microsoft.exchange.webservices.data.autodiscover.exceptions.UserSettingError;
+import microsoft.exchange.webservices.data.autodiscover.exception.error.UserSettingError;
 import microsoft.exchange.webservices.data.autodiscover.WebClientUrlCollection;
 
 import java.util.ArrayList;

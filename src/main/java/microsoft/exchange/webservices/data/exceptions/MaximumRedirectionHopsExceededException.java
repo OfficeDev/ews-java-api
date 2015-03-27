@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data.exceptions;
 
+import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
+
 /**
  *
  * The Class MaximumRedirectionHopsExceededException.

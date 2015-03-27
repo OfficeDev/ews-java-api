@@ -269,205 +269,205 @@ public enum RuleProperty {
   ConditionWithinSizeRange,
 
   /**
-   * The Categories property of a rule's set of exceptions.
+   * The Categories property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:Categories")
   ExceptionCategories,
 
   /**
-   * The ContainsBodyStrings property of a rule's set of exceptions.
+   * The ContainsBodyStrings property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:ContainsBodyStrings")
   ExceptionContainsBodyStrings,
 
   /**
-   * The ContainsHeaderStrings property of a rule's set of exceptions.
+   * The ContainsHeaderStrings property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:ContainsHeaderStrings")
   ExceptionContainsHeaderStrings,
 
   /**
-   * The ContainsRecipientStrings property of a rule's set of exceptions.
+   * The ContainsRecipientStrings property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:ContainsRecipientStrings")
   ExceptionContainsRecipientStrings,
 
   /**
-   * The ContainsSenderStrings property of a rule's set of exceptions.
+   * The ContainsSenderStrings property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:ContainsSenderStrings")
   ExceptionContainsSenderStrings,
 
   /**
-   * The ContainsSubjectOrBodyStrings property of a rule's set of exceptions.
+   * The ContainsSubjectOrBodyStrings property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:ContainsSubjectOrBodyStrings")
   ExceptionContainsSubjectOrBodyStrings,
 
   /**
-   * The ContainsSubjectStrings property of a rule's set of exceptions.
+   * The ContainsSubjectStrings property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:ContainsSubjectStrings")
   ExceptionContainsSubjectStrings,
 
   /**
-   * The FlaggedForAction property of a rule's set of exceptions.
+   * The FlaggedForAction property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:FlaggedForAction")
   ExceptionFlaggedForAction,
 
   /**
-   * The FromAddresses property of a rule's set of exceptions.
+   * The FromAddresses property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:FromAddresses")
   ExceptionFromAddresses,
 
   /**
-   * The FromConnectedAccounts property of a rule's set of exceptions.
+   * The FromConnectedAccounts property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:FromConnectedAccounts")
   ExceptionFromConnectedAccounts,
 
   /**
-   * The HasAttachments property of a rule's set of exceptions.
+   * The HasAttachments property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:HasAttachments")
   ExceptionHasAttachments,
 
   /**
-   * The Importance property of a rule's set of exceptions.
+   * The Importance property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:Importance")
   ExceptionImportance,
 
   /**
-   * The IsApprovalRequest property of a rule's set of exceptions.
+   * The IsApprovalRequest property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:IsApprovalRequest")
   ExceptionIsApprovalRequest,
 
   /**
-   * The IsAutomaticForward property of a rule's set of exceptions.
+   * The IsAutomaticForward property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:IsAutomaticForward")
   ExceptionIsAutomaticForward,
 
   /**
-   * The IsAutomaticReply property of a rule's set of exceptions.
+   * The IsAutomaticReply property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:IsAutomaticReply")
   ExceptionIsAutomaticReply,
 
   /**
-   * The IsEncrypted property of a rule's set of exceptions.
+   * The IsEncrypted property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:IsEncrypted")
   ExceptionIsEncrypted,
 
   /**
-   * The IsMeetingRequest property of a rule's set of exceptions.
+   * The IsMeetingRequest property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:IsMeetingRequest")
   ExceptionIsMeetingRequest,
 
   /**
-   * The IsMeetingResponse property of a rule's set of exceptions.
+   * The IsMeetingResponse property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:IsMeetingResponse")
   ExceptionIsMeetingResponse,
 
   /**
-   * The IsNonDeliveryReport property of a rule's set of exceptions.
+   * The IsNonDeliveryReport property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:IsNDR")
   ExceptionIsNonDeliveryReport,
 
   /**
-   * The IsPermissionControlled property of a rule's set of exceptions.
+   * The IsPermissionControlled property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:IsPermissionControlled")
   ExceptionIsPermissionControlled,
 
   /**
-   * The IsRead property of a rule's set of exceptions.
+   * The IsRead property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:IsRead")
   ExceptionIsRead,
 
   /**
-   * The IsSigned property of a rule's set of exceptions.
+   * The IsSigned property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:IsSigned")
   ExceptionIsSigned,
 
   /**
-   * The IsVoicemail property of a rule's set of exceptions.
+   * The IsVoicemail property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:IsVoicemail")
   ExceptionIsVoicemail,
 
   /**
-   * The ItemClasses property of a rule's set of exceptions.
+   * The ItemClasses property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:ItemClasses")
   ExceptionItemClasses,
 
   /**
-   * The MessageClassifications property of a rule's set of exceptions.
+   * The MessageClassifications property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:MessageClassifications")
   ExceptionMessageClassifications,
 
   /**
-   * The NotSentToMe property of a rule's set of exceptions.
+   * The NotSentToMe property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:NotSentToMe")
   ExceptionNotSentToMe,
 
   /**
-   * The SentCcMe property of a rule's set of exceptions.
+   * The SentCcMe property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:SentCcMe")
   ExceptionSentCcMe,
 
   /**
-   * The SentOnlyToMe property of a rule's set of exceptions.
+   * The SentOnlyToMe property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:SentOnlyToMe")
   ExceptionSentOnlyToMe,
 
   /**
-   * The SentToAddresses property of a rule's set of exceptions.
+   * The SentToAddresses property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:SentToAddresses")
   ExceptionSentToAddresses,
 
   /**
-   * The SentToMe property of a rule's set of exceptions.
+   * The SentToMe property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:SentToMe")
   ExceptionSentToMe,
 
   /**
-   * The SentToOrCcMe property of a rule's set of exceptions.
+   * The SentToOrCcMe property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:SentToOrCcMe")
   ExceptionSentToOrCcMe,
 
   /**
-   * The Sensitivity property of a rule's set of exceptions.
+   * The Sensitivity property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:Sensitivity")
   ExceptionSensitivity,
 
   /**
-   * The WithinDateRange property of a rule's set of exceptions.
+   * The WithinDateRange property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:WithinDateRange")
   ExceptionWithinDateRange,
 
   /**
-   * The WithinSizeRange property of a rule's set of exceptions.
+   * The WithinSizeRange property of a rule's set of exception.
    */
   @EwsEnum(schemaName = "Exception:WithinSizeRange")
   ExceptionWithinSizeRange,
@@ -569,7 +569,7 @@ public enum RuleProperty {
   Conditions,
 
   /**
-   * The Exceptions property of a rule, contains all exceptions of the rule.
+   * The Exceptions property of a rule, contains all exception of the rule.
    */
   @EwsEnum(schemaName = "Exceptions")
   Exceptions

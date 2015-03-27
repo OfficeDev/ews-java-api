@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.autodiscover.exceptions;
+package microsoft.exchange.webservices.data.autodiscover.exception.error;
 
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;

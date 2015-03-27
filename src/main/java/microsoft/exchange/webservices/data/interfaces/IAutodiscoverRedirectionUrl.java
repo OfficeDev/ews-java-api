@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException;
+import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
 
 /**
  * Defines a delegate that is used by the AutodiscoverService to ask whether a
@@ -36,7 +36,7 @@ public interface IAutodiscoverRedirectionUrl {
    *
    * @param redirectionUrl the redirection url
    * @return true, if successful
-   * @throws microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException the autodiscover local exception
+   * @throws AutodiscoverLocalException the autodiscover local exception
    */
   boolean autodiscoverRedirectionUrlValidationCallback(
       String redirectionUrl) throws AutodiscoverLocalException;

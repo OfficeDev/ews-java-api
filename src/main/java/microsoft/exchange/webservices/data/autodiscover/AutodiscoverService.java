@@ -23,11 +23,11 @@
 
 package microsoft.exchange.webservices.data.autodiscover;
 
+import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverEndpoints;
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
-import microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException;
-import microsoft.exchange.webservices.data.exceptions.AutodiscoverRemoteException;
+import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverRemoteException;
 import microsoft.exchange.webservices.data.autodiscover.requests.AutodiscoverRequest;
 import microsoft.exchange.webservices.data.autodiscover.configuration.ConfigurationSettingsBase;
 import microsoft.exchange.webservices.data.enumerations.DomainSettingName;
@@ -216,7 +216,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    *
    * @param redirectionUrl the redirection url
    * @return Returns true.
-   * @throws microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException the autodiscover local exception
+   * @throws AutodiscoverLocalException the autodiscover local exception
    */
   private boolean defaultAutodiscoverRedirectionUrlValidationCallback(
       String redirectionUrl) throws AutodiscoverLocalException {
@@ -336,7 +336,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
         try {
           request.close();
         } catch (Exception e2) {
-          // Ignore exceptions while closing the request.
+          // Ignore exception while closing the request.
         }
       }
     }
@@ -423,7 +423,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
         try {
           request.close();
         } catch (Exception e) {
-          // Ignore exceptions when closing the request
+          // Ignore exception when closing the request
         }
       }
     }

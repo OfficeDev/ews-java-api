@@ -21,9 +21,10 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exceptions;
+package microsoft.exchange.webservices.data.autodiscover.exception;
 
-import microsoft.exchange.webservices.data.autodiscover.exceptions.AutodiscoverError;
+import microsoft.exchange.webservices.data.autodiscover.exception.error.AutodiscoverError;
+import microsoft.exchange.webservices.data.exceptions.ServiceRemoteException;
 
 /**
  * Represents an exception that is thrown when the Autodiscover service returns

@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 /**
  * Represents a rule that automatically handles incoming messages.
  * A rule consists of a set of conditions
- * and exceptions that determine whether or
+ * and exception that determine whether or
  * not a set of actions should be executed on incoming messages.
  */
 public final class Rule extends ComplexProperty {
@@ -78,7 +78,7 @@ public final class Rule extends ComplexProperty {
   private RuleActions actions;
 
   /**
-   * The rule exceptions.
+   * The rule exception.
    */
   private RulePredicates exceptions;
 
@@ -206,7 +206,7 @@ public final class Rule extends ComplexProperty {
   }
 
   /**
-   * Gets the exceptions that determine
+   * Gets the exception that determine
    * if this rule should be skipped even if
    * its conditions evaluate to true.
    */

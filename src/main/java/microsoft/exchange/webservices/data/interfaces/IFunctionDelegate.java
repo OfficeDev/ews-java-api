@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.interfaces;
 
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException;
+import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 import javax.xml.stream.XMLStreamException;

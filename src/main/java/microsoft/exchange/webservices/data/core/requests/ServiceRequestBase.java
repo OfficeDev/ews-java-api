@@ -727,7 +727,7 @@ public abstract class ServiceRequestBase<T> {
       try {
         request.close();
       } catch (Exception e2) {
-        // Ignore exceptions while closing the request.
+        // Ignore exception while closing the request.
       }
 
       throw e;

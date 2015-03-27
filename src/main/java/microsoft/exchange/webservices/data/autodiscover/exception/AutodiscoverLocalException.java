@@ -21,7 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exceptions;
+package microsoft.exchange.webservices.data.autodiscover.exception;
+
+import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 
 /**
  * Represents an exception that is thrown when the Autodiscover service could

@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
 import microsoft.exchange.webservices.data.core.service.items.Appointment;
 import microsoft.exchange.webservices.data.misc.AsyncCallback;
 import microsoft.exchange.webservices.data.misc.AsyncRequestResult;
@@ -126,7 +127,6 @@ import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exceptions.AccountIsLockedException;
 import microsoft.exchange.webservices.data.exceptions.ArgumentOutOfRangeException;
-import microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceRemoteException;
 import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
@@ -3575,7 +3575,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *
    * @param redirectionUrl the redirection url
    * @return Returns true.
-   * @throws microsoft.exchange.webservices.data.exceptions.AutodiscoverLocalException the autodiscover local exception
+   * @throws AutodiscoverLocalException the autodiscover local exception
    */
   private boolean defaultAutodiscoverRedirectionUrlValidationCallback(
       String redirectionUrl) throws AutodiscoverLocalException {
