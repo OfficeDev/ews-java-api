@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition;
+import microsoft.exchange.webservices.data.properties.complex.time.TimeZoneDefinition;
 
 /**
  * Represents a time zone in which a meeting is defined.

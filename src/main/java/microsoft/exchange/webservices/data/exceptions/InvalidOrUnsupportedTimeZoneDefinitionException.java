@@ -28,8 +28,8 @@ package microsoft.exchange.webservices.data.exceptions;
  *
  * Thrown when time zone definition is not valid.
  *
- * @see microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition
- * @see microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneTransitionGroup
+ * @see microsoft.exchange.webservices.data.properties.complex.time.TimeZoneDefinition
+ * @see microsoft.exchange.webservices.data.properties.complex.time.TimeZoneTransitionGroup
  */
 public class InvalidOrUnsupportedTimeZoneDefinitionException extends ServiceLocalException {
 

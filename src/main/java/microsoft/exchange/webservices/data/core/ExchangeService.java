@@ -165,7 +165,7 @@ import microsoft.exchange.webservices.data.properties.complex.StringList;
 import microsoft.exchange.webservices.data.properties.complex.UserId;
 import microsoft.exchange.webservices.data.properties.complex.availability.OofSettings;
 import microsoft.exchange.webservices.data.properties.definition.PropertyDefinitionBase;
-import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition;
+import microsoft.exchange.webservices.data.properties.complex.time.TimeZoneDefinition;
 import microsoft.exchange.webservices.data.search.CalendarView;
 import microsoft.exchange.webservices.data.search.ConversationIndexedItemView;
 import microsoft.exchange.webservices.data.search.FindFoldersResults;

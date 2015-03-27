@@ -63,7 +63,7 @@ import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfo;
 import microsoft.exchange.webservices.data.properties.complex.OccurrenceInfoCollection;
 import microsoft.exchange.webservices.data.properties.complex.RecurringAppointmentMasterId;
 import microsoft.exchange.webservices.data.properties.complex.recurrence.patterns.Recurrence;
-import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition;
+import microsoft.exchange.webservices.data.properties.complex.time.TimeZoneDefinition;
 
 import java.util.ArrayList;
 import java.util.Date;

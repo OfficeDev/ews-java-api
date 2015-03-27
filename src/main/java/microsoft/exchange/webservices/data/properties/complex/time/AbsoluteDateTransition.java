@@ -21,32 +21,29 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.properties.complex.timeZones;
+package microsoft.exchange.webservices.data.properties.complex.time;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
- * Represents a time zone period transition that occurs on a relative day of a
- * specific month.
+ * Represents a time zone period transition that occurs on a fixed (absolute)
+ * date.
  */
-class RelativeDayOfMonthTransition extends AbsoluteMonthTransition {
+public class AbsoluteDateTransition extends TimeZoneTransition {
 
   /**
-   * The day of the week.
+   * The date time.
    */
-  private DayOfTheWeek dayOfTheWeek;
-
-  /**
-   * The week index.
-   */
-  private int weekIndex;
+  private Date dateTime;
 
   /**
    * Gets the XML element name associated with the transition.
@@ -55,32 +52,33 @@ class RelativeDayOfMonthTransition extends AbsoluteMonthTransition {
    */
   @Override
   protected String getXmlElementName() {
-    return XmlElementNames.RecurringDayTransition;
+    return XmlElementNames.AbsoluteDateTransition;
   }
 
   /**
    * Tries to read element from XML.
    *
-   * @param reader accepts EwsServiceXmlReader
+   * @param reader the reader
    * @return True if element was read.
-   * @throws Exception throws Exception
+   * @throws java.text.ParseException the parse exception
+   * @throws Exception                the exception
    */
   @Override
   public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
-      throws Exception {
-    if (super.tryReadElementFromXml(reader)) {
-      return true;
-    } else {
-      if (reader.getLocalName().equals(XmlElementNames.DayOfWeek)) {
-        this.dayOfTheWeek = reader.readElementValue(DayOfTheWeek.class);
-        return true;
-      } else if (reader.getLocalName().equals(XmlElementNames.Occurrence)) {
-        this.weekIndex = reader.readElementValue(Integer.class);
-        return true;
-      } else {
-        return false;
+      throws ParseException, Exception {
+    boolean result = super.tryReadElementFromXml(reader);
+
+    if (!result) {
+      if (reader.getLocalName().equals(XmlElementNames.DateTime)) {
+        SimpleDateFormat sdfin = new SimpleDateFormat(
+            "yyyy-MM-dd'T'HH:mm:ss");
+        this.dateTime = sdfin.parse(reader.readElementValue());
+
+        result = true;
       }
     }
+
+    return result;
   }
 
   /**
@@ -95,54 +93,45 @@ class RelativeDayOfMonthTransition extends AbsoluteMonthTransition {
       throws ServiceXmlSerializationException, XMLStreamException {
     super.writeElementsToXml(writer);
 
-    writer.writeElementValue(
-        XmlNamespace.Types,
-        XmlElementNames.DayOfWeek,
-        this.dayOfTheWeek);
-
-    writer.writeElementValue(
-        XmlNamespace.Types,
-        XmlElementNames.Occurrence,
-        this.weekIndex);
+    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.DateTime,
+        this.dateTime);
   }
 
   /**
-   * Initializes a new instance of the "RelativeDayOfMonthTransition class.
+   * Initializes a new instance of the AbsoluteDateTransition class.
    *
-   * @param timeZoneDefinition the time zone definition
+   * @param timeZoneDefinition , The time zone definition the transition will belong to.
    */
-  protected RelativeDayOfMonthTransition(
-      TimeZoneDefinition timeZoneDefinition) {
+  protected AbsoluteDateTransition(TimeZoneDefinition timeZoneDefinition) {
     super(timeZoneDefinition);
   }
 
   /**
-   * Initializes a new instance of the "RelativeDayOfMonthTransition class.
+   * Initializes a new instance of the AbsoluteDateTransition class.
    *
-   * @param timeZoneDefinition the time zone definition
-   * @param targetPeriod       the target period
+   * @param timeZoneDefinition The time zone definition the transition will belong to.
+   * @param targetGroup        the target group
    */
-  protected RelativeDayOfMonthTransition(
-      TimeZoneDefinition timeZoneDefinition,
-      TimeZonePeriod targetPeriod) {
-    super(timeZoneDefinition, targetPeriod);
+  protected AbsoluteDateTransition(TimeZoneDefinition timeZoneDefinition,
+      TimeZoneTransitionGroup targetGroup) {
+    super(timeZoneDefinition, targetGroup);
   }
 
   /**
-   * Gets the day of the week when the transition occurs.
+   * Gets the absolute date and time when the transition occurs.
    *
-   * @return the day of the week
+   * @return the date time
    */
-  protected DayOfTheWeek getDayOfTheWeek() {
-    return this.dayOfTheWeek;
+  public Date getDateTime() {
+    return dateTime;
   }
 
   /**
-   * Gets the index of the week in the month when the transition occurs.
+   * Sets the date time.
    *
-   * @return the week index
+   * @param dateTime the new date time
    */
-  protected int getWeekIndex() {
-    return this.weekIndex;
+  protected void setDateTime(Date dateTime) {
+    this.dateTime = dateTime;
   }
 }

@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.properties.complex.timeZones;
+package microsoft.exchange.webservices.data.properties.complex.time;
 
 import microsoft.exchange.webservices.data.properties.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;

@@ -21,29 +21,27 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.properties.complex.timeZones;
+package microsoft.exchange.webservices.data.properties.complex.time;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
- * Represents a time zone period transition that occurs on a fixed (absolute)
- * date.
+ * Represents a time zone period transition that occurs on a specific day of a
+ * specific month.
  */
-public class AbsoluteDateTransition extends TimeZoneTransition {
+class AbsoluteDayOfMonthTransition extends AbsoluteMonthTransition {
 
   /**
-   * The date time.
+   * The day of month.
    */
-  private Date dateTime;
+  private int dayOfMonth;
 
   /**
    * Gets the XML element name associated with the transition.
@@ -52,33 +50,34 @@ public class AbsoluteDateTransition extends TimeZoneTransition {
    */
   @Override
   protected String getXmlElementName() {
-    return XmlElementNames.AbsoluteDateTransition;
+    return XmlElementNames.RecurringDateTransition;
   }
 
   /**
    * Tries to read element from XML.
    *
-   * @param reader the reader
-   * @return True if element was read.
-   * @throws java.text.ParseException the parse exception
-   * @throws Exception                the exception
+   * @param reader returns True if element was read.
+   * @return true
+   * @throws Exception throws Exception
    */
   @Override
   public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
-      throws ParseException, Exception {
-    boolean result = super.tryReadElementFromXml(reader);
+      throws Exception {
+    if (super.tryReadElementFromXml(reader)) {
+      return true;
+    } else {
+      if (reader.getLocalName().equals(XmlElementNames.Day)) {
+        this.dayOfMonth = reader.readElementValue(Integer.class);
 
-    if (!result) {
-      if (reader.getLocalName().equals(XmlElementNames.DateTime)) {
-        SimpleDateFormat sdfin = new SimpleDateFormat(
-            "yyyy-MM-dd'T'HH:mm:ss");
-        this.dateTime = sdfin.parse(reader.readElementValue());
+        EwsUtilities.EwsAssert(this.dayOfMonth > 0 && this.dayOfMonth <= 31,
+                               "AbsoluteDayOfMonthTransition.TryReadElementFromXml",
+                               "dayOfMonth is not in the valid 1 - 31 range.");
 
-        result = true;
+        return true;
+      } else {
+        return false;
       }
     }
-
-    return result;
   }
 
   /**
@@ -93,45 +92,37 @@ public class AbsoluteDateTransition extends TimeZoneTransition {
       throws ServiceXmlSerializationException, XMLStreamException {
     super.writeElementsToXml(writer);
 
-    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.DateTime,
-        this.dateTime);
+    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.Day,
+        this.dayOfMonth);
   }
 
   /**
-   * Initializes a new instance of the AbsoluteDateTransition class.
+   * Initializes a new instance of the AbsoluteDayOfMonthTransition class.
    *
-   * @param timeZoneDefinition , The time zone definition the transition will belong to.
+   * @param timeZoneDefinition the time zone definition
    */
-  protected AbsoluteDateTransition(TimeZoneDefinition timeZoneDefinition) {
+  protected AbsoluteDayOfMonthTransition(TimeZoneDefinition timeZoneDefinition) {
     super(timeZoneDefinition);
   }
 
   /**
-   * Initializes a new instance of the AbsoluteDateTransition class.
+   * Initializes a new instance of the AbsoluteDayOfMonthTransition class.
    *
-   * @param timeZoneDefinition The time zone definition the transition will belong to.
-   * @param targetGroup        the target group
+   * @param timeZoneDefinition the time zone definition
+   * @param targetPeriod       the target period
    */
-  protected AbsoluteDateTransition(TimeZoneDefinition timeZoneDefinition,
-      TimeZoneTransitionGroup targetGroup) {
-    super(timeZoneDefinition, targetGroup);
+
+  protected AbsoluteDayOfMonthTransition(
+      TimeZoneDefinition timeZoneDefinition, TimeZonePeriod targetPeriod) {
+    super(timeZoneDefinition, targetPeriod);
   }
 
   /**
-   * Gets the absolute date and time when the transition occurs.
+   * Gets the day of then month when this transition occurs.
    *
-   * @return the date time
+   * @return the day of month
    */
-  public Date getDateTime() {
-    return dateTime;
-  }
-
-  /**
-   * Sets the date time.
-   *
-   * @param dateTime the new date time
-   */
-  protected void setDateTime(Date dateTime) {
-    this.dateTime = dateTime;
+  protected int getDayOfMonth() {
+    return this.dayOfMonth;
   }
 }

@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.misc.availability.LegacyAvailabilityT
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.properties.complex.timeZones.TimeZoneDefinition;
+import microsoft.exchange.webservices.data.properties.complex.time.TimeZoneDefinition;
 
 import java.util.ArrayList;
 import java.util.Collection;
