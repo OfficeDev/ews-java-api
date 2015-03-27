@@ -25,8 +25,8 @@ package microsoft.exchange.webservices.data.core.response;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.notification.SubscriptionBase;
 
 import javax.xml.stream.XMLStreamException;
@@ -59,7 +59,7 @@ public final class SubscribeResponse<TSubscription extends SubscriptionBase> ext
    * Reads response elements from XML.
    *
    * @param reader The reader.
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException  the service xml deserialization exception
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws InstantiationException              the instantiation exception
    * @throws IllegalAccessException              the illegal access exception

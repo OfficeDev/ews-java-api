@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.exceptions.ArgumentException;
+import microsoft.exchange.webservices.data.exception.ArgumentException;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -58,7 +58,7 @@ public final class Time {
    * Initializes a new instance of Time.
    *
    * @param minutes The number of minutes since 12:00AM.
-   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException the argument exception
+   * @throws microsoft.exchange.webservices.data.exception.ArgumentException the argument exception
    */
 
   protected Time(int minutes) throws ArgumentException {
@@ -161,7 +161,7 @@ public final class Time {
    * Sets the minutes.
    *
    * @param value the new minutes
-   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException the argument exception
+   * @throws microsoft.exchange.webservices.data.exception.ArgumentException the argument exception
    */
   protected void setMinutes(int value) throws ArgumentException {
     if (value >= 0 && value < 60) {

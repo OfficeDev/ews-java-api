@@ -36,7 +36,7 @@ import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 
 import java.util.EnumSet;
 

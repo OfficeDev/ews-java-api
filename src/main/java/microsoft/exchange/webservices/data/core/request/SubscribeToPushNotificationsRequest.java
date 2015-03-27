@@ -30,8 +30,8 @@ import microsoft.exchange.webservices.data.core.response.SubscribeResponse;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ArgumentException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ArgumentException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.notification.PushSubscription;
 
 import javax.xml.stream.XMLStreamException;

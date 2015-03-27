@@ -30,8 +30,8 @@ import microsoft.exchange.webservices.data.misc.CallableMethod;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.WebAsyncCallStateAnchor;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceRequestException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceRequestException;
 import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -59,7 +59,7 @@ public abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> 
    * Executes this request.
    *
    * @throws Exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException
    */
   protected T internalExecute() throws ServiceLocalException, Exception {
     HttpWebRequest response = null;

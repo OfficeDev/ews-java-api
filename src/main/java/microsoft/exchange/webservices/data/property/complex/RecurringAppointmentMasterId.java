@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.property.complex;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 /**
  * Represents the Id of an occurrence of a recurring appointment.
@@ -57,7 +57,7 @@ public final class RecurringAppointmentMasterId extends ItemId {
    * Writes attribute to XML.
    *
    * @param writer the writer
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   public void writeAttributesToXml(EwsServiceXmlWriter writer)

@@ -38,7 +38,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
 import microsoft.exchange.webservices.data.enumerations.ResponseMessageType;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.property.complex.EmailAddress;
 import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;
 import microsoft.exchange.webservices.data.property.complex.FolderId;

@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 
 /**
  * The Interface IPredicate.

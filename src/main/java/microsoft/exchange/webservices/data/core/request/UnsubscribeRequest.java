@@ -31,8 +31,8 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -112,7 +112,7 @@ public class UnsubscribeRequest extends MultiResponseServiceRequest<ServiceRespo
   /**
    * Validate the request.
    *
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    * @throws Exception             the exception
    */
   @Override
@@ -128,7 +128,7 @@ public class UnsubscribeRequest extends MultiResponseServiceRequest<ServiceRespo
    *
    * @param writer the writer
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)

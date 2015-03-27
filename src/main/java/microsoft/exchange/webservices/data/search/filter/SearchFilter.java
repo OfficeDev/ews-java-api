@@ -34,9 +34,9 @@ import microsoft.exchange.webservices.data.enumerations.ContainmentMode;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.LogicalOperator;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
 import microsoft.exchange.webservices.data.interfaces.ISearchStringProvider;
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
@@ -278,7 +278,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * Writes the attribute to XML.
      *
      * @param writer the writer
-     * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
+     * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
      */
     @Override
     public void writeAttributesToXml(EwsServiceXmlWriter writer)
@@ -989,7 +989,7 @@ public abstract class SearchFilter extends ComplexProperty {
      *
      * @param writer the writer
      * @throws javax.xml.stream.XMLStreamException the xML stream exception
-     * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
+     * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
      */
     @Override
     public void writeElementsToXml(EwsServiceXmlWriter writer)

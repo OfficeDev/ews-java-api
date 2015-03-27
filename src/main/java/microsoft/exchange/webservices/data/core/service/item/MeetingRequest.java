@@ -38,7 +38,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumerations.MeetingRequestType;
 import microsoft.exchange.webservices.data.enumerations.MeetingResponseType;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.interfaces.ICalendarActionProvider;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
 import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;

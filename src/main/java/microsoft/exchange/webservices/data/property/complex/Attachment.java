@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.BodyType;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import java.util.Date;
@@ -233,7 +233,7 @@ public abstract class Attachment extends ComplexProperty {
    * Gets the date and time when this attachment was last modified.
    *
    * @return the last modified time
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException the service version exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceVersionException the service version exception
    */
   public Date getLastModifiedTime() throws ServiceVersionException {
 
@@ -411,7 +411,7 @@ public abstract class Attachment extends ComplexProperty {
    * Validates this instance.
    *
    * @param attachmentIndex Index of this attachment.
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException the service validation exception
    * @throws Exception                  the exception
    */
   abstract void validate(int attachmentIndex) throws Exception;

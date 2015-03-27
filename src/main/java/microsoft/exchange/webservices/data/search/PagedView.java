@@ -29,9 +29,9 @@ import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.OffsetBasePoint;
-import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
-import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+import microsoft.exchange.webservices.data.exception.ServiceVersionException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -118,7 +118,7 @@ public abstract class PagedView extends ViewBase {
    *
    * @param request The request using this view.
    * @throws ServiceVersionException    the service version exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException the service validation exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException the service validation exception
    */
   @Override public void internalValidate(ServiceRequestBase request)
       throws ServiceVersionException, ServiceValidationException {

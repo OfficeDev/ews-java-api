@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.autodiscover.exception;
 
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
-import microsoft.exchange.webservices.data.exceptions.ServiceRemoteException;
+import microsoft.exchange.webservices.data.exception.ServiceRemoteException;
 
 /**
  * Represents an exception from an autodiscover error response.

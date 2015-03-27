@@ -35,10 +35,10 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.UserConfigurationProperties;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
-import microsoft.exchange.webservices.data.exceptions.PropertyException;
-import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.InvalidOperationException;
+import microsoft.exchange.webservices.data.exception.PropertyException;
+import microsoft.exchange.webservices.data.exception.ServiceVersionException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.UserConfigurationDictionary;
@@ -275,7 +275,7 @@ public class UserConfiguration {
    * Gets the xml data of the user configuration.
    *
    * @return the xml data
-   * @throws microsoft.exchange.webservices.data.exceptions.PropertyException the property exception
+   * @throws microsoft.exchange.webservices.data.exception.PropertyException the property exception
    */
   public byte[] getXmlData() throws PropertyException {
 
@@ -299,7 +299,7 @@ public class UserConfiguration {
    * Gets the binary data of the user configuration.
    *
    * @return the binary data
-   * @throws microsoft.exchange.webservices.data.exceptions.PropertyException the property exception
+   * @throws microsoft.exchange.webservices.data.exception.PropertyException the property exception
    */
   public byte[] getBinaryData() throws PropertyException {
     this.validatePropertyAccess(UserConfigurationProperties.BinaryData);
@@ -672,7 +672,7 @@ public class UserConfiguration {
    * Determines whether the specified property may be accessed.
    *
    * @param property Property to access.
-   * @throws microsoft.exchange.webservices.data.exceptions.PropertyException the property exception
+   * @throws microsoft.exchange.webservices.data.exception.PropertyException the property exception
    */
   private void validatePropertyAccess(UserConfigurationProperties property)
       throws PropertyException {

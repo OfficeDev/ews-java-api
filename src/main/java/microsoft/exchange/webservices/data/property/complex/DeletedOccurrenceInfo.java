@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.property.complex;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.Date;

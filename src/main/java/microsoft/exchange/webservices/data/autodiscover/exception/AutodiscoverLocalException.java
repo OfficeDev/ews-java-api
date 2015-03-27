@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover.exception;
 
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 
 /**
  * Represents an exception that is thrown when the Autodiscover service could

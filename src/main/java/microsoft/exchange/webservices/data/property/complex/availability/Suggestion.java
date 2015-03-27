@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.SuggestionQuality;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 
 import javax.xml.stream.XMLStreamException;
 import java.text.SimpleDateFormat;
@@ -70,7 +70,7 @@ public final class Suggestion extends ComplexProperty {
    * @param reader the reader
    * @return True if appropriate element was read.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException  the service xml deserialization exception
    * @throws Exception                           the exception
    */
   @Override

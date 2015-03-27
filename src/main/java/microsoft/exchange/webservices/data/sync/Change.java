@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.ChangeType;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.property.complex.ServiceId;
 
 /**
@@ -104,7 +104,7 @@ public abstract class Change {
    * Gets the Id of the service object the change applies to.
    *
    * @return the id
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   public ServiceId getId() throws ServiceLocalException {
     return this.getServiceObject() != null ? this.getServiceObject()

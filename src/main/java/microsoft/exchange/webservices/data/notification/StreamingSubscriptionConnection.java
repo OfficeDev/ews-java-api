@@ -32,10 +32,10 @@ import microsoft.exchange.webservices.data.core.request.HangingServiceRequestBas
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceError;
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
-import microsoft.exchange.webservices.data.exceptions.ArgumentException;
-import microsoft.exchange.webservices.data.exceptions.ArgumentOutOfRangeException;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.exception.ArgumentException;
+import microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceResponseException;
 
 import java.io.Closeable;
 import java.util.ArrayList;
@@ -290,7 +290,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
    * results in a long-standing call to EWS.
    *
    * @throws Exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException Thrown when Open is called while connected.
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException Thrown when Open is called while connected.
    */
   public void open() throws ServiceLocalException, Exception {
     synchronized (this) {
@@ -397,7 +397,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
    * Handles the service response object.
    *
    * @param response The response.
-   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
    */
   private void handleServiceResponseObject(Object response)
       throws ArgumentException {

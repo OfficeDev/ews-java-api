@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 
 /**
@@ -134,7 +134,7 @@ public final class MeetingTimeZone extends ComplexProperty {
    * Writes the attribute to XML.
    *
    * @param writer the writer
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   public void writeAttributesToXml(EwsServiceXmlWriter writer)

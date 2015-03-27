@@ -47,7 +47,7 @@ import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
 import microsoft.exchange.webservices.data.enumerations.SendInvitationsMode;
 import microsoft.exchange.webservices.data.enumerations.SendInvitationsOrCancellationsMode;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.interfaces.ICalendarActionProvider;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
 import microsoft.exchange.webservices.data.property.complex.AppointmentOccurrenceId;
@@ -656,7 +656,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * Gets the original start time of this appointment.
    *
    * @return the original start
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   public Date getOriginalStart() throws ServiceLocalException {
     return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(

@@ -30,8 +30,8 @@ import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
-import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
+import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 
 import java.util.ArrayList;
 import java.util.Iterator;

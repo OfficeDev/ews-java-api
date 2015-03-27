@@ -41,8 +41,8 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.SendCancellationsMode;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
-import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.InvalidOperationException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.property.complex.FolderPermissionCollection;
@@ -746,7 +746,7 @@ public class Folder extends ServiceObject {
    * user has on the folder.
    *
    * @return the effective rights
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   public EnumSet<EffectiveRights> getEffectiveRights() throws ServiceLocalException {
     return (EnumSet<EffectiveRights>) this.getPropertyBag()

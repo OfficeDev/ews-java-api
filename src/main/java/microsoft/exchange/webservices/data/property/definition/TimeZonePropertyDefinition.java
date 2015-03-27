@@ -28,8 +28,8 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.PropertyBag;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 
 import javax.xml.stream.XMLStreamException;
@@ -73,9 +73,9 @@ public class TimeZonePropertyDefinition extends PropertyDefinition {
    * @param writer            the writer
    * @param propertyBag       the property bag
    * @param isUpdateOperation the is update operation
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    * @throws javax.xml.stream.XMLStreamException                       the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException                          the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException                          the service xml serialization exception
    * @throws Exception                                                 the exception
    */
   public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,

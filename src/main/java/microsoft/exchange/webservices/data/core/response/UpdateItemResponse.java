@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ServiceResult;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
 
 import javax.xml.stream.XMLStreamException;
@@ -72,7 +72,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
    * Reads response elements from XML.
    *
    * @param reader the reader
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException  the service xml deserialization exception
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws InstantiationException              the instantiation exception
    * @throws IllegalAccessException              the illegal access exception

@@ -27,8 +27,8 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.service.folder.Folder;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
    * Adds the specified folder.
    *
    * @param folder the folder
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   public void add(Folder folder) throws ServiceLocalException {
     this.ids.add(new FolderWrapper(folder));
@@ -138,7 +138,7 @@ public class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
    * Validates list of folderIds against a specified request version.
    *
    * @param version the version
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException the service version exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceVersionException the service version exception
    */
   public void validate(ExchangeVersion version)
       throws ServiceVersionException {

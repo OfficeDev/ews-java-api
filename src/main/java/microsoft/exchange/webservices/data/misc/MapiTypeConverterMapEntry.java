@@ -25,10 +25,10 @@ package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.LazyMember;
-import microsoft.exchange.webservices.data.exceptions.ArgumentException;
-import microsoft.exchange.webservices.data.exceptions.ArgumentNullException;
-import microsoft.exchange.webservices.data.exceptions.FormatException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exception.ArgumentException;
+import microsoft.exchange.webservices.data.exception.ArgumentNullException;
+import microsoft.exchange.webservices.data.exception.FormatException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.interfaces.IFunction;
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 
@@ -167,8 +167,8 @@ public class MapiTypeConverterMapEntry {
    *
    * @param stringValue String to convert to a value.
    * @return value
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException                  the service xml deserialization exception
-   * @throws microsoft.exchange.webservices.data.exceptions.FormatException the format exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException                  the service xml deserialization exception
+   * @throws microsoft.exchange.webservices.data.exception.FormatException the format exception
    */
   public Object convertToValue(String stringValue)
       throws ServiceXmlDeserializationException, FormatException {
@@ -190,7 +190,7 @@ public class MapiTypeConverterMapEntry {
    *
    * @param stringValue to convert to a value.
    * @return Value.
-   * @throws microsoft.exchange.webservices.data.exceptions.FormatException
+   * @throws microsoft.exchange.webservices.data.exception.FormatException
    * @throws ServiceXmlDeserializationException
    */
   public Object ConvertToValueOrDefault(String stringValue)
@@ -204,8 +204,8 @@ public class MapiTypeConverterMapEntry {
    * Validates array value.
    *
    * @param value the value
-   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException     the argument exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentNullException the argument exception
+   * @throws microsoft.exchange.webservices.data.exception.ArgumentException     the argument exception
+   * @throws microsoft.exchange.webservices.data.exception.ArgumentNullException the argument exception
    */
   private void validateValueAsArray(Object value) throws ArgumentException, ArgumentNullException {
     if (value == null) {

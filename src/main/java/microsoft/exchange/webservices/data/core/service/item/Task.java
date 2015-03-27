@@ -38,8 +38,8 @@ import microsoft.exchange.webservices.data.enumerations.MessageDisposition;
 import microsoft.exchange.webservices.data.enumerations.TaskDelegationState;
 import microsoft.exchange.webservices.data.enumerations.TaskMode;
 import microsoft.exchange.webservices.data.enumerations.TaskStatus;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceResponseException;
 import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.StringList;
@@ -165,7 +165,7 @@ public class Task extends Item {
    * object representing the current occurrence if the task is
    * recurring and the uypdate changed its recurrence pattern; or null
    * in every other case.
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceResponseException the service response exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
   public Task updateTask(ConflictResolutionMode conflictResolutionMode)

@@ -30,8 +30,8 @@ import microsoft.exchange.webservices.data.core.response.FindConversationRespons
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.FolderIdWrapper;
 import microsoft.exchange.webservices.data.search.ConversationIndexedItemView;
 import microsoft.exchange.webservices.data.search.filter.SearchFilter;
@@ -97,7 +97,7 @@ public final class FindConversationRequest extends SimpleServiceRequestBase<Find
    * Validate request.
    *
    * @throws Exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException
    */
   @Override
   protected void validate() throws ServiceLocalException, Exception {
@@ -191,7 +191,7 @@ public final class FindConversationRequest extends SimpleServiceRequestBase<Find
    *
    * @return Service response.
    * @throws Exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException
    */
   public FindConversationResponse execute()
       throws ServiceLocalException, Exception {

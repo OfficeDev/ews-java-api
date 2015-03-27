@@ -30,10 +30,10 @@ import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumerations.BasePropertySet;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ArgumentException;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
-import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exception.ArgumentException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
+import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChanged;
 import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
 import microsoft.exchange.webservices.data.interfaces.ICustomXmlUpdateSerializer;
@@ -243,7 +243,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    * @param propertyDefinition The property definition.
    * @param propertyValue      The property value.
    * @return True if property was retrieved.
-   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
    */
   public <T> boolean tryGetPropertyType(Class<T> cls, PropertyDefinition propertyDefinition,
       OutParam<T> propertyValue) throws ArgumentException {

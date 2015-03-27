@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.sync;
 
 import microsoft.exchange.webservices.data.core.service.item.Item;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.ServiceId;
 
@@ -90,7 +90,7 @@ public final class ItemChange extends Change {
    * Gets the Id of the item the change applies to.
    *
    * @return the item id
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   public ItemId getItemId() throws ServiceLocalException {
     return (ItemId) this.getId();

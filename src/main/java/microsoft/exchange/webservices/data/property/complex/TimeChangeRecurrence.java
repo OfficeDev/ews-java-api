@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;
 import microsoft.exchange.webservices.data.enumerations.DayOfTheWeekIndex;
 import microsoft.exchange.webservices.data.enumerations.Month;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 

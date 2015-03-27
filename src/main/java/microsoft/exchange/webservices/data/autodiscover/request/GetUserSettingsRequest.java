@@ -28,9 +28,9 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeServiceBase;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
@@ -70,7 +70,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    *
    * @param service the service
    * @param url     the url
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException
+   * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException
    */
   public GetUserSettingsRequest(AutodiscoverService service, URI url) throws ServiceValidationException {
     this(service, url, false);
@@ -128,7 +128,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    * Executes this instance.
    *
    * @return the gets the user settings response collection
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    * @throws Exception                                                 the exception
    */
   public GetUserSettingsResponseCollection execute()
@@ -201,7 +201,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    * Writes the attribute to XML.
    *
    * @param writer The writer.
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)

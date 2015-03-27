@@ -34,8 +34,8 @@ import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.UserConfigurationDictionaryObjectType;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.util.DateTimeUtils;
 
 import javax.xml.stream.XMLStreamException;
@@ -294,7 +294,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    *                         or a single value. Single values can be: <br />
    *                         - datetime, boolean, byte, int, long, string
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
    */
   private void writeObjectValueToXml(final EwsServiceXmlWriter writer,
       final Object dictionaryObject) throws XMLStreamException,
@@ -375,7 +375,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * @param writer               The writer.
    * @param dictionaryObjectType Type to write.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
    */
   private void writeEntryTypeToXml(EwsServiceXmlWriter writer,
       UserConfigurationDictionaryObjectType dictionaryObjectType)
@@ -684,7 +684,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * Validate the array object.
    *
    * @param dictionaryObjectAsArray Object to validate
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   private void validateArrayObject(Object[] dictionaryObjectAsArray)
       throws ServiceLocalException {
@@ -718,7 +718,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * Validates the dictionary object type.
    *
    * @param theObject Object to validate.
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException the service local exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   private void validateObjectType(Object theObject) throws ServiceLocalException {
     // This logic is based on

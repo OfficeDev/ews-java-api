@@ -26,8 +26,8 @@ package microsoft.exchange.webservices.data.property.complex;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -68,7 +68,7 @@ public final class InternetMessageHeader extends ComplexProperty {
    *
    * @param reader the reader
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException  the service xml deserialization exception
    */
   public void readTextValueFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException {
@@ -79,7 +79,7 @@ public final class InternetMessageHeader extends ComplexProperty {
    * Writes the attribute to XML.
    *
    * @param writer the writer
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
    */
   public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {

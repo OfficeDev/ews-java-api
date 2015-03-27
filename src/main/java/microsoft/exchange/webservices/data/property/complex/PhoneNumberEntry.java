@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.PhoneNumberKey;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 /**
  * Represents an entry of a PhoneNumberDictionary.
@@ -76,7 +76,7 @@ public final class PhoneNumberEntry extends DictionaryEntryProperty<PhoneNumberK
    * Writes elements to XML.
    *
    * @param writer The writer.
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
    */
   public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {

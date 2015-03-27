@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.dns;
 
-import microsoft.exchange.webservices.data.exceptions.DnsException;
+import microsoft.exchange.webservices.data.exception.DnsException;
 
 /**
  * Represents a DnsRecord.
@@ -66,7 +66,7 @@ abstract class DnsRecord {
    * loads the DNS Record.
    *
    * @param value the value
-   * @throws microsoft.exchange.webservices.data.exceptions.DnsException the dns exception
+   * @throws microsoft.exchange.webservices.data.exception.DnsException the dns exception
    */
   protected void load(String value) throws DnsException {
 

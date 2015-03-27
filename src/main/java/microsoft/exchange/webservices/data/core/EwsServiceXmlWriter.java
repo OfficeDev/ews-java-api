@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.interfaces.IDisposable;
 import microsoft.exchange.webservices.data.interfaces.ISearchStringProvider;
 import microsoft.exchange.webservices.data.util.Base64;
@@ -465,7 +465,7 @@ public class EwsServiceXmlWriter implements IDisposable {
    * @param localName    The local name of the element.
    * @param value        The value.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException    the service xml serialization exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
    */
   public void writeElementValue(XmlNamespace xmlNamespace, String localName,
       Object value) throws XMLStreamException,

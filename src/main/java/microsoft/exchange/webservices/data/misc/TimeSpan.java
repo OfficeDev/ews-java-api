@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.exceptions.FormatException;
+import microsoft.exchange.webservices.data.exception.FormatException;
 
 /**
  * The Class TimeSpan.

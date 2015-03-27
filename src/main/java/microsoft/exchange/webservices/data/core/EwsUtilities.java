@@ -39,13 +39,13 @@ import microsoft.exchange.webservices.data.enumerations.MeetingRequestsDeliveryS
 import microsoft.exchange.webservices.data.enumerations.RuleProperty;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ArgumentException;
-import microsoft.exchange.webservices.data.exceptions.ArgumentNullException;
-import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
-import microsoft.exchange.webservices.data.exceptions.FormatException;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
-import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
+import microsoft.exchange.webservices.data.exception.ArgumentException;
+import microsoft.exchange.webservices.data.exception.ArgumentNullException;
+import microsoft.exchange.webservices.data.exception.EWSHttpException;
+import microsoft.exchange.webservices.data.exception.FormatException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 import microsoft.exchange.webservices.data.interfaces.IAction;
 import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithAttachmentParam;
 import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithServiceParam;
@@ -619,7 +619,7 @@ public class EwsUtilities {
    *
    * @param response the response
    * @return the string
-   * @throws microsoft.exchange.webservices.data.exceptions.EWSHttpException the eWS http exception
+   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
    */
   public static String formatHttpResponseHeaders(HttpWebRequest response)
       throws EWSHttpException {
@@ -1150,7 +1150,7 @@ public class EwsUtilities {
    *
    * @param emailAddress The email address.
    * @return Domain name.
-   * @throws microsoft.exchange.webservices.data.exceptions.FormatException the format exception
+   * @throws microsoft.exchange.webservices.data.exception.FormatException the format exception
    */
   public static String domainFromEmailAddress(String emailAddress)
       throws FormatException {
@@ -1262,8 +1262,8 @@ public class EwsUtilities {
    *
    * @param param     The string parameter.
    * @param paramName Name of the parameter.
-   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException
+   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException
    */
   public static void validateNonBlankStringParamAllowNull(String param,
       String paramName) throws ArgumentException, ServiceLocalException {
@@ -1289,7 +1289,7 @@ public class EwsUtilities {
    *
    * @param param     The string parameter.
    * @param paramName Name of the parameter.
-   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentNullException
+   * @throws microsoft.exchange.webservices.data.exception.ArgumentNullException
    * @throws ArgumentException
    * @throws ServiceLocalException
    */
@@ -1307,7 +1307,7 @@ public class EwsUtilities {
    *
    * @param enumValue      the enum value
    * @param requestVersion the request version
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceVersionException the service version exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceVersionException the service version exception
    */
   public static void validateEnumVersionValue(Enum<?> enumValue,
       ExchangeVersion requestVersion) throws ServiceVersionException {

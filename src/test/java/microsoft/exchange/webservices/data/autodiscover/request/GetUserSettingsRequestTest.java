@@ -28,9 +28,9 @@ import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.base.BaseTest;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.exceptions.ArgumentException;
-import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ArgumentException;
+import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import org.hamcrest.core.IsNot;
 import org.hamcrest.core.IsNull;
 import org.junit.Assert;
@@ -75,7 +75,7 @@ public class GetUserSettingsRequestTest extends BaseTest {
    * Returns the Parameters which where handled to the constructor
    *
    * @return the available Services
-   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
    */
   @Parameterized.Parameters
   public static List<Object[]> getAutodiscoverServices() throws ArgumentException {
@@ -122,7 +122,7 @@ public class GetUserSettingsRequestTest extends BaseTest {
    *
    * @throws ServiceValidationException
    * @throws XMLStreamException
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException
    */
   @Test
   public void testWriteExtraCustomSoapHeadersToXmlWithoutPartnertoken()
@@ -154,9 +154,9 @@ public class GetUserSettingsRequestTest extends BaseTest {
   /**
    * Test if content is added correctly if expectPartnerToken is set
    *
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceValidationException
+   * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException
    * @throws XMLStreamException
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException
+   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException
    */
   @Test
   public void testWriteExtraCustomSoapHeadersToXmlWithPartnertoken()

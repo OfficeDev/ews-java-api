@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.core.service.schema.ContactSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ContactGroupSchema;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
-import microsoft.exchange.webservices.data.exceptions.ServiceObjectPropertyException;
+import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
 import microsoft.exchange.webservices.data.property.complex.GroupMemberCollection;
 import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 import microsoft.exchange.webservices.data.property.complex.ItemId;

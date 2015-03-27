@@ -125,12 +125,12 @@ import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.enumerations.UserConfigurationProperties;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
-import microsoft.exchange.webservices.data.exceptions.AccountIsLockedException;
-import microsoft.exchange.webservices.data.exceptions.ArgumentOutOfRangeException;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceRemoteException;
-import microsoft.exchange.webservices.data.exceptions.ServiceResponseException;
-import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
+import microsoft.exchange.webservices.data.exception.AccountIsLockedException;
+import microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceRemoteException;
+import microsoft.exchange.webservices.data.exception.ServiceResponseException;
+import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
 import microsoft.exchange.webservices.data.interfaces.IAutodiscoverRedirectionUrl;
 import microsoft.exchange.webservices.data.interfaces.IFileAttachmentContentHandler;
@@ -1544,7 +1544,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param parentItemId the parent item id
    * @param attachments  the attachments
    * @return Service response collection.
-   * @throws microsoft.exchange.webservices.data.exceptions.ServiceResponseException the service response exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
   public ServiceResponseCollection<CreateAttachmentResponse> createAttachments(String parentItemId,

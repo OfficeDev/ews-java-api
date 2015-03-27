@@ -33,8 +33,8 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.exceptions.ArgumentException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.exception.ArgumentException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
@@ -187,7 +187,7 @@ public final class ExtendedPropertyCollection extends ComplexPropertyCollection<
    * @param propertyDefinition The property definition.
    * @param propertyValueOut   The property value.
    * @return True if property exists in collection.
-   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
+   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
    */
   public <T> boolean tryGetValue(Class<T> cls, ExtendedPropertyDefinition propertyDefinition,
       OutParam<T> propertyValueOut) throws ArgumentException {

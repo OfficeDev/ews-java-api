@@ -29,13 +29,13 @@ import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumerations.HangingRequestDisconnectReason;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
-import microsoft.exchange.webservices.data.exceptions.ArgumentException;
-import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
-import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.exceptions.ServiceRequestException;
-import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
-import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.exceptions.XmlException;
+import microsoft.exchange.webservices.data.exception.ArgumentException;
+import microsoft.exchange.webservices.data.exception.EWSHttpException;
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.exception.ServiceRequestException;
+import microsoft.exchange.webservices.data.exception.ServiceVersionException;
+import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.exception.XmlException;
 import microsoft.exchange.webservices.data.misc.HangingTraceStream;
 
 import javax.xml.stream.XMLStreamException;
@@ -63,7 +63,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
      * Callback delegate to handle asynchronous response.
      *
      * @param response Response received from the server
-     * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
+     * @throws microsoft.exchange.webservices.data.exception.ArgumentException
      */
     void handleResponseObject(Object response) throws ArgumentException;
   }
