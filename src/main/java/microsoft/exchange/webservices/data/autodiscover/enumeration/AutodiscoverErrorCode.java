@@ -21,54 +21,78 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.enumeration;
+package microsoft.exchange.webservices.data.autodiscover.enumeration;
 
 /**
- * Defines the types of Autodiscover endpoints that are available.
+ * Defines the error codes that can be returned by the Autodiscover service.
  */
-public enum AutodiscoverEndpoints {
+public enum AutodiscoverErrorCode {
 
+  // There was no Error.
   /**
-   * No endpoints available.
+   * The No error.
    */
-  None(0),
+  NoError,
 
+  // The caller must follow the e-mail address redirection that was returned
+  // by Autodiscover.
   /**
-   * The "legacy" Autodiscover endpoint.
+   * The Redirect address.
    */
-  Legacy(1),
+  RedirectAddress,
 
+  // The caller must follow the URL redirection that was returned by
+  // Autodiscover.
   /**
-   * The SOAP endpoint.
+   * The Redirect url.
    */
-  Soap(2),
+  RedirectUrl,
 
+  // The user that was passed in the request is invalid.
   /**
-   * The WS-Security endpoint.
+   * The Invalid user.
    */
-  WsSecurity(4),
+  InvalidUser,
 
+  // The request is invalid.
   /**
-   * The WS-Security/SymmetricKey endpoint.
+   * The Invalid request.
    */
-  WSSecuritySymmetricKey(8),
+  InvalidRequest,
 
+  // A specified setting is invalid.
   /**
-   * The WS-Security/X509Cert endpoint.
+   * The Invalid setting.
    */
-  WSSecurityX509Cert(16);
+  InvalidSetting,
 
+  // A specified setting is not available.
   /**
-   * The autodiscover end points.
+   * The Setting is not available.
    */
-  private final int autodiscoverEndPoints;
+  SettingIsNotAvailable,
 
+  // The server is too busy to process the request.
   /**
-   * Instantiates a new autodiscover endpoints.
-   *
-   * @param autodiscoverEndPoints the autodiscover end points
+   * The Server busy.
    */
-  AutodiscoverEndpoints(int autodiscoverEndPoints) {
-    this.autodiscoverEndPoints = autodiscoverEndPoints;
-  }
+  ServerBusy,
+
+  // The requested domain is not valid.
+  /**
+   * The Invalid domain.
+   */
+  InvalidDomain,
+
+  // The organization is not federated.
+  /**
+   * The Not federated.
+   */
+  NotFederated,
+
+  // Internal server error.
+  /**
+   * The Internal server error.
+   */
+  InternalServerError,
 }

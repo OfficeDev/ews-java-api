@@ -21,31 +21,54 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.enumeration;
+package microsoft.exchange.webservices.data.autodiscover.enumeration;
 
 /**
- * Defines the types of response the Autodiscover service can return.
+ * Defines the types of Autodiscover endpoints that are available.
  */
-public enum AutodiscoverResponseType {
+public enum AutodiscoverEndpoints {
 
-  // The request returned an error.
   /**
-   * The Error.
+   * No endpoints available.
    */
-  Error,
-  // A URL redirection is necessary.
+  None(0),
+
   /**
-   * The Redirect url.
+   * The "legacy" Autodiscover endpoint.
    */
-  RedirectUrl,
-  // An address redirection is necessary.
+  Legacy(1),
+
   /**
-   * The Redirect address.
+   * The SOAP endpoint.
    */
-  RedirectAddress,
-  // The request succeeded.
+  Soap(2),
+
   /**
-   * The Success.
+   * The WS-Security endpoint.
    */
-  Success
+  WsSecurity(4),
+
+  /**
+   * The WS-Security/SymmetricKey endpoint.
+   */
+  WSSecuritySymmetricKey(8),
+
+  /**
+   * The WS-Security/X509Cert endpoint.
+   */
+  WSSecurityX509Cert(16);
+
+  /**
+   * The autodiscover end points.
+   */
+  private final int autodiscoverEndPoints;
+
+  /**
+   * Instantiates a new autodiscover endpoints.
+   *
+   * @param autodiscoverEndPoints the autodiscover end points
+   */
+  AutodiscoverEndpoints(int autodiscoverEndPoints) {
+    this.autodiscoverEndPoints = autodiscoverEndPoints;
+  }
 }

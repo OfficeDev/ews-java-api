@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover.request;
 
-import microsoft.exchange.webservices.data.enumeration.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;

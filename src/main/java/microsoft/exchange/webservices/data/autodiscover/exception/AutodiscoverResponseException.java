@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover.exception;
 
-import microsoft.exchange.webservices.data.enumeration.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.exception.ServiceRemoteException;
 
 /**

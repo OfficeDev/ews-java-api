@@ -25,8 +25,8 @@ package microsoft.exchange.webservices.data.autodiscover;
 
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
 import microsoft.exchange.webservices.data.exception.ArgumentException;
-import microsoft.exchange.webservices.data.enumeration.AutodiscoverEndpoints;
-import microsoft.exchange.webservices.data.enumeration.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverEndpoints;
+import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverRemoteException;
 import microsoft.exchange.webservices.data.autodiscover.request.AutodiscoverRequest;
 import microsoft.exchange.webservices.data.autodiscover.configuration.ConfigurationSettingsBase;
