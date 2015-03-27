@@ -21,46 +21,45 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.property.complex.recurrence.ranges;
+package microsoft.exchange.webservices.data.property.complex.recurrence.range;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.property.complex.recurrence.patterns.Recurrence;
+import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.Recurrence;
 
 import javax.xml.stream.XMLStreamException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Represents recurrent range with an end date.
+ * The Class NumberedRecurrenceRange.
  */
-public final class EndDateRecurrenceRange extends RecurrenceRange {
+public final class NumberedRecurrenceRange extends RecurrenceRange {
 
   /**
-   * The end date.
+   * The number of occurrences.
    */
-  private Date endDate;
+  private Integer numberOfOccurrences;
 
   /**
    * Initializes a new instance.
    */
-  public EndDateRecurrenceRange() {
+  public NumberedRecurrenceRange() {
     super();
   }
 
   /**
    * Initializes a new instance.
    *
-   * @param startDate the start date
-   * @param endDate   the end date
+   * @param startDate           the start date
+   * @param numberOfOccurrences the number of occurrences
    */
-  public EndDateRecurrenceRange(Date startDate, Date endDate) {
+  public NumberedRecurrenceRange(Date startDate,
+      Integer numberOfOccurrences) {
     super(startDate);
-    this.endDate = endDate;
+    this.numberOfOccurrences = numberOfOccurrences;
   }
 
   /**
@@ -69,7 +68,7 @@ public final class EndDateRecurrenceRange extends RecurrenceRange {
    * @return The name of the XML element
    */
   public String getXmlElementName() {
-    return XmlElementNames.EndDateRecurrence;
+    return XmlElementNames.NumberedRecurrence;
   }
 
   /**
@@ -80,11 +79,11 @@ public final class EndDateRecurrenceRange extends RecurrenceRange {
    */
   public void setupRecurrence(Recurrence recurrence) throws Exception {
     super.setupRecurrence(recurrence);
-    recurrence.setEndDate(this.endDate);
+    recurrence.setNumberOfOccurrences(this.numberOfOccurrences);
   }
 
   /**
-   * Writes the elements to XML.
+   * Writes the elements to XML..
    *
    * @param writer the writer
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
@@ -92,14 +91,13 @@ public final class EndDateRecurrenceRange extends RecurrenceRange {
    */
   public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
-    Date d = this.endDate;
-    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-    String formattedString = df.format(d);
-
     super.writeElementsToXml(writer);
 
-    writer.writeElementValue(XmlNamespace.Types, XmlElementNames.EndDate,
-        formattedString);
+    if (this.numberOfOccurrences != null) {
+      writer.writeElementValue(XmlNamespace.Types,
+          XmlElementNames.NumberOfOccurrences,
+          this.numberOfOccurrences);
+    }
   }
 
   /**
@@ -114,13 +112,10 @@ public final class EndDateRecurrenceRange extends RecurrenceRange {
     if (super.tryReadElementFromXml(reader)) {
       return true;
     } else {
-      if (reader.getLocalName().equals(XmlElementNames.EndDate)) {
-
-        Date temp = reader.readElementValueAsUnspecifiedDate();
-
-        if (temp != null) {
-          this.endDate = temp;
-        }
+      if (reader.getLocalName().equals(
+          XmlElementNames.NumberOfOccurrences)) {
+        this.numberOfOccurrences = reader
+            .readElementValue(Integer.class);
         return true;
       } else {
         return false;
@@ -129,21 +124,23 @@ public final class EndDateRecurrenceRange extends RecurrenceRange {
   }
 
   /**
-   * Gets the end date.
+   * Gets the number of occurrences.
    *
-   * @return endDate
+   * @return numberOfOccurrences
    */
-  public Date getEndDate() {
-    return this.endDate;
+
+  public Integer getNumberOfOccurrences() {
+    return this.numberOfOccurrences;
   }
 
   /**
-   * sets the end date.
+   * sets the number of occurrences.
    *
-   * @param value the new end date
+   * @param value the new number of occurrences
    */
-  public void setEndDate(Date value) {
-    this.canSetFieldValue(this.endDate, value);
+  public void setNumberOfOccurrences(Integer value) {
+    this.canSetFieldValue(this.numberOfOccurrences, value);
+
   }
 
 }

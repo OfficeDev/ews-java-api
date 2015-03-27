@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.property.complex.recurrence.ranges;
+package microsoft.exchange.webservices.data.property.complex.recurrence.range;
 
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.property.complex.recurrence.patterns.Recurrence;
+import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.Recurrence;
 
 import javax.xml.stream.XMLStreamException;
 import java.text.DateFormat;

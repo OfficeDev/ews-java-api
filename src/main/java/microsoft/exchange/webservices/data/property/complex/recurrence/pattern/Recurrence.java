@@ -21,18 +21,18 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.property.complex.recurrence.patterns;
+package microsoft.exchange.webservices.data.property.complex.recurrence.pattern;
 
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
-import microsoft.exchange.webservices.data.property.complex.recurrence.ranges.EndDateRecurrenceRange;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.EndDateRecurrenceRange;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
-import microsoft.exchange.webservices.data.property.complex.recurrence.ranges.NoEndRecurrenceRange;
-import microsoft.exchange.webservices.data.property.complex.recurrence.ranges.NumberedRecurrenceRange;
-import microsoft.exchange.webservices.data.property.complex.recurrence.ranges.RecurrenceRange;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.NoEndRecurrenceRange;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.NumberedRecurrenceRange;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.RecurrenceRange;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.DayOfTheWeek;

@@ -23,14 +23,14 @@
 
 package microsoft.exchange.webservices.data.property.definition;
 
-import microsoft.exchange.webservices.data.property.complex.recurrence.ranges.EndDateRecurrenceRange;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.EndDateRecurrenceRange;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.property.complex.recurrence.ranges.NoEndRecurrenceRange;
-import microsoft.exchange.webservices.data.property.complex.recurrence.ranges.NumberedRecurrenceRange;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.NoEndRecurrenceRange;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.NumberedRecurrenceRange;
 import microsoft.exchange.webservices.data.core.PropertyBag;
-import microsoft.exchange.webservices.data.property.complex.recurrence.patterns.Recurrence;
-import microsoft.exchange.webservices.data.property.complex.recurrence.ranges.RecurrenceRange;
+import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.Recurrence;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.RecurrenceRange;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;

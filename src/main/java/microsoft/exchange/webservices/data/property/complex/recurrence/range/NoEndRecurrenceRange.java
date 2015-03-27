@@ -21,10 +21,10 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.property.complex.recurrence.ranges;
+package microsoft.exchange.webservices.data.property.complex.recurrence.range;
 
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.property.complex.recurrence.patterns.Recurrence;
+import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.Recurrence;
 
 import java.util.Date;
 

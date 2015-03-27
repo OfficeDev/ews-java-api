@@ -62,7 +62,7 @@ import microsoft.exchange.webservices.data.property.complex.MessageBody;
 import microsoft.exchange.webservices.data.property.complex.OccurrenceInfo;
 import microsoft.exchange.webservices.data.property.complex.OccurrenceInfoCollection;
 import microsoft.exchange.webservices.data.property.complex.RecurringAppointmentMasterId;
-import microsoft.exchange.webservices.data.property.complex.recurrence.patterns.Recurrence;
+import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.Recurrence;
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 
 import java.util.ArrayList;
@@ -1021,7 +1021,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   public void setRecurrence(Recurrence value) throws Exception {
     if (value != null) {
       if (value.isRegenerationPattern()) {
-        throw new ServiceLocalException("Regeneration patterns can only be used with Task items.");
+        throw new ServiceLocalException("Regeneration pattern can only be used with Task items.");
       }
     }
     this.getPropertyBag().setObjectFromPropertyDefinition(

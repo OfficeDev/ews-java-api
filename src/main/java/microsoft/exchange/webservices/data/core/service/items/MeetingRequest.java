@@ -49,7 +49,7 @@ import microsoft.exchange.webservices.data.property.complex.ItemCollection;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.OccurrenceInfo;
 import microsoft.exchange.webservices.data.property.complex.OccurrenceInfoCollection;
-import microsoft.exchange.webservices.data.property.complex.recurrence.patterns.Recurrence;
+import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.Recurrence;
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 
 import java.util.Date;
