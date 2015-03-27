@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.core.requests.ServiceRequestBase;
+import microsoft.exchange.webservices.data.core.request.ServiceRequestBase;
 import microsoft.exchange.webservices.data.enumerations.BasePropertySet;
 import microsoft.exchange.webservices.data.enumerations.BodyType;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;

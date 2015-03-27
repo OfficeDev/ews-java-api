@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.interfaces;
 
-import microsoft.exchange.webservices.data.core.requests.WaitHandle;
+import microsoft.exchange.webservices.data.core.request.WaitHandle;
 
 import java.util.concurrent.Future;
 

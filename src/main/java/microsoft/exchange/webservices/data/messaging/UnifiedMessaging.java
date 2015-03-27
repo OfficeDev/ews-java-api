@@ -23,12 +23,12 @@
 
 package microsoft.exchange.webservices.data.messaging;
 
-import microsoft.exchange.webservices.data.core.requests.DisconnectPhoneCallRequest;
+import microsoft.exchange.webservices.data.core.request.DisconnectPhoneCallRequest;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.requests.GetPhoneCallRequest;
+import microsoft.exchange.webservices.data.core.request.GetPhoneCallRequest;
 import microsoft.exchange.webservices.data.core.response.GetPhoneCallResponse;
-import microsoft.exchange.webservices.data.core.requests.PlayOnPhoneRequest;
+import microsoft.exchange.webservices.data.core.request.PlayOnPhoneRequest;
 import microsoft.exchange.webservices.data.core.response.PlayOnPhoneResponse;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 

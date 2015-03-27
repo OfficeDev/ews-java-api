@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.misc.availability;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.requests.GetUserAvailabilityRequest;
+import microsoft.exchange.webservices.data.core.request.GetUserAvailabilityRequest;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.FreeBusyViewType;
 import microsoft.exchange.webservices.data.enumerations.SuggestionQuality;

@@ -23,12 +23,12 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.core.requests.WaitHandle;
+import microsoft.exchange.webservices.data.core.request.WaitHandle;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
-import microsoft.exchange.webservices.data.core.requests.ServiceRequestBase;
-import microsoft.exchange.webservices.data.core.requests.SimpleServiceRequestBase;
+import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
+import microsoft.exchange.webservices.data.core.request.ServiceRequestBase;
+import microsoft.exchange.webservices.data.core.request.SimpleServiceRequestBase;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
 

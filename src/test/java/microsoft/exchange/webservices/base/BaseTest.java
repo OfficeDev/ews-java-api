@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.base;
 
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.ExchangeServiceBase;
-import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
+import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

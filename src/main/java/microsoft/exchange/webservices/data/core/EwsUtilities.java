@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.service.ServiceObjectInfo;
 import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.attribute.EwsEnum;
 import microsoft.exchange.webservices.data.attribute.RequiredServerVersion;
-import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
+import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
 import microsoft.exchange.webservices.data.enumerations.EventType;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.FileAsMapping;
