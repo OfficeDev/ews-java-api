@@ -47,7 +47,7 @@ public final class PullSubscription extends SubscriptionBase {
   }
 
   /**
-   * Obtains a collection of events that occurred on the subscribed folders
+   * Obtains a collection of events that occurred on the subscribed folder
    * since the point in time defined by the Watermark property. When GetEvents
    * succeeds, Watermark is updated.
    *
@@ -65,7 +65,7 @@ public final class PullSubscription extends SubscriptionBase {
 
   /**
    * Begins an asynchronous request to obtain a collection of events that occurred on the subscribed
-   * folders since the point in time defined by the Watermark property
+   * folder since the point in time defined by the Watermark property
    *
    * @param callback The AsyncCallback delegate
    * @param state    An object that contains state information for this request
@@ -78,7 +78,7 @@ public final class PullSubscription extends SubscriptionBase {
 
   /**
    * Ends an asynchronous request to obtain a collection of events that occurred on the subscribed
-   * folders since the point in time defined by the Watermark property. When EndGetEvents succeeds,
+   * folder since the point in time defined by the Watermark property. When EndGetEvents succeeds,
    * Watermark is updated.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.

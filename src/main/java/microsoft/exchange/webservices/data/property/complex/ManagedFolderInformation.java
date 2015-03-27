@@ -53,7 +53,7 @@ public final class ManagedFolderInformation extends ComplexProperty {
   private Boolean hasQuota;
 
   /**
-   * The is managed folders root.
+   * The is managed folder root.
    */
   private Boolean isManagedFoldersRoot;
 
@@ -190,7 +190,7 @@ public final class ManagedFolderInformation extends ComplexProperty {
    * Gets a value indicating whether the folder is the root of the managed
    * folder hierarchy.
    *
-   * @return the checks if is managed folders root
+   * @return the checks if is managed folder root
    */
   public Boolean getIsManagedFoldersRoot() {
     return isManagedFoldersRoot;

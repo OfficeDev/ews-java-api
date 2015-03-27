@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.requests;
 import microsoft.exchange.webservices.data.core.responses.CreateFolderResponse;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.service.folders.Folder;
+import microsoft.exchange.webservices.data.core.service.folder.Folder;
 import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
@@ -142,18 +142,18 @@ public final class CreateFolderRequest extends CreateRequest<Folder, ServiceResp
   }
 
   /**
-   * Gets the folders.
+   * Gets the folder.
    *
-   * @return the folders
+   * @return the folder
    */
   public Iterable<Folder> getFolders() {
     return this.getObjects();
   }
 
   /**
-   * Sets the folders.
+   * Sets the folder.
    *
-   * @param folder the new folders
+   * @param folder the new folder
    */
   public void setFolders(Iterable<Folder> folder) {
     this.setObjects((Collection<Folder>) folder);

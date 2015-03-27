@@ -173,10 +173,10 @@ public final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
 
   /**
    * Gets a value indicating whether empty
-   * folder should also delete sub folders.
+   * folder should also delete sub folder.
    *
    * @value true if empty folder should also
-   * delete sub folders, otherwise false.
+   * delete sub folder, otherwise false.
    */
   protected boolean getDeleteSubFolders() {
     return deleteSubFolders;
@@ -184,10 +184,10 @@ public final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
 
   /**
    * Sets a value indicating whether empty
-   * folder should also delete sub folders.
+   * folder should also delete sub folder.
    *
    * @value true if empty folder should also
-   * delete sub folders, otherwise false.
+   * delete sub folder, otherwise false.
    */
   public void setDeleteSubFolders(boolean value) {
     this.deleteSubFolders = value;

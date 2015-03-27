@@ -41,7 +41,7 @@ import java.util.EnumSet;
 public class SearchFolderSchema extends FolderSchema {
 
   /**
-   * Field URIs for search folders.
+   * Field URIs for search folder.
    */
   private static interface FieldUris {
 

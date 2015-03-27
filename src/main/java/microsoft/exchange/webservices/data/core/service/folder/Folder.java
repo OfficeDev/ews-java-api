@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.folders;
+package microsoft.exchange.webservices.data.core.service.folder;
 
 import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.service.schema.FolderSchema;
@@ -258,7 +258,7 @@ public class Folder extends ServiceObject {
    * Empties the folder. Calling this method results in a call to EWS.
    *
    * @param deletemode       the delete mode
-   * @param deleteSubFolders Indicates whether sub-folders should also be deleted.
+   * @param deleteSubFolders Indicates whether sub-folder should also be deleted.
    * @throws Exception
    */
   public void empty(DeleteMode deletemode, boolean deleteSubFolders)
@@ -516,10 +516,10 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of this folder.
+   * Obtains a list of folder by searching the sub-folder of this folder.
    * Calling this method results in a call to EWS.
    *
-   * @param view The view controlling the number of folders returned.
+   * @param view The view controlling the number of folder returned.
    * @return An object representing the results of the search operation.
    * @throws Exception the exception
    */
@@ -530,13 +530,13 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of this folder.
+   * Obtains a list of folder by searching the sub-folder of this folder.
    * Calling this method results in a call to EWS.
    *
    * @param searchFilter The search filter. Available search filter classes include
    *                     SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
    *                     SearchFilter.SearchFilterCollection
-   * @param view         The view controlling the number of folders returned.
+   * @param view         The view controlling the number of folder returned.
    * @return An object representing the results of the search operation.
    * @throws Exception the exception
    */
@@ -551,7 +551,7 @@ public class Folder extends ServiceObject {
    * Obtains a grouped list of item by searching the contents of this folder.
    * Calling this method results in a call to EWS.
    *
-   * @param view    The view controlling the number of folders returned.
+   * @param view    The view controlling the number of folder returned.
    * @param groupBy The grouping criteria.
    * @return A collection of grouped item representing the contents of this
    * folder.
@@ -641,7 +641,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Gets the number of child folders this folder has.
+   * Gets the number of child folder this folder has.
    *
    * @return the child folder count
    * @throws NumberFormatException the number format exception

@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data.enumerations;
 
 
 /**
- * Defines permission levels for calendar folders.
+ * Defines permission levels for calendar folder.
  */
 public enum FolderPermissionLevel {
 
@@ -86,14 +86,14 @@ public enum FolderPermissionLevel {
    */
   Contributor,
 
-  // The Free/busy Time Only level. (Can only be applied to Calendar folders).
+  // The Free/busy Time Only level. (Can only be applied to Calendar folder).
   /**
    * The Free busy time only.
    */
   FreeBusyTimeOnly,
 
   // The Free/busy Time, Subject and Location level. (Can only be applied to
-  // Calendar folders).
+  // Calendar folder).
   /**
    * The Free busy time and subject and location.
    */

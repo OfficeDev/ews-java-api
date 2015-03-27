@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.property.definition;
 
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.service.folders.Folder;
+import microsoft.exchange.webservices.data.core.service.folder.Folder;
 import microsoft.exchange.webservices.data.property.complex.FolderPermissionCollection;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;

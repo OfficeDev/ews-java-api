@@ -40,13 +40,13 @@ import microsoft.exchange.webservices.data.property.definition.StringPropertyDef
 import java.util.EnumSet;
 
 /**
- * Represents the schema for folders.
+ * Represents the schema for folder.
  */
 @Schema
 public class FolderSchema extends ServiceObjectSchema {
 
   /**
-   * Field URIs for folders.
+   * Field URIs for folder.
    */
   private static class FieldUris {
 

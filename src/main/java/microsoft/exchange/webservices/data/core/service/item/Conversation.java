@@ -487,7 +487,7 @@ public class Conversation extends ServiceObject {
 
   /**
    * Gets a list of all the people who have received
-   * messages in this conversation across all folders in the mailbox.
+   * messages in this conversation across all folder in the mailbox.
    *
    * @return String
    * @throws Exception
@@ -529,7 +529,7 @@ public class Conversation extends ServiceObject {
   /**
    * Gets a list of all the people who have sent
    * messages that are currently unread in this
-   * conversation across all folders in the mailbox.
+   * conversation across all folder in the mailbox.
    *
    * @return unreadSenders
    * @throws ArgumentException
@@ -566,7 +566,7 @@ public class Conversation extends ServiceObject {
 
   /**
    * Gets a list of all the people who have sent messages
-   * in this conversation across all folders in the mailbox.
+   * in this conversation across all folder in the mailbox.
    *
    * @return String
    * @throws Exception
@@ -591,7 +591,7 @@ public class Conversation extends ServiceObject {
 
   /**
    * Gets the delivery time of the message that was last
-   * received in this conversation across all folders in the mailbox.
+   * received in this conversation across all folder in the mailbox.
    *
    * @return Date
    * @throws Exception
@@ -630,7 +630,7 @@ public class Conversation extends ServiceObject {
 
   /**
    * Gets a list summarizing the categories stamped on
-   * messages in this conversation, across all folders in the mailbox.
+   * messages in this conversation, across all folder in the mailbox.
    *
    * @return returnValue
    * @throws ArgumentException
@@ -678,7 +678,7 @@ public class Conversation extends ServiceObject {
 
   /**
    * Gets the flag status for this conversation, calculated by aggregating
-   * individual messages flag status across all folders in the mailbox.
+   * individual messages flag status across all folder in the mailbox.
    *
    * @return returnValue
    * @throws ArgumentException
@@ -717,7 +717,7 @@ public class Conversation extends ServiceObject {
 
   /**
    * Gets a value indicating if at least one message
-   * in this conversation, across all folders in the mailbox,
+   * in this conversation, across all folder in the mailbox,
    * has an attachment.
    *
    * @return boolean
@@ -745,7 +745,7 @@ public class Conversation extends ServiceObject {
 
   /**
    * Gets the total number of messages in this
-   * conversation across all folders in the mailbox.
+   * conversation across all folder in the mailbox.
    *
    * @return integer
    * @throws ServiceLocalException
@@ -785,7 +785,7 @@ public class Conversation extends ServiceObject {
 
   /**
    * Gets the total number of unread messages in this
-   * conversation across all folders in the mailbox.
+   * conversation across all folder in the mailbox.
    *
    * @return returnValue
    * @throws ArgumentException
@@ -822,7 +822,7 @@ public class Conversation extends ServiceObject {
   /**
    * Gets the size of this conversation, calculated by
    * adding the sizes of all messages in the conversation
-   * across all folders in the mailbox.
+   * across all folder in the mailbox.
    *
    * @return integer
    * @throws ServiceLocalException
@@ -848,7 +848,7 @@ public class Conversation extends ServiceObject {
 
   /**
    * Gets a list summarizing the classes of the item
-   * in this conversation, across all folders in the mailbox.
+   * in this conversation, across all folder in the mailbox.
    *
    * @return string
    * @throws Exception
@@ -876,7 +876,7 @@ public class Conversation extends ServiceObject {
   /**
    * Gets the importance of this conversation, calculated by
    * aggregating individual messages importance across all
-   * folders in the mailbox.
+   * folder in the mailbox.
    *
    * @return important
    * @throws Exception
@@ -902,7 +902,7 @@ public class Conversation extends ServiceObject {
 
   /**
    * Gets the Ids of the messages in this conversation,
-   * across all folders in the mailbox.
+   * across all folder in the mailbox.
    *
    * @return Id
    * @throws Exception

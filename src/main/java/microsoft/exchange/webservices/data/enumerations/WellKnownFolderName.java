@@ -97,7 +97,7 @@ public enum WellKnownFolderName {
 
   // The root of the Public Folders hierarchy.
   /**
-   * The Public folders root.
+   * The Public folder root.
    */
   @RequiredServerVersion(version = ExchangeVersion.Exchange2007_SP1)
   PublicFoldersRoot,
@@ -116,7 +116,7 @@ public enum WellKnownFolderName {
 
   // The Search Folders folder, also known as the Finder folder.
   /**
-   * The Search folders.
+   * The Search folder.
    */
   SearchFolders,
 

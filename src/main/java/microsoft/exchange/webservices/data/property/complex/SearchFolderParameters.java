@@ -189,7 +189,7 @@ public final class SearchFolderParameters extends ComplexProperty implements ICo
   }
 
   /**
-   * Gets the list of root folders the search folder searches in.
+   * Gets the list of root folder the search folder searches in.
    *
    * @return the root folder ids
    */

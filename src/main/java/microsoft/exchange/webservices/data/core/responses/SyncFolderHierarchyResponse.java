@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.responses;
 
-import microsoft.exchange.webservices.data.core.service.folders.Folder;
+import microsoft.exchange.webservices.data.core.service.folder.Folder;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.sync.FolderChange;

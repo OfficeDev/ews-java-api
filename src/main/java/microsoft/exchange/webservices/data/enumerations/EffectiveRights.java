@@ -46,20 +46,20 @@ public enum EffectiveRights {
    */
   CreateContents(2),
 
-  // The user can create sub-folders.
+  // The user can create sub-folder.
 
   /**
    * The Create hierarchy.
    */
   CreateHierarchy(4),
 
-  // The user can delete item and/or folders.
+  // The user can delete item and/or folder.
   /**
    * The Delete.
    */
   Delete(8),
 
-  // The user can modify the property of item and/or folders.
+  // The user can modify the property of item and/or folder.
   /**
    * The Modify.
    */

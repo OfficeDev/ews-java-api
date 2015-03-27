@@ -35,14 +35,14 @@ public enum FolderPermissionReadAccess {
   None,
 
   // The user can read the start and end date and time of appointments. (Can
-  // only be applied to Calendar folders).
+  // only be applied to Calendar folder).
   /**
    * The Time only.
    */
   TimeOnly,
 
   // The user can read the start and end date and time, subject and location
-  // of appointments. (Can only be applied to Calendar folders).
+  // of appointments. (Can only be applied to Calendar folder).
   /**
    * The Time and subject and location.
    */

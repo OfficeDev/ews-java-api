@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.search;
 
-import microsoft.exchange.webservices.data.core.service.folders.Folder;
+import microsoft.exchange.webservices.data.core.service.folder.Folder;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,7 +49,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
   private boolean moreAvailable;
 
   /**
-   * The folders.
+   * The folder.
    */
   private ArrayList<Folder> folders = new ArrayList<Folder>();
 
@@ -61,7 +61,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets the total number of folders matching the search criteria available
+   * Gets the total number of folder matching the search criteria available
    * in the searched folder.
    *
    * @return the total count
@@ -71,7 +71,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Sets the total number of folders.
+   * Sets the total number of folder.
    *
    * @param totalCount the new total count
    */
@@ -81,7 +81,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
 
   /**
    * Gets the offset that should be used with FolderView to retrieve the next
-   * page of folders in a FindFolders operation.
+   * page of folder in a FindFolders operation.
    *
    * @return the next page offset
    */
@@ -91,7 +91,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
 
   /**
    * Sets the offset that should be used with FolderView to retrieve the next
-   * page of folders in a FindFolders operation.
+   * page of folder in a FindFolders operation.
    *
    * @param nextPageOffset the new next page offset
    */
@@ -100,7 +100,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets a value indicating whether more folders matching the search
+   * Gets a value indicating whether more folder matching the search
    * criteria. are available in the searched folder.
    *
    * @return true, if is more available
@@ -110,7 +110,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Sets a value indicating whether more folders matching the search
+   * Sets a value indicating whether more folder matching the search
    * criteria. are available in the searched folder.
    *
    * @param moreAvailable the new more available
@@ -120,10 +120,10 @@ public final class FindFoldersResults implements Iterable<Folder> {
   }
 
   /**
-   * Gets a collection containing the folders that were found by the search
+   * Gets a collection containing the folder that were found by the search
    * operation.
    *
-   * @return the folders
+   * @return the folder
    */
   public ArrayList<Folder> getFolders() {
     return folders;

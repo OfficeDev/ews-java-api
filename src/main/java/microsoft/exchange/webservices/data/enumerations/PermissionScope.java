@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.enumerations;
 
 /**
- * Defines the scope of a user's permission on a folders.
+ * Defines the scope of a user's permission on a folder.
  */
 public enum PermissionScope {
 

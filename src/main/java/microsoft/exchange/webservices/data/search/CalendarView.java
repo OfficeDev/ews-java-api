@@ -167,7 +167,7 @@ public final class CalendarView extends ViewBase {
   }
 
   /**
-   * Gets the maximum number of item or folders the search operation should
+   * Gets the maximum number of item or folder the search operation should
    * return.
    *
    * @return The maximum number of item the search operation should return.

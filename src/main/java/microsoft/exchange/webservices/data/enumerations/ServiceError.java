@@ -1237,7 +1237,7 @@ public enum ServiceError {
 
   // / <summary>
   // / A subscription can only be established on
-  // /a single public folder or on folders from a
+  // /a single public folder or on folder from a
   // / single mailbox.
   // / </summary>
   ErrorInvalidSubscriptionRequest,

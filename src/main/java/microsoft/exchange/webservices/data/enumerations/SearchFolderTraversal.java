@@ -34,7 +34,7 @@ public enum SearchFolderTraversal {
    */
   Shallow,
 
-  // Items belonging to the root folder and its sub-folders are retrieved.
+  // Items belonging to the root folder and its sub-folder are retrieved.
   /**
    * The Deep.
    */

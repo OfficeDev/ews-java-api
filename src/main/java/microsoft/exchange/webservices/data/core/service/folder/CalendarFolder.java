@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.folders;
+package microsoft.exchange.webservices.data.core.service.folder;
 
 import microsoft.exchange.webservices.data.core.service.item.Appointment;
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;

@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.core.service.folders.Folder;
+import microsoft.exchange.webservices.data.core.service.folder.Folder;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
@@ -59,7 +59,7 @@ public class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
   /**
    * Adds the range.
    *
-   * @param folders the folders
+   * @param folders the folder
    * @throws ServiceLocalException the service local exception
    */
   protected void addRangeFolder(Iterable<Folder> folders)

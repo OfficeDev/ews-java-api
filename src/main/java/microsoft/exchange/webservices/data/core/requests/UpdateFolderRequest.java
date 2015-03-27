@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.requests;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.service.folders.Folder;
+import microsoft.exchange.webservices.data.core.service.folder.Folder;
 import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
 import microsoft.exchange.webservices.data.core.responses.UpdateFolderResponse;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
@@ -44,7 +44,7 @@ public final class UpdateFolderRequest extends
     MultiResponseServiceRequest<ServiceResponse> {
 
   /**
-   * The folders.
+   * The folder.
    */
   private ArrayList<Folder> folders = new ArrayList<Folder>();
 
@@ -163,9 +163,9 @@ public final class UpdateFolderRequest extends
   }
 
   /**
-   * Gets the folders.
+   * Gets the folder.
    *
-   * @return the folders
+   * @return the folder
    */
   public ArrayList<Folder> getFolders() {
     return this.folders;

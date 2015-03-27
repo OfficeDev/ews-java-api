@@ -34,7 +34,7 @@ public enum DeleteMode {
    */
   HardDelete,
 
-  // The item or folder will be moved to the dumpster. Items and folders in
+  // The item or folder will be moved to the dumpster. Items and folder in
   // the dumpster can be recovered.
   /**
    * The Soft delete.

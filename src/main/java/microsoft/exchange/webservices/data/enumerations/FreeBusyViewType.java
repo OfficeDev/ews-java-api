@@ -41,7 +41,7 @@ public enum FreeBusyViewType {
   // does not have an Availability service configured, the Availability
   // service of the requestor retrieves the
   // target users free/busy information from the free/busy public folder.
-  // Because public folders only store
+  // Because public folder only store
   // free/busy information in merged form, MergedOnly is the only available
   // information.
   /**

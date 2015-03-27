@@ -272,7 +272,7 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
   private boolean canCreateItems;
 
   /**
-   * The can create sub folders.
+   * The can create sub folder.
    */
   private boolean canCreateSubFolders;
 
@@ -535,18 +535,18 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
 
   /**
    * Gets  a value indicating whether the user can create
-   * sub-folders.
+   * sub-folder.
    *
-   * @return the can create sub folders
+   * @return the can create sub folder
    */
   public boolean getCanCreateSubFolders() {
     return this.canCreateSubFolders;
   }
 
   /**
-   * Sets the can create sub folders.
+   * Sets the can create sub folder.
    *
-   * @param value the new can create sub folders
+   * @param value the new can create sub folder
    */
   public void setCanCreateSubFolders(boolean value) {
     if (this.canSetFieldValue(this.canCreateSubFolders, value)) {

@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.service.item.Appointment;
 import microsoft.exchange.webservices.data.misc.AsyncCallback;
 import microsoft.exchange.webservices.data.misc.AsyncRequestResult;
 import microsoft.exchange.webservices.data.core.service.item.Conversation;
-import microsoft.exchange.webservices.data.core.service.folders.Folder;
+import microsoft.exchange.webservices.data.core.service.folder.Folder;
 import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
@@ -336,13 +336,13 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Finds folders.
+   * Finds folder.
    *
    * @param parentFolderIds   The parent folder ids.
    * @param searchFilter      The search filter. Available search filter classes include
    *                          SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
    *                          SearchFilter.SearchFilterCollection
-   * @param view              The view controlling the number of folders returned.
+   * @param view              The view controlling the number of folder returned.
    * @param errorHandlingMode Indicates the type of error handling should be done.
    * @return Collection of service response.
    * @throws Exception the exception
@@ -363,14 +363,14 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of the specified
+   * Obtains a list of folder by searching the sub-folder of the specified
    * folder.
    *
-   * @param parentFolderId The Id of the folder in which to search for folders.
+   * @param parentFolderId The Id of the folder in which to search for folder.
    * @param searchFilter   The search filter. Available search filter classes include
    *                       SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
    *                       SearchFilter.SearchFilterCollection
-   * @param view           The view controlling the number of folders returned.
+   * @param view           The view controlling the number of folder returned.
    * @return An object representing the results of the search operation.
    * @throws Exception the exception
    */
@@ -390,11 +390,11 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of the specified
+   * Obtains a list of folder by searching the sub-folder of the specified
    * folder.
    *
-   * @param parentFolderId The Id of the folder in which to search for folders.
-   * @param view           The view controlling the number of folders returned.
+   * @param parentFolderId The Id of the folder in which to search for folder.
+   * @param view           The view controlling the number of folder returned.
    * @return An object representing the results of the search operation.
    * @throws Exception the exception
    */
@@ -414,14 +414,14 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of the specified
+   * Obtains a list of folder by searching the sub-folder of the specified
    * folder.
    *
-   * @param parentFolderName The name of the folder in which to search for folders.
+   * @param parentFolderName The name of the folder in which to search for folder.
    * @param searchFilter     The search filter. Available search filter classes include
    *                         SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
    *                         SearchFilter.SearchFilterCollection
-   * @param view             The view controlling the number of folders returned.
+   * @param view             The view controlling the number of folder returned.
    * @return An object representing the results of the search operation.
    * @throws Exception the exception
    */
@@ -432,7 +432,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a list of folders by searching the sub-folders of the specified
+   * Obtains a list of folder by searching the sub-folder of the specified
    * folder.
    *
    * @param parentFolderName the parent folder name
@@ -541,7 +541,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param folderId         The folder id
    * @param deleteMode       The delete mode
    * @param deleteSubFolders if set to <c>true</c> empty folder should also delete sub
-   *                         folders.
+   *                         folder.
    * @throws Exception the exception
    */
   public void emptyFolder(FolderId folderId, DeleteMode deleteMode, boolean deleteSubFolders) throws Exception {
@@ -945,7 +945,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *                          SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
    *                          SearchFilter.SearchFilterCollection
    * @param queryString       the query string
-   * @param view              The view controlling the number of folders returned.
+   * @param view              The view controlling the number of folder returned.
    * @param groupBy           The group by.
    * @param errorHandlingMode Indicates the type of error handling should be done.
    * @return Service response collection.
@@ -1624,11 +1624,11 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
 
   /**
    * Finds contacts in the Global Address List and/or in specific contact
-   * folders that have names that match the one passed as a parameter. Calling
+   * folder that have names that match the one passed as a parameter. Calling
    * this method results in a call to EWS.
    *
    * @param nameToResolve          The name to resolve.
-   * @param parentFolderIds        The Ids of the contact folders in which to look for matching
+   * @param parentFolderIds        The Ids of the contact folder in which to look for matching
    *                               contacts.
    * @param searchScope            The scope of the search.
    * @param returnContactDetails   Indicates whether full contact information should be returned
@@ -1833,7 +1833,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Subscribes to pull notification on all folders in the authenticated
+   * Subscribes to pull notification on all folder in the authenticated
    * user's mailbox. Calling this method results in a call to EWS.
    *
    * @param timeout    the timeout
@@ -1855,7 +1855,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
 
   /**
    * Begins an asynchronous request to subscribe to pull notification on all
-   * folders in the authenticated user's mailbox. Calling this method results
+   * folder in the authenticated user's mailbox. Calling this method results
    * in a call to EWS.
    *
    * @param callback   The AsyncCallback delegate.
@@ -2119,7 +2119,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Subscribes to push notification on all folders in the authenticated
+   * Subscribes to push notification on all folder in the authenticated
    * user's mailbox. Calling this method results in a call to EWS.
    *
    * @param url        the url
@@ -2142,7 +2142,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
 
   /**
    * Begins an asynchronous request to subscribe to push notification on all
-   * folders in the authenticated user's mailbox. Calling this method results
+   * folder in the authenticated user's mailbox. Calling this method results
    * in a call to EWS.
    *
    * @param callback   The asynccallback delegate
@@ -2248,7 +2248,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Subscribes to streaming notification on all folders in the authenticated
+   * Subscribes to streaming notification on all folder in the authenticated
    * user's mailbox. Calling this method results in a call to EWS.
    *
    * @param eventTypes The event types to subscribe to.
@@ -2313,7 +2313,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Subscribes to streaming notification on all folders in the authenticated
+   * Subscribes to streaming notification on all folder in the authenticated
    * user's mailbox. Calling this method results in a call to EWS.
    *
    *@param eventTypes
@@ -2334,7 +2334,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
 
   /**
    * Begins an asynchronous request to subscribe to streaming notification on
-   * all folders in the authenticated user's mailbox. Calling this method
+   * all folder in the authenticated user's mailbox. Calling this method
    * results in a call to EWS.
    *
    * @param callback The AsyncCallback delegate
@@ -2506,7 +2506,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Synchronizes the sub-folders of a specific folder. Calling this method
+   * Synchronizes the sub-folder of a specific folder. Calling this method
    * results in a call to EWS.
    *
    * @param syncFolderId the sync folder id
@@ -2524,7 +2524,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Begins an asynchronous request to synchronize the sub-folders of a
+   * Begins an asynchronous request to synchronize the sub-folder of a
    * specific folder. Calling this method results in a call to EWS.
    *
    * @param callback     The AsyncCallback delegate
