@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.serviceObjects.items;
+package microsoft.exchange.webservices.data.core.service.items;
 
 import microsoft.exchange.webservices.base.BaseTest;
 import microsoft.exchange.webservices.data.core.service.item.Task;
