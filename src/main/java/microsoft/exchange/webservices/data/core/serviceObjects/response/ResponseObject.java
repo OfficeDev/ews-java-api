@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.serviceObjects.responseObjects;
+package microsoft.exchange.webservices.data.core.serviceObjects.response;
 
 /**
  * Represents the base class for all responses that can be sent.

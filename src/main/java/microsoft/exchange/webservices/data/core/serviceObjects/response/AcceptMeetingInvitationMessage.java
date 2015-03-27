@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.serviceObjects.responseObjects;
+package microsoft.exchange.webservices.data.core.serviceObjects.response;
 
 import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
 import microsoft.exchange.webservices.data.core.XmlElementNames;

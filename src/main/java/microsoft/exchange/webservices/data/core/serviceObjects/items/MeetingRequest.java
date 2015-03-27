@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.core.serviceObjects.items;
 
-import microsoft.exchange.webservices.data.core.serviceObjects.responseObjects.AcceptMeetingInvitationMessage;
+import microsoft.exchange.webservices.data.core.serviceObjects.response.AcceptMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.core.serviceObjects.schemas.AppointmentSchema;
-import microsoft.exchange.webservices.data.core.serviceObjects.responseObjects.DeclineMeetingInvitationMessage;
+import microsoft.exchange.webservices.data.core.serviceObjects.response.DeclineMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.serviceObjects.schemas.MeetingRequestSchema;
 import microsoft.exchange.webservices.data.core.PropertySet;
