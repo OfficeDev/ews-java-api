@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.exceptions;
 
-import microsoft.exchange.webservices.data.autodiscover.AutodiscoverError;
+import microsoft.exchange.webservices.data.autodiscover.exceptions.AutodiscoverError;
 
 /**
  * Represents an exception that is thrown when the Autodiscover service returns

@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.autodiscover.configuration;
 
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
-import microsoft.exchange.webservices.data.autodiscover.AutodiscoverError;
+import microsoft.exchange.webservices.data.autodiscover.exceptions.AutodiscoverError;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
