@@ -27,9 +27,9 @@ import microsoft.exchange.webservices.data.core.requests.DisconnectPhoneCallRequ
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.requests.GetPhoneCallRequest;
-import microsoft.exchange.webservices.data.core.responses.GetPhoneCallResponse;
+import microsoft.exchange.webservices.data.core.response.GetPhoneCallResponse;
 import microsoft.exchange.webservices.data.core.requests.PlayOnPhoneRequest;
-import microsoft.exchange.webservices.data.core.responses.PlayOnPhoneResponse;
+import microsoft.exchange.webservices.data.core.response.PlayOnPhoneResponse;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 
 /**

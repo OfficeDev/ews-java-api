@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.exceptions;
 
-import microsoft.exchange.webservices.data.core.responses.DeleteAttachmentResponse;
+import microsoft.exchange.webservices.data.core.response.DeleteAttachmentResponse;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.responses.ServiceResponseCollection;
+import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
 
 /**
  * Represents an error that occurs when a call to the DeleteAttachment web

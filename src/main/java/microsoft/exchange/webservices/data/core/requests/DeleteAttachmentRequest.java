@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.requests;
 /**
  * Represents a DeleteAttachment request.
  */
-import microsoft.exchange.webservices.data.core.responses.DeleteAttachmentResponse;
+import microsoft.exchange.webservices.data.core.response.DeleteAttachmentResponse;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;

@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.requests;
 
-import microsoft.exchange.webservices.data.core.responses.DelegateManagementResponse;
+import microsoft.exchange.webservices.data.core.response.DelegateManagementResponse;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;

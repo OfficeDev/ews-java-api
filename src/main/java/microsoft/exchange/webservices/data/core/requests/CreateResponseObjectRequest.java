@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.requests;
 
-import microsoft.exchange.webservices.data.core.responses.CreateResponseObjectResponse;
+import microsoft.exchange.webservices.data.core.response.CreateResponseObjectResponse;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
