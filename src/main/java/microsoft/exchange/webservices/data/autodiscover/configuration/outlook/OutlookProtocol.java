@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.autodiscover.configurationSettings.outlook;
+package microsoft.exchange.webservices.data.autodiscover.configuration.outlook;
 
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;

@@ -21,10 +21,10 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.autodiscover.configurationSettings.outlook;
+package microsoft.exchange.webservices.data.autodiscover.configuration.outlook;
 
 import microsoft.exchange.webservices.data.autodiscover.UserSettingError;
-import microsoft.exchange.webservices.data.autodiscover.configurationSettings.ConfigurationSettingsBase;
+import microsoft.exchange.webservices.data.autodiscover.configuration.ConfigurationSettingsBase;
 import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
