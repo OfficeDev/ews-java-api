@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.responses;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
@@ -79,7 +79,7 @@ public final class MoveCopyItemResponse extends ServiceResponse implements
         null, /* requestedPropertySet */
         false); /* summaryPropertiesOnly */
 
-    // We only receive the copied or moved items if the copy or move
+    // We only receive the copied or moved item if the copy or move
     // operation was within
     // a single mailbox. No item is returned if the operation is
     // cross-mailbox, from a

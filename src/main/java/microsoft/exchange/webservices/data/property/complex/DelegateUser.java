@@ -51,7 +51,7 @@ public final class DelegateUser extends ComplexProperty {
   private boolean receiveCopiesOfMeetingMessages;
 
   /**
-   * The view private items.
+   * The view private item.
    */
   private boolean viewPrivateItems;
 
@@ -125,9 +125,9 @@ public final class DelegateUser extends ComplexProperty {
 
   /**
    * Gets  a value indicating if the delegate user should be
-   * able to view the principal's private items.
+   * able to view the principal's private item.
    *
-   * @return the view private items
+   * @return the view private item
    */
   public boolean getViewPrivateItems() {
     return this.viewPrivateItems;
@@ -136,9 +136,9 @@ public final class DelegateUser extends ComplexProperty {
 
   /**
    * Gets  a value indicating if the delegate user should be able to
-   * view the principal's private items.
+   * view the principal's private item.
    *
-   * @param value the new view private items
+   * @param value the new view private item
    */
   public void setViewPrivateItems(boolean value) {
 

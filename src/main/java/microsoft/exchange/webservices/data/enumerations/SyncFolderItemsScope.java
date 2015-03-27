@@ -24,19 +24,19 @@
 package microsoft.exchange.webservices.data.enumerations;
 
 /**
- * Determines items to be included in a SyncFolderItems response.
+ * Determines item to be included in a SyncFolderItems response.
  */
 public enum SyncFolderItemsScope {
 
-  // Include only normal items in the response.
+  // Include only normal item in the response.
   /**
-   * The Normal items.
+   * The Normal item.
    */
   NormalItems,
 
-  // Include normal and associated items in the response.
+  // Include normal and associated item in the response.
   /**
-   * The Normal and associated items.
+   * The Normal and associated item.
    */
   NormalAndAssociatedItems
 }

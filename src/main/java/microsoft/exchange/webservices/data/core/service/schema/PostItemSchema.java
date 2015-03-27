@@ -33,7 +33,7 @@ import microsoft.exchange.webservices.data.property.definition.PropertyDefinitio
 import java.util.EnumSet;
 
 /**
- * Represents the schema for post items.
+ * Represents the schema for post item.
  */
 @Schema
 public final class PostItemSchema extends ItemSchema {

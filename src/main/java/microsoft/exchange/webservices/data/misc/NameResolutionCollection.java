@@ -52,7 +52,7 @@ public final class NameResolutionCollection implements
   private boolean includesAllResolutions;
 
   /**
-   * The items.
+   * The item.
    */
   private List<NameResolution> items = new ArrayList<NameResolution>();
 

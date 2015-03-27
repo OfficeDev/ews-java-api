@@ -51,7 +51,7 @@ import javax.xml.stream.XMLStreamException;
 import java.util.*;
 
 /**
- * Represents a recurrence pattern, as used by Appointment and Task items.
+ * Represents a recurrence pattern, as used by Appointment and Task item.
  */
 public abstract class Recurrence extends ComplexProperty {
 

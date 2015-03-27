@@ -52,24 +52,24 @@ public abstract class ComplexPropertyCollection
     Iterable<TComplexProperty>, IComplexPropertyChangedDelegate {
 
   /**
-   * The items.
+   * The item.
    */
   private List<TComplexProperty> items = new ArrayList<TComplexProperty>();
 
   /**
-   * The added items.
+   * The added item.
    */
   private List<TComplexProperty> addedItems =
       new ArrayList<TComplexProperty>();
 
   /**
-   * The modified items.
+   * The modified item.
    */
   private List<TComplexProperty> modifiedItems =
       new ArrayList<TComplexProperty>();
 
   /**
-   * The removed items.
+   * The removed item.
    */
   private List<TComplexProperty> removedItems =
       new ArrayList<TComplexProperty>();
@@ -263,36 +263,36 @@ public abstract class ComplexPropertyCollection
   }
 
   /**
-   * Gets the items.
+   * Gets the item.
    *
-   * @return The items.
+   * @return The item.
    */
   public List<TComplexProperty> getItems() {
     return this.items;
   }
 
   /**
-   * Gets the added items.
+   * Gets the added item.
    *
-   * @return The added items.
+   * @return The added item.
    */
   protected List<TComplexProperty> getAddedItems() {
     return this.addedItems;
   }
 
   /**
-   * Gets the modified items.
+   * Gets the modified item.
    *
-   * @return The modified items.
+   * @return The modified item.
    */
   protected List<TComplexProperty> getModifiedItems() {
     return this.modifiedItems;
   }
 
   /**
-   * Gets the removed items.
+   * Gets the removed item.
    *
-   * @return The removed items.
+   * @return The removed item.
    */
   protected List<TComplexProperty> getRemovedItems() {
     return this.removedItems;

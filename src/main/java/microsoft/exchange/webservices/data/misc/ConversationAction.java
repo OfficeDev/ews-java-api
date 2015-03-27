@@ -171,7 +171,7 @@ public class ConversationAction {
 
   /**
    * ConversationLastSyncTime is used in one
-   * time action to determine the items
+   * time action to determine the item
    * on which to take the action.
    *
    * @return conversationLastSyncTime
@@ -182,7 +182,7 @@ public class ConversationAction {
 
   /**
    * ConversationLastSyncTime is used in
-   * one time action to determine the items
+   * one time action to determine the item
    * on which to take the action.
    */
   public void setConversationLastSyncTime(Date value) {

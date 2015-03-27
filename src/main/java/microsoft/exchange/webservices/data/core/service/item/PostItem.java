@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.items;
+package microsoft.exchange.webservices.data.core.service.item;
 
 import microsoft.exchange.webservices.data.attribute.Attachable;
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
@@ -46,7 +46,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Represents a post item. Properties available on post items are defined in the
+ * Represents a post item. Properties available on post item are defined in the
  * PostItemSchema class.
  */
 @Attachable

@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.requests;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
@@ -44,7 +44,7 @@ public final class SendItemRequest extends
     MultiResponseServiceRequest<ServiceResponse> {
 
   /**
-   * The items.
+   * The item.
    */
   private Iterable<Item> items;
 
@@ -187,18 +187,18 @@ public final class SendItemRequest extends
   }
 
   /**
-   * Gets the items. <value>The items.</value>
+   * Gets the item. <value>The item.</value>
    *
-   * @return the items
+   * @return the item
    */
   public Iterable<Item> getItems() {
     return this.items;
   }
 
   /**
-   * Sets the items.
+   * Sets the item.
    *
-   * @param items the new items
+   * @param items the new item
    */
   public void setItems(Iterable<Item> items) {
     this.items = items;

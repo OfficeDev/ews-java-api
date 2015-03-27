@@ -43,7 +43,7 @@ public enum WellKnownFolderName {
 
   // The Deleted Items folder
   /**
-   * The Deleted items.
+   * The Deleted item.
    */
   DeletedItems,
 
@@ -79,7 +79,7 @@ public enum WellKnownFolderName {
 
   // The Sent Items folder.
   /**
-   * The Sent items.
+   * The Sent item.
    */
   SentItems,
 

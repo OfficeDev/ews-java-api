@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.items;
+package microsoft.exchange.webservices.data.core.service.item;
 
 import microsoft.exchange.webservices.data.attribute.Attachable;
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
@@ -70,7 +70,7 @@ import java.util.EnumSet;
 import java.util.ListIterator;
 
 /**
- * Represents a generic item. Properties available on items are defined in the
+ * Represents a generic item. Properties available on item are defined in the
  * ItemSchema class.
  */
 @Attachable

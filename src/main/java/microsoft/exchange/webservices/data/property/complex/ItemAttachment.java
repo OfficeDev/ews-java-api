@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.interfaces.IServiceObjectChangedDelegate;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.BodyType;
@@ -189,7 +189,7 @@ public class ItemAttachment extends Attachment implements IServiceObjectChangedD
           "The name of the item attachment at index %d must be set.", attachmentIndex));
     }
 
-    // Recurse through any items attached to item attachment.
+    // Recurse through any item attached to item attachment.
     this.validate();
   }
 

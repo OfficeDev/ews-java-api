@@ -28,8 +28,8 @@ package microsoft.exchange.webservices.data.core.service.response;
  *
  */
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
-import microsoft.exchange.webservices.data.core.service.items.EmailMessage;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.EmailMessage;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.PropertySet;
@@ -110,7 +110,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends Serv
    *
    * @param destinationFolderId the destination folder id
    * @param messageDisposition  the message disposition
-   * @return The list of items returned by EWS.
+   * @return The list of item returned by EWS.
    * @throws Exception the exception
    */
   protected List<Item> internalCreate(FolderId destinationFolderId,

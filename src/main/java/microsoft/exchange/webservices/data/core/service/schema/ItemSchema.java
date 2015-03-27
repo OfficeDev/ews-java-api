@@ -53,7 +53,7 @@ import microsoft.exchange.webservices.data.property.definition.StringPropertyDef
 import java.util.EnumSet;
 
 /**
- * Represents the schema for generic items.
+ * Represents the schema for generic item.
  */
 @Schema
 public class ItemSchema extends ServiceObjectSchema {

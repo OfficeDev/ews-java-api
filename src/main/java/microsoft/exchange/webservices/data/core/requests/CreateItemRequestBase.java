@@ -188,18 +188,18 @@ abstract class CreateItemRequestBase<TServiceObject extends ServiceObject,
   }
 
   /**
-   * Gets  the items.
+   * Gets  the item.
    *
-   * @param value the new items
+   * @param value the new item
    */
   public void setItems(Collection<TServiceObject> value) {
     this.setObjects(value);
   }
 
   /**
-   * Gets the items.
+   * Gets the item.
    *
-   * @return the items
+   * @return the item
    */
   public Iterable<TServiceObject> getItems() {
     return this.getObjects();

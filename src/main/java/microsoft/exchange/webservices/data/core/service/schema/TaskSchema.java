@@ -45,7 +45,7 @@ import microsoft.exchange.webservices.data.property.definition.TaskDelegationSta
 import java.util.EnumSet;
 
 /**
- * Represents the schema for task items.
+ * Represents the schema for task item.
  */
 @Schema
 public class TaskSchema extends ItemSchema {

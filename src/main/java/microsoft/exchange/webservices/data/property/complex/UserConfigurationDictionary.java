@@ -170,7 +170,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   }
 
   /**
-   * Removes all items from the user configuration dictionary.
+   * Removes all item from the user configuration dictionary.
    */
   public void clear() {
     if (this.dictionary.size() != 0) {

@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.items;
+package microsoft.exchange.webservices.data.core.service.item;
 
 import microsoft.exchange.webservices.data.attribute.RequiredServerVersion;
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;

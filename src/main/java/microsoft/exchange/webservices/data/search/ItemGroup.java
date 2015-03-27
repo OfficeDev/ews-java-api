@@ -24,14 +24,14 @@
 package microsoft.exchange.webservices.data.search;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 /**
- * Represents a group of items as returned by grouped item search operations.
+ * Represents a group of item as returned by grouped item search operations.
  *
  * @param <TItem> the generic type
  */
@@ -43,7 +43,7 @@ public final class ItemGroup<TItem extends Item> {
   private String groupIndex;
 
   /**
-   * The items.
+   * The item.
    */
   private Collection<TItem> items;
 
@@ -51,12 +51,12 @@ public final class ItemGroup<TItem extends Item> {
    * Initializes a new instance of the class.
    *
    * @param groupIndex the group index
-   * @param items      the items
+   * @param items      the item
    */
   public ItemGroup(String groupIndex, List<TItem> items) {
     EwsUtilities.EwsAssert(groupIndex != null, "ItemGroup.ctor", "groupIndex is null");
     EwsUtilities
-        .EwsAssert(items != null, "ItemGroup.ctor", "items is null");
+        .EwsAssert(items != null, "ItemGroup.ctor", "item is null");
 
     this.groupIndex = groupIndex;
     this.items = new ArrayList<TItem>(items);
@@ -79,16 +79,16 @@ public final class ItemGroup<TItem extends Item> {
   }
 
   /**
-   * Gets a collection of the items in this group.
+   * Gets a collection of the item in this group.
    *
-   * @return the items
+   * @return the item
    */
   public Collection<TItem> getItems() {
     return this.items;
   }
 
   /**
-   * Sets a collection of the items in this group.
+   * Sets a collection of the item in this group.
    */
   private void setItems(Collection<TItem> value) {
     this.items = value;

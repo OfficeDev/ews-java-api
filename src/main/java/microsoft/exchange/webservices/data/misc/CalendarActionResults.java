@@ -23,12 +23,12 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.core.service.items.Appointment;
+import microsoft.exchange.webservices.data.core.service.item.Appointment;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.service.items.Item;
-import microsoft.exchange.webservices.data.core.service.items.MeetingCancellation;
-import microsoft.exchange.webservices.data.core.service.items.MeetingRequest;
-import microsoft.exchange.webservices.data.core.service.items.MeetingResponse;
+import microsoft.exchange.webservices.data.core.service.item.Item;
+import microsoft.exchange.webservices.data.core.service.item.MeetingCancellation;
+import microsoft.exchange.webservices.data.core.service.item.MeetingRequest;
+import microsoft.exchange.webservices.data.core.service.item.MeetingResponse;
 
 /**
  * Represents the results of an action performed on a calendar item or meeting
@@ -60,7 +60,7 @@ public final class CalendarActionResults {
   /**
    * Initializes a new instance of the class.
    *
-   * @param items the items
+   * @param items the item
    */
   public CalendarActionResults(Iterable<Item> items) {
     this.appointment = EwsUtilities.findFirstItemOfType(Appointment.class, items);

@@ -48,7 +48,7 @@ public final class CalendarView extends ViewBase {
   private ItemTraversal traversal = ItemTraversal.Shallow;
 
   /**
-   * The max items returned.
+   * The max item returned.
    */
   private Integer maxItemsReturned;
 
@@ -120,7 +120,7 @@ public final class CalendarView extends ViewBase {
    *
    * @param startDate        the start date
    * @param endDate          the end date
-   * @param maxItemsReturned the max items returned
+   * @param maxItemsReturned the max item returned
    */
   public CalendarView(Date startDate, Date endDate, int maxItemsReturned) {
     this(startDate, endDate);
@@ -167,10 +167,10 @@ public final class CalendarView extends ViewBase {
   }
 
   /**
-   * Gets the maximum number of items or folders the search operation should
+   * Gets the maximum number of item or folders the search operation should
    * return.
    *
-   * @return The maximum number of items the search operation should return.
+   * @return The maximum number of item the search operation should return.
    */
   protected Integer getMaxEntriesReturned() {
     return this.maxItemsReturned;
@@ -213,9 +213,9 @@ public final class CalendarView extends ViewBase {
   }
 
   /**
-   * The maximum number of items the search operation should return.
+   * The maximum number of item the search operation should return.
    *
-   * @return the max items returned
+   * @return the max item returned
    */
   public Integer getMaxItemsReturned() {
 
@@ -223,9 +223,9 @@ public final class CalendarView extends ViewBase {
   }
 
   /**
-   * Sets the max items returned.
+   * Sets the max item returned.
    *
-   * @param maxItemsReturned the new max items returned
+   * @param maxItemsReturned the new max item returned
    * @throws ArgumentException the argument exception
    */
   public void setMaxItemsReturned(Integer maxItemsReturned)

@@ -267,7 +267,7 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
   private UserId userId;
 
   /**
-   * The can create items.
+   * The can create item.
    */
   private boolean canCreateItems;
 
@@ -292,17 +292,17 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
   private boolean isFolderContact;
 
   /**
-   * The edit items.
+   * The edit item.
    */
   private PermissionScope editItems = PermissionScope.None;
 
   /**
-   * The delete items.
+   * The delete item.
    */
   private PermissionScope deleteItems = PermissionScope.None;
 
   /**
-   * The read items.
+   * The read item.
    */
   private FolderPermissionReadAccess readItems = FolderPermissionReadAccess.None;
 
@@ -512,18 +512,18 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
   }
 
   /**
-   * Gets  a value indicating whether the user can create new items.
+   * Gets  a value indicating whether the user can create new item.
    *
-   * @return the can create items
+   * @return the can create item
    */
   public boolean getCanCreateItems() {
     return this.canCreateItems;
   }
 
   /**
-   * Sets the can create items.
+   * Sets the can create item.
    *
-   * @param value the new can create items
+   * @param value the new can create item
    */
   public void setCanCreateItems(boolean value) {
     if (this.canSetFieldValue(this.canCreateItems, value)) {
@@ -626,18 +626,18 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
 
   /**
    * Gets  a value indicating if/how the user can edit existing
-   * items.
+   * item.
    *
-   * @return the edits the items
+   * @return the edits the item
    */
   public PermissionScope getEditItems() {
     return this.editItems;
   }
 
   /**
-   * Sets the edits the items.
+   * Sets the edits the item.
    *
-   * @param value the new edits the items
+   * @param value the new edits the item
    */
   public void setEditItems(PermissionScope value) {
     if (this.canSetFieldValue(this.editItems, value)) {
@@ -649,18 +649,18 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
 
   /**
    * Gets  a value indicating if/how the user can delete existing
-   * items.
+   * item.
    *
-   * @return the delete items
+   * @return the delete item
    */
   public PermissionScope getDeleteItems() {
     return this.deleteItems;
   }
 
   /**
-   * Sets the delete items.
+   * Sets the delete item.
    *
-   * @param value the new delete items
+   * @param value the new delete item
    */
   public void setDeleteItems(PermissionScope value) {
     if (this.canSetFieldValue(this.deleteItems, value)) {
@@ -671,18 +671,18 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
   }
 
   /**
-   * Gets  the read items access permission.
+   * Gets  the read item access permission.
    *
-   * @return the read items
+   * @return the read item
    */
   public FolderPermissionReadAccess getReadItems() {
     return this.readItems;
   }
 
   /**
-   * Sets the read items.
+   * Sets the read item.
    *
-   * @param value the new read items
+   * @param value the new read item
    */
   public void setReadItems(FolderPermissionReadAccess value) {
     if (this.canSetFieldValue(this.readItems, value)) {

@@ -118,10 +118,10 @@ public abstract class ViewBase {
   protected abstract String getViewXmlElementName();
 
   /**
-   * Gets the maximum number of items or folders the search operation should
+   * Gets the maximum number of item or folders the search operation should
    * return.
    *
-   * @return The maximum number of items or folders that should be returned by
+   * @return The maximum number of item or folders that should be returned by
    * the search operation.
    */
   protected abstract Integer getMaxEntriesReturned();
@@ -175,8 +175,8 @@ public abstract class ViewBase {
 
   /**
    * Gets the property set. PropertySet determines which property will be
-   * loaded on found items. If PropertySet is null, all first class property
-   * are loaded on found items.
+   * loaded on found item. If PropertySet is null, all first class property
+   * are loaded on found item.
    *
    * @return the property set
    */
@@ -186,8 +186,8 @@ public abstract class ViewBase {
 
   /**
    * Sets the property set. PropertySet determines which property will be
-   * loaded on found items. If PropertySet is null, all first class property
-   * are loaded on found items.
+   * loaded on found item. If PropertySet is null, all first class property
+   * are loaded on found item.
    *
    * @param propertySet The property set
    */

@@ -23,13 +23,13 @@
 
 package microsoft.exchange.webservices.data.core.responses;
 
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.sync.ItemChange;
 
 /**
- * Represents the response to a folder items synchronization operation.
+ * Represents the response to a folder item synchronization operation.
  */
 public final class SyncFolderItemsResponse extends
     SyncResponse<Item, ItemChange> {

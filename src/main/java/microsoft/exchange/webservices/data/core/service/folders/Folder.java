@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.service.folders;
 
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.service.schema.FolderSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
@@ -371,11 +371,11 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Find items.
+   * Find item.
    *
    * @param <TItem>     The type of the item.
    * @param queryString query string to be used for indexed search
-   * @param view        The view controlling the number of items returned.
+   * @param view        The view controlling the number of item returned.
    * @param groupBy     The group by.
    * @return FindItems response collection.
    * @throws Exception the exception
@@ -395,13 +395,13 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Find items.
+   * Find item.
    *
    * @param <TItem>      The type of the item.
    * @param searchFilter The search filter. Available search filter classes include
    *                     SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
    *                     SearchFilter.SearchFilterCollection
-   * @param view         The view controlling the number of items returned.
+   * @param view         The view controlling the number of item returned.
    * @param groupBy      The group by.
    * @return FindItems response collection.
    * @throws Exception the exception
@@ -420,12 +420,12 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Find items.
+   * Find item.
    *
    * @param searchFilter The search filter. Available search filter classes include
    *                     SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
    *                     SearchFilter.SearchFilterCollection
-   * @param view         The view controlling the number of items returned.
+   * @param view         The view controlling the number of item returned.
    * @return FindItems results collection.
    * @throws Exception the exception
    */
@@ -440,10 +440,10 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Find items.
+   * Find item.
    *
    * @param queryString query string to be used for indexed search
-   * @param view        The view controlling the number of items returned.
+   * @param view        The view controlling the number of item returned.
    * @return FindItems results collection.
    * @throws Exception the exception
    */
@@ -458,9 +458,9 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Find items.
+   * Find item.
    *
-   * @param view The view controlling the number of items returned.
+   * @param view The view controlling the number of item returned.
    * @return FindItems results collection.
    * @throws Exception the exception
    */
@@ -473,14 +473,14 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Find items.
+   * Find item.
    *
    * @param searchFilter The search filter. Available search filter classes include
    *                     SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
    *                     SearchFilter.SearchFilterCollection
-   * @param view         The view controlling the number of items returned.
+   * @param view         The view controlling the number of item returned.
    * @param groupBy      The group by.
-   * @return A collection of grouped items representing the contents of this
+   * @return A collection of grouped item representing the contents of this
    * folder.
    * @throws Exception the exception
    */
@@ -496,12 +496,12 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Find items.
+   * Find item.
    *
    * @param queryString query string to be used for indexed search
-   * @param view        The view controlling the number of items returned.
+   * @param view        The view controlling the number of item returned.
    * @param groupBy     The group by.
-   * @return A collection of grouped items representing the contents of this
+   * @return A collection of grouped item representing the contents of this
    * folder.
    * @throws Exception the exception
    */
@@ -548,12 +548,12 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of this folder.
+   * Obtains a grouped list of item by searching the contents of this folder.
    * Calling this method results in a call to EWS.
    *
    * @param view    The view controlling the number of folders returned.
    * @param groupBy The grouping criteria.
-   * @return A collection of grouped items representing the contents of this
+   * @return A collection of grouped item representing the contents of this
    * folder.
    * @throws Exception the exception
    */
@@ -700,7 +700,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Gets the total number of items contained in the folder.
+   * Gets the total number of item contained in the folder.
    *
    * @return the total count
    * @throws NumberFormatException the number format exception
@@ -766,7 +766,7 @@ public class Folder extends ServiceObject {
   }
 
   /**
-   * Gets the number of unread items in the folder.
+   * Gets the number of unread item in the folder.
    *
    * @return the unread count
    * @throws NumberFormatException the number format exception

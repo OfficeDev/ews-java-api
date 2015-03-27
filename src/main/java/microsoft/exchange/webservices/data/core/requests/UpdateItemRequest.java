@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.requests;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.responses.UpdateItemResponse;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
@@ -51,12 +51,12 @@ public final class UpdateItemRequest extends
     MultiResponseServiceRequest<UpdateItemResponse> {
 
   /**
-   * The items.
+   * The item.
    */
   private List<Item> items = new ArrayList<Item>();
 
   /**
-   * The saved items destination folder.
+   * The saved item destination folder.
    */
   private FolderId savedItemsDestinationFolder;
 
@@ -295,27 +295,27 @@ public final class UpdateItemRequest extends
   }
 
   /**
-   * Gets the items.
+   * Gets the item.
    *
-   * @return the items
+   * @return the item
    */
   public List<Item> getItems() {
     return this.items;
   }
 
   /**
-   * Gets the saved items destination folder.
+   * Gets the saved item destination folder.
    *
-   * @return the saved items destination folder
+   * @return the saved item destination folder
    */
   public FolderId getSavedItemsDestinationFolder() {
     return this.savedItemsDestinationFolder;
   }
 
   /**
-   * Sets the saved items destination folder.
+   * Sets the saved item destination folder.
    *
-   * @param value the new saved items destination folder
+   * @param value the new saved item destination folder
    */
   public void setSavedItemsDestinationFolder(FolderId value) {
     this.savedItemsDestinationFolder = value;

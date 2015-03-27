@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 
 /**
- * Represents a folder containing task items.
+ * Represents a folder containing task item.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.TasksFolder)
 public class TasksFolder extends Folder {

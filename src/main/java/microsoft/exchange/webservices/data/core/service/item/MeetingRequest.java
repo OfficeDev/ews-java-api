@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.items;
+package microsoft.exchange.webservices.data.core.service.item;
 
 import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
@@ -173,7 +173,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    * Accepts the meeting. Calling this method results in a call to EWS.
    *
    * @param sendResponse Indicates whether to send a response to the organizer.
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception throws Exception
    */
@@ -186,7 +186,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    * EWS.
    *
    * @param sendResponse Indicates whether to send a response to the organizer.
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception throws Exception
    */
@@ -200,7 +200,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    *
    * @param tentative    True if tentative accept.
    * @param sendResponse Indicates whether to send a response to the organizer.
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception throws Exception
    */
@@ -222,7 +222,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    * EWS.
    *
    * @param sendResponse Indicates whether to send a response to the organizer.
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception throws Exception
    */

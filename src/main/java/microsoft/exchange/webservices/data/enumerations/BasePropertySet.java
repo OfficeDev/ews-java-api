@@ -29,13 +29,13 @@ package microsoft.exchange.webservices.data.enumerations;
  */
 public enum BasePropertySet {
 
-  // Only includes the Id of items and folders.
+  // Only includes the Id of item and folders.
   /**
    * The Id only.
    */
   IdOnly("IdOnly"),
 
-  // Includes all the first class property of items and folders.
+  // Includes all the first class property of item and folders.
   /**
    * The First class property.
    */

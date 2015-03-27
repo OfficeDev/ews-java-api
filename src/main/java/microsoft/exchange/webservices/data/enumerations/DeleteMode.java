@@ -43,7 +43,7 @@ public enum DeleteMode {
 
   // The item or folder will be moved to the mailbox' Deleted Items folder.
   /**
-   * The Move to deleted items.
+   * The Move to deleted item.
    */
   MoveToDeletedItems
 

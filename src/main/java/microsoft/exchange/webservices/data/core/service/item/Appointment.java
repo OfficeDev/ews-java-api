@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.items;
+package microsoft.exchange.webservices.data.core.service.item;
 
 import microsoft.exchange.webservices.data.core.service.response.CancelMeetingMessage;
 import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingInvitationMessage;
@@ -483,7 +483,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * Accepts the meeting. Calling this method results in a call to EWS.
    *
    * @param sendResponse the send response
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -496,7 +496,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * EWS.
    *
    * @param sendResponse the send response
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -510,7 +510,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    *
    * @param tentative    the tentative
    * @param sendResponse the send response
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -530,7 +530,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * Cancels the meeting and sends cancellation messages to all attendees.
    * Calling this method results in a call to EWS.
    *
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -543,7 +543,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * Calling this method results in a call to EWS.
    *
    * @param cancellationMessageText the cancellation message text
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -559,7 +559,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * EWS.
    *
    * @param sendResponse the send response
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -1021,7 +1021,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   public void setRecurrence(Recurrence value) throws Exception {
     if (value != null) {
       if (value.isRegenerationPattern()) {
-        throw new ServiceLocalException("Regeneration pattern can only be used with Task items.");
+        throw new ServiceLocalException("Regeneration pattern can only be used with Task item.");
       }
     }
     this.getPropertyBag().setObjectFromPropertyDefinition(

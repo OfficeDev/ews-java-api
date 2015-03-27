@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.core.responses;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
@@ -43,7 +43,7 @@ import java.util.List;
 /**
  * Represents the response to a item search operation.
  *
- * @param <TItem> The type of items that the opeartion returned.
+ * @param <TItem> The type of item that the opeartion returned.
  */
 public final class FindItemResponse
     <TItem extends Item> extends ServiceResponse {
@@ -152,11 +152,11 @@ public final class FindItemResponse
   }
 
   /**
-   * Read items from XML.
+   * Read item from XML.
    *
    * @param reader          The reader
    * @param propertySet     The property set
-   * @param destinationList The list in which to add the read items.
+   * @param destinationList The list in which to add the read item.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationException  the service xml deserialization exception
    * @throws Exception                           the exception
@@ -197,7 +197,7 @@ public final class FindItemResponse
   }
 
   /**
-   * Gets a grouped list of items matching the specified search criteria that
+   * Gets a grouped list of item matching the specified search criteria that
    * were found in Exchange. ItemGroups is null if the search operation did
    * not specify grouping options.
    *

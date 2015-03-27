@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.service.folders;
 
-import microsoft.exchange.webservices.data.core.service.items.Appointment;
+import microsoft.exchange.webservices.data.core.service.item.Appointment;
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;

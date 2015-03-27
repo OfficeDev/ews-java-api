@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.items;
+package microsoft.exchange.webservices.data.core.service.item;
 
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.service.schema.ConversationSchema;
@@ -191,9 +191,9 @@ public class Conversation extends ServiceObject {
    * received within that conversation is always categorized.
    * Calling this method results in a call to EWS.
    *
-   * @param categories           The categories that should be stamped on items in the conversation.
+   * @param categories           The categories that should be stamped on item in the conversation.
    * @param processSynchronously Indicates whether the method should
-   *                             return only once enabling this rule and stamping existing items
+   *                             return only once enabling this rule and stamping existing item
    *                             in the conversation is completely done.
    *                             If processSynchronously is false, the method returns immediately.
    * @throws Exception
@@ -220,7 +220,7 @@ public class Conversation extends ServiceObject {
    *
    * @param processSynchronously Indicates whether the method should
    *                             return only once disabling this rule and
-   *                             removing the categories from existing items
+   *                             removing the categories from existing item
    *                             in the conversation is completely done. If processSynchronously
    *                             is false, the method returns immediately.
    * @throws Exception
@@ -242,7 +242,7 @@ public class Conversation extends ServiceObject {
    * Calling this method results in a call to EWS.
    *
    * @param processSynchronously Indicates whether the method should
-   *                             return only once enabling this rule and deleting existing items
+   *                             return only once enabling this rule and deleting existing item
    *                             in the conversation is completely done. If processSynchronously
    *                             is false, the method returns immediately.
    * @throws Exception
@@ -264,7 +264,7 @@ public class Conversation extends ServiceObject {
    * Calling this method results in a call to EWS.
    *
    * @param processSynchronously Indicates whether the method should return
-   *                             only once disabling this rule and restoring the items
+   *                             only once disabling this rule and restoring the item
    *                             in the conversation is completely done. If processSynchronously
    *                             is false, the method returns immediately.
    * @throws Exception
@@ -285,10 +285,10 @@ public class Conversation extends ServiceObject {
    * that conversation is always moved to a specific folder.
    * Calling this method results in a call to EWS.
    *
-   * @param destinationFolderId  The Id of the folder to which conversation items should be moved.
+   * @param destinationFolderId  The Id of the folder to which conversation item should be moved.
    * @param processSynchronously Indicates whether the method should return only
    *                             once enabling this rule
-   *                             and moving existing items in the conversation is completely done.
+   *                             and moving existing item in the conversation is completely done.
    *                             If processSynchronously is false, the method returns immediately.
    * @throws Exception
    * @throws IndexOutOfBoundsException
@@ -328,12 +328,12 @@ public class Conversation extends ServiceObject {
   }
 
   /**
-   * Deletes items in the specified conversation.
+   * Deletes item in the specified conversation.
    * Calling this method results in a call to EWS.
    *
-   * @param contextFolderId The Id of the folder items must belong
+   * @param contextFolderId The Id of the folder item must belong
    *                        to in order to be deleted. If contextFolderId is
-   *                        null, items across the entire mailbox are deleted.
+   *                        null, item across the entire mailbox are deleted.
    * @param deleteMode      The deletion mode.
    * @throws Exception
    * @throws IndexOutOfBoundsException
@@ -355,12 +355,12 @@ public class Conversation extends ServiceObject {
 
 
   /**
-   * Moves items in the specified conversation to a specific folder.
+   * Moves item in the specified conversation to a specific folder.
    * Calling this method results in a call to EWS.
    *
-   * @param contextFolderId     The Id of the folder items must belong to
+   * @param contextFolderId     The Id of the folder item must belong to
    *                            in order to be moved. If contextFolderId is null,
-   *                            items across the entire mailbox are moved.
+   *                            item across the entire mailbox are moved.
    * @param destinationFolderId The Id of the destination folder.
    * @throws Exception
    * @throws IndexOutOfBoundsException
@@ -382,12 +382,12 @@ public class Conversation extends ServiceObject {
   }
 
   /**
-   * Copies items in the specified conversation to a specific folder.
+   * Copies item in the specified conversation to a specific folder.
    * Calling this method results in a call to EWS.
    *
-   * @param contextFolderId     The Id of the folder items must belong to in
+   * @param contextFolderId     The Id of the folder item must belong to in
    *                            order to be copied. If contextFolderId
-   *                            is null, items across the entire mailbox are copied.
+   *                            is null, item across the entire mailbox are copied.
    * @param destinationFolderId The Id of the destination folder.
    * @throws Exception
    * @throws IndexOutOfBoundsException
@@ -409,14 +409,14 @@ public class Conversation extends ServiceObject {
   }
 
   /**
-   * Sets the read state of items in the specified conversation.
+   * Sets the read state of item in the specified conversation.
    * Calling this method results in a call to EWS.
    *
-   * @param contextFolderId The Id of the folder items must
+   * @param contextFolderId The Id of the folder item must
    *                        belong to in order for their read state to
    *                        be set. If contextFolderId is null, the read states of
-   *                        items across the entire mailbox are set.
-   * @param isRead          if set to <c>true</c>, conversation items are marked as read;
+   *                        item across the entire mailbox are set.
+   * @param isRead          if set to <c>true</c>, conversation item are marked as read;
    *                        otherwise they are marked as unread.
    * @throws Exception
    * @throws IndexOutOfBoundsException
@@ -834,7 +834,7 @@ public class Conversation extends ServiceObject {
   }
 
   /**
-   * Gets a list summarizing the classes of the items
+   * Gets a list summarizing the classes of the item
    * in this conversation, in the current folder only.
    *
    * @return string
@@ -847,7 +847,7 @@ public class Conversation extends ServiceObject {
   }
 
   /**
-   * Gets a list summarizing the classes of the items
+   * Gets a list summarizing the classes of the item
    * in this conversation, across all folders in the mailbox.
    *
    * @return string

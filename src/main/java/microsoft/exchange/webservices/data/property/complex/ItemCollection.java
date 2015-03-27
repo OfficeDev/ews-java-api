@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.property.complex;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
@@ -38,7 +38,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Represents a collection of items.
+ * Represents a collection of item.
  *
  * @param <TItem> the generic type. The type of item the collection contains.
  */
@@ -47,7 +47,7 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
     implements Iterable<TItem> {
 
   /**
-   * The items.
+   * The item.
    */
   private List<TItem> items = new ArrayList<TItem>();
 
@@ -99,7 +99,7 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
   }
 
   /**
-   * Gets the total number of items in the collection.
+   * Gets the total number of item in the collection.
    *
    * @return the count
    */

@@ -175,7 +175,7 @@ public final class ItemView extends PagedView {
   }
 
   /**
-   * Gets the property against which the returned items should be ordered.
+   * Gets the property against which the returned item should be ordered.
    *
    * @return the order by
    */

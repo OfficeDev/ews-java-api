@@ -30,19 +30,19 @@ import microsoft.exchange.webservices.data.attribute.RequiredServerVersion;
  */
 public enum ItemTraversal {
 
-  // All non deleted items in the specified folder are retrieved.
+  // All non deleted item in the specified folder are retrieved.
   /**
    * The Shallow.
    */
   Shallow,
 
-  // Only soft-deleted items are retrieved.
+  // Only soft-deleted item are retrieved.
   /**
    * The Soft deleted.
    */
   SoftDeleted,
 
-  // Only associated items are retrieved (Exchange 2010 or later).
+  // Only associated item are retrieved (Exchange 2010 or later).
   /**
    * The Associated.
    */

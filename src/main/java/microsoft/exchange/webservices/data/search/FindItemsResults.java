@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.search;
 
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -52,7 +52,7 @@ public final class FindItemsResults<TItem extends Item> implements
   private boolean moreAvailable;
 
   /**
-   * The items.
+   * The item.
    */
   private ArrayList<TItem> items = new ArrayList<TItem>();
 
@@ -63,7 +63,7 @@ public final class FindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Gets the total number of items matching the search criteria available in
+   * Gets the total number of item matching the search criteria available in
    * the searched folder.
    *
    * @return the total count
@@ -73,7 +73,7 @@ public final class FindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Sets the total number of items matching the search criteria available in
+   * Sets the total number of item matching the search criteria available in
    * the searched folder.
    *
    * @param totalCount the new total count
@@ -84,7 +84,7 @@ public final class FindItemsResults<TItem extends Item> implements
 
   /**
    * Gets the offset that should be used with ItemView to retrieve the next
-   * page of items in a FindItems operation.
+   * page of item in a FindItems operation.
    *
    * @return the next page offset
    */
@@ -94,7 +94,7 @@ public final class FindItemsResults<TItem extends Item> implements
 
   /**
    * Sets the offset that should be used with ItemView to retrieve the next
-   * page of items in a FindItems operation.
+   * page of item in a FindItems operation.
    *
    * @param nextPageOffset the new next page offset
    */
@@ -103,7 +103,7 @@ public final class FindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Gets a value indicating whether more items matching the search criteria
+   * Gets a value indicating whether more item matching the search criteria
    * are available in the searched folder.
    *
    * @return true, if is more available
@@ -113,7 +113,7 @@ public final class FindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Sets a value indicating whether more items matching the search criteria
+   * Sets a value indicating whether more item matching the search criteria
    * are available in the searched folder.
    *
    * @param moreAvailable the new more available
@@ -123,10 +123,10 @@ public final class FindItemsResults<TItem extends Item> implements
   }
 
   /**
-   * Gets a collection containing the items that were found by the search
+   * Gets a collection containing the item that were found by the search
    * operation.
    *
-   * @return the items
+   * @return the item
    */
   public ArrayList<TItem> getItems() {
     return this.items;

@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.misc.CalendarActionResults;
 import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingInvitationMessage;
 
 /**
- * Interface defintion of a group of methods that are common to items that
+ * Interface defintion of a group of methods that are common to item that
  * return CalendarActionResults.
  */
 public interface ICalendarActionProvider {
@@ -37,7 +37,7 @@ public interface ICalendarActionProvider {
    * Implements the Accept method.
    *
    * @param sendResponse Indicates whether to send a response to the organizer.
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a result of this operation.
    * @throws Exception the exception
    */
@@ -47,7 +47,7 @@ public interface ICalendarActionProvider {
    * Implements the AcceptTentatively method.
    *
    * @param sendResponse Indicates whether to send a response to the organizer.
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a result of this operation.
    * @throws Exception the exception
    */
@@ -58,7 +58,7 @@ public interface ICalendarActionProvider {
    * Implements the Decline method.
    *
    * @param sendResponse Indicates whether to send a response to the organizer.
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a result of this operation.
    * @throws Exception the exception
    */

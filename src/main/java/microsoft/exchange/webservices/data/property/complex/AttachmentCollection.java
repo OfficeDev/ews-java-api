@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.core.responses.CreateAttachmentRespon
 import microsoft.exchange.webservices.data.core.responses.DeleteAttachmentResponse;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.interfaces.IOwnedProperty;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.responses.ServiceResponseCollection;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
@@ -363,7 +363,7 @@ public final class AttachmentCollection extends ComplexPropertyCollection<Attach
 
   /**
    * Disables the change log clearing mechanism. Attachment collections are
-   * saved separately from the items they belong to.
+   * saved separately from the item they belong to.
    */
   @Override public void clearChangeLog() {
     // Do nothing

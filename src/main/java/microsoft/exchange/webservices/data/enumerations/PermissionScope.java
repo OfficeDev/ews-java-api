@@ -34,13 +34,13 @@ public enum PermissionScope {
    */
   None,
 
-  // The user has the associated permission on items that it owns.
+  // The user has the associated permission on item that it owns.
   /**
    * The Owned.
    */
   Owned,
 
-  // The user has the associated permission on all items.
+  // The user has the associated permission on all item.
   /**
    * The All.
    */

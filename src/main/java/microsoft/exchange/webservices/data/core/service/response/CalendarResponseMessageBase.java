@@ -23,8 +23,8 @@
 
 package microsoft.exchange.webservices.data.core.service.response;
 
-import microsoft.exchange.webservices.data.core.service.items.EmailMessage;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.EmailMessage;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;
@@ -58,7 +58,7 @@ public abstract class CalendarResponseMessageBase<TMessage extends EmailMessage>
    * in a call to EWS.
    *
    * @param destinationFolderId The Id of the folder in which to save the response.
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -76,7 +76,7 @@ public abstract class CalendarResponseMessageBase<TMessage extends EmailMessage>
    * in a call to EWS.
    *
    * @param destinationFolderName The name of the folder in which to save the response.
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -90,7 +90,7 @@ public abstract class CalendarResponseMessageBase<TMessage extends EmailMessage>
    * Saves the response in the Drafts folder. Calling this method results in a
    * call to EWS.
    *
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -103,7 +103,7 @@ public abstract class CalendarResponseMessageBase<TMessage extends EmailMessage>
    * Sends this response without saving a copy. Calling this method results in
    * a call to EWS.
    *
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -117,7 +117,7 @@ public abstract class CalendarResponseMessageBase<TMessage extends EmailMessage>
    * this method results in a call to EWS.
    *
    * @param destinationFolderId The Id of the folder in which to save the copy of the message.
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -134,7 +134,7 @@ public abstract class CalendarResponseMessageBase<TMessage extends EmailMessage>
    * this method results in a call to EWS.
    *
    * @param destinationFolderName the destination folder name
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */
@@ -148,7 +148,7 @@ public abstract class CalendarResponseMessageBase<TMessage extends EmailMessage>
    * Sends this response ans saves a copy in the specified folder. Calling
    * this method results in a call to EWS.
    *
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws Exception the exception
    */

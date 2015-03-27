@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.items;
+package microsoft.exchange.webservices.data.core.service.item;
 
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.ExchangeService;
@@ -103,7 +103,7 @@ public class MeetingCancellation extends MeetingMessage {
    * Removes the meeting associated with the cancellation message from the
    * user's calendar.
    *
-   * @return A CalendarActionResults object containing the various items that
+   * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
    * @throws ServiceLocalException the service local exception
    * @throws Exception             the exception

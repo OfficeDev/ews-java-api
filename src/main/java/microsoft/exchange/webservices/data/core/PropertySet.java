@@ -344,7 +344,7 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Gets type of body that should be loaded on items. If RequestedBodyType
+   * Gets type of body that should be loaded on item. If RequestedBodyType
    * is null, body is returned as HTML if available, plain text otherwise.
    *
    * @return the requested body type
@@ -354,10 +354,10 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Sets type of body that should be loaded on items. If RequestedBodyType is
+   * Sets type of body that should be loaded on item. If RequestedBodyType is
    * null, body is returned as HTML if available, plain text otherwise.
    *
-   * @param requestedBodyType Type of body that should be loaded on items.
+   * @param requestedBodyType Type of body that should be loaded on item.
    */
   public void setRequestedBodyType(BodyType requestedBodyType) {
     this.throwIfReadonly();

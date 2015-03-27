@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
@@ -64,7 +64,7 @@ public class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
   /**
    * Adds the specified item.
    *
-   * @param items the items
+   * @param items the item
    * @throws ServiceLocalException the service local exception
    */
   public void addRangeItem(Iterable<Item> items)

@@ -519,7 +519,7 @@ public enum ServiceError {
 
   // ErrorDeleteItemsFailed
   /**
-   * The Error delete items failed.
+   * The Error delete item failed.
    */
   ErrorDeleteItemsFailed,
 
@@ -1863,7 +1863,7 @@ public enum ServiceError {
   ErrorRulesOverQuota,
 
   // / <summary>
-  // / The folder in which items were to be saved could not be found.
+  // / The folder in which item were to be saved could not be found.
   // / </summary>
   ErrorSavedItemFolderNotFound,
 
@@ -1885,19 +1885,19 @@ public enum ServiceError {
   ErrorSendAsDenied,
 
   // / <summary>
-  // / SendMeetingCancellations attribute is required for Calendar items.
+  // / SendMeetingCancellations attribute is required for Calendar item.
   // / </summary>
   ErrorSendMeetingCancellationsRequired,
 
   // / <summary>
   // / The SendMeetingInvitationsOrCancellations attribute
-  // /is required for calendar items.
+  // /is required for calendar item.
   // / </summary>
   ErrorSendMeetingInvitationsOrCancellationsRequired,
 
   // ErrorSendMeetingInvitationsRequired
   /**
-   * The SendMeetingInvitations attribute is required for calendar items.
+   * The SendMeetingInvitations attribute is required for calendar item.
    */
   ErrorSendMeetingInvitationsRequired,
 

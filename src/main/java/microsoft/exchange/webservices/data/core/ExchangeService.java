@@ -24,12 +24,12 @@
 package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
-import microsoft.exchange.webservices.data.core.service.items.Appointment;
+import microsoft.exchange.webservices.data.core.service.item.Appointment;
 import microsoft.exchange.webservices.data.misc.AsyncCallback;
 import microsoft.exchange.webservices.data.misc.AsyncRequestResult;
-import microsoft.exchange.webservices.data.core.service.items.Conversation;
+import microsoft.exchange.webservices.data.core.service.item.Conversation;
 import microsoft.exchange.webservices.data.core.service.folders.Folder;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
@@ -237,7 +237,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param responseObject     the response object
    * @param parentFolderId     the parent folder id
    * @param messageDisposition the message disposition
-   * @return The list of items created or modified as a result of the
+   * @return The list of item created or modified as a result of the
    * "creation" of the response object.
    * @throws Exception the exception
    */
@@ -557,17 +557,17 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Creates multiple items in a single EWS call. Supported item classes are
+   * Creates multiple item in a single EWS call. Supported item classes are
    * EmailMessage, Appointment, Contact, PostItem, Task and Item. CreateItems
-   * does not support items that have unsaved attachments.
+   * does not support item that have unsaved attachments.
    *
-   * @param items               the items
+   * @param items               the item
    * @param parentFolderId      the parent folder id
    * @param messageDisposition  the message disposition
    * @param sendInvitationsMode the send invitations mode
    * @param errorHandling       the error handling
    * @return A ServiceResponseCollection providing creation results for each
-   * of the specified items.
+   * of the specified item.
    * @throws Exception the exception
    */
   private ServiceResponseCollection<ServiceResponse> internalCreateItems(
@@ -584,23 +584,23 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Creates multiple items in a single EWS call. Supported item classes are
+   * Creates multiple item in a single EWS call. Supported item classes are
    * EmailMessage, Appointment, Contact, PostItem, Task and Item. CreateItems
-   * does not support items that have unsaved attachments.
+   * does not support item that have unsaved attachments.
    *
-   * @param items               the items
+   * @param items               the item
    * @param parentFolderId      the parent folder id
    * @param messageDisposition  the message disposition
    * @param sendInvitationsMode the send invitations mode
    * @return A ServiceResponseCollection providing creation results for each
-   * of the specified items.
+   * of the specified item.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<ServiceResponse> createItems(
       Collection<Item> items, FolderId parentFolderId,
       MessageDisposition messageDisposition,
       SendInvitationsMode sendInvitationsMode) throws Exception {
-    // All items have to be new.
+    // All item have to be new.
     if (!EwsUtilities.trueForAll(items, new IPredicate<Item>() {
       @Override
       public boolean predicate(Item obj) throws ServiceLocalException {
@@ -611,7 +611,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
           "This operation can't be performed because at least one item already has an ID.");
     }
 
-    // E14:298274 Make sure that all items do *not* have unprocessed
+    // E14:298274 Make sure that all item do *not* have unprocessed
     // attachments.
     if (!EwsUtilities.trueForAll(items, new IPredicate<Item>() {
       @Override
@@ -619,7 +619,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
         return !obj.hasUnprocessedAttachmentChanges();
       }
     })) {
-      throw new ServiceValidationException("This operation doesn't support items that have attachments.");
+      throw new ServiceValidationException("This operation doesn't support item that have attachments.");
     }
     return this.internalCreateItems(items, parentFolderId,
         messageDisposition, sendInvitationsMode,
@@ -644,17 +644,17 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Updates multiple items in a single EWS call. UpdateItems does not
-   * support items that have unsaved attachments.
+   * Updates multiple item in a single EWS call. UpdateItems does not
+   * support item that have unsaved attachments.
    *
-   * @param items                              the items
-   * @param savedItemsDestinationFolderId      the saved items destination folder id
+   * @param items                              the item
+   * @param savedItemsDestinationFolderId      the saved item destination folder id
    * @param conflictResolution                 the conflict resolution
    * @param messageDisposition                 the message disposition
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
    * @param errorHandling                      the error handling
    * @return A ServiceResponseCollection providing update results for each of
-   * the specified items.
+   * the specified item.
    * @throws Exception the exception
    */
   private ServiceResponseCollection<UpdateItemResponse> internalUpdateItems(
@@ -677,16 +677,16 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Updates multiple items in a single EWS call. UpdateItems does not
-   * support items that have unsaved attachments.
+   * Updates multiple item in a single EWS call. UpdateItems does not
+   * support item that have unsaved attachments.
    *
-   * @param items                              the items
-   * @param savedItemsDestinationFolderId      the saved items destination folder id
+   * @param items                              the item
+   * @param savedItemsDestinationFolderId      the saved item destination folder id
    * @param conflictResolution                 the conflict resolution
    * @param messageDisposition                 the message disposition
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
    * @return A ServiceResponseCollection providing update results for each of
-   * the specified items.
+   * the specified item.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<UpdateItemResponse> updateItems(
@@ -697,7 +697,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
       SendInvitationsOrCancellationsMode sendInvitationsOrCancellationsMode)
       throws Exception {
 
-    // All items have to exist on the server (!new) and modified (dirty)
+    // All item have to exist on the server (!new) and modified (dirty)
     if (!EwsUtilities.trueForAll(items, new IPredicate<Item>() {
       @Override
       public boolean predicate(Item obj) throws ServiceLocalException {
@@ -705,10 +705,10 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
       }
     })) {
       throw new ServiceValidationException(
-          "This operation can't be performed because one or more items are new or unmodified.");
+          "This operation can't be performed because one or more item are new or unmodified.");
     }
 
-    // E14:298274 Make sure that all items do *not* have unprocessed
+    // E14:298274 Make sure that all item do *not* have unprocessed
     // attachments.
     if (!EwsUtilities.trueForAll(items, new IPredicate<Item>() {
       @Override
@@ -717,7 +717,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
       }
     })) {
       throw new ServiceValidationException(
-          "This operation can't be performed because attachments have been added or deleted for one or more items.");
+          "This operation can't be performed because attachments have been added or deleted for one or more item.");
     }
 
     return this.internalUpdateItems(items, savedItemsDestinationFolderId,
@@ -730,7 +730,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * Updates an item.
    *
    * @param item                               the item
-   * @param savedItemsDestinationFolderId      the saved items destination folder id
+   * @param savedItemsDestinationFolderId      the saved item destination folder id
    * @param conflictResolution                 the conflict resolution
    * @param messageDisposition                 the message disposition
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
@@ -776,7 +776,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Copies multiple items in a single call to EWS.
+   * Copies multiple item in a single call to EWS.
    *
    * @param itemIds             the item ids
    * @param destinationFolderId the destination folder id
@@ -800,7 +800,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Copies multiple items in a single call to EWS.
+   * Copies multiple item in a single call to EWS.
    *
    * @param itemIds             the item ids
    * @param destinationFolderId the destination folder id
@@ -816,10 +816,10 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Copies multiple items in a single call to EWS.
+   * Copies multiple item in a single call to EWS.
    *
-   * @param itemIds             The Ids of the items to copy.
-   * @param destinationFolderId The Id of the folder to copy the items to.
+   * @param itemIds             The Ids of the item to copy.
+   * @param destinationFolderId The Id of the folder to copy the item to.
    * @param returnNewItemIds    Flag indicating whether service should return new ItemIds or
    *                            not.
    * @return A ServiceResponseCollection providing copy results for each of
@@ -857,7 +857,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Moves multiple items in a single call to EWS.
+   * Moves multiple item in a single call to EWS.
    *
    * @param itemIds             the item ids
    * @param destinationFolderId the destination folder id
@@ -881,7 +881,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Moves multiple items in a single call to EWS.
+   * Moves multiple item in a single call to EWS.
    *
    * @param itemIds             the item ids
    * @param destinationFolderId the destination folder id
@@ -897,10 +897,10 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Moves multiple items in a single call to EWS.
+   * Moves multiple item in a single call to EWS.
    *
-   * @param itemIds             The Ids of the items to move.
-   * @param destinationFolderId The Id of the folder to move the items to.
+   * @param itemIds             The Ids of the item to move.
+   * @param destinationFolderId The Id of the folder to move the item to.
    * @param returnNewItemIds    Flag indicating whether service should return new ItemIds or
    *                            not.
    * @return A ServiceResponseCollection providing copy results for each of
@@ -918,7 +918,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Copies multiple items in a single call to EWS.
+   * Copies multiple item in a single call to EWS.
    *
    * @param itemId              the item id
    * @param destinationFolderId the destination folder id
@@ -937,7 +937,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Finds items.
+   * Finds item.
    *
    * @param <TItem>           The type of item
    * @param parentFolderIds   The parent folder ids.
@@ -974,7 +974,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
+   * Obtains a list of item by searching the contents of a specific folder.
    * Calling this method results in a call to EWS.
    *
    * @param parentFolderId the parent folder id
@@ -999,7 +999,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
+   * Obtains a list of item by searching the contents of a specific folder.
    * Calling this method results in a call to EWS.
    *
    * @param parentFolderId the parent folder id
@@ -1022,7 +1022,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
+   * Obtains a list of item by searching the contents of a specific folder.
    * Calling this method results in a call to EWS.
    *
    * @param parentFolderId the parent folder id
@@ -1044,7 +1044,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
+   * Obtains a list of item by searching the contents of a specific folder.
    * Calling this method results in a call to EWS.
    *
    * @param parentFolderName the parent folder name
@@ -1061,7 +1061,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
+   * Obtains a list of item by searching the contents of a specific folder.
    * Calling this method results in a call to EWS.
    *
    * @param parentFolderName the parent folder name
@@ -1078,7 +1078,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a list of items by searching the contents of a specific folder.
+   * Obtains a list of item by searching the contents of a specific folder.
    * Calling this method results in a call to EWS.
    *
    * @param parentFolderName the parent folder name
@@ -1094,14 +1094,14 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
+   * Obtains a grouped list of item by searching the contents of a specific
    * folder. Calling this method results in a call to EWS.
    *
    * @param parentFolderId the parent folder id
    * @param queryString    the query string
    * @param view           the view
    * @param groupBy        the group by
-   * @return A list of items containing the contents of the specified folder.
+   * @return A list of item containing the contents of the specified folder.
    * @throws Exception the exception
    */
   public GroupedFindItemsResults<Item> findItems(FolderId parentFolderId,
@@ -1121,14 +1121,14 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
+   * Obtains a grouped list of item by searching the contents of a specific
    * folder. Calling this method results in a call to EWS.
    *
    * @param parentFolderId the parent folder id
    * @param searchFilter   the search filter
    * @param view           the view
    * @param groupBy        the group by
-   * @return A list of items containing the contents of the specified folder.
+   * @return A list of item containing the contents of the specified folder.
    * @throws Exception the exception
    */
   public GroupedFindItemsResults<Item> findItems(FolderId parentFolderId,
@@ -1148,13 +1148,13 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
+   * Obtains a grouped list of item by searching the contents of a specific
    * folder. Calling this method results in a call to EWS.
    *
    * @param parentFolderId the parent folder id
    * @param view           the view
    * @param groupBy        the group by
-   * @return A list of items containing the contents of the specified folder.
+   * @return A list of item containing the contents of the specified folder.
    * @throws Exception the exception
    */
   public GroupedFindItemsResults<Item> findItems(FolderId parentFolderId,
@@ -1173,7 +1173,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
+   * Obtains a grouped list of item by searching the contents of a specific
    * folder. Calling this method results in a call to EWS.
    *
    * @param <TItem>        the generic type
@@ -1182,7 +1182,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param searchFilter   the search filter
    * @param view           the view
    * @param groupBy        the group by
-   * @return A list of items containing the contents of the specified folder.
+   * @return A list of item containing the contents of the specified folder.
    * @throws Exception the exception
    */
   protected <TItem extends Item> ServiceResponseCollection<FindItemResponse<TItem>> findItems(
@@ -1197,14 +1197,14 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
+   * Obtains a grouped list of item by searching the contents of a specific
    * folder. Calling this method results in a call to EWS.
    *
    * @param parentFolderName the parent folder name
    * @param queryString      the query string
    * @param view             the view
    * @param groupBy          the group by
-   * @return A collection of grouped items containing the contents of the
+   * @return A collection of grouped item containing the contents of the
    * specified.
    * @throws Exception the exception
    */
@@ -1217,14 +1217,14 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Obtains a grouped list of items by searching the contents of a specific
+   * Obtains a grouped list of item by searching the contents of a specific
    * folder. Calling this method results in a call to EWS.
    *
    * @param parentFolderName the parent folder name
    * @param searchFilter     the search filter
    * @param view             the view
    * @param groupBy          the group by
-   * @return A collection of grouped items containing the contents of the
+   * @return A collection of grouped item containing the contents of the
    * specified.
    * @throws Exception the exception
    */
@@ -1277,17 +1277,17 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Loads the property of multiple items in a single call to EWS.
+   * Loads the property of multiple item in a single call to EWS.
    *
-   * @param items       the items
+   * @param items       the item
    * @param propertySet the property set
    * @return A ServiceResponseCollection providing results for each of the
-   * specified items.
+   * specified item.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<ServiceResponse> loadPropertiesForItems(
       Iterable<Item> items, PropertySet propertySet) throws Exception {
-    EwsUtilities.validateParamCollection(items.iterator(), "items");
+    EwsUtilities.validateParamCollection(items.iterator(), "item");
     EwsUtilities.validateParam(propertySet, "propertySet");
 
     return this.internalLoadPropertiesForItems(items, propertySet,
@@ -1295,13 +1295,13 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Loads the property of multiple items in a single call to EWS.
+   * Loads the property of multiple item in a single call to EWS.
    *
-   * @param items         the items
+   * @param items         the item
    * @param propertySet   the property set
    * @param errorHandling the error handling
    * @return A ServiceResponseCollection providing results for each of the
-   * specified items.
+   * specified item.
    * @throws Exception the exception
    */
   public ServiceResponseCollection<ServiceResponse> internalLoadPropertiesForItems(Iterable<Item> items,
@@ -1317,7 +1317,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Binds to multiple items in a single call to EWS.
+   * Binds to multiple item in a single call to EWS.
    *
    * @param itemIds       the item ids
    * @param propertySet   the property set
@@ -1336,7 +1336,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Binds to multiple items in a single call to EWS.
+   * Binds to multiple item in a single call to EWS.
    *
    * @param itemIds     the item ids
    * @param propertySet the property set
@@ -1354,7 +1354,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Binds to multiple items in a single call to EWS.
+   * Binds to multiple item in a single call to EWS.
    *
    * @param itemId      the item id
    * @param propertySet the property set
@@ -1397,7 +1397,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Deletes multiple items in a single call to EWS.
+   * Deletes multiple item in a single call to EWS.
    *
    * @param itemIds                 the item ids
    * @param deleteMode              the delete mode
@@ -1424,7 +1424,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Deletes multiple items in a single call to EWS.
+   * Deletes multiple item in a single call to EWS.
    *
    * @param itemIds                 the item ids
    * @param deleteMode              the delete mode
@@ -2405,14 +2405,14 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
 
 
   /**
-   * Synchronizes the items of a specific folder. Calling this method
+   * Synchronizes the item of a specific folder. Calling this method
    * results in a call to EWS.
    *
-   * @param syncFolderId       The Id of the folder containing the items to synchronize with.
-   * @param propertySet        The set of property to retrieve for synchronized items.
+   * @param syncFolderId       The Id of the folder containing the item to synchronize with.
+   * @param propertySet        The set of property to retrieve for synchronized item.
    * @param ignoredItemIds     The optional list of item Ids that should be ignored.
    * @param maxChangesReturned The maximum number of changes that should be returned.
-   * @param syncScope          The sync scope identifying items to include in the
+   * @param syncScope          The sync scope identifying item to include in the
    *                           ChangeCollection.
    * @param syncState          The optional sync state representing the point in time when to
    *                           start the synchronization.
@@ -2430,16 +2430,16 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Begins an asynchronous request to synchronize the items of a specific
+   * Begins an asynchronous request to synchronize the item of a specific
    * folder. Calling this method results in a call to EWS.
    *
    * @param callback           The AsyncCallback delegate
    * @param state              An object that contains state information for this request
-   * @param syncFolderId       The Id of the folder containing the items to synchronize with
-   * @param propertySet        The set of property to retrieve for synchronized items.
+   * @param syncFolderId       The Id of the folder containing the item to synchronize with
+   * @param propertySet        The set of property to retrieve for synchronized item.
    * @param ignoredItemIds     The optional list of item Ids that should be ignored.
    * @param maxChangesReturned The maximum number of changes that should be returned.
-   * @param syncScope          The sync scope identifying items to include in the
+   * @param syncScope          The sync scope identifying item to include in the
    *                           ChangeCollection
    * @param syncState          The optional sync state representing the point in time when to
    *                           start the synchronization
@@ -2456,7 +2456,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Ends an asynchronous request to synchronize the items of a specific
+   * Ends an asynchronous request to synchronize the item of a specific
    * folder.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
@@ -2471,17 +2471,17 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Builds a request to synchronize the items of a specific folder.
+   * Builds a request to synchronize the item of a specific folder.
    *
-   * @param syncFolderId       The Id of the folder containing the items to synchronize with
-   * @param propertySet        The set of property to retrieve for synchronized items.
+   * @param syncFolderId       The Id of the folder containing the item to synchronize with
+   * @param propertySet        The set of property to retrieve for synchronized item.
    * @param ignoredItemIds     The optional list of item Ids that should be ignored
    * @param maxChangesReturned The maximum number of changes that should be returned.
-   * @param syncScope          The sync scope identifying items to include in the
+   * @param syncScope          The sync scope identifying item to include in the
    *                           ChangeCollection.
    * @param syncState          The optional sync state representing the point in time when to
    *                           start the synchronization.
-   * @return A request to synchronize the items of a specific folder.
+   * @return A request to synchronize the item of a specific folder.
    * @throws Exception
    */
   private SyncFolderItemsRequest buildSyncFolderItemsRequest(
@@ -2529,9 +2529,9 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *
    * @param callback     The AsyncCallback delegate
    * @param state        An object that contains state information for this request.
-   * @param syncFolderId The Id of the folder containing the items to synchronize with.
+   * @param syncFolderId The Id of the folder containing the item to synchronize with.
    *                     A null value indicates the root folder of the mailbox.
-   * @param propertySet  The set of property to retrieve for synchronized items.
+   * @param propertySet  The set of property to retrieve for synchronized item.
    * @param syncState    The optional sync state representing the point in time when to
    *                     start the synchronization.
    * @return An IAsyncResult that references the asynchronous request
@@ -2548,7 +2548,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * Synchronizes the entire folder hierarchy of the mailbox this Service is
    * connected to. Calling this method results in a call to EWS.
    *
-   * @param propertySet The set of property to retrieve for synchronized items.
+   * @param propertySet The set of property to retrieve for synchronized item.
    * @param syncState   The optional sync state representing the point in time when to
    *                    start the synchronization.
    * @return A ChangeCollection containing a list of changes that occurred in
@@ -2571,7 +2571,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
 	 * @param state
 	 *            An object that contains state information for this request.
 	 * @param propertySet
-	 *            The set of property to retrieve for synchronized items.
+	 *            The set of property to retrieve for synchronized item.
 	 * @param syncState
 	 *            The optional sync state representing the point in time when to
 	 *            start the synchronization.
@@ -2601,9 +2601,9 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * Builds a request to synchronize the specified folder hierarchy of the
    * mailbox this Service is connected to.
    *
-   * @param syncFolderId The Id of the folder containing the items to synchronize with.
+   * @param syncFolderId The Id of the folder containing the item to synchronize with.
    *                     A null value indicates the root folder of the mailbox.
-   * @param propertySet  The set of property to retrieve for synchronized items.
+   * @param propertySet  The set of property to retrieve for synchronized item.
    * @param syncState    The optional sync state representing the point in time when to
    *                     start the synchronization.
    * @return A request to synchronize the specified folder hierarchy of the
@@ -2800,7 +2800,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *                            the Assitant process it in the back ground
    * @param categories          Catgories that need to be stamped can be null or empty
    * @param enableAlwaysDelete  True moves every current and future messages in the
-   *                            conversation to deleted items folder. False stops the alwasy
+   *                            conversation to deleted item folder. False stops the alwasy
    *                            delete action. This is applicable only if the action is
    *                            AlwaysDelete
    * @param destinationFolderId Applicable if the action is AlwaysMove. This moves every
@@ -2847,7 +2847,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Applies one time conversation action on items in specified folder inside
+   * Applies one time conversation action on item in specified folder inside
    * the conversation.
    *
    * @param actionType          The action
@@ -2908,10 +2908,10 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * is always categorized. Calling this method results in a call to EWS.
    *
    * @param conversationId       The id of the conversation.
-   * @param categories           The categories that should be stamped on items in the
+   * @param categories           The categories that should be stamped on item in the
    *                             conversation.
    * @param processSynchronously Indicates whether the method should return only once enabling
-   *                             this rule and stamping existing items in the conversation is
+   *                             this rule and stamping existing item in the conversation is
    *                             completely done. If processSynchronously is false, the method
    *                             returns immediately.
    * @throws Exception
@@ -2934,7 +2934,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *
    * @param conversationId       The id of the conversation.
    * @param processSynchronously Indicates whether the method should return only once enabling
-   *                             this rule and stamping existing items in the conversation is
+   *                             this rule and stamping existing item in the conversation is
    *                             completely done. If processSynchronously is false, the method
    *                             returns immediately.
    * @throws Exception
@@ -2955,7 +2955,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *
    * @param conversationId       The id of the conversation.
    * @param processSynchronously Indicates whether the method should return only once enabling
-   *                             this rule and stamping existing items in the conversation is
+   *                             this rule and stamping existing item in the conversation is
    *                             completely done. If processSynchronously is false, the method
    *                             returns immediately.
    * @throws Exception
@@ -2976,7 +2976,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *
    * @param conversationId       The id of the conversation.
    * @param processSynchronously Indicates whether the method should return only once enabling
-   *                             this rule and stamping existing items in the conversation is
+   *                             this rule and stamping existing item in the conversation is
    *                             completely done. If processSynchronously is false, the method
    *                             returns immediately.
    * @throws Exception
@@ -2995,11 +2995,11 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * is always moved to a specific folder. Calling this method results in a
    * call to EWS.
    *
-   * @param conversationId       The Id of the folder to which conversation items should be
+   * @param conversationId       The Id of the folder to which conversation item should be
    *                             moved.
    * @param destinationFolderId  The Id of the destination folder.
    * @param processSynchronously Indicates whether the method should return only once enabling
-   *                             this rule and stamping existing items in the conversation is
+   *                             this rule and stamping existing item in the conversation is
    *                             completely done. If processSynchronously is false, the method
    *                             returns immediately.
    * @throws Exception
@@ -3034,10 +3034,10 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Moves the items in the specified conversation to the specified
+   * Moves the item in the specified conversation to the specified
    * destination folder. Calling this method results in a call to EWS.
    *
-   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should be moved
+   * @param idLastSyncTimePairs The pairs of Id of conversation whose item should be moved
    *                            and the dateTime conversation was last synced (Items received
    *                            after that dateTime will not be moved).
    * @param contextFolderId     The Id of the folder that contains the conversation.
@@ -3055,10 +3055,10 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Copies the items in the specified conversation to the specified
+   * Copies the item in the specified conversation to the specified
    * destination folder. Calling this method results in a call to EWS.
    *
-   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should be copied
+   * @param idLastSyncTimePairs The pairs of Id of conversation whose item should be copied
    *                            and the dateTime conversation was last synced (Items received
    *                            after that dateTime will not be copied).
    * @param contextFolderId     The context folder id.
@@ -3076,10 +3076,10 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Deletes the items in the specified conversation. Calling this method
+   * Deletes the item in the specified conversation. Calling this method
    * results in a call to EWS.
    *
-   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should be deleted
+   * @param idLastSyncTimePairs The pairs of Id of conversation whose item should be deleted
    *                            and the date and time conversation was last synced (Items
    *                            received after that date will not be deleted). conversation
    *                            was last synced (Items received after that dateTime will not
@@ -3098,17 +3098,17 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Sets the read state for items in conversation. Calling this mehtod would
+   * Sets the read state for item in conversation. Calling this mehtod would
    * result in call to EWS.
    *
-   * @param idLastSyncTimePairs The pairs of Id of conversation whose items should read state
+   * @param idLastSyncTimePairs The pairs of Id of conversation whose item should read state
    *                            set and the date and time conversation was last synced (Items
    *                            received after that date will not have their read state set).
    *                            was last synced (Items received after that date will not be
    *                            deleted). conversation was last synced (Items received after
    *                            that dateTime will not be copied).
    * @param contextFolderId     The Id of the folder that contains the conversation.
-   * @param isRead              if set to <c>true</c>, conversation items are marked as read;
+   * @param isRead              if set to <c>true</c>, conversation item are marked as read;
    *                            otherwise they are marked as unread.
    * @throws Exception
    */

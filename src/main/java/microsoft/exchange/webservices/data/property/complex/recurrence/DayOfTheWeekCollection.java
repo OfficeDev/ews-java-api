@@ -46,7 +46,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
     Iterable<DayOfTheWeek> {
 
   /**
-   * The items.
+   * The item.
    */
   private List<DayOfTheWeek> items = new ArrayList<DayOfTheWeek>();
 
@@ -70,7 +70,7 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
       StringBuilder daysOfTheWeekstr = new StringBuilder();
 
       for (int i = 0; i < this.getCount(); i++) {
-        // daysOfTheWeekArray[i] = items.get(i).toString();
+        // daysOfTheWeekArray[i] = item.get(i).toString();
         if (daysOfTheWeekstr.length() == 0) {
           daysOfTheWeekstr.append(items.get(i).toString());
         } else {

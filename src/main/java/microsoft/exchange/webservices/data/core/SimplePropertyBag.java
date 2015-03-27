@@ -36,22 +36,22 @@ import java.util.*;
 public class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> {
 
   /**
-   * The items.
+   * The item.
    */
   private Map<TKey, Object> items = new HashMap<TKey, Object>();
 
   /**
-   * The removed items.
+   * The removed item.
    */
   private List<TKey> removedItems = new ArrayList<TKey>();
 
   /**
-   * The added items.
+   * The added item.
    */
   private List<TKey> addedItems = new ArrayList<TKey>();
 
   /**
-   * The modified items.
+   * The modified item.
    */
   private List<TKey> modifiedItems = new ArrayList<TKey>();
 
@@ -94,27 +94,27 @@ public class SimplePropertyBag<TKey> implements Iterable<HashMap<TKey, Object>> 
 
 
   /**
-   * Gets the added items. <value>The added items.</value>
+   * Gets the added item. <value>The added item.</value>
    *
-   * @return the added items
+   * @return the added item
    */
   public Iterable<TKey> getAddedItems() {
     return this.addedItems;
   }
 
   /**
-   * Gets the removed items. <value>The removed items.</value>
+   * Gets the removed item. <value>The removed item.</value>
    *
-   * @return the removed items
+   * @return the removed item
    */
   public Iterable<TKey> getRemovedItems() {
     return this.removedItems;
   }
 
   /**
-   * Gets the modified items. <value>The modified items.</value>
+   * Gets the modified item. <value>The modified item.</value>
    *
-   * @return the modified items
+   * @return the modified item
    */
   public Iterable<TKey> getModifiedItems() {
     return this.modifiedItems;

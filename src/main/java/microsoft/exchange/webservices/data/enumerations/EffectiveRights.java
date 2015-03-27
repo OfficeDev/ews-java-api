@@ -34,13 +34,13 @@ public enum EffectiveRights {
    */
   None(0),
 
-  // The user can create associated items (FAI)
+  // The user can create associated item (FAI)
   /**
    * The Create associated.
    */
   CreateAssociated(1),
 
-  // The user can create items.
+  // The user can create item.
   /**
    * The Create contents.
    */
@@ -53,25 +53,25 @@ public enum EffectiveRights {
    */
   CreateHierarchy(4),
 
-  // The user can delete items and/or folders.
+  // The user can delete item and/or folders.
   /**
    * The Delete.
    */
   Delete(8),
 
-  // The user can modify the property of items and/or folders.
+  // The user can modify the property of item and/or folders.
   /**
    * The Modify.
    */
   Modify(16),
 
-  // The user can read the contents of items.
+  // The user can read the contents of item.
   /**
    * The Read.
    */
   Read(32),
 
-  /// The user can view private items.
+  /// The user can view private item.
   /**
    * The View Private Items.
    */

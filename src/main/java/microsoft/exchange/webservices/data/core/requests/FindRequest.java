@@ -227,7 +227,7 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
   }
 
   /**
-   * Gets the view controlling the number of items or folders returned.
+   * Gets the view controlling the number of item or folders returned.
    *
    * @return the view
    */
@@ -236,7 +236,7 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
   }
 
   /**
-   * Sets the view controlling the number of items or folders returned.
+   * Sets the view controlling the number of item or folders returned.
    *
    * @param view the new view
    */

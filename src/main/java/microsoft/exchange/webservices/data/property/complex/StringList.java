@@ -41,7 +41,7 @@ import java.util.List;
 public class StringList extends ComplexProperty implements Iterable<String> {
 
   /**
-   * The items.
+   * The item.
    */
   private List<String> items = new ArrayList<String>();
 

@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.requests;
 import microsoft.exchange.webservices.data.core.responses.CreateItemResponse;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.responses.ServiceResponse;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
@@ -73,7 +73,7 @@ public final class CreateItemRequest extends
   @Override
   protected void validate() throws ServiceLocalException, Exception {
     super.validate();
-    //	Iterable<Item> items = this.getItems();
+    //	Iterable<Item> item = this.getItems();
     // Validate each item.
     for (Item item : this.getItems()) {
       item.validate();

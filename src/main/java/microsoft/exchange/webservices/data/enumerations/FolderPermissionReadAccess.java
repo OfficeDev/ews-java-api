@@ -24,11 +24,11 @@
 package microsoft.exchange.webservices.data.enumerations;
 
 /**
- * Defines a user's read access permission on items in a non-calendar folder.
+ * Defines a user's read access permission on item in a non-calendar folder.
  */
 public enum FolderPermissionReadAccess {
 
-  // The user has no read access on the items in the folder.
+  // The user has no read access on the item in the folder.
   /**
    * The None.
    */
@@ -48,7 +48,7 @@ public enum FolderPermissionReadAccess {
    */
   TimeAndSubjectAndLocation,
 
-  // The user has access to the full details of items.
+  // The user has access to the full details of item.
   /**
    * The Full details.
    */

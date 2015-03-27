@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.service.ServiceObjectInfo;
 import microsoft.exchange.webservices.data.misc.TimeSpan;
@@ -542,7 +542,7 @@ public class EwsUtilities {
    *
    * @param <TItem> TItem is the type of the item to find.
    * @param cls     the cls
-   * @param items   the items
+   * @param items   the item
    * @return A TItem instance or null if no instance of TItem could be found.
    */
   public static <TItem extends Item> TItem findFirstItemOfType(Class<TItem> cls, Iterable<Item> items) {
