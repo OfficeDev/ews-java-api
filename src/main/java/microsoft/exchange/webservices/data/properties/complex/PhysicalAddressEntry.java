@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 import microsoft.exchange.webservices.data.interfaces.IPropertyBagChangedDelegate;
 import microsoft.exchange.webservices.data.core.LazyMember;
-import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.SimplePropertyBag;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;

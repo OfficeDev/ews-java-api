@@ -27,8 +27,8 @@ import microsoft.exchange.webservices.data.core.responses.CreateAttachmentRespon
 import microsoft.exchange.webservices.data.core.responses.DeleteAttachmentResponse;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.interfaces.IOwnedProperty;
-import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
-import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
+import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.responses.ServiceResponseCollection;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;

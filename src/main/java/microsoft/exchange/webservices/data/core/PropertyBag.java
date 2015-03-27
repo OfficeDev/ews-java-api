@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
+import microsoft.exchange.webservices.data.core.service.items.Item;
 import microsoft.exchange.webservices.data.misc.OutParam;
-import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumerations.BasePropertySet;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;

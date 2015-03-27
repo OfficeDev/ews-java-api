@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.properties.complex;
 
-import microsoft.exchange.webservices.data.core.serviceObjects.items.Contact;
+import microsoft.exchange.webservices.data.core.service.items.Contact;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;

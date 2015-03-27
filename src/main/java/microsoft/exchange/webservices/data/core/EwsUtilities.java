@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
-import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
-import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObjectInfo;
+import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
+import microsoft.exchange.webservices.data.core.service.ServiceObjectInfo;
 import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.attributes.EwsEnum;
 import microsoft.exchange.webservices.data.attributes.RequiredServerVersion;

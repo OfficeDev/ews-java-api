@@ -23,12 +23,12 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.core.serviceObjects.items.Appointment;
+import microsoft.exchange.webservices.data.core.service.items.Appointment;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
-import microsoft.exchange.webservices.data.core.serviceObjects.items.MeetingCancellation;
-import microsoft.exchange.webservices.data.core.serviceObjects.items.MeetingRequest;
-import microsoft.exchange.webservices.data.core.serviceObjects.items.MeetingResponse;
+import microsoft.exchange.webservices.data.core.service.items.Item;
+import microsoft.exchange.webservices.data.core.service.items.MeetingCancellation;
+import microsoft.exchange.webservices.data.core.service.items.MeetingRequest;
+import microsoft.exchange.webservices.data.core.service.items.MeetingResponse;
 
 /**
  * Represents the results of an action performed on a calendar item or meeting

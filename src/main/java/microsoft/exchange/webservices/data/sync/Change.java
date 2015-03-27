@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.sync;
 
-import microsoft.exchange.webservices.data.core.serviceObjects.ServiceObject;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.attributes.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.ChangeType;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;

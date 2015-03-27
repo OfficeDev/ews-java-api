@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.properties.complex;
 
-import microsoft.exchange.webservices.data.core.serviceObjects.items.Item;
+import microsoft.exchange.webservices.data.core.service.items.Item;
 
 /**
  * Represents a strongly typed item attachment.
