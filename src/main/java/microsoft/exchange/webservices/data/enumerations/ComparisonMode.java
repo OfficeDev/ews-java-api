@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.enumerations;
 
 /**
- * Defines the way values are compared in search filters.
+ * Defines the way values are compared in search filter.
  */
 public enum ComparisonMode {
 

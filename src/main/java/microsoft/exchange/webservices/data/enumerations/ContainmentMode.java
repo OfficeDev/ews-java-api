@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.enumerations;
 
 /**
- * Defines the containment mode for Contains search filters.
+ * Defines the containment mode for Contains search filter.
  */
 public enum ContainmentMode {
 

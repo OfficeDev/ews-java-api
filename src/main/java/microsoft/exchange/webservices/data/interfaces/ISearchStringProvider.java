@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.interfaces;
 
 /**
  * Interface defined for types that can produce a string representation for use
- * in search filters.
+ * in search filter.
  */
 public interface ISearchStringProvider {
   /**

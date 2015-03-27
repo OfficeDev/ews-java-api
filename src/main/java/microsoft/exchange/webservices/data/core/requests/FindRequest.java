@@ -36,7 +36,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationExc
 import microsoft.exchange.webservices.data.misc.FolderIdWrapperList;
 import microsoft.exchange.webservices.data.search.Grouping;
 import microsoft.exchange.webservices.data.search.ViewBase;
-import microsoft.exchange.webservices.data.search.filters.SearchFilter;
+import microsoft.exchange.webservices.data.search.filter.SearchFilter;
 
 /**
  * Represents an abstract Find request.
@@ -188,7 +188,7 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
    * Gets the search filter. Available search filter classes include
    * SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
    * SearchFilter.SearchFilterCollection. If SearchFilter is null, no search
-   * filters are applied.
+   * filter are applied.
    *
    * @return the search filter
    */
@@ -200,7 +200,7 @@ abstract class FindRequest<TResponse extends ServiceResponse> extends
    * Sets the search filter. Available search filter classes include
    * SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
    * SearchFilter.SearchFilterCollection. If SearchFilter is null, no search
-   * filters are applied.
+   * filter are applied.
    *
    * @param searchFilter the new search filter
    */

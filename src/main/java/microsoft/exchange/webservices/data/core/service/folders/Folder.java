@@ -56,7 +56,7 @@ import microsoft.exchange.webservices.data.search.GroupedFindItemsResults;
 import microsoft.exchange.webservices.data.search.Grouping;
 import microsoft.exchange.webservices.data.search.ItemView;
 import microsoft.exchange.webservices.data.search.ViewBase;
-import microsoft.exchange.webservices.data.search.filters.SearchFilter;
+import microsoft.exchange.webservices.data.search.filter.SearchFilter;
 
 import java.util.ArrayList;
 import java.util.EnumSet;

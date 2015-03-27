@@ -34,7 +34,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.FolderIdWrapper;
 import microsoft.exchange.webservices.data.search.ConversationIndexedItemView;
-import microsoft.exchange.webservices.data.search.filters.SearchFilter;
+import microsoft.exchange.webservices.data.search.filter.SearchFilter;
 
 /**
  * Represents a request to a Find Conversation operation

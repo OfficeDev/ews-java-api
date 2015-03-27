@@ -36,7 +36,7 @@ import microsoft.exchange.webservices.data.enumerations.WellKnownFolderName;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.search.CalendarView;
 import microsoft.exchange.webservices.data.search.FindItemsResults;
-import microsoft.exchange.webservices.data.search.filters.SearchFilter;
+import microsoft.exchange.webservices.data.search.filter.SearchFilter;
 
 /**
  * Represents a folder containing appointments.

@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.search.filters;
+package microsoft.exchange.webservices.data.search.filter;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
@@ -49,7 +49,7 @@ import java.util.Iterator;
 /**
  * Represents the base search filter class. Use descendant search filter classes
  * such as SearchFilter.IsEqualTo, SearchFilter.ContainsSubstring and
- * SearchFilter.SearchFilterCollection to define search filters.
+ * SearchFilter.SearchFilterCollection to define search filter.
  */
 public abstract class SearchFilter extends ComplexProperty {
 
@@ -1021,7 +1021,7 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents the base class for relational filters (for example, IsEqualTo,
+   * Represents the base class for relational filter (for example, IsEqualTo,
    * IsGreaterThan or IsLessThanOrEqualTo).
    */
   @EditorBrowsable(state = EditorBrowsableState.Never)
@@ -1088,7 +1088,7 @@ public abstract class SearchFilter extends ComplexProperty {
         if (!((value instanceof Object) || (value instanceof ISearchStringProvider))) {
           throw new ServiceValidationException(
               String
-                  .format("Values of type '%s' cannot be as comparison values in search filters.",
+                  .format("Values of type '%s' cannot be as comparison values in search filter.",
                       value.getClass().getName()));
         }
       }
@@ -1217,9 +1217,9 @@ public abstract class SearchFilter extends ComplexProperty {
 
 
   /**
-   * Represents a collection of search filters linked by a logical operator.
+   * Represents a collection of search filter linked by a logical operator.
    * Applications can use SearchFilterCollection to define complex search
-   * filters such as "Condition1 AND Condition2".
+   * filter such as "Condition1 AND Condition2".
    */
   public static class SearchFilterCollection extends SearchFilter implements
       Iterable<SearchFilter>, IComplexPropertyChangedDelegate {
@@ -1230,7 +1230,7 @@ public abstract class SearchFilter extends ComplexProperty {
     private LogicalOperator logicalOperator = LogicalOperator.And;
 
     /**
-     * The search filters.
+     * The search filter.
      */
     private ArrayList<SearchFilter> searchFilters =
         new ArrayList<SearchFilter>();
@@ -1255,7 +1255,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * Initializes a new instance of the class.
      *
      * @param logicalOperator The logical operator used to initialize the collection.
-     * @param searchFilters   The search filters to add to the collection.
+     * @param searchFilters   The search filter to add to the collection.
      */
     public SearchFilterCollection(LogicalOperator logicalOperator,
         SearchFilter... searchFilters) {
@@ -1271,7 +1271,7 @@ public abstract class SearchFilter extends ComplexProperty {
      * Initializes a new instance of the class.
      *
      * @param logicalOperator The logical operator used to initialize the collection.
-     * @param searchFilters   The search filters to add to the collection.
+     * @param searchFilters   The search filter to add to the collection.
      */
     public SearchFilterCollection(LogicalOperator logicalOperator,
         Iterable<SearchFilter> searchFilters) {
@@ -1384,9 +1384,9 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Adds multiple search filters to the collection.
+     * Adds multiple search filter to the collection.
      *
-     * @param searchFilters The search filters to add. Available search filter classes
+     * @param searchFilters The search filter to add. Available search filter classes
      *                      include SearchFilter.IsEqualTo,
      *                      SearchFilter.ContainsSubstring and
      *                      SearchFilter.SearchFilterCollection
@@ -1461,7 +1461,7 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Gets the total number of search filters in the collection.
+     * Gets the total number of search filter in the collection.
      *
      * @return the count
      */
@@ -1501,7 +1501,7 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Gets the logical operator that links the serach filters in this
+     * Gets the logical operator that links the serach filter in this
      * collection.
      *
      * @return LogicalOperator
@@ -1511,7 +1511,7 @@ public abstract class SearchFilter extends ComplexProperty {
     }
 
     /**
-     * Sets the logical operator that links the serach filters in this
+     * Sets the logical operator that links the serach filter in this
      * collection.
      *
      * @param logicalOperator the new logical operator
