@@ -28,20 +28,20 @@ package microsoft.exchange.webservices.data.enumerations;
  */
 public enum OofExternalAudience {
 
-  // No external recipients should receive Out of Office notifications.
+  // No external recipients should receive Out of Office notification.
   /**
    * The None.
    */
   None,
 
   // Only recipients that are in the user's Contacts frolder should receive
-  // Out of Office notifications.
+  // Out of Office notification.
   /**
    * The Known.
    */
   Known,
 
-  // All recipients should receive Out of Office notifications.
+  // All recipients should receive Out of Office notification.
   /**
    * The All.
    */

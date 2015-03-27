@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.notifications;
+package microsoft.exchange.webservices.data.notification;
 
 import microsoft.exchange.webservices.data.core.ExchangeService;
 

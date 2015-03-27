@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.notifications;
+package microsoft.exchange.webservices.data.notification;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.enumerations.EventType;
@@ -33,7 +33,7 @@ import javax.xml.stream.XMLStreamException;
 import java.util.Date;
 
 /**
- * Represents an event as exposed by push and pull notifications.
+ * Represents an event as exposed by push and pull notification.
  */
 public abstract class NotificationEvent {
 

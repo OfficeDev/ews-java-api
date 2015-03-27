@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.notifications;
+package microsoft.exchange.webservices.data.notification;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
@@ -127,7 +127,7 @@ public final class GetStreamingEventsResults {
    * @param reader           The reader.
    * @param eventElementName Name of the event XML element.
    * @param eventType        Type of the event.
-   * @param notifications    Collection of notifications
+   * @param notifications    Collection of notification
    * @throws Exception
    */
   private void loadNotificationEventFromXml(

@@ -261,7 +261,7 @@ public final class OofSettings extends ComplexProperty implements ISelfValidate 
   }
 
   /**
-   * Gets a value indicating the authorized external OOF notifications.
+   * Gets a value indicating the authorized external OOF notification.
    *
    * @return the allow external oof
    */
@@ -270,7 +270,7 @@ public final class OofSettings extends ComplexProperty implements ISelfValidate 
   }
 
   /**
-   * Sets a value indicating the authorized external OOF notifications.
+   * Sets a value indicating the authorized external OOF notification.
    *
    * @param allowExternalOof the new allow external oof
    */

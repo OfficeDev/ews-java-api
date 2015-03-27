@@ -147,10 +147,10 @@ import microsoft.exchange.webservices.data.misc.availability.AvailabilityOptions
 import microsoft.exchange.webservices.data.misc.availability.GetUserAvailabilityResults;
 import microsoft.exchange.webservices.data.misc.availability.TimeWindow;
 import microsoft.exchange.webservices.data.misc.id.AlternateIdBase;
-import microsoft.exchange.webservices.data.notifications.GetEventsResults;
-import microsoft.exchange.webservices.data.notifications.PullSubscription;
-import microsoft.exchange.webservices.data.notifications.PushSubscription;
-import microsoft.exchange.webservices.data.notifications.StreamingSubscription;
+import microsoft.exchange.webservices.data.notification.GetEventsResults;
+import microsoft.exchange.webservices.data.notification.PullSubscription;
+import microsoft.exchange.webservices.data.notification.PushSubscription;
+import microsoft.exchange.webservices.data.notification.StreamingSubscription;
 import microsoft.exchange.webservices.data.properties.complex.Attachment;
 import microsoft.exchange.webservices.data.properties.complex.ConversationId;
 import microsoft.exchange.webservices.data.properties.complex.DelegateUser;
@@ -1785,7 +1785,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Subscribes to pull notifications. Calling this method results in a call
+   * Subscribes to pull notification. Calling this method results in a call
    * to EWS.
    *
    * @param folderIds  The Ids of the folder to subscribe to
@@ -1808,7 +1808,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Begins an asynchronous request to subscribes to pull notifications.
+   * Begins an asynchronous request to subscribes to pull notification.
    * Calling this method results in a call to EWS.
    *
    * @param callback   The AsyncCallback delegate.
@@ -1833,7 +1833,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Subscribes to pull notifications on all folders in the authenticated
+   * Subscribes to pull notification on all folders in the authenticated
    * user's mailbox. Calling this method results in a call to EWS.
    *
    * @param timeout    the timeout
@@ -1854,7 +1854,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Begins an asynchronous request to subscribe to pull notifications on all
+   * Begins an asynchronous request to subscribe to pull notification on all
    * folders in the authenticated user's mailbox. Calling this method results
    * in a call to EWS.
    *
@@ -1879,7 +1879,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Ends an asynchronous request to subscribe to pull notifications in the
+   * Ends an asynchronous request to subscribe to pull notification in the
    * authenticated user's mailbox.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
@@ -1896,7 +1896,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Builds a request to subscribe to pull notifications in the
+   * Builds a request to subscribe to pull notification in the
    * authenticated user's mailbox.
    *
    * @param folderIds  The Ids of the folder to subscribe to.
@@ -1905,7 +1905,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param watermark  An optional watermark representing a previously opened
    *                   subscription
    * @param eventTypes The event types to subscribe to
-   * @return A request to subscribe to pull notifications in the authenticated
+   * @return A request to subscribe to pull notification in the authenticated
    * user's mailbox
    * @throws Exception the exception
    */
@@ -2070,7 +2070,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Subscribes to push notifications. Calling this method results in a call
+   * Subscribes to push notification. Calling this method results in a call
    * to EWS.
    *
    * @param folderIds  the folder ids
@@ -2092,7 +2092,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Begins an asynchronous request to subscribe to push notifications.
+   * Begins an asynchronous request to subscribe to push notification.
    * Calling this method results in a call to EWS.
    *
    * @param callback   The asynccallback delegate
@@ -2119,7 +2119,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Subscribes to push notifications on all folders in the authenticated
+   * Subscribes to push notification on all folders in the authenticated
    * user's mailbox. Calling this method results in a call to EWS.
    *
    * @param url        the url
@@ -2141,7 +2141,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Begins an asynchronous request to subscribe to push notifications on all
+   * Begins an asynchronous request to subscribe to push notification on all
    * folders in the authenticated user's mailbox. Calling this method results
    * in a call to EWS.
    *
@@ -2169,7 +2169,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
 
 
   /**
-   * Ends an asynchronous request to subscribe to push notifications in the
+   * Ends an asynchronous request to subscribe to push notification in the
    * authenticated user's mailbox.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
@@ -2186,7 +2186,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Builds an request to request to subscribe to push notifications in the
+   * Builds an request to request to subscribe to push notification in the
    * authenticated user's mailbox.
    *
    * @param folderIds  the folder ids
@@ -2194,7 +2194,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * @param frequency  the frequency
    * @param watermark  the watermark
    * @param eventTypes the event types
-   * @return A request to request to subscribe to push notifications in the
+   * @return A request to request to subscribe to push notification in the
    * authenticated user's mailbox.
    * @throws Exception the exception
    */
@@ -2226,7 +2226,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Subscribes to streaming notifications. Calling this method results in a
+   * Subscribes to streaming notification. Calling this method results in a
    * call to EWS.
    *
    * @param folderIds  The Ids of the folder to subscribe to.
@@ -2248,7 +2248,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Subscribes to streaming notifications on all folders in the authenticated
+   * Subscribes to streaming notification on all folders in the authenticated
    * user's mailbox. Calling this method results in a call to EWS.
    *
    * @param eventTypes The event types to subscribe to.
@@ -2266,7 +2266,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
 	/*
-	 * Subscribes to streaming notifications. Calling this method results in a
+	 * Subscribes to streaming notification. Calling this method results in a
 	 * call to EWS.
 	 * 
 	 * @param folderIds
@@ -2289,7 +2289,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
 	}*/
 
   /**
-   * Begins an asynchronous request to subscribe to streaming notifications.
+   * Begins an asynchronous request to subscribe to streaming notification.
    * Calling this method results in a call to EWS.
    *
    * @param callback   The AsyncCallback delegate
@@ -2313,7 +2313,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Subscribes to streaming notifications on all folders in the authenticated
+   * Subscribes to streaming notification on all folders in the authenticated
    * user's mailbox. Calling this method results in a call to EWS.
    *
    *@param eventTypes
@@ -2333,7 +2333,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
 	}*/
 
   /**
-   * Begins an asynchronous request to subscribe to streaming notifications on
+   * Begins an asynchronous request to subscribe to streaming notification on
    * all folders in the authenticated user's mailbox. Calling this method
    * results in a call to EWS.
    *
@@ -2353,7 +2353,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Ends an asynchronous request to subscribe to push notifications in the
+   * Ends an asynchronous request to subscribe to push notification in the
    * authenticated user's mailbox.
    *
    * @param asyncResult An IAsyncResult that references the asynchronous request.
@@ -2375,12 +2375,12 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
   }
 
   /**
-   * Builds request to subscribe to streaming notifications in the
+   * Builds request to subscribe to streaming notification in the
    * authenticated user's mailbox.
    *
    * @param folderIds  The Ids of the folder to subscribe to.
    * @param eventTypes The event types to subscribe to.
-   * @return A request to subscribe to streaming notifications in the
+   * @return A request to subscribe to streaming notification in the
    * authenticated user's mailbox
    * @throws Exception
    */

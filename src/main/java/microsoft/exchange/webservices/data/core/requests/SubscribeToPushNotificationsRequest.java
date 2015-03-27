@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.notifications.PushSubscription;
+import microsoft.exchange.webservices.data.notification.PushSubscription;
 
 import javax.xml.stream.XMLStreamException;
 import java.net.URI;
@@ -54,7 +54,7 @@ public class SubscribeToPushNotificationsRequest extends
   private URI url;
 
   /**
-   * Instantiates a new subscribe to push notifications request.
+   * Instantiates a new subscribe to push notification request.
    *
    * @param service the service
    * @throws Exception

@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.notifications;
+package microsoft.exchange.webservices.data.notification;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
@@ -78,7 +78,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
 
   public interface INotificationEventDelegate {
     /**
-     * Represents a delegate that is invoked when notifications are received
+     * Represents a delegate that is invoked when notification are received
      * from the server
      *
      * @param sender The StreamingSubscriptionConnection instance that received
@@ -90,7 +90,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
 
 
   /**
-   * Notification events Occurs when notifications are received from the
+   * Notification events Occurs when notification are received from the
    * server.
    */
   private List<INotificationEventDelegate> onNotificationEvent = new ArrayList<INotificationEventDelegate>();
@@ -409,7 +409,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
       if (gseResponse.getResult() == ServiceResult.Success
           || gseResponse.getResult() == ServiceResult.Warning) {
         if (gseResponse.getResults().getNotifications().size() > 0) {
-          // We got notifications; dole them out.
+          // We got notification; dole them out.
           this.issueNotificationEvents(gseResponse);
         } else {
           // // This was just a heartbeat, nothing to do here.

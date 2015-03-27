@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumerations.HangingRequestDisconnectReason;
 import microsoft.exchange.webservices.data.core.requests.HangingServiceRequestBase;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.notifications.GetStreamingEventsResults;
+import microsoft.exchange.webservices.data.notification.GetStreamingEventsResults;
 
 import java.util.ArrayList;
 import java.util.List;

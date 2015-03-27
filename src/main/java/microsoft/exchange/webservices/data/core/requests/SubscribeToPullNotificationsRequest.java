@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.notifications.PullSubscription;
+import microsoft.exchange.webservices.data.notification.PullSubscription;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -47,7 +47,7 @@ public class SubscribeToPullNotificationsRequest extends
   private int timeout = 30;
 
   /**
-   * Instantiates a new subscribe to pull notifications request.
+   * Instantiates a new subscribe to pull notification request.
    *
    * @param service the service
    * @throws Exception the exception

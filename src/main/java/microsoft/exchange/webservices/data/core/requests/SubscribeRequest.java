@@ -35,7 +35,7 @@ import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceValidationException;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.FolderIdWrapperList;
-import microsoft.exchange.webservices.data.notifications.SubscriptionBase;
+import microsoft.exchange.webservices.data.notification.SubscriptionBase;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;

@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core.responses;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.notifications.GetEventsResults;
+import microsoft.exchange.webservices.data.notification.GetEventsResults;
 
 /**
  * Represents the response to a subscription event retrieval operation.

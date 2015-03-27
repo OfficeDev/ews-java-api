@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.attribute.RequiredServerVersion;
  * Defines the types of event that can occur in a folder.
  */
 public enum EventType {
-  // This event is sent to a client application by push notifications to
+  // This event is sent to a client application by push notification to
   // indicate that
   // the subscription is still alive.
   /**

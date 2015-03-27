@@ -21,31 +21,37 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.notifications;
+package microsoft.exchange.webservices.data.notification;
 
 /**
  * Provides data to a StreamingSubscriptionConnection's
- * OnNotificationEvent event.
+ * OnSubscriptionError and OnDisconnect events.
  */
-public class NotificationEventArgs {
+public class SubscriptionErrorEventArgs { //TODO extends EventObject {
+
   private StreamingSubscription subscription;
-  private Iterable<NotificationEvent> events;
+  private Exception exception;
 
   /**
-   * Initializes a new instance of the NotificationEventArgs class.
+   * Initializes a new instance of the SubscriptionErrorEventArgs class.
    *
-   * @param subscription The subscription for which notifications have been received.
-   * @param events       The events that were received.
+   * @param subscription The subscription for which an error occurred.
+   *                     If subscription is null, the error applies to the entire connection.
+   * @param exception    The exception representing the error.
+   *                     If exception is null, the connection
+   *                     was cleanly closed by the server.
    */
-  protected NotificationEventArgs(
+  protected SubscriptionErrorEventArgs(
       StreamingSubscription subscription,
-      Iterable<NotificationEvent> events) {
+      Exception exception) {
+    //	super(subscription); //TODO need to check for EventObject
     this.setSubscription(subscription);
-    this.setEvents(events);
+    this.setException(exception);
   }
 
   /**
-   * Gets the subscription for which notifications have been received.
+   * Gets the subscription for which an error occurred.
+   * If Subscription is null, the error applies to the entire connection.
    */
   public StreamingSubscription getSubscription() {
     return this.subscription;
@@ -53,26 +59,29 @@ public class NotificationEventArgs {
   }
 
   /**
-   * Sets the events that were received.
+   * Sets the subscription for which an error occurred.
+   * If Subscription is null, the error applies to the entire connection.
    */
   protected void setSubscription(StreamingSubscription value) {
     this.subscription = value;
-  }
-
-  /**
-   * Gets the events that were received.
-   */
-  public Iterable<NotificationEvent> getEvents() {
-    return this.events;
 
   }
 
   /**
-   * Sets the events that were received.
+   * Gets the exception representing the error. If Exception is null,
+   * the connection was cleanly closed by the server.
    */
-  protected void setEvents(Iterable<NotificationEvent> value) {
-    this.events = value;
+  public Exception getException() {
+    return this.exception;
+
   }
 
+  /**
+   * Sets the exception representing the error. If Exception is null,
+   * the connection was cleanly closed by the server.
+   */
+  protected void setException(Exception value) {
+    this.exception = value;
 
+  }
 }
