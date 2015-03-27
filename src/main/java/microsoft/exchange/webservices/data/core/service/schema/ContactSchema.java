@@ -344,7 +344,7 @@ public class ContactSchema extends ItemSchema {
    * Defines the FileAsMapping property.
    */
   public static final PropertyDefinition FileAsMapping =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.FileAsMapping>(
+      new GenericPropertyDefinition<FileAsMapping>(
           FileAsMapping.class,
           XmlElementNames.FileAsMapping, FieldUris.FileAsMapping, EnumSet.of(
           PropertyDefinitionFlags.CanSet,
@@ -583,7 +583,7 @@ public class ContactSchema extends ItemSchema {
    * Defines the ContactSource property.
    */
   public static final PropertyDefinition ContactSource =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.ContactSource>(
+      new GenericPropertyDefinition<ContactSource>(
           ContactSource.class,
           XmlElementNames.ContactSource, FieldUris.ContactSource, EnumSet
           .of(PropertyDefinitionFlags.CanFind),

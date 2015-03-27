@@ -354,7 +354,7 @@ public class AppointmentSchema extends ItemSchema {
    * The Constant LegacyFreeBusyStatus.
    */
   public static final PropertyDefinition LegacyFreeBusyStatus =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus>(
+      new GenericPropertyDefinition<LegacyFreeBusyStatus>(
           LegacyFreeBusyStatus.class,
           XmlElementNames.LegacyFreeBusyStatus,
           FieldUris.LegacyFreeBusyStatus, EnumSet.of(
@@ -446,7 +446,7 @@ public class AppointmentSchema extends ItemSchema {
    * The Constant AppointmentType.
    */
   public static final PropertyDefinition AppointmentType =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.AppointmentType>(
+      new GenericPropertyDefinition<AppointmentType>(
           AppointmentType.class,
           XmlElementNames.CalendarItemType, FieldUris.CalendarItemType,
           EnumSet.of(PropertyDefinitionFlags.CanFind),
