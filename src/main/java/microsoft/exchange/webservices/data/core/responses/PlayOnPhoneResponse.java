@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.unifiedMessaging.PhoneCallId;
+import microsoft.exchange.webservices.data.messaging.PhoneCallId;
 
 /**
  * Represents the response to a PlayOnPhone operation.

@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.core.responses.GetPhoneCallResponse;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
-import microsoft.exchange.webservices.data.unifiedMessaging.PhoneCallId;
+import microsoft.exchange.webservices.data.messaging.PhoneCallId;
 
 /**
  * Represents a GetPhoneCall request.
