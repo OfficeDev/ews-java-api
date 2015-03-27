@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.autodiscover.requests;
+package microsoft.exchange.webservices.data.autodiscover.request;
 
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
@@ -35,8 +35,8 @@ import microsoft.exchange.webservices.data.enumerations.UserSettingName;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
-import microsoft.exchange.webservices.data.autodiscover.responses.AutodiscoverResponse;
-import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponseCollection;
+import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
+import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponseCollection;
 
 import javax.xml.stream.XMLStreamException;
 import java.net.URI;
@@ -143,9 +143,9 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
   }
 
   /**
-   * Post-process responses to GetUserSettings.
+   * Post-process response to GetUserSettings.
    *
-   * @param responses The GetUserSettings responses.
+   * @param responses The GetUserSettings response.
    */
   private void postProcessResponses(
       GetUserSettingsResponseCollection responses) {

@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.exceptions.ArgumentException;
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverEndpoints;
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverRemoteException;
-import microsoft.exchange.webservices.data.autodiscover.requests.AutodiscoverRequest;
+import microsoft.exchange.webservices.data.autodiscover.request.AutodiscoverRequest;
 import microsoft.exchange.webservices.data.autodiscover.configuration.ConfigurationSettingsBase;
 import microsoft.exchange.webservices.data.enumerations.DomainSettingName;
 import microsoft.exchange.webservices.data.exceptions.EWSHttpException;
@@ -37,12 +37,12 @@ import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeServiceBase;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.exceptions.FormatException;
-import microsoft.exchange.webservices.data.autodiscover.requests.GetDomainSettingsRequest;
-import microsoft.exchange.webservices.data.autodiscover.responses.GetDomainSettingsResponse;
-import microsoft.exchange.webservices.data.autodiscover.responses.GetDomainSettingsResponseCollection;
-import microsoft.exchange.webservices.data.autodiscover.requests.GetUserSettingsRequest;
-import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
-import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponseCollection;
+import microsoft.exchange.webservices.data.autodiscover.request.GetDomainSettingsRequest;
+import microsoft.exchange.webservices.data.autodiscover.response.GetDomainSettingsResponse;
+import microsoft.exchange.webservices.data.autodiscover.response.GetDomainSettingsResponseCollection;
+import microsoft.exchange.webservices.data.autodiscover.request.GetUserSettingsRequest;
+import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponse;
+import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponseCollection;
 import microsoft.exchange.webservices.data.core.requests.HttpClientWebRequest;
 import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 import microsoft.exchange.webservices.data.interfaces.IAutodiscoverRedirectionUrl;
@@ -1868,7 +1868,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @param userSmtpAddresses the user smtp addresses
    * @param userSettingNames  The user setting names.
    * @return A GetUserSettingsResponseCollection object containing the
-   * responses for each individual user.
+   * response for each individual user.
    * @throws Exception the exception
    */
   public GetUserSettingsResponseCollection getUsersSettings(
@@ -1916,7 +1916,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * @param requestedVersion   Requested version of the Exchange service.
    * @param domainSettingNames The domain setting names.
    * @return A GetDomainSettingsResponseCollection object containing the
-   * responses for each individual domain.
+   * response for each individual domain.
    * @throws Exception the exception
    */
   public GetDomainSettingsResponseCollection getDomainSettings(

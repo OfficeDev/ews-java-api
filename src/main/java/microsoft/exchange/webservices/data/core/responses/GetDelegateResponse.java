@@ -76,10 +76,10 @@ public final class GetDelegateResponse extends DelegateManagementResponse {
   }
 
   /**
-   * Gets a value indicating if and how meeting requests are delivered to
+   * Gets a value indicating if and how meeting request are delivered to
    * delegates.
    *
-   * @return the meeting requests delivery scope
+   * @return the meeting request delivery scope
    */
   public MeetingRequestsDeliveryScope getMeetingRequestsDeliveryScope() {
     return this.meetingRequestsDeliveryScope;

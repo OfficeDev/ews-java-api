@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.autodiscover.requests;
+package microsoft.exchange.webservices.data.autodiscover.request;
 
 import microsoft.exchange.webservices.data.misc.ConversationAction;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;

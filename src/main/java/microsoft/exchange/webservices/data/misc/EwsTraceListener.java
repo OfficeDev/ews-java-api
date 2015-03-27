@@ -28,7 +28,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * EwsTraceListener logs request/responses.
+ * EwsTraceListener logs request/response.
  */
 public class EwsTraceListener implements ITraceListener {
 

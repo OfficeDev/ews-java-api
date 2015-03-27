@@ -60,7 +60,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
   public interface IHandleResponseObject {
 
     /**
-     * Callback delegate to handle asynchronous responses.
+     * Callback delegate to handle asynchronous response.
      *
      * @param response Response received from the server
      * @throws microsoft.exchange.webservices.data.exceptions.ArgumentException
@@ -98,7 +98,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
   private EwsServiceMultiResponseXmlReader ewsXmlReader;
 
   /**
-   * Expected minimum frequency in responses, in milliseconds.
+   * Expected minimum frequency in response, in milliseconds.
    */
   protected int heartbeatFrequencyMilliseconds;
 
@@ -175,7 +175,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
   }
 
   /**
-   * Parses the responses.
+   * Parses the response.
    *
    */
   private void parseResponses() {

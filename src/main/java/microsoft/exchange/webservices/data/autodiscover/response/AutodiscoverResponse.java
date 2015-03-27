@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.autodiscover.responses;
+package microsoft.exchange.webservices.data.autodiscover.response;
 
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import java.net.URI;
 
 /**
- * Represents the base class for all responses returned by the Autodiscover
+ * Represents the base class for all response returned by the Autodiscover
  * service.
  */
 public abstract class AutodiscoverResponse {

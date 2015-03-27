@@ -519,7 +519,7 @@ public class Item extends ServiceObject {
   public boolean getIsTimeZoneHeaderRequired(boolean isUpdateOperation)
       throws Exception {
     // Starting E14SP2, attachment will be sent along with CreateItem
-    // requests.
+    // request.
     // if the attachment used to require the Timezone header, CreateItem
     // request should do so too.
     //

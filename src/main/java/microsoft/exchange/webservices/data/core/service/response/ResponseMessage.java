@@ -43,7 +43,7 @@ import microsoft.exchange.webservices.data.properties.complex.MessageBody;
 public final class ResponseMessage extends ResponseObject<EmailMessage> {
 
   /**
-   * Represents the base class for e-mail related responses (Reply, Reply all
+   * Represents the base class for e-mail related response (Reply, Reply all
    * and Forward).
    */
   private ResponseMessageType responseType;

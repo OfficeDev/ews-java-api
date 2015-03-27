@@ -21,31 +21,31 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.autodiscover.responses;
+package microsoft.exchange.webservices.data.autodiscover.response;
 
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverResponseCollection;
 
 /**
- * Represents a collection of responses to GetDomainSettings.
+ * Represents a collection of response to GetUserSettings.
  */
-public final class GetDomainSettingsResponseCollection extends
-                                                       AutodiscoverResponseCollection<GetDomainSettingsResponse> {
+public final class GetUserSettingsResponseCollection extends
+                                                     AutodiscoverResponseCollection<GetUserSettingsResponse> {
 
   /**
    * Initializes a new instance of the AutodiscoverResponseCollection class.
    */
-  public GetDomainSettingsResponseCollection() {
+  public GetUserSettingsResponseCollection() {
   }
 
   /**
    * Create a response instance.
    *
-   * @return GetDomainSettingsResponse.
+   * @return GetUserSettingsResponse.
    */
   @Override
-  protected GetDomainSettingsResponse createResponseInstance() {
-    return new GetDomainSettingsResponse();
+  protected GetUserSettingsResponse createResponseInstance() {
+    return new GetUserSettingsResponse();
   }
 
   /**
@@ -55,7 +55,7 @@ public final class GetDomainSettingsResponseCollection extends
    */
   @Override
   protected String getResponseCollectionXmlElementName() {
-    return XmlElementNames.DomainResponses;
+    return XmlElementNames.UserResponses;
   }
 
   /**
@@ -65,7 +65,7 @@ public final class GetDomainSettingsResponseCollection extends
    */
   @Override
   protected String getResponseInstanceXmlElementName() {
-    return XmlElementNames.DomainResponse;
+    return XmlElementNames.UserResponse;
   }
 
 }

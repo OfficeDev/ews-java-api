@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.autodiscover.requests;
+package microsoft.exchange.webservices.data.autodiscover.request;
 
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.enumerations.DomainSettingName;
@@ -34,8 +34,8 @@ import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationExc
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
-import microsoft.exchange.webservices.data.autodiscover.responses.AutodiscoverResponse;
-import microsoft.exchange.webservices.data.autodiscover.responses.GetDomainSettingsResponseCollection;
+import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
+import microsoft.exchange.webservices.data.autodiscover.response.GetDomainSettingsResponseCollection;
 
 import javax.xml.stream.XMLStreamException;
 import java.net.URI;
@@ -122,9 +122,9 @@ public class GetDomainSettingsRequest extends AutodiscoverRequest {
   }
 
   /**
-   * Post-process responses to GetDomainSettings.
+   * Post-process response to GetDomainSettings.
    *
-   * @param responses The GetDomainSettings responses.
+   * @param responses The GetDomainSettings response.
    */
   private void PostProcessResponses(
       GetDomainSettingsResponseCollection responses) {

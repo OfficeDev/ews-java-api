@@ -83,7 +83,7 @@ public class SyncFolderHierarchyRequest extends
   /**
    * Gets the expected response message count.
    *
-   * @return Number of expected responses
+   * @return Number of expected response
    */
   @Override
   protected int getExpectedResponseMessageCount() {

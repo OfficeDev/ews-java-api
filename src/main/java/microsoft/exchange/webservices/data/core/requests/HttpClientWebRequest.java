@@ -74,7 +74,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
   @Override
   public void close() throws IOException {
     // First check if we can close the response, by consuming the complete response
-    // This releases the connection but keeps it alive for future requests
+    // This releases the connection but keeps it alive for future request
     // If that is not possible, we simply cleanup the whole connection
     if (response != null && response.getEntity() != null) {
       EntityUtils.consume(response.getEntity());

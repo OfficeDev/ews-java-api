@@ -502,7 +502,7 @@ public final class PropertySet implements ISelfValidate,
             !propertyDefinition.hasFlag(
                 PropertyDefinitionFlags.CanFind, request.
                     getService().getRequestedServerVersion())) {
-          throw new ServiceValidationException(String.format("The property %s can't be used in %s requests.",
+          throw new ServiceValidationException(String.format("The property %s can't be used in %s request.",
               propertyDefinition.getName(), request
                   .getXmlElementName()));
         }

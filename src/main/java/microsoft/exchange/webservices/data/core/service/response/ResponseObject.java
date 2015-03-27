@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core.service.response;
 
 /**
- * Represents the base class for all responses that can be sent.
+ * Represents the base class for all response that can be sent.
  *
  */
 import microsoft.exchange.webservices.data.core.service.schemas.ServiceObjectSchema;

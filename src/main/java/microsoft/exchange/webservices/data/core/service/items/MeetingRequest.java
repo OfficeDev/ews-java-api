@@ -57,7 +57,7 @@ import java.util.Date;
 /**
  * Represents a meeting request that an attendee can accept
  * or decline. Properties available on meeting
- * requests are defined in the MeetingRequestSchema class.
+ * request are defined in the MeetingRequestSchema class.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.MeetingRequest)
 public class MeetingRequest extends MeetingMessage implements ICalendarActionProvider {

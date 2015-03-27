@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.autodiscover.requests;
+package microsoft.exchange.webservices.data.autodiscover.request;
 
 import microsoft.exchange.webservices.data.enumerations.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverResponseException;
@@ -44,7 +44,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
-import microsoft.exchange.webservices.data.autodiscover.responses.AutodiscoverResponse;
+import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
@@ -680,7 +680,7 @@ public abstract class AutodiscoverRequest {
   }
 
   /**
-   * Loads responses from XML.
+   * Loads response from XML.
    *
    * @param reader The reader.
    * @return AutodiscoverResponse AutodiscoverResponse object

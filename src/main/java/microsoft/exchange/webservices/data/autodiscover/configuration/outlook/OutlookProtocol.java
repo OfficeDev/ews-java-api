@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.autodiscover.WebClientUrl;
 import microsoft.exchange.webservices.data.autodiscover.WebClientUrlCollection;
-import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
+import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponse;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;

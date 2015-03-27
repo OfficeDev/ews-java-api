@@ -41,14 +41,14 @@ public final class DeleteAttachmentException extends
   private static final long serialVersionUID = 1L;
 
   /**
-   * The responses.
+   * The response.
    */
   private ServiceResponseCollection<DeleteAttachmentResponse> responses;
 
   /**
    * Initializes a new instance of DeleteAttachmentException.
    *
-   * @param serviceResponses The list of responses to be associated with this exception.
+   * @param serviceResponses The list of response to be associated with this exception.
    * @param message          The message that describes the error.
    */
   public DeleteAttachmentException(ServiceResponseCollection<DeleteAttachmentResponse> serviceResponses,
@@ -64,7 +64,7 @@ public final class DeleteAttachmentException extends
   /**
    * Initializes a new instance of DeleteAttachmentException.
    *
-   * @param serviceResponses The list of responses to be associated with this exception.
+   * @param serviceResponses The list of response to be associated with this exception.
    * @param message          The message that describes the error.
    * @param innerException   The exception that is the cause of the current exception.
    */

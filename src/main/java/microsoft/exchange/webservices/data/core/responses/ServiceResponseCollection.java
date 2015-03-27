@@ -31,7 +31,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 /**
- * Represents a strongly typed list of service responses.
+ * Represents a strongly typed list of service response.
  *
  * @param <TResponse> The type of response stored in the list.
  */
@@ -39,7 +39,7 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
     implements Iterable<TResponse> {
 
   /**
-   * The responses.
+   * The response.
    */
   private Vector<TResponse> responses = new Vector<TResponse>();
 
@@ -70,9 +70,9 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
   }
 
   /**
-   * Gets the total number of responses in the list.
+   * Gets the total number of response in the list.
    *
-   * @return total number of responses in the list.
+   * @return total number of response in the list.
    */
   public int getCount() {
     return this.responses.size();
@@ -95,10 +95,10 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
 
   /**
    * Gets a value indicating the overall result of the request that
-   * generated this response collection. If all of the responses have their
+   * generated this response collection. If all of the response have their
    * Result property set to Success, OverallResult returns Success. If at
    * least one response has its Result property set to Warning and all other
-   * responses have their Result property set to Success, OverallResult
+   * response have their Result property set to Success, OverallResult
    * returns Warning. If at least one response has a its Result set to Error,
    * OverallResult returns Error.
    *

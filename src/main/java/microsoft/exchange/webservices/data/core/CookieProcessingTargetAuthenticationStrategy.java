@@ -36,7 +36,7 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * TargetAuthenticationStrategy that also processes the cookies in HTTP 401 responses. While not fully
+ * TargetAuthenticationStrategy that also processes the cookies in HTTP 401 response. While not fully
  * according to the RFC's, this is often necessary to ensure good load balancing behaviour (e.g., TMG server
  * requires it for authentication, where it sends a HTTP 401 with a new Cookie after 5 minutes of inactivity)
  */

@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover;
 
-import microsoft.exchange.webservices.data.autodiscover.responses.AutodiscoverResponse;
+import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
@@ -33,16 +33,16 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Represents a collection of responses to a call to the Autodiscover service.
+ * Represents a collection of response to a call to the Autodiscover service.
  *
- * @param <TResponse> The type of the responses in the collection.
+ * @param <TResponse> The type of the response in the collection.
  */
 public abstract class AutodiscoverResponseCollection
     <TResponse extends AutodiscoverResponse>
     extends AutodiscoverResponse implements Iterable<TResponse> {
 
   /**
-   * The responses.
+   * The response.
    */
   private List<TResponse> responses;
 
@@ -55,7 +55,7 @@ public abstract class AutodiscoverResponseCollection
   }
 
   /**
-   * Gets the number of responses in the collection.
+   * Gets the number of response in the collection.
    *
    * @return the count
    */
@@ -74,9 +74,9 @@ public abstract class AutodiscoverResponseCollection
   }
 
   /**
-   * Gets the responses.
+   * Gets the response.
    *
-   * @return the responses
+   * @return the response
    */
   public List<TResponse> getResponses() {
     return responses;

@@ -36,7 +36,7 @@ import java.util.List;
 public final class DelegateInformation {
 
   /**
-   * The delegate user responses.
+   * The delegate user response.
    */
   private Collection<DelegateUserResponse> delegateUserResponses;
 
@@ -48,7 +48,7 @@ public final class DelegateInformation {
   /**
    * Initializes a DelegateInformation object.
    *
-   * @param delegateUserResponses       the delegate user responses
+   * @param delegateUserResponses       the delegate user response
    * @param meetingReqestsDeliveryScope the meeting reqests delivery scope
    */
   public DelegateInformation(List<DelegateUserResponse> delegateUserResponses,
@@ -59,17 +59,17 @@ public final class DelegateInformation {
   }
 
   /**
-   * Gets a list of responses for each of the delegate users concerned by the
+   * Gets a list of response for each of the delegate users concerned by the
    * operation.
    *
-   * @return the delegate user responses
+   * @return the delegate user response
    */
   public Collection<DelegateUserResponse> getDelegateUserResponses() {
     return delegateUserResponses;
   }
 
   /**
-   * Gets a value indicating if and how meeting requests are delivered to
+   * Gets a value indicating if and how meeting request are delivered to
    * delegates.
    *
    * @return the meeting reqests delivery scope

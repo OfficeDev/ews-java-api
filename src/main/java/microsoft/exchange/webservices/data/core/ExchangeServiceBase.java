@@ -260,7 +260,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param url                The URL that the HttpWebRequest should target.
    * @param acceptGzipEncoding If true, ask server for GZip compressed content.
-   * @param allowAutoRedirect  If true, redirection responses will be automatically followed.
+   * @param allowAutoRedirect  If true, redirection response will be automatically followed.
    * @return An initialised instance of HttpWebRequest.
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceLocalException       the service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
@@ -269,7 +269,7 @@ public abstract class ExchangeServiceBase implements Closeable {
       boolean allowAutoRedirect) throws ServiceLocalException, URISyntaxException {
     // Verify that the protocol is something that we can handle
     if (!url.getScheme().equalsIgnoreCase("HTTP") && !url.getScheme().equalsIgnoreCase("HTTPS")) {
-      String strErr = String.format("Protocol %s isn't supported for service requests.", url.getScheme());
+      String strErr = String.format("Protocol %s isn't supported for service request.", url.getScheme());
       throw new ServiceLocalException(strErr);
     }
 
@@ -606,7 +606,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.credentials = credentials;
     this.useDefaultCredentials = false;
 
-    // Reset the httpContext, to remove any existing authentication cookies from subsequent requests
+    // Reset the httpContext, to remove any existing authentication cookies from subsequent request
     initializeHttpContext();
   }
 
@@ -635,13 +635,13 @@ public abstract class ExchangeServiceBase implements Closeable {
       this.credentials = null;
     }
 
-    // Reset the httpContext, to remove any existing authentication cookies from subsequent requests
+    // Reset the httpContext, to remove any existing authentication cookies from subsequent request
     initializeHttpContext();
   }
   
   /**
-   * Gets the timeout used when sending HTTP requests and when receiving HTTP
-   * responses, in milliseconds.
+   * Gets the timeout used when sending HTTP request and when receiving HTTP
+   * response, in milliseconds.
    *
    * @return timeout in milliseconds
    */
@@ -650,7 +650,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Sets the timeout used when sending HTTP requests and when receiving HTTP
+   * Sets the timeout used when sending HTTP request and when receiving HTTP
    * respones, in milliseconds. Defaults to 100000.
    *
    * @param timeout timeout in milliseconds
@@ -735,7 +735,7 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   /**
    * Gets information associated with the server that processed the last
-   * request. Will be null if no requests have been processed.
+   * request. Will be null if no request have been processed.
    *
    * @return the server info
    */
@@ -754,7 +754,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Gets the web proxy that should be used when sending requests to EWS.
+   * Gets the web proxy that should be used when sending request to EWS.
    *
    * @return Proxy
    * the Proxy Information
@@ -764,7 +764,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Sets the web proxy that should be used when sending requests to EWS.
+   * Sets the web proxy that should be used when sending request to EWS.
    * Set this property to null to use the default web proxy.
    *
    * @param value the Proxy Information
@@ -787,7 +787,7 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   /**
    * Provides an event that applications can implement to emit custom SOAP
-   * headers in requests that are sent to Exchange.
+   * headers in request that are sent to Exchange.
    */
   private List<ICustomXmlSerialization> OnSerializeCustomSoapHeaders;
 

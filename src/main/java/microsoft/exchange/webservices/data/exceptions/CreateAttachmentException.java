@@ -41,14 +41,14 @@ public final class CreateAttachmentException extends
   private static final long serialVersionUID = 1L;
 
   /**
-   * The responses.
+   * The response.
    */
   private ServiceResponseCollection<CreateAttachmentResponse> responses;
 
   /**
    * Initializes a new instance of CreateAttachmentException.
    *
-   * @param serviceResponses the service responses
+   * @param serviceResponses the service response
    * @param message          the message
    */
   public CreateAttachmentException(ServiceResponseCollection<CreateAttachmentResponse> serviceResponses,
@@ -64,7 +64,7 @@ public final class CreateAttachmentException extends
   /**
    * Initializes a new instance of CreateAttachmentException.
    *
-   * @param serviceResponses the service responses
+   * @param serviceResponses the service response
    * @param message          the message
    * @param innerException   the inner exception
    */

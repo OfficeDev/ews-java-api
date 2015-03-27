@@ -33,8 +33,8 @@ import microsoft.exchange.webservices.data.core.service.items.Item;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
-import microsoft.exchange.webservices.data.autodiscover.requests.ApplyConversationActionRequest;
-import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
+import microsoft.exchange.webservices.data.autodiscover.request.ApplyConversationActionRequest;
+import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponse;
 import microsoft.exchange.webservices.data.core.requests.AddDelegateRequest;
 import microsoft.exchange.webservices.data.core.requests.ConvertIdRequest;
 import microsoft.exchange.webservices.data.core.requests.CopyFolderRequest;
@@ -344,7 +344,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    *                          SearchFilter.SearchFilterCollection
    * @param view              The view controlling the number of folders returned.
    * @param errorHandlingMode Indicates the type of error handling should be done.
-   * @return Collection of service responses.
+   * @return Collection of service response.
    * @throws Exception the exception
    */
   private ServiceResponseCollection<FindFolderResponse> internalFindFolders(
@@ -3193,7 +3193,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * call to EWS.
    *
    * @param mailbox                      the mailbox
-   * @param meetingRequestsDeliveryScope the meeting requests delivery scope
+   * @param meetingRequestsDeliveryScope the meeting request delivery scope
    * @param delegateUsers                the delegate users
    * @return A collection of DelegateUserResponse objects providing the
    * results of the operation.
@@ -3216,7 +3216,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * call to EWS.
    *
    * @param mailbox                      the mailbox
-   * @param meetingRequestsDeliveryScope the meeting requests delivery scope
+   * @param meetingRequestsDeliveryScope the meeting request delivery scope
    * @param delegateUsers                the delegate users
    * @return A collection of DelegateUserResponse objects providing the
    * results of the operation.
@@ -3247,7 +3247,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * a call to EWS.
    *
    * @param mailbox                      the mailbox
-   * @param meetingRequestsDeliveryScope the meeting requests delivery scope
+   * @param meetingRequestsDeliveryScope the meeting request delivery scope
    * @param delegateUsers                the delegate users
    * @return A collection of DelegateUserResponse objects providing the
    * results of the operation.
@@ -3270,7 +3270,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
    * a call to EWS.
    *
    * @param mailbox                      the mailbox
-   * @param meetingRequestsDeliveryScope the meeting requests delivery scope
+   * @param meetingRequestsDeliveryScope the meeting request delivery scope
    * @param delegateUsers                the delegate users
    * @return A collection of DelegateUserResponse objects providing the
    * results of the operation.

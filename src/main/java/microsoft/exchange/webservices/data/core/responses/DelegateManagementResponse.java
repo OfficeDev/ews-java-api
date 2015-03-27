@@ -49,7 +49,7 @@ public class DelegateManagementResponse extends ServiceResponse {
   private List<DelegateUser> delegateUsers;
 
   /**
-   * The delegate user responses.
+   * The delegate user response.
    */
   private Collection<DelegateUserResponse> delegateUserResponses;
 
@@ -112,10 +112,10 @@ public class DelegateManagementResponse extends ServiceResponse {
   }
 
   /**
-   * Gets a collection of responses for each of the delegate users concerned
+   * Gets a collection of response for each of the delegate users concerned
    * by the operation.
    *
-   * @return the delegate user responses
+   * @return the delegate user response
    */
   public Collection<DelegateUserResponse> getDelegateUserResponses() {
     return this.delegateUserResponses;

@@ -105,7 +105,7 @@ public final class DelegateUser extends ComplexProperty {
 
   /**
    * Gets  a value indicating if the delegate user should receive
-   * copies of meeting requests.
+   * copies of meeting request.
    *
    * @return the receive copies of meeting messages
    */

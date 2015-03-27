@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.autodiscover.configuration.outlook;
 
 import microsoft.exchange.webservices.data.autodiscover.exception.error.UserSettingError;
 import microsoft.exchange.webservices.data.autodiscover.configuration.ConfigurationSettingsBase;
-import microsoft.exchange.webservices.data.autodiscover.responses.GetUserSettingsResponse;
+import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponse;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.LazyMember;

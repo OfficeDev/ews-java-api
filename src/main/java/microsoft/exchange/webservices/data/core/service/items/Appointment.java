@@ -255,7 +255,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
     //      o   Recurrence
     //  ... then, we must send the MeetingTimeZone element
     // (which is generated from StartTimeZone for
-    //  Exchange2007_SP1 requests (see
+    //  Exchange2007_SP1 request (see
     //StartTimeZonePropertyDefinition.cs).
     // If the StartTimeZone isn't
     //  in the property bag, then throw, because clients must
@@ -794,7 +794,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
-   * Gets  a value indicating whether responses are requested when
+   * Gets  a value indicating whether response are requested when
    * invitations are sent for this meeting.
    *
    * @return the checks if is response requested

@@ -55,7 +55,7 @@ import microsoft.exchange.webservices.data.properties.definition.TimeZonePropert
 import java.util.EnumSet;
 
 /**
- * Represents the schema for appointment and meeting requests.
+ * Represents the schema for appointment and meeting request.
  */
 @Schema
 public class AppointmentSchema extends ItemSchema {

@@ -35,7 +35,7 @@ import microsoft.exchange.webservices.data.properties.definition.PropertyDefinit
 import java.util.EnumSet;
 
 /**
- * Represents the schema for meeting requests.
+ * Represents the schema for meeting request.
  */
 @Schema
 public class MeetingRequestSchema extends MeetingMessageSchema {

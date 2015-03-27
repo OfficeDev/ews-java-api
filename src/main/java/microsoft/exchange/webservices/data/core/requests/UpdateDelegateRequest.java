@@ -48,7 +48,7 @@ public class UpdateDelegateRequest extends
   private List<DelegateUser> delegateUsers = new ArrayList<DelegateUser>();
 
   /**
-   * The meeting requests delivery scope.
+   * The meeting request delivery scope.
    */
   private MeetingRequestsDeliveryScope meetingRequestsDeliveryScope;
 
@@ -144,19 +144,19 @@ public class UpdateDelegateRequest extends
   }
 
   /**
-   * Gets the meeting requests delivery scope. <value>The meeting
-   * requests delivery scope.</value>
+   * Gets the meeting request delivery scope. <value>The meeting
+   * request delivery scope.</value>
    *
-   * @return the meeting requests delivery scope
+   * @return the meeting request delivery scope
    */
   public MeetingRequestsDeliveryScope getMeetingRequestsDeliveryScope() {
     return this.meetingRequestsDeliveryScope;
   }
 
   /**
-   * Sets the meeting requests delivery scope.
+   * Sets the meeting request delivery scope.
    *
-   * @param value the new meeting requests delivery scope
+   * @param value the new meeting request delivery scope
    */
   public void setMeetingRequestsDeliveryScope(
       MeetingRequestsDeliveryScope value) {

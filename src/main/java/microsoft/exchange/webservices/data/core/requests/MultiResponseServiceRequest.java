@@ -37,7 +37,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceXmlDeserializationE
 import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
 
 /**
- * Represents a service request that can have multiple responses.
+ * Represents a service request that can have multiple response.
  *
  * @param <TResponse> The type of the response.
  */
@@ -78,7 +78,7 @@ public abstract class MultiResponseServiceRequest<TResponse extends ServiceRespo
 
       // Add the response to the list after it has been deserialized
       // because the response list updates an overall result as individual
-      // responses are added
+      // response are added
       // to it.
       serviceResponses.add(response);
     }
@@ -96,7 +96,7 @@ public abstract class MultiResponseServiceRequest<TResponse extends ServiceRespo
             .getResponseAtIndex(0));
       } else {
         throw new ServiceXmlDeserializationException(String.format(
-            "The service was expected to return %s responses of type '%d', but %d responses were received.", this
+            "The service was expected to return %s response of type '%d', but %d response were received.", this
                 .getResponseMessageXmlElementName(), this
                 .getExpectedResponseMessageCount(),
             serviceResponses.getCount()));

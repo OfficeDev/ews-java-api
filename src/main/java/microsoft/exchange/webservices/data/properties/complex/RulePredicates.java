@@ -353,7 +353,7 @@ public final class RulePredicates extends ComplexProperty {
 
   /**
    * Gets or sets a value indicating whether incoming messages must be
-   * approval requests for the condition or exception to apply.
+   * approval request for the condition or exception to apply.
    */
   public boolean getIsApprovalRequest() {
     return this.isApprovalRequest;
@@ -415,7 +415,7 @@ public final class RulePredicates extends ComplexProperty {
 
   /**
    * Gets or sets a value indicating whether incoming messages must be
-   * meeting requests for the condition or exception to apply.
+   * meeting request for the condition or exception to apply.
    */
   public boolean getIsMeetingRequest() {
     return this.isMeetingRequest;
@@ -433,7 +433,7 @@ public final class RulePredicates extends ComplexProperty {
 
   /**
    * Gets or sets a value indicating whether incoming messages must be
-   * meeting responses for the condition or exception to apply.
+   * meeting response for the condition or exception to apply.
    */
   public boolean getIsMeetingResponse() {
 
