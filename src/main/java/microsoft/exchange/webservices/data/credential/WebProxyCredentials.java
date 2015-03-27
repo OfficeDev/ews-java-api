@@ -21,30 +21,31 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.credentials;
+package microsoft.exchange.webservices.data.credential;
 
-//These constants needs to be defined as per user configurations.
-public interface CredentialConstants {
-  String URL = "";
-  String USERNAME = "";
-  String DOMAIN = "";
-  String EMAIL_ID = "";
-  String PASSWORD = "";
-  String ATTENDEE_EMAIL_ID = "";
-  String ATTENDEE_USERNAME = "";
-  String ATTENDEE_PASSWORD = "";
-  String PROXY_CRED_USERNAME = "";
-  String PROXY_CRED_PASSWORD = "";
-  String PROXY_CRED_DOMAIN = "";
-  String PROXY_HOST = "";
-  int PROXY_PORT = 80;
-  String PATH = "";
-  String COPYTOFILEPATH = "";
-  String SMTPADDRESS_DISTRIBUTION_GROUP = "";
-  String SMTPADDRESS_ROOM = "";
-  int THREAD_SLEEP_MILLSEC = 5000;
+public class WebProxyCredentials {
 
+  private String username;
+
+  private String password;
+
+  private String domain;
+
+  public WebProxyCredentials(String username, String password, String domain) {
+    this.username = username;
+    this.password = password;
+    this.domain = domain;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public String getDomain() {
+    return domain;
+  }
 }
-
-
-

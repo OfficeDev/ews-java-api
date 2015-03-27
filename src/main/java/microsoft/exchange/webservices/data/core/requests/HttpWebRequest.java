@@ -85,7 +85,7 @@ public abstract class HttpWebRequest {
   private boolean acceptGzipEncoding;
 
   /**
-   * The use default credentials.
+   * The use default credential.
    */
   private boolean useDefaultCredentials;
 
@@ -371,18 +371,18 @@ public abstract class HttpWebRequest {
   }
 
   /**
-   * Checks if is use default credentials.
+   * Checks if is use default credential.
    *
-   * @return true, if is use default credentials
+   * @return true, if is use default credential
    */
   public boolean isUseDefaultCredentials() {
     return useDefaultCredentials;
   }
 
   /**
-   * Sets the use default credentials.
+   * Sets the use default credential.
    *
-   * @param useDefaultCredentials the new use default credentials
+   * @param useDefaultCredentials the new use default credential
    */
   public void setUseDefaultCredentials(boolean useDefaultCredentials) {
     this.useDefaultCredentials = useDefaultCredentials;
@@ -390,10 +390,10 @@ public abstract class HttpWebRequest {
 
   /**
    * Whether web service authentication is allowed.
-   * This can be set to {@code false} to disallow sending credentials with this request.
+   * This can be set to {@code false} to disallow sending credential with this request.
    *
    * This is useful for the autodiscover request to the legacy HTTP url, because this single request doesn't
-   * require authentication and we don't want to send credentials over HTTP.
+   * require authentication and we don't want to send credential over HTTP.
    *
    * @return {@code true} if authentication is allowed.
    */
@@ -403,10 +403,10 @@ public abstract class HttpWebRequest {
 
   /**
    * Whether web service authentication is allowed.
-   * This can be set to {@code false} to disallow sending credentials with this request.
+   * This can be set to {@code false} to disallow sending credential with this request.
    *
    * This is useful for the autodiscover request to the legacy HTTP url, because this single request doesn't
-   * require authentication and we don't want to send credentials over HTTP.
+   * require authentication and we don't want to send credential over HTTP.
    *
    * Default is {@code true}.
    *
@@ -453,7 +453,7 @@ public abstract class HttpWebRequest {
   }
 
   /**
-   * Sets the credentials.
+   * Sets the credential.
    *
    * @param domain user domain
    * @param user   user name

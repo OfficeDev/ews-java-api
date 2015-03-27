@@ -3650,7 +3650,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
 
   /**
    * Autodiscover will always return the "plain" EWS endpoint URL but if the
-   * client is using WindowsLive credentials, ExchangeService needs to use the
+   * client is using WindowsLive credential, ExchangeService needs to use the
    * WS-Security endpoint.
    *
    * @param uri the uri

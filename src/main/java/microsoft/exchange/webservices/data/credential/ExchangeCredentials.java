@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.credentials;
+package microsoft.exchange.webservices.data.credential;
 
 import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 import microsoft.exchange.webservices.data.exceptions.InvalidOperationException;
@@ -42,7 +42,7 @@ public abstract class ExchangeCredentials {
    * cref="System.Net.NetworkCredential"/> to <see
    * cref="Microsoft.Exchange.WebServices.Data.ExchangeCredentials"/>. This
    * allows a NetworkCredential object to be implictly converted to an
-   * ExchangeCredential which is useful when setting credentials on an
+   * ExchangeCredential which is useful when setting credential on an
    * ExchangeService.
    *
    * @param userName Account user name.
@@ -75,7 +75,7 @@ public abstract class ExchangeCredentials {
   }
 
   /**
-   * This method is called to pre-authenticate credentials before a service
+   * This method is called to pre-authenticate credential before a service
    * request is made.
    */
   public void preAuthenticate() {
@@ -83,7 +83,7 @@ public abstract class ExchangeCredentials {
   }
 
   /**
-   * This method is called to apply credentials to a service request before
+   * This method is called to apply credential to a service request before
    * the request is made.
    *
    * @param client The request.
@@ -119,7 +119,7 @@ public abstract class ExchangeCredentials {
   }
 
   /**
-   * Adjusts the URL endpoint based on the credentials.
+   * Adjusts the URL endpoint based on the credential.
    *
    * @param url The URL.
    * @return Adjust URL.

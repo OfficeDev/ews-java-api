@@ -21,31 +21,39 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.credentials;
+package microsoft.exchange.webservices.data.credential;
 
-public class WebProxyCredentials {
+import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 
-  private String username;
+import java.net.URISyntaxException;
 
-  private String password;
+/**
+ * TokenCredentials provides credential if you already have a token.
+ */
+public final class TokenCredentials extends WSSecurityBasedCredentials {
 
-  private String domain;
+  /**
+   * Initializes a new instance of the TokenCredentials class.
+   *
+   * @param securityToken The token.
+   * @throws microsoft.exchange.webservices.data.exceptions.ArgumentNullException the argument null exception
+   */
+  public TokenCredentials(String securityToken) throws Exception {
+    super(securityToken);
+    EwsUtilities.validateParam(securityToken, "securityToken");
 
-  public WebProxyCredentials(String username, String password, String domain) {
-    this.username = username;
-    this.password = password;
-    this.domain = domain;
   }
 
-  public String getUsername() {
-    return username;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public String getDomain() {
-    return domain;
+  /**
+   * This method is called to apply credential to a service request before
+   * the request is made.
+   *
+   * @param request The request.
+   * @throws java.net.URISyntaxException the uRI syntax exception
+   */
+  @Override public void prepareWebRequest(HttpWebRequest request)
+      throws URISyntaxException {
+    this.setEwsUrl(request.getUrl().toURI());
   }
 }

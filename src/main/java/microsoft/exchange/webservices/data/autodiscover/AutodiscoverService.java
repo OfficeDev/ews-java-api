@@ -56,7 +56,7 @@ import microsoft.exchange.webservices.data.exceptions.ServiceValidationException
 import microsoft.exchange.webservices.data.exceptions.ServiceVersionException;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.enumerations.UserSettingName;
-import microsoft.exchange.webservices.data.credentials.WSSecurityBasedCredentials;
+import microsoft.exchange.webservices.data.credential.WSSecurityBasedCredentials;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -951,14 +951,14 @@ public final class AutodiscoverService extends ExchangeServiceBase
   protected GetUserSettingsResponse internalGetLegacyUserSettings(
       String emailAddress,
       List<UserSettingName> requestedSettings) throws Exception {
-    // Cannot call legacy Autodiscover service with WindowsLive credentials
+    // Cannot call legacy Autodiscover service with WindowsLive credential
     	    	   	
         /*if ((this.getCredentials() != null) && (this.getCredentials() instanceof WindowsLiveCredentials)) {
             throw new AutodiscoverLocalException(
 					Strings.WLIDCredentialsCannotBeUsedWithLegacyAutodiscover);
         }*/
 
-    // Cannot call legacy Autodiscover service with WindowsLive and other WSSecurity-based credentials
+    // Cannot call legacy Autodiscover service with WindowsLive and other WSSecurity-based credential
     if ((this.getCredentials() != null) && (this.getCredentials() instanceof WSSecurityBasedCredentials)) {
       throw new AutodiscoverLocalException(
           "WindowsLiveCredentials can't be used with this Autodiscover endpoint.");
@@ -1378,7 +1378,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
         return false;
       }
 
-      // If we have WLID credentials, make sure that we have a WS-Security
+      // If we have WLID credential, make sure that we have a WS-Security
       // endpoint
 			/*
 			if (this.getCredentials() instanceof WindowsLiveCredentials) {
@@ -1936,12 +1936,12 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * Try to get the partner access information for the given target tenant.
    *
    * @param targetTenantDomain The target domain or user email address.
-   * @param partnerAccessCredentials The partner access credentials.
+   * @param partnerAccessCredentials The partner access credential.
    * @param targetTenantAutodiscoverUrl The autodiscover url for the given tenant.
    * @return True if the partner access information was retrieved, false otherwise.
    */
 
-  /** commented as the code belongs to Partener Token credentials. */
+  /** commented as the code belongs to Partener Token credential. */
 	  
   /*  public boolean tryGetPartnerAccess(
         String targetTenantDomain,

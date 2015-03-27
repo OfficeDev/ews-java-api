@@ -126,7 +126,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
 
     CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
 
-    // Add proxy credentials if necessary.
+    // Add proxy credential if necessary.
     WebProxy proxy = getProxy();
     if (proxy != null) {
       HttpHost proxyHost = new HttpHost(proxy.getHost(), proxy.getPort());
@@ -140,7 +140,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
       }
     }
 
-    // Add web service credentials if necessary.
+    // Add web service credential if necessary.
     if (isAllowAuthentication() && getUsername() != null) {
       NTCredentials webServiceCredentials = new NTCredentials(getUsername(), getPassword(), "", getDomain());
       credentialsProvider.setCredentials(new AuthScope(AuthScope.ANY), webServiceCredentials);

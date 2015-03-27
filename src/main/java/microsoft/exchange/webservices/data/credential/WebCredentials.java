@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.credentials;
+package microsoft.exchange.webservices.data.credential;
 
 import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
 
@@ -47,7 +47,7 @@ public final class WebCredentials extends ExchangeCredentials {
   private String pwd;
 
   /**
-   * The use default credentials.
+   * The use default credential.
    */
   private boolean useDefaultCredentials = true;
 
@@ -79,16 +79,16 @@ public final class WebCredentials extends ExchangeCredentials {
   }
 
   /**
-   * Checks if is use default credentials.
+   * Checks if is use default credential.
    *
-   * @return true, if is use default credentials
+   * @return true, if is use default credential
    */
   public boolean isUseDefaultCredentials() {
     return useDefaultCredentials;
   }
 
   /**
-   * Initializes a new instance to use default network credentials.
+   * Initializes a new instance to use default network credential.
    */
   public WebCredentials() {
     useDefaultCredentials = true;
@@ -98,7 +98,7 @@ public final class WebCredentials extends ExchangeCredentials {
   }
 
   /**
-   * Initializes a new instance to use specified credentials.
+   * Initializes a new instance to use specified credential.
    *
    * @param userName Account user name.
    * @param password Account password.
@@ -117,7 +117,7 @@ public final class WebCredentials extends ExchangeCredentials {
   }
 
   /**
-   * Initializes a new instance to use specified credentials.
+   * Initializes a new instance to use specified credential.
    *
    * @param username The user name.
    * @param password The password.
@@ -127,7 +127,7 @@ public final class WebCredentials extends ExchangeCredentials {
   }
 
   /**
-   * This method is called to apply credentials to a service request before
+   * This method is called to apply credential to a service request before
    * the request is made.
    *
    * @param request The request.

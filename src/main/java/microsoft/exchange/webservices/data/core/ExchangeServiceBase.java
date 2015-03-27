@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.core.requests.HttpClientWebRequest;
 import microsoft.exchange.webservices.data.core.requests.HttpWebRequest;
-import microsoft.exchange.webservices.data.credentials.ExchangeCredentials;
+import microsoft.exchange.webservices.data.credential.ExchangeCredentials;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.TraceFlags;
 import microsoft.exchange.webservices.data.exceptions.AccountIsLockedException;
@@ -81,12 +81,12 @@ public abstract class ExchangeServiceBase implements Closeable {
   private static final String ExtendedHeaderPrefix = "X-";
 
   /**
-   * The credentials.
+   * The credential.
    */
   private ExchangeCredentials credentials;
 
   /**
-   * The use default credentials.
+   * The use default credential.
    */
   private boolean useDefaultCredentials;
 
@@ -306,10 +306,10 @@ public abstract class ExchangeServiceBase implements Closeable {
         throw new ServiceLocalException("Credentials are required to make a service request.");
       }
 
-      // Make sure that credentials have been authenticated if required
+      // Make sure that credential have been authenticated if required
       credentials.preAuthenticate();
 
-      // Apply credentials to the request
+      // Apply credential to the request
       credentials.prepareWebRequest(request);
     }
   }
@@ -587,20 +587,20 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Gets the credentials used to authenticate with the Exchange Web Services.
+   * Gets the credential used to authenticate with the Exchange Web Services.
    *
-   * @return credentials
+   * @return credential
    */
   public ExchangeCredentials getCredentials() {
     return this.credentials;
   }
 
   /**
-   * Sets the credentials used to authenticate with the Exchange Web Services.
+   * Sets the credential used to authenticate with the Exchange Web Services.
    * Setting the Credentials property automatically sets the
    * UseDefaultCredentials to false.
    *
-   * @param credentials Exchange credentials.
+   * @param credentials Exchange credential.
    */
   public void setCredentials(ExchangeCredentials credentials) {
     this.credentials = credentials;
@@ -611,23 +611,23 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Gets a value indicating whether the credentials of the user currently
+   * Gets a value indicating whether the credential of the user currently
    * logged into Windows should be used to authenticate with the Exchange Web
    * Services.
    *
-   * @return true if credentials of the user currently logged in are used
+   * @return true if credential of the user currently logged in are used
    */
   public boolean getUseDefaultCredentials() {
     return this.useDefaultCredentials;
   }
 
   /**
-   * Sets a value indicating whether the credentials of the user currently
+   * Sets a value indicating whether the credential of the user currently
    * logged into Windows should be used to authenticate with the Exchange Web
    * Services. Setting UseDefaultCredentials to true automatically sets the
    * Credentials property to null.
    *
-   * @param value the new use default credentials
+   * @param value the new use default credential
    */
   public void setUseDefaultCredentials(boolean value) {
     this.useDefaultCredentials = value;

@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.credentials.WebProxyCredentials;
+import microsoft.exchange.webservices.data.credential.WebProxyCredentials;
 
 /**
  * WebProxy is used for setting proxy details for proxy authentication schemes such as
@@ -63,7 +63,7 @@ public class WebProxy {
    * Initializes a new instance to use specified proxy with default port 80.
    *
    * @param host proxy host.
-   * @param credentials the credentials to use for the proxy.
+   * @param credentials the credential to use for the proxy.
    */
   public WebProxy(String host, WebProxyCredentials credentials) {
     this.host = host;
@@ -75,7 +75,7 @@ public class WebProxy {
    *
    * @param host proxy host.
    * @param port proxy port.
-   * @param credentials the credentials to use for the proxy.
+   * @param credentials the credential to use for the proxy.
    */
   public WebProxy(String host, int port, WebProxyCredentials credentials) {
     this.host = host;
@@ -108,7 +108,7 @@ public class WebProxy {
   /**
    * Gets the Proxy Credentials.
    *
-   * @return the proxy credentials
+   * @return the proxy credential
    */
   public WebProxyCredentials getCredentials() {
     return credentials;

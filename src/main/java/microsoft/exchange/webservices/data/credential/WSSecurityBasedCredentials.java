@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.credentials;
+package microsoft.exchange.webservices.data.credential;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 
@@ -135,7 +135,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
   }
 
   /**
-   * This method is called to pre-authenticate credentials before a service
+   * This method is called to pre-authenticate credential before a service
    * request is made.
    */
   @Override public void preAuthenticate() {
@@ -237,7 +237,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
   }
 
   /**
-   * Adjusts the URL based on the credentials.
+   * Adjusts the URL based on the credential.
    *
    * @param url The URL.
    * @return Adjust URL.
