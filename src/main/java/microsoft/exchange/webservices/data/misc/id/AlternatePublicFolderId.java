@@ -21,68 +21,74 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.misc.idConversion;
+package microsoft.exchange.webservices.data.misc.id;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.IdFormat;
-import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
-
-import javax.xml.stream.XMLStreamException;
 
 /**
- * Represents the base class for Id expressed in a specific format.
+ * Represents the Id of a public folder expressed in a specific format.
  */
-public abstract class AlternateIdBase implements ISelfValidate {
+public class AlternatePublicFolderId extends AlternateIdBase {
 
   /**
-   * Id format.
+   * Name of schema type used for AlternatePublicFolderId element.
    */
-  private IdFormat format;
+  public final static String SchemaTypeName =
+      "AlternatePublicFolderIdType";
+
+  private String folderId;
 
   /**
-   * Initializes a new instance of the class.
+   * Initializes a new instance of AlternatePublicFolderId.
    */
-  protected AlternateIdBase() {
-  }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param format the format
-   */
-  protected AlternateIdBase(IdFormat format) {
+  public AlternatePublicFolderId() {
     super();
-    this.format = format;
   }
 
   /**
-   * Gets the format in which the Id in expressed.
+   * Initializes a new instance of AlternatePublicFolderId.
    *
-   * @return the format
+   * @param format   the format
+   * @param folderId the folder id
    */
-  public IdFormat getFormat() {
-    return this.format;
+  public AlternatePublicFolderId(IdFormat format, String folderId) {
+    super(format);
+    this.setFolderId(folderId);
   }
 
   /**
-   * Sets the format.
+   * The Id of the public folder.
    *
-   * @param format the new format
+   * @return the folder id
    */
-  public void setFormat(IdFormat format) {
-    this.format = format;
+  public String getFolderId() {
+    return this.folderId;
+
+  }
+
+  /**
+   * Sets the folder id.
+   *
+   * @param folderId the new folder id
+   */
+  public void setFolderId(String folderId) {
+    this.folderId = folderId;
   }
 
   /**
    * Gets the name of the XML element.
    *
-   * @return XML element name.
+   * @return XML element name
    */
-  protected abstract String getXmlElementName();
+  @Override
+  protected String getXmlElementName() {
+    return XmlElementNames.AlternatePublicFolderId;
+  }
 
   /**
    * Writes the attributes to XML.
@@ -90,9 +96,12 @@ public abstract class AlternateIdBase implements ISelfValidate {
    * @param writer the writer
    * @throws microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException the service xml serialization exception
    */
+  @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
-    writer.writeAttributeValue(XmlAttributeNames.Format, this.getFormat());
+    super.writeAttributesToXml(writer);
+    writer.writeAttributeValue(XmlAttributeNames.FolderId, this
+        .getFolderId());
   }
 
   /**
@@ -101,42 +110,10 @@ public abstract class AlternateIdBase implements ISelfValidate {
    * @param reader the reader
    * @throws Exception the exception
    */
-  public void loadAttributesFromXml(EwsServiceXmlReader reader)
+  @Override public void loadAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
-    this.setFormat(reader.readAttributeValue(IdFormat.class,
-        XmlAttributeNames.Format));
-  }
-
-  /**
-   * Writes to XML.
-   *
-   * @param writer the writer
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   */
-  public void writeToXml(EwsServiceXmlWriter writer)
-      throws ServiceXmlSerializationException, XMLStreamException {
-    writer.writeStartElement(XmlNamespace.Types, this.getXmlElementName());
-    this.writeAttributesToXml(writer);
-    writer.writeEndElement(); // this.GetXmlElementName()
-  }
-
-  /**
-   * Validate this instance.
-   *
-   * @throws Exception
-   */
-  protected void internalValidate() throws Exception {
-    // nothing to do.
-  }
-
-  /**
-   * Validates this instance.
-   *
-   * @throws Exception
-   */
-  public void validate() throws Exception {
-    this.internalValidate();
+    super.loadAttributesFromXml(reader);
+    this.setFolderId(reader.readAttributeValue(XmlAttributeNames.FolderId));
   }
 
 }

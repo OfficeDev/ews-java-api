@@ -29,10 +29,10 @@ import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceLocalException;
-import microsoft.exchange.webservices.data.misc.idConversion.AlternateId;
-import microsoft.exchange.webservices.data.misc.idConversion.AlternateIdBase;
-import microsoft.exchange.webservices.data.misc.idConversion.AlternatePublicFolderId;
-import microsoft.exchange.webservices.data.misc.idConversion.AlternatePublicFolderItemId;
+import microsoft.exchange.webservices.data.misc.id.AlternateId;
+import microsoft.exchange.webservices.data.misc.id.AlternateIdBase;
+import microsoft.exchange.webservices.data.misc.id.AlternatePublicFolderId;
+import microsoft.exchange.webservices.data.misc.id.AlternatePublicFolderItemId;
 
 /**
  * Represents the response to an individual Id conversion operation.

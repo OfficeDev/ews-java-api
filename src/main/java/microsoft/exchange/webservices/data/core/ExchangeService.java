@@ -146,7 +146,7 @@ import microsoft.exchange.webservices.data.misc.availability.AttendeeInfo;
 import microsoft.exchange.webservices.data.misc.availability.AvailabilityOptions;
 import microsoft.exchange.webservices.data.misc.availability.GetUserAvailabilityResults;
 import microsoft.exchange.webservices.data.misc.availability.TimeWindow;
-import microsoft.exchange.webservices.data.misc.idConversion.AlternateIdBase;
+import microsoft.exchange.webservices.data.misc.id.AlternateIdBase;
 import microsoft.exchange.webservices.data.notifications.GetEventsResults;
 import microsoft.exchange.webservices.data.notifications.PullSubscription;
 import microsoft.exchange.webservices.data.notifications.PushSubscription;

@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.misc.idConversion;
+package microsoft.exchange.webservices.data.misc.id;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
@@ -31,63 +31,67 @@ import microsoft.exchange.webservices.data.enumerations.IdFormat;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
 
 /**
- * Represents the Id of a public folder expressed in a specific format.
+ * Represents the Id of a public folder item expressed in a specific format.
  */
-public class AlternatePublicFolderId extends AlternateIdBase {
+public class AlternatePublicFolderItemId extends AlternatePublicFolderId {
 
   /**
-   * Name of schema type used for AlternatePublicFolderId element.
+   * Schema type associated with AlternatePublicFolderItemId.
    */
   public final static String SchemaTypeName =
-      "AlternatePublicFolderIdType";
-
-  private String folderId;
+      "AlternatePublicFolderItemIdType";
 
   /**
-   * Initializes a new instance of AlternatePublicFolderId.
+   * Item id.
    */
-  public AlternatePublicFolderId() {
+  private String itemId;
+
+  /**
+   * Initializes a new instance of the class.
+   */
+  public AlternatePublicFolderItemId() {
     super();
   }
 
   /**
-   * Initializes a new instance of AlternatePublicFolderId.
+   * Initializes a new instance of the class.
    *
    * @param format   the format
    * @param folderId the folder id
+   * @param itemId   the item id
    */
-  public AlternatePublicFolderId(IdFormat format, String folderId) {
-    super(format);
-    this.setFolderId(folderId);
+  public AlternatePublicFolderItemId(IdFormat format, String folderId,
+      String itemId) {
+    super(format, folderId);
+    this.itemId = itemId;
   }
 
   /**
-   * The Id of the public folder.
+   * Gets The Id of the public folder item.
    *
-   * @return the folder id
+   * @return the item id
    */
-  public String getFolderId() {
-    return this.folderId;
-
+  public String getItemId() {
+    return this.itemId;
   }
 
   /**
-   * Sets the folder id.
+   * Sets the item id.
    *
-   * @param folderId the new folder id
+   * @param itemId the new item id
    */
-  public void setFolderId(String folderId) {
-    this.folderId = folderId;
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   /**
    * Gets the name of the XML element.
    *
-   * @return XML element name
+   * @return XML element name.
    */
   @Override
   protected String getXmlElementName() {
-    return XmlElementNames.AlternatePublicFolderId;
+    return XmlElementNames.AlternatePublicFolderItemId;
   }
 
   /**
@@ -100,8 +104,7 @@ public class AlternatePublicFolderId extends AlternateIdBase {
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     super.writeAttributesToXml(writer);
-    writer.writeAttributeValue(XmlAttributeNames.FolderId, this
-        .getFolderId());
+    writer.writeAttributeValue(XmlAttributeNames.ItemId, this.getItemId());
   }
 
   /**
@@ -113,7 +116,7 @@ public class AlternatePublicFolderId extends AlternateIdBase {
   @Override public void loadAttributesFromXml(EwsServiceXmlReader reader)
       throws Exception {
     super.loadAttributesFromXml(reader);
-    this.setFolderId(reader.readAttributeValue(XmlAttributeNames.FolderId));
+    this.itemId = reader.readAttributeValue(XmlAttributeNames.ItemId);
   }
 
 }

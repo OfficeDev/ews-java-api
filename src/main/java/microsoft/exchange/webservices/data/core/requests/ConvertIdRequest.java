@@ -34,7 +34,7 @@ import microsoft.exchange.webservices.data.enumerations.IdFormat;
 import microsoft.exchange.webservices.data.enumerations.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumerations.XmlNamespace;
 import microsoft.exchange.webservices.data.exceptions.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.misc.idConversion.AlternateIdBase;
+import microsoft.exchange.webservices.data.misc.id.AlternateIdBase;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
