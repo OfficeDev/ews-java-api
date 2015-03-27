@@ -150,25 +150,25 @@ public class EwsUtilities {
    * The Constant EwsTypesNamespace.
    */
   public static final String EwsTypesNamespace =
-      "http://schemas.microsoft.com/exchange/services/2006/types";
+      "http://schema.microsoft.com/exchange/services/2006/types";
 
   /**
    * The Constant EwsMessagesNamespace.
    */
   public static final String EwsMessagesNamespace =
-      "http://schemas.microsoft.com/exchange/services/2006/messages";
+      "http://schema.microsoft.com/exchange/services/2006/messages";
 
   /**
    * The Constant EwsErrorsNamespace.
    */
   public static final String EwsErrorsNamespace =
-      "http://schemas.microsoft.com/exchange/services/2006/errors";
+      "http://schema.microsoft.com/exchange/services/2006/errors";
 
   /**
    * The Constant EwsSoapNamespace.
    */
   public static final String EwsSoapNamespace =
-      "http://schemas.xmlsoap.org/soap/envelope/";
+      "http://schema.xmlsoap.org/soap/envelope/";
 
   /**
    * The Constant EwsSoap12Namespace.
@@ -186,13 +186,13 @@ public class EwsUtilities {
    * The Constant PassportSoapFaultNamespace.
    */
   public static final String PassportSoapFaultNamespace =
-      "http://schemas.microsoft.com/Passport/SoapServices/SOAPFault";
+      "http://schema.microsoft.com/Passport/SoapServices/SOAPFault";
 
   /**
    * The Constant WSTrustFebruary2005Namespace.
    */
   public static final String WSTrustFebruary2005Namespace =
-      "http://schemas.xmlsoap.org/ws/2005/02/trust";
+      "http://schema.xmlsoap.org/ws/2005/02/trust";
 
   /**
    * The Constant WSAddressingNamespace.
@@ -205,7 +205,7 @@ public class EwsUtilities {
    * The Constant AutodiscoverSoapNamespace.
    */
   public static final String AutodiscoverSoapNamespace =
-      "http://schemas.microsoft.com/exchange/2010/Autodiscover";
+      "http://schema.microsoft.com/exchange/2010/Autodiscover";
 
   public static final String WSSecurityUtilityNamespace =
       "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";

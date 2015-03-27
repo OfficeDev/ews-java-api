@@ -82,7 +82,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
    * The Constant WsAddressingHeadersFormat.
    */
   protected static final String wsAddressingHeadersFormat =
-      "<wsa:Action soap:mustUnderstand='1'>http://schemas.microsoft.com/exchange/services/2006/messages/%s</wsa:Action>"
+      "<wsa:Action soap:mustUnderstand='1'>http://schema.microsoft.com/exchange/services/2006/messages/%s</wsa:Action>"
           +
           "<wsa:ReplyTo><wsa:Address>http://www.w3.org/2005/08/addressing/anonymous</wsa:Address>" +
           "</wsa:ReplyTo>" +

@@ -23,15 +23,15 @@
 
 package microsoft.exchange.webservices.data.core.service.response;
 
-import microsoft.exchange.webservices.data.core.service.schemas.ResponseMessageSchema;
-import microsoft.exchange.webservices.data.core.service.schemas.ServiceObjectSchema;
+import microsoft.exchange.webservices.data.core.service.schema.ResponseMessageSchema;
+import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.service.items.EmailMessage;
 import microsoft.exchange.webservices.data.core.service.items.Item;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.core.service.schemas.EmailMessageSchema;
-import microsoft.exchange.webservices.data.core.service.schemas.ItemSchema;
-import microsoft.exchange.webservices.data.core.service.schemas.ResponseObjectSchema;
+import microsoft.exchange.webservices.data.core.service.schema.EmailMessageSchema;
+import microsoft.exchange.webservices.data.core.service.schema.ItemSchema;
+import microsoft.exchange.webservices.data.core.service.schema.ResponseObjectSchema;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.ResponseMessageType;
 import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;

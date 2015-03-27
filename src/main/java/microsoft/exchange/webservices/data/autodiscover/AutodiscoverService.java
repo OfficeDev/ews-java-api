@@ -164,7 +164,7 @@ public final class AutodiscoverService extends ExchangeServiceBase
    * The Constant AutodiscoverRequestNamespace.
    */
   private static final String AutodiscoverRequestNamespace =
-      "http://schemas.microsoft.com/exchange/autodiscover/" +
+      "http://schema.microsoft.com/exchange/autodiscover/" +
           "outlook/requestschema/2006";
   // Maximum number of Url (or address) redirections that will be followed by
   // an Autodiscover call

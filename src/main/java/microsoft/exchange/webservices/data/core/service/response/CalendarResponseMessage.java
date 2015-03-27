@@ -24,10 +24,10 @@
 package microsoft.exchange.webservices.data.core.service.response;
 
 import microsoft.exchange.webservices.data.core.service.items.Item;
-import microsoft.exchange.webservices.data.core.service.schemas.CalendarResponseObjectSchema;
-import microsoft.exchange.webservices.data.core.service.schemas.EmailMessageSchema;
-import microsoft.exchange.webservices.data.core.service.schemas.ItemSchema;
-import microsoft.exchange.webservices.data.core.service.schemas.ServiceObjectSchema;
+import microsoft.exchange.webservices.data.core.service.schema.CalendarResponseObjectSchema;
+import microsoft.exchange.webservices.data.core.service.schema.EmailMessageSchema;
+import microsoft.exchange.webservices.data.core.service.schema.ItemSchema;
+import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.service.items.EmailMessage;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumerations.EditorBrowsableState;

@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.schemas;
+package microsoft.exchange.webservices.data.core.service.schema;
 
 /**
  * Represents the schema for CalendarResponseObject.

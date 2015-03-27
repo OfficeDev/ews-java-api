@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.schemas;
+package microsoft.exchange.webservices.data.core.service.schema;
 
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
@@ -44,7 +44,7 @@ import java.lang.reflect.Modifier;
 import java.util.*;
 
 /**
- * Represents the base class for all item and folder schemas.
+ * Represents the base class for all item and folder schema.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public abstract class ServiceObjectSchema implements

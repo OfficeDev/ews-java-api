@@ -21,71 +21,69 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.schemas;
+package microsoft.exchange.webservices.data.core.service.schema;
 
-import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.property.complex.SearchFolderParameters;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
+import microsoft.exchange.webservices.data.property.complex.MessageBody;
 import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 import java.util.EnumSet;
 
 /**
- * The Class SearchFolderSchema.
+ * Represents ResponseObject schema definition.
  */
-@Schema
-public class SearchFolderSchema extends FolderSchema {
+public class ResponseObjectSchema extends ServiceObjectSchema {
 
   /**
-   * Field URIs for search folders.
+   * The Reference item id.
    */
-  private static interface FieldUris {
-
-    /**
-     * The Search parameters.
-     */
-    String SearchParameters = "folder:SearchParameters";
-  }
-
-
-  /**
-   * Defines the SearchParameters property.
-   */
-  public static final PropertyDefinition SearchParameters =
-      new ComplexPropertyDefinition<SearchFolderParameters>(
-          SearchFolderParameters.class,
-          XmlElementNames.SearchParameters,
-          FieldUris.SearchParameters,
-          EnumSet.of(PropertyDefinitionFlags.CanSet,
-              PropertyDefinitionFlags.CanUpdate,
-              PropertyDefinitionFlags.AutoInstantiateOnRead),
+  public static PropertyDefinition ReferenceItemId =
+      new ComplexPropertyDefinition<ItemId>(
+          ItemId.class,
+          XmlElementNames.ReferenceItemId, EnumSet.of(
+          PropertyDefinitionFlags.AutoInstantiateOnRead,
+          PropertyDefinitionFlags.CanSet),
           ExchangeVersion.Exchange2007_SP1,
-          new ICreateComplexPropertyDelegate<SearchFolderParameters>() {
-            @Override
-            public SearchFolderParameters createComplexProperty() {
-              return new SearchFolderParameters();
+          new ICreateComplexPropertyDelegate<ItemId>() {
+            public ItemId createComplexProperty() {
+              return new ItemId();
             }
           });
 
-  // This must be declared after the property definitions
   /**
-   * The Constant Instance.
+   * The Body prefix.
    */
-  public static final SearchFolderSchema Instance = new SearchFolderSchema();
+  public static final PropertyDefinition BodyPrefix =
+      new ComplexPropertyDefinition<MessageBody>(
+          MessageBody.class,
+          XmlElementNames.NewBodyContent, EnumSet
+          .of(PropertyDefinitionFlags.CanSet),
+          ExchangeVersion.Exchange2007_SP1,
+          new ICreateComplexPropertyDelegate<MessageBody>() {
+            public MessageBody createComplexProperty() {
+              return new MessageBody();
+            }
+          });
 
   /**
-   * Registers property.
+   * This must be declared after the property definitions.
    */
-  // IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
-  // same order as they are defined in types.xsd)
+  public static final ResponseObjectSchema Instance =
+      new ResponseObjectSchema();
+
+  /**
+   * Registers property. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
+   * SCHEMA ORDER (i.e. the same order as they are defined in types.xsd)
+   */
   @Override
   protected void registerProperties() {
     super.registerProperties();
-
-    this.registerProperty(SearchParameters);
+    this.registerProperty(ResponseObjectSchema.ReferenceItemId);
   }
+
 }

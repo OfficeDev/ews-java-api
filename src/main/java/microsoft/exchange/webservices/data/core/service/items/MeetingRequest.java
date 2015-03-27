@@ -24,11 +24,11 @@
 package microsoft.exchange.webservices.data.core.service.items;
 
 import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingInvitationMessage;
-import microsoft.exchange.webservices.data.core.service.schemas.ServiceObjectSchema;
+import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.service.response.AcceptMeetingInvitationMessage;
-import microsoft.exchange.webservices.data.core.service.schemas.AppointmentSchema;
+import microsoft.exchange.webservices.data.core.service.schema.AppointmentSchema;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.service.schemas.MeetingRequestSchema;
+import microsoft.exchange.webservices.data.core.service.schema.MeetingRequestSchema;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.core.XmlElementNames;

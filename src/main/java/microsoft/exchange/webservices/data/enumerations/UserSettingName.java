@@ -294,7 +294,7 @@ public enum UserSettingName {
   // Services. The schema version values
   // will be the same as the values of the ExchangeServerVersion enumeration.
   /**
-   * The Ews supported schemas.
+   * The Ews supported schema.
    */
   EwsSupportedSchemas,
 

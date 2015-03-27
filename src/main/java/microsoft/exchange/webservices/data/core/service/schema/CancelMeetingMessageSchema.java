@@ -21,17 +21,43 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.core.service.schemas;
+package microsoft.exchange.webservices.data.core.service.schema;
+
+import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.enumerations.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumerations.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
+import microsoft.exchange.webservices.data.property.complex.MessageBody;
+import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
+
+import java.util.EnumSet;
 
 /**
- * Represents ResponseMessage schema definition.
+ * Represents a meeting cancellation message.
  */
-public class ResponseMessageSchema extends ServiceObjectSchema {
+public class CancelMeetingMessageSchema extends ServiceObjectSchema {
+
+  /**
+   * The Constant Body.
+   */
+  public static final PropertyDefinition Body =
+      new ComplexPropertyDefinition<MessageBody>(
+          MessageBody.class,
+          XmlElementNames.NewBodyContent, EnumSet
+          .of(PropertyDefinitionFlags.CanSet),
+          ExchangeVersion.Exchange2007_SP1,
+          new ICreateComplexPropertyDelegate<MessageBody>() {
+            public MessageBody createComplexProperty() {
+              return new MessageBody();
+            }
+          });
 
   /**
    * This must be declared after the property definitions.
    */
-  public static final ResponseMessageSchema Instance = new ResponseMessageSchema();
+  public static final CancelMeetingMessageSchema Instance =
+      new CancelMeetingMessageSchema();
 
   /**
    * Registers property. IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN
@@ -41,14 +67,9 @@ public class ResponseMessageSchema extends ServiceObjectSchema {
   protected void registerProperties() {
     super.registerProperties();
 
-    this.registerProperty(ItemSchema.Subject);
-    this.registerProperty(ItemSchema.Body);
-    this.registerProperty(EmailMessageSchema.ToRecipients);
-    this.registerProperty(EmailMessageSchema.CcRecipients);
-    this.registerProperty(EmailMessageSchema.BccRecipients);
     this.registerProperty(EmailMessageSchema.IsReadReceiptRequested);
     this.registerProperty(EmailMessageSchema.IsDeliveryReceiptRequested);
     this.registerProperty(ResponseObjectSchema.ReferenceItemId);
-    this.registerProperty(ResponseObjectSchema.BodyPrefix);
+    this.registerProperty(CancelMeetingMessageSchema.Body);
   }
 }
