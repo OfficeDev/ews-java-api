@@ -85,7 +85,7 @@ public final class UniqueBody extends ComplexProperty {
    * Reads attribute from XML.
    *
    * @param reader the reader
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws javax.xml.stream.XMLStreamException the xml stream exception
    * @throws ServiceXmlDeserializationException  the service xml deserialization exception
    */
   public void readTextValueFromXml(EwsServiceXmlReader reader)
@@ -94,7 +94,7 @@ public final class UniqueBody extends ComplexProperty {
   }
 
   /**
-   * Reads attribute from XML.
+   * Writes attributes from XML.
    *
    * @param writer the writer
    * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
