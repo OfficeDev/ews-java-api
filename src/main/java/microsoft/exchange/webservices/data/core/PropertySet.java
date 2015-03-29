@@ -147,9 +147,7 @@ public final class PropertySet implements ISelfValidate,
       PropertyDefinitionBase... additionalProperties) {
     this.basePropertySet = basePropertySet;
     if (null != additionalProperties) {
-      for (PropertyDefinitionBase property : additionalProperties) {
-        this.additionalProperties.add(property);
-      }
+        this.additionalProperties.addAll(Arrays.asList(additionalProperties));
     }
   }
 
