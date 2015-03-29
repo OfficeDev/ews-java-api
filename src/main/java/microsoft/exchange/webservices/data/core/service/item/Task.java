@@ -55,6 +55,10 @@ import java.util.Date;
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Task)
 public class Task extends Item {
 
+  private static final double PERCENT_MIN = 0.0D;
+  private static final double PERCENT_MAX = 100.0D;
+
+
   /**
    * Initializes an unsaved local instance of Task.To bind to an existing
    * task, use Task.Bind() instead.
@@ -466,10 +470,10 @@ public class Task extends Item {
    * @throws Exception the exception
    */
   public void setPercentComplete(Double value) throws Exception {
-    if (value == null || Double.isNaN(value) || value < 0.0 || value > 100.0) {
+    if (value == null || Double.isNaN(value) || value < PERCENT_MIN || value > PERCENT_MAX) {
       throw new IllegalArgumentException(
-          String.format("%s must be between %d and %d.",
-              ((value != null) ? value : "null"), 0.0, 100));
+          String.format("%s must be between %f and %f",
+              String.valueOf(value), PERCENT_MIN, PERCENT_MAX));
     }
     this.getPropertyBag().setObjectFromPropertyDefinition(
         TaskSchema.PercentComplete, value);
