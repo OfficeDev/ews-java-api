@@ -101,7 +101,7 @@ public final class OutlookConfigurationSettings extends ConfigurationSettingsBas
    * @return The namespace that defines the settings.
    */
   @Override public String getNamespace() {
-    return "http://schema.microsoft.com/exchange/" +
+    return "http://schemas.microsoft.com/exchange/" +
         "autodiscover/outlook/responseschema/2006a";
   }
 
