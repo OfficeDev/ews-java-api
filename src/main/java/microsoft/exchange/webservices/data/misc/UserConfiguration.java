@@ -42,6 +42,8 @@ import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationExce
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.UserConfigurationDictionary;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.EnumSet;
@@ -52,10 +54,12 @@ import java.util.EnumSet;
  */
 public class UserConfiguration {
 
+  private static final Logger LOG = LoggerFactory.getLogger(UserConfiguration.class);
+
   /**
    * The object version.
    */
-  private static ExchangeVersion ObjectVersion = ExchangeVersion.Exchange2010;
+  private static final ExchangeVersion ObjectVersion = ExchangeVersion.Exchange2010;
 
   /**
    * For consistency with ServiceObject behavior, access to ItemId is
@@ -663,7 +667,7 @@ public class UserConfiguration {
     try {
       this.updatedProperties = EnumSet.of(NoProperties);
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error("", e);
     }
     this.dictionary.setIsDirty(false);
   }

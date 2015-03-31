@@ -27,11 +27,16 @@ import microsoft.exchange.webservices.data.core.request.HttpClientWebRequest;
 import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
 import microsoft.exchange.webservices.data.exception.EWSHttpException;
 import microsoft.exchange.webservices.data.exception.HttpErrorException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.concurrent.Callable;
 
 public class CallableMethod implements Callable<Object> {
+
+  private static final Logger LOG = LoggerFactory.getLogger(CallableMethod.class);
+
   HttpWebRequest request;
 
   public CallableMethod(HttpWebRequest request) {
@@ -49,14 +54,11 @@ public class CallableMethod implements Callable<Object> {
     try {
       return executeMethod();
     } catch (EWSHttpException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      LOG.error("", e);
     } catch (HttpErrorException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      LOG.error("", e);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      LOG.error("", e);
     }
     return request;
   }

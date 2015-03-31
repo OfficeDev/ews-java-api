@@ -36,6 +36,8 @@ import microsoft.exchange.webservices.data.exception.ArgumentException;
 import microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceResponseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.Closeable;
 import java.util.ArrayList;
@@ -49,6 +51,8 @@ import java.util.Map;
 public final class StreamingSubscriptionConnection implements Closeable,
                                                               HangingServiceRequestBase.IHandleResponseObject,
     HangingServiceRequestBase.IHangingRequestDisconnectHandler {
+
+  private static final Logger LOG = LoggerFactory.getLogger(StreamingSubscriptionConnection.class);
 
   /**
    * Mapping of streaming id to subscriptions currently on the connection.
@@ -342,7 +346,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
         // doing the necessary cleanup.
         this.currentHangingRequest.disconnect();
       } catch (Exception e) {
-        e.printStackTrace();
+        LOG.error("", e);
       }
     }
   }

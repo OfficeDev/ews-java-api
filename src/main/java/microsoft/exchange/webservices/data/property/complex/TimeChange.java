@@ -32,6 +32,8 @@ import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,6 +42,8 @@ import java.util.Date;
  * Represents a change of time for a time zone.
  */
 public final class TimeChange extends ComplexProperty {
+
+  private static final Logger LOG = LoggerFactory.getLogger(TimeChange.class);
 
   /**
    * The time zone name.
@@ -253,7 +257,7 @@ public final class TimeChange extends ComplexProperty {
       writer.writeAttributeValue(XmlAttributeNames.TimeZoneName,
           this.timeZoneName);
     } catch (ServiceXmlSerializationException e) {
-      e.printStackTrace();
+      LOG.error("", e);
     }
   }
 

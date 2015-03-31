@@ -24,6 +24,8 @@
 package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.exception.FormatException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The Class TimeSpan.
@@ -34,6 +36,8 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
    * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
+
+  private static final Logger LOG = LoggerFactory.getLogger(TimeSpan.class);
 
   /**
    * The time.
@@ -221,7 +225,7 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
     try {
       return super.clone();
     } catch (CloneNotSupportedException e) {
-      e.printStackTrace();
+      LOG.error("", e);
       throw new InternalError();
     }
   }

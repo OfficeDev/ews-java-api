@@ -32,11 +32,15 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Represents a time zone in which a meeting is defined.
  */
 public final class MeetingTimeZone extends ComplexProperty {
+
+  private static final Logger LOG = LoggerFactory.getLogger(MeetingTimeZone.class);
 
   /**
    * The name.
@@ -181,7 +185,7 @@ public final class MeetingTimeZone extends ComplexProperty {
       result.setId(this.getName());
     } catch (Exception e) {
       // Could not find a time zone with that Id on the local system.
-      e.printStackTrace();
+      LOG.error("", e);
     }
 
     // Again, we cannot accurately convert MeetingTimeZone into TimeZoneInfo

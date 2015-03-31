@@ -51,6 +51,8 @@ import microsoft.exchange.webservices.data.property.complex.OccurrenceInfo;
 import microsoft.exchange.webservices.data.property.complex.OccurrenceInfoCollection;
 import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.Recurrence;
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
@@ -61,6 +63,8 @@ import java.util.Date;
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.MeetingRequest)
 public class MeetingRequest extends MeetingMessage implements ICalendarActionProvider {
+
+  private static final Logger LOG = LoggerFactory.getLogger(MeetingRequest.class);
 
   /**
    * Initializes a new instance of the class.
@@ -97,7 +101,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
     try {
       return service.bindToItem(MeetingRequest.class, id, propertySet);
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error("", e);
       return null;
     }
   }
@@ -148,7 +152,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
     try {
       return new AcceptMeetingInvitationMessage(this, tentative);
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error("", e);
       return null;
     }
   }
@@ -164,7 +168,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
     try {
       return new DeclineMeetingInvitationMessage(this);
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error("", e);
       return null;
     }
   }

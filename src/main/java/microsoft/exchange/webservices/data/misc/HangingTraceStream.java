@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data.misc;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.request.HangingServiceRequestBase;
 import microsoft.exchange.webservices.data.enumeration.TraceFlags;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.ByteArrayOutputStream;
@@ -37,6 +39,8 @@ import java.io.InputStream;
  * That trace may be retrieved at the end of the stream.
  */
 public class HangingTraceStream extends InputStream {
+
+  private static final Logger LOG = LoggerFactory.getLogger(HangingTraceStream.class);
 
   private InputStream underlyingStream;
   private ExchangeService service;
@@ -126,7 +130,7 @@ public class HangingTraceStream extends InputStream {
             TraceFlags.DebugMessage,
             logMessage);
       } catch (XMLStreamException e) {
-        e.printStackTrace();
+        LOG.error("", e);
       }
     }
 
@@ -140,7 +144,7 @@ public class HangingTraceStream extends InputStream {
   /**
    * sets the response copy
    *
-   * @param responsecopy a copy of response
+   * @param responseCopy a copy of response
    */
   public void setResponseCopy(ByteArrayOutputStream responseCopy) {
     this.responseCopy = responseCopy;

@@ -34,6 +34,8 @@ import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
@@ -41,6 +43,8 @@ import java.util.Date;
  * Represents an attachment to an item.
  */
 public abstract class Attachment extends ComplexProperty {
+
+  private static final Logger LOG = LoggerFactory.getLogger(Attachment.class);
 
   /**
    * The owner.
@@ -315,7 +319,7 @@ public abstract class Attachment extends ComplexProperty {
         try {
           this.id = reader.readAttributeValue(XmlAttributeNames.Id);
         } catch (Exception e) {
-          e.printStackTrace();
+          LOG.error("", e);
           return false;
         }
         if (this.getOwner() != null) {

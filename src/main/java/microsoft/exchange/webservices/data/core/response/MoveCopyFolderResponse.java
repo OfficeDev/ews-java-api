@@ -31,6 +31,8 @@ import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -40,6 +42,8 @@ import java.util.List;
  */
 public final class MoveCopyFolderResponse extends ServiceResponse implements
                                                                   IGetObjectInstanceDelegate<ServiceObject> {
+
+  private static final Logger LOG = LoggerFactory.getLogger(MoveCopyFolderResponse.class);
 
   /**
    * The folder.
@@ -87,7 +91,7 @@ public final class MoveCopyFolderResponse extends ServiceResponse implements
 
       this.folder = folders.get(0);
     } catch (ServiceLocalException e) {
-      e.printStackTrace();
+      LOG.error("", e);
     }
 
   }

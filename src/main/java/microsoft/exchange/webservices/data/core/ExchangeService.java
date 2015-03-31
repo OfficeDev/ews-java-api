@@ -180,6 +180,8 @@ import microsoft.exchange.webservices.data.sync.ChangeCollection;
 import microsoft.exchange.webservices.data.sync.FolderChange;
 import microsoft.exchange.webservices.data.sync.ItemChange;
 import microsoft.exchange.webservices.data.messaging.UnifiedMessaging;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -200,6 +202,8 @@ import java.util.TimeZone;
  * Represents a binding to the Exchange Web Services.
  */
 public final class ExchangeService extends ExchangeServiceBase implements IAutodiscoverRedirectionUrl {
+
+  private static final Logger LOG = LoggerFactory.getLogger(ExchangeService.class);
 
   /**
    * The url.
@@ -3800,7 +3804,7 @@ public final class ExchangeService extends ExchangeServiceBase implements IAutod
     try {
       this.url = this.adjustServiceUriFromCredentials(this.getUrl());
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error("", e);
     }
     return this.prepareHttpWebRequestForUrl(url, this
         .getAcceptGzipEncoding(), true);

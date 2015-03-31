@@ -29,6 +29,8 @@ import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationExce
 import microsoft.exchange.webservices.data.interfaces.IDisposable;
 import microsoft.exchange.webservices.data.interfaces.ISearchStringProvider;
 import microsoft.exchange.webservices.data.util.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.*;
 
 import javax.xml.stream.XMLOutputFactory;
@@ -44,6 +46,8 @@ import java.util.Date;
  * Stax based XML Writer implementation.
  */
 public class EwsServiceXmlWriter implements IDisposable {
+
+  private static final Logger LOG = LoggerFactory.getLogger(EwsServiceXmlWriter.class);
 
   /**
    * The is disposed.
@@ -139,7 +143,7 @@ public class EwsServiceXmlWriter implements IDisposable {
       try {
         this.xmlWriter.close();
       } catch (XMLStreamException e) {
-        e.printStackTrace();
+        LOG.error("", e);
       }
       this.isDisposed = true;
     }
@@ -503,7 +507,7 @@ public class EwsServiceXmlWriter implements IDisposable {
         bos.write(buf, 0, readNum);
       }
     } catch (IOException ex) {
-      ex.printStackTrace();
+      LOG.error("", ex);
     } finally {
       bos.close();
     }

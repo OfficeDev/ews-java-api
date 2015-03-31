@@ -32,11 +32,15 @@ import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.misc.FolderIdWrapperList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Represents a DeleteFolder request.
  */
 public final class DeleteFolderRequest extends DeleteRequest<ServiceResponse> {
+
+  private static final Logger LOG = LoggerFactory.getLogger(DeleteFolderRequest.class);
 
   /**
    * The folder ids.
@@ -131,7 +135,7 @@ public final class DeleteFolderRequest extends DeleteRequest<ServiceResponse> {
       this.getFolderIds().writeToXml(writer, XmlNamespace.Messages,
           XmlElementNames.FolderIds);
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error("", e);
     }
   }
 

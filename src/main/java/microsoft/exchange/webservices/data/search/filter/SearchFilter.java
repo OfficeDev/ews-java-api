@@ -41,6 +41,8 @@ import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDel
 import microsoft.exchange.webservices.data.interfaces.ISearchStringProvider;
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
@@ -52,6 +54,8 @@ import java.util.Iterator;
  * SearchFilter.SearchFilterCollection to define search filter.
  */
 public abstract class SearchFilter extends ComplexProperty {
+
+  private static final Logger LOG = LoggerFactory.getLogger(SearchFilter.class);
 
   /**
    * Initializes a new instance of the SearchFilter class.
@@ -1113,9 +1117,9 @@ public abstract class SearchFilter extends ComplexProperty {
             reader.read();
             reader.ensureCurrentNodeIsStartElement();
           } catch (ServiceXmlDeserializationException e) {
-            e.printStackTrace();
+            LOG.error("", e);
           } catch (XMLStreamException e) {
-            e.printStackTrace();
+            LOG.error("", e);
           }
 
           if (reader.isStartElement(XmlNamespace.Types,

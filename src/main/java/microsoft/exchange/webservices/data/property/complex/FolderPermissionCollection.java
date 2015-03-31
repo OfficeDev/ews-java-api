@@ -32,6 +32,8 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -42,6 +44,8 @@ import java.util.Iterator;
  */
 public final class FolderPermissionCollection extends ComplexPropertyCollection<FolderPermission> {
 
+  private static final Logger LOG = LoggerFactory.getLogger(FolderPermissionCollection.class);
+
   /**
    * The is calendar folder.
    */
@@ -50,7 +54,7 @@ public final class FolderPermissionCollection extends ComplexPropertyCollection<
   /**
    * The unknown entries.
    */
-  private Collection<String> unknownEntries = new ArrayList<String>();
+  private final Collection<String> unknownEntries = new ArrayList<String>();
 
   /**
    * Initializes a new instance of the FolderPermissionCollection class.
@@ -136,9 +140,9 @@ public final class FolderPermissionCollection extends ComplexPropertyCollection<
       try {
         permission.validate(this.isCalendarFolder, permissionIndex);
       } catch (ServiceValidationException e) {
-        e.printStackTrace();
+        LOG.error("", e);
       } catch (ServiceLocalException e) {
-        e.printStackTrace();
+        LOG.error("", e);
       }
     }
   }

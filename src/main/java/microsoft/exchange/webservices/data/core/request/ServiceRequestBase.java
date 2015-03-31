@@ -47,6 +47,8 @@ import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationEx
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.exception.XmlException;
 import microsoft.exchange.webservices.data.misc.SoapFaultDetails;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.ws.http.HTTPException;
@@ -58,6 +60,8 @@ import java.util.zip.InflaterInputStream;
  * Represents an abstract service request.
  */
 public abstract class ServiceRequestBase<T> {
+
+  private static final Logger LOG = LoggerFactory.getLogger(ServiceRequestBase.class);
 
   // Private Constants
   // private final String XMLSchemaNamespace =
@@ -698,7 +702,7 @@ public abstract class ServiceRequestBase<T> {
       // If response doesn't contain a valid SOAP fault, just ignore
       // exception and
       // return null for SOAP fault details.
-      e.printStackTrace();
+      LOG.error("", e);
     }
 
     return soapFaultDetails;

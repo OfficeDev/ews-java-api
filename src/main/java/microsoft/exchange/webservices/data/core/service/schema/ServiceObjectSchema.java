@@ -38,6 +38,8 @@ import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDe
 import microsoft.exchange.webservices.data.property.definition.IndexedPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -50,16 +52,18 @@ import java.util.*;
 public abstract class ServiceObjectSchema implements
     Iterable<PropertyDefinition> {
 
+  private static final Logger LOG = LoggerFactory.getLogger(ServiceObjectSchema.class);
+
   /**
    * The lock object.
    */
-  private static Object lockObject = new Object();
+  private static final Object lockObject = new Object();
 
   /**
    * List of all schema types. If you add a new ServiceObject subclass that
    * has an associated schema, add the schema type to the list below.
    */
-  private static LazyMember<List<Class<?>>> allSchemaTypes = new
+  private static final LazyMember<List<Class<?>>> allSchemaTypes = new
       LazyMember<List<Class<?>>>(new
                                      ILazyMember<List<Class<?>>>() {
                                        public List<Class<?>> createInstance() {
@@ -104,7 +108,7 @@ public abstract class ServiceObjectSchema implements
   /**
    * Dictionary of all property definitions.
    */
-  private static LazyMember<Map<String, PropertyDefinitionBase>>
+  private static final LazyMember<Map<String, PropertyDefinitionBase>>
       allSchemaProperties = new
       LazyMember<Map<String, PropertyDefinitionBase>>(
       new ILazyMember<Map<String, PropertyDefinitionBase>>() {
@@ -176,11 +180,11 @@ public abstract class ServiceObjectSchema implements
             }
           }
         } catch (IllegalArgumentException e) {
-          e.printStackTrace();
+          LOG.error("", e);
 
           // Skip the field
         } catch (IllegalAccessException e) {
-          e.printStackTrace();
+          LOG.error("", e);
 
           // Skip the field
         }
@@ -212,11 +216,11 @@ public abstract class ServiceObjectSchema implements
                 .getName());
           }
         } catch (IllegalArgumentException e) {
-          e.printStackTrace();
+          LOG.error("", e);
 
           // Skip the field
         } catch (IllegalAccessException e) {
-          e.printStackTrace();
+          LOG.error("", e);
 
           // Skip the field
         }
@@ -261,11 +265,11 @@ public abstract class ServiceObjectSchema implements
                 propertyDefinition.setName(field.getName());
               }
             } catch (IllegalArgumentException e) {
-              e.printStackTrace();
+              LOG.error("", e);
 
               // Skip the field
             } catch (IllegalAccessException e) {
-              e.printStackTrace();
+              LOG.error("", e);
 
               // Skip the field
             }

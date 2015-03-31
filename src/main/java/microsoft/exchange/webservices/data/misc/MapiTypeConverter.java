@@ -30,6 +30,8 @@ import microsoft.exchange.webservices.data.exception.FormatException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.interfaces.IFunction;
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -45,6 +47,8 @@ import java.util.UUID;
  * Utility class to convert between MAPI Property type values and strings.
  */
 public class MapiTypeConverter {
+
+  private static final Logger LOG = LoggerFactory.getLogger(MapiTypeConverter.class);
 
   private static final IFunction<String, Object> DATE_TIME_PARSER = new IFunction<String, Object>() {
     public Object func(final String s) {
@@ -297,7 +301,7 @@ public class MapiTypeConverter {
         try {
           dt = utcFormatter.parse(s);
         } catch (ParseException e1) {
-          e.printStackTrace();
+          LOG.error("", e);
           throw new IllegalArgumentException(
               errMsg, e);
         }

@@ -32,6 +32,8 @@ import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -46,10 +48,12 @@ import java.util.List;
 public final class ItemCollection<TItem extends Item> extends ComplexProperty
     implements Iterable<TItem> {
 
+  private static final Logger LOG = LoggerFactory.getLogger(ItemCollection.class);
+
   /**
    * The item.
    */
-  private List<TItem> items = new ArrayList<TItem>();
+  private final List<TItem> items = new ArrayList<TItem>();
 
   /**
    * Initializes a new instance of the "ItemCollection&lt;TItem&gt;" class.
@@ -83,9 +87,9 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
               item.loadFromXml(reader,
                   true /* clearPropertyBag */);
             } catch (ServiceObjectPropertyException e) {
-              e.printStackTrace();
+              LOG.error("", e);
             } catch (ServiceVersionException e) {
-              e.printStackTrace();
+              LOG.error("", e);
             }
 
             this.items.add(item);

@@ -23,10 +23,15 @@
 
 package microsoft.exchange.webservices.data.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Represents a base 64 class.
  */
 public class Base64 {
+
+  private static final Logger LOG = LoggerFactory.getLogger(Base64.class);
 
   /**
    * The data.
@@ -168,7 +173,7 @@ public class Base64 {
         }
       }
     } catch (ArrayIndexOutOfBoundsException e) {
-      e.printStackTrace();
+      LOG.error("", e);
     }
     return byteArry;
   }

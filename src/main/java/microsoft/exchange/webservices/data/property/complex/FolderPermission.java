@@ -37,6 +37,8 @@ import microsoft.exchange.webservices.data.enumeration.StandardUser;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,8 +51,9 @@ import java.util.Map.Entry;
  */
 public final class FolderPermission extends ComplexProperty implements IComplexPropertyChangedDelegate {
 
+  private static final Logger LOG = LoggerFactory.getLogger(FolderPermission.class);
 
-  private static LazyMember<Map<FolderPermissionLevel, FolderPermission>>
+  private static final LazyMember<Map<FolderPermissionLevel, FolderPermission>>
       defaultPermissions =
       new LazyMember<Map<FolderPermissionLevel, FolderPermission>>(
           new ILazyMember<Map<FolderPermissionLevel, FolderPermission>>() {
@@ -216,7 +219,7 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
    * Variants of pre-defined permission levels that Outlook also displays with
    * the same levels.
    */
-  private static LazyMember<List<FolderPermission>> levelVariants =
+  private static final LazyMember<List<FolderPermission>> levelVariants =
       new LazyMember<List<FolderPermission>>(
           new ILazyMember<List<FolderPermission>>() {
             @Override
@@ -255,7 +258,7 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
                 results.add(permission);
 
               } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
+                LOG.error("", e);
               }
               return results;
             }

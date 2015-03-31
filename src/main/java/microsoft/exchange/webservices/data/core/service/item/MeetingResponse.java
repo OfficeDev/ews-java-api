@@ -30,6 +30,8 @@ import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Represents a response to a meeting request. Properties available on meeting
@@ -37,6 +39,8 @@ import microsoft.exchange.webservices.data.property.complex.ItemId;
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.MeetingResponse)
 public class MeetingResponse extends MeetingMessage {
+
+  private static final Logger LOG = LoggerFactory.getLogger(MeetingResponse.class);
 
   /**
    * Initializes a new instance of the class.
@@ -74,7 +78,7 @@ public class MeetingResponse extends MeetingMessage {
     try {
       return service.bindToItem(MeetingResponse.class, id, propertySet);
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error("", e);
       return null;
     }
   }

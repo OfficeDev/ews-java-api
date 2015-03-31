@@ -34,6 +34,8 @@ import microsoft.exchange.webservices.data.enumeration.BodyType;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
@@ -41,6 +43,8 @@ import java.util.Arrays;
  * Represents an item attachment.
  */
 public class ItemAttachment extends Attachment implements IServiceObjectChangedDelegate {
+
+  private static final Logger LOG = LoggerFactory.getLogger(ItemAttachment.class);
 
   /**
    * The item.
@@ -121,8 +125,7 @@ public class ItemAttachment extends Attachment implements IServiceObjectChangedD
         try {
           this.item.loadFromXml(reader, true /* clearPropertyBag */);
         } catch (Exception e) {
-          e.printStackTrace();
-
+          LOG.error("", e);
         }
       }
     }
@@ -173,8 +176,7 @@ public class ItemAttachment extends Attachment implements IServiceObjectChangedD
     try {
       this.item.writeToXml(writer);
     } catch (Exception e) {
-      e.printStackTrace();
-
+      LOG.error("", e);
     }
   }
 

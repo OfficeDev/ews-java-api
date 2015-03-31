@@ -23,9 +23,14 @@
 
 package microsoft.exchange.webservices.data.misc;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.Future;
 
 public abstract class AbstractAsyncCallback implements Runnable, Callback<Object> {
+  private static final Logger LOG = LoggerFactory.getLogger(AbstractAsyncCallback.class);
+
   Future<?> task;
   static boolean callbackProcessed = false;
 
@@ -45,8 +50,7 @@ public abstract class AbstractAsyncCallback implements Runnable, Callback<Object
         try {
           Thread.sleep(1000);
         } catch (InterruptedException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
+          LOG.error("", e);
         }
         break;
       }

@@ -31,6 +31,8 @@ import microsoft.exchange.webservices.data.exception.FormatException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.interfaces.IFunction;
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -46,19 +48,21 @@ import java.util.UUID;
  */
 public class MapiTypeConverterMapEntry {
 
+  private static final Logger LOG = LoggerFactory.getLogger(MapiTypeConverterMapEntry.class);
+
   /**
    * Map CLR types used for MAPI property to matching default values.
    */
-  private static LazyMember<Map<Class<?>, Object>> defaultValueMap = new LazyMember<Map<Class<?>, Object>>(
+  private static final LazyMember<Map<Class<?>, Object>> defaultValueMap = new LazyMember<Map<Class<?>, Object>>(
       new ILazyMember<Map<Class<?>, Object>>() {
         public Map<Class<?>, Object> createInstance() {
 
           Map<Class<?>, Object> map = new HashMap<Class<?>, Object>();
 
-          map.put(Boolean.class, false);
+          map.put(Boolean.class, Boolean.FALSE);
           map.put(Byte[].class, null);
-          map.put(Short.class, new Short((short) 0));
-          map.put(Integer.class, 0);
+          map.put(Short.class, Short.valueOf((short) 0));
+          map.put(Integer.class, Integer.valueOf(0));
           map.put(Long.class, new Long(0L));
           map.put(Float.class, new Float(0.0));
           map.put(Double.class, new Double(0.0D));
@@ -66,7 +70,7 @@ public class MapiTypeConverterMapEntry {
           try {
             map.put(Date.class, formatter.parse("0001-01-01 12:00:00"));
           } catch (ParseException e) {
-            e.printStackTrace();
+            LOG.error("", e);
           }
           map.put(UUID.class, UUID.fromString("00000000-0000-0000-0000-000000000000"));
           map.put(String.class, null);
