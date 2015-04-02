@@ -41,6 +41,8 @@ import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationExce
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.UserConfigurationDictionary;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.xml.stream.XMLStreamException;
@@ -51,6 +53,8 @@ import java.util.EnumSet;
  * settings.
  */
 public class UserConfiguration {
+
+  private static final Log LOG = LogFactory.getLog(UserConfiguration.class);
 
   /**
    * The object version.
@@ -660,7 +664,7 @@ public class UserConfiguration {
     try {
       this.updatedProperties = EnumSet.of(NoProperties);
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error(e);
     }
     this.dictionary.setIsDirty(false);
   }

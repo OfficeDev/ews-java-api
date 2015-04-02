@@ -99,7 +99,7 @@ public class EwsServiceXmlReader extends EwsXmlReader {
       formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
       tempDate = formatter.parse(date);
     } catch (Exception e) {
-      //e.printStackTrace();
+      //LOG.error(e);
       DateFormat formatter = new SimpleDateFormat(
           "yyyy-MM-dd'T'HH:mm:ss.SSS");
       formatter.setTimeZone(TimeZone.getTimeZone("UTC"));

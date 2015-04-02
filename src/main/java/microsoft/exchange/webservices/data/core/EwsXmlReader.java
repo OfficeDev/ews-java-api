@@ -28,6 +28,8 @@ import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -41,6 +43,8 @@ import java.io.*;
  * Defines the EwsXmlReader class.
  */
 public class EwsXmlReader {
+
+  private static final Log LOG = LogFactory.getLog(EwsXmlReader.class);
 
   /**
    * The Read write buffer size.
@@ -954,12 +958,12 @@ public class EwsXmlReader {
       try {
         in = new ByteArrayInputStream(str.toString().getBytes("UTF-8"));
       } catch (UnsupportedEncodingException e) {
-        e.printStackTrace();
+        LOG.error(e);
       }
       eventReader = inputFactory.createXMLEventReader(in);
 
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error(e);
     }
     return eventReader;
   }

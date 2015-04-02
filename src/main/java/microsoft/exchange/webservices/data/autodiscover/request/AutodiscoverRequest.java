@@ -45,6 +45,8 @@ import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
@@ -58,6 +60,9 @@ import java.util.zip.InflaterInputStream;
  * Represents the base class for all requested made to the Autodiscover service.
  */
 public abstract class AutodiscoverRequest {
+
+  private static final Log LOG = LogFactory.getLog(AutodiscoverRequest.class);
+
   /**
    * The service.
    */
@@ -169,7 +174,7 @@ public abstract class AutodiscoverRequest {
 			 * String decodedString;
 			 * 
 			 * while ((decodedString = in.readLine()) != null) {
-			 * System.out.println(decodedString); } in.close();
+			 * LOG.debug(decodedString); } in.close();
 			 */
 
       memoryStream = new ByteArrayOutputStream();
@@ -316,7 +321,7 @@ public abstract class AutodiscoverRequest {
           this.service.processHttpErrorResponse(req, exception);
         }
       } catch (Exception e) {
-        e.printStackTrace();
+        LOG.error(e);
       }
     }
   }
@@ -446,7 +451,7 @@ public abstract class AutodiscoverRequest {
       // If response doesn't contain a valid SOAP fault, just ignore
       // exception and
       // return null for SOAP fault details.
-      e.printStackTrace();
+      LOG.error(e);
     }
 
     return soapFaultDetails;

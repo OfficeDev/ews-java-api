@@ -33,6 +33,8 @@ import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -40,6 +42,8 @@ import javax.xml.stream.XMLStreamException;
  * Represents grouping options in item search operations.
  */
 public final class Grouping implements ISelfValidate {
+
+  private static final Log LOG = LogFactory.getLog(Grouping.class);
 
   /**
    * The sort direction.
@@ -208,7 +212,7 @@ public final class Grouping implements ISelfValidate {
     try {
       this.internalValidate();
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error(e);
     }
 
   }

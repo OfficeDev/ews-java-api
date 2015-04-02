@@ -30,11 +30,15 @@ import microsoft.exchange.webservices.data.interfaces.ISearchStringProvider;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.MailboxType;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Represents an e-mail address.
  */
 public class EmailAddress extends ComplexProperty implements ISearchStringProvider {
+
+  private static final Log LOG = LogFactory.getLog(EmailAddress.class);
 
   // SMTP routing type.
   /**
@@ -315,7 +319,7 @@ public class EmailAddress extends ComplexProperty implements ISearchStringProvid
         return false;
       }
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error(e);
       return false;
     }
   }

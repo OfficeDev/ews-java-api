@@ -26,6 +26,8 @@ package microsoft.exchange.webservices.data.property.complex;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.Date;
@@ -35,6 +37,9 @@ import java.util.Date;
  * appointment.
  */
 public class DeletedOccurrenceInfo extends ComplexProperty {
+
+  private static final Log LOG = LogFactory.getLog(DeletedOccurrenceInfo.class);
+
   /**
    * The original start date and time of the deleted occurrence. The EWS
    * schema contains a Start property for deleted occurrences but it's really
@@ -62,9 +67,9 @@ public class DeletedOccurrenceInfo extends ComplexProperty {
       try {
         this.originalStart = reader.readElementValueAsDateTime();
       } catch (ServiceXmlDeserializationException e) {
-        e.printStackTrace();
+        LOG.error(e);
       } catch (XMLStreamException e) {
-        e.printStackTrace();
+        LOG.error(e);
       }
       return true;
     } else {

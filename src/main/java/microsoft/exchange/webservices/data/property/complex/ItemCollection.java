@@ -32,6 +32,8 @@ import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -45,6 +47,8 @@ import java.util.List;
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public final class ItemCollection<TItem extends Item> extends ComplexProperty
     implements Iterable<TItem> {
+
+  private static final Log LOG = LogFactory.getLog(ItemCollection.class);
 
   /**
    * The item.
@@ -83,9 +87,9 @@ public final class ItemCollection<TItem extends Item> extends ComplexProperty
               item.loadFromXml(reader,
                   true /* clearPropertyBag */);
             } catch (ServiceObjectPropertyException e) {
-              e.printStackTrace();
+              LOG.error(e);
             } catch (ServiceVersionException e) {
-              e.printStackTrace();
+              LOG.error(e);
             }
 
             this.items.add(item);

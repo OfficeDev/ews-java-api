@@ -37,6 +37,8 @@ import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exception.XmlException;
 import microsoft.exchange.webservices.data.misc.HangingTraceStream;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.ByteArrayOutputStream;
@@ -56,6 +58,8 @@ import java.util.concurrent.TimeUnit;
  * Represents an abstract, hanging service request.
  */
 public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T> {
+
+  private static final Log LOG = LogFactory.getLog(HangingServiceRequestBase.class);
 
   public interface IHandleResponseObject {
 
@@ -247,7 +251,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
       this.disconnect(HangingRequestDisconnectReason.Exception, ex);
       return;
     } catch (UnsupportedOperationException ex) {
-      ex.printStackTrace();
+      LOG.error(ex);
       // This is thrown if we close the stream during a
       //read operation due to a user method call.
       // Trying to delay closing until the read finishes
@@ -264,7 +268,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
           responseCopy.close();
           responseCopy = null;
         } catch (Exception ex) {
-          ex.printStackTrace();
+          LOG.error(ex);
         }
       }
     }

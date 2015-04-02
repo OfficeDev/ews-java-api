@@ -28,11 +28,15 @@ import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Represents response to generic Create request.
  */
 @EditorBrowsable(state = EditorBrowsableState.Never) public final class CreateResponseObjectResponse extends CreateItemResponseBase {
+
+  private static final Log LOG = LogFactory.getLog(CreateResponseObjectResponse.class);
 
   /**
    * Gets Item instance.
@@ -48,10 +52,10 @@ import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
     try {
       return EwsUtilities.createEwsObjectFromXmlElementName(Item.class, service, xmlElementName);
     } catch (InstantiationException e) {
-      e.printStackTrace();
+      LOG.error(e);
       return null;
     } catch (IllegalAccessException e) {
-      e.printStackTrace();
+      LOG.error(e);
       return null;
     }
   }
