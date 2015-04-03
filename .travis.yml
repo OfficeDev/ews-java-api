@@ -38,6 +38,8 @@ env:
 cache:
   directories:
     - $HOME/.m2/repository
+before_cache:
+  - rm -rf $HOME/.m2/repository/com/microsoft/ews-java-api
 
 notifications:
   webhooks:
