@@ -174,8 +174,8 @@ public abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
   @Override public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
       boolean isUpdateOperation)
       throws Exception {
-    ComplexProperty complexProperty = (ComplexProperty) propertyBag
-        .getObjectFromPropertyDefinition(this);
+    ComplexProperty complexProperty =
+      propertyBag.getObjectFromPropertyDefinition(this);
     if (complexProperty != null) {
       complexProperty.writeToXml(writer, this.getXmlElement());
     }

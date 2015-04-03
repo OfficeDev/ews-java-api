@@ -242,7 +242,7 @@ public final class GetUserAvailabilityRequest extends SimpleServiceRequestBase<G
    * @throws Exception the exception
    */
   public GetUserAvailabilityResults execute() throws Exception {
-    return (GetUserAvailabilityResults) this.internalExecute();
+    return internalExecute();
   }
 
   /**

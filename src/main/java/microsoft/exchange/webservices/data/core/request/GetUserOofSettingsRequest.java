@@ -150,9 +150,7 @@ public final class GetUserOofSettingsRequest extends SimpleServiceRequestBase<Ge
    * @throws Exception the exception
    */
   public GetUserOofSettingsResponse execute() throws Exception {
-    GetUserOofSettingsResponse serviceResponse =
-        (GetUserOofSettingsResponse) this
-            .internalExecute();
+    GetUserOofSettingsResponse serviceResponse = internalExecute();
     serviceResponse.throwIfNecessary();
     return serviceResponse;
   }

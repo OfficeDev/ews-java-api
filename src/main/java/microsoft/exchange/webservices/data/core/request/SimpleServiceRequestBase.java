@@ -70,7 +70,7 @@ public abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> 
     } catch (IOException ex) {
       // Wrap exception.
       throw new ServiceRequestException(String.
-          format("The request failed. %s", ex.getMessage(), ex));
+          format("The request failed. %s", ex.getMessage()), ex);
     } catch (Exception e) {
       if (response != null) {
         this.getService().processHttpResponseHeaders(TraceFlags.

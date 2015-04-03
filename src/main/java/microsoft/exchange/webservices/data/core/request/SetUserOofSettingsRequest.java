@@ -137,8 +137,7 @@ public final class SetUserOofSettingsRequest extends SimpleServiceRequestBase<Se
    * @throws Exception the exception
    */
   public ServiceResponse execute() throws Exception {
-    ServiceResponse serviceResponse = (ServiceResponse) this
-        .internalExecute();
+    ServiceResponse serviceResponse = internalExecute();
     serviceResponse.throwIfNecessary();
     return serviceResponse;
   }

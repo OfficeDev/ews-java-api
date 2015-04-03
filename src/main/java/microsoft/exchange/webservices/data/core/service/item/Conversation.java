@@ -444,9 +444,8 @@ public class Conversation extends ServiceObject {
    * @throws ServiceLocalException
    */
   public ConversationId getId() throws ServiceLocalException {
-    return (ConversationId) this.getPropertyBag().
-        getObjectFromPropertyDefinition(this.getIdPropertyDefinition());
-
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        getIdPropertyDefinition());
   }
 
   /**
@@ -481,8 +480,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public StringList getUniqueRecipients() throws Exception {
-    return (StringList) this.getPropertyBag().
-        getObjectFromPropertyDefinition(ConversationSchema.UniqueRecipients);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.UniqueRecipients);
   }
 
   /**
@@ -493,10 +492,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public StringList getGlobalUniqueRecipients() throws Exception {
-    return (StringList) this.getPropertyBag().
-        getObjectFromPropertyDefinition(ConversationSchema.
-            GlobalUniqueRecipients);
-
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.GlobalUniqueRecipients);
   }
 
   /**
@@ -559,9 +556,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public StringList getUniqueSenders() throws Exception {
-    return (StringList) this.getPropertyBag().
-        getObjectFromPropertyDefinition(ConversationSchema.UniqueSenders);
-
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.UniqueSenders);
   }
 
   /**
@@ -572,8 +568,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public StringList getGlobalUniqueSenders() throws Exception {
-    return (StringList) this.getPropertyBag().
-        getObjectFromPropertyDefinition(ConversationSchema.GlobalUniqueSenders);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.GlobalUniqueSenders);
   }
 
   /**
@@ -584,9 +580,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public Date getLastDeliveryTime() throws Exception {
-    return (Date) this.getPropertyBag().
-        getObjectFromPropertyDefinition(ConversationSchema.LastDeliveryTime);
-
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.LastDeliveryTime);
   }
 
   /**
@@ -597,11 +592,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public Date getGlobalLastDeliveryTime() throws Exception {
-
-    return (Date) this.getPropertyBag().
-        getObjectFromPropertyDefinition(ConversationSchema.
-            GlobalLastDeliveryTime);
-
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.GlobalLastDeliveryTime);
   }
 
   /**
@@ -710,9 +702,7 @@ public class Conversation extends ServiceObject {
    * @throws ServiceLocalException
    */
   public boolean getHasAttachments() throws ServiceLocalException {
-    return ((Boolean) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.HasAttachments)).booleanValue();
+    return getPropertyBag().<Boolean>getObjectFromPropertyDefinition(ConversationSchema.HasAttachments);
   }
 
   /**
@@ -724,10 +714,8 @@ public class Conversation extends ServiceObject {
    * @throws ServiceLocalException
    */
   public boolean getGlobalHasAttachments() throws ServiceLocalException {
-    return ((Boolean) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.GlobalHasAttachments)).booleanValue();
-
+    return getPropertyBag().<Boolean>getObjectFromPropertyDefinition(
+        ConversationSchema.GlobalHasAttachments);
   }
 
   /**
@@ -738,9 +726,8 @@ public class Conversation extends ServiceObject {
    * @throws ServiceLocalException
    */
   public int getMessageCount() throws ServiceLocalException {
-    return ((Integer) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.MessageCount)).intValue();
+    return getPropertyBag().<Integer>getObjectFromPropertyDefinition(
+        ConversationSchema.MessageCount);
   }
 
   /**
@@ -751,11 +738,8 @@ public class Conversation extends ServiceObject {
    * @throws ServiceLocalException
    */
   public int getGlobalMessageCount() throws ServiceLocalException {
-
-    return ((Integer) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.GlobalMessageCount)).intValue();
-
+    return getPropertyBag().<Integer>getObjectFromPropertyDefinition(
+        ConversationSchema.GlobalMessageCount);
   }
 
   /**
@@ -814,9 +798,8 @@ public class Conversation extends ServiceObject {
    * @throws ServiceLocalException
    */
   public int getSize() throws ServiceLocalException {
-    return ((Integer) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.Size)).intValue();
+    return getPropertyBag().<Integer>getObjectFromPropertyDefinition(
+        ConversationSchema.Size);
   }
 
   /**
@@ -828,9 +811,8 @@ public class Conversation extends ServiceObject {
    * @throws ServiceLocalException
    */
   public int getGlobalSize() throws ServiceLocalException {
-    return ((Integer) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.GlobalSize)).intValue();
+    return getPropertyBag().<Integer>getObjectFromPropertyDefinition(
+        ConversationSchema.GlobalSize);
   }
 
   /**
@@ -841,9 +823,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public StringList getItemClasses() throws Exception {
-    return (StringList) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.ItemClasses);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.ItemClasses);
   }
 
   /**
@@ -854,10 +835,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public StringList getGlobalItemClasses() throws Exception {
-    return (StringList) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.GlobalItemClasses);
-
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.GlobalItemClasses);
   }
 
   /**
@@ -868,9 +847,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public Importance getImportance() throws Exception {
-    return (Importance) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.Importance);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.Importance);
   }
 
   /**
@@ -882,9 +860,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public Importance getGlobalImportance() throws Exception {
-    return (Importance) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.GlobalImportance);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.GlobalImportance);
   }
 
   /**
@@ -895,9 +872,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public ItemIdCollection getItemIds() throws Exception {
-    return (ItemIdCollection) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.ItemIds);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.ItemIds);
   }
 
   /**
@@ -908,9 +884,8 @@ public class Conversation extends ServiceObject {
    * @throws Exception
    */
   public ItemIdCollection getGlobalItemIds() throws Exception {
-    return (ItemIdCollection) this.getPropertyBag().
-        getObjectFromPropertyDefinition(
-            ConversationSchema.GlobalItemIds);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ConversationSchema.GlobalItemIds);
   }
 
 }

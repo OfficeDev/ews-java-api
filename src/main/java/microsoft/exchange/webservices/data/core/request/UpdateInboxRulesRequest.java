@@ -27,8 +27,8 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.response.UpdateInboxRulesResponse;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.response.UpdateInboxRulesResponse;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.ServiceResult;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
@@ -166,8 +166,7 @@ public final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<Upda
    */
   public UpdateInboxRulesResponse execute()
       throws ServiceLocalException, Exception {
-    UpdateInboxRulesResponse serviceResponse =
-        (UpdateInboxRulesResponse) this.internalExecute();
+    UpdateInboxRulesResponse serviceResponse = internalExecute();
     if (serviceResponse.getResult() == ServiceResult.Error) {
       throw new UpdateInboxRulesException(serviceResponse,
           this.inboxRuleOperations);

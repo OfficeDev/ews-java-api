@@ -113,8 +113,7 @@ public final class GetPhoneCallRequest extends SimpleServiceRequestBase<GetPhone
    * @throws Exception the exception
    */
   public GetPhoneCallResponse execute() throws Exception {
-    GetPhoneCallResponse serviceResponse = (GetPhoneCallResponse) this
-        .internalExecute();
+    GetPhoneCallResponse serviceResponse = internalExecute();
     serviceResponse.throwIfNecessary();
     return serviceResponse;
   }

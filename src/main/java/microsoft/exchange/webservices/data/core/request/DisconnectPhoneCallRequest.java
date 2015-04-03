@@ -114,8 +114,7 @@ public final class DisconnectPhoneCallRequest extends SimpleServiceRequestBase<S
    * @throws Exception the exception
    */
   public ServiceResponse execute() throws Exception {
-    ServiceResponse serviceResponse = (ServiceResponse) this
-        .internalExecute();
+    ServiceResponse serviceResponse = internalExecute();
     serviceResponse.throwIfNecessary();
     return serviceResponse;
   }

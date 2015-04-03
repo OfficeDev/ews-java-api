@@ -77,9 +77,8 @@ public final class CancelMeetingMessage extends
    * @throws ServiceLocalException the service local exception
    */
   public MessageBody getBody() throws ServiceLocalException {
-    return (MessageBody) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(
-            CancelMeetingMessageSchema.Body);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        CancelMeetingMessageSchema.Body);
   }
 
   /**

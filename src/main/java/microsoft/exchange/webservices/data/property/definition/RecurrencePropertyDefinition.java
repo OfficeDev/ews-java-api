@@ -165,8 +165,7 @@ public class RecurrencePropertyDefinition extends PropertyDefinition {
   public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
       boolean isUpdateOperation)
       throws Exception {
-    Recurrence value = (Recurrence) propertyBag
-        .getObjectFromPropertyDefinition(this);
+    Recurrence value = propertyBag.getObjectFromPropertyDefinition(this);
 
     if (value != null) {
       value.writeToXml(writer, XmlElementNames.Recurrence);

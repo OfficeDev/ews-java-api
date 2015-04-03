@@ -277,10 +277,10 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    *                                 the property.
    * @return Property value. May be null.
    */
-  private Object getPropertyValueOrException(
+  private <T> T getPropertyValueOrException(
       PropertyDefinition propertyDefinition,
       OutParam<ServiceLocalException> serviceExceptionOutParam) {
-    OutParam<Object> propertyValueOutParam = new OutParam<Object>();
+    OutParam<T> propertyValueOutParam = new OutParam<T>();
     propertyValueOutParam.setParam(null);
     serviceExceptionOutParam.setParam(null);
 
@@ -312,11 +312,13 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
         // property
         ComplexPropertyDefinitionBase complexPropertyDefinition =
             (ComplexPropertyDefinitionBase) propertyDefinition;
-        Object propertyValue = complexPropertyDefinition
-            .createPropertyInstance(this.getOwner());
-        propertyValueOutParam.setParam(propertyValue);
+        ComplexProperty propertyValue = complexPropertyDefinition
+            .createPropertyInstance(getOwner());
+
+        // XXX: It could be dangerous to return complex value instead of <T>
+        propertyValueOutParam.setParam((T) propertyValue);
         if (propertyValue != null) {
-          this.initComplexProperty((ComplexProperty) propertyValue);
+          this.initComplexProperty(propertyValue);
           this.properties.put(propertyDefinition, propertyValue);
         }
       } else {
@@ -379,10 +381,10 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    * @param propertyValueOutParam If the method succeeds, contains the value of the property.
    * @return True if the value could be retrieved, false otherwise.
    */
-  public boolean tryGetValue(PropertyDefinition propertyDefinition, OutParam<Object> propertyValueOutParam) {
+  public <T> boolean tryGetValue(PropertyDefinition propertyDefinition, OutParam<T> propertyValueOutParam) {
     if (this.properties.containsKey(propertyDefinition)) {
-      propertyValueOutParam.setParam(this.properties
-          .get(propertyDefinition));
+      T param = (T) properties.get(propertyDefinition);
+      propertyValueOutParam.setParam(param);
       return true;
     } else {
       propertyValueOutParam.setParam(null);
@@ -749,20 +751,17 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    *                               property hasn't been assigned or loaded, raised for set if
    *                               property cannot be updated or deleted.
    */
-  public Object getObjectFromPropertyDefinition(PropertyDefinition propertyDefinition)
+  public <T> T getObjectFromPropertyDefinition(PropertyDefinition propertyDefinition)
       throws ServiceLocalException {
-    ServiceLocalException serviceException = null;
     OutParam<ServiceLocalException> serviceExceptionOut =
         new OutParam<ServiceLocalException>();
-    Object propertyValue = this.getPropertyValueOrException(
-        propertyDefinition, serviceExceptionOut);
-    serviceException = serviceExceptionOut.getParam();
-    if (serviceException == null) {
-      return propertyValue;
-    } else {
-      //throw new ServiceLocalException();
+    T propertyValue = getPropertyValueOrException(propertyDefinition, serviceExceptionOut);
+
+    ServiceLocalException serviceException = serviceExceptionOut.getParam();
+    if (serviceException != null) {
       throw serviceException;
     }
+    return propertyValue;
   }
 
   /**

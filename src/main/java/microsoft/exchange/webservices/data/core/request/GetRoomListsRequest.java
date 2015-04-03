@@ -103,8 +103,7 @@ public final class GetRoomListsRequest extends SimpleServiceRequestBase<GetRoomL
    * @throws Exception the exception
    */
   public GetRoomListsResponse execute() throws Exception {
-    GetRoomListsResponse serviceResponse = (GetRoomListsResponse) this
-        .internalExecute();
+    GetRoomListsResponse serviceResponse = internalExecute();
     serviceResponse.throwIfNecessary();
     return serviceResponse;
   }

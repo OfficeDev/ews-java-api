@@ -26,9 +26,9 @@ package microsoft.exchange.webservices.data.core.request;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.response.ServiceResponse;
 import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
-import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumeration.ServiceResult;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
@@ -155,9 +155,7 @@ public abstract class MultiResponseServiceRequest<TResponse extends ServiceRespo
    * @throws Exception the exception
    */
   public ServiceResponseCollection<TResponse> execute() throws Exception {
-    ServiceResponseCollection<TResponse> serviceResponses =
-        (ServiceResponseCollection<TResponse>) this
-            .internalExecute();
+    ServiceResponseCollection<TResponse> serviceResponses = internalExecute();
 
     if (this.errorHandlingMode == ServiceErrorHandling.ThrowOnError) {
       EwsUtilities.EwsAssert(serviceResponses.getCount() == 1, "MultiResponseServiceRequest.Execute",
@@ -177,8 +175,7 @@ public abstract class MultiResponseServiceRequest<TResponse extends ServiceRespo
    * @return Service response collection.
    */
   public ServiceResponseCollection<TResponse> endExecute(IAsyncResult asyncResult) throws Exception {
-    ServiceResponseCollection<TResponse> serviceResponses =
-        (ServiceResponseCollection<TResponse>) this.endInternalExecute(asyncResult);
+    ServiceResponseCollection<TResponse> serviceResponses = endInternalExecute(asyncResult);
 
     if (this.errorHandlingMode == ServiceErrorHandling.ThrowOnError) {
       EwsUtilities.EwsAssert(

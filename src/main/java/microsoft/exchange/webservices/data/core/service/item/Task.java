@@ -187,7 +187,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Integer getActualWork() throws ServiceLocalException {
-    return (Integer) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.ActualWork);
   }
 
@@ -209,7 +209,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Date getAssignedTime() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.AssignedTime);
   }
 
@@ -220,7 +220,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getBillingInformation() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.BillingInformation);
   }
 
@@ -242,7 +242,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Integer getChangeCount() throws ServiceLocalException {
-    return (Integer) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.ChangeCount);
   }
 
@@ -253,8 +253,8 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public StringList getCompanies() throws ServiceLocalException {
-    return (StringList) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(TaskSchema.Companies);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        TaskSchema.Companies);
   }
 
   /**
@@ -275,7 +275,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Date getCompleteDate() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.CompleteDate);
   }
 
@@ -297,8 +297,8 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public StringList getContacts() throws ServiceLocalException {
-    return (StringList) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(TaskSchema.Contacts);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        TaskSchema.Contacts);
   }
 
   /**
@@ -320,8 +320,8 @@ public class Task extends Item {
    */
   public TaskDelegationState getDelegationState()
       throws ServiceLocalException {
-    return (TaskDelegationState) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(TaskSchema.DelegationState);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        TaskSchema.DelegationState);
   }
 
   /**
@@ -331,7 +331,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getDelegator() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.Delegator);
   }
 
@@ -342,7 +342,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Date getDueDate() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.DueDate);
   }
 
@@ -364,8 +364,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public TaskMode getMode() throws ServiceLocalException {
-    return (TaskMode) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(TaskSchema.Mode);
+    return getPropertyBag().getObjectFromPropertyDefinition(TaskSchema.Mode);
   }
 
   /**
@@ -375,7 +374,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsComplete() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.IsComplete);
   }
 
@@ -386,7 +385,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsRecurring() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.IsRecurring);
   }
 
@@ -397,7 +396,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Boolean getIsTeamTask() throws ServiceLocalException {
-    return (Boolean) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.IsTeamTask);
   }
 
@@ -408,7 +407,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getMileage() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.Mileage);
   }
 
@@ -430,7 +429,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getOwner() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.Owner);
   }
 
@@ -443,7 +442,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Double getPercentComplete() throws ServiceLocalException {
-    return (Double) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.PercentComplete);
   }
 
@@ -488,8 +487,8 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Recurrence getRecurrence() throws ServiceLocalException {
-    return (Recurrence) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(TaskSchema.Recurrence);
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        TaskSchema.Recurrence);
   }
 
   /**
@@ -510,7 +509,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Date getStartDate() throws ServiceLocalException {
-    return (Date) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.StartDate);
   }
 
@@ -532,8 +531,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public TaskStatus getStatus() throws ServiceLocalException {
-    return (TaskStatus) this.getPropertyBag()
-        .getObjectFromPropertyDefinition(TaskSchema.Status);
+    return getPropertyBag().getObjectFromPropertyDefinition(TaskSchema.Status);
   }
 
   /**
@@ -556,7 +554,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public String getStatusDescription() throws ServiceLocalException {
-    return (String) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.StatusDescription);
   }
 
@@ -567,7 +565,7 @@ public class Task extends Item {
    * @throws ServiceLocalException the service local exception
    */
   public Integer getTotalWork() throws ServiceLocalException {
-    return (Integer) this.getPropertyBag().getObjectFromPropertyDefinition(
+    return getPropertyBag().getObjectFromPropertyDefinition(
         TaskSchema.TotalWork);
   }
 

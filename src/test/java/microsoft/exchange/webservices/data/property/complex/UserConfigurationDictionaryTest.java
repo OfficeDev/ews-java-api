@@ -60,7 +60,7 @@ public class UserConfigurationDictionaryTest extends BaseTest {
    */
   @Test(expected = ServiceLocalException.class)
   public void testAddUnsupportedElementsToDictionary() throws Exception {
-    this.userConfigurationDictionary.addElement("someDouble", (Double) 1.0);
+    this.userConfigurationDictionary.addElement("someDouble", 1.0);
   }
 
   /**
