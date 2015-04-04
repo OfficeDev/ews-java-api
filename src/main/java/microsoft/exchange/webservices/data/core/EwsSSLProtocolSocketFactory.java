@@ -23,24 +23,26 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import org.apache.http.conn.ssl.DefaultHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.SSLContexts;
+import org.apache.http.ssl.SSLContexts;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLException;
 import javax.net.ssl.TrustManager;
+
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 
 /**
  * <p>
- * EwsSSLProtocolSocketFactory can be used to creats SSL {@link java.net.Socket}s
+ * EwsSSLProtocolSocketFactory can be used to create SSL {@link java.net.Socket}s
  * that accept self-signed certificates.
  * </p>
  * <p>
  * This socket factory SHOULD NOT be used for productive systems
- * due to security reasons, unless it is a concious decision and
+ * due to security reasons, unless it is a conscious decision and
  * you are perfectly aware of security implications of accepting
  * self-signed certificates
  * </p>
@@ -80,6 +82,10 @@ import java.security.NoSuchAlgorithmException;
 
 public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
 
+  private static final HostnameVerifier HOSTNAME_VERIFIER =
+    new DefaultHostnameVerifier();
+
+
   /**
    * The SSL Context.
    */
@@ -87,20 +93,11 @@ public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
 
   /**
    * Constructor for EasySSLProtocolSocketFactory.
-   *
-   * @throws SSLException
    */
   public EwsSSLProtocolSocketFactory(SSLContext context) {
-    super(context, SSLConnectionSocketFactory.STRICT_HOSTNAME_VERIFIER);
+    super(context, HOSTNAME_VERIFIER);
     this.sslcontext = context;
   }
-
-
-
-  public SSLContext getContext() {
-    return this.sslcontext;
-  }
-
 
 
   public static EwsSSLProtocolSocketFactory build(TrustManager trustManager)
@@ -114,6 +111,11 @@ public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
     return new EwsSSLProtocolSocketFactory(sslContext);
   }
 
+
+  public SSLContext getContext() {
+    return this.sslcontext;
+  }
+
   public boolean equals(Object obj) {
     return ((obj != null) && obj.getClass().equals(EwsSSLProtocolSocketFactory.class));
   }
@@ -121,4 +123,5 @@ public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
   public int hashCode() {
     return EwsSSLProtocolSocketFactory.class.hashCode();
   }
+
 }
