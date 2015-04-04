@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
+import microsoft.exchange.webservices.data.ISelfValidate;
 
 import javax.xml.stream.XMLStreamException;
 import java.text.DateFormat;

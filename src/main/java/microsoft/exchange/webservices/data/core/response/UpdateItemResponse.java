@@ -32,7 +32,6 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.ServiceResult;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
 
 import javax.xml.stream.XMLStreamException;
 

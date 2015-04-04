@@ -42,8 +42,6 @@ import microsoft.exchange.webservices.data.core.service.folder.TasksFolder;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.service.item.MeetingResponse;
-import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithAttachmentParam;
-import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithServiceParam;
 import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 
 import java.util.ArrayList;

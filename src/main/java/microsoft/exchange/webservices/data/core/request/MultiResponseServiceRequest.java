@@ -34,7 +34,7 @@ import microsoft.exchange.webservices.data.enumeration.ServiceResult;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceResponseException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
+import microsoft.exchange.webservices.data.misc.IAsyncResult;
 
 /**
  * Represents a service request that can have multiple response.

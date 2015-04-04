@@ -28,8 +28,6 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import microsoft.exchange.webservices.data.core.LazyMember;
-import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

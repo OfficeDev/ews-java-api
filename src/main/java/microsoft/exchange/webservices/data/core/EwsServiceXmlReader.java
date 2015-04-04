@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
+import microsoft.exchange.webservices.data.core.response.IGetObjectInstanceDelegate;
 import microsoft.exchange.webservices.data.util.DateTimeUtils;
 
 import java.io.InputStream;

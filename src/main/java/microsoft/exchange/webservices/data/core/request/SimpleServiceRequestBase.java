@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.core.WebAsyncCallStateAnchor;
 import microsoft.exchange.webservices.data.enumeration.TraceFlags;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceRequestException;
-import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
+import microsoft.exchange.webservices.data.misc.IAsyncResult;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

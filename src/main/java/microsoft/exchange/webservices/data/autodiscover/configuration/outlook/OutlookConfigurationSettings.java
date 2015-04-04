@@ -34,7 +34,7 @@ import microsoft.exchange.webservices.data.autodiscover.enumeration.Autodiscover
 import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverResponseType;
 import microsoft.exchange.webservices.data.enumeration.UserSettingName;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.interfaces.ILazyMember;
+import microsoft.exchange.webservices.data.core.ILazyMember;
 
 import javax.xml.stream.XMLStreamException;
 import java.net.URI;

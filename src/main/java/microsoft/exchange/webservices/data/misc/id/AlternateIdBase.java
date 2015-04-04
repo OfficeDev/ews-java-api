@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.enumeration.IdFormat;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
+import microsoft.exchange.webservices.data.ISelfValidate;
 
 import javax.xml.stream.XMLStreamException;
 

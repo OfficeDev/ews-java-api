@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
+import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.EmailAddress;
 import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;
 import microsoft.exchange.webservices.data.property.definition.BoolPropertyDefinition;

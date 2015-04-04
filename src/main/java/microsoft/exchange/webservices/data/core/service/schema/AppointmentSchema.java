@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumeration.MeetingResponseType;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
+import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;
 import microsoft.exchange.webservices.data.property.complex.DeletedOccurrenceInfoCollection;
 import microsoft.exchange.webservices.data.property.complex.EmailAddress;

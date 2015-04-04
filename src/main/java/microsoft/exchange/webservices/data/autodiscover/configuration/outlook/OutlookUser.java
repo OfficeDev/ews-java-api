@@ -32,8 +32,8 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.UserSettingName;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.interfaces.IFunc;
-import microsoft.exchange.webservices.data.interfaces.ILazyMember;
+import microsoft.exchange.webservices.data.autodiscover.IFunc;
+import microsoft.exchange.webservices.data.core.ILazyMember;
 
 import java.util.HashMap;
 import java.util.List;

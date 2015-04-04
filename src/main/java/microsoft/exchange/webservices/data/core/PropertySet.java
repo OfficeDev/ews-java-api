@@ -33,8 +33,7 @@ import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.interfaces.ILazyMember;
-import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
+import microsoft.exchange.webservices.data.ISelfValidate;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 

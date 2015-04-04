@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.misc.OutParam;
-import microsoft.exchange.webservices.data.interfaces.IPropertyBagChangedDelegate;
+import microsoft.exchange.webservices.data.property.complex.IPropertyBagChangedDelegate;
 
 import java.util.*;
 

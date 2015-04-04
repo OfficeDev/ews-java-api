@@ -36,7 +36,7 @@ import microsoft.exchange.webservices.data.enumeration.ResolveNameSearchLocation
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.interfaces.ILazyMember;
+import microsoft.exchange.webservices.data.core.ILazyMember;
 import microsoft.exchange.webservices.data.misc.FolderIdWrapperList;
 
 import java.util.HashMap;

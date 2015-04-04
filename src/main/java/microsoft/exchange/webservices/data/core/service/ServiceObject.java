@@ -41,7 +41,7 @@ import microsoft.exchange.webservices.data.exception.InvalidOperationException;
 import microsoft.exchange.webservices.data.exception.NotSupportedException;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
-import microsoft.exchange.webservices.data.interfaces.IServiceObjectChangedDelegate;
+import microsoft.exchange.webservices.data.property.complex.IServiceObjectChangedDelegate;
 import microsoft.exchange.webservices.data.property.complex.ExtendedProperty;
 import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
 import microsoft.exchange.webservices.data.property.complex.ServiceId;

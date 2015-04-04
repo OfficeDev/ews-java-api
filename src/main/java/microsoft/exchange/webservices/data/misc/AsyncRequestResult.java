@@ -30,7 +30,6 @@ import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
 import microsoft.exchange.webservices.data.core.request.ServiceRequestBase;
 import microsoft.exchange.webservices.data.core.request.SimpleServiceRequestBase;
 import microsoft.exchange.webservices.data.exception.ArgumentException;
-import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
 
 import java.util.concurrent.*;
 

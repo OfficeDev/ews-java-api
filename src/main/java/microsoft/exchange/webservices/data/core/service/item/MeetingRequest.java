@@ -39,7 +39,6 @@ import microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumeration.MeetingRequestType;
 import microsoft.exchange.webservices.data.enumeration.MeetingResponseType;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.interfaces.ICalendarActionProvider;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
 import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;
 import microsoft.exchange.webservices.data.property.complex.DeletedOccurrenceInfoCollection;

@@ -48,7 +48,6 @@ import microsoft.exchange.webservices.data.enumeration.SendInvitationsMode;
 import microsoft.exchange.webservices.data.enumeration.SendInvitationsOrCancellationsMode;
 import microsoft.exchange.webservices.data.enumeration.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.interfaces.ICalendarActionProvider;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
 import microsoft.exchange.webservices.data.property.complex.AppointmentOccurrenceId;
 import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;

@@ -23,8 +23,6 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.interfaces.ILazyMember;
-
 /**
  * Wrapper class for lazy members. Does lazy initialization of member on first
  * access.
