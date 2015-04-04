@@ -79,6 +79,7 @@
         <httpcore.version>4.4.1</httpcore.version>
         <commons-logging.version>1.2</commons-logging.version>
         <joda-time.version>2.7</joda-time.version>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
         <!--  Dependencies [TEST]:  -->
         <junit.version>4.12</junit.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
@@ -176,6 +177,12 @@
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>${commons-logging.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
         </dependency>
 
         <dependency>

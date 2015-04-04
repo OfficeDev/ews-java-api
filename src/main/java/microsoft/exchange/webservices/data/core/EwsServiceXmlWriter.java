@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.interfaces.IDisposable;
 import microsoft.exchange.webservices.data.interfaces.ISearchStringProvider;
-import microsoft.exchange.webservices.data.util.Base64;
+import org.apache.commons.codec.binary.Base64;
 import org.w3c.dom.*;
 
 import javax.xml.stream.XMLOutputFactory;
@@ -482,7 +482,7 @@ public class EwsServiceXmlWriter implements IDisposable {
   public void writeBase64ElementValue(byte[] buffer)
       throws XMLStreamException {
 
-    String strValue = Base64.encode(buffer);
+    String strValue = Base64.encodeBase64String(buffer);
     this.xmlWriter.writeCharacters(strValue);//Base64.encode(buffer));
   }
 
@@ -508,7 +508,7 @@ public class EwsServiceXmlWriter implements IDisposable {
       bos.close();
     }
     byte[] bytes = bos.toByteArray();
-    String strValue = Base64.encode(bytes);
+    String strValue = Base64.encodeBase64String(bytes);
     this.xmlWriter.writeCharacters(strValue);
 
   }

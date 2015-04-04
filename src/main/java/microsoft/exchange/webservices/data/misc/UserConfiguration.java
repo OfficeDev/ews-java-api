@@ -23,7 +23,6 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.util.Base64EncoderStream;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
@@ -42,6 +41,7 @@ import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationExce
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.UserConfigurationDictionary;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.EnumSet;
@@ -155,8 +155,7 @@ public class UserConfiguration {
     writer.writeStartElement(XmlNamespace.Types, xmlElementName);
 
     if (byteArray != null && byteArray.length > 0) {
-      writer.writeValue(Base64EncoderStream.encode(byteArray),
-          xmlElementName);
+      writer.writeValue(Base64.encodeBase64String(byteArray), xmlElementName);
     }
 
     writer.writeEndElement();
@@ -614,12 +613,10 @@ public class UserConfiguration {
               XmlElementNames.Dictionary);
         } else if (reader.getLocalName()
             .equals(XmlElementNames.XmlData)) {
-          this.xmlData = Base64EncoderStream.decode(reader
-              .readElementValue());
+          this.xmlData = Base64.decodeBase64(reader.readElementValue());
         } else if (reader.getLocalName().equals(
             XmlElementNames.BinaryData)) {
-          this.binaryData = Base64EncoderStream.decode(reader
-              .readElementValue());
+          this.binaryData = Base64.decodeBase64(reader.readElementValue());
         } else {
           EwsUtilities.EwsAssert(false,
               "UserConfiguration.LoadFromXml",
