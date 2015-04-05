@@ -82,38 +82,55 @@ import java.security.NoSuchAlgorithmException;
 
 public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
 
-  private static final HostnameVerifier HOSTNAME_VERIFIER =
-    new DefaultHostnameVerifier();
+  private static final HostnameVerifier DEFAULT_HOSTNAME_VERIFIER = new DefaultHostnameVerifier();
 
 
   /**
    * The SSL Context.
    */
-  private SSLContext sslcontext = null;
+  private final SSLContext sslcontext;
+
 
   /**
    * Constructor for EasySSLProtocolSocketFactory.
+   *
+   * @param context          SSL context
+   * @param hostnameVerifier hostname verifier
    */
-  public EwsSSLProtocolSocketFactory(SSLContext context) {
-    super(context, HOSTNAME_VERIFIER);
+  public EwsSSLProtocolSocketFactory(
+    SSLContext context, HostnameVerifier hostnameVerifier
+  ) {
+    super(context, hostnameVerifier);
     this.sslcontext = context;
   }
 
 
   public static EwsSSLProtocolSocketFactory build(TrustManager trustManager)
-      throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
+    throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
+    return build(trustManager, DEFAULT_HOSTNAME_VERIFIER);
+  }
+
+  public static EwsSSLProtocolSocketFactory build(
+    TrustManager trustManager, HostnameVerifier hostnameVerifier
+  ) throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
+    SSLContext sslContext = createSslContext(trustManager);
+    return new EwsSSLProtocolSocketFactory(sslContext, hostnameVerifier);
+  }
+
+  public static SSLContext createSslContext(TrustManager trustManager)
+      throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
     SSLContext sslContext = SSLContexts.createDefault();
     sslContext.init(
         null,
         new TrustManager[] {new EwsX509TrustManager(null, trustManager)},
         null
     );
-    return new EwsSSLProtocolSocketFactory(sslContext);
+    return sslContext;
   }
 
 
   public SSLContext getContext() {
-    return this.sslcontext;
+    return sslcontext;
   }
 
   public boolean equals(Object obj) {
