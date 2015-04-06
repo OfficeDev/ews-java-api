@@ -27,7 +27,7 @@ import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.util.Base64EncoderStream;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -552,7 +552,7 @@ public class EwsXmlReader {
 
     ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
 
-    buffer = Base64EncoderStream.decode(this.xmlReader.getElementText().toString());
+    buffer = Base64.decodeBase64(this.xmlReader.getElementText().toString());
     byteArrayStream.write(buffer);
 
     return byteArrayStream.toByteArray();
@@ -570,8 +570,7 @@ public class EwsXmlReader {
     this.ensureCurrentNodeIsStartElement();
 
     byte[] buffer = null;
-    buffer = Base64EncoderStream.decode(this.xmlReader.getElementText()
-        .toString());
+    buffer = Base64.decodeBase64(this.xmlReader.getElementText().toString());
     outputStream.write(buffer);
     outputStream.flush();
   }

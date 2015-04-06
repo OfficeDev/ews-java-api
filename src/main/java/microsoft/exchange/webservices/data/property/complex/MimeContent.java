@@ -23,12 +23,12 @@
 
 package microsoft.exchange.webservices.data.property.complex;
 
-import microsoft.exchange.webservices.data.util.Base64EncoderStream;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -88,7 +88,7 @@ public final class MimeContent extends ComplexProperty {
   @Override
   public void readTextValueFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException {
-    this.content = Base64EncoderStream.decode(reader.readValue());
+    this.content = Base64.decodeBase64(reader.readValue());
   }
 
   /**
@@ -176,7 +176,7 @@ public final class MimeContent extends ComplexProperty {
             "UTF-8" : this.getCharacterSet();
         return new String(this.getContent(), charSet);
       } catch (Exception e) {
-        return Base64EncoderStream.encode(this.getContent());
+        return Base64.encodeBase64String(this.getContent());
       }
     }
   }

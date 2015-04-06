@@ -23,7 +23,6 @@
 
 package microsoft.exchange.webservices.data.property.complex;
 
-import microsoft.exchange.webservices.data.util.Base64EncoderStream;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
@@ -37,6 +36,8 @@ import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.util.DateTimeUtils;
+import org.apache.commons.codec.binary.*;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.xml.stream.XMLStreamException;
 import java.lang.reflect.Array;
@@ -346,7 +347,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
         valueAsString = String.valueOf(dictionaryObject);
       } else if (dictionaryObject instanceof byte[]) {
         dictionaryObjectType = UserConfigurationDictionaryObjectType.ByteArray;
-        valueAsString = Base64EncoderStream.encode((byte[]) dictionaryObject);
+        valueAsString = Base64.encodeBase64String((byte[]) dictionaryObject);
       } else if (dictionaryObject instanceof Byte[]) {
         dictionaryObjectType = UserConfigurationDictionaryObjectType.ByteArray;
 
@@ -357,7 +358,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
           to[currentIndex] = (byte) from[currentIndex];
         }
 
-        valueAsString = Base64EncoderStream.encode(to);
+        valueAsString = Base64.encodeBase64String(to);
       } else {
         throw new IllegalArgumentException(String.format(
             "Unsupported type: %s", dictionaryObject.getClass()
@@ -602,7 +603,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
     } else if (type.equals(UserConfigurationDictionaryObjectType.Byte)) {
       dictionaryObject = Byte.parseByte(value.get(0));
     } else if (type.equals(UserConfigurationDictionaryObjectType.ByteArray)) {
-      dictionaryObject = Base64EncoderStream.decode(value.get(0));
+      dictionaryObject = Base64.decodeBase64(value.get(0));
     } else if (type.equals(UserConfigurationDictionaryObjectType.DateTime)) {
       Date dateTime = DateTimeUtils.convertDateTimeStringToDate(value.get(0));
       if (dateTime != null) {
