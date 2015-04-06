@@ -23,55 +23,48 @@
 
 package microsoft.exchange.webservices.data.property.definition;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
 
+import org.apache.commons.codec.binary.Base64;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import java.util.EnumSet;
 
-/**
- * Represents String property definition.
- */
-public class StringPropertyDefinition extends TypedPropertyDefinition<String> {
+@RunWith(JUnit4.class)
+public class ByteArrayPropertyDefinitionTest {
+
+  private ByteArrayPropertyDefinition testObject;
+
+  private static final String TEST_STRING = "Lorem ipsum dolor sit amet";
+  private static final String BASE64_ENCODEDSTRING = Base64.encodeBase64String(TEST_STRING.getBytes());
 
   /**
-   * Initializes a new instance of the "StringPropertyDefinition" class.
-   *
-   * @param xmlElementName Name of the XML element.
-   * @param uri            The URI.
-   * @param flags          The flags.
-   * @param version        The version.
+   * setup
    */
-  public StringPropertyDefinition(String xmlElementName, String uri, EnumSet<PropertyDefinitionFlags> flags,
-      ExchangeVersion version) {
-    super(xmlElementName, uri, flags, version);
+  @Before
+  public void init(){
+    this.testObject =
+        new ByteArrayPropertyDefinition("myTestObject", "myTestUri",
+                                        EnumSet.of(PropertyDefinitionFlags.None),
+                                        ExchangeVersion.Exchange2010_SP2);
   }
 
   /**
-   * Parses the specified value.
-   *
-   * @param value The value.
-   * @return Typed value.
+   * Test for ByteArrayPropertyDefinition.toString()
+   * This Test should guarantee that toString() byte encoding works
    */
-  @Override
-  protected String parse(String value) {
-    return value;
+  @Test
+  public void testToString(){
+    String result = testObject.toString(TEST_STRING.getBytes());
+    assertNotNull(result);
+    assertEquals(BASE64_ENCODEDSTRING, result);
   }
 
-  /**
-   * Gets a value indicating whether this property definition is for a
-   * nullable type (ref, int?, bool?...).
-   *
-   * @return True
-   */
-  @Override public boolean isNullable() {
-    return true;
-  }
-
-  /**
-   * Gets the property type.
-   */
-  @Override
-  public Class<String> getType() {
-    return String.class;
-  }
 }

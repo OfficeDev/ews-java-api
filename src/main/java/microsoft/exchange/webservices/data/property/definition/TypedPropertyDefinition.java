@@ -33,13 +33,15 @@ import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
+
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.EnumSet;
 
 /**
  * Represents typed property definition.
  */
-abstract class TypedPropertyDefinition extends PropertyDefinition {
+abstract class TypedPropertyDefinition<T extends Serializable> extends PropertyDefinition {
 
   /**
    * The is nullable.
@@ -98,7 +100,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    * @throws IllegalAccessException
    * @throws InstantiationException
    */
-  protected abstract Object parse(String value) throws InstantiationException,
+  protected abstract T parse(String value) throws InstantiationException,
       IllegalAccessException, ParseException;
 
   /**
@@ -117,7 +119,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
    * @param value The value.
    * @return String representation of property value.
    */
-  protected String toString(Object value) {
+  protected String toString(T value) {
     return value.toString();
   }
 
@@ -133,8 +135,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
         .getXmlElement());
 
     if (value != null && !value.isEmpty()) {
-      propertyBag
-          .setObjectFromPropertyDefinition(this, this.parse(value));
+      propertyBag.setObjectFromPropertyDefinition(this, this.parse(value));
     }
   }
 
@@ -151,7 +152,7 @@ abstract class TypedPropertyDefinition extends PropertyDefinition {
   @Override public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
       boolean isUpdateOperation)
       throws XMLStreamException, ServiceXmlSerializationException, ServiceLocalException {
-    Object value = propertyBag.getObjectFromPropertyDefinition(this);
+    T value = propertyBag.getObjectFromPropertyDefinition(this);
 
     if (value != null) {
       writer.writeElementValue(XmlNamespace.Types, this.getXmlElement(),

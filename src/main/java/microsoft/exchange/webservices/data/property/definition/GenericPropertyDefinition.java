@@ -27,6 +27,7 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.EnumSet;
 
@@ -35,8 +36,8 @@ import java.util.EnumSet;
  *
  * @param <TPropertyValue> Property type.
  */
-public class GenericPropertyDefinition<TPropertyValue> extends
-    TypedPropertyDefinition {
+public class GenericPropertyDefinition<TPropertyValue extends Serializable> extends
+    TypedPropertyDefinition<TPropertyValue> {
 
   private Class<TPropertyValue> instance;
 
@@ -100,7 +101,7 @@ public class GenericPropertyDefinition<TPropertyValue> extends
    * @throws InstantiationException
    */
   @Override
-  protected Object parse(String value) throws InstantiationException,
+  protected TPropertyValue parse(String value) throws InstantiationException,
       IllegalAccessException, ParseException {
 
     return EwsUtilities.parse(instance, value);
