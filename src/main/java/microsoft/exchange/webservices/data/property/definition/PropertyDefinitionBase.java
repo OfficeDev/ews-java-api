@@ -44,7 +44,7 @@ public abstract class PropertyDefinitionBase {
    * Initializes a new instance.
    */
   protected PropertyDefinitionBase() {
-
+    super();
   }
 
   /**

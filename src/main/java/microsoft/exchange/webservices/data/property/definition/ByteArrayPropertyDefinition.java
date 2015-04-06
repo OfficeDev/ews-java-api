@@ -32,7 +32,7 @@ import java.util.EnumSet;
 /**
  * Represents byte array property definition.
  */
-public final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
+public final class ByteArrayPropertyDefinition extends TypedPropertyDefinition<byte[]> {
 
   /**
    * Initializes a new instance.
@@ -54,9 +54,8 @@ public final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
    * @return value
    */
   @Override
-  protected Object parse(String value) {
+  protected byte[] parse(String value) {
     return Base64.decodeBase64(value);
-    // return null;
   }
 
   /**
@@ -66,8 +65,8 @@ public final class ByteArrayPropertyDefinition extends TypedPropertyDefinition {
    * @return value
    */
   @Override
-  protected String toString(Object value) {
-    return Base64.encodeBase64String((byte[]) value);
+  protected String toString(byte[] value) {
+    return Base64.encodeBase64String(value);
   }
 
   /**

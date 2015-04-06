@@ -99,7 +99,7 @@ public final class TaskDelegationStatePropertyDefinition extends
    * @return Typed value.
    */
   @Override
-  protected Object parse(String value) {
+  protected TaskDelegationState parse(String value) {
     switch (Status.valueOf(value)) {
       case NoMatch:
         return TaskDelegationState.NoDelegation;
@@ -126,17 +126,15 @@ public final class TaskDelegationStatePropertyDefinition extends
    * @return String representation of property value.
    */
   @Override
-  protected String toString(Object value) {
-    TaskDelegationState taskDelegationState = (TaskDelegationState) value;
-
-    if (taskDelegationState.equals(TaskDelegationState.NoDelegation)) {
+  protected String toString(TaskDelegationState value) {
+    if (value.equals(TaskDelegationState.NoDelegation)) {
       return NoMatch;
-    } else if (taskDelegationState.equals(TaskDelegationState.Unknown)) {
+    } else if (value.equals(TaskDelegationState.Unknown)) {
       return OwnNew;
-    } else if (taskDelegationState.equals(TaskDelegationState.Accepted)) {
+    } else if (value.equals(TaskDelegationState.Accepted)) {
       return Owned;
     }
-    if (taskDelegationState.equals(TaskDelegationState.Declined)) {
+    if (value.equals(TaskDelegationState.Declined)) {
       return Accepted;
     } else {
       EwsUtilities.EwsAssert(false,
