@@ -31,9 +31,7 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
+import java.security.GeneralSecurityException;
 
 /**
  * <p>
@@ -82,6 +80,9 @@ import java.security.NoSuchAlgorithmException;
 
 public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
 
+  /**
+   * Default hostname verifier.
+   */
   private static final HostnameVerifier DEFAULT_HOSTNAME_VERIFIER = new DefaultHostnameVerifier();
 
 
@@ -105,30 +106,57 @@ public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
   }
 
 
+  /**
+   * Create and configure SSL protocol socket factory using default hostname verifier.
+   * {@link EwsSSLProtocolSocketFactory#DEFAULT_HOSTNAME_VERIFIER}
+   *
+   * @param trustManager trust manager
+   * @return socket factory for SSL protocol
+   * @throws GeneralSecurityException
+   */
   public static EwsSSLProtocolSocketFactory build(TrustManager trustManager)
-    throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
+    throws GeneralSecurityException {
     return build(trustManager, DEFAULT_HOSTNAME_VERIFIER);
   }
 
+  /**
+   * Create and configure SSL protocol socket factory using trust manager and hostname verifier.
+   *
+   * @param trustManager trust manager
+   * @param hostnameVerifier hostname verifier
+   * @return socket factory for SSL protocol
+   * @throws GeneralSecurityException
+   */
   public static EwsSSLProtocolSocketFactory build(
     TrustManager trustManager, HostnameVerifier hostnameVerifier
-  ) throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
+  ) throws GeneralSecurityException {
     SSLContext sslContext = createSslContext(trustManager);
     return new EwsSSLProtocolSocketFactory(sslContext, hostnameVerifier);
   }
 
+  /**
+   * Create SSL context and initialize it using specific trust manager.
+   *
+   * @param trustManager trust manager
+   * @return initialized SSL context
+   * @throws GeneralSecurityException on security error
+   */
   public static SSLContext createSslContext(TrustManager trustManager)
-      throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+    throws GeneralSecurityException {
+    EwsX509TrustManager x509TrustManager = new EwsX509TrustManager(null, trustManager);
     SSLContext sslContext = SSLContexts.createDefault();
     sslContext.init(
-        null,
-        new TrustManager[] {new EwsX509TrustManager(null, trustManager)},
-        null
+      null,
+      new TrustManager[] { x509TrustManager },
+      null
     );
     return sslContext;
   }
 
 
+  /**
+   * @return SSL context
+   */
   public SSLContext getContext() {
     return sslcontext;
   }

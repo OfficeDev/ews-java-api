@@ -201,18 +201,23 @@ public abstract class ExchangeServiceBase implements Closeable {
       .build();
   }
 
+  /**
+   * Create registry with configured {@see ConnectionSocketFactory} instances.
+   * Override this method to change how to work with different schemas.
+   *
+   * @return registry object
+   */
   protected Registry<ConnectionSocketFactory> createConnectionSocketFactoryRegistry() {
-    final EwsSSLProtocolSocketFactory factory;
     try {
-      factory = EwsSSLProtocolSocketFactory.build(null);
+      return RegistryBuilder.<ConnectionSocketFactory>create()
+        .register(EWSConstants.HTTP_SCHEME, new PlainConnectionSocketFactory())
+        .register(EWSConstants.HTTPS_SCHEME, EwsSSLProtocolSocketFactory.build(null))
+        .build();
     } catch (GeneralSecurityException e) {
-      throw new RuntimeException("Could not initialize HttpClientConnectionManager", e);
+      throw new RuntimeException(
+        "Could not initialize ConnectionSocketFactory instances for HttpClientConnectionManager", e
+      );
     }
-
-    return RegistryBuilder.<ConnectionSocketFactory>create()
-      .register(EWSConstants.HTTP_SCHEME, new PlainConnectionSocketFactory())
-      .register(EWSConstants.HTTPS_SCHEME, factory)
-      .build();
   }
 
   /**
