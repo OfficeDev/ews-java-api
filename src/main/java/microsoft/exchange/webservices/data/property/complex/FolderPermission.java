@@ -37,6 +37,8 @@ import microsoft.exchange.webservices.data.enumeration.StandardUser;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,6 +51,7 @@ import java.util.Map.Entry;
  */
 public final class FolderPermission extends ComplexProperty implements IComplexPropertyChangedDelegate {
 
+  private static final Log LOG = LogFactory.getLog(FolderPermission.class);
 
   private static LazyMember<Map<FolderPermissionLevel, FolderPermission>>
       defaultPermissions =
@@ -255,7 +258,7 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
                 results.add(permission);
 
               } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
+                LOG.error(e);
               }
               return results;
             }

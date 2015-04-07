@@ -31,6 +31,8 @@ import microsoft.exchange.webservices.data.exception.FormatException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.interfaces.IFunction;
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -45,6 +47,8 @@ import java.util.UUID;
  * Represents an entry in the MapiTypeConverter map.
  */
 public class MapiTypeConverterMapEntry {
+
+  private static final Log LOG = LogFactory.getLog(MapiTypeConverterMapEntry.class);
 
   /**
    * Map CLR types used for MAPI property to matching default values.
@@ -66,7 +70,7 @@ public class MapiTypeConverterMapEntry {
           try {
             map.put(Date.class, formatter.parse("0001-01-01 12:00:00"));
           } catch (ParseException e) {
-            e.printStackTrace();
+            LOG.error(e);
           }
           map.put(UUID.class, UUID.fromString("00000000-0000-0000-0000-000000000000"));
           map.put(String.class, null);

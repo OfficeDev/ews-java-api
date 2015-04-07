@@ -38,6 +38,8 @@ import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDe
 import microsoft.exchange.webservices.data.property.definition.IndexedPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -50,10 +52,12 @@ import java.util.*;
 public abstract class ServiceObjectSchema implements
     Iterable<PropertyDefinition> {
 
+  private static final Log LOG = LogFactory.getLog(ServiceObjectSchema.class);
+
   /**
    * The lock object.
    */
-  private static Object lockObject = new Object();
+  private static final Object lockObject = new Object();
 
   /**
    * List of all schema types. If you add a new ServiceObject subclass that
@@ -176,11 +180,11 @@ public abstract class ServiceObjectSchema implements
             }
           }
         } catch (IllegalArgumentException e) {
-          e.printStackTrace();
+          LOG.error(e);
 
           // Skip the field
         } catch (IllegalAccessException e) {
-          e.printStackTrace();
+          LOG.error(e);
 
           // Skip the field
         }
@@ -212,11 +216,11 @@ public abstract class ServiceObjectSchema implements
                 .getName());
           }
         } catch (IllegalArgumentException e) {
-          e.printStackTrace();
+          LOG.error(e);
 
           // Skip the field
         } catch (IllegalAccessException e) {
-          e.printStackTrace();
+          LOG.error(e);
 
           // Skip the field
         }
@@ -261,11 +265,11 @@ public abstract class ServiceObjectSchema implements
                 propertyDefinition.setName(field.getName());
               }
             } catch (IllegalArgumentException e) {
-              e.printStackTrace();
+              LOG.error(e);
 
               // Skip the field
             } catch (IllegalAccessException e) {
-              e.printStackTrace();
+              LOG.error(e);
 
               // Skip the field
             }

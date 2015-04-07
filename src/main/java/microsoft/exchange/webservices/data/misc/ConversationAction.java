@@ -32,6 +32,8 @@ import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ArgumentException;
 import microsoft.exchange.webservices.data.property.complex.ConversationId;
 import microsoft.exchange.webservices.data.property.complex.StringList;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.util.Date;
 
@@ -43,6 +45,8 @@ import java.util.Date;
  * be taken on a conversation.
  */
 public class ConversationAction {
+
+  private static final Log LOG = LogFactory.getLog(ConversationAction.class);
 
   private ConversationActionType action;
   private ConversationId conversationId;
@@ -382,7 +386,7 @@ public class ConversationAction {
         }
       }
     } catch (Exception e) {
-      e.printStackTrace();
+      LOG.error(e);
     } finally {
       writer.writeEndElement();
     }

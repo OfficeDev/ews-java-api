@@ -24,6 +24,8 @@
 package microsoft.exchange.webservices.data.security;
 
 import microsoft.exchange.webservices.data.exception.NotSupportedException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.xml.sax.EntityResolver;
@@ -42,6 +44,8 @@ import java.io.*;
  * XmlDocument that does not allow DTD parsing.
  */
 public class SafeXmlDocument extends DocumentBuilder {
+
+  private static final Log LOG = LogFactory.getLog(SafeXmlDocument.class);
 
   /**
    * Initializes a new instance of the SafeXmlDocument class.
@@ -112,10 +116,10 @@ public class SafeXmlDocument extends DocumentBuilder {
         this.load((InputStream) reader);
       } catch (XMLStreamException e) {
         // TODO Auto-generated catch block
-        e.printStackTrace();
+        LOG.error(e);
       } catch (FileNotFoundException e) {
         // TODO Auto-generated catch block
-        e.printStackTrace();
+        LOG.error(e);
       }
     }
   }
@@ -136,7 +140,7 @@ public class SafeXmlDocument extends DocumentBuilder {
         this.load((InputStream) reader);
       } catch (XMLStreamException e) {
         // TODO Auto-generated catch block
-        e.printStackTrace();
+        LOG.error(e);
       }
     }
   }
@@ -167,7 +171,7 @@ public class SafeXmlDocument extends DocumentBuilder {
         this.load((InputStream) reader);
       } catch (XMLStreamException e) {
         // TODO Auto-generated catch block
-        e.printStackTrace();
+        LOG.error(e);
       }
     }
 

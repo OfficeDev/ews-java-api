@@ -23,13 +23,18 @@
 
 package microsoft.exchange.webservices.data.misc;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.util.concurrent.Future;
 
 public class AsyncCallbackImplementation extends AsyncCallback {
 
+  private static final Log LOG = LogFactory.getLog(AsyncCallbackImplementation.class);
+
   @Override
   public Object processMe(Future<?> task) {
-    System.out.println("In Async Callback" + task.isDone());
+    LOG.debug("In Async Callback" + task.isDone());
     return null;
   }
 

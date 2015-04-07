@@ -57,6 +57,8 @@ import microsoft.exchange.webservices.data.search.Grouping;
 import microsoft.exchange.webservices.data.search.ItemView;
 import microsoft.exchange.webservices.data.search.ViewBase;
 import microsoft.exchange.webservices.data.search.filter.SearchFilter;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -66,6 +68,8 @@ import java.util.EnumSet;
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Folder)
 public class Folder extends ServiceObject {
+
+  private static final Log LOG = LogFactory.getLog(Folder.class);
 
   /**
    * Initializes an unsaved local instance of <see cref="Folder"/>.
@@ -158,7 +162,7 @@ public class Folder extends ServiceObject {
         this.getPermissions().validate();
       }
     } catch (ServiceLocalException e) {
-      e.printStackTrace();
+      LOG.error(e);
     }
   }
 
@@ -238,7 +242,7 @@ public class Folder extends ServiceObject {
     try {
       this.throwIfThisIsNew();
     } catch (InvalidOperationException e) {
-      e.printStackTrace();
+      LOG.error(e);
     }
 
     this.getService().deleteFolder(this.getId(), deleteMode);
@@ -623,7 +627,7 @@ public class Folder extends ServiceObject {
       return getPropertyBag().getObjectFromPropertyDefinition(
           getIdPropertyDefinition());
     } catch (ServiceLocalException e) {
-      e.printStackTrace();
+      LOG.error(e);
       return null;
     }
   }
