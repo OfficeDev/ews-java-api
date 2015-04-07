@@ -201,7 +201,7 @@ import java.util.TimeZone;
 /**
  * Represents a binding to the Exchange Web Services.
  */
-public final class ExchangeService extends ExchangeServiceBase implements IAutodiscoverRedirectionUrl {
+public class ExchangeService extends ExchangeServiceBase implements IAutodiscoverRedirectionUrl {
 
   private static final Log LOG = LogFactory.getLog(ExchangeService.class);
 

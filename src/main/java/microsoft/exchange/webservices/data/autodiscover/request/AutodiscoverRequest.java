@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover.request;
 
+import microsoft.exchange.webservices.data.EWSConstants;
 import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverResponseException;
 import microsoft.exchange.webservices.data.exception.EWSHttpException;
@@ -342,9 +343,10 @@ public abstract class AutodiscoverRequest {
     if (!(location == null || location.isEmpty())) {
       try {
         URI redirectionUri = new URI(location);
-        if (redirectionUri.getScheme().toLowerCase().equals("http")
-            || redirectionUri.getScheme().toLowerCase().equals(
-            "https")) {
+        String scheme = redirectionUri.getScheme();
+
+        if (scheme.equalsIgnoreCase(EWSConstants.HTTP_SCHEME)
+            || scheme.equalsIgnoreCase(EWSConstants.HTTPS_SCHEME)) {
           AutodiscoverResponse response = this.createServiceResponse();
           response.setErrorCode(AutodiscoverErrorCode.RedirectUrl);
           response.setRedirectionUrl(redirectionUri);

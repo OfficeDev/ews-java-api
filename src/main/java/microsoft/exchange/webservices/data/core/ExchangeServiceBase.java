@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import microsoft.exchange.webservices.data.EWSConstants;
 import microsoft.exchange.webservices.data.core.request.HttpClientWebRequest;
 import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
 import microsoft.exchange.webservices.data.credential.ExchangeCredentials;
@@ -35,6 +36,7 @@ import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.interfaces.ICustomXmlSerialization;
 import microsoft.exchange.webservices.data.interfaces.ITraceListener;
 import microsoft.exchange.webservices.data.misc.EwsTraceListener;
+import org.apache.http.client.AuthenticationStrategy;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;
@@ -44,12 +46,12 @@ import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
+
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
@@ -57,9 +59,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
+import java.security.GeneralSecurityException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -191,26 +191,33 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   private void initializeHttpClient() {
-    EwsSSLProtocolSocketFactory factory;
-    try {
-      factory = EwsSSLProtocolSocketFactory.build(null);
-    } catch (NoSuchAlgorithmException e) {
-      throw new RuntimeException("Could not initialize HttpClientConnectionManager.", e);
-    } catch (KeyStoreException e) {
-      throw new RuntimeException("Could not initialize HttpClientConnectionManager.", e);
-    } catch (KeyManagementException e) {
-      throw new RuntimeException("Could not initialize HttpClientConnectionManager.", e);
-    }
-
-    Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
-        .register("http", new PlainConnectionSocketFactory())
-        .register("https", factory)
-        .build();
-
+    Registry<ConnectionSocketFactory> registry = createConnectionSocketFactoryRegistry();
     HttpClientConnectionManager httpConnectionManager = new BasicHttpClientConnectionManager(registry);
-    HttpClientBuilder httpClientBuilder = HttpClients.custom().setConnectionManager(httpConnectionManager)
-        .setTargetAuthenticationStrategy(new CookieProcessingTargetAuthenticationStrategy());
-    httpClient = httpClientBuilder.build();
+    AuthenticationStrategy authStrategy = new CookieProcessingTargetAuthenticationStrategy();
+
+    httpClient = HttpClients.custom()
+      .setConnectionManager(httpConnectionManager)
+      .setTargetAuthenticationStrategy(authStrategy)
+      .build();
+  }
+
+  /**
+   * Create registry with configured {@see ConnectionSocketFactory} instances.
+   * Override this method to change how to work with different schemas.
+   *
+   * @return registry object
+   */
+  protected Registry<ConnectionSocketFactory> createConnectionSocketFactoryRegistry() {
+    try {
+      return RegistryBuilder.<ConnectionSocketFactory>create()
+        .register(EWSConstants.HTTP_SCHEME, new PlainConnectionSocketFactory())
+        .register(EWSConstants.HTTPS_SCHEME, EwsSSLProtocolSocketFactory.build(null))
+        .build();
+    } catch (GeneralSecurityException e) {
+      throw new RuntimeException(
+        "Could not initialize ConnectionSocketFactory instances for HttpClientConnectionManager", e
+      );
+    }
   }
 
   /**
@@ -223,7 +230,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     httpContext.setCookieStore(cookieStore);
   }
 
-    @Override
+  @Override
   public void close() {
     try {
       httpClient.close();
@@ -268,8 +275,10 @@ public abstract class ExchangeServiceBase implements Closeable {
   protected HttpWebRequest prepareHttpWebRequestForUrl(URI url, boolean acceptGzipEncoding,
       boolean allowAutoRedirect) throws ServiceLocalException, URISyntaxException {
     // Verify that the protocol is something that we can handle
-    if (!url.getScheme().equalsIgnoreCase("HTTP") && !url.getScheme().equalsIgnoreCase("HTTPS")) {
-      String strErr = String.format("Protocol %s isn't supported for service request.", url.getScheme());
+    String scheme = url.getScheme();
+    if (!scheme.equalsIgnoreCase(EWSConstants.HTTP_SCHEME)
+      && !scheme.equalsIgnoreCase(EWSConstants.HTTPS_SCHEME)) {
+      String strErr = String.format("Protocol %s isn't supported for service request.", scheme);
       throw new ServiceLocalException(strErr);
     }
 
