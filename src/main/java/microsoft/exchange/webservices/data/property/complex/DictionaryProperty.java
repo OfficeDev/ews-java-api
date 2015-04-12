@@ -23,16 +23,16 @@
 
 package microsoft.exchange.webservices.data.property.complex;
 
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
-import microsoft.exchange.webservices.data.interfaces.ICustomXmlUpdateSerializer;
-import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
+import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
+import microsoft.exchange.webservices.data.interfaces.ICustomXmlUpdateSerializer;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 import java.util.ArrayList;

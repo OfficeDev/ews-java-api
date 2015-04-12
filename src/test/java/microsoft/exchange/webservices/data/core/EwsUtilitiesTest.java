@@ -23,7 +23,6 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.core.EwsUtilities;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

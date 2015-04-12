@@ -23,12 +23,11 @@
 
 package microsoft.exchange.webservices.data.search.filter;
 
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumeration.ComparisonMode;
 import microsoft.exchange.webservices.data.enumeration.ContainmentMode;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
@@ -39,12 +38,14 @@ import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationEx
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.interfaces.IComplexPropertyChangedDelegate;
 import microsoft.exchange.webservices.data.interfaces.ISearchStringProvider;
+import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 

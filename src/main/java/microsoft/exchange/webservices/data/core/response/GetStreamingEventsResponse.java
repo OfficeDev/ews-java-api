@@ -25,11 +25,11 @@ package microsoft.exchange.webservices.data.core.response;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.security.XmlNodeType;
-import microsoft.exchange.webservices.data.enumeration.HangingRequestDisconnectReason;
 import microsoft.exchange.webservices.data.core.request.HangingServiceRequestBase;
+import microsoft.exchange.webservices.data.enumeration.HangingRequestDisconnectReason;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.notification.GetStreamingEventsResults;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 
 import java.util.ArrayList;
 import java.util.List;

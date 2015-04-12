@@ -24,33 +24,38 @@
 package microsoft.exchange.webservices.data.autodiscover.request;
 
 import microsoft.exchange.webservices.data.EWSConstants;
+import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverResponseException;
-import microsoft.exchange.webservices.data.exception.EWSHttpException;
+import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeServerInfo;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
+import microsoft.exchange.webservices.data.core.response.ServiceResponse;
+import microsoft.exchange.webservices.data.enumeration.TraceFlags;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
+import microsoft.exchange.webservices.data.exception.EWSHttpException;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceRemoteException;
 import microsoft.exchange.webservices.data.exception.ServiceRequestException;
-import microsoft.exchange.webservices.data.core.response.ServiceResponse;
 import microsoft.exchange.webservices.data.exception.ServiceResponseException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.SoapFaultDetails;
-import microsoft.exchange.webservices.data.enumeration.TraceFlags;
-import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
-import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
-import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import javax.xml.stream.XMLStreamException;
-import java.io.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.ParseException;

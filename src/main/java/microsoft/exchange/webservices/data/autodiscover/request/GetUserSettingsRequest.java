@@ -23,22 +23,23 @@
 
 package microsoft.exchange.webservices.data.autodiscover.request;
 
+import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
+import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponseCollection;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeServiceBase;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.enumeration.UserSettingName;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.enumeration.UserSettingName;
-import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
-import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
-import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponseCollection;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.net.URI;
 import java.util.List;
 

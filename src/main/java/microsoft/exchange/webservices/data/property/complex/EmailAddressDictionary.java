@@ -23,10 +23,10 @@
 
 package microsoft.exchange.webservices.data.property.complex;
 
-import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.EmailAddressKey;
+import microsoft.exchange.webservices.data.misc.OutParam;
 
 /**
  * Represents a dictionary of e-mail addresses.

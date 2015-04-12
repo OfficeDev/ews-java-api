@@ -28,7 +28,6 @@ import static org.junit.Assert.assertNotNull;
 
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
-
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Before;
 import org.junit.Test;

@@ -39,7 +39,13 @@ import microsoft.exchange.webservices.data.property.definition.PropertyDefinitio
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import javax.xml.stream.XMLStreamException;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Represents a set of item or folder property. Property sets are used to

@@ -23,14 +23,14 @@
 
 package microsoft.exchange.webservices.data.autodiscover.response;
 
-import microsoft.exchange.webservices.data.enumeration.DomainSettingName;
+import microsoft.exchange.webservices.data.autodiscover.exception.error.DomainSettingError;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.enumeration.DomainSettingName;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
-import microsoft.exchange.webservices.data.autodiscover.exception.error.DomainSettingError;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

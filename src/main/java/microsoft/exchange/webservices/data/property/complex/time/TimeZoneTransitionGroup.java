@@ -23,16 +23,16 @@
 
 package microsoft.exchange.webservices.data.property.complex.time;
 
-import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.exception.InvalidOrUnsupportedTimeZoneDefinitionException;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.misc.TimeSpan;
+import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 
 import java.util.ArrayList;
 import java.util.List;
