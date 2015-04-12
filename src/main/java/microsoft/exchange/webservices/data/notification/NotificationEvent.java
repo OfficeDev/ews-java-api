@@ -30,6 +30,7 @@ import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationEx
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.util.Date;
 
 /**

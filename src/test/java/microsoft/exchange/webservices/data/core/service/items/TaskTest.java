@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data.core.service.items;
 
+import static org.junit.Assert.assertThat;
+
 import microsoft.exchange.webservices.base.BaseTest;
 import microsoft.exchange.webservices.data.core.service.item.Task;
 import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
@@ -34,8 +36,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import static org.junit.Assert.assertThat;
 
 /**
  * Testclass for methods of Task

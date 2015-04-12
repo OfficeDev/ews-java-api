@@ -23,25 +23,25 @@
 
 package microsoft.exchange.webservices.data.core.service;
 
-import microsoft.exchange.webservices.data.core.service.folder.ContactsFolder;
-import microsoft.exchange.webservices.data.core.service.folder.SearchFolder;
-import microsoft.exchange.webservices.data.core.service.item.MeetingRequest;
-import microsoft.exchange.webservices.data.core.service.item.PostItem;
-import microsoft.exchange.webservices.data.core.service.item.Appointment;
+import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.service.folder.CalendarFolder;
+import microsoft.exchange.webservices.data.core.service.folder.ContactsFolder;
+import microsoft.exchange.webservices.data.core.service.folder.Folder;
+import microsoft.exchange.webservices.data.core.service.folder.SearchFolder;
+import microsoft.exchange.webservices.data.core.service.folder.TasksFolder;
+import microsoft.exchange.webservices.data.core.service.item.Appointment;
 import microsoft.exchange.webservices.data.core.service.item.Contact;
 import microsoft.exchange.webservices.data.core.service.item.ContactGroup;
 import microsoft.exchange.webservices.data.core.service.item.Conversation;
 import microsoft.exchange.webservices.data.core.service.item.EmailMessage;
-import microsoft.exchange.webservices.data.core.service.folder.Folder;
 import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.service.item.MeetingCancellation;
 import microsoft.exchange.webservices.data.core.service.item.MeetingMessage;
-import microsoft.exchange.webservices.data.core.service.item.Task;
-import microsoft.exchange.webservices.data.core.service.folder.TasksFolder;
-import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.service.item.MeetingRequest;
 import microsoft.exchange.webservices.data.core.service.item.MeetingResponse;
+import microsoft.exchange.webservices.data.core.service.item.PostItem;
+import microsoft.exchange.webservices.data.core.service.item.Task;
 import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithAttachmentParam;
 import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithServiceParam;
 import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
