@@ -23,11 +23,12 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.misc.OutParam;
-import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.misc.OutParam;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -36,8 +37,19 @@ import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.*;
-import java.io.*;
+import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.Characters;
+import javax.xml.stream.events.EndElement;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Defines the EwsXmlReader class.
@@ -687,10 +699,10 @@ public class EwsXmlReader {
    */
   public boolean isStartElement(XmlNamespace xmlNamespace, String localName) {
     return this.isStartElement()
-        && EwsUtilities.stringEquals(this.getLocalName(), localName)
-        && (
-        EwsUtilities.stringEquals(this.getNamespacePrefix(), EwsUtilities.getNamespacePrefix(xmlNamespace)) ||
-            EwsUtilities.stringEquals(this.getNamespaceUri(), EwsUtilities.getNamespaceUri(xmlNamespace)));
+      && StringUtils.equals(getLocalName(), localName)
+      && (
+         StringUtils.equals(getNamespacePrefix(), EwsUtilities.getNamespacePrefix(xmlNamespace)) ||
+         StringUtils.equals(getNamespaceUri(), EwsUtilities.getNamespaceUri(xmlNamespace)));
   }
 
   /**

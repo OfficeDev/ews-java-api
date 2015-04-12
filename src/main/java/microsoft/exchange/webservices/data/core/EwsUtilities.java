@@ -23,13 +23,12 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.core.service.item.Item;
-import microsoft.exchange.webservices.data.core.service.ServiceObject;
-import microsoft.exchange.webservices.data.core.service.ServiceObjectInfo;
-import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.attribute.EwsEnum;
 import microsoft.exchange.webservices.data.attribute.RequiredServerVersion;
 import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
+import microsoft.exchange.webservices.data.core.service.ServiceObjectInfo;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.enumeration.EventType;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.FileAsMapping;
@@ -52,11 +51,15 @@ import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithSe
 import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 import microsoft.exchange.webservices.data.interfaces.IPredicate;
 import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
+import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.io.ByteArrayInputStream;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -74,14 +77,10 @@ import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
-
 /**
  * EWS utilities.
  */
-public class EwsUtilities {
+public final class EwsUtilities {
 
   private static final Log LOG = LogFactory.getLog(EwsUtilities.class);
 
@@ -219,59 +218,31 @@ public class EwsUtilities {
   /**
    * The service object info.
    */
-  private static LazyMember<ServiceObjectInfo> serviceObjectInfo =
-      new LazyMember<ServiceObjectInfo>(new
-                                            ILazyMember<ServiceObjectInfo>() {
-                                              public ServiceObjectInfo createInstance() {
-                                                return new ServiceObjectInfo();
-                                              }
-                                            });
+  private static final LazyMember<ServiceObjectInfo> SERVICE_OBJECT_INFO =
+      new LazyMember<ServiceObjectInfo>(
+        new ILazyMember<ServiceObjectInfo>() {
+          public ServiceObjectInfo createInstance() {
+            return new ServiceObjectInfo();
+          }
+        }
+      );
+
+  private static final String XML_SCHEMA_DATE_FORMAT = "yyyy-MM-dd'Z'";
+  private static final String XML_SCHEMA_DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+
+  private static final Pattern PATTERN_TIME_SPAN = Pattern.compile("-P");
+  private static final Pattern PATTERN_YEAR = Pattern.compile("(\\d+)Y");
+  private static final Pattern PATTERN_MONTH = Pattern.compile("(\\d+)M");
+  private static final Pattern PATTERN_DAY = Pattern.compile("(\\d+)D");
+  private static final Pattern PATTERN_HOUR = Pattern.compile("(\\d+)H");
+  private static final Pattern PATTERN_MINUTES = Pattern.compile("(\\d+)M");
+  private static final Pattern PATTERN_SECONDS = Pattern.compile("(\\d+).");
+  private static final Pattern PATTERN_MILLISECONDS = Pattern.compile("(\\d+)S");
 
 
-  /**
-   * Copies source stream to target.
-   *
-   * @param source The source stream.
-   * @param target The target stream.
-   */
-  public static void copyStream(ByteArrayOutputStream source, ByteArrayOutputStream target)
-      throws Exception {
-    // See if this is a MemoryStream -- we can use WriteTo.
-
-    	
-   /* 	InputStream inputStream = new FileInputStream ("D:\\EWS ManagedAPI sp2\\Rp\\xml\\useravailrequest.xml");
-
-    	 byte buf[]=new byte[1024];
-    	 int len;
-    	 while((len=inputStream.read(buf))>0)
-    	 {
-    	  target.write(buf,0, len);
-    	 }
-    	*/
-
-    	/*PrintWriter pw = new PrintWriter(source,true);
-    	PrintWriter pw1 = new PrintWriter(target,true);
-    	pw1.println(pw.toString());*/
-
-
-
-    ByteArrayOutputStream memContentStream = source;
-    if (memContentStream != null) {
-      memContentStream.writeTo(target);
-      memContentStream.flush();
-    } else {
-      // Otherwise, copy data through a buffer
-
-      int c;
-      ByteArrayInputStream inStream = new ByteArrayInputStream(source.toByteArray());
-
-      while ((c = inStream.read()) != -1) {
-        target.write((char) c);
-
-      }
-    }
+  private EwsUtilities() {
+    throw new UnsupportedOperationException();
   }
-
 
 
   /**
@@ -284,21 +255,10 @@ public class EwsUtilities {
   }
 
   /**
-   * A null-safe case sensitive comparison of two specified strings.
-   *
-   * @param first  The first string, can be null.
-   * @param second The second string, can be null.
-   * @return true: equals, false: otherwise.
-   */
-  public static boolean stringEquals(String first, String second) {
-    return (first == null && second == null) || (first != null && first.equals(second));
-  }
-
-  /**
    * The enum version dictionaries.
    */
-  private static LazyMember<Map<Class<?>, Map<String, ExchangeVersion>>>
-      enumVersionDictionaries =
+  private static final LazyMember<Map<Class<?>, Map<String, ExchangeVersion>>>
+      ENUM_VERSION_DICTIONARIES =
       new LazyMember<Map<Class<?>, Map<String, ExchangeVersion>>>(
           new ILazyMember<Map<Class<?>, Map<String, ExchangeVersion>>>() {
             @Override
@@ -324,8 +284,8 @@ public class EwsUtilities {
   /**
    * Dictionary of enum type to schema-name-to-enum-value maps.
    */
-  private static LazyMember<Map<Class<?>, Map<String, String>>>
-      schemaToEnumDictionaries =
+  private static final LazyMember<Map<Class<?>, Map<String, String>>>
+      SCHEMA_TO_ENUM_DICTIONARIES =
       new LazyMember<Map<Class<?>, Map<String, String>>>(
           new ILazyMember<Map<Class<?>, Map<String, String>>>() {
             @Override
@@ -348,8 +308,8 @@ public class EwsUtilities {
   /**
    * Dictionary of enum type to enum-value-to-schema-name maps.
    */
-  public static LazyMember<Map<Class<?>, Map<String, String>>>
-      enumToSchemaDictionaries =
+  public static final LazyMember<Map<Class<?>, Map<String, String>>>
+      ENUM_TO_SCHEMA_DICTIONARIES =
       new LazyMember<Map<Class<?>, Map<String, String>>>(
           new ILazyMember<Map<Class<?>, Map<String, String>>>() {
             @Override
@@ -381,8 +341,9 @@ public class EwsUtilities {
    * @param message   The message to use if assertion fails.
    */
   public static void EwsAssert(boolean condition, String caller, String message) {
-    assert condition : String.format("[%s] %s",
-        caller, message);
+    if (!condition) {
+      throw new RuntimeException(String.format("[%s] %s", caller, message));
+    }
   }
 
   /**
@@ -412,31 +373,23 @@ public class EwsUtilities {
    * @return the namespace from uri
    */
   public static XmlNamespace getNamespaceFromUri(String namespaceUri) {
-    if (namespaceUri.equals(EwsErrorsNamespace)) {
+    if (EwsErrorsNamespace.equals(namespaceUri)) {
       return XmlNamespace.Errors;
-    }
-    if (namespaceUri.equals(EwsTypesNamespace)) {
+    } else if (EwsTypesNamespace.equals(namespaceUri)) {
       return XmlNamespace.Types;
-    }
-    if (namespaceUri.equals(EwsMessagesNamespace)) {
+    } else if (EwsMessagesNamespace.equals(namespaceUri)) {
       return XmlNamespace.Messages;
-    }
-    if (namespaceUri.equals(EwsSoapNamespace)) {
+    } else if (EwsSoapNamespace.equals(namespaceUri)) {
       return XmlNamespace.Soap;
-    }
-    if (namespaceUri.equals(EwsSoap12Namespace)) {
+    } else if (EwsSoap12Namespace.equals(namespaceUri)) {
       return XmlNamespace.Soap12;
-    }
-    if (namespaceUri.equals(EwsXmlSchemaInstanceNamespace)) {
+    } else if (EwsXmlSchemaInstanceNamespace.equals(namespaceUri)) {
       return XmlNamespace.XmlSchemaInstance;
-    }
-    if (namespaceUri.equals(PassportSoapFaultNamespace)) {
+    } else if (PassportSoapFaultNamespace.equals(namespaceUri)) {
       return XmlNamespace.PassportSoapFault;
-    }
-    if (namespaceUri.equals(WSTrustFebruary2005Namespace)) {
+    } else if (WSTrustFebruary2005Namespace.equals(namespaceUri)) {
       return XmlNamespace.WSTrustFebruary2005;
-    }
-    if (namespaceUri.equals(WSAddressingNamespace)) {
+    } else if (WSAddressingNamespace.equals(namespaceUri)) {
       return XmlNamespace.WSAddressing;
     } else {
       return XmlNamespace.NotSpecified;
@@ -453,31 +406,30 @@ public class EwsUtilities {
    * @return the t service object
    * @throws Exception the exception
    */
+  @SuppressWarnings("unchecked")
   public static <TServiceObject extends ServiceObject>
   TServiceObject createEwsObjectFromXmlElementName(
       Class<?> itemClass, ExchangeService service, String xmlElementName)
       throws Exception {
-    ICreateServiceObjectWithServiceParam creationDelegate;
-    if (EwsUtilities.serviceObjectInfo.getMember()
-        .getXmlElementNameToServiceObjectClassMap().containsKey(
-            xmlElementName)) {
-      itemClass = EwsUtilities.serviceObjectInfo.getMember()
-          .getXmlElementNameToServiceObjectClassMap().get(
-              xmlElementName);
-      if (EwsUtilities.serviceObjectInfo.getMember()
-          .getServiceObjectConstructorsWithServiceParam()
-          .containsKey(itemClass)) {
-        creationDelegate = EwsUtilities.serviceObjectInfo.getMember()
-            .getServiceObjectConstructorsWithServiceParam().get(
-                itemClass);
+    final ServiceObjectInfo member = EwsUtilities.SERVICE_OBJECT_INFO.getMember();
+    final Map<String, Class<?>> map = member.getXmlElementNameToServiceObjectClassMap();
+
+    final Class<?> ic = map.get(xmlElementName);
+    if (ic != null) {
+      final Map<Class<?>, ICreateServiceObjectWithServiceParam>
+          serviceParam = member.getServiceObjectConstructorsWithServiceParam();
+      final ICreateServiceObjectWithServiceParam creationDelegate =
+          serviceParam.get(ic);
+
+      if (creationDelegate != null) {
         return (TServiceObject) creationDelegate
             .createServiceObjectWithServiceParam(service);
       } else {
         throw new IllegalArgumentException("No appropriate constructor could be found for this item class.");
       }
-    } else {
-      return (TServiceObject) itemClass.newInstance();
     }
+
+    return (TServiceObject) itemClass.newInstance();
   }
 
   /**
@@ -492,20 +444,17 @@ public class EwsUtilities {
   public static Item createItemFromItemClass(
       ItemAttachment itemAttachment, Class<?> itemClass, boolean isNew)
       throws Exception {
-    ICreateServiceObjectWithAttachmentParam creationDelegate;
-    if (EwsUtilities.serviceObjectInfo.getMember()
-        .getServiceObjectConstructorsWithAttachmentParam().containsKey(
-            itemClass)) {
+    final ServiceObjectInfo member = EwsUtilities.SERVICE_OBJECT_INFO.getMember();
+    final Map<Class<?>, ICreateServiceObjectWithAttachmentParam>
+      dataMap = member.getServiceObjectConstructorsWithAttachmentParam();
+    final ICreateServiceObjectWithAttachmentParam creationDelegate =
+      dataMap.get(itemClass);
 
-      creationDelegate = EwsUtilities.serviceObjectInfo.getMember()
-          .getServiceObjectConstructorsWithAttachmentParam().get(
-              itemClass);
+    if (creationDelegate != null) {
       return (Item) creationDelegate
-          .createServiceObjectWithAttachmentParam(itemAttachment,
-              isNew);
-    } else {
-      throw new IllegalArgumentException("No appropriate constructor could be found for this item class.");
+          .createServiceObjectWithAttachmentParam(itemAttachment, isNew);
     }
+    throw new IllegalArgumentException("No appropriate constructor could be found for this item class.");
   }
 
   /**
@@ -519,25 +468,21 @@ public class EwsUtilities {
   public static Item createItemFromXmlElementName(
       ItemAttachment itemAttachment, String xmlElementName)
       throws Exception {
-    Class<?> itemClass;
-    if (EwsUtilities.serviceObjectInfo.getMember()
-        .getXmlElementNameToServiceObjectClassMap().containsKey(
-            xmlElementName)) {
-      itemClass = EwsUtilities.serviceObjectInfo.getMember()
-          .getXmlElementNameToServiceObjectClassMap().get(
-              xmlElementName);
+    final ServiceObjectInfo member = EwsUtilities.SERVICE_OBJECT_INFO.getMember();
+    final Map<String, Class<?>> map =
+      member.getXmlElementNameToServiceObjectClassMap();
+
+    final Class<?> itemClass = map.get(xmlElementName);
+    if (itemClass != null) {
       return createItemFromItemClass(itemAttachment, itemClass, false);
-    } else {
-      return null;
     }
+    return null;
   }
 
-  /**
-   *
-   */
   public static Class<?> getItemTypeFromXmlElementName(String xmlElementName) {
-    return EwsUtilities.serviceObjectInfo.getMember().getXmlElementNameToServiceObjectClassMap()
-        .get(xmlElementName).getClass();
+    final ServiceObjectInfo member = EwsUtilities.SERVICE_OBJECT_INFO.getMember();
+    final Map<String, Class<?>> map = member.getXmlElementNameToServiceObjectClassMap();
+    return map.get(xmlElementName);
   }
 
   /**
@@ -549,10 +494,14 @@ public class EwsUtilities {
    * @param items   the item
    * @return A TItem instance or null if no instance of TItem could be found.
    */
-  public static <TItem extends Item> TItem findFirstItemOfType(Class<TItem> cls, Iterable<Item> items) {
+  @SuppressWarnings("unchecked")
+  public static <TItem extends Item> TItem findFirstItemOfType(
+    Class<TItem> cls, Iterable<Item> items
+  ) {
     for (Item item : items) {
       // We're looking for an exact class match here.
-      if (item.getClass().equals(cls)) {
+      final Class<? extends Item> itemClass = item.getClass();
+      if (itemClass.equals(cls)) {
         return (TItem) item;
       }
     }
@@ -596,15 +545,16 @@ public class EwsUtilities {
    */
   public static String formatLogMessage(String entryKind, String logEntry)
       throws XMLStreamException, IOException {
+    String lineSeparator = System.getProperty("line.separator");
     ByteArrayOutputStream outStream = new ByteArrayOutputStream();
     XMLOutputFactory factory = XMLOutputFactory.newInstance();
     XMLStreamWriter writer = factory.createXMLStreamWriter(outStream);
     EwsUtilities.writeTraceStartElement(writer, entryKind, false);
-    writer.writeCharacters(System.getProperty("line.separator"));
+    writer.writeCharacters(lineSeparator);
     writer.writeCharacters(logEntry);
-    writer.writeCharacters(System.getProperty("line.separator"));
+    writer.writeCharacters(lineSeparator);
     writer.writeEndElement();
-    writer.writeCharacters(System.getProperty("line.separator"));
+    writer.writeCharacters(lineSeparator);
     writer.flush();
     writer.close();
     outStream.flush();
@@ -627,14 +577,12 @@ public class EwsUtilities {
    */
   public static String formatHttpResponseHeaders(HttpWebRequest response)
       throws EWSHttpException {
-    StringBuilder sb = new StringBuilder();
-    sb.append(String.format("%d %s\n", response.getResponseCode(), response
-        .getResponseContentType()));
+    final int code = response.getResponseCode();
+    final String contentType = response.getResponseContentType();
+    final Map<String, String> headers = response.getResponseHeaders();
 
-    sb.append(EwsUtilities.formatHttpHeaders(response.
-        getResponseHeaders()));
-    sb.append("\n");
-    return sb.toString();
+    return code + " " + contentType + "\n"
+       + EwsUtilities.formatHttpHeaders(headers) + "\n";
   }
 
   /**
@@ -644,17 +592,12 @@ public class EwsUtilities {
    */
   public static String formatHttpRequestHeaders(HttpWebRequest request)
       throws URISyntaxException, EWSHttpException {
-    StringBuilder sb = new StringBuilder();
-    sb.append(
-        String.format(
-            "%s %s HTTP/%s\n",
-            request.getRequestMethod().toUpperCase(),
-            request.getUrl().toURI().getPath(),
-            "1.1"));
+    final String method = request.getRequestMethod().toUpperCase();
+    final String path = request.getUrl().toURI().getPath();
+    final Map<String, String> property = request.getRequestProperty();
+    final String headers = EwsUtilities.formatHttpHeaders(property);
 
-    sb.append(EwsUtilities.formatHttpHeaders(request.getRequestProperty()));
-    sb.append("\n");
-    return sb.toString();
+    return String.format("%s %s HTTP/%s\n", method, path, "1.1") + headers + "\n";
   }
 
   /**
@@ -683,7 +626,6 @@ public class EwsUtilities {
     try {
       return formatLogMessage(traceTypeStr, stream.toString());
     } catch (Exception e) {
-
       return stream.toString();
     }
   }
@@ -709,10 +651,9 @@ public class EwsUtilities {
    */
   public static <T extends Enum<?>> void parseEnumValueList(Class<T> c,
       List<T> list, String value, char... separators) {
-    EwsUtilities.EwsAssert(c.isEnum(), "EwsUtilities.ParseEnumValueList",
-        "T is not an enum type.");
+    EwsUtilities.EwsAssert(c.isEnum(), "EwsUtilities.ParseEnumValueList", "T is not an enum type.");
 
-    StringBuffer regexp = new StringBuffer("");
+    StringBuilder regexp = new StringBuilder();
     regexp.append("[");
     for (char s : separators) {
       regexp.append("[");
@@ -724,10 +665,9 @@ public class EwsUtilities {
     String[] enumValues = value.split(regexp.toString());
 
     for (String enumValue : enumValues) {
-      // list.add((T)Enum.parse(c, enumValue, false));
-      for (Object o : c.getEnumConstants()) {
+      for (T o : c.getEnumConstants()) {
         if (o.toString().equals(enumValue)) {
-          list.add((T) o);
+          list.add(o);
         }
       }
     }
@@ -741,18 +681,18 @@ public class EwsUtilities {
    * @return String representation of enum to be used in the protocol
    */
   public static String serializeEnum(Object value) {
-    Map<String, String> enumToStringDict;
     String strValue = value.toString();
-    if (enumToSchemaDictionaries.getMember().
-        containsKey(value.getClass())) {
-      enumToStringDict = enumToSchemaDictionaries.getMember().get(
-          value.getClass());
-      Enum<?> e = (Enum<?>) value;
-      if (enumToStringDict.containsKey(e.name())) {
-        strValue = enumToStringDict.get(e.name());
+    final Map<Class<?>, Map<String, String>> member =
+      ENUM_TO_SCHEMA_DICTIONARIES.getMember();
+
+    final Map<String, String> enumToStringDict = member.get(value.getClass());
+    if (enumToStringDict != null) {
+      final Enum<?> e = (Enum<?>) value;
+      final String enumStr = enumToStringDict.get(e.name());
+      if (enumStr != null) {
+        strValue = enumStr;
       }
     }
-
     return strValue;
   }
 
@@ -767,61 +707,39 @@ public class EwsUtilities {
    * @throws IllegalAccessException   the illegal access exception
    * @throws java.text.ParseException the parse exception
    */
+  @SuppressWarnings("unchecked")
   public static <T> T parse(Class<T> cls, String value)
       throws InstantiationException, IllegalAccessException,
       ParseException {
-
     if (cls.isEnum()) {
-      Map<String, String> stringToEnumDict;
-      if (schemaToEnumDictionaries.getMember().containsKey(cls)) {
-        stringToEnumDict = schemaToEnumDictionaries.getMember()
-            .get(cls);
-        if (stringToEnumDict.containsKey(value)) {
-          String strEnumName = stringToEnumDict.get(value);
-          for (Object o : cls.getEnumConstants()) {
-            if (o.toString().equals(strEnumName)) {
-              return (T) o;
-            }
-          }
-          return null;
-        } else {
-          for (Object o : cls.getEnumConstants()) {
-            if (o.toString().equals(value)) {
-              return (T) o;
-            }
-          }
-          return null;
+      final Map<Class<?>, Map<String, String>> member =
+        SCHEMA_TO_ENUM_DICTIONARIES.getMember();
+
+      String val = value;
+      final Map<String, String> stringToEnumDict = member.get(cls);
+      if (stringToEnumDict != null) {
+        final String strEnumName = stringToEnumDict.get(value);
+        if (strEnumName != null) {
+          val = strEnumName;
         }
-      } else {
-        for (Object o : cls.getEnumConstants()) {
-          if (o.toString().equals(value)) {
-            return (T) o;
-          }
-        }
-        return null;
       }
-    } else if (cls.isInstance(Integer.valueOf(0)))
-    // else if( cls.isInstance(new Integer(0)))
-    {
-      Object o = null;
-      o = Integer.parseInt(value);
-      return (T) o;
-    } else if (cls.isInstance(new Date())) {
-      DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-      df.setTimeZone(TimeZone.getTimeZone("UTC"));
+      for (T o : cls.getEnumConstants()) {
+        if (o.toString().equals(val)) {
+          return o;
+        }
+      }
+      return null;
+    } else if (cls.isAssignableFrom(Double.class)) {
+      return (T) ((Double) Double.parseDouble(value));
+    } else if (cls.isAssignableFrom(Number.class))  {
+      return (T) ((Integer) Integer.parseInt(value));
+    } else if (cls.isAssignableFrom(Date.class)) {
+      DateFormat df = createDateFormat(XML_SCHEMA_DATE_TIME_FORMAT);
       return (T) df.parse(value);
-    } else if (cls.isInstance(Boolean.valueOf(false)))
-    // else if( cls.isInstance(new Boolean(false)))
-    {
-      Object o = null;
-      o = Boolean.parseBoolean(value);
-      return (T) o;
-    } else if (cls.isInstance(new String())) {
+    } else if (cls.isAssignableFrom(Boolean.class)) {
+      return (T) ((Boolean) Boolean.parseBoolean(value));
+    } else if (cls.isAssignableFrom(String.class)) {
       return (T) value;
-    } else if (cls.isInstance(Double.valueOf(0.0))) {
-      Object o = null;
-      o = Double.parseDouble(value);
-      return (T) o;
     }
     return null;
   }
@@ -862,29 +780,25 @@ public class EwsUtilities {
    */
   public static void validateParamCollection(EventType[] eventTypes,
       String paramName) throws Exception {
-
     validateParam(eventTypes, paramName);
-
     int count = 0;
 
-    for (Object event : eventTypes) {
-
+    for (EventType event : eventTypes) {
       try {
         validateParam(event, String.format("collection[%d] , ", count));
       } catch (Exception e) {
         throw new IllegalArgumentException(String.format(
             "The element at position %d is invalid", count), e);
       }
-
       count++;
     }
 
     if (count == 0) {
-      throw new IllegalArgumentException(String.format("The collection is empty.", paramName));
+      throw new IllegalArgumentException(
+        String.format("The collection \"%s\" is empty.", paramName)
+      );
     }
   }
-
-
 
   /**
    * Convert DateTime to XML Schema date.
@@ -893,10 +807,7 @@ public class EwsUtilities {
    * @return String representation of DateTime.
    */
   public static String dateTimeToXSDate(Date date) {
-    String format = "yyyy-MM-dd'Z'";
-    DateFormat utcFormatter = new SimpleDateFormat(format);
-    utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-    return utcFormatter.format(date);
+    return formatDate(date, XML_SCHEMA_DATE_FORMAT);
   }
 
   /**
@@ -906,10 +817,7 @@ public class EwsUtilities {
    * @return String representation of DateTime.
    */
   public static String dateTimeToXSDateTime(Date date) {
-    String format = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-    DateFormat utcFormatter = new SimpleDateFormat(format);
-    utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-    return utcFormatter.format(date);
+    return formatDate(date, XML_SCHEMA_DATE_TIME_FORMAT);
   }
 
   /**
@@ -922,23 +830,19 @@ public class EwsUtilities {
    * @return xs:duration formatted string
    */
   public static String getTimeSpanToXSDuration(TimeSpan timeOffset) {
-
-		/*
-		 * SimpleDateFormat dateformatter = new SimpleDateFormat("dd:HH:mm:ss");
-		 * return dateformatter.format(timeOffset.toString());
-		 */
     // Optional '-' offset
     String offsetStr = (timeOffset.getTotalSeconds() < 0) ? "-" : "";
+    long days = Math.abs(timeOffset.getDays());
+    long hours = Math.abs(timeOffset.getHours());
+    long minutes = Math.abs(timeOffset.getMinutes());
+    long seconds = Math.abs(timeOffset.getSeconds());
+    long milliseconds = Math.abs(timeOffset.getMilliseconds());
 
     // The TimeSpan structure does not have a Year or Month
     // property, therefore we wouldn't be able to return an xs:duration
     // string from a TimeSpan that included the nY or nM components.
-
-    return String.format("%sP%sDT%sH%sM%sS", offsetStr, Math.abs(timeOffset
-        .getDays()), Math.abs(timeOffset.getHours()), Math
-        .abs(timeOffset.getMinutes()), Math
-        .abs(timeOffset.getSeconds())
-        + "." + Math.abs(timeOffset.getMilliseconds()));
+    return offsetStr + "P" + days + "DT" + hours + "H" + minutes + "M"
+       + seconds + "." + milliseconds + "S";
   }
 
   /**
@@ -954,8 +858,7 @@ public class EwsUtilities {
    */
   public static TimeSpan getXSDurationToTimeSpan(String xsDuration) {
     // TODO: Need to check whether this should be the equivalent or not
-    Pattern timeSpanParser = Pattern.compile("-P");
-    Matcher m = timeSpanParser.matcher(xsDuration);
+    Matcher m = PATTERN_TIME_SPAN.matcher(xsDuration);
     boolean negative = false;
     LOG.debug(m.find());
     if (m.find()) {
@@ -964,7 +867,7 @@ public class EwsUtilities {
     LOG.debug(m.group());
 
     // Year
-    m = Pattern.compile("(\\d+)Y").matcher(xsDuration);
+    m = PATTERN_YEAR.matcher(xsDuration);
     LOG.debug(m.find());
     int year = 0;
     if (m.find()) {
@@ -973,7 +876,7 @@ public class EwsUtilities {
     }
 
     // Month
-    m = Pattern.compile("(\\d+)M").matcher(xsDuration);
+    m = PATTERN_MONTH.matcher(xsDuration);
     LOG.debug(m.find());
     int month = 0;
     if (m.find()) {
@@ -982,7 +885,7 @@ public class EwsUtilities {
     }
 
     // Day
-    m = Pattern.compile("(\\d+)D").matcher(xsDuration);
+    m = PATTERN_DAY.matcher(xsDuration);
     LOG.debug(m.find());
     int day = 0;
     if (m.find()) {
@@ -991,7 +894,7 @@ public class EwsUtilities {
     }
 
     // Hour
-    m = Pattern.compile("(\\d+)H").matcher(xsDuration);
+    m = PATTERN_HOUR.matcher(xsDuration);
     LOG.debug(m.find());
     int hour = 0;
     if (m.find()) {
@@ -1000,7 +903,7 @@ public class EwsUtilities {
     }
 
     // Minute
-    m = Pattern.compile("(\\d+)M").matcher(xsDuration);
+    m = PATTERN_MINUTES.matcher(xsDuration);
     LOG.debug(m.find());
     int minute = 0;
     if (m.find()) {
@@ -1009,7 +912,7 @@ public class EwsUtilities {
     }
 
     // Seconds
-    m = Pattern.compile("(\\d+).").matcher(xsDuration);
+    m = PATTERN_SECONDS.matcher(xsDuration);
     LOG.debug(m.find());
     int seconds = 0;
     if (m.find()) {
@@ -1018,7 +921,7 @@ public class EwsUtilities {
     }
 
     int milliseconds = 0;
-    m = Pattern.compile("(\\d+)S").matcher(xsDuration);
+    m = PATTERN_MILLISECONDS.matcher(xsDuration);
     LOG.debug(m.find());
     if (m.find()) {
       // Only allowed 4 digits of precision
@@ -1058,8 +961,7 @@ public class EwsUtilities {
    */
   public static TimeSpan getXSDurationToTimeSpanValue(String xsDuration) {
     // TODO: Need to check whether this should be the equivalent or not
-    Pattern timeSpanParser = Pattern.compile("-P");
-    Matcher m = timeSpanParser.matcher(xsDuration);
+    Matcher m = PATTERN_TIME_SPAN.matcher(xsDuration);
     boolean negative = false;
     if (m.find()) {
       negative = true;
@@ -1082,7 +984,7 @@ public class EwsUtilities {
     //    }
 
     // Day
-    m = Pattern.compile("(\\d+)D").matcher(xsDuration);
+    m = PATTERN_DAY.matcher(xsDuration);
     long day = 0;
     if (m.find()) {
       day = Integer.parseInt(m.group().substring(0,
@@ -1090,7 +992,7 @@ public class EwsUtilities {
     }
 
     // Hour
-    m = Pattern.compile("(\\d+)H").matcher(xsDuration);
+    m = PATTERN_HOUR.matcher(xsDuration);
     int hour = 0;
     if (m.find()) {
       hour = Integer.parseInt(m.group().substring(0,
@@ -1098,7 +1000,7 @@ public class EwsUtilities {
     }
 
     // Minute
-    m = Pattern.compile("(\\d+)M").matcher(xsDuration);
+    m = PATTERN_MINUTES.matcher(xsDuration);
     int minute = 0;
     if (m.find()) {
       minute = Integer.parseInt(m.group().substring(0,
@@ -1106,10 +1008,10 @@ public class EwsUtilities {
     }
 
     // Seconds
-    m = Pattern.compile("(\\d+).").matcher(xsDuration);
+    m = PATTERN_SECONDS.matcher(xsDuration);
     int seconds = 0;
     int milliseconds = 0;
-    m = Pattern.compile("(\\d+)S").matcher(xsDuration);
+    m = PATTERN_MILLISECONDS.matcher(xsDuration);
     if (m.find()) {
       // Only allowed 4 digits of precision
       if (m.group().length() > 5) {
@@ -1133,7 +1035,6 @@ public class EwsUtilities {
       retval = -retval;
     }
     return new TimeSpan(retval);
-
   }
 
 
@@ -1212,11 +1113,10 @@ public class EwsUtilities {
    * @param paramName Name of the param.
    * @throws Exception the exception
    */
-  public static void validateParam(Object param, String paramName)
-      throws Exception {
-    boolean isValid = false;
+  public static void validateParam(Object param, String paramName) throws Exception {
+    boolean isValid;
 
-    if (param != null && param instanceof String) {
+    if (param instanceof String) {
       String strParam = (String) param;
       isValid = !strParam.isEmpty();
     } else {
@@ -1239,9 +1139,7 @@ public class EwsUtilities {
    * @throws Exception the exception
    */
   public static <T> void validateParamCollection(Iterator<T> collection, String paramName) throws Exception {
-
     validateParam(collection, paramName);
-
     int count = 0;
 
     while (collection.hasNext()) {
@@ -1252,12 +1150,13 @@ public class EwsUtilities {
         throw new IllegalArgumentException(String.format(
             "The element at position %d is invalid", count), e);
       }
-
       count++;
     }
 
     if (count == 0) {
-      throw new IllegalArgumentException(String.format("The collection is empty.", paramName));
+      throw new IllegalArgumentException(
+        String.format("The collection \"%s\" is empty.", paramName)
+      );
     }
   }
 
@@ -1315,20 +1214,23 @@ public class EwsUtilities {
    */
   public static void validateEnumVersionValue(Enum<?> enumValue,
       ExchangeVersion requestVersion) throws ServiceVersionException {
-    Map<String, ExchangeVersion> enumVersionDict = enumVersionDictionaries
-        .getMember().get(enumValue.getClass());
-    // String strValue = enumValue.toString();
-    if (enumVersionDict.containsKey(enumValue.toString())) {
-      ExchangeVersion enumVersion = enumVersionDict.get(enumValue
-          .toString());
-      int i = requestVersion.compareTo(enumVersion);
+    final Map<Class<?>, Map<String, ExchangeVersion>> member =
+      ENUM_VERSION_DICTIONARIES.getMember();
+    final Map<String, ExchangeVersion> enumVersionDict =
+      member.get(enumValue.getClass());
+
+    final ExchangeVersion enumVersion = enumVersionDict.get(enumValue.toString());
+    if (enumVersion != null) {
+      final int i = requestVersion.compareTo(enumVersion);
       if (i < 0) {
         throw new ServiceVersionException(
-            String.format("Enumeration value %s in enumeration type %s is only valid for Exchange version %s "
-                          + "or later.",
-                          enumValue.toString(),
-                          enumValue.getClass().getName(),
-                          enumVersion));
+          String.format(
+            "Enumeration value %s in enumeration type %s is only valid for Exchange version %s or later.",
+            enumValue.toString(),
+            enumValue.getClass().getName(),
+            enumVersion
+          )
+        );
       }
     }
   }
@@ -1350,8 +1252,7 @@ public class EwsUtilities {
     if (requestVersion.ordinal() < minimumRequiredServerVersion.ordinal()) {
       String msg = String.format(
           "The object type %s is only valid for Exchange Server version %s or later versions.",
-          serviceObject.getClass().getName(),
-          minimumRequiredServerVersion.toString());
+          serviceObject.getClass().getName(), minimumRequiredServerVersion.toString());
       throw new ServiceVersionException(msg);
     }
   }
@@ -1494,7 +1395,7 @@ public class EwsUtilities {
   public static <T> int getEnumeratedObjectCount(Iterator<T> objects) {
     int count = 0;
     while (objects != null && objects.hasNext()) {
-      Object obj = objects.next();
+      objects.next();
       count++;
     }
     return count;
@@ -1508,8 +1409,7 @@ public class EwsUtilities {
    * @param index   the index
    * @return the enumerated object at
    */
-  public static <T> Object getEnumeratedObjectAt(Iterable<T> objects,
-      int index) {
+  public static <T> Object getEnumeratedObjectAt(Iterable<T> objects, int index) {
     int count = 0;
     for (Object obj : objects) {
       if (count == index) {
@@ -1529,15 +1429,15 @@ public class EwsUtilities {
    * @return Count of characters that match condition expressed by predicate.
    * @throws ServiceLocalException
    */
-  public static int countMatchingChars(String str,
-      IPredicate<Character> charPredicate) throws ServiceLocalException {
+  public static int countMatchingChars(
+    String str, IPredicate<Character> charPredicate
+  ) throws ServiceLocalException {
     int count = 0;
     for (int i = 0; i < str.length(); i++) {
-      if (charPredicate.predicate(Character.valueOf(str.charAt(i)))) {
+      if (charPredicate.predicate(str.charAt(i))) {
         count++;
       }
     }
-
     return count;
   }
 
@@ -1575,4 +1475,17 @@ public class EwsUtilities {
       action.action(entry);
     }
   }
+
+
+  private static String formatDate(Date date, String format) {
+    final DateFormat utcFormatter = createDateFormat(format);
+    return utcFormatter.format(date);
+  }
+
+  private static DateFormat createDateFormat(String format) {
+    final DateFormat utcFormatter = new SimpleDateFormat(format);
+    utcFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+    return utcFormatter;
+  }
+
 }

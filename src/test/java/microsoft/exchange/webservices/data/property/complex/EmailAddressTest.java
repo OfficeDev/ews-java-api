@@ -23,7 +23,6 @@
 
 package microsoft.exchange.webservices.data.property.complex;
 
-import microsoft.exchange.webservices.data.core.EwsUtilities;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,7 +33,6 @@ public class EmailAddressTest {
 
   @Test
   public void testEmailAddressToString() {
-    Assert.assertTrue(EwsUtilities.stringEquals(null, null));
     EmailAddress address = new EmailAddress();
     address.setAddress("ews@ews.com");
     Assert.assertEquals(address.toString(), "ews@ews.com");
