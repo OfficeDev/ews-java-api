@@ -146,12 +146,12 @@ public class ItemAttachment extends Attachment implements IServiceObjectChangedD
     super.tryReadElementFromXml(reader);
 
     reader.read();
-    Class<?> itemClass = EwsUtilities.getItemTypeFromXmlElementName(reader
-        .getLocalName().toString());
+
+    String localName = reader.getLocalName();
+    Class<?> itemClass = EwsUtilities.getItemTypeFromXmlElementName(localName);
 
     if (itemClass != null) {
-      if (this.item == null
-          || this.item.getClass() != itemClass) {
+      if (item == null || item.getClass() != itemClass) {
         throw new ServiceLocalException(
             "Attachment item type mismatch.");
       }
