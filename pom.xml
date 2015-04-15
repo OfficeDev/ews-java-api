@@ -86,7 +86,6 @@
         <mockito-core.version>1.10.19</mockito-core.version>
         <slf4j.version>1.7.12</slf4j.version>
         <logback.version>1.1.3</logback.version>
-        <jansi.version>1.11</jansi.version>
     </properties>
 
     <profiles>
@@ -233,13 +232,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.fusesource.jansi</groupId>
-            <artifactId>jansi</artifactId>
-            <version>${jansi.version}</version>
             <scope>test</scope>
         </dependency>
 
