@@ -21,13 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
 
 /**
- * Represents an error that occurs when a date and time cannot be converted from
- * one time zone to another.
+ * The Class ServiceRequestException.
  */
-public class TimeZoneConversionException extends ServiceLocalException {
+public class ServiceRequestException extends ServiceRemoteException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -35,30 +34,28 @@ public class TimeZoneConversionException extends ServiceLocalException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceLocalException Constructor.
+   * ServiceRequestException Constructor.
    */
-  public TimeZoneConversionException() {
+  public ServiceRequestException() {
     super();
   }
 
   /**
-   * ServiceLocalException Constructor.
+   * ServiceRequestException Constructor.
    *
    * @param message the message
    */
-  public TimeZoneConversionException(String message) {
+  public ServiceRequestException(String message) {
     super(message);
   }
 
   /**
-   * ServiceLocalException Constructor.
+   * ServiceRequestException Constructor.
    *
    * @param message        the message
    * @param innerException the inner exception
    */
-  public TimeZoneConversionException(String message,
-      Exception innerException) {
+  public ServiceRequestException(String message, Exception innerException) {
     super(message, innerException);
   }
-
 }

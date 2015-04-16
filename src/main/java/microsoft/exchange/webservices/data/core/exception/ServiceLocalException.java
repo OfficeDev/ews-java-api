@@ -21,9 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
 
-public class NotSupportedException extends Exception {
+/**
+ * Represents an error that occurs when a service operation fails locally (e.g.
+ * validation error).
+ */
+public class ServiceLocalException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -31,19 +35,29 @@ public class NotSupportedException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new argument exception.
+   * ServiceLocalException Constructor.
    */
-  public NotSupportedException() {
+  public ServiceLocalException() {
     super();
-
   }
 
   /**
-   * Instantiates a new NotSupported exception.
+   * ServiceLocalException Constructor.
    *
-   * @param strMessage the str message
+   * @param message the message
    */
-  public NotSupportedException(String strMessage) {
-    super(strMessage);
+  public ServiceLocalException(String message) {
+    super(message);
   }
+
+  /**
+   * ServiceLocalException Constructor.
+   *
+   * @param message        the message
+   * @param innerException the inner exception
+   */
+  public ServiceLocalException(String message, Exception innerException) {
+    super(message, innerException);
+  }
+
 }

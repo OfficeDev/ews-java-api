@@ -21,12 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
 
 /**
- * The Class ArgumentOutOfRangeException.
+ * Represents an error that occurs when the XML for a response cannot be
+ * deserialized.
  */
-public class ArgumentOutOfRangeException extends Exception {
+public final class ServiceXmlDeserializationException extends ServiceLocalException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,30 +35,30 @@ public class ArgumentOutOfRangeException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new argument out of range exception.
+   * ServiceXmlDeserializationException Constructor.
    */
-  public ArgumentOutOfRangeException() {
+  public ServiceXmlDeserializationException() {
     super();
-
   }
 
   /**
-   * Instantiates a new argument out of range exception.
+   * ServiceXmlDeserializationException Constructor.
    *
-   * @param arg0 the arg0
+   * @param message the message
    */
-  public ArgumentOutOfRangeException(final String arg0) {
-    super(arg0);
-
+  public ServiceXmlDeserializationException(String message) {
+    super(message);
   }
 
   /**
-   * Instantiates a new argument out of range exception.
+   * ServiceXmlDeserializationException Constructor.
    *
-   * @param arg0 the arg0
-   * @param arg1 the arg1
+   * @param message        the message
+   * @param innerException the inner exception
    */
-  public ArgumentOutOfRangeException(final String arg0, final String arg1) {
-
+  public ServiceXmlDeserializationException(String message,
+      Exception innerException) {
+    super(message, innerException);
   }
+
 }

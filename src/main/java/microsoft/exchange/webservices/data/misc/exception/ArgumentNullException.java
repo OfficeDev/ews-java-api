@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.misc.exception;
 
 /**
- * Defines DnsException class.
+ * The Class ArgumentNullException.
  */
-public class DnsException extends Exception {
+public class ArgumentNullException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,11 +34,41 @@ public class DnsException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new dns exception.
-   *
-   * @param exceptionMessage the exception message
+   * Instantiates a new argument null exception.
    */
-  public DnsException(String exceptionMessage) {
-    super(exceptionMessage);
+  public ArgumentNullException() {
+    super();
+
+  }
+
+  /**
+   * Instantiates a new argument null exception.
+   *
+   * @param arg0 the arg0
+   * @param arg1 the arg1
+   */
+  public ArgumentNullException(final String arg0, final Throwable arg1) {
+    super(arg0, arg1);
+
+  }
+
+  /**
+   * Instantiates a new argument null exception.
+   *
+   * @param arg0 the arg0
+   */
+  public ArgumentNullException(final String arg0) {
+    super(arg0);
+
+  }
+
+  /**
+   * Instantiates a new argument null exception.
+   *
+   * @param arg0 the arg0
+   */
+  public ArgumentNullException(final Throwable arg0) {
+    super(arg0);
+
   }
 }

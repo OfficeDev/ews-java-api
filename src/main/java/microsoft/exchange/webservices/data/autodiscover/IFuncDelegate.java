@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover;
 
-import microsoft.exchange.webservices.data.exception.FormatException;
+import microsoft.exchange.webservices.data.misc.exception.FormatException;
 
 /**
  * The Interface FuncDelegate.
@@ -36,7 +36,7 @@ public interface IFuncDelegate<TResult> {
    * Func.
    *
    * @return the t result
-   * @throws microsoft.exchange.webservices.data.exception.FormatException the format exception
+   * @throws FormatException the format exception
    */
   TResult func() throws FormatException;
 }

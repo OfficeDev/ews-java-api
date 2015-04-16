@@ -25,9 +25,9 @@ package microsoft.exchange.webservices.data.core.request;
 
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.WebAsyncCallStateAnchor;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.ServiceRequestException;
 import microsoft.exchange.webservices.data.enumeration.TraceFlags;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceRequestException;
 import microsoft.exchange.webservices.data.misc.AsyncCallback;
 import microsoft.exchange.webservices.data.misc.AsyncExecutor;
 import microsoft.exchange.webservices.data.misc.AsyncRequestResult;
@@ -59,7 +59,7 @@ public abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> 
    * Executes this request.
    *
    * @throws Exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException
+   * @throws ServiceLocalException
    */
   protected T internalExecute() throws ServiceLocalException, Exception {
     HttpWebRequest response = null;

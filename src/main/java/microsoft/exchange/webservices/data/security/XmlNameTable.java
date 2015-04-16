@@ -23,6 +23,9 @@
 
 package microsoft.exchange.webservices.data.security;
 
+import microsoft.exchange.webservices.data.misc.exception.ArgumentNullException;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentOutOfRangeException;
+
 /**
  * Table of atomized String objects.
  */
@@ -40,7 +43,7 @@ public abstract class XmlNameTable {
    *
    * @param array : The name to add.
    * @return The new atomized String or the existing one if it already exists.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentNullException array is null.
+   * @throws ArgumentNullException array is null.
    */
   public abstract String Add(String array);
 
@@ -53,10 +56,10 @@ public abstract class XmlNameTable {
    * @param length The number of characters in the name.
    * @return The new atomized String or the existing one if it already exists.
    * If length is zero, String.Empty is returned
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException 0 > offset -or- offset >= array.Length -or- length >
+   * @throws ArgumentOutOfRangeException 0 > offset -or- offset >= array.Length -or- length >
    *                                     array.Length The above conditions do not cause an exception
    *                                     to be thrown if length =0.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException length < 0.
+   * @throws ArgumentOutOfRangeException length < 0.
    */
   public abstract String Add(char[] array, int offset, int length);
 
@@ -67,7 +70,7 @@ public abstract class XmlNameTable {
    * @param array The name to look up.
    * @return The atomized String or null if the String has not already been
    * atomized.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentNullException : array is null.
+   * @throws ArgumentNullException : array is null.
    */
   public abstract String Get(String array);
 
@@ -82,10 +85,10 @@ public abstract class XmlNameTable {
    * @param length The number of characters in the name.
    * @return The atomized String or null if the String has not already been
    * atomized. If length is zero, String.Empty is returned
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException 0 > offset -or- offset >= array.Length -or- length >
+   * @throws ArgumentOutOfRangeException 0 > offset -or- offset >= array.Length -or- length >
    *                                     array.Length The above conditions do not cause an exception
    *                                     to be thrown if length =0.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException length < 0.
+   * @throws ArgumentOutOfRangeException length < 0.
    */
   public abstract String Get(char[] array, int offset, int length);
 

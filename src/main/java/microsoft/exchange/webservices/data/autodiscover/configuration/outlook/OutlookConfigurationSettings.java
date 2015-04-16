@@ -33,8 +33,8 @@ import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.ILazyMember;
 import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.enumeration.UserSettingName;
-import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 
 import javax.xml.stream.XMLStreamException;
 

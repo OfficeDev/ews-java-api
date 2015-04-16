@@ -21,13 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.misc.exception;
 
 /**
- * Represents an error that occurs when the XML for a request cannot be
- * serialized.
+ * The Class ArgumentException.
  */
-public class ServiceXmlSerializationException extends ServiceLocalException {
+public class ArgumentException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -35,31 +34,45 @@ public class ServiceXmlSerializationException extends ServiceLocalException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceXmlSerializationException Constructor.
+   * Instantiates a new argument exception.
    */
-  public ServiceXmlSerializationException() {
+  public ArgumentException() {
     super();
+
   }
 
   /**
-   * Instantiates a new service xml serialization exception.
+   * Instantiates a new argument exception.
    *
-   * @param message the message
+   * @param arg0 the arg0
    */
-  public ServiceXmlSerializationException(String message) {
-    super(message);
+  public ArgumentException(final String arg0) {
+    super(arg0);
 
   }
 
   /**
-   * Instantiates a new service xml serialization exception.
+   * ServiceXmlDeserializationException Constructor.
    *
    * @param message        the message
    * @param innerException the inner exception
    */
-  public ServiceXmlSerializationException(String message,
-      Exception innerException) {
+  public ArgumentException(String message, Exception innerException) {
     super(message, innerException);
+  }
+
+  /**
+   * Initializes a new instance of the System.
+   * ArgumentException class with a specified
+   * error message and the name of the
+   * parameter that causes this exception.
+   *
+   * @param message   The error message that explains the reason for the exception.
+   * @param paramName The name of the parameter that caused the current exception.
+   */
+  public ArgumentException(String message, String paramName) {
+    super(message + " Parameter that caused " +
+        "the current exception :" + paramName);
   }
 
 }

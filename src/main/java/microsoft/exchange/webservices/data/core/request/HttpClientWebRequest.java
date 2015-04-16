@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core.request;
 
 import microsoft.exchange.webservices.data.core.WebProxy;
-import microsoft.exchange.webservices.data.exception.EWSHttpException;
+import microsoft.exchange.webservices.data.core.exception.EWSHttpException;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
@@ -160,7 +160,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
    * Gets the input stream.
    *
    * @return the input stream
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    * @throws java.io.IOException
    */
   @Override
@@ -179,7 +179,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
    * Gets the error stream.
    *
    * @return the error stream
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   @Override
   public InputStream getErrorStream() throws EWSHttpException {
@@ -197,7 +197,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
    * Gets the output stream.
    *
    * @return the output stream
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   @Override
   public OutputStream getOutputStream() throws EWSHttpException {
@@ -213,7 +213,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
    * Gets the response headers.
    *
    * @return the response headers
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   @Override
   public Map<String, String> getResponseHeaders()
@@ -260,7 +260,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
    * Gets the content encoding.
    *
    * @return the content encoding
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   @Override
   public String getContentEncoding() throws EWSHttpException {
@@ -274,7 +274,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
    * Gets the response content type.
    *
    * @return the response content type
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   @Override
   public String getResponseContentType() throws EWSHttpException {
@@ -287,7 +287,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
   /**
    * Executes Request by sending request xml data to server.
    *
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    * @throws java.io.IOException                                  the IO Exception
    */
   @Override
@@ -301,7 +301,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
    * Gets the response code.
    *
    * @return the response code
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   @Override
   public int getResponseCode() throws EWSHttpException {
@@ -313,7 +313,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
    * Gets the response message.
    *
    * @return the response message
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   public String getResponseText() throws EWSHttpException {
     throwIfResponseIsNull();
@@ -341,7 +341,7 @@ public class HttpClientWebRequest extends HttpWebRequest {
    * Gets the request property.
    *
    * @return the request property
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   public Map<String, String> getRequestProperty() throws EWSHttpException {
     throwIfRequestIsNull();

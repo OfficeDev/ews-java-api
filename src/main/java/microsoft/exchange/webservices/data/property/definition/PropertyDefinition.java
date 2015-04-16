@@ -26,15 +26,15 @@ package microsoft.exchange.webservices.data.property.definition;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.PropertyBag;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.ServiceObjectPropertyException;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -183,7 +183,7 @@ public abstract class PropertyDefinition extends
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
    * @throws InstantiationException              the instantiation exception
    * @throws IllegalAccessException              the illegal access exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException      the service object property exception
+   * @throws ServiceObjectPropertyException      the service object property exception
    * @throws ServiceVersionException             the service version exception
    * @throws Exception                           the exception
    */
@@ -198,8 +198,8 @@ public abstract class PropertyDefinition extends
    * @param propertyBag       The property bag.
    * @param isUpdateOperation Indicates whether the context is an update operation.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException               the service local exception
+   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws ServiceLocalException               the service local exception
    * @throws InstantiationException              the instantiation exception
    * @throws IllegalAccessException              the illegal access exception
    * @throws ServiceValidationException          the service validation exception

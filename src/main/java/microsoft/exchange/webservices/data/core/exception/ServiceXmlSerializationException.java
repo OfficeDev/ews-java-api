@@ -21,12 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
 
 /**
- * Represents an error that occurs when a service operation fails remotely.
+ * Represents an error that occurs when the XML for a request cannot be
+ * serialized.
  */
-public class ServiceRemoteException extends Exception {
+public class ServiceXmlSerializationException extends ServiceLocalException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,28 +35,31 @@ public class ServiceRemoteException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceRemoteException Constructor.
+   * ServiceXmlSerializationException Constructor.
    */
-  public ServiceRemoteException() {
+  public ServiceXmlSerializationException() {
     super();
   }
 
   /**
-   * ServiceRemoteException Constructor.
+   * Instantiates a new service xml serialization exception.
    *
    * @param message the message
    */
-  public ServiceRemoteException(String message) {
+  public ServiceXmlSerializationException(String message) {
     super(message);
+
   }
 
   /**
-   * ServiceRemoteException Constructor.
+   * Instantiates a new service xml serialization exception.
    *
    * @param message        the message
    * @param innerException the inner exception
    */
-  public ServiceRemoteException(String message, Exception innerException) {
+  public ServiceXmlSerializationException(String message,
+      Exception innerException) {
     super(message, innerException);
   }
+
 }

@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.dns;
 
 import microsoft.exchange.webservices.data.EWSConstants;
-import microsoft.exchange.webservices.data.exception.DnsException;
+import microsoft.exchange.webservices.data.dns.exception.DnsException;
 
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
@@ -50,7 +50,7 @@ public class DnsClient {
    * @param domain           the domain
    * @param dnsServerAddress IPAddress of DNS server to use (may be null)
    * @return DnsRecord The DNS record list (never null but may be empty)
-   * @throws microsoft.exchange.webservices.data.exception.DnsException the dns exception
+   * @throws DnsException the dns exception
    */
 
   public static <T extends DnsRecord> List<T> dnsQuery(Class<T> cls, String domain, String dnsServerAddress) throws

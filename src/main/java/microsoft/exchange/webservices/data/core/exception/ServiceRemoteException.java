@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
 
 /**
- * The Class ServiceRequestException.
+ * Represents an error that occurs when a service operation fails remotely.
  */
-public class ServiceRequestException extends ServiceRemoteException {
+public class ServiceRemoteException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,28 +34,28 @@ public class ServiceRequestException extends ServiceRemoteException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceRequestException Constructor.
+   * ServiceRemoteException Constructor.
    */
-  public ServiceRequestException() {
+  public ServiceRemoteException() {
     super();
   }
 
   /**
-   * ServiceRequestException Constructor.
+   * ServiceRemoteException Constructor.
    *
    * @param message the message
    */
-  public ServiceRequestException(String message) {
+  public ServiceRemoteException(String message) {
     super(message);
   }
 
   /**
-   * ServiceRequestException Constructor.
+   * ServiceRemoteException Constructor.
    *
    * @param message        the message
    * @param innerException the inner exception
    */
-  public ServiceRequestException(String message, Exception innerException) {
+  public ServiceRemoteException(String message, Exception innerException) {
     super(message, innerException);
   }
 }

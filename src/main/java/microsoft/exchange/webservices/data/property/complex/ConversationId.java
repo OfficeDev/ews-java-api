@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.property.complex;
 
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.exception.ArgumentNullException;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentNullException;
 
 /**
  * Represents the Id of a Conversation.

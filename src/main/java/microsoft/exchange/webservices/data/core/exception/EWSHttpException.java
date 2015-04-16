@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
 
 /**
- * The Class ArgumentNullException.
+ * The Class EWSHttpException.
  */
-public class ArgumentNullException extends Exception {
+public class EWSHttpException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,41 +34,42 @@ public class ArgumentNullException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new argument null exception.
+   * Instantiates a new eWS http exception.
    */
-  public ArgumentNullException() {
+  public EWSHttpException() {
     super();
 
   }
 
   /**
-   * Instantiates a new argument null exception.
+   * Instantiates a new eWS http exception.
    *
    * @param arg0 the arg0
    * @param arg1 the arg1
    */
-  public ArgumentNullException(final String arg0, final Throwable arg1) {
+  public EWSHttpException(String arg0, Throwable arg1) {
     super(arg0, arg1);
 
   }
 
   /**
-   * Instantiates a new argument null exception.
+   * Instantiates a new eWS http exception.
    *
    * @param arg0 the arg0
    */
-  public ArgumentNullException(final String arg0) {
+  public EWSHttpException(String arg0) {
     super(arg0);
 
   }
 
   /**
-   * Instantiates a new argument null exception.
+   * Instantiates a new eWS http exception.
    *
    * @param arg0 the arg0
    */
-  public ArgumentNullException(final Throwable arg0) {
+  public EWSHttpException(Throwable arg0) {
     super(arg0);
 
   }
+
 }

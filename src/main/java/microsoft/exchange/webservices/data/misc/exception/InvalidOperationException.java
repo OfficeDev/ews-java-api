@@ -21,13 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.misc.exception;
 
 /**
- * Represents an error that occurs when a service operation fails locally (e.g.
- * validation error).
+ * The Class InvalidOperationException.
  */
-public class ServiceLocalException extends Exception {
+public class InvalidOperationException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -35,29 +34,18 @@ public class ServiceLocalException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceLocalException Constructor.
+   * Instantiates a new invalid operation exception.
    */
-  public ServiceLocalException() {
-    super();
+  public InvalidOperationException() {
+
   }
 
   /**
-   * ServiceLocalException Constructor.
+   * Instantiates a new invalid operation exception.
    *
-   * @param message the message
+   * @param strMessage the str message
    */
-  public ServiceLocalException(String message) {
-    super(message);
+  public InvalidOperationException(String strMessage) {
+    super(strMessage);
   }
-
-  /**
-   * ServiceLocalException Constructor.
-   *
-   * @param message        the message
-   * @param innerException the inner exception
-   */
-  public ServiceLocalException(String message, Exception innerException) {
-    super(message, innerException);
-  }
-
 }

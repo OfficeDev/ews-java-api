@@ -21,7 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.property.exception;
+
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
 
 /**
  * The Class InvalidOrUnsupportedTimeZoneDefinitionException.

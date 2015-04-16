@@ -21,14 +21,9 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.security.exception;
 
-/**
- * Represents an error that occurs when the XML for a response cannot be
- * deserialized.
- */
-public final class ServiceXmlDeserializationException extends
-    ServiceLocalException {
+public class XmlException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -36,19 +31,21 @@ public final class ServiceXmlDeserializationException extends
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceXmlDeserializationException Constructor.
+   * Instantiates a new argument exception.
    */
-  public ServiceXmlDeserializationException() {
+  public XmlException() {
     super();
+
   }
 
   /**
-   * ServiceXmlDeserializationException Constructor.
+   * Instantiates a new argument exception.
    *
-   * @param message the message
+   * @param arg0 the arg0
    */
-  public ServiceXmlDeserializationException(String message) {
-    super(message);
+  public XmlException(final String arg0) {
+    super(arg0);
+
   }
 
   /**
@@ -57,9 +54,7 @@ public final class ServiceXmlDeserializationException extends
    * @param message        the message
    * @param innerException the inner exception
    */
-  public ServiceXmlDeserializationException(String message,
-      Exception innerException) {
+  public XmlException(String message, Exception innerException) {
     super(message, innerException);
   }
-
 }

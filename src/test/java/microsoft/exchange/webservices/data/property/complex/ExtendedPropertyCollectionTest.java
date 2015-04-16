@@ -23,8 +23,8 @@
 
 package microsoft.exchange.webservices.data.property.complex;
 
-import microsoft.exchange.webservices.data.exception.ArgumentException;
 import microsoft.exchange.webservices.data.misc.OutParam;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentException;
 import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
 import org.junit.Assert;
 import org.junit.Test;

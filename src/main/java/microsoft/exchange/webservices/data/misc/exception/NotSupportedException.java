@@ -21,32 +21,29 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.misc.exception;
 
-
-/**
- * User: nwoodham Date: 3/8/11 Time: 5:30 PM
- */
-public class HttpErrorException extends Exception {
+public class NotSupportedException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 
-  private final int code;
-
-  public HttpErrorException() {
+  /**
+   * Instantiates a new argument exception.
+   */
+  public NotSupportedException() {
     super();
-    this.code = 0;
+
   }
 
-  public HttpErrorException(String message, int code) {
-    super(message);
-    this.code = code;
-  }
-
-  public int getHttpErrorCode() {
-    return this.code;
+  /**
+   * Instantiates a new NotSupported exception.
+   *
+   * @param strMessage the str message
+   */
+  public NotSupportedException(String strMessage) {
+    super(strMessage);
   }
 }

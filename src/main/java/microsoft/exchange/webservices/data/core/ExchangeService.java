@@ -28,6 +28,10 @@ import microsoft.exchange.webservices.data.autodiscover.IAutodiscoverRedirection
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
 import microsoft.exchange.webservices.data.autodiscover.request.ApplyConversationActionRequest;
 import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponse;
+import microsoft.exchange.webservices.data.core.exception.AccountIsLockedException;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.ServiceRemoteException;
+import microsoft.exchange.webservices.data.core.exception.ServiceResponseException;
 import microsoft.exchange.webservices.data.core.request.AddDelegateRequest;
 import microsoft.exchange.webservices.data.core.request.ConvertIdRequest;
 import microsoft.exchange.webservices.data.core.request.CopyFolderRequest;
@@ -123,11 +127,6 @@ import microsoft.exchange.webservices.data.enumeration.TraceFlags;
 import microsoft.exchange.webservices.data.enumeration.UserConfigurationProperties;
 import microsoft.exchange.webservices.data.enumeration.UserSettingName;
 import microsoft.exchange.webservices.data.enumeration.WellKnownFolderName;
-import microsoft.exchange.webservices.data.exception.AccountIsLockedException;
-import microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceRemoteException;
-import microsoft.exchange.webservices.data.exception.ServiceResponseException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.messaging.UnifiedMessaging;
 import microsoft.exchange.webservices.data.misc.AsyncCallback;
@@ -145,6 +144,7 @@ import microsoft.exchange.webservices.data.misc.availability.AttendeeInfo;
 import microsoft.exchange.webservices.data.misc.availability.AvailabilityOptions;
 import microsoft.exchange.webservices.data.misc.availability.GetUserAvailabilityResults;
 import microsoft.exchange.webservices.data.misc.availability.TimeWindow;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentOutOfRangeException;
 import microsoft.exchange.webservices.data.misc.id.AlternateIdBase;
 import microsoft.exchange.webservices.data.notification.GetEventsResults;
 import microsoft.exchange.webservices.data.notification.PullSubscription;
@@ -1551,7 +1551,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    * @param parentItemId the parent item id
    * @param attachments  the attachments
    * @return Service response collection.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceResponseException the service response exception
+   * @throws ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
   public ServiceResponseCollection<CreateAttachmentResponse> createAttachments(String parentItemId,

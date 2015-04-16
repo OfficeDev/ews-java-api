@@ -21,58 +21,51 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
+
+import java.net.URI;
 
 /**
- * The Class ArgumentException.
+ * Represents an error that occurs when the account that is
+ * being accessed is locked and requires user interaction to be unlocked.
  */
-public class ArgumentException extends Exception {
+public class AccountIsLockedException extends ServiceRemoteException {
 
   /**
    * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * Instantiates a new argument exception.
-   */
-  public ArgumentException() {
-    super();
+  private URI accountUnlockUrl;
 
-  }
 
   /**
-   * Instantiates a new argument exception.
+   * Initializes a new instance of the AccountIsLockedException class.
    *
-   * @param arg0 the arg0
+   * @param message          Error message text.
+   * @param accountUnlockUrl URL for client to visit to unlock account.
    */
-  public ArgumentException(final String arg0) {
-    super(arg0);
+  public AccountIsLockedException(String message, URI accountUnlockUrl,
+      Exception innerException) {
 
-  }
-
-  /**
-   * ServiceXmlDeserializationException Constructor.
-   *
-   * @param message        the message
-   * @param innerException the inner exception
-   */
-  public ArgumentException(String message, Exception innerException) {
     super(message, innerException);
+    this.setAccountUnlockUrl(accountUnlockUrl);
   }
 
   /**
-   * Initializes a new instance of the System.
-   * ArgumentException class with a specified
-   * error message and the name of the
-   * parameter that causes this exception.
-   *
-   * @param message   The error message that explains the reason for the exception.
-   * @param paramName The name of the parameter that caused the current exception.
+   * Gets the URL of a web page where the user
+   * can navigate to unlock his or her account.
    */
-  public ArgumentException(String message, String paramName) {
-    super(message + " Parameter that caused " +
-        "the current exception :" + paramName);
+  public URI getAccountUnlockUrl() {
+    return accountUnlockUrl;
   }
 
+
+  /**
+   * Sets the URL of a web page where the
+   * user can navigate to unlock his or her account.
+   */
+  private void setAccountUnlockUrl(URI value) {
+    this.accountUnlockUrl = value;
+  }
 }

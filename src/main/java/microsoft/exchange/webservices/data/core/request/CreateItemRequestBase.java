@@ -28,12 +28,12 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.core.response.ServiceResponse;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.enumeration.MessageDisposition;
 import microsoft.exchange.webservices.data.enumeration.SendInvitationsMode;
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import java.util.Collection;
 
@@ -134,7 +134,7 @@ abstract class CreateItemRequestBase<TServiceObject extends ServiceObject,
    * Writes the attribute to XML.
    *
    * @param writer The writer.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)

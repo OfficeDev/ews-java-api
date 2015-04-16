@@ -21,17 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
-
-import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
+package microsoft.exchange.webservices.data.security.exception;
 
 /**
- *
- * The Class MaximumRedirectionHopsExceededException.
- *
- * @see microsoft.exchange.webservices.data.autodiscover.AutodiscoverService
+ * Exception class for banned xml parsing
  */
-public class MaximumRedirectionHopsExceededException extends AutodiscoverLocalException {
+class XmlDtdException extends XmlException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -39,28 +34,11 @@ public class MaximumRedirectionHopsExceededException extends AutodiscoverLocalEx
   private static final long serialVersionUID = 1L;
 
   /**
-   * Initializes a new instance of the class.
+   * Gets the xml exception message.
    */
-  public MaximumRedirectionHopsExceededException() {
-  }
 
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param message the message
-   */
-  public MaximumRedirectionHopsExceededException(String message) {
-    super(message);
+  @Override
+  public String getMessage() {
+    return "For security reasons DTD is prohibited in this XML document.";
   }
-
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param message        the message
-   * @param innerException the inner exception
-   */
-  public MaximumRedirectionHopsExceededException(String message, Exception innerException) {
-    super(message, innerException);
-  }
-
 }

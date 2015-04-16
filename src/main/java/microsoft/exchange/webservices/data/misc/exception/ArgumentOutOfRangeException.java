@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.misc.exception;
 
 /**
- * The Class FormatException.
+ * The Class ArgumentOutOfRangeException.
  */
-public class FormatException extends Exception {
+public class ArgumentOutOfRangeException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,42 +34,30 @@ public class FormatException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new format exception.
+   * Instantiates a new argument out of range exception.
    */
-  public FormatException() {
+  public ArgumentOutOfRangeException() {
     super();
 
   }
 
   /**
-   * Instantiates a new format exception.
+   * Instantiates a new argument out of range exception.
+   *
+   * @param arg0 the arg0
+   */
+  public ArgumentOutOfRangeException(final String arg0) {
+    super(arg0);
+
+  }
+
+  /**
+   * Instantiates a new argument out of range exception.
    *
    * @param arg0 the arg0
    * @param arg1 the arg1
    */
-  public FormatException(final String arg0, final Throwable arg1) {
-    super(arg0, arg1);
+  public ArgumentOutOfRangeException(final String arg0, final String arg1) {
 
   }
-
-  /**
-   * Instantiates a new format exception.
-   *
-   * @param arg0 the arg0
-   */
-  public FormatException(final String arg0) {
-    super(arg0);
-
-  }
-
-  /**
-   * Instantiates a new format exception.
-   *
-   * @param arg0 the arg0
-   */
-  public FormatException(final Throwable arg0) {
-    super(arg0);
-
-  }
-
 }

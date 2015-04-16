@@ -21,9 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.dns.exception;
 
-public class XmlException extends Exception {
+/**
+ * Defines DnsException class.
+ */
+public class DnsException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -31,30 +34,11 @@ public class XmlException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new argument exception.
-   */
-  public XmlException() {
-    super();
-
-  }
-
-  /**
-   * Instantiates a new argument exception.
+   * Instantiates a new dns exception.
    *
-   * @param arg0 the arg0
+   * @param exceptionMessage the exception message
    */
-  public XmlException(final String arg0) {
-    super(arg0);
-
-  }
-
-  /**
-   * ServiceXmlDeserializationException Constructor.
-   *
-   * @param message        the message
-   * @param innerException the inner exception
-   */
-  public XmlException(String message, Exception innerException) {
-    super(message, innerException);
+  public DnsException(String exceptionMessage) {
+    super(exceptionMessage);
   }
 }
