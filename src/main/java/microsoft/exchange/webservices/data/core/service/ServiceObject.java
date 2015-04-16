@@ -23,8 +23,6 @@
 
 package microsoft.exchange.webservices.data.core.service;
 
-import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
-import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
@@ -33,6 +31,7 @@ import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertyBag;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.enumeration.AffectedTaskOccurrence;
 import microsoft.exchange.webservices.data.enumeration.DeleteMode;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
@@ -41,9 +40,10 @@ import microsoft.exchange.webservices.data.exception.InvalidOperationException;
 import microsoft.exchange.webservices.data.exception.NotSupportedException;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
-import microsoft.exchange.webservices.data.property.complex.IServiceObjectChangedDelegate;
+import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.property.complex.ExtendedProperty;
 import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
+import microsoft.exchange.webservices.data.property.complex.IServiceObjectChangedDelegate;
 import microsoft.exchange.webservices.data.property.complex.ServiceId;
 import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;

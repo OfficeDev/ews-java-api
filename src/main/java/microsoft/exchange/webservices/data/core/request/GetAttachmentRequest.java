@@ -26,10 +26,10 @@ package microsoft.exchange.webservices.data.core.request;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.response.GetAttachmentResponse;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.response.GetAttachmentResponse;
 import microsoft.exchange.webservices.data.enumeration.BodyType;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
@@ -39,6 +39,7 @@ import microsoft.exchange.webservices.data.property.complex.Attachment;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.util.ArrayList;
 import java.util.List;
 

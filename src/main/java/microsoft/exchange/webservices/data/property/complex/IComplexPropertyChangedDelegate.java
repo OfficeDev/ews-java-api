@@ -23,8 +23,6 @@
 
 package microsoft.exchange.webservices.data.property.complex;
 
-import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
-
 /**
  * The Interface ComplexPropertyChangedDelegateInterface.
  */

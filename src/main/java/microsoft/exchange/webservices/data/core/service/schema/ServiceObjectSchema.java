@@ -23,17 +23,17 @@
 
 package microsoft.exchange.webservices.data.core.service.schema;
 
-import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.ILazyMember;
 import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.core.ILazyMember;
+import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
+import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.IndexedPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
@@ -43,7 +43,12 @@ import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Represents the base class for all item and folder schema.

@@ -23,8 +23,11 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import org.apache.http.*;
-import org.apache.http.auth.AuthScheme;
+import org.apache.http.Header;
+import org.apache.http.HttpException;
+import org.apache.http.HttpHost;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
 import org.apache.http.auth.MalformedChallengeException;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.client.protocol.RequestAddCookies;

@@ -31,6 +31,7 @@ import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationExce
 import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.Recurrence;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.util.Date;
 
 /**

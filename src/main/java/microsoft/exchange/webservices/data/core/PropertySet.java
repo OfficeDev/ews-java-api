@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import microsoft.exchange.webservices.data.ISelfValidate;
 import microsoft.exchange.webservices.data.core.request.ServiceRequestBase;
 import microsoft.exchange.webservices.data.enumeration.BasePropertySet;
 import microsoft.exchange.webservices.data.enumeration.BodyType;
@@ -33,12 +34,17 @@ import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.ISelfValidate;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import javax.xml.stream.XMLStreamException;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Represents a set of item or folder property. Property sets are used to

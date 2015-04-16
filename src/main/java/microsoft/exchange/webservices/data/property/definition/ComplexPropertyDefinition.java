@@ -23,13 +23,13 @@
 
 package microsoft.exchange.webservices.data.property.definition;
 
-import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
-import microsoft.exchange.webservices.data.property.complex.IOwnedProperty;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
+import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
+import microsoft.exchange.webservices.data.property.complex.IOwnedProperty;
 
 import java.util.EnumSet;
 

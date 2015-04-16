@@ -24,9 +24,9 @@
 package microsoft.exchange.webservices.data.core.response;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.enumeration.ServiceError;
 import microsoft.exchange.webservices.data.enumeration.ServiceResult;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
@@ -39,6 +39,7 @@ import microsoft.exchange.webservices.data.property.definition.IndexedPropertyDe
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;

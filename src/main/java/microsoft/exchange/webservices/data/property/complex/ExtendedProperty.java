@@ -26,13 +26,14 @@ package microsoft.exchange.webservices.data.property.complex;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.misc.MapiTypeConverter;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.misc.MapiTypeConverter;
 import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.util.ArrayList;
 
 /**

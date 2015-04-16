@@ -28,6 +28,7 @@ import microsoft.exchange.webservices.data.exception.InvalidOperationException;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
+
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;

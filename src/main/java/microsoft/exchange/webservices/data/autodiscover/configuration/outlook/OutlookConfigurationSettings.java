@@ -23,20 +23,21 @@
 
 package microsoft.exchange.webservices.data.autodiscover.configuration.outlook;
 
-import microsoft.exchange.webservices.data.autodiscover.exception.error.UserSettingError;
 import microsoft.exchange.webservices.data.autodiscover.configuration.ConfigurationSettingsBase;
+import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverResponseType;
+import microsoft.exchange.webservices.data.autodiscover.exception.error.UserSettingError;
 import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponse;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
+import microsoft.exchange.webservices.data.core.ILazyMember;
 import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
-import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverResponseType;
 import microsoft.exchange.webservices.data.enumeration.UserSettingName;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.core.ILazyMember;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;

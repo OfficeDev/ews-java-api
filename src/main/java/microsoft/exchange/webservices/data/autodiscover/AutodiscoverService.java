@@ -53,9 +53,6 @@ import microsoft.exchange.webservices.data.exception.MaximumRedirectionHopsExcee
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
-import microsoft.exchange.webservices.data.interfaces.IAutodiscoverRedirectionUrl;
-import microsoft.exchange.webservices.data.interfaces.IFuncDelegate;
-import microsoft.exchange.webservices.data.interfaces.IFunctionDelegate;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 

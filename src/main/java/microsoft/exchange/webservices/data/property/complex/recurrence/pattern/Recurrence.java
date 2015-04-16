@@ -23,18 +23,12 @@
 
 package microsoft.exchange.webservices.data.property.complex.recurrence.pattern;
 
-import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
-import microsoft.exchange.webservices.data.property.complex.recurrence.range.EndDateRecurrenceRange;
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.property.complex.IComplexPropertyChangedDelegate;
-import microsoft.exchange.webservices.data.property.complex.recurrence.range.NoEndRecurrenceRange;
-import microsoft.exchange.webservices.data.property.complex.recurrence.range.NumberedRecurrenceRange;
-import microsoft.exchange.webservices.data.property.complex.recurrence.range.RecurrenceRange;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.enumeration.DayOfTheWeek;
 import microsoft.exchange.webservices.data.enumeration.DayOfTheWeekIndex;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
@@ -45,10 +39,21 @@ import microsoft.exchange.webservices.data.exception.ArgumentException;
 import microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
+import microsoft.exchange.webservices.data.property.complex.IComplexPropertyChangedDelegate;
 import microsoft.exchange.webservices.data.property.complex.recurrence.DayOfTheWeekCollection;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.EndDateRecurrenceRange;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.NoEndRecurrenceRange;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.NumberedRecurrenceRange;
+import microsoft.exchange.webservices.data.property.complex.recurrence.range.RecurrenceRange;
 
 import javax.xml.stream.XMLStreamException;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
 
 /**
  * Represents a recurrence pattern, as used by Appointment and Task item.
