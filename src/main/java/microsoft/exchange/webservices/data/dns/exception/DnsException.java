@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.dns.exception;
 
 /**
- * Exception class for banned xml parsing
+ * Defines DnsException class.
  */
-class XmlDtdException extends XmlException {
+public class DnsException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,11 +34,11 @@ class XmlDtdException extends XmlException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Gets the xml exception message.
+   * Instantiates a new dns exception.
+   *
+   * @param exceptionMessage the exception message
    */
-
-  @Override
-  public String getMessage() {
-    return "For security reasons DTD is prohibited in this XML document.";
+  public DnsException(String exceptionMessage) {
+    super(exceptionMessage);
   }
 }

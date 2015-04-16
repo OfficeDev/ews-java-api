@@ -29,12 +29,12 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ILazyMember;
 import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.enumeration.FolderPermissionLevel;
 import microsoft.exchange.webservices.data.enumeration.FolderPermissionReadAccess;
 import microsoft.exchange.webservices.data.enumeration.PermissionScope;
 import microsoft.exchange.webservices.data.enumeration.StandardUser;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -707,7 +707,7 @@ public final class FolderPermission extends ComplexProperty implements IComplexP
    * Sets the permission level.
    *
    * @param value the new permission level
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    */
   public void setPermissionLevel(FolderPermissionLevel value)
       throws ServiceLocalException {

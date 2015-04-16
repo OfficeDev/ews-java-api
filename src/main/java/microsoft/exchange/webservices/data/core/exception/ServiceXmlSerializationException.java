@@ -21,13 +21,13 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
 
 /**
- * Represents an error that occurs when a service operation fails locally (e.g.
- * validation error).
+ * Represents an error that occurs when the XML for a request cannot be
+ * serialized.
  */
-public class ServiceLocalException extends Exception {
+public class ServiceXmlSerializationException extends ServiceLocalException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -35,28 +35,30 @@ public class ServiceLocalException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceLocalException Constructor.
+   * ServiceXmlSerializationException Constructor.
    */
-  public ServiceLocalException() {
+  public ServiceXmlSerializationException() {
     super();
   }
 
   /**
-   * ServiceLocalException Constructor.
+   * Instantiates a new service xml serialization exception.
    *
    * @param message the message
    */
-  public ServiceLocalException(String message) {
+  public ServiceXmlSerializationException(String message) {
     super(message);
+
   }
 
   /**
-   * ServiceLocalException Constructor.
+   * Instantiates a new service xml serialization exception.
    *
    * @param message        the message
    * @param innerException the inner exception
    */
-  public ServiceLocalException(String message, Exception innerException) {
+  public ServiceXmlSerializationException(String message,
+      Exception innerException) {
     super(message, innerException);
   }
 

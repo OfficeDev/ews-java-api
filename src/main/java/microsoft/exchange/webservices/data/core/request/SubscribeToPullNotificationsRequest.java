@@ -26,11 +26,11 @@ package microsoft.exchange.webservices.data.core.request;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.core.response.SubscribeResponse;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ArgumentException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentException;
 import microsoft.exchange.webservices.data.notification.PullSubscription;
 
 import javax.xml.stream.XMLStreamException;
@@ -130,7 +130,7 @@ public class SubscribeToPullNotificationsRequest extends
    *
    * @param writer the writer
    * @throws javax.xml.stream.XMLStreamException                                  the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void internalWriteElementsToXml(EwsServiceXmlWriter writer)

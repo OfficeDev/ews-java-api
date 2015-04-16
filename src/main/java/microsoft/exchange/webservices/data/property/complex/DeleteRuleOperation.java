@@ -26,8 +26,8 @@ package microsoft.exchange.webservices.data.property.complex;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 

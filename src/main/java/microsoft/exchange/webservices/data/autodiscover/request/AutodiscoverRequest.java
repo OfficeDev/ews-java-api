@@ -33,17 +33,17 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeServerInfo;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.EWSHttpException;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.ServiceRemoteException;
+import microsoft.exchange.webservices.data.core.exception.ServiceRequestException;
+import microsoft.exchange.webservices.data.core.exception.ServiceResponseException;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
 import microsoft.exchange.webservices.data.core.response.ServiceResponse;
 import microsoft.exchange.webservices.data.enumeration.TraceFlags;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.EWSHttpException;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceRemoteException;
-import microsoft.exchange.webservices.data.exception.ServiceRequestException;
-import microsoft.exchange.webservices.data.exception.ServiceResponseException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.SoapFaultDetails;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import org.apache.commons.logging.Log;
@@ -95,7 +95,7 @@ public abstract class AutodiscoverRequest {
    *
    * @param request the request
    * @return True if redirection response.
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   public static boolean isRedirectionResponse(HttpWebRequest request)
       throws EWSHttpException {
@@ -108,7 +108,7 @@ public abstract class AutodiscoverRequest {
   /**
    * Validates the request.
    *
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    * @throws Exception             the exception
    */
   protected void validate() throws ServiceLocalException, Exception {
@@ -339,7 +339,7 @@ public abstract class AutodiscoverRequest {
    * @return AutodiscoverResponse autodiscoverResponse object.
    * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   private AutodiscoverResponse createRedirectionResponse(
       HttpWebRequest httpWebResponse) throws XMLStreamException,
@@ -469,7 +469,7 @@ public abstract class AutodiscoverRequest {
    *
    * @param requestUrl Request URL.
    * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
+   * @throws ServiceXmlSerializationException    the service xml serialization exception
    */
   protected void writeSoapRequest(URI requestUrl,
       EwsServiceXmlWriter writer) throws XMLStreamException, ServiceXmlSerializationException {
@@ -576,7 +576,7 @@ public abstract class AutodiscoverRequest {
    *
    * @param request the request
    * @return ResponseStream
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
    */
   protected static InputStream getResponseStream(HttpWebRequest request)

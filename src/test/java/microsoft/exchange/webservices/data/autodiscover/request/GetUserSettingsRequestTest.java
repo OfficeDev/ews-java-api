@@ -27,10 +27,10 @@ package microsoft.exchange.webservices.data.autodiscover.request;
 import microsoft.exchange.webservices.base.BaseTest;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.exception.ArgumentException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentException;
 import org.hamcrest.core.IsNot;
 import org.hamcrest.core.IsNull;
 import org.junit.Assert;
@@ -76,7 +76,7 @@ public class GetUserSettingsRequestTest extends BaseTest {
    * Returns the Parameters which where handled to the constructor
    *
    * @return the available Services
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @throws ArgumentException
    */
   @Parameterized.Parameters
   public static List<Object[]> getAutodiscoverServices() throws ArgumentException {
@@ -123,7 +123,7 @@ public class GetUserSettingsRequestTest extends BaseTest {
    *
    * @throws ServiceValidationException
    * @throws XMLStreamException
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException
+   * @throws ServiceXmlSerializationException
    */
   @Test
   public void testWriteExtraCustomSoapHeadersToXmlWithoutPartnertoken()
@@ -157,7 +157,7 @@ public class GetUserSettingsRequestTest extends BaseTest {
    *
    * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException
    * @throws XMLStreamException
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException
+   * @throws ServiceXmlSerializationException
    */
   @Test
   public void testWriteExtraCustomSoapHeadersToXmlWithPartnertoken()

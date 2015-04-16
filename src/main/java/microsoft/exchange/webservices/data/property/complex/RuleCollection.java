@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.property.complex;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentOutOfRangeException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -80,7 +80,7 @@ public final class RuleCollection extends ComplexProperty implements Iterable<Ru
    *
    * @param index The index of the rule to get.
    * @return The rule at the specified index.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException
+   * @throws ArgumentOutOfRangeException
    */
   public Rule getRule(int index) throws ArgumentOutOfRangeException {
     if (index < 0 || index >= this.rules.size()) {

@@ -31,12 +31,12 @@ import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.core.response.ResolveNamesResponse;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.ResolveNameSearchLocation;
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.FolderIdWrapperList;
 
 import java.util.HashMap;

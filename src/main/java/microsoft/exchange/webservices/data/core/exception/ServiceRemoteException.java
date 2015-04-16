@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
 
 /**
- * The Class FormatException.
+ * Represents an error that occurs when a service operation fails remotely.
  */
-public class FormatException extends Exception {
+public class ServiceRemoteException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,42 +34,28 @@ public class FormatException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new format exception.
+   * ServiceRemoteException Constructor.
    */
-  public FormatException() {
+  public ServiceRemoteException() {
     super();
-
   }
 
   /**
-   * Instantiates a new format exception.
+   * ServiceRemoteException Constructor.
    *
-   * @param arg0 the arg0
-   * @param arg1 the arg1
+   * @param message the message
    */
-  public FormatException(final String arg0, final Throwable arg1) {
-    super(arg0, arg1);
-
+  public ServiceRemoteException(String message) {
+    super(message);
   }
 
   /**
-   * Instantiates a new format exception.
+   * ServiceRemoteException Constructor.
    *
-   * @param arg0 the arg0
+   * @param message        the message
+   * @param innerException the inner exception
    */
-  public FormatException(final String arg0) {
-    super(arg0);
-
+  public ServiceRemoteException(String message, Exception innerException) {
+    super(message, innerException);
   }
-
-  /**
-   * Instantiates a new format exception.
-   *
-   * @param arg0 the arg0
-   */
-  public FormatException(final Throwable arg0) {
-    super(arg0);
-
-  }
-
 }

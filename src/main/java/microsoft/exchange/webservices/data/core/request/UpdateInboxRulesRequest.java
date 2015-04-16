@@ -28,12 +28,12 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.UpdateInboxRulesException;
 import microsoft.exchange.webservices.data.core.response.UpdateInboxRulesResponse;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.ServiceResult;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.UpdateInboxRulesException;
 import microsoft.exchange.webservices.data.property.complex.RuleOperation;
 
 /**
@@ -162,7 +162,7 @@ public final class UpdateInboxRulesRequest extends SimpleServiceRequestBase<Upda
    *
    * @return Service response.
    * @throws Exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException
+   * @throws ServiceLocalException
    */
   public UpdateInboxRulesResponse execute()
       throws ServiceLocalException, Exception {

@@ -21,51 +21,54 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
-
-import java.net.URI;
+package microsoft.exchange.webservices.data.misc.exception;
 
 /**
- * Represents an error that occurs when the account that is
- * being accessed is locked and requires user interaction to be unlocked.
+ * The Class ArgumentNullException.
  */
-public class AccountIsLockedException extends ServiceRemoteException {
+public class ArgumentNullException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 
-  private URI accountUnlockUrl;
+  /**
+   * Instantiates a new argument null exception.
+   */
+  public ArgumentNullException() {
+    super();
 
+  }
 
   /**
-   * Initializes a new instance of the AccountIsLockedException class.
+   * Instantiates a new argument null exception.
    *
-   * @param message          Error message text.
-   * @param accountUnlockUrl URL for client to visit to unlock account.
+   * @param arg0 the arg0
+   * @param arg1 the arg1
    */
-  public AccountIsLockedException(String message, URI accountUnlockUrl,
-      Exception innerException) {
+  public ArgumentNullException(final String arg0, final Throwable arg1) {
+    super(arg0, arg1);
 
-    super(message, innerException);
-    this.setAccountUnlockUrl(accountUnlockUrl);
   }
 
   /**
-   * Gets the URL of a web page where the user
-   * can navigate to unlock his or her account.
+   * Instantiates a new argument null exception.
+   *
+   * @param arg0 the arg0
    */
-  public URI getAccountUnlockUrl() {
-    return accountUnlockUrl;
+  public ArgumentNullException(final String arg0) {
+    super(arg0);
+
   }
 
-
   /**
-   * Sets the URL of a web page where the
-   * user can navigate to unlock his or her account.
+   * Instantiates a new argument null exception.
+   *
+   * @param arg0 the arg0
    */
-  private void setAccountUnlockUrl(URI value) {
-    this.accountUnlockUrl = value;
+  public ArgumentNullException(final Throwable arg0) {
+    super(arg0);
+
   }
 }

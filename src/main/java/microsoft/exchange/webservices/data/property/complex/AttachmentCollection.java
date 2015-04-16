@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data.property.complex;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.core.response.CreateAttachmentResponse;
 import microsoft.exchange.webservices.data.core.response.DeleteAttachmentResponse;
 import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
@@ -34,11 +35,10 @@ import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.ServiceResult;
-import microsoft.exchange.webservices.data.exception.CreateAttachmentException;
-import microsoft.exchange.webservices.data.exception.DeleteAttachmentException;
-import microsoft.exchange.webservices.data.exception.InvalidOperationException;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+import microsoft.exchange.webservices.data.misc.exception.InvalidOperationException;
+import microsoft.exchange.webservices.data.property.exception.CreateAttachmentException;
+import microsoft.exchange.webservices.data.property.exception.DeleteAttachmentException;
 
 import java.io.File;
 import java.io.InputStream;
@@ -321,7 +321,7 @@ public final class AttachmentCollection extends ComplexPropertyCollection<Attach
    * Determines whether there are any unsaved attachment collection changes.
    *
    * @return True if attachment adds or deletes haven't been processed yet.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException
+   * @throws ServiceLocalException
    */
   public boolean hasUnprocessedChanges() throws ServiceLocalException {
     // Any new attachments?

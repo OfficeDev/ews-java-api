@@ -23,8 +23,8 @@
 
 package microsoft.exchange.webservices.data.sync;
 
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.core.service.folder.Folder;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.property.complex.ServiceId;
 
@@ -65,7 +65,7 @@ public final class FolderChange extends Change {
    * retrieve the Id of the folder that was deleted.
    *
    * @return the folder id
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    */
   public FolderId getFolderId() throws ServiceLocalException {
     return (FolderId) this.getId();

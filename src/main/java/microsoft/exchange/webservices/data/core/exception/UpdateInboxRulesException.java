@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
 
 import microsoft.exchange.webservices.data.core.response.ServiceResponse;
 import microsoft.exchange.webservices.data.core.response.UpdateInboxRulesResponse;

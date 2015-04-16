@@ -21,12 +21,15 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.autodiscover.exception;
 
 /**
- * The Class InvalidOperationException.
+ *
+ * The Class MaximumRedirectionHopsExceededException.
+ *
+ * @see microsoft.exchange.webservices.data.autodiscover.AutodiscoverService
  */
-public class InvalidOperationException extends Exception {
+public class MaximumRedirectionHopsExceededException extends AutodiscoverLocalException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,18 +37,28 @@ public class InvalidOperationException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new invalid operation exception.
+   * Initializes a new instance of the class.
    */
-  public InvalidOperationException() {
-
+  public MaximumRedirectionHopsExceededException() {
   }
 
   /**
-   * Instantiates a new invalid operation exception.
+   * Initializes a new instance of the class.
    *
-   * @param strMessage the str message
+   * @param message the message
    */
-  public InvalidOperationException(String strMessage) {
-    super(strMessage);
+  public MaximumRedirectionHopsExceededException(String message) {
+    super(message);
   }
+
+  /**
+   * Initializes a new instance of the class.
+   *
+   * @param message        the message
+   * @param innerException the inner exception
+   */
+  public MaximumRedirectionHopsExceededException(String message, Exception innerException) {
+    super(message, innerException);
+  }
+
 }

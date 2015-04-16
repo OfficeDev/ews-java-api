@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.misc.exception;
 
 /**
- * The Class EWSHttpException.
+ * The Class InvalidOperationException.
  */
-public class EWSHttpException extends Exception {
+public class InvalidOperationException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,42 +34,18 @@ public class EWSHttpException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new eWS http exception.
+   * Instantiates a new invalid operation exception.
    */
-  public EWSHttpException() {
-    super();
+  public InvalidOperationException() {
 
   }
 
   /**
-   * Instantiates a new eWS http exception.
+   * Instantiates a new invalid operation exception.
    *
-   * @param arg0 the arg0
-   * @param arg1 the arg1
+   * @param strMessage the str message
    */
-  public EWSHttpException(String arg0, Throwable arg1) {
-    super(arg0, arg1);
-
+  public InvalidOperationException(String strMessage) {
+    super(strMessage);
   }
-
-  /**
-   * Instantiates a new eWS http exception.
-   *
-   * @param arg0 the arg0
-   */
-  public EWSHttpException(String arg0) {
-    super(arg0);
-
-  }
-
-  /**
-   * Instantiates a new eWS http exception.
-   *
-   * @param arg0 the arg0
-   */
-  public EWSHttpException(Throwable arg0) {
-    super(arg0);
-
-  }
-
 }

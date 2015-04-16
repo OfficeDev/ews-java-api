@@ -26,17 +26,17 @@ package microsoft.exchange.webservices.data.core.request;
 import microsoft.exchange.webservices.data.core.EwsServiceMultiResponseXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.exception.EWSHttpException;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.ServiceRequestException;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.enumeration.HangingRequestDisconnectReason;
 import microsoft.exchange.webservices.data.enumeration.TraceFlags;
-import microsoft.exchange.webservices.data.exception.ArgumentException;
-import microsoft.exchange.webservices.data.exception.EWSHttpException;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceRequestException;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.exception.XmlException;
 import microsoft.exchange.webservices.data.misc.HangingTraceStream;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentException;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
+import microsoft.exchange.webservices.data.security.exception.XmlException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -68,7 +68,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
      * Callback delegate to handle asynchronous response.
      *
      * @param response Response received from the server
-     * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+     * @throws ArgumentException
      */
     void handleResponseObject(Object response) throws ArgumentException;
   }

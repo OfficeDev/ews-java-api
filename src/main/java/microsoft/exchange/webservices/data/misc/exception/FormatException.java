@@ -21,9 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.misc.exception;
 
-public class NotSupportedException extends Exception {
+/**
+ * The Class FormatException.
+ */
+public class FormatException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -31,19 +34,42 @@ public class NotSupportedException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new argument exception.
+   * Instantiates a new format exception.
    */
-  public NotSupportedException() {
+  public FormatException() {
     super();
 
   }
 
   /**
-   * Instantiates a new NotSupported exception.
+   * Instantiates a new format exception.
    *
-   * @param strMessage the str message
+   * @param arg0 the arg0
+   * @param arg1 the arg1
    */
-  public NotSupportedException(String strMessage) {
-    super(strMessage);
+  public FormatException(final String arg0, final Throwable arg1) {
+    super(arg0, arg1);
+
   }
+
+  /**
+   * Instantiates a new format exception.
+   *
+   * @param arg0 the arg0
+   */
+  public FormatException(final String arg0) {
+    super(arg0);
+
+  }
+
+  /**
+   * Instantiates a new format exception.
+   *
+   * @param arg0 the arg0
+   */
+  public FormatException(final Throwable arg0) {
+    super(arg0);
+
+  }
+
 }

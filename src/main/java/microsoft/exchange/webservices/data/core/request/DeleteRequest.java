@@ -26,10 +26,10 @@ package microsoft.exchange.webservices.data.core.request;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.core.response.ServiceResponse;
 import microsoft.exchange.webservices.data.enumeration.DeleteMode;
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -65,7 +65,7 @@ abstract class DeleteRequest<TResponse extends ServiceResponse> extends
    * Writes XML attribute.
    *
    * @param writer The writer.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)

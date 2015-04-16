@@ -31,16 +31,16 @@ import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertyBag;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.ServiceObjectPropertyException;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.enumeration.AffectedTaskOccurrence;
 import microsoft.exchange.webservices.data.enumeration.DeleteMode;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.SendCancellationsMode;
-import microsoft.exchange.webservices.data.exception.InvalidOperationException;
-import microsoft.exchange.webservices.data.exception.NotSupportedException;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
 import microsoft.exchange.webservices.data.misc.OutParam;
+import microsoft.exchange.webservices.data.misc.exception.InvalidOperationException;
+import microsoft.exchange.webservices.data.misc.exception.NotSupportedException;
 import microsoft.exchange.webservices.data.property.complex.ExtendedProperty;
 import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
 import microsoft.exchange.webservices.data.property.complex.IServiceObjectChangedDelegate;
@@ -92,7 +92,7 @@ public abstract class ServiceObject {
    * Throws exception if this is a new service object.
    *
    * @throws InvalidOperationException the invalid operation exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException     the service local exception
+   * @throws ServiceLocalException     the service local exception
    */
   public void throwIfThisIsNew() throws InvalidOperationException,
       ServiceLocalException {
@@ -105,7 +105,7 @@ public abstract class ServiceObject {
   /**
    * Throws exception if this is not a new service object.
    *
-   * @throws microsoft.exchange.webservices.data.exception.InvalidOperationException the invalid operation exception
+   * @throws InvalidOperationException the invalid operation exception
    * @throws ServiceLocalException     the service local exception
    */
   protected void throwIfThisIsNotNew() throws InvalidOperationException,
@@ -542,7 +542,7 @@ public abstract class ServiceObject {
    * Gets the id.
    *
    * @return the id
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    */
   public ServiceId getId() throws ServiceLocalException {
     PropertyDefinition idPropertyDefinition = this
