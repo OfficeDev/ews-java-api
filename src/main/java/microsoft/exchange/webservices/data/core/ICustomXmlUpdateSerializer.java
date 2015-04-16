@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 import javax.xml.stream.XMLStreamException;

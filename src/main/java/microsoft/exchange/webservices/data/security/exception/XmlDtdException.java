@@ -21,12 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.security.exception;
 
 /**
- * The Class ServiceRequestException.
+ * Exception class for banned xml parsing
  */
-public class ServiceRequestException extends ServiceRemoteException {
+class XmlDtdException extends XmlException {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -34,28 +34,11 @@ public class ServiceRequestException extends ServiceRemoteException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * ServiceRequestException Constructor.
+   * Gets the xml exception message.
    */
-  public ServiceRequestException() {
-    super();
-  }
 
-  /**
-   * ServiceRequestException Constructor.
-   *
-   * @param message the message
-   */
-  public ServiceRequestException(String message) {
-    super(message);
-  }
-
-  /**
-   * ServiceRequestException Constructor.
-   *
-   * @param message        the message
-   * @param innerException the inner exception
-   */
-  public ServiceRequestException(String message, Exception innerException) {
-    super(message, innerException);
+  @Override
+  public String getMessage() {
+    return "For security reasons DTD is prohibited in this XML document.";
   }
 }

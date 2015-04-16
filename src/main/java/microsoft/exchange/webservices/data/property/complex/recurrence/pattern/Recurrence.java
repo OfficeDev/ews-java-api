@@ -29,16 +29,16 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.enumeration.DayOfTheWeek;
 import microsoft.exchange.webservices.data.enumeration.DayOfTheWeekIndex;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.Month;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ArgumentException;
-import microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentException;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentOutOfRangeException;
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.property.complex.IComplexPropertyChangedDelegate;
 import microsoft.exchange.webservices.data.property.complex.recurrence.DayOfTheWeekCollection;
@@ -423,7 +423,7 @@ public abstract class Recurrence extends ComplexProperty {
      *
      * @param writer the writer
      * @throws javax.xml.stream.XMLStreamException the xML stream exception
-     * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
+     * @throws ServiceXmlSerializationException    the service xml serialization exception
      * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException          the service validation exception
      * @throws Exception                           the exception
      */
@@ -517,7 +517,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @param startDate  the start date
      * @param interval   the interval
      * @param dayOfMonth the day of month
-     * @throws microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException the argument out of range exception
+     * @throws ArgumentOutOfRangeException the argument out of range exception
      */
     public MonthlyPattern(Date startDate, int interval, int dayOfMonth)
         throws ArgumentOutOfRangeException {

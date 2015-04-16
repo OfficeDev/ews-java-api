@@ -21,9 +21,10 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.property.exception;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.exception.ServiceRemoteException;
 import microsoft.exchange.webservices.data.core.response.DeleteAttachmentResponse;
 import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
 
@@ -31,8 +32,7 @@ import microsoft.exchange.webservices.data.core.response.ServiceResponseCollecti
  * Represents an error that occurs when a call to the DeleteAttachment web
  * method fails.
  */
-public final class DeleteAttachmentException extends
-    ServiceRemoteException {// extends
+public final class DeleteAttachmentException extends ServiceRemoteException {// extends
   // BatchServiceResponseException<DeleteAttachmentResponse>
 
   /**

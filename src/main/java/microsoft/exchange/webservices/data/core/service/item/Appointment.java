@@ -29,6 +29,7 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.core.service.response.AcceptMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.core.service.response.CancelMeetingMessage;
 import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingInvitationMessage;
@@ -46,7 +47,6 @@ import microsoft.exchange.webservices.data.enumeration.SendCancellationsMode;
 import microsoft.exchange.webservices.data.enumeration.SendInvitationsMode;
 import microsoft.exchange.webservices.data.enumeration.SendInvitationsOrCancellationsMode;
 import microsoft.exchange.webservices.data.enumeration.WellKnownFolderName;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
 import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.property.complex.AppointmentOccurrenceId;
@@ -650,7 +650,7 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * Gets the original start time of this appointment.
    *
    * @return the original start
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    */
   public Date getOriginalStart() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(

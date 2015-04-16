@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data.exception;
 
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
+
 /**
  * Represents an error that occurs when a date and time cannot be converted from
  * one time zone to another.

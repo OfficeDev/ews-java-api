@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
 import microsoft.exchange.webservices.data.core.request.ServiceRequestBase;
 import microsoft.exchange.webservices.data.core.request.SimpleServiceRequestBase;
 import microsoft.exchange.webservices.data.core.request.WaitHandle;
-import microsoft.exchange.webservices.data.exception.ArgumentException;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentException;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;

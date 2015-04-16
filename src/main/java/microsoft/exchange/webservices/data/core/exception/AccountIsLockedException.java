@@ -21,24 +21,51 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
+
+import java.net.URI;
 
 /**
- * Defines DnsException class.
+ * Represents an error that occurs when the account that is
+ * being accessed is locked and requires user interaction to be unlocked.
  */
-public class DnsException extends Exception {
+public class AccountIsLockedException extends ServiceRemoteException {
 
   /**
    * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 
+  private URI accountUnlockUrl;
+
+
   /**
-   * Instantiates a new dns exception.
+   * Initializes a new instance of the AccountIsLockedException class.
    *
-   * @param exceptionMessage the exception message
+   * @param message          Error message text.
+   * @param accountUnlockUrl URL for client to visit to unlock account.
    */
-  public DnsException(String exceptionMessage) {
-    super(exceptionMessage);
+  public AccountIsLockedException(String message, URI accountUnlockUrl,
+      Exception innerException) {
+
+    super(message, innerException);
+    this.setAccountUnlockUrl(accountUnlockUrl);
+  }
+
+  /**
+   * Gets the URL of a web page where the user
+   * can navigate to unlock his or her account.
+   */
+  public URI getAccountUnlockUrl() {
+    return accountUnlockUrl;
+  }
+
+
+  /**
+   * Sets the URL of a web page where the
+   * user can navigate to unlock his or her account.
+   */
+  private void setAccountUnlockUrl(URI value) {
+    this.accountUnlockUrl = value;
   }
 }

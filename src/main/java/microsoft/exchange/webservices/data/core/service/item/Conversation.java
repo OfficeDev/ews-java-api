@@ -27,6 +27,8 @@ import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.ServiceResponseException;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.service.schema.ConversationSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
@@ -36,10 +38,8 @@ import microsoft.exchange.webservices.data.enumeration.DeleteMode;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.Importance;
 import microsoft.exchange.webservices.data.enumeration.SendCancellationsMode;
-import microsoft.exchange.webservices.data.exception.ArgumentException;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceResponseException;
 import microsoft.exchange.webservices.data.misc.OutParam;
+import microsoft.exchange.webservices.data.misc.exception.ArgumentException;
 import microsoft.exchange.webservices.data.property.complex.ConversationId;
 import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
@@ -337,7 +337,7 @@ public class Conversation extends ServiceObject {
    * @param deleteMode      The deletion mode.
    * @throws Exception
    * @throws IndexOutOfBoundsException
-   * @throws microsoft.exchange.webservices.data.exception.ServiceResponseException
+   * @throws ServiceResponseException
    */
   public void deleteItems(FolderId contextFolderId, DeleteMode deleteMode)
       throws ServiceResponseException, IndexOutOfBoundsException, Exception {

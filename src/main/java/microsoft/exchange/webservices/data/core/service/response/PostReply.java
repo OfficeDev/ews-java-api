@@ -41,7 +41,7 @@ import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.MessageDisposition;
 import microsoft.exchange.webservices.data.enumeration.SendCancellationsMode;
 import microsoft.exchange.webservices.data.enumeration.WellKnownFolderName;
-import microsoft.exchange.webservices.data.exception.InvalidOperationException;
+import microsoft.exchange.webservices.data.misc.exception.InvalidOperationException;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.MessageBody;

@@ -29,6 +29,8 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.ServiceResponseException;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.service.schema.ItemSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
@@ -46,9 +48,7 @@ import microsoft.exchange.webservices.data.enumeration.SendInvitationsOrCancella
 import microsoft.exchange.webservices.data.enumeration.Sensitivity;
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumeration.WellKnownFolderName;
-import microsoft.exchange.webservices.data.exception.InvalidOperationException;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceResponseException;
+import microsoft.exchange.webservices.data.misc.exception.InvalidOperationException;
 import microsoft.exchange.webservices.data.property.complex.Attachment;
 import microsoft.exchange.webservices.data.property.complex.AttachmentCollection;
 import microsoft.exchange.webservices.data.property.complex.ConversationId;
@@ -162,7 +162,7 @@ public class Item extends ServiceObject {
   /**
    * Throws exception if this is attachment.
    *
-   * @throws microsoft.exchange.webservices.data.exception.InvalidOperationException the invalid operation exception
+   * @throws InvalidOperationException the invalid operation exception
    */
   protected void throwIfThisIsAttachment() throws InvalidOperationException {
     if (this.isAttachment()) {
@@ -263,7 +263,7 @@ public class Item extends ServiceObject {
    * @param messageDisposition                 the message disposition
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
    * @return Updated item.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceResponseException the service response exception
+   * @throws ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
   protected Item internalUpdate(
@@ -394,7 +394,7 @@ public class Item extends ServiceObject {
    * be made if attachments have been added or removed.
    *
    * @param conflictResolutionMode the conflict resolution mode
-   * @throws microsoft.exchange.webservices.data.exception.ServiceResponseException the service response exception
+   * @throws ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
   public void update(ConflictResolutionMode conflictResolutionMode)
@@ -833,7 +833,7 @@ public class Item extends ServiceObject {
    * created.
    *
    * @return the checks if is unmodified
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    */
   public boolean getIsUnmodified() throws ServiceLocalException {
     return getPropertyBag().<Boolean>getObjectFromPropertyDefinition(
@@ -991,7 +991,7 @@ public class Item extends ServiceObject {
    * Gets the body of this item.
    *
    * @return MessageBody
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    */
   public MessageBody getBody() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(ItemSchema.Body);
@@ -1118,7 +1118,7 @@ public class Item extends ServiceObject {
    * Gets the name of the user who last modified this item.
    *
    * @return the last modified name
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    */
   public String getLastModifiedName() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(

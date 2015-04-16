@@ -21,9 +21,12 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.misc.exception;
 
-public class XmlException extends Exception {
+/**
+ * The Class ArgumentOutOfRangeException.
+ */
+public class ArgumentOutOfRangeException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
@@ -31,30 +34,30 @@ public class XmlException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new argument exception.
+   * Instantiates a new argument out of range exception.
    */
-  public XmlException() {
+  public ArgumentOutOfRangeException() {
     super();
 
   }
 
   /**
-   * Instantiates a new argument exception.
+   * Instantiates a new argument out of range exception.
    *
    * @param arg0 the arg0
    */
-  public XmlException(final String arg0) {
+  public ArgumentOutOfRangeException(final String arg0) {
     super(arg0);
 
   }
 
   /**
-   * ServiceXmlDeserializationException Constructor.
+   * Instantiates a new argument out of range exception.
    *
-   * @param message        the message
-   * @param innerException the inner exception
+   * @param arg0 the arg0
+   * @param arg1 the arg1
    */
-  public XmlException(String message, Exception innerException) {
-    super(message, innerException);
+  public ArgumentOutOfRangeException(final String arg0, final String arg1) {
+
   }
 }

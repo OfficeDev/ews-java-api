@@ -21,46 +21,32 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.exception;
+package microsoft.exchange.webservices.data.core.exception;
 
-import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
 
 /**
- *
- * The Class MaximumRedirectionHopsExceededException.
- *
- * @see microsoft.exchange.webservices.data.autodiscover.AutodiscoverService
+ * User: nwoodham Date: 3/8/11 Time: 5:30 PM
  */
-public class MaximumRedirectionHopsExceededException extends AutodiscoverLocalException {
+public class HttpErrorException extends Exception {
 
   /**
    * Constant serialized ID used for compatibility.
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * Initializes a new instance of the class.
-   */
-  public MaximumRedirectionHopsExceededException() {
+  private final int code;
+
+  public HttpErrorException() {
+    super();
+    this.code = 0;
   }
 
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param message the message
-   */
-  public MaximumRedirectionHopsExceededException(String message) {
+  public HttpErrorException(String message, int code) {
     super(message);
+    this.code = code;
   }
 
-  /**
-   * Initializes a new instance of the class.
-   *
-   * @param message        the message
-   * @param innerException the inner exception
-   */
-  public MaximumRedirectionHopsExceededException(String message, Exception innerException) {
-    super(message, innerException);
+  public int getHttpErrorCode() {
+    return this.code;
   }
-
 }
