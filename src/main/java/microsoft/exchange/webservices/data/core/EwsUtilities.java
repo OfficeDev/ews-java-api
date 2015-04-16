@@ -729,16 +729,16 @@ public final class EwsUtilities {
         }
       }
       return null;
-    } else if (cls.isAssignableFrom(Double.class)) {
+    } else if (Double.class.isAssignableFrom(cls)) {
       return (T) ((Double) Double.parseDouble(value));
-    } else if (cls.isAssignableFrom(Number.class))  {
+    } else if (Number.class.isAssignableFrom(cls))  {
       return (T) ((Integer) Integer.parseInt(value));
-    } else if (cls.isAssignableFrom(Date.class)) {
+    } else if (Date.class.isAssignableFrom(cls)) {
       DateFormat df = createDateFormat(XML_SCHEMA_DATE_TIME_FORMAT);
       return (T) df.parse(value);
-    } else if (cls.isAssignableFrom(Boolean.class)) {
+    } else if (Boolean.class.isAssignableFrom(cls)) {
       return (T) ((Boolean) Boolean.parseBoolean(value));
-    } else if (cls.isAssignableFrom(String.class)) {
+    } else if (String.class.isAssignableFrom(cls)) {
       return (T) value;
     }
     return null;

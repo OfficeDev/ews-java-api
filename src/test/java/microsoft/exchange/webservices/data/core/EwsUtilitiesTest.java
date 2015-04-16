@@ -45,12 +45,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.text.ParseException;
+
 @RunWith(JUnit4.class)
 public class EwsUtilitiesTest {
 
   @Test
   public void testGetBuildVersion() {
     Assert.assertEquals("Build version must be 0s", "0.0.0.0", EwsUtilities.getBuildVersion());
+  }
+
+  @Test
+  public void testParseInt() throws IllegalAccessException, ParseException, InstantiationException {
+    Assert.assertEquals(new Integer(14), EwsUtilities.parse(Integer.class, "14"));
   }
 
   @Test
