@@ -23,18 +23,18 @@
 
 package microsoft.exchange.webservices.data.autodiscover.configuration.outlook;
 
-import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.autodiscover.AlternateMailbox;
 import microsoft.exchange.webservices.data.autodiscover.AlternateMailboxCollection;
+import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverResponseType;
 import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponse;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverResponseType;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.OutlookProtocolType;
 import microsoft.exchange.webservices.data.enumeration.UserSettingName;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 
 import java.util.HashMap;
 import java.util.List;

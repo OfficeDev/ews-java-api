@@ -21,15 +21,29 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.core;
+
+import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 
 /**
- * The Interface IDisposable.
+ * The Interface IPredicate.
+ *
+ * @param <T> The type of the object to compare.
  */
-public interface IDisposable {
+public interface IPredicate<T> {
 
   /**
-   * Dispose.
+   * Represents the method that defines a
+   * set of criteria and determines whether
+   * the specified object meets those criteria.
+   *
+   * @param obj The object to compare against
+   *            the criteria defined within the method represented
+   *            by this delegate.
+   * @return true if obj meets the criteria
+   * defined within the method represented by this
+   * delegate; otherwise, false.
+   * @throws ServiceLocalException
    */
-  void dispose();
+  boolean predicate(T obj) throws ServiceLocalException;
 }

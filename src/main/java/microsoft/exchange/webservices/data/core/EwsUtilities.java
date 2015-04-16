@@ -23,9 +23,12 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import microsoft.exchange.webservices.data.ISelfValidate;
 import microsoft.exchange.webservices.data.attribute.EwsEnum;
 import microsoft.exchange.webservices.data.attribute.RequiredServerVersion;
 import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
+import microsoft.exchange.webservices.data.core.service.ICreateServiceObjectWithAttachmentParam;
+import microsoft.exchange.webservices.data.core.service.ICreateServiceObjectWithServiceParam;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.service.ServiceObjectInfo;
 import microsoft.exchange.webservices.data.core.service.item.Item;
@@ -45,12 +48,6 @@ import microsoft.exchange.webservices.data.exception.FormatException;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
-import microsoft.exchange.webservices.data.interfaces.IAction;
-import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithAttachmentParam;
-import microsoft.exchange.webservices.data.interfaces.ICreateServiceObjectWithServiceParam;
-import microsoft.exchange.webservices.data.interfaces.ILazyMember;
-import microsoft.exchange.webservices.data.interfaces.IPredicate;
-import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 import org.apache.commons.logging.Log;

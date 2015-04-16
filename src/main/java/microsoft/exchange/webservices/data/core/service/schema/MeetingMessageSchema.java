@@ -28,7 +28,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.MeetingResponseType;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
+import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.definition.BoolPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;

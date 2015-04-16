@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.property.complex.availability;
 
-import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 
 /**
  * Represents the details of a calendar event as returned by the

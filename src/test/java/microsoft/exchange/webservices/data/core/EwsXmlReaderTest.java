@@ -23,7 +23,8 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.core.EwsXmlReader;
+import static org.mockito.Mockito.doReturn;
+
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import org.junit.Assert;
 import org.junit.Before;
@@ -36,9 +37,8 @@ import org.mockito.MockitoAnnotations;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.XMLEvent;
-import java.io.ByteArrayInputStream;
 
-import static org.mockito.Mockito.doReturn;
+import java.io.ByteArrayInputStream;
 
 public class EwsXmlReaderTest {
 

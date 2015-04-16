@@ -23,8 +23,6 @@
 
 package microsoft.exchange.webservices.data.property.complex;
 
-import java.util.ArrayList;
-
 import microsoft.exchange.webservices.data.exception.ArgumentException;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
@@ -32,6 +30,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import java.util.ArrayList;
 
 @RunWith(JUnit4.class)
 public class ExtendedPropertyCollectionTest {

@@ -23,10 +23,6 @@
 
 package microsoft.exchange.webservices.data.core.service.item;
 
-import microsoft.exchange.webservices.data.core.service.response.CancelMeetingMessage;
-import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingInvitationMessage;
-import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
-import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.attribute.Attachable;
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
@@ -34,8 +30,11 @@ import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.service.response.AcceptMeetingInvitationMessage;
+import microsoft.exchange.webservices.data.core.service.response.CancelMeetingMessage;
+import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.core.service.response.ResponseMessage;
 import microsoft.exchange.webservices.data.core.service.schema.AppointmentSchema;
+import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.enumeration.AppointmentType;
 import microsoft.exchange.webservices.data.enumeration.ConflictResolutionMode;
 import microsoft.exchange.webservices.data.enumeration.DeleteMode;
@@ -48,8 +47,8 @@ import microsoft.exchange.webservices.data.enumeration.SendInvitationsMode;
 import microsoft.exchange.webservices.data.enumeration.SendInvitationsOrCancellationsMode;
 import microsoft.exchange.webservices.data.enumeration.WellKnownFolderName;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.interfaces.ICalendarActionProvider;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
+import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.property.complex.AppointmentOccurrenceId;
 import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;
 import microsoft.exchange.webservices.data.property.complex.DeletedOccurrenceInfoCollection;

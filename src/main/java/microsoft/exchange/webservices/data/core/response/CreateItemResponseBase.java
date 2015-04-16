@@ -23,14 +23,13 @@
 
 package microsoft.exchange.webservices.data.core.response;
 
+import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.service.item.Item;
-import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
+import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
-import microsoft.exchange.webservices.data.interfaces.IGetObjectInstanceDelegate;
 
 import java.util.List;
 

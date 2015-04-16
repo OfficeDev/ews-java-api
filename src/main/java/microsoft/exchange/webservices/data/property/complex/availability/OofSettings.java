@@ -23,19 +23,19 @@
 
 package microsoft.exchange.webservices.data.property.complex.availability;
 
-import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
+import microsoft.exchange.webservices.data.ISelfValidate;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
-import microsoft.exchange.webservices.data.misc.availability.OofReply;
-import microsoft.exchange.webservices.data.misc.availability.TimeWindow;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.OofExternalAudience;
 import microsoft.exchange.webservices.data.enumeration.OofState;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ArgumentException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.misc.availability.OofReply;
+import microsoft.exchange.webservices.data.misc.availability.TimeWindow;
+import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 
 import javax.xml.stream.XMLStreamException;
 

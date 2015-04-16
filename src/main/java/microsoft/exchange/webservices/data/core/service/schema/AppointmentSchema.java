@@ -23,18 +23,18 @@
 
 package microsoft.exchange.webservices.data.core.service.schema;
 
-import microsoft.exchange.webservices.data.core.service.item.Appointment;
 import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.service.item.Appointment;
 import microsoft.exchange.webservices.data.enumeration.AppointmentType;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumeration.MeetingResponseType;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;
 import microsoft.exchange.webservices.data.property.complex.DeletedOccurrenceInfoCollection;
 import microsoft.exchange.webservices.data.property.complex.EmailAddress;
+import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.ItemCollection;
 import microsoft.exchange.webservices.data.property.complex.OccurrenceInfo;
 import microsoft.exchange.webservices.data.property.complex.OccurrenceInfoCollection;

@@ -24,7 +24,6 @@
 package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.interfaces.IFunction;
 import org.apache.commons.codec.binary.Base64;
 
 import java.util.Date;

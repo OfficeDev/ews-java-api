@@ -23,14 +23,14 @@
 
 package microsoft.exchange.webservices.data.property.complex.time;
 
-import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.misc.TimeSpan;
+import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 
 /**
  * Represents a time zone period as defined in the EWS schema.

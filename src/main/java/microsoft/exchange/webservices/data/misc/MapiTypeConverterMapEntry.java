@@ -24,13 +24,12 @@
 package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.ILazyMember;
 import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.exception.ArgumentException;
 import microsoft.exchange.webservices.data.exception.ArgumentNullException;
 import microsoft.exchange.webservices.data.exception.FormatException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.interfaces.IFunction;
-import microsoft.exchange.webservices.data.interfaces.ILazyMember;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

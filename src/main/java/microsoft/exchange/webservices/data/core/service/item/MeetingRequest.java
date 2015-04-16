@@ -23,24 +23,23 @@
 
 package microsoft.exchange.webservices.data.core.service.item;
 
-import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingInvitationMessage;
-import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
-import microsoft.exchange.webservices.data.core.service.response.AcceptMeetingInvitationMessage;
-import microsoft.exchange.webservices.data.core.service.schema.AppointmentSchema;
-import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.service.schema.MeetingRequestSchema;
-import microsoft.exchange.webservices.data.core.PropertySet;
-import microsoft.exchange.webservices.data.misc.TimeSpan;
-import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
+import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.PropertySet;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.service.response.AcceptMeetingInvitationMessage;
+import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingInvitationMessage;
+import microsoft.exchange.webservices.data.core.service.schema.AppointmentSchema;
+import microsoft.exchange.webservices.data.core.service.schema.MeetingRequestSchema;
+import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.enumeration.AppointmentType;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus;
 import microsoft.exchange.webservices.data.enumeration.MeetingRequestType;
 import microsoft.exchange.webservices.data.enumeration.MeetingResponseType;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.interfaces.ICalendarActionProvider;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
+import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;
 import microsoft.exchange.webservices.data.property.complex.DeletedOccurrenceInfoCollection;
 import microsoft.exchange.webservices.data.property.complex.EmailAddress;

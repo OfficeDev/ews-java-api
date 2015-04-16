@@ -21,22 +21,20 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
+import javax.xml.stream.XMLStreamWriter;
 
 /**
- * Used to create instances of ComplexProperty.
- *
- * @param <TComplexProperty> Type that extends ComplexProperty
+ * The Interface CustomXmlSerializationInterface.
  */
-public interface ICreateComplexPropertyDelegate
-    <TComplexProperty extends ComplexProperty> {
+public interface ICustomXmlSerialization {
 
   /**
-   * used to create instances of ComplexProperty.
+   * Custom xml serialization.
    *
-   * @return Complex property instance
+   * @param writer the writer
    */
-  TComplexProperty createComplexProperty();
+  void CustomXmlSerialization(XMLStreamWriter writer);
+
 }

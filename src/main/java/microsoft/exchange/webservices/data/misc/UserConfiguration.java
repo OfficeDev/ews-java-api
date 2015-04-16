@@ -29,7 +29,6 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.security.XmlNodeType;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.UserConfigurationProperties;
 import microsoft.exchange.webservices.data.enumeration.WellKnownFolderName;
@@ -41,11 +40,13 @@ import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationExce
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.UserConfigurationDictionary;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.commons.codec.binary.Base64;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.util.EnumSet;
 
 /**

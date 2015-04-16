@@ -24,17 +24,22 @@
 package microsoft.exchange.webservices.data.search;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.SortDirection;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import javax.xml.stream.XMLStreamException;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Represents an ordered collection of property definitions qualified with a

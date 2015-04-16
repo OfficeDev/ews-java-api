@@ -25,13 +25,13 @@ package microsoft.exchange.webservices.data.core.response;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.service.folder.Folder;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.security.XmlNodeType;
+import microsoft.exchange.webservices.data.core.service.folder.Folder;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.search.FindFoldersResults;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 
 /**
  * Represents the response to a folder search operation.

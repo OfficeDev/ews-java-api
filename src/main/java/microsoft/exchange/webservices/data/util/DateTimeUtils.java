@@ -23,10 +23,10 @@
 
 package microsoft.exchange.webservices.data.util;
 
-import java.util.Date;
-
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
+import java.util.Date;
 
 public final class DateTimeUtils {
 

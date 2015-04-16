@@ -21,21 +21,23 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.core;
+
+import java.io.OutputStream;
 
 /**
- * The Interface IAction.
- *
- * @param <T> The type of the parameter of the
- *            method that this delegate encapsulates.
+ * Defines a file attachment content handler. Application can implement
+ * IFileAttachmentContentHandler /// to provide a stream in which the content of
+ * file attachment should be written.
  */
-public interface IAction<T> {
+public interface IFileAttachmentContentHandler {
 
   /**
-   * Encapsulates a method that takes a single parameter and does not return a
-   * value.
+   * Provides a stream to which the content of the attachment with the
+   * specified Id should be written.
    *
-   * @param obj The parameter of the method that this delegate encapsulates.
+   * @param attachmentId The Id of the attachment that is being loaded.
+   * @return A Stream to which the content of the attachment will be written.
    */
-  void action(T obj);
+  OutputStream getOutputStream(String attachmentId);
 }

@@ -23,8 +23,6 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.misc.Param;
-
 /**
  * The Class RefParam.
  *

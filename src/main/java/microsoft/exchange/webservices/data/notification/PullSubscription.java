@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.notification;
 
-import microsoft.exchange.webservices.data.misc.AsyncCallback;
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
+import microsoft.exchange.webservices.data.misc.AsyncCallback;
+import microsoft.exchange.webservices.data.misc.IAsyncResult;
 
 /**
  * Represents a pull subscription.

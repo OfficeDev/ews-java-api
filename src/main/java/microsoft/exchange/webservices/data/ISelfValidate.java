@@ -21,22 +21,20 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data;
 
-import microsoft.exchange.webservices.data.exception.FormatException;
+import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 
 /**
- * The Interface FuncDelegate.
- *
- * @param <TResult> the generic type
+ * The Interface ISelfValidate.
  */
-public interface IFuncDelegate<TResult> {
+public interface ISelfValidate {
 
   /**
-   * Func.
+   * Validate.
    *
-   * @return the t result
-   * @throws microsoft.exchange.webservices.data.exception.FormatException the format exception
+   * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException the service validation exception
+   * @throws Exception                  the exception
    */
-  TResult func() throws FormatException;
+  void validate() throws ServiceValidationException, Exception;
 }

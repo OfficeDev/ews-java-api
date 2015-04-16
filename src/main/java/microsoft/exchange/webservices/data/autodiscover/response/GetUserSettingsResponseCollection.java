@@ -23,8 +23,8 @@
 
 package microsoft.exchange.webservices.data.autodiscover.response;
 
-import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverResponseCollection;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
 
 /**
  * Represents a collection of response to GetUserSettings.

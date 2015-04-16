@@ -21,17 +21,23 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.autodiscover;
+
+import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
 
 /**
- * Interface defined for types that can produce a string representation for use
- * in search filter.
+ * Defines a delegate that is used by the AutodiscoverService to ask whether a
+ * redirectionUrl can be used.
  */
-public interface ISearchStringProvider {
+public interface IAutodiscoverRedirectionUrl {
+
   /**
-   * Get a string representation for using this instance in a search filter.
+   * Autodiscover redirection url validation callback.
    *
-   * @return String representation of instance.
+   * @param redirectionUrl the redirection url
+   * @return true, if successful
+   * @throws AutodiscoverLocalException the autodiscover local exception
    */
-  String getSearchString();
+  boolean autodiscoverRedirectionUrlValidationCallback(
+      String redirectionUrl) throws AutodiscoverLocalException;
 }

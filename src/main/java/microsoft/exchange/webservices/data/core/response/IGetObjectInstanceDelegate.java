@@ -21,27 +21,26 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.core.response;
 
+import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 
 /**
- * Complex property that implement that interface are owned by an instance of
- * EwsObject. For this reason, they also cannot be shared.
+ * The Interface GetObjectInstanceDelegateInterface.
+ *
+ * @param <T> the generic type
  */
-public interface IOwnedProperty {
+public interface IGetObjectInstanceDelegate<T extends ServiceObject> {
 
   /**
-   * Gets the owner.
+   * Gets the object instance delegate.
    *
-   * @return The owner.
+   * @param service        the service
+   * @param xmlElementName the xml element name
+   * @return the object instance delegate
+   * @throws Exception the exception
    */
-  ServiceObject getOwner();
-
-  /**
-   * Sets the owner.
-   *
-   * @param obj The owner.
-   */
-  void setOwner(ServiceObject obj);
+  T getObjectInstanceDelegate(ExchangeService service, String xmlElementName)
+      throws Exception;
 }

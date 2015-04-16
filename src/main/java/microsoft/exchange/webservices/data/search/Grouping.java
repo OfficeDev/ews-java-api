@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data.search;
 
+import microsoft.exchange.webservices.data.ISelfValidate;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
@@ -31,7 +32,6 @@ import microsoft.exchange.webservices.data.enumeration.AggregateType;
 import microsoft.exchange.webservices.data.enumeration.SortDirection;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

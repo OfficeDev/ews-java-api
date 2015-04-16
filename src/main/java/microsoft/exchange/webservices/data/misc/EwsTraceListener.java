@@ -23,7 +23,6 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.interfaces.ITraceListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

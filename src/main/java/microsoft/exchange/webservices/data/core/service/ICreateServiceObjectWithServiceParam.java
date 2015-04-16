@@ -21,20 +21,22 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.core.service;
 
-import microsoft.exchange.webservices.data.core.service.ServiceObject;
+import microsoft.exchange.webservices.data.core.ExchangeService;
 
 /**
- * The Interface ServiceObjectChangedDelegateInterface.
+ * The Interface ICreateServiceObjectWithServiceParam.
  */
-public interface IServiceObjectChangedDelegate {
+public interface ICreateServiceObjectWithServiceParam {
 
   /**
-   * Service object changed.
+   * Creates the service object with service param.
    *
-   * @param serviceObject the service object
+   * @param srv the srv
+   * @return the object
+   * @throws Exception the exception
    */
-  void serviceObjectChanged(ServiceObject serviceObject);
-
+  Object createServiceObjectWithServiceParam(ExchangeService srv)
+      throws Exception;
 }
