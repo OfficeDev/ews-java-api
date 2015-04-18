@@ -728,7 +728,7 @@ public final class EwsUtilities {
       return null;
     } else if (cls.isAssignableFrom(Double.class)) {
       return (T) ((Double) Double.parseDouble(value));
-    } else if (cls.isAssignableFrom(Number.class))  {
+    } else if (cls.isAssignableFrom(Number.class) || cls == Integer.class)  {
       return (T) ((Integer) Integer.parseInt(value));
     } else if (cls.isAssignableFrom(Date.class)) {
       DateFormat df = createDateFormat(XML_SCHEMA_DATE_TIME_FORMAT);
