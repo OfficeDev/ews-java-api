@@ -31,6 +31,7 @@ import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationEx
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.util.ArrayList;
 import java.util.Collection;
 

@@ -23,16 +23,19 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.core.request.WaitHandle;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
 import microsoft.exchange.webservices.data.core.request.ServiceRequestBase;
 import microsoft.exchange.webservices.data.core.request.SimpleServiceRequestBase;
+import microsoft.exchange.webservices.data.core.request.WaitHandle;
 import microsoft.exchange.webservices.data.exception.ArgumentException;
-import microsoft.exchange.webservices.data.interfaces.IAsyncResult;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class AsyncRequestResult implements IAsyncResult {
 

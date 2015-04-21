@@ -21,13 +21,14 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.autodiscover;
 
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;

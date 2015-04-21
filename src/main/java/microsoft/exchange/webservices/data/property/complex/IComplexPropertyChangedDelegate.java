@@ -21,20 +21,17 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
-
-import javax.xml.stream.XMLStreamWriter;
+package microsoft.exchange.webservices.data.property.complex;
 
 /**
- * The Interface CustomXmlSerializationInterface.
+ * The Interface ComplexPropertyChangedDelegateInterface.
  */
-public interface ICustomXmlSerialization {
+public interface IComplexPropertyChangedDelegate {
 
   /**
-   * Custom xml serialization.
+   * Complex property changed.
    *
-   * @param writer the writer
+   * @param complexProperty the complex property
    */
-  void CustomXmlSerialization(XMLStreamWriter writer);
-
+  void complexPropertyChanged(ComplexProperty complexProperty);
 }

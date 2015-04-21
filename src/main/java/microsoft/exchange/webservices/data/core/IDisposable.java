@@ -21,23 +21,15 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
-
-import microsoft.exchange.webservices.data.core.request.WaitHandle;
-
-import java.util.concurrent.Future;
+package microsoft.exchange.webservices.data.core;
 
 /**
- * Represents the stauts of Asynchronous operation.
+ * The Interface IDisposable.
  */
+public interface IDisposable {
 
-public interface IAsyncResult extends Future<Object> {
-
-  public Object getAsyncState();
-
-  public WaitHandle getAsyncWaitHanle();
-
-  public boolean getCompleteSynchronously();
-
-  public boolean getIsCompleted();
+  /**
+   * Dispose.
+   */
+  void dispose();
 }

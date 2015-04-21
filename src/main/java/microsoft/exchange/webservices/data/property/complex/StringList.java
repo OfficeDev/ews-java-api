@@ -31,6 +31,7 @@ import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationEx
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

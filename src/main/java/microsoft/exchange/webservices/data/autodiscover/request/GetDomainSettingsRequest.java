@@ -23,21 +23,22 @@
 
 package microsoft.exchange.webservices.data.autodiscover.request;
 
+import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
-import microsoft.exchange.webservices.data.enumeration.DomainSettingName;
+import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
+import microsoft.exchange.webservices.data.autodiscover.response.GetDomainSettingsResponseCollection;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.enumeration.DomainSettingName;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
-import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
-import microsoft.exchange.webservices.data.autodiscover.response.GetDomainSettingsResponseCollection;
 
 import javax.xml.stream.XMLStreamException;
+
 import java.net.URI;
 import java.util.List;
 

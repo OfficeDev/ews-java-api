@@ -21,21 +21,24 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.core.service;
 
-import microsoft.exchange.webservices.data.core.SimplePropertyBag;
+import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 
 /**
- * The Interface PropertyBagChangedDelegateInterface.
- *
- * @param <TKey> the generic type
+ * The Interface ICreateServiceObjectWithAttachmentParam.
  */
+public interface ICreateServiceObjectWithAttachmentParam {
 
-public interface IPropertyBagChangedDelegate<TKey> {
   /**
-   * Property bag changed.
+   * Creates the service object with attachment param.
    *
-   * @param simplePropertyBag the simple property bag
+   * @param itemAttachment the item attachment
+   * @param isNew          the is new
+   * @return the object
+   * @throws Exception the exception
    */
-  void propertyBagChanged(SimplePropertyBag<TKey> simplePropertyBag);
+  Object createServiceObjectWithAttachmentParam(
+      ItemAttachment itemAttachment, boolean isNew) throws Exception;
+
 }

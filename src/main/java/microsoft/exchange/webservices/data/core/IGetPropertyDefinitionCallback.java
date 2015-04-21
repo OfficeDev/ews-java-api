@@ -21,24 +21,21 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
+import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
 /**
- * The Interface ICreateServiceObjectWithAttachmentParam.
+ * The Interface GetPropertyDefinitionCallbackInterface.
  */
-public interface ICreateServiceObjectWithAttachmentParam {
+interface IGetPropertyDefinitionCallback {
 
   /**
-   * Creates the service object with attachment param.
+   * Gets the property definition callback.
    *
-   * @param itemAttachment the item attachment
-   * @param isNew          the is new
-   * @return the object
-   * @throws Exception the exception
+   * @param version the version
+   * @return the property definition callback
    */
-  Object createServiceObjectWithAttachmentParam(
-      ItemAttachment itemAttachment, boolean isNew) throws Exception;
-
+  PropertyDefinition getPropertyDefinitionCallback(ExchangeVersion version);
 }

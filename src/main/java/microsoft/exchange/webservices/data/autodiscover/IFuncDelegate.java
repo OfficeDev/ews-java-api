@@ -21,21 +21,22 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.autodiscover;
 
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
+import microsoft.exchange.webservices.data.exception.FormatException;
 
 /**
- * The Interface GetPropertyDefinitionCallbackInterface.
+ * The Interface FuncDelegate.
+ *
+ * @param <TResult> the generic type
  */
-interface IGetPropertyDefinitionCallback {
+public interface IFuncDelegate<TResult> {
 
   /**
-   * Gets the property definition callback.
+   * Func.
    *
-   * @param version the version
-   * @return the property definition callback
+   * @return the t result
+   * @throws microsoft.exchange.webservices.data.exception.FormatException the format exception
    */
-  PropertyDefinition getPropertyDefinitionCallback(ExchangeVersion version);
+  TResult func() throws FormatException;
 }

@@ -21,26 +21,17 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
-
-import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.service.ServiceObject;
+package microsoft.exchange.webservices.data.property.complex;
 
 /**
- * The Interface GetObjectInstanceDelegateInterface.
- *
- * @param <T> the generic type
+ * Interface defined for types that can produce a string representation for use
+ * in search filter.
  */
-public interface IGetObjectInstanceDelegate<T extends ServiceObject> {
-
+public interface ISearchStringProvider {
   /**
-   * Gets the object instance delegate.
+   * Get a string representation for using this instance in a search filter.
    *
-   * @param service        the service
-   * @param xmlElementName the xml element name
-   * @return the object instance delegate
-   * @throws Exception the exception
+   * @return String representation of instance.
    */
-  T getObjectInstanceDelegate(ExchangeService service, String xmlElementName)
-      throws Exception;
+  String getSearchString();
 }

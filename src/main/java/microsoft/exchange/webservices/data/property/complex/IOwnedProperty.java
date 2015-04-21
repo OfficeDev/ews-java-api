@@ -21,22 +21,27 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.property.complex;
 
-import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
 
 /**
- * The Interface ICreateServiceObjectWithServiceParam.
+ * Complex property that implement that interface are owned by an instance of
+ * EwsObject. For this reason, they also cannot be shared.
  */
-public interface ICreateServiceObjectWithServiceParam {
+public interface IOwnedProperty {
 
   /**
-   * Creates the service object with service param.
+   * Gets the owner.
    *
-   * @param srv the srv
-   * @return the object
-   * @throws Exception the exception
+   * @return The owner.
    */
-  Object createServiceObjectWithServiceParam(ExchangeService srv)
-      throws Exception;
+  ServiceObject getOwner();
+
+  /**
+   * Sets the owner.
+   *
+   * @param obj The owner.
+   */
+  void setOwner(ServiceObject obj);
 }

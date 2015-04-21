@@ -21,11 +21,19 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.core;
 
 /**
- * The Interface DateTimePropertyDefinitionInterface.
+ * The Interface ILazyMember.
+ *
+ * @param <T> the generic type
  */
-interface IDateTimePropertyDefinition {
+public interface ILazyMember<T> {
 
+  /**
+   * Creates the instance.
+   *
+   * @return the t
+   */
+  T createInstance();
 }

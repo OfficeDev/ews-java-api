@@ -21,21 +21,19 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.misc;
 
 /**
- * The Interface Func.
- *
- * @param <T>       the generic type
- * @param <TResult> the generic type
+ * ITraceListener handles message tracing.
  */
-public interface IFunc<T, TResult> {
+public interface ITraceListener {
 
   /**
-   * Func.
+   * Handles a trace message.
    *
-   * @param arg the arg
-   * @return the t result
+   * @param traceType    Type of trace message.
+   * @param traceMessage The trace message.
    */
-  TResult func(T arg);
+  void trace(String traceType, String traceMessage);
+
 }

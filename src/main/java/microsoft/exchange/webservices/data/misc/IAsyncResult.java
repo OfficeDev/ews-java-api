@@ -21,19 +21,23 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.misc;
+
+import microsoft.exchange.webservices.data.core.request.WaitHandle;
+
+import java.util.concurrent.Future;
 
 /**
- * ITraceListener handles message tracing.
+ * Represents the stauts of Asynchronous operation.
  */
-public interface ITraceListener {
 
-  /**
-   * Handles a trace message.
-   *
-   * @param traceType    Type of trace message.
-   * @param traceMessage The trace message.
-   */
-  void trace(String traceType, String traceMessage);
+public interface IAsyncResult extends Future<Object> {
 
+  public Object getAsyncState();
+
+  public WaitHandle getAsyncWaitHanle();
+
+  public boolean getCompleteSynchronously();
+
+  public boolean getIsCompleted();
 }

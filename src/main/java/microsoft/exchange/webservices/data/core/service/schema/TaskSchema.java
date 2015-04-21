@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumeration.TaskMode;
 import microsoft.exchange.webservices.data.enumeration.TaskStatus;
-import microsoft.exchange.webservices.data.interfaces.ICreateComplexPropertyDelegate;
+import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.StringList;
 import microsoft.exchange.webservices.data.property.definition.BoolPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.ComplexPropertyDefinition;

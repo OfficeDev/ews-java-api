@@ -21,21 +21,21 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.core;
 
 /**
- * The Interface FuncInterface.
+ * The Interface IAction.
  *
- * @param <T>       the generic type
- * @param <TResult> the generic type
+ * @param <T> The type of the parameter of the
+ *            method that this delegate encapsulates.
  */
-public interface IFunction<T, TResult> {
+public interface IAction<T> {
 
   /**
-   * Func.
+   * Encapsulates a method that takes a single parameter and does not return a
+   * value.
    *
-   * @param arg the arg
-   * @return the t result
+   * @param obj The parameter of the method that this delegate encapsulates.
    */
-  TResult func(T arg);
+  void action(T obj);
 }

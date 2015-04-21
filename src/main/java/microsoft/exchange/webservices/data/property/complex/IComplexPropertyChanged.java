@@ -21,9 +21,7 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
-
-import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
+package microsoft.exchange.webservices.data.property.complex;
 
 /**
  * Indicates that a complex property changed.

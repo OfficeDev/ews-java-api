@@ -23,8 +23,8 @@
 
 package microsoft.exchange.webservices.data.misc;
 
+import microsoft.exchange.webservices.data.ISelfValidate;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.interfaces.ISelfValidate;
 
 /**
  * Represents a mobile phone.

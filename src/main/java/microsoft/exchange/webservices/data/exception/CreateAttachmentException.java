@@ -23,8 +23,8 @@
 
 package microsoft.exchange.webservices.data.exception;
 
-import microsoft.exchange.webservices.data.core.response.CreateAttachmentResponse;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.response.CreateAttachmentResponse;
 import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
 
 /**

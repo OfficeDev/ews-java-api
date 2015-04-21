@@ -21,20 +21,11 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
-
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+package microsoft.exchange.webservices.data.property.definition;
 
 /**
- * The Interface ISelfValidate.
+ * The Interface DateTimePropertyDefinitionInterface.
  */
-public interface ISelfValidate {
+interface IDateTimePropertyDefinition {
 
-  /**
-   * Validate.
-   *
-   * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException the service validation exception
-   * @throws Exception                  the exception
-   */
-  void validate() throws ServiceValidationException, Exception;
 }

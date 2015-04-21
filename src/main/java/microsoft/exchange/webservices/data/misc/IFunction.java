@@ -21,19 +21,21 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.interfaces;
+package microsoft.exchange.webservices.data.misc;
 
 /**
- * The Interface ILazyMember.
+ * The Interface FuncInterface.
  *
- * @param <T> the generic type
+ * @param <T>       the generic type
+ * @param <TResult> the generic type
  */
-public interface ILazyMember<T> {
+public interface IFunction<T, TResult> {
 
   /**
-   * Creates the instance.
+   * Func.
    *
-   * @return the t
+   * @param arg the arg
+   * @return the t result
    */
-  T createInstance();
+  TResult func(T arg);
 }
