@@ -45,12 +45,57 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+
 @RunWith(JUnit4.class)
 public class EwsUtilitiesTest {
 
   @Test
   public void testGetBuildVersion() {
     Assert.assertEquals("Build version must be 0s", "0.0.0.0", EwsUtilities.getBuildVersion());
+  }
+
+  @Test
+  public void testParseDouble() throws IllegalAccessException, ParseException, InstantiationException {
+    Assert.assertEquals(new Double(14.0), EwsUtilities.parse(Double.class, "14.0"));
+  }
+
+  @Test
+  public void testParseNumber() throws IllegalAccessException, ParseException, InstantiationException {
+    Assert.assertEquals(new Integer(14), EwsUtilities.parse(Number.class, "14"));
+  }
+
+  @Test
+  public void testParseInt() throws IllegalAccessException, ParseException, InstantiationException {
+    Assert.assertEquals(new Integer(14), EwsUtilities.parse(Integer.class, "14"));
+  }
+
+  @Test
+  public void testParseDate() throws IllegalAccessException, ParseException, InstantiationException {
+    Calendar calendar = new GregorianCalendar();
+    calendar.set(Calendar.YEAR, 2015);
+    calendar.set(Calendar.MONTH, 6);
+    calendar.set(Calendar.DAY_OF_MONTH, 26);
+    calendar.set(Calendar.HOUR_OF_DAY, 14);
+    calendar.set(Calendar.MINUTE, 0);
+    calendar.set(Calendar.SECOND, 0);
+    calendar.set(Calendar.MILLISECOND, 0);
+    calendar.setTimeZone(TimeZone.getTimeZone("GMT"));
+    Assert.assertEquals(calendar.getTime(), EwsUtilities.parse(Date.class, "2015-07-26T14:00:00Z"));
+  }
+
+  @Test
+  public void testParseBoolean() throws IllegalAccessException, ParseException, InstantiationException {
+    Assert.assertEquals(Boolean.FALSE, EwsUtilities.parse(Boolean.class, "false"));
+  }
+
+  @Test
+  public void testParseString() throws IllegalAccessException, ParseException, InstantiationException {
+    Assert.assertEquals("14", EwsUtilities.parse(String.class, "14"));
   }
 
   @Test
