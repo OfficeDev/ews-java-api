@@ -60,6 +60,8 @@ import javax.xml.stream.XMLStreamWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -700,17 +702,12 @@ public final class EwsUtilities {
    * @param cls   the cls
    * @param value the value
    * @return the t
-   * @throws InstantiationException   the instantiation exception
-   * @throws IllegalAccessException   the illegal access exception
    * @throws java.text.ParseException the parse exception
    */
   @SuppressWarnings("unchecked")
-  public static <T> T parse(Class<T> cls, String value)
-      throws InstantiationException, IllegalAccessException,
-      ParseException {
+  public static <T> T parse(Class<T> cls, String value) throws ParseException {
     if (cls.isEnum()) {
-      final Map<Class<?>, Map<String, String>> member =
-        SCHEMA_TO_ENUM_DICTIONARIES.getMember();
+      final Map<Class<?>, Map<String, String>> member = SCHEMA_TO_ENUM_DICTIONARIES.getMember();
 
       String val = value;
       final Map<String, String> stringToEnumDict = member.get(cls);
@@ -726,16 +723,30 @@ public final class EwsUtilities {
         }
       }
       return null;
-    } else if (cls.isAssignableFrom(Double.class)) {
-      return (T) ((Double) Double.parseDouble(value));
-    } else if (cls.isAssignableFrom(Number.class))  {
-      return (T) ((Integer) Integer.parseInt(value));
-    } else if (cls.isAssignableFrom(Date.class)) {
+    }else if (Number.class.isAssignableFrom(cls)){
+      if (Double.class.isAssignableFrom(cls)){
+        return (T) ((Double) Double.parseDouble(value));
+      }else if (Integer.class.isAssignableFrom(cls)) {
+        return (T) ((Integer) Integer.parseInt(value));
+      }else if (Long.class.isAssignableFrom(cls)){
+        return (T) ((Long) Long.parseLong(value));
+      }else if (Float.class.isAssignableFrom(cls)){
+        return (T) ((Float) Float.parseFloat(value));
+      }else if (Byte.class.isAssignableFrom(cls)){
+        return (T) ((Byte) Byte.parseByte(value));
+      }else if (Short.class.isAssignableFrom(cls)){
+        return (T) ((Short) Short.parseShort(value));
+      }else if (BigInteger.class.isAssignableFrom(cls)){
+        return (T) (new BigInteger(value));
+      }else if (BigDecimal.class.isAssignableFrom(cls)){
+        return (T) (new BigDecimal(value));
+      }
+    } else if (Date.class.isAssignableFrom(cls)) {
       DateFormat df = createDateFormat(XML_SCHEMA_DATE_TIME_FORMAT);
       return (T) df.parse(value);
-    } else if (cls.isAssignableFrom(Boolean.class)) {
+    } else if (Boolean.class.isAssignableFrom(cls)) {
       return (T) ((Boolean) Boolean.parseBoolean(value));
-    } else if (cls.isAssignableFrom(String.class)) {
+    } else if (String.class.isAssignableFrom(cls)) {
       return (T) value;
     }
     return null;
