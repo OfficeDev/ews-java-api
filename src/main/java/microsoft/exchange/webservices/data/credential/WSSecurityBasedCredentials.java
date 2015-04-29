@@ -153,13 +153,13 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
       throws XMLStreamException {
     writer.writeAttribute(
         "xmlns",
+        "",
         EwsUtilities.WSSecuritySecExtNamespacePrefix,
-        null,
         EwsUtilities.WSSecuritySecExtNamespace);
     writer.writeAttribute(
         "xmlns",
+        "",
         EwsUtilities.WSAddressingNamespacePrefix,
-        null,
         EwsUtilities.WSAddressingNamespace);
   }
 
