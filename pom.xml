@@ -176,6 +176,13 @@
         </dependency>
 
         <dependency>
+            <groupId>com.github.rwitzel.streamflyer</groupId>
+            <artifactId>streamflyer-core</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>${commons-logging.version}</version>
