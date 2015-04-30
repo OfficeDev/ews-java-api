@@ -43,6 +43,23 @@ import java.util.List;
 public class DnsClient {
 
   /**
+   * Set up the environment used to construct the DirContext.
+   *
+   * @param dnsServerAddress
+   * @return
+   */
+  static Hashtable<String, String> getEnv(String dnsServerAddress) {
+    // Set up environment for creating initial context
+    Hashtable<String, String> env = new Hashtable<String, String>();
+    env.put("java.naming.factory.initial",
+            "com.sun.jndi.dns.DnsContextFactory");
+    if(dnsServerAddress != null && !dnsServerAddress.isEmpty()) {
+      env.put("java.naming.provider.url", "dns://" + dnsServerAddress);
+    }
+    return env;
+  }
+
+  /**
    * Performs Dns query.
    *
    * @param <T>              the generic type
@@ -58,15 +75,8 @@ public class DnsClient {
 
     List<T> dnsRecordList = new ArrayList<T>();
     try {
-
-      // Set up environment for creating initial context
-      Hashtable<String, String> env = new Hashtable<String, String>();
-      env.put("java.naming.factory.initial",
-          "com.sun.jndi.dns.DnsContextFactory");
-      env.put("java.naming.provider.url", "dns://" + dnsServerAddress);
-
       // Create initial context
-      DirContext ictx = new InitialDirContext(env);
+      DirContext ictx = new InitialDirContext(getEnv(dnsServerAddress));
 
       // Retrieve SRV record context attribute for the specified domain
       Attributes contextAttributes = ictx.getAttributes(domain,
