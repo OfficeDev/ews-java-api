@@ -233,6 +233,13 @@ final class OutlookProtocol {
                       return arg.publicFolderServer;
                     }
                   });
+              results.put(UserSettingName.GroupingInformation,
+                new IFunc<OutlookProtocol, Object>() {
+                  public Object func(OutlookProtocol arg) {
+                    return arg.groupingInformation;
+                  }
+                });
+
               return results;
             }
           });
@@ -561,6 +568,10 @@ final class OutlookProtocol {
    * The constant internalOutlookWebAccessUrls.
    */
   private WebClientUrlCollection internalOutlookWebAccessUrls;
+  /**
+   * The constant groupingInformation.
+   */
+  private String groupingInformation;
 
 
   /**
@@ -651,7 +662,10 @@ final class OutlookProtocol {
           this.ecpUrlPublish = reader.readElementValue();
         } else if (reader.getLocalName().equals(
             XmlElementNames.ExchangeRpcUrl)) {
-          this.exchangeRpcUrl = reader.readElementValue();
+            this.exchangeRpcUrl = reader.readElementValue();
+        } else if (reader.getLocalName().equals(
+            XmlElementNames.GroupingInformation)) {
+            this.groupingInformation = reader.readElementValue();
         } else {
           reader.skipCurrentElement();
         }

@@ -352,4 +352,9 @@ public enum UserSettingName {
    */
 
   MobileMailboxPolicy,
+
+  /**
+   * The grouping hint for certain clients.
+   */
+  GroupingInformation,
 }
