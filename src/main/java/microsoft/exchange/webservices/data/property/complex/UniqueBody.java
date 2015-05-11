@@ -85,8 +85,8 @@ public final class UniqueBody extends ComplexProperty {
    * Reads attribute from XML.
    *
    * @param reader the reader
-   * @throws javax.xml.stream.XMLStreamException the xml stream exception
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws XMLStreamException the xml stream exception
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
    */
   public void readTextValueFromXml(EwsServiceXmlReader reader)
       throws XMLStreamException, ServiceXmlDeserializationException {

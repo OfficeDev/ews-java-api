@@ -91,10 +91,10 @@ public abstract class ViewBase {
   /**
    * Writes the search settings to XML.
    *
-   * @param writer  The Writer
-   * @param groupBy The group by clause.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer  the writer
+   * @param groupBy the group by clause
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   protected abstract void internalWriteSearchSettingsToXml(
       EwsServiceXmlWriter writer, Grouping groupBy)
@@ -103,9 +103,9 @@ public abstract class ViewBase {
   /**
    * Writes OrderBy property to XML.
    *
-   * @param writer The Writer
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   public abstract void writeOrderByToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException;

@@ -52,7 +52,7 @@ public final class OofReply {
    *
    * @param writer         the writer
    * @param xmlElementName the xml element name
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws XMLStreamException the XML stream exception
    */
   public static void writeEmptyReplyToXml(EwsServiceXmlWriter writer, String xmlElementName) throws XMLStreamException {
     writer.writeStartElement(XmlNamespace.Types, xmlElementName);
@@ -124,8 +124,8 @@ public final class OofReply {
    *
    * @param writer         the writer
    * @param xmlElementName the xml element name
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   public void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
       throws XMLStreamException, ServiceXmlSerializationException {

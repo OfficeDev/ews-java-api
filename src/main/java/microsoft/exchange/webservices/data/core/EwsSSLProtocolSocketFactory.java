@@ -44,8 +44,6 @@ import java.security.GeneralSecurityException;
  * you are perfectly aware of security implications of accepting
  * self-signed certificates
  * </p>
- * <p/>
- * <p>
  * Example of using custom protocol socket factory for a specific host:
  * <pre>
  *     Protocol easyhttps = new Protocol("https", new EasySSLProtocolSocketFactory(), 443);
@@ -112,7 +110,7 @@ public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
    *
    * @param trustManager trust manager
    * @return socket factory for SSL protocol
-   * @throws GeneralSecurityException
+   * @throws GeneralSecurityException on security error
    */
   public static EwsSSLProtocolSocketFactory build(TrustManager trustManager)
     throws GeneralSecurityException {
@@ -125,7 +123,7 @@ public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
    * @param trustManager trust manager
    * @param hostnameVerifier hostname verifier
    * @return socket factory for SSL protocol
-   * @throws GeneralSecurityException
+   * @throws GeneralSecurityException on security error
    */
   public static EwsSSLProtocolSocketFactory build(
     TrustManager trustManager, HostnameVerifier hostnameVerifier

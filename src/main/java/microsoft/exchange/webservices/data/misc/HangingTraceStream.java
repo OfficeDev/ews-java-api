@@ -143,9 +143,9 @@ public class HangingTraceStream extends InputStream {
   }
 
   /**
-   * sets the response copy
+   * Sets the response copy.
    *
-   * @param responsecopy a copy of response
+   * @param responseCopy a copy of response
    */
   public void setResponseCopy(ByteArrayOutputStream responseCopy) {
     this.responseCopy = responseCopy;

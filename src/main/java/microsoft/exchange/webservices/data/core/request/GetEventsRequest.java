@@ -130,8 +130,8 @@ public class GetEventsRequest extends MultiResponseServiceRequest<GetEventsRespo
    * Writes the elements to XML writer.
    *
    * @param writer the writer
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)

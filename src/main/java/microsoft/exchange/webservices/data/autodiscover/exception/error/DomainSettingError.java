@@ -50,9 +50,8 @@ public final class DomainSettingError {
   private String settingName;
 
   /**
-   * Initializes a new instance of the <see cref="DomainSettingError"/> class.
+   * Initializes a new instance of the {@link DomainSettingError} class.
    */
-
   public DomainSettingError() {
   }
 

@@ -86,8 +86,8 @@ public final class ImAddressEntry extends DictionaryEntryProperty<ImAddressKey> 
    * Reads the text value from XML.
    *
    * @param reader accepts EwsServiceXmlReader
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
    */
   @Override
   public void readTextValueFromXml(EwsServiceXmlReader reader)

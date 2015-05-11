@@ -80,8 +80,8 @@ public class StringList extends ComplexProperty implements Iterable<String> {
    *
    * @param reader accepts EwsServiceXmlReader
    * @return True if element was read
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
    */
   @Override
   public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
@@ -105,8 +105,8 @@ public class StringList extends ComplexProperty implements Iterable<String> {
    * Writes elements to XML.
    *
    * @param writer accepts EwsServiceXmlWriter
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
    */
   @Override
   public void writeElementsToXml(EwsServiceXmlWriter writer)

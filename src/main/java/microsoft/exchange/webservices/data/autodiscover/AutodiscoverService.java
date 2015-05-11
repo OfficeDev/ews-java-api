@@ -248,9 +248,8 @@ public class AutodiscoverService extends ExchangeServiceBase
       Class<TSettings> cls, String emailAddress, URI url)
       throws Exception {
     this
-        .traceMessage(TraceFlags.AutodiscoverConfiguration, String
-            .format("Trying to call Autodiscover for %s on %s.",
-                emailAddress, url));
+        .traceMessage(TraceFlags.AutodiscoverConfiguration,
+                      String.format("Trying to call Autodiscover for %s on %s.", emailAddress, url));
 
     TSettings settings = cls.newInstance();
 
@@ -358,14 +357,12 @@ public class AutodiscoverService extends ExchangeServiceBase
   private void writeLegacyAutodiscoverRequest(String emailAddress,
       ConfigurationSettingsBase settings, PrintWriter writer)
       throws IOException {
-    writer.write(String.format("<Autodiscover xmlns=\"%s\">",
-        AutodiscoverRequestNamespace));
+    writer.write(String.format("<Autodiscover xmlns=\"%s\">", AutodiscoverRequestNamespace));
     writer.write("<Request>");
     writer.write(String.format("<EMailAddress>%s</EMailAddress>",
         emailAddress));
-    writer.write(String.format(
-        "<AcceptableResponseSchema>%s</AcceptableResponseSchema>",
-        settings.getNamespace()));
+    writer.write(
+        String.format("<AcceptableResponseSchema>%s</AcceptableResponseSchema>", settings.getNamespace()));
     writer.write("</Request>");
     writer.write("</Autodiscover>");
   }
@@ -375,19 +372,19 @@ public class AutodiscoverService extends ExchangeServiceBase
    * standard non-SSL Autodiscover URL.
    *
    * @param domainName the domain name
-   * @return A valid SSL-enabled redirection URL. (May be null).
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
-   * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
-   * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException                                the service local exception
-   * @throws java.net.URISyntaxException                          the uRI syntax exception
+   * @return A valid SSL-enabled redirection URL. (May be null)
+   * @throws EWSHttpException the eWS http exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws IOException Signals that an I/O exception has occurred.
+   * @throws ServiceLocalException the service local exception
+   * @throws URISyntaxException the uRI syntax exception
    */
   private URI getRedirectUrl(String domainName)
       throws EWSHttpException, XMLStreamException, IOException, ServiceLocalException, URISyntaxException {
     String url = String.format(AutodiscoverLegacyHttpUrl, "autodiscover." + domainName);
 
     traceMessage(TraceFlags.AutodiscoverConfiguration,
-        String.format("Trying to get Autodiscover redirection URL from %s.", url));
+                 String.format("Trying to get Autodiscover redirection URL from %s.", url));
 
     HttpWebRequest request = null;
 
@@ -439,11 +436,11 @@ public class AutodiscoverService extends ExchangeServiceBase
    * Tries the get redirection response.
    *
    * @param request     the request
-   * @param redirectUrl The redirect URL.
-   * @return True if a valid redirection URL was found.
-   * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
-   * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @param redirectUrl the redirect URL
+   * @return true if a valid redirection URL was found
+   * @throws XMLStreamException the XML stream exception
+   * @throws IOException signals that an I/O exception has occurred.
+   * @throws EWSHttpException the eWS http exception
    */
   private boolean tryGetRedirectionResponse(HttpWebRequest request,
       OutParam<URI> redirectUrl) throws XMLStreamException, IOException,
@@ -810,8 +807,7 @@ public class AutodiscoverService extends ExchangeServiceBase
     // to specify delegate to be called to determine whether we are allowed
     // to use the redirection URL.
     if (this
-        .callRedirectionUrlValidationCallback(
-            redirectionUrl.toString())) {
+        .callRedirectionUrlValidationCallback(redirectionUrl.toString())) {
       for (int currentHop = 0; currentHop < AutodiscoverService.AutodiscoverMaxRedirections; currentHop++) {
         try {
           settings.setParam(this.getLegacyUserSettingsAtUrl(cls,
@@ -950,17 +946,11 @@ public class AutodiscoverService extends ExchangeServiceBase
    * @param emailAddress      The email address to use.
    * @param requestedSettings The requested settings.
    * @return GetUserSettingsResponse
+   * @throws Exception on error
    */
   protected GetUserSettingsResponse internalGetLegacyUserSettings(
       String emailAddress,
       List<UserSettingName> requestedSettings) throws Exception {
-    // Cannot call legacy Autodiscover service with WindowsLive credential
-    	    	   	
-        /*if ((this.getCredentials() != null) && (this.getCredentials() instanceof WindowsLiveCredentials)) {
-            throw new AutodiscoverLocalException(
-					Strings.WLIDCredentialsCannotBeUsedWithLegacyAutodiscover);
-        }*/
-
     // Cannot call legacy Autodiscover service with WindowsLive and other WSSecurity-based credential
     if ((this.getCredentials() != null) && (this.getCredentials() instanceof WSSecurityBasedCredentials)) {
       throw new AutodiscoverLocalException(
@@ -983,6 +973,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    * @param smtpAddress       SMTP address.
    * @param requestedSettings The requested settings.
    * @return GetUserSettingsResponse
+   * @throws Exception on error
    */
   protected GetUserSettingsResponse internalGetSoapUserSettings(
       String smtpAddress,
@@ -1624,9 +1615,9 @@ public class AutodiscoverService extends ExchangeServiceBase
    *
    * @param request      the request
    * @param memoryStream the memory stream
-   * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
-   * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws IOException signals that an I/O exception has occurred.
+   * @throws EWSHttpException the eWS http exception
    */
   public void traceResponse(HttpWebRequest request, ByteArrayOutputStream memoryStream) throws XMLStreamException,
       IOException, EWSHttpException {
@@ -1651,8 +1642,8 @@ public class AutodiscoverService extends ExchangeServiceBase
    * appropriate parameters, based on the configuration of this service
    * object.
    *
-   * @param url The URL that the HttpWebRequest should target.
-   * @return HttpWebRequest The HttpWebRequest.
+   * @param url The URL that the HttpWebRequest should target
+   * @return HttpWebRequest The HttpWebRequest
    * @throws ServiceLocalException       the service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
@@ -1710,7 +1701,7 @@ public class AutodiscoverService extends ExchangeServiceBase
   /**
    * Initializes a new instance of the "AutodiscoverService" class.
    *
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @throws ArgumentException on validation error
    */
   public AutodiscoverService() throws ArgumentException {
     this(ExchangeVersion.Exchange2010);
@@ -1719,8 +1710,8 @@ public class AutodiscoverService extends ExchangeServiceBase
   /**
    * Initializes a new instance of the "AutodiscoverService" class.
    *
-   * @param requestedServerVersion The requested server version.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @param requestedServerVersion The requested server version
+   * @throws ArgumentException on validation error
    */
   public AutodiscoverService(ExchangeVersion requestedServerVersion)
       throws ArgumentException {
@@ -1730,9 +1721,8 @@ public class AutodiscoverService extends ExchangeServiceBase
   /**
    * Initializes a new instance of the "AutodiscoverService" class.
    *
-   * @param domain The domain that will be used to determine the URL of the
-   *               service.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @param domain The domain that will be used to determine the URL of the service
+   * @throws ArgumentException on validation error
    */
   public AutodiscoverService(String domain) throws ArgumentException {
     this(null, domain);
@@ -1741,10 +1731,9 @@ public class AutodiscoverService extends ExchangeServiceBase
   /**
    * Initializes a new instance of the "AutodiscoverService" class.
    *
-   * @param domain                 The domain that will be used to determine the URL of the
-   *                               service.
-   * @param requestedServerVersion The requested server version.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @param domain                 The domain that will be used to determine the URL of the service
+   * @param requestedServerVersion The requested server version
+   * @throws ArgumentException on validation error
    */
   public AutodiscoverService(String domain,
       ExchangeVersion requestedServerVersion) throws ArgumentException {
@@ -1754,8 +1743,8 @@ public class AutodiscoverService extends ExchangeServiceBase
   /**
    * Initializes a new instance of the "AutodiscoverService" class.
    *
-   * @param url The URL of the service.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @param url The URL of the service
+   * @throws ArgumentException on validation error
    */
   public AutodiscoverService(URI url) throws ArgumentException {
     this(url, url.getHost());
@@ -1764,9 +1753,9 @@ public class AutodiscoverService extends ExchangeServiceBase
   /**
    * Initializes a new instance of the "AutodiscoverService" class.
    *
-   * @param url                    The URL of the service.
-   * @param requestedServerVersion The requested server version.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @param url                    The URL of the service
+   * @param requestedServerVersion The requested server version
+   * @throws ArgumentException on validation error
    */
   public AutodiscoverService(URI url,
       ExchangeVersion requestedServerVersion) throws ArgumentException {
@@ -1776,10 +1765,9 @@ public class AutodiscoverService extends ExchangeServiceBase
   /**
    * Initializes a new instance of the "AutodiscoverService" class.
    *
-   * @param url    The URL of the service.
-   * @param domain The domain that will be used to determine the URL of the
-   *               service.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @param url    The URL of the service
+   * @param domain The domain that will be used to determine the URL of the service
+   * @throws ArgumentException on validation error
    */
   public AutodiscoverService(URI url, String domain)
       throws ArgumentException {
@@ -1797,7 +1785,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    * @param domain                 The domain that will be used to determine the URL of the
    *                               service.
    * @param requestedServerVersion The requested server version.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @throws ArgumentException on validation error
    */
   public AutodiscoverService(URI url, String domain,
       ExchangeVersion requestedServerVersion) throws ArgumentException {
@@ -1832,15 +1820,14 @@ public class AutodiscoverService extends ExchangeServiceBase
 
   /**
    * Retrieves the specified settings for single SMTP address.
-   *
+   * <p>This method will run the entire Autodiscover "discovery"
+   * algorithm and will follow address and URL redirections.</p>
+
    * @param userSmtpAddress  The SMTP addresses of the user.
    * @param userSettingNames The user setting names.
    * @return A UserResponse object containing the requested settings for the
    * specified user.
-   * @throws Exception the exception
-   *                   <p/>
-   *                   This method handles will run the entire Autodiscover "discovery"
-   *                   algorithm and will follow address and URL redirections.
+   * @throws Exception on error
    */
   public GetUserSettingsResponse getUserSettings(String userSmtpAddress,
       UserSettingName... userSettingNames) throws Exception {
@@ -1936,100 +1923,8 @@ public class AutodiscoverService extends ExchangeServiceBase
   }
 
   /**
-   * Try to get the partner access information for the given target tenant.
-   *
-   * @param targetTenantDomain The target domain or user email address.
-   * @param partnerAccessCredentials The partner access credential.
-   * @param targetTenantAutodiscoverUrl The autodiscover url for the given tenant.
-   * @return True if the partner access information was retrieved, false otherwise.
-   */
-
-  /** commented as the code belongs to Partener Token credential. */
-	  
-  /*  public boolean tryGetPartnerAccess(
-        String targetTenantDomain,
-        OutParam<ExchangeCredentials> partnerAccessCredentials,
-        OutParam<URI> targetTenantAutodiscoverUrl)
-    {
-        EwsUtilities.validateNonBlankStringParam(targetTenantDomain, "targetTenantDomain");
-
-        // the user should set the url to its own tenant's autodiscover url.
-        // 
-        if (this.url == null)
-        {
-            throw new ServiceValidationException(Strings.PartnerTokenRequestRequiresUrl);
-        }
-
-        if (this.getRequestedServerVersion().ordinal() < ExchangeVersion.Exchange2010_SP1.ordinal())
-        {
-            throw new ServiceVersionException(
-                String.format(
-                    Strings.PartnerTokenIncompatibleWithRequestVersion,
-                    ExchangeVersion.Exchange2010_SP1));
-        }
-
-        partnerAccessCredentials = null;
-        targetTenantAutodiscoverUrl = null;
-
-        String smtpAddress = targetTenantDomain;
-        if (!smtpAddress.contains("@"))
-        {
-            smtpAddress = "SystemMailbox{e0dc1c29-89c3-4034-b678-e6c29d823ed9}@" + targetTenantDomain;
-        }
-
-        List<String> smtpAddresses = new ArrayList<String>();
-        smtpAddresses.add(smtpAddress);
-        List<UserSettingName> settings = new ArrayList<UserSettingName>();
-        settings.add(UserSettingName.ExternalEwsUrl);
-        
-        GetUserSettingsRequest request = new GetUserSettingsRequest(this, this.url, true  expectPartnerToken );
-        request.setSmtpAddresses(smtpAddresses);
-        request.setSettings(settings);
-        GetUserSettingsResponseCollection response = request.execute();
-
-        if (request.getPartnerToken()!=null && !request.getPartnerToken().isEmpty())
-            || request.getPartnerTokenReference()!=null && !request.getPartnerTokenReference().isEmpty() ))
-        {
-            return false;
-        }
-
-        if (request.getErrorCode() == AutodiscoverErrorCode.NoError)
-        {
-            GetUserSettingsResponse firstResponse = request.getResponse(0);
-            if (firstResponse.getErrorCode() == AutodiscoverErrorCode.NoError)
-            {
-                targetTenantAutodiscoverUrl = this.url;
-            }
-            else if (firstResponse.getErrorCode() == AutodiscoverErrorCode.RedirectUrl)
-            {
-                targetTenantAutodiscoverUrl = new URI(firstResponse.getRedirectTarget());
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        }
-
-        partnerAccessCredentials = new PartnerTokenCredentials(
-            request.getPartnerToken(),
-            request.getPartnerTokenReference());
-
-        targetTenantAutodiscoverUrl = partnerAccessCredentials.adjustUrl(
-            targetTenantAutodiscoverUrl);
-
-        return true;
-    }
-*/
-
-  /**
    * Gets the domain this service is bound to. When this property is
-   * set, the domain
-   * <p/>
-   * name is used to automatically determine the Autodiscover service URL.
+   * set, the domain name is used to automatically determine the Autodiscover service URL.
    *
    * @return the domain
    */
@@ -2043,7 +1938,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    * name is used to automatically determine the Autodiscover service URL.
    *
    * @param value the new domain
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @throws ArgumentException on validation error
    */
   public void setDomain(String value) throws ArgumentException {
     EwsUtilities.validateDomainNameAllowNull(value, "Domain");

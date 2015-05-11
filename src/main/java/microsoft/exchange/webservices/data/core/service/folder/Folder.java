@@ -72,9 +72,9 @@ public class Folder extends ServiceObject {
   private static final Log LOG = LogFactory.getLog(Folder.class);
 
   /**
-   * Initializes an unsaved local instance of <see cref="Folder"/>.
+   * Initializes an unsaved local instance of {@link Folder}.
    *
-   * @param service EWS service to which this object belongs.
+   * @param service EWS service to which this object belongs
    * @throws Exception the exception
    */
   public Folder(ExchangeService service) throws Exception {

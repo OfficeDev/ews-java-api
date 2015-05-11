@@ -70,19 +70,14 @@ public final class Suggestion extends ComplexProperty {
    *
    * @param reader the reader
    * @return True if appropriate element was read.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws Exception                           the exception
+   * @throws Exception the exception
    */
   @Override
-  public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
-      throws XMLStreamException, ServiceXmlDeserializationException,
-      Exception {
+  public boolean tryReadElementFromXml(EwsServiceXmlReader reader) throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.Date)) {
       SimpleDateFormat sdfin = new SimpleDateFormat(
           "yyyy-MM-dd'T'HH:mm:ss");
-      Date tempDate = sdfin.parse(reader.readElementValue());
-      this.date = tempDate;
+      this.date = sdfin.parse(reader.readElementValue());
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.DayQuality)) {
       this.quality = reader.readElementValue(SuggestionQuality.class);

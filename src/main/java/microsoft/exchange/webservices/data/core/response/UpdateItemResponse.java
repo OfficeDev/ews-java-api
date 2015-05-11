@@ -71,16 +71,10 @@ public final class UpdateItemResponse extends ServiceResponse implements
    * Reads response elements from XML.
    *
    * @param reader the reader
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws InstantiationException              the instantiation exception
-   * @throws IllegalAccessException              the illegal access exception
-   * @throws Exception                           the exception
+   * @throws Exception the exception
    */
   @Override
-  protected void readElementsFromXml(EwsServiceXmlReader reader)
-      throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException, Exception {
+  protected void readElementsFromXml(EwsServiceXmlReader reader) throws Exception {
     super.readElementsFromXml(reader);
 
     reader.readServiceObjectsCollectionFromXml(XmlElementNames.Items, this,

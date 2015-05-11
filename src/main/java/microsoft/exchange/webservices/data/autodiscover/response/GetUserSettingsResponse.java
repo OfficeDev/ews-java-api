@@ -67,8 +67,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
   private Collection<UserSettingError> userSettingErrors;
 
   /**
-   * Initializes a new instance of the <see cref="GetUserSettingsResponse"/>
-   * class.
+   * Initializes a new instance of the {@link GetUserSettingsResponse} class.
    */
   public GetUserSettingsResponse() {
     super();
@@ -127,6 +126,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
 
   /**
    * Sets the redirectionTarget (URL or email address).
+   * @param value redirect target value
    */
   public void setRedirectTarget(String value) {
     this.redirectTarget = value;
@@ -142,7 +142,8 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
   }
 
   /**
-   * sets the requested settings for the user.
+   * Sets the requested settings for the user.
+   * @param settings settings map
    */
   public void setSettings(Map<UserSettingName, Object> settings) {
     this.settings = settings;
@@ -158,7 +159,8 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
   }
 
   /**
-   * sets the requested settings for the user.
+   * Sets the requested settings for the user.
+   * @param value user setting errors
    */
   protected void setUserSettingErrors(Collection<UserSettingError> value) {
     this.userSettingErrors = value;

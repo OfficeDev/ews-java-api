@@ -111,8 +111,8 @@ public abstract class AlternateIdBase implements ISelfValidate {
    * Writes to XML.
    *
    * @param writer the writer
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
    */
   public void writeToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {

@@ -201,7 +201,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Create registry with configured {@see ConnectionSocketFactory} instances.
+   * Create registry with configured {@link ConnectionSocketFactory} instances.
    * Override this method to change how to work with different schemas.
    *
    * @return registry object
@@ -327,7 +327,11 @@ public abstract class ExchangeServiceBase implements Closeable {
    * 500 ISE typically indicates that a SOAP fault has occurred and the handling of
    * a SOAP fault is currently service specific.
    *
-   * @throws Exception
+   * @param httpWebResponse HTTP web response
+   * @param webException web exception
+   * @param responseHeadersTraceFlag trace flag for response headers
+   * @param responseTraceFlag trace flag for respone
+   * @throws Exception on error
    */
   protected void internalProcessHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException,
       TraceFlags responseHeadersTraceFlag, TraceFlags responseTraceFlag) throws Exception {
@@ -354,8 +358,8 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * @return false if location is null,true if this abstract pathname is
-   * absolute,
+   * @param location file path
+   * @return false if location is null,true if this abstract pathname is absolute
    */
   public static boolean checkURIPath(String location) {
     if (location == null) {
@@ -366,7 +370,9 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * @throws Exception
+   * @param httpWebResponse HTTP web response
+   * @param webException web exception
+   * @throws Exception on error
    */
   protected abstract void processHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException)
       throws Exception;
@@ -384,10 +390,10 @@ public abstract class ExchangeServiceBase implements Closeable {
   /**
    * Logs the specified string to the TraceListener if tracing is enabled.
    *
-   * @param traceType Kind of trace entry.
-   * @param logEntry  The entry to log.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws java.io.IOException                 Signals that an I/O exception has occurred.
+   * @param traceType kind of trace entry
+   * @param logEntry the entry to log
+   * @throws XMLStreamException the XML stream exception
+   * @throws IOException signals that an I/O exception has occurred
    */
   public void traceMessage(TraceFlags traceType, String logEntry) throws XMLStreamException, IOException {
     if (this.isTraceEnabledFor(traceType)) {
@@ -416,10 +422,10 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param traceType Kind of trace entry.
    * @param request   The request
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException
-   * @throws java.net.URISyntaxException
-   * @throws java.io.IOException
-   * @throws javax.xml.stream.XMLStreamException
+   * @throws EWSHttpException eWS http exception
+   * @throws URISyntaxException URI syntax error
+   * @throws IOException signals that an I/O exception has occurred
+   * @throws XMLStreamException the XML stream exception
    */
   public void traceHttpRequestHeaders(TraceFlags traceType, HttpWebRequest request)
       throws URISyntaxException, EWSHttpException, XMLStreamException, IOException {
@@ -434,11 +440,11 @@ public abstract class ExchangeServiceBase implements Closeable {
   /**
    * Traces the HTTP response headers.
    *
-   * @param traceType Kind of trace entry.
-   * @param request   The HttpRequest object.
-   * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
-   * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @param traceType kind of trace entry
+   * @param request the HttpRequest object
+   * @throws XMLStreamException the XML stream exception
+   * @throws IOException signals that an I/O exception has occurred
+   * @throws EWSHttpException the eWS http exception
    */
   private void traceHttpResponseHeaders(TraceFlags traceType, HttpWebRequest request)
       throws XMLStreamException, IOException, EWSHttpException {
@@ -485,56 +491,6 @@ public abstract class ExchangeServiceBase implements Closeable {
       }
     }
   }
-
-//  /**
-//   * Gets the cookie container. <value>The cookie container.</value>
-//   *
-//   * @param url   the url
-//   * @param value the value
-//   * @throws java.io.IOException         , URISyntaxException
-//   * @throws java.net.URISyntaxException the uRI syntax exception
-//   */
-//  public void setCookie(URL url, String value) throws IOException,
-//      URISyntaxException {
-//    CookieHandler handler = CookieHandler.getDefault();
-//    if (handler != null) {
-//      Map<String, List<String>> headers =
-//          new HashMap<String, List<String>>();
-//      List<String> values = new Vector<String>();
-//      values.add(value);
-//      headers.put("Cookie", values);
-//
-//      handler.put(url.toURI(), headers);
-//    }
-//  }
-//
-//  /**
-//   * Gets the cookie.
-//   *
-//   * @param url the url
-//   * @return the cookie
-//   * @throws java.io.IOException         Signals that an I/O exception has occurred.
-//   * @throws java.net.URISyntaxException the uRI syntax exception
-//   */
-//  public String getCookie(URL url) throws IOException, URISyntaxException {
-//    String cookieValue = null;
-//
-//    CookieHandler handler = CookieHandler.getDefault();
-//    if (handler != null) {
-//      Map<String, List<String>> headers = handler.get(url.toURI(),
-//          new HashMap<String, List<String>>());
-//      List<String> values = headers.get("Cookie");
-//      for (Iterator<String> iter = values.iterator(); iter.hasNext(); ) {
-//        String v = iter.next();
-//
-//        if (cookieValue == null)
-//          cookieValue = v;
-//        else
-//          cookieValue = cookieValue + ";" + v;
-//      }
-//    }
-//    return cookieValue;
-//  }
 
   /**
    * Gets a value indicating whether tracing is enabled.
@@ -822,9 +778,9 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param traceType kind of trace entry
    * @param request   The request
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException
-   * @throws java.io.IOException
-   * @throws javax.xml.stream.XMLStreamException
+   * @throws EWSHttpException eWS http exception
+   * @throws IOException signals that an I/O exception has occurred
+   * @throws XMLStreamException the XML stream exception
    */
   public void processHttpResponseHeaders(TraceFlags traceType, HttpWebRequest request)
       throws XMLStreamException, IOException, EWSHttpException {
@@ -847,6 +803,7 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   /**
    * Gets a collection of HTTP headers from the last response.
+   * @return HTTP response headers
    */
   public Map<String, String> getHttpResponseHeaders() {
     return this.httpResponseHeaders;
@@ -854,6 +811,7 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   /**
    * Gets the session key.
+   * @return session key
    */
   public static byte[] getSessionKey() {
     // this has to be computed only once.

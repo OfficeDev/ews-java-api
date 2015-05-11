@@ -274,8 +274,9 @@ public final class DelegatePermissions extends ComplexProperty {
   /**
    * Write permission to Xml.
    *
-   * @param writer         The writer.
-   * @param xmlElementName The element name.
+   * @param writer         the writer
+   * @param xmlElementName the element name
+   * @throws XMLStreamException the XML stream exception
    */
   private void writePermissionToXml(
       EwsServiceXmlWriter writer,

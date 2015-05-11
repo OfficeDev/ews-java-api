@@ -24,7 +24,6 @@
 package microsoft.exchange.webservices.data.core.request;
 
 import microsoft.exchange.webservices.data.EWSConstants;
-import microsoft.exchange.webservices.data.core.WebAsyncCallStateAnchor;
 import microsoft.exchange.webservices.data.core.WebProxy;
 import microsoft.exchange.webservices.data.exception.EWSHttpException;
 import microsoft.exchange.webservices.data.misc.IAsyncResult;
@@ -472,8 +471,8 @@ public abstract class HttpWebRequest {
    * Gets the input stream.
    *
    * @return the input stream
-   * @throws EWSHttpException    the eWS http exception
-   * @throws java.io.IOException
+   * @throws EWSHttpException the eWS http exception
+   * @throws IOException the IO exception
    */
   public abstract InputStream getInputStream() throws EWSHttpException, IOException;
 
@@ -481,7 +480,7 @@ public abstract class HttpWebRequest {
    * Gets the error stream.
    *
    * @return the error stream
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   public abstract InputStream getErrorStream() throws EWSHttpException;
 
@@ -489,7 +488,7 @@ public abstract class HttpWebRequest {
    * Gets the output stream.
    *
    * @return the output stream
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   public abstract OutputStream getOutputStream() throws EWSHttpException;
 
@@ -532,7 +531,7 @@ public abstract class HttpWebRequest {
    * Gets the response code.
    *
    * @return the response code
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   public abstract int getResponseCode() throws EWSHttpException;
 
@@ -540,7 +539,7 @@ public abstract class HttpWebRequest {
    * Gets the response message.
    *
    * @return the response message
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   public abstract String getResponseText() throws EWSHttpException;
 
@@ -549,7 +548,7 @@ public abstract class HttpWebRequest {
    *
    * @param headerName the header name
    * @return the response header field
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   public abstract String getResponseHeaderField(String headerName)
       throws EWSHttpException;
@@ -567,25 +566,8 @@ public abstract class HttpWebRequest {
    * Executes Request by sending request xml data to server.
    *
    * @throws EWSHttpException    the eWS http exception
-   * @throws HttpException       the http exception
    * @throws java.io.IOException the IO Exception
    */
   public abstract int executeRequest() throws EWSHttpException, IOException;
-
-  public IAsyncResult beginGetResponse(Object webRequestAsyncCallback,
-      WebAsyncCallStateAnchor wrappedState) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-
-
-  public ByteArrayOutputStream endGetRequestStream(
-      IAsyncResult result) {
-    // TODO Auto-generated method stub
-    return new ByteArrayOutputStream();
-  }
-
-
 
 }

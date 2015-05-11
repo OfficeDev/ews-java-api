@@ -31,7 +31,6 @@ import microsoft.exchange.webservices.data.core.response.ServiceResponse;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.misc.UserConfiguration;
 
 /**
@@ -48,11 +47,10 @@ public class UpdateUserConfigurationRequest extends
   /**
    * Validate request.
    *
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
-   * @throws Exception                                                 the exception
+   * @throws Exception the exception
    */
   @Override
-  protected void validate() throws ServiceLocalException, Exception {
+  protected void validate() throws Exception {
     super.validate();
     EwsUtilities.validateParam(this.userConfiguration, "userConfiguration");
   }
@@ -137,7 +135,7 @@ public class UpdateUserConfigurationRequest extends
    * Initializes a new instance of the class.
    *
    * @param service the service
-   * @throws Exception
+   * @throws Exception on error
    */
   public UpdateUserConfigurationRequest(ExchangeService service)
       throws Exception {
@@ -145,8 +143,7 @@ public class UpdateUserConfigurationRequest extends
   }
 
   /**
-   * Gets the user configuration. <value>The user
-   * configuration.</value>
+   * Gets the user configuration.
    *
    * @return the user configuration
    */

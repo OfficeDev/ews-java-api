@@ -27,8 +27,6 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.Recurrence;
@@ -36,7 +34,6 @@ import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.R
 import javax.xml.stream.XMLStreamException;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -85,13 +82,9 @@ public abstract class RecurrenceRange extends ComplexProperty {
    * Setup the recurrence.
    *
    * @param recurrence the new up recurrence
-   * @throws InstantiationException     the instantiation exception
-   * @throws IllegalAccessException     the illegal access exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException the service validation exception
-   * @throws Exception                  the exception
+   * @throws Exception the exception
    */
-  public void setupRecurrence(Recurrence recurrence)
-      throws InstantiationException, IllegalAccessException, ServiceValidationException, Exception {
+  public void setupRecurrence(Recurrence recurrence) throws Exception {
     recurrence.setStartDate(this.getStartDate());
   }
 
@@ -99,8 +92,8 @@ public abstract class RecurrenceRange extends ComplexProperty {
    * Writes elements to XML..
    *
    * @param writer the writer
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
@@ -117,17 +110,10 @@ public abstract class RecurrenceRange extends ComplexProperty {
    *
    * @param reader the reader
    * @return True if element was read
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws InstantiationException              the instantiation exception
-   * @throws IllegalAccessException              the illegal access exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws java.text.ParseException            the parse exception
-   * @throws Exception                           the exception
+   * @throws Exception the exception
    */
   public boolean tryReadElementFromXml(EwsServiceXmlReader reader)
-      throws ServiceXmlDeserializationException, InstantiationException,
-      IllegalAccessException, XMLStreamException, ParseException,
-      Exception {
+      throws Exception {
     if (reader.getLocalName().equals(XmlElementNames.StartDate)) {
       //this.startDate = reader.readElementValueAsDateTime();
       Date startDate = reader.readElementValueAsUnspecifiedDate();

@@ -75,8 +75,8 @@ class AutodiscoverDnsClient {
    *
    * @param domain the domain
    * @return Autodiscover hostname (will be null if lookup failed).
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws java.io.IOException                 Signals that an I/O exception has occurred.
+   * @throws XMLStreamException the XML stream exception
+   * @throws IOException signals that an I/O exception has occurred.
    */
   protected String findAutodiscoverHostFromSrv(String domain)
       throws XMLStreamException, IOException {
@@ -104,9 +104,9 @@ class AutodiscoverDnsClient {
    * Finds the best matching SRV record.
    *
    * @param domain the domain
-   * @return DnsSrvRecord(will be null if lookup failed).
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws java.io.IOException                 Signals that an I/O exception has occurred.
+   * @return DnsSrvRecord (will be null if lookup failed)
+   * @throws XMLStreamException the XML stream exception
+   * @throws IOException signals that an I/O exception has occurred.
    */
   private DnsSrvRecord findBestMatchingSrvRecord(String domain)
       throws XMLStreamException, IOException {

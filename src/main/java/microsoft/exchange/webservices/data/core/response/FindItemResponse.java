@@ -155,12 +155,12 @@ public final class FindItemResponse
   /**
    * Read item from XML.
    *
-   * @param reader          The reader
-   * @param propertySet     The property set
-   * @param destinationList The list in which to add the read item.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws Exception                           the exception
+   * @param reader the reader
+   * @param propertySet the property set
+   * @param destinationList the list in which to add the read item
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
+   * @throws Exception the exception
    */
   private void internalReadItemsFromXml(EwsServiceXmlReader reader,
       PropertySet propertySet, List<TItem> destinationList)

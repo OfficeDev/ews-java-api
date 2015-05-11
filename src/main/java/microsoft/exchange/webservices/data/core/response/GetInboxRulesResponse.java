@@ -38,8 +38,7 @@ public final class GetInboxRulesResponse extends ServiceResponse {
   private RuleCollection ruleCollection;
 
   /**
-   * Initializes a new instance of the
-   * <see cref="GetInboxRulesResponse"/> class.
+   * Initializes a new instance of the {@link GetInboxRulesResponse} class.
    */
   public GetInboxRulesResponse() {
     super();

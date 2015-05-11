@@ -60,10 +60,10 @@ public final class AcceptMeetingInvitationMessage extends
    * returns null or empty, the XML element name associated with this
    * type is determined by the EwsObjectDefinition attribute that
    * decorates the type, if present.
-   * <p/>
+   * <p>
    * Item and folder classes that can be returned by EWS MUST rely on
-   * the EwsObjectDefinition attribute for XML element name
-   * determination.
+   * the EwsObjectDefinition attribute for XML element name determination.
+   * </p>
    */
   @Override public String getXmlElementName() {
     // getXmlElementOverride is pvt and getXmlElementName returns

@@ -387,8 +387,8 @@ public final class GroupMemberCollection extends ComplexPropertyCollection<Group
    * Delete the whole members collection.
    *
    * @param writer the writer
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   private void writeDeleteMembersCollectionToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
@@ -403,8 +403,8 @@ public final class GroupMemberCollection extends ComplexPropertyCollection<Group
    *
    * @param writer  the writer
    * @param members the members
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   private void writeDeleteMembersToXml(EwsServiceXmlWriter writer,
       List<GroupMember> members) throws XMLStreamException,

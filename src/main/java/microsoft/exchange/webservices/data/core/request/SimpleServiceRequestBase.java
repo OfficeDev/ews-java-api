@@ -24,9 +24,7 @@
 package microsoft.exchange.webservices.data.core.request;
 
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.WebAsyncCallStateAnchor;
 import microsoft.exchange.webservices.data.enumeration.TraceFlags;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceRequestException;
 import microsoft.exchange.webservices.data.misc.AsyncCallback;
 import microsoft.exchange.webservices.data.misc.AsyncExecutor;
@@ -45,8 +43,6 @@ import java.util.concurrent.Future;
  */
 public abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> {
 
-  private static final Log log = LogFactory.getLog(SimpleServiceRequestBase.class);
-
   /**
    * Initializes a new instance of the SimpleServiceRequestBase class.
    */
@@ -58,10 +54,10 @@ public abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> 
   /**
    * Executes this request.
    *
-   * @throws Exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException
+   * @return response object
+   * @throws Exception on error
    */
-  protected T internalExecute() throws ServiceLocalException, Exception {
+  protected T internalExecute() throws Exception {
     HttpWebRequest response = null;
 
     try {
@@ -85,7 +81,8 @@ public abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> 
    * Ends executing this async request.
    *
    * @param asyncResult The async result
-   * @return Service response object.
+   * @return Service response object
+   * @throws Exception on error
    */
   protected T endInternalExecute(IAsyncResult asyncResult) throws Exception {
     HttpWebRequest response = (HttpWebRequest) asyncResult.get();
@@ -96,29 +93,19 @@ public abstract class SimpleServiceRequestBase<T> extends ServiceRequestBase<T> 
    * Begins executing this async request.
    *
    * @param callback The AsyncCallback delegate.
-   * @param state    An object that contains state information for this request.
    * @return An IAsyncResult that references the asynchronous request.
+   * @throws Exception on error
    */
-  public AsyncRequestResult beginExecute(AsyncCallback callback, Object state) throws Exception {
+  public AsyncRequestResult beginExecute(AsyncCallback callback) throws Exception {
     this.validate();
 
     HttpWebRequest request = this.buildEwsHttpWebRequest();
-
-    WebAsyncCallStateAnchor wrappedState = new WebAsyncCallStateAnchor(
-        this, request, callback /* user callback */, state /*user state*/);
-
     AsyncExecutor es = new AsyncExecutor();
     Callable<?> cl = new CallableMethod(request);
     Future<?> task = es.submit(cl, callback);
     es.shutdown();
-    AsyncRequestResult ft = new AsyncRequestResult(this, request, task, null);
 
-    // ct.setAsyncRequest();
-    // webAsyncResult =
-    // request.beginGetResponse(SimpleServiceRequestBase.webRequestAsyncCallback(webAsyncResult),
-    // wrappedState);
-    return ft;
-    // return new AsyncRequestResult(this, request, webAsyncResult, state /*
-    // user state */);
+    return new AsyncRequestResult(this, request, task, null);
   }
+
 }

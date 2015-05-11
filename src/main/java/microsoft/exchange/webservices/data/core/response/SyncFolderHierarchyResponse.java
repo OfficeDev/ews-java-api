@@ -64,9 +64,8 @@ public final class SyncFolderHierarchyResponse extends
   }
 
   /**
-   * Gets a value indicating whether this request returns full or summary
-   * property. <value> <c>true</c> if summary property only; otherwise,
-   * <c>false</c>. </value>
+   * Gets a value indicating whether this request returns full or summary property.
+   * "true" if summary property only; otherwise, "false".
    *
    * @return the summary property only
    */

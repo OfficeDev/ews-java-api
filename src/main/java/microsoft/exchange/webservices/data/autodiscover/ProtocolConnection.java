@@ -50,7 +50,7 @@ public final class ProtocolConnection {
   private int port;
 
   /**
-   * Initializes a new instance of the <see cref="ProtocolConnection"/> class.
+   * Initializes a new instance of the {@link ProtocolConnection} class.
    */
 
   protected ProtocolConnection() {

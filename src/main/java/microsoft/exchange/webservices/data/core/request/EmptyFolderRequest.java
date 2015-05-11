@@ -32,7 +32,6 @@ import microsoft.exchange.webservices.data.core.response.ServiceResponse;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.FolderIdWrapperList;
 
@@ -49,7 +48,7 @@ public final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
    *
    * @param service           The service.
    * @param errorHandlingMode Indicates how errors should be handled.
-   * @throws Exception
+   * @throws Exception on error
    */
   public EmptyFolderRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
@@ -59,11 +58,10 @@ public final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
   /**
    * Validates request.
    *
-   * @throws Exception
-   * @throws ServiceLocalException
+   * @throws Exception on error
    */
   @Override
-  protected void validate() throws ServiceLocalException, Exception {
+  protected void validate() throws Exception {
     super.validate();
     EwsUtilities.validateParam(this.getFolderIds(), "FolderIds");
     this.getFolderIds().validate(this.getService().
@@ -73,7 +71,7 @@ public final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
   /**
    * Gets the expected response message count.
    *
-   * @return Number of expected response messages.</returns>
+   * @return Number of expected response messages.
    */
   @Override
   protected int getExpectedResponseMessageCount() {
@@ -141,7 +139,7 @@ public final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
    * Writes XML attribute.
    *
    * @param writer The writer.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException
+   * @throws ServiceXmlSerializationException
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
@@ -154,8 +152,7 @@ public final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
   /**
    * Gets the request version.
    *
-   * @return Earliest Exchange version
-   * in which this request is supported.
+   * @return Earliest Exchange version in which this request is supported.
    */
   @Override
   protected ExchangeVersion getMinimumRequiredServerVersion() {
@@ -172,22 +169,18 @@ public final class EmptyFolderRequest extends DeleteRequest<ServiceResponse> {
   }
 
   /**
-   * Gets a value indicating whether empty
-   * folder should also delete sub folder.
+   * Gets a value indicating whether empty folder should also delete sub folder.
    *
-   * @value true if empty folder should also
-   * delete sub folder, otherwise false.
+   * @value true if empty folder should also delete sub folder, otherwise false.
    */
   protected boolean getDeleteSubFolders() {
     return deleteSubFolders;
   }
 
   /**
-   * Sets a value indicating whether empty
-   * folder should also delete sub folder.
+   * Sets a value indicating whether empty folder should also delete sub folder.
    *
-   * @value true if empty folder should also
-   * delete sub folder, otherwise false.
+   * @value true if empty folder should also delete sub folder, otherwise false.
    */
   public void setDeleteSubFolders(boolean value) {
     this.deleteSubFolders = value;

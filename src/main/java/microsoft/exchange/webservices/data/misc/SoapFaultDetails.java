@@ -138,13 +138,9 @@ public class SoapFaultDetails {
    * Parses the detail node.
    *
    * @param reader the reader
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws Exception                           the exception
+   * @throws Exception the exception
    */
-  private void parseDetailNode(EwsXmlReader reader)
-      throws ServiceXmlDeserializationException, XMLStreamException,
-      Exception, Exception {
+  private void parseDetailNode(EwsXmlReader reader) throws Exception {
     do {
       reader.read();
       if (reader.getNodeType().equals(

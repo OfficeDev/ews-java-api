@@ -300,8 +300,8 @@ public abstract class SearchFilter extends ComplexProperty {
      * Writes the elements to Xml.
      *
      * @param writer the writer
-     * @throws javax.xml.stream.XMLStreamException the xML stream exception
-     * @throws ServiceXmlSerializationException    the service xml serialization exception
+     * @throws XMLStreamException the XML stream exception
+     * @throws ServiceXmlSerializationException the service xml serialization exception
      */
     @Override
     public void writeElementsToXml(EwsServiceXmlWriter writer)
@@ -993,8 +993,8 @@ public abstract class SearchFilter extends ComplexProperty {
      * Writes the elements to XML.
      *
      * @param writer the writer
-     * @throws javax.xml.stream.XMLStreamException the xML stream exception
-     * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
+     * @throws XMLStreamException the XML stream exception
+     * @throws ServiceXmlSerializationException the service xml serialization exception
      */
     @Override
     public void writeElementsToXml(EwsServiceXmlWriter writer)

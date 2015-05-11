@@ -85,8 +85,8 @@ public final class GetInboxRulesRequest extends SimpleServiceRequestBase<GetInbo
    * Writes XML elements.
    *
    * @param writer The writer.
-   * @throws javax.xml.stream.XMLStreamException
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)

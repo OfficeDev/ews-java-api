@@ -248,7 +248,7 @@ public final class ResolveNamesRequest extends
   }
 
   /**
-   * Gets the name to resolve. <value>The name to resolve.</value>
+   * Gets the name to resolve.
    *
    * @return the name to resolve
    */
@@ -266,9 +266,8 @@ public final class ResolveNamesRequest extends
   }
 
   /**
-   * Gets a value indicating whether to return full contact data or
-   * not. <value> <c>true</c> if should return full contact data; otherwise,
-   * <c>false</c>. </value>
+   * Gets a value indicating whether to return full contact data or not.
+   * "true" if should return full contact data; otherwise, "false".
    *
    * @return the return full contact data
    */
@@ -286,7 +285,7 @@ public final class ResolveNamesRequest extends
   }
 
   /**
-   * Gets the search location. <value>The search scope.</value>
+   * Gets the search location.
    *
    * @return the search location
    */
@@ -304,7 +303,7 @@ public final class ResolveNamesRequest extends
   }
 
   /**
-   * Gets the parent folder ids. <value>The parent folder ids.</value>
+   * Gets the parent folder ids.
    *
    * @return the parent folder ids
    */
@@ -331,7 +330,5 @@ public final class ResolveNamesRequest extends
   public PropertySet getContactDataPropertySet() {
     return this.contactDataPropertySet;
   }
-
-
 
 }

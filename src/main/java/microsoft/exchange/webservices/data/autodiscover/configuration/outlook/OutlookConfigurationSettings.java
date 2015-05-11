@@ -34,9 +34,6 @@ import microsoft.exchange.webservices.data.core.ILazyMember;
 import microsoft.exchange.webservices.data.core.LazyMember;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.UserSettingName;
-import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-
-import javax.xml.stream.XMLStreamException;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -120,16 +117,12 @@ public final class OutlookConfigurationSettings extends ConfigurationSettingsBas
   /**
    * Tries to read the current XML element.
    *
-   * @param reader The reader.
-   * @return True is the current element was read, false otherwise.
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws Exception                           the exception
+   * @param reader the reader
+   * @return true is the current element was read, false otherwise
+   * @throws Exception the exception
    */
   @Override
-  public boolean tryReadCurrentXmlElement(EwsXmlReader reader)
-      throws ServiceXmlDeserializationException, XMLStreamException,
-      Exception {
+  public boolean tryReadCurrentXmlElement(EwsXmlReader reader) throws Exception {
     if (!super.tryReadCurrentXmlElement(reader)) {
       if (reader.getLocalName().equals(XmlElementNames.User)) {
         this.user.loadFromXml(reader);

@@ -136,7 +136,7 @@ public class ExpandGroupRequest extends
    * Initializes a new instance of the class.
    *
    * @param service the service
-   * @throws Exception
+   * @throws Exception on error
    */
   public ExpandGroupRequest(ExchangeService service)
       throws Exception {
@@ -144,7 +144,7 @@ public class ExpandGroupRequest extends
   }
 
   /**
-   * Gets  the email address. <value>The email address.</value>
+   * Gets  the email address.
    *
    * @return the email address
    */

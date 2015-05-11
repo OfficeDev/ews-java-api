@@ -694,9 +694,10 @@ public class ItemSchema extends ServiceObjectSchema {
 
   /**
    * Registers property.
-   * <p/>
+   * <p>
    * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
    * same order as they are defined in types.xsd)
+   * </p>
    */
   @Override
   protected void registerProperties() {

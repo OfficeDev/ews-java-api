@@ -71,8 +71,8 @@ public class Contact extends Item {
   private final String ContactPictureName = "ContactPicture.jpg";
 
   /**
-   * Initializes an unsaved local instance of <see cref="Contact"/>. To bind
-   * to an existing contact, use Contact.Bind() instead.
+   * Initializes an unsaved local instance of {@link Contact}.
+   * To bind to an existing contact, use Contact.Bind() instead.
    *
    * @param service the service
    * @throws Exception the exception
@@ -82,7 +82,7 @@ public class Contact extends Item {
   }
 
   /**
-   * Initializes a new instance of the <see cref="Contact"/> class.
+   * Initializes a new instance of the {@link Contact} class.
    *
    * @param parentAttachment the parent attachment
    * @throws Exception the exception

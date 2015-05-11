@@ -173,6 +173,7 @@ public abstract class MultiResponseServiceRequest<TResponse extends ServiceRespo
    *
    * @param asyncResult The async result
    * @return Service response collection.
+   * @throws Exception on error
    */
   public ServiceResponseCollection<TResponse> endExecute(IAsyncResult asyncResult) throws Exception {
     ServiceResponseCollection<TResponse> serviceResponses = endInternalExecute(asyncResult);

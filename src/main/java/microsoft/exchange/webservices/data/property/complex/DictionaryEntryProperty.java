@@ -117,12 +117,12 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
   /**
    * Writes the set update to XML.
    *
-   * @param writer                        The writer.
-   * @param ewsObject                     The ews object.
-   * @param ownerDictionaryXmlElementName Name of the owner dictionary XML element.
-   * @return True if update XML was written.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer                        the writer
+   * @param ewsObject                     the ews object
+   * @param ownerDictionaryXmlElementName name of the owner dictionary XML element
+   * @return true if update XML was written
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   protected boolean writeSetUpdateToXml(EwsServiceXmlWriter writer,
       ServiceObject ewsObject, String ownerDictionaryXmlElementName)
@@ -133,11 +133,11 @@ public abstract class DictionaryEntryProperty<TKey> extends ComplexProperty {
   /**
    * Writes the delete update to XML.
    *
-   * @param writer    The writer.
-   * @param ewsObject The ews object.
-   * @return True if update XML was written.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer    the writer
+   * @param ewsObject the ews object
+   * @return true if update XML was written
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   protected boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
       ServiceObject ewsObject) throws XMLStreamException, ServiceXmlSerializationException {

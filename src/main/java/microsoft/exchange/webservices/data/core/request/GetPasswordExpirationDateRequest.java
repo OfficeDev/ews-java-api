@@ -30,11 +30,6 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.response.GetPasswordExpirationDateResponse;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
-
-import javax.xml.stream.XMLStreamException;
 
 public final class GetPasswordExpirationDateRequest extends SimpleServiceRequestBase<GetPasswordExpirationDateResponse> {
 
@@ -66,9 +61,7 @@ public final class GetPasswordExpirationDateRequest extends SimpleServiceRequest
   }
 
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
-      throws XMLStreamException, ServiceXmlSerializationException, ServiceLocalException, InstantiationException,
-      IllegalAccessException, ServiceValidationException, Exception {
+  protected void writeElementsToXml(EwsServiceXmlWriter writer) throws Exception {
     writer.writeElementValue(XmlNamespace.Messages,
         XmlElementNames.MailboxSmtpAddress,
         this.getMailboxSmtpAddress());
