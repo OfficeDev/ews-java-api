@@ -109,7 +109,8 @@ public final class RulePredicateDateRange extends ComplexProperty {
   /**
    * Writes elements to XML.
    *
-   * @param writer The writer.
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
    */
   @Override
   public void writeElementsToXml(EwsServiceXmlWriter writer)

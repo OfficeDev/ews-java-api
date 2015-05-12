@@ -34,13 +34,14 @@ import java.io.InputStreamReader;
 /**
  * Represents an xml reader used by the ExchangeService to parse multi-response streams,
  * such as GetStreamingEvents.
- * <p/>
+ * <p>
  * Necessary because the basic EwsServiceXmlReader does not
  * use normalization (see E14:60369), and in order to turn normalization off, it is
  * necessary to use an XmlTextReader, which does not allow the ConformanceLevel.Auto that
  * a multi-response stream requires.
  * If ever there comes a time we need to deal with multi-response streams with user-generated
  * content, we will need to tackle that parsing problem separately.
+ * </p>
  */
 public class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
 
@@ -60,24 +61,21 @@ public class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
   /**
    * Creates a new instance of the EwsServiceMultiResponseXmlReader class.
    *
-   * @param stream  The stream.
-   * @param service The service.
-   * @return an instance of EwsServiceMultiResponseXmlReader
-   * wrapped around the input stream.
-   * @throws Exception
+   * @param stream the stream
+   * @param service the service
+   * @return an instance of EwsServiceMultiResponseXmlReader wrapped around the input stream
+   * @throws Exception on error
    */
   public static EwsServiceMultiResponseXmlReader create(InputStream stream, ExchangeService service) throws Exception {
-    EwsServiceMultiResponseXmlReader reader =
-        new EwsServiceMultiResponseXmlReader(stream, service);
-    return reader;
+    return new EwsServiceMultiResponseXmlReader(stream, service);
   }
 
   /**
    * Creates the XML reader.
    *
-   * @param stream The stream.
-   * @return An XML reader to use.
-   * @throws javax.xml.stream.XMLStreamException
+   * @param stream The stream
+   * @return an XML reader to use
+   * @throws XMLStreamException the XML stream exception
    */
   private static XMLEventReader createXmlReader(InputStream stream)
       throws XMLStreamException {
@@ -96,9 +94,8 @@ public class EwsServiceMultiResponseXmlReader extends EwsServiceXmlReader {
   /**
    * Initializes the XML reader.
    *
-   * @param stream The stream.
-   *               An XML reader to use.
-   * @throws Exception
+   * @param stream The stream. An XML reader to use.
+   * @throws Exception on error
    */
   @Override
   protected XMLEventReader initializeXmlReader(InputStream stream)

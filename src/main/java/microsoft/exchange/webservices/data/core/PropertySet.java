@@ -441,12 +441,12 @@ public final class PropertySet implements ISelfValidate,
   }
 
   /**
-   * Writes additonal property to XML.
+   * Writes additional property to XML.
    *
-   * @param writer              The writer to write to.
-   * @param propertyDefinitions The property definitions to write.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer              The writer to write to
+   * @param propertyDefinitions The property definitions to write
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   public static void writeAdditionalPropertiesToXml(EwsServiceXmlWriter writer,
       Iterator<PropertyDefinitionBase> propertyDefinitions)
@@ -533,10 +533,10 @@ public final class PropertySet implements ISelfValidate,
   /**
    * Writes the property set to XML.
    *
-   * @param writer            The writer to write to.
-   * @param serviceObjectType The type of service object the property set is emitted for.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer            The writer to write to
+   * @param serviceObjectType The type of service object the property set is emitted for
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   public void writeToXml(EwsServiceXmlWriter writer, ServiceObjectType serviceObjectType) throws XMLStreamException, ServiceXmlSerializationException {
     writer

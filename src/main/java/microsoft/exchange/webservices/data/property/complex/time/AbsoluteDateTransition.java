@@ -86,8 +86,8 @@ public class AbsoluteDateTransition extends TimeZoneTransition {
    * Writes elements to XML.
    *
    * @param writer the writer
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
    */
   @Override
   public void writeElementsToXml(EwsServiceXmlWriter writer)

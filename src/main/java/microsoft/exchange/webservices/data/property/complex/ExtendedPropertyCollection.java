@@ -259,11 +259,11 @@ public final class ExtendedPropertyCollection extends ComplexPropertyCollection<
   /**
    * Writes the deletion update to XML.
    *
-   * @param writer    The writer.
-   * @param ewsObject The ews object.
-   * @return True if property generated serialization.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer    the writer
+   * @param ewsObject the ews object
+   * @return true if property generated serialization
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   public boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,

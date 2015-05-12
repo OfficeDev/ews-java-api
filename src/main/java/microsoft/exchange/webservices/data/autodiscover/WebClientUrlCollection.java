@@ -41,8 +41,7 @@ public final class WebClientUrlCollection {
   private ArrayList<WebClientUrl> urls;
 
   /**
-   * Initializes a new instance of the <see cref="WebClientUrlCollection"/>
-   * class.
+   * Initializes a new instance of the {@link WebClientUrlCollection} class.
    */
   public WebClientUrlCollection() {
     this.urls = new ArrayList<WebClientUrl>();

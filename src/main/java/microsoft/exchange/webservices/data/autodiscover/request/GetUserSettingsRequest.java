@@ -34,7 +34,6 @@ import microsoft.exchange.webservices.data.core.ExchangeServiceBase;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.UserSettingName;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
@@ -51,10 +50,10 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
   /**
    * Action Uri of Autodiscover.GetUserSettings method.
    */
-  // / </summary>
   private static final String GetUserSettingsActionUri = EwsUtilities.
       AutodiscoverSoapNamespace +
       "/Autodiscover/GetUserSettings";
+
   private List<String> smtpAddresses;
   private List<UserSettingName> settings;
 
@@ -66,29 +65,26 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
   private String partnerToken;
 
   /**
-   * Initializes a new instance of the <see cref="GetUserSettingsRequest"/>
-   * class.
+   * Initializes a new instance of the {@link GetUserSettingsRequest} class.
    *
    * @param service the service
    * @param url     the url
-   * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException
+   * @throws ServiceValidationException on validation error
    */
   public GetUserSettingsRequest(AutodiscoverService service, URI url) throws ServiceValidationException {
     this(service, url, false);
   }
 
   /**
-   * Initializes a new instance of the <see cref="GetUserSettingsRequest"/>
-   * class.
+   * Initializes a new instance of the {@link GetUserSettingsRequest} class.
    *
-   * @param service Autodiscover service associated with this request
-   * @param url     URL of Autodiscover service.
-   * @throws ServiceValidationException
+   * @param service autodiscover service associated with this request
+   * @param url URL of Autodiscover service
+   * @param expectPartnerToken expect partner token or not
+   * @throws ServiceValidationException on validation error
    */
   public GetUserSettingsRequest(AutodiscoverService service, URI url, boolean expectPartnerToken)
-      throws ServiceValidationException
-
-  {
+      throws ServiceValidationException {
     super(service, url);
     this.expectPartnerToken = expectPartnerToken;
 
@@ -129,11 +125,9 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    * Executes this instance.
    *
    * @return the gets the user settings response collection
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
-   * @throws Exception                                                 the exception
+   * @throws Exception the exception
    */
-  public GetUserSettingsResponseCollection execute()
-      throws ServiceLocalException, Exception {
+  public GetUserSettingsResponseCollection execute() throws Exception {
     GetUserSettingsResponseCollection responses =
         (GetUserSettingsResponseCollection) this
             .internalExecute();
@@ -202,7 +196,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
    * Writes the attribute to XML.
    *
    * @param writer The writer.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
@@ -213,8 +207,9 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
   }
 
   /**
-   * @throws XMLStreamException
-   * @throws ServiceXmlSerializationException
+   * @param writer XML writer
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override public void writeExtraCustomSoapHeadersToXml(EwsServiceXmlWriter writer) throws XMLStreamException,
       ServiceXmlSerializationException {
@@ -230,9 +225,9 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
   /**
    * Writes request to XML.
    *
-   * @param writer The writer.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
@@ -270,8 +265,8 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
   /**
    * Read the partner token soap header.
    *
-   * @param reader ewsxmlreader
-   * @throws Exception
+   * @param reader eWS XML reader
+   * @throws Exception on error
    */
   @Override
   protected void readSoapHeader(EwsXmlReader reader) throws Exception {
@@ -292,8 +287,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
 
   /**
    * Gets the SMTP addresses.
-   *
-   * @return the smtp addresses
+   * @return the SMTP addresses
    */
   protected List<String> getSmtpAddresses() {
     return smtpAddresses;
@@ -301,7 +295,6 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
 
   /**
    * Sets the smtp addresses.
-   *
    * @param value the new smtp addresses
    */
   public void setSmtpAddresses(List<String> value) {
@@ -310,7 +303,6 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
 
   /**
    * Gets the settings.
-   *
    * @return the settings
    */
   protected List<UserSettingName> getSettings() {
@@ -329,6 +321,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
 
   /**
    * Gets the partner token.
+   * @return partner token
    */
   protected String getPartnerToken() {
     return partnerToken;
@@ -339,8 +332,8 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
   }
 
   /**
-   * <summary>
    * Gets the partner token reference.
+   * @return partner token reference
    */
   protected String getPartnerTokenReference() {
     return partnerTokenReference;

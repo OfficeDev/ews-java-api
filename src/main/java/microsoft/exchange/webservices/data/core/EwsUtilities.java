@@ -511,9 +511,10 @@ public final class EwsUtilities {
   /**
    * Write trace start element.
    *
-   * @param writer         The writer to write the start element to.
-   * @param traceTag       The trace tag.
-   * @param includeVersion If true, include build version attribute.
+   * @param writer         the writer to write the start element to
+   * @param traceTag       the trace tag
+   * @param includeVersion if true, include build version attribute
+   * @throws XMLStreamException the XML stream exception
    */
   private static void writeTraceStartElement(
       XMLStreamWriter writer,
@@ -539,8 +540,8 @@ public final class EwsUtilities {
    * @param entryKind the entry kind
    * @param logEntry  the log entry
    * @return the string
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws java.io.IOException                 Signals that an I/O exception has occurred.
+   * @throws XMLStreamException the XML stream exception
+   * @throws IOException signals that an I/O exception has occurred.
    */
   public static String formatLogMessage(String entryKind, String logEntry)
       throws XMLStreamException, IOException {

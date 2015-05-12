@@ -102,8 +102,8 @@ public final class ItemView extends PagedView {
    *
    * @param writer  the writer
    * @param groupBy the group by
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void internalWriteSearchSettingsToXml(EwsServiceXmlWriter writer,
@@ -116,8 +116,8 @@ public final class ItemView extends PagedView {
    * Writes OrderBy property to XML.
    *
    * @param writer the writer
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override public void writeOrderByToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {

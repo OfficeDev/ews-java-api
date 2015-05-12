@@ -28,10 +28,11 @@ package microsoft.exchange.webservices.data.core;
  * access.
  *
  * @param <T> Type of the lazy member
- *            <p/>
+ *            <p>
  *            If we find ourselves creating a whole bunch of these in our code,
  *            we need to rethink this. Each lazy member holds the actual member
  *            and a delegate. That can turn into a whole lot of overhead
+ *            </p>
  */
 public class LazyMember<T> {
 

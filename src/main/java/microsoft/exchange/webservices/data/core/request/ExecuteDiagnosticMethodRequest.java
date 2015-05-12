@@ -67,7 +67,7 @@ public final class ExecuteDiagnosticMethodRequest extends
    * Writes XML elements.
    *
    * @param writer The writer
-   * @throws javax.xml.stream.XMLStreamException
+   * @throws XMLStreamException the XML stream exception
    * @throws ServiceXmlSerializationException
    */
   @Override

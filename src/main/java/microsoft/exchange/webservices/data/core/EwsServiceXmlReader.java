@@ -50,9 +50,9 @@ public class EwsServiceXmlReader extends EwsXmlReader {
   /**
    * Initializes a new instance of the EwsXmlReader class.
    *
-   * @param stream  the stream
+   * @param stream the stream
    * @param service the service
-   * @throws Exception
+   * @throws Exception on error
    */
   public EwsServiceXmlReader(InputStream stream, ExchangeService service)
       throws Exception {
@@ -73,8 +73,8 @@ public class EwsServiceXmlReader extends EwsXmlReader {
   /**
    * Reads the element value as unspecified date.
    *
-   * @return Element value
-   * @throws Exception
+   * @return element value
+   * @throws Exception on error
    */
   public Date readElementValueAsUnspecifiedDate() throws Exception {
     return DateTimeUtils.convertDateStringToDate(readElementValue());
@@ -91,43 +91,18 @@ public class EwsServiceXmlReader extends EwsXmlReader {
       throws Exception {
     // Convert the element's value to a DateTime with no adjustment.
     String date = this.readElementValue();
-    Date tempDate = null;
 
     try {
       DateFormat formatter =
           new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
       formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-      tempDate = formatter.parse(date);
+      return formatter.parse(date);
     } catch (Exception e) {
-      //LOG.error(e);
       DateFormat formatter = new SimpleDateFormat(
           "yyyy-MM-dd'T'HH:mm:ss.SSS");
       formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-      tempDate = formatter.parse(date);
+      return formatter.parse(date);
     }
-
-		/*
-                 * TimeZone tz = sdfin.getTimeZone(); Calendar calen =
-		 * Calendar.getInstance(); calen.setTime(tempDate);
-		 */
-
-    // Set the kind according to the service's time zone
-    // Since the TimeZone is default UTC so no need to checks for Local and
-    // other
-    // if ((this.service.getTimeZone()).equals(TimeZone.getTimeZone("utc")))
-    // {
-
-		/*
-                 * calen.setTimeInMillis(calen.getTimeInMillis() -
-		 * tz.getOffset(tempDate.getTime()));
-		 */
-    return tempDate;
-                /*
-		 * } else if (EwsUtilities.isLocalTimeZone(this.service.getTimeZone()))
-		 * { calen.setTimeInMillis(calen.getTimeInMillis() +
-		 * tz.getOffset(tempDate.getTime())); return calen.getTime(); } else {
-		 * return tempDate; }
-		 */
   }
 
   /**
@@ -163,7 +138,7 @@ public class EwsServiceXmlReader extends EwsXmlReader {
       boolean summaryPropertiesOnly) throws Exception {
 
     List<TServiceObject> serviceObjects = new ArrayList<TServiceObject>();
-    TServiceObject serviceObject = null;
+    TServiceObject serviceObject;
 
     this.readStartElement(XmlNamespace.Messages, collectionXmlElementName);
 

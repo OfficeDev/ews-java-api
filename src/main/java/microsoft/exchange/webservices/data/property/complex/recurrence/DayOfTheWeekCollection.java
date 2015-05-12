@@ -102,8 +102,8 @@ public final class DayOfTheWeekCollection extends ComplexProperty implements
    *
    * @param writer         the writer
    * @param xmlElementName the xml element name
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override public void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)
       throws XMLStreamException, ServiceXmlSerializationException {

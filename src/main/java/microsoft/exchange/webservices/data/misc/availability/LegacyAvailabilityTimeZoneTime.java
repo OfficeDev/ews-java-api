@@ -157,8 +157,8 @@ final class LegacyAvailabilityTimeZoneTime extends ComplexProperty {
    * Writes the elements to XML.
    *
    * @param writer the writer
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
    */
   @Override
   public void writeElementsToXml(EwsServiceXmlWriter writer)

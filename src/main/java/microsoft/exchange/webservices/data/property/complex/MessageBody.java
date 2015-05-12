@@ -119,9 +119,9 @@ public final class MessageBody extends ComplexProperty {
   /**
    * Reads text value from XML.
    *
-   * @param reader The reader.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException  the service xml deserialization exception
+   * @param reader the reader
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
    */
   @Override
   public void readTextValueFromXml(EwsServiceXmlReader reader)

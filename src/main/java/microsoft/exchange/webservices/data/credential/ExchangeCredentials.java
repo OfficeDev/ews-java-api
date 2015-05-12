@@ -59,7 +59,7 @@ public abstract class ExchangeCredentials {
 
 
   /**
-   * Return the url without wssecruity address.
+   * Return the url without ws-security address.
    *
    * @param url The url
    * @return The absolute uri base.
@@ -98,8 +98,8 @@ public abstract class ExchangeCredentials {
   /**
    * Emit any extra necessary namespace aliases for the SOAP:header block.
    *
-   * @param writer The writer.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
    */
   public void emitExtraSoapHeaderNamespaceAliases(XMLStreamWriter writer)
       throws XMLStreamException {
@@ -111,9 +111,9 @@ public abstract class ExchangeCredentials {
    * authentication schemes that rely on WS-Security, or for endpoints
    * requiring WS-Addressing.
    *
-   * @param writer        The writer.
-   * @param webMethodName The Web method being called.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @param writer the writer
+   * @param webMethodName the Web method being called
+   * @throws XMLStreamException the XML stream exception
    */
   public void serializeExtraSoapHeaders(XMLStreamWriter writer, String webMethodName) throws XMLStreamException {
     // do nothing by default.
@@ -148,16 +148,14 @@ public abstract class ExchangeCredentials {
 
 
   /**
-   * Serialize SOAP headers used for authentication schemes that rely on
-   * WS-Security.
+   * Serialize SOAP headers used for authentication schemes that rely on WS-Security.
    *
-   * @param writer The writer.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
    */
   public void serializeWSSecurityHeaders(XMLStreamWriter writer)
       throws XMLStreamException {
     // do nothing by default.
   }
-
 
 }

@@ -82,8 +82,8 @@ public final class MimeContent extends ComplexProperty {
    * Reads text value from XML.
    *
    * @param reader the reader
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
    */
   @Override
   public void readTextValueFromXml(EwsServiceXmlReader reader)
@@ -108,7 +108,7 @@ public final class MimeContent extends ComplexProperty {
    * Writes elements to XML.
    *
    * @param writer the writer
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws XMLStreamException the XML stream exception
    */
   public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException {

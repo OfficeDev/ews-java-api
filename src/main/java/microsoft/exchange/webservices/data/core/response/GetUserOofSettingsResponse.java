@@ -43,7 +43,7 @@ public class GetUserOofSettingsResponse extends ServiceResponse {
   }
 
   /**
-   * Gets  the OOF settings. <value>The oof settings.</value>
+   * Gets  the OOF settings.
    *
    * @return the oof settings
    */

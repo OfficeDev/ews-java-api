@@ -136,8 +136,8 @@ public final class ConvertIdRequest extends
    * Writes XML elements.
    *
    * @param writer the writer
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)
@@ -164,8 +164,7 @@ public final class ConvertIdRequest extends
   }
 
   /**
-   * Gets the destination format. <value>The destination
-   * format.</value>
+   * Gets the destination format.
    *
    * @return the destination format
    */
@@ -183,7 +182,7 @@ public final class ConvertIdRequest extends
   }
 
   /**
-   * Gets the ids. <value>The ids.</value>
+   * Gets the ids.
    *
    * @return the ids
    */

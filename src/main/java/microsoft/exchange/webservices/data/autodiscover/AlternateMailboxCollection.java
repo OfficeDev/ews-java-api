@@ -73,6 +73,7 @@ public final class AlternateMailboxCollection {
 
   /**
    * Gets the collection of alternate mailboxes.
+   * @return alternate mailboxes
    */
   public List<AlternateMailbox> getEntries() {
     return this.entries;

@@ -113,8 +113,8 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
     /**
      * Delegate method to handle a hanging request disconnection.
      *
-     * @param sender The object invoking the delegate.
-     * @param args,  Event data.
+     * @param sender the object invoking the delegate
+     * @param args event data
      */
     void hangingRequestDisconnectHandler(Object sender,
         HangingRequestDisconnectEventArgs args);
@@ -323,6 +323,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
 
   /**
    * Perform any bookkeeping needed when we connect
+   * @throws XMLStreamException the XML stream exception
    */
   private void internalOnConnect() throws XMLStreamException,
       IOException, EWSHttpException {

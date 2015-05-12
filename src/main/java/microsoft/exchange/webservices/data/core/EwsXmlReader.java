@@ -82,7 +82,7 @@ public class EwsXmlReader {
    * Initializes a new instance of the EwsXmlReader class.
    *
    * @param stream the stream
-   * @throws Exception
+   * @throws Exception on error
    */
   public EwsXmlReader(InputStream stream) throws Exception {
     this.xmlReader = initializeXmlReader(stream);
@@ -93,14 +93,11 @@ public class EwsXmlReader {
    *
    * @param stream the stream
    * @return An XML reader to use.
-   * @throws Exception
+   * @throws Exception on error
    */
-  protected XMLEventReader initializeXmlReader(InputStream stream)
-      throws XMLStreamException, Exception {
-
+  protected XMLEventReader initializeXmlReader(InputStream stream) throws Exception {
     XMLInputFactory inputFactory = XMLInputFactory.newInstance();
     inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
-    //inputFactory.setProperty(XMLInputFactory.RESOLVER, null);
 
     return inputFactory.createXMLEventReader(stream);
   }
@@ -178,7 +175,7 @@ public class EwsXmlReader {
    * Reads the specified node type.
    *
    * @throws ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws XMLStreamException the XML stream exception
    */
   public void read() throws ServiceXmlDeserializationException,
       XMLStreamException {
@@ -190,7 +187,7 @@ public class EwsXmlReader {
    *
    * @param keepWhiteSpace Do not remove whitespace characters if true
    * @throws ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws XMLStreamException the XML stream exception
    */
   private void read(boolean keepWhiteSpace) throws ServiceXmlDeserializationException,
       XMLStreamException {
@@ -431,8 +428,8 @@ public class EwsXmlReader {
    * Present event will be set on END ELEMENT
    *
    * @return String
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
    */
   public String readValue() throws XMLStreamException,
       ServiceXmlDeserializationException {
@@ -446,8 +443,8 @@ public class EwsXmlReader {
    *
    * @param keepWhiteSpace Do not remove whitespace characters if true
    * @return String
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
    */
   public String readValue(boolean keepWhiteSpace) throws XMLStreamException,
       ServiceXmlDeserializationException {
@@ -520,7 +517,7 @@ public class EwsXmlReader {
    *
    * @param value the value
    * @return boolean
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws XMLStreamException the XML stream exception
    * @throws ServiceXmlDeserializationException  the service xml deserialization exception
    */
   public boolean tryReadValue(OutParam<String> value)
@@ -555,9 +552,9 @@ public class EwsXmlReader {
    * Reads the base64 element value.
    *
    * @return byte[]
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws java.io.IOException                 Signals that an I/O exception has occurred.
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws IOException signals that an I/O exception has occurred
    */
   public byte[] readBase64ElementValue()
       throws ServiceXmlDeserializationException, XMLStreamException,
@@ -862,8 +859,8 @@ public class EwsXmlReader {
    * Outer XML as string.
    *
    * @return String
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
+   * @throws XMLStreamException the XML stream exception
    */
   public String readOuterXml() throws ServiceXmlDeserializationException,
       XMLStreamException {
@@ -887,8 +884,8 @@ public class EwsXmlReader {
    * Reads the Inner XML at the given location.
    *
    * @return String
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
+   * @throws XMLStreamException the XML stream exception
    */
   public String readInnerXml() throws ServiceXmlDeserializationException,
       XMLStreamException {
@@ -916,9 +913,7 @@ public class EwsXmlReader {
    * @param endEvent   the end event
    * @return true, if successful
    */
-  public static boolean checkEndElement(XMLEvent startEvent,
-      XMLEvent endEvent) {
-
+  public static boolean checkEndElement(XMLEvent startEvent, XMLEvent endEvent) {
     boolean isEndElement = false;
     if (endEvent.isEndElement()) {
       QName qEName = endEvent.asEndElement().getName();
@@ -936,13 +931,13 @@ public class EwsXmlReader {
    * Gets the XML reader for node.
    *
    * @return null
-   * @throws javax.xml.stream.XMLStreamException
-   * @throws ServiceXmlDeserializationException
-   * @throws java.io.FileNotFoundException
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlDeserializationException the service xml deserialization exception
+   * @throws FileNotFoundException the file not found exception
    */
   public XMLEventReader getXmlReaderForNode()
       throws FileNotFoundException, ServiceXmlDeserializationException, XMLStreamException {
-    return readSubtree(); //this.xmlReader.ReadSubtree();
+    return readSubtree();
   }
 
   public XMLEventReader readSubtree()
@@ -986,9 +981,9 @@ public class EwsXmlReader {
    *
    * @param xmlNamespace The namespace of the element you with to move to.
    * @param localName    The local name of the element you wish to move to.
-   * @throws javax.xml.stream.XMLStreamException
+   * @throws XMLStreamException the XML stream exception
    */
-  public void ReadToDescendant(XmlNamespace xmlNamespace, String localName) throws XMLStreamException {
+  public void readToDescendant(XmlNamespace xmlNamespace, String localName) throws XMLStreamException {
     readToDescendant(localName, EwsUtilities.getNamespaceUri(xmlNamespace));
   }
 
@@ -1034,7 +1029,7 @@ public class EwsXmlReader {
    * Gets a value indicating whether current element is empty.
    *
    * @return boolean
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws XMLStreamException the XML stream exception
    */
   public boolean isEmptyElement() throws XMLStreamException {
     boolean isPresentStartElement = this.presentEvent.isStartElement();
@@ -1100,12 +1095,11 @@ public class EwsXmlReader {
    * Gets the type of the node.
    *
    * @return XmlNodeType
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws XMLStreamException the XML stream exception
    */
   public XmlNodeType getNodeType() throws XMLStreamException {
     XMLEvent event = this.presentEvent;
-    XmlNodeType nodeType = new XmlNodeType(event.getEventType());
-    return nodeType;
+    return new XmlNodeType(event.getEventType());
   }
 
   /**

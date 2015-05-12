@@ -144,11 +144,11 @@ public class UserConfiguration {
   /**
    * Writes a byte array to Xml.
    *
-   * @param writer         The writer.
-   * @param byteArray      Byte array to write.
-   * @param xmlElementName Name of the Xml element.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer         the writer
+   * @param byteArray      byte array to write
+   * @param xmlElementName name of the Xml element
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   private static void writeByteArrayToXml(EwsServiceXmlWriter writer,
       byte[] byteArray, String xmlElementName) throws XMLStreamException, ServiceXmlSerializationException {
@@ -551,9 +551,9 @@ public class UserConfiguration {
   /**
    * Writes the XmlData property to Xml.
    *
-   * @param writer The writer.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   private void writeXmlDataToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
@@ -566,9 +566,9 @@ public class UserConfiguration {
   /**
    * Writes the BinaryData property to Xml.
    *
-   * @param writer The writer.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   private void writeBinaryDataToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {

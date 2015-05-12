@@ -86,8 +86,8 @@ public class GetStreamingEventsRequest extends HangingServiceRequestBase<GetStre
   /**
    * Writes the elements to XML writer.
    *
-   * @param writer The writer
-   * @throws javax.xml.stream.XMLStreamException
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
    * @throws ServiceXmlSerializationException
    */
   @Override

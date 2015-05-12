@@ -83,9 +83,9 @@ public final class MobilePhone implements ISelfValidate {
 
 
   /**
-   * Validates this instance.//>!(contentType == null || contentType.isEmpty()
+   * Validates this instance.
    *
-   * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException
+   * @throws ServiceValidationException on validation error
    */
   public void validate() throws ServiceValidationException {
     if (this.getPhoneNumber() == null || this.getPhoneNumber().isEmpty()) {

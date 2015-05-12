@@ -58,7 +58,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.text.ParseException;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
 
@@ -108,10 +107,9 @@ public abstract class AutodiscoverRequest {
   /**
    * Validates the request.
    *
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
-   * @throws Exception             the exception
+   * @throws Exception the exception
    */
-  protected void validate() throws ServiceLocalException, Exception {
+  protected void validate() throws Exception {
     this.getService().validate();
   }
 
@@ -119,11 +117,9 @@ public abstract class AutodiscoverRequest {
    * Executes this instance.
    *
    * @return the autodiscover response
-   * @throws ServiceLocalException the service local exception
-   * @throws Exception             the exception
+   * @throws Exception the exception
    */
-  protected AutodiscoverResponse internalExecute()
-      throws ServiceLocalException, Exception {
+  protected AutodiscoverResponse internalExecute() throws Exception {
     this.validate();
     HttpWebRequest request = null;
     try {
@@ -172,16 +168,6 @@ public abstract class AutodiscoverRequest {
           throw new ServiceRemoteException("The service returned an invalid redirection response.");
         }
       }
-
-			/*
-                         * BufferedReader in = new BufferedReader(new
-			 * InputStreamReader(request.getInputStream()));
-			 * 
-			 * String decodedString;
-			 * 
-			 * while ((decodedString = in.readLine()) != null) {
-			 * LOG.debug(decodedString); } in.close();
-			 */
 
       memoryStream = new ByteArrayOutputStream();
       InputStream serviceResponseStream = request.getInputStream();
@@ -335,11 +321,11 @@ public abstract class AutodiscoverRequest {
   /**
    * Create a redirection response.
    *
-   * @param httpWebResponse The HTTP web response.
-   * @return AutodiscoverResponse autodiscoverResponse object.
-   * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
-   * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @param httpWebResponse the HTTP web response
+   * @return AutodiscoverResponse autodiscoverResponse object
+   * @throws XMLStreamException the XML stream exception
+   * @throws IOException signals that an I/O exception has occurred
+   * @throws EWSHttpException the eWS http exception
    */
   private AutodiscoverResponse createRedirectionResponse(
       HttpWebRequest httpWebResponse) throws XMLStreamException,
@@ -467,9 +453,10 @@ public abstract class AutodiscoverRequest {
   /**
    * Writes the autodiscover SOAP request.
    *
-   * @param requestUrl Request URL.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
+   * @param requestUrl request URL
+   * @param writer writer object
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   protected void writeSoapRequest(URI requestUrl,
       EwsServiceXmlWriter writer) throws XMLStreamException, ServiceXmlSerializationException {
@@ -538,9 +525,9 @@ public abstract class AutodiscoverRequest {
   /**
    * Write extra headers.
    *
-   * @param writer The writer
-   * @throws ServiceXmlSerializationException
-   * @throws javax.xml.stream.XMLStreamException
+   * @param writer the writer
+   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
    */
   protected void writeExtraCustomSoapHeadersToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
@@ -552,17 +539,14 @@ public abstract class AutodiscoverRequest {
   /**
    * Writes XML body.
    *
-   * @param writer The writer.
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @param writer the writer
+   * @throws ServiceXmlSerializationException the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
    */
   protected void writeBodyToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException, XMLStreamException {
     writer.writeStartElement(XmlNamespace.Autodiscover, this
         .getRequestXmlElementName());
-    // writer.WriteAttributeValue("xmlns",
-    // EwsUtilities.AutodiscoverSoapNamespacePrefix,
-    // EwsUtilities.AutodiscoverSoapNamespace);
 
     this.writeAttributesToXml(writer);
     this.writeElementsToXml(writer);
@@ -576,8 +560,8 @@ public abstract class AutodiscoverRequest {
    *
    * @param request the request
    * @return ResponseStream
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
-   * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
+   * @throws EWSHttpException the eWS http exception
+   * @throws IOException signals that an I/O exception has occurred.
    */
   protected static InputStream getResponseStream(HttpWebRequest request)
       throws EWSHttpException, IOException {
@@ -620,7 +604,7 @@ public abstract class AutodiscoverRequest {
    * Reads a single SOAP header.
    *
    * @param reader EwsXmlReader
-   * @throws Exception
+   * @throws Exception on error
    */
   protected void readSoapHeader(EwsXmlReader reader) throws Exception {
     // Is this the ServerVersionInfo?
@@ -675,14 +659,9 @@ public abstract class AutodiscoverRequest {
    *
    * @param reader EwsXmlReader.
    * @return AutodiscoverResponse AutodiscoverResponse object
-   * @throws InstantiationException   the instantiation exception
-   * @throws IllegalAccessException   the illegal access exception
-   * @throws java.text.ParseException the parse exception
-   * @throws Exception                the exception
+   * @throws Exception the exception
    */
-  protected AutodiscoverResponse readSoapBody(EwsXmlReader reader)
-      throws InstantiationException, IllegalAccessException,
-      ParseException, Exception {
+  protected AutodiscoverResponse readSoapBody(EwsXmlReader reader) throws Exception {
     reader.readStartElement(XmlNamespace.Soap,
         XmlElementNames.SOAPBodyElementName);
     AutodiscoverResponse responses = this.loadFromXml(reader);
@@ -695,15 +674,10 @@ public abstract class AutodiscoverRequest {
    * Loads response from XML.
    *
    * @param reader The reader.
-   * @return AutodiscoverResponse AutodiscoverResponse object
-   * @throws InstantiationException   the instantiation exception
-   * @throws IllegalAccessException   the illegal access exception
-   * @throws java.text.ParseException the parse exception
-   * @throws Exception                the exception
+   * @return AutodiscoverResponse object
+   * @throws Exception the exception
    */
-  protected AutodiscoverResponse loadFromXml(EwsXmlReader reader)
-      throws InstantiationException, IllegalAccessException,
-      ParseException, Exception {
+  protected AutodiscoverResponse loadFromXml(EwsXmlReader reader) throws Exception {
     String elementName = this.getResponseXmlElementName();
     reader.readStartElement(XmlNamespace.Autodiscover, elementName);
     AutodiscoverResponse response = this.createServiceResponse();
@@ -751,9 +725,9 @@ public abstract class AutodiscoverRequest {
   /**
    * Writes elements to request XML.
    *
-   * @param writer The writer.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   protected abstract void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException;

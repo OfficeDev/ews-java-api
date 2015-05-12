@@ -59,7 +59,7 @@ public abstract class MoveCopyItemRequest<TResponse extends ServiceResponse>
    *
    * @param service           the service
    * @param errorHandlingMode the error handling mode
-   * @throws Exception
+   * @throws Exception on error
    */
   protected MoveCopyItemRequest(ExchangeService service,
       ServiceErrorHandling errorHandlingMode)
@@ -96,7 +96,7 @@ public abstract class MoveCopyItemRequest<TResponse extends ServiceResponse>
   }
 
   /**
-   * Gets the item ids. <value>The item ids.</value>
+   * Gets the item ids.
    *
    * @return the item ids
    */

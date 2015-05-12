@@ -144,7 +144,7 @@ public class DeleteUserConfigurationRequest extends
    * Initializes a new instance of the class.
    *
    * @param service the service
-   * @throws Exception
+   * @throws Exception on error
    */
   public DeleteUserConfigurationRequest(ExchangeService service)
       throws Exception {
@@ -152,7 +152,7 @@ public class DeleteUserConfigurationRequest extends
   }
 
   /**
-   * Gets  the name. <value>The name.</value>
+   * Gets  the name.
    *
    * @return the name
    */
@@ -170,8 +170,7 @@ public class DeleteUserConfigurationRequest extends
   }
 
   /**
-   * Gets  the parent folThe parent folder Id. <value>The parent folder
-   * Id.</value>
+   * Gets the parent folThe parent folder Id.
    *
    * @return the parent folder id
    */

@@ -67,8 +67,7 @@ public class GetDomainSettingsRequest extends AutodiscoverRequest {
   private ExchangeVersion requestedVersion;
 
   /**
-   * Initializes a new instance of the <see cref="GetDomainSettingsRequest"/>
-   * class.
+   * Initializes a new instance of the {@link GetDomainSettingsRequest} class.
    *
    * @param service the service
    * @param url     the url
@@ -108,11 +107,9 @@ public class GetDomainSettingsRequest extends AutodiscoverRequest {
    * Executes this instance.
    *
    * @return the gets the domain settings response collection
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
-   * @throws Exception                                                 the exception
+   * @throws Exception the exception
    */
-  public GetDomainSettingsResponseCollection execute()
-      throws ServiceLocalException, Exception {
+  public GetDomainSettingsResponseCollection execute() throws Exception {
     GetDomainSettingsResponseCollection responses =
         (GetDomainSettingsResponseCollection) this
             .internalExecute();
@@ -181,7 +178,7 @@ public class GetDomainSettingsRequest extends AutodiscoverRequest {
    * Writes the attribute to XML.
    *
    * @param writer The writer.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
@@ -194,9 +191,9 @@ public class GetDomainSettingsRequest extends AutodiscoverRequest {
   /**
    * Writes request to XML.
    *
-   * @param writer The writer.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void writeElementsToXml(EwsServiceXmlWriter writer)

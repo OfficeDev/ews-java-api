@@ -77,7 +77,7 @@ public class AutodiscoverRemoteException extends ServiceRemoteException {
   }
 
   /**
-   * Gets the error. <value>The error.</value>
+   * Gets the error.
    *
    * @return the error
    */

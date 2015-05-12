@@ -64,7 +64,7 @@ public class UpdateDelegateRequest extends
   }
 
   /**
-   * Validate request..
+   * Validate request.
    *
    * @throws Exception the exception
    */
@@ -144,8 +144,7 @@ public class UpdateDelegateRequest extends
   }
 
   /**
-   * Gets the meeting request delivery scope. <value>The meeting
-   * request delivery scope.</value>
+   * Gets the meeting request delivery scope.
    *
    * @return the meeting request delivery scope
    */
@@ -164,7 +163,7 @@ public class UpdateDelegateRequest extends
   }
 
   /**
-   * Gets the delegate users. <value>The delegate users.</value>
+   * Gets the delegate users.
    *
    * @return the delegate users
    */

@@ -242,11 +242,11 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
   /**
    * Tries to get a property value based on a property definition.
    *
-   * @param <T>                The types of the property.
-   * @param propertyDefinition The property definition.
-   * @param propertyValue      The property value.
-   * @return True if property was retrieved.
-   * @throws microsoft.exchange.webservices.data.exception.ArgumentException
+   * @param <T>                the types of the property
+   * @param propertyDefinition the property definition
+   * @param propertyValue      the property value
+   * @return true if property was retrieved
+   * @throws ArgumentException on validation error
    */
   public <T> boolean tryGetPropertyType(Class<T> cls, PropertyDefinition propertyDefinition,
       OutParam<T> propertyValue) throws ArgumentException {
@@ -380,9 +380,9 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
   /**
    * Tries to retrieve the value of the specified property.
    *
-   * @param propertyDefinition    The property for which to retrieve a value.
-   * @param propertyValueOutParam If the method succeeds, contains the value of the property.
-   * @return True if the value could be retrieved, false otherwise.
+   * @param propertyDefinition the property for which to retrieve a value
+   * @param propertyValueOutParam if the method succeeds, contains the value of the property
+   * @return true if the value could be retrieved, false otherwise
    */
   public <T> boolean tryGetValue(PropertyDefinition propertyDefinition, OutParam<T> propertyValueOutParam) {
     if (this.properties.containsKey(propertyDefinition)) {

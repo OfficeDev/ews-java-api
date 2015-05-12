@@ -30,7 +30,6 @@ import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -145,13 +144,11 @@ abstract class TypedPropertyDefinition<T extends Serializable> extends PropertyD
    * @param writer            The writer.
    * @param propertyBag       The property bag.
    * @param isUpdateOperation Indicates whether the context is an update operation.
-   * @throws javax.xml.stream.XMLStreamException                       the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException                          the service xml serialization exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceLocalException the service local exception
    */
   @Override public void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
-      boolean isUpdateOperation)
-      throws XMLStreamException, ServiceXmlSerializationException, ServiceLocalException {
+      boolean isUpdateOperation) throws XMLStreamException, ServiceLocalException {
     T value = propertyBag.getObjectFromPropertyDefinition(this);
 
     if (value != null) {

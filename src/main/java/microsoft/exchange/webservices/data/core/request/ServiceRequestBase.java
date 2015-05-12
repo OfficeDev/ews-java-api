@@ -40,7 +40,6 @@ import microsoft.exchange.webservices.data.exception.HttpErrorException;
 import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceRequestException;
 import microsoft.exchange.webservices.data.exception.ServiceResponseException;
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
 import microsoft.exchange.webservices.data.exception.ServiceVersionException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
@@ -68,12 +67,6 @@ import java.util.zip.InflaterInputStream;
 public abstract class ServiceRequestBase<T> {
 
   private static final Log LOG = LogFactory.getLog(ServiceRequestBase.class);
-
-  // Private Constants
-  // private final String XMLSchemaNamespace =
-  // "http://www.w3.org/2001/XMLSchema";
-  // private final String XMLSchemaInstanceNamespace =
-  // "http://www.w3.org/2001/XMLSchema-instance";
 
   /**
    * The service.
@@ -117,18 +110,9 @@ public abstract class ServiceRequestBase<T> {
    * Writes XML elements.
    *
    * @param writer The writer.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
-   * @throws ServiceLocalException               the service local exception
-   * @throws InstantiationException              the instantiation exception
-   * @throws IllegalAccessException              the illegal access exception
-   * @throws ServiceValidationException          the service validation exception
-   * @throws Exception                           the exception
+   * @throws Exception the exception
    */
-  protected abstract void writeElementsToXml(EwsServiceXmlWriter writer)
-      throws XMLStreamException, ServiceXmlSerializationException,
-      ServiceLocalException, InstantiationException,
-      IllegalAccessException, ServiceValidationException, Exception;
+  protected abstract void writeElementsToXml(EwsServiceXmlWriter writer) throws Exception;
 
   /**
    * Validate request.
@@ -136,7 +120,7 @@ public abstract class ServiceRequestBase<T> {
    * @throws ServiceLocalException the service local exception
    * @throws Exception             the exception
    */
-  protected void validate() throws ServiceLocalException, Exception {
+  protected void validate() throws Exception {
     this.service.validate();
   }
 
@@ -348,11 +332,11 @@ public abstract class ServiceRequestBase<T> {
   /**
    * Traces the response.
    *
-   * @param request      The response.
-   * @param memoryStream The response content in a MemoryStream.
-   * @throws javax.xml.stream.XMLStreamException                  the xML stream exception
-   * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @param request the response
+   * @param memoryStream the response content in a MemoryStream
+   * @throws XMLStreamException the XML stream exception
+   * @throws IOException signals that an I/O exception has occurred
+   * @throws EWSHttpException the eWS http exception
    */
   protected void traceResponse(HttpWebRequest request,
       ByteArrayOutputStream memoryStream) throws XMLStreamException,
@@ -404,15 +388,14 @@ public abstract class ServiceRequestBase<T> {
   /**
    * Reads the response.
    *
-   * @return serviceResponse
-   * @throws Exception
+   * @param response HTTP web request
+   * @return response response object
+   * @throws Exception on error
    */
   protected T readResponse(HttpWebRequest response) throws Exception {
     T serviceResponse;
 
     if (!response.getResponseContentType().startsWith("text/xml")) {
-      String line = new BufferedReader(new InputStreamReader(ServiceRequestBase.getResponseStream(response)))
-          .readLine();
       throw new ServiceRequestException("The response received from the service didn't contain valid XML.");
     }
 
@@ -463,9 +446,7 @@ public abstract class ServiceRequestBase<T> {
     } catch (IOException e) {
       throw new ServiceRequestException(String.format("The request failed. %s", e.getMessage()), e);
     } finally { // close the underlying response
-      if (response != null) {
-        response.close();
-      }
+      response.close();
     }
   }
 
@@ -505,7 +486,7 @@ public abstract class ServiceRequestBase<T> {
    * Reads any preamble data not part of the core response.
    *
    * @param ewsXmlReader The EwsServiceXmlReader.
-   * @throws Exception
+   * @throws Exception on error
    */
   protected void readPreamble(EwsServiceXmlReader ewsXmlReader)
       throws Exception {
@@ -538,13 +519,13 @@ public abstract class ServiceRequestBase<T> {
   /**
    * Processes the web exception.
    *
-   * @param webException The web exception.
-   * @param req          http Request object used to send the http request.
-   * @throws Exception
+   * @param webException the web exception
+   * @param req HTTP Request object used to send the http request
+   * @throws Exception on error
    */
   protected void processWebException(Exception webException, HttpWebRequest req)
       throws Exception {
-    SoapFaultDetails soapFaultDetails = null;
+    SoapFaultDetails soapFaultDetails;
     if (null != req) {
       this.getService().processHttpResponseHeaders(
           TraceFlags.EwsResponseHttpHeaders, req);
@@ -718,8 +699,9 @@ public abstract class ServiceRequestBase<T> {
    * Validates request parameters, and emits the request to the server.
    *
    * @return The response returned by the server.
+   * @throws Exception on error
    */
-  protected HttpWebRequest validateAndEmitRequest() throws ServiceLocalException, Exception {
+  protected HttpWebRequest validateAndEmitRequest() throws Exception {
     this.validate();
 
     HttpWebRequest request = this.buildEwsHttpWebRequest();
@@ -745,10 +727,10 @@ public abstract class ServiceRequestBase<T> {
   }
 
   /**
-   * <summary> Builds the HttpWebRequest object for current service request
-   * with exception handling.
+   * Builds the HttpWebRequest object for current service request with exception handling.
    *
    * @return An HttpWebRequest instance
+   * @throws Exception on error
    */
   protected HttpWebRequest buildEwsHttpWebRequest() throws Exception {
     try {
@@ -784,6 +766,7 @@ public abstract class ServiceRequestBase<T> {
    *
    * @param request The specified HttpWebRequest
    * @return An HttpWebResponse instance
+   * @throws Exception on error
    */
   protected HttpWebRequest getEwsHttpWebResponse(HttpWebRequest request) throws Exception {
     try {

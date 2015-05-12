@@ -92,9 +92,9 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Initializes a new instance.
    *
-   * @param service The service.
-   * @param stream  The stream.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @param service the service
+   * @param stream the stream
+   * @throws XMLStreamException the XML stream exception
    */
   public EwsServiceXmlWriter(ExchangeServiceBase service, OutputStream stream) throws XMLStreamException {
     this.service = service;
@@ -161,7 +161,7 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Flushes this instance.
    *
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws XMLStreamException the XML stream exception
    */
   public void flush() throws XMLStreamException {
     this.xmlWriter.flush();
@@ -170,9 +170,9 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Writes the start element.
    *
-   * @param xmlNamespace The XML namespace.
-   * @param localName    The local name of the element.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @param xmlNamespace the XML namespace
+   * @param localName    the local name of the element
+   * @throws XMLStreamException the XML stream exception
    */
   public void writeStartElement(XmlNamespace xmlNamespace, String localName)
       throws XMLStreamException {
@@ -184,7 +184,7 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Writes the end element.
    *
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws XMLStreamException the XML stream exception
    */
   public void writeEndElement() throws XMLStreamException {
     this.xmlWriter.writeEndElement();
@@ -193,8 +193,8 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Writes the attribute value.
    *
-   * @param localName The local name of the attribute.
-   * @param value     The value.
+   * @param localName the local name of the attribute
+   * @param value     the value
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   public void writeAttributeValue(String localName, Object value)
@@ -206,10 +206,10 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Writes the attribute value.  Optionally emits empty string values.
    *
-   * @param localName              The local name of the attribute.
-   * @param alwaysWriteEmptyString Always emit the empty string as the value.
-   * @param value                  The value.
-   * @throws ServiceXmlSerializationException
+   * @param localName              the local name of the attribute.
+   * @param alwaysWriteEmptyString always emit the empty string as the value.
+   * @param value                  the value
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   public void writeAttributeValue(String localName,
       boolean alwaysWriteEmptyString,
@@ -231,9 +231,9 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Writes the attribute value.
    *
-   * @param namespacePrefix The namespace prefix.
-   * @param localName       The local name of the attribute.
-   * @param value           The value.
+   * @param namespacePrefix the namespace prefix
+   * @param localName       the local name of the attribute
+   * @param value           the value
    * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   public void writeAttributeValue(String namespacePrefix, String localName,
@@ -258,7 +258,7 @@ public class EwsServiceXmlWriter implements IDisposable {
    *
    * @param localName   The local name of the attribute.
    * @param stringValue The string value.
-   * @throws ServiceXmlSerializationException Thrown if string value isn't valid for XML.
+   * @throws ServiceXmlSerializationException Thrown if string value isn't valid for XML
    */
   protected void writeAttributeString(String localName, String stringValue)
       throws ServiceXmlSerializationException {
@@ -316,13 +316,12 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Writes the element value.
    *
-   * @param xmlNamespace The XML namespace.
-   * @param localName    The local name of the element.
-   * @param displayName  The name that should appear in the exception message when the
-   *                     value can not be serialized.
-   * @param value        The value.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param xmlNamespace the XML namespace
+   * @param localName    the local name of the element
+   * @param displayName  the name that should appear in the exception message when the value can not be serialized
+   * @param value        the value
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   public void writeElementValue(XmlNamespace xmlNamespace, String localName, String displayName, Object value)
       throws XMLStreamException, ServiceXmlSerializationException {
@@ -348,14 +347,13 @@ public class EwsServiceXmlWriter implements IDisposable {
   public void writeNode(Node xmlNode) throws XMLStreamException {
     if (xmlNode != null) {
       writeNode(xmlNode, this.xmlWriter);
-      //this.xmlWriter.writeCharacters(xmlNode.);
-      //this.xmlWriter.writeDTD(xmlNode);
-      //xmlNode.WriteTo(this.xmlWriter);
     }
   }
 
   /**
-   * @throws javax.xml.stream.XMLStreamException
+   * @param xmlNode XML node
+   * @param xmlStreamWriter XML stream writer
+   * @throws XMLStreamException the XML stream exception
    */
   public static void writeNode(Node xmlNode, XMLStreamWriter xmlStreamWriter)
       throws XMLStreamException {
@@ -379,7 +377,9 @@ public class EwsServiceXmlWriter implements IDisposable {
   }
 
   /**
-   * @throws javax.xml.stream.XMLStreamException
+   * @param document XML document
+   * @param xmlStreamWriter XML stream writer
+   * @throws XMLStreamException the XML stream exception
    */
   public static void writeToDocument(Document document,
       XMLStreamWriter xmlStreamWriter) throws XMLStreamException {
@@ -391,7 +391,9 @@ public class EwsServiceXmlWriter implements IDisposable {
   }
 
   /**
-   * @throws javax.xml.stream.XMLStreamException
+   * @param element DOM element
+   * @param writer XML stream writer
+   * @throws XMLStreamException the XML stream exception
    */
   public static void addElement(Element element, XMLStreamWriter writer)
       throws XMLStreamException {
@@ -474,11 +476,11 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Writes the element value.
    *
-   * @param xmlNamespace The XML namespace.
-   * @param localName    The local name of the element.
-   * @param value        The value.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
+   * @param xmlNamespace the XML namespace
+   * @param localName    the local name of the element
+   * @param value        the value
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   public void writeElementValue(XmlNamespace xmlNamespace, String localName,
       Object value) throws XMLStreamException,
@@ -489,8 +491,8 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Writes the base64-encoded element value.
    *
-   * @param buffer The buffer.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @param buffer the buffer
+   * @throws XMLStreamException the XML stream exception
    */
   public void writeBase64ElementValue(byte[] buffer)
       throws XMLStreamException {
@@ -502,9 +504,9 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Writes the base64-encoded element value.
    *
-   * @param stream The stream.
-   * @throws java.io.IOException                 Signals that an I/O exception has occurred.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @param stream the stream
+   * @throws IOException signals that an I/O exception has occurred
+   * @throws XMLStreamException the XML stream exception
    */
   public void writeBase64ElementValue(InputStream stream) throws IOException,
       XMLStreamException {
@@ -582,7 +584,7 @@ public class EwsServiceXmlWriter implements IDisposable {
   /**
    * Write start document.
    *
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
+   * @throws XMLStreamException the XML stream exception
    */
   public void writeStartDocument() throws XMLStreamException {
     this.xmlWriter.writeStartDocument("utf-8", "1.0");

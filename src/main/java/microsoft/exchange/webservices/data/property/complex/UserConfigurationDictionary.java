@@ -233,8 +233,8 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * Writes elements to XML.
    *
    * @param writer accepts EwsServiceXmlWriter
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   public void writeElementsToXml(EwsServiceXmlWriter writer)
@@ -257,11 +257,11 @@ public final class UserConfigurationDictionary extends ComplexProperty
   /**
    * Writes a dictionary object (key or value) to Xml.
    *
-   * @param writer           The writer.
-   * @param xmlElementName   The Xml element name.
-   * @param dictionaryObject The object to write.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer           the writer
+   * @param xmlElementName   the Xml element name
+   * @param dictionaryObject the object to write
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   private void writeObjectToXml(EwsServiceXmlWriter writer,
       String xmlElementName, Object dictionaryObject)
@@ -299,8 +299,8 @@ public final class UserConfigurationDictionary extends ComplexProperty
    *                         an array of strings, an array of bytes (which will be encoded into base64) <br />
    *                         or a single value. Single values can be: <br />
    *                         - datetime, boolean, byte, int, long, string
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   private void writeObjectValueToXml(final EwsServiceXmlWriter writer,
       final Object dictionaryObject) throws XMLStreamException,
@@ -378,10 +378,10 @@ public final class UserConfigurationDictionary extends ComplexProperty
   /**
    * Writes a dictionary entry type to Xml.
    *
-   * @param writer               The writer.
-   * @param dictionaryObjectType Type to write.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer               the writer
+   * @param dictionaryObjectType type to write
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   private void writeEntryTypeToXml(EwsServiceXmlWriter writer,
       UserConfigurationDictionaryObjectType dictionaryObjectType)
@@ -396,10 +396,10 @@ public final class UserConfigurationDictionary extends ComplexProperty
   /**
    * Writes a dictionary entry value to Xml.
    *
-   * @param writer The writer.
-   * @param value  Value to write.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer the writer
+   * @param value  value to write
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   private void writeEntryValueToXml(EwsServiceXmlWriter writer, String value)
       throws XMLStreamException, ServiceXmlSerializationException {

@@ -24,11 +24,7 @@
 package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
-
-import javax.xml.stream.XMLStreamException;
 
 /**
  * Interface defined for property that produce their own update serialization.
@@ -38,21 +34,14 @@ public interface ICustomXmlUpdateSerializer {
   /**
    * Writes the update to XML.
    *
-   * @param writer             The writer.
-   * @param ewsObject          The ews object.
-   * @param propertyDefinition Property definition.
-   * @return True if property generated serialization.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
-   * @throws InstantiationException              the instantiation exception
-   * @throws IllegalAccessException              the illegal access exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException          the service validation exception
-   * @throws Exception                           the exception
+   * @param writer the writer
+   * @param ewsObject The ews object
+   * @param propertyDefinition property definition
+   * @return true if property generated serialization
+   * @throws Exception the exception
    */
   boolean writeSetUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject, PropertyDefinition propertyDefinition)
-      throws XMLStreamException, ServiceXmlSerializationException,
-      InstantiationException, IllegalAccessException, ServiceValidationException, Exception;
+      ServiceObject ewsObject, PropertyDefinition propertyDefinition) throws Exception;
 
   /**
    * Writes the deletion update to XML.
@@ -60,11 +49,8 @@ public interface ICustomXmlUpdateSerializer {
    * @param writer    The writer.
    * @param ewsObject The ews object.
    * @return True if property generated serialization.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
-   * @throws Exception                           the exception
+   * @throws Exception the exception
    */
   boolean writeDeleteUpdateToXml(EwsServiceXmlWriter writer,
-      ServiceObject ewsObject) throws XMLStreamException,
-      ServiceXmlSerializationException, Exception;
+      ServiceObject ewsObject) throws Exception;
 }

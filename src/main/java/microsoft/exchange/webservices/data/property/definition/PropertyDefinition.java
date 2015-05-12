@@ -29,12 +29,6 @@ import microsoft.exchange.webservices.data.core.PropertyBag;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.exception.ServiceVersionException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -179,36 +173,21 @@ public abstract class PropertyDefinition extends
    *
    * @param reader      The reader.
    * @param propertyBag The property bag.
-   * @throws ServiceXmlDeserializationException  the service xml deserialization exception
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws InstantiationException              the instantiation exception
-   * @throws IllegalAccessException              the illegal access exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException      the service object property exception
-   * @throws ServiceVersionException             the service version exception
-   * @throws Exception                           the exception
+   * @throws Exception the exception
    */
   public abstract void loadPropertyValueFromXml(EwsServiceXmlReader reader, PropertyBag propertyBag)
-      throws ServiceXmlDeserializationException, XMLStreamException,
-      InstantiationException, IllegalAccessException, ServiceObjectPropertyException, ServiceVersionException, Exception;
+      throws Exception;
 
   /**
    * Writes the property value to XML.
    *
-   * @param writer            The writer.
-   * @param propertyBag       The property bag.
-   * @param isUpdateOperation Indicates whether the context is an update operation.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException               the service local exception
-   * @throws InstantiationException              the instantiation exception
-   * @throws IllegalAccessException              the illegal access exception
-   * @throws ServiceValidationException          the service validation exception
-   * @throws Exception                           the exception
+   * @param writer            the writer
+   * @param propertyBag       the property bag
+   * @param isUpdateOperation indicates whether the context is an update operation
+   * @throws Exception the exception
    */
   public abstract void writePropertyValueToXml(EwsServiceXmlWriter writer, PropertyBag propertyBag,
-      boolean isUpdateOperation)
-      throws XMLStreamException, ServiceXmlSerializationException, ServiceLocalException, InstantiationException,
-      IllegalAccessException, ServiceValidationException, Exception;
+      boolean isUpdateOperation) throws Exception;
 
   /**
    * Gets the name of the XML element.

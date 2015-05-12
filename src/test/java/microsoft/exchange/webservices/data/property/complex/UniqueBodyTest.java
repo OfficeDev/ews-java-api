@@ -33,13 +33,10 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.BodyType;
-import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import javax.xml.stream.XMLStreamException;
 
 public class UniqueBodyTest {
 
@@ -89,7 +86,7 @@ public class UniqueBodyTest {
     assertEquals(text, impl.toString());
   }
 
-  private void setTextToImpl(String myText) throws XMLStreamException, ServiceXmlDeserializationException {
+  private void setTextToImpl(String myText) throws Exception {
     doReturn(myText).when(reader).readValue();
     impl.readTextValueFromXml(reader);
   }

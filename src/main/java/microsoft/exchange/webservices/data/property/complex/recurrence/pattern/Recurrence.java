@@ -55,6 +55,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
+
 /**
  * Represents a recurrence pattern, as used by Appointment and Task item.
  */
@@ -112,14 +118,9 @@ public abstract class Recurrence extends ComplexProperty {
    * Write property to XML.
    *
    * @param writer the writer
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
-   * @throws ServiceValidationException          the service validation exception
-   * @throws Exception                           the exception
+   * @throws Exception the exception
    */
-  public void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
-      throws XMLStreamException, ServiceXmlSerializationException,
-      ServiceValidationException, Exception {
+  public void internalWritePropertiesToXml(EwsServiceXmlWriter writer) throws Exception {
   }
 
   /**
@@ -422,15 +423,10 @@ public abstract class Recurrence extends ComplexProperty {
      * Write property to XML.
      *
      * @param writer the writer
-     * @throws javax.xml.stream.XMLStreamException the xML stream exception
-     * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException    the service xml serialization exception
-     * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException          the service validation exception
-     * @throws Exception                           the exception
+     * @throws Exception the exception
      */
     @Override
-    public void internalWritePropertiesToXml(EwsServiceXmlWriter writer)
-        throws XMLStreamException, ServiceXmlSerializationException,
-        ServiceValidationException, Exception {
+    public void internalWritePropertiesToXml(EwsServiceXmlWriter writer) throws Exception {
       super.internalWritePropertiesToXml(writer);
 
       writer.writeElementValue(XmlNamespace.Types,

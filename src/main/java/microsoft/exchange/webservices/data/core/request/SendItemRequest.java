@@ -33,7 +33,6 @@ import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
 import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 
@@ -140,12 +139,10 @@ public final class SendItemRequest extends
    * Writes the elements to XML.
    *
    * @param writer the writer
-   * @throws ServiceLocalException the service local exception
-   * @throws Exception             the exception
+   * @throws Exception the exception
    */
   @Override
-  protected void writeElementsToXml(EwsServiceXmlWriter writer)
-      throws ServiceLocalException, Exception {
+  protected void writeElementsToXml(EwsServiceXmlWriter writer) throws Exception {
     writer
         .writeStartElement(XmlNamespace.Messages,
             XmlElementNames.ItemIds);
@@ -205,8 +202,7 @@ public final class SendItemRequest extends
   }
 
   /**
-   * Gets the saved copy destination folder id. <value>The saved
-   * copy destination folder id.</value>
+   * Gets the saved copy destination folder id.
    *
    * @return the saved copy destination folder id
    */

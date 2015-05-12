@@ -87,10 +87,10 @@ public abstract class PagedView extends ViewBase {
   /**
    * Internals the write search settings to XML.
    *
-   * @param writer  The writer
-   * @param groupBy The group by clause.
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer  the writer
+   * @param groupBy the group by clause
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override
   protected void internalWriteSearchSettingsToXml(EwsServiceXmlWriter writer,
@@ -104,9 +104,9 @@ public abstract class PagedView extends ViewBase {
   /**
    * Writes OrderBy property to XML.
    *
-   * @param writer The Writer
-   * @throws javax.xml.stream.XMLStreamException the xML stream exception
-   * @throws ServiceXmlSerializationException    the service xml serialization exception
+   * @param writer the writer
+   * @throws XMLStreamException the XML stream exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   @Override public void writeOrderByToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
