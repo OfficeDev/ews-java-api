@@ -243,8 +243,7 @@ public final class StreamingSubscriptionConnection implements Closeable,
       Iterable<StreamingSubscription> subscriptions, int lifetime)
       throws Exception {
     this(service, lifetime);
-    EwsUtilities.validateParamCollection(subscriptions.iterator(),
-        "subscriptions");
+    EwsUtilities.validateParamCollection(subscriptions.iterator(), "subscriptions");
     for (StreamingSubscription subscription : subscriptions) {
       this.subscriptions.put(subscription.getId(), subscription);
     }
@@ -528,32 +527,9 @@ public final class StreamingSubscriptionConnection implements Closeable,
   }
 
   /**
-   * Finalizes an instance of the StreamingSubscriptionConnection class.
-   */
-  @Override
-  protected void finalize() throws Throwable {
-    this.dispose(false);
-  }
-
-  /**
    * Frees resources associated with this StreamingSubscriptionConnection.
    */
   public void dispose() {
-    this.dispose(true);
-  }
-
-  /**
-   * Performs application-defined tasks associated with freeing, releasing, or
-   * resetting unmanaged resources.
-   *
-   * @param suppressFinalizer Value indicating whether to suppress the garbage collector's
-   *                          finalizer.
-   */
-  private void dispose(boolean suppressFinalizer) {
-    if (suppressFinalizer) {
-      System.runFinalizersOnExit(false);
-    }
-
     synchronized (this) {
       if (!this.isDisposed) {
         if (this.currentHangingRequest != null) {
