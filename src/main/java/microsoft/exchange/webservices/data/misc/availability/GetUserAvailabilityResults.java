@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.misc.availability;
 import microsoft.exchange.webservices.data.core.response.AttendeeAvailability;
 import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
 import microsoft.exchange.webservices.data.core.response.SuggestionsResponse;
-import microsoft.exchange.webservices.data.exception.ServiceResponseException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceResponseException;
 import microsoft.exchange.webservices.data.property.complex.availability.Suggestion;
 
 import java.util.Collection;
@@ -96,7 +96,7 @@ public final class GetUserAvailabilityResults {
    * period.
    *
    * @return the suggestions
-   * @throws microsoft.exchange.webservices.data.exception.ServiceResponseException the service response exception
+   * @throws ServiceResponseException the service response exception
    */
   public Collection<Suggestion> getSuggestions()
       throws ServiceResponseException {

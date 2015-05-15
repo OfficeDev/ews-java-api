@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.FolderTraversal;
 import microsoft.exchange.webservices.data.enumeration.OffsetBasePoint;
 import microsoft.exchange.webservices.data.enumeration.ServiceObjectType;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

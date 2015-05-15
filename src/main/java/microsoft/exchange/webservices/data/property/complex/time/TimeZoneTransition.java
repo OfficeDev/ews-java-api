@@ -28,8 +28,8 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 
 import javax.xml.stream.XMLStreamException;
@@ -71,7 +71,7 @@ public class TimeZoneTransition extends ComplexProperty {
    * @param timeZoneDefinition the time zone definition
    * @param xmlElementName     the xml element name
    * @return A TimeZonePeriodTransition instance.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    */
   public static TimeZoneTransition create(TimeZoneDefinition timeZoneDefinition, String xmlElementName)
       throws ServiceLocalException {

@@ -33,9 +33,9 @@ import microsoft.exchange.webservices.data.core.service.schema.ContactGroupSchem
 import microsoft.exchange.webservices.data.enumeration.EmailAddressKey;
 import microsoft.exchange.webservices.data.enumeration.MailboxType;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.property.definition.GroupMemberPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 

@@ -35,15 +35,15 @@ import microsoft.exchange.webservices.data.enumeration.DateTimePrecision;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.TraceFlags;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.EWSHttpException;
-import microsoft.exchange.webservices.data.exception.HttpErrorException;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceRequestException;
-import microsoft.exchange.webservices.data.exception.ServiceResponseException;
-import microsoft.exchange.webservices.data.exception.ServiceVersionException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.exception.XmlException;
+import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
+import microsoft.exchange.webservices.data.core.exception.http.HttpErrorException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRequestException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceResponseException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceVersionException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.core.exception.xml.XmlException;
 import microsoft.exchange.webservices.data.misc.SoapFaultDetails;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import org.apache.commons.logging.Log;
@@ -52,12 +52,10 @@ import org.apache.commons.logging.LogFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.ws.http.HTTPException;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
 
@@ -144,7 +142,7 @@ public abstract class ServiceRequestBase<T> {
    * Writes XML attribute. Subclass will override if it has XML attribute.
    *
    * @param writer The writer.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   protected void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
@@ -307,7 +305,7 @@ public abstract class ServiceRequestBase<T> {
    * @param request HttpWebRequest object from which response stream can be read.
    * @return ResponseStream
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    */
   protected static InputStream getResponseStream(HttpWebRequest request)
       throws IOException, EWSHttpException {
@@ -362,7 +360,7 @@ public abstract class ServiceRequestBase<T> {
    *
    * @param request the request
    * @return the response error stream
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the eWS http exception
    * @throws java.io.IOException                                  Signals that an I/O exception has occurred.
    */
   private static InputStream getResponseErrorStream(HttpWebRequest request)

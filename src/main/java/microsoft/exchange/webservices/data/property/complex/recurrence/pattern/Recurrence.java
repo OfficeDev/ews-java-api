@@ -35,10 +35,9 @@ import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.Month;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ArgumentException;
-import microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException;
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException;
+import microsoft.exchange.webservices.data.core.exception.misc.ArgumentOutOfRangeException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import microsoft.exchange.webservices.data.property.complex.IComplexPropertyChangedDelegate;
 import microsoft.exchange.webservices.data.property.complex.recurrence.DayOfTheWeekCollection;
@@ -46,14 +45,6 @@ import microsoft.exchange.webservices.data.property.complex.recurrence.range.End
 import microsoft.exchange.webservices.data.property.complex.recurrence.range.NoEndRecurrenceRange;
 import microsoft.exchange.webservices.data.property.complex.recurrence.range.NumberedRecurrenceRange;
 import microsoft.exchange.webservices.data.property.complex.recurrence.range.RecurrenceRange;
-
-import javax.xml.stream.XMLStreamException;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -513,7 +504,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @param startDate  the start date
      * @param interval   the interval
      * @param dayOfMonth the day of month
-     * @throws microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException the argument out of range exception
+     * @throws ArgumentOutOfRangeException the argument out of range exception
      */
     public MonthlyPattern(Date startDate, int interval, int dayOfMonth)
         throws ArgumentOutOfRangeException {
@@ -1043,7 +1034,7 @@ public abstract class Recurrence extends ComplexProperty {
      * Gets the month.
      *
      * @return the month
-     * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException the service validation exception
+     * @throws ServiceValidationException the service validation exception
      */
     public Month getMonth() throws ServiceValidationException {
 

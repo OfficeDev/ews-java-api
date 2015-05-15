@@ -32,8 +32,8 @@ import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.UserConfigurationDictionaryObjectType;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.util.DateTimeUtils;
 import org.apache.commons.codec.binary.Base64;
@@ -690,7 +690,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * Validate the array object.
    *
    * @param dictionaryObjectAsArray Object to validate
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    */
   private void validateArrayObject(Object[] dictionaryObjectAsArray)
       throws ServiceLocalException {
@@ -724,7 +724,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * Validates the dictionary object type.
    *
    * @param theObject Object to validate.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    */
   private void validateObjectType(Object theObject) throws ServiceLocalException {
     // This logic is based on

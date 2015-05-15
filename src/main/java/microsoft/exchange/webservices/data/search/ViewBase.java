@@ -31,9 +31,9 @@ import microsoft.exchange.webservices.data.core.request.ServiceRequestBase;
 import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
 import microsoft.exchange.webservices.data.enumeration.ServiceObjectType;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.exception.ServiceVersionException;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceVersionException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -59,7 +59,7 @@ public abstract class ViewBase {
    *
    * @param request The request using this view.
    * @throws ServiceValidationException the service validation exception
-   * @throws microsoft.exchange.webservices.data.exception.ServiceVersionException    the service version exception
+   * @throws ServiceVersionException    the service version exception
    */
   public void internalValidate(ServiceRequestBase request)
       throws ServiceValidationException, ServiceVersionException {
@@ -137,7 +137,7 @@ public abstract class ViewBase {
    * Writes the attribute to XML.
    *
    * @param writer The writer.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException the service xml serialization exception
+   * @throws ServiceXmlSerializationException the service xml serialization exception
    */
   public abstract void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException;

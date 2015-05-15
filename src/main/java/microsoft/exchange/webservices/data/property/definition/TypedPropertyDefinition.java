@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.PropertyBag;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 
 import javax.xml.stream.XMLStreamException;
 

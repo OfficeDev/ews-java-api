@@ -29,10 +29,10 @@ import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
 import microsoft.exchange.webservices.data.credential.ExchangeCredentials;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.TraceFlags;
-import microsoft.exchange.webservices.data.exception.AccountIsLockedException;
-import microsoft.exchange.webservices.data.exception.EWSHttpException;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.AccountIsLockedException;
+import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
 import microsoft.exchange.webservices.data.misc.EwsTraceListener;
 import microsoft.exchange.webservices.data.misc.ITraceListener;
 import org.apache.http.client.AuthenticationStrategy;
@@ -268,7 +268,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @param acceptGzipEncoding If true, ask server for GZip compressed content.
    * @param allowAutoRedirect  If true, redirection response will be automatically followed.
    * @return An initialised instance of HttpWebRequest.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException       the service local exception
+   * @throws ServiceLocalException       the service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
   protected HttpWebRequest prepareHttpWebRequestForUrl(URI url, boolean acceptGzipEncoding,
@@ -481,7 +481,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   /**
    * Validates this instance.
    *
-   * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
+   * @throws ServiceLocalException the service local exception
    */
   public void validate() throws ServiceLocalException {
     // E14:302056 -- Allow clients to add HTTP request headers with 'X-' prefix but no others.

@@ -123,12 +123,12 @@ import microsoft.exchange.webservices.data.enumeration.TraceFlags;
 import microsoft.exchange.webservices.data.enumeration.UserConfigurationProperties;
 import microsoft.exchange.webservices.data.enumeration.UserSettingName;
 import microsoft.exchange.webservices.data.enumeration.WellKnownFolderName;
-import microsoft.exchange.webservices.data.exception.AccountIsLockedException;
-import microsoft.exchange.webservices.data.exception.ArgumentOutOfRangeException;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceRemoteException;
-import microsoft.exchange.webservices.data.exception.ServiceResponseException;
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.AccountIsLockedException;
+import microsoft.exchange.webservices.data.core.exception.misc.ArgumentOutOfRangeException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRemoteException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceResponseException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
 import microsoft.exchange.webservices.data.messaging.UnifiedMessaging;
 import microsoft.exchange.webservices.data.misc.AsyncCallback;
 import microsoft.exchange.webservices.data.misc.AsyncRequestResult;
@@ -1541,7 +1541,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    * @param parentItemId the parent item id
    * @param attachments  the attachments
    * @return Service response collection.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceResponseException the service response exception
+   * @throws ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
   public ServiceResponseCollection<CreateAttachmentResponse> createAttachments(String parentItemId,

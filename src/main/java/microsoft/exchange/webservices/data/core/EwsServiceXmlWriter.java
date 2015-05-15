@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core;
 
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.property.complex.ISearchStringProvider;
 import org.apache.commons.codec.binary.Base64;

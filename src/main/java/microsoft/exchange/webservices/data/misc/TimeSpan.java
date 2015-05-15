@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.exception.FormatException;
+import microsoft.exchange.webservices.data.core.exception.misc.FormatException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

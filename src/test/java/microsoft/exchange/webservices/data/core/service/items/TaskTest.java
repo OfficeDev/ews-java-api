@@ -27,7 +27,7 @@ import static org.junit.Assert.assertThat;
 
 import microsoft.exchange.webservices.base.BaseTest;
 import microsoft.exchange.webservices.data.core.service.item.Task;
-import microsoft.exchange.webservices.data.exception.ServiceObjectPropertyException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceObjectPropertyException;
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsInstanceOf;
 import org.hamcrest.core.IsNot;

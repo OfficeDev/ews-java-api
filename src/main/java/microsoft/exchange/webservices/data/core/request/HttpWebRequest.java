@@ -25,11 +25,8 @@ package microsoft.exchange.webservices.data.core.request;
 
 import microsoft.exchange.webservices.data.EWSConstants;
 import microsoft.exchange.webservices.data.core.WebProxy;
-import microsoft.exchange.webservices.data.exception.EWSHttpException;
-import microsoft.exchange.webservices.data.misc.IAsyncResult;
-import org.apache.http.HttpException;
+import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
