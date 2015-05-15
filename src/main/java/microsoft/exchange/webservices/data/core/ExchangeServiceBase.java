@@ -73,12 +73,6 @@ import java.util.TimeZone;
  * Represents an abstract binding to an Exchange Service.
  */
 public abstract class ExchangeServiceBase implements Closeable {
-
-  /**
-   * Prefix for "extended" headers.
-   */
-  private static final String ExtendedHeaderPrefix = "X-";
-
   /**
    * The credential.
    */
@@ -484,12 +478,6 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @throws microsoft.exchange.webservices.data.exception.ServiceLocalException the service local exception
    */
   public void validate() throws ServiceLocalException {
-    // E14:302056 -- Allow clients to add HTTP request headers with 'X-' prefix but no others.
-    for (Map.Entry<String, String> key : this.httpHeaders.entrySet()) {
-      if (!key.getKey().startsWith(ExtendedHeaderPrefix)) {
-        throw new ServiceValidationException(String.format("HTTP header '%s' isn't permitted. Only HTTP headers with the 'X-' prefix are permitted.", key));
-      }
-    }
   }
 
   /**
