@@ -34,7 +34,7 @@ public class EWSHttpException extends Exception {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new eWS http exception.
+   * Instantiates a new EWS http exception.
    */
   public EWSHttpException() {
     super();
@@ -42,7 +42,7 @@ public class EWSHttpException extends Exception {
   }
 
   /**
-   * Instantiates a new eWS http exception.
+   * Instantiates a new EWS http exception.
    *
    * @param arg0 the arg0
    * @param arg1 the arg1
@@ -53,7 +53,7 @@ public class EWSHttpException extends Exception {
   }
 
   /**
-   * Instantiates a new eWS http exception.
+   * Instantiates a new EWS http exception.
    *
    * @param arg0 the arg0
    */
@@ -63,7 +63,7 @@ public class EWSHttpException extends Exception {
   }
 
   /**
-   * Instantiates a new eWS http exception.
+   * Instantiates a new EWS http exception.
    *
    * @param arg0 the arg0
    */

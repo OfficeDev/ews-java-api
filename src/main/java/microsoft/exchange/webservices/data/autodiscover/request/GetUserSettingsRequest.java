@@ -265,7 +265,7 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
   /**
    * Read the partner token soap header.
    *
-   * @param reader eWS XML reader
+   * @param reader EWS XML reader
    * @throws Exception on error
    */
   @Override

@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.core.exception.misc;
 /**
  * The Class FormatException.
  */
-public class FormatException extends Exception {
+public class FormatException extends IllegalArgumentException {
 
   /**
    * Constant serialized ID used for compatibility.

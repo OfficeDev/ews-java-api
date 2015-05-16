@@ -422,7 +422,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param traceType Kind of trace entry.
    * @param request   The request
-   * @throws EWSHttpException eWS http exception
+   * @throws EWSHttpException EWS http exception
    * @throws URISyntaxException URI syntax error
    * @throws IOException signals that an I/O exception has occurred
    * @throws XMLStreamException the XML stream exception
@@ -444,7 +444,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @param request the HttpRequest object
    * @throws XMLStreamException the XML stream exception
    * @throws IOException signals that an I/O exception has occurred
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   private void traceHttpResponseHeaders(TraceFlags traceType, HttpWebRequest request)
       throws XMLStreamException, IOException, EWSHttpException {
@@ -778,7 +778,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    *
    * @param traceType kind of trace entry
    * @param request   The request
-   * @throws EWSHttpException eWS http exception
+   * @throws EWSHttpException EWS http exception
    * @throws IOException signals that an I/O exception has occurred
    * @throws XMLStreamException the XML stream exception
    */

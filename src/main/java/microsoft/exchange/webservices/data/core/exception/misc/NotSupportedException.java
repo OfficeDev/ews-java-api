@@ -23,6 +23,10 @@
 
 package microsoft.exchange.webservices.data.core.exception.misc;
 
+/**
+ * @deprecated Use {@link UnsupportedOperationException} instead
+ */
+@Deprecated
 public class NotSupportedException extends Exception {
 
   /**

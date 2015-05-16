@@ -373,7 +373,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    *
    * @param domainName the domain name
    * @return A valid SSL-enabled redirection URL. (May be null)
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    * @throws XMLStreamException the XML stream exception
    * @throws IOException Signals that an I/O exception has occurred.
    * @throws ServiceLocalException the service local exception
@@ -440,7 +440,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    * @return true if a valid redirection URL was found
    * @throws XMLStreamException the XML stream exception
    * @throws IOException signals that an I/O exception has occurred.
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   private boolean tryGetRedirectionResponse(HttpWebRequest request,
       OutParam<URI> redirectUrl) throws XMLStreamException, IOException,
@@ -1570,7 +1570,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    *
    * @param request the request
    * @return Endpoints enabled.
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   private EnumSet<AutodiscoverEndpoints> getEndpointsFromHttpWebResponse(
       HttpWebRequest request) throws EWSHttpException {
@@ -1617,7 +1617,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    * @param memoryStream the memory stream
    * @throws XMLStreamException the XML stream exception
    * @throws IOException signals that an I/O exception has occurred.
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   public void traceResponse(HttpWebRequest request, ByteArrayOutputStream memoryStream) throws XMLStreamException,
       IOException, EWSHttpException {

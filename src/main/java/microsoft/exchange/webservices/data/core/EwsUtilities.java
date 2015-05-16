@@ -573,7 +573,7 @@ public final class EwsUtilities {
    *
    * @param response the response
    * @return the string
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   public static String formatHttpResponseHeaders(HttpWebRequest response)
       throws EWSHttpException {

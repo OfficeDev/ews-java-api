@@ -32,8 +32,7 @@ import microsoft.exchange.webservices.data.core.response.ServiceResponseCollecti
  * Represents an error that occurs when a call to the DeleteAttachment web
  * method fails.
  */
-public final class DeleteAttachmentException extends ServiceRemoteException {// extends
-  // BatchServiceResponseException<DeleteAttachmentResponse>
+public final class DeleteAttachmentException extends ServiceRemoteException {
 
   /**
    * Constant serialized ID used for compatibility.

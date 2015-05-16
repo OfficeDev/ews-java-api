@@ -512,7 +512,7 @@ public abstract class HttpWebRequest {
    * Gets the content encoding.
    *
    * @return the content encoding
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   public abstract String getContentEncoding() throws EWSHttpException;
 
@@ -520,7 +520,7 @@ public abstract class HttpWebRequest {
    * Gets the response content type.
    *
    * @return the response content type
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   public abstract String getResponseContentType() throws EWSHttpException;
 
@@ -528,7 +528,7 @@ public abstract class HttpWebRequest {
    * Gets the response code.
    *
    * @return the response code
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   public abstract int getResponseCode() throws EWSHttpException;
 
@@ -536,7 +536,7 @@ public abstract class HttpWebRequest {
    * Gets the response message.
    *
    * @return the response message
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   public abstract String getResponseText() throws EWSHttpException;
 
@@ -545,7 +545,7 @@ public abstract class HttpWebRequest {
    *
    * @param headerName the header name
    * @return the response header field
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   public abstract String getResponseHeaderField(String headerName)
       throws EWSHttpException;
@@ -554,7 +554,7 @@ public abstract class HttpWebRequest {
    * Gets the request property.
    *
    * @return the request property
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   public abstract Map<String, String> getRequestProperty()
       throws EWSHttpException;
@@ -562,7 +562,7 @@ public abstract class HttpWebRequest {
   /**
    * Executes Request by sending request xml data to server.
    *
-   * @throws EWSHttpException    the eWS http exception
+   * @throws EWSHttpException    the EWS http exception
    * @throws java.io.IOException the IO Exception
    */
   public abstract int executeRequest() throws EWSHttpException, IOException;

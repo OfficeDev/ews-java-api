@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data.notification;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.exception.misc.ArgumentNullException;
 import microsoft.exchange.webservices.data.core.request.GetStreamingEventsRequest;
 import microsoft.exchange.webservices.data.core.request.HangingRequestDisconnectEventArgs;
 import microsoft.exchange.webservices.data.core.request.HangingServiceRequestBase;
@@ -408,7 +409,8 @@ public final class StreamingSubscriptionConnection implements Closeable,
     GetStreamingEventsResponse gseResponse = (GetStreamingEventsResponse) response;
 
     if (gseResponse == null) {
-      throw new ArgumentException();
+      throw new ArgumentNullException("GetStreamingEventsResponse must not be null",
+                                      "GetStreamingEventsResponse");
     } else {
       if (gseResponse.getResult() == ServiceResult.Success
           || gseResponse.getResult() == ServiceResult.Warning) {

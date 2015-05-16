@@ -23,52 +23,85 @@
 
 package microsoft.exchange.webservices.data.core.exception.misc;
 
-/**
- * The Class ArgumentNullException.
- */
-public class ArgumentNullException extends Exception {
+public class ArgumentNullException extends ArgumentException {
 
   /**
-   * Constant serialized ID used for compatibility.
+   * Constructs an <code>IllegalArgumentException</code> with the specified detail message.
+   *
+   * @param message the detail message.
    */
-  private static final long serialVersionUID = 1L;
-
-  /**
-   * Instantiates a new argument null exception.
-   */
-  public ArgumentNullException() {
-    super();
-
+  public ArgumentNullException(String message) {
+    super(message);
   }
 
   /**
-   * Instantiates a new argument null exception.
+   * Constructs an <code>IllegalArgumentException</code> with the specified detail message.
    *
-   * @param arg0 the arg0
-   * @param arg1 the arg1
+   * @param s         the detail message.
+   * @param paramName the Name of the Param that causes the exception
    */
-  public ArgumentNullException(final String arg0, final Throwable arg1) {
-    super(arg0, arg1);
-
+  public ArgumentNullException(String s, String paramName) {
+    super(s, paramName);
   }
 
   /**
-   * Instantiates a new argument null exception.
+   * Constructs a new exception with the specified detail message and cause.
+   * <p/>
+   * <p>Note that the detail message associated with <code>cause</code> is <i>not</i> automatically
+   * incorporated in this exception's detail message.
    *
-   * @param arg0 the arg0
+   * @param message the detail message (which is saved for later retrieval by the {@link
+   *                Throwable#getMessage()} method).
+   * @param cause   the cause (which is saved for later retrieval by the {@link Throwable#getCause()} method).
+   *                (A <tt>null</tt> value is permitted, and indicates that the cause is nonexistent or
+   *                unknown.)
+   * @since 1.5
    */
-  public ArgumentNullException(final String arg0) {
-    super(arg0);
-
+  public ArgumentNullException(String message, Throwable cause) {
+    super(message, cause);
   }
 
   /**
-   * Instantiates a new argument null exception.
+   * Constructs a new exception with the specified cause and a detail message of <tt>(cause==null ? null :
+   * cause.toString())</tt> (which typically contains the class and detail message of <tt>cause</tt>). This
+   * constructor is useful for exceptions that are little more than wrappers for other throwables (for
+   * example, {@link PrivilegedActionException}).
    *
-   * @param arg0 the arg0
+   * @param cause the cause (which is saved for later retrieval by the {@link Throwable#getCause()} method).
+   *              (A <tt>null</tt> value is permitted, and indicates that the cause is nonexistent or
+   *              unknown.)
+   * @since 1.5
    */
-  public ArgumentNullException(final Throwable arg0) {
-    super(arg0);
+  public ArgumentNullException(Throwable cause) {
+    super(cause);
+  }
 
+  /**
+   * Constructs a new exception with the specified cause and a detail message of <tt>(cause==null ? null :
+   * cause.toString())</tt> (which typically contains the class and detail message of <tt>cause</tt>). This
+   * constructor is useful for exceptions that are little more than wrappers for other throwables (for
+   * example, {@link PrivilegedActionException}).
+   *
+   * @param cause     the cause (which is saved for later retrieval by the {@link Throwable#getCause()}
+   *                  method). (A <tt>null</tt> value is permitted, and indicates that the cause is
+   *                  nonexistent or unknown.)
+   * @param paramName the Name of the Param that causes the exception
+   */
+  public ArgumentNullException(Throwable cause, String paramName) {
+    super(cause, paramName);
+  }
+
+  /**
+   * Initializes a new instance of the System. ArgumentException class with a specified error message and the
+   * name of the parameter that causes this exception.
+   *
+   * @param message   The error message that explains the reason for the exception.
+   * @param cause     the cause (which is saved for later retrieval by the {@link Throwable#getCause()}
+   *                  method). (A <tt>null</tt> value is permitted, and indicates that the cause is
+   *                  nonexistent or unknown.)
+   * @param paramName the Name of the Param that causes the exception
+   */
+  public ArgumentNullException(String message, Throwable cause, String paramName) {
+    super(message, cause, paramName);
   }
 }

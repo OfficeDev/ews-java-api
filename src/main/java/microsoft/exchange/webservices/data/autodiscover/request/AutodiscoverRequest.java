@@ -93,7 +93,7 @@ public abstract class AutodiscoverRequest {
    *
    * @param request the request
    * @return True if redirection response.
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   public static boolean isRedirectionResponse(HttpWebRequest request)
       throws EWSHttpException {
@@ -324,7 +324,7 @@ public abstract class AutodiscoverRequest {
    * @return AutodiscoverResponse autodiscoverResponse object
    * @throws XMLStreamException the XML stream exception
    * @throws IOException signals that an I/O exception has occurred
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   private AutodiscoverResponse createRedirectionResponse(
       HttpWebRequest httpWebResponse) throws XMLStreamException,
@@ -559,7 +559,7 @@ public abstract class AutodiscoverRequest {
    *
    * @param request the request
    * @return ResponseStream
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    * @throws IOException signals that an I/O exception has occurred.
    */
   protected static InputStream getResponseStream(HttpWebRequest request)

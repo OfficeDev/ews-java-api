@@ -32,8 +32,7 @@ import microsoft.exchange.webservices.data.core.response.ServiceResponseCollecti
  * Represents an error that occurs when a call to the CreateAttachment web
  * method fails.
  */
-public final class CreateAttachmentException extends ServiceRemoteException {// extends
-  // BatchServiceResponseException<CreateAttachmentResponse>
+public final class CreateAttachmentException extends ServiceRemoteException {
 
   /**
    * Constant serialized ID used for compatibility.
