@@ -28,11 +28,12 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
 import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.enumeration.BodyType;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceVersionException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceVersionException;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -237,7 +238,7 @@ public abstract class Attachment extends ComplexProperty {
    * Gets the date and time when this attachment was last modified.
    *
    * @return the last modified time
-   * @throws microsoft.exchange.webservices.data.exception.ServiceVersionException the service version exception
+   * @throws ServiceVersionException the service version exception
    */
   public Date getLastModifiedTime() throws ServiceVersionException {
 
@@ -415,7 +416,7 @@ public abstract class Attachment extends ComplexProperty {
    * Validates this instance.
    *
    * @param attachmentIndex Index of this attachment.
-   * @throws microsoft.exchange.webservices.data.exception.ServiceValidationException the service validation exception
+   * @throws ServiceValidationException the service validation exception
    * @throws Exception                  the exception
    */
   abstract void validate(int attachmentIndex) throws Exception;

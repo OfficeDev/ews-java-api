@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.credential;
 
 import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
-import microsoft.exchange.webservices.data.exception.InvalidOperationException;
+import microsoft.exchange.webservices.data.core.exception.misc.InvalidOperationException;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;

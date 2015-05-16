@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.property.complex.time;
 
 
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 import microsoft.exchange.webservices.data.util.TimeZoneUtils;
 
 import java.util.Date;

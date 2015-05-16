@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.core.response.ExecuteDiagnosticMethod
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 import org.w3c.dom.Node;
 
 import javax.xml.stream.XMLStreamException;

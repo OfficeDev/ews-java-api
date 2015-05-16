@@ -46,13 +46,13 @@ import microsoft.exchange.webservices.data.enumeration.DomainSettingName;
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.TraceFlags;
 import microsoft.exchange.webservices.data.enumeration.UserSettingName;
-import microsoft.exchange.webservices.data.exception.ArgumentException;
-import microsoft.exchange.webservices.data.exception.EWSHttpException;
-import microsoft.exchange.webservices.data.exception.FormatException;
-import microsoft.exchange.webservices.data.exception.MaximumRedirectionHopsExceededException;
-import microsoft.exchange.webservices.data.exception.ServiceLocalException;
-import microsoft.exchange.webservices.data.exception.ServiceValidationException;
-import microsoft.exchange.webservices.data.exception.ServiceVersionException;
+import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException;
+import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
+import microsoft.exchange.webservices.data.core.exception.misc.FormatException;
+import microsoft.exchange.webservices.data.autodiscover.exception.MaximumRedirectionHopsExceededException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceVersionException;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 
@@ -373,7 +373,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    *
    * @param domainName the domain name
    * @return A valid SSL-enabled redirection URL. (May be null)
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    * @throws XMLStreamException the XML stream exception
    * @throws IOException Signals that an I/O exception has occurred.
    * @throws ServiceLocalException the service local exception
@@ -440,7 +440,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    * @return true if a valid redirection URL was found
    * @throws XMLStreamException the XML stream exception
    * @throws IOException signals that an I/O exception has occurred.
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   private boolean tryGetRedirectionResponse(HttpWebRequest request,
       OutParam<URI> redirectUrl) throws XMLStreamException, IOException,
@@ -1570,7 +1570,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    *
    * @param request the request
    * @return Endpoints enabled.
-   * @throws microsoft.exchange.webservices.data.exception.EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   private EnumSet<AutodiscoverEndpoints> getEndpointsFromHttpWebResponse(
       HttpWebRequest request) throws EWSHttpException {
@@ -1617,7 +1617,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    * @param memoryStream the memory stream
    * @throws XMLStreamException the XML stream exception
    * @throws IOException signals that an I/O exception has occurred.
-   * @throws EWSHttpException the eWS http exception
+   * @throws EWSHttpException the EWS http exception
    */
   public void traceResponse(HttpWebRequest request, ByteArrayOutputStream memoryStream) throws XMLStreamException,
       IOException, EWSHttpException {

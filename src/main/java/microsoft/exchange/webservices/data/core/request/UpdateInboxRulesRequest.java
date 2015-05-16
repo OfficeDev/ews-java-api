@@ -32,7 +32,7 @@ import microsoft.exchange.webservices.data.core.response.UpdateInboxRulesRespons
 import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
 import microsoft.exchange.webservices.data.enumeration.ServiceResult;
 import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
-import microsoft.exchange.webservices.data.exception.UpdateInboxRulesException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.UpdateInboxRulesException;
 import microsoft.exchange.webservices.data.property.complex.RuleOperation;
 
 /**

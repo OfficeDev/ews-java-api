@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.security;
 
-import microsoft.exchange.webservices.data.exception.NotSupportedException;
+import microsoft.exchange.webservices.data.core.exception.misc.NotSupportedException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.DOMImplementation;
