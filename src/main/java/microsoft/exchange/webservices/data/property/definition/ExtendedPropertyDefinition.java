@@ -28,9 +28,9 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.DefaultExtendedPropertySet;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.MapiPropertyType;
+import microsoft.exchange.webservices.data.core.enumeration.property.DefaultExtendedPropertySet;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.property.MapiPropertyType;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.MapiTypeConverter;
 

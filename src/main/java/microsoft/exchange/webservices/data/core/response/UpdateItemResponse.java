@@ -29,8 +29,8 @@ import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.service.item.Item;
-import microsoft.exchange.webservices.data.enumeration.ServiceResult;
-import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
+import microsoft.exchange.webservices.data.core.enumeration.service.ServiceResult;
+import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 
 /**
  * The Class UpdateItemResponse.

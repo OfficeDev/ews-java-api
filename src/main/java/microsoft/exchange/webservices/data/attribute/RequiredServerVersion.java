@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.attribute;
 
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

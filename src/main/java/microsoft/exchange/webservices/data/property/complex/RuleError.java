@@ -25,8 +25,8 @@ package microsoft.exchange.webservices.data.property.complex;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.RuleErrorCode;
-import microsoft.exchange.webservices.data.enumeration.RuleProperty;
+import microsoft.exchange.webservices.data.core.enumeration.property.error.RuleErrorCode;
+import microsoft.exchange.webservices.data.core.enumeration.property.RuleProperty;
 
 /**
  * Defines the RuleError class.

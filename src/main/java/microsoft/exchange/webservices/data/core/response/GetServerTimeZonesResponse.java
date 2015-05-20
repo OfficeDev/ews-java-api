@@ -25,10 +25,8 @@ package microsoft.exchange.webservices.data.core.response;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
+import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
-
-import javax.xml.stream.XMLStreamException;
 
 import java.util.ArrayList;
 import java.util.Collection;

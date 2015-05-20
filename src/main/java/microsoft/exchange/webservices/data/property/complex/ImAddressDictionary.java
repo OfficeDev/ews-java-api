@@ -24,8 +24,8 @@
 package microsoft.exchange.webservices.data.property.complex;
 
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
-import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
-import microsoft.exchange.webservices.data.enumeration.ImAddressKey;
+import microsoft.exchange.webservices.data.core.enumeration.attribute.EditorBrowsableState;
+import microsoft.exchange.webservices.data.core.enumeration.property.ImAddressKey;
 import microsoft.exchange.webservices.data.misc.OutParam;
 
 /**

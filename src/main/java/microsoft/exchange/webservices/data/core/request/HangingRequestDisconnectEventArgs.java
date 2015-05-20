@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.request;
 
-import microsoft.exchange.webservices.data.enumeration.HangingRequestDisconnectReason;
+import microsoft.exchange.webservices.data.core.enumeration.misc.HangingRequestDisconnectReason;
 
 /**
  * Represents a collection of arguments for the

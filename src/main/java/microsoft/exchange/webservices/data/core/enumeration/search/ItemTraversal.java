@@ -21,32 +21,32 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.autodiscover;
+package microsoft.exchange.webservices.data.core.enumeration.search;
 
+import microsoft.exchange.webservices.data.attribute.RequiredServerVersion;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 
-import java.net.URI;
-import java.util.List;
-
 /**
- * The Interface FuncDelegateInterface.
- *
- * @param <T1>      the generic type
- * @param <T2>      the generic type
- * @param <TResult> the generic type
+ * Defines the scope of FindItems operations.
  */
-public interface IFunctionDelegate<T1 extends List<?>, T2 extends List<?>, TResult> {
+public enum ItemTraversal {
 
+  // All non deleted item in the specified folder are retrieved.
   /**
-   * Func.
-   *
-   * @param arg1 the arg1
-   * @param arg2 the arg2
-   * @param arg3 the arg3
-   * @param arg4 the arg4
-   * @return the t result
-   * @throws Exception the exception
+   * The Shallow.
    */
-  TResult func(T1 arg1, T2 arg2, ExchangeVersion arg3, URI arg4) throws Exception;
+  Shallow,
 
+  // Only soft-deleted item are retrieved.
+  /**
+   * The Soft deleted.
+   */
+  SoftDeleted,
+
+  // Only associated item are retrieved (Exchange 2010 or later).
+  /**
+   * The Associated.
+   */
+  @RequiredServerVersion(version = ExchangeVersion.Exchange2010)
+  Associated
 }

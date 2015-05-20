@@ -28,9 +28,9 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.response.DelegateManagementResponse;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.MeetingRequestsDeliveryScope;
-import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.service.MeetingRequestsDeliveryScope;
+import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.property.complex.DelegateUser;
 
 import java.util.ArrayList;

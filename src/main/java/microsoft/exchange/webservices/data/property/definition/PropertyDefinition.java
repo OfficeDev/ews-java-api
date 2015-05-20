@@ -27,10 +27,8 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.PropertyBag;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
-
-import javax.xml.stream.XMLStreamException;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.property.PropertyDefinitionFlags;
 
 import java.util.ArrayList;
 import java.util.EnumSet;

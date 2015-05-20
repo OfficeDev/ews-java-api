@@ -26,7 +26,7 @@ package microsoft.exchange.webservices.data.misc;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ILazyMember;
 import microsoft.exchange.webservices.data.core.LazyMember;
-import microsoft.exchange.webservices.data.enumeration.MapiPropertyType;
+import microsoft.exchange.webservices.data.core.enumeration.property.MapiPropertyType;
 import microsoft.exchange.webservices.data.core.exception.misc.FormatException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
 import org.apache.commons.logging.Log;

@@ -25,10 +25,10 @@ package microsoft.exchange.webservices.data.core.service.schema;
 
 import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus;
-import microsoft.exchange.webservices.data.enumeration.MeetingRequestType;
-import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.property.LegacyFreeBusyStatus;
+import microsoft.exchange.webservices.data.core.enumeration.service.MeetingRequestType;
+import microsoft.exchange.webservices.data.core.enumeration.property.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.property.definition.GenericPropertyDefinition;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinition;
 
@@ -61,7 +61,7 @@ public class MeetingRequestSchema extends MeetingMessageSchema {
    * Defines the MeetingRequestType property.
    */
   public static final PropertyDefinition MeetingRequestType =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.MeetingRequestType>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.core.enumeration.service.MeetingRequestType>(
           MeetingRequestType.class,
           XmlElementNames.MeetingRequestType, FieldUris.MeetingRequestType,
           ExchangeVersion.Exchange2007_SP1);
@@ -70,7 +70,7 @@ public class MeetingRequestSchema extends MeetingMessageSchema {
    * Defines the IntendedFreeBusyStatus property.
    */
   public static final PropertyDefinition IntendedFreeBusyStatus =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.core.enumeration.property.LegacyFreeBusyStatus>(
           LegacyFreeBusyStatus.class,
           XmlElementNames.IntendedFreeBusyStatus,
           FieldUris.IntendedFreeBusyStatus, EnumSet

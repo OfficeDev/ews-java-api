@@ -27,8 +27,8 @@ import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
-import microsoft.exchange.webservices.data.enumeration.PhoneNumberKey;
+import microsoft.exchange.webservices.data.core.enumeration.attribute.EditorBrowsableState;
+import microsoft.exchange.webservices.data.core.enumeration.property.PhoneNumberKey;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 
 /**

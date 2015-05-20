@@ -21,32 +21,26 @@
  * THE SOFTWARE.
  */
 
-package microsoft.exchange.webservices.data.autodiscover;
-
-import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
-
-import java.net.URI;
-import java.util.List;
+package microsoft.exchange.webservices.data.core.enumeration.permission;
 
 /**
- * The Interface FuncDelegateInterface.
- *
- * @param <T1>      the generic type
- * @param <T2>      the generic type
- * @param <TResult> the generic type
+ * Defines the scope of a user's permission on a folder.
  */
-public interface IFunctionDelegate<T1 extends List<?>, T2 extends List<?>, TResult> {
+public enum PermissionScope {
 
   /**
-   * Func.
-   *
-   * @param arg1 the arg1
-   * @param arg2 the arg2
-   * @param arg3 the arg3
-   * @param arg4 the arg4
-   * @return the t result
-   * @throws Exception the exception
+   * The user does not have the associated permission.
    */
-  TResult func(T1 arg1, T2 arg2, ExchangeVersion arg3, URI arg4) throws Exception;
+  None,
+
+  /**
+   * The user has the associated permission on item that it owns.
+   */
+  Owned,
+
+  /**
+   * The user has the associated permission on all item.
+   */
+  All
 
 }

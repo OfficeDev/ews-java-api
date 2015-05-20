@@ -24,7 +24,7 @@
 package microsoft.exchange.webservices.data.core.request;
 
 import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.enumeration.TraceFlags;
+import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
 import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRequestException;
 import microsoft.exchange.webservices.data.misc.AsyncCallback;
 import microsoft.exchange.webservices.data.misc.AsyncExecutor;

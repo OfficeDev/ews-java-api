@@ -31,9 +31,9 @@ import microsoft.exchange.webservices.data.core.response.DeleteAttachmentRespons
 import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.service.item.Item;
-import microsoft.exchange.webservices.data.enumeration.EditorBrowsableState;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.ServiceResult;
+import microsoft.exchange.webservices.data.core.enumeration.attribute.EditorBrowsableState;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.service.ServiceResult;
 import microsoft.exchange.webservices.data.core.exception.service.remote.CreateAttachmentException;
 import microsoft.exchange.webservices.data.core.exception.service.remote.DeleteAttachmentException;
 import microsoft.exchange.webservices.data.core.exception.misc.InvalidOperationException;

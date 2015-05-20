@@ -27,8 +27,8 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.ConnectionFailureCause;
-import microsoft.exchange.webservices.data.enumeration.PhoneCallState;
+import microsoft.exchange.webservices.data.core.enumeration.service.error.ConnectionFailureCause;
+import microsoft.exchange.webservices.data.core.enumeration.service.PhoneCallState;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 

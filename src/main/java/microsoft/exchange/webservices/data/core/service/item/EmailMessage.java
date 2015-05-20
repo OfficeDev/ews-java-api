@@ -33,11 +33,11 @@ import microsoft.exchange.webservices.data.core.service.response.ResponseMessage
 import microsoft.exchange.webservices.data.core.service.response.SuppressReadReceipt;
 import microsoft.exchange.webservices.data.core.service.schema.EmailMessageSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
-import microsoft.exchange.webservices.data.enumeration.ConflictResolutionMode;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.MessageDisposition;
-import microsoft.exchange.webservices.data.enumeration.ResponseMessageType;
-import microsoft.exchange.webservices.data.enumeration.WellKnownFolderName;
+import microsoft.exchange.webservices.data.core.enumeration.service.ConflictResolutionMode;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.service.MessageDisposition;
+import microsoft.exchange.webservices.data.core.enumeration.service.ResponseMessageType;
+import microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 import microsoft.exchange.webservices.data.property.complex.EmailAddress;
 import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;

@@ -30,9 +30,9 @@ import microsoft.exchange.webservices.data.core.request.GetStreamingEventsReques
 import microsoft.exchange.webservices.data.core.request.HangingRequestDisconnectEventArgs;
 import microsoft.exchange.webservices.data.core.request.HangingServiceRequestBase;
 import microsoft.exchange.webservices.data.core.response.GetStreamingEventsResponse;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.ServiceError;
-import microsoft.exchange.webservices.data.enumeration.ServiceResult;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.misc.error.ServiceError;
+import microsoft.exchange.webservices.data.core.enumeration.service.ServiceResult;
 import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException;
 import microsoft.exchange.webservices.data.core.exception.misc.ArgumentOutOfRangeException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
