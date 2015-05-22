@@ -532,7 +532,7 @@ public abstract class ServiceRequestBase<T> {
               // This shouldn't happen. It
               // indicates that a request wasn't
               // valid for the version that was specified.
-              EwsUtilities.EwsAssert(false, "ServiceRequestBase.ProcessWebException",
+              EwsUtilities.ewsAssert(false, "ServiceRequestBase.ProcessWebException",
                                      "Exchange server supports " + "requested version "
                                      + "but request was invalid for that version");
               break;

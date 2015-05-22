@@ -117,7 +117,7 @@ public class HangingTraceStream extends InputStream {
     count = 4096;
     int retVal = this.underlyingStream.read(buffer, offset, count);
 
-    if (HangingServiceRequestBase.LogAllWireBytes) {
+    if (HangingServiceRequestBase.logAllWireBytes) {
       String readString = new String(buffer, offset, count, "UTF-8");
       String logMessage = String.format(
           "HangingTraceStream ID [%d] " +

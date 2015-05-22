@@ -118,7 +118,7 @@ public final class TimeSuggestion extends ComplexProperty {
               conflict = new Conflict(ConflictType.GroupConflict);
             } else {
               EwsUtilities
-                  .EwsAssert(false, "TimeSuggestion." + "TryReadElementFromXml",
+                  .ewsAssert(false, "TimeSuggestion." + "TryReadElementFromXml",
                              String.format("The %s element name " +
                                            "does not map " +
                                            "to any AttendeeConflict " +

@@ -83,10 +83,10 @@ public class EwsUtilitiesTest {
 
   @Test
   public void testEwsAssert() {
-    EwsUtilities.EwsAssert(true, null, null);
+    EwsUtilities.ewsAssert(true, null, null);
 
     try {
-      EwsUtilities.EwsAssert(false, "a", "b");
+      EwsUtilities.ewsAssert(false, "a", "b");
     } catch (final RuntimeException ex) {
       assertEquals("[a] b", ex.getMessage());
     }

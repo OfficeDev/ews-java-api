@@ -61,8 +61,7 @@ public final class ServiceResponseCollection<TResponse extends ServiceResponse>
    * @param response The response.
    */
   public void add(TResponse response) {
-
-    EwsUtilities.EwsAssert(response != null, "EwsResponseList.Add", "response is null");
+    EwsUtilities.ewsAssert(response != null, "EwsResponseList.Add", "response is null");
     if (response.getResult().ordinal() > this.overallResult.ordinal()) {
       this.overallResult = response.getResult();
     }

@@ -60,7 +60,7 @@ public final class UpdateItemResponse extends ServiceResponse implements
    */
   public UpdateItemResponse(Item item) {
     super();
-    EwsUtilities.EwsAssert(item != null, "UpdateItemResponse.ctor", "item is null");
+    EwsUtilities.ewsAssert(item != null, "UpdateItemResponse.ctor", "item is null");
     this.item = item;
   }
 

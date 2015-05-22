@@ -152,7 +152,7 @@ public abstract class ServiceObject {
       }
     }
     EwsUtilities
-        .EwsAssert(!isNullOrEmpty(this.xmlElementName), "EwsObject.GetXmlElementName", String
+        .ewsAssert(!isNullOrEmpty(this.xmlElementName), "EwsObject.GetXmlElementName", String
             .format("The class %s does not have an " + "associated XML element name.",
                     this.getClass().getName()));
 

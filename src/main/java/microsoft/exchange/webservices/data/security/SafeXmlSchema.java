@@ -23,7 +23,6 @@
 
 package microsoft.exchange.webservices.data.security;
 
-import javax.xml.bind.ValidationEventHandler;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -53,32 +52,25 @@ public class SafeXmlSchema extends Schema {
   /**
    * Reads an XML Schema from the supplied stream.
    *
-   * @param stream                 The supplied data stream.
-   * @param validationEventHandler The validation event handler that receives information about the XML Schema syntax errors
+   * @param stream The supplied data stream.
    * @return The XmlSchema object representing the XML Schema.
    * @throws javax.xml.stream.XMLStreamException
    */
-  public static Schema Read(InputStream stream, ValidationEventHandler validationEventHandler)
-      throws XMLStreamException {
-    XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-
+  public static Schema read(final InputStream stream) throws XMLStreamException {
+    final XMLInputFactory inputFactory = XMLInputFactory.newInstance();
     return (Schema) inputFactory.createXMLEventReader(stream);
   }
 
   /**
    * Reads an XML Schema from the supplied TextReader.
    *
-   * @param reader                 The TextReader containing the XML Schema to read
-   * @param validationEventHandler The validation event handler that receives information about the XML Schema syntax errors.
+   * @param reader The TextReader containing the XML Schema to read
    * @return The XmlSchema object representing the XML Schema.
    * @throws javax.xml.stream.XMLStreamException
    */
 
-  public static Schema Read(XMLStreamReader reader, ValidationEventHandler validationEventHandler)
-      throws XMLStreamException {
-
-    XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-
+  public static Schema read(XMLStreamReader reader) throws XMLStreamException {
+    final XMLInputFactory inputFactory = XMLInputFactory.newInstance();
     return (Schema) inputFactory.createXMLEventReader(reader);
   }
 

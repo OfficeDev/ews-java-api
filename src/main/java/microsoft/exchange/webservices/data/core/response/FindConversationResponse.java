@@ -65,7 +65,7 @@ public final class FindConversationResponse extends ServiceResponse {
   @Override
   protected void readElementsFromXml(EwsServiceXmlReader reader)
       throws Exception {
-    EwsUtilities.EwsAssert(conversations != null, "FindConversationResponse.ReadElementsFromXml",
+    EwsUtilities.ewsAssert(conversations != null, "FindConversationResponse.ReadElementsFromXml",
                            "conversations is null.");
 
     reader.readStartElement(XmlNamespace.Messages,

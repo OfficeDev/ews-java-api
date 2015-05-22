@@ -86,16 +86,14 @@ public final class ExtendedProperty extends ComplexProperty {
       this.propertyDefinition.loadFromXml(reader);
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.Value)) {
-      EwsUtilities.EwsAssert(this.getPropertyDefinition() != null,
-          "ExtendedProperty.TryReadElementFromXml",
-          "PropertyDefintion is missing");
+      EwsUtilities.ewsAssert(this.getPropertyDefinition() != null, "ExtendedProperty.TryReadElementFromXml",
+                             "PropertyDefintion is missing");
       String stringValue = reader.readElementValue();
       this.value = MapiTypeConverter.convertToValue(this.getPropertyDefinition().getMapiType(), stringValue);
       return true;
     } else if (reader.getLocalName().equals(XmlElementNames.Values)) {
-      EwsUtilities.EwsAssert(this.getPropertyDefinition() != null,
-          "ExtendedProperty.TryReadElementFromXml",
-          "PropertyDefintion is missing");
+      EwsUtilities.ewsAssert(this.getPropertyDefinition() != null, "ExtendedProperty.TryReadElementFromXml",
+                             "PropertyDefintion is missing");
 
       StringList stringList = new StringList(XmlElementNames.Value);
       stringList.loadFromXml(reader, reader.getLocalName());

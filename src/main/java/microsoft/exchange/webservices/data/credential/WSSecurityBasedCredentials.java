@@ -184,11 +184,11 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
    */
   private void serializeWSAddressingHeaders(XMLStreamWriter xmlWriter,
       String webMethodName) throws XMLStreamException {
-    EwsUtilities.EwsAssert(webMethodName != null,
+    EwsUtilities.ewsAssert(webMethodName != null,
         "WSSecurityBasedCredentials.SerializeWSAddressingHeaders",
         "Web method name cannot be null!");
 
-    EwsUtilities.EwsAssert(this.ewsUrl != null,
+    EwsUtilities.ewsAssert(this.ewsUrl != null,
         "WSSecurityBasedCredentials.SerializeWSAddressingHeaders",
         "EWS Url cannot be null!");
 
@@ -209,7 +209,7 @@ public abstract class WSSecurityBasedCredentials extends ExchangeCredentials {
    */
   @Override public void serializeWSSecurityHeaders(XMLStreamWriter xmlWriter)
       throws XMLStreamException {
-    EwsUtilities.EwsAssert(this.securityToken != null,
+    EwsUtilities.ewsAssert(this.securityToken != null,
         "WSSecurityBasedCredentials.SerializeWSSecurityHeaders",
         "Security token cannot be null!");
 

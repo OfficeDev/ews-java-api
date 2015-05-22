@@ -60,7 +60,7 @@ public final class GetFolderResponse extends ServiceResponse implements
     this.folder = folder;
     this.propertySet = propertySet;
     EwsUtilities
-        .EwsAssert(this.propertySet != null, "GetFolderResponse.ctor", "PropertySet should not be null");
+        .ewsAssert(this.propertySet != null, "GetFolderResponse.ctor", "PropertySet should not be null");
   }
 
   /**

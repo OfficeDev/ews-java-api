@@ -58,7 +58,7 @@ public final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
    */
   public ExecuteDiagnosticMethodResponse(ExchangeService service) {
     super();
-    EwsUtilities.EwsAssert(service != null, "ExecuteDiagnosticMethodResponse.ctor", "service is null");
+    EwsUtilities.ewsAssert(service != null, "ExecuteDiagnosticMethodResponse.ctor", "service is null");
   }
 
   /**

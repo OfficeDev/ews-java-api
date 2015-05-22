@@ -64,7 +64,7 @@ public class ComplexPropertyDefinition<TComplexProperty extends ComplexProperty>
           propertyCreationDelegate) {
     super(xmlElementName, flags, version);
     this.instance = cls;
-    EwsUtilities.EwsAssert(propertyCreationDelegate != null, "ComplexPropertyDefinition ctor",
+    EwsUtilities.ewsAssert(propertyCreationDelegate != null, "ComplexPropertyDefinition ctor",
                            "CreateComplexPropertyDelegate cannot be null");
 
     this.propertyCreationDelegate = propertyCreationDelegate;

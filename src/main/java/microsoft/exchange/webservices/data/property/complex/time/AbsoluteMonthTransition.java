@@ -67,7 +67,7 @@ abstract class AbsoluteMonthTransition extends TimeZoneTransition {
       } else if (reader.getLocalName().equals(XmlElementNames.Month)) {
         this.month = reader.readElementValue(Integer.class);
 
-        EwsUtilities.EwsAssert(this.month > 0 && this.month <= 12,
+        EwsUtilities.ewsAssert(this.month > 0 && this.month <= 12,
             "AbsoluteMonthTransition.TryReadElementFromXml",
             "month is not in the valid 1 - 12 range.");
 

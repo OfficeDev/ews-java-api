@@ -82,7 +82,7 @@ public final class AttachmentCollection extends ComplexPropertyCollection<Attach
    */
   public void setOwner(ServiceObject value) {
     Item item = (Item) value;
-    EwsUtilities.EwsAssert(item != null, "AttachmentCollection.IOwnedProperty.set_Owner",
+    EwsUtilities.ewsAssert(item != null, "AttachmentCollection.IOwnedProperty.set_Owner",
                            "value is not a descendant of ItemBase");
 
     this.owner = item;

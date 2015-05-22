@@ -44,7 +44,7 @@ public final class GetUserConfigurationResponse extends ServiceResponse {
    */
   public GetUserConfigurationResponse(UserConfiguration userConfiguration) {
     super();
-    EwsUtilities.EwsAssert(userConfiguration != null, "GetUserConfigurationResponse.ctor",
+    EwsUtilities.ewsAssert(userConfiguration != null, "GetUserConfigurationResponse.ctor",
                            "userConfiguration is null");
 
     this.userConfiguration = userConfiguration;

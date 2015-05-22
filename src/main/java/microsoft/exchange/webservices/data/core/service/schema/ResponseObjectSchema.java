@@ -42,7 +42,7 @@ public class ResponseObjectSchema extends ServiceObjectSchema {
   /**
    * The Reference item id.
    */
-  public static PropertyDefinition ReferenceItemId =
+  public static final PropertyDefinition ReferenceItemId =
       new ComplexPropertyDefinition<ItemId>(
           ItemId.class,
           XmlElementNames.ReferenceItemId, EnumSet.of(

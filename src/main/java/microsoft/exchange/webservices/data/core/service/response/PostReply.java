@@ -67,7 +67,7 @@ public final class PostReply extends ServiceObject {
    */
   public PostReply(Item referenceItem) throws Exception {
     super(referenceItem.getService());
-    EwsUtilities.EwsAssert(referenceItem != null, "PostReply.ctor", "referenceItem is null");
+    EwsUtilities.ewsAssert(referenceItem != null, "PostReply.ctor", "referenceItem is null");
     referenceItem.throwIfThisIsNew();
 
     this.referenceItem = referenceItem;
@@ -116,9 +116,8 @@ public final class PostReply extends ServiceObject {
 
     // This should never happen. If it does, we have a bug.
     EwsUtilities
-        .EwsAssert(postItem != null, "PostReply.InternalCreate",
-            "postItem is null. The CreateItem call did" +
-                " not return the expected PostItem.");
+        .ewsAssert(postItem != null, "PostReply.InternalCreate",
+                   "postItem is null. The CreateItem call did" + " not return the expected PostItem.");
 
     return postItem;
   }

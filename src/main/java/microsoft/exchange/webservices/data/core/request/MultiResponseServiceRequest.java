@@ -158,7 +158,7 @@ public abstract class MultiResponseServiceRequest<TResponse extends ServiceRespo
     ServiceResponseCollection<TResponse> serviceResponses = internalExecute();
 
     if (this.errorHandlingMode == ServiceErrorHandling.ThrowOnError) {
-      EwsUtilities.EwsAssert(serviceResponses.getCount() == 1, "MultiResponseServiceRequest.Execute",
+      EwsUtilities.ewsAssert(serviceResponses.getCount() == 1, "MultiResponseServiceRequest.Execute",
                              "ServiceErrorHandling.ThrowOnError " + "error handling " +
                              "is only valid for singleton request");
 
@@ -179,10 +179,8 @@ public abstract class MultiResponseServiceRequest<TResponse extends ServiceRespo
     ServiceResponseCollection<TResponse> serviceResponses = endInternalExecute(asyncResult);
 
     if (this.errorHandlingMode == ServiceErrorHandling.ThrowOnError) {
-      EwsUtilities.EwsAssert(
-          serviceResponses.getCount() == 1,
-          "MultiResponseServiceRequest.Execute",
-          "ServiceErrorHandling.ThrowOnError error handling is only valid for singleton request");
+      EwsUtilities.ewsAssert(serviceResponses.getCount() == 1, "MultiResponseServiceRequest.Execute",
+                             "ServiceErrorHandling.ThrowOnError error handling is only valid for singleton request");
 
       serviceResponses.getResponseAtIndex(0).throwIfNecessary();
     }

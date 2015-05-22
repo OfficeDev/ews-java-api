@@ -48,7 +48,7 @@ public final class DeleteAttachmentResponse extends ServiceResponse {
    */
   public DeleteAttachmentResponse(Attachment attachment) {
     super();
-    EwsUtilities.EwsAssert(attachment != null, "DeleteAttachmentResponse.ctor", "attachment is null");
+    EwsUtilities.ewsAssert(attachment != null, "DeleteAttachmentResponse.ctor", "attachment is null");
 
     this.attachment = attachment;
   }

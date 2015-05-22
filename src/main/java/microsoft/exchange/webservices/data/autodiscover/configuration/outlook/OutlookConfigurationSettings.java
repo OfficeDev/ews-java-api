@@ -178,7 +178,7 @@ public final class OutlookConfigurationSettings extends ConfigurationSettingsBas
           response.setRedirectTarget(this.getRedirectTarget());
           break;
         default:
-          EwsUtilities.EwsAssert(false, "OutlookConfigurationSettings.ConvertSettings",
+          EwsUtilities.ewsAssert(false, "OutlookConfigurationSettings.ConvertSettings",
                                  "An unexpected error has occured. "
                                  + "This code path should never be reached.");
           break;

@@ -61,7 +61,7 @@ public class ContactSchema extends ItemSchema {
   /**
    * FieldURIs for contacts.
    */
-  private static interface FieldUris {
+  private interface FieldUris {
 
     /**
      * The File as.
@@ -837,7 +837,7 @@ public class ContactSchema extends ItemSchema {
    * Defines MSExchangeCertificate Property **
    */
 
-  public static PropertyDefinition MSExchangeCertificate =
+  public static final PropertyDefinition MSExchangeCertificate =
       new ComplexPropertyDefinition<ByteArrayArray>(
           ByteArrayArray.class,
           XmlElementNames.MSExchangeCertificate,
@@ -856,7 +856,7 @@ public class ContactSchema extends ItemSchema {
    * Defines DirectoryId Property **
    */
 
-  public static PropertyDefinition DirectoryId =
+  public static final  PropertyDefinition DirectoryId =
       new StringPropertyDefinition(
           XmlElementNames.DirectoryId,
           FieldUris.DirectoryId,
@@ -867,7 +867,7 @@ public class ContactSchema extends ItemSchema {
    * Defines ManagerMailbox Property **
    */
 
-  public static PropertyDefinition ManagerMailbox =
+  public static final PropertyDefinition ManagerMailbox =
       new ContainedPropertyDefinition<EmailAddress>(
           EmailAddress.class,
           XmlElementNames.ManagerMailbox,
@@ -886,7 +886,7 @@ public class ContactSchema extends ItemSchema {
    * Defines DirectReports Property **
    */
 
-  public static PropertyDefinition DirectReports =
+  public static final PropertyDefinition DirectReports =
       new ComplexPropertyDefinition<EmailAddressCollection>(
           EmailAddressCollection.class,
           XmlElementNames.DirectReports,

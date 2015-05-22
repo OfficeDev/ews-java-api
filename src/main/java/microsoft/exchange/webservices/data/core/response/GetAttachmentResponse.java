@@ -47,7 +47,7 @@ public final class GetAttachmentResponse extends ServiceResponse {
    */
   public GetAttachmentResponse(Attachment attachment) {
     super();
-    EwsUtilities.EwsAssert(attachment != null, "GetAttachmentResponse.ctor", "attachment is null");
+    EwsUtilities.ewsAssert(attachment != null, "GetAttachmentResponse.ctor", "attachment is null");
 
     this.attachment = attachment;
   }

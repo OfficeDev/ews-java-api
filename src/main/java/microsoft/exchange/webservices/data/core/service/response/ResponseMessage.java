@@ -99,8 +99,8 @@ public final class ResponseMessage extends ResponseObject<EmailMessage> {
     } else if (this.responseType == ResponseMessageType.Forward) {
       return XmlElementNames.ForwardItem;
     } else {
-      EwsUtilities.EwsAssert(false, "ResponseMessage.GetXmlElementNameOverride",
-                             "An unexpected value for responseType " + "could not be handled.");
+      EwsUtilities.ewsAssert(false, "ResponseMessage.GetXmlElementNameOverride",
+                             "An unexpected value for responseType could not be handled.");
       return null; // Because the compiler wants it
     }
 

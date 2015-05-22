@@ -24,7 +24,6 @@
 package microsoft.exchange.webservices.data.core.exception.service.remote;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRemoteException;
 import microsoft.exchange.webservices.data.core.response.DeleteAttachmentResponse;
 import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
 
@@ -52,10 +51,9 @@ public final class DeleteAttachmentException extends ServiceRemoteException {
    */
   public DeleteAttachmentException(ServiceResponseCollection<DeleteAttachmentResponse> serviceResponses,
       String message) {
-    // super(serviceResponses, message);
     super(message);
-    EwsUtilities
-        .EwsAssert(serviceResponses != null, "MultiServiceResponseException.ctor", "serviceResponses is null");
+    EwsUtilities.ewsAssert(serviceResponses != null,
+      "MultiServiceResponseException.ctor", "serviceResponses is null");
 
     this.responses = serviceResponses;
   }
@@ -68,14 +66,11 @@ public final class DeleteAttachmentException extends ServiceRemoteException {
    * @param innerException   The exception that is the cause of the current exception.
    */
   protected DeleteAttachmentException(
-      ServiceResponseCollection<DeleteAttachmentResponse>
-          serviceResponses,
+      ServiceResponseCollection<DeleteAttachmentResponse> serviceResponses,
       String message, Exception innerException) {
-    // super(serviceResponses, message, innerException);
     super(message, innerException);
-    EwsUtilities.EwsAssert(serviceResponses != null,
-        "MultiServiceResponseException.ctor",
-        "serviceResponses is null");
+    EwsUtilities.ewsAssert(serviceResponses != null,
+      "MultiServiceResponseException.ctor", "serviceResponses is null");
 
     this.responses = serviceResponses;
   }

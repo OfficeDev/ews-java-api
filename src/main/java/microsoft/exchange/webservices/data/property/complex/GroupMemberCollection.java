@@ -113,11 +113,9 @@ public final class GroupMemberCollection extends ComplexPropertyCollection<Group
    */
   public void add(GroupMember member) throws Exception {
     EwsUtilities.validateParam(member, "member");
-    EwsUtilities.EwsAssert(member.getKey() == null,
-        "GroupMemberCollection.Add", "member.Key is not null.");
-    EwsUtilities.EwsAssert(!this.contains(member),
-        "GroupMemberCollection.Add",
-        "The member is already in the collection");
+    EwsUtilities.ewsAssert(member.getKey() == null, "GroupMemberCollection.Add", "member.Key is not null.");
+    EwsUtilities.ewsAssert(!this.contains(member), "GroupMemberCollection.Add",
+                           "The member is already in the collection");
 
     this.internalAdd(member);
   }

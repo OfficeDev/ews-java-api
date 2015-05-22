@@ -240,7 +240,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    */
   public void doOnSerializeCustomSoapHeaders(XMLStreamWriter writer) {
     EwsUtilities
-        .EwsAssert(writer != null, "ExchangeService.DoOnSerializeCustomSoapHeaders", "writer is null");
+        .ewsAssert(writer != null, "ExchangeService.DoOnSerializeCustomSoapHeaders", "writer is null");
 
     if (null != getOnSerializeCustomSoapHeaders() &&
         !getOnSerializeCustomSoapHeaders().isEmpty()) {
@@ -328,7 +328,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    */
   protected void internalProcessHttpErrorResponse(HttpWebRequest httpWebResponse, Exception webException,
       TraceFlags responseHeadersTraceFlag, TraceFlags responseTraceFlag) throws Exception {
-    EwsUtilities.EwsAssert(500 != httpWebResponse.getResponseCode(),
+    EwsUtilities.ewsAssert(500 != httpWebResponse.getResponseCode(),
         "ExchangeServiceBase.InternalProcessHttpErrorResponse",
         "InternalProcessHttpErrorResponse does not handle 500 ISE errors, the caller is supposed to handle this.");
 

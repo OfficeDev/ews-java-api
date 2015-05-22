@@ -239,7 +239,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
   @Override
   public void writeElementsToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
-    EwsUtilities.EwsAssert(writer != null, "UserConfigurationDictionary.WriteElementsToXml", "writer is null");
+    EwsUtilities.ewsAssert(writer != null, "UserConfigurationDictionary.WriteElementsToXml", "writer is null");
     Iterator<Entry<Object, Object>> it = this.dictionary.entrySet()
         .iterator();
     while (it.hasNext()) {
@@ -266,19 +266,14 @@ public final class UserConfigurationDictionary extends ComplexProperty
   private void writeObjectToXml(EwsServiceXmlWriter writer,
       String xmlElementName, Object dictionaryObject)
       throws XMLStreamException, ServiceXmlSerializationException {
-    EwsUtilities.EwsAssert(writer != null,
-        "UserConfigurationDictionary.WriteObjectToXml",
-        "writer is null");
-    EwsUtilities.EwsAssert(xmlElementName != null,
-        "UserConfigurationDictionary.WriteObjectToXml",
-        "xmlElementName is null");
+    EwsUtilities.ewsAssert(writer != null, "UserConfigurationDictionary.WriteObjectToXml", "writer is null");
+    EwsUtilities.ewsAssert(xmlElementName != null, "UserConfigurationDictionary.WriteObjectToXml",
+                           "xmlElementName is null");
     writer.writeStartElement(XmlNamespace.Types, xmlElementName);
 
     if (dictionaryObject == null) {
-      EwsUtilities.EwsAssert((!xmlElementName
-              .equals(XmlElementNames.DictionaryKey)),
-          "UserConfigurationDictionary.WriteObjectToXml",
-          "Key is null");
+      EwsUtilities.ewsAssert((!xmlElementName.equals(XmlElementNames.DictionaryKey)),
+                             "UserConfigurationDictionary.WriteObjectToXml", "Key is null");
 
       writer.writeAttributeValue(
           EwsUtilities.EwsXmlSchemaInstanceNamespacePrefix,
@@ -464,8 +459,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    * @throws Exception the exception
    */
   private void loadEntry(EwsServiceXmlReader reader) throws Exception {
-    EwsUtilities.EwsAssert(reader != null,
-        "UserConfigurationDictionary.LoadEntry", "reader is null");
+    EwsUtilities.ewsAssert(reader != null, "UserConfigurationDictionary.LoadEntry", "reader is null");
 
     Object key;
     Object value = null;
@@ -500,8 +494,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    */
   private Object getDictionaryObject(EwsServiceXmlReader reader)
       throws Exception {
-    EwsUtilities.EwsAssert(reader != null,
-        "UserConfigurationDictionary.loadFromXml", "reader is null");
+    EwsUtilities.ewsAssert(reader != null, "UserConfigurationDictionary.loadFromXml", "reader is null");
     UserConfigurationDictionaryObjectType type = this.getObjectType(reader);
     List<String> values = this.getObjectValue(reader, type);
     return this.constructObject(type, values, reader);
@@ -518,8 +511,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    */
   private List<String> getObjectValue(EwsServiceXmlReader reader,
       UserConfigurationDictionaryObjectType type) throws Exception {
-    EwsUtilities.EwsAssert(reader != null,
-        "UserConfigurationDictionary.LoadFromXml", "reader is null");
+    EwsUtilities.ewsAssert(reader != null, "UserConfigurationDictionary.loadFromXml", "reader is null");
 
     List<String> values = new ArrayList<String>();
 
@@ -537,12 +529,8 @@ public final class UserConfigurationDictionary extends ComplexProperty
           value = "";
         } else {
           EwsUtilities
-              .EwsAssert(
-                  false,
-                  "UserConfigurationDictionary." +
-                      "GetObjectValue",
-                  "Empty element passed for type: "
-                      + type.toString());
+              .ewsAssert(false, "UserConfigurationDictionary." + "GetObjectValue",
+                         "Empty element passed for type: " + type.toString());
 
         }
 
@@ -568,8 +556,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
    */
   private UserConfigurationDictionaryObjectType getObjectType(
       EwsServiceXmlReader reader) throws Exception {
-    EwsUtilities.EwsAssert(reader != null,
-        "UserConfigurationDictionary.LoadFromXml", "reader is null");
+    EwsUtilities.ewsAssert(reader != null, "UserConfigurationDictionary.loadFromXml", "reader is null");
 
     reader.readStartElement(this.getNamespace(), XmlElementNames.Type);
 
@@ -588,19 +575,14 @@ public final class UserConfigurationDictionary extends ComplexProperty
    */
   private Object constructObject(UserConfigurationDictionaryObjectType type,
       List<String> value, EwsServiceXmlReader reader) {
-    EwsUtilities.EwsAssert(value != null,
-        "UserConfigurationDictionary.ConstructObject", "value is null");
+    EwsUtilities.ewsAssert(value != null, "UserConfigurationDictionary.ConstructObject", "value is null");
     EwsUtilities
-        .EwsAssert(
-            (value.size() == 1 || type ==
-                UserConfigurationDictionaryObjectType.StringArray),
+        .ewsAssert((value.size() == 1 || type == UserConfigurationDictionaryObjectType.StringArray),
 
-            "UserConfigurationDictionary.ConstructObject",
-            "value is array but type is not StringArray");
+                   "UserConfigurationDictionary.ConstructObject",
+                   "value is array but type is not StringArray");
     EwsUtilities
-        .EwsAssert(reader != null,
-            "UserConfigurationDictionary.ConstructObject",
-            "reader is null");
+        .ewsAssert(reader != null, "UserConfigurationDictionary.ConstructObject", "reader is null");
 
     Object dictionaryObject = null;
     if (type.equals(UserConfigurationDictionaryObjectType.Boolean)) {
@@ -614,9 +596,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
       if (dateTime != null) {
         dictionaryObject = dateTime;
       } else {
-        EwsUtilities.EwsAssert(false,
-            "UserConfigurationDictionary.ConstructObject",
-            "DateTime is null");
+        EwsUtilities.ewsAssert(false, "UserConfigurationDictionary.ConstructObject", "DateTime is null");
       }
     } else if (type.equals(UserConfigurationDictionaryObjectType.Integer32)) {
       dictionaryObject = Integer.parseInt(value.get(0));
@@ -636,9 +616,8 @@ public final class UserConfigurationDictionary extends ComplexProperty
             UnsignedInteger64)) {
       dictionaryObject = Long.parseLong(value.get(0));
     } else {
-      EwsUtilities.EwsAssert(false,
-          "UserConfigurationDictionary.ConstructObject",
-          "Type not recognized: " + type.toString());
+      EwsUtilities.ewsAssert(false, "UserConfigurationDictionary.ConstructObject",
+                             "Type not recognized: " + type.toString());
     }
 
     return dictionaryObject;

@@ -81,7 +81,7 @@ public final class FindItemResponse
     this.propertySet = propertySet;
 
     EwsUtilities
-        .EwsAssert(this.propertySet != null, "FindItemResponse.ctor", "PropertySet should not be null");
+        .ewsAssert(this.propertySet != null, "FindItemResponse.ctor", "PropertySet should not be null");
   }
 
   /**
@@ -166,9 +166,8 @@ public final class FindItemResponse
       PropertySet propertySet, List<TItem> destinationList)
       throws XMLStreamException, ServiceXmlDeserializationException,
       Exception {
-    EwsUtilities.EwsAssert(destinationList != null,
-        "FindItemResponse.InternalReadItemsFromXml",
-        "destinationList is null.");
+    EwsUtilities.ewsAssert(destinationList != null, "FindItemResponse.InternalReadItemsFromXml",
+                           "destinationList is null.");
 
     reader.readStartElement(XmlNamespace.Types, XmlElementNames.Items);
     if (!reader.isEmptyElement()) {
