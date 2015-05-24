@@ -43,8 +43,8 @@ public class HangingTraceStream extends InputStream {
 
   private static final Log LOG = LogFactory.getLog(HangingTraceStream.class);
 
-  private InputStream underlyingStream;
-  private ExchangeService service;
+  private final InputStream underlyingStream;
+  private final ExchangeService service;
   private ByteArrayOutputStream responseCopy;
 
   /**
@@ -53,10 +53,9 @@ public class HangingTraceStream extends InputStream {
    * @param stream  The stream.
    * @param service the service.
    */
-  public HangingTraceStream(InputStream stream, ExchangeService service) {
+  public HangingTraceStream(final InputStream stream, final ExchangeService service) {
     this.underlyingStream = stream;
     this.service = service;
-
   }
 
   /**
@@ -114,29 +113,24 @@ public class HangingTraceStream extends InputStream {
    */
   @Override
   public int read(byte[] buffer, int offset, int count) throws IOException {
-    count = 4096;
-    int retVal = this.underlyingStream.read(buffer, offset, count);
+    count = HangingServiceRequestBase.BUFFER_SIZE;
+    final int retVal = underlyingStream.read(buffer, offset, count);
 
-    if (HangingServiceRequestBase.logAllWireBytes) {
-      String readString = new String(buffer, offset, count, "UTF-8");
-      String logMessage = String.format(
-          "HangingTraceStream ID [%d] " +
-              "returned %d bytes. Bytes returned: [%s]",
-          this.hashCode(),
-          retVal,
-          readString);
+    if (HangingServiceRequestBase.isLogAllWireBytes()) {
+      final String readString = new String(buffer, offset, count, "UTF-8");
+      final String logMessage = String.format(
+          "HangingTraceStream ID [%d] returned %d bytes. Bytes returned: [%s]",
+          hashCode(), retVal, readString);
 
       try {
-        this.service.traceMessage(
-            TraceFlags.DebugMessage,
-            logMessage);
-      } catch (XMLStreamException e) {
+        service.traceMessage(TraceFlags.DebugMessage, logMessage);
+      } catch (final XMLStreamException e) {
         LOG.error(e);
       }
     }
 
-    if (this.responseCopy != null) {
-      this.responseCopy.write(buffer, offset, retVal);
+    if (responseCopy != null) {
+      responseCopy.write(buffer, offset, retVal);
     }
 
     return retVal;
@@ -147,7 +141,7 @@ public class HangingTraceStream extends InputStream {
    *
    * @param responseCopy a copy of response
    */
-  public void setResponseCopy(ByteArrayOutputStream responseCopy) {
+  public void setResponseCopy(final ByteArrayOutputStream responseCopy) {
     this.responseCopy = responseCopy;
   }
 
@@ -155,5 +149,6 @@ public class HangingTraceStream extends InputStream {
   public int read() throws IOException {
     return 0;
   }
+
 }
 

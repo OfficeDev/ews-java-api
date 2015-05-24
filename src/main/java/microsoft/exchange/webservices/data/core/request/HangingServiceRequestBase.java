@@ -28,12 +28,11 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.enumeration.misc.HangingRequestDisconnectReason;
 import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
-import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException;
 import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
-import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRequestException;
+import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceVersionException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRequestException;
 import microsoft.exchange.webservices.data.core.exception.xml.XmlException;
 import microsoft.exchange.webservices.data.misc.HangingTraceStream;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
@@ -62,6 +61,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
 
   private static final Log LOG = LogFactory.getLog(HangingServiceRequestBase.class);
 
+
   public interface IHandleResponseObject {
 
     /**
@@ -74,13 +74,13 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
   }
 
 
-  private static final int BufferSize = 4096;
+  public static final int BUFFER_SIZE = 4096;
 
   /**
    * Test switch to log all bytes that come across the wire.
    * Helpful when parsing fails before certain bytes hit the trace logs.
    */
-  public static boolean logAllWireBytes = false;
+  private static boolean logAllWireBytes = false;
 
   /**
    * Callback delegate to handle response objects
@@ -91,16 +91,6 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
    * Response from the server.
    */
   private HttpWebRequest response;
-
-  /**
-   * Request to the server.
-   */
-  private HttpWebRequest request;
-
-  /**
-   * Xml reader used to parse the response.
-   */
-  private EwsServiceMultiResponseXmlReader ewsXmlReader;
 
   /**
    * Expected minimum frequency in response, in milliseconds.
@@ -121,6 +111,14 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
 
   }
 
+
+  public static boolean isLogAllWireBytes() {
+    return logAllWireBytes;
+  }
+
+  public static void setLogAllWireBytes(final boolean logAllWireBytes) {
+    HangingServiceRequestBase.logAllWireBytes = logAllWireBytes;
+  }
 
   /**
    * Disconnect events Occur when the hanging request is disconnected.
@@ -172,7 +170,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
   /**
    * Exectures the request.
    */
-  public void internalExecute() throws ServiceLocalException, Exception {
+  public void internalExecute() throws Exception {
     synchronized (this) {
       this.response = this.validateAndEmitRequest();
       this.internalOnConnect();
@@ -200,30 +198,15 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
         tracingStream.setResponseCopy(responseCopy);
       }
 
-      //EwsServiceMultiResponseXmlReader ewsXmlReader = EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
-
-
-
       while (this.isConnected()) {
-        T responseObject = null;
+        T responseObject;
         if (traceEWSResponse) {
-                                        /*try{*/
           EwsServiceMultiResponseXmlReader ewsXmlReader =
               EwsServiceMultiResponseXmlReader.create(tracingStream, getService());
           responseObject = this.readResponse(ewsXmlReader);
           this.responseHandler.handleResponseObject(responseObject);
-                                /*	}catch(Exception ex){
-						this.disconnect(HangingRequestDisconnectReason.Exception, ex);
-						return;
-						
-					}
-					finally{
-						this.getService().traceXml(TraceFlags.EwsResponse,responseCopy);
-						if(responseObject!=null)
-							this.responseHandler.handleResponseObject(responseObject);
-					}*/
-          // reset the stream collector.
 
+          // reset the stream collector.
           responseCopy.close();
           responseCopy = new ByteArrayOutputStream();
           tracingStream.setResponseCopy(responseCopy);
@@ -238,19 +221,15 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
     } catch (SocketTimeoutException ex) {
       // The connection timed out.
       this.disconnect(HangingRequestDisconnectReason.Timeout, ex);
-      return;
     } catch (UnknownServiceException ex) {
       // Stream is closed, so disconnect.
       this.disconnect(HangingRequestDisconnectReason.Exception, ex);
-      return;
     } catch (ObjectStreamException ex) {
       // Stream is closed, so disconnect.
       this.disconnect(HangingRequestDisconnectReason.Exception, ex);
-      return;
     } catch (IOException ex) {
       // Stream is closed, so disconnect.
       this.disconnect(HangingRequestDisconnectReason.Exception, ex);
-      return;
     } catch (UnsupportedOperationException ex) {
       LOG.error(ex);
       // This is thrown if we close the stream during a
@@ -258,11 +237,9 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
       // Trying to delay closing until the read finishes
       //simply results in a long-running connection.
       this.disconnect(HangingRequestDisconnectReason.UserInitiated, null);
-      return;
     } catch (Exception ex) {
       // Stream is closed, so disconnect.
       this.disconnect(HangingRequestDisconnectReason.Exception, ex);
-      return;
     } finally {
       if (responseCopy != null) {
         try {
