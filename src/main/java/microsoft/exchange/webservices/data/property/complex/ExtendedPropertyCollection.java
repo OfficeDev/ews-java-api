@@ -197,7 +197,7 @@ public final class ExtendedPropertyCollection extends ComplexPropertyCollection<
         new OutParam<ExtendedProperty>();
     if (this.tryGetProperty(propertyDefinition, extendedPropertyOut)) {
       extendedProperty = extendedPropertyOut.getParam();
-      if (cls.isAssignableFrom(propertyDefinition.getType())) {
+      if (!cls.isAssignableFrom(propertyDefinition.getType())) {
         String errorMessage = String.format(
             "Property definition type '%s' and type parameter '%s' aren't compatible.",
             propertyDefinition.getType().getSimpleName(),
