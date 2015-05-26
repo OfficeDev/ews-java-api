@@ -46,10 +46,12 @@ public class ExtendedPropertyCollectionTest {
    public void tryGetValue() throws Exception{
      ExtendedPropertyCollection epc = new ExtendedPropertyCollection();
      epc.setExtendedProperty(new ExtendedPropertyDefinition(), new ArrayList<Boolean>());
-     Class<String> cls = String.class;
+     Class<Long> cls = Long.class;
+     // By default - type of ExtendedPropertyDefinition will be String
      ExtendedPropertyDefinition propertyDefinition = new ExtendedPropertyDefinition();
      
-     OutParam<String> propertyValueOut = new OutParam<String>();
+     OutParam<Long> propertyValueOut = new OutParam<Long>();
+     // It should fail here due to incompatibility between default String and passed Long
      Assert.assertTrue(epc.tryGetValue(cls, propertyDefinition, propertyValueOut));
    }
 }
