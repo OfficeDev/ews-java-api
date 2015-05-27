@@ -25,9 +25,9 @@ package microsoft.exchange.webservices.data.core.request;
 
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.enumeration.service.error.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.core.response.MoveCopyFolderResponse;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 
 /**
  * Represents a CopyFolder request.

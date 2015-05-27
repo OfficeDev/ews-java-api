@@ -32,11 +32,11 @@ import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingI
 import microsoft.exchange.webservices.data.core.service.schema.AppointmentSchema;
 import microsoft.exchange.webservices.data.core.service.schema.MeetingRequestSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
-import microsoft.exchange.webservices.data.enumeration.AppointmentType;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus;
-import microsoft.exchange.webservices.data.enumeration.MeetingRequestType;
-import microsoft.exchange.webservices.data.enumeration.MeetingResponseType;
+import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AppointmentType;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.property.LegacyFreeBusyStatus;
+import microsoft.exchange.webservices.data.core.enumeration.service.MeetingRequestType;
+import microsoft.exchange.webservices.data.core.enumeration.property.MeetingResponseType;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
 import microsoft.exchange.webservices.data.misc.TimeSpan;

@@ -24,10 +24,10 @@
 package microsoft.exchange.webservices.data.core.request;
 
 import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.enumeration.service.error.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.core.response.CreateResponseObjectResponse;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 
 /**
  * Represents a CreateItem request for a response object.

@@ -23,10 +23,9 @@
 
 package microsoft.exchange.webservices.data.core.exception.service.remote;
 
-import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRemoteException;
 import microsoft.exchange.webservices.data.core.response.ServiceResponse;
 import microsoft.exchange.webservices.data.core.response.UpdateInboxRulesResponse;
-import microsoft.exchange.webservices.data.enumeration.ServiceError;
+import microsoft.exchange.webservices.data.core.enumeration.misc.error.ServiceError;
 import microsoft.exchange.webservices.data.property.complex.RuleOperation;
 import microsoft.exchange.webservices.data.property.complex.RuleOperationError;
 import microsoft.exchange.webservices.data.property.complex.RuleOperationErrorCollection;

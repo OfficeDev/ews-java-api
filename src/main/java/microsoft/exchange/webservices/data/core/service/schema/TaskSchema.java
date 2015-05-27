@@ -25,10 +25,10 @@ package microsoft.exchange.webservices.data.core.service.schema;
 
 import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
-import microsoft.exchange.webservices.data.enumeration.TaskMode;
-import microsoft.exchange.webservices.data.enumeration.TaskStatus;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.property.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.core.enumeration.service.TaskMode;
+import microsoft.exchange.webservices.data.core.enumeration.service.TaskStatus;
 import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.StringList;
 import microsoft.exchange.webservices.data.property.definition.BoolPropertyDefinition;

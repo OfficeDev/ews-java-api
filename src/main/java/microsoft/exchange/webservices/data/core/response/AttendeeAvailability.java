@@ -25,9 +25,9 @@ package microsoft.exchange.webservices.data.core.response;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.FreeBusyViewType;
-import microsoft.exchange.webservices.data.enumeration.LegacyFreeBusyStatus;
-import microsoft.exchange.webservices.data.enumeration.XmlNamespace;
+import microsoft.exchange.webservices.data.core.enumeration.availability.FreeBusyViewType;
+import microsoft.exchange.webservices.data.core.enumeration.property.LegacyFreeBusyStatus;
+import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.property.complex.availability.CalendarEvent;
 import microsoft.exchange.webservices.data.property.complex.availability.WorkingHours;
 

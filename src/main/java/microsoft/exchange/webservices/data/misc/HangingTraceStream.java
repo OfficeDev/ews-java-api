@@ -25,7 +25,7 @@ package microsoft.exchange.webservices.data.misc;
 
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.request.HangingServiceRequestBase;
-import microsoft.exchange.webservices.data.enumeration.TraceFlags;
+import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover;
 
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 
 import java.net.URI;
 import java.util.List;

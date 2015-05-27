@@ -25,10 +25,10 @@ package microsoft.exchange.webservices.data.core.service.schema;
 
 import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.enumeration.ConversationFlagStatus;
-import microsoft.exchange.webservices.data.enumeration.ExchangeVersion;
-import microsoft.exchange.webservices.data.enumeration.Importance;
-import microsoft.exchange.webservices.data.enumeration.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.core.enumeration.service.ConversationFlagStatus;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.property.Importance;
+import microsoft.exchange.webservices.data.core.enumeration.property.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.property.complex.ConversationId;
 import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.ItemIdCollection;
@@ -548,7 +548,7 @@ public class ConversationSchema extends ServiceObjectSchema {
    * Defines the Importance property.
    */
   public static final PropertyDefinition Importance =
-      new GenericPropertyDefinition<microsoft.exchange.webservices.data.enumeration.Importance>(
+      new GenericPropertyDefinition<microsoft.exchange.webservices.data.core.enumeration.property.Importance>(
           Importance.class,
           XmlElementNames.Importance,
           FieldUris.Importance,

@@ -23,7 +23,7 @@
 
 package microsoft.exchange.webservices.data.misc;
 
-import microsoft.exchange.webservices.data.enumeration.MapiPropertyType;
+import microsoft.exchange.webservices.data.core.enumeration.property.MapiPropertyType;
 
 import java.util.HashMap;
 
