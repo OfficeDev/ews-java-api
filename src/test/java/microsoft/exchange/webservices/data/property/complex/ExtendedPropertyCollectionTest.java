@@ -25,13 +25,13 @@ package microsoft.exchange.webservices.data.property.complex;
 
 import java.util.ArrayList;
 
+import microsoft.exchange.webservices.data.core.enumeration.property.MapiPropertyType;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException;
-import microsoft.exchange.webservices.data.enumeration.MapiPropertyType;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
 
