@@ -23,15 +23,17 @@
 
 package microsoft.exchange.webservices.data.property.complex;
 
-import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException;
-import microsoft.exchange.webservices.data.misc.OutParam;
-import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
+import java.util.ArrayList;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.util.ArrayList;
+import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException;
+import microsoft.exchange.webservices.data.enumeration.MapiPropertyType;
+import microsoft.exchange.webservices.data.misc.OutParam;
+import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
 
 @RunWith(JUnit4.class)
 public class ExtendedPropertyCollectionTest {
@@ -46,10 +48,30 @@ public class ExtendedPropertyCollectionTest {
    public void tryGetValue() throws Exception{
      ExtendedPropertyCollection epc = new ExtendedPropertyCollection();
      epc.setExtendedProperty(new ExtendedPropertyDefinition(), new ArrayList<Boolean>());
-     Class<String> cls = String.class;
+     Class<Long> cls = Long.class;
+     // By default - type of ExtendedPropertyDefinition will be String
      ExtendedPropertyDefinition propertyDefinition = new ExtendedPropertyDefinition();
      
-     OutParam<String> propertyValueOut = new OutParam<String>();
+     OutParam<Long> propertyValueOut = new OutParam<Long>();
+     // It should fail here due to incompatibility between default String and passed Long
      Assert.assertTrue(epc.tryGetValue(cls, propertyDefinition, propertyValueOut));
    }
+
+   /**
+    * Calling tryGetValue with non-default input 
+    * expecting positive result.
+    * 
+    */
+    @Test()
+    public void tryGetValueWithProperInput() throws Exception{
+      ExtendedPropertyCollection epc = new ExtendedPropertyCollection();
+      Class<Integer> cls = Integer.class;
+      Integer testValue = new Integer(456);
+      ExtendedPropertyDefinition propertyDefinition = new ExtendedPropertyDefinition(123, MapiPropertyType.Integer);
+      epc.setExtendedProperty(propertyDefinition, testValue);
+      
+      OutParam<Integer> propertyValueOut = new OutParam<Integer>();
+      Assert.assertTrue(epc.tryGetValue(cls, propertyDefinition, propertyValueOut));
+      Assert.assertTrue(propertyValueOut.getParam().equals(testValue));
+    }
 }
