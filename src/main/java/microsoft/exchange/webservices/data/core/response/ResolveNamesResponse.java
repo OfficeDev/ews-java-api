@@ -47,7 +47,7 @@ public final class ResolveNamesResponse extends ServiceResponse {
    */
   public ResolveNamesResponse(ExchangeService service) {
     super();
-    EwsUtilities.EwsAssert(service != null, "ResolveNamesResponse.ctor", "service is null");
+    EwsUtilities.ewsAssert(service != null, "ResolveNamesResponse.ctor", "service is null");
 
     this.resolutions = new NameResolutionCollection(service);
   }

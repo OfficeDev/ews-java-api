@@ -30,6 +30,7 @@ import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException
 import microsoft.exchange.webservices.data.core.exception.misc.ArgumentNullException;
 import microsoft.exchange.webservices.data.core.exception.misc.FormatException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -109,7 +110,7 @@ public class MapiTypeConverterMapEntry {
    *             this behavior.
    */
   public MapiTypeConverterMapEntry(Class<?> type) {
-    EwsUtilities.EwsAssert(defaultValueMap.getMember().containsKey(type), "MapiTypeConverterMapEntry ctor",
+    EwsUtilities.ewsAssert(defaultValueMap.getMember().containsKey(type), "MapiTypeConverterMapEntry ctor",
                            "No default value entry for type " + type.getName());
 
     this.type = type;
@@ -196,11 +197,10 @@ public class MapiTypeConverterMapEntry {
    * @throws FormatException
    * @throws ServiceXmlDeserializationException
    */
-  public Object ConvertToValueOrDefault(String stringValue)
+  public Object convertToValueOrDefault(final String stringValue)
       throws ServiceXmlDeserializationException, FormatException {
-    return (stringValue == null || stringValue.isEmpty()) ?
-        this.getDefaultValue() :
-        this.convertToValue(stringValue);
+    return (StringUtils.isEmpty(stringValue))
+         ? getDefaultValue() : convertToValue(stringValue);
   }
 
   /**

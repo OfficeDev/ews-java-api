@@ -152,10 +152,9 @@ public class UserConfiguration {
    */
   private static void writeByteArrayToXml(EwsServiceXmlWriter writer,
       byte[] byteArray, String xmlElementName) throws XMLStreamException, ServiceXmlSerializationException {
-    EwsUtilities.EwsAssert(writer != null, "UserConfiguration.WriteByteArrayToXml", "writer is null");
-    EwsUtilities.EwsAssert(xmlElementName != null,
-        "UserConfiguration.WriteByteArrayToXml",
-        "xmlElementName is null");
+    EwsUtilities.ewsAssert(writer != null, "UserConfiguration.WriteByteArrayToXml", "writer is null");
+    EwsUtilities.ewsAssert(xmlElementName != null, "UserConfiguration.WriteByteArrayToXml",
+                           "xmlElementName is null");
 
     writer.writeStartElement(XmlNamespace.Types, xmlElementName);
 
@@ -178,15 +177,11 @@ public class UserConfiguration {
    */
   public static void writeUserConfigurationNameToXml(EwsServiceXmlWriter writer, XmlNamespace xmlNamespace,
       String name, FolderId parentFolderId) throws Exception {
-    EwsUtilities.EwsAssert(writer != null,
-        "UserConfiguration.WriteUserConfigurationNameToXml",
-        "writer is null");
-    EwsUtilities.EwsAssert(name != null,
-        "UserConfiguration.WriteUserConfigurationNameToXml",
-        "name is null");
-    EwsUtilities.EwsAssert(parentFolderId != null,
-        "UserConfiguration.WriteUserConfigurationNameToXml",
-        "parentFolderId is null");
+    EwsUtilities.ewsAssert(writer != null, "UserConfiguration.WriteUserConfigurationNameToXml",
+                           "writer is null");
+    EwsUtilities.ewsAssert(name != null, "UserConfiguration.WriteUserConfigurationNameToXml", "name is null");
+    EwsUtilities.ewsAssert(parentFolderId != null, "UserConfiguration.WriteUserConfigurationNameToXml",
+                           "parentFolderId is null");
 
     writer.writeStartElement(xmlNamespace,
         XmlElementNames.UserConfigurationName);
@@ -481,10 +476,8 @@ public class UserConfiguration {
    * @throws Exception the exception
    */
   public void writeToXml(EwsServiceXmlWriter writer, XmlNamespace xmlNamespace, String xmlElementName) throws Exception {
-    EwsUtilities.EwsAssert(writer != null, "UserConfiguration.WriteToXml",
-        "writer is null");
-    EwsUtilities.EwsAssert(xmlElementName != null,
-        "UserConfiguration.WriteToXml", "xmlElementName is null");
+    EwsUtilities.ewsAssert(writer != null, "UserConfiguration.WriteToXml", "writer is null");
+    EwsUtilities.ewsAssert(xmlElementName != null, "UserConfiguration.WriteToXml", "xmlElementName is null");
 
     writer.writeStartElement(xmlNamespace, xmlElementName);
 
@@ -536,9 +529,8 @@ public class UserConfiguration {
             (this.binaryData.length == 0);
         break;
       default:
-        EwsUtilities.EwsAssert(false,
-            "UserConfiguration.IsPropertyUpdated",
-            "property not supported: " + property.toString());
+        EwsUtilities.ewsAssert(false, "UserConfiguration.IsPropertyUpdated",
+                               "property not supported: " + property.toString());
         break;
     }
 
@@ -557,8 +549,7 @@ public class UserConfiguration {
    */
   private void writeXmlDataToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
-    EwsUtilities.EwsAssert(writer != null,
-        "UserConfiguration.WriteXmlDataToXml", "writer is null");
+    EwsUtilities.ewsAssert(writer != null, "UserConfiguration.WriteXmlDataToXml", "writer is null");
 
     writeByteArrayToXml(writer, this.xmlData, XmlElementNames.XmlData);
   }
@@ -572,8 +563,7 @@ public class UserConfiguration {
    */
   private void writeBinaryDataToXml(EwsServiceXmlWriter writer)
       throws XMLStreamException, ServiceXmlSerializationException {
-    EwsUtilities.EwsAssert(writer != null,
-        "UserConfiguration.WriteBinaryDataToXml", "writer is null");
+    EwsUtilities.ewsAssert(writer != null, "UserConfiguration.WriteBinaryDataToXml", "writer is null");
 
     writeByteArrayToXml(writer, this.binaryData,
         XmlElementNames.BinaryData);
@@ -588,8 +578,7 @@ public class UserConfiguration {
    * @throws Exception the exception
    */
   public void loadFromXml(EwsServiceXmlReader reader) throws Exception {
-    EwsUtilities.EwsAssert(reader != null, "UserConfiguration.LoadFromXml",
-        "reader is null");
+    EwsUtilities.ewsAssert(reader != null, "UserConfiguration.loadFromXml", "reader is null");
 
     reader.readStartElement(XmlNamespace.Messages,
         XmlElementNames.UserConfiguration);
@@ -602,11 +591,9 @@ public class UserConfiguration {
           String responseName = reader
               .readAttributeValue(XmlAttributeNames.Name);
 
-          EwsUtilities.EwsAssert(this.name.equals(responseName),
-              "UserConfiguration.LoadFromXml",
-              "UserConfigurationName does not match: Expected: "
-                  + this.name + " Name in response: "
-                  + responseName);
+          EwsUtilities.ewsAssert(this.name.equals(responseName), "UserConfiguration.loadFromXml",
+                                 "UserConfigurationName does not match: Expected: " + this.name
+                                 + " Name in response: " + responseName);
 
           reader.skipCurrentElement();
         } else if (reader.getLocalName().equals(XmlElementNames.ItemId)) {
@@ -623,10 +610,8 @@ public class UserConfiguration {
             XmlElementNames.BinaryData)) {
           this.binaryData = Base64.decodeBase64(reader.readElementValue());
         } else {
-          EwsUtilities.EwsAssert(false,
-              "UserConfiguration.LoadFromXml",
-              "Xml element not supported: "
-                  + reader.getLocalName());
+          EwsUtilities.ewsAssert(false, "UserConfiguration.loadFromXml",
+                                 "Xml element not supported: " + reader.getLocalName());
         }
       }
 

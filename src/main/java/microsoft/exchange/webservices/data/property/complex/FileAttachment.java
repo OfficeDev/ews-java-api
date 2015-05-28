@@ -196,7 +196,7 @@ public final class FileAttachment extends Attachment {
       writer.writeBase64ElementValue(this.content);
     } else {
       EwsUtilities
-          .EwsAssert(false, "FileAttachment.WriteElementsToXml", "The attachment's content is not set.");
+          .ewsAssert(false, "FileAttachment.WriteElementsToXml", "The attachment's content is not set.");
     }
 
     writer.writeEndElement();

@@ -115,7 +115,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
    * @param owner The owner of the bag.
    */
   public PropertyBag(ServiceObject owner) {
-    EwsUtilities.EwsAssert(owner != null, "PropertyBag.ctor", "owner is null");
+    EwsUtilities.ewsAssert(owner != null, "PropertyBag.ctor", "owner is null");
 
     this.owner = owner;
   }
@@ -303,8 +303,7 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
       if (propertyDefinition
           .hasFlag(PropertyDefinitionFlags.AutoInstantiateOnRead)) {
         EwsUtilities
-            .EwsAssert(
-                propertyDefinition instanceof ComplexPropertyDefinitionBase,
+            .ewsAssert(propertyDefinition instanceof ComplexPropertyDefinitionBase,
                 "PropertyBag.get_this[]",
                 "propertyDefinition is " +
                     "marked with AutoInstantiateOnRead " +

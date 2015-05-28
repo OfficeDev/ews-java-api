@@ -225,8 +225,8 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
           } else if (settingClass.equals(XmlElementNames.ProtocolConnectionCollectionSetting)) {
             this.readSettingFromXml(reader);
           } else {
-            EwsUtilities.EwsAssert(false, "GetUserSettingsResponse." + "LoadUserSettingsFromXml", String
-                                       .format("%s,%s", "Invalid setting class '%s' returned", settingClass));
+            EwsUtilities.ewsAssert(false, "GetUserSettingsResponse." + "LoadUserSettingsFromXml", String
+                .format("%s,%s", "Invalid setting class '%s' returned", settingClass));
             break;
           }
         }
@@ -261,7 +261,7 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
           value = WebClientUrlCollection.loadFromXml(reader);
         } else if (reader.getLocalName().equals(
             XmlElementNames.ProtocolConnections)) {
-          value = ProtocolConnectionCollection.LoadFromXml(reader);
+          value = ProtocolConnectionCollection.loadFromXml(reader);
         } else if (reader.getLocalName().equals(
             XmlElementNames.AlternateMailboxes)) {
           value = AlternateMailboxCollection.loadFromXml(reader);
@@ -270,9 +270,8 @@ public final class GetUserSettingsResponse extends AutodiscoverResponse {
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
         XmlElementNames.UserSetting));
 
-    EwsUtilities.EwsAssert(name != null,
-        "GetUserSettingsResponse.ReadSettingFromXml",
-        "Missing name element in user setting");
+    EwsUtilities.ewsAssert(name != null, "GetUserSettingsResponse.ReadSettingFromXml",
+                           "Missing name element in user setting");
 
     this.getSettings().put(name, value);
   }

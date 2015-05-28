@@ -181,7 +181,7 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
             this.readSettingFromXml(reader);
           } else {
             EwsUtilities
-                .EwsAssert(false, "GetDomainSettingsResponse." + "LoadDomainSettingsFromXml",
+                .ewsAssert(false, "GetDomainSettingsResponse." + "LoadDomainSettingsFromXml",
                            String.format("%s,%s", "Invalid setting " + "class '%s' returned", settingClass));
             break;
           }
@@ -217,9 +217,8 @@ public final class GetDomainSettingsResponse extends AutodiscoverResponse {
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
         XmlElementNames.DomainSetting));
 
-    EwsUtilities.EwsAssert(name != null,
-        "GetDomainSettingsResponse.ReadSettingFromXml",
-        "Missing name element in domain setting");
+    EwsUtilities.ewsAssert(name != null, "GetDomainSettingsResponse.ReadSettingFromXml",
+                           "Missing name element in domain setting");
 
     this.settings.put(name, value);
   }

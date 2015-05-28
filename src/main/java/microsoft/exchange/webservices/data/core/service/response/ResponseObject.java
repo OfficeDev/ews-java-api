@@ -67,7 +67,7 @@ public abstract class ResponseObject<TMessage extends EmailMessage> extends Serv
    */
   protected ResponseObject(Item referenceItem) throws Exception {
     super(referenceItem.getService());
-    EwsUtilities.EwsAssert(referenceItem != null, "ResponseObject.ctor", "referenceItem is null");
+    EwsUtilities.ewsAssert(referenceItem != null, "ResponseObject.ctor", "referenceItem is null");
     referenceItem.throwIfThisIsNew();
     this.referenceItem = referenceItem;
   }

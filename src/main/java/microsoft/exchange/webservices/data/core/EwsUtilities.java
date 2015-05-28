@@ -339,7 +339,9 @@ public final class EwsUtilities {
    * @param caller    The caller.
    * @param message   The message to use if assertion fails.
    */
-  public static void EwsAssert(boolean condition, String caller, String message) {
+  public static void ewsAssert(
+    final boolean condition, final String caller, final String message
+  ) {
     if (!condition) {
       throw new RuntimeException(String.format("[%s] %s", caller, message));
     }
@@ -651,7 +653,7 @@ public final class EwsUtilities {
    */
   public static <T extends Enum<?>> void parseEnumValueList(Class<T> c,
       List<T> list, String value, char... separators) {
-    EwsUtilities.EwsAssert(c.isEnum(), "EwsUtilities.ParseEnumValueList", "T is not an enum type.");
+    EwsUtilities.ewsAssert(c.isEnum(), "EwsUtilities.ParseEnumValueList", "T is not an enum type.");
 
     StringBuilder regexp = new StringBuilder();
     regexp.append("[");

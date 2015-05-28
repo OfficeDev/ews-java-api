@@ -24,7 +24,6 @@
 package microsoft.exchange.webservices.data.core.exception.service.remote;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRemoteException;
 import microsoft.exchange.webservices.data.core.response.CreateAttachmentResponse;
 import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
 
@@ -52,10 +51,9 @@ public final class CreateAttachmentException extends ServiceRemoteException {
    */
   public CreateAttachmentException(ServiceResponseCollection<CreateAttachmentResponse> serviceResponses,
       String message) {
-    // super(serviceResponses,message);
     super(message);
-    EwsUtilities
-        .EwsAssert(serviceResponses != null, "MultiServiceResponseException.ctor", "serviceResponses is null");
+    EwsUtilities.ewsAssert(serviceResponses != null,
+      "MultiServiceResponseException.ctor", "serviceResponses is null");
 
     this.responses = serviceResponses;
   }
@@ -68,14 +66,11 @@ public final class CreateAttachmentException extends ServiceRemoteException {
    * @param innerException   the inner exception
    */
   protected CreateAttachmentException(
-      ServiceResponseCollection<CreateAttachmentResponse>
-          serviceResponses,
+      ServiceResponseCollection<CreateAttachmentResponse> serviceResponses,
       String message, Exception innerException) {
-    // super(serviceResponses, message, innerException);
     super(message, innerException);
-    EwsUtilities.EwsAssert(serviceResponses != null,
-        "MultiServiceResponseException.ctor",
-        "serviceResponses is null");
+    EwsUtilities.ewsAssert(serviceResponses != null,
+      "MultiServiceResponseException.ctor", "serviceResponses is null");
 
     this.responses = serviceResponses;
   }

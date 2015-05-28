@@ -170,7 +170,7 @@ class AutodiscoverDnsClient {
 
     // The list must contain at least one matching record since we found one
     // earlier.
-    EwsUtilities.EwsAssert(dnsSrvRecordList.size() > 0, "AutodiscoverDnsClient.FindBestMatchingSrvRecord",
+    EwsUtilities.ewsAssert(dnsSrvRecordList.size() > 0, "AutodiscoverDnsClient.FindBestMatchingSrvRecord",
                            "At least one DNS SRV record must match the criteria.");
 
     // If we have multiple records with the same priority and weight,

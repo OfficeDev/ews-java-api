@@ -62,7 +62,7 @@ public final class NameResolutionCollection implements
    * @param service the service
    */
   public NameResolutionCollection(ExchangeService service) {
-    EwsUtilities.EwsAssert(service != null, "NameResolutionSet.ctor", "service is null.");
+    EwsUtilities.ewsAssert(service != null, "NameResolutionSet.ctor", "service is null.");
     this.service = service;
   }
 

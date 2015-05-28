@@ -158,7 +158,7 @@ public abstract class ServiceObjectSchema implements
                 existingPropertyDefinition = propDefDictionary
                     .get(propertyDefinition.getUri());
                 EwsUtilities
-                    .EwsAssert(existingPropertyDefinition == propertyDefinition,
+                    .ewsAssert(existingPropertyDefinition == propertyDefinition,
                                "Schema.allSchemaProperties." + "delegate",
                                String.format("There are at least " +
                                              "two distinct property " +

@@ -87,7 +87,7 @@ public abstract class ServiceObjectPropertyDefinition extends
    */
   protected ServiceObjectPropertyDefinition(String uri) {
     this();
-    EwsUtilities.EwsAssert(!(uri == null || uri.isEmpty()), "ServiceObjectPropertyDefinition.ctor",
+    EwsUtilities.ewsAssert(!(uri == null || uri.isEmpty()), "ServiceObjectPropertyDefinition.ctor",
                            "uri is null or empty");
     this.uri = uri;
   }

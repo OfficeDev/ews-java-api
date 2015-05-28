@@ -105,7 +105,7 @@ public abstract class ComplexPropertyCollection
    */
   protected void itemChanged(ComplexProperty complexProperty) {
     EwsUtilities
-        .EwsAssert(complexProperty instanceof ComplexProperty, "ComplexPropertyCollection.ItemChanged",
+        .ewsAssert(complexProperty instanceof ComplexProperty, "ComplexPropertyCollection.ItemChanged",
                    String.format("ComplexPropertyCollection." +
                                  "ItemChanged: the type of " +
                                  "the complexProperty argument " +
@@ -314,9 +314,8 @@ public abstract class ComplexPropertyCollection
    */
   private void internalAdd(TComplexProperty complexProperty,
       boolean loading) {
-    EwsUtilities.EwsAssert(complexProperty != null,
-        "ComplexPropertyCollection.InternalAdd",
-        "complexProperty is null");
+    EwsUtilities.ewsAssert(complexProperty != null, "ComplexPropertyCollection.InternalAdd",
+                           "complexProperty is null");
 
     if (!this.items.contains(complexProperty)) {
       this.items.add(complexProperty);
@@ -354,9 +353,8 @@ public abstract class ComplexPropertyCollection
    * @param index The index.
    */
   protected void internalRemoveAt(int index) {
-    EwsUtilities.EwsAssert(index >= 0 && index < this.getCount(),
-        "ComplexPropertyCollection.InternalRemoveAt",
-        "index is out of range.");
+    EwsUtilities.ewsAssert(index >= 0 && index < this.getCount(),
+                           "ComplexPropertyCollection.InternalRemoveAt", "index is out of range.");
 
     this.internalRemove(this.items.get(index));
   }
@@ -369,9 +367,8 @@ public abstract class ComplexPropertyCollection
    * collection, false otherwise.
    */
   protected boolean internalRemove(TComplexProperty complexProperty) {
-    EwsUtilities.EwsAssert(complexProperty != null,
-        "ComplexPropertyCollection.InternalRemove",
-        "complexProperty is null");
+    EwsUtilities.ewsAssert(complexProperty != null, "ComplexPropertyCollection.InternalRemove",
+                           "complexProperty is null");
 
     if (this.items.remove(complexProperty)) {
       complexProperty.removeChangeEvent(this);

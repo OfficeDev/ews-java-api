@@ -57,7 +57,7 @@ public final class NameResolution {
    * @param owner the owner
    */
   protected NameResolution(NameResolutionCollection owner) {
-    EwsUtilities.EwsAssert(owner != null, "NameResolution.ctor", "owner is null.");
+    EwsUtilities.ewsAssert(owner != null, "NameResolution.ctor", "owner is null.");
 
     this.owner = owner;
   }

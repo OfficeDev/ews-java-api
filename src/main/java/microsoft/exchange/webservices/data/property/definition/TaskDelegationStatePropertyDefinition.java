@@ -110,7 +110,7 @@ public final class TaskDelegationStatePropertyDefinition extends
       case Accepted:
         return TaskDelegationState.Declined;
       default:
-        EwsUtilities.EwsAssert(false, "TaskDelegationStatePropertyDefinition.Parse",
+        EwsUtilities.ewsAssert(false, "TaskDelegationStatePropertyDefinition.Parse",
                                String.format("TaskDelegationStatePropertyDefinition." +
                                              "Parse():" +
                                              " value %s cannot be handled.", value));
@@ -137,9 +137,8 @@ public final class TaskDelegationStatePropertyDefinition extends
     if (value.equals(TaskDelegationState.Declined)) {
       return Accepted;
     } else {
-      EwsUtilities.EwsAssert(false,
-          "TaskDelegationStatePropertyDefinition.ToString",
-          "Invalid TaskDelegationState value.");
+      EwsUtilities.ewsAssert(false, "TaskDelegationStatePropertyDefinition.ToString",
+                             "Invalid TaskDelegationState value.");
       return null; // To keep the compiler happy
     }
 

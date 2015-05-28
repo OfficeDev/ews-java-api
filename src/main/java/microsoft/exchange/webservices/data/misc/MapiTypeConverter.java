@@ -194,9 +194,8 @@ public class MapiTypeConverter {
     int index = 0;
 
     while (strings.hasNext()) {
-      Object value = typeConverter.ConvertToValueOrDefault(strings.next());
+      Object value = typeConverter.convertToValueOrDefault(strings.next());
       array.add(index, value);
-
     }
     return array;
   }

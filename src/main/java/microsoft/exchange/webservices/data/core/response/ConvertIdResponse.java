@@ -88,7 +88,7 @@ public final class ConvertIdResponse extends ServiceResponse {
       this.convertedId = new AlternatePublicFolderItemId();
     } else {
       EwsUtilities
-          .EwsAssert(false, "ConvertIdResponse.ReadElementsFromXml",
+          .ewsAssert(false, "ConvertIdResponse.ReadElementsFromXml",
                      String.format("Unknown alternate Id class: %s", alternateIdClass));
     }
 

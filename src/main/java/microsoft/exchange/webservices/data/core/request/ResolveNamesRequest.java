@@ -196,11 +196,9 @@ public final class ResolveNamesRequest extends
     }
 
     EwsUtilities
-        .EwsAssert(
-            (!(searchScope == null || searchScope.isEmpty())),
-            "ResolveNameRequest.WriteAttributesToXml",
-            "The specified search location cannot " +
-                "be mapped to an EWS search scope.");
+        .ewsAssert((!(searchScope == null || searchScope.isEmpty())),
+                   "ResolveNameRequest.WriteAttributesToXml",
+                   "The specified search location cannot be mapped to an EWS search scope.");
 
     String propertySet = null;
     if (this.getContactDataPropertySet() != null) {

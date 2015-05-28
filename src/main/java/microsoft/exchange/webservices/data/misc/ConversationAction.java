@@ -338,11 +338,9 @@ public class ConversationAction {
         }
 
         if (this.getAction() == ConversationActionType.Copy) {
-          EwsUtilities.EwsAssert(
-              this.getDestinationFolderId() != null,
-              "ApplyconversationActionRequest",
-              "DestinationFolderId should be set " +
-                  "when performing copy action");
+          EwsUtilities.ewsAssert(this.getDestinationFolderId() != null,
+            "ApplyconversationActionRequest",
+            "DestinationFolderId should be set when performing copy action");
 
           writer.writeStartElement(
               XmlNamespace.Types,
@@ -350,11 +348,9 @@ public class ConversationAction {
           this.getDestinationFolderId().writeToXml(writer);
           writer.writeEndElement();
         } else if (this.getAction() == ConversationActionType.Move) {
-          EwsUtilities.EwsAssert(
-              this.getDestinationFolderId() != null,
-              "ApplyconversationActionRequest",
-              "DestinationFolderId should be " +
-                  "set when performing move action");
+          EwsUtilities.ewsAssert(this.getDestinationFolderId() != null,
+            "ApplyconversationActionRequest",
+            "DestinationFolderId should be set when performing move action");
 
           writer.writeStartElement(
               XmlNamespace.Types,
@@ -362,22 +358,18 @@ public class ConversationAction {
           this.getDestinationFolderId().writeToXml(writer);
           writer.writeEndElement();
         } else if (this.getAction() == ConversationActionType.Delete) {
-          EwsUtilities.EwsAssert(
-              this.getDeleteType() != null,
-              "ApplyconversationActionRequest",
-              "DeleteType should be specified " +
-                  "when deleting a conversation.");
+          EwsUtilities.ewsAssert(this.getDeleteType() != null,
+            "ApplyconversationActionRequest",
+            "DeleteType should be specified when deleting a conversation.");
 
           writer.writeElementValue(
               XmlNamespace.Types,
               XmlElementNames.DeleteType,
               this.getDeleteType());
         } else if (this.getAction() == ConversationActionType.SetReadState) {
-          EwsUtilities.EwsAssert(
-              this.getIsRead() != null,
-              "ApplyconversationActionRequest",
-              "IsRead should be specified when " +
-                  "marking/unmarking a conversation as read.");
+          EwsUtilities.ewsAssert(this.getIsRead() != null,
+            "ApplyconversationActionRequest",
+            "IsRead should be specified when marking/unmarking a conversation as read.");
 
           writer.writeElementValue(
               XmlNamespace.Types,

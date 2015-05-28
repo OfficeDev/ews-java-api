@@ -47,7 +47,7 @@ public final class GetPhoneCallResponse extends ServiceResponse {
    */
   public GetPhoneCallResponse(ExchangeService service) {
     super();
-    EwsUtilities.EwsAssert(service != null, "GetPhoneCallResponse.ctor", "service is null");
+    EwsUtilities.ewsAssert(service != null, "GetPhoneCallResponse.ctor", "service is null");
 
     this.phoneCall = new PhoneCall(service);
   }

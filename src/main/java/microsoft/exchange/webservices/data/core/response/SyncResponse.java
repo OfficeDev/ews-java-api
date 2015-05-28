@@ -65,7 +65,7 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
   protected SyncResponse(PropertySet propertySet) {
     super();
     this.propertySet = propertySet;
-    EwsUtilities.EwsAssert(this.propertySet != null, "SyncResponse.ctor", "PropertySet should not be null");
+    EwsUtilities.ewsAssert(this.propertySet != null, "SyncResponse.ctor", "PropertySet should not be null");
   }
 
   /**
@@ -141,12 +141,8 @@ public abstract class SyncResponse<TServiceObject extends ServiceObject,
                   itemChange = (ItemChange) change;
                 }
                 EwsUtilities
-                    .EwsAssert(
-                        itemChange != null,
-                        "SyncResponse." +
-                            "ReadElementsFromXml",
-                        "ReadFlagChange is only " +
-                            "valid on ItemChange");
+                    .ewsAssert(itemChange != null, "SyncResponse." + "ReadElementsFromXml",
+                               "ReadFlagChange is only " + "valid on ItemChange");
 
                 itemChange.setIsRead(reader.readElementValue(
                     Boolean.class, XmlNamespace.Types,

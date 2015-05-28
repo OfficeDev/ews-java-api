@@ -2760,11 +2760,10 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
       StringList categories, boolean enableAlwaysDelete,
       FolderId destinationFolderId, ServiceErrorHandling errorHandlingMode)
       throws Exception {
-    EwsUtilities.EwsAssert(
-        actionType == ConversationActionType.AlwaysCategorize
-            || actionType == ConversationActionType.AlwaysMove
-            || actionType == ConversationActionType.AlwaysDelete,
-        "ApplyConversationAction", "Invalic actionType");
+    EwsUtilities.ewsAssert(actionType == ConversationActionType.AlwaysCategorize
+                           || actionType == ConversationActionType.AlwaysMove
+                           || actionType == ConversationActionType.AlwaysDelete, "ApplyConversationAction",
+                           "Invalic actionType");
 
     EwsUtilities.validateParam(conversationIds, "conversationId");
     EwsUtilities.validateMethodVersion(this,
@@ -2809,10 +2808,9 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
       FolderId contextFolderId, FolderId destinationFolderId,
       DeleteMode deleteType, Boolean isRead,
       ServiceErrorHandling errorHandlingMode) throws Exception {
-    EwsUtilities.EwsAssert(actionType == ConversationActionType.Move
-            || actionType == ConversationActionType.Delete
-            || actionType == ConversationActionType.SetReadState
-            || actionType == ConversationActionType.Copy,
+    EwsUtilities.ewsAssert(
+        actionType == ConversationActionType.Move || actionType == ConversationActionType.Delete
+        || actionType == ConversationActionType.SetReadState || actionType == ConversationActionType.Copy,
         "ApplyConversationOneTimeAction", "Invalid actionType");
 
     EwsUtilities.validateParamCollection(idTimePairs.iterator(),
@@ -3396,9 +3394,8 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    */
   public void loadPropertiesForUserConfiguration(UserConfiguration userConfiguration,
       UserConfigurationProperties properties) throws Exception {
-    EwsUtilities.EwsAssert(userConfiguration != null,
-        "ExchangeService.LoadPropertiesForUserConfiguration",
-        "userConfiguration is null");
+    EwsUtilities.ewsAssert(userConfiguration != null, "ExchangeService.LoadPropertiesForUserConfiguration",
+                           "userConfiguration is null");
 
     GetUserConfigurationRequest request = new GetUserConfigurationRequest(
         this);

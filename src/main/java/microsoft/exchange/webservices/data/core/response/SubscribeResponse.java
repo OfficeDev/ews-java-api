@@ -47,7 +47,7 @@ public final class SubscribeResponse<TSubscription extends SubscriptionBase> ext
    */
   public SubscribeResponse(TSubscription subscription) {
     super();
-    EwsUtilities.EwsAssert(subscription != null, "SubscribeResponse.ctor", "subscription is null");
+    EwsUtilities.ewsAssert(subscription != null, "SubscribeResponse.ctor", "subscription is null");
     this.subscription = subscription;
   }
 

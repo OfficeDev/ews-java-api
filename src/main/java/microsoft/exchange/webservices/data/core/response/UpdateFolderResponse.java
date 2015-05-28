@@ -49,7 +49,7 @@ public final class UpdateFolderResponse extends ServiceResponse implements
    */
   public UpdateFolderResponse(Folder folder) {
     super();
-    EwsUtilities.EwsAssert(folder != null, "UpdateFolderResponse.ctor", "folder is null");
+    EwsUtilities.ewsAssert(folder != null, "UpdateFolderResponse.ctor", "folder is null");
 
     this.folder = folder;
   }

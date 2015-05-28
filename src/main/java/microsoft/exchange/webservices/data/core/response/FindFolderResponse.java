@@ -108,8 +108,8 @@ public final class FindFolderResponse extends ServiceResponse {
     super();
     this.propertySet = propertySet;
 
-    EwsUtilities.EwsAssert(this.propertySet != null,
-        "FindFolderResponse.ctor", "PropertySet should not be null");
+    EwsUtilities.ewsAssert(this.propertySet != null, "FindFolderResponse.ctor",
+                           "PropertySet should not be null");
   }
 
   /**

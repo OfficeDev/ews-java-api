@@ -69,7 +69,7 @@ class AbsoluteDayOfMonthTransition extends AbsoluteMonthTransition {
       if (reader.getLocalName().equals(XmlElementNames.Day)) {
         this.dayOfMonth = reader.readElementValue(Integer.class);
 
-        EwsUtilities.EwsAssert(this.dayOfMonth > 0 && this.dayOfMonth <= 31,
+        EwsUtilities.ewsAssert(this.dayOfMonth > 0 && this.dayOfMonth <= 31,
                                "AbsoluteDayOfMonthTransition.TryReadElementFromXml",
                                "dayOfMonth is not in the valid 1 - 31 range.");
 

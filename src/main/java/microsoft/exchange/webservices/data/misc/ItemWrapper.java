@@ -44,11 +44,9 @@ class ItemWrapper extends AbstractItemIdWrapper {
    * @param item the item
    * @throws ServiceLocalException the service local exception
    */
-  protected ItemWrapper(Item item) throws ServiceLocalException {
-    EwsUtilities
-        .EwsAssert(item != null, "ItemWrapper.ctor", "item is null");
-    EwsUtilities.EwsAssert(!item.isNew(), "ItemWrapper.ctor",
-        "item does not have an Id");
+  protected ItemWrapper(final Item item) throws ServiceLocalException {
+    EwsUtilities.ewsAssert(item != null, "ItemWrapper.ctor", "item is null");
+    EwsUtilities.ewsAssert(!item.isNew(), "ItemWrapper.ctor", "item does not have an Id");
     this.item = item;
   }
 

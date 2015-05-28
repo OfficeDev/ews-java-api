@@ -60,7 +60,7 @@ public class PermissionSetPropertyDefinition extends ComplexPropertyDefinitionBa
   @Override public ComplexProperty createPropertyInstance(ServiceObject owner) {
     Folder folder = (Folder) owner;
 
-    EwsUtilities.EwsAssert(folder != null, "PermissionCollectionPropertyDefinition.CreatePropertyInstance",
+    EwsUtilities.ewsAssert(folder != null, "PermissionCollectionPropertyDefinition.CreatePropertyInstance",
                            "The owner parameter is not of type Folder or a derived class.");
 
     return new FolderPermissionCollection(folder);

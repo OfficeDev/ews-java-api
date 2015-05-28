@@ -54,9 +54,9 @@ public final class ItemGroup<TItem extends Item> {
    * @param items      the item
    */
   public ItemGroup(String groupIndex, List<TItem> items) {
-    EwsUtilities.EwsAssert(groupIndex != null, "ItemGroup.ctor", "groupIndex is null");
+    EwsUtilities.ewsAssert(groupIndex != null, "ItemGroup.ctor", "groupIndex is null");
     EwsUtilities
-        .EwsAssert(items != null, "ItemGroup.ctor", "item is null");
+        .ewsAssert(items != null, "ItemGroup.ctor", "item is null");
 
     this.groupIndex = groupIndex;
     this.items = new ArrayList<TItem>(items);

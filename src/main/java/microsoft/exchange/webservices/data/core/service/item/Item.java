@@ -101,7 +101,7 @@ public class Item extends ServiceObject {
    */
   public Item(ItemAttachment parentAttachment) throws Exception {
     this(parentAttachment.getOwner().getService());
-    EwsUtilities.EwsAssert(parentAttachment != null, "Item.ctor", "parentAttachment is null");
+    EwsUtilities.ewsAssert(parentAttachment != null, "Item.ctor", "parentAttachment is null");
 
     this.parentAttachment = parentAttachment;
   }

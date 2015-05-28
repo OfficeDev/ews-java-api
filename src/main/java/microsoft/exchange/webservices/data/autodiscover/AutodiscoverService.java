@@ -657,10 +657,8 @@ public class AutodiscoverService extends ExchangeServiceBase
             break;
           default:
             EwsUtilities
-                .EwsAssert(false,
-                    "Autodiscover.GetConfigurationSettings",
-                    "An unexpected error has occured. " +
-                        "This code path should never be reached.");
+                .ewsAssert(false, "Autodiscover.GetConfigurationSettings",
+                           "An unexpected error has occured. This code path should never be reached.");
             break;
         }
       } catch (XMLStreamException ex) {

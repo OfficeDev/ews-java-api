@@ -47,7 +47,7 @@ public final class PlayOnPhoneResponse extends ServiceResponse {
    */
   public PlayOnPhoneResponse(ExchangeService service) {
     super();
-    EwsUtilities.EwsAssert(service != null, "PlayOnPhoneResponse.ctor", "service is null");
+    EwsUtilities.ewsAssert(service != null, "PlayOnPhoneResponse.ctor", "service is null");
 
     this.phoneCallId = new PhoneCallId();
   }
