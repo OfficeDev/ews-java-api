@@ -3601,6 +3601,8 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
       throws Exception {
 
     AutodiscoverService autodiscoverService = new AutodiscoverService(this, requestedServerVersion);
+    autodiscoverService.setWebProxy(getWebProxy());
+
     autodiscoverService
         .setRedirectionUrlValidationCallback(validateRedirectionUrlCallback);
     autodiscoverService.setEnableScpLookup(this.getEnableScpLookup());

@@ -275,6 +275,8 @@ public abstract class ExchangeServiceBase implements Closeable {
     }
 
     request = new HttpClientWebRequest(httpClient, httpContext);
+    request.setProxy(getWebProxy());
+
     try {
       request.setUrl(url.toURL());
     } catch (MalformedURLException e) {
