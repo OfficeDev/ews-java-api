@@ -103,15 +103,13 @@ public abstract class ComplexPropertyCollection
    *
    * @param complexProperty The complex property.
    */
-  protected void itemChanged(ComplexProperty complexProperty) {
-    EwsUtilities
-        .ewsAssert(complexProperty instanceof ComplexProperty, "ComplexPropertyCollection.ItemChanged",
-                   String.format("ComplexPropertyCollection." +
-                                 "ItemChanged: the type of " +
-                                 "the complexProperty argument " +
-                                 "(%s) is not supported.", complexProperty.getClass().getName()));
+  protected void itemChanged(final ComplexProperty complexProperty) {
+    final TComplexProperty property = (TComplexProperty) complexProperty;
+    EwsUtilities.ewsAssert(
+      complexProperty != null, "ComplexPropertyCollection.ItemChanged",
+      "The complexProperty argument must be not null"
+    );
 
-    TComplexProperty property = (TComplexProperty) complexProperty;
     if (!this.addedItems.contains(property)) {
       if (!this.modifiedItems.contains(property)) {
         this.modifiedItems.add(property);
