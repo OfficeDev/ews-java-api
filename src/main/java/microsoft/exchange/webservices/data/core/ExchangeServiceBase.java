@@ -34,6 +34,7 @@ import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 import microsoft.exchange.webservices.data.misc.EwsTraceListener;
 import microsoft.exchange.webservices.data.misc.ITraceListener;
+
 import org.apache.http.client.AuthenticationStrategy;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.protocol.HttpClientContext;
@@ -46,6 +47,7 @@ import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -142,7 +144,12 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   protected HttpClientContext httpContext;
 
-  protected HttpClientWebRequest request = null;
+  protected CloseableHttpClient	httpPoolingClient;
+  
+  private int	maximumPoolingConnections	= 10;
+
+
+//  protected HttpClientWebRequest request = null;
 
   // protected static HttpStatusCode AccountIsLocked = (HttpStatusCode)456;
 
@@ -193,8 +200,32 @@ public abstract class ExchangeServiceBase implements Closeable {
       .build();
   }
 
+  private void initializeHttpPoolingClient() {
+	    Registry<ConnectionSocketFactory> registry = createConnectionSocketFactoryRegistry();
+	    PoolingHttpClientConnectionManager httpConnectionManager = new PoolingHttpClientConnectionManager(registry);
+	    httpConnectionManager.setMaxTotal(maximumPoolingConnections);
+	    httpConnectionManager.setDefaultMaxPerRoute(maximumPoolingConnections);
+	    AuthenticationStrategy authStrategy = new CookieProcessingTargetAuthenticationStrategy();
+
+	    httpPoolingClient = HttpClients.custom()
+	      .setConnectionManager(httpConnectionManager)
+	      .setTargetAuthenticationStrategy(authStrategy)
+	      .build();
+	  }
+  
+  
   /**
-   * Create registry with configured {@link ConnectionSocketFactory} instances.
+   * Sets the maximum number of connections for the pooling connection manager which is used for subscriptions.
+   * <p>
+   * Default is 10.
+   * @param maximumPoolConnections
+   */
+  public void setMaximumPoolingConnections(int maximumPoolingConnections) {
+    this.maximumPoolingConnections = maximumPoolingConnections;
+  }
+
+  /**
+   * Create registry with configured {@see ConnectionSocketFactory} instances.
    * Override this method to change how to work with different schemas.
    *
    * @return registry object
@@ -226,6 +257,8 @@ public abstract class ExchangeServiceBase implements Closeable {
   public void close() {
     try {
       httpClient.close();
+      if (httpPoolingClient != null)
+      	httpPoolingClient.close();
     } catch (IOException e) {
       // Ignore exception while closing the HttpClient.
     }
@@ -274,9 +307,33 @@ public abstract class ExchangeServiceBase implements Closeable {
       throw new ServiceLocalException(strErr);
     }
 
-    request = new HttpClientWebRequest(httpClient, httpContext);
-    request.setProxy(getWebProxy());
+    HttpClientWebRequest request = new HttpClientWebRequest(httpClient, httpContext);
+    prepareHttpWebRequestForUrl(url, acceptGzipEncoding, allowAutoRedirect, request);
 
+    return request;
+  }
+
+  protected HttpWebRequest prepareHttpPoolingWebRequestForUrl(URI url, boolean acceptGzipEncoding,
+	      boolean allowAutoRedirect) throws ServiceLocalException, URISyntaxException {
+	    // Verify that the protocol is something that we can handle
+	    String scheme = url.getScheme();
+	    if (!scheme.equalsIgnoreCase(EWSConstants.HTTP_SCHEME)
+	      && !scheme.equalsIgnoreCase(EWSConstants.HTTPS_SCHEME)) {
+	      String strErr = String.format("Protocol %s isn't supported for service request.", scheme);
+	      throw new ServiceLocalException(strErr);
+	    }
+
+	    if (httpPoolingClient == null)
+	   	 initializeHttpPoolingClient();
+	    HttpClientWebRequest request = new HttpClientWebRequest(httpPoolingClient, httpContext);
+	    prepareHttpWebRequestForUrl(url, acceptGzipEncoding, allowAutoRedirect, request);
+
+	    return request;
+	  }
+
+private void prepareHttpWebRequestForUrl(URI url, boolean acceptGzipEncoding, boolean allowAutoRedirect, HttpClientWebRequest request)
+		throws ServiceLocalException, URISyntaxException
+{
     try {
       request.setUrl(url.toURL());
     } catch (MalformedURLException e) {
@@ -298,8 +355,6 @@ public abstract class ExchangeServiceBase implements Closeable {
     request.prepareConnection();
 
     httpResponseHeaders.clear();
-
-    return request;
   }
 
   protected void prepareCredentials(HttpWebRequest request) throws ServiceLocalException, URISyntaxException {

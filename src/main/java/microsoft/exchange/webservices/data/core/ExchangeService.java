@@ -3744,6 +3744,17 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
         .getAcceptGzipEncoding(), true);
   }
 
+  public HttpWebRequest prepareHttpPoolingWebRequest()
+	      throws ServiceLocalException, URISyntaxException {
+	    try {
+	      this.url = this.adjustServiceUriFromCredentials(this.getUrl());
+	    } catch (Exception e) {
+	      LOG.error(e);
+	    }
+	    return this.prepareHttpPoolingWebRequestForUrl(url, this
+	        .getAcceptGzipEncoding(), true);
+	  }
+
   /**
    * Processes an HTTP error response.
    *

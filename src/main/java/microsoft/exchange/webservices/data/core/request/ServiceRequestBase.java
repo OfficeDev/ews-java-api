@@ -661,8 +661,18 @@ public abstract class ServiceRequestBase<T> {
    * @throws Exception on error
    */
   protected HttpWebRequest buildEwsHttpWebRequest() throws Exception {
-    try {
       HttpWebRequest request = service.prepareHttpWebRequest();
+    return buildEwsHttpWebRequest(request);
+  }
+
+  protected HttpWebRequest buildEwsHttpPoolingWebRequest() throws Exception {
+     HttpWebRequest request = service.prepareHttpPoolingWebRequest();
+    return buildEwsHttpWebRequest(request);
+  }
+
+private HttpWebRequest buildEwsHttpWebRequest(HttpWebRequest request) throws Exception
+{
+	try {
 
       service.traceHttpRequestHeaders(TraceFlags.EwsRequestHttpHeaders, request);
 
