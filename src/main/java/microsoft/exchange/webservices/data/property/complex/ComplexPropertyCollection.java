@@ -48,7 +48,7 @@ import java.util.List;
 public abstract class ComplexPropertyCollection
     <TComplexProperty extends ComplexProperty>
     extends ComplexProperty implements ICustomXmlUpdateSerializer,
-    Iterable<TComplexProperty>, IComplexPropertyChangedDelegate {
+    Iterable<TComplexProperty>, IComplexPropertyChangedDelegate<TComplexProperty> {
 
   /**
    * The item.
@@ -101,12 +101,11 @@ public abstract class ComplexPropertyCollection
   /**
    * Item changed.
    *
-   * @param complexProperty The complex property.
+   * @param property The complex property.
    */
-  protected void itemChanged(final ComplexProperty complexProperty) {
-    final TComplexProperty property = (TComplexProperty) complexProperty;
+  protected void itemChanged(final TComplexProperty property) {
     EwsUtilities.ewsAssert(
-      complexProperty != null, "ComplexPropertyCollection.ItemChanged",
+      property != null, "ComplexPropertyCollection.ItemChanged",
       "The complexProperty argument must be not null"
     );
 
@@ -332,7 +331,7 @@ public abstract class ComplexPropertyCollection
    * @param complexProperty accepts ComplexProperty
    */
   @Override
-  public void complexPropertyChanged(ComplexProperty complexProperty) {
+  public void complexPropertyChanged(final TComplexProperty complexProperty) {
     this.itemChanged(complexProperty);
   }
 
