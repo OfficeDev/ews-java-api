@@ -372,20 +372,18 @@ public abstract class ComplexProperty implements ISelfValidate, ComplexFunctionD
   /**
    * Implements ISelfValidate.validate. Validates this instance.
    *
-   * @throws ServiceValidationException the service validation exception
-   * @throws Exception                  the exception
+   * @throws Exception the exception
    */
-  public void validate() throws ServiceValidationException, Exception {
+  public void validate() throws Exception {
     this.internalValidate();
   }
 
   /**
    * Validates this instance.
    *
-   * @throws ServiceValidationException the service validation exception
-   * @throws Exception
+   * @throws Exception the exception
    */
-  protected void internalValidate() throws ServiceValidationException, Exception {
+  protected void internalValidate() throws Exception {
   }
 
   public Boolean func(EwsServiceXmlReader reader) throws Exception {
