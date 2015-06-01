@@ -10,6 +10,8 @@
 
 package microsoft.exchange.webservices.data;
 
+import org.apache.commons.codec.binary.Base64OutputStream;
+
 import java.io.*;
 
 /**
@@ -213,6 +215,128 @@ public final class FileAttachment extends Attachment {
     this.fileName = fileName;
     this.content = null;
     this.contentStream = null;
+  }
+
+  /**
+   * Streams the decoded content of this attachment into the specified stream.
+   * Calling this method results in a call to EWS.
+   *
+   * @param outputStream the stream to receive the content
+   * @throws Exception the exception
+   */
+  public void streamContent(OutputStream outputStream) throws Exception {
+    File responseFile = File.createTempFile("response", ".tmp");
+    responseFile.deleteOnExit();
+    BufferedOutputStream os = null;
+    try {
+      os = new BufferedOutputStream(new FileOutputStream(responseFile));
+      this.getOwner().getService().streamGetAttachmentResponse(this, os);
+      os.flush();
+      os.close();
+      writeContentFromResponseFile(new FileInputStream(responseFile), outputStream);
+    } finally {
+      if (os != null) {
+        os.close();
+      }
+      responseFile.delete();
+    }
+  }
+
+  /**
+   * Helper method to read through the responseInputStream (which is required to be xml) and
+   * write the attachment's content to the outputStream argument.
+   * @param responseInputStream An {@link InputStream} that is assumed to be an xml document
+   *                            with a FileAttachment's "Content" element within it.
+   * @param outputStream An {@link OutputStream} provided by the caller that will be filled
+   *                     with the binary attachment content.
+   * @throws IOException If an exception occurs.
+   */
+  public static void writeContentFromResponseFile(final InputStream responseInputStream, OutputStream outputStream) throws IOException {
+
+    InputStream is = new BufferedInputStream(responseInputStream);
+    final String pattern = ":Content>";
+    try {
+      // read ahead until we match the "pattern" variable in the responseInputStream
+      readUntilPatternMatch(is, pattern);
+
+      // now that we've found the beginning of the Base64-encoded element value, wrap it with
+      // a Base64ValueStream so it stops reading when the delimiting "<" character is found.
+      Base64ValueStream base64ValueStream = new Base64ValueStream(is);
+
+      // Use a Base64OutputStream to write to outputStream so the base64 data is decoded
+      // during the writing operation.
+      Base64OutputStream base64OutputStream = new Base64OutputStream(
+          new BufferedOutputStream(outputStream), false, 0, null);
+      int b;
+      try {
+        while (-1 != (b = base64ValueStream.read())) {
+          base64OutputStream.write(b);
+        }
+        base64OutputStream.flush();
+      } finally {
+        base64OutputStream.close();
+        base64ValueStream.close();
+      }
+    } finally {
+      is.close();
+    }
+  }
+
+  /**
+   * Helper function used to keep reading through the specified {@link InputStream} until the specified
+   * pattern's (UTF8-encoded) bytes are found.
+   *
+   * @param is An {@link InputStream}.
+   * @param pattern The pattern to find.
+   * @throws IOException If an exception occurs.
+   */
+  static void readUntilPatternMatch(InputStream is, String pattern) throws IOException {
+    final byte[] patternBytes = pattern.getBytes("UTF-8");
+    final int beginPatternLength = patternBytes.length;
+
+    int patternIndex = 0;
+    long bytesRead = 0;
+    int b = -1;
+
+    while ((patternIndex < beginPatternLength) && (-1 != (b=is.read()))) {
+      bytesRead++;
+      if (b == patternBytes[patternIndex]) {
+        patternIndex++;
+      } else {
+        patternIndex = 0;
+      }
+    }
+    if (b == -1) {
+      throw new IOException(String.format(
+          "read %s bytes, never found pattern [%s]",
+          bytesRead, pattern));
+    }
+  }
+
+  /**
+   * Helper class used to read through an XML value's Base64-encoded element value,
+   * reporting "finished" when the "<" character is encountered.
+   */
+  static class Base64ValueStream extends FilterInputStream {
+
+    public Base64ValueStream(InputStream is) {
+      super(is);
+    }
+
+    private boolean foundEnd = false;
+
+    @Override
+    public int read() throws IOException {
+      if (foundEnd) {
+        return -1;
+      }
+      int result = super.read();
+      if (result == (byte)'<') {
+        foundEnd = true;
+        result = -1;
+      }
+      return result;
+    }
   }
 
   /**

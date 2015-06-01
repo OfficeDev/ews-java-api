@@ -15,6 +15,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
 
@@ -618,9 +619,20 @@ abstract class ServiceRequestBase {
    * @return The response returned by the server.
    */
   protected HttpWebRequest validateAndEmitRequest() throws ServiceLocalException, Exception {
+    return validateAndEmitRequest(null);
+  }
+
+  /**
+   * Validates request parameters, and emits the request to the server.
+   *
+   * @param responseOutputStream If not null, the response Entity will be streamed into this object.
+   * @return The response returned by the server.
+   */
+  protected HttpWebRequest validateAndEmitRequest(OutputStream responseOutputStream) throws Exception {
     this.validate();
 
     HttpWebRequest request = this.buildEwsHttpWebRequest();
+    request.setResponseOutputStream(responseOutputStream);
 
     try {
       try {
