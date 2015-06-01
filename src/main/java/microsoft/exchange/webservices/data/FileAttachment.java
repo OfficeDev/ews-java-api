@@ -260,7 +260,7 @@ public final class FileAttachment extends Attachment {
       readUntilPatternMatch(is, pattern);
 
       // now that we've found the beginning of the Base64-encoded element value, wrap it with
-      // a Base64ValueStream so it stops reading the the delimiting "<" character is found.
+      // a Base64ValueStream so it stops reading when the delimiting "<" character is found.
       Base64ValueStream base64ValueStream = new Base64ValueStream(is);
 
       // Use a Base64OutputStream to write to outputStream so the base64 data is decoded
@@ -298,8 +298,7 @@ public final class FileAttachment extends Attachment {
     long bytesRead = 0;
     int b = -1;
 
-    while ((patternIndex < beginPatternLength) &&
-        (-1 != (b=is.read()))) {
+    while ((patternIndex < beginPatternLength) && (-1 != (b=is.read()))) {
       bytesRead++;
       if (b == patternBytes[patternIndex]) {
         patternIndex++;
