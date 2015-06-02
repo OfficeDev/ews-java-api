@@ -256,4 +256,9 @@ abstract class SubscribeRequest<TSubscription extends SubscriptionBase> extends
     this.watermark = watermark;
   }
 
+  @Override
+	protected HttpWebRequest buildEwsHttpWebRequest() throws Exception
+	{
+		return super.buildEwsHttpPoolingWebRequest();
+	}
 }

@@ -661,8 +661,27 @@ public abstract class ServiceRequestBase<T> {
    * @throws Exception on error
    */
   protected HttpWebRequest buildEwsHttpWebRequest() throws Exception {
-    try {
       HttpWebRequest request = service.prepareHttpWebRequest();
+    return buildEwsHttpWebRequest(request);
+  }
+
+  /**
+   * Builds a HttpWebRequest object from a pooling connection manager for current service request
+   * with exception handling.
+   * <p>
+   * Used for subscriptions.
+   * </p>
+   * 
+   * @return A HttpWebRequest instance
+   * @throws Exception on error
+   */
+  protected HttpWebRequest buildEwsHttpPoolingWebRequest() throws Exception {
+    HttpWebRequest request = service.prepareHttpPoolingWebRequest();
+    return buildEwsHttpWebRequest(request);
+  }
+
+  private HttpWebRequest buildEwsHttpWebRequest(HttpWebRequest request) throws Exception {
+    try {
 
       service.traceHttpRequestHeaders(TraceFlags.EwsRequestHttpHeaders, request);
 
@@ -670,7 +689,8 @@ public abstract class ServiceRequestBase<T> {
 
       EwsServiceXmlWriter writer = new EwsServiceXmlWriter(service, requestStream);
 
-      boolean needSignature = service.getCredentials() != null && service.getCredentials().isNeedSignature();
+      boolean needSignature =
+          service.getCredentials() != null && service.getCredentials().isNeedSignature();
       writer.setRequireWSSecurityUtilityNamespace(needSignature);
 
       writeToXml(writer);

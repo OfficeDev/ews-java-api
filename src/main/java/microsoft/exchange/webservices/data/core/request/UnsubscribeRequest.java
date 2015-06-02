@@ -164,5 +164,9 @@ public class UnsubscribeRequest extends MultiResponseServiceRequest<ServiceRespo
   public void setSubscriptionId(String subscriptionId) {
     this.subscriptionId = subscriptionId;
   }
-
+  @Override
+ 	protected HttpWebRequest buildEwsHttpWebRequest() throws Exception
+ 	{
+		return super.buildEwsHttpPoolingWebRequest();
+ 	}
 }

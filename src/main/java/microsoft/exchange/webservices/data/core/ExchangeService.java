@@ -23,11 +23,52 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
+
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.IAutodiscoverRedirectionUrl;
+import microsoft.exchange.webservices.data.autodiscover.enumeration.UserSettingName;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
 import microsoft.exchange.webservices.data.autodiscover.request.ApplyConversationActionRequest;
 import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettingsResponse;
+import microsoft.exchange.webservices.data.core.enumeration.availability.AvailabilityData;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ConversationActionType;
+import microsoft.exchange.webservices.data.core.enumeration.misc.DateTimePrecision;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.misc.IdFormat;
+import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
+import microsoft.exchange.webservices.data.core.enumeration.misc.UserConfigurationProperties;
+import microsoft.exchange.webservices.data.core.enumeration.notification.EventType;
+import microsoft.exchange.webservices.data.core.enumeration.property.BodyType;
+import microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName;
+import microsoft.exchange.webservices.data.core.enumeration.search.ResolveNameSearchLocation;
+import microsoft.exchange.webservices.data.core.enumeration.service.ConflictResolutionMode;
+import microsoft.exchange.webservices.data.core.enumeration.service.DeleteMode;
+import microsoft.exchange.webservices.data.core.enumeration.service.MeetingRequestsDeliveryScope;
+import microsoft.exchange.webservices.data.core.enumeration.service.MessageDisposition;
+import microsoft.exchange.webservices.data.core.enumeration.service.SendCancellationsMode;
+import microsoft.exchange.webservices.data.core.enumeration.service.SendInvitationsMode;
+import microsoft.exchange.webservices.data.core.enumeration.service.SendInvitationsOrCancellationsMode;
+import microsoft.exchange.webservices.data.core.enumeration.service.SyncFolderItemsScope;
+import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AffectedTaskOccurrence;
+import microsoft.exchange.webservices.data.core.enumeration.service.error.ServiceErrorHandling;
+import microsoft.exchange.webservices.data.core.exception.misc.ArgumentOutOfRangeException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.AccountIsLockedException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRemoteException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceResponseException;
 import microsoft.exchange.webservices.data.core.request.AddDelegateRequest;
 import microsoft.exchange.webservices.data.core.request.ConvertIdRequest;
 import microsoft.exchange.webservices.data.core.request.CopyFolderRequest;
@@ -101,34 +142,6 @@ import microsoft.exchange.webservices.data.core.service.folder.Folder;
 import microsoft.exchange.webservices.data.core.service.item.Appointment;
 import microsoft.exchange.webservices.data.core.service.item.Conversation;
 import microsoft.exchange.webservices.data.core.service.item.Item;
-import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AffectedTaskOccurrence;
-import microsoft.exchange.webservices.data.core.enumeration.availability.AvailabilityData;
-import microsoft.exchange.webservices.data.core.enumeration.property.BodyType;
-import microsoft.exchange.webservices.data.core.enumeration.service.ConflictResolutionMode;
-import microsoft.exchange.webservices.data.core.enumeration.misc.ConversationActionType;
-import microsoft.exchange.webservices.data.core.enumeration.misc.DateTimePrecision;
-import microsoft.exchange.webservices.data.core.enumeration.service.DeleteMode;
-import microsoft.exchange.webservices.data.core.enumeration.notification.EventType;
-import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
-import microsoft.exchange.webservices.data.core.enumeration.misc.IdFormat;
-import microsoft.exchange.webservices.data.core.enumeration.service.MeetingRequestsDeliveryScope;
-import microsoft.exchange.webservices.data.core.enumeration.service.MessageDisposition;
-import microsoft.exchange.webservices.data.core.enumeration.search.ResolveNameSearchLocation;
-import microsoft.exchange.webservices.data.core.enumeration.service.SendCancellationsMode;
-import microsoft.exchange.webservices.data.core.enumeration.service.SendInvitationsMode;
-import microsoft.exchange.webservices.data.core.enumeration.service.SendInvitationsOrCancellationsMode;
-import microsoft.exchange.webservices.data.core.enumeration.service.error.ServiceErrorHandling;
-import microsoft.exchange.webservices.data.core.enumeration.service.SyncFolderItemsScope;
-import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
-import microsoft.exchange.webservices.data.core.enumeration.misc.UserConfigurationProperties;
-import microsoft.exchange.webservices.data.autodiscover.enumeration.UserSettingName;
-import microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName;
-import microsoft.exchange.webservices.data.core.exception.service.remote.AccountIsLockedException;
-import microsoft.exchange.webservices.data.core.exception.misc.ArgumentOutOfRangeException;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
-import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRemoteException;
-import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceResponseException;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
 import microsoft.exchange.webservices.data.messaging.UnifiedMessaging;
 import microsoft.exchange.webservices.data.misc.AsyncCallback;
 import microsoft.exchange.webservices.data.misc.AsyncRequestResult;
@@ -178,23 +191,11 @@ import microsoft.exchange.webservices.data.search.filter.SearchFilter;
 import microsoft.exchange.webservices.data.sync.ChangeCollection;
 import microsoft.exchange.webservices.data.sync.FolderChange;
 import microsoft.exchange.webservices.data.sync.ItemChange;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
 
 /**
  * Represents a binding to the Exchange Web Services.
@@ -3743,6 +3744,24 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
     return this.prepareHttpWebRequestForUrl(url, this
         .getAcceptGzipEncoding(), true);
   }
+
+  /**
+   * Prepares a http web request from a pooling connection manager, used for subscriptions.
+   * 
+   * @return A http web request
+   * @throws ServiceLocalException The service local exception
+   * @throws java.net.URISyntaxException the uRI syntax exception
+   */
+  public HttpWebRequest prepareHttpPoolingWebRequest()
+	      throws ServiceLocalException, URISyntaxException {
+	    try {
+	      this.url = this.adjustServiceUriFromCredentials(this.getUrl());
+	    } catch (Exception e) {
+	      LOG.error(e);
+	    }
+	    return this.prepareHttpPoolingWebRequestForUrl(url, this
+	        .getAcceptGzipEncoding(), true);
+	  }
 
   /**
    * Processes an HTTP error response.
