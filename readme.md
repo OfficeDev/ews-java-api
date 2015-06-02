@@ -3,7 +3,11 @@ forked from OfficeDev/ews-java-api
 The official Exchange Java SDK from MS is not yet on maven central as it is not production ready. See OfficeDev/ews-java-api/issues/1.
 
 This fork's main intention is to get the repository into EBF's dependency management.
-=======
+
+## Building EWS JAVA API
+To build your own jar you will need to download and [install maven](http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html).
+After the installation you can navigate to your local repository via cmd and run `mvn clean install`. This will validate the available unit-tests und build all necessary jars which afterwards may be found @ `PROJECT_ROOT\target`.
+
 ## Using the EWS JAVA API for https
 
 To make an environment secure, you must be sure that any communication is with "trusted" sites. SSL uses certificates for authentication — these are digitally signed documents that bind the public key to the identity of the private key owner.
@@ -46,7 +50,7 @@ Note that you should either set the URL manually or call AutodiscoverUrl, but yo
 
 If the domain that the user inputs as their email address contains a CNAME that redirects the user this Exception is thrown:
 
-> microsoft.exchange.webservices.data.AutodiscoverLocalException: Autodiscover blocked a
+> microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException: Autodiscover blocked a
 potentially insecure redirection to **URL**. To allow Autodiscover to follow the redirection, use the AutodiscoverUrl(string, AutodiscoverRedirectionUrlValidationCallback) overload.<
 
 When this happens, instead of failing, the user can be prompted to accept the redirection or
