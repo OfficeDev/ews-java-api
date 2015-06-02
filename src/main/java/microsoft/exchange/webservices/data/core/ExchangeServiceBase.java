@@ -23,35 +23,6 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.EWSConstants;
-import microsoft.exchange.webservices.data.core.request.HttpClientWebRequest;
-import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
-import microsoft.exchange.webservices.data.credential.ExchangeCredentials;
-import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
-import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
-import microsoft.exchange.webservices.data.core.exception.service.remote.AccountIsLockedException;
-import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
-import microsoft.exchange.webservices.data.misc.EwsTraceListener;
-import microsoft.exchange.webservices.data.misc.ITraceListener;
-
-import org.apache.http.client.AuthenticationStrategy;
-import org.apache.http.client.CookieStore;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.config.Registry;
-import org.apache.http.config.RegistryBuilder;
-import org.apache.http.conn.HttpClientConnectionManager;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
-
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
@@ -70,10 +41,44 @@ import java.util.Map;
 import java.util.Random;
 import java.util.TimeZone;
 
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
+
+import microsoft.exchange.webservices.data.EWSConstants;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
+import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.AccountIsLockedException;
+import microsoft.exchange.webservices.data.core.request.HttpClientWebRequest;
+import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
+import microsoft.exchange.webservices.data.credential.ExchangeCredentials;
+import microsoft.exchange.webservices.data.misc.EwsTraceListener;
+import microsoft.exchange.webservices.data.misc.ITraceListener;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.http.client.AuthenticationStrategy;
+import org.apache.http.client.CookieStore;
+import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.config.Registry;
+import org.apache.http.config.RegistryBuilder;
+import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.conn.socket.ConnectionSocketFactory;
+import org.apache.http.conn.socket.PlainConnectionSocketFactory;
+import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+
 /**
  * Represents an abstract binding to an Exchange Service.
  */
 public abstract class ExchangeServiceBase implements Closeable {
+  
+  private static final Log LOG = LogFactory.getLog(ExchangeService.class);
+
   /**
    * The credential.
    */
@@ -146,7 +151,7 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   protected CloseableHttpClient	httpPoolingClient;
   
-  private int	maximumPoolingConnections	= 10;
+  private int maximumPoolingConnections = 10;
 
 
 //  protected HttpClientWebRequest request = null;
@@ -215,12 +220,17 @@ public abstract class ExchangeServiceBase implements Closeable {
   
   
   /**
-   * Sets the maximum number of connections for the pooling connection manager which is used for subscriptions.
+   * Sets the maximum number of connections for the pooling connection manager which is used for
+   * subscriptions.
    * <p>
    * Default is 10.
-   * @param maximumPoolConnections
+   * </p>
+   * 
+   * @param maximumPoolingConnections Maximum number of pooling connections
    */
   public void setMaximumPoolingConnections(int maximumPoolingConnections) {
+    if (maximumPoolingConnections < 1)
+      throw new IllegalArgumentException("maximumPoolingConnections must be 1 or greater");
     this.maximumPoolingConnections = maximumPoolingConnections;
   }
 
@@ -257,10 +267,16 @@ public abstract class ExchangeServiceBase implements Closeable {
   public void close() {
     try {
       httpClient.close();
-      if (httpPoolingClient != null)
-      	httpPoolingClient.close();
     } catch (IOException e) {
-      // Ignore exception while closing the HttpClient.
+      LOG.debug(e);
+    }
+
+    if (httpPoolingClient != null) {
+      try {
+        httpPoolingClient.close();
+      } catch (IOException e) {
+        LOG.debug(e);
+      }
     }
   }
 
@@ -313,6 +329,20 @@ public abstract class ExchangeServiceBase implements Closeable {
     return request;
   }
 
+  /**
+   * Creates an HttpWebRequest instance from a pooling connection manager and initialises it with
+   * the appropriate parameters, based on the configuration of this service object.
+   * <p>
+   * This is used for subscriptions.
+   * </p>
+   *
+   * @param url The URL that the HttpWebRequest should target.
+   * @param acceptGzipEncoding If true, ask server for GZip compressed content.
+   * @param allowAutoRedirect If true, redirection response will be automatically followed.
+   * @return An initialised instance of HttpWebRequest.
+   * @throws ServiceLocalException the service local exception
+   * @throws java.net.URISyntaxException the uRI syntax exception
+   */
   protected HttpWebRequest prepareHttpPoolingWebRequestForUrl(URI url, boolean acceptGzipEncoding,
 	      boolean allowAutoRedirect) throws ServiceLocalException, URISyntaxException {
 	    // Verify that the protocol is something that we can handle
