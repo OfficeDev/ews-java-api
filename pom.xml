@@ -31,7 +31,7 @@
     <groupId>com.microsoft.ews-java-api</groupId>
     <artifactId>ews-java-api</artifactId>
     
-    <version>2.0-SNAPSHOT</version>
+    <version>2.0.1-SNAPSHOT</version>
 
     <!-- Required by the site command for certain relative URL configuration. -->
     <url>http://www.microsoft.com/</url>
