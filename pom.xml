@@ -175,12 +175,12 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh-snapshot</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <id>ebf-snapshots</id>
+            <url>http://cindy.ebf.de:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+             <id>ebf-releases</id>
+            <url>http://cindy.ebf.de:8081/nexus/content/repositories/releases/</url>
         </repository>
     </distributionManagement>
 
