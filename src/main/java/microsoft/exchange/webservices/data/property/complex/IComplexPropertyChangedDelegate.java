@@ -26,12 +26,13 @@ package microsoft.exchange.webservices.data.property.complex;
 /**
  * The Interface ComplexPropertyChangedDelegateInterface.
  */
-public interface IComplexPropertyChangedDelegate {
+public interface IComplexPropertyChangedDelegate<TComplexProperty extends ComplexProperty> {
 
   /**
    * Complex property changed.
    *
    * @param complexProperty the complex property
    */
-  void complexPropertyChanged(ComplexProperty complexProperty);
+  void complexPropertyChanged(TComplexProperty complexProperty);
+
 }

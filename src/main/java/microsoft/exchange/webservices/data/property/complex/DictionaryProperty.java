@@ -50,7 +50,7 @@ import java.util.Map.Entry;
 @EditorBrowsable(state = EditorBrowsableState.Never)
 public abstract class DictionaryProperty
     <TKey, TEntry extends DictionaryEntryProperty<TKey>>
-    extends ComplexProperty implements ICustomXmlUpdateSerializer, IComplexPropertyChangedDelegate {
+    extends ComplexProperty implements ICustomXmlUpdateSerializer, IComplexPropertyChangedDelegate<TEntry> {
 
   /**
    * The entries.
@@ -77,8 +77,8 @@ public abstract class DictionaryProperty
    *
    * @param complexProperty the complex property
    */
-  private void entryChanged(ComplexProperty complexProperty) {
-    TKey key = ((TEntry) complexProperty).getKey();
+  private void entryChanged(final TEntry complexProperty) {
+    TKey key = complexProperty.getKey();
 
     if (!this.addedEntries.contains(key) && !this.modifiedEntries.contains(key)) {
       this.modifiedEntries.add(key);
@@ -188,8 +188,8 @@ public abstract class DictionaryProperty
    * @param complexProperty accepts ComplexProperty
    */
   @Override
-  public void complexPropertyChanged(ComplexProperty complexProperty) {
-    this.entryChanged(complexProperty);
+  public void complexPropertyChanged(final TEntry complexProperty) {
+    entryChanged(complexProperty);
   }
 
   /**
