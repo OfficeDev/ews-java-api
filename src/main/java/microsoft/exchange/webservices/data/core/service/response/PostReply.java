@@ -67,7 +67,6 @@ public final class PostReply extends ServiceObject {
    */
   public PostReply(Item referenceItem) throws Exception {
     super(referenceItem.getService());
-    EwsUtilities.ewsAssert(referenceItem != null, "PostReply.ctor", "referenceItem is null");
     referenceItem.throwIfThisIsNew();
 
     this.referenceItem = referenceItem;
