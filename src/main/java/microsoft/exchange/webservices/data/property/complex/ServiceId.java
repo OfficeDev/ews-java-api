@@ -28,6 +28,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Represents the Id of an Exchange object.
@@ -172,14 +173,8 @@ public abstract class ServiceId extends ComplexProperty {
    * @param other The ServiceId to compare with the current ServiceId.
    * @return true if equal otherwise false.
    */
-  public boolean sameIdAndChangeKey(ServiceId other) {
-    if (this.equals(other)) {
-      return ((this.getChangeKey() == null) &&
-          (other.getChangeKey() == null)) ||
-          this.getChangeKey().equals(other.getChangeKey());
-    } else {
-      return false;
-    }
+  public boolean sameIdAndChangeKey(final ServiceId other) {
+    return this.equals(other) && StringUtils.equals(this.getChangeKey(), other.getChangeKey());
   }
 
   /**

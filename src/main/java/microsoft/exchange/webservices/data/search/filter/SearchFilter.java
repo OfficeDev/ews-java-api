@@ -1085,17 +1085,6 @@ public abstract class SearchFilter extends ComplexProperty {
       if (this.otherPropertyDefinition == null && this.value == null) {
         throw new ServiceValidationException(
             "Either the OtherPropertyDefinition or the Value property must be set.");
-      } else if (value != null) {
-        // All objects implement Object.
-        // Value types that don't implement Object must implement
-        // ISearchStringProvider
-        // in order to be used in a search filter.
-        if (!((value instanceof Object) || (value instanceof ISearchStringProvider))) {
-          throw new ServiceValidationException(
-              String
-                  .format("Values of type '%s' cannot be as comparison values in search filter.",
-                      value.getClass().getName()));
-        }
       }
     }
 

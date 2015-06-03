@@ -84,17 +84,14 @@ public class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition 
     Object value = propertyBag.getObjectFromPropertyDefinition(this);
 
     if (value != null) {
-      if (writer.getService().getRequestedServerVersion() == ExchangeVersion.Exchange2007_SP1) {
-        ExchangeService service = (ExchangeService) writer.getService();
-        if (service != null && !service.getExchange2007CompatibilityMode()) {
-          MeetingTimeZone meetingTimeZone = new MeetingTimeZone(
-              (TimeZoneDefinition) value);
-          meetingTimeZone.writeToXml(writer,
-              XmlElementNames.MeetingTimeZone);
+      final ExchangeService service = (ExchangeService) writer.getService();
+      if (service.getRequestedServerVersion() == ExchangeVersion.Exchange2007_SP1) {
+        if (!service.getExchange2007CompatibilityMode()) {
+          MeetingTimeZone meetingTimeZone = new MeetingTimeZone((TimeZoneDefinition) value);
+          meetingTimeZone.writeToXml(writer, XmlElementNames.MeetingTimeZone);
         }
       } else {
-        super.writePropertyValueToXml(writer, propertyBag,
-            isUpdateOperation);
+        super.writePropertyValueToXml(writer, propertyBag, isUpdateOperation);
       }
     }
   }
