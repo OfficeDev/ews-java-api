@@ -99,26 +99,15 @@ public abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
     boolean justCreated = getPropertyInstance(propertyBag, complexProperty);
     if (!justCreated && this.hasFlag(PropertyDefinitionFlags.UpdateCollectionItems,
         propertyBag.getOwner().getService().getRequestedServerVersion())) {
-      ComplexProperty c = (ComplexProperty) complexProperty.getParam();
-      if (complexProperty.getParam() instanceof ComplexProperty) {
-        c.updateFromXml(reader, reader.getLocalName());
+      Object c = complexProperty.getParam();
+      if (c instanceof ComplexProperty) {
+        ((ComplexProperty) c).updateFromXml(reader, reader.getLocalName());
       }
-
-
-
     } else {
       ComplexProperty c = (ComplexProperty) complexProperty.getParam();
       c.loadFromXml(reader, reader.getLocalName());
     }
-                /*if (!propertyBag.tryGetValue(this, complexProperty) ||
-                                 !this.hasFlag(PropertyDefinitionFlags.ReuseInstance)) {
-			complexProperty.setParam(this.createPropertyInstance(propertyBag
-					.getOwner()));
-		}
-		if (complexProperty.getParam() instanceof ComplexProperty) {
-			ComplexProperty c = (ComplexProperty)complexProperty.getParam();
-			c.loadFromXml(reader, reader.getLocalName());
-		}*/
+
     propertyBag.setObjectFromPropertyDefinition(this, complexProperty
         .getParam());
   }

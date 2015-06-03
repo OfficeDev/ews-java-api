@@ -37,6 +37,7 @@ import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -109,20 +110,21 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
    * positive number if x is greater than y.
    */
   @Override
-  public int compare(TimeZoneTransition x, TimeZoneTransition y) {
+  public int compare(final TimeZoneTransition x, final TimeZoneTransition y) {
     if (x == y) {
       return 0;
-    } else if (x instanceof TimeZoneTransition) {
-      return -1;
-    } else if (y instanceof TimeZoneTransition) {
-      return 1;
-    } else {
-      AbsoluteDateTransition firstTransition = (AbsoluteDateTransition) x;
-      AbsoluteDateTransition secondTransition = (AbsoluteDateTransition) y;
+    } else if (x != null && y != null) {
+      final AbsoluteDateTransition firstTransition = (AbsoluteDateTransition) x;
+      final AbsoluteDateTransition secondTransition = (AbsoluteDateTransition) y;
 
-      return firstTransition.getDateTime().compareTo(
-          secondTransition.getDateTime());
+      final Date firstDateTime = firstTransition.getDateTime();
+      final Date secondDateTime = secondTransition.getDateTime();
+
+      return firstDateTime.compareTo(secondDateTime);
+    } else if (y == null) {
+      return 1;
     }
+    return -1;
   }
 
   /**
