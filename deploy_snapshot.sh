@@ -21,28 +21,80 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-if [ "$TRAVIS_REPO_SLUG" != "OfficeDev/ews-java-api" ]; then 
-	echo "[DEPLOY] Skipping snapshot deployment for repo:'$TRAVIS_REPO_SLUG'."
+set -e # Any subsequent(*) commands which fail will cause the shell script to exit immediately
+
+if [ "$TRAVIS_REPO_SLUG" != "OfficeDev/ews-java-api" ]; then
+    echo "[DEPLOY] Skipping snapshot deployment for repo:'$TRAVIS_REPO_SLUG'."
 elif [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-	echo "[DEPLOY] Skipping snapshot deployment for a pull request."
+    echo "[DEPLOY] Skipping snapshot deployment for a pull request."
 elif [ "$TRAVIS_BRANCH" != "master" ]; then
-	echo "[DEPLOY] Skipping snapshot deployment for branch:'$TRAVIS_BRANCH'."
+    echo "[DEPLOY] Skipping snapshot deployment for branch:'$TRAVIS_BRANCH'."
 elif [ "$TRAVIS_SECURE_ENV_VARS" == "false" ]; then
-	echo "[DEPLOY] Skipping snapshot deployment due to TRAVIS_SECURE_ENV_VARS is set to '$TRAVIS_SECURE_ENV_VARS'."
+    echo "[DEPLOY] Skipping snapshot deployment due to TRAVIS_SECURE_ENV_VARS is set to '$TRAVIS_SECURE_ENV_VARS'."
 elif [ "$TRAVIS_JDK_VERSION" != "oraclejdk7" ]; then
-	echo "[DEPLOY] Skipping snapshot deployment for jdk:'$TRAVIS_JDK_VERSION'."
-else 
-	echo "[DEPLOY] Deploying snapshot for commit:'$TRAVIS_COMMIT' @ build-id:'$TRAVIS_BUILD_ID'"	
-	# create settings.xml
-	echo "<settings><servers><server><id>ossrh-snapshot</id><username>${OSSRHUSER}</username><password>${OSSRHPASS}</password></server></servers></settings>" > $HOME/.m2/settings.xml
-	# deploy
-	if [ -z "${GPG_PASSPHRASE+xxx}" ]; then
-	    echo "[INFO] Deploying unsigned artifacts"
-            mvn clean deploy --settings="$HOME/.m2/settings.xml" -Dmaven.test.skip=true
-        else
-            echo "[INFO] Deploying signed artifacts"
-            mvn clean deploy --settings="$HOME/.m2/settings.xml" -Dmaven.test.skip=true -Dgpg.passphrase=$GPG_PASSPHRASE
-        fi
-	# clean up
-	rm -f $HOME/.m2/settings.xml
+    echo "[DEPLOY] Skipping snapshot deployment for jdk:'$TRAVIS_JDK_VERSION'."
+else
+    echo "[DEPLOY] Deploying snapshot for commit:'$TRAVIS_COMMIT' @ build-id:'$TRAVIS_BUILD_ID'"
+    # create settings.xml
+    echo "<settings><servers><server><id>ossrh-snapshot</id><username>${OSSRHUSER}</username><password>${OSSRHPASS}</password></server></servers></settings>" > $HOME/.m2/settings.xml
+    # deploy
+    if [ -z "${GPG_PASSPHRASE+xxx}" ]; then
+       echo "[INFO] Deploying unsigned artifacts"
+       mvn clean deploy --settings="$HOME/.m2/settings.xml" -Dmaven.test.skip=true
+    else
+       echo "[INFO] Deploying signed artifacts"
+       mvn clean deploy --settings="$HOME/.m2/settings.xml" -Dmaven.test.skip=true -Dgpg.passphrase=$GPG_PASSPHRASE
+    fi
+    # clean up
+    rm -f $HOME/.m2/settings.xml
+    echo "[DEPLOY] Done deploying snapshot"
+
+    if [ -z "${GITHUB_USER+xxx}" ]; then
+       echo "[GH-PAGES] Deployment of gh-pages skipped. No GITHUB_TOKEN set."
+    else
+       # download hub
+       mkdir -m777 -v -p "$HOME/download" ; cd "$HOME/download" && { curl -L https://github.com/github/hub/releases/download/v2.2.1/hub-linux-amd64-2.2.1.tar.gz | tar xz ; cd -; }
+
+       # init travis-user
+       [[ -d "$HOME/.config" ]] || mkdir -m777 -v -p $HOME/.config
+       echo -e "github.com:\n- user: ${GITHUB_USERNAME}\n  oauth_token: ${GITHUB_TOKEN}\n  protocol: https\n" > $HOME/.config/hub
+
+       git config --global user.email "travis@travis-ci.org"
+       git config --global user.name "travis-ci"
+
+       mvn clean site
+
+       echo "[GH-PAGES] Deploying gh-pages for $TRAVIS_BRANCH"
+
+       # clone actual gh-pages repo
+       cd "$HOME/OfficeDev"
+       echo "[GH-PAGES] Cloning travis-user fork"
+       git clone -q --progress -b gh-pages --single-branch https://${GITHUB_TOKEN}@github.com/OfficeDev/ews-java-api.git gh-pages && cd gh-pages
+       git remote add upstream https://github.com/OfficeDev/ews-java-api.git
+       echo "[GH-PAGES] Updating origin if needed"
+       git fetch -q --progress upstream gh-pages
+       git merge -q --progress upstream/gh-pages gh-pages
+       git push -fq --progress origin gh-pages
+
+       echo "[GH-PAGES] Applying local changes"
+       git rm -rf --ignore-unmatch "./docs/snapshots/$TRAVIS_BRANCH"
+       mkdir -m777 -v -p "./docs/snapshots/$TRAVIS_BRANCH"
+
+       # copy all the builded stuff into the snapshot dir
+       cp -Rf "$HOME/OfficeDev/ews-java-api/target/site/*" "./docs/snapshots/$TRAVIS_BRANCH"
+
+       git add .
+       echo "[GH-PAGES] Committing changes to local repository"
+       git commit --author "travis-ci <travis@travis-ci.org>" -m "[TRAVIS]Deploy mvn site to [gh-pages/$TRAVIS_BRANCH] @ $TRAVIS_BUILD_NUMBER"
+       echo "[GH-PAGES] Pushing changes to origin gh-pages"
+       git push -fq --progress origin gh-pages
+
+       echo "[GH-PAGES] Creating a PR"
+       eval "$HOME/download/hub-linux-amd64-2.2.1/hub pull-request -m "$(printf "[TRAVIS] UPDATE [gh-pages/$TRAVIS_BRANCH] @ $TRAVIS_BUILD_NUMBER\n\n$TRAVIS_BUILD_NUMBER\nAutomated Pull Request :shipit:")" -b 'OfficeDev/ews-java-api:gh-pages' -h ${GITHUB_USERNAME}/ews-java-api:gh-pages"
+
+       # clean up
+       rm -f $HOME/.config/hub
+
+       echo "[GH-PAGES] Finished site deployment. Pull request now needs to be merged by humans."
+    fi
 fi

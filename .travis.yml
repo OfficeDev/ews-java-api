@@ -34,6 +34,10 @@ env:
     - secure: "V37/WY3//w4fQUxmtKXw9dsU4iH5Z6HvTpBkZj+5DaX5h2Lj98FzALvkGSt7KvqVKQBbgETjs3HTMQkz6hwbLgX2okLKCQbmhZu3vQLqkWe6KPqnO1NOKSaU4vhCoGpScNWMiVxrzCHLHZf5tQu7d+1WVMk5GNlgGqeKVSnz5LY="
     - secure: "O9Mjx/mU5MLQsngcVbTf7AVMFo2Bh3ZWXwTyiLVXAfU7/VZX39vx30Mf2laNpewYqbiouix7fOkK76YS8459QRoLVBAQSwzjuGsZAwQvz7b7+r3kCS7rwGm7eCobJDbwItoxAxA00rI3gpyX/BnaX8aFutQw/0ZoPSPOH+LzR+4="
 
+branches:
+  except:
+    - gh-pages
+
 # cache local repository for speed of build
 cache:
   directories:
