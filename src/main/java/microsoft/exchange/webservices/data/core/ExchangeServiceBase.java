@@ -235,7 +235,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   /**
-   * Create registry with configured {@see ConnectionSocketFactory} instances.
+   * Create registry with configured {@link ConnectionSocketFactory} instances.
    * Override this method to change how to work with different schemas.
    *
    * @return registry object
