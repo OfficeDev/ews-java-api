@@ -207,7 +207,7 @@ public final class FolderId extends ServiceId {
    */
   @Override
   public boolean equals(Object obj) {
-    if (obj == this || (obj == null && this == null)) {
+    if (obj == this) {
       return true;
     } else if (obj instanceof FolderId) {
       FolderId other = (FolderId) obj;

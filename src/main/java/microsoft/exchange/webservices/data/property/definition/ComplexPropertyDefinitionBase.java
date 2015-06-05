@@ -25,11 +25,12 @@ package microsoft.exchange.webservices.data.property.definition;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
+import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertyBag;
-import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
-import microsoft.exchange.webservices.data.core.enumeration.property.PropertyDefinitionFlags;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
+import microsoft.exchange.webservices.data.core.enumeration.property.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.property.complex.ComplexProperty;
 
@@ -92,33 +93,21 @@ public abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
    * @param propertyBag The property bag.
    * @throws Exception the exception
    */
-  protected void internalLoadFromXml(EwsServiceXmlReader reader,
-      PropertyBag propertyBag) throws Exception {
-    OutParam<Object> complexProperty = new OutParam<Object>();
+  protected void internalLoadFromXml(
+    final EwsServiceXmlReader reader, final PropertyBag propertyBag
+  ) throws Exception {
+    final OutParam<ComplexProperty> complexProperty = new OutParam<ComplexProperty>();
+    final boolean justCreated = getPropertyInstance(propertyBag, complexProperty);
 
-    boolean justCreated = getPropertyInstance(propertyBag, complexProperty);
     if (!justCreated && this.hasFlag(PropertyDefinitionFlags.UpdateCollectionItems,
         propertyBag.getOwner().getService().getRequestedServerVersion())) {
-      ComplexProperty c = (ComplexProperty) complexProperty.getParam();
-      if (complexProperty.getParam() instanceof ComplexProperty) {
-        c.updateFromXml(reader, reader.getLocalName());
-      }
-
-
-
+      final ComplexProperty c = complexProperty.getParam();
+      c.updateFromXml(reader, reader.getLocalName());
     } else {
-      ComplexProperty c = (ComplexProperty) complexProperty.getParam();
+      final ComplexProperty c = complexProperty.getParam();
       c.loadFromXml(reader, reader.getLocalName());
     }
-                /*if (!propertyBag.tryGetValue(this, complexProperty) ||
-                                 !this.hasFlag(PropertyDefinitionFlags.ReuseInstance)) {
-			complexProperty.setParam(this.createPropertyInstance(propertyBag
-					.getOwner()));
-		}
-		if (complexProperty.getParam() instanceof ComplexProperty) {
-			ComplexProperty c = (ComplexProperty)complexProperty.getParam();
-			c.loadFromXml(reader, reader.getLocalName());
-		}*/
+
     propertyBag.setObjectFromPropertyDefinition(this, complexProperty
         .getParam());
   }
@@ -132,17 +121,18 @@ public abstract class ComplexPropertyDefinitionBase extends PropertyDefinition {
    * @param complexProperty The property instance.
    * @return True if the instance is newly created.
    */
-  private boolean getPropertyInstance(PropertyBag propertyBag, OutParam<Object> complexProperty) {
-    boolean retValue = false;
-    if (!propertyBag.tryGetValue(this, complexProperty) || !this
-        .hasFlag(PropertyDefinitionFlags.ReuseInstance,
-            propertyBag.getOwner().getService().getRequestedServerVersion())) {
-      complexProperty.setParam(this.createPropertyInstance(propertyBag
-          .getOwner()));
-      retValue = true;
-    }
-    return retValue;
+  private boolean getPropertyInstance(
+    final PropertyBag propertyBag, final OutParam<ComplexProperty> complexProperty
+  ) {
+    final ServiceObject owner = propertyBag.getOwner();
+    final ExchangeService service = owner.getService();
 
+    if (!propertyBag.tryGetValue(this, complexProperty)
+        || !hasFlag(PropertyDefinitionFlags.ReuseInstance, service.getRequestedServerVersion())) {
+      complexProperty.setParam(createPropertyInstance(owner));
+      return true;
+    }
+    return false;
   }
 
   /**

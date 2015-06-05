@@ -31,6 +31,7 @@ import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.MapiTypeConverter;
 import microsoft.exchange.webservices.data.property.definition.ExtendedPropertyDefinition;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -213,19 +214,13 @@ public final class ExtendedProperty extends ComplexProperty {
    * @return boolean
    */
   @Override
-  public boolean equals(Object obj) {
-
+  public boolean equals(final Object obj) {
     if (obj instanceof ExtendedProperty) {
-      ExtendedProperty other = (ExtendedProperty) obj;
-      if (other.getPropertyDefinition().equals(
-          this.getPropertyDefinition())) {
-        return this.getStringValue().equals(other.getStringValue());
-      } else {
-        return false;
-      }
-    } else {
-      return false;
+      final ExtendedProperty other = (ExtendedProperty) obj;
+      return other.getPropertyDefinition().equals(this.getPropertyDefinition())
+        && StringUtils.equals(this.getStringValue(), other.getStringValue());
     }
+    return false;
   }
 
   /**
