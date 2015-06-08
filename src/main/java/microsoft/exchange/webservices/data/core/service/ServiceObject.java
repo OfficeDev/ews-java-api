@@ -31,15 +31,13 @@ import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertyBag;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
-import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AffectedTaskOccurrence;
-import microsoft.exchange.webservices.data.core.enumeration.service.DeleteMode;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.service.DeleteMode;
 import microsoft.exchange.webservices.data.core.enumeration.service.SendCancellationsMode;
+import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AffectedTaskOccurrence;
 import microsoft.exchange.webservices.data.core.exception.misc.InvalidOperationException;
-import microsoft.exchange.webservices.data.core.exception.misc.NotSupportedException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceObjectPropertyException;
+import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.property.complex.ExtendedProperty;
 import microsoft.exchange.webservices.data.property.complex.ExtendedPropertyCollection;
@@ -395,27 +393,15 @@ public abstract class ServiceObject {
    */
   public Object getObjectFromPropertyDefinition(
       PropertyDefinitionBase propertyDefinition) throws Exception {
-    OutParam<Object> propertyValue = new OutParam<Object>();
     PropertyDefinition propDef = (PropertyDefinition) propertyDefinition;
 
     if (propDef != null) {
       return this.getPropertyBag().getObjectFromPropertyDefinition(propDef);
     } else {
-      ExtendedPropertyDefinition extendedPropDef = (ExtendedPropertyDefinition) propertyDefinition;
-      if (extendedPropDef != null) {
-        if (this.tryGetExtendedProperty(Object.class, extendedPropDef, propertyValue)) {
-          return propertyValue;
-        } else {
-          throw new ServiceObjectPropertyException(
-              "You must load or assign this property before you can read its value.",
-              propertyDefinition);
-        }
-      } else {
-        // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
-        throw new NotSupportedException(String.format(
-            "This operation isn't supported for property definition type %s.",
-            propertyDefinition.getType().getName()));
-      }
+      // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
+      throw new UnsupportedOperationException(String.format(
+          "This operation isn't supported for property definition type %s.",
+          propertyDefinition.getType().getName()));
     }
   }
 
@@ -470,15 +456,10 @@ public abstract class ServiceObject {
     if (propDef != null) {
       return this.getPropertyBag().tryGetPropertyType(cls, propDef, propertyValue);
     } else {
-      ExtendedPropertyDefinition extPropDef = (ExtendedPropertyDefinition) propertyDefinition;
-      if (extPropDef != null) {
-        return this.tryGetExtendedProperty(cls, extPropDef, propertyValue);
-      } else {
-        // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
-        throw new NotSupportedException(String.format(
-            "This operation isn't supported for property definition type %s.",
-            propertyDefinition.getType().getName()));
-      }
+      // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
+      throw new UnsupportedOperationException(String.format(
+          "This operation isn't supported for property definition type %s.",
+          propertyDefinition.getType().getName()));
     }
   }
 
