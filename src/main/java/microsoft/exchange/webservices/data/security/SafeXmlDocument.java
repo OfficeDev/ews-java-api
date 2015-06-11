@@ -23,7 +23,6 @@
 
 package microsoft.exchange.webservices.data.security;
 
-import microsoft.exchange.webservices.data.core.exception.misc.NotSupportedException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.DOMImplementation;
@@ -56,37 +55,13 @@ public class SafeXmlDocument extends DocumentBuilder {
   /**
    * Initializes a new instance of the SafeXmlDocument class.
    */
-  public XMLInputFactory inputFactory;
+  private final XMLInputFactory inputFactory;
 
   public SafeXmlDocument() {
     super();
     inputFactory = XMLInputFactory.newInstance();
   }
 
-  /**
-   * Initializes a new instance of the SafeXmlDocument class with the
-   * specified XSImplementation.
-   *
-   * @param imp The XmlImplementation to use.
-   * @throws NotSupportedException
-   */
-  // <remarks>Not supported do to no use within exchange dev code.</remarks>
-  public SafeXmlDocument(DocumentBuilder imp) throws NotSupportedException {
-    throw new NotSupportedException("Not supported");
-  }
-
-  /**
-   * Initializes a new instance of the SafeXmlDocument class with the
-   * specified XmlNameTable.
-   *
-   * @param nt The XmlNameTable to use.
-   */
-  public SafeXmlDocument(XmlNameTable nt) {
-    super();
-    if (inputFactory == null) {
-      inputFactory = XMLInputFactory.newInstance();
-    }
-  }
 
   /**
    * Loads the XML document from the specified stream.
