@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data.util;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import microsoft.exchange.webservices.base.util.TestUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -167,7 +168,6 @@ public class DateTimeUtilsTest {
   }
 
 
-
   // Tests for DateTimeUtils.convertDateStringToDate()
 
   @Test
@@ -245,4 +245,15 @@ public class DateTimeUtilsTest {
     assertEquals(0, calendar.get(Calendar.MINUTE));
     assertEquals(0, calendar.get(Calendar.SECOND));
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testConvertDateStringToDateBadFormat() {
+    DateTimeUtils.convertDateStringToDate("Monday, May, 1988");
+  }
+
+  @Test(expected = UnsupportedOperationException.class)
+  public void testDateTimeUtilsConstructor() throws Throwable {
+    TestUtils.checkUtilClassConstructor(DateTimeUtils.class);
+  }
+
 }
