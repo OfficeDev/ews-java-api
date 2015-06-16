@@ -13,6 +13,8 @@ package microsoft.exchange.webservices.data;
 import org.apache.commons.codec.binary.Base64OutputStream;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Represents a file attachment.
@@ -254,10 +256,10 @@ public final class FileAttachment extends Attachment {
   public static void writeContentFromResponseFile(final InputStream responseInputStream, OutputStream outputStream) throws IOException {
 
     InputStream is = new BufferedInputStream(responseInputStream);
-    final String pattern = ":Content>";
+    final List<String> patterns = Arrays.asList(":Content>", ":Content/>");
     try {
       // read ahead until we match the "pattern" variable in the responseInputStream
-      readUntilPatternMatch(is, pattern);
+      readUntilPatternMatch(is, patterns);
 
       // now that we've found the beginning of the Base64-encoded element value, wrap it with
       // a Base64ValueStream so it stops reading when the delimiting "<" character is found.
@@ -283,33 +285,54 @@ public final class FileAttachment extends Attachment {
   }
 
   /**
-   * Helper function used to keep reading through the specified {@link InputStream} until the specified
-   * pattern's (UTF8-encoded) bytes are found.
+   * Helper function used to keep reading through the specified {@link InputStream} until the (UTF8-encoded) bytes of
+   * at least one of the specified patterns are found.
    *
    * @param is An {@link InputStream}.
-   * @param pattern The pattern to find.
-   * @throws IOException If an exception occurs.
+   * @param patterns The patterns to find.
+   * @throws IOException If an exception occurs or none of the patterns are found..
    */
-  static void readUntilPatternMatch(InputStream is, String pattern) throws IOException {
-    final byte[] patternBytes = pattern.getBytes("UTF-8");
-    final int beginPatternLength = patternBytes.length;
+  static void readUntilPatternMatch(InputStream is, List<String> patterns) throws IOException {
+    final int numPatterns = patterns.size();
+    final byte[][] patternBytes = new byte[numPatterns][];
+    final int[] patternLengths = new int[numPatterns];
+    for (int i = 0; i < patterns.size(); ++i) {
+      // Get the bytes and length of each pattern.
+      patternBytes[i] = patterns.get(i).getBytes("UTF-8");
+      patternLengths[i] = patternBytes[i].length;
+    }
 
-    int patternIndex = 0;
+    // Track where we are in matching each pattern.
+    int[] patternIndices = new int[numPatterns];
+    Arrays.fill(patternIndices, 0);
     long bytesRead = 0;
+    boolean matched = false;
     int b = -1;
 
-    while ((patternIndex < beginPatternLength) && (-1 != (b=is.read()))) {
+    while (!matched && (-1 != (b = is.read()))) {
       bytesRead++;
-      if (b == patternBytes[patternIndex]) {
-        patternIndex++;
-      } else {
-        patternIndex = 0;
+      // Loop through each of the patterns.
+      for (int i = 0; i < numPatterns; ++i) {
+        // Check if the current InputStream byte matches the next byte in the current pattern.
+        if (b == patternBytes[i][patternIndices[i]]) {
+          // Increment the index for the current pattern if matched.
+          ++patternIndices[i];
+        } else {
+          // Re-start the index for the current pattern if no match.
+          patternIndices[i] = 0;
+        }
+        // Break out of the for loop if we matched the current pattern.
+        if (patternIndices[i] == patternLengths[i]) {
+          matched = true;
+          break;
+        }
       }
     }
+
     if (b == -1) {
       throw new IOException(String.format(
-          "read %s bytes, never found pattern [%s]",
-          bytesRead, pattern));
+          "read %s bytes, never found patterns [%s]",
+          bytesRead, Arrays.toString(patterns.toArray())));
     }
   }
 
