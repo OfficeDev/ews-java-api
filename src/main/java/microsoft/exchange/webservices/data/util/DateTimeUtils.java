@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data.util;
 
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -72,7 +73,7 @@ public final class DateTimeUtils {
   private static Date parseInternal(String value, boolean dateOnly) {
     String originalValue = value;
 
-    if (value == null || value.isEmpty()) {
+    if (StringUtils.isEmpty(value)) {
       return null;
     } else {
       if (value.endsWith("z")) {
@@ -80,8 +81,8 @@ public final class DateTimeUtils {
         value = value.substring(0, value.length() - 1) + "Z";
       }
 
-      DateTimeFormatter[] formats = dateOnly ? DATE_FORMATS : DATE_TIME_FORMATS;
-      for (DateTimeFormatter format : formats) {
+      final DateTimeFormatter[] formats = dateOnly ? DATE_FORMATS : DATE_TIME_FORMATS;
+      for (final DateTimeFormatter format : formats) {
         try {
           return format.parseDateTime(value).toDate();
         } catch (IllegalArgumentException e) {
