@@ -121,18 +121,22 @@ public class TimeZoneTransition extends ComplexProperty {
       String targetId = reader.readElementValue();
       if (targetKind.equals(PeriodTarget)) {
         if (!this.timeZoneDefinition.getPeriods().containsKey(targetId)) {
-          this.targetPeriod = this.timeZoneDefinition.getPeriods()
-              .get(targetId);
+         
           throw new ServiceLocalException(String.format(
               "Invalid transition. A period with the specified Id couldn't be found: %s", targetId));
+        } else {
+        	 this.targetPeriod = this.timeZoneDefinition.getPeriods()
+                     .get(targetId);
         }
       } else if (targetKind.equals(GroupTarget)) {
         if (!this.timeZoneDefinition.getTransitionGroups().containsKey(
             targetId)) {
-          this.targetGroup = this.timeZoneDefinition
-              .getTransitionGroups().get(targetId);
+         
           throw new ServiceLocalException(String.format(
               "Invalid transition. A transition group with the specified ID couldn't be found: %s", targetId));
+        } else {
+        	 this.targetGroup = this.timeZoneDefinition
+                     .getTransitionGroups().get(targetId);
         }
       } else {
         throw new ServiceLocalException("The time zone transition target isn't supported.");
@@ -159,7 +163,7 @@ public class TimeZoneTransition extends ComplexProperty {
     if (this.targetPeriod != null) {
       writer.writeAttributeValue(XmlAttributeNames.Kind, PeriodTarget);
       writer.writeValue(this.targetPeriod.getId(), XmlElementNames.To);
-    } else {
+    } else if (this.targetGroup != null) {
       writer.writeAttributeValue(XmlAttributeNames.Kind, GroupTarget);
       writer.writeValue(this.targetGroup.getId(), XmlElementNames.To);
     }

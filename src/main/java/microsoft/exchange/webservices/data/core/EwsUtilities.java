@@ -235,7 +235,7 @@ public final class EwsUtilities {
   private static final Pattern PATTERN_DAY = Pattern.compile("(\\d+)D");
   private static final Pattern PATTERN_HOUR = Pattern.compile("(\\d+)H");
   private static final Pattern PATTERN_MINUTES = Pattern.compile("(\\d+)M");
-  private static final Pattern PATTERN_SECONDS = Pattern.compile("(\\d+).");
+  private static final Pattern PATTERN_SECONDS = Pattern.compile("(\\d+)\\."); // Need to escape dot, otherwise it matches any char
   private static final Pattern PATTERN_MILLISECONDS = Pattern.compile("(\\d+)S");
 
 
@@ -871,15 +871,12 @@ public final class EwsUtilities {
     // TODO: Need to check whether this should be the equivalent or not
     Matcher m = PATTERN_TIME_SPAN.matcher(xsDuration);
     boolean negative = false;
-    LOG.debug(m.find());
     if (m.find()) {
       negative = true;
     }
-    LOG.debug(m.group());
 
     // Year
     m = PATTERN_YEAR.matcher(xsDuration);
-    LOG.debug(m.find());
     int year = 0;
     if (m.find()) {
       year = Integer.parseInt(m.group().substring(0,
@@ -888,7 +885,6 @@ public final class EwsUtilities {
 
     // Month
     m = PATTERN_MONTH.matcher(xsDuration);
-    LOG.debug(m.find());
     int month = 0;
     if (m.find()) {
       month = Integer.parseInt(m.group().substring(0,
@@ -897,7 +893,6 @@ public final class EwsUtilities {
 
     // Day
     m = PATTERN_DAY.matcher(xsDuration);
-    LOG.debug(m.find());
     int day = 0;
     if (m.find()) {
       day = Integer.parseInt(m.group().substring(0,
@@ -906,7 +901,6 @@ public final class EwsUtilities {
 
     // Hour
     m = PATTERN_HOUR.matcher(xsDuration);
-    LOG.debug(m.find());
     int hour = 0;
     if (m.find()) {
       hour = Integer.parseInt(m.group().substring(0,
@@ -915,7 +909,6 @@ public final class EwsUtilities {
 
     // Minute
     m = PATTERN_MINUTES.matcher(xsDuration);
-    LOG.debug(m.find());
     int minute = 0;
     if (m.find()) {
       minute = Integer.parseInt(m.group().substring(0,
@@ -924,7 +917,6 @@ public final class EwsUtilities {
 
     // Seconds
     m = PATTERN_SECONDS.matcher(xsDuration);
-    LOG.debug(m.find());
     int seconds = 0;
     if (m.find()) {
       seconds = Integer.parseInt(m.group().substring(0,
@@ -933,7 +925,6 @@ public final class EwsUtilities {
 
     int milliseconds = 0;
     m = PATTERN_MILLISECONDS.matcher(xsDuration);
-    LOG.debug(m.find());
     if (m.find()) {
       // Only allowed 4 digits of precision
       if (m.group().length() > 5) {

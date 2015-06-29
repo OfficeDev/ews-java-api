@@ -29,6 +29,7 @@ import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
+import microsoft.exchange.webservices.data.core.enumeration.property.time.DayOfTheWeek;
 import microsoft.exchange.webservices.data.core.exception.service.local.InvalidOrUnsupportedTimeZoneDefinitionException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
@@ -114,13 +115,18 @@ public class TimeZoneDefinition extends ComplexProperty implements Comparator<Ti
     if (x == y) {
       return 0;
     } else if (x != null && y != null) {
-      final AbsoluteDateTransition firstTransition = (AbsoluteDateTransition) x;
-      final AbsoluteDateTransition secondTransition = (AbsoluteDateTransition) y;
+      if (x instanceof AbsoluteDateTransition && y instanceof AbsoluteDateTransition) {
+        final AbsoluteDateTransition firstTransition = (AbsoluteDateTransition) x;
+        final AbsoluteDateTransition secondTransition = (AbsoluteDateTransition) y;
 
-      final Date firstDateTime = firstTransition.getDateTime();
-      final Date secondDateTime = secondTransition.getDateTime();
+        final Date firstDateTime = firstTransition.getDateTime();
+        final Date secondDateTime = secondTransition.getDateTime();
 
-      return firstDateTime.compareTo(secondDateTime);
+        return firstDateTime.compareTo(secondDateTime);
+
+      } else if (y instanceof TimeZoneTransition) {
+        return 1;
+      }
     } else if (y == null) {
       return 1;
     }
