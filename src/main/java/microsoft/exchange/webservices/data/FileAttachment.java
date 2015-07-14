@@ -13,6 +13,9 @@ package microsoft.exchange.webservices.data;
 import org.apache.commons.codec.binary.Base64OutputStream;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -236,11 +239,24 @@ public final class FileAttachment extends Attachment {
       os.flush();
       os.close();
       writeContentFromResponseFile(new FileInputStream(responseFile), outputStream);
+      responseFile.delete();
+    } catch(Exception e) {
+      if (responseFile.exists()) {
+        String path = responseFile.getAbsolutePath();
+        System.out.println("EWS response written to file " + path + ".");
+        if (responseFile.length() < 524288) { // .5 MB in bytes ((1024 * 1024) / 2)
+          try {
+            byte[] responseBytes = Files.readAllBytes(Paths.get(path));
+            System.out.println("EWS response:");
+            System.out.println(new String(responseBytes, Charset.forName("UTF-8")));
+          } catch (Exception e1) {}
+        }
+      }
+      throw e;
     } finally {
       if (os != null) {
         os.close();
       }
-      responseFile.delete();
     }
   }
 
