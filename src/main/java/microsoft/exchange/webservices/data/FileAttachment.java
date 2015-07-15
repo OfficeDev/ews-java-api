@@ -245,18 +245,49 @@ public final class FileAttachment extends Attachment {
         String path = responseFile.getAbsolutePath();
         System.out.println("EWS response written to file " + path + ".");
         if (responseFile.length() < 524288) { // .5 MB in bytes ((1024 * 1024) / 2)
+          byte[] responseBytes = null;
           try {
-            byte[] responseBytes = Files.readAllBytes(Paths.get(path));
+            responseBytes = Files.readAllBytes(Paths.get(path));
             System.out.println("EWS response:");
             System.out.println(new String(responseBytes, Charset.forName("UTF-8")));
           } catch (Exception e1) {}
+          // If the message was small enough to fit into memory, parse it using EWS code to surface any
+          // ServiceRequest/ResponseErrors.
+          parseGetAttachmentResponse(responseBytes);
         }
       }
+      // Throw the original Exception if the response file does not exist, the response was too big to fit into memory,
+      // or there was an error loading the bytes into memory.
       throw e;
     } finally {
       if (os != null) {
         os.close();
       }
+    }
+  }
+
+  /**
+   * Parse the response bytes from a get attachment call and throw an error if necessary.
+   *
+   * @param responseBytes The bytes of the get attachment response.
+   * @throws Exception If the response was an error response.
+   */
+  protected void parseGetAttachmentResponse(byte[] responseBytes) throws Exception {
+    if (responseBytes == null) {
+      return;
+    }
+
+    // Use the existing EWS code to parse the response and throw the resulting error.
+    ExchangeService service = this.getOwner().getService();
+    EwsServiceXmlReader xmlReader = new EwsServiceXmlReader(new ByteArrayInputStream(responseBytes), service);
+    GetAttachmentRequest getAttachmentRequest = new GetAttachmentRequest(service, ServiceErrorHandling.ThrowOnError);
+    getAttachmentRequest.getAttachments().add(this);
+    Object responseCollection = getAttachmentRequest.readResponse(xmlReader);
+
+    if (responseCollection != null
+            && (responseCollection instanceof ServiceResponseCollection)
+            && (((ServiceResponseCollection)responseCollection).getCount() > 0)) {
+      ((ServiceResponseCollection)responseCollection).getResponseAtIndex(0).internalThrowIfNecessary();
     }
   }
 
