@@ -1,15 +1,18 @@
 package microsoft.exchange.webservices.data;
 
 import org.junit.Test;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.*;
+import static org.mockito.internal.matchers.NotNull.NOT_NULL;
 
 /**
  * Test class for the FileAttachment methods that were added to support streaming of large
@@ -46,6 +49,48 @@ public class FileAttachmentTest {
       }
     } finally {
       is.close();
+    }
+  }
+
+  @Test
+  public void testErrorResponse() throws Exception {
+    final String xmlFilename = this.getClass().getSimpleName() + "ErrorResponse.xml";
+
+    Item parent = mock(Item.class);
+    ExchangeService exchangeService = mock(ExchangeService.class);
+    FileAttachment fileAttachment = new FileAttachment(parent);
+
+    when(parent.getService()).thenReturn(exchangeService);
+    when(exchangeService.getRequestedServerVersion()).thenReturn(ExchangeVersion.Exchange2010_SP1);
+    doAnswer(new Answer() {
+      @Override
+      public Object answer(InvocationOnMock invocationOnMock) throws Throwable {
+        // Read test test xml file into the responseFile OutputStream.
+        OutputStream os = (OutputStream)invocationOnMock.getArguments()[1];
+        InputStream is = null;
+        try {
+          is = ClassLoader.getSystemResourceAsStream(xmlFilename);
+          byte[] buffer = new byte[is.available()];
+          // Read test file into buffer
+          is.read(buffer);
+          // Dump buffer into OutputStream
+          os.write(buffer);
+        } finally {
+          if (is != null) {
+            is.close();
+          }
+        }
+        return null;
+      }
+    }).when(exchangeService).streamGetAttachmentResponse(eq(fileAttachment), any(OutputStream.class));
+
+    try {
+      fileAttachment.streamContent(new ByteArrayOutputStream());
+      fail("ServiceResponseException expected.");
+    } catch (ServiceResponseException e) {
+      assertThat(e, NOT_NULL);
+      assertThat(e.getMessage(), equalTo("The attachment could not be opened."));
+      assertThat(e.getErrorCode(), equalTo(ServiceError.ErrorCannotOpenFileAttachment));
     }
   }
 
