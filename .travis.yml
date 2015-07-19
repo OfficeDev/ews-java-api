@@ -49,6 +49,7 @@ notifications:
 
 before_install:
   - chmod +x ./deploy_snapshot.sh
+  - chmod +x gradlew
 
 after_success:
   - ./deploy_snapshot.sh
