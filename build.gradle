@@ -50,14 +50,17 @@ signing {
 }
 
 apply plugin: 'build-dashboard'
-apply plugin: 'findbugs'
-findbugs {
-    ignoreFailures = true
 
-    findbugsMain {
-        reports {
-            xml.enabled = false
-            html.enabled = true
+if (JavaVersion.current().isJava7Compatible()) {
+    apply plugin: 'findbugs'
+    findbugs {
+        ignoreFailures = true
+
+        findbugsMain {
+            reports {
+                xml.enabled = false
+                html.enabled = true
+            }
         }
     }
 }
