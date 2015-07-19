@@ -35,11 +35,13 @@ env:
     - secure: "O9Mjx/mU5MLQsngcVbTf7AVMFo2Bh3ZWXwTyiLVXAfU7/VZX39vx30Mf2laNpewYqbiouix7fOkK76YS8459QRoLVBAQSwzjuGsZAwQvz7b7+r3kCS7rwGm7eCobJDbwItoxAxA00rI3gpyX/BnaX8aFutQw/0ZoPSPOH+LzR+4="
 
 # cache local repository for speed of build
+before_cache:
+ - find ~/.gradle/caches -type f -name "*.lock" -delete
+ - find ~/.gradle/caches -type f -name "*.class" -delete
+ - find ~/.gradle/caches -type f -name "cache.properties" -delete
 cache:
   directories:
-    - $HOME/.m2/repository
-before_cache:
-  - rm -rf $HOME/.m2/repository/com/microsoft/ews-java-api
+    - ~/.gradle/caches
 
 notifications:
   webhooks:
