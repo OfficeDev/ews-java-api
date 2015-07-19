@@ -110,7 +110,9 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 }
 
 javadoc {
-    options.addStringOption('Xdoclint:none', '-quiet')
+    if(JavaVersion.current().equals(JavaVersion.VERSION_1_8)) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
 }
 
 task javadocJar(type: Jar) {
