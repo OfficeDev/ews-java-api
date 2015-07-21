@@ -472,10 +472,11 @@ public class EwsXmlReader {
         // Element)
         // this.read();
         return elementValue.toString();
+      } else if (this.presentEvent.isEndElement()) {
+        return "";
       } else {
         throw new ServiceXmlDeserializationException(
-          getReadValueErrMsg("Could not find " + XmlNodeType.getString(XmlNodeType.CHARACTERS))
-        );
+            getReadValueErrMsg("Could not find " + XmlNodeType.getString(XmlNodeType.CHARACTERS)));
       }
     } else if (this.presentEvent.getEventType() == XmlNodeType.CHARACTERS
         && this.presentEvent.isCharacters()) {
