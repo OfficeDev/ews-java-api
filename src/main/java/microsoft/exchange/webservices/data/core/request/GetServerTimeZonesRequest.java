@@ -38,7 +38,7 @@ import javax.xml.stream.XMLStreamException;
 /**
  * Represents a GetServerTimeZones request.
  */
-class GetServerTimeZonesRequest extends
+public final class GetServerTimeZonesRequest extends
     MultiResponseServiceRequest<GetServerTimeZonesResponse> {
 
   /**
@@ -65,7 +65,7 @@ class GetServerTimeZonesRequest extends
    * @param service the service
    * @throws Exception
    */
-  protected GetServerTimeZonesRequest(ExchangeService service)
+  public GetServerTimeZonesRequest(ExchangeService service)
       throws Exception {
     super(service, ServiceErrorHandling.ThrowOnError);
   }

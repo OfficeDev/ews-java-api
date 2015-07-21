@@ -30,10 +30,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.EnumSet;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.TimeZone;
 
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
@@ -99,6 +101,7 @@ import microsoft.exchange.webservices.data.core.request.GetItemRequestForLoad;
 import microsoft.exchange.webservices.data.core.request.GetPasswordExpirationDateRequest;
 import microsoft.exchange.webservices.data.core.request.GetRoomListsRequest;
 import microsoft.exchange.webservices.data.core.request.GetRoomsRequest;
+import microsoft.exchange.webservices.data.core.request.GetServerTimeZonesRequest;
 import microsoft.exchange.webservices.data.core.request.GetUserAvailabilityRequest;
 import microsoft.exchange.webservices.data.core.request.GetUserConfigurationRequest;
 import microsoft.exchange.webservices.data.core.request.GetUserOofSettingsRequest;
@@ -132,6 +135,7 @@ import microsoft.exchange.webservices.data.core.response.GetAttachmentResponse;
 import microsoft.exchange.webservices.data.core.response.GetDelegateResponse;
 import microsoft.exchange.webservices.data.core.response.GetFolderResponse;
 import microsoft.exchange.webservices.data.core.response.GetItemResponse;
+import microsoft.exchange.webservices.data.core.response.GetServerTimeZonesResponse;
 import microsoft.exchange.webservices.data.core.response.MoveCopyFolderResponse;
 import microsoft.exchange.webservices.data.core.response.MoveCopyItemResponse;
 import microsoft.exchange.webservices.data.core.response.ServiceResponse;
@@ -3928,58 +3932,51 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
   public void setExchange2007CompatibilityMode(boolean value) {
     this.exchange2007CompatibilityMode = value;
   }
-
+  
   /**
    * Retrieves the definitions of the specified server-side time zones.
    *
    * @param timeZoneIds the time zone ids
    * @return A Collection containing the definitions of the specified time
    * zones.
+ * @throws Exception 
    */
   public Collection<TimeZoneDefinition> getServerTimeZones(
-      Iterable<String> timeZoneIds) {
-    Date today = new Date();
+      Iterable<String> timeZoneIds) throws Exception {
+    Map<String, TimeZoneDefinition> timeZoneMap = new HashMap<String, TimeZoneDefinition>();
+    
+    GetServerTimeZonesRequest request = new GetServerTimeZonesRequest(this);
+	ServiceResponseCollection<GetServerTimeZonesResponse> responses = request.execute();
+	for (GetServerTimeZonesResponse response : responses) {
+		for (TimeZoneDefinition tzd : response.getTimeZones()) {
+			timeZoneMap.put(tzd.getId(), tzd);
+		}
+	}
+   
     Collection<TimeZoneDefinition> timeZoneList = new ArrayList<TimeZoneDefinition>();
+
     for (String timeZoneId : timeZoneIds) {
-      TimeZoneDefinition timeZoneDefinition = new TimeZoneDefinition();
-      timeZoneList.add(timeZoneDefinition);
-      TimeZone timeZone = TimeZone.getTimeZone(timeZoneId);
-      timeZoneDefinition.id = timeZone.getID();
-      timeZoneDefinition.name = timeZone.getDisplayName(timeZone
-          .inDaylightTime(today), TimeZone.LONG);
-			/*
-			 * String shortName =
-			 * timeZone.getDisplayName(timeZone.inDaylightTime(today),
-			 * TimeZone.SHORT); String longName =
-			 * timeZone.getDisplayName(timeZone.inDaylightTime(today),
-			 * TimeZone.LONG); int rawOffset = timeZone.getRawOffset(); int hour
-			 * = rawOffset / (60*60*1000); int min = Math.abs(rawOffset /
-			 * (60*1000)) % 60; boolean hasDST = timeZone.useDaylightTime();
-			 * boolean inDST = timeZone.inDaylightTime(today);
-			 */
+    	timeZoneList.add(timeZoneMap.get(timeZoneId));
     }
 
     return timeZoneList;
   }
-
+  
   /**
    * Retrieves the definitions of all server-side time zones.
    *
    * @return A Collection containing the definitions of the specified time
    * zones.
+ * @throws Exception 
    */
-  public Collection<TimeZoneDefinition> getServerTimeZones() {
-    Date today = new Date();
-    Collection<TimeZoneDefinition> timeZoneList = new ArrayList<TimeZoneDefinition>();
-    for (String timeZoneId : TimeZone.getAvailableIDs()) {
-      TimeZoneDefinition timeZoneDefinition = new TimeZoneDefinition();
-      timeZoneList.add(timeZoneDefinition);
-      TimeZone timeZone = TimeZone.getTimeZone(timeZoneId);
-      timeZoneDefinition.id = timeZone.getID();
-      timeZoneDefinition.name = timeZone.getDisplayName(timeZone
-          .inDaylightTime(today), TimeZone.LONG);
-    }
-
+  public Collection<TimeZoneDefinition> getServerTimeZones() throws Exception {
+	  GetServerTimeZonesRequest request = new GetServerTimeZonesRequest(this);
+	  Collection<TimeZoneDefinition> timeZoneList = new ArrayList<TimeZoneDefinition>();
+	  ServiceResponseCollection<GetServerTimeZonesResponse> responses = request.execute();
+	  for (GetServerTimeZonesResponse response : responses) {
+		  timeZoneList.addAll(response.getTimeZones());
+	  }
+   
     return timeZoneList;
   }
 
