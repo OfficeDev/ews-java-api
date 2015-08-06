@@ -49,12 +49,15 @@ public class TimeZoneUtilsTest {
     // null-argument is not allowed.
     try {
       Assert.fail(TimeZoneUtils.getMicrosoftTimeZoneName(null));
-    } catch (final IllegalArgumentException ignored) {}
-
-    // Case-insensitive ID is not supported.
-    checkGetMicrosoftTimeZoneName("africa/abidjan", "UTC");
+    } catch (final IllegalArgumentException ignored) {
+    }
   }
 
+  @Test
+  public void testCaseInsensitiveIdNotSupported() {
+    // Case-insensitive ID is not supported so the map look up returns null.
+    checkGetMicrosoftTimeZoneName("africa/abidjan", null);
+  }
 
   private void checkGetMicrosoftTimeZoneName(final String id, final String name) {
     final TimeZone timeZone = TimeZone.getTimeZone(id);
