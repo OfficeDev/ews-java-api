@@ -23,13 +23,13 @@
 
 package microsoft.exchange.webservices.data.misc.availability;
 
-import org.junit.Assert;
 import microsoft.exchange.webservices.base.BaseTest;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -58,7 +58,7 @@ public class TimeWindowTest extends BaseTest {
       TimeWindow tw = new TimeWindow();
       tw.setStartTime(midnight);
       tw.setEndTime(just_before_midnight);
-      tw.writeToXmlUnscopedDatesOnly(writer, XmlElementNames.TimeWindow);
+      tw.writeToXmlUnscopedDatesOnly(writer, XmlElementNames.Duration);
       writer.writeEndElement();
 
       // read the test markup
@@ -66,24 +66,16 @@ public class TimeWindowTest extends BaseTest {
       EwsServiceXmlReader reader = new EwsServiceXmlReader(inputStream, exchangeServiceMock);
       reader.read(new XmlNodeType(XmlNodeType.START_DOCUMENT));
       reader.readStartElement(XmlNamespace.NotSpecified, "test");
-      TimeWindow deserializedTW = loadFromXml(reader);
+      reader.readStartElement(XmlNamespace.Types, XmlElementNames.Duration);
+      TimeWindow checkTw = new TimeWindow();
+
+      checkTw.loadFromXml(reader);
 
       // Test that the dates have not shifted.
-      Assert.assertEquals(midnight, deserializedTW.getStartTime());
-      Assert.assertEquals(midnight, deserializedTW.getEndTime());
+      Assert.assertEquals(midnight, checkTw.getStartTime());
+      Assert.assertEquals(midnight, checkTw.getEndTime());
     } catch (Exception e) {
       Assert.fail(e.getMessage());
     }
-  }
-
-  private TimeWindow loadFromXml(EwsServiceXmlReader reader) throws Exception {
-    TimeWindow window = new TimeWindow();
-    reader.readStartElement(XmlNamespace.Types, XmlElementNames.TimeWindow);
-    window.setStartTime(reader.readElementValueAsDateTime(XmlNamespace.Types,
-                                                          XmlElementNames.StartTime));
-    window.setEndTime(reader.readElementValueAsDateTime(XmlNamespace.Types,
-                                                        XmlElementNames.EndTime));
-    reader.readEndElementIfNecessary(XmlNamespace.Types, XmlElementNames.TimeWindow);
-    return window;
   }
 }
