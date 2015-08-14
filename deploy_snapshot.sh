@@ -25,8 +25,6 @@ if [ "$TRAVIS_REPO_SLUG" != "OfficeDev/ews-java-api" ]; then
 	echo "[DEPLOY] Skipping snapshot deployment for repo:'$TRAVIS_REPO_SLUG'."
 elif [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
 	echo "[DEPLOY] Skipping snapshot deployment for a pull request."
-elif [ "$TRAVIS_BRANCH" != "master" ]; then
-	echo "[DEPLOY] Skipping snapshot deployment for branch:'$TRAVIS_BRANCH'."
 elif [ "$TRAVIS_SECURE_ENV_VARS" == "false" ]; then
 	echo "[DEPLOY] Skipping snapshot deployment due to TRAVIS_SECURE_ENV_VARS is set to '$TRAVIS_SECURE_ENV_VARS'."
 elif [ "$TRAVIS_JDK_VERSION" != "oraclejdk7" ]; then
