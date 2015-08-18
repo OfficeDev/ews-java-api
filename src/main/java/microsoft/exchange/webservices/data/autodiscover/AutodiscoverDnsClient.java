@@ -24,10 +24,10 @@
 package microsoft.exchange.webservices.data.autodiscover;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.dns.DnsClient;
-import microsoft.exchange.webservices.data.dns.DnsSrvRecord;
 import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
 import microsoft.exchange.webservices.data.core.exception.dns.DnsException;
+import microsoft.exchange.webservices.data.dns.DnsClient;
+import microsoft.exchange.webservices.data.dns.DnsSrvRecord;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -71,11 +71,27 @@ class AutodiscoverDnsClient {
   }
 
   /**
+   * Extracts a valid autodiscover hostname, if any, from a dns srv response.
+   *
+   * @param dnsNameTarget The hostname response returned by DNS
+   * @return Autodiscover hostname (will be null if dnsNameTarget is invalid).
+   */
+  protected static String extractHostnameFromDnsSrv(String dnsNameTarget) {
+    if (dnsNameTarget == null || dnsNameTarget.isEmpty()) {
+      return null;
+    } else {
+      if (dnsNameTarget.endsWith(".")) {
+        dnsNameTarget = dnsNameTarget.substring(0, dnsNameTarget.length()-1);
+      }
+      return dnsNameTarget;
+    }
+  }
+
+  /**
    * Finds the Autodiscover host from DNS SRV records.
    *
    * @param domain the domain
    * @return Autodiscover hostname (will be null if lookup failed).
-   * @throws XMLStreamException the XML stream exception
    * @throws IOException signals that an I/O exception has occurred.
    */
   protected String findAutodiscoverHostFromSrv(String domain)
@@ -84,20 +100,17 @@ class AutodiscoverDnsClient {
 
     DnsSrvRecord dnsSrvRecord = this
         .findBestMatchingSrvRecord(domainToMatch);
-
-    if ((dnsSrvRecord == null) || dnsSrvRecord.getNameTarget() == null ||
-        dnsSrvRecord.getNameTarget().isEmpty()) {
-      this.service.traceMessage(TraceFlags.AutodiscoverConfiguration,
-          "No appropriate SRV record was found.");
-      return null;
-    } else {
-      this.service.traceMessage(TraceFlags.AutodiscoverConfiguration,
-          String.format(
-              "DNS query for SRV record for domain %s found %s",
-              domain, dnsSrvRecord.getNameTarget()));
-
-      return dnsSrvRecord.getNameTarget();
+    if (dnsSrvRecord != null) {
+      String hostName = extractHostnameFromDnsSrv(dnsSrvRecord.getNameTarget());
+      if (hostName != null) {
+        this.service.traceMessage(TraceFlags.AutodiscoverConfiguration, String
+            .format("DNS query for SRV record for domain %s found %s", domain, hostName));
+        return hostName;
+      }
     }
+    this.service.traceMessage(TraceFlags.AutodiscoverConfiguration,
+                              "No appropriate SRV record was found.");
+    return null;
   }
 
   /**
