@@ -1029,22 +1029,12 @@ public class Item extends ServiceObject {
   }
 
   /**
-   * Gets the subject of this item.
-   *
-   * @param subject the new subject
-   * @throws Exception the exception
-   */
-  protected void setSubject(String subject) throws Exception {
-    this.setSubject((Object) subject);
-  }
-
-  /**
    * Sets the subject.
    *
    * @param subject the new subject
    * @throws Exception the exception
    */
-  public void setSubject(Object subject) throws Exception {
+  public void setSubject(String subject) throws Exception {
     this.getPropertyBag().setObjectFromPropertyDefinition(
         ItemSchema.Subject, subject);
   }

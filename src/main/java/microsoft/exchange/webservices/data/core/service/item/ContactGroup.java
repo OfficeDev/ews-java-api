@@ -169,7 +169,7 @@ public class ContactGroup extends Item {
    * @throws ServiceObjectPropertyException the service object property exception
    */
   @Override
-  protected void setSubject(String subject)
+  public void setSubject(String subject)
       throws ServiceObjectPropertyException {
     // Set is disabled in client API even though it is implemented in
     // protocol for Item.Subject.
