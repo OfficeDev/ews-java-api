@@ -35,6 +35,7 @@ import javax.xml.stream.XMLStreamException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Represents a time period.
@@ -160,6 +161,7 @@ public class TimeWindow implements ISelfValidate {
     final String DateOnlyFormat = "yyyy-MM-dd'T'00:00:00";
 
     DateFormat formatter = new SimpleDateFormat(DateOnlyFormat);
+    formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 
     String start = formatter.format(this.startTime);
     String end = formatter.format(this.endTime);
