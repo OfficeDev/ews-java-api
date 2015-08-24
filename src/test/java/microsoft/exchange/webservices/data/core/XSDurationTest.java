@@ -32,50 +32,40 @@ public class XSDurationTest {
 
   // Tests for EwsUtilities.getXSDurationToTimeSpan()
 
-  private static final String PERIOD_HOURS = "-PT13H";
-  private static final String PERIOD_HOURS_MINUTES = "-PT5H30M";
-  private static final String PERIOD_FULL = "PT2H30M59.0S";
-  private static final String PERIOD_FULL_NEGATIVE = "-PT2H30M59.0S";
-  private static final String PERIOD_OVERFLOW = "PT2H100M59.0S";
-  private static final String PERIOD_FAIL = "P2H30M59.0S";
-  
-  
   @Test
   public void testPeriodHours() {
-    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan(PERIOD_HOURS);
+    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan("-PT13H");
     Assert.assertEquals("-P0DT13H0M0.0S", EwsUtilities.getTimeSpanToXSDuration(timeSpan));
   }
 
   @Test
   public void testPeriodHoursMinutes() {
-    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan(PERIOD_HOURS_MINUTES);
+    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan("-PT5H30M");
     Assert.assertEquals("-P0DT5H30M0.0S", EwsUtilities.getTimeSpanToXSDuration(timeSpan));
   }
 
   @Test
   public void testPeriodFull() {
-    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan(PERIOD_FULL);
+    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan("PT2H30M59.0S");
     Assert.assertEquals("P0DT2H30M59.0S", EwsUtilities.getTimeSpanToXSDuration(timeSpan));
   }
 
   @Test
   public void testPeriodFullNegative() {
-    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan(PERIOD_FULL_NEGATIVE);
+    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan("-PT2H30M59.0S");
     Assert.assertEquals("-P0DT2H30M59.0S", EwsUtilities.getTimeSpanToXSDuration(timeSpan));
   }
-  
+
   @Test
   public void testPeriodFail2() {
-    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan(PERIOD_OVERFLOW);
+    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan("PT2H100M59.0S");
     Assert.assertEquals("P0DT3H40M59.0S", EwsUtilities.getTimeSpanToXSDuration(timeSpan));
   }
-  
+
   @Test(expected = IllegalArgumentException.class)
   public void testPeriodFail() {
-    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan(PERIOD_FAIL);
+    TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan("P2H30M59.0S");
     Assert.assertEquals("-P0DT2H30M59.0S", EwsUtilities.getTimeSpanToXSDuration(timeSpan));
   }
-  
- 
 
 }
