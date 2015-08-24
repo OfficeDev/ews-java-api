@@ -32,11 +32,15 @@ import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.Time;
 import microsoft.exchange.webservices.data.misc.TimeSpan;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
+
+import javax.xml.bind.DatatypeConverter;
 
 /**
  * Represents a change of time for a time zone.
@@ -217,16 +221,13 @@ public final class TimeChange extends ComplexProperty {
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(
         XmlElementNames.AbsoluteDate)) {
-      SimpleDateFormat sdfin = new SimpleDateFormat(
-          "yyyy-MM-dd'T'HH:mm:ss");
-      Date tempDate = sdfin.parse(reader.readElementValue());
-      this.absoluteDate = tempDate;
+      Calendar cal = DatatypeConverter.parseDate(reader.readElementValue());
+      cal.setTimeZone(TimeZone.getTimeZone("UTC"));
+      this.absoluteDate = cal.getTime();
       return true;
     } else if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.Time)) {
-      SimpleDateFormat sdfin = new SimpleDateFormat(
-          "yyyy-MM-dd'T'HH:mm:ss");
-      Date tempDate = sdfin.parse(reader.readElementValue());
-      this.time = new Time(tempDate);
+      Calendar cal = DatatypeConverter.parseTime(reader.readElementValue());
+      this.time = new Time(cal.getTime());
       return true;
     } else {
       return false;
