@@ -31,6 +31,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.GeneralSecurityException;
+import java.security.SecureRandom;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,6 +41,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.TimeZone;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -92,7 +94,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   /**
    * The binary secret.
    */
-  private static byte[] binarySecret;
+  private static byte[] binarySecret = generateSessionKey();
 
   /**
    * The timeout.
@@ -132,24 +134,26 @@ public abstract class ExchangeServiceBase implements Closeable {
   /**
    * The requested server version.
    */
-  private ExchangeVersion requestedServerVersion = ExchangeVersion.Exchange2010_SP2;
+  private final ExchangeVersion requestedServerVersion;
 
   /**
    * The server info.
    */
   private ExchangeServerInfo serverInfo;
 
-  private Map<String, String> httpHeaders = new HashMap<String, String>();
-
-  private Map<String, String> httpResponseHeaders = new HashMap<String, String>();
+  private Map<String, String> httpHeaders = new ConcurrentHashMap<String, String>();
 
   private WebProxy webProxy;
 
-  protected CloseableHttpClient httpClient;
+  private volatile CloseableHttpClient httpClient;
 
-  protected HttpClientContext httpContext;
+  private final Object httpClientLock = new Object();
 
-  protected CloseableHttpClient	httpPoolingClient;
+  private final CookieStore cookieStore = new BasicCookieStore();
+
+  private volatile CloseableHttpClient	httpPoolingClient;
+
+  private final Object httpPoolingClientLock = new Object();
   
   private int maximumPoolingConnections = 10;
 
@@ -161,7 +165,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   /**
    * Default UserAgent.
    */
-  private static String defaultUserAgent = "ExchangeServicesClient/" + EwsUtilities.getBuildVersion();
+  private static final String defaultUserAgent = "ExchangeServicesClient/" + EwsUtilities.getBuildVersion();
 
   /**
    * Initializes a new instance.
@@ -170,13 +174,11 @@ public abstract class ExchangeServiceBase implements Closeable {
    * every other constructor.
    */
   protected ExchangeServiceBase() {
-    setUseDefaultCredentials(true);
-    initializeHttpClient();
-    initializeHttpContext();
+	this(ExchangeVersion.Exchange2010_SP2);
   }
 
   protected ExchangeServiceBase(ExchangeVersion requestedServerVersion) {
-    this();
+    setUseDefaultCredentials(true);
     this.requestedServerVersion = requestedServerVersion;
   }
 
@@ -194,30 +196,6 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.httpHeaders = service.getHttpHeaders();
   }
 
-  private void initializeHttpClient() {
-    Registry<ConnectionSocketFactory> registry = createConnectionSocketFactoryRegistry();
-    HttpClientConnectionManager httpConnectionManager = new BasicHttpClientConnectionManager(registry);
-    AuthenticationStrategy authStrategy = new CookieProcessingTargetAuthenticationStrategy();
-
-    httpClient = HttpClients.custom()
-      .setConnectionManager(httpConnectionManager)
-      .setTargetAuthenticationStrategy(authStrategy)
-      .build();
-  }
-
-  private void initializeHttpPoolingClient() {
-    Registry<ConnectionSocketFactory> registry = createConnectionSocketFactoryRegistry();
-    PoolingHttpClientConnectionManager httpConnectionManager = new PoolingHttpClientConnectionManager(registry);
-    httpConnectionManager.setMaxTotal(maximumPoolingConnections);
-    httpConnectionManager.setDefaultMaxPerRoute(maximumPoolingConnections);
-    AuthenticationStrategy authStrategy = new CookieProcessingTargetAuthenticationStrategy();
-
-    httpPoolingClient = HttpClients.custom()
-        .setConnectionManager(httpConnectionManager)
-        .setTargetAuthenticationStrategy(authStrategy)
-        .build();
-  }
-
   /**
    * Sets the maximum number of connections for the pooling connection manager which is used for
    * subscriptions.
@@ -230,6 +208,9 @@ public abstract class ExchangeServiceBase implements Closeable {
   public void setMaximumPoolingConnections(int maximumPoolingConnections) {
     if (maximumPoolingConnections < 1)
       throw new IllegalArgumentException("maximumPoolingConnections must be 1 or greater");
+    if(httpPoolingClient!=null){
+    	throw new IllegalStateException("Cannot change the maximumPoolingConnections setting after a request has been made");
+    }
     this.maximumPoolingConnections = maximumPoolingConnections;
   }
 
@@ -252,29 +233,37 @@ public abstract class ExchangeServiceBase implements Closeable {
     }
   }
 
-  /**
-   * (Re)initializes the HttpContext object. This removes any existing state (mainly cookies). Use an own
-   * cookie store, instead of the httpClient's global store, so cookies get reset on reinitialization
-   */
-  private void initializeHttpContext() {
-    CookieStore cookieStore = new BasicCookieStore();
-    httpContext = HttpClientContext.create();
+  protected HttpClientContext createHttpClientContext() {
+	HttpClientContext httpContext = HttpClientContext.create();
     httpContext.setCookieStore(cookieStore);
+    return httpContext;
   }
 
   @Override
   public void close() {
-    try {
-      httpClient.close();
-    } catch (IOException e) {
-      LOG.debug(e);
+    if(httpClient!=null) {
+	  synchronized(httpClientLock){
+	    if(httpClient!=null) {
+	      try {
+	        httpClient.close();
+	      } catch (IOException e) {
+	        LOG.debug(e);
+	      }
+	      httpClient = null;
+	    }
+      }
     }
 
     if (httpPoolingClient != null) {
-      try {
-        httpPoolingClient.close();
-      } catch (IOException e) {
-        LOG.debug(e);
+      synchronized(httpPoolingClientLock){
+    	if (httpPoolingClient != null) {
+          try {
+            httpPoolingClient.close();
+          } catch (IOException e) {
+            LOG.debug(e);
+          }
+          httpPoolingClient=null;
+    	}
       }
     }
   }
@@ -322,7 +311,8 @@ public abstract class ExchangeServiceBase implements Closeable {
       throw new ServiceLocalException(strErr);
     }
 
-    HttpClientWebRequest request = new HttpClientWebRequest(httpClient, httpContext);
+    HttpClientWebRequest request = new HttpClientWebRequest(getHttpClient(), createHttpClientContext());
+    request.setProxy(getWebProxy());
     prepareHttpWebRequestForUrl(url, acceptGzipEncoding, allowAutoRedirect, request);
 
     return request;
@@ -352,11 +342,8 @@ public abstract class ExchangeServiceBase implements Closeable {
       throw new ServiceLocalException(strErr);
     }
 
-    if (httpPoolingClient == null) {
-      initializeHttpPoolingClient();
-    }
-
-    HttpClientWebRequest request = new HttpClientWebRequest(httpPoolingClient, httpContext);
+    HttpClientWebRequest request = new HttpClientWebRequest(getHttpPoolingClient(), createHttpClientContext());
+    request.setProxy(getWebProxy());
     prepareHttpWebRequestForUrl(url, acceptGzipEncoding, allowAutoRedirect, request);
 
     return request;
@@ -383,8 +370,6 @@ public abstract class ExchangeServiceBase implements Closeable {
     prepareCredentials(request);
 
     request.prepareConnection();
-
-    httpResponseHeaders.clear();
   }
 
   protected void prepareCredentials(HttpWebRequest request) throws ServiceLocalException, URISyntaxException {
@@ -644,8 +629,8 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.credentials = credentials;
     this.useDefaultCredentials = false;
 
-    // Reset the httpContext, to remove any existing authentication cookies from subsequent request
-    initializeHttpContext();
+    // Reset the cookies, to remove any existing authentication cookies from subsequent request
+    cookieStore.clear();
   }
 
   /**
@@ -673,8 +658,8 @@ public abstract class ExchangeServiceBase implements Closeable {
       this.credentials = null;
     }
 
-    // Reset the httpContext, to remove any existing authentication cookies from subsequent request
-    initializeHttpContext();
+    // Reset the cookies, to remove any existing authentication cookies from subsequent request
+    cookieStore.clear();
   }
   
   /**
@@ -820,6 +805,48 @@ public abstract class ExchangeServiceBase implements Closeable {
   public Map<String, String> getHttpHeaders() {
     return this.httpHeaders;
   }
+  
+  protected final CloseableHttpClient getHttpClient(){
+    CloseableHttpClient ret = httpClient;
+	if(ret == null){
+		synchronized(httpClientLock){
+			ret = httpClient;
+			if(ret == null){
+				Registry<ConnectionSocketFactory> registry = createConnectionSocketFactoryRegistry();
+				HttpClientConnectionManager httpConnectionManager = new BasicHttpClientConnectionManager(registry);
+				AuthenticationStrategy authStrategy = new CookieProcessingTargetAuthenticationStrategy();
+			
+				httpClient = ret = HttpClients.custom()
+				  .setConnectionManager(httpConnectionManager)
+				  .setTargetAuthenticationStrategy(authStrategy)
+				  .build();
+			}
+		}
+	}
+	return ret;
+  }
+  
+  protected final CloseableHttpClient getHttpPoolingClient(){
+    CloseableHttpClient ret = httpClient;
+	if(ret == null){
+		synchronized(httpPoolingClientLock){
+			ret = httpPoolingClient;
+			if(ret == null){
+				Registry<ConnectionSocketFactory> registry = createConnectionSocketFactoryRegistry();
+				PoolingHttpClientConnectionManager poolingHttpConnectionManager = new PoolingHttpClientConnectionManager(registry);
+				poolingHttpConnectionManager.setMaxTotal(maximumPoolingConnections);
+				poolingHttpConnectionManager.setDefaultMaxPerRoute(maximumPoolingConnections);
+				AuthenticationStrategy authStrategy = new CookieProcessingTargetAuthenticationStrategy();
+			
+				httpPoolingClient = ret = HttpClients.custom()
+				  .setConnectionManager(poolingHttpConnectionManager)
+				  .setTargetAuthenticationStrategy(authStrategy)
+				  .build();
+			}
+		}
+	}
+	return ret;
+  }
 
   // Events
 
@@ -859,28 +886,6 @@ public abstract class ExchangeServiceBase implements Closeable {
   public void processHttpResponseHeaders(TraceFlags traceType, HttpWebRequest request)
       throws XMLStreamException, IOException, EWSHttpException {
     this.traceHttpResponseHeaders(traceType, request);
-    this.saveHttpResponseHeaders(request.getResponseHeaders());
-  }
-
-  /**
-   * Save the HTTP response headers.
-   *
-   * @param headers The response headers
-   */
-  private void saveHttpResponseHeaders(Map<String, String> headers) {
-    this.httpResponseHeaders.clear();
-
-    for (String key : headers.keySet()) {
-      this.httpResponseHeaders.put(key, headers.get(key));
-    }
-  }
-
-  /**
-   * Gets a collection of HTTP headers from the last response.
-   * @return HTTP response headers
-   */
-  public Map<String, String> getHttpResponseHeaders() {
-    return this.httpResponseHeaders;
   }
 
   /**
@@ -888,15 +893,14 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @return session key
    */
   public static byte[] getSessionKey() {
+    return ExchangeServiceBase.binarySecret;
+  }
+  
+  private static byte[] generateSessionKey(){
     // this has to be computed only once.
-    synchronized (ExchangeServiceBase.class) {
-      if (ExchangeServiceBase.binarySecret == null) {
-        Random randomNumberGenerator = new Random();
-        ExchangeServiceBase.binarySecret = new byte[256 / 8];
-        randomNumberGenerator.nextBytes(binarySecret);
-      }
-
-      return ExchangeServiceBase.binarySecret;
-    }
+	Random randomNumberGenerator = new SecureRandom();
+	final byte[] bytes = new byte[256 / 8];
+	randomNumberGenerator.nextBytes(bytes);
+	return bytes;
   }
 }

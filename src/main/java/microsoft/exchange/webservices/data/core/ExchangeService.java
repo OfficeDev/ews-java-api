@@ -3573,7 +3573,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
         ExchangeVersion.Exchange2007_SP1,
         validateRedirectionUrlCallback);
 
-    this.setUrl(this.adjustServiceUriFromCredentials(exchangeServiceUrl));
+    setUrl(this.adjustServiceUriFromCredentials(exchangeServiceUrl));
   }
 
   /**
@@ -3741,11 +3741,11 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
   public HttpWebRequest prepareHttpWebRequest()
       throws ServiceLocalException, URISyntaxException {
     try {
-      this.url = this.adjustServiceUriFromCredentials(this.getUrl());
+      setUrl(this.adjustServiceUriFromCredentials(this.getUrl()));
     } catch (Exception e) {
       LOG.error(e);
     }
-    return this.prepareHttpWebRequestForUrl(url, this
+    return this.prepareHttpWebRequestForUrl(getUrl(), this
         .getAcceptGzipEncoding(), true);
   }
 
@@ -3759,11 +3759,11 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
   public HttpWebRequest prepareHttpPoolingWebRequest()
 	      throws ServiceLocalException, URISyntaxException {
 	    try {
-	      this.url = this.adjustServiceUriFromCredentials(this.getUrl());
+	      setUrl(this.adjustServiceUriFromCredentials(this.getUrl()));
 	    } catch (Exception e) {
 	      LOG.error(e);
 	    }
-	    return this.prepareHttpPoolingWebRequestForUrl(url, this
+	    return this.prepareHttpPoolingWebRequestForUrl(getUrl(), this
 	        .getAcceptGzipEncoding(), true);
 	  }
 

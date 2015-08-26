@@ -23,13 +23,13 @@
 
 package microsoft.exchange.webservices.data.credential;
 
-public class WebProxyCredentials {
+public final class WebProxyCredentials {
 
-  private String username;
+  private final String username;
 
-  private String password;
+  private final String password;
 
-  private String domain;
+  private final String domain;
 
   public WebProxyCredentials(String username, String password, String domain) {
     this.username = username;
