@@ -554,7 +554,7 @@ public abstract class Recurrence extends ComplexProperty {
         return true;
       } else {
         if (reader.getLocalName().equals(XmlElementNames.DayOfMonth)) {
-          this.dayOfMonth = reader.readElementValue(int.class);
+          this.dayOfMonth = reader.readElementValue(Integer.class);
           return true;
         } else {
           return false;
@@ -583,7 +583,7 @@ public abstract class Recurrence extends ComplexProperty {
      * @throws ServiceValidationException the service validation exception
      */
     public int getDayOfMonth() throws ServiceValidationException {
-      return this.getFieldValueOrThrowIfNull(int.class, this.dayOfMonth,
+      return this.getFieldValueOrThrowIfNull(Integer.class, this.dayOfMonth,
           "DayOfMonth");
 
     }
@@ -1367,7 +1367,7 @@ public abstract class Recurrence extends ComplexProperty {
       } else {
         if (reader.getLocalName().equals(XmlElementNames.DayOfMonth)) {
 
-          this.dayOfMonth = reader.readElementValue(int.class);
+          this.dayOfMonth = reader.readElementValue(Integer.class);
           return true;
         } else if (reader.getLocalName().equals(XmlElementNames.Month)) {
 
@@ -1432,7 +1432,7 @@ public abstract class Recurrence extends ComplexProperty {
      */
     public int getDayOfMonth() throws ServiceValidationException {
 
-      return this.getFieldValueOrThrowIfNull(int.class, this.dayOfMonth,
+      return this.getFieldValueOrThrowIfNull(Integer.class, this.dayOfMonth,
           "DayOfMonth");
 
     }
