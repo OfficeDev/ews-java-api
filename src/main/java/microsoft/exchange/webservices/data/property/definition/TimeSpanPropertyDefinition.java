@@ -57,7 +57,7 @@ public class TimeSpanPropertyDefinition extends GenericPropertyDefinition<TimeSp
    */
   @Override
   protected TimeSpan parse(String value) {
-    return EwsUtilities.getXSDurationToTimeSpanValue(value);
+    return EwsUtilities.getXSDurationToTimeSpan(value);
   }
 
   /**
