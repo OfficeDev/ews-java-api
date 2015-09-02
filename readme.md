@@ -4,6 +4,9 @@
 
 Please see the [Getting Started Guide](https://github.com/OfficeDev/ews-java-api/wiki/Getting-Started-Guide) on our wiki for an introduction to this library.
 
+## Contributing
+Please see the [HowTo:Contribute](CONTRIBUTING.md) for details.
+
 ## Using the library
 Prebuilt JARs are available in the Maven Central repository, which are easy to use with your project. Note that currently, no stable version is available yet, only snapshots in the snapshots repository.
 

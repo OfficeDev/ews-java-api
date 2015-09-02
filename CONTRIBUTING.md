@@ -20,7 +20,8 @@ Before submitting a feature or substantial code contribution please discuss it w
 The project is using the _google-styleguide for Java_. Documentation of this style can be found here: [Google Java Style](https://google-styleguide.googlecode.com/svn-history/r130/trunk/javaguide.html)
 
 #### Using IntelliJ
-`Settings` -> `Code Style` -> `Scheme` -> _Choose_ `Project`
+Gradle will setup your project environment so just open a shell/cmd and run `gradlew idea` @project_root. After that you can open the project in IntelliJ.
+
 #### Using Eclipse
 * Open *google-styleguide for Java* by clicking on: [google-styleguide](https://google-styleguide.googlecode.com/svn-history/r122/trunk/eclipse-java-google-style.xml)
 * Download the file with: “Right click and save as”
