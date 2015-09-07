@@ -379,7 +379,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     request.setAllowAutoRedirect(allowAutoRedirect);
     request.setAcceptGzipEncoding(acceptGzipEncoding);
     request.setHeaders(getHttpHeaders());
-
+    request.setProxy(getWebProxy());
     prepareCredentials(request);
 
     request.prepareConnection();
