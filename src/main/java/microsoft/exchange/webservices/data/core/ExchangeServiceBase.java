@@ -208,7 +208,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   public void setMaximumPoolingConnections(int maximumPoolingConnections) {
     if (maximumPoolingConnections < 1)
       throw new IllegalArgumentException("maximumPoolingConnections must be 1 or greater");
-    if(httpPoolingClient!=null){
+    if (httpPoolingClient != null) {
     	throw new IllegalStateException("Cannot change the maximumPoolingConnections setting after a request has been made");
     }
     this.maximumPoolingConnections = maximumPoolingConnections;
@@ -262,7 +262,7 @@ public abstract class ExchangeServiceBase implements Closeable {
           } catch (IOException e) {
             LOG.debug(e);
           }
-          httpPoolingClient=null;
+          httpPoolingClient = null;
     	}
       }
     }

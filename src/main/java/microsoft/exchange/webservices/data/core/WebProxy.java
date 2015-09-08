@@ -45,7 +45,7 @@ public class WebProxy {
    * @param port proxy port.
    */
   public WebProxy(String host, int port) {
-    this(host,port,null);
+    this(host, port, null);
   }
 
   /**
@@ -54,7 +54,7 @@ public class WebProxy {
    * @param host proxy host.
    */
   public WebProxy(String host) {
-    this(host,80,null);
+    this(host, 80, null);
   }
 
   /**
@@ -64,7 +64,7 @@ public class WebProxy {
    * @param credentials the credential to use for the proxy.
    */
   public WebProxy(String host, WebProxyCredentials credentials) {
-    this(host,80,credentials);
+    this(host, 80, credentials);
   }
 
   /**
