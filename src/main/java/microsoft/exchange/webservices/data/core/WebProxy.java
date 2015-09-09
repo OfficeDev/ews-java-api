@@ -31,11 +31,11 @@ import microsoft.exchange.webservices.data.credential.WebProxyCredentials;
  */
 public class WebProxy {
 
-  private String host;
+  private final String host;
 
-  private int port;
+  private final int port;
 
-  private WebProxyCredentials credentials;
+  private final WebProxyCredentials credentials;
 
 
   /**
@@ -45,8 +45,7 @@ public class WebProxy {
    * @param port proxy port.
    */
   public WebProxy(String host, int port) {
-    this.host = host;
-    this.port = port;
+    this(host, port, null);
   }
 
   /**
@@ -55,8 +54,7 @@ public class WebProxy {
    * @param host proxy host.
    */
   public WebProxy(String host) {
-    this.host = host;
-    this.port = 80;
+    this(host, 80, null);
   }
 
   /**
@@ -66,8 +64,7 @@ public class WebProxy {
    * @param credentials the credential to use for the proxy.
    */
   public WebProxy(String host, WebProxyCredentials credentials) {
-    this.host = host;
-    this.credentials = credentials;
+    this(host, 80, credentials);
   }
 
   /**
