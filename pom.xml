@@ -53,6 +53,25 @@
         <url>http://www.microsoft.com/</url>
     </organization>
 
+    <developers>
+        <developer>
+            <id>vboctor</id>
+            <name>Victor Boctor</name>
+            <email>vboctor@users.noreply.github.com</email>
+            <url>http://www.github.com/officedev/ews-java-api</url>
+            <organization>Microsoft</organization>
+            <organizationUrl>http://www.microsoft.com</organizationUrl>
+            <roles>
+                <role>administrator</role>
+                <role>developer</role>
+            </roles>
+            <timezone>America/New_York</timezone>
+            <properties>
+                 <picUrl>http://www.example.com/jdoe/pic</picUrl>
+            </properties>
+        </developer>
+    </developers>
+
     <properties>
         <!-- Eliminates the file encoding warning. Of course, all of your files
             should probably be UTF-8 nowadays. -->
@@ -248,6 +267,8 @@
                 <configuration>
                     <!-- Ref.: http://books.sonatype.com/nexus-book/reference/staging-deployment.html -->
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                 </configuration>
             </plugin>
             <plugin>
