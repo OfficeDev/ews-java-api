@@ -1,0 +1,15 @@
+microsoft.exchange.webservices.base
+microsoft.exchange.webservices.base.util
+microsoft.exchange.webservices.data.autodiscover
+microsoft.exchange.webservices.data.autodiscover.request
+microsoft.exchange.webservices.data.core
+microsoft.exchange.webservices.data.core.service.items
+microsoft.exchange.webservices.data.credential
+microsoft.exchange.webservices.data.dns
+microsoft.exchange.webservices.data.exception
+microsoft.exchange.webservices.data.misc
+microsoft.exchange.webservices.data.misc.availability
+microsoft.exchange.webservices.data.property.complex
+microsoft.exchange.webservices.data.property.definition
+microsoft.exchange.webservices.data.sync
+microsoft.exchange.webservices.data.util

@@ -1,0 +1,424 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * The MIT License<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * Copyright (c) 2012 Microsoft Corporation<a name="line.3"></a>
+<span class="sourceLineNo">004</span> *<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * Permission is hereby granted, free of charge, to any person obtaining a copy<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * of this software and associated documentation files (the "Software"), to deal<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * in the Software without restriction, including without limitation the rights<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * copies of the Software, and to permit persons to whom the Software is<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * furnished to do so, subject to the following conditions:<a name="line.10"></a>
+<span class="sourceLineNo">011</span> *<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * The above copyright notice and this permission notice shall be included in<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * all copies or substantial portions of the Software.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> *<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<a name="line.19"></a>
+<span class="sourceLineNo">020</span> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<a name="line.20"></a>
+<span class="sourceLineNo">021</span> * THE SOFTWARE.<a name="line.21"></a>
+<span class="sourceLineNo">022</span> */<a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span>package microsoft.exchange.webservices.data.core.request;<a name="line.24"></a>
+<span class="sourceLineNo">025</span><a name="line.25"></a>
+<span class="sourceLineNo">026</span>import microsoft.exchange.webservices.data.core.WebProxy;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import org.apache.http.Header;<a name="line.28"></a>
+<span class="sourceLineNo">029</span>import org.apache.http.HttpHost;<a name="line.29"></a>
+<span class="sourceLineNo">030</span>import org.apache.http.auth.AuthScope;<a name="line.30"></a>
+<span class="sourceLineNo">031</span>import org.apache.http.auth.NTCredentials;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>import org.apache.http.client.CredentialsProvider;<a name="line.32"></a>
+<span class="sourceLineNo">033</span>import org.apache.http.client.config.AuthSchemes;<a name="line.33"></a>
+<span class="sourceLineNo">034</span>import org.apache.http.client.config.RequestConfig;<a name="line.34"></a>
+<span class="sourceLineNo">035</span>import org.apache.http.client.methods.CloseableHttpResponse;<a name="line.35"></a>
+<span class="sourceLineNo">036</span>import org.apache.http.client.methods.HttpPost;<a name="line.36"></a>
+<span class="sourceLineNo">037</span>import org.apache.http.client.protocol.HttpClientContext;<a name="line.37"></a>
+<span class="sourceLineNo">038</span>import org.apache.http.impl.client.BasicCredentialsProvider;<a name="line.38"></a>
+<span class="sourceLineNo">039</span>import org.apache.http.impl.client.CloseableHttpClient;<a name="line.39"></a>
+<span class="sourceLineNo">040</span>import org.apache.http.util.EntityUtils;<a name="line.40"></a>
+<span class="sourceLineNo">041</span><a name="line.41"></a>
+<span class="sourceLineNo">042</span>import java.io.BufferedInputStream;<a name="line.42"></a>
+<span class="sourceLineNo">043</span>import java.io.ByteArrayOutputStream;<a name="line.43"></a>
+<span class="sourceLineNo">044</span>import java.io.IOException;<a name="line.44"></a>
+<span class="sourceLineNo">045</span>import java.io.InputStream;<a name="line.45"></a>
+<span class="sourceLineNo">046</span>import java.io.OutputStream;<a name="line.46"></a>
+<span class="sourceLineNo">047</span>import java.util.Arrays;<a name="line.47"></a>
+<span class="sourceLineNo">048</span>import java.util.HashMap;<a name="line.48"></a>
+<span class="sourceLineNo">049</span>import java.util.Map;<a name="line.49"></a>
+<span class="sourceLineNo">050</span><a name="line.50"></a>
+<span class="sourceLineNo">051</span><a name="line.51"></a>
+<span class="sourceLineNo">052</span>/**<a name="line.52"></a>
+<span class="sourceLineNo">053</span> * HttpClientWebRequest is used for making request to the server through NTLM Authentication by using Apache<a name="line.53"></a>
+<span class="sourceLineNo">054</span> * HttpClient 3.1 and JCIFS Library.<a name="line.54"></a>
+<span class="sourceLineNo">055</span> */<a name="line.55"></a>
+<span class="sourceLineNo">056</span>public class HttpClientWebRequest extends HttpWebRequest {<a name="line.56"></a>
+<span class="sourceLineNo">057</span><a name="line.57"></a>
+<span class="sourceLineNo">058</span>  /**<a name="line.58"></a>
+<span class="sourceLineNo">059</span>   * The Http Method.<a name="line.59"></a>
+<span class="sourceLineNo">060</span>   */<a name="line.60"></a>
+<span class="sourceLineNo">061</span>  private HttpPost httpPost = null;<a name="line.61"></a>
+<span class="sourceLineNo">062</span>  private CloseableHttpResponse response = null;<a name="line.62"></a>
+<span class="sourceLineNo">063</span><a name="line.63"></a>
+<span class="sourceLineNo">064</span>  private final CloseableHttpClient httpClient;<a name="line.64"></a>
+<span class="sourceLineNo">065</span>  private final HttpClientContext httpContext;<a name="line.65"></a>
+<span class="sourceLineNo">066</span><a name="line.66"></a>
+<span class="sourceLineNo">067</span><a name="line.67"></a>
+<span class="sourceLineNo">068</span>  /**<a name="line.68"></a>
+<span class="sourceLineNo">069</span>   * Instantiates a new http native web request.<a name="line.69"></a>
+<span class="sourceLineNo">070</span>   */<a name="line.70"></a>
+<span class="sourceLineNo">071</span>  public HttpClientWebRequest(CloseableHttpClient httpClient, HttpClientContext httpContext) {<a name="line.71"></a>
+<span class="sourceLineNo">072</span>    this.httpClient = httpClient;<a name="line.72"></a>
+<span class="sourceLineNo">073</span>    this.httpContext = httpContext;<a name="line.73"></a>
+<span class="sourceLineNo">074</span>  }<a name="line.74"></a>
+<span class="sourceLineNo">075</span><a name="line.75"></a>
+<span class="sourceLineNo">076</span>  /**<a name="line.76"></a>
+<span class="sourceLineNo">077</span>   * Releases the connection by Closing.<a name="line.77"></a>
+<span class="sourceLineNo">078</span>   */<a name="line.78"></a>
+<span class="sourceLineNo">079</span>  @Override<a name="line.79"></a>
+<span class="sourceLineNo">080</span>  public void close() throws IOException {<a name="line.80"></a>
+<span class="sourceLineNo">081</span>    // First check if we can close the response, by consuming the complete response<a name="line.81"></a>
+<span class="sourceLineNo">082</span>    // This releases the connection but keeps it alive for future request<a name="line.82"></a>
+<span class="sourceLineNo">083</span>    // If that is not possible, we simply cleanup the whole connection<a name="line.83"></a>
+<span class="sourceLineNo">084</span>    if (response != null &amp;&amp; response.getEntity() != null) {<a name="line.84"></a>
+<span class="sourceLineNo">085</span>      EntityUtils.consume(response.getEntity());<a name="line.85"></a>
+<span class="sourceLineNo">086</span>    } else if (httpPost != null) {<a name="line.86"></a>
+<span class="sourceLineNo">087</span>      httpPost.releaseConnection();<a name="line.87"></a>
+<span class="sourceLineNo">088</span>    }<a name="line.88"></a>
+<span class="sourceLineNo">089</span><a name="line.89"></a>
+<span class="sourceLineNo">090</span>    // We set httpPost to null to prevent the connection from being closed again by an accidental<a name="line.90"></a>
+<span class="sourceLineNo">091</span>    // second call to close()<a name="line.91"></a>
+<span class="sourceLineNo">092</span>    // The response is kept, in case something in the library still wants to read something from it,<a name="line.92"></a>
+<span class="sourceLineNo">093</span>    // like response code or headers<a name="line.93"></a>
+<span class="sourceLineNo">094</span>    httpPost = null;<a name="line.94"></a>
+<span class="sourceLineNo">095</span>  }<a name="line.95"></a>
+<span class="sourceLineNo">096</span><a name="line.96"></a>
+<span class="sourceLineNo">097</span>  /**<a name="line.97"></a>
+<span class="sourceLineNo">098</span>   * Prepares the request by setting appropriate headers, authentication, timeouts, etc.<a name="line.98"></a>
+<span class="sourceLineNo">099</span>   */<a name="line.99"></a>
+<span class="sourceLineNo">100</span>  @Override<a name="line.100"></a>
+<span class="sourceLineNo">101</span>  public void prepareConnection() {<a name="line.101"></a>
+<span class="sourceLineNo">102</span>    httpPost = new HttpPost(getUrl().toString());<a name="line.102"></a>
+<span class="sourceLineNo">103</span><a name="line.103"></a>
+<span class="sourceLineNo">104</span>    // Populate headers.<a name="line.104"></a>
+<span class="sourceLineNo">105</span>    httpPost.addHeader("Content-type", getContentType());<a name="line.105"></a>
+<span class="sourceLineNo">106</span>    httpPost.addHeader("User-Agent", getUserAgent());<a name="line.106"></a>
+<span class="sourceLineNo">107</span>    httpPost.addHeader("Accept", getAccept());<a name="line.107"></a>
+<span class="sourceLineNo">108</span>    httpPost.addHeader("Keep-Alive", "300");<a name="line.108"></a>
+<span class="sourceLineNo">109</span>    httpPost.addHeader("Connection", "Keep-Alive");<a name="line.109"></a>
+<span class="sourceLineNo">110</span><a name="line.110"></a>
+<span class="sourceLineNo">111</span>    if (isAcceptGzipEncoding()) {<a name="line.111"></a>
+<span class="sourceLineNo">112</span>      httpPost.addHeader("Accept-Encoding", "gzip,deflate");<a name="line.112"></a>
+<span class="sourceLineNo">113</span>    }<a name="line.113"></a>
+<span class="sourceLineNo">114</span><a name="line.114"></a>
+<span class="sourceLineNo">115</span>    if (getHeaders() != null) {<a name="line.115"></a>
+<span class="sourceLineNo">116</span>      for (Map.Entry&lt;String, String&gt; httpHeader : getHeaders().entrySet()) {<a name="line.116"></a>
+<span class="sourceLineNo">117</span>        httpPost.addHeader(httpHeader.getKey(), httpHeader.getValue());<a name="line.117"></a>
+<span class="sourceLineNo">118</span>      }<a name="line.118"></a>
+<span class="sourceLineNo">119</span>    }<a name="line.119"></a>
+<span class="sourceLineNo">120</span><a name="line.120"></a>
+<span class="sourceLineNo">121</span>    // Build request configuration.<a name="line.121"></a>
+<span class="sourceLineNo">122</span>    // Disable Kerberos in the preferred auth schemes - EWS should usually allow NTLM or Basic auth<a name="line.122"></a>
+<span class="sourceLineNo">123</span>    RequestConfig.Builder<a name="line.123"></a>
+<span class="sourceLineNo">124</span>        requestConfigBuilder =<a name="line.124"></a>
+<span class="sourceLineNo">125</span>        RequestConfig.custom().setAuthenticationEnabled(true).setConnectionRequestTimeout(getTimeout())<a name="line.125"></a>
+<span class="sourceLineNo">126</span>            .setConnectTimeout(getTimeout()).setRedirectsEnabled(isAllowAutoRedirect())<a name="line.126"></a>
+<span class="sourceLineNo">127</span>            .setSocketTimeout(getTimeout())<a name="line.127"></a>
+<span class="sourceLineNo">128</span>            .setTargetPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.BASIC))<a name="line.128"></a>
+<span class="sourceLineNo">129</span>            .setProxyPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.BASIC));<a name="line.129"></a>
+<span class="sourceLineNo">130</span><a name="line.130"></a>
+<span class="sourceLineNo">131</span>    CredentialsProvider credentialsProvider = new BasicCredentialsProvider();<a name="line.131"></a>
+<span class="sourceLineNo">132</span><a name="line.132"></a>
+<span class="sourceLineNo">133</span>    // Add proxy credential if necessary.<a name="line.133"></a>
+<span class="sourceLineNo">134</span>    WebProxy proxy = getProxy();<a name="line.134"></a>
+<span class="sourceLineNo">135</span>    if (proxy != null) {<a name="line.135"></a>
+<span class="sourceLineNo">136</span>      HttpHost proxyHost = new HttpHost(proxy.getHost(), proxy.getPort());<a name="line.136"></a>
+<span class="sourceLineNo">137</span>      requestConfigBuilder.setProxy(proxyHost);<a name="line.137"></a>
+<span class="sourceLineNo">138</span><a name="line.138"></a>
+<span class="sourceLineNo">139</span>      if (proxy.hasCredentials()) {<a name="line.139"></a>
+<span class="sourceLineNo">140</span>        NTCredentials<a name="line.140"></a>
+<span class="sourceLineNo">141</span>            proxyCredentials =<a name="line.141"></a>
+<span class="sourceLineNo">142</span>            new NTCredentials(proxy.getCredentials().getUsername(), proxy.getCredentials().getPassword(), "",<a name="line.142"></a>
+<span class="sourceLineNo">143</span>                              proxy.getCredentials().getDomain());<a name="line.143"></a>
+<span class="sourceLineNo">144</span><a name="line.144"></a>
+<span class="sourceLineNo">145</span>        credentialsProvider.setCredentials(new AuthScope(proxyHost), proxyCredentials);<a name="line.145"></a>
+<span class="sourceLineNo">146</span>      }<a name="line.146"></a>
+<span class="sourceLineNo">147</span>    }<a name="line.147"></a>
+<span class="sourceLineNo">148</span><a name="line.148"></a>
+<span class="sourceLineNo">149</span>    // Add web service credential if necessary.<a name="line.149"></a>
+<span class="sourceLineNo">150</span>    if (isAllowAuthentication() &amp;&amp; getUsername() != null) {<a name="line.150"></a>
+<span class="sourceLineNo">151</span>      NTCredentials webServiceCredentials = new NTCredentials(getUsername(), getPassword(), "", getDomain());<a name="line.151"></a>
+<span class="sourceLineNo">152</span>      credentialsProvider.setCredentials(new AuthScope(AuthScope.ANY), webServiceCredentials);<a name="line.152"></a>
+<span class="sourceLineNo">153</span>    }<a name="line.153"></a>
+<span class="sourceLineNo">154</span><a name="line.154"></a>
+<span class="sourceLineNo">155</span>    httpContext.setCredentialsProvider(credentialsProvider);<a name="line.155"></a>
+<span class="sourceLineNo">156</span><a name="line.156"></a>
+<span class="sourceLineNo">157</span>    httpPost.setConfig(requestConfigBuilder.build());<a name="line.157"></a>
+<span class="sourceLineNo">158</span>  }<a name="line.158"></a>
+<span class="sourceLineNo">159</span><a name="line.159"></a>
+<span class="sourceLineNo">160</span>  /**<a name="line.160"></a>
+<span class="sourceLineNo">161</span>   * Gets the input stream.<a name="line.161"></a>
+<span class="sourceLineNo">162</span>   *<a name="line.162"></a>
+<span class="sourceLineNo">163</span>   * @return the input stream<a name="line.163"></a>
+<span class="sourceLineNo">164</span>   * @throws EWSHttpException the EWS http exception<a name="line.164"></a>
+<span class="sourceLineNo">165</span>   */<a name="line.165"></a>
+<span class="sourceLineNo">166</span>  @Override<a name="line.166"></a>
+<span class="sourceLineNo">167</span>  public InputStream getInputStream() throws EWSHttpException, IOException {<a name="line.167"></a>
+<span class="sourceLineNo">168</span>    throwIfResponseIsNull();<a name="line.168"></a>
+<span class="sourceLineNo">169</span>    BufferedInputStream bufferedInputStream = null;<a name="line.169"></a>
+<span class="sourceLineNo">170</span>    try {<a name="line.170"></a>
+<span class="sourceLineNo">171</span>      bufferedInputStream = new BufferedInputStream(response.getEntity().getContent());<a name="line.171"></a>
+<span class="sourceLineNo">172</span>    } catch (IOException e) {<a name="line.172"></a>
+<span class="sourceLineNo">173</span>      throw new EWSHttpException("Connection Error " + e);<a name="line.173"></a>
+<span class="sourceLineNo">174</span>    }<a name="line.174"></a>
+<span class="sourceLineNo">175</span>    return bufferedInputStream;<a name="line.175"></a>
+<span class="sourceLineNo">176</span>  }<a name="line.176"></a>
+<span class="sourceLineNo">177</span><a name="line.177"></a>
+<span class="sourceLineNo">178</span>  /**<a name="line.178"></a>
+<span class="sourceLineNo">179</span>   * Gets the error stream.<a name="line.179"></a>
+<span class="sourceLineNo">180</span>   *<a name="line.180"></a>
+<span class="sourceLineNo">181</span>   * @return the error stream<a name="line.181"></a>
+<span class="sourceLineNo">182</span>   * @throws EWSHttpException the EWS http exception<a name="line.182"></a>
+<span class="sourceLineNo">183</span>   */<a name="line.183"></a>
+<span class="sourceLineNo">184</span>  @Override<a name="line.184"></a>
+<span class="sourceLineNo">185</span>  public InputStream getErrorStream() throws EWSHttpException {<a name="line.185"></a>
+<span class="sourceLineNo">186</span>    throwIfResponseIsNull();<a name="line.186"></a>
+<span class="sourceLineNo">187</span>    BufferedInputStream bufferedInputStream = null;<a name="line.187"></a>
+<span class="sourceLineNo">188</span>    try {<a name="line.188"></a>
+<span class="sourceLineNo">189</span>      bufferedInputStream = new BufferedInputStream(response.getEntity().getContent());<a name="line.189"></a>
+<span class="sourceLineNo">190</span>    } catch (Exception e) {<a name="line.190"></a>
+<span class="sourceLineNo">191</span>      throw new EWSHttpException("Connection Error " + e);<a name="line.191"></a>
+<span class="sourceLineNo">192</span>    }<a name="line.192"></a>
+<span class="sourceLineNo">193</span>    return bufferedInputStream;<a name="line.193"></a>
+<span class="sourceLineNo">194</span>  }<a name="line.194"></a>
+<span class="sourceLineNo">195</span><a name="line.195"></a>
+<span class="sourceLineNo">196</span>  /**<a name="line.196"></a>
+<span class="sourceLineNo">197</span>   * Gets the output stream.<a name="line.197"></a>
+<span class="sourceLineNo">198</span>   *<a name="line.198"></a>
+<span class="sourceLineNo">199</span>   * @return the output stream<a name="line.199"></a>
+<span class="sourceLineNo">200</span>   * @throws EWSHttpException the EWS http exception<a name="line.200"></a>
+<span class="sourceLineNo">201</span>   */<a name="line.201"></a>
+<span class="sourceLineNo">202</span>  @Override<a name="line.202"></a>
+<span class="sourceLineNo">203</span>  public OutputStream getOutputStream() throws EWSHttpException {<a name="line.203"></a>
+<span class="sourceLineNo">204</span>    OutputStream os = null;<a name="line.204"></a>
+<span class="sourceLineNo">205</span>    throwIfRequestIsNull();<a name="line.205"></a>
+<span class="sourceLineNo">206</span>    os = new ByteArrayOutputStream();<a name="line.206"></a>
+<span class="sourceLineNo">207</span><a name="line.207"></a>
+<span class="sourceLineNo">208</span>    httpPost.setEntity(new ByteArrayOSRequestEntity(os));<a name="line.208"></a>
+<span class="sourceLineNo">209</span>    return os;<a name="line.209"></a>
+<span class="sourceLineNo">210</span>  }<a name="line.210"></a>
+<span class="sourceLineNo">211</span><a name="line.211"></a>
+<span class="sourceLineNo">212</span>  /**<a name="line.212"></a>
+<span class="sourceLineNo">213</span>   * Gets the response headers.<a name="line.213"></a>
+<span class="sourceLineNo">214</span>   *<a name="line.214"></a>
+<span class="sourceLineNo">215</span>   * @return the response headers<a name="line.215"></a>
+<span class="sourceLineNo">216</span>   * @throws EWSHttpException the EWS http exception<a name="line.216"></a>
+<span class="sourceLineNo">217</span>   */<a name="line.217"></a>
+<span class="sourceLineNo">218</span>  @Override<a name="line.218"></a>
+<span class="sourceLineNo">219</span>  public Map&lt;String, String&gt; getResponseHeaders() throws EWSHttpException {<a name="line.219"></a>
+<span class="sourceLineNo">220</span>    throwIfResponseIsNull();<a name="line.220"></a>
+<span class="sourceLineNo">221</span>    Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();<a name="line.221"></a>
+<span class="sourceLineNo">222</span><a name="line.222"></a>
+<span class="sourceLineNo">223</span>    Header[] hM = response.getAllHeaders();<a name="line.223"></a>
+<span class="sourceLineNo">224</span>    for (Header header : hM) {<a name="line.224"></a>
+<span class="sourceLineNo">225</span>      // RFC2109: Servers may return multiple Set-Cookie headers<a name="line.225"></a>
+<span class="sourceLineNo">226</span>      // Need to append the cookies before they are added to the map<a name="line.226"></a>
+<span class="sourceLineNo">227</span>      if (header.getName().equals("Set-Cookie")) {<a name="line.227"></a>
+<span class="sourceLineNo">228</span>        String cookieValue = "";<a name="line.228"></a>
+<span class="sourceLineNo">229</span>        if (map.containsKey("Set-Cookie")) {<a name="line.229"></a>
+<span class="sourceLineNo">230</span>          cookieValue += map.get("Set-Cookie");<a name="line.230"></a>
+<span class="sourceLineNo">231</span>          cookieValue += ",";<a name="line.231"></a>
+<span class="sourceLineNo">232</span>        }<a name="line.232"></a>
+<span class="sourceLineNo">233</span>        cookieValue += header.getValue();<a name="line.233"></a>
+<span class="sourceLineNo">234</span>        map.put("Set-Cookie", cookieValue);<a name="line.234"></a>
+<span class="sourceLineNo">235</span>      } else {<a name="line.235"></a>
+<span class="sourceLineNo">236</span>        map.put(header.getName(), header.getValue());<a name="line.236"></a>
+<span class="sourceLineNo">237</span>      }<a name="line.237"></a>
+<span class="sourceLineNo">238</span>    }<a name="line.238"></a>
+<span class="sourceLineNo">239</span><a name="line.239"></a>
+<span class="sourceLineNo">240</span>    return map;<a name="line.240"></a>
+<span class="sourceLineNo">241</span>  }<a name="line.241"></a>
+<span class="sourceLineNo">242</span><a name="line.242"></a>
+<span class="sourceLineNo">243</span>  /*<a name="line.243"></a>
+<span class="sourceLineNo">244</span>   * (non-Javadoc)<a name="line.244"></a>
+<span class="sourceLineNo">245</span>   *<a name="line.245"></a>
+<span class="sourceLineNo">246</span>   * @see<a name="line.246"></a>
+<span class="sourceLineNo">247</span>   * microsoft.exchange.webservices.HttpWebRequest#getResponseHeaderField(<a name="line.247"></a>
+<span class="sourceLineNo">248</span>   * java.lang.String)<a name="line.248"></a>
+<span class="sourceLineNo">249</span>   */<a name="line.249"></a>
+<span class="sourceLineNo">250</span>  @Override<a name="line.250"></a>
+<span class="sourceLineNo">251</span>  public String getResponseHeaderField(String headerName) throws EWSHttpException {<a name="line.251"></a>
+<span class="sourceLineNo">252</span>    throwIfResponseIsNull();<a name="line.252"></a>
+<span class="sourceLineNo">253</span>    Header hM = response.getFirstHeader(headerName);<a name="line.253"></a>
+<span class="sourceLineNo">254</span>    return hM != null ? hM.getValue() : null;<a name="line.254"></a>
+<span class="sourceLineNo">255</span>  }<a name="line.255"></a>
+<span class="sourceLineNo">256</span><a name="line.256"></a>
+<span class="sourceLineNo">257</span>  /**<a name="line.257"></a>
+<span class="sourceLineNo">258</span>   * Gets the content encoding.<a name="line.258"></a>
+<span class="sourceLineNo">259</span>   *<a name="line.259"></a>
+<span class="sourceLineNo">260</span>   * @return the content encoding<a name="line.260"></a>
+<span class="sourceLineNo">261</span>   * @throws EWSHttpException the EWS http exception<a name="line.261"></a>
+<span class="sourceLineNo">262</span>   */<a name="line.262"></a>
+<span class="sourceLineNo">263</span>  @Override<a name="line.263"></a>
+<span class="sourceLineNo">264</span>  public String getContentEncoding() throws EWSHttpException {<a name="line.264"></a>
+<span class="sourceLineNo">265</span>    throwIfResponseIsNull();<a name="line.265"></a>
+<span class="sourceLineNo">266</span>    return response.getFirstHeader("content-encoding") != null ? response.getFirstHeader("content-encoding")<a name="line.266"></a>
+<span class="sourceLineNo">267</span>        .getValue() : null;<a name="line.267"></a>
+<span class="sourceLineNo">268</span>  }<a name="line.268"></a>
+<span class="sourceLineNo">269</span><a name="line.269"></a>
+<span class="sourceLineNo">270</span>  /**<a name="line.270"></a>
+<span class="sourceLineNo">271</span>   * Gets the response content type.<a name="line.271"></a>
+<span class="sourceLineNo">272</span>   *<a name="line.272"></a>
+<span class="sourceLineNo">273</span>   * @return the response content type<a name="line.273"></a>
+<span class="sourceLineNo">274</span>   * @throws EWSHttpException the EWS http exception<a name="line.274"></a>
+<span class="sourceLineNo">275</span>   */<a name="line.275"></a>
+<span class="sourceLineNo">276</span>  @Override<a name="line.276"></a>
+<span class="sourceLineNo">277</span>  public String getResponseContentType() throws EWSHttpException {<a name="line.277"></a>
+<span class="sourceLineNo">278</span>    throwIfResponseIsNull();<a name="line.278"></a>
+<span class="sourceLineNo">279</span>    return response.getFirstHeader("Content-type") != null ? response.getFirstHeader("Content-type")<a name="line.279"></a>
+<span class="sourceLineNo">280</span>        .getValue() : null;<a name="line.280"></a>
+<span class="sourceLineNo">281</span>  }<a name="line.281"></a>
+<span class="sourceLineNo">282</span><a name="line.282"></a>
+<span class="sourceLineNo">283</span>  /**<a name="line.283"></a>
+<span class="sourceLineNo">284</span>   * Executes Request by sending request xml data to server.<a name="line.284"></a>
+<span class="sourceLineNo">285</span>   *<a name="line.285"></a>
+<span class="sourceLineNo">286</span>   * @throws EWSHttpException    the EWS http exception<a name="line.286"></a>
+<span class="sourceLineNo">287</span>   * @throws java.io.IOException the IO Exception<a name="line.287"></a>
+<span class="sourceLineNo">288</span>   */<a name="line.288"></a>
+<span class="sourceLineNo">289</span>  @Override<a name="line.289"></a>
+<span class="sourceLineNo">290</span>  public int executeRequest() throws EWSHttpException, IOException {<a name="line.290"></a>
+<span class="sourceLineNo">291</span>    throwIfRequestIsNull();<a name="line.291"></a>
+<span class="sourceLineNo">292</span>    response = httpClient.execute(httpPost, httpContext);<a name="line.292"></a>
+<span class="sourceLineNo">293</span>    return response.getStatusLine().getStatusCode(); // ?? don't know what is wanted in return<a name="line.293"></a>
+<span class="sourceLineNo">294</span>  }<a name="line.294"></a>
+<span class="sourceLineNo">295</span><a name="line.295"></a>
+<span class="sourceLineNo">296</span>  /**<a name="line.296"></a>
+<span class="sourceLineNo">297</span>   * Gets the response code.<a name="line.297"></a>
+<span class="sourceLineNo">298</span>   *<a name="line.298"></a>
+<span class="sourceLineNo">299</span>   * @return the response code<a name="line.299"></a>
+<span class="sourceLineNo">300</span>   * @throws EWSHttpException the EWS http exception<a name="line.300"></a>
+<span class="sourceLineNo">301</span>   */<a name="line.301"></a>
+<span class="sourceLineNo">302</span>  @Override<a name="line.302"></a>
+<span class="sourceLineNo">303</span>  public int getResponseCode() throws EWSHttpException {<a name="line.303"></a>
+<span class="sourceLineNo">304</span>    throwIfResponseIsNull();<a name="line.304"></a>
+<span class="sourceLineNo">305</span>    return response.getStatusLine().getStatusCode();<a name="line.305"></a>
+<span class="sourceLineNo">306</span>  }<a name="line.306"></a>
+<span class="sourceLineNo">307</span><a name="line.307"></a>
+<span class="sourceLineNo">308</span>  /**<a name="line.308"></a>
+<span class="sourceLineNo">309</span>   * Gets the response message.<a name="line.309"></a>
+<span class="sourceLineNo">310</span>   *<a name="line.310"></a>
+<span class="sourceLineNo">311</span>   * @return the response message<a name="line.311"></a>
+<span class="sourceLineNo">312</span>   * @throws EWSHttpException the EWS http exception<a name="line.312"></a>
+<span class="sourceLineNo">313</span>   */<a name="line.313"></a>
+<span class="sourceLineNo">314</span>  public String getResponseText() throws EWSHttpException {<a name="line.314"></a>
+<span class="sourceLineNo">315</span>    throwIfResponseIsNull();<a name="line.315"></a>
+<span class="sourceLineNo">316</span>    return response.getStatusLine().getReasonPhrase();<a name="line.316"></a>
+<span class="sourceLineNo">317</span>  }<a name="line.317"></a>
+<span class="sourceLineNo">318</span><a name="line.318"></a>
+<span class="sourceLineNo">319</span>  /**<a name="line.319"></a>
+<span class="sourceLineNo">320</span>   * Throw if conn is null.<a name="line.320"></a>
+<span class="sourceLineNo">321</span>   *<a name="line.321"></a>
+<span class="sourceLineNo">322</span>   * @throws EWSHttpException the EWS http exception<a name="line.322"></a>
+<span class="sourceLineNo">323</span>   */<a name="line.323"></a>
+<span class="sourceLineNo">324</span>  private void throwIfRequestIsNull() throws EWSHttpException {<a name="line.324"></a>
+<span class="sourceLineNo">325</span>    if (null == httpPost) {<a name="line.325"></a>
+<span class="sourceLineNo">326</span>      throw new EWSHttpException("Connection not established");<a name="line.326"></a>
+<span class="sourceLineNo">327</span>    }<a name="line.327"></a>
+<span class="sourceLineNo">328</span>  }<a name="line.328"></a>
+<span class="sourceLineNo">329</span><a name="line.329"></a>
+<span class="sourceLineNo">330</span>  private void throwIfResponseIsNull() throws EWSHttpException {<a name="line.330"></a>
+<span class="sourceLineNo">331</span>    if (null == response) {<a name="line.331"></a>
+<span class="sourceLineNo">332</span>      throw new EWSHttpException("Connection not established");<a name="line.332"></a>
+<span class="sourceLineNo">333</span>    }<a name="line.333"></a>
+<span class="sourceLineNo">334</span>  }<a name="line.334"></a>
+<span class="sourceLineNo">335</span><a name="line.335"></a>
+<span class="sourceLineNo">336</span>  /**<a name="line.336"></a>
+<span class="sourceLineNo">337</span>   * Gets the request property.<a name="line.337"></a>
+<span class="sourceLineNo">338</span>   *<a name="line.338"></a>
+<span class="sourceLineNo">339</span>   * @return the request property<a name="line.339"></a>
+<span class="sourceLineNo">340</span>   * @throws EWSHttpException the EWS http exception<a name="line.340"></a>
+<span class="sourceLineNo">341</span>   */<a name="line.341"></a>
+<span class="sourceLineNo">342</span>  public Map&lt;String, String&gt; getRequestProperty() throws EWSHttpException {<a name="line.342"></a>
+<span class="sourceLineNo">343</span>    throwIfRequestIsNull();<a name="line.343"></a>
+<span class="sourceLineNo">344</span>    Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();<a name="line.344"></a>
+<span class="sourceLineNo">345</span><a name="line.345"></a>
+<span class="sourceLineNo">346</span>    Header[] hM = httpPost.getAllHeaders();<a name="line.346"></a>
+<span class="sourceLineNo">347</span>    for (Header header : hM) {<a name="line.347"></a>
+<span class="sourceLineNo">348</span>      map.put(header.getName(), header.getValue());<a name="line.348"></a>
+<span class="sourceLineNo">349</span>    }<a name="line.349"></a>
+<span class="sourceLineNo">350</span>    return map;<a name="line.350"></a>
+<span class="sourceLineNo">351</span>  }<a name="line.351"></a>
+<span class="sourceLineNo">352</span>}<a name="line.352"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

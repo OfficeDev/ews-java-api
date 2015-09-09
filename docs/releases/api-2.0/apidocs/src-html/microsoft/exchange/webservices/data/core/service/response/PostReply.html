@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * The MIT License<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * Copyright (c) 2012 Microsoft Corporation<a name="line.3"></a>
+<span class="sourceLineNo">004</span> *<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * Permission is hereby granted, free of charge, to any person obtaining a copy<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * of this software and associated documentation files (the "Software"), to deal<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * in the Software without restriction, including without limitation the rights<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * copies of the Software, and to permit persons to whom the Software is<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * furnished to do so, subject to the following conditions:<a name="line.10"></a>
+<span class="sourceLineNo">011</span> *<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * The above copyright notice and this permission notice shall be included in<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * all copies or substantial portions of the Software.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> *<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<a name="line.19"></a>
+<span class="sourceLineNo">020</span> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<a name="line.20"></a>
+<span class="sourceLineNo">021</span> * THE SOFTWARE.<a name="line.21"></a>
+<span class="sourceLineNo">022</span> */<a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span>package microsoft.exchange.webservices.data.core.service.response;<a name="line.24"></a>
+<span class="sourceLineNo">025</span><a name="line.25"></a>
+<span class="sourceLineNo">026</span>import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import microsoft.exchange.webservices.data.core.EwsUtilities;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import microsoft.exchange.webservices.data.core.PropertySet;<a name="line.28"></a>
+<span class="sourceLineNo">029</span>import microsoft.exchange.webservices.data.core.XmlElementNames;<a name="line.29"></a>
+<span class="sourceLineNo">030</span>import microsoft.exchange.webservices.data.core.service.ServiceObject;<a name="line.30"></a>
+<span class="sourceLineNo">031</span>import microsoft.exchange.webservices.data.core.service.item.Item;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>import microsoft.exchange.webservices.data.core.service.item.PostItem;<a name="line.32"></a>
+<span class="sourceLineNo">033</span>import microsoft.exchange.webservices.data.core.service.schema.EmailMessageSchema;<a name="line.33"></a>
+<span class="sourceLineNo">034</span>import microsoft.exchange.webservices.data.core.service.schema.ItemSchema;<a name="line.34"></a>
+<span class="sourceLineNo">035</span>import microsoft.exchange.webservices.data.core.service.schema.PostReplySchema;<a name="line.35"></a>
+<span class="sourceLineNo">036</span>import microsoft.exchange.webservices.data.core.service.schema.ResponseObjectSchema;<a name="line.36"></a>
+<span class="sourceLineNo">037</span>import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;<a name="line.37"></a>
+<span class="sourceLineNo">038</span>import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AffectedTaskOccurrence;<a name="line.38"></a>
+<span class="sourceLineNo">039</span>import microsoft.exchange.webservices.data.core.enumeration.service.DeleteMode;<a name="line.39"></a>
+<span class="sourceLineNo">040</span>import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;<a name="line.40"></a>
+<span class="sourceLineNo">041</span>import microsoft.exchange.webservices.data.core.enumeration.service.MessageDisposition;<a name="line.41"></a>
+<span class="sourceLineNo">042</span>import microsoft.exchange.webservices.data.core.enumeration.service.SendCancellationsMode;<a name="line.42"></a>
+<span class="sourceLineNo">043</span>import microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName;<a name="line.43"></a>
+<span class="sourceLineNo">044</span>import microsoft.exchange.webservices.data.core.exception.misc.InvalidOperationException;<a name="line.44"></a>
+<span class="sourceLineNo">045</span>import microsoft.exchange.webservices.data.property.complex.FolderId;<a name="line.45"></a>
+<span class="sourceLineNo">046</span>import microsoft.exchange.webservices.data.property.complex.ItemId;<a name="line.46"></a>
+<span class="sourceLineNo">047</span>import microsoft.exchange.webservices.data.property.complex.MessageBody;<a name="line.47"></a>
+<span class="sourceLineNo">048</span><a name="line.48"></a>
+<span class="sourceLineNo">049</span>import java.util.List;<a name="line.49"></a>
+<span class="sourceLineNo">050</span><a name="line.50"></a>
+<span class="sourceLineNo">051</span>/**<a name="line.51"></a>
+<span class="sourceLineNo">052</span> * Represents a reply to a post item.<a name="line.52"></a>
+<span class="sourceLineNo">053</span> */<a name="line.53"></a>
+<span class="sourceLineNo">054</span>@ServiceObjectDefinition(xmlElementName = XmlElementNames.PostReplyItem, returnedByServer = false)<a name="line.54"></a>
+<span class="sourceLineNo">055</span>public final class PostReply extends ServiceObject {<a name="line.55"></a>
+<span class="sourceLineNo">056</span><a name="line.56"></a>
+<span class="sourceLineNo">057</span>  /**<a name="line.57"></a>
+<span class="sourceLineNo">058</span>   * The reference item.<a name="line.58"></a>
+<span class="sourceLineNo">059</span>   */<a name="line.59"></a>
+<span class="sourceLineNo">060</span>  private Item referenceItem;<a name="line.60"></a>
+<span class="sourceLineNo">061</span><a name="line.61"></a>
+<span class="sourceLineNo">062</span>  /**<a name="line.62"></a>
+<span class="sourceLineNo">063</span>   * Initializes a new instance of the class.<a name="line.63"></a>
+<span class="sourceLineNo">064</span>   *<a name="line.64"></a>
+<span class="sourceLineNo">065</span>   * @param referenceItem the reference item<a name="line.65"></a>
+<span class="sourceLineNo">066</span>   * @throws Exception the exception<a name="line.66"></a>
+<span class="sourceLineNo">067</span>   */<a name="line.67"></a>
+<span class="sourceLineNo">068</span>  public PostReply(Item referenceItem) throws Exception {<a name="line.68"></a>
+<span class="sourceLineNo">069</span>    super(referenceItem.getService());<a name="line.69"></a>
+<span class="sourceLineNo">070</span>    referenceItem.throwIfThisIsNew();<a name="line.70"></a>
+<span class="sourceLineNo">071</span><a name="line.71"></a>
+<span class="sourceLineNo">072</span>    this.referenceItem = referenceItem;<a name="line.72"></a>
+<span class="sourceLineNo">073</span>  }<a name="line.73"></a>
+<span class="sourceLineNo">074</span><a name="line.74"></a>
+<span class="sourceLineNo">075</span>  /**<a name="line.75"></a>
+<span class="sourceLineNo">076</span>   * Internal method to return the schema associated with this type of object.<a name="line.76"></a>
+<span class="sourceLineNo">077</span>   *<a name="line.77"></a>
+<span class="sourceLineNo">078</span>   * @return The schema associated with this type of object.<a name="line.78"></a>
+<span class="sourceLineNo">079</span>   */<a name="line.79"></a>
+<span class="sourceLineNo">080</span>  @Override<a name="line.80"></a>
+<span class="sourceLineNo">081</span>  public ServiceObjectSchema getSchema() {<a name="line.81"></a>
+<span class="sourceLineNo">082</span>    return PostReplySchema.Instance;<a name="line.82"></a>
+<span class="sourceLineNo">083</span>  }<a name="line.83"></a>
+<span class="sourceLineNo">084</span><a name="line.84"></a>
+<span class="sourceLineNo">085</span>  /**<a name="line.85"></a>
+<span class="sourceLineNo">086</span>   * Gets the minimum required server version.<a name="line.86"></a>
+<span class="sourceLineNo">087</span>   *<a name="line.87"></a>
+<span class="sourceLineNo">088</span>   * @return Earliest Exchange version in which this service object type is<a name="line.88"></a>
+<span class="sourceLineNo">089</span>   * supported.<a name="line.89"></a>
+<span class="sourceLineNo">090</span>   */<a name="line.90"></a>
+<span class="sourceLineNo">091</span>  @Override public ExchangeVersion getMinimumRequiredServerVersion() {<a name="line.91"></a>
+<span class="sourceLineNo">092</span>    return ExchangeVersion.Exchange2007_SP1;<a name="line.92"></a>
+<span class="sourceLineNo">093</span>  }<a name="line.93"></a>
+<span class="sourceLineNo">094</span><a name="line.94"></a>
+<span class="sourceLineNo">095</span>  /**<a name="line.95"></a>
+<span class="sourceLineNo">096</span>   * Create a PostItem response.<a name="line.96"></a>
+<span class="sourceLineNo">097</span>   *<a name="line.97"></a>
+<span class="sourceLineNo">098</span>   * @param parentFolderId     the parent folder id<a name="line.98"></a>
+<span class="sourceLineNo">099</span>   * @param messageDisposition the message disposition<a name="line.99"></a>
+<span class="sourceLineNo">100</span>   * @return Created PostItem.<a name="line.100"></a>
+<span class="sourceLineNo">101</span>   * @throws Exception the exception<a name="line.101"></a>
+<span class="sourceLineNo">102</span>   */<a name="line.102"></a>
+<span class="sourceLineNo">103</span>  protected PostItem internalCreate(FolderId parentFolderId,<a name="line.103"></a>
+<span class="sourceLineNo">104</span>      MessageDisposition messageDisposition) throws Exception {<a name="line.104"></a>
+<span class="sourceLineNo">105</span>    ((ItemId) this<a name="line.105"></a>
+<span class="sourceLineNo">106</span>        .getObjectFromPropertyDefinition(<a name="line.106"></a>
+<span class="sourceLineNo">107</span>            ResponseObjectSchema.ReferenceItemId))<a name="line.107"></a>
+<span class="sourceLineNo">108</span>        .assign(this.referenceItem.getId());<a name="line.108"></a>
+<span class="sourceLineNo">109</span><a name="line.109"></a>
+<span class="sourceLineNo">110</span>    List&lt;Item&gt; items = this.getService().internalCreateResponseObject(this,<a name="line.110"></a>
+<span class="sourceLineNo">111</span>        parentFolderId, messageDisposition);<a name="line.111"></a>
+<span class="sourceLineNo">112</span><a name="line.112"></a>
+<span class="sourceLineNo">113</span>    PostItem postItem = EwsUtilities.findFirstItemOfType(PostItem.class,<a name="line.113"></a>
+<span class="sourceLineNo">114</span>        items);<a name="line.114"></a>
+<span class="sourceLineNo">115</span><a name="line.115"></a>
+<span class="sourceLineNo">116</span>    // This should never happen. If it does, we have a bug.<a name="line.116"></a>
+<span class="sourceLineNo">117</span>    EwsUtilities<a name="line.117"></a>
+<span class="sourceLineNo">118</span>        .ewsAssert(postItem != null, "PostReply.InternalCreate",<a name="line.118"></a>
+<span class="sourceLineNo">119</span>                   "postItem is null. The CreateItem call did" + " not return the expected PostItem.");<a name="line.119"></a>
+<span class="sourceLineNo">120</span><a name="line.120"></a>
+<span class="sourceLineNo">121</span>    return postItem;<a name="line.121"></a>
+<span class="sourceLineNo">122</span>  }<a name="line.122"></a>
+<span class="sourceLineNo">123</span><a name="line.123"></a>
+<span class="sourceLineNo">124</span>  /**<a name="line.124"></a>
+<span class="sourceLineNo">125</span>   * Loads the specified set of property on the object.<a name="line.125"></a>
+<span class="sourceLineNo">126</span>   *<a name="line.126"></a>
+<span class="sourceLineNo">127</span>   * @param propertySet the property set<a name="line.127"></a>
+<span class="sourceLineNo">128</span>   * @throws InvalidOperationException the invalid operation exception<a name="line.128"></a>
+<span class="sourceLineNo">129</span>   */<a name="line.129"></a>
+<span class="sourceLineNo">130</span>  @Override<a name="line.130"></a>
+<span class="sourceLineNo">131</span>  protected void internalLoad(PropertySet propertySet)<a name="line.131"></a>
+<span class="sourceLineNo">132</span>      throws InvalidOperationException {<a name="line.132"></a>
+<span class="sourceLineNo">133</span>    throw new InvalidOperationException("Loading this type of object is not supported.");<a name="line.133"></a>
+<span class="sourceLineNo">134</span>  }<a name="line.134"></a>
+<span class="sourceLineNo">135</span><a name="line.135"></a>
+<span class="sourceLineNo">136</span>  /**<a name="line.136"></a>
+<span class="sourceLineNo">137</span>   * Deletes the object.<a name="line.137"></a>
+<span class="sourceLineNo">138</span>   *<a name="line.138"></a>
+<span class="sourceLineNo">139</span>   * @param deleteMode              the delete mode<a name="line.139"></a>
+<span class="sourceLineNo">140</span>   * @param sendCancellationsMode   the send cancellations mode<a name="line.140"></a>
+<span class="sourceLineNo">141</span>   * @param affectedTaskOccurrences the affected task occurrences<a name="line.141"></a>
+<span class="sourceLineNo">142</span>   * @throws InvalidOperationException the invalid operation exception<a name="line.142"></a>
+<span class="sourceLineNo">143</span>   */<a name="line.143"></a>
+<span class="sourceLineNo">144</span>  @Override<a name="line.144"></a>
+<span class="sourceLineNo">145</span>  protected void internalDelete(DeleteMode deleteMode,<a name="line.145"></a>
+<span class="sourceLineNo">146</span>      SendCancellationsMode sendCancellationsMode,<a name="line.146"></a>
+<span class="sourceLineNo">147</span>      AffectedTaskOccurrence affectedTaskOccurrences)<a name="line.147"></a>
+<span class="sourceLineNo">148</span>      throws InvalidOperationException {<a name="line.148"></a>
+<span class="sourceLineNo">149</span>    throw new InvalidOperationException("Deleting this type of object isn't authorized.");<a name="line.149"></a>
+<span class="sourceLineNo">150</span>  }<a name="line.150"></a>
+<span class="sourceLineNo">151</span><a name="line.151"></a>
+<span class="sourceLineNo">152</span>  /**<a name="line.152"></a>
+<span class="sourceLineNo">153</span>   * Saves the post reply in the same folder as the original post item.<a name="line.153"></a>
+<span class="sourceLineNo">154</span>   * Calling this method results in a call to EWS.<a name="line.154"></a>
+<span class="sourceLineNo">155</span>   *<a name="line.155"></a>
+<span class="sourceLineNo">156</span>   * @return A PostItem representing the posted reply<a name="line.156"></a>
+<span class="sourceLineNo">157</span>   * @throws Exception the exception<a name="line.157"></a>
+<span class="sourceLineNo">158</span>   */<a name="line.158"></a>
+<span class="sourceLineNo">159</span>  public PostItem save() throws Exception {<a name="line.159"></a>
+<span class="sourceLineNo">160</span>    return this.internalCreate(null, null);<a name="line.160"></a>
+<span class="sourceLineNo">161</span>  }<a name="line.161"></a>
+<span class="sourceLineNo">162</span><a name="line.162"></a>
+<span class="sourceLineNo">163</span>  /**<a name="line.163"></a>
+<span class="sourceLineNo">164</span>   * Saves the post reply in the same folder as the original post item.<a name="line.164"></a>
+<span class="sourceLineNo">165</span>   * Calling this method results in a call to EWS.<a name="line.165"></a>
+<span class="sourceLineNo">166</span>   *<a name="line.166"></a>
+<span class="sourceLineNo">167</span>   * @param destinationFolderId the destination folder id<a name="line.167"></a>
+<span class="sourceLineNo">168</span>   * @return A PostItem representing the posted reply<a name="line.168"></a>
+<span class="sourceLineNo">169</span>   * @throws Exception the exception<a name="line.169"></a>
+<span class="sourceLineNo">170</span>   */<a name="line.170"></a>
+<span class="sourceLineNo">171</span>  public PostItem save(FolderId destinationFolderId) throws Exception {<a name="line.171"></a>
+<span class="sourceLineNo">172</span>    EwsUtilities.validateParam(destinationFolderId, "destinationFolderId");<a name="line.172"></a>
+<span class="sourceLineNo">173</span>    return this.internalCreate(destinationFolderId, null);<a name="line.173"></a>
+<span class="sourceLineNo">174</span>  }<a name="line.174"></a>
+<span class="sourceLineNo">175</span><a name="line.175"></a>
+<span class="sourceLineNo">176</span>  /**<a name="line.176"></a>
+<span class="sourceLineNo">177</span>   * Saves the post reply in a specified folder. Calling this method results<a name="line.177"></a>
+<span class="sourceLineNo">178</span>   * in a call to EWS.<a name="line.178"></a>
+<span class="sourceLineNo">179</span>   *<a name="line.179"></a>
+<span class="sourceLineNo">180</span>   * @param destinationFolderName the destination folder name<a name="line.180"></a>
+<span class="sourceLineNo">181</span>   * @return A PostItem representing the posted reply.<a name="line.181"></a>
+<span class="sourceLineNo">182</span>   * @throws Exception the exception<a name="line.182"></a>
+<span class="sourceLineNo">183</span>   */<a name="line.183"></a>
+<span class="sourceLineNo">184</span>  public PostItem save(WellKnownFolderName destinationFolderName)<a name="line.184"></a>
+<span class="sourceLineNo">185</span>      throws Exception {<a name="line.185"></a>
+<span class="sourceLineNo">186</span>    return this.internalCreate(new FolderId(destinationFolderName), null);<a name="line.186"></a>
+<span class="sourceLineNo">187</span>  }<a name="line.187"></a>
+<span class="sourceLineNo">188</span><a name="line.188"></a>
+<span class="sourceLineNo">189</span>  /**<a name="line.189"></a>
+<span class="sourceLineNo">190</span>   * Gets the subject of the post reply.<a name="line.190"></a>
+<span class="sourceLineNo">191</span>   *<a name="line.191"></a>
+<span class="sourceLineNo">192</span>   * @return the subject<a name="line.192"></a>
+<span class="sourceLineNo">193</span>   * @throws Exception the exception<a name="line.193"></a>
+<span class="sourceLineNo">194</span>   */<a name="line.194"></a>
+<span class="sourceLineNo">195</span>  public String getSubject() throws Exception {<a name="line.195"></a>
+<span class="sourceLineNo">196</span>    return (String) this<a name="line.196"></a>
+<span class="sourceLineNo">197</span>        .getObjectFromPropertyDefinition(EmailMessageSchema.Subject);<a name="line.197"></a>
+<span class="sourceLineNo">198</span>  }<a name="line.198"></a>
+<span class="sourceLineNo">199</span><a name="line.199"></a>
+<span class="sourceLineNo">200</span>  /**<a name="line.200"></a>
+<span class="sourceLineNo">201</span>   * Sets the subject.<a name="line.201"></a>
+<span class="sourceLineNo">202</span>   *<a name="line.202"></a>
+<span class="sourceLineNo">203</span>   * @param value the new subject<a name="line.203"></a>
+<span class="sourceLineNo">204</span>   * @throws Exception the exception<a name="line.204"></a>
+<span class="sourceLineNo">205</span>   */<a name="line.205"></a>
+<span class="sourceLineNo">206</span>  public void setSubject(String value) throws Exception {<a name="line.206"></a>
+<span class="sourceLineNo">207</span>    this.getPropertyBag().setObjectFromPropertyDefinition(<a name="line.207"></a>
+<span class="sourceLineNo">208</span>        EmailMessageSchema.Subject, value);<a name="line.208"></a>
+<span class="sourceLineNo">209</span>  }<a name="line.209"></a>
+<span class="sourceLineNo">210</span><a name="line.210"></a>
+<span class="sourceLineNo">211</span>  /**<a name="line.211"></a>
+<span class="sourceLineNo">212</span>   * Gets the body of the post reply.<a name="line.212"></a>
+<span class="sourceLineNo">213</span>   *<a name="line.213"></a>
+<span class="sourceLineNo">214</span>   * @return the body<a name="line.214"></a>
+<span class="sourceLineNo">215</span>   * @throws Exception the exception<a name="line.215"></a>
+<span class="sourceLineNo">216</span>   */<a name="line.216"></a>
+<span class="sourceLineNo">217</span>  public MessageBody getBody() throws Exception {<a name="line.217"></a>
+<span class="sourceLineNo">218</span>    return (MessageBody) this<a name="line.218"></a>
+<span class="sourceLineNo">219</span>        .getObjectFromPropertyDefinition(ItemSchema.Body);<a name="line.219"></a>
+<span class="sourceLineNo">220</span>  }<a name="line.220"></a>
+<span class="sourceLineNo">221</span><a name="line.221"></a>
+<span class="sourceLineNo">222</span>  /**<a name="line.222"></a>
+<span class="sourceLineNo">223</span>   * Sets the body.<a name="line.223"></a>
+<span class="sourceLineNo">224</span>   *<a name="line.224"></a>
+<span class="sourceLineNo">225</span>   * @param value the new body<a name="line.225"></a>
+<span class="sourceLineNo">226</span>   * @throws Exception the exception<a name="line.226"></a>
+<span class="sourceLineNo">227</span>   */<a name="line.227"></a>
+<span class="sourceLineNo">228</span>  public void setBody(MessageBody value) throws Exception {<a name="line.228"></a>
+<span class="sourceLineNo">229</span>    this.getPropertyBag().setObjectFromPropertyDefinition(ItemSchema.Body,<a name="line.229"></a>
+<span class="sourceLineNo">230</span>        value);<a name="line.230"></a>
+<span class="sourceLineNo">231</span>  }<a name="line.231"></a>
+<span class="sourceLineNo">232</span><a name="line.232"></a>
+<span class="sourceLineNo">233</span>  /**<a name="line.233"></a>
+<span class="sourceLineNo">234</span>   * Gets the body prefix that should be prepended to the original<a name="line.234"></a>
+<span class="sourceLineNo">235</span>   * post item's body.<a name="line.235"></a>
+<span class="sourceLineNo">236</span>   *<a name="line.236"></a>
+<span class="sourceLineNo">237</span>   * @return the body prefix<a name="line.237"></a>
+<span class="sourceLineNo">238</span>   * @throws Exception the exception<a name="line.238"></a>
+<span class="sourceLineNo">239</span>   */<a name="line.239"></a>
+<span class="sourceLineNo">240</span>  public MessageBody getBodyPrefix() throws Exception {<a name="line.240"></a>
+<span class="sourceLineNo">241</span>    return (MessageBody) this<a name="line.241"></a>
+<span class="sourceLineNo">242</span>        .getObjectFromPropertyDefinition(<a name="line.242"></a>
+<span class="sourceLineNo">243</span>            ResponseObjectSchema.BodyPrefix);<a name="line.243"></a>
+<span class="sourceLineNo">244</span>  }<a name="line.244"></a>
+<span class="sourceLineNo">245</span><a name="line.245"></a>
+<span class="sourceLineNo">246</span>  /**<a name="line.246"></a>
+<span class="sourceLineNo">247</span>   * Sets the body prefix.<a name="line.247"></a>
+<span class="sourceLineNo">248</span>   *<a name="line.248"></a>
+<span class="sourceLineNo">249</span>   * @param value the new body prefix<a name="line.249"></a>
+<span class="sourceLineNo">250</span>   * @throws Exception the exception<a name="line.250"></a>
+<span class="sourceLineNo">251</span>   */<a name="line.251"></a>
+<span class="sourceLineNo">252</span>  public void setBodyPrefix(MessageBody value) throws Exception {<a name="line.252"></a>
+<span class="sourceLineNo">253</span>    this.getPropertyBag().setObjectFromPropertyDefinition(<a name="line.253"></a>
+<span class="sourceLineNo">254</span>        ResponseObjectSchema.BodyPrefix, value);<a name="line.254"></a>
+<span class="sourceLineNo">255</span>  }<a name="line.255"></a>
+<span class="sourceLineNo">256</span><a name="line.256"></a>
+<span class="sourceLineNo">257</span>}<a name="line.257"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

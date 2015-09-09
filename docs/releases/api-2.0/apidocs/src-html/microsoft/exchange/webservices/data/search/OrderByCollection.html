@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * The MIT License<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * Copyright (c) 2012 Microsoft Corporation<a name="line.3"></a>
+<span class="sourceLineNo">004</span> *<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * Permission is hereby granted, free of charge, to any person obtaining a copy<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * of this software and associated documentation files (the "Software"), to deal<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * in the Software without restriction, including without limitation the rights<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * copies of the Software, and to permit persons to whom the Software is<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * furnished to do so, subject to the following conditions:<a name="line.10"></a>
+<span class="sourceLineNo">011</span> *<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * The above copyright notice and this permission notice shall be included in<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * all copies or substantial portions of the Software.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> *<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<a name="line.19"></a>
+<span class="sourceLineNo">020</span> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<a name="line.20"></a>
+<span class="sourceLineNo">021</span> * THE SOFTWARE.<a name="line.21"></a>
+<span class="sourceLineNo">022</span> */<a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span>package microsoft.exchange.webservices.data.search;<a name="line.24"></a>
+<span class="sourceLineNo">025</span><a name="line.25"></a>
+<span class="sourceLineNo">026</span>import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import microsoft.exchange.webservices.data.core.XmlAttributeNames;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import microsoft.exchange.webservices.data.core.XmlElementNames;<a name="line.28"></a>
+<span class="sourceLineNo">029</span>import microsoft.exchange.webservices.data.core.enumeration.search.SortDirection;<a name="line.29"></a>
+<span class="sourceLineNo">030</span>import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;<a name="line.30"></a>
+<span class="sourceLineNo">031</span>import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;<a name="line.32"></a>
+<span class="sourceLineNo">033</span>import microsoft.exchange.webservices.data.misc.OutParam;<a name="line.33"></a>
+<span class="sourceLineNo">034</span>import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;<a name="line.34"></a>
+<span class="sourceLineNo">035</span><a name="line.35"></a>
+<span class="sourceLineNo">036</span>import javax.xml.stream.XMLStreamException;<a name="line.36"></a>
+<span class="sourceLineNo">037</span><a name="line.37"></a>
+<span class="sourceLineNo">038</span>import java.util.ArrayList;<a name="line.38"></a>
+<span class="sourceLineNo">039</span>import java.util.HashMap;<a name="line.39"></a>
+<span class="sourceLineNo">040</span>import java.util.Iterator;<a name="line.40"></a>
+<span class="sourceLineNo">041</span>import java.util.List;<a name="line.41"></a>
+<span class="sourceLineNo">042</span>import java.util.Map;<a name="line.42"></a>
+<span class="sourceLineNo">043</span><a name="line.43"></a>
+<span class="sourceLineNo">044</span>/**<a name="line.44"></a>
+<span class="sourceLineNo">045</span> * Represents an ordered collection of property definitions qualified with a<a name="line.45"></a>
+<span class="sourceLineNo">046</span> * sort direction.<a name="line.46"></a>
+<span class="sourceLineNo">047</span> */<a name="line.47"></a>
+<span class="sourceLineNo">048</span>public final class OrderByCollection implements<a name="line.48"></a>
+<span class="sourceLineNo">049</span>    Iterable&lt;Map&lt;PropertyDefinitionBase, SortDirection&gt;&gt; {<a name="line.49"></a>
+<span class="sourceLineNo">050</span><a name="line.50"></a>
+<span class="sourceLineNo">051</span>  /**<a name="line.51"></a>
+<span class="sourceLineNo">052</span>   * The prop def sort order pair list.<a name="line.52"></a>
+<span class="sourceLineNo">053</span>   */<a name="line.53"></a>
+<span class="sourceLineNo">054</span>  private List&lt;Map&lt;PropertyDefinitionBase,<a name="line.54"></a>
+<span class="sourceLineNo">055</span>      SortDirection&gt;&gt; propDefSortOrderPairList;<a name="line.55"></a>
+<span class="sourceLineNo">056</span><a name="line.56"></a>
+<span class="sourceLineNo">057</span>  /**<a name="line.57"></a>
+<span class="sourceLineNo">058</span>   * Initializes a new instance of the OrderByCollection class.<a name="line.58"></a>
+<span class="sourceLineNo">059</span>   */<a name="line.59"></a>
+<span class="sourceLineNo">060</span>  protected OrderByCollection() {<a name="line.60"></a>
+<span class="sourceLineNo">061</span>    this.propDefSortOrderPairList = new<a name="line.61"></a>
+<span class="sourceLineNo">062</span>        ArrayList&lt;Map&lt;PropertyDefinitionBase, SortDirection&gt;&gt;();<a name="line.62"></a>
+<span class="sourceLineNo">063</span>  }<a name="line.63"></a>
+<span class="sourceLineNo">064</span><a name="line.64"></a>
+<span class="sourceLineNo">065</span>  /**<a name="line.65"></a>
+<span class="sourceLineNo">066</span>   * Adds the specified property definition / sort direction pair to the<a name="line.66"></a>
+<span class="sourceLineNo">067</span>   * collection.<a name="line.67"></a>
+<span class="sourceLineNo">068</span>   *<a name="line.68"></a>
+<span class="sourceLineNo">069</span>   * @param propertyDefinition the property definition<a name="line.69"></a>
+<span class="sourceLineNo">070</span>   * @param sortDirection      the sort direction<a name="line.70"></a>
+<span class="sourceLineNo">071</span>   * @throws ServiceLocalException the service local exception<a name="line.71"></a>
+<span class="sourceLineNo">072</span>   */<a name="line.72"></a>
+<span class="sourceLineNo">073</span>  public void add(PropertyDefinitionBase propertyDefinition,<a name="line.73"></a>
+<span class="sourceLineNo">074</span>      SortDirection sortDirection) throws ServiceLocalException {<a name="line.74"></a>
+<span class="sourceLineNo">075</span>    if (this.contains(propertyDefinition)) {<a name="line.75"></a>
+<span class="sourceLineNo">076</span>      throw new ServiceLocalException(String.format("Property %s already exists in OrderByCollection.",<a name="line.76"></a>
+<span class="sourceLineNo">077</span>          propertyDefinition.getPrintableName()));<a name="line.77"></a>
+<span class="sourceLineNo">078</span>    }<a name="line.78"></a>
+<span class="sourceLineNo">079</span>    Map&lt;PropertyDefinitionBase, SortDirection&gt; propertyDefinitionSortDirectionPair = new<a name="line.79"></a>
+<span class="sourceLineNo">080</span>        HashMap&lt;PropertyDefinitionBase, SortDirection&gt;();<a name="line.80"></a>
+<span class="sourceLineNo">081</span>    propertyDefinitionSortDirectionPair.put(propertyDefinition,<a name="line.81"></a>
+<span class="sourceLineNo">082</span>        sortDirection);<a name="line.82"></a>
+<span class="sourceLineNo">083</span>    this.propDefSortOrderPairList.add(propertyDefinitionSortDirectionPair);<a name="line.83"></a>
+<span class="sourceLineNo">084</span>  }<a name="line.84"></a>
+<span class="sourceLineNo">085</span><a name="line.85"></a>
+<span class="sourceLineNo">086</span>  /**<a name="line.86"></a>
+<span class="sourceLineNo">087</span>   * Removes all elements from the collection.<a name="line.87"></a>
+<span class="sourceLineNo">088</span>   */<a name="line.88"></a>
+<span class="sourceLineNo">089</span>  public void clear() {<a name="line.89"></a>
+<span class="sourceLineNo">090</span>    this.propDefSortOrderPairList.clear();<a name="line.90"></a>
+<span class="sourceLineNo">091</span>  }<a name="line.91"></a>
+<span class="sourceLineNo">092</span><a name="line.92"></a>
+<span class="sourceLineNo">093</span>  /**<a name="line.93"></a>
+<span class="sourceLineNo">094</span>   * Determines whether the collection contains the specified property<a name="line.94"></a>
+<span class="sourceLineNo">095</span>   * definition.<a name="line.95"></a>
+<span class="sourceLineNo">096</span>   *<a name="line.96"></a>
+<span class="sourceLineNo">097</span>   * @param propertyDefinition the property definition<a name="line.97"></a>
+<span class="sourceLineNo">098</span>   * @return True if the collection contains the specified property<a name="line.98"></a>
+<span class="sourceLineNo">099</span>   * definition; otherwise, false.<a name="line.99"></a>
+<span class="sourceLineNo">100</span>   */<a name="line.100"></a>
+<span class="sourceLineNo">101</span>  protected boolean contains(PropertyDefinitionBase propertyDefinition) {<a name="line.101"></a>
+<span class="sourceLineNo">102</span>    for (Map&lt;PropertyDefinitionBase, SortDirection&gt; propDefSortOrderPair : propDefSortOrderPairList) {<a name="line.102"></a>
+<span class="sourceLineNo">103</span>      return propDefSortOrderPair.containsKey(propertyDefinition);<a name="line.103"></a>
+<span class="sourceLineNo">104</span>    }<a name="line.104"></a>
+<span class="sourceLineNo">105</span>    return false;<a name="line.105"></a>
+<span class="sourceLineNo">106</span>  }<a name="line.106"></a>
+<span class="sourceLineNo">107</span><a name="line.107"></a>
+<span class="sourceLineNo">108</span>  /**<a name="line.108"></a>
+<span class="sourceLineNo">109</span>   * Gets the number of elements contained in the collection.<a name="line.109"></a>
+<span class="sourceLineNo">110</span>   *<a name="line.110"></a>
+<span class="sourceLineNo">111</span>   * @return the int<a name="line.111"></a>
+<span class="sourceLineNo">112</span>   */<a name="line.112"></a>
+<span class="sourceLineNo">113</span>  public int count() {<a name="line.113"></a>
+<span class="sourceLineNo">114</span>    return this.propDefSortOrderPairList.size();<a name="line.114"></a>
+<span class="sourceLineNo">115</span>  }<a name="line.115"></a>
+<span class="sourceLineNo">116</span><a name="line.116"></a>
+<span class="sourceLineNo">117</span>  /**<a name="line.117"></a>
+<span class="sourceLineNo">118</span>   * Removes the specified property definition from the collection.<a name="line.118"></a>
+<span class="sourceLineNo">119</span>   *<a name="line.119"></a>
+<span class="sourceLineNo">120</span>   * @param propertyDefinition the property definition<a name="line.120"></a>
+<span class="sourceLineNo">121</span>   * @return True if the property definition is successfully removed;<a name="line.121"></a>
+<span class="sourceLineNo">122</span>   * otherwise, false<a name="line.122"></a>
+<span class="sourceLineNo">123</span>   */<a name="line.123"></a>
+<span class="sourceLineNo">124</span>  public boolean remove(PropertyDefinitionBase propertyDefinition) {<a name="line.124"></a>
+<span class="sourceLineNo">125</span>    List&lt;Map&lt;PropertyDefinitionBase, SortDirection&gt;&gt; removeList = new<a name="line.125"></a>
+<span class="sourceLineNo">126</span>        ArrayList&lt;Map&lt;PropertyDefinitionBase, SortDirection&gt;&gt;();<a name="line.126"></a>
+<span class="sourceLineNo">127</span>    for (Map&lt;PropertyDefinitionBase, SortDirection&gt; propDefSortOrderPair : propDefSortOrderPairList) {<a name="line.127"></a>
+<span class="sourceLineNo">128</span>      if (propDefSortOrderPair.containsKey(propertyDefinition)) {<a name="line.128"></a>
+<span class="sourceLineNo">129</span>        removeList.add(propDefSortOrderPair);<a name="line.129"></a>
+<span class="sourceLineNo">130</span>      }<a name="line.130"></a>
+<span class="sourceLineNo">131</span>    }<a name="line.131"></a>
+<span class="sourceLineNo">132</span>    this.propDefSortOrderPairList.removeAll(removeList);<a name="line.132"></a>
+<span class="sourceLineNo">133</span>    return removeList.size() &gt; 0;<a name="line.133"></a>
+<span class="sourceLineNo">134</span>  }<a name="line.134"></a>
+<span class="sourceLineNo">135</span><a name="line.135"></a>
+<span class="sourceLineNo">136</span>  /**<a name="line.136"></a>
+<span class="sourceLineNo">137</span>   * Removes the element at the specified index from the collection.<a name="line.137"></a>
+<span class="sourceLineNo">138</span>   *<a name="line.138"></a>
+<span class="sourceLineNo">139</span>   * @param index the index<a name="line.139"></a>
+<span class="sourceLineNo">140</span>   */<a name="line.140"></a>
+<span class="sourceLineNo">141</span>  public void removeAt(int index) {<a name="line.141"></a>
+<span class="sourceLineNo">142</span>    this.propDefSortOrderPairList.remove(index);<a name="line.142"></a>
+<span class="sourceLineNo">143</span>  }<a name="line.143"></a>
+<span class="sourceLineNo">144</span><a name="line.144"></a>
+<span class="sourceLineNo">145</span>  /**<a name="line.145"></a>
+<span class="sourceLineNo">146</span>   * Tries to get the value for a property definition in the collection.<a name="line.146"></a>
+<span class="sourceLineNo">147</span>   *<a name="line.147"></a>
+<span class="sourceLineNo">148</span>   * @param propertyDefinition the property definition<a name="line.148"></a>
+<span class="sourceLineNo">149</span>   * @param sortDirection      the sort direction<a name="line.149"></a>
+<span class="sourceLineNo">150</span>   * @return True if collection contains property definition, otherwise false.<a name="line.150"></a>
+<span class="sourceLineNo">151</span>   */<a name="line.151"></a>
+<span class="sourceLineNo">152</span>  public boolean tryGetValue(PropertyDefinitionBase propertyDefinition,<a name="line.152"></a>
+<span class="sourceLineNo">153</span>      OutParam&lt;SortDirection&gt; sortDirection) {<a name="line.153"></a>
+<span class="sourceLineNo">154</span>    for (Map&lt;PropertyDefinitionBase, SortDirection&gt; pair : this.propDefSortOrderPairList) {<a name="line.154"></a>
+<span class="sourceLineNo">155</span><a name="line.155"></a>
+<span class="sourceLineNo">156</span>      if (pair.containsKey(propertyDefinition)) {<a name="line.156"></a>
+<span class="sourceLineNo">157</span>        sortDirection.setParam(pair.get(propertyDefinition));<a name="line.157"></a>
+<span class="sourceLineNo">158</span>        return true;<a name="line.158"></a>
+<span class="sourceLineNo">159</span>      }<a name="line.159"></a>
+<span class="sourceLineNo">160</span>    }<a name="line.160"></a>
+<span class="sourceLineNo">161</span>    sortDirection.setParam(SortDirection.Ascending); // out parameter has to<a name="line.161"></a>
+<span class="sourceLineNo">162</span>    // be set to some<a name="line.162"></a>
+<span class="sourceLineNo">163</span>    // value.<a name="line.163"></a>
+<span class="sourceLineNo">164</span>    return false;<a name="line.164"></a>
+<span class="sourceLineNo">165</span>  }<a name="line.165"></a>
+<span class="sourceLineNo">166</span><a name="line.166"></a>
+<span class="sourceLineNo">167</span>  /**<a name="line.167"></a>
+<span class="sourceLineNo">168</span>   * Writes to XML.<a name="line.168"></a>
+<span class="sourceLineNo">169</span>   *<a name="line.169"></a>
+<span class="sourceLineNo">170</span>   * @param writer         the writer<a name="line.170"></a>
+<span class="sourceLineNo">171</span>   * @param xmlElementName the xml element name<a name="line.171"></a>
+<span class="sourceLineNo">172</span>   * @throws XMLStreamException the XML stream exception<a name="line.172"></a>
+<span class="sourceLineNo">173</span>   * @throws ServiceXmlSerializationException the service xml serialization exception<a name="line.173"></a>
+<span class="sourceLineNo">174</span>   */<a name="line.174"></a>
+<span class="sourceLineNo">175</span>  protected void writeToXml(EwsServiceXmlWriter writer, String xmlElementName)<a name="line.175"></a>
+<span class="sourceLineNo">176</span>      throws XMLStreamException, ServiceXmlSerializationException {<a name="line.176"></a>
+<span class="sourceLineNo">177</span>    if (this.count() &gt; 0) {<a name="line.177"></a>
+<span class="sourceLineNo">178</span>      writer.writeStartElement(XmlNamespace.Messages, xmlElementName);<a name="line.178"></a>
+<span class="sourceLineNo">179</span><a name="line.179"></a>
+<span class="sourceLineNo">180</span>      for (Map&lt;PropertyDefinitionBase, SortDirection&gt; keyValuePair : this.propDefSortOrderPairList) {<a name="line.180"></a>
+<span class="sourceLineNo">181</span>        writer.writeStartElement(XmlNamespace.Types,<a name="line.181"></a>
+<span class="sourceLineNo">182</span>            XmlElementNames.FieldOrder);<a name="line.182"></a>
+<span class="sourceLineNo">183</span><a name="line.183"></a>
+<span class="sourceLineNo">184</span>        writer.writeAttributeValue(XmlAttributeNames.Order,<a name="line.184"></a>
+<span class="sourceLineNo">185</span>            keyValuePair.values().iterator().next());<a name="line.185"></a>
+<span class="sourceLineNo">186</span>        keyValuePair.keySet().iterator().next().writeToXml(writer);<a name="line.186"></a>
+<span class="sourceLineNo">187</span><a name="line.187"></a>
+<span class="sourceLineNo">188</span>        writer.writeEndElement(); // FieldOrder<a name="line.188"></a>
+<span class="sourceLineNo">189</span>      }<a name="line.189"></a>
+<span class="sourceLineNo">190</span><a name="line.190"></a>
+<span class="sourceLineNo">191</span>      writer.writeEndElement();<a name="line.191"></a>
+<span class="sourceLineNo">192</span>    }<a name="line.192"></a>
+<span class="sourceLineNo">193</span>  }<a name="line.193"></a>
+<span class="sourceLineNo">194</span><a name="line.194"></a>
+<span class="sourceLineNo">195</span>  /*<a name="line.195"></a>
+<span class="sourceLineNo">196</span>   * (non-Javadoc)<a name="line.196"></a>
+<span class="sourceLineNo">197</span>   *<a name="line.197"></a>
+<span class="sourceLineNo">198</span>   * @see java.lang.Iterable#iterator()<a name="line.198"></a>
+<span class="sourceLineNo">199</span>   */<a name="line.199"></a>
+<span class="sourceLineNo">200</span>  @Override<a name="line.200"></a>
+<span class="sourceLineNo">201</span>  public Iterator&lt;Map&lt;PropertyDefinitionBase, SortDirection&gt;&gt; iterator() {<a name="line.201"></a>
+<span class="sourceLineNo">202</span>    return this.propDefSortOrderPairList.iterator();<a name="line.202"></a>
+<span class="sourceLineNo">203</span>  }<a name="line.203"></a>
+<span class="sourceLineNo">204</span><a name="line.204"></a>
+<span class="sourceLineNo">205</span>  /**<a name="line.205"></a>
+<span class="sourceLineNo">206</span>   * Gets the element at the specified index from the collection.<a name="line.206"></a>
+<span class="sourceLineNo">207</span>   *<a name="line.207"></a>
+<span class="sourceLineNo">208</span>   * @param index the index<a name="line.208"></a>
+<span class="sourceLineNo">209</span>   * @return the property definition sort direction pair<a name="line.209"></a>
+<span class="sourceLineNo">210</span>   */<a name="line.210"></a>
+<span class="sourceLineNo">211</span>  public Map&lt;PropertyDefinitionBase,<a name="line.211"></a>
+<span class="sourceLineNo">212</span>      SortDirection&gt; getPropertyDefinitionSortDirectionPair(<a name="line.212"></a>
+<span class="sourceLineNo">213</span>      int index) {<a name="line.213"></a>
+<span class="sourceLineNo">214</span>    return this.propDefSortOrderPairList.get(index);<a name="line.214"></a>
+<span class="sourceLineNo">215</span>  }<a name="line.215"></a>
+<span class="sourceLineNo">216</span><a name="line.216"></a>
+<span class="sourceLineNo">217</span>  /**<a name="line.217"></a>
+<span class="sourceLineNo">218</span>   * Returns an enumerator that iterates through the collection.<a name="line.218"></a>
+<span class="sourceLineNo">219</span>   *<a name="line.219"></a>
+<span class="sourceLineNo">220</span>   * @return A Iterator that can be used to iterate through the collection.<a name="line.220"></a>
+<span class="sourceLineNo">221</span>   */<a name="line.221"></a>
+<span class="sourceLineNo">222</span>  public Iterator&lt;Map&lt;PropertyDefinitionBase,<a name="line.222"></a>
+<span class="sourceLineNo">223</span>      SortDirection&gt;&gt; getEnumerator() {<a name="line.223"></a>
+<span class="sourceLineNo">224</span>    return (this.propDefSortOrderPairList.iterator());<a name="line.224"></a>
+<span class="sourceLineNo">225</span>  }<a name="line.225"></a>
+<span class="sourceLineNo">226</span><a name="line.226"></a>
+<span class="sourceLineNo">227</span>}<a name="line.227"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

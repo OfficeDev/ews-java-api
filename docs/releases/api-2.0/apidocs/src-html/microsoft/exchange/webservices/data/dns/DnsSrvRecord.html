@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * The MIT License<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * Copyright (c) 2012 Microsoft Corporation<a name="line.3"></a>
+<span class="sourceLineNo">004</span> *<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * Permission is hereby granted, free of charge, to any person obtaining a copy<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * of this software and associated documentation files (the "Software"), to deal<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * in the Software without restriction, including without limitation the rights<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * copies of the Software, and to permit persons to whom the Software is<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * furnished to do so, subject to the following conditions:<a name="line.10"></a>
+<span class="sourceLineNo">011</span> *<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * The above copyright notice and this permission notice shall be included in<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * all copies or substantial portions of the Software.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> *<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<a name="line.19"></a>
+<span class="sourceLineNo">020</span> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<a name="line.20"></a>
+<span class="sourceLineNo">021</span> * THE SOFTWARE.<a name="line.21"></a>
+<span class="sourceLineNo">022</span> */<a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span>package microsoft.exchange.webservices.data.dns;<a name="line.24"></a>
+<span class="sourceLineNo">025</span><a name="line.25"></a>
+<span class="sourceLineNo">026</span>import microsoft.exchange.webservices.data.core.exception.dns.DnsException;<a name="line.26"></a>
+<span class="sourceLineNo">027</span><a name="line.27"></a>
+<span class="sourceLineNo">028</span>import java.util.NoSuchElementException;<a name="line.28"></a>
+<span class="sourceLineNo">029</span>import java.util.StringTokenizer;<a name="line.29"></a>
+<span class="sourceLineNo">030</span><a name="line.30"></a>
+<span class="sourceLineNo">031</span>/**<a name="line.31"></a>
+<span class="sourceLineNo">032</span> * Represents a DNS SRV Record.<a name="line.32"></a>
+<span class="sourceLineNo">033</span> */<a name="line.33"></a>
+<span class="sourceLineNo">034</span>public class DnsSrvRecord extends DnsRecord {<a name="line.34"></a>
+<span class="sourceLineNo">035</span>        /*<a name="line.35"></a>
+<span class="sourceLineNo">036</span>         * The string representing the target host<a name="line.36"></a>
+<span class="sourceLineNo">037</span>         */<a name="line.37"></a>
+<span class="sourceLineNo">038</span>  /**<a name="line.38"></a>
+<span class="sourceLineNo">039</span>   * The target.<a name="line.39"></a>
+<span class="sourceLineNo">040</span>   */<a name="line.40"></a>
+<span class="sourceLineNo">041</span>  private String target;<a name="line.41"></a>
+<span class="sourceLineNo">042</span><a name="line.42"></a>
+<span class="sourceLineNo">043</span>        /*<a name="line.43"></a>
+<span class="sourceLineNo">044</span>         * priority of the target host specified in the owner name.<a name="line.44"></a>
+<span class="sourceLineNo">045</span>         */<a name="line.45"></a>
+<span class="sourceLineNo">046</span>  /**<a name="line.46"></a>
+<span class="sourceLineNo">047</span>   * The priority.<a name="line.47"></a>
+<span class="sourceLineNo">048</span>   */<a name="line.48"></a>
+<span class="sourceLineNo">049</span>  private int priority;<a name="line.49"></a>
+<span class="sourceLineNo">050</span>        /*<a name="line.50"></a>
+<span class="sourceLineNo">051</span>         * weight of the target host<a name="line.51"></a>
+<span class="sourceLineNo">052</span>         */<a name="line.52"></a>
+<span class="sourceLineNo">053</span>  /**<a name="line.53"></a>
+<span class="sourceLineNo">054</span>   * The weight.<a name="line.54"></a>
+<span class="sourceLineNo">055</span>   */<a name="line.55"></a>
+<span class="sourceLineNo">056</span>  private int weight;<a name="line.56"></a>
+<span class="sourceLineNo">057</span>        /*<a name="line.57"></a>
+<span class="sourceLineNo">058</span>         * port used on the target for the service<a name="line.58"></a>
+<span class="sourceLineNo">059</span>         */<a name="line.59"></a>
+<span class="sourceLineNo">060</span>  /**<a name="line.60"></a>
+<span class="sourceLineNo">061</span>   * The port.<a name="line.61"></a>
+<span class="sourceLineNo">062</span>   */<a name="line.62"></a>
+<span class="sourceLineNo">063</span>  private int port;<a name="line.63"></a>
+<span class="sourceLineNo">064</span><a name="line.64"></a>
+<span class="sourceLineNo">065</span>  /**<a name="line.65"></a>
+<span class="sourceLineNo">066</span>   * Retrieves the value of the target property.<a name="line.66"></a>
+<span class="sourceLineNo">067</span>   *<a name="line.67"></a>
+<span class="sourceLineNo">068</span>   * @return target<a name="line.68"></a>
+<span class="sourceLineNo">069</span>   */<a name="line.69"></a>
+<span class="sourceLineNo">070</span>  public String getNameTarget() {<a name="line.70"></a>
+<span class="sourceLineNo">071</span>    return this.target;<a name="line.71"></a>
+<span class="sourceLineNo">072</span>  }<a name="line.72"></a>
+<span class="sourceLineNo">073</span><a name="line.73"></a>
+<span class="sourceLineNo">074</span>  /**<a name="line.74"></a>
+<span class="sourceLineNo">075</span>   * Retrieves the value of the priority property.<a name="line.75"></a>
+<span class="sourceLineNo">076</span>   *<a name="line.76"></a>
+<span class="sourceLineNo">077</span>   * @return priority<a name="line.77"></a>
+<span class="sourceLineNo">078</span>   */<a name="line.78"></a>
+<span class="sourceLineNo">079</span>  public int getPriority() {<a name="line.79"></a>
+<span class="sourceLineNo">080</span>    return priority;<a name="line.80"></a>
+<span class="sourceLineNo">081</span>  }<a name="line.81"></a>
+<span class="sourceLineNo">082</span><a name="line.82"></a>
+<span class="sourceLineNo">083</span>  /**<a name="line.83"></a>
+<span class="sourceLineNo">084</span>   * Retrieves the value of the weight property.<a name="line.84"></a>
+<span class="sourceLineNo">085</span>   *<a name="line.85"></a>
+<span class="sourceLineNo">086</span>   * @return weight<a name="line.86"></a>
+<span class="sourceLineNo">087</span>   */<a name="line.87"></a>
+<span class="sourceLineNo">088</span>  public int getWeight() {<a name="line.88"></a>
+<span class="sourceLineNo">089</span>    return weight;<a name="line.89"></a>
+<span class="sourceLineNo">090</span>  }<a name="line.90"></a>
+<span class="sourceLineNo">091</span><a name="line.91"></a>
+<span class="sourceLineNo">092</span>  /**<a name="line.92"></a>
+<span class="sourceLineNo">093</span>   * Retrieves the value of the port property.<a name="line.93"></a>
+<span class="sourceLineNo">094</span>   *<a name="line.94"></a>
+<span class="sourceLineNo">095</span>   * @return port<a name="line.95"></a>
+<span class="sourceLineNo">096</span>   */<a name="line.96"></a>
+<span class="sourceLineNo">097</span>  public int getPort() {<a name="line.97"></a>
+<span class="sourceLineNo">098</span>    return port;<a name="line.98"></a>
+<span class="sourceLineNo">099</span>  }<a name="line.99"></a>
+<span class="sourceLineNo">100</span><a name="line.100"></a>
+<span class="sourceLineNo">101</span>  /**<a name="line.101"></a>
+<span class="sourceLineNo">102</span>   * Initializes a new instance of the DnsSrvRecord class.<a name="line.102"></a>
+<span class="sourceLineNo">103</span>   *<a name="line.103"></a>
+<span class="sourceLineNo">104</span>   * @param srvRecord srvRecord that is fetched from JNDI<a name="line.104"></a>
+<span class="sourceLineNo">105</span>   * @throws DnsException the dns exception<a name="line.105"></a>
+<span class="sourceLineNo">106</span>   */<a name="line.106"></a>
+<span class="sourceLineNo">107</span>  protected void load(String srvRecord) throws DnsException {<a name="line.107"></a>
+<span class="sourceLineNo">108</span>    super.load(null);<a name="line.108"></a>
+<span class="sourceLineNo">109</span>    StringTokenizer strTokens = new StringTokenizer(srvRecord);<a name="line.109"></a>
+<span class="sourceLineNo">110</span>    try {<a name="line.110"></a>
+<span class="sourceLineNo">111</span>      while (strTokens.hasMoreTokens()) {<a name="line.111"></a>
+<span class="sourceLineNo">112</span>        String priority = strTokens.nextToken();<a name="line.112"></a>
+<span class="sourceLineNo">113</span>        this.priority = Integer.parseInt(priority);<a name="line.113"></a>
+<span class="sourceLineNo">114</span><a name="line.114"></a>
+<span class="sourceLineNo">115</span>        String weight = strTokens.nextToken();<a name="line.115"></a>
+<span class="sourceLineNo">116</span>        this.weight = Integer.parseInt(weight);<a name="line.116"></a>
+<span class="sourceLineNo">117</span><a name="line.117"></a>
+<span class="sourceLineNo">118</span>        String port = strTokens.nextToken();<a name="line.118"></a>
+<span class="sourceLineNo">119</span>        this.port = Integer.parseInt(port);<a name="line.119"></a>
+<span class="sourceLineNo">120</span><a name="line.120"></a>
+<span class="sourceLineNo">121</span>        String target = strTokens.nextToken();<a name="line.121"></a>
+<span class="sourceLineNo">122</span>        this.target = target;<a name="line.122"></a>
+<span class="sourceLineNo">123</span>      }<a name="line.123"></a>
+<span class="sourceLineNo">124</span>    } catch (NumberFormatException ne) {<a name="line.124"></a>
+<span class="sourceLineNo">125</span>      throw new DnsException("NumberFormatException " + ne.getMessage());<a name="line.125"></a>
+<span class="sourceLineNo">126</span>    } catch (NoSuchElementException ne) {<a name="line.126"></a>
+<span class="sourceLineNo">127</span>      throw new DnsException("NoSuchElementException " + ne.getMessage());<a name="line.127"></a>
+<span class="sourceLineNo">128</span>    }<a name="line.128"></a>
+<span class="sourceLineNo">129</span><a name="line.129"></a>
+<span class="sourceLineNo">130</span>  }<a name="line.130"></a>
+<span class="sourceLineNo">131</span>}<a name="line.131"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

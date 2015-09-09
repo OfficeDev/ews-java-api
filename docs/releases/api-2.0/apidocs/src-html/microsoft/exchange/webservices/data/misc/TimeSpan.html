@@ -1,0 +1,575 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * The MIT License<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * Copyright (c) 2012 Microsoft Corporation<a name="line.3"></a>
+<span class="sourceLineNo">004</span> *<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * Permission is hereby granted, free of charge, to any person obtaining a copy<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * of this software and associated documentation files (the "Software"), to deal<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * in the Software without restriction, including without limitation the rights<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * copies of the Software, and to permit persons to whom the Software is<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * furnished to do so, subject to the following conditions:<a name="line.10"></a>
+<span class="sourceLineNo">011</span> *<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * The above copyright notice and this permission notice shall be included in<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * all copies or substantial portions of the Software.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> *<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<a name="line.19"></a>
+<span class="sourceLineNo">020</span> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<a name="line.20"></a>
+<span class="sourceLineNo">021</span> * THE SOFTWARE.<a name="line.21"></a>
+<span class="sourceLineNo">022</span> */<a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span>package microsoft.exchange.webservices.data.misc;<a name="line.24"></a>
+<span class="sourceLineNo">025</span><a name="line.25"></a>
+<span class="sourceLineNo">026</span>import microsoft.exchange.webservices.data.core.exception.misc.FormatException;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import org.apache.commons.logging.Log;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import org.apache.commons.logging.LogFactory;<a name="line.28"></a>
+<span class="sourceLineNo">029</span><a name="line.29"></a>
+<span class="sourceLineNo">030</span>/**<a name="line.30"></a>
+<span class="sourceLineNo">031</span> * The Class TimeSpan.<a name="line.31"></a>
+<span class="sourceLineNo">032</span> */<a name="line.32"></a>
+<span class="sourceLineNo">033</span>public class TimeSpan implements Comparable&lt;TimeSpan&gt;, java.io.Serializable, Cloneable {<a name="line.33"></a>
+<span class="sourceLineNo">034</span><a name="line.34"></a>
+<span class="sourceLineNo">035</span>  private static final Log LOG = LogFactory.getLog(TimeSpan.class);<a name="line.35"></a>
+<span class="sourceLineNo">036</span><a name="line.36"></a>
+<span class="sourceLineNo">037</span>  /**<a name="line.37"></a>
+<span class="sourceLineNo">038</span>   * Constant serialized ID used for compatibility.<a name="line.38"></a>
+<span class="sourceLineNo">039</span>   */<a name="line.39"></a>
+<span class="sourceLineNo">040</span>  private static final long serialVersionUID = 1L;<a name="line.40"></a>
+<span class="sourceLineNo">041</span><a name="line.41"></a>
+<span class="sourceLineNo">042</span>  /**<a name="line.42"></a>
+<span class="sourceLineNo">043</span>   * The time.<a name="line.43"></a>
+<span class="sourceLineNo">044</span>   */<a name="line.44"></a>
+<span class="sourceLineNo">045</span>  private long time = 0;<a name="line.45"></a>
+<span class="sourceLineNo">046</span><a name="line.46"></a>
+<span class="sourceLineNo">047</span>  /**<a name="line.47"></a>
+<span class="sourceLineNo">048</span>   * Constant for milliseconds unit and conversion.<a name="line.48"></a>
+<span class="sourceLineNo">049</span>   */<a name="line.49"></a>
+<span class="sourceLineNo">050</span>  public static final int MILLISECONDS = 1;<a name="line.50"></a>
+<span class="sourceLineNo">051</span><a name="line.51"></a>
+<span class="sourceLineNo">052</span>  /**<a name="line.52"></a>
+<span class="sourceLineNo">053</span>   * Constant for seconds unit and conversion.<a name="line.53"></a>
+<span class="sourceLineNo">054</span>   */<a name="line.54"></a>
+<span class="sourceLineNo">055</span>  public static final int SECONDS = MILLISECONDS * 1000;<a name="line.55"></a>
+<span class="sourceLineNo">056</span><a name="line.56"></a>
+<span class="sourceLineNo">057</span>  /**<a name="line.57"></a>
+<span class="sourceLineNo">058</span>   * Constant for minutes unit and conversion.<a name="line.58"></a>
+<span class="sourceLineNo">059</span>   */<a name="line.59"></a>
+<span class="sourceLineNo">060</span>  public static final int MINUTES = SECONDS * 60;<a name="line.60"></a>
+<span class="sourceLineNo">061</span><a name="line.61"></a>
+<span class="sourceLineNo">062</span>  /**<a name="line.62"></a>
+<span class="sourceLineNo">063</span>   * Constant for hours unit and conversion.<a name="line.63"></a>
+<span class="sourceLineNo">064</span>   */<a name="line.64"></a>
+<span class="sourceLineNo">065</span>  public static final int HOURS = MINUTES * 60;<a name="line.65"></a>
+<span class="sourceLineNo">066</span><a name="line.66"></a>
+<span class="sourceLineNo">067</span>  /**<a name="line.67"></a>
+<span class="sourceLineNo">068</span>   * Constant for days unit and conversion.<a name="line.68"></a>
+<span class="sourceLineNo">069</span>   */<a name="line.69"></a>
+<span class="sourceLineNo">070</span>  public static final int DAYS = HOURS * 24;<a name="line.70"></a>
+<span class="sourceLineNo">071</span><a name="line.71"></a>
+<span class="sourceLineNo">072</span>  /**<a name="line.72"></a>
+<span class="sourceLineNo">073</span>   * Represents the Maximum TimeSpan value.<a name="line.73"></a>
+<span class="sourceLineNo">074</span>   */<a name="line.74"></a>
+<span class="sourceLineNo">075</span>  public static final TimeSpan MAX_VALUE = new TimeSpan(Long.MAX_VALUE);<a name="line.75"></a>
+<span class="sourceLineNo">076</span><a name="line.76"></a>
+<span class="sourceLineNo">077</span>  /**<a name="line.77"></a>
+<span class="sourceLineNo">078</span>   * Represents the Minimum TimeSpan value.<a name="line.78"></a>
+<span class="sourceLineNo">079</span>   */<a name="line.79"></a>
+<span class="sourceLineNo">080</span>  public static final TimeSpan MIN_VALUE = new TimeSpan(Long.MIN_VALUE);<a name="line.80"></a>
+<span class="sourceLineNo">081</span><a name="line.81"></a>
+<span class="sourceLineNo">082</span>  /**<a name="line.82"></a>
+<span class="sourceLineNo">083</span>   * Represents the TimeSpan with a value of zero.<a name="line.83"></a>
+<span class="sourceLineNo">084</span>   */<a name="line.84"></a>
+<span class="sourceLineNo">085</span>  public static final TimeSpan ZERO = new TimeSpan(0L);<a name="line.85"></a>
+<span class="sourceLineNo">086</span><a name="line.86"></a>
+<span class="sourceLineNo">087</span>  /**<a name="line.87"></a>
+<span class="sourceLineNo">088</span>   * Creates a new instance of TimeSpan based on the number of milliseconds<a name="line.88"></a>
+<span class="sourceLineNo">089</span>   * entered.<a name="line.89"></a>
+<span class="sourceLineNo">090</span>   *<a name="line.90"></a>
+<span class="sourceLineNo">091</span>   * @param time the number of milliseconds for this TimeSpan.<a name="line.91"></a>
+<span class="sourceLineNo">092</span>   */<a name="line.92"></a>
+<span class="sourceLineNo">093</span>  public TimeSpan(long time) {<a name="line.93"></a>
+<span class="sourceLineNo">094</span>    this.time = time;<a name="line.94"></a>
+<span class="sourceLineNo">095</span>  }<a name="line.95"></a>
+<span class="sourceLineNo">096</span><a name="line.96"></a>
+<span class="sourceLineNo">097</span>  /**<a name="line.97"></a>
+<span class="sourceLineNo">098</span>   * Creates a new TimeSpan object based on the unit and value entered.<a name="line.98"></a>
+<span class="sourceLineNo">099</span>   *<a name="line.99"></a>
+<span class="sourceLineNo">100</span>   * @param units the type of unit to use to create a TimeSpan instance.<a name="line.100"></a>
+<span class="sourceLineNo">101</span>   * @param value the number of units to use to create a TimeSpan instance.<a name="line.101"></a>
+<span class="sourceLineNo">102</span>   */<a name="line.102"></a>
+<span class="sourceLineNo">103</span>  public TimeSpan(int units, long value) {<a name="line.103"></a>
+<span class="sourceLineNo">104</span>    this.time = TimeSpan.toMilliseconds(units, value);<a name="line.104"></a>
+<span class="sourceLineNo">105</span>  }<a name="line.105"></a>
+<span class="sourceLineNo">106</span><a name="line.106"></a>
+<span class="sourceLineNo">107</span>        /*<a name="line.107"></a>
+<span class="sourceLineNo">108</span>         * public static TimeSpan fromMinutes(int value) { int l = value*60*100;<a name="line.108"></a>
+<span class="sourceLineNo">109</span>         * return l; }<a name="line.109"></a>
+<span class="sourceLineNo">110</span>         */<a name="line.110"></a>
+<span class="sourceLineNo">111</span><a name="line.111"></a>
+<span class="sourceLineNo">112</span>  /**<a name="line.112"></a>
+<span class="sourceLineNo">113</span>   * Subtracts two Date objects creating a new TimeSpan object.<a name="line.113"></a>
+<span class="sourceLineNo">114</span>   *<a name="line.114"></a>
+<span class="sourceLineNo">115</span>   * @param date1 Date to use as the base value.<a name="line.115"></a>
+<span class="sourceLineNo">116</span>   * @param date2 Date to subtract from the base value.<a name="line.116"></a>
+<span class="sourceLineNo">117</span>   * @return a TimeSpan object representing the difference bewteen the two<a name="line.117"></a>
+<span class="sourceLineNo">118</span>   * Date objects.<a name="line.118"></a>
+<span class="sourceLineNo">119</span>   */<a name="line.119"></a>
+<span class="sourceLineNo">120</span>  public static TimeSpan subtract(java.util.Date date1,<a name="line.120"></a>
+<span class="sourceLineNo">121</span>      java.util.Date date2) {<a name="line.121"></a>
+<span class="sourceLineNo">122</span>    return new TimeSpan(date1.getTime() - date2.getTime());<a name="line.122"></a>
+<span class="sourceLineNo">123</span>  }<a name="line.123"></a>
+<span class="sourceLineNo">124</span><a name="line.124"></a>
+<span class="sourceLineNo">125</span>  /**<a name="line.125"></a>
+<span class="sourceLineNo">126</span>   * Compares this object with the specified object for order. Returns a<a name="line.126"></a>
+<span class="sourceLineNo">127</span>   * negative integer, zero, or a positive integer as this object is less<a name="line.127"></a>
+<span class="sourceLineNo">128</span>   * than, equal to, or greater than the specified object. Comparison is based<a name="line.128"></a>
+<span class="sourceLineNo">129</span>   * on the number of milliseconds in this TimeSpan.<a name="line.129"></a>
+<span class="sourceLineNo">130</span>   *<a name="line.130"></a>
+<span class="sourceLineNo">131</span>   * @param o the Object to be compared.<a name="line.131"></a>
+<span class="sourceLineNo">132</span>   * @return a negative integer, zero, or a positive integer as this object is<a name="line.132"></a>
+<span class="sourceLineNo">133</span>   * less than, equal to, or greater than the specified object.<a name="line.133"></a>
+<span class="sourceLineNo">134</span>   */<a name="line.134"></a>
+<span class="sourceLineNo">135</span>  public int compareTo(TimeSpan o) {<a name="line.135"></a>
+<span class="sourceLineNo">136</span>    TimeSpan compare = (TimeSpan) o;<a name="line.136"></a>
+<span class="sourceLineNo">137</span>    if (this.time == compare.time) {<a name="line.137"></a>
+<span class="sourceLineNo">138</span>      return 0;<a name="line.138"></a>
+<span class="sourceLineNo">139</span>    }<a name="line.139"></a>
+<span class="sourceLineNo">140</span>    if (this.time &gt; compare.time) {<a name="line.140"></a>
+<span class="sourceLineNo">141</span>      return +1;<a name="line.141"></a>
+<span class="sourceLineNo">142</span>    }<a name="line.142"></a>
+<span class="sourceLineNo">143</span>    return -1;<a name="line.143"></a>
+<span class="sourceLineNo">144</span>  }<a name="line.144"></a>
+<span class="sourceLineNo">145</span><a name="line.145"></a>
+<span class="sourceLineNo">146</span>  /**<a name="line.146"></a>
+<span class="sourceLineNo">147</span>   * Indicates whether some other object is "equal to" this one. Comparison is<a name="line.147"></a>
+<span class="sourceLineNo">148</span>   * based on the number of milliseconds in this TimeSpan.<a name="line.148"></a>
+<span class="sourceLineNo">149</span>   *<a name="line.149"></a>
+<span class="sourceLineNo">150</span>   * @param obj the reference object with which to compare.<a name="line.150"></a>
+<span class="sourceLineNo">151</span>   * @return if the obj argument is a TimeSpan object with the exact same<a name="line.151"></a>
+<span class="sourceLineNo">152</span>   * number of milliseconds. otherwise.<a name="line.152"></a>
+<span class="sourceLineNo">153</span>   */<a name="line.153"></a>
+<span class="sourceLineNo">154</span>  public boolean equals(Object obj) {<a name="line.154"></a>
+<span class="sourceLineNo">155</span>    if (obj instanceof TimeSpan) {<a name="line.155"></a>
+<span class="sourceLineNo">156</span>      TimeSpan compare = (TimeSpan) obj;<a name="line.156"></a>
+<span class="sourceLineNo">157</span>      if (this.time == compare.time) {<a name="line.157"></a>
+<span class="sourceLineNo">158</span>        return true;<a name="line.158"></a>
+<span class="sourceLineNo">159</span>      }<a name="line.159"></a>
+<span class="sourceLineNo">160</span>    }<a name="line.160"></a>
+<span class="sourceLineNo">161</span>    return false;<a name="line.161"></a>
+<span class="sourceLineNo">162</span>  }<a name="line.162"></a>
+<span class="sourceLineNo">163</span><a name="line.163"></a>
+<span class="sourceLineNo">164</span>  /**<a name="line.164"></a>
+<span class="sourceLineNo">165</span>   * Returns a hash code value for the object. This method is supported for<a name="line.165"></a>
+<span class="sourceLineNo">166</span>   * the benefit of hashtables such as those provided by<a name="line.166"></a>
+<span class="sourceLineNo">167</span>   * &lt;code&gt;java.util.Hashtable&lt;/code&gt;. The method uses the same algorithm as<a name="line.167"></a>
+<span class="sourceLineNo">168</span>   * found in the Long class.<a name="line.168"></a>
+<span class="sourceLineNo">169</span>   *<a name="line.169"></a>
+<span class="sourceLineNo">170</span>   * @return a hash code value for this object.<a name="line.170"></a>
+<span class="sourceLineNo">171</span>   * @see Object#equals(Object)<a name="line.171"></a>
+<span class="sourceLineNo">172</span>   * @see java.util.Hashtable<a name="line.172"></a>
+<span class="sourceLineNo">173</span>   */<a name="line.173"></a>
+<span class="sourceLineNo">174</span>  public int hashCode() {<a name="line.174"></a>
+<span class="sourceLineNo">175</span>    return Long.valueOf(this.time).hashCode();<a name="line.175"></a>
+<span class="sourceLineNo">176</span>  }<a name="line.176"></a>
+<span class="sourceLineNo">177</span><a name="line.177"></a>
+<span class="sourceLineNo">178</span>  /**<a name="line.178"></a>
+<span class="sourceLineNo">179</span>   * Returns a string representation of the object in the format.<a name="line.179"></a>
+<span class="sourceLineNo">180</span>   * "[-]d.hh:mm:ss.ff" where "-" is an optional sign for negative TimeSpan<a name="line.180"></a>
+<span class="sourceLineNo">181</span>   * values, the "d" component is days, "hh" is hours, "mm" is minutes, "ss"<a name="line.181"></a>
+<span class="sourceLineNo">182</span>   * is seconds, and "ff" is milliseconds<a name="line.182"></a>
+<span class="sourceLineNo">183</span>   *<a name="line.183"></a>
+<span class="sourceLineNo">184</span>   * @return a string containing the number of milliseconds.<a name="line.184"></a>
+<span class="sourceLineNo">185</span>   */<a name="line.185"></a>
+<span class="sourceLineNo">186</span>  public String toString() {<a name="line.186"></a>
+<span class="sourceLineNo">187</span>    StringBuffer sb = new StringBuffer();<a name="line.187"></a>
+<span class="sourceLineNo">188</span>    long millis = this.time;<a name="line.188"></a>
+<span class="sourceLineNo">189</span>    if (millis &lt; 0) {<a name="line.189"></a>
+<span class="sourceLineNo">190</span>      sb.append("-");<a name="line.190"></a>
+<span class="sourceLineNo">191</span>      millis = -millis;<a name="line.191"></a>
+<span class="sourceLineNo">192</span>    }<a name="line.192"></a>
+<span class="sourceLineNo">193</span><a name="line.193"></a>
+<span class="sourceLineNo">194</span>    long day = millis / TimeSpan.DAYS;<a name="line.194"></a>
+<span class="sourceLineNo">195</span><a name="line.195"></a>
+<span class="sourceLineNo">196</span>    if (day != 0) {<a name="line.196"></a>
+<span class="sourceLineNo">197</span>      sb.append(day);<a name="line.197"></a>
+<span class="sourceLineNo">198</span>      sb.append("d.");<a name="line.198"></a>
+<span class="sourceLineNo">199</span>      millis = millis % TimeSpan.DAYS;<a name="line.199"></a>
+<span class="sourceLineNo">200</span>    }<a name="line.200"></a>
+<span class="sourceLineNo">201</span><a name="line.201"></a>
+<span class="sourceLineNo">202</span>    sb.append(millis / TimeSpan.HOURS);<a name="line.202"></a>
+<span class="sourceLineNo">203</span>    millis = millis % TimeSpan.HOURS;<a name="line.203"></a>
+<span class="sourceLineNo">204</span>    sb.append("h:");<a name="line.204"></a>
+<span class="sourceLineNo">205</span>    sb.append(millis / TimeSpan.MINUTES);<a name="line.205"></a>
+<span class="sourceLineNo">206</span>    millis = millis % TimeSpan.MINUTES;<a name="line.206"></a>
+<span class="sourceLineNo">207</span>    sb.append("m:");<a name="line.207"></a>
+<span class="sourceLineNo">208</span>    sb.append(millis / TimeSpan.SECONDS);<a name="line.208"></a>
+<span class="sourceLineNo">209</span>    sb.append("s");<a name="line.209"></a>
+<span class="sourceLineNo">210</span>    millis = millis % TimeSpan.SECONDS;<a name="line.210"></a>
+<span class="sourceLineNo">211</span>    if (millis != 0) {<a name="line.211"></a>
+<span class="sourceLineNo">212</span>      sb.append(".");<a name="line.212"></a>
+<span class="sourceLineNo">213</span>      sb.append(millis);<a name="line.213"></a>
+<span class="sourceLineNo">214</span>      sb.append("ms");<a name="line.214"></a>
+<span class="sourceLineNo">215</span>    }<a name="line.215"></a>
+<span class="sourceLineNo">216</span>    return sb.toString();<a name="line.216"></a>
+<span class="sourceLineNo">217</span>  }<a name="line.217"></a>
+<span class="sourceLineNo">218</span><a name="line.218"></a>
+<span class="sourceLineNo">219</span>  /**<a name="line.219"></a>
+<span class="sourceLineNo">220</span>   * Returns a clone of this TimeSpan.<a name="line.220"></a>
+<span class="sourceLineNo">221</span>   *<a name="line.221"></a>
+<span class="sourceLineNo">222</span>   * @return a clone of this TimeSpan.<a name="line.222"></a>
+<span class="sourceLineNo">223</span>   */<a name="line.223"></a>
+<span class="sourceLineNo">224</span>  public Object clone() {<a name="line.224"></a>
+<span class="sourceLineNo">225</span>    try {<a name="line.225"></a>
+<span class="sourceLineNo">226</span>      return super.clone();<a name="line.226"></a>
+<span class="sourceLineNo">227</span>    } catch (CloneNotSupportedException e) {<a name="line.227"></a>
+<span class="sourceLineNo">228</span>      LOG.error(e);<a name="line.228"></a>
+<span class="sourceLineNo">229</span>      throw new InternalError();<a name="line.229"></a>
+<span class="sourceLineNo">230</span>    }<a name="line.230"></a>
+<span class="sourceLineNo">231</span>  }<a name="line.231"></a>
+<span class="sourceLineNo">232</span><a name="line.232"></a>
+<span class="sourceLineNo">233</span>  /**<a name="line.233"></a>
+<span class="sourceLineNo">234</span>   * Indicates whether the value of the TimeSpan is positive.<a name="line.234"></a>
+<span class="sourceLineNo">235</span>   *<a name="line.235"></a>
+<span class="sourceLineNo">236</span>   * @return if the value of the TimeSpan is greater than<a name="line.236"></a>
+<span class="sourceLineNo">237</span>   * zero.  otherwise.<a name="line.237"></a>
+<span class="sourceLineNo">238</span>   */<a name="line.238"></a>
+<span class="sourceLineNo">239</span>  public boolean isPositive() {<a name="line.239"></a>
+<span class="sourceLineNo">240</span>    return this.compareTo(TimeSpan.ZERO) &gt; 0 ? true : false;<a name="line.240"></a>
+<span class="sourceLineNo">241</span>  }<a name="line.241"></a>
+<span class="sourceLineNo">242</span><a name="line.242"></a>
+<span class="sourceLineNo">243</span>  /**<a name="line.243"></a>
+<span class="sourceLineNo">244</span>   * Indicates whether the value of the TimeSpan is negative.<a name="line.244"></a>
+<span class="sourceLineNo">245</span>   *<a name="line.245"></a>
+<span class="sourceLineNo">246</span>   * @return if the value of the TimeSpan is less than zero.<a name="line.246"></a>
+<span class="sourceLineNo">247</span>   * otherwise.<a name="line.247"></a>
+<span class="sourceLineNo">248</span>   */<a name="line.248"></a>
+<span class="sourceLineNo">249</span>  public boolean isNegative() {<a name="line.249"></a>
+<span class="sourceLineNo">250</span>    return this.compareTo(TimeSpan.ZERO) &lt; 0 ? true : false;<a name="line.250"></a>
+<span class="sourceLineNo">251</span>  }<a name="line.251"></a>
+<span class="sourceLineNo">252</span><a name="line.252"></a>
+<span class="sourceLineNo">253</span>  /**<a name="line.253"></a>
+<span class="sourceLineNo">254</span>   * Indicates whether the value of the TimeSpan is zero.<a name="line.254"></a>
+<span class="sourceLineNo">255</span>   *<a name="line.255"></a>
+<span class="sourceLineNo">256</span>   * @return if the value of the TimeSpan is equal to zero.<a name="line.256"></a>
+<span class="sourceLineNo">257</span>   * otherwise.<a name="line.257"></a>
+<span class="sourceLineNo">258</span>   */<a name="line.258"></a>
+<span class="sourceLineNo">259</span>  public boolean isZero() {<a name="line.259"></a>
+<span class="sourceLineNo">260</span>    return this.equals(TimeSpan.ZERO);<a name="line.260"></a>
+<span class="sourceLineNo">261</span>  }<a name="line.261"></a>
+<span class="sourceLineNo">262</span><a name="line.262"></a>
+<span class="sourceLineNo">263</span>  /**<a name="line.263"></a>
+<span class="sourceLineNo">264</span>   * Gets the number of milliseconds.<a name="line.264"></a>
+<span class="sourceLineNo">265</span>   *<a name="line.265"></a>
+<span class="sourceLineNo">266</span>   * @return the number of milliseconds.<a name="line.266"></a>
+<span class="sourceLineNo">267</span>   */<a name="line.267"></a>
+<span class="sourceLineNo">268</span>  public long getMilliseconds() {<a name="line.268"></a>
+<span class="sourceLineNo">269</span>    return (((this.time % TimeSpan.HOURS) % TimeSpan.MINUTES) % TimeSpan.MILLISECONDS)<a name="line.269"></a>
+<span class="sourceLineNo">270</span>        / TimeSpan.MILLISECONDS;<a name="line.270"></a>
+<span class="sourceLineNo">271</span>  }<a name="line.271"></a>
+<span class="sourceLineNo">272</span><a name="line.272"></a>
+<span class="sourceLineNo">273</span>  /**<a name="line.273"></a>
+<span class="sourceLineNo">274</span>   * Gets the number of milliseconds.<a name="line.274"></a>
+<span class="sourceLineNo">275</span>   *<a name="line.275"></a>
+<span class="sourceLineNo">276</span>   * @return the number of milliseconds.<a name="line.276"></a>
+<span class="sourceLineNo">277</span>   */<a name="line.277"></a>
+<span class="sourceLineNo">278</span>  public long getTotalMilliseconds() {<a name="line.278"></a>
+<span class="sourceLineNo">279</span>    return this.time;<a name="line.279"></a>
+<span class="sourceLineNo">280</span>  }<a name="line.280"></a>
+<span class="sourceLineNo">281</span><a name="line.281"></a>
+<span class="sourceLineNo">282</span>  /**<a name="line.282"></a>
+<span class="sourceLineNo">283</span>   * Gets the number of seconds (truncated).<a name="line.283"></a>
+<span class="sourceLineNo">284</span>   *<a name="line.284"></a>
+<span class="sourceLineNo">285</span>   * @return the number of seconds.<a name="line.285"></a>
+<span class="sourceLineNo">286</span>   */<a name="line.286"></a>
+<span class="sourceLineNo">287</span>  public long getSeconds() {<a name="line.287"></a>
+<span class="sourceLineNo">288</span>    return ((this.time % TimeSpan.HOURS) % TimeSpan.MINUTES) / TimeSpan.SECONDS;<a name="line.288"></a>
+<span class="sourceLineNo">289</span>  }<a name="line.289"></a>
+<span class="sourceLineNo">290</span><a name="line.290"></a>
+<span class="sourceLineNo">291</span>  /**<a name="line.291"></a>
+<span class="sourceLineNo">292</span>   * Gets the number of seconds including fractional seconds.<a name="line.292"></a>
+<span class="sourceLineNo">293</span>   *<a name="line.293"></a>
+<span class="sourceLineNo">294</span>   * @return the number of seconds.<a name="line.294"></a>
+<span class="sourceLineNo">295</span>   */<a name="line.295"></a>
+<span class="sourceLineNo">296</span>  public double getTotalSeconds() {<a name="line.296"></a>
+<span class="sourceLineNo">297</span>    return this.time / 1000.0d;<a name="line.297"></a>
+<span class="sourceLineNo">298</span>  }<a name="line.298"></a>
+<span class="sourceLineNo">299</span><a name="line.299"></a>
+<span class="sourceLineNo">300</span>  /**<a name="line.300"></a>
+<span class="sourceLineNo">301</span>   * Gets the number of minutes (truncated).<a name="line.301"></a>
+<span class="sourceLineNo">302</span>   *<a name="line.302"></a>
+<span class="sourceLineNo">303</span>   * @return the number of minutes.<a name="line.303"></a>
+<span class="sourceLineNo">304</span>   */<a name="line.304"></a>
+<span class="sourceLineNo">305</span>  public long getMinutes() {<a name="line.305"></a>
+<span class="sourceLineNo">306</span>    return (this.time % TimeSpan.HOURS) / TimeSpan.MINUTES;// (this.time/1000)/60;<a name="line.306"></a>
+<span class="sourceLineNo">307</span>  }<a name="line.307"></a>
+<span class="sourceLineNo">308</span><a name="line.308"></a>
+<span class="sourceLineNo">309</span>  /**<a name="line.309"></a>
+<span class="sourceLineNo">310</span>   * Gets the number of minutes including fractional minutes.<a name="line.310"></a>
+<span class="sourceLineNo">311</span>   *<a name="line.311"></a>
+<span class="sourceLineNo">312</span>   * @return the number of minutes.<a name="line.312"></a>
+<span class="sourceLineNo">313</span>   */<a name="line.313"></a>
+<span class="sourceLineNo">314</span>  public double getTotalMinutes() {<a name="line.314"></a>
+<span class="sourceLineNo">315</span>    return (this.time / 1000.0d) / 60.0d;<a name="line.315"></a>
+<span class="sourceLineNo">316</span>  }<a name="line.316"></a>
+<span class="sourceLineNo">317</span><a name="line.317"></a>
+<span class="sourceLineNo">318</span>  /**<a name="line.318"></a>
+<span class="sourceLineNo">319</span>   * Gets the number of hours (truncated).<a name="line.319"></a>
+<span class="sourceLineNo">320</span>   *<a name="line.320"></a>
+<span class="sourceLineNo">321</span>   * @return the number of hours.<a name="line.321"></a>
+<span class="sourceLineNo">322</span>   */<a name="line.322"></a>
+<span class="sourceLineNo">323</span>  public long getHours() {<a name="line.323"></a>
+<span class="sourceLineNo">324</span>    return ((this.time / 1000) / 60) / 60;<a name="line.324"></a>
+<span class="sourceLineNo">325</span>  }<a name="line.325"></a>
+<span class="sourceLineNo">326</span><a name="line.326"></a>
+<span class="sourceLineNo">327</span>  /**<a name="line.327"></a>
+<span class="sourceLineNo">328</span>   * Gets the number of hours including fractional hours.<a name="line.328"></a>
+<span class="sourceLineNo">329</span>   *<a name="line.329"></a>
+<span class="sourceLineNo">330</span>   * @return the number of hours.<a name="line.330"></a>
+<span class="sourceLineNo">331</span>   */<a name="line.331"></a>
+<span class="sourceLineNo">332</span>  public double getTotalHours() {<a name="line.332"></a>
+<span class="sourceLineNo">333</span>    return ((this.time / 1000.0d) / 60.0d) / 60.0d;<a name="line.333"></a>
+<span class="sourceLineNo">334</span>  }<a name="line.334"></a>
+<span class="sourceLineNo">335</span><a name="line.335"></a>
+<span class="sourceLineNo">336</span>  /**<a name="line.336"></a>
+<span class="sourceLineNo">337</span>   * Gets the number of days (truncated).<a name="line.337"></a>
+<span class="sourceLineNo">338</span>   *<a name="line.338"></a>
+<span class="sourceLineNo">339</span>   * @return the number of days.<a name="line.339"></a>
+<span class="sourceLineNo">340</span>   */<a name="line.340"></a>
+<span class="sourceLineNo">341</span>  public long getDays() {<a name="line.341"></a>
+<span class="sourceLineNo">342</span>    return (((this.time / 1000) / 60) / 60) / 24;<a name="line.342"></a>
+<span class="sourceLineNo">343</span>  }<a name="line.343"></a>
+<span class="sourceLineNo">344</span><a name="line.344"></a>
+<span class="sourceLineNo">345</span>  /**<a name="line.345"></a>
+<span class="sourceLineNo">346</span>   * Gets the number of days including fractional days.<a name="line.346"></a>
+<span class="sourceLineNo">347</span>   *<a name="line.347"></a>
+<span class="sourceLineNo">348</span>   * @return the number of days.<a name="line.348"></a>
+<span class="sourceLineNo">349</span>   */<a name="line.349"></a>
+<span class="sourceLineNo">350</span>  public double getTotalDays() {<a name="line.350"></a>
+<span class="sourceLineNo">351</span>    return (((this.time / 1000.0d) / 60.0d) / 60.0d) / 24.0d;<a name="line.351"></a>
+<span class="sourceLineNo">352</span>  }<a name="line.352"></a>
+<span class="sourceLineNo">353</span><a name="line.353"></a>
+<span class="sourceLineNo">354</span>  /**<a name="line.354"></a>
+<span class="sourceLineNo">355</span>   * Adds a TimeSpan to this TimeSpan.<a name="line.355"></a>
+<span class="sourceLineNo">356</span>   *<a name="line.356"></a>
+<span class="sourceLineNo">357</span>   * @param timespan the TimeSpan to add to this TimeSpan.<a name="line.357"></a>
+<span class="sourceLineNo">358</span>   */<a name="line.358"></a>
+<span class="sourceLineNo">359</span>  public void add(TimeSpan timespan) {<a name="line.359"></a>
+<span class="sourceLineNo">360</span>    add(TimeSpan.MILLISECONDS, timespan.time);<a name="line.360"></a>
+<span class="sourceLineNo">361</span>  }<a name="line.361"></a>
+<span class="sourceLineNo">362</span><a name="line.362"></a>
+<span class="sourceLineNo">363</span>  /**<a name="line.363"></a>
+<span class="sourceLineNo">364</span>   * Adds a number of units to this TimeSpan.<a name="line.364"></a>
+<span class="sourceLineNo">365</span>   *<a name="line.365"></a>
+<span class="sourceLineNo">366</span>   * @param units the type of unit to add to this TimeSpan.<a name="line.366"></a>
+<span class="sourceLineNo">367</span>   * @param value the number of units to add to this TimeSpan.<a name="line.367"></a>
+<span class="sourceLineNo">368</span>   */<a name="line.368"></a>
+<span class="sourceLineNo">369</span>  public void add(int units, long value) {<a name="line.369"></a>
+<span class="sourceLineNo">370</span>    this.time += TimeSpan.toMilliseconds(units, value);<a name="line.370"></a>
+<span class="sourceLineNo">371</span>  }<a name="line.371"></a>
+<span class="sourceLineNo">372</span><a name="line.372"></a>
+<span class="sourceLineNo">373</span>  /**<a name="line.373"></a>
+<span class="sourceLineNo">374</span>   * Compares two TimeSpan objects.<a name="line.374"></a>
+<span class="sourceLineNo">375</span>   *<a name="line.375"></a>
+<span class="sourceLineNo">376</span>   * @param first  first TimeSpan to use in the compare.<a name="line.376"></a>
+<span class="sourceLineNo">377</span>   * @param second second TimeSpan to use in the compare.<a name="line.377"></a>
+<span class="sourceLineNo">378</span>   * @return a negative integer, zero, or a positive integer as the first<a name="line.378"></a>
+<span class="sourceLineNo">379</span>   * TimeSpan is less than, equal to, or greater than the second<a name="line.379"></a>
+<span class="sourceLineNo">380</span>   * TimeSpan.<a name="line.380"></a>
+<span class="sourceLineNo">381</span>   */<a name="line.381"></a>
+<span class="sourceLineNo">382</span>  public static int compare(TimeSpan first, TimeSpan second) {<a name="line.382"></a>
+<span class="sourceLineNo">383</span>    if (first.time == second.time) {<a name="line.383"></a>
+<span class="sourceLineNo">384</span>      return 0;<a name="line.384"></a>
+<span class="sourceLineNo">385</span>    }<a name="line.385"></a>
+<span class="sourceLineNo">386</span>    if (first.time &gt; second.time) {<a name="line.386"></a>
+<span class="sourceLineNo">387</span>      return +1;<a name="line.387"></a>
+<span class="sourceLineNo">388</span>    }<a name="line.388"></a>
+<span class="sourceLineNo">389</span>    return -1;<a name="line.389"></a>
+<span class="sourceLineNo">390</span>  }<a name="line.390"></a>
+<span class="sourceLineNo">391</span><a name="line.391"></a>
+<span class="sourceLineNo">392</span>  /**<a name="line.392"></a>
+<span class="sourceLineNo">393</span>   * Returns a TimeSpan whose value is the absolute value of this TimeSpan.<a name="line.393"></a>
+<span class="sourceLineNo">394</span>   *<a name="line.394"></a>
+<span class="sourceLineNo">395</span>   * @return a TimeSpan whose value is the absolute value of this TimeSpan.<a name="line.395"></a>
+<span class="sourceLineNo">396</span>   */<a name="line.396"></a>
+<span class="sourceLineNo">397</span>  public TimeSpan duration() {<a name="line.397"></a>
+<span class="sourceLineNo">398</span>    return new TimeSpan(Math.abs(this.time));<a name="line.398"></a>
+<span class="sourceLineNo">399</span>  }<a name="line.399"></a>
+<span class="sourceLineNo">400</span><a name="line.400"></a>
+<span class="sourceLineNo">401</span>  /**<a name="line.401"></a>
+<span class="sourceLineNo">402</span>   * Returns a TimeSpan whose value is the negated value of this TimeSpan.<a name="line.402"></a>
+<span class="sourceLineNo">403</span>   *<a name="line.403"></a>
+<span class="sourceLineNo">404</span>   * @return a TimeSpan whose value is the negated value of this TimeSpan.<a name="line.404"></a>
+<span class="sourceLineNo">405</span>   */<a name="line.405"></a>
+<span class="sourceLineNo">406</span>  public TimeSpan negate() {<a name="line.406"></a>
+<span class="sourceLineNo">407</span>    return new TimeSpan(-this.time);<a name="line.407"></a>
+<span class="sourceLineNo">408</span>  }<a name="line.408"></a>
+<span class="sourceLineNo">409</span><a name="line.409"></a>
+<span class="sourceLineNo">410</span>  /**<a name="line.410"></a>
+<span class="sourceLineNo">411</span>   * Subtracts a TimeSpan from this TimeSpan.<a name="line.411"></a>
+<span class="sourceLineNo">412</span>   *<a name="line.412"></a>
+<span class="sourceLineNo">413</span>   * @param timespan the TimeSpan to subtract from this TimeSpan.<a name="line.413"></a>
+<span class="sourceLineNo">414</span>   */<a name="line.414"></a>
+<span class="sourceLineNo">415</span>  public void subtract(TimeSpan timespan) {<a name="line.415"></a>
+<span class="sourceLineNo">416</span>    subtract(TimeSpan.MILLISECONDS, timespan.time);<a name="line.416"></a>
+<span class="sourceLineNo">417</span>  }<a name="line.417"></a>
+<span class="sourceLineNo">418</span><a name="line.418"></a>
+<span class="sourceLineNo">419</span>  /**<a name="line.419"></a>
+<span class="sourceLineNo">420</span>   * Subtracts a number of units from this TimeSpan.<a name="line.420"></a>
+<span class="sourceLineNo">421</span>   *<a name="line.421"></a>
+<span class="sourceLineNo">422</span>   * @param units the type of unit to subtract from this TimeSpan.<a name="line.422"></a>
+<span class="sourceLineNo">423</span>   * @param value the number of units to subtract from this TimeSpan.<a name="line.423"></a>
+<span class="sourceLineNo">424</span>   */<a name="line.424"></a>
+<span class="sourceLineNo">425</span>  public void subtract(int units, long value) {<a name="line.425"></a>
+<span class="sourceLineNo">426</span>    add(units, -value);<a name="line.426"></a>
+<span class="sourceLineNo">427</span>  }<a name="line.427"></a>
+<span class="sourceLineNo">428</span><a name="line.428"></a>
+<span class="sourceLineNo">429</span>  /**<a name="line.429"></a>
+<span class="sourceLineNo">430</span>   * To milliseconds.<a name="line.430"></a>
+<span class="sourceLineNo">431</span>   *<a name="line.431"></a>
+<span class="sourceLineNo">432</span>   * @param units the units<a name="line.432"></a>
+<span class="sourceLineNo">433</span>   * @param value the value<a name="line.433"></a>
+<span class="sourceLineNo">434</span>   * @return the long<a name="line.434"></a>
+<span class="sourceLineNo">435</span>   */<a name="line.435"></a>
+<span class="sourceLineNo">436</span>  private static long toMilliseconds(int units, long value) {<a name="line.436"></a>
+<span class="sourceLineNo">437</span>    long millis;<a name="line.437"></a>
+<span class="sourceLineNo">438</span>    switch (units) {<a name="line.438"></a>
+<span class="sourceLineNo">439</span>      case TimeSpan.MILLISECONDS:<a name="line.439"></a>
+<span class="sourceLineNo">440</span>      case TimeSpan.SECONDS:<a name="line.440"></a>
+<span class="sourceLineNo">441</span>      case TimeSpan.MINUTES:<a name="line.441"></a>
+<span class="sourceLineNo">442</span>      case TimeSpan.HOURS:<a name="line.442"></a>
+<span class="sourceLineNo">443</span>      case TimeSpan.DAYS:<a name="line.443"></a>
+<span class="sourceLineNo">444</span>        millis = value * units;<a name="line.444"></a>
+<span class="sourceLineNo">445</span>        break;<a name="line.445"></a>
+<span class="sourceLineNo">446</span>      default:<a name="line.446"></a>
+<span class="sourceLineNo">447</span>        throw new IllegalArgumentException("Unrecognized units: " + units);<a name="line.447"></a>
+<span class="sourceLineNo">448</span>    }<a name="line.448"></a>
+<span class="sourceLineNo">449</span>    return millis;<a name="line.449"></a>
+<span class="sourceLineNo">450</span>  }<a name="line.450"></a>
+<span class="sourceLineNo">451</span><a name="line.451"></a>
+<span class="sourceLineNo">452</span>  public static TimeSpan parse(String s) throws Exception {<a name="line.452"></a>
+<span class="sourceLineNo">453</span>    String str = s.trim();<a name="line.453"></a>
+<span class="sourceLineNo">454</span>    String[] st1 = str.split("\\.");<a name="line.454"></a>
+<span class="sourceLineNo">455</span>    int days = 0, millsec = 0, totMillSec = 0;<a name="line.455"></a>
+<span class="sourceLineNo">456</span>    String data = str;<a name="line.456"></a>
+<span class="sourceLineNo">457</span>    switch (st1.length) {<a name="line.457"></a>
+<span class="sourceLineNo">458</span>      case 1:<a name="line.458"></a>
+<span class="sourceLineNo">459</span>        data = str;<a name="line.459"></a>
+<span class="sourceLineNo">460</span>        break;<a name="line.460"></a>
+<span class="sourceLineNo">461</span>      case 2:<a name="line.461"></a>
+<span class="sourceLineNo">462</span>        if (st1[0].split(":").length &gt; 1) {<a name="line.462"></a>
+<span class="sourceLineNo">463</span>          millsec = Integer.parseInt(st1[1]);<a name="line.463"></a>
+<span class="sourceLineNo">464</span>          data = st1[0];<a name="line.464"></a>
+<span class="sourceLineNo">465</span>        } else {<a name="line.465"></a>
+<span class="sourceLineNo">466</span>          days = Integer.parseInt(st1[0]);<a name="line.466"></a>
+<span class="sourceLineNo">467</span>          data = st1[1];<a name="line.467"></a>
+<span class="sourceLineNo">468</span>        }<a name="line.468"></a>
+<span class="sourceLineNo">469</span>        break;<a name="line.469"></a>
+<span class="sourceLineNo">470</span>      case 3:<a name="line.470"></a>
+<span class="sourceLineNo">471</span>        days = Integer.parseInt(st1[0]);<a name="line.471"></a>
+<span class="sourceLineNo">472</span>        data = st1[1];<a name="line.472"></a>
+<span class="sourceLineNo">473</span>        millsec = Integer.parseInt(st1[2]);<a name="line.473"></a>
+<span class="sourceLineNo">474</span>        break;<a name="line.474"></a>
+<span class="sourceLineNo">475</span>      default:<a name="line.475"></a>
+<span class="sourceLineNo">476</span>        throw new FormatException("Bad Format");<a name="line.476"></a>
+<span class="sourceLineNo">477</span><a name="line.477"></a>
+<span class="sourceLineNo">478</span>    }<a name="line.478"></a>
+<span class="sourceLineNo">479</span>    String[] st = data.split(":");<a name="line.479"></a>
+<span class="sourceLineNo">480</span>    switch (st.length) {<a name="line.480"></a>
+<span class="sourceLineNo">481</span>      case 1:<a name="line.481"></a>
+<span class="sourceLineNo">482</span>        totMillSec = Integer.parseInt(str) * 24 * 60 * 60 * 1000;<a name="line.482"></a>
+<span class="sourceLineNo">483</span>        break;<a name="line.483"></a>
+<span class="sourceLineNo">484</span>      case 2:<a name="line.484"></a>
+<span class="sourceLineNo">485</span>        totMillSec = (Integer.parseInt(st[0]) * 60 * 60 * 1000) + (Integer.parseInt(st[1]) * 60 * 1000);<a name="line.485"></a>
+<span class="sourceLineNo">486</span>        break;<a name="line.486"></a>
+<span class="sourceLineNo">487</span>      case 3:<a name="line.487"></a>
+<span class="sourceLineNo">488</span>        totMillSec = (Integer.parseInt(st[0]) * 60 * 60 * 1000) + (Integer.parseInt(st[1]) * 60 * 1000) + (<a name="line.488"></a>
+<span class="sourceLineNo">489</span>            Integer.parseInt(st[2]) * 1000);<a name="line.489"></a>
+<span class="sourceLineNo">490</span>        break;<a name="line.490"></a>
+<span class="sourceLineNo">491</span>      case 4:<a name="line.491"></a>
+<span class="sourceLineNo">492</span>        totMillSec =<a name="line.492"></a>
+<span class="sourceLineNo">493</span>            (Integer.parseInt(st[0]) * 24 * 60 * 60 * 1000) + (Integer.parseInt(st[1]) * 60 * 60 * 1000) + (<a name="line.493"></a>
+<span class="sourceLineNo">494</span>                Integer.parseInt(st[2]) * 60 * 1000) + (Integer.parseInt(st[3]) * 1000);<a name="line.494"></a>
+<span class="sourceLineNo">495</span>        break;<a name="line.495"></a>
+<span class="sourceLineNo">496</span>      default:<a name="line.496"></a>
+<span class="sourceLineNo">497</span>        throw new FormatException("Bad Format/Overflow");<a name="line.497"></a>
+<span class="sourceLineNo">498</span>    }<a name="line.498"></a>
+<span class="sourceLineNo">499</span>    totMillSec += (days * 24 * 60 * 60 * 1000) + millsec;<a name="line.499"></a>
+<span class="sourceLineNo">500</span>    return new TimeSpan(totMillSec);<a name="line.500"></a>
+<span class="sourceLineNo">501</span>  }<a name="line.501"></a>
+<span class="sourceLineNo">502</span><a name="line.502"></a>
+<span class="sourceLineNo">503</span>}<a name="line.503"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

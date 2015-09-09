@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * The MIT License<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * Copyright (c) 2012 Microsoft Corporation<a name="line.3"></a>
+<span class="sourceLineNo">004</span> *<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * Permission is hereby granted, free of charge, to any person obtaining a copy<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * of this software and associated documentation files (the "Software"), to deal<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * in the Software without restriction, including without limitation the rights<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * copies of the Software, and to permit persons to whom the Software is<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * furnished to do so, subject to the following conditions:<a name="line.10"></a>
+<span class="sourceLineNo">011</span> *<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * The above copyright notice and this permission notice shall be included in<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * all copies or substantial portions of the Software.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> *<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<a name="line.19"></a>
+<span class="sourceLineNo">020</span> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<a name="line.20"></a>
+<span class="sourceLineNo">021</span> * THE SOFTWARE.<a name="line.21"></a>
+<span class="sourceLineNo">022</span> */<a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span>package microsoft.exchange.webservices.data.property.complex;<a name="line.24"></a>
+<span class="sourceLineNo">025</span><a name="line.25"></a>
+<span class="sourceLineNo">026</span>import microsoft.exchange.webservices.data.attribute.EditorBrowsable;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import microsoft.exchange.webservices.data.core.enumeration.attribute.EditorBrowsableState;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import microsoft.exchange.webservices.data.core.enumeration.property.PhysicalAddressKey;<a name="line.28"></a>
+<span class="sourceLineNo">029</span>import microsoft.exchange.webservices.data.misc.OutParam;<a name="line.29"></a>
+<span class="sourceLineNo">030</span><a name="line.30"></a>
+<span class="sourceLineNo">031</span>/**<a name="line.31"></a>
+<span class="sourceLineNo">032</span> * Represents a dictionary of physical addresses.<a name="line.32"></a>
+<span class="sourceLineNo">033</span> */<a name="line.33"></a>
+<span class="sourceLineNo">034</span>@EditorBrowsable(state = EditorBrowsableState.Never)<a name="line.34"></a>
+<span class="sourceLineNo">035</span>public final class PhysicalAddressDictionary extends<a name="line.35"></a>
+<span class="sourceLineNo">036</span>                                             DictionaryProperty&lt;PhysicalAddressKey, PhysicalAddressEntry&gt; {<a name="line.36"></a>
+<span class="sourceLineNo">037</span><a name="line.37"></a>
+<span class="sourceLineNo">038</span>  /**<a name="line.38"></a>
+<span class="sourceLineNo">039</span>   * Creates instance of dictionary entry.<a name="line.39"></a>
+<span class="sourceLineNo">040</span>   *<a name="line.40"></a>
+<span class="sourceLineNo">041</span>   * @return New instance.<a name="line.41"></a>
+<span class="sourceLineNo">042</span>   */<a name="line.42"></a>
+<span class="sourceLineNo">043</span>  @Override<a name="line.43"></a>
+<span class="sourceLineNo">044</span>  protected PhysicalAddressEntry createEntryInstance() {<a name="line.44"></a>
+<span class="sourceLineNo">045</span>    return new PhysicalAddressEntry();<a name="line.45"></a>
+<span class="sourceLineNo">046</span>  }<a name="line.46"></a>
+<span class="sourceLineNo">047</span><a name="line.47"></a>
+<span class="sourceLineNo">048</span>  /**<a name="line.48"></a>
+<span class="sourceLineNo">049</span>   * Gets  the physical address at the specified key.<a name="line.49"></a>
+<span class="sourceLineNo">050</span>   *<a name="line.50"></a>
+<span class="sourceLineNo">051</span>   * @param key the key<a name="line.51"></a>
+<span class="sourceLineNo">052</span>   * @return The physical address at the specified key.<a name="line.52"></a>
+<span class="sourceLineNo">053</span>   */<a name="line.53"></a>
+<span class="sourceLineNo">054</span>  public PhysicalAddressEntry getPhysicalAddress(PhysicalAddressKey key) {<a name="line.54"></a>
+<span class="sourceLineNo">055</span>    return this.getEntries().get(key);<a name="line.55"></a>
+<span class="sourceLineNo">056</span>  }<a name="line.56"></a>
+<span class="sourceLineNo">057</span><a name="line.57"></a>
+<span class="sourceLineNo">058</span>  /**<a name="line.58"></a>
+<span class="sourceLineNo">059</span>   * Sets the physical address.<a name="line.59"></a>
+<span class="sourceLineNo">060</span>   *<a name="line.60"></a>
+<span class="sourceLineNo">061</span>   * @param key   the key<a name="line.61"></a>
+<span class="sourceLineNo">062</span>   * @param value the value<a name="line.62"></a>
+<span class="sourceLineNo">063</span>   */<a name="line.63"></a>
+<span class="sourceLineNo">064</span>  public void setPhysicalAddress(PhysicalAddressKey key,<a name="line.64"></a>
+<span class="sourceLineNo">065</span>      PhysicalAddressEntry value) {<a name="line.65"></a>
+<span class="sourceLineNo">066</span>    if (value == null) {<a name="line.66"></a>
+<span class="sourceLineNo">067</span>      this.internalRemove(key);<a name="line.67"></a>
+<span class="sourceLineNo">068</span>    } else {<a name="line.68"></a>
+<span class="sourceLineNo">069</span>      value.setKey(key);<a name="line.69"></a>
+<span class="sourceLineNo">070</span>      this.internalAddOrReplace(value);<a name="line.70"></a>
+<span class="sourceLineNo">071</span>    }<a name="line.71"></a>
+<span class="sourceLineNo">072</span>  }<a name="line.72"></a>
+<span class="sourceLineNo">073</span><a name="line.73"></a>
+<span class="sourceLineNo">074</span>  /**<a name="line.74"></a>
+<span class="sourceLineNo">075</span>   * Tries to get the physical address associated with the specified key.<a name="line.75"></a>
+<span class="sourceLineNo">076</span>   *<a name="line.76"></a>
+<span class="sourceLineNo">077</span>   * @param key      the key<a name="line.77"></a>
+<span class="sourceLineNo">078</span>   * @param outparam the outparam<a name="line.78"></a>
+<span class="sourceLineNo">079</span>   * @return true if the Dictionary contains a physical address associated<a name="line.79"></a>
+<span class="sourceLineNo">080</span>   * with the specified key; otherwise, false.<a name="line.80"></a>
+<span class="sourceLineNo">081</span>   */<a name="line.81"></a>
+<span class="sourceLineNo">082</span>  public boolean tryGetValue(PhysicalAddressKey key,<a name="line.82"></a>
+<span class="sourceLineNo">083</span>      OutParam&lt;PhysicalAddressEntry&gt; outparam) {<a name="line.83"></a>
+<span class="sourceLineNo">084</span>    if (this.getEntries().containsKey(key)) {<a name="line.84"></a>
+<span class="sourceLineNo">085</span>      outparam.setParam(this.getEntries().get(key));<a name="line.85"></a>
+<span class="sourceLineNo">086</span>    }<a name="line.86"></a>
+<span class="sourceLineNo">087</span>    return this.getEntries().containsKey(key);<a name="line.87"></a>
+<span class="sourceLineNo">088</span>  }<a name="line.88"></a>
+<span class="sourceLineNo">089</span><a name="line.89"></a>
+<span class="sourceLineNo">090</span>}<a name="line.90"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

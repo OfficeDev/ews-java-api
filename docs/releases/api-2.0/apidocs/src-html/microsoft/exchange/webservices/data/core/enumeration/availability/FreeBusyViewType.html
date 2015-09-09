@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * The MIT License<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * Copyright (c) 2012 Microsoft Corporation<a name="line.3"></a>
+<span class="sourceLineNo">004</span> *<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * Permission is hereby granted, free of charge, to any person obtaining a copy<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * of this software and associated documentation files (the "Software"), to deal<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * in the Software without restriction, including without limitation the rights<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * copies of the Software, and to permit persons to whom the Software is<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * furnished to do so, subject to the following conditions:<a name="line.10"></a>
+<span class="sourceLineNo">011</span> *<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * The above copyright notice and this permission notice shall be included in<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * all copies or substantial portions of the Software.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> *<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<a name="line.19"></a>
+<span class="sourceLineNo">020</span> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<a name="line.20"></a>
+<span class="sourceLineNo">021</span> * THE SOFTWARE.<a name="line.21"></a>
+<span class="sourceLineNo">022</span> */<a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span>package microsoft.exchange.webservices.data.core.enumeration.availability;<a name="line.24"></a>
+<span class="sourceLineNo">025</span><a name="line.25"></a>
+<span class="sourceLineNo">026</span>/**<a name="line.26"></a>
+<span class="sourceLineNo">027</span> * Defines the type of free/busy information returned by a GetUserAvailability<a name="line.27"></a>
+<span class="sourceLineNo">028</span> * operation.<a name="line.28"></a>
+<span class="sourceLineNo">029</span> */<a name="line.29"></a>
+<span class="sourceLineNo">030</span>public enum FreeBusyViewType {<a name="line.30"></a>
+<span class="sourceLineNo">031</span><a name="line.31"></a>
+<span class="sourceLineNo">032</span>  // No view could be returned. This value cannot be specified in a call to<a name="line.32"></a>
+<span class="sourceLineNo">033</span>  // GetUserAvailability.<a name="line.33"></a>
+<span class="sourceLineNo">034</span>  /**<a name="line.34"></a>
+<span class="sourceLineNo">035</span>   * The None.<a name="line.35"></a>
+<span class="sourceLineNo">036</span>   */<a name="line.36"></a>
+<span class="sourceLineNo">037</span>  None,<a name="line.37"></a>
+<span class="sourceLineNo">038</span><a name="line.38"></a>
+<span class="sourceLineNo">039</span>  // Represents an aggregated free/busy stream. In cross-forest scenarios in<a name="line.39"></a>
+<span class="sourceLineNo">040</span>  // which the target user in one forest<a name="line.40"></a>
+<span class="sourceLineNo">041</span>  // does not have an Availability service configured, the Availability<a name="line.41"></a>
+<span class="sourceLineNo">042</span>  // service of the requestor retrieves the<a name="line.42"></a>
+<span class="sourceLineNo">043</span>  // target users free/busy information from the free/busy public folder.<a name="line.43"></a>
+<span class="sourceLineNo">044</span>  // Because public folder only store<a name="line.44"></a>
+<span class="sourceLineNo">045</span>  // free/busy information in merged form, MergedOnly is the only available<a name="line.45"></a>
+<span class="sourceLineNo">046</span>  // information.<a name="line.46"></a>
+<span class="sourceLineNo">047</span>  /**<a name="line.47"></a>
+<span class="sourceLineNo">048</span>   * The Merged only.<a name="line.48"></a>
+<span class="sourceLineNo">049</span>   */<a name="line.49"></a>
+<span class="sourceLineNo">050</span>  MergedOnly,<a name="line.50"></a>
+<span class="sourceLineNo">051</span><a name="line.51"></a>
+<span class="sourceLineNo">052</span>  // Represents the legacy status information: free, busy, tentative, and OOF.<a name="line.52"></a>
+<span class="sourceLineNo">053</span>  // This also includes the start/end<a name="line.53"></a>
+<span class="sourceLineNo">054</span>  // times of the appointments. This view is richer than the legacy free/busy<a name="line.54"></a>
+<span class="sourceLineNo">055</span>  // view because individual meeting<a name="line.55"></a>
+<span class="sourceLineNo">056</span>  // start and end times are provided instead of an aggregated free/busy<a name="line.56"></a>
+<span class="sourceLineNo">057</span>  // stream.<a name="line.57"></a>
+<span class="sourceLineNo">058</span>  /**<a name="line.58"></a>
+<span class="sourceLineNo">059</span>   * The Free busy.<a name="line.59"></a>
+<span class="sourceLineNo">060</span>   */<a name="line.60"></a>
+<span class="sourceLineNo">061</span>  FreeBusy,<a name="line.61"></a>
+<span class="sourceLineNo">062</span><a name="line.62"></a>
+<span class="sourceLineNo">063</span>  // Represents all the property in FreeBusy with a stream of merged<a name="line.63"></a>
+<span class="sourceLineNo">064</span>  // free/busy availability information.<a name="line.64"></a>
+<span class="sourceLineNo">065</span>  /**<a name="line.65"></a>
+<span class="sourceLineNo">066</span>   * The Free busy merged.<a name="line.66"></a>
+<span class="sourceLineNo">067</span>   */<a name="line.67"></a>
+<span class="sourceLineNo">068</span>  FreeBusyMerged,<a name="line.68"></a>
+<span class="sourceLineNo">069</span><a name="line.69"></a>
+<span class="sourceLineNo">070</span>  // Represents the legacy status information: free, busy, tentative, and OOF;<a name="line.70"></a>
+<span class="sourceLineNo">071</span>  // the start/end times of the<a name="line.71"></a>
+<span class="sourceLineNo">072</span>  // appointments; and various property of the appointment such as subject,<a name="line.72"></a>
+<span class="sourceLineNo">073</span>  // location, and importance.<a name="line.73"></a>
+<span class="sourceLineNo">074</span>  // This requested view will return the maximum amount of information for<a name="line.74"></a>
+<span class="sourceLineNo">075</span>  // which the requesting user is privileged.<a name="line.75"></a>
+<span class="sourceLineNo">076</span>  // If merged free/busy information only is available, as with requesting<a name="line.76"></a>
+<span class="sourceLineNo">077</span>  // information for users in a Microsoft<a name="line.77"></a>
+<span class="sourceLineNo">078</span>  // Exchange Server 2003 forest, MergedOnly will be returned. Otherwise,<a name="line.78"></a>
+<span class="sourceLineNo">079</span>  // FreeBusy or Detailed will be returned.<a name="line.79"></a>
+<span class="sourceLineNo">080</span>  /**<a name="line.80"></a>
+<span class="sourceLineNo">081</span>   * The Detailed.<a name="line.81"></a>
+<span class="sourceLineNo">082</span>   */<a name="line.82"></a>
+<span class="sourceLineNo">083</span>  Detailed,<a name="line.83"></a>
+<span class="sourceLineNo">084</span><a name="line.84"></a>
+<span class="sourceLineNo">085</span>  // Represents all the property in Detailed with a stream of merged<a name="line.85"></a>
+<span class="sourceLineNo">086</span>  // free/busy availability<a name="line.86"></a>
+<span class="sourceLineNo">087</span>  // information. If only merged free/busy information is available, for<a name="line.87"></a>
+<span class="sourceLineNo">088</span>  // example if the mailbox exists on a computer<a name="line.88"></a>
+<span class="sourceLineNo">089</span>  // running Exchange 2003, MergedOnly will be returned. Otherwise,<a name="line.89"></a>
+<span class="sourceLineNo">090</span>  // FreeBusyMerged or DetailedMerged will be returned.<a name="line.90"></a>
+<span class="sourceLineNo">091</span>  /**<a name="line.91"></a>
+<span class="sourceLineNo">092</span>   * The Detailed merged.<a name="line.92"></a>
+<span class="sourceLineNo">093</span>   */<a name="line.93"></a>
+<span class="sourceLineNo">094</span>  DetailedMerged<a name="line.94"></a>
+<span class="sourceLineNo">095</span><a name="line.95"></a>
+<span class="sourceLineNo">096</span>}<a name="line.96"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

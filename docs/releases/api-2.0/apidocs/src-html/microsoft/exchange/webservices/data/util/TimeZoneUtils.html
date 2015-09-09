@@ -1,0 +1,701 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * The MIT License<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * Copyright (c) 2012 Microsoft Corporation<a name="line.3"></a>
+<span class="sourceLineNo">004</span> *<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * Permission is hereby granted, free of charge, to any person obtaining a copy<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * of this software and associated documentation files (the "Software"), to deal<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * in the Software without restriction, including without limitation the rights<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * copies of the Software, and to permit persons to whom the Software is<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * furnished to do so, subject to the following conditions:<a name="line.10"></a>
+<span class="sourceLineNo">011</span> *<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * The above copyright notice and this permission notice shall be included in<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * all copies or substantial portions of the Software.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> *<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<a name="line.16"></a>
+<span class="sourceLineNo">017</span> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<a name="line.19"></a>
+<span class="sourceLineNo">020</span> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN<a name="line.20"></a>
+<span class="sourceLineNo">021</span> * THE SOFTWARE.<a name="line.21"></a>
+<span class="sourceLineNo">022</span> */<a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span>package microsoft.exchange.webservices.data.util;<a name="line.24"></a>
+<span class="sourceLineNo">025</span><a name="line.25"></a>
+<span class="sourceLineNo">026</span>import java.util.HashMap;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import java.util.Map;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import java.util.TimeZone;<a name="line.28"></a>
+<span class="sourceLineNo">029</span><a name="line.29"></a>
+<span class="sourceLineNo">030</span>/**<a name="line.30"></a>
+<span class="sourceLineNo">031</span> * Miscellany timezone functions<a name="line.31"></a>
+<span class="sourceLineNo">032</span> */<a name="line.32"></a>
+<span class="sourceLineNo">033</span>public final class TimeZoneUtils {<a name="line.33"></a>
+<span class="sourceLineNo">034</span><a name="line.34"></a>
+<span class="sourceLineNo">035</span>  // A map of olson name &gt; Microsoft Name.<a name="line.35"></a>
+<span class="sourceLineNo">036</span>  private static final Map&lt;String, String&gt; olsonTimeZoneToMs = createOlsonTimeZoneToMsMap();<a name="line.36"></a>
+<span class="sourceLineNo">037</span><a name="line.37"></a>
+<span class="sourceLineNo">038</span><a name="line.38"></a>
+<span class="sourceLineNo">039</span>  private TimeZoneUtils() {<a name="line.39"></a>
+<span class="sourceLineNo">040</span>    throw new UnsupportedOperationException();<a name="line.40"></a>
+<span class="sourceLineNo">041</span>  }<a name="line.41"></a>
+<span class="sourceLineNo">042</span><a name="line.42"></a>
+<span class="sourceLineNo">043</span><a name="line.43"></a>
+<span class="sourceLineNo">044</span>  /**<a name="line.44"></a>
+<span class="sourceLineNo">045</span>   * Convert Olson TimeZone to Microsoft TimeZone Generated using Unicode CLDR project Example:<a name="line.45"></a>
+<span class="sourceLineNo">046</span>   * https://gist.github.com/scottmac/655675e9b4d4913c539c<a name="line.46"></a>
+<span class="sourceLineNo">047</span>   *<a name="line.47"></a>
+<span class="sourceLineNo">048</span>   * @param timeZone java timezone (Olson)<a name="line.48"></a>
+<span class="sourceLineNo">049</span>   * @return a microsoft timezone identifier (ala Eastern Standard Time)<a name="line.49"></a>
+<span class="sourceLineNo">050</span>   */<a name="line.50"></a>
+<span class="sourceLineNo">051</span>  public static String getMicrosoftTimeZoneName(final TimeZone timeZone) {<a name="line.51"></a>
+<span class="sourceLineNo">052</span>    if (timeZone == null) {<a name="line.52"></a>
+<span class="sourceLineNo">053</span>      throw new IllegalArgumentException("Parameter \"timeZone\" must be defined");<a name="line.53"></a>
+<span class="sourceLineNo">054</span>    }<a name="line.54"></a>
+<span class="sourceLineNo">055</span><a name="line.55"></a>
+<span class="sourceLineNo">056</span>    final String id = timeZone.getID();<a name="line.56"></a>
+<span class="sourceLineNo">057</span>    return olsonTimeZoneToMs.get(id);<a name="line.57"></a>
+<span class="sourceLineNo">058</span>  }<a name="line.58"></a>
+<span class="sourceLineNo">059</span><a name="line.59"></a>
+<span class="sourceLineNo">060</span><a name="line.60"></a>
+<span class="sourceLineNo">061</span>  public static Map&lt;String, String&gt; createOlsonTimeZoneToMsMap() {<a name="line.61"></a>
+<span class="sourceLineNo">062</span>    final Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();<a name="line.62"></a>
+<span class="sourceLineNo">063</span>    map.put("Africa/Abidjan", "Greenwich Standard Time");<a name="line.63"></a>
+<span class="sourceLineNo">064</span>    map.put("Africa/Accra", "Greenwich Standard Time");<a name="line.64"></a>
+<span class="sourceLineNo">065</span>    map.put("Africa/Addis_Ababa", "E. Africa Standard Time");<a name="line.65"></a>
+<span class="sourceLineNo">066</span>    map.put("Africa/Algiers", "W. Central Africa Standard Time");<a name="line.66"></a>
+<span class="sourceLineNo">067</span>    map.put("Africa/Asmara", "E. Africa Standard Time");<a name="line.67"></a>
+<span class="sourceLineNo">068</span>    map.put("Africa/Asmera", "E. Africa Standard Time");<a name="line.68"></a>
+<span class="sourceLineNo">069</span>    map.put("Africa/Bamako", "Greenwich Standard Time");<a name="line.69"></a>
+<span class="sourceLineNo">070</span>    map.put("Africa/Bangui", "W. Central Africa Standard Time");<a name="line.70"></a>
+<span class="sourceLineNo">071</span>    map.put("Africa/Banjul", "Greenwich Standard Time");<a name="line.71"></a>
+<span class="sourceLineNo">072</span>    map.put("Africa/Bissau", "Greenwich Standard Time");<a name="line.72"></a>
+<span class="sourceLineNo">073</span>    map.put("Africa/Blantyre", "South Africa Standard Time");<a name="line.73"></a>
+<span class="sourceLineNo">074</span>    map.put("Africa/Brazzaville", "W. Central Africa Standard Time");<a name="line.74"></a>
+<span class="sourceLineNo">075</span>    map.put("Africa/Bujumbura", "South Africa Standard Time");<a name="line.75"></a>
+<span class="sourceLineNo">076</span>    map.put("Africa/Cairo", "Egypt Standard Time");<a name="line.76"></a>
+<span class="sourceLineNo">077</span>    map.put("Africa/Casablanca", "Morocco Standard Time");<a name="line.77"></a>
+<span class="sourceLineNo">078</span>    map.put("Africa/Ceuta", "Romance Standard Time");<a name="line.78"></a>
+<span class="sourceLineNo">079</span>    map.put("Africa/Conakry", "Greenwich Standard Time");<a name="line.79"></a>
+<span class="sourceLineNo">080</span>    map.put("Africa/Dakar", "Greenwich Standard Time");<a name="line.80"></a>
+<span class="sourceLineNo">081</span>    map.put("Africa/Dar_es_Salaam", "E. Africa Standard Time");<a name="line.81"></a>
+<span class="sourceLineNo">082</span>    map.put("Africa/Djibouti", "E. Africa Standard Time");<a name="line.82"></a>
+<span class="sourceLineNo">083</span>    map.put("Africa/Douala", "W. Central Africa Standard Time");<a name="line.83"></a>
+<span class="sourceLineNo">084</span>    map.put("Africa/El_Aaiun", "Morocco Standard Time");<a name="line.84"></a>
+<span class="sourceLineNo">085</span>    map.put("Africa/Freetown", "Greenwich Standard Time");<a name="line.85"></a>
+<span class="sourceLineNo">086</span>    map.put("Africa/Gaborone", "South Africa Standard Time");<a name="line.86"></a>
+<span class="sourceLineNo">087</span>    map.put("Africa/Harare", "South Africa Standard Time");<a name="line.87"></a>
+<span class="sourceLineNo">088</span>    map.put("Africa/Johannesburg", "South Africa Standard Time");<a name="line.88"></a>
+<span class="sourceLineNo">089</span>    map.put("Africa/Juba", "E. Africa Standard Time");<a name="line.89"></a>
+<span class="sourceLineNo">090</span>    map.put("Africa/Kampala", "E. Africa Standard Time");<a name="line.90"></a>
+<span class="sourceLineNo">091</span>    map.put("Africa/Khartoum", "E. Africa Standard Time");<a name="line.91"></a>
+<span class="sourceLineNo">092</span>    map.put("Africa/Kigali", "South Africa Standard Time");<a name="line.92"></a>
+<span class="sourceLineNo">093</span>    map.put("Africa/Kinshasa", "W. Central Africa Standard Time");<a name="line.93"></a>
+<span class="sourceLineNo">094</span>    map.put("Africa/Lagos", "W. Central Africa Standard Time");<a name="line.94"></a>
+<span class="sourceLineNo">095</span>    map.put("Africa/Libreville", "W. Central Africa Standard Time");<a name="line.95"></a>
+<span class="sourceLineNo">096</span>    map.put("Africa/Lome", "Greenwich Standard Time");<a name="line.96"></a>
+<span class="sourceLineNo">097</span>    map.put("Africa/Luanda", "W. Central Africa Standard Time");<a name="line.97"></a>
+<span class="sourceLineNo">098</span>    map.put("Africa/Lubumbashi", "South Africa Standard Time");<a name="line.98"></a>
+<span class="sourceLineNo">099</span>    map.put("Africa/Lusaka", "South Africa Standard Time");<a name="line.99"></a>
+<span class="sourceLineNo">100</span>    map.put("Africa/Malabo", "W. Central Africa Standard Time");<a name="line.100"></a>
+<span class="sourceLineNo">101</span>    map.put("Africa/Maputo", "South Africa Standard Time");<a name="line.101"></a>
+<span class="sourceLineNo">102</span>    map.put("Africa/Maseru", "South Africa Standard Time");<a name="line.102"></a>
+<span class="sourceLineNo">103</span>    map.put("Africa/Mbabane", "South Africa Standard Time");<a name="line.103"></a>
+<span class="sourceLineNo">104</span>    map.put("Africa/Mogadishu", "E. Africa Standard Time");<a name="line.104"></a>
+<span class="sourceLineNo">105</span>    map.put("Africa/Monrovia", "Greenwich Standard Time");<a name="line.105"></a>
+<span class="sourceLineNo">106</span>    map.put("Africa/Nairobi", "E. Africa Standard Time");<a name="line.106"></a>
+<span class="sourceLineNo">107</span>    map.put("Africa/Ndjamena", "W. Central Africa Standard Time");<a name="line.107"></a>
+<span class="sourceLineNo">108</span>    map.put("Africa/Niamey", "W. Central Africa Standard Time");<a name="line.108"></a>
+<span class="sourceLineNo">109</span>    map.put("Africa/Nouakchott", "Greenwich Standard Time");<a name="line.109"></a>
+<span class="sourceLineNo">110</span>    map.put("Africa/Ouagadougou", "Greenwich Standard Time");<a name="line.110"></a>
+<span class="sourceLineNo">111</span>    map.put("Africa/Porto-Novo", "W. Central Africa Standard Time");<a name="line.111"></a>
+<span class="sourceLineNo">112</span>    map.put("Africa/Sao_Tome", "Greenwich Standard Time");<a name="line.112"></a>
+<span class="sourceLineNo">113</span>    map.put("Africa/Timbuktu", "Greenwich Standard Time");<a name="line.113"></a>
+<span class="sourceLineNo">114</span>    map.put("Africa/Tripoli", "Libya Standard Time");<a name="line.114"></a>
+<span class="sourceLineNo">115</span>    map.put("Africa/Tunis", "W. Central Africa Standard Time");<a name="line.115"></a>
+<span class="sourceLineNo">116</span>    map.put("Africa/Windhoek", "Namibia Standard Time");<a name="line.116"></a>
+<span class="sourceLineNo">117</span>    map.put("America/Anchorage", "Alaskan Standard Time");<a name="line.117"></a>
+<span class="sourceLineNo">118</span>    map.put("America/Anguilla", "SA Western Standard Time");<a name="line.118"></a>
+<span class="sourceLineNo">119</span>    map.put("America/Antigua", "SA Western Standard Time");<a name="line.119"></a>
+<span class="sourceLineNo">120</span>    map.put("America/Araguaina", "SA Eastern Standard Time");<a name="line.120"></a>
+<span class="sourceLineNo">121</span>    map.put("America/Argentina/Buenos_Aires", "Argentina Standard Time");<a name="line.121"></a>
+<span class="sourceLineNo">122</span>    map.put("America/Argentina/Catamarca", "Argentina Standard Time");<a name="line.122"></a>
+<span class="sourceLineNo">123</span>    map.put("America/Argentina/ComodRivadavia", "Argentina Standard Time");<a name="line.123"></a>
+<span class="sourceLineNo">124</span>    map.put("America/Argentina/Cordoba", "Argentina Standard Time");<a name="line.124"></a>
+<span class="sourceLineNo">125</span>    map.put("America/Argentina/Jujuy", "Argentina Standard Time");<a name="line.125"></a>
+<span class="sourceLineNo">126</span>    map.put("America/Argentina/La_Rioja", "Argentina Standard Time");<a name="line.126"></a>
+<span class="sourceLineNo">127</span>    map.put("America/Argentina/Mendoza", "Argentina Standard Time");<a name="line.127"></a>
+<span class="sourceLineNo">128</span>    map.put("America/Argentina/Rio_Gallegos", "Argentina Standard Time");<a name="line.128"></a>
+<span class="sourceLineNo">129</span>    map.put("America/Argentina/Salta", "Argentina Standard Time");<a name="line.129"></a>
+<span class="sourceLineNo">130</span>    map.put("America/Argentina/San_Juan", "Argentina Standard Time");<a name="line.130"></a>
+<span class="sourceLineNo">131</span>    map.put("America/Argentina/San_Luis", "Argentina Standard Time");<a name="line.131"></a>
+<span class="sourceLineNo">132</span>    map.put("America/Argentina/Tucuman", "Argentina Standard Time");<a name="line.132"></a>
+<span class="sourceLineNo">133</span>    map.put("America/Argentina/Ushuaia", "Argentina Standard Time");<a name="line.133"></a>
+<span class="sourceLineNo">134</span>    map.put("America/Aruba", "SA Western Standard Time");<a name="line.134"></a>
+<span class="sourceLineNo">135</span>    map.put("America/Asuncion", "Paraguay Standard Time");<a name="line.135"></a>
+<span class="sourceLineNo">136</span>    map.put("America/Atikokan", "SA Pacific Standard Time");<a name="line.136"></a>
+<span class="sourceLineNo">137</span>    map.put("America/Bahia", "Bahia Standard Time");<a name="line.137"></a>
+<span class="sourceLineNo">138</span>    map.put("America/Bahia_Banderas", "Central Standard Time (Mexico)");<a name="line.138"></a>
+<span class="sourceLineNo">139</span>    map.put("America/Barbados", "SA Western Standard Time");<a name="line.139"></a>
+<span class="sourceLineNo">140</span>    map.put("America/Belem", "SA Eastern Standard Time");<a name="line.140"></a>
+<span class="sourceLineNo">141</span>    map.put("America/Belize", "Central America Standard Time");<a name="line.141"></a>
+<span class="sourceLineNo">142</span>    map.put("America/Blanc-Sablon", "SA Western Standard Time");<a name="line.142"></a>
+<span class="sourceLineNo">143</span>    map.put("America/Boa_Vista", "SA Western Standard Time");<a name="line.143"></a>
+<span class="sourceLineNo">144</span>    map.put("America/Bogota", "SA Pacific Standard Time");<a name="line.144"></a>
+<span class="sourceLineNo">145</span>    map.put("America/Boise", "Mountain Standard Time");<a name="line.145"></a>
+<span class="sourceLineNo">146</span>    map.put("America/Buenos_Aires", "Argentina Standard Time");<a name="line.146"></a>
+<span class="sourceLineNo">147</span>    map.put("America/Cambridge_Bay", "Mountain Standard Time");<a name="line.147"></a>
+<span class="sourceLineNo">148</span>    map.put("America/Campo_Grande", "Central Brazilian Standard Time");<a name="line.148"></a>
+<span class="sourceLineNo">149</span>    map.put("America/Cancun", "Eastern Standard Time (Mexico)");<a name="line.149"></a>
+<span class="sourceLineNo">150</span>    map.put("America/Caracas", "Venezuela Standard Time");<a name="line.150"></a>
+<span class="sourceLineNo">151</span>    map.put("America/Catamarca", "Argentina Standard Time");<a name="line.151"></a>
+<span class="sourceLineNo">152</span>    map.put("America/Cayenne", "SA Eastern Standard Time");<a name="line.152"></a>
+<span class="sourceLineNo">153</span>    map.put("America/Cayman", "SA Pacific Standard Time");<a name="line.153"></a>
+<span class="sourceLineNo">154</span>    map.put("America/Chicago", "Central Standard Time");<a name="line.154"></a>
+<span class="sourceLineNo">155</span>    map.put("America/Chihuahua", "Mountain Standard Time (Mexico)");<a name="line.155"></a>
+<span class="sourceLineNo">156</span>    map.put("America/Coral_Harbour", "SA Pacific Standard Time");<a name="line.156"></a>
+<span class="sourceLineNo">157</span>    map.put("America/Cordoba", "Argentina Standard Time");<a name="line.157"></a>
+<span class="sourceLineNo">158</span>    map.put("America/Costa_Rica", "Central America Standard Time");<a name="line.158"></a>
+<span class="sourceLineNo">159</span>    map.put("America/Creston", "US Mountain Standard Time");<a name="line.159"></a>
+<span class="sourceLineNo">160</span>    map.put("America/Cuiaba", "Central Brazilian Standard Time");<a name="line.160"></a>
+<span class="sourceLineNo">161</span>    map.put("America/Curacao", "SA Western Standard Time");<a name="line.161"></a>
+<span class="sourceLineNo">162</span>    map.put("America/Danmarkshavn", "UTC");<a name="line.162"></a>
+<span class="sourceLineNo">163</span>    map.put("America/Dawson", "Pacific Standard Time");<a name="line.163"></a>
+<span class="sourceLineNo">164</span>    map.put("America/Dawson_Creek", "US Mountain Standard Time");<a name="line.164"></a>
+<span class="sourceLineNo">165</span>    map.put("America/Denver", "Mountain Standard Time");<a name="line.165"></a>
+<span class="sourceLineNo">166</span>    map.put("America/Detroit", "Eastern Standard Time");<a name="line.166"></a>
+<span class="sourceLineNo">167</span>    map.put("America/Dominica", "SA Western Standard Time");<a name="line.167"></a>
+<span class="sourceLineNo">168</span>    map.put("America/Edmonton", "Mountain Standard Time");<a name="line.168"></a>
+<span class="sourceLineNo">169</span>    map.put("America/Eirunepe", "SA Pacific Standard Time");<a name="line.169"></a>
+<span class="sourceLineNo">170</span>    map.put("America/El_Salvador", "Central America Standard Time");<a name="line.170"></a>
+<span class="sourceLineNo">171</span>    map.put("America/Ensenada", "Pacific Standard Time");<a name="line.171"></a>
+<span class="sourceLineNo">172</span>    map.put("America/Fort_Wayne", "US Eastern Standard Time");<a name="line.172"></a>
+<span class="sourceLineNo">173</span>    map.put("America/Fortaleza", "SA Eastern Standard Time");<a name="line.173"></a>
+<span class="sourceLineNo">174</span>    map.put("America/Glace_Bay", "Atlantic Standard Time");<a name="line.174"></a>
+<span class="sourceLineNo">175</span>    map.put("America/Godthab", "Greenland Standard Time");<a name="line.175"></a>
+<span class="sourceLineNo">176</span>    map.put("America/Goose_Bay", "Atlantic Standard Time");<a name="line.176"></a>
+<span class="sourceLineNo">177</span>    map.put("America/Grand_Turk", "SA Western Standard Time");<a name="line.177"></a>
+<span class="sourceLineNo">178</span>    map.put("America/Grenada", "SA Western Standard Time");<a name="line.178"></a>
+<span class="sourceLineNo">179</span>    map.put("America/Guadeloupe", "SA Western Standard Time");<a name="line.179"></a>
+<span class="sourceLineNo">180</span>    map.put("America/Guatemala", "Central America Standard Time");<a name="line.180"></a>
+<span class="sourceLineNo">181</span>    map.put("America/Guayaquil", "SA Pacific Standard Time");<a name="line.181"></a>
+<span class="sourceLineNo">182</span>    map.put("America/Guyana", "SA Western Standard Time");<a name="line.182"></a>
+<span class="sourceLineNo">183</span>    map.put("America/Halifax", "Atlantic Standard Time");<a name="line.183"></a>
+<span class="sourceLineNo">184</span>    map.put("America/Havana", "Eastern Standard Time");<a name="line.184"></a>
+<span class="sourceLineNo">185</span>    map.put("America/Hermosillo", "US Mountain Standard Time");<a name="line.185"></a>
+<span class="sourceLineNo">186</span>    map.put("America/Indiana/Indianapolis", "US Eastern Standard Time");<a name="line.186"></a>
+<span class="sourceLineNo">187</span>    map.put("America/Indiana/Knox", "Central Standard Time");<a name="line.187"></a>
+<span class="sourceLineNo">188</span>    map.put("America/Indiana/Marengo", "US Eastern Standard Time");<a name="line.188"></a>
+<span class="sourceLineNo">189</span>    map.put("America/Indiana/Petersburg", "Eastern Standard Time");<a name="line.189"></a>
+<span class="sourceLineNo">190</span>    map.put("America/Indiana/Tell_City", "Central Standard Time");<a name="line.190"></a>
+<span class="sourceLineNo">191</span>    map.put("America/Indiana/Vevay", "US Eastern Standard Time");<a name="line.191"></a>
+<span class="sourceLineNo">192</span>    map.put("America/Indiana/Vincennes", "Eastern Standard Time");<a name="line.192"></a>
+<span class="sourceLineNo">193</span>    map.put("America/Indiana/Winamac", "Eastern Standard Time");<a name="line.193"></a>
+<span class="sourceLineNo">194</span>    map.put("America/Indianapolis", "US Eastern Standard Time");<a name="line.194"></a>
+<span class="sourceLineNo">195</span>    map.put("America/Inuvik", "Mountain Standard Time");<a name="line.195"></a>
+<span class="sourceLineNo">196</span>    map.put("America/Iqaluit", "Eastern Standard Time");<a name="line.196"></a>
+<span class="sourceLineNo">197</span>    map.put("America/Jamaica", "SA Pacific Standard Time");<a name="line.197"></a>
+<span class="sourceLineNo">198</span>    map.put("America/Jujuy", "Argentina Standard Time");<a name="line.198"></a>
+<span class="sourceLineNo">199</span>    map.put("America/Juneau", "Alaskan Standard Time");<a name="line.199"></a>
+<span class="sourceLineNo">200</span>    map.put("America/Kentucky/Louisville", "Eastern Standard Time");<a name="line.200"></a>
+<span class="sourceLineNo">201</span>    map.put("America/Kentucky/Monticello", "Eastern Standard Time");<a name="line.201"></a>
+<span class="sourceLineNo">202</span>    map.put("America/Knox_IN", "Central Standard Time");<a name="line.202"></a>
+<span class="sourceLineNo">203</span>    map.put("America/Kralendijk", "SA Western Standard Time");<a name="line.203"></a>
+<span class="sourceLineNo">204</span>    map.put("America/La_Paz", "SA Western Standard Time");<a name="line.204"></a>
+<span class="sourceLineNo">205</span>    map.put("America/Lima", "SA Pacific Standard Time");<a name="line.205"></a>
+<span class="sourceLineNo">206</span>    map.put("America/Los_Angeles", "Pacific Standard Time");<a name="line.206"></a>
+<span class="sourceLineNo">207</span>    map.put("America/Louisville", "Eastern Standard Time");<a name="line.207"></a>
+<span class="sourceLineNo">208</span>    map.put("America/Lower_Princes", "SA Western Standard Time");<a name="line.208"></a>
+<span class="sourceLineNo">209</span>    map.put("America/Maceio", "SA Eastern Standard Time");<a name="line.209"></a>
+<span class="sourceLineNo">210</span>    map.put("America/Managua", "Central America Standard Time");<a name="line.210"></a>
+<span class="sourceLineNo">211</span>    map.put("America/Manaus", "SA Western Standard Time");<a name="line.211"></a>
+<span class="sourceLineNo">212</span>    map.put("America/Marigot", "SA Western Standard Time");<a name="line.212"></a>
+<span class="sourceLineNo">213</span>    map.put("America/Martinique", "SA Western Standard Time");<a name="line.213"></a>
+<span class="sourceLineNo">214</span>    map.put("America/Matamoros", "Central Standard Time");<a name="line.214"></a>
+<span class="sourceLineNo">215</span>    map.put("America/Mazatlan", "Mountain Standard Time (Mexico)");<a name="line.215"></a>
+<span class="sourceLineNo">216</span>    map.put("America/Mendoza", "Argentina Standard Time");<a name="line.216"></a>
+<span class="sourceLineNo">217</span>    map.put("America/Menominee", "Central Standard Time");<a name="line.217"></a>
+<span class="sourceLineNo">218</span>    map.put("America/Merida", "Central Standard Time (Mexico)");<a name="line.218"></a>
+<span class="sourceLineNo">219</span>    map.put("America/Mexico_City", "Central Standard Time (Mexico)");<a name="line.219"></a>
+<span class="sourceLineNo">220</span>    map.put("America/Moncton", "Atlantic Standard Time");<a name="line.220"></a>
+<span class="sourceLineNo">221</span>    map.put("America/Monterrey", "Central Standard Time (Mexico)");<a name="line.221"></a>
+<span class="sourceLineNo">222</span>    map.put("America/Montevideo", "Montevideo Standard Time");<a name="line.222"></a>
+<span class="sourceLineNo">223</span>    map.put("America/Montreal", "Eastern Standard Time");<a name="line.223"></a>
+<span class="sourceLineNo">224</span>    map.put("America/Montserrat", "SA Western Standard Time");<a name="line.224"></a>
+<span class="sourceLineNo">225</span>    map.put("America/Nassau", "Eastern Standard Time");<a name="line.225"></a>
+<span class="sourceLineNo">226</span>    map.put("America/New_York", "Eastern Standard Time");<a name="line.226"></a>
+<span class="sourceLineNo">227</span>    map.put("America/Nipigon", "Eastern Standard Time");<a name="line.227"></a>
+<span class="sourceLineNo">228</span>    map.put("America/Nome", "Alaskan Standard Time");<a name="line.228"></a>
+<span class="sourceLineNo">229</span>    map.put("America/Noronha", "UTC-02");<a name="line.229"></a>
+<span class="sourceLineNo">230</span>    map.put("America/North_Dakota/Beulah", "Central Standard Time");<a name="line.230"></a>
+<span class="sourceLineNo">231</span>    map.put("America/North_Dakota/Center", "Central Standard Time");<a name="line.231"></a>
+<span class="sourceLineNo">232</span>    map.put("America/North_Dakota/New_Salem", "Central Standard Time");<a name="line.232"></a>
+<span class="sourceLineNo">233</span>    map.put("America/Ojinaga", "Mountain Standard Time");<a name="line.233"></a>
+<span class="sourceLineNo">234</span>    map.put("America/Panama", "SA Pacific Standard Time");<a name="line.234"></a>
+<span class="sourceLineNo">235</span>    map.put("America/Pangnirtung", "Eastern Standard Time");<a name="line.235"></a>
+<span class="sourceLineNo">236</span>    map.put("America/Paramaribo", "SA Eastern Standard Time");<a name="line.236"></a>
+<span class="sourceLineNo">237</span>    map.put("America/Phoenix", "US Mountain Standard Time");<a name="line.237"></a>
+<span class="sourceLineNo">238</span>    map.put("America/Port-au-Prince", "Eastern Standard Time");<a name="line.238"></a>
+<span class="sourceLineNo">239</span>    map.put("America/Port_of_Spain", "SA Western Standard Time");<a name="line.239"></a>
+<span class="sourceLineNo">240</span>    map.put("America/Porto_Acre", "SA Pacific Standard Time");<a name="line.240"></a>
+<span class="sourceLineNo">241</span>    map.put("America/Porto_Velho", "SA Western Standard Time");<a name="line.241"></a>
+<span class="sourceLineNo">242</span>    map.put("America/Puerto_Rico", "SA Western Standard Time");<a name="line.242"></a>
+<span class="sourceLineNo">243</span>    map.put("America/Rainy_River", "Central Standard Time");<a name="line.243"></a>
+<span class="sourceLineNo">244</span>    map.put("America/Rankin_Inlet", "Central Standard Time");<a name="line.244"></a>
+<span class="sourceLineNo">245</span>    map.put("America/Recife", "SA Eastern Standard Time");<a name="line.245"></a>
+<span class="sourceLineNo">246</span>    map.put("America/Regina", "Canada Central Standard Time");<a name="line.246"></a>
+<span class="sourceLineNo">247</span>    map.put("America/Resolute", "Central Standard Time");<a name="line.247"></a>
+<span class="sourceLineNo">248</span>    map.put("America/Rio_Branco", "SA Pacific Standard Time");<a name="line.248"></a>
+<span class="sourceLineNo">249</span>    map.put("America/Rosario", "Argentina Standard Time");<a name="line.249"></a>
+<span class="sourceLineNo">250</span>    map.put("America/Santa_Isabel", "Pacific Standard Time (Mexico)");<a name="line.250"></a>
+<span class="sourceLineNo">251</span>    map.put("America/Santarem", "SA Eastern Standard Time");<a name="line.251"></a>
+<span class="sourceLineNo">252</span>    map.put("America/Santiago", "Pacific SA Standard Time");<a name="line.252"></a>
+<span class="sourceLineNo">253</span>    map.put("America/Santo_Domingo", "SA Western Standard Time");<a name="line.253"></a>
+<span class="sourceLineNo">254</span>    map.put("America/Sao_Paulo", "E. South America Standard Time");<a name="line.254"></a>
+<span class="sourceLineNo">255</span>    map.put("America/Scoresbysund", "Azores Standard Time");<a name="line.255"></a>
+<span class="sourceLineNo">256</span>    map.put("America/Shiprock", "Mountain Standard Time");<a name="line.256"></a>
+<span class="sourceLineNo">257</span>    map.put("America/Sitka", "Alaskan Standard Time");<a name="line.257"></a>
+<span class="sourceLineNo">258</span>    map.put("America/St_Barthelemy", "SA Western Standard Time");<a name="line.258"></a>
+<span class="sourceLineNo">259</span>    map.put("America/St_Johns", "Newfoundland Standard Time");<a name="line.259"></a>
+<span class="sourceLineNo">260</span>    map.put("America/St_Kitts", "SA Western Standard Time");<a name="line.260"></a>
+<span class="sourceLineNo">261</span>    map.put("America/St_Lucia", "SA Western Standard Time");<a name="line.261"></a>
+<span class="sourceLineNo">262</span>    map.put("America/St_Thomas", "SA Western Standard Time");<a name="line.262"></a>
+<span class="sourceLineNo">263</span>    map.put("America/St_Vincent", "SA Western Standard Time");<a name="line.263"></a>
+<span class="sourceLineNo">264</span>    map.put("America/Swift_Current", "Canada Central Standard Time");<a name="line.264"></a>
+<span class="sourceLineNo">265</span>    map.put("America/Tegucigalpa", "Central America Standard Time");<a name="line.265"></a>
+<span class="sourceLineNo">266</span>    map.put("America/Thule", "Atlantic Standard Time");<a name="line.266"></a>
+<span class="sourceLineNo">267</span>    map.put("America/Thunder_Bay", "Eastern Standard Time");<a name="line.267"></a>
+<span class="sourceLineNo">268</span>    map.put("America/Tijuana", "Pacific Standard Time");<a name="line.268"></a>
+<span class="sourceLineNo">269</span>    map.put("America/Toronto", "Eastern Standard Time");<a name="line.269"></a>
+<span class="sourceLineNo">270</span>    map.put("America/Tortola", "SA Western Standard Time");<a name="line.270"></a>
+<span class="sourceLineNo">271</span>    map.put("America/Vancouver", "Pacific Standard Time");<a name="line.271"></a>
+<span class="sourceLineNo">272</span>    map.put("America/Virgin", "SA Western Standard Time");<a name="line.272"></a>
+<span class="sourceLineNo">273</span>    map.put("America/Whitehorse", "Pacific Standard Time");<a name="line.273"></a>
+<span class="sourceLineNo">274</span>    map.put("America/Winnipeg", "Central Standard Time");<a name="line.274"></a>
+<span class="sourceLineNo">275</span>    map.put("America/Yakutat", "Alaskan Standard Time");<a name="line.275"></a>
+<span class="sourceLineNo">276</span>    map.put("America/Yellowknife", "Mountain Standard Time");<a name="line.276"></a>
+<span class="sourceLineNo">277</span>    map.put("Antarctica/Casey", "W. Australia Standard Time");<a name="line.277"></a>
+<span class="sourceLineNo">278</span>    map.put("Antarctica/Davis", "SE Asia Standard Time");<a name="line.278"></a>
+<span class="sourceLineNo">279</span>    map.put("Antarctica/DumontDUrville", "West Pacific Standard Time");<a name="line.279"></a>
+<span class="sourceLineNo">280</span>    map.put("Antarctica/Macquarie", "Central Pacific Standard Time");<a name="line.280"></a>
+<span class="sourceLineNo">281</span>    map.put("Antarctica/Mawson", "West Asia Standard Time");<a name="line.281"></a>
+<span class="sourceLineNo">282</span>    map.put("Antarctica/McMurdo", "New Zealand Standard Time");<a name="line.282"></a>
+<span class="sourceLineNo">283</span>    map.put("Antarctica/Palmer", "Pacific SA Standard Time");<a name="line.283"></a>
+<span class="sourceLineNo">284</span>    map.put("Antarctica/Rothera", "SA Eastern Standard Time");<a name="line.284"></a>
+<span class="sourceLineNo">285</span>    map.put("Antarctica/South_Pole", "New Zealand Standard Time");<a name="line.285"></a>
+<span class="sourceLineNo">286</span>    map.put("Antarctica/Syowa", "E. Africa Standard Time");<a name="line.286"></a>
+<span class="sourceLineNo">287</span>    map.put("Antarctica/Vostok", "Central Asia Standard Time");<a name="line.287"></a>
+<span class="sourceLineNo">288</span>    map.put("Arctic/Longyearbyen", "W. Europe Standard Time");<a name="line.288"></a>
+<span class="sourceLineNo">289</span>    map.put("Asia/Aden", "Arab Standard Time");<a name="line.289"></a>
+<span class="sourceLineNo">290</span>    map.put("Asia/Almaty", "Central Asia Standard Time");<a name="line.290"></a>
+<span class="sourceLineNo">291</span>    map.put("Asia/Amman", "Jordan Standard Time");<a name="line.291"></a>
+<span class="sourceLineNo">292</span>    map.put("Asia/Anadyr", "Russia Time Zone 11");<a name="line.292"></a>
+<span class="sourceLineNo">293</span>    map.put("Asia/Aqtau", "West Asia Standard Time");<a name="line.293"></a>
+<span class="sourceLineNo">294</span>    map.put("Asia/Aqtobe", "West Asia Standard Time");<a name="line.294"></a>
+<span class="sourceLineNo">295</span>    map.put("Asia/Ashgabat", "West Asia Standard Time");<a name="line.295"></a>
+<span class="sourceLineNo">296</span>    map.put("Asia/Ashkhabad", "West Asia Standard Time");<a name="line.296"></a>
+<span class="sourceLineNo">297</span>    map.put("Asia/Baghdad", "Arabic Standard Time");<a name="line.297"></a>
+<span class="sourceLineNo">298</span>    map.put("Asia/Bahrain", "Arab Standard Time");<a name="line.298"></a>
+<span class="sourceLineNo">299</span>    map.put("Asia/Baku", "Azerbaijan Standard Time");<a name="line.299"></a>
+<span class="sourceLineNo">300</span>    map.put("Asia/Bangkok", "SE Asia Standard Time");<a name="line.300"></a>
+<span class="sourceLineNo">301</span>    map.put("Asia/Beirut", "Middle East Standard Time");<a name="line.301"></a>
+<span class="sourceLineNo">302</span>    map.put("Asia/Bishkek", "Central Asia Standard Time");<a name="line.302"></a>
+<span class="sourceLineNo">303</span>    map.put("Asia/Brunei", "Singapore Standard Time");<a name="line.303"></a>
+<span class="sourceLineNo">304</span>    map.put("Asia/Calcutta", "India Standard Time");<a name="line.304"></a>
+<span class="sourceLineNo">305</span>    map.put("Asia/Chita", "North Asia East Standard Time");<a name="line.305"></a>
+<span class="sourceLineNo">306</span>    map.put("Asia/Choibalsan", "Ulaanbaatar Standard Time");<a name="line.306"></a>
+<span class="sourceLineNo">307</span>    map.put("Asia/Chongqing", "China Standard Time");<a name="line.307"></a>
+<span class="sourceLineNo">308</span>    map.put("Asia/Chungking", "China Standard Time");<a name="line.308"></a>
+<span class="sourceLineNo">309</span>    map.put("Asia/Colombo", "Sri Lanka Standard Time");<a name="line.309"></a>
+<span class="sourceLineNo">310</span>    map.put("Asia/Dacca", "Bangladesh Standard Time");<a name="line.310"></a>
+<span class="sourceLineNo">311</span>    map.put("Asia/Damascus", "Syria Standard Time");<a name="line.311"></a>
+<span class="sourceLineNo">312</span>    map.put("Asia/Dhaka", "Bangladesh Standard Time");<a name="line.312"></a>
+<span class="sourceLineNo">313</span>    map.put("Asia/Dili", "Tokyo Standard Time");<a name="line.313"></a>
+<span class="sourceLineNo">314</span>    map.put("Asia/Dubai", "Arabian Standard Time");<a name="line.314"></a>
+<span class="sourceLineNo">315</span>    map.put("Asia/Dushanbe", "West Asia Standard Time");<a name="line.315"></a>
+<span class="sourceLineNo">316</span>    map.put("Asia/Harbin", "China Standard Time");<a name="line.316"></a>
+<span class="sourceLineNo">317</span>    map.put("Asia/Ho_Chi_Minh", "SE Asia Standard Time");<a name="line.317"></a>
+<span class="sourceLineNo">318</span>    map.put("Asia/Hong_Kong", "China Standard Time");<a name="line.318"></a>
+<span class="sourceLineNo">319</span>    map.put("Asia/Hovd", "SE Asia Standard Time");<a name="line.319"></a>
+<span class="sourceLineNo">320</span>    map.put("Asia/Irkutsk", "North Asia East Standard Time");<a name="line.320"></a>
+<span class="sourceLineNo">321</span>    map.put("Asia/Istanbul", "Turkey Standard Time");<a name="line.321"></a>
+<span class="sourceLineNo">322</span>    map.put("Asia/Jakarta", "SE Asia Standard Time");<a name="line.322"></a>
+<span class="sourceLineNo">323</span>    map.put("Asia/Jayapura", "Tokyo Standard Time");<a name="line.323"></a>
+<span class="sourceLineNo">324</span>    map.put("Asia/Jerusalem", "Israel Standard Time");<a name="line.324"></a>
+<span class="sourceLineNo">325</span>    map.put("Asia/Kabul", "Afghanistan Standard Time");<a name="line.325"></a>
+<span class="sourceLineNo">326</span>    map.put("Asia/Kamchatka", "Russia Time Zone 11");<a name="line.326"></a>
+<span class="sourceLineNo">327</span>    map.put("Asia/Karachi", "Pakistan Standard Time");<a name="line.327"></a>
+<span class="sourceLineNo">328</span>    map.put("Asia/Kashgar", "Central Asia Standard Time");<a name="line.328"></a>
+<span class="sourceLineNo">329</span>    map.put("Asia/Kathmandu", "Nepal Standard Time");<a name="line.329"></a>
+<span class="sourceLineNo">330</span>    map.put("Asia/Katmandu", "Nepal Standard Time");<a name="line.330"></a>
+<span class="sourceLineNo">331</span>    map.put("Asia/Khandyga", "Yakutsk Standard Time");<a name="line.331"></a>
+<span class="sourceLineNo">332</span>    map.put("Asia/Kolkata", "India Standard Time");<a name="line.332"></a>
+<span class="sourceLineNo">333</span>    map.put("Asia/Krasnoyarsk", "North Asia Standard Time");<a name="line.333"></a>
+<span class="sourceLineNo">334</span>    map.put("Asia/Kuala_Lumpur", "Singapore Standard Time");<a name="line.334"></a>
+<span class="sourceLineNo">335</span>    map.put("Asia/Kuching", "Singapore Standard Time");<a name="line.335"></a>
+<span class="sourceLineNo">336</span>    map.put("Asia/Kuwait", "Arab Standard Time");<a name="line.336"></a>
+<span class="sourceLineNo">337</span>    map.put("Asia/Macao", "China Standard Time");<a name="line.337"></a>
+<span class="sourceLineNo">338</span>    map.put("Asia/Macau", "China Standard Time");<a name="line.338"></a>
+<span class="sourceLineNo">339</span>    map.put("Asia/Magadan", "Magadan Standard Time");<a name="line.339"></a>
+<span class="sourceLineNo">340</span>    map.put("Asia/Makassar", "Singapore Standard Time");<a name="line.340"></a>
+<span class="sourceLineNo">341</span>    map.put("Asia/Manila", "Singapore Standard Time");<a name="line.341"></a>
+<span class="sourceLineNo">342</span>    map.put("Asia/Muscat", "Arabian Standard Time");<a name="line.342"></a>
+<span class="sourceLineNo">343</span>    map.put("Asia/Nicosia", "GTB Standard Time");<a name="line.343"></a>
+<span class="sourceLineNo">344</span>    map.put("Asia/Novokuznetsk", "North Asia Standard Time");<a name="line.344"></a>
+<span class="sourceLineNo">345</span>    map.put("Asia/Novosibirsk", "N. Central Asia Standard Time");<a name="line.345"></a>
+<span class="sourceLineNo">346</span>    map.put("Asia/Omsk", "N. Central Asia Standard Time");<a name="line.346"></a>
+<span class="sourceLineNo">347</span>    map.put("Asia/Oral", "West Asia Standard Time");<a name="line.347"></a>
+<span class="sourceLineNo">348</span>    map.put("Asia/Phnom_Penh", "SE Asia Standard Time");<a name="line.348"></a>
+<span class="sourceLineNo">349</span>    map.put("Asia/Pontianak", "SE Asia Standard Time");<a name="line.349"></a>
+<span class="sourceLineNo">350</span>    map.put("Asia/Pyongyang", "Korea Standard Time");<a name="line.350"></a>
+<span class="sourceLineNo">351</span>    map.put("Asia/Qatar", "Arab Standard Time");<a name="line.351"></a>
+<span class="sourceLineNo">352</span>    map.put("Asia/Qyzylorda", "Central Asia Standard Time");<a name="line.352"></a>
+<span class="sourceLineNo">353</span>    map.put("Asia/Rangoon", "Myanmar Standard Time");<a name="line.353"></a>
+<span class="sourceLineNo">354</span>    map.put("Asia/Riyadh", "Arab Standard Time");<a name="line.354"></a>
+<span class="sourceLineNo">355</span>    map.put("Asia/Saigon", "SE Asia Standard Time");<a name="line.355"></a>
+<span class="sourceLineNo">356</span>    map.put("Asia/Sakhalin", "Vladivostok Standard Time");<a name="line.356"></a>
+<span class="sourceLineNo">357</span>    map.put("Asia/Samarkand", "West Asia Standard Time");<a name="line.357"></a>
+<span class="sourceLineNo">358</span>    map.put("Asia/Seoul", "Korea Standard Time");<a name="line.358"></a>
+<span class="sourceLineNo">359</span>    map.put("Asia/Shanghai", "China Standard Time");<a name="line.359"></a>
+<span class="sourceLineNo">360</span>    map.put("Asia/Singapore", "Singapore Standard Time");<a name="line.360"></a>
+<span class="sourceLineNo">361</span>    map.put("Asia/Srednekolymsk", "Russia Time Zone 10");<a name="line.361"></a>
+<span class="sourceLineNo">362</span>    map.put("Asia/Taipei", "Taipei Standard Time");<a name="line.362"></a>
+<span class="sourceLineNo">363</span>    map.put("Asia/Tashkent", "West Asia Standard Time");<a name="line.363"></a>
+<span class="sourceLineNo">364</span>    map.put("Asia/Tbilisi", "Georgian Standard Time");<a name="line.364"></a>
+<span class="sourceLineNo">365</span>    map.put("Asia/Tehran", "Iran Standard Time");<a name="line.365"></a>
+<span class="sourceLineNo">366</span>    map.put("Asia/Tel_Aviv", "Israel Standard Time");<a name="line.366"></a>
+<span class="sourceLineNo">367</span>    map.put("Asia/Thimbu", "Bangladesh Standard Time");<a name="line.367"></a>
+<span class="sourceLineNo">368</span>    map.put("Asia/Thimphu", "Bangladesh Standard Time");<a name="line.368"></a>
+<span class="sourceLineNo">369</span>    map.put("Asia/Tokyo", "Tokyo Standard Time");<a name="line.369"></a>
+<span class="sourceLineNo">370</span>    map.put("Asia/Ujung_Pandang", "Singapore Standard Time");<a name="line.370"></a>
+<span class="sourceLineNo">371</span>    map.put("Asia/Ulaanbaatar", "Ulaanbaatar Standard Time");<a name="line.371"></a>
+<span class="sourceLineNo">372</span>    map.put("Asia/Ulan_Bator", "Ulaanbaatar Standard Time");<a name="line.372"></a>
+<span class="sourceLineNo">373</span>    map.put("Asia/Urumqi", "Central Asia Standard Time");<a name="line.373"></a>
+<span class="sourceLineNo">374</span>    map.put("Asia/Ust-Nera", "Vladivostok Standard Time");<a name="line.374"></a>
+<span class="sourceLineNo">375</span>    map.put("Asia/Vientiane", "SE Asia Standard Time");<a name="line.375"></a>
+<span class="sourceLineNo">376</span>    map.put("Asia/Vladivostok", "Vladivostok Standard Time");<a name="line.376"></a>
+<span class="sourceLineNo">377</span>    map.put("Asia/Yakutsk", "Yakutsk Standard Time");<a name="line.377"></a>
+<span class="sourceLineNo">378</span>    map.put("Asia/Yekaterinburg", "Ekaterinburg Standard Time");<a name="line.378"></a>
+<span class="sourceLineNo">379</span>    map.put("Asia/Yerevan", "Caucasus Standard Time");<a name="line.379"></a>
+<span class="sourceLineNo">380</span>    map.put("Atlantic/Azores", "Azores Standard Time");<a name="line.380"></a>
+<span class="sourceLineNo">381</span>    map.put("Atlantic/Bermuda", "Atlantic Standard Time");<a name="line.381"></a>
+<span class="sourceLineNo">382</span>    map.put("Atlantic/Canary", "GMT Standard Time");<a name="line.382"></a>
+<span class="sourceLineNo">383</span>    map.put("Atlantic/Cape_Verde", "Cape Verde Standard Time");<a name="line.383"></a>
+<span class="sourceLineNo">384</span>    map.put("Atlantic/Faeroe", "GMT Standard Time");<a name="line.384"></a>
+<span class="sourceLineNo">385</span>    map.put("Atlantic/Faroe", "GMT Standard Time");<a name="line.385"></a>
+<span class="sourceLineNo">386</span>    map.put("Atlantic/Jan_Mayen", "W. Europe Standard Time");<a name="line.386"></a>
+<span class="sourceLineNo">387</span>    map.put("Atlantic/Madeira", "GMT Standard Time");<a name="line.387"></a>
+<span class="sourceLineNo">388</span>    map.put("Atlantic/Reykjavik", "Greenwich Standard Time");<a name="line.388"></a>
+<span class="sourceLineNo">389</span>    map.put("Atlantic/South_Georgia", "UTC-02");<a name="line.389"></a>
+<span class="sourceLineNo">390</span>    map.put("Atlantic/St_Helena", "Greenwich Standard Time");<a name="line.390"></a>
+<span class="sourceLineNo">391</span>    map.put("Atlantic/Stanley", "SA Eastern Standard Time");<a name="line.391"></a>
+<span class="sourceLineNo">392</span>    map.put("Australia/ACT", "AUS Eastern Standard Time");<a name="line.392"></a>
+<span class="sourceLineNo">393</span>    map.put("Australia/Adelaide", "Cen. Australia Standard Time");<a name="line.393"></a>
+<span class="sourceLineNo">394</span>    map.put("Australia/Brisbane", "E. Australia Standard Time");<a name="line.394"></a>
+<span class="sourceLineNo">395</span>    map.put("Australia/Broken_Hill", "Cen. Australia Standard Time");<a name="line.395"></a>
+<span class="sourceLineNo">396</span>    map.put("Australia/Canberra", "AUS Eastern Standard Time");<a name="line.396"></a>
+<span class="sourceLineNo">397</span>    map.put("Australia/Currie", "Tasmania Standard Time");<a name="line.397"></a>
+<span class="sourceLineNo">398</span>    map.put("Australia/Darwin", "AUS Central Standard Time");<a name="line.398"></a>
+<span class="sourceLineNo">399</span>    map.put("Australia/Hobart", "Tasmania Standard Time");<a name="line.399"></a>
+<span class="sourceLineNo">400</span>    map.put("Australia/Lindeman", "E. Australia Standard Time");<a name="line.400"></a>
+<span class="sourceLineNo">401</span>    map.put("Australia/Melbourne", "AUS Eastern Standard Time");<a name="line.401"></a>
+<span class="sourceLineNo">402</span>    map.put("Australia/NSW", "AUS Eastern Standard Time");<a name="line.402"></a>
+<span class="sourceLineNo">403</span>    map.put("Australia/North", "AUS Central Standard Time");<a name="line.403"></a>
+<span class="sourceLineNo">404</span>    map.put("Australia/Perth", "W. Australia Standard Time");<a name="line.404"></a>
+<span class="sourceLineNo">405</span>    map.put("Australia/Queensland", "E. Australia Standard Time");<a name="line.405"></a>
+<span class="sourceLineNo">406</span>    map.put("Australia/South", "Cen. Australia Standard Time");<a name="line.406"></a>
+<span class="sourceLineNo">407</span>    map.put("Australia/Sydney", "AUS Eastern Standard Time");<a name="line.407"></a>
+<span class="sourceLineNo">408</span>    map.put("Australia/Tasmania", "Tasmania Standard Time");<a name="line.408"></a>
+<span class="sourceLineNo">409</span>    map.put("Australia/Victoria", "AUS Eastern Standard Time");<a name="line.409"></a>
+<span class="sourceLineNo">410</span>    map.put("Australia/West", "W. Australia Standard Time");<a name="line.410"></a>
+<span class="sourceLineNo">411</span>    map.put("Australia/Yancowinna", "Cen. Australia Standard Time");<a name="line.411"></a>
+<span class="sourceLineNo">412</span>    map.put("Brazil/Acre", "SA Pacific Standard Time");<a name="line.412"></a>
+<span class="sourceLineNo">413</span>    map.put("Brazil/DeNoronha", "UTC-02");<a name="line.413"></a>
+<span class="sourceLineNo">414</span>    map.put("Brazil/East", "E. South America Standard Time");<a name="line.414"></a>
+<span class="sourceLineNo">415</span>    map.put("Brazil/West", "SA Western Standard Time");<a name="line.415"></a>
+<span class="sourceLineNo">416</span>    map.put("CST6CDT", "Central Standard Time");<a name="line.416"></a>
+<span class="sourceLineNo">417</span>    map.put("Canada/Atlantic", "Atlantic Standard Time");<a name="line.417"></a>
+<span class="sourceLineNo">418</span>    map.put("Canada/Central", "Central Standard Time");<a name="line.418"></a>
+<span class="sourceLineNo">419</span>    map.put("Canada/East-Saskatchewan", "Canada Central Standard Time");<a name="line.419"></a>
+<span class="sourceLineNo">420</span>    map.put("Canada/Eastern", "Eastern Standard Time");<a name="line.420"></a>
+<span class="sourceLineNo">421</span>    map.put("Canada/Mountain", "Mountain Standard Time");<a name="line.421"></a>
+<span class="sourceLineNo">422</span>    map.put("Canada/Newfoundland", "Newfoundland Standard Time");<a name="line.422"></a>
+<span class="sourceLineNo">423</span>    map.put("Canada/Pacific", "Pacific Standard Time");<a name="line.423"></a>
+<span class="sourceLineNo">424</span>    map.put("Canada/Saskatchewan", "Canada Central Standard Time");<a name="line.424"></a>
+<span class="sourceLineNo">425</span>    map.put("Canada/Yukon", "Pacific Standard Time");<a name="line.425"></a>
+<span class="sourceLineNo">426</span>    map.put("Chile/Continental", "Pacific SA Standard Time");<a name="line.426"></a>
+<span class="sourceLineNo">427</span>    map.put("Cuba", "Eastern Standard Time");<a name="line.427"></a>
+<span class="sourceLineNo">428</span>    map.put("EST", "SA Pacific Standard Time");<a name="line.428"></a>
+<span class="sourceLineNo">429</span>    map.put("EST5EDT", "Eastern Standard Time");<a name="line.429"></a>
+<span class="sourceLineNo">430</span>    map.put("Egypt", "Egypt Standard Time");<a name="line.430"></a>
+<span class="sourceLineNo">431</span>    map.put("Eire", "GMT Standard Time");<a name="line.431"></a>
+<span class="sourceLineNo">432</span>    map.put("Etc/GMT", "UTC");<a name="line.432"></a>
+<span class="sourceLineNo">433</span>    map.put("Etc/GMT+0", "UTC");<a name="line.433"></a>
+<span class="sourceLineNo">434</span>    map.put("Etc/GMT+1", "Cape Verde Standard Time");<a name="line.434"></a>
+<span class="sourceLineNo">435</span>    map.put("Etc/GMT+10", "Hawaiian Standard Time");<a name="line.435"></a>
+<span class="sourceLineNo">436</span>    map.put("Etc/GMT+11", "UTC-11");<a name="line.436"></a>
+<span class="sourceLineNo">437</span>    map.put("Etc/GMT+12", "Dateline Standard Time");<a name="line.437"></a>
+<span class="sourceLineNo">438</span>    map.put("Etc/GMT+2", "UTC-02");<a name="line.438"></a>
+<span class="sourceLineNo">439</span>    map.put("Etc/GMT+3", "SA Eastern Standard Time");<a name="line.439"></a>
+<span class="sourceLineNo">440</span>    map.put("Etc/GMT+4", "SA Western Standard Time");<a name="line.440"></a>
+<span class="sourceLineNo">441</span>    map.put("Etc/GMT+5", "SA Pacific Standard Time");<a name="line.441"></a>
+<span class="sourceLineNo">442</span>    map.put("Etc/GMT+6", "Central America Standard Time");<a name="line.442"></a>
+<span class="sourceLineNo">443</span>    map.put("Etc/GMT+7", "US Mountain Standard Time");<a name="line.443"></a>
+<span class="sourceLineNo">444</span>    map.put("Etc/GMT-0", "UTC");<a name="line.444"></a>
+<span class="sourceLineNo">445</span>    map.put("Etc/GMT-1", "W. Central Africa Standard Time");<a name="line.445"></a>
+<span class="sourceLineNo">446</span>    map.put("Etc/GMT-10", "West Pacific Standard Time");<a name="line.446"></a>
+<span class="sourceLineNo">447</span>    map.put("Etc/GMT-11", "Central Pacific Standard Time");<a name="line.447"></a>
+<span class="sourceLineNo">448</span>    map.put("Etc/GMT-12", "UTC+12");<a name="line.448"></a>
+<span class="sourceLineNo">449</span>    map.put("Etc/GMT-13", "Tonga Standard Time");<a name="line.449"></a>
+<span class="sourceLineNo">450</span>    map.put("Etc/GMT-14", "Line Islands Standard Time");<a name="line.450"></a>
+<span class="sourceLineNo">451</span>    map.put("Etc/GMT-2", "South Africa Standard Time");<a name="line.451"></a>
+<span class="sourceLineNo">452</span>    map.put("Etc/GMT-3", "E. Africa Standard Time");<a name="line.452"></a>
+<span class="sourceLineNo">453</span>    map.put("Etc/GMT-4", "Arabian Standard Time");<a name="line.453"></a>
+<span class="sourceLineNo">454</span>    map.put("Etc/GMT-5", "West Asia Standard Time");<a name="line.454"></a>
+<span class="sourceLineNo">455</span>    map.put("Etc/GMT-6", "Central Asia Standard Time");<a name="line.455"></a>
+<span class="sourceLineNo">456</span>    map.put("Etc/GMT-7", "SE Asia Standard Time");<a name="line.456"></a>
+<span class="sourceLineNo">457</span>    map.put("Etc/GMT-8", "Singapore Standard Time");<a name="line.457"></a>
+<span class="sourceLineNo">458</span>    map.put("Etc/GMT-9", "Tokyo Standard Time");<a name="line.458"></a>
+<span class="sourceLineNo">459</span>    map.put("Etc/GMT0", "UTC");<a name="line.459"></a>
+<span class="sourceLineNo">460</span>    map.put("Etc/Greenwich", "UTC");<a name="line.460"></a>
+<span class="sourceLineNo">461</span>    map.put("Etc/UCT", "UTC");<a name="line.461"></a>
+<span class="sourceLineNo">462</span>    map.put("Etc/UTC", "UTC");<a name="line.462"></a>
+<span class="sourceLineNo">463</span>    map.put("Etc/Universal", "UTC");<a name="line.463"></a>
+<span class="sourceLineNo">464</span>    map.put("Etc/Zulu", "UTC");<a name="line.464"></a>
+<span class="sourceLineNo">465</span>    map.put("Europe/Amsterdam", "W. Europe Standard Time");<a name="line.465"></a>
+<span class="sourceLineNo">466</span>    map.put("Europe/Andorra", "W. Europe Standard Time");<a name="line.466"></a>
+<span class="sourceLineNo">467</span>    map.put("Europe/Athens", "GTB Standard Time");<a name="line.467"></a>
+<span class="sourceLineNo">468</span>    map.put("Europe/Belfast", "GMT Standard Time");<a name="line.468"></a>
+<span class="sourceLineNo">469</span>    map.put("Europe/Belgrade", "Central Europe Standard Time");<a name="line.469"></a>
+<span class="sourceLineNo">470</span>    map.put("Europe/Berlin", "W. Europe Standard Time");<a name="line.470"></a>
+<span class="sourceLineNo">471</span>    map.put("Europe/Bratislava", "Central Europe Standard Time");<a name="line.471"></a>
+<span class="sourceLineNo">472</span>    map.put("Europe/Brussels", "Romance Standard Time");<a name="line.472"></a>
+<span class="sourceLineNo">473</span>    map.put("Europe/Bucharest", "GTB Standard Time");<a name="line.473"></a>
+<span class="sourceLineNo">474</span>    map.put("Europe/Budapest", "Central Europe Standard Time");<a name="line.474"></a>
+<span class="sourceLineNo">475</span>    map.put("Europe/Busingen", "W. Europe Standard Time");<a name="line.475"></a>
+<span class="sourceLineNo">476</span>    map.put("Europe/Chisinau", "GTB Standard Time");<a name="line.476"></a>
+<span class="sourceLineNo">477</span>    map.put("Europe/Copenhagen", "Romance Standard Time");<a name="line.477"></a>
+<span class="sourceLineNo">478</span>    map.put("Europe/Dublin", "GMT Standard Time");<a name="line.478"></a>
+<span class="sourceLineNo">479</span>    map.put("Europe/Gibraltar", "W. Europe Standard Time");<a name="line.479"></a>
+<span class="sourceLineNo">480</span>    map.put("Europe/Guernsey", "GMT Standard Time");<a name="line.480"></a>
+<span class="sourceLineNo">481</span>    map.put("Europe/Helsinki", "FLE Standard Time");<a name="line.481"></a>
+<span class="sourceLineNo">482</span>    map.put("Europe/Isle_of_Man", "GMT Standard Time");<a name="line.482"></a>
+<span class="sourceLineNo">483</span>    map.put("Europe/Istanbul", "Turkey Standard Time");<a name="line.483"></a>
+<span class="sourceLineNo">484</span>    map.put("Europe/Jersey", "GMT Standard Time");<a name="line.484"></a>
+<span class="sourceLineNo">485</span>    map.put("Europe/Kaliningrad", "Kaliningrad Standard Time");<a name="line.485"></a>
+<span class="sourceLineNo">486</span>    map.put("Europe/Kiev", "FLE Standard Time");<a name="line.486"></a>
+<span class="sourceLineNo">487</span>    map.put("Europe/Lisbon", "GMT Standard Time");<a name="line.487"></a>
+<span class="sourceLineNo">488</span>    map.put("Europe/Ljubljana", "Central Europe Standard Time");<a name="line.488"></a>
+<span class="sourceLineNo">489</span>    map.put("Europe/London", "GMT Standard Time");<a name="line.489"></a>
+<span class="sourceLineNo">490</span>    map.put("Europe/Luxembourg", "W. Europe Standard Time");<a name="line.490"></a>
+<span class="sourceLineNo">491</span>    map.put("Europe/Madrid", "Romance Standard Time");<a name="line.491"></a>
+<span class="sourceLineNo">492</span>    map.put("Europe/Malta", "W. Europe Standard Time");<a name="line.492"></a>
+<span class="sourceLineNo">493</span>    map.put("Europe/Mariehamn", "FLE Standard Time");<a name="line.493"></a>
+<span class="sourceLineNo">494</span>    map.put("Europe/Minsk", "Belarus Standard Time");<a name="line.494"></a>
+<span class="sourceLineNo">495</span>    map.put("Europe/Monaco", "W. Europe Standard Time");<a name="line.495"></a>
+<span class="sourceLineNo">496</span>    map.put("Europe/Moscow", "Russian Standard Time");<a name="line.496"></a>
+<span class="sourceLineNo">497</span>    map.put("Europe/Nicosia", "GTB Standard Time");<a name="line.497"></a>
+<span class="sourceLineNo">498</span>    map.put("Europe/Oslo", "W. Europe Standard Time");<a name="line.498"></a>
+<span class="sourceLineNo">499</span>    map.put("Europe/Paris", "Romance Standard Time");<a name="line.499"></a>
+<span class="sourceLineNo">500</span>    map.put("Europe/Podgorica", "Central Europe Standard Time");<a name="line.500"></a>
+<span class="sourceLineNo">501</span>    map.put("Europe/Prague", "Central Europe Standard Time");<a name="line.501"></a>
+<span class="sourceLineNo">502</span>    map.put("Europe/Riga", "FLE Standard Time");<a name="line.502"></a>
+<span class="sourceLineNo">503</span>    map.put("Europe/Rome", "W. Europe Standard Time");<a name="line.503"></a>
+<span class="sourceLineNo">504</span>    map.put("Europe/Samara", "Russia Time Zone 3");<a name="line.504"></a>
+<span class="sourceLineNo">505</span>    map.put("Europe/San_Marino", "W. Europe Standard Time");<a name="line.505"></a>
+<span class="sourceLineNo">506</span>    map.put("Europe/Sarajevo", "Central European Standard Time");<a name="line.506"></a>
+<span class="sourceLineNo">507</span>    map.put("Europe/Simferopol", "Russian Standard Time");<a name="line.507"></a>
+<span class="sourceLineNo">508</span>    map.put("Europe/Skopje", "Central European Standard Time");<a name="line.508"></a>
+<span class="sourceLineNo">509</span>    map.put("Europe/Sofia", "FLE Standard Time");<a name="line.509"></a>
+<span class="sourceLineNo">510</span>    map.put("Europe/Stockholm", "W. Europe Standard Time");<a name="line.510"></a>
+<span class="sourceLineNo">511</span>    map.put("Europe/Tallinn", "FLE Standard Time");<a name="line.511"></a>
+<span class="sourceLineNo">512</span>    map.put("Europe/Tirane", "Central Europe Standard Time");<a name="line.512"></a>
+<span class="sourceLineNo">513</span>    map.put("Europe/Tiraspol", "GTB Standard Time");<a name="line.513"></a>
+<span class="sourceLineNo">514</span>    map.put("Europe/Uzhgorod", "FLE Standard Time");<a name="line.514"></a>
+<span class="sourceLineNo">515</span>    map.put("Europe/Vaduz", "W. Europe Standard Time");<a name="line.515"></a>
+<span class="sourceLineNo">516</span>    map.put("Europe/Vatican", "W. Europe Standard Time");<a name="line.516"></a>
+<span class="sourceLineNo">517</span>    map.put("Europe/Vienna", "W. Europe Standard Time");<a name="line.517"></a>
+<span class="sourceLineNo">518</span>    map.put("Europe/Vilnius", "FLE Standard Time");<a name="line.518"></a>
+<span class="sourceLineNo">519</span>    map.put("Europe/Volgograd", "Russian Standard Time");<a name="line.519"></a>
+<span class="sourceLineNo">520</span>    map.put("Europe/Warsaw", "Central European Standard Time");<a name="line.520"></a>
+<span class="sourceLineNo">521</span>    map.put("Europe/Zagreb", "Central European Standard Time");<a name="line.521"></a>
+<span class="sourceLineNo">522</span>    map.put("Europe/Zaporozhye", "FLE Standard Time");<a name="line.522"></a>
+<span class="sourceLineNo">523</span>    map.put("Europe/Zurich", "W. Europe Standard Time");<a name="line.523"></a>
+<span class="sourceLineNo">524</span>    map.put("GB", "GMT Standard Time");<a name="line.524"></a>
+<span class="sourceLineNo">525</span>    map.put("GB-Eire", "GMT Standard Time");<a name="line.525"></a>
+<span class="sourceLineNo">526</span>    map.put("GMT", "UTC");<a name="line.526"></a>
+<span class="sourceLineNo">527</span>    map.put("GMT+0", "UTC");<a name="line.527"></a>
+<span class="sourceLineNo">528</span>    map.put("GMT-0", "UTC");<a name="line.528"></a>
+<span class="sourceLineNo">529</span>    map.put("GMT0", "UTC");<a name="line.529"></a>
+<span class="sourceLineNo">530</span>    map.put("Greenwich", "UTC");<a name="line.530"></a>
+<span class="sourceLineNo">531</span>    map.put("HST", "Hawaiian Standard Time");<a name="line.531"></a>
+<span class="sourceLineNo">532</span>    map.put("Hongkong", "China Standard Time");<a name="line.532"></a>
+<span class="sourceLineNo">533</span>    map.put("Iceland", "Greenwich Standard Time");<a name="line.533"></a>
+<span class="sourceLineNo">534</span>    map.put("Indian/Antananarivo", "E. Africa Standard Time");<a name="line.534"></a>
+<span class="sourceLineNo">535</span>    map.put("Indian/Chagos", "Central Asia Standard Time");<a name="line.535"></a>
+<span class="sourceLineNo">536</span>    map.put("Indian/Christmas", "SE Asia Standard Time");<a name="line.536"></a>
+<span class="sourceLineNo">537</span>    map.put("Indian/Cocos", "Myanmar Standard Time");<a name="line.537"></a>
+<span class="sourceLineNo">538</span>    map.put("Indian/Comoro", "E. Africa Standard Time");<a name="line.538"></a>
+<span class="sourceLineNo">539</span>    map.put("Indian/Kerguelen", "West Asia Standard Time");<a name="line.539"></a>
+<span class="sourceLineNo">540</span>    map.put("Indian/Mahe", "Mauritius Standard Time");<a name="line.540"></a>
+<span class="sourceLineNo">541</span>    map.put("Indian/Maldives", "West Asia Standard Time");<a name="line.541"></a>
+<span class="sourceLineNo">542</span>    map.put("Indian/Mauritius", "Mauritius Standard Time");<a name="line.542"></a>
+<span class="sourceLineNo">543</span>    map.put("Indian/Mayotte", "E. Africa Standard Time");<a name="line.543"></a>
+<span class="sourceLineNo">544</span>    map.put("Indian/Reunion", "Mauritius Standard Time");<a name="line.544"></a>
+<span class="sourceLineNo">545</span>    map.put("Iran", "Iran Standard Time");<a name="line.545"></a>
+<span class="sourceLineNo">546</span>    map.put("Israel", "Israel Standard Time");<a name="line.546"></a>
+<span class="sourceLineNo">547</span>    map.put("Jamaica", "SA Pacific Standard Time");<a name="line.547"></a>
+<span class="sourceLineNo">548</span>    map.put("Japan", "Tokyo Standard Time");<a name="line.548"></a>
+<span class="sourceLineNo">549</span>    map.put("Kwajalein", "UTC+12");<a name="line.549"></a>
+<span class="sourceLineNo">550</span>    map.put("Libya", "Libya Standard Time");<a name="line.550"></a>
+<span class="sourceLineNo">551</span>    map.put("MST", "US Mountain Standard Time");<a name="line.551"></a>
+<span class="sourceLineNo">552</span>    map.put("MST7MDT", "Mountain Standard Time");<a name="line.552"></a>
+<span class="sourceLineNo">553</span>    map.put("Mexico/BajaNorte", "Pacific Standard Time");<a name="line.553"></a>
+<span class="sourceLineNo">554</span>    map.put("Mexico/BajaSur", "Mountain Standard Time (Mexico)");<a name="line.554"></a>
+<span class="sourceLineNo">555</span>    map.put("Mexico/General", "Central Standard Time (Mexico)");<a name="line.555"></a>
+<span class="sourceLineNo">556</span>    map.put("NZ", "New Zealand Standard Time");<a name="line.556"></a>
+<span class="sourceLineNo">557</span>    map.put("Navajo", "Mountain Standard Time");<a name="line.557"></a>
+<span class="sourceLineNo">558</span>    map.put("PRC", "China Standard Time");<a name="line.558"></a>
+<span class="sourceLineNo">559</span>    map.put("PST8PDT", "Pacific Standard Time");<a name="line.559"></a>
+<span class="sourceLineNo">560</span>    map.put("Pacific/Apia", "Samoa Standard Time");<a name="line.560"></a>
+<span class="sourceLineNo">561</span>    map.put("Pacific/Auckland", "New Zealand Standard Time");<a name="line.561"></a>
+<span class="sourceLineNo">562</span>    map.put("Pacific/Bougainville", "Central Pacific Standard Time");<a name="line.562"></a>
+<span class="sourceLineNo">563</span>    map.put("Pacific/Chuuk", "West Pacific Standard Time");<a name="line.563"></a>
+<span class="sourceLineNo">564</span>    map.put("Pacific/Efate", "Central Pacific Standard Time");<a name="line.564"></a>
+<span class="sourceLineNo">565</span>    map.put("Pacific/Enderbury", "Tonga Standard Time");<a name="line.565"></a>
+<span class="sourceLineNo">566</span>    map.put("Pacific/Fakaofo", "Tonga Standard Time");<a name="line.566"></a>
+<span class="sourceLineNo">567</span>    map.put("Pacific/Fiji", "Fiji Standard Time");<a name="line.567"></a>
+<span class="sourceLineNo">568</span>    map.put("Pacific/Funafuti", "UTC+12");<a name="line.568"></a>
+<span class="sourceLineNo">569</span>    map.put("Pacific/Galapagos", "Central America Standard Time");<a name="line.569"></a>
+<span class="sourceLineNo">570</span>    map.put("Pacific/Guadalcanal", "Central Pacific Standard Time");<a name="line.570"></a>
+<span class="sourceLineNo">571</span>    map.put("Pacific/Guam", "West Pacific Standard Time");<a name="line.571"></a>
+<span class="sourceLineNo">572</span>    map.put("Pacific/Honolulu", "Hawaiian Standard Time");<a name="line.572"></a>
+<span class="sourceLineNo">573</span>    map.put("Pacific/Johnston", "Hawaiian Standard Time");<a name="line.573"></a>
+<span class="sourceLineNo">574</span>    map.put("Pacific/Kiritimati", "Line Islands Standard Time");<a name="line.574"></a>
+<span class="sourceLineNo">575</span>    map.put("Pacific/Kosrae", "Central Pacific Standard Time");<a name="line.575"></a>
+<span class="sourceLineNo">576</span>    map.put("Pacific/Kwajalein", "UTC+12");<a name="line.576"></a>
+<span class="sourceLineNo">577</span>    map.put("Pacific/Majuro", "UTC+12");<a name="line.577"></a>
+<span class="sourceLineNo">578</span>    map.put("Pacific/Midway", "UTC-11");<a name="line.578"></a>
+<span class="sourceLineNo">579</span>    map.put("Pacific/Nauru", "UTC+12");<a name="line.579"></a>
+<span class="sourceLineNo">580</span>    map.put("Pacific/Niue", "UTC-11");<a name="line.580"></a>
+<span class="sourceLineNo">581</span>    map.put("Pacific/Noumea", "Central Pacific Standard Time");<a name="line.581"></a>
+<span class="sourceLineNo">582</span>    map.put("Pacific/Pago_Pago", "UTC-11");<a name="line.582"></a>
+<span class="sourceLineNo">583</span>    map.put("Pacific/Palau", "Tokyo Standard Time");<a name="line.583"></a>
+<span class="sourceLineNo">584</span>    map.put("Pacific/Pohnpei", "Central Pacific Standard Time");<a name="line.584"></a>
+<span class="sourceLineNo">585</span>    map.put("Pacific/Ponape", "Central Pacific Standard Time");<a name="line.585"></a>
+<span class="sourceLineNo">586</span>    map.put("Pacific/Port_Moresby", "West Pacific Standard Time");<a name="line.586"></a>
+<span class="sourceLineNo">587</span>    map.put("Pacific/Rarotonga", "Hawaiian Standard Time");<a name="line.587"></a>
+<span class="sourceLineNo">588</span>    map.put("Pacific/Saipan", "West Pacific Standard Time");<a name="line.588"></a>
+<span class="sourceLineNo">589</span>    map.put("Pacific/Samoa", "UTC-11");<a name="line.589"></a>
+<span class="sourceLineNo">590</span>    map.put("Pacific/Tahiti", "Hawaiian Standard Time");<a name="line.590"></a>
+<span class="sourceLineNo">591</span>    map.put("Pacific/Tarawa", "UTC+12");<a name="line.591"></a>
+<span class="sourceLineNo">592</span>    map.put("Pacific/Tongatapu", "Tonga Standard Time");<a name="line.592"></a>
+<span class="sourceLineNo">593</span>    map.put("Pacific/Truk", "West Pacific Standard Time");<a name="line.593"></a>
+<span class="sourceLineNo">594</span>    map.put("Pacific/Wake", "UTC+12");<a name="line.594"></a>
+<span class="sourceLineNo">595</span>    map.put("Pacific/Wallis", "UTC+12");<a name="line.595"></a>
+<span class="sourceLineNo">596</span>    map.put("Pacific/Yap", "West Pacific Standard Time");<a name="line.596"></a>
+<span class="sourceLineNo">597</span>    map.put("Poland", "Central European Standard Time");<a name="line.597"></a>
+<span class="sourceLineNo">598</span>    map.put("Portugal", "GMT Standard Time");<a name="line.598"></a>
+<span class="sourceLineNo">599</span>    map.put("ROC", "Taipei Standard Time");<a name="line.599"></a>
+<span class="sourceLineNo">600</span>    map.put("ROK", "Korea Standard Time");<a name="line.600"></a>
+<span class="sourceLineNo">601</span>    map.put("Singapore", "Singapore Standard Time");<a name="line.601"></a>
+<span class="sourceLineNo">602</span>    map.put("Turkey", "Turkey Standard Time");<a name="line.602"></a>
+<span class="sourceLineNo">603</span>    map.put("UCT", "UTC");<a name="line.603"></a>
+<span class="sourceLineNo">604</span>    map.put("US/Alaska", "Alaskan Standard Time");<a name="line.604"></a>
+<span class="sourceLineNo">605</span>    map.put("US/Arizona", "US Mountain Standard Time");<a name="line.605"></a>
+<span class="sourceLineNo">606</span>    map.put("US/Central", "Central Standard Time");<a name="line.606"></a>
+<span class="sourceLineNo">607</span>    map.put("US/East-Indiana", "US Eastern Standard Time");<a name="line.607"></a>
+<span class="sourceLineNo">608</span>    map.put("US/Eastern", "Eastern Standard Time");<a name="line.608"></a>
+<span class="sourceLineNo">609</span>    map.put("US/Hawaii", "Hawaiian Standard Time");<a name="line.609"></a>
+<span class="sourceLineNo">610</span>    map.put("US/Indiana-Starke", "Central Standard Time");<a name="line.610"></a>
+<span class="sourceLineNo">611</span>    map.put("US/Michigan", "Eastern Standard Time");<a name="line.611"></a>
+<span class="sourceLineNo">612</span>    map.put("US/Mountain", "Mountain Standard Time");<a name="line.612"></a>
+<span class="sourceLineNo">613</span>    map.put("US/Pacific", "Pacific Standard Time");<a name="line.613"></a>
+<span class="sourceLineNo">614</span>    map.put("US/Pacific-New", "Pacific Standard Time");<a name="line.614"></a>
+<span class="sourceLineNo">615</span>    map.put("US/Samoa", "UTC-11");<a name="line.615"></a>
+<span class="sourceLineNo">616</span>    map.put("UTC", "UTC");<a name="line.616"></a>
+<span class="sourceLineNo">617</span>    map.put("Universal", "UTC");<a name="line.617"></a>
+<span class="sourceLineNo">618</span>    map.put("W-SU", "Russian Standard Time");<a name="line.618"></a>
+<span class="sourceLineNo">619</span>    map.put("Zulu", "UTC");<a name="line.619"></a>
+<span class="sourceLineNo">620</span>    //additions outside of Unicode list<a name="line.620"></a>
+<span class="sourceLineNo">621</span>    map.put("America/Adak", "Hawaiian Standard Time,(UTC-10:00) Hawaii");<a name="line.621"></a>
+<span class="sourceLineNo">622</span>    map.put("America/Atka", "Hawaiian Standard Time,(UTC-10:00) Hawaii");<a name="line.622"></a>
+<span class="sourceLineNo">623</span>    map.put("America/Metlakatla", "Pacific Standard Time");<a name="line.623"></a>
+<span class="sourceLineNo">624</span>    map.put("America/Miquelon", "South America Standard Time");<a name="line.624"></a>
+<span class="sourceLineNo">625</span>    map.put("Asia/Gaza", "Middle East Standard Time");<a name="line.625"></a>
+<span class="sourceLineNo">626</span>    return map;<a name="line.626"></a>
+<span class="sourceLineNo">627</span>  }<a name="line.627"></a>
+<span class="sourceLineNo">628</span><a name="line.628"></a>
+<span class="sourceLineNo">629</span>}<a name="line.629"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>
