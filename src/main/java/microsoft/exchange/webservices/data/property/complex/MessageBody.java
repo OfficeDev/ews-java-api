@@ -33,6 +33,7 @@ import microsoft.exchange.webservices.data.core.exception.service.local.ServiceX
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jsoup.Jsoup;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -102,6 +103,20 @@ public final class MessageBody extends ComplexProperty {
       throws Exception {
     EwsUtilities.validateParam(messageBody, "messageBody");
     return messageBody.text;
+  }
+
+  /**
+   * Defines an implicit conversion of MessageBody into a string,
+   * removing html tags.
+   *
+   * @param messageBody The MessageBody to convert to a string.
+   * @return A string containing the clear text of the MessageBody.
+   * @throws Exception the exception
+   */
+  public static String getClearTextFromMessageBody(MessageBody messageBody)
+      throws Exception {
+    EwsUtilities.validateParam(messageBody, "messageBody");
+    return Jsoup.parse(messageBody.text).text();
   }
 
   /**
