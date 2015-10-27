@@ -379,7 +379,7 @@ public class AutodiscoverService extends ExchangeServiceBase
    * @throws ServiceLocalException the service local exception
    * @throws URISyntaxException the uRI syntax exception
    */
-  private URI getRedirectUrl(String domainName)
+  public URI getRedirectUrl(String domainName)
       throws EWSHttpException, XMLStreamException, IOException, ServiceLocalException, URISyntaxException {
     String url = String.format(AutodiscoverLegacyHttpUrl, "autodiscover." + domainName);
 
@@ -1524,6 +1524,7 @@ public class AutodiscoverService extends ExchangeServiceBase
         request.setAllowAutoRedirect(false);
         request.setPreAuthenticate(false);
         request.setUseDefaultCredentials(this.getUseDefaultCredentials());
+        request.setTimeout(getTimeout());
 
         prepareCredentials(request);
 
