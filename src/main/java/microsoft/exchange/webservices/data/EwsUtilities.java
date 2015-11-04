@@ -927,7 +927,7 @@ class EwsUtilities {
     Pattern timeSpanParser = Pattern.compile("-P");
     Matcher m = timeSpanParser.matcher(xsDuration);
     boolean negative = false;
-    System.out.println(m.find());
+    m.find();
     if (m.find()) {
       negative = true;
     }
@@ -935,7 +935,7 @@ class EwsUtilities {
 
     // Year
     m = Pattern.compile("(\\d+)Y").matcher(xsDuration);
-    System.out.println(m.find());
+    m.find();
     int year = 0;
     if (m.find()) {
       year = Integer.parseInt(m.group().substring(0,
@@ -944,7 +944,7 @@ class EwsUtilities {
 
     // Month
     m = Pattern.compile("(\\d+)M").matcher(xsDuration);
-    System.out.println(m.find());
+    m.find();
     int month = 0;
     if (m.find()) {
       month = Integer.parseInt(m.group().substring(0,
@@ -953,7 +953,7 @@ class EwsUtilities {
 
     // Day
     m = Pattern.compile("(\\d+)D").matcher(xsDuration);
-    System.out.println(m.find());
+    m.find();
     int day = 0;
     if (m.find()) {
       day = Integer.parseInt(m.group().substring(0,
@@ -962,7 +962,7 @@ class EwsUtilities {
 
     // Hour
     m = Pattern.compile("(\\d+)H").matcher(xsDuration);
-    System.out.println(m.find());
+    m.find();
     int hour = 0;
     if (m.find()) {
       hour = Integer.parseInt(m.group().substring(0,
@@ -971,7 +971,7 @@ class EwsUtilities {
 
     // Minute
     m = Pattern.compile("(\\d+)M").matcher(xsDuration);
-    System.out.println(m.find());
+    m.find();
     int minute = 0;
     if (m.find()) {
       minute = Integer.parseInt(m.group().substring(0,
@@ -980,7 +980,7 @@ class EwsUtilities {
 
     // Seconds
     m = Pattern.compile("(\\d+).").matcher(xsDuration);
-    System.out.println(m.find());
+    m.find();
     int seconds = 0;
     if (m.find()) {
       seconds = Integer.parseInt(m.group().substring(0,
@@ -989,7 +989,7 @@ class EwsUtilities {
 
     int milliseconds = 0;
     m = Pattern.compile("(\\d+)S").matcher(xsDuration);
-    System.out.println(m.find());
+    m.find();
     if (m.find()) {
       // Only allowed 4 digits of precision
       if (m.group().length() > 5) {
