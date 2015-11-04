@@ -931,7 +931,7 @@ class EwsUtilities {
     if (m.find()) {
       negative = true;
     }
-    System.out.println(m.group());
+//    System.out.println(m.group());
 
     // Year
     m = Pattern.compile("(\\d+)Y").matcher(xsDuration);
