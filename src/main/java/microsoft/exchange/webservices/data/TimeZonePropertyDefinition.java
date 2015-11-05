@@ -12,7 +12,6 @@ package microsoft.exchange.webservices.data;
 
 import javax.xml.stream.XMLStreamException;
 import java.util.EnumSet;
-import java.util.TimeZone;
 
 /**
  * Represents a property definition for properties of type TimeZoneInfo.
@@ -82,7 +81,7 @@ class TimeZonePropertyDefinition extends PropertyDefinition {
    * Gets the property type.
    */
   @Override
-  public Class<TimeZone> getType() {
-    return TimeZone.class;
+  public Class<TimeZoneDefinition> getType() {
+    return TimeZoneDefinition.class;
   }
 }

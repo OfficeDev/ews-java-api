@@ -436,20 +436,20 @@ public abstract class ServiceObject {
   public <T> boolean tryGetProperty(Class<T> cls, PropertyDefinitionBase propertyDefinition,
       OutParam<T> propertyValue) throws Exception {
 
-    PropertyDefinition propDef = (PropertyDefinition) propertyDefinition;
-    if (propDef != null) {
-      return this.getPropertyBag().tryGetPropertyType(cls, propDef, propertyValue);
-    } else {
-      ExtendedPropertyDefinition extPropDef = (ExtendedPropertyDefinition) propertyDefinition;
-      if (extPropDef != null) {
-        return this.tryGetExtendedProperty(cls, extPropDef, propertyValue);
-      } else {
-        // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
-        throw new NotSupportedException(String.format(
-            Strings.OperationNotSupportedForPropertyDefinitionType,
-            propertyDefinition.getType().getName()));
-      }
+    if (propertyDefinition == null) {
+      return false;
     }
+
+    if (propertyDefinition instanceof PropertyDefinition) {
+      return this.getPropertyBag().tryGetPropertyType(cls, (PropertyDefinition) propertyDefinition, propertyValue);
+    }
+    if (propertyDefinition instanceof ExtendedPropertyDefinition) {
+      return this.tryGetExtendedProperty(cls, (ExtendedPropertyDefinition) propertyDefinition, propertyValue);
+    }
+    // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
+    throw new NotSupportedException(String.format(
+        Strings.OperationNotSupportedForPropertyDefinitionType,
+        propertyDefinition.getType().getName()));
   }
 
   /**
