@@ -80,31 +80,31 @@
         <javadoc.doclint.param/>
 
         <!--  Dependencies [BUILD]:  -->
-        <maven-checkstyle-plugin.version>2.16</maven-checkstyle-plugin.version>
+        <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.6</nexus-staging-maven-plugin.version>
         <maven-source-plugin.version>2.4</maven-source-plugin.version>
         <animal-sniffer-maven-plugin.version>1.14</animal-sniffer-maven-plugin.version>
         <animal-sniffer-maven-plugin.signature.version>1.1</animal-sniffer-maven-plugin.signature.version>
         <!--  Dependencies [REPORT]:  -->
         <maven-site-plugin.version>3.4</maven-site-plugin.version>
-        <maven-project-info-reports-plugin.version>2.8</maven-project-info-reports-plugin.version>
+        <maven-project-info-reports-plugin.version>2.8.1</maven-project-info-reports-plugin.version>
         <versions-maven-plugin.version>2.2</versions-maven-plugin.version>
         <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
-        <maven-surefire-report-plugin.version>2.18.1</maven-surefire-report-plugin.version>
+        <maven-surefire-report-plugin.version>2.19</maven-surefire-report-plugin.version>
         <!--  Dependencies [COMPILE]:  -->
-        <httpclient.version>4.4.1</httpclient.version>
-        <httpcore.version>4.4.1</httpcore.version>
+        <httpclient.version>4.5.1</httpclient.version>
+        <httpcore.version>4.4.4</httpcore.version>
         <commons-logging.version>1.2</commons-logging.version>
-        <joda-time.version>2.8</joda-time.version>
+        <joda-time.version>2.9</joda-time.version>
         <commons-lang3.version>3.4</commons-lang3.version>
         <commons-io.version>2.4</commons-io.version>
         <!--  Dependencies [TEST]:  -->
         <junit.version>4.12</junit.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
-        <mockito-core.version>1.10.19</mockito-core.version>
+        <mockito-core.version>2.0.31-beta</mockito-core.version>
         <slf4j.version>1.7.12</slf4j.version>
         <logback.version>1.1.3</logback.version>
     </properties>
