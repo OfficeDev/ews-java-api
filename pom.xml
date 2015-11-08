@@ -80,6 +80,7 @@
         <javadoc.doclint.param/>
 
         <!--  Dependencies [BUILD]:  -->
+        <maven-checkstyle-plugin.version>2.16</maven-checkstyle-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
@@ -117,6 +118,34 @@
             <properties>
                 <javadoc.doclint.param>-Xdoclint:none</javadoc.doclint.param>
             </properties>
+        </profile>
+        <profile>
+            <!-- maven-checkstyle-plugin required Java 7 or later -->
+            <id>java-7-or-later-profile</id>
+            <activation>
+                <jdk>[1.7,)</jdk>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${maven-checkstyle-plugin.version}</version>
+                    <configuration>
+                    <failsOnError>true</failsOnError>
+                        <configLocation>google_checks.xml</configLocation>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>checkstyle</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <profile>
             <id>release-sign-artifacts</id>
