@@ -33,6 +33,8 @@ import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceVersionException;
 
+import org.apache.commons.io.IOUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -234,11 +236,7 @@ public final class FileAttachment extends Attachment {
       this.load();
       this.loadToStream.flush();
     } finally {
-      try {
-        this.loadToStream.close();
-      } catch(Exception e) {
-        //ignore exception on close
-      }
+      IOUtils.closeQuietly(this.loadToStream);
       this.loadToStream = null;
     }
 

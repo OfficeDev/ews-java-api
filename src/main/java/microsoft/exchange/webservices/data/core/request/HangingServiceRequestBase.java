@@ -36,6 +36,7 @@ import microsoft.exchange.webservices.data.core.exception.service.remote.Service
 import microsoft.exchange.webservices.data.core.exception.xml.XmlException;
 import microsoft.exchange.webservices.data.misc.HangingTraceStream;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -241,14 +242,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
       // Stream is closed, so disconnect.
       this.disconnect(HangingRequestDisconnectReason.Exception, ex);
     } finally {
-      if (responseCopy != null) {
-        try {
-          responseCopy.close();
-          responseCopy = null;
-        } catch (Exception ex) {
-          LOG.error(ex);
-        }
-      }
+      IOUtils.closeQuietly(responseCopy);
     }
   }
 
@@ -272,11 +266,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
    */
   public void disconnect() {
     synchronized (this) {
-      try {
-        this.response.close();
-      } catch (IOException e) {
-        // Ignore exception on disconnection
-      }
+      IOUtils.closeQuietly(this.response);
       this.disconnect(HangingRequestDisconnectReason.UserInitiated, null);
     }
   }
@@ -289,11 +279,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
    */
   public void disconnect(HangingRequestDisconnectReason reason, Exception exception) {
     if (this.isConnected()) {
-      try {
-        this.response.close();
-      } catch (IOException e) {
-        // Ignore exception on disconnection
-      }
+      IOUtils.closeQuietly(this.response);
       this.internalOnDisconnect(reason, exception);
     }
   }
