@@ -52,3 +52,4 @@ before_install:
 
 after_success:
   - ./deploy_snapshot.sh
+  - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
