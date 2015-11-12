@@ -36,10 +36,10 @@ else
 	# deploy
 	if [ -z "${GPG_PASSPHRASE+xxx}" ]; then
 	    echo "[INFO] Deploying unsigned artifacts"
-            mvn clean deploy --settings="$HOME/.m2/settings.xml" -Dmaven.test.skip=true
+            mvn clean deploy --settings="$HOME/.m2/settings.xml" -Dmaven.test.skip=true -Dcheckstyle.skip=true
         else
             echo "[INFO] Deploying signed artifacts"
-            mvn clean deploy --settings="$HOME/.m2/settings.xml" -Dmaven.test.skip=true -Dgpg.passphrase=$GPG_PASSPHRASE
+            mvn clean deploy --settings="$HOME/.m2/settings.xml" -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dgpg.passphrase=$GPG_PASSPHRASE
         fi
 	# clean up
 	rm -f $HOME/.m2/settings.xml
