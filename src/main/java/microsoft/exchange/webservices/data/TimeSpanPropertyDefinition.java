@@ -40,7 +40,7 @@ class TimeSpanPropertyDefinition extends GenericPropertyDefinition<TimeSpan> {
   @Override
   protected Object parse(String value) {
 
-    return EwsUtilities.getXSDurationToTimeSpanValue(value);
+    return EwsUtilities.getXSDurationToTimeSpan(value);
 
   }
 
