@@ -15,11 +15,34 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(JUnit4.class)
 public class EwsUtilitiesTest {
   @Test
   public void testGetBuildVersion() {
-    Assert.assertEquals("Build version must be 0s", "0.0.0.0", EwsUtilities.getBuildVersion());
+    assertEquals("Build version must be 0s", "0.0.0.0", EwsUtilities.getBuildVersion());
+  }
+
+  @Test
+  public void testGetXSDurationToTimeSpan() {
+    TimeSpan result = EwsUtilities.getXSDurationToTimeSpan("PT0H");
+    assertEquals(0, result.getHours());
+    assertEquals(0, result.getMinutes());
+    assertEquals(0, result.getSeconds());
+    assertEquals(0, result.getMilliseconds());
+
+    result = EwsUtilities.getXSDurationToTimeSpan("PT23H56M22.123S");
+    assertEquals(23, result.getHours());
+    assertEquals(56, result.getMinutes());
+    assertEquals(22, result.getSeconds());
+    assertEquals(123, result.getMilliseconds());
+
+    result = EwsUtilities.getXSDurationToTimeSpan("PT1H");
+    assertEquals(1, result.getHours());
+    assertEquals(0, result.getMinutes());
+    assertEquals(0, result.getSeconds());
+    assertEquals(0, result.getMilliseconds());
   }
 
   @Test

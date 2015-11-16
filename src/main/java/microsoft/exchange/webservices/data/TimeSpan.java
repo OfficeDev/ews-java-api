@@ -247,7 +247,7 @@ public class TimeSpan implements Comparable<TimeSpan>, java.io.Serializable, Clo
    * @return the number of milliseconds.
    */
   public long getMilliseconds() {
-    return (((this.time % TimeSpan.HOURS) % TimeSpan.MINUTES) % TimeSpan.MILLISECONDS)
+    return (((this.time % TimeSpan.HOURS) % TimeSpan.MINUTES) % TimeSpan.SECONDS)
         / TimeSpan.MILLISECONDS;
   }
 
