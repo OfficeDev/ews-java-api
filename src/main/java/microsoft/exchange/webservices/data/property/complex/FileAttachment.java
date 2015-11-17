@@ -44,6 +44,7 @@ import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -274,12 +275,12 @@ public final class FileAttachment extends Attachment {
     } catch(Exception e) {
       if (responseFile.exists()) {
         String path = responseFile.getAbsolutePath();
-        System.out.println("EWS attachment response written to file " + path + ".");
+        System.out.println("EWS response written to file " + path + ".");
         if (responseFile.length() < 524288) { // .5 MB in bytes ((1024 * 1024) / 2)
           try {
             byte[] responseBytes = Files.readAllBytes(Paths.get(path));
-            System.out.println("EWS attachment response:");
-            System.out.println(new String(responseBytes));
+            System.out.println("EWS response:");
+            System.out.println(new String(responseBytes, Charset.forName("UTF-8")));
           } catch (Exception e1) {}
         }
       }
