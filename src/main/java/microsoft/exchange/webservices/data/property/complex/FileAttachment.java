@@ -26,7 +26,6 @@ package microsoft.exchange.webservices.data.property.complex;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
@@ -42,7 +41,6 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -334,27 +332,17 @@ public final class FileAttachment extends Attachment {
    * @throws Exception If the response was an error response.
    */
   protected FileAttachment parseGetAttachmentResponse(byte[] responseBytes) throws Exception {
-    if (responseBytes == null) {
-      throw new IllegalArgumentException("responseBytes cannot be null.");
-    }
-
     // Use the existing EWS code to parse the response and throw the resulting error.
-    ExchangeService service = this.getOwner().getService();
-    EwsServiceXmlReader xmlReader = new EwsServiceXmlReader(new ByteArrayInputStream(responseBytes), service);
-    GetAttachmentRequest
-        getAttachmentRequest = new GetAttachmentRequest(service, ServiceErrorHandling.ThrowOnError);
+    GetAttachmentRequest getAttachmentRequest = new GetAttachmentRequest(
+        getOwner().getService(), ServiceErrorHandling.ThrowOnError);
     getAttachmentRequest.getAttachments().add(this);
-    Object responseCollection = getAttachmentRequest.readResponse(xmlReader);
+    // parseResponseBytes will return the collection or throw a ServiceRequest/ResponseError if needed.
+    ServiceResponseCollection<GetAttachmentResponse> serviceResponseCollection =
+        getAttachmentRequest.parseResponseBytes(responseBytes);
 
-    if (responseCollection != null
-            && (responseCollection instanceof ServiceResponseCollection)
-            && (((ServiceResponseCollection)responseCollection).getCount() > 0)) {
-      // Throw an EWS ServiceRequest/ResponseError if needed.
-      ((ServiceResponseCollection)responseCollection).getResponseAtIndex(0).internalThrowIfNecessary();
-      // Otherwise return the FileAttachment.
-      ServiceResponseCollection serviceResponseCollection = ((ServiceResponseCollection) responseCollection);
-      GetAttachmentResponse getAttachmentResponse = (GetAttachmentResponse) serviceResponseCollection
-              .getResponseAtIndex(0);
+    if (serviceResponseCollection.getCount() > 0) {
+      // Return the FileAttachment.
+      GetAttachmentResponse getAttachmentResponse = serviceResponseCollection.getResponseAtIndex(0);
       return (FileAttachment) getAttachmentResponse.getAttachment();
     }
 

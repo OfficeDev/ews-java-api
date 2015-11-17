@@ -97,7 +97,7 @@ public class FileAttachmentTest {
         }
         return null;
       }
-    }).when(exchangeService).streamGetAttachmentResponse(eq(fileAttachment), any(OutputStream.class));
+    }).when(exchangeService).streamAttachment(eq(fileAttachment), any(OutputStream.class));
 
     try {
       fileAttachment.streamContent(new ByteArrayOutputStream());
