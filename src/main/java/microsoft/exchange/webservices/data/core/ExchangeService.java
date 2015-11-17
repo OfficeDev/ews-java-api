@@ -23,22 +23,6 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import java.io.OutputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TimeZone;
-
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.IAutodiscoverRedirectionUrl;
 import microsoft.exchange.webservices.data.autodiscover.enumeration.UserSettingName;
@@ -196,11 +180,24 @@ import microsoft.exchange.webservices.data.search.filter.SearchFilter;
 import microsoft.exchange.webservices.data.sync.ChangeCollection;
 import microsoft.exchange.webservices.data.sync.FolderChange;
 import microsoft.exchange.webservices.data.sync.ItemChange;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+
+import java.io.OutputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Represents a binding to the Exchange Web Services.
@@ -1548,13 +1545,12 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    * @param outputStream         the stream to put the response into.
    * @throws Exception the exception
    */
-  protected void streamGetAttachmentResponse(Attachment attachment, OutputStream outputStream)
+  public void streamAttachment(Attachment attachment, OutputStream outputStream)
       throws Exception {
 
     GetAttachmentRequest request = new GetAttachmentRequest(this, ServiceErrorHandling.ThrowOnError);
     request.getAttachments().add(attachment);
-
-    request.validateAndEmitRequest(outputStream);
+    request.execute(outputStream);
   }
 
   /**

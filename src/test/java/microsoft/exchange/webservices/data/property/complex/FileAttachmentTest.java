@@ -1,6 +1,5 @@
-package microsoft.exchange.webservices.data;
+package microsoft.exchange.webservices.data.property.complex;
 
-import microsoft.exchange.webservices.data.property.complex.FileAttachment;
 import org.junit.Test;
 
 import java.io.BufferedInputStream;

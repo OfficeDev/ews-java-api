@@ -40,6 +40,7 @@ import microsoft.exchange.webservices.data.property.definition.PropertyDefinitio
 
 import javax.xml.stream.XMLStreamException;
 
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,6 +76,10 @@ public final class GetAttachmentRequest extends
   public GetAttachmentRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
+  }
+
+  public void execute(OutputStream outputStream) throws Exception {
+    validateAndEmitRequest(outputStream);
   }
 
   /**

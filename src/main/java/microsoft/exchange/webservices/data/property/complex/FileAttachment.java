@@ -262,7 +262,7 @@ public final class FileAttachment extends Attachment {
     BufferedOutputStream os = null;
     try {
       os = new BufferedOutputStream(new FileOutputStream(responseFile));
-      this.getOwner().getService().streamGetAttachmentResponse(this, os);
+      this.getOwner().getService().streamAttachment(this, os);
       os.flush();
       os.close();
       writeContentFromResponseFile(new FileInputStream(responseFile), outputStream);
