@@ -311,7 +311,7 @@ public final class FileAttachment extends Attachment {
       System.out.println(new String(responseBytes, Charset.forName("UTF-8")));
     } catch (Exception e1) {
       // If we had any errors loading/printing the responseFile, log the error and throw the original Exception.
-      System.out.println("Error reading responseFile. " + e.getMessage());
+      System.out.println("Error reading responseFile. " + e1.getMessage());
       e1.printStackTrace();
       // Throw the original Exception.
       throw e;
