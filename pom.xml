@@ -344,27 +344,27 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>animal-sniffer-maven-plugin</artifactId>
-                <version>${animal-sniffer-maven-plugin.version}</version>
-                <configuration>
-                    <signature>
-                        <groupId>org.codehaus.mojo.signature</groupId>
-                        <artifactId>java16-sun</artifactId>
-                        <version>${animal-sniffer-maven-plugin.signature.version}</version>
-                    </signature>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>check-java16-sun</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>animal-sniffer-maven-plugin</artifactId>-->
+                <!--<version>${animal-sniffer-maven-plugin.version}</version>-->
+                <!--<configuration>-->
+                    <!--<signature>-->
+                        <!--<groupId>org.codehaus.mojo.signature</groupId>-->
+                        <!--<artifactId>java16-sun</artifactId>-->
+                        <!--<version>${animal-sniffer-maven-plugin.signature.version}</version>-->
+                    <!--</signature>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>check-java16-sun</id>-->
+                        <!--<phase>test</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>check</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
 
             <plugin>
                 <groupId>org.jacoco</groupId>
