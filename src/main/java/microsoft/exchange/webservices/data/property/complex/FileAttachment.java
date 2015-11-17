@@ -34,6 +34,7 @@ import microsoft.exchange.webservices.data.core.enumeration.service.error.Servic
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceVersionException;
 import microsoft.exchange.webservices.data.core.request.GetAttachmentRequest;
+import microsoft.exchange.webservices.data.core.response.GetAttachmentResponse;
 import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
 import microsoft.exchange.webservices.data.core.service.item.Item;
 import org.apache.commons.codec.binary.Base64OutputStream;
@@ -278,29 +279,52 @@ public final class FileAttachment extends Attachment {
       writeContentFromResponseFile(new FileInputStream(responseFile), outputStream);
       responseFile.delete();
     } catch(Exception e) {
-      if (responseFile.exists()) {
-        String path = responseFile.getAbsolutePath();
-        System.out.println("EWS response written to file " + path + ".");
-        if (responseFile.length() < 524288) { // .5 MB in bytes ((1024 * 1024) / 2)
-          byte[] responseBytes = null;
-          try {
-            responseBytes = Files.readAllBytes(Paths.get(path));
-            System.out.println("EWS response:");
-            System.out.println(new String(responseBytes, Charset.forName("UTF-8")));
-          } catch (Exception e1) {}
-          // If the message was small enough to fit into memory, parse it using EWS code to surface any
-          // ServiceRequest/ResponseErrors.
-          parseGetAttachmentResponse(responseBytes);
-        }
-      }
-      // Throw the original Exception if the response file does not exist, the response was too big to fit into memory,
-      // or there was an error loading the bytes into memory.
-      throw e;
+      handleStreamContentException(e, responseFile, outputStream);
     } finally {
       if (os != null) {
         os.close();
       }
     }
+  }
+
+  protected void handleStreamContentException(Exception e, File responseFile, OutputStream outputStream)
+          throws Exception {
+    if (!responseFile.exists()) {
+      // Throw the original Exception if the response file does not exist.
+      throw e;
+    }
+
+    String path = responseFile.getAbsolutePath();
+    System.out.println("EWS response written to file " + path + ".");
+
+    if (responseFile.length() > 524288) { // .5 MB in bytes ((1024 * 1024) / 2)
+      // Do not load the response file into memory if it is too large.
+      throw e;
+    }
+
+    byte[] responseBytes;
+    try {
+      responseBytes = Files.readAllBytes(Paths.get(path));
+
+      // Print the response to the output file.
+      System.out.println("EWS response:");
+      System.out.println(new String(responseBytes, Charset.forName("UTF-8")));
+    } catch (Exception e1) {
+      // If we had any errors loading/printing the responseFile, log the error and throw the original Exception.
+      System.out.println("Error reading responseFile. " + e.getMessage());
+      e1.printStackTrace();
+      // Throw the original Exception.
+      throw e;
+    }
+
+    // Load the responseFile contents into memory and parse the response using EWS code to surface any
+    // ServiceRequest/ServiceResponseErrors, or load any FileAttachments that had no content.
+    FileAttachment attachment = parseGetAttachmentResponse(responseBytes);
+    // If we made it here and parseGetAttachmentResponse() did not throw an EWS ServiceRequest/ResponseError, then this
+    // is a small FileAttachment response with no content tag. Call the original FileAttachment load to write any data
+    // to the original OutputStream. From what we've seen so far, as you'd guess, this normally results in 0 bytes being
+    // written to the OutputStream.
+    attachment.load(outputStream);
   }
 
   /**
@@ -309,9 +333,9 @@ public final class FileAttachment extends Attachment {
    * @param responseBytes The bytes of the get attachment response.
    * @throws Exception If the response was an error response.
    */
-  protected void parseGetAttachmentResponse(byte[] responseBytes) throws Exception {
+  protected FileAttachment parseGetAttachmentResponse(byte[] responseBytes) throws Exception {
     if (responseBytes == null) {
-      return;
+      throw new IllegalArgumentException("responseBytes cannot be null.");
     }
 
     // Use the existing EWS code to parse the response and throw the resulting error.
@@ -325,8 +349,16 @@ public final class FileAttachment extends Attachment {
     if (responseCollection != null
             && (responseCollection instanceof ServiceResponseCollection)
             && (((ServiceResponseCollection)responseCollection).getCount() > 0)) {
+      // Throw an EWS ServiceRequest/ResponseError if needed.
       ((ServiceResponseCollection)responseCollection).getResponseAtIndex(0).internalThrowIfNecessary();
+      // Otherwise return the FileAttachment.
+      ServiceResponseCollection serviceResponseCollection = ((ServiceResponseCollection) responseCollection);
+      GetAttachmentResponse getAttachmentResponse = (GetAttachmentResponse) serviceResponseCollection
+              .getResponseAtIndex(0);
+      return (FileAttachment) getAttachmentResponse.getAttachment();
     }
+
+    throw new RuntimeException("Unable to parse GetAttachmentResponse bytes.");
   }
 
   /**
