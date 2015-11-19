@@ -23,23 +23,27 @@
 
 package microsoft.exchange.webservices.data.core.request;
 
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.core.enumeration.service.error.ServiceErrorHandling;
-import microsoft.exchange.webservices.data.core.response.GetAttachmentResponse;
-import microsoft.exchange.webservices.data.core.enumeration.property.BodyType;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
+import microsoft.exchange.webservices.data.core.enumeration.property.BodyType;
+import microsoft.exchange.webservices.data.core.enumeration.service.error.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
+import microsoft.exchange.webservices.data.core.response.GetAttachmentResponse;
+import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
 import microsoft.exchange.webservices.data.property.complex.Attachment;
 import microsoft.exchange.webservices.data.property.definition.PropertyDefinitionBase;
 
 import javax.xml.stream.XMLStreamException;
 
+import java.io.ByteArrayInputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,6 +79,34 @@ public final class GetAttachmentRequest extends
   public GetAttachmentRequest(ExchangeService service, ServiceErrorHandling errorHandlingMode)
       throws Exception {
     super(service, errorHandlingMode);
+  }
+
+  /**
+   * Executes this request and streams the response to the {@code OutputStream}.
+   *
+   * @throws Exception the exception
+   */
+  public void execute(OutputStream outputStream) throws Exception {
+    validateAndEmitRequest(outputStream);
+  }
+
+  /**
+   * Parse the bytes of the response and throw an error if necessary.
+   *
+   * @param responseBytes The response bytes.
+   * @throws Exception
+   */
+  public ServiceResponseCollection<GetAttachmentResponse> parseResponseBytes(byte[] responseBytes) throws Exception {
+    if (responseBytes == null) {
+      throw new IllegalArgumentException("responseBytes cannot be null.");
+    }
+    EwsServiceXmlReader xmlReader = new EwsServiceXmlReader(new ByteArrayInputStream(responseBytes), getService());
+    ServiceResponseCollection<GetAttachmentResponse> responseCollection = readResponse(xmlReader);
+    if (responseCollection != null && responseCollection.getCount() > 0) {
+      responseCollection.getResponseAtIndex(0).throwIfNecessary();
+      return responseCollection;
+    }
+    return new ServiceResponseCollection<GetAttachmentResponse>();
   }
 
   /**

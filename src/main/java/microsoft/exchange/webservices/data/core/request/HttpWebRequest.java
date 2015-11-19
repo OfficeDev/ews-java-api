@@ -490,6 +490,16 @@ public abstract class HttpWebRequest implements Closeable {
    */
   public abstract OutputStream getOutputStream() throws EWSHttpException;
 
+  protected OutputStream responseOutputStream;
+
+  /**
+   * Set the {@link OutputStream} that the entity from a successful response will be streamed into.
+   * @param responseOutputStream An {@link OutputStream}.
+   */
+  public void setResponseOutputStream(OutputStream responseOutputStream) {
+    this.responseOutputStream = responseOutputStream;
+  }
+
   /**
    * Close.
    */

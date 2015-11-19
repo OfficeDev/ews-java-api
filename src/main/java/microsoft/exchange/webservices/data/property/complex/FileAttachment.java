@@ -27,19 +27,32 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
+import microsoft.exchange.webservices.data.core.enumeration.service.error.ServiceErrorHandling;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceVersionException;
-
+import microsoft.exchange.webservices.data.core.request.GetAttachmentRequest;
+import microsoft.exchange.webservices.data.core.response.GetAttachmentResponse;
+import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
+import microsoft.exchange.webservices.data.core.service.item.Item;
+import org.apache.commons.codec.binary.Base64OutputStream;
 import org.apache.commons.io.IOUtils;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Represents a file attachment.
@@ -243,6 +256,216 @@ public final class FileAttachment extends Attachment {
     this.fileName = fileName;
     this.content = null;
     this.contentStream = null;
+  }
+
+  /**
+   * Streams the decoded content of this attachment into the specified stream.
+   * Calling this method results in a call to EWS.
+   *
+   * @param outputStream the stream to receive the content
+   * @throws Exception the exception
+   */
+  public void streamContent(OutputStream outputStream) throws Exception {
+    File responseFile = File.createTempFile("response", ".tmp");
+    responseFile.deleteOnExit();
+    BufferedOutputStream os = null;
+    try {
+      os = new BufferedOutputStream(new FileOutputStream(responseFile));
+      this.getOwner().getService().streamAttachment(this, os);
+      os.flush();
+      os.close();
+      writeContentFromResponseFile(new FileInputStream(responseFile), outputStream);
+      responseFile.delete();
+    } catch(Exception e) {
+      handleStreamContentException(e, responseFile, outputStream);
+    } finally {
+      if (os != null) {
+        os.close();
+      }
+    }
+  }
+
+  protected void handleStreamContentException(Exception e, File responseFile, OutputStream outputStream)
+          throws Exception {
+    if (!responseFile.exists()) {
+      // Throw the original Exception if the response file does not exist.
+      throw e;
+    }
+
+    String path = responseFile.getAbsolutePath();
+    System.out.println("EWS response written to file " + path + ".");
+
+    if (responseFile.length() > 524288) { // .5 MB in bytes ((1024 * 1024) / 2)
+      // Do not load the response file into memory if it is too large.
+      throw e;
+    }
+
+    byte[] responseBytes;
+    try {
+      responseBytes = Files.readAllBytes(Paths.get(path));
+
+      // Print the response to the output file.
+      System.out.println("EWS response:");
+      System.out.println(new String(responseBytes, Charset.forName("UTF-8")));
+    } catch (Exception e1) {
+      // If we had any errors loading/printing the responseFile, log the error and throw the original Exception.
+      System.out.println("Error reading responseFile. " + e1.getMessage());
+      e1.printStackTrace();
+      // Throw the original Exception.
+      throw e;
+    }
+
+    // Load the responseFile contents into memory and parse the response using EWS code to surface any
+    // ServiceRequest/ServiceResponseErrors, or load any FileAttachments that had no content.
+    FileAttachment attachment = parseGetAttachmentResponse(responseBytes);
+    // If we made it here and parseGetAttachmentResponse() did not throw an EWS ServiceRequest/ResponseError, then this
+    // is a small FileAttachment response with no content tag. Call the original FileAttachment load to write any data
+    // to the original OutputStream. From what we've seen so far, as you'd guess, this normally results in 0 bytes being
+    // written to the OutputStream.
+    attachment.load(outputStream);
+  }
+
+  /**
+   * Parse the response bytes from a get attachment call and throw an error if necessary.
+   *
+   * @param responseBytes The bytes of the get attachment response.
+   * @throws Exception If the response was an error response.
+   */
+  protected FileAttachment parseGetAttachmentResponse(byte[] responseBytes) throws Exception {
+    // Use the existing EWS code to parse the response and throw the resulting error.
+    GetAttachmentRequest getAttachmentRequest = new GetAttachmentRequest(
+        getOwner().getService(), ServiceErrorHandling.ThrowOnError);
+    getAttachmentRequest.getAttachments().add(this);
+    // parseResponseBytes will return the collection or throw a ServiceRequest/ResponseError if needed.
+    ServiceResponseCollection<GetAttachmentResponse> serviceResponseCollection =
+        getAttachmentRequest.parseResponseBytes(responseBytes);
+
+    if (serviceResponseCollection.getCount() > 0) {
+      // Return the FileAttachment.
+      GetAttachmentResponse getAttachmentResponse = serviceResponseCollection.getResponseAtIndex(0);
+      return (FileAttachment) getAttachmentResponse.getAttachment();
+    }
+
+    throw new RuntimeException("Unable to parse GetAttachmentResponse bytes.");
+  }
+
+  /**
+   * Helper method to read through the responseInputStream (which is required to be xml) and
+   * write the attachment's content to the outputStream argument.
+   * @param responseInputStream An {@link InputStream} that is assumed to be an xml document
+   *                            with a FileAttachment's "Content" element within it.
+   * @param outputStream An {@link OutputStream} provided by the caller that will be filled
+   *                     with the binary attachment content.
+   * @throws IOException If an exception occurs.
+   */
+  public static void writeContentFromResponseFile(final InputStream responseInputStream, OutputStream outputStream) throws
+                                                                                                                    IOException {
+
+    InputStream is = new BufferedInputStream(responseInputStream);
+    final List<String> patterns = Arrays.asList(":Content>", ":Content/>");
+    try {
+      // read ahead until we match the "pattern" variable in the responseInputStream
+      readUntilPatternMatch(is, patterns);
+
+      // now that we've found the beginning of the Base64-encoded element value, wrap it with
+      // a Base64ValueStream so it stops reading when the delimiting "<" character is found.
+      Base64ValueStream base64ValueStream = new Base64ValueStream(is);
+
+      // Use a Base64OutputStream to write to outputStream so the base64 data is decoded
+      // during the writing operation.
+      Base64OutputStream base64OutputStream = new Base64OutputStream(
+          new BufferedOutputStream(outputStream), false, 0, null);
+      int b;
+      try {
+        while (-1 != (b = base64ValueStream.read())) {
+          base64OutputStream.write(b);
+        }
+        base64OutputStream.flush();
+      } finally {
+        base64OutputStream.close();
+        base64ValueStream.close();
+      }
+    } finally {
+      is.close();
+    }
+  }
+
+  /**
+   * Helper function used to keep reading through the specified {@link InputStream} until the (UTF8-encoded) bytes of
+   * at least one of the specified patterns are found.
+   *
+   * @param is An {@link InputStream}.
+   * @param patterns The patterns to find.
+   * @throws IOException If an exception occurs or none of the patterns are found..
+   */
+  static void readUntilPatternMatch(InputStream is, List<String> patterns) throws IOException {
+    final int numPatterns = patterns.size();
+    final byte[][] patternBytes = new byte[numPatterns][];
+    final int[] patternLengths = new int[numPatterns];
+    for (int i = 0; i < patterns.size(); ++i) {
+      // Get the bytes and length of each pattern.
+      patternBytes[i] = patterns.get(i).getBytes("UTF-8");
+      patternLengths[i] = patternBytes[i].length;
+    }
+
+    // Track where we are in matching each pattern.
+    int[] patternIndices = new int[numPatterns];
+    Arrays.fill(patternIndices, 0);
+    long bytesRead = 0;
+    boolean matched = false;
+    int b = -1;
+
+    while (!matched && (-1 != (b = is.read()))) {
+      bytesRead++;
+      // Loop through each of the patterns.
+      for (int i = 0; i < numPatterns; ++i) {
+        // Check if the current InputStream byte matches the next byte in the current pattern.
+        if (b == patternBytes[i][patternIndices[i]]) {
+          // Increment the index for the current pattern if matched.
+          ++patternIndices[i];
+        } else {
+          // Re-start the index for the current pattern if no match.
+          patternIndices[i] = 0;
+        }
+        // Break out of the for loop if we matched the current pattern.
+        if (patternIndices[i] == patternLengths[i]) {
+          matched = true;
+          break;
+        }
+      }
+    }
+
+    if (b == -1) {
+      throw new IOException(String.format(
+          "read %s bytes, never found patterns [%s]",
+          bytesRead, Arrays.toString(patterns.toArray())));
+    }
+  }
+
+  /**
+   * Helper class used to read through an XML value's Base64-encoded element value,
+   * reporting "finished" when the "<" character is encountered.
+   */
+  static class Base64ValueStream extends FilterInputStream {
+
+    public Base64ValueStream(InputStream is) {
+      super(is);
+    }
+
+    private boolean foundEnd = false;
+
+    @Override
+    public int read() throws IOException {
+      if (foundEnd) {
+        return -1;
+      }
+      int result = super.read();
+      if (result == (byte)'<') {
+        foundEnd = true;
+        result = -1;
+      }
+      return result;
+    }
   }
 
   /**

@@ -290,7 +290,11 @@ public class HttpClientWebRequest extends HttpWebRequest {
   public int executeRequest() throws EWSHttpException, IOException {
     throwIfRequestIsNull();
     response = httpClient.execute(httpPost, httpContext);
-    return response.getStatusLine().getStatusCode(); // ?? don't know what is wanted in return
+    int result = response.getStatusLine().getStatusCode();
+    if ((responseOutputStream != null) && (result >= 200 && result < 300)) {
+      response.getEntity().writeTo(responseOutputStream);
+    }
+    return result; // ?? don't know what is wanted in return
   }
 
   /**
