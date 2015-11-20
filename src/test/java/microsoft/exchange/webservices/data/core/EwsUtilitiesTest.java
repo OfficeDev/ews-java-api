@@ -42,6 +42,7 @@ import microsoft.exchange.webservices.data.core.service.item.MeetingRequest;
 import microsoft.exchange.webservices.data.core.service.item.MeetingResponse;
 import microsoft.exchange.webservices.data.core.service.item.PostItem;
 import microsoft.exchange.webservices.data.core.service.item.Task;
+import microsoft.exchange.webservices.data.misc.TimeSpan;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -202,4 +203,24 @@ public class EwsUtilitiesTest {
     assertEquals(input, EwsUtilities.parse(String.class, input));
   }
 
+  @Test
+  public void testGetXSDurationToTimeSpan() {
+    TimeSpan result = EwsUtilities.getXSDurationToTimeSpan("PT0H");
+    assertEquals(0, result.getHours());
+    assertEquals(0, result.getMinutes());
+    assertEquals(0, result.getSeconds());
+    assertEquals(0, result.getMilliseconds());
+
+    result = EwsUtilities.getXSDurationToTimeSpan("PT23H56M22.123S");
+    assertEquals(23, result.getHours());
+    assertEquals(56, result.getMinutes());
+    assertEquals(22, result.getSeconds());
+    assertEquals(123, result.getMilliseconds());
+
+    result = EwsUtilities.getXSDurationToTimeSpan("PT1H");
+    assertEquals(1, result.getHours());
+    assertEquals(0, result.getMinutes());
+    assertEquals(0, result.getSeconds());
+    assertEquals(0, result.getMilliseconds());
+  }
 }
