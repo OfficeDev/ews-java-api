@@ -451,19 +451,16 @@ public abstract class ServiceObject {
    */
   public <T> boolean tryGetProperty(Class<T> cls, PropertyDefinitionBase propertyDefinition,
       OutParam<T> propertyValue) throws Exception {
-    if (propertyDefinition == null) {
-      return false;
+
+    PropertyDefinition propDef = (PropertyDefinition) propertyDefinition;
+    if (propDef != null) {
+      return this.getPropertyBag().tryGetPropertyType(cls, propDef, propertyValue);
+    } else {
+      // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
+      throw new UnsupportedOperationException(String.format(
+          "This operation isn't supported for property definition type %s.",
+          propertyDefinition.getType().getName()));
     }
-    if (propertyDefinition instanceof PropertyDefinition) {
-      return this.getPropertyBag().tryGetPropertyType(cls, (PropertyDefinition) propertyDefinition, propertyValue);
-    }
-    if (propertyDefinition instanceof ExtendedPropertyDefinition) {
-      return this.tryGetExtendedProperty(cls, (ExtendedPropertyDefinition) propertyDefinition, propertyValue);
-    }
-    // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
-    throw new UnsupportedOperationException(String.format(
-        "This operation isn't supported for property definition type %s.",
-        propertyDefinition.getType().getName()));
   }
 
   /**
