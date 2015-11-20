@@ -31,7 +31,6 @@ import microsoft.exchange.webservices.data.core.enumeration.property.PropertyDef
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
 
 import java.util.EnumSet;
-import java.util.TimeZone;
 
 /**
  * Represents a property definition for property of type TimeZoneInfo.
@@ -94,7 +93,7 @@ public class TimeZonePropertyDefinition extends PropertyDefinition {
    * Gets the property type.
    */
   @Override
-  public Class<TimeZone> getType() {
-    return TimeZone.class;
+  public Class<TimeZoneDefinition> getType() {
+    return TimeZoneDefinition.class;
   }
 }
