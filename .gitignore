@@ -15,8 +15,12 @@
 # User-specific stuff:
 .idea/workspace.xml
 .idea/tasks.xml
+.idea/findbugs-idea.xml
+.idea/codeStyleSettings.xml
 .idea/dictionaries
+.idea/shelf
 *.iws
+*.ipr
 # Sensitive or high-churn files:
 .idea/dataSources.ids
 .idea/dataSources.xml

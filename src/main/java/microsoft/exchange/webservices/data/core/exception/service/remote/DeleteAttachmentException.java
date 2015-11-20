@@ -1,0 +1,77 @@
+/*
+ * The MIT License
+ * Copyright (c) 2012 Microsoft Corporation
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+package microsoft.exchange.webservices.data.core.exception.service.remote;
+
+import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.response.DeleteAttachmentResponse;
+import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
+
+/**
+ * Represents an error that occurs when a call to the DeleteAttachment web
+ * method fails.
+ */
+public final class DeleteAttachmentException extends ServiceRemoteException {
+
+  /**
+   * Constant serialized ID used for compatibility.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * The response.
+   */
+  private ServiceResponseCollection<DeleteAttachmentResponse> responses;
+
+  /**
+   * Initializes a new instance of DeleteAttachmentException.
+   *
+   * @param serviceResponses The list of response to be associated with this exception.
+   * @param message          The message that describes the error.
+   */
+  public DeleteAttachmentException(ServiceResponseCollection<DeleteAttachmentResponse> serviceResponses,
+      String message) {
+    super(message);
+    EwsUtilities.ewsAssert(serviceResponses != null,
+      "MultiServiceResponseException.ctor", "serviceResponses is null");
+
+    this.responses = serviceResponses;
+  }
+
+  /**
+   * Initializes a new instance of DeleteAttachmentException.
+   *
+   * @param serviceResponses The list of response to be associated with this exception.
+   * @param message          The message that describes the error.
+   * @param innerException   The exception that is the cause of the current exception.
+   */
+  protected DeleteAttachmentException(
+      ServiceResponseCollection<DeleteAttachmentResponse> serviceResponses,
+      String message, Exception innerException) {
+    super(message, innerException);
+    EwsUtilities.ewsAssert(serviceResponses != null,
+      "MultiServiceResponseException.ctor", "serviceResponses is null");
+
+    this.responses = serviceResponses;
+  }
+}
