@@ -101,8 +101,7 @@ public class XmlElementNames {
   /**
    * The Constant FractionalPageItemView.
    */
-  public static final String FractionalPageItemView =
-      "FractionalPageItemView";
+  public static final String FractionalPageItemView = "FractionalPageItemView";
 
   /**
    * The Constant FractionalPageFolderView.
@@ -249,8 +248,7 @@ public class XmlElementNames {
   /**
    * The Constant IsReadReceiptRequested.
    */
-  public static final String IsReadReceiptRequested =
-      "IsReadReceiptRequested";
+  public static final String IsReadReceiptRequested = "IsReadReceiptRequested";
 
   /**
    * The Constant IsResponseRequested.
@@ -385,8 +383,7 @@ public class XmlElementNames {
   /**
    * The Constant InternetMessageHeaders.
    */
-  public static final String InternetMessageHeaders =
-      "InternetMessageHeaders";
+  public static final String InternetMessageHeaders = "InternetMessageHeaders";
 
   /**
    * The Constant DateTimeSent.
@@ -1359,8 +1356,7 @@ public class XmlElementNames {
   /**
    * The Constant IntendedFreeBusyStatus.
    */
-  public static final String IntendedFreeBusyStatus =
-      "IntendedFreeBusyStatus";
+  public static final String IntendedFreeBusyStatus = "IntendedFreeBusyStatus";
 
   /**
    * The Constant MeetingRequest.
@@ -2046,8 +2042,7 @@ public class XmlElementNames {
   /**
    * The Constant SuggestionsViewOptions.
    */
-  public static final String SuggestionsViewOptions =
-      "SuggestionsViewOptions";
+  public static final String SuggestionsViewOptions = "SuggestionsViewOptions";
 
   /**
    * The Constant FreeBusyView.
@@ -2350,8 +2345,7 @@ public class XmlElementNames {
   /**
    * The Constant DeliverMeetingRequests.
    */
-  public static final String DeliverMeetingRequests =
-      "DeliverMeetingRequests";
+  public static final String DeliverMeetingRequests = "DeliverMeetingRequests";
 
   /**
    * The Constant MessageXml.
@@ -2448,8 +2442,7 @@ public class XmlElementNames {
   /**
    * The Constant ConnectionFailureCause.
    */
-  public static final String ConnectionFailureCause =
-      "ConnectionFailureCause";
+  public static final String ConnectionFailureCause = "ConnectionFailureCause";
 
   /**
    * The Constant SIPResponseCode.
@@ -2526,14 +2519,12 @@ public class XmlElementNames {
   /**
    * The Constant AbsoluteDateTransition.
    */
-  public static final String AbsoluteDateTransition =
-      "AbsoluteDateTransition";
+  public static final String AbsoluteDateTransition = "AbsoluteDateTransition";
 
   /**
    * The Constant RecurringDayTransition.
    */
-  public static final String RecurringDayTransition =
-      "RecurringDayTransition";
+  public static final String RecurringDayTransition = "RecurringDayTransition";
 
   /**
    * The Constant RecurringDateTransition.
@@ -2695,8 +2686,7 @@ public class XmlElementNames {
   /**
    * The Constant GlobalUniqueRecipients.
    */
-  public static final String GlobalUniqueRecipients =
-      "GlobalUniqueRecipients";
+  public static final String GlobalUniqueRecipients = "GlobalUniqueRecipients";
 
   /**
    * The Constant UniqueUnreadSenders.
@@ -2727,8 +2717,7 @@ public class XmlElementNames {
   /**
    * The Constant GlobalLastDeliveryTime.
    */
-  public static final String GlobalLastDeliveryTime =
-      "GlobalLastDeliveryTime";
+  public static final String GlobalLastDeliveryTime = "GlobalLastDeliveryTime";
 
   /**
    * The Constant GlobalCategories.
@@ -2999,6 +2988,17 @@ public class XmlElementNames {
    */
   public static final String ServerVersionInfo = "ServerVersionInfo";
 
+
+  /**
+   * The Constant SmtpAddress.
+   */
+  public static final String SmtpAddress = "SmtpAddress";
+
+  /**
+   * The Constant OwnerSmtpAddress.
+   */
+  public static final String OwnerSmtpAddress = "OwnerSmtpAddress";
+
   /**
    * The Constant AD.
    */
@@ -3093,8 +3093,7 @@ public class XmlElementNames {
   /**
    * The Constant RequestedServerVersion.
    */
-  public static final String RequestedServerVersion =
-      "RequestedServerVersion";
+  public static final String RequestedServerVersion = "RequestedServerVersion";
 
   /**
    * The Constant Request.
@@ -3483,8 +3482,7 @@ public class XmlElementNames {
   /**
    * The Constant ContainsSubjectStrings.
    */
-  public static final String ContainsSubjectStrings =
-      "ContainsSubjectStrings";
+  public static final String ContainsSubjectStrings = "ContainsSubjectStrings";
 
   /**
    * The Constant FlaggedForAction.
@@ -3539,8 +3537,7 @@ public class XmlElementNames {
   /**
    * The Constant IsPermissionControlled.
    */
-  public static final String IsPermissionControlled =
-      "IsPermissionControlled";
+  public static final String IsPermissionControlled = "IsPermissionControlled";
 
   /**
    * The Constant IsSigned.
@@ -3560,8 +3557,7 @@ public class XmlElementNames {
   /**
    * The Constant MessageClassifications.
    */
-  public static final String MessageClassifications =
-      "MessageClassifications";
+  public static final String MessageClassifications = "MessageClassifications";
 
   /**
    * The Constant NotSentToMe.
@@ -3683,8 +3679,7 @@ public class XmlElementNames {
   /**
    * The Constant ServerReplyWithMessage.
    */
-  public static final String ServerReplyWithMessage =
-      "ServerReplyWithMessage";
+  public static final String ServerReplyWithMessage = "ServerReplyWithMessage";
 
   /**
    * The Constant StopProcessingRules.
@@ -3805,8 +3800,7 @@ public class XmlElementNames {
   /**
    * The Constant IsGreaterThanOrEqualTo.
    */
-  public static final String IsGreaterThanOrEqualTo =
-      "IsGreaterThanOrEqualTo";
+  public static final String IsGreaterThanOrEqualTo = "IsGreaterThanOrEqualTo";
 
   /**
    * The Constant IsLessThan.
@@ -3818,7 +3812,7 @@ public class XmlElementNames {
    */
   public static final String IsLessThanOrEqualTo = "IsLessThanOrEqualTo";
 
-  //Directory only contact property
+  // Directory only contact property
   /**
    * The Constant PhoneticFullName.
    */
@@ -3934,8 +3928,7 @@ public class XmlElementNames {
   /**
    * The Constant GetItemResponseMessage.
    */
-  public static final String GetItemResponseMessage =
-      "GetItemResponseMessage";
+  public static final String GetItemResponseMessage = "GetItemResponseMessage";
 
   // CreateItem
   /**
@@ -4107,7 +4100,7 @@ public class XmlElementNames {
   public static final String DeleteFolderResponseMessage =
       "DeleteFolderResponseMessage";
 
-  //EmptyFolder
+  // EmptyFolder
   /**
    * The Constant EmptyFolder.
    */
@@ -4201,8 +4194,8 @@ public class XmlElementNames {
   /**
    * The Constant CreateAttachmentResponse.
    */
-  public static final String
-      CreateAttachmentResponse = "CreateAttachmentResponse";
+  public static final String CreateAttachmentResponse =
+      "CreateAttachmentResponse";
 
   /**
    * The Constant CreateAttachmentResponseMessage.
@@ -4507,8 +4500,7 @@ public class XmlElementNames {
   /**
    * The Constant RemoveDelegateResponse.
    */
-  public static final String RemoveDelegateResponse =
-      "RemoveDelegateResponse";
+  public static final String RemoveDelegateResponse = "RemoveDelegateResponse";
 
   // GetDelegate
   /**
@@ -4530,8 +4522,7 @@ public class XmlElementNames {
   /**
    * The Constant UpdateDelegateResponse.
    */
-  public static final String UpdateDelegateResponse =
-      "UpdateDelegateResponse";
+  public static final String UpdateDelegateResponse = "UpdateDelegateResponse";
 
   // CreateUserConfiguration
   /**
@@ -4703,16 +4694,18 @@ public class XmlElementNames {
   public static final String ExecuteDiagnosticMethodResponseMEssage =
       "ExecuteDiagnosticMethodResponseMessage";
 
-  //GetPasswordExpirationDate
+  // GetPasswordExpirationDate
   /**
    * The Constant GetPasswordExpirationDate.
    */
-  public static final String GetPasswordExpirationDateRequest = "GetPasswordExpirationDate";
+  public static final String GetPasswordExpirationDateRequest =
+      "GetPasswordExpirationDate";
 
   /**
    * The Constant GetPasswordExpirationDateResponse.
    */
-  public static final String GetPasswordExpirationDateResponse = "GetPasswordExpirationDateResponse";
+  public static final String GetPasswordExpirationDateResponse =
+      "GetPasswordExpirationDateResponse";
 
   // SOAP element names
 
@@ -4779,8 +4772,7 @@ public class XmlElementNames {
   /**
    * The Constant EwsErrorCodeElementName.
    */
-  public static final String EwsErrorCodeElementName =
-      "ErrorCode"; // Generated
+  public static final String EwsErrorCodeElementName = "ErrorCode"; // Generated
 
 
   // by
@@ -4788,8 +4780,7 @@ public class XmlElementNames {
   /**
    * The Constant EwsExceptionTypeElementName.
    */
-  public static final String EwsExceptionTypeElementName =
-      "ExceptionType"; // Generated
+  public static final String EwsExceptionTypeElementName = "ExceptionType"; // Generated
 
   // by
   // UM
