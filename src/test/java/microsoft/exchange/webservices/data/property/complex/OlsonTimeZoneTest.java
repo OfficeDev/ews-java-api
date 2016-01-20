@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
- 
+
 package microsoft.exchange.webservices.data.property.complex;
 
 import microsoft.exchange.webservices.data.property.complex.time.OlsonTimeZoneDefinition;
@@ -54,7 +54,7 @@ public class OlsonTimeZoneTest {
         final OlsonTimeZoneDefinition olsonTimeZone = new OlsonTimeZoneDefinition(timeZone);
         final String olsonTimeZoneId = olsonTimeZone.getId();
 
-        Assert.assertFalse(StringUtils.isBlank(olsonTimeZoneId));
+        Assert.assertFalse("olsonTimeZoneId for " + timeZoneId + " is blank", StringUtils.isBlank(olsonTimeZoneId));
         Assert.assertEquals(olsonTimeZoneToMsMap.get(timeZoneId), olsonTimeZoneId);
       }
     }
