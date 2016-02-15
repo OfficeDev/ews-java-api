@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Represents a connection to an ongoing stream of events.
@@ -310,6 +311,10 @@ public final class StreamingSubscriptionConnection implements Closeable,
       this.currentHangingRequest = new GetStreamingEventsRequest(
           this.session, this, this.subscriptions.keySet(),
           this.connectionTimeout);
+
+      // Make sure socket timeout for this request is at least as large as connection timeout
+      // otherwise connection may get dropped too soon.
+      this.currentHangingRequest.setTimeout((int) TimeUnit.MINUTES.toMillis(connectionTimeout));
 
       this.currentHangingRequest.addOnDisconnectEvent(this);
 

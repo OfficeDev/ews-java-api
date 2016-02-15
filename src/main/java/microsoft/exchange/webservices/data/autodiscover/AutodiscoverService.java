@@ -1653,7 +1653,7 @@ public class AutodiscoverService extends ExchangeServiceBase
       throws ServiceLocalException, URISyntaxException {
     return this.prepareHttpWebRequestForUrl(url, false,
         // acceptGzipEncoding
-        false); // allowAutoRedirect
+        false, null); // allowAutoRedirect
   }
 
   /**

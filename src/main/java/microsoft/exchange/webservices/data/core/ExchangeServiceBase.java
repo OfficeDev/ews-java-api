@@ -298,12 +298,13 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @param url                The URL that the HttpWebRequest should target.
    * @param acceptGzipEncoding If true, ask server for GZip compressed content.
    * @param allowAutoRedirect  If true, redirection response will be automatically followed.
+   * @param timeout If not null then override service specified timeout
    * @return An initialised instance of HttpWebRequest.
    * @throws ServiceLocalException       the service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
   protected HttpWebRequest prepareHttpWebRequestForUrl(URI url, boolean acceptGzipEncoding,
-      boolean allowAutoRedirect) throws ServiceLocalException, URISyntaxException {
+      boolean allowAutoRedirect, Integer timeout) throws ServiceLocalException, URISyntaxException {
     // Verify that the protocol is something that we can handle
     String scheme = url.getScheme();
     if (!scheme.equalsIgnoreCase(EWSConstants.HTTP_SCHEME)
@@ -313,7 +314,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     }
 
     HttpClientWebRequest request = new HttpClientWebRequest(httpClient, httpContext);
-    prepareHttpWebRequestForUrl(url, acceptGzipEncoding, allowAutoRedirect, request);
+    prepareHttpWebRequestForUrl(url, acceptGzipEncoding, allowAutoRedirect, request, timeout);
 
     return request;
   }
@@ -328,12 +329,13 @@ public abstract class ExchangeServiceBase implements Closeable {
    * @param url The URL that the HttpWebRequest should target.
    * @param acceptGzipEncoding If true, ask server for GZip compressed content.
    * @param allowAutoRedirect If true, redirection response will be automatically followed.
+   * @param timeout If not null then overrides service specified timeout
    * @return An initialised instance of HttpWebRequest.
    * @throws ServiceLocalException the service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
   protected HttpWebRequest prepareHttpPoolingWebRequestForUrl(URI url, boolean acceptGzipEncoding,
-      boolean allowAutoRedirect) throws ServiceLocalException, URISyntaxException {
+      boolean allowAutoRedirect, Integer timeout) throws ServiceLocalException, URISyntaxException {
     // Verify that the protocol is something that we can handle
     String scheme = url.getScheme();
     if (!scheme.equalsIgnoreCase(EWSConstants.HTTP_SCHEME)
@@ -347,13 +349,13 @@ public abstract class ExchangeServiceBase implements Closeable {
     }
 
     HttpClientWebRequest request = new HttpClientWebRequest(httpPoolingClient, httpContext);
-    prepareHttpWebRequestForUrl(url, acceptGzipEncoding, allowAutoRedirect, request);
+    prepareHttpWebRequestForUrl(url, acceptGzipEncoding, allowAutoRedirect, request, timeout);
 
     return request;
   }
 
   private void prepareHttpWebRequestForUrl(URI url, boolean acceptGzipEncoding, boolean allowAutoRedirect,
-      HttpClientWebRequest request) throws ServiceLocalException, URISyntaxException {
+      HttpClientWebRequest request, Integer timeout) throws ServiceLocalException, URISyntaxException {
     try {
       request.setUrl(url.toURL());
     } catch (MalformedURLException e) {
@@ -362,7 +364,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     }
 
     request.setPreAuthenticate(preAuthenticate);
-    request.setTimeout(timeout);
+    request.setTimeout(timeout != null ? timeout : this.timeout);
     request.setContentType("text/xml; charset=utf-8");
     request.setAccept("text/xml");
     request.setUserAgent(userAgent);
