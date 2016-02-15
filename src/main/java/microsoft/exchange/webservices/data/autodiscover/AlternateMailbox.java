@@ -54,10 +54,21 @@ public final class AlternateMailbox {
   private String server;
 
   /**
+   * The SMTP address of alternate mailbox. It is only set if it is available
+   * for the given type. E.g. type 'Delegate' has one type 'Archive' not.
+   */
+  private String smtpAddress;
+
+
+  /**
+   * The SMTP address of the owner of this alternate mailbox.
+   */
+  private String ownerSmtpAddress;
+
+  /**
    * Initializes a new instance of the AlternateMailbox class.
    */
-  private AlternateMailbox() {
-  }
+  private AlternateMailbox() {}
 
   /**
    * PLoads AlternateMailbox instance from XML.
@@ -66,28 +77,31 @@ public final class AlternateMailbox {
    * @return AlternateMailbox
    * @throws Exception the exception
    */
-  public static AlternateMailbox loadFromXml(EwsXmlReader reader)
+  public static AlternateMailbox loadFromXml(final EwsXmlReader reader)
       throws Exception {
-    AlternateMailbox altMailbox = new AlternateMailbox();
+    final AlternateMailbox altMailbox = new AlternateMailbox();
 
     do {
       reader.read();
 
       if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
-        if (reader.getLocalName()
-            .equalsIgnoreCase(XmlElementNames.Type)) {
+        if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.Type)) {
           altMailbox.setType(reader.readElementValue(String.class));
-        } else if (reader.getLocalName().equalsIgnoreCase(
-            XmlElementNames.DisplayName)) {
-          altMailbox.setDisplayName(reader
-              .readElementValue(String.class));
-        } else if (reader.getLocalName().equalsIgnoreCase(
-            XmlElementNames.LegacyDN)) {
-          altMailbox.setLegacyDN(reader
-              .readElementValue(String.class));
-        } else if (reader.getLocalName().equalsIgnoreCase(
-            XmlElementNames.Server)) {
+        } else if (reader.getLocalName()
+            .equalsIgnoreCase(XmlElementNames.DisplayName)) {
+          altMailbox.setDisplayName(reader.readElementValue(String.class));
+        } else if (reader.getLocalName()
+            .equalsIgnoreCase(XmlElementNames.LegacyDN)) {
+          altMailbox.setLegacyDN(reader.readElementValue(String.class));
+        } else
+          if (reader.getLocalName().equalsIgnoreCase(XmlElementNames.Server)) {
           altMailbox.setServer(reader.readElementValue(String.class));
+        } else if (reader.getLocalName()
+            .equalsIgnoreCase(XmlElementNames.SmtpAddress)) {
+          altMailbox.setSmtpAddress(reader.readElementValue(String.class));
+        } else if (reader.getLocalName()
+            .equalsIgnoreCase(XmlElementNames.OwnerSmtpAddress)) {
+          altMailbox.setOwnerSmtpAddress(reader.readElementValue(String.class));
         }
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
@@ -110,7 +124,7 @@ public final class AlternateMailbox {
    *
    * @param type the new type
    */
-  protected void setType(String type) {
+  protected void setType(final String type) {
     this.type = type;
   }
 
@@ -128,7 +142,7 @@ public final class AlternateMailbox {
    *
    * @param displayName the new display name
    */
-  protected void setDisplayName(String displayName) {
+  protected void setDisplayName(final String displayName) {
     this.displayName = displayName;
   }
 
@@ -146,7 +160,7 @@ public final class AlternateMailbox {
    *
    * @param legacyDN the new legacy dn
    */
-  protected void setLegacyDN(String legacyDN) {
+  protected void setLegacyDN(final String legacyDN) {
     this.legacyDN = legacyDN;
   }
 
@@ -162,10 +176,47 @@ public final class AlternateMailbox {
   /**
    * Sets the server.
    *
-   * @param server the new server
+   * @param server the new server.
    */
-  protected void setServer(String server) {
+  protected void setServer(final String server) {
     this.server = server;
+  }
+
+  /**
+   * Gets the SMTP address.
+   *
+   * @return the SMTP address if available for the mailbox type otherwise null
+   *         is returned.
+   */
+  public String getSmtpAddress() {
+    return smtpAddress;
+  }
+
+  /**
+   * Sets the SMTP address.
+   *
+   * @param smtpAddress the new SMTP address.
+   */
+  protected void setSmtpAddress(final String smtpAddress) {
+    this.smtpAddress = smtpAddress;
+  }
+
+  /**
+   * Gets the owner SMTP address.
+   *
+   * @return the SMTP address of the owner of this mailbox.
+   */
+  public String getOwnerSmtpAddress() {
+    return ownerSmtpAddress;
+  }
+
+  /**
+   * Sets the owner SMTP address.
+   *
+   * @param ownerSmtpAdress the new owner SMTP address
+   */
+  protected void setOwnerSmtpAddress(final String ownerSmtpAddress) {
+    this.ownerSmtpAddress = ownerSmtpAddress;
   }
 
 }

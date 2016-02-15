@@ -401,6 +401,7 @@ public class AutodiscoverService extends ExchangeServiceBase
 
       request.setRequestMethod("GET");
       request.setAllowAutoRedirect(false);
+      request.setTimeout(getTimeout());
 
       // Do NOT allow authentication as this single request will be made over plain HTTP.
       request.setAllowAuthentication(false);
@@ -1523,6 +1524,7 @@ public class AutodiscoverService extends ExchangeServiceBase
         request.setAllowAutoRedirect(false);
         request.setPreAuthenticate(false);
         request.setUseDefaultCredentials(this.getUseDefaultCredentials());
+        request.setTimeout(getTimeout());
 
         prepareCredentials(request);
 

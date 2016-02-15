@@ -66,7 +66,7 @@ public final class AlternateMailboxCollection {
             AlternateMailbox.loadFromXml(reader));
       }
     } while (!reader.isEndElement(XmlNamespace.Autodiscover,
-        XmlElementNames.AlternateMailbox));
+        XmlElementNames.AlternateMailboxes));
 
     return instance;
   }
