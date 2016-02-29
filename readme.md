@@ -6,7 +6,7 @@
 Please see the [Getting Started Guide](https://github.com/OfficeDev/ews-java-api/wiki/Getting-Started-Guide) on our wiki for an introduction to this library.
 
 ## Using the library
-Prebuilt JARs are available in the Maven Central repository, which are easy to use with your project. See next section for further details.
+Please see [this wiki-entry](https://github.com/OfficeDev/ews-java-api/wiki/Getting-Started-Guide#using-the-library) on how to include the library in your project
 
 ### Maven / Gradle
 For Documentation on how to use _ews-java-api_ with maven or gradle please refer to [this section in our wiki](https://github.com/OfficeDev/ews-java-api/wiki#maven--gradle-integration). 
