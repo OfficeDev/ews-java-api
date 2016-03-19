@@ -633,7 +633,13 @@ public abstract class ServiceRequestBase<T> {
   protected HttpWebRequest validateAndEmitRequest() throws Exception {
     this.validate();
 
-    HttpWebRequest request = this.buildEwsHttpWebRequest();
+    HttpWebRequest request;
+    
+    if (service.getMaximumPoolingConnections() > 1) {
+        request = buildEwsHttpPoolingWebRequest();
+    } else {
+        request = buildEwsHttpWebRequest();
+    }
 
     try {
       try {

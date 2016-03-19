@@ -889,4 +889,8 @@ public abstract class ExchangeServiceBase implements Closeable {
       return ExchangeServiceBase.binarySecret;
     }
   }
+
+  public int getMaximumPoolingConnections() {
+    return maximumPoolingConnections;
+  }
 }
