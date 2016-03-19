@@ -169,6 +169,7 @@ public final class TimeZoneUtils {
     map.put("America/Eirunepe", "SA Pacific Standard Time");
     map.put("America/El_Salvador", "Central America Standard Time");
     map.put("America/Ensenada", "Pacific Standard Time");
+    map.put("America/Fort_Nelson", "Mountain Standard Time");
     map.put("America/Fort_Wayne", "US Eastern Standard Time");
     map.put("America/Fortaleza", "SA Eastern Standard Time");
     map.put("America/Glace_Bay", "Atlantic Standard Time");
