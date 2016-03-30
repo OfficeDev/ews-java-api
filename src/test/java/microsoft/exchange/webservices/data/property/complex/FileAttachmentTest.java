@@ -73,7 +73,7 @@ public class FileAttachmentTest {
 
     Item parent = mock(Item.class);
     ExchangeService exchangeService = mock(ExchangeService.class);
-    FileAttachment fileAttachment = new FileAttachment(parent);
+    FileAttachment fileAttachment = new FileAttachment(parent, false);
 
     when(parent.getService()).thenReturn(exchangeService);
     when(exchangeService.getRequestedServerVersion()).thenReturn(ExchangeVersion.Exchange2010_SP1);
