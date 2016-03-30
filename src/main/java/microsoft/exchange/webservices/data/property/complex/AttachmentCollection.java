@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data.property.complex;
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
 import microsoft.exchange.webservices.data.core.response.CreateAttachmentResponse;
 import microsoft.exchange.webservices.data.core.response.DeleteAttachmentResponse;
 import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
@@ -107,7 +108,8 @@ public final class AttachmentCollection extends ComplexPropertyCollection<Attach
    * @return A FileAttachment instance.
    */
   public FileAttachment addFileAttachment(String name, String fileName) {
-    FileAttachment fileAttachment = new FileAttachment(this.owner);
+    FileAttachment fileAttachment = new FileAttachment(
+        this.owner, this.owner.getService().isTraceEnabledFor(TraceFlags.EwsResponse));
     fileAttachment.setName(name);
     fileAttachment.setFileName(fileName);
 
@@ -126,7 +128,8 @@ public final class AttachmentCollection extends ComplexPropertyCollection<Attach
    */
   public FileAttachment addFileAttachment(String name,
       InputStream contentStream) {
-    FileAttachment fileAttachment = new FileAttachment(this.owner);
+    FileAttachment fileAttachment = new FileAttachment(
+        this.owner, this.owner.getService().isTraceEnabledFor(TraceFlags.EwsResponse));
     fileAttachment.setName(name);
     fileAttachment.setContentStream(contentStream);
 
@@ -144,7 +147,8 @@ public final class AttachmentCollection extends ComplexPropertyCollection<Attach
    * @return FileAttachment
    */
   public FileAttachment addFileAttachment(String name, byte[] content) {
-    FileAttachment fileAttachment = new FileAttachment(this.owner);
+    FileAttachment fileAttachment = new FileAttachment(
+        this.owner, this.owner.getService().isTraceEnabledFor(TraceFlags.EwsResponse));
     fileAttachment.setName(name);
     fileAttachment.setContent(content);
 
@@ -225,7 +229,8 @@ public final class AttachmentCollection extends ComplexPropertyCollection<Attach
   @Override
   protected Attachment createComplexProperty(String xmlElementName) {
     if (xmlElementName.equals(XmlElementNames.FileAttachment)) {
-      return new FileAttachment(this.owner);
+      return new FileAttachment(
+          this.owner, this.owner.getService().isTraceEnabledFor(TraceFlags.EwsResponse));
     } else if (xmlElementName.equals(XmlElementNames.ItemAttachment)) {
       return new ItemAttachment(this.owner);
     } else {

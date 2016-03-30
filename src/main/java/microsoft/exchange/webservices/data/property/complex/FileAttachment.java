@@ -85,12 +85,18 @@ public final class FileAttachment extends Attachment {
   private boolean isContactPhoto;
 
   /**
+   * Flag to determine if the contents of small attachments are printed to System.out on an error.
+   */
+  private boolean ewsResponseTraceEnabled;
+
+  /**
    * Initializes a new instance.
    *
    * @param owner the owner
    */
-  protected FileAttachment(Item owner) {
+  protected FileAttachment(Item owner, boolean ewsResponseTraceEnabled) {
     super(owner);
+    this.ewsResponseTraceEnabled = ewsResponseTraceEnabled;
   }
 
   /**
@@ -304,9 +310,11 @@ public final class FileAttachment extends Attachment {
     try {
       responseBytes = Files.readAllBytes(Paths.get(path));
 
-      // Print the response to the output file.
-      System.out.println("EWS response:");
-      System.out.println(new String(responseBytes, Charset.forName("UTF-8")));
+      if (ewsResponseTraceEnabled) {
+        // Print the response to the output file.
+        System.out.println("EWS response:");
+        System.out.println(new String(responseBytes, Charset.forName("UTF-8")));
+      }
     } catch (Exception e1) {
       // If we had any errors loading/printing the responseFile, log the error and throw the original Exception.
       System.out.println("Error reading responseFile. " + e1.getMessage());
