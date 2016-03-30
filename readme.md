@@ -6,15 +6,35 @@
 
 This project is a fork of the Ms Office EWS api
 There are a few code changes.
-This project is distributed via the Spanning Cloudbees maven repo
-to update the repo
 
-Mount the cloudbees repo locally via DAV
-http://wiki.cloudbees.com/bin/view/DEV/Mounting+DAV+Repositories
+#### Adding Dependencies
+To depend using maven:
 
-Run:
-mvn clean source:jar javadoc:jar deploy -DrepositoryId=local-dav
+1. Go to https://jitpack.io and sign in with github (top right of the screen). You'll have to grant jitpack authorization
+to do a few things (e.g., access private repos).
 
+2. After you're logged in, go <a href="https://jitpack.io/private#auth">here</a> and click the "maven" tab. Copy the xml
+into your ~/.m2/settings.xml file.
+
+3. In the pom where you need to depend on a stitch module, add the jitpack repo to your repositories section:
+
+  ```xml
+  <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+  </repository>
+  ```
+
+4. Now, you can depend on the ews-java-api module by using `com.github.SpanningCloudApps` as the `groupId` and `ews-java-api`
+as the `artifactId`. For `version`, use `tagName` to depend on the a tag/release.
+
+  ```xml
+  <dependency>
+      <groupId>com.github.SpanningCloudApps</groupId>
+      <artifactId>ews-java-api</artifactId>
+      <version>2.1.2</version>
+  </dependency>
+  ```
 
 # EWS JAVA API
 

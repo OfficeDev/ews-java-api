@@ -76,7 +76,6 @@
         <!-- Eliminates the file encoding warning. Of course, all of your files
             should probably be UTF-8 nowadays. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <javaLanguage.version>1.6</javaLanguage.version>
         <javadoc.doclint.param/>
 
         <!--  Dependencies [BUILD]:  -->
