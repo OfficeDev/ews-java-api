@@ -6,15 +6,6 @@
 
 This project is a fork of the Ms Office EWS api
 There are a few code changes.
-This project is distributed via the Spanning Cloudbees maven repo
-to update the repo
-
-Mount the cloudbees repo locally via DAV
-http://wiki.cloudbees.com/bin/view/DEV/Mounting+DAV+Repositories
-
-Run:
-mvn clean source:jar javadoc:jar deploy -DrepositoryId=local-dav
-
 
 # EWS JAVA API
 
