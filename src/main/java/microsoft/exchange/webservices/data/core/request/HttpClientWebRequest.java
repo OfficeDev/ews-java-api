@@ -35,6 +35,7 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.impl.auth.win.WindowsCredentialsProvider;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
@@ -152,6 +153,10 @@ public class HttpClientWebRequest extends HttpWebRequest {
       credentialsProvider.setCredentials(new AuthScope(AuthScope.ANY), webServiceCredentials);
     }
 
+    if(isUseDefaultCredentials() && System.getProperty("os.name").toLowerCase().contains("windows")) {
+    	credentialsProvider = new WindowsCredentialsProvider(credentialsProvider);
+    }
+    
     httpContext.setCredentialsProvider(credentialsProvider);
 
     httpPost.setConfig(requestConfigBuilder.build());
