@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+    <s:Header>
+        <h:ServerVersionInfo xmlns:h="http://schemas.microsoft.com/exchange/services/2006/types"
+                             xmlns="http://schemas.microsoft.com/exchange/services/2006/types"
+                             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                             MajorVersion="14" MinorVersion="3" MajorBuildNumber="266" MinorBuildNumber="1"
+                             Version="Exchange2010_SP2"/>
+    </s:Header>
+    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <m:GetUserConfigurationResponse xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+                                        xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+            <m:ResponseMessages>
+                <m:GetUserConfigurationResponseMessage ResponseClass="Success">
+                    <m:ResponseCode>NoError</m:ResponseCode>
+                    <m:UserConfiguration>
+                        <t:UserConfigurationName Name="Calendar">
+                            <t:DistinguishedFolderId Id="calendar">
+                                <t:Mailbox>
+                                    <t:EmailAddress>room@company.com</t:EmailAddress>
+                                </t:Mailbox>
+                            </t:DistinguishedFolderId>
+                        </t:UserConfigurationName>
+                        <t:ItemId
+                                Id="AAMkADM1ZTI1ZDFkLTVhYzAtNGM1OS1hNWU0LTRkYWMyN2IxY2NhYgBGAAAAAABpRr8ivxS3SpNwMWdbqv/CBwBC8RoCDnbYSbjqYWwdG9viAKfx+eOZAABC8RoCDnbYSbjqYWwdG9viAKfx+6f2AAA="
+                                ChangeKey="CQAAABYAAADXBP/PKsWQRKG/Fv+wtIlbAAASQjNo"/>
+                        <t:Dictionary>
+                            <t:DictionaryEntry>
+                                <t:DictionaryKey>
+                                    <t:Type>String</t:Type>
+                                    <t:Value>RequestInPolicy</t:Value>
+                                </t:DictionaryKey>
+                                <t:DictionaryValue xsi:nil="true"/>
+                            </t:DictionaryEntry>
+                            <t:DictionaryEntry>
+                                <t:DictionaryKey>
+                                    <t:Type>String</t:Type>
+                                    <t:Value>RemovePrivateProperty</t:Value>
+                                </t:DictionaryKey>
+                                <t:DictionaryValue>
+                                    <t:Type>Boolean</t:Type>
+                                    <t:Value>true</t:Value>
+                                </t:DictionaryValue>
+                            </t:DictionaryEntry>
+                        </t:Dictionary>
+                    </m:UserConfiguration>
+                </m:GetUserConfigurationResponseMessage>
+            </m:ResponseMessages>
+        </m:GetUserConfigurationResponse>
+    </s:Body>
+</s:Envelope>

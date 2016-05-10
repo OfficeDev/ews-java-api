@@ -476,8 +476,7 @@ public final class UserConfigurationDictionary extends ComplexProperty
 
     String nil = reader.readAttributeValue(XmlNamespace.XmlSchemaInstance,
         XmlAttributeNames.Nil);
-    boolean hasValue = (nil == null)
-        || (!nil.getClass().equals(Boolean.TYPE));
+    boolean hasValue = (nil == null);
     if (hasValue) {
       value = this.getDictionaryObject(reader);
     }
