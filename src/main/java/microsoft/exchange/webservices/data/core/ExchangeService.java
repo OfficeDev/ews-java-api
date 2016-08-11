@@ -23,21 +23,6 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TimeZone;
-
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.IAutodiscoverRedirectionUrl;
 import microsoft.exchange.webservices.data.autodiscover.enumeration.UserSettingName;
@@ -90,6 +75,8 @@ import microsoft.exchange.webservices.data.core.request.ExpandGroupRequest;
 import microsoft.exchange.webservices.data.core.request.FindConversationRequest;
 import microsoft.exchange.webservices.data.core.request.FindFolderRequest;
 import microsoft.exchange.webservices.data.core.request.FindItemRequest;
+import microsoft.exchange.webservices.data.core.request.GetAppManifestsRequest;
+import microsoft.exchange.webservices.data.core.request.GetAppMarketplaceUrlRequest;
 import microsoft.exchange.webservices.data.core.request.GetAttachmentRequest;
 import microsoft.exchange.webservices.data.core.request.GetDelegateRequest;
 import microsoft.exchange.webservices.data.core.request.GetEventsRequest;
@@ -106,6 +93,7 @@ import microsoft.exchange.webservices.data.core.request.GetUserAvailabilityReque
 import microsoft.exchange.webservices.data.core.request.GetUserConfigurationRequest;
 import microsoft.exchange.webservices.data.core.request.GetUserOofSettingsRequest;
 import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
+import microsoft.exchange.webservices.data.core.request.InstallAppRequest;
 import microsoft.exchange.webservices.data.core.request.MoveFolderRequest;
 import microsoft.exchange.webservices.data.core.request.MoveItemRequest;
 import microsoft.exchange.webservices.data.core.request.RemoveDelegateRequest;
@@ -136,6 +124,7 @@ import microsoft.exchange.webservices.data.core.response.GetDelegateResponse;
 import microsoft.exchange.webservices.data.core.response.GetFolderResponse;
 import microsoft.exchange.webservices.data.core.response.GetItemResponse;
 import microsoft.exchange.webservices.data.core.response.GetServerTimeZonesResponse;
+import microsoft.exchange.webservices.data.core.response.InstallAppResponse;
 import microsoft.exchange.webservices.data.core.response.MoveCopyFolderResponse;
 import microsoft.exchange.webservices.data.core.response.MoveCopyItemResponse;
 import microsoft.exchange.webservices.data.core.response.ServiceResponse;
@@ -168,6 +157,7 @@ import microsoft.exchange.webservices.data.notification.PullSubscription;
 import microsoft.exchange.webservices.data.notification.PushSubscription;
 import microsoft.exchange.webservices.data.notification.StreamingSubscription;
 import microsoft.exchange.webservices.data.property.complex.Attachment;
+import microsoft.exchange.webservices.data.property.complex.ClientApp;
 import microsoft.exchange.webservices.data.property.complex.ConversationId;
 import microsoft.exchange.webservices.data.property.complex.DelegateUser;
 import microsoft.exchange.webservices.data.property.complex.EmailAddress;
@@ -195,11 +185,24 @@ import microsoft.exchange.webservices.data.search.filter.SearchFilter;
 import microsoft.exchange.webservices.data.sync.ChangeCollection;
 import microsoft.exchange.webservices.data.sync.FolderChange;
 import microsoft.exchange.webservices.data.sync.ItemChange;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Represents a binding to the Exchange Web Services.
@@ -3993,4 +3996,38 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
 
   }
 
+  public List<InputStream> getAppManifests() throws Exception {
+    GetAppManifestsRequest request = new GetAppManifestsRequest(this);
+    return request.execute().getManifests();
+  }
+
+  public List<ClientApp> getAppManifests(String apiVersionSupported, String schemaVersionSupported) throws Exception {
+    GetAppManifestsRequest request = new GetAppManifestsRequest(this);
+    request.setSchemaVersionSupported(schemaVersionSupported);
+    request.setApiVersionSupported(apiVersionSupported);
+    return request.execute().getApps();
+  }
+
+  public String getAppMarketplaceUrl(String apiVersionSupported, String schemaVersionSupported) throws Exception {
+    GetAppMarketplaceUrlRequest request = new GetAppMarketplaceUrlRequest(this);
+    request.setApiVersionSupported(apiVersionSupported);
+    request.setSchemaVersionSupported(schemaVersionSupported);
+    return request.execute().getAppMarketplaceUrl();
+  }
+
+  public String getAppMarketplaceUrl() throws Exception {
+    return getAppMarketplaceUrl(null, null);
+  }
+
+  public void installApp(InputStream manifest) throws Exception {
+    EwsUtilities.validateParam(manifest, "manifestStream");
+    this.internalInstallApp(manifest, null, null, false);
+  }
+
+  private boolean internalInstallApp(InputStream manifestStream, String marketplaceAssetId, String marketplaceContentMarket, boolean sendWelcomeEmail) throws Exception {
+    EwsUtilities.validateParam(manifestStream, "manifestStream");
+    InstallAppRequest request = new InstallAppRequest(this, manifestStream, marketplaceAssetId, marketplaceContentMarket, false);
+    InstallAppResponse response = request.execute();
+    return response.isWasFirstInstall();
+  }
 }
