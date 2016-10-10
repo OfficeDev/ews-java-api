@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import com.sun.org.apache.xerces.internal.impl.Constants;
+import com.sun.org.apache.xerces.internal.impl.XMLErrorReporter;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.misc.OutParam;
@@ -64,6 +66,13 @@ public class EwsXmlReader {
   private static final int ReadWriteBufferSize = 4096;
 
   /**
+   * Default setting for ignore xml errors
+   */
+
+  private static final boolean IgnoreErrorsDefault = true;
+
+
+  /**
    * The xml reader.
    */
   private XMLEventReader xmlReader = null;
@@ -85,7 +94,17 @@ public class EwsXmlReader {
    * @throws Exception on error
    */
   public EwsXmlReader(InputStream stream) throws Exception {
-    this.xmlReader = initializeXmlReader(stream);
+    this.xmlReader = initializeXmlReader(stream, IgnoreErrorsDefault);
+  }
+
+  /**
+   * Initializes a new instance of the EwsXmlReader class.
+   *
+   * @param stream the stream
+   * @throws Exception on error
+   */
+  public EwsXmlReader(InputStream stream, boolean ignoreErrors) throws Exception {
+    this.xmlReader = initializeXmlReader(stream, ignoreErrors);
   }
 
   /**
@@ -95,13 +114,22 @@ public class EwsXmlReader {
    * @return An XML reader to use.
    * @throws Exception on error
    */
-  protected XMLEventReader initializeXmlReader(InputStream stream) throws Exception {
+  protected XMLEventReader initializeXmlReader(InputStream stream, boolean ignoreErrors) throws Exception {
     XMLInputFactory inputFactory = XMLInputFactory.newInstance();
     inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
 
-    return inputFactory.createXMLEventReader(stream);
-  }
+    XMLEventReader reader = inputFactory.createXMLEventReader(stream);
 
+    if (ignoreErrors) {
+      //continue after fatal error to prevent "invalid character reference"
+      XMLErrorReporter errorReporter =
+          (XMLErrorReporter) reader.getProperty(Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY);
+
+      errorReporter.setFeature(Constants.XERCES_FEATURE_PREFIX + Constants.CONTINUE_AFTER_FATAL_ERROR_FEATURE, true);
+    }
+
+    return reader;
+  }
 
   /**
    * Formats the name of the element.
