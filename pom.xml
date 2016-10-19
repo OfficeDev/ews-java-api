@@ -30,7 +30,7 @@
 
     <groupId>com.ravn.github</groupId>
     <artifactId>com.microsoft.ews-java-api-2.0</artifactId>
-    <version>001</version>
+    <version>002</version>
 
     <name>${bundle.symbolicName} ${wrapped.version} [github]</name>
     <description>Exchange Web Services (EWS) Java API</description>

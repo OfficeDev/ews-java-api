@@ -125,7 +125,11 @@ public class EwsXmlReader {
       XMLErrorReporter errorReporter =
           (XMLErrorReporter) reader.getProperty(Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY);
 
-      errorReporter.setFeature(Constants.XERCES_FEATURE_PREFIX + Constants.CONTINUE_AFTER_FATAL_ERROR_FEATURE, true);
+      if (errorReporter != null) {
+        errorReporter.setFeature(Constants.XERCES_FEATURE_PREFIX + Constants.CONTINUE_AFTER_FATAL_ERROR_FEATURE, true);
+      } else {
+        LOG.warn("Failed to configure ignore errors for the XML Reader. Expected the Xerces parser implementation.");
+      }
     }
 
     return reader;
