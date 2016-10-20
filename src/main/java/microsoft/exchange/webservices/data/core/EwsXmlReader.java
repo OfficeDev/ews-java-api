@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data.core;
 
 import com.sun.org.apache.xerces.internal.impl.Constants;
 import com.sun.org.apache.xerces.internal.impl.XMLErrorReporter;
+import com.sun.xml.internal.stream.XMLInputFactoryImpl;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.misc.OutParam;
@@ -115,7 +116,7 @@ public class EwsXmlReader {
    * @throws Exception on error
    */
   protected XMLEventReader initializeXmlReader(InputStream stream, boolean ignoreErrors) throws Exception {
-    XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+    XMLInputFactory inputFactory = new XMLInputFactoryImpl();
     inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
 
     XMLEventReader reader = inputFactory.createXMLEventReader(stream);

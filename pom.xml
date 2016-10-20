@@ -259,6 +259,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.sun.xml.parsers</groupId>
+            <artifactId>jaxp-ri</artifactId>
+            <version>1.4.5</version>
+        </dependency>
+
     </dependencies>
 
     <build>
