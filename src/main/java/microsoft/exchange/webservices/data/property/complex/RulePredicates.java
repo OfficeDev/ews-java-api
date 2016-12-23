@@ -422,9 +422,9 @@ public final class RulePredicates extends ComplexProperty {
   }
 
   public void setIsMeetingRequest(boolean value) {
-    if (this.canSetFieldValue(this.isEncrypted, value)) {
+    if (this.canSetFieldValue(this.isMeetingRequest, value)) {
 
-      this.isEncrypted = value;
+      this.isMeetingRequest = value;
       this.changed();
     }
 
