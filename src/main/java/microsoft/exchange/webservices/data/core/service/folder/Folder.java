@@ -60,6 +60,7 @@ import microsoft.exchange.webservices.data.search.filter.SearchFilter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.EnumSet;
 
@@ -67,8 +68,9 @@ import java.util.EnumSet;
  * Represents a generic folder.
  */
 @ServiceObjectDefinition(xmlElementName = XmlElementNames.Folder)
-public class Folder extends ServiceObject {
+public class Folder extends ServiceObject implements Serializable {
 
+  private static final long serialVersionUID = -1821642181310536327L;
   private static final Log LOG = LogFactory.getLog(Folder.class);
 
   /**
