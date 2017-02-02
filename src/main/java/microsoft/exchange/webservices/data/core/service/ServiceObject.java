@@ -232,6 +232,10 @@ public abstract class ServiceObject {
     this.propertyBag = new PropertyBag(this);
   }
 
+  protected ServiceObject() {
+    this.propertyBag = new PropertyBag(this);
+  }
+
   /**
    * Gets the schema associated with this type of object.
    *
@@ -391,18 +395,23 @@ public abstract class ServiceObject {
    * @return The value of specified property in this instance.
    * @throws Exception the exception
    */
-  public Object getObjectFromPropertyDefinition(
-      PropertyDefinitionBase propertyDefinition) throws Exception {
-    PropertyDefinition propDef = (PropertyDefinition) propertyDefinition;
+  public Object getObjectFromPropertyDefinition(PropertyDefinitionBase propertyDefinition) throws Exception {
+    OutParam<Object> propertyValue = new OutParam<Object>();
 
-    if (propDef != null) {
-      return this.getPropertyBag().getObjectFromPropertyDefinition(propDef);
-    } else {
-      // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
-      throw new UnsupportedOperationException(String.format(
-          "This operation isn't supported for property definition type %s.",
-          propertyDefinition.getType().getName()));
-    }
+    if (propertyDefinition instanceof PropertyDefinition) {
+      return getPropertyBag().getObjectFromPropertyDefinition((PropertyDefinition) propertyDefinition);
+	}
+
+    if (propertyDefinition instanceof ExtendedPropertyDefinition) {
+	  if (this.tryGetExtendedProperty(Object.class, (ExtendedPropertyDefinition) propertyDefinition, propertyValue)) {
+		return propertyValue;
+	  }
+	}
+	
+    // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
+    throw new UnsupportedOperationException(String.format(
+      "This operation isn't supported for property definition type %s.",
+      propertyDefinition.getType().getName()));
   }
 
   /**
@@ -449,18 +458,19 @@ public abstract class ServiceObject {
    * @return true, if successful
    * @throws Exception the exception
    */
-  public <T> boolean tryGetProperty(Class<T> cls, PropertyDefinitionBase propertyDefinition,
-      OutParam<T> propertyValue) throws Exception {
-
-    PropertyDefinition propDef = (PropertyDefinition) propertyDefinition;
-    if (propDef != null) {
-      return this.getPropertyBag().tryGetPropertyType(cls, propDef, propertyValue);
-    } else {
-      // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
-      throw new UnsupportedOperationException(String.format(
-          "This operation isn't supported for property definition type %s.",
-          propertyDefinition.getType().getName()));
+  public <T> boolean tryGetProperty(Class<T> cls, PropertyDefinitionBase propertyDefinition, OutParam<T> propertyValue) throws Exception {
+    if (propertyDefinition instanceof PropertyDefinition) {
+      return getPropertyBag().tryGetPropertyType(cls, (PropertyDefinition) propertyDefinition, propertyValue);
     }
+
+    if (propertyDefinition instanceof ExtendedPropertyDefinition) {
+      return this.tryGetExtendedProperty(cls, (ExtendedPropertyDefinition) propertyDefinition, propertyValue);
+    }
+	
+    // E14:226103 -- Other subclasses of PropertyDefinitionBase are not supported.
+    throw new UnsupportedOperationException(String.format(
+      "This operation isn't supported for property definition type %s.",
+      propertyDefinition.getType().getName()));
   }
 
   /**
