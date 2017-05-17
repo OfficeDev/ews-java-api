@@ -29,6 +29,7 @@ import microsoft.exchange.webservices.data.autodiscover.enumeration.Autodiscover
 import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverRemoteException;
+import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverUnauthorizedException;
 import microsoft.exchange.webservices.data.autodiscover.request.AutodiscoverRequest;
 import microsoft.exchange.webservices.data.autodiscover.request.GetDomainSettingsRequest;
 import microsoft.exchange.webservices.data.autodiscover.request.GetUserSettingsRequest;
@@ -39,6 +40,8 @@ import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettings
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeServiceBase;
+import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRequestException;
+import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceResponseException;
 import microsoft.exchange.webservices.data.core.request.HttpClientWebRequest;
 import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
 import microsoft.exchange.webservices.data.credential.WSSecurityBasedCredentials;
@@ -292,7 +295,10 @@ public class AutodiscoverService extends ExchangeServiceBase
       /* Flush End */
       }
       request.executeRequest();
-      request.getResponseCode();
+      int resp = request.getResponseCode();
+      if (resp == 401) {
+          throw new AutodiscoverUnauthorizedException();
+      }
       URI redirectUrl;
       OutParam<URI> outParam = new OutParam<URI>();
       if (this.tryGetRedirectionResponse(request, outParam)) {
@@ -878,11 +884,13 @@ public class AutodiscoverService extends ExchangeServiceBase
                           .getMessage()));
           return false;
         } catch (IOException ex) {
-          this.traceMessage(
-              TraceFlags.AutodiscoverConfiguration,
-              String.format("%s failed: I/O error: %s",
-                  redirectionUrl, ex.getMessage()));
-          return false;
+            this.traceMessage(
+                    TraceFlags.AutodiscoverConfiguration,
+                    String.format("%s failed: I/O error: %s",
+                            redirectionUrl, ex.getMessage()));
+            return false;
+        } catch (AutodiscoverUnauthorizedException aue) {
+            throw aue;
         } catch (Exception ex) {
           // TODO: BUG response is always null
           HttpWebRequest response = null;

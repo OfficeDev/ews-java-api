@@ -23,6 +23,8 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import com.sun.org.apache.xerces.internal.impl.Constants;
+import com.sun.org.apache.xerces.internal.impl.XMLErrorReporter;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.misc.OutParam;
@@ -98,8 +100,12 @@ public class EwsXmlReader {
   protected XMLEventReader initializeXmlReader(InputStream stream) throws Exception {
     XMLInputFactory inputFactory = XMLInputFactory.newInstance();
     inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
+    XMLEventReader reader = inputFactory.createXMLEventReader(stream);
+    XMLErrorReporter errorReporter =
+            (XMLErrorReporter) reader.getProperty(Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY);
+    errorReporter.setFeature(Constants.XERCES_FEATURE_PREFIX + Constants.CONTINUE_AFTER_FATAL_ERROR_FEATURE, true);
 
-    return inputFactory.createXMLEventReader(stream);
+    return reader;
   }
 
 
