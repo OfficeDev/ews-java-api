@@ -67,7 +67,7 @@ public class ItemIdWrapperList implements Iterable<AbstractItemIdWrapper> {
    * @param items the item
    * @throws ServiceLocalException the service local exception
    */
-  public void addRangeItem(Iterable<Item> items)
+  public void addRangeItem(Iterable<? extends Item> items)
       throws ServiceLocalException {
     for (Item item : items) {
       this.add(item);

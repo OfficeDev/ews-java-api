@@ -1295,7 +1295,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    * @throws Exception the exception
    */
   public ServiceResponseCollection<ServiceResponse> loadPropertiesForItems(
-      Iterable<Item> items, PropertySet propertySet) throws Exception {
+      Iterable<? extends Item> items, PropertySet propertySet) throws Exception {
     EwsUtilities.validateParamCollection(items.iterator(), "item");
     EwsUtilities.validateParam(propertySet, "propertySet");
 
@@ -1312,7 +1312,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    * specified item.
    * @throws Exception the exception
    */
-  public ServiceResponseCollection<ServiceResponse> internalLoadPropertiesForItems(Iterable<Item> items,
+  public ServiceResponseCollection<ServiceResponse> internalLoadPropertiesForItems(Iterable<? extends Item> items,
       PropertySet propertySet, ServiceErrorHandling errorHandling) throws Exception {
     GetItemRequestForLoad request = new GetItemRequestForLoad(this,
         errorHandling);
