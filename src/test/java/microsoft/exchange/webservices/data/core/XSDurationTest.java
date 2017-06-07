@@ -19,13 +19,13 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.misc.TimeSpan;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import java.time.format.DateTimeParseException;
 
 @RunWith(JUnit4.class)
 public class XSDurationTest {
@@ -62,7 +62,7 @@ public class XSDurationTest {
     Assert.assertEquals("P0DT3H40M59.0S", EwsUtilities.getTimeSpanToXSDuration(timeSpan));
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test(expected = DateTimeParseException.class)
   public void testPeriodFail() {
     TimeSpan timeSpan = EwsUtilities.getXSDurationToTimeSpan("P2H30M59.0S");
     Assert.assertEquals("-P0DT2H30M59.0S", EwsUtilities.getTimeSpanToXSDuration(timeSpan));

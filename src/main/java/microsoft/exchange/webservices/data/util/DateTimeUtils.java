@@ -24,10 +24,19 @@
 package microsoft.exchange.webservices.data.util;
 
 import org.apache.commons.lang3.StringUtils;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.OffsetTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAccessor;
 import java.util.Date;
+
+import static java.time.temporal.ChronoField.INSTANT_SECONDS;
 
 public final class DateTimeUtils {
 
@@ -84,8 +93,29 @@ public final class DateTimeUtils {
       final DateTimeFormatter[] formats = dateOnly ? DATE_FORMATS : DATE_TIME_FORMATS;
       for (final DateTimeFormatter format : formats) {
         try {
-          return format.parseDateTime(value).toDate();
-        } catch (IllegalArgumentException e) {
+          TemporalAccessor temporalAccessor = format.parse(value);
+
+          Instant instant = null;
+
+          if (!temporalAccessor.isSupported(INSTANT_SECONDS)) {
+            // Only date
+            ZoneOffset zoneOffset = ZoneOffset.UTC;
+
+            if (temporalAccessor.isSupported(ChronoField.OFFSET_SECONDS)) {
+              // Have date with timezone offset
+              zoneOffset = ZoneOffset.ofTotalSeconds(temporalAccessor.get(ChronoField.OFFSET_SECONDS));
+            }
+
+            instant = LocalDate.from(temporalAccessor).atTime(OffsetTime.of(LocalTime.MIDNIGHT, zoneOffset)).toInstant();
+
+          } else {
+            // Date and time
+            instant = Instant.from(temporalAccessor);
+          }
+
+          return Date.from(instant);
+
+        } catch (DateTimeParseException e) {
           // Ignore and try the next pattern.
         }
       }
@@ -97,21 +127,26 @@ public final class DateTimeUtils {
 
   private static DateTimeFormatter[] createDateTimeFormats() {
     return new DateTimeFormatter[] {
-        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssZ").withZoneUTC(),
-        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ").withZoneUTC(),
-        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ").withZoneUTC(),
-        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss").withZoneUTC(),
-        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").withZoneUTC(),
-        DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS").withZoneUTC(),
-        DateTimeFormat.forPattern("yyyy-MM-ddZ").withZoneUTC(),
-        DateTimeFormat.forPattern("yyyy-MM-dd").withZoneUTC()
+        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZZZZZ"),
+        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ"),
+        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"),
+        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ"),
+        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZZZZZ"),
+        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"),
+        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss").withZone(ZoneOffset.UTC),
+        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS").withZone(ZoneOffset.UTC),
+        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS").withZone(ZoneOffset.UTC),
+        DateTimeFormatter.ofPattern("yyyy-MM-ddZZZZZ"),
+        DateTimeFormatter.ofPattern("yyyy-MM-ddZ"),
+        DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneOffset.UTC)
     };
   }
 
   private static DateTimeFormatter[] createDateFormats() {
     return new DateTimeFormatter[] {
-        DateTimeFormat.forPattern("yyyy-MM-ddZ").withZoneUTC(),
-        DateTimeFormat.forPattern("yyyy-MM-dd").withZoneUTC()
+        DateTimeFormatter.ofPattern("yyyy-MM-ddZZZZZ"),
+        DateTimeFormatter.ofPattern("yyyy-MM-ddZ"),
+        DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneOffset.UTC)
     };
   }
 
