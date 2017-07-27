@@ -266,7 +266,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
    */
   public void disconnect() {
     synchronized (this) {
-      IOUtils.closeQuietly(this.response);
+      this.response.releaseConnection();
       this.disconnect(HangingRequestDisconnectReason.UserInitiated, null);
     }
   }
@@ -279,7 +279,7 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
    */
   public void disconnect(HangingRequestDisconnectReason reason, Exception exception) {
     if (this.isConnected()) {
-      IOUtils.closeQuietly(this.response);
+      this.response.releaseConnection();
       this.internalOnDisconnect(reason, exception);
     }
   }
