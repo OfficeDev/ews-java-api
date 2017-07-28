@@ -1,6 +1,20 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/OfficeDev/ews-java-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)  
 [![Build Status](https://travis-ci.org/OfficeDev/ews-java-api.svg)](https://travis-ci.org/OfficeDev/ews-java-api) [![codecov.io](https://codecov.io/github/OfficeDev/ews-java-api/coverage.svg?branch=master)](https://codecov.io/github/OfficeDev/ews-java-api?branch=master)
 
+NOTE: This fork was made to fix the 'hanging' close connection problem.
+The solution was pulled from pexlabs, referenced here:
+https://github.com/OfficeDev/ews-java-api/issues/425
+
+To use this version in your build, change:
+
+    compile 'com.microsoft.ews-java-api:ews-java-api:2.0'
+
+to:
+
+    compile 'com.github.mitimes:ews-java-api:master-SNAPSHOT'
+
+using jitpack.io as a repo.
+
 # EWS JAVA API
 
 Please see the [Getting Started Guide](https://github.com/OfficeDev/ews-java-api/wiki/Getting-Started-Guide) on our wiki for an introduction to this library.
