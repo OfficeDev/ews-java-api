@@ -31,7 +31,7 @@
     <groupId>com.microsoft.ews-java-api</groupId>
     <artifactId>ews-java-api-netc</artifactId>
     
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 
     <name>Exchange Web Services Java API</name>
     <description>Exchange Web Services (EWS) Java API</description>
@@ -72,14 +72,6 @@
         </developer>
     </developers>
 
-    <repositories>
-       <repository>
-          <id>netc-repo</id>
-          <name>netc repo</name>
-          <url>http://netcitadel-maven-repo.s3-website-us-west-2.amazonaws.com/vendors_repo/tools/m2</url>
-       </repository>
-    </repositories>
-
     <properties>
         <!-- Eliminates the file encoding warning. Of course, all of your files
             should probably be UTF-8 nowadays. -->
@@ -102,7 +94,7 @@
         <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
         <maven-surefire-report-plugin.version>2.18.1</maven-surefire-report-plugin.version>
         <!--  Dependencies [COMPILE]:  -->
-        <httpclient.version>4.5.1</httpclient.version>
+        <httpclient.version>4.5.3</httpclient.version>
         <httpcore.version>4.4.1</httpcore.version>
         <commons-logging.version>1.2</commons-logging.version>
         <joda-time.version>2.8</joda-time.version>
@@ -192,7 +184,7 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient-netc</artifactId>
+            <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
         </dependency>
 
