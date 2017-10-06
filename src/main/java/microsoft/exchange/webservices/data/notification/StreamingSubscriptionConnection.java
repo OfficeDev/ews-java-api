@@ -357,13 +357,13 @@ public final class StreamingSubscriptionConnection implements Closeable,
    * @param ex The exception that caused the disconnection. May be null.
    */
   private void internalOnDisconnect(Exception ex) {
+    this.currentHangingRequest = null;
     if (!onDisconnect.isEmpty()) {
       for (ISubscriptionErrorDelegate disconnect : onDisconnect) {
         disconnect.subscriptionErrorDelegate(this,
             new SubscriptionErrorEventArgs(null, ex));
       }
     }
-    this.currentHangingRequest = null;
   }
 
   /**
