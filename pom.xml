@@ -28,12 +28,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.microsoft.ews-java-api</groupId>
-    <artifactId>ews-java-api</artifactId>
-    
-    <version>2.1-SNAPSHOT</version>
+    <groupId>com.mitimes.github</groupId>
+    <artifactId>com.microsoft.ews-java-api-2.0</artifactId>
+    <version>002</version>
 
-    <name>Exchange Web Services Java API</name>
+    <name>${bundle.symbolicName} ${wrapped.version} [github]</name>
     <description>Exchange Web Services (EWS) Java API</description>
 
     <!-- Required by the site command for certain relative URL configuration. -->
@@ -73,6 +72,12 @@
     </developers>
 
     <properties>
+        <!-- RAVN -->
+        <bundle.symbolicName>com.microsoft.ews-java-api</bundle.symbolicName>
+        <wrapped.groupId>com.microsoft.ews-java-api</wrapped.groupId>
+        <wrapped.artifactId>ews-java-api</wrapped.artifactId>
+        <wrapped.version>2.0</wrapped.version>
+
         <!-- Eliminates the file encoding warning. Of course, all of your files
             should probably be UTF-8 nowadays. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -218,7 +223,7 @@
             <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
@@ -289,6 +294,12 @@
             <artifactId>jcl-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.parsers</groupId>
+            <artifactId>jaxp-ri</artifactId>
+            <version>1.4.5</version>
         </dependency>
 
     </dependencies>

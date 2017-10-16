@@ -495,6 +495,8 @@ public abstract class HttpWebRequest implements Closeable {
    */
   public abstract void close() throws IOException;
 
+  public abstract void releaseConnection();
+
   /**
    * Prepare connection.
    */

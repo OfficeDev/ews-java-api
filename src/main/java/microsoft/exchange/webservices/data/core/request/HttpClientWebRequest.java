@@ -94,6 +94,13 @@ public class HttpClientWebRequest extends HttpWebRequest {
     httpPost = null;
   }
 
+  @Override
+  public void releaseConnection() {
+    if (httpPost != null) {
+      httpPost.releaseConnection();
+    }
+  }
+
   /**
    * Prepares the request by setting appropriate headers, authentication, timeouts, etc.
    */
