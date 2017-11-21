@@ -94,7 +94,16 @@
         <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
         <maven-surefire-report-plugin.version>2.18.1</maven-surefire-report-plugin.version>
         <!--  Dependencies [COMPILE]:  -->
+<!--
+
+microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRequestException: The request failed. 40
+https://github.com/OfficeDev/ews-java-api/issues/371
+
+Mal schauen, ob der update auf version 4.5.3 hilft.
+
         <httpclient.version>4.4.1</httpclient.version>
+  -->
+        <httpclient.version>4.5.3</httpclient.version>
         <httpcore.version>4.4.1</httpcore.version>
         <commons-logging.version>1.2</commons-logging.version>
         <joda-time.version>2.8</joda-time.version>
