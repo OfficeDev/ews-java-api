@@ -465,6 +465,7 @@ public final class TimeZoneUtils {
     map.put("Etc/Zulu", "UTC");
     map.put("Europe/Amsterdam", "W. Europe Standard Time");
     map.put("Europe/Andorra", "W. Europe Standard Time");
+    map.put("Europe/Astrakhan", "Russia Time Zone 3");
     map.put("Europe/Athens", "GTB Standard Time");
     map.put("Europe/Belfast", "GMT Standard Time");
     map.put("Europe/Belgrade", "Central Europe Standard Time");
