@@ -170,6 +170,7 @@ public final class TimeZoneUtils {
     map.put("America/El_Salvador", "Central America Standard Time");
     map.put("America/Ensenada", "Pacific Standard Time");
     map.put("America/Fort_Wayne", "US Eastern Standard Time");
+    map.put("America/Fort_Nelson", "Mountain Standard Time");
     map.put("America/Fortaleza", "SA Eastern Standard Time");
     map.put("America/Glace_Bay", "Atlantic Standard Time");
     map.put("America/Godthab", "Greenland Standard Time");
@@ -240,6 +241,7 @@ public final class TimeZoneUtils {
     map.put("America/Porto_Acre", "SA Pacific Standard Time");
     map.put("America/Porto_Velho", "SA Western Standard Time");
     map.put("America/Puerto_Rico", "SA Western Standard Time");
+    map.put("America/Punta_Arenas", "Pacific SA Standard Time");
     map.put("America/Rainy_River", "Central Standard Time");
     map.put("America/Rankin_Inlet", "Central Standard Time");
     map.put("America/Recife", "SA Eastern Standard Time");
@@ -464,6 +466,7 @@ public final class TimeZoneUtils {
     map.put("Etc/Zulu", "UTC");
     map.put("Europe/Amsterdam", "W. Europe Standard Time");
     map.put("Europe/Andorra", "W. Europe Standard Time");
+    map.put("Europe/Astrakhan", "Russia Time Zone 3");
     map.put("Europe/Athens", "GTB Standard Time");
     map.put("Europe/Belfast", "GMT Standard Time");
     map.put("Europe/Belgrade", "Central Europe Standard Time");
@@ -483,6 +486,7 @@ public final class TimeZoneUtils {
     map.put("Europe/Istanbul", "Turkey Standard Time");
     map.put("Europe/Jersey", "GMT Standard Time");
     map.put("Europe/Kaliningrad", "Kaliningrad Standard Time");
+    map.put("Europe/Kirov", "Russia Time Zone 3");
     map.put("Europe/Kiev", "FLE Standard Time");
     map.put("Europe/Lisbon", "GMT Standard Time");
     map.put("Europe/Ljubljana", "Central Europe Standard Time");
@@ -504,6 +508,7 @@ public final class TimeZoneUtils {
     map.put("Europe/Samara", "Russia Time Zone 3");
     map.put("Europe/San_Marino", "W. Europe Standard Time");
     map.put("Europe/Sarajevo", "Central European Standard Time");
+    map.put("Europe/Saratov", "Russian Standard Time");
     map.put("Europe/Simferopol", "Russian Standard Time");
     map.put("Europe/Skopje", "Central European Standard Time");
     map.put("Europe/Sofia", "FLE Standard Time");
@@ -511,6 +516,7 @@ public final class TimeZoneUtils {
     map.put("Europe/Tallinn", "FLE Standard Time");
     map.put("Europe/Tirane", "Central Europe Standard Time");
     map.put("Europe/Tiraspol", "GTB Standard Time");
+    map.put("Europe/Ulyanovsk", "Russian Standard Time");
     map.put("Europe/Uzhgorod", "FLE Standard Time");
     map.put("Europe/Vaduz", "W. Europe Standard Time");
     map.put("Europe/Vatican", "W. Europe Standard Time");
