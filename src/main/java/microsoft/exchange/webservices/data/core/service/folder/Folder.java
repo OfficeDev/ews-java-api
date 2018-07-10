@@ -754,6 +754,19 @@ public class Folder extends ServiceObject {
   }
 
   /**
+   * Gets the WellKnownFolderName of the folder. Returns null if folder doesn't have a well known name.
+   * @return the well known folder name
+   */
+  public String getWellKnownFolderName() {
+    try {
+      return getPropertyBag().getObjectFromPropertyDefinition(FolderSchema.WellKnownFolderName);
+    } catch (ServiceLocalException e) {
+      LOG.error(e);
+      return null;
+    }
+  }
+
+  /**
    * Gets a list of permissions for the folder.
    *
    * @return the permissions

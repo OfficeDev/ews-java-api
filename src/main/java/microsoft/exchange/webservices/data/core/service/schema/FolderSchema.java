@@ -27,6 +27,7 @@ import microsoft.exchange.webservices.data.attribute.Schema;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 import microsoft.exchange.webservices.data.core.enumeration.property.PropertyDefinitionFlags;
+import microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.property.complex.ICreateComplexPropertyDelegate;
 import microsoft.exchange.webservices.data.property.complex.ManagedFolderInformation;
@@ -100,6 +101,12 @@ public class FolderSchema extends ServiceObjectSchema {
      * The Constant PermissionSet.
      */
     public final static String PermissionSet = "folder:PermissionSet";
+
+    /**
+     * The Constant DistinguishedFolderId.
+     */
+    public static final String DistinguishedFolderId = "folder:DistinguishedFolderId";
+
   }
 
 
@@ -223,6 +230,14 @@ public class FolderSchema extends ServiceObjectSchema {
           PropertyDefinitionFlags.CanDelete),
           ExchangeVersion.Exchange2007_SP1);
 
+  public static final PropertyDefinition WellKnownFolderName =
+      new StringPropertyDefinition(
+          XmlElementNames.DistinguishedFolderId,
+          FieldUris.DistinguishedFolderId,
+          EnumSet.of(PropertyDefinitionFlags.CanFind, PropertyDefinitionFlags.CanSet),
+          ExchangeVersion.Exchange2013
+      );
+
   /**
    * This must be declared after the property definitions.
    */
@@ -247,5 +262,7 @@ public class FolderSchema extends ServiceObjectSchema {
     this.registerProperty(EffectiveRights);
     this.registerProperty(Permissions);
     this.registerProperty(UnreadCount);
+    this.registerProperty(WellKnownFolderName);
   }
+
 }

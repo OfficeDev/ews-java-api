@@ -194,5 +194,52 @@ public enum WellKnownFolderName {
   @RequiredServerVersion(version = ExchangeVersion.Exchange2010_SP1)
   ArchiveRecoverableItemsPurges,
 
+  // The Sync Issues folder.
+  /**
+   * The Sync Issues.
+   */
+  SyncIssues,
+
+  // The Conflicts folder.
+  /**
+   * The Conflicts.
+   */
+  Conflicts,
+
+  // The Local Failures folder.
+  /**
+   * The Local Failures.
+   */
+  LocalFailures,
+
+  // The Server Failures folder.
+  /**
+   * The Server Failures.
+   */
+  ServerFailures,
+
+  // The Recipient Cache folder.
+  /**
+   * The Recipient Cache.
+   */
+  RecipientCache,
+
+  // The Quick Contacts folder.
+  /**
+   * The Quick Contacts.
+   */
+  QuickContacts,
+
+  // The Conversation History folder.
+  /**
+   * The Conversation History.
+   */
+  ConversationHistory,
+
+  // The To Do Search folder.
+  /**
+   * The To Do Search.
+   */
+  ToDoSearch
 
 }
