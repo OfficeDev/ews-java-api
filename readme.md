@@ -1,3 +1,5 @@
+### Disclaimer: this project is no longer maintained. See #661 for details.
+
 # Getting Started with the EWS Java API
 
 [![Gitter](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/OfficeDev/ews-java-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
