@@ -69,7 +69,9 @@ import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.client.WinHttpClients;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
@@ -171,7 +173,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * every other constructor.
    */
   protected ExchangeServiceBase() {
-    setUseDefaultCredentials(true);
+    setUseDefaultCredentials(false);
     initializeHttpClient();
     initializeHttpContext();
   }
@@ -200,7 +202,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     HttpClientConnectionManager httpConnectionManager = new BasicHttpClientConnectionManager(registry);
     AuthenticationStrategy authStrategy = new CookieProcessingTargetAuthenticationStrategy();
 
-    httpClient = HttpClients.custom()
+    httpClient = constructHttpClientBuilder()
       .setConnectionManager(httpConnectionManager)
       .setTargetAuthenticationStrategy(authStrategy)
       .build();
@@ -213,10 +215,20 @@ public abstract class ExchangeServiceBase implements Closeable {
     httpConnectionManager.setDefaultMaxPerRoute(maximumPoolingConnections);
     AuthenticationStrategy authStrategy = new CookieProcessingTargetAuthenticationStrategy();
 
-    httpPoolingClient = HttpClients.custom()
+    httpPoolingClient = constructHttpClientBuilder()
         .setConnectionManager(httpConnectionManager)
         .setTargetAuthenticationStrategy(authStrategy)
         .build();
+  }
+  
+  private HttpClientBuilder constructHttpClientBuilder(){
+	  if(useDefaultCredentials) {
+		  if(System.getProperty("os.name").toLowerCase().contains("windows")) {
+			  return WinHttpClients.custom();
+		  }
+	  }
+
+	  return HttpClients.custom();
   }
 
   /**
