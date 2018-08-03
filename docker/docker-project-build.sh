@@ -2,7 +2,7 @@ set -e
 
 ./docker-build.sh
 
-docker run -it \
+docker run -i \
            --rm \
            -v `pwd`/..:/mnt \
            -v `pwd`/../dot-m2:/root/.m2 \
