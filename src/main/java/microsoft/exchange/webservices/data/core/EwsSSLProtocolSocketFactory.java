@@ -26,6 +26,7 @@ package microsoft.exchange.webservices.data.core;
 import org.apache.http.conn.ssl.DefaultHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.ssl.SSLContexts;
+import org.apache.http.util.TextUtils;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -103,6 +104,22 @@ public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
     this.sslcontext = context;
   }
 
+  /**
+   * Constructor for EasySSLProtocolSocketFactory.
+   *
+   * @param context          SSL context
+   * @param supportedProtocols protocol from sys prop
+   * @param supportedCipherSuites cipherSuites from sys prop
+   * @param hostnameVerifier hostname verifier
+   */
+  public EwsSSLProtocolSocketFactory(
+          SSLContext context,String[] supportedProtocols, String[] supportedCipherSuites,
+          HostnameVerifier hostnameVerifier
+  ) {
+    super(context,supportedProtocols,supportedCipherSuites, hostnameVerifier);
+    this.sslcontext = context;
+  }
+
 
   /**
    * Create and configure SSL protocol socket factory using default hostname verifier.
@@ -129,7 +146,22 @@ public class EwsSSLProtocolSocketFactory extends SSLConnectionSocketFactory {
     TrustManager trustManager, HostnameVerifier hostnameVerifier
   ) throws GeneralSecurityException {
     SSLContext sslContext = createSslContext(trustManager);
-    return new EwsSSLProtocolSocketFactory(sslContext, hostnameVerifier);
+
+    //read system properties
+    String[] keepAliveStrategyCopy;
+    keepAliveStrategyCopy = split(System.getProperty("https.protocols"));
+    String[] targetAuthStrategyCopy;
+    targetAuthStrategyCopy = split(System.getProperty("https.cipherSuites"));
+
+    if (null != keepAliveStrategyCopy || null != targetAuthStrategyCopy) {
+      return new EwsSSLProtocolSocketFactory(sslContext,keepAliveStrategyCopy,targetAuthStrategyCopy, hostnameVerifier);
+    } else {
+      return new EwsSSLProtocolSocketFactory(sslContext, hostnameVerifier);
+    }
+  }
+
+  private static String[] split(String s) {
+    return TextUtils.isBlank(s)?null:s.split(" *, *");
   }
 
   /**
