@@ -46,6 +46,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectStreamException;
+import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownServiceException;
 import java.util.ArrayList;
@@ -92,6 +93,8 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
    * Response from the server.
    */
   private HttpWebRequest response;
+
+  private volatile boolean disconnecting;
 
   /**
    * Expected minimum frequency in response, in milliseconds.
@@ -222,15 +225,11 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
     } catch (SocketTimeoutException ex) {
       // The connection timed out.
       this.disconnect(HangingRequestDisconnectReason.Timeout, ex);
-    } catch (UnknownServiceException ex) {
-      // Stream is closed, so disconnect.
-      this.disconnect(HangingRequestDisconnectReason.Exception, ex);
-    } catch (ObjectStreamException ex) {
-      // Stream is closed, so disconnect.
-      this.disconnect(HangingRequestDisconnectReason.Exception, ex);
     } catch (IOException ex) {
-      // Stream is closed, so disconnect.
-      this.disconnect(HangingRequestDisconnectReason.Exception, ex);
+      if (!(disconnecting && isSocketClosed(ex))) {
+        // Stream was closed due to an error
+        this.disconnect(HangingRequestDisconnectReason.Exception, ex);
+      }
     } catch (UnsupportedOperationException ex) {
       LOG.error(ex);
       // This is thrown if we close the stream during a
@@ -239,11 +238,24 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
       //simply results in a long-running connection.
       this.disconnect(HangingRequestDisconnectReason.UserInitiated, null);
     } catch (Exception ex) {
-      // Stream is closed, so disconnect.
-      this.disconnect(HangingRequestDisconnectReason.Exception, ex);
+      if (!(disconnecting && isSocketClosed(ex))) {
+        // Stream was closed due to an error
+        this.disconnect(HangingRequestDisconnectReason.Exception, ex);
+      }
+
     } finally {
       IOUtils.closeQuietly(responseCopy);
     }
+  }
+
+  private static boolean isSocketClosed(Throwable e) {
+    while (e != null) {
+      if (e instanceof SocketException) {
+        return true;
+      }
+      e = e.getCause();
+    }
+    return false;
   }
 
   private boolean isConnected;
@@ -266,7 +278,8 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
    */
   public void disconnect() {
     synchronized (this) {
-      IOUtils.closeQuietly(this.response);
+      disconnecting = true;
+      this.response.releaseConnection();
       this.disconnect(HangingRequestDisconnectReason.UserInitiated, null);
     }
   }
@@ -279,7 +292,8 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
    */
   public void disconnect(HangingRequestDisconnectReason reason, Exception exception) {
     if (this.isConnected()) {
-      IOUtils.closeQuietly(this.response);
+      disconnecting = true;
+      this.response.releaseConnection();
       this.internalOnDisconnect(reason, exception);
     }
   }
