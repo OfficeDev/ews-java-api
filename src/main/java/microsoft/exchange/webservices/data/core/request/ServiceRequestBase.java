@@ -501,7 +501,7 @@ public abstract class ServiceRequestBase<T> {
           soapFaultDetails = this.readSoapFault(reader);
           memoryStream.close();
         } else {
-          InputStream serviceResponseStream = ServiceRequestBase.getResponseStream(req);
+          InputStream serviceResponseStream = ServiceRequestBase.getResponseErrorStream(req);
           EwsServiceXmlReader reader = new EwsServiceXmlReader(serviceResponseStream, this.service);
           soapFaultDetails = this.readSoapFault(reader);
           serviceResponseStream.close();
