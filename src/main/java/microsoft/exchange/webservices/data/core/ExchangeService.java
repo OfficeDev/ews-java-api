@@ -30,13 +30,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.EnumSet;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.TimeZone;
 
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.IAutodiscoverRedirectionUrl;
@@ -3734,12 +3732,12 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
 
   /**
    * Prepare http web request.
-   *
+   * @param timeout If specified then overrides service level timeout value
    * @return the http web request
    * @throws ServiceLocalException       the service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
-  public HttpWebRequest prepareHttpWebRequest()
+  public HttpWebRequest prepareHttpWebRequest(Integer timeout)
       throws ServiceLocalException, URISyntaxException {
     try {
       this.url = this.adjustServiceUriFromCredentials(this.getUrl());
@@ -3747,26 +3745,26 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
       LOG.error(e);
     }
     return this.prepareHttpWebRequestForUrl(url, this
-        .getAcceptGzipEncoding(), true);
+        .getAcceptGzipEncoding(), true, timeout);
   }
 
   /**
    * Prepares a http web request from a pooling connection manager, used for subscriptions.
-   * 
+   * @param timeout If specified then overrides service level timeout value
    * @return A http web request
    * @throws ServiceLocalException The service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
    */
-  public HttpWebRequest prepareHttpPoolingWebRequest()
-	      throws ServiceLocalException, URISyntaxException {
-	    try {
-	      this.url = this.adjustServiceUriFromCredentials(this.getUrl());
-	    } catch (Exception e) {
-	      LOG.error(e);
-	    }
-	    return this.prepareHttpPoolingWebRequestForUrl(url, this
-	        .getAcceptGzipEncoding(), true);
-	  }
+  public HttpWebRequest prepareHttpPoolingWebRequest(Integer timeout)
+      throws ServiceLocalException, URISyntaxException {
+    try {
+      this.url = this.adjustServiceUriFromCredentials(this.getUrl());
+    } catch (Exception e) {
+      LOG.error(e);
+    }
+    return this.prepareHttpPoolingWebRequestForUrl(url, this
+        .getAcceptGzipEncoding(), true, timeout);
+  }
 
   /**
    * Processes an HTTP error response.

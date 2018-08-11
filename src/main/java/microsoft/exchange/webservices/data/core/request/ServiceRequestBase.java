@@ -72,6 +72,9 @@ public abstract class ServiceRequestBase<T> {
    */
   private ExchangeService service;
 
+  /* If included then overrides service specified timeout */
+  private Integer timeout;
+
   // Methods for subclasses to override
 
   /**
@@ -120,6 +123,10 @@ public abstract class ServiceRequestBase<T> {
    */
   protected void validate() throws Exception {
     this.service.validate();
+  }
+
+  public void setTimeout(Integer timeout) {
+    this.timeout = timeout;
   }
 
   /**
@@ -663,7 +670,7 @@ public abstract class ServiceRequestBase<T> {
    * @throws Exception on error
    */
   protected HttpWebRequest buildEwsHttpWebRequest() throws Exception {
-      HttpWebRequest request = service.prepareHttpWebRequest();
+      HttpWebRequest request = service.prepareHttpWebRequest(timeout);
     return buildEwsHttpWebRequest(request);
   }
 
@@ -678,7 +685,7 @@ public abstract class ServiceRequestBase<T> {
    * @throws Exception on error
    */
   protected HttpWebRequest buildEwsHttpPoolingWebRequest() throws Exception {
-    HttpWebRequest request = service.prepareHttpPoolingWebRequest();
+    HttpWebRequest request = service.prepareHttpPoolingWebRequest(timeout);
     return buildEwsHttpWebRequest(request);
   }
 
