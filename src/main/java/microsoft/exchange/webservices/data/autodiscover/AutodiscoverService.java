@@ -549,6 +549,7 @@ public class AutodiscoverService extends ExchangeServiceBase
     int scpUrlCount;
     OutParam<Integer> outParamInt = new OutParam<Integer>();
     List<URI> urls = this.getAutodiscoverServiceUrls(domainName, outParamInt);
+    List<URI> origUrls = new ArrayList<URI>(urls);
     scpUrlCount = outParamInt.getParam();
     if (urls.size() == 0) {
       throw new ServiceValidationException(
@@ -570,6 +571,9 @@ public class AutodiscoverService extends ExchangeServiceBase
 
     do {
       URI autodiscoverUrl = urls.get(currentUrlIndex);
+      if (origUrls.contains(autodiscoverUrl)) {
+        currentHop.setParam(1);
+      }
       boolean isScpUrl = currentUrlIndex < scpUrlCount;
 
       try {
@@ -601,7 +605,7 @@ public class AutodiscoverService extends ExchangeServiceBase
                               settings
                                   .getRedirectTarget()));
 
-              urls.add(currentUrlIndex, new URI(
+              urls.set(currentUrlIndex, new URI(
                   settings.getRedirectTarget()));
 
               break;
