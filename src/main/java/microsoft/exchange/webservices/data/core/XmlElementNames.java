@@ -4785,4 +4785,104 @@ public class XmlElementNames {
   // by
   // UM
 
+  /**
+   * The Constant ActionUrl.
+   */
+  public static final String ActionUrl = "ActionUrl";
+
+  /**
+   * The Constant AppStatus.
+   */
+  public static final String AppStatus = "AppStatus";
+
+  /**
+   * The Constant EndNodeUrl.
+   */
+  public static final String EndNodeUrl = "EndNodeUrl";
+
+  /**
+   * The Constant GetAppManifestsRequest.
+   */
+  public static final String GetAppManifestsRequest = "GetAppManifests";
+
+  /**
+   * The Constant ApiVersionSupported.
+   */
+  public static final String ApiVersionSupported = "ApiVersionSupported";
+
+  /**
+   * The Constant SchemaVersionSupported.
+   */
+  public static final String SchemaVersionSupported = "SchemaVersionSupported";
+
+  /**
+   * The Constant Manifests.
+   */
+  public static final String Manifests = "Manifests";
+
+  /**
+   * The Constant Manifest.
+   */
+  public static final String Manifest = "Manifest";
+
+  /**
+   * The Constant Apps.
+   */
+  public static final String Apps = "Apps";
+
+  /**
+   * The Constant App.
+   */
+  public static final String App = "App";
+
+  /**
+   * The Constant GetAppManifestsResponse.
+   */
+  public static final String GetAppManifestsResponse = "GetAppManifestsResponse";
+
+  /**
+   * The Constant GetAppMarketplaceUrlRequest.
+   */
+  public static final String GetAppMarketplaceUrlRequest = "GetAppMarketplaceUrl";
+
+  /**
+   * The Constant GetAppMarketplaceUrlResponse.
+   */
+  public static final String GetAppMarketplaceUrlResponse = "GetAppMarketplaceUrlResponse";
+
+  /**
+   * The Constant AppMarketplaceUrl.
+   */
+  public static final String AppMarketplaceUrl= "AppMarketplaceUrl";
+
+  /**
+   * The Constant InstallAppRequest.
+   */
+  public static final String InstallAppRequest = "InstallApp";
+
+  /**
+   * The Constant MarketplaceAssetId.
+   */
+  public static final String MarketplaceAssetId = "MarketplaceAssetId";
+
+  /**
+   * The Constant MarketplaceContentMarket.
+   */
+  public static final String MarketplaceContentMarket = "MarketplaceContentMarket";
+
+  /**
+   * The Constant SendWelcomeEmail.
+   */
+  public static final String SendWelcomeEmail = "SendWelcomeEmail";
+
+  /**
+   * The Constant InstallAppResponse.
+   */
+  public static final String InstallAppResponse = "InstallAppResponse";
+
+  /**
+   * The Constant WasFirstInstall.
+   */
+  public static final String WasFirstInstall = "WasFirstInstall";
+
 }

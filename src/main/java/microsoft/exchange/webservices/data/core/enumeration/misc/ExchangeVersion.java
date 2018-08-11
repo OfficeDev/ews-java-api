@@ -50,4 +50,35 @@ public enum ExchangeVersion {
    * Exchange2010_SP2.
    */
   Exchange2010_SP2,
+
+  // Microsoft Exchange 2013
+  /**
+   * Exchange2013
+   */
+  Exchange2013,
+
+  // Microsoft Exchange 2013, Service Pack 1
+  /**
+   * Exchange2013_SP1
+   */
+  Exchange2013_SP1,
+
+  // Microsoft Exchange 2015 (aka Exchange 2016)
+  /**
+   * Exchange2013_SP1
+   */
+  Exchange2015,
+
+  // Microsoft Exchange 2016
+  /**
+   * Exchange2013_SP1
+   */
+  Exchange2016,
+
+  // Functionality starting 10/05/2015
+  /**
+   * V2015_10_05
+   */
+  V2015_10_05
+
 }
