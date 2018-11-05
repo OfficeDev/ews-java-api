@@ -28,5 +28,9 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
-      # run tests!
-      - run: mvn test
+      # build
+      - run: mvn package
+
+      # deploy
+      - run: mvn deploy -s .circleci/settings.xml -DskipTests=true -Dcheckstyle.skip=true
+
