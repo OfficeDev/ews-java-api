@@ -23,15 +23,7 @@
 
 package microsoft.exchange.webservices.data.core.response;
 
-import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
-import microsoft.exchange.webservices.data.security.XmlNodeType;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
+import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -42,7 +34,16 @@ import javax.xml.stream.events.Namespace;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-import java.util.Iterator;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.core.EwsUtilities;
+import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 
 
 /**
@@ -116,18 +117,15 @@ public final class ExecuteDiagnosticMethodResponse extends ServiceResponse {
         element = document.createElementNS(ele.getName()
             .getNamespaceURI(), ele.getName().getLocalPart());
 
-        Iterator<Attribute> ite = ele.getAttributes();
-
-        while (ite.hasNext()) {
+        for (Iterator<Attribute> ite = ele.getAttributes(); ite.hasNext();) {
           Attribute attr = ite.next();
           element.setAttribute(attr.getName().getLocalPart(),
               attr.getValue());
         }
 
         String xmlns = EwsUtilities.WSTrustFebruary2005Namespace;//"http://schemas.xmlsoap.org/wsdl/";
-        ite = ele.getNamespaces();
-        while (ite.hasNext()) {
-          Namespace ns = (Namespace) ite.next();
+        for (Iterator<Namespace> ite = ele.getNamespaces(); ite.hasNext();) {
+          Namespace ns = ite.next();
           String name = ns.getPrefix();
           if (!name.isEmpty()) {
             element.setAttributeNS(xmlns, name,

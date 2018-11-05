@@ -28,7 +28,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.microsoft.ews-java-api</groupId>
+    <groupId>com.surevine.ews-java-api</groupId>
     <artifactId>ews-java-api</artifactId>
     
     <version>2.1-SNAPSHOT</version>
@@ -49,8 +49,8 @@
     </prerequisites>
 
     <organization>
-        <name>Microsoft</name>
-        <url>http://www.microsoft.com/</url>
+        <name>Surevine</name>
+        <url>http://www.surevine.com/</url>
     </organization>
 
     <developers>
@@ -76,32 +76,35 @@
         <!-- Eliminates the file encoding warning. Of course, all of your files
             should probably be UTF-8 nowadays. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <javaLanguage.version>1.6</javaLanguage.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <javaLanguage.version>11</javaLanguage.version>
         <javadoc.doclint.param/>
 
         <!--  Dependencies [BUILD]:  -->
-        <maven-checkstyle-plugin.version>2.16</maven-checkstyle-plugin.version>
+        <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-        <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
-        <maven-source-plugin.version>2.4</maven-source-plugin.version>
-        <animal-sniffer-maven-plugin.version>1.14</animal-sniffer-maven-plugin.version>
+        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <animal-sniffer-maven-plugin.version>1.17</animal-sniffer-maven-plugin.version>
         <animal-sniffer-maven-plugin.signature.version>1.1</animal-sniffer-maven-plugin.signature.version>
         <!--  Dependencies [REPORT]:  -->
-        <maven-site-plugin.version>3.4</maven-site-plugin.version>
-        <maven-project-info-reports-plugin.version>2.8</maven-project-info-reports-plugin.version>
-        <versions-maven-plugin.version>2.2</versions-maven-plugin.version>
-        <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
-        <maven-surefire-report-plugin.version>2.18.1</maven-surefire-report-plugin.version>
-        <jacoco-maven-plugin.version>0.7.5.201505241946</jacoco-maven-plugin.version>
+        <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
+        <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
+        <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+        <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
+        <maven-surefire-report-plugin.version>2.22.1</maven-surefire-report-plugin.version>
+        <jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
         <!--  Dependencies [COMPILE]:  -->
-        <httpclient.version>4.4.1</httpclient.version>
-        <httpcore.version>4.4.1</httpcore.version>
+        <httpclient.version>4.5.6</httpclient.version>
+        <httpcore.version>4.4.10</httpcore.version>
         <commons-logging.version>1.2</commons-logging.version>
-        <joda-time.version>2.8</joda-time.version>
-        <commons-lang3.version>3.4</commons-lang3.version>
-        <commons-io.version>2.4</commons-io.version>
+        <joda-time.version>2.10.1</joda-time.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <commons-io.version>2.5</commons-io.version>
+        <jaxws-api.version>2.3.1</jaxws-api.version>
         <!--  Dependencies [TEST]:  -->
         <junit.version>4.12</junit.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
@@ -250,6 +253,12 @@
         </dependency>
 
         <dependency>
+            <groupId>javax.xml.ws</groupId>
+            <artifactId>jaxws-api</artifactId>
+            <version>${jaxws-api.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
@@ -318,7 +327,7 @@
                     <target>${javaLanguage.version}</target>
                 </configuration>
             </plugin>
-            <plugin>
+<!--             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
@@ -334,7 +343,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -348,7 +357,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+            <!-- <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>animal-sniffer-maven-plugin</artifactId>
                 <version>${animal-sniffer-maven-plugin.version}</version>
@@ -368,7 +377,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
 
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -433,7 +442,7 @@
             </plugin>
 
             <!-- Generates the Javadoc for the report. -->
-            <plugin>
+            <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
@@ -441,7 +450,7 @@
                     <linksource>true</linksource>
                     <additionalparam>${javadoc.doclint.param}</additionalparam>
                 </configuration>
-            </plugin>
+            </plugin> -->
 
             <!-- Generates a nice HTML linked source cross-reference. -->
             <plugin>
