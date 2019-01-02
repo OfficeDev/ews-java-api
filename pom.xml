@@ -95,7 +95,7 @@
         <maven-surefire-report-plugin.version>2.18.1</maven-surefire-report-plugin.version>
         <!--  Dependencies [COMPILE]:  -->
         <httpclient.version>4.5.5</httpclient.version>
-        <httpcore.version>4.4.6</httpcore.version>
+        <httpcore.version>4.4.9</httpcore.version>
         <commons-logging.version>1.2</commons-logging.version>
         <joda-time.version>2.8</joda-time.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
