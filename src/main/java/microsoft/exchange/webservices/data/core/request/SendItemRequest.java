@@ -184,7 +184,7 @@ public final class SendItemRequest extends
   }
 
   /**
-   * Gets the item. <value>The item.</value>
+   * Gets the item. 
    *
    * @return the item
    */

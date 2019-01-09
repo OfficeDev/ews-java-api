@@ -42,7 +42,7 @@ public final class MobilePhone implements ISelfValidate {
   private String phoneNumber;
 
   /**
-   * Initializes a new instance of the <see cref="MobilePhone"/> class.
+   * Initializes a new instance of the {@link MobilePhone} class.
    */
   public MobilePhone() {
   }

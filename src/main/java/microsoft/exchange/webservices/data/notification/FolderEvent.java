@@ -67,8 +67,8 @@ public class FolderEvent extends NotificationEvent {
    * Initializes a new instance.
    *
    * @param eventType the event type
-   * @param the       folderId of the folder that this event refers to
-   * @param the       parent folder of the folder this event refers to
+   * @param folderId of the folder that this event refers to
+   * @param parentFolderId of the folder this event refers to
    */
   public FolderEvent(EventType eventType, FolderId folderId, FolderId parentFolderId) {
     super(eventType, null);

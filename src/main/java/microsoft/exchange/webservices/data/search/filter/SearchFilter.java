@@ -1363,10 +1363,10 @@ public abstract class SearchFilter extends ComplexProperty {
     /**
      * Adds a search filter of any type to the collection.
      *
-     * @param searchFilter >The search filter to add. Available search filter classes
-     *                     include SearchFilter.IsEqualTo,
-     *                     SearchFilter.ContainsSubstring and
-     *                     SearchFilter.SearchFilterCollection.
+     * @param searchFilter The search filter to add. Available search filter classes
+     *                     include {@link IsEqualTo},
+     *                     {@link ContainsSubstring} and
+     *                     {@link SearchFilterCollection}
      */
     public void add(SearchFilter searchFilter) {
       if (searchFilter == null) {
@@ -1381,9 +1381,9 @@ public abstract class SearchFilter extends ComplexProperty {
      * Adds multiple search filter to the collection.
      *
      * @param searchFilters The search filter to add. Available search filter classes
-     *                      include SearchFilter.IsEqualTo,
-     *                      SearchFilter.ContainsSubstring and
-     *                      SearchFilter.SearchFilterCollection
+     *                      include {@link IsEqualTo},
+     *                      {@link ContainsSubstring} and
+     *                      {@link SearchFilterCollection}
      */
     public void addRange(Iterable<SearchFilter> searchFilters) {
       if (searchFilters == null) {

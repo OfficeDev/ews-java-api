@@ -91,7 +91,7 @@ public final class NameResolutionCollection implements
   }
 
   /**
-   * Gets the session. <value>The session.</value>
+   * Gets the session.
    *
    * @return the session
    */

@@ -35,7 +35,7 @@ import javax.xml.stream.XMLStreamException;
 
 /**
  * Represents an entry of a DictionaryProperty object.
- * <p/>
+ *
  * All descendants of DictionaryEntryProperty must implement a parameterless
  * constructor. That constructor does not have to be public. That constructor
  * does not have to be public.

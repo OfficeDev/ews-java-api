@@ -132,8 +132,8 @@ public class CreateUserConfigurationRequest extends
   }
 
   /**
-   * Initializes a new instance of the <see
-   * cref="CreateUserConfigurationRequest"/> class.
+   * Initializes a new instance of the {@link CreateUserConfigurationRequest}
+   * class.
    *
    * @param service The service.
    * @throws Exception

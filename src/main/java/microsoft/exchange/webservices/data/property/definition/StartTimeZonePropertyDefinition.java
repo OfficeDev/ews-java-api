@@ -117,8 +117,8 @@ public class StartTimeZonePropertyDefinition extends TimeZonePropertyDefinition 
    *
    * @param flag    The flag.
    * @param version Requested version.
-   * @return <c>true</c> if the specified
-   * flag is set; otherwise, <c>false</c>.
+   * @return <em>true</em> if the specified
+   * flag is set; otherwise, <em>false</em>.
    */
   @Override public boolean hasFlag(PropertyDefinitionFlags flag, ExchangeVersion version) {
     if (version != null && (version == ExchangeVersion.Exchange2007_SP1)) {

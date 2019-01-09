@@ -112,7 +112,7 @@ public abstract class Attachment extends ComplexProperty {
 
   /**
    * Sets value of field.
-   * <p/>
+   *
    * We override the base implementation. Attachments cannot be modified so
    * any attempts the change a property on an existing attachment is an error.
    *

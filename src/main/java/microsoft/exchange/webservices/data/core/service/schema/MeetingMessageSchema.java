@@ -161,7 +161,7 @@ public class MeetingMessageSchema extends EmailMessageSchema {
 
   /**
    * Registers property.
-   * <p/>
+   *
    * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
    * same order as they are defined in types.xsd)
    */

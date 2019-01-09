@@ -54,7 +54,7 @@ public final class FindFoldersResults implements Iterable<Folder> {
   private ArrayList<Folder> folders = new ArrayList<Folder>();
 
   /**
-   * Initializes a new instance of the <see cref="FindFoldersResults"/> class.
+   * Initializes a new instance of the {@link FindFoldersResults} class.
    */
   public FindFoldersResults() {
 

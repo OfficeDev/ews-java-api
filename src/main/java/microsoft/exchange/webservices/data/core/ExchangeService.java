@@ -3056,7 +3056,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    *                            deleted). conversation was last synced (Items received after
    *                            that dateTime will not be copied).
    * @param contextFolderId     The Id of the folder that contains the conversation.
-   * @param isRead              if set to <c>true</c>, conversation item are marked as read;
+   * @param isRead              if set to <em>true</em>, conversation item are marked as read;
    *                            otherwise they are marked as unread.
    * @throws Exception
    */
@@ -3712,7 +3712,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
   // region Constructors
 
   /**
-   * Initializes a new instance of the <see cref="ExchangeService"/> class,
+   * Initializes a new instance of the {@link ExchangeService} class,
    * targeting the specified version of EWS and scoped to the to the system's
    * current time zone.
    */
@@ -3721,7 +3721,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
   }
 
   /**
-   * Initializes a new instance of the <see cref="ExchangeService"/> class,
+   * Initializes a new instance of the {@link ExchangeService} class,
    * targeting the specified version of EWS and scoped to the system's current
    * time zone.
    *
@@ -3732,7 +3732,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
   }
 
   /**
-   * Initializes a new instance of the <see cref="ExchangeService"/> class,
+   * Initializes a new instance of the {@link ExchangeService} class,
    * targeting the specified version of EWS and scoped to the system's current
    * time zone.
    * 
@@ -3941,11 +3941,11 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
   /**
    * Set the flag indicating if the Exchange2007 compatibility mode is enabled.
    *
-   * <remarks>
+   * <p>
    * In order to support E12 servers, the <code>exchange2007CompatibilityMode</code> property,
    * set to true, can be used to indicate that we should use "Exchange2007" as the server version String
    * rather than Exchange2007_SP1.
-   * </remarks>
+   * </p>
    *
    * @param value true if the Exchange2007 compatibility mode is enabled.
    */

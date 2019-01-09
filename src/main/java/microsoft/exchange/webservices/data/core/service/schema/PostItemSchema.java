@@ -106,7 +106,7 @@ public final class PostItemSchema extends ItemSchema {
 
   /**
    * Registers property.
-   * <p/>
+   *
    * IMPORTANT NOTE: PROPERTIES MUST BE REGISTERED IN SCHEMA ORDER (i.e. the
    * same order as they are defined in types.xsd)
    */

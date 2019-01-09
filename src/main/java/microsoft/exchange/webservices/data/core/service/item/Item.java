@@ -83,8 +83,8 @@ public class Item extends ServiceObject {
   private ItemAttachment parentAttachment;
 
   /**
-   * Initializes an unsaved local instance of <see cref="Item"/>. To bind to
-   * an existing item, use Item.Bind() instead.
+   * Initializes an unsaved local instance of {@link Item}. To bind to
+   * an existing item, use {@link Item#bind(ExchangeService, ItemId)} instead.
    *
    * @param service the service
    * @throws Exception the exception

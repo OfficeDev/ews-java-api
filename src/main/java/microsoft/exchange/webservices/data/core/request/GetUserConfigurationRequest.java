@@ -186,7 +186,7 @@ public class GetUserConfigurationRequest extends
   }
 
   /**
-   * Gets  the name. <value>The name.</value>
+   * Gets  the name. 
    *
    * @return the name
    */
@@ -204,7 +204,7 @@ public class GetUserConfigurationRequest extends
   }
 
   /**
-   * Gets  the parent folder Id. <value>The parent folder Id.</value>
+   * Gets  the parent folder Id. 
    *
    * @return the parent folder id
    */
@@ -222,8 +222,7 @@ public class GetUserConfigurationRequest extends
   }
 
   /**
-   * Gets  the user configuration. <value>The user
-   * configuration.</value>
+   * Gets  the user configuration.
    *
    * @return the user configuration
    */

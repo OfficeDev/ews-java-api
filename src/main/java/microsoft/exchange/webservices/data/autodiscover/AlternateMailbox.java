@@ -213,7 +213,7 @@ public final class AlternateMailbox {
   /**
    * Sets the owner SMTP address.
    *
-   * @param ownerSmtpAdress the new owner SMTP address
+   * @param ownerSmtpAddress the new owner SMTP address
    */
   protected void setOwnerSmtpAddress(final String ownerSmtpAddress) {
     this.ownerSmtpAddress = ownerSmtpAddress;

@@ -35,7 +35,7 @@ import microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFo
 public final class FolderIdCollection extends ComplexPropertyCollection<FolderId> {
 
   /**
-   * Initializes a new instance of the <see cref="FolderIdCollection"/> class.
+   * Initializes a new instance of the {@link FolderIdCollection} class.
    */
   protected FolderIdCollection() {
     super();

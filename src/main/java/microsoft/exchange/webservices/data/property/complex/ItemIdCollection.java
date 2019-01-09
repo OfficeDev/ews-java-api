@@ -28,7 +28,7 @@ package microsoft.exchange.webservices.data.property.complex;
  */
 public final class ItemIdCollection extends ComplexPropertyCollection<ItemId> {
   /**
-   * Initializes a new instance of the <see cref="ItemIdCollection"/> class.
+   * Initializes a new instance of the {@link ItemIdCollection} class.
    */
   public ItemIdCollection() {
     super();

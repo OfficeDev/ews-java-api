@@ -170,7 +170,7 @@ public class SyncFolderHierarchyRequest extends
   }
 
   /**
-   * Gets or sets the property set. <value>The property set.</value>
+   * Gets or sets the property set. 
    *
    * @return the property set
    */
@@ -188,7 +188,7 @@ public class SyncFolderHierarchyRequest extends
   }
 
   /**
-   * Gets or sets the property set. <value>The property set.</value>
+   * Gets or sets the property set. 
    *
    * @return the sync folder id
    */
@@ -206,8 +206,7 @@ public class SyncFolderHierarchyRequest extends
   }
 
   /**
-   * Gets or sets the state of the sync. <value>The state of the
-   * sync.</value>
+   * Gets or sets the state of the sync.
    *
    * @return the sync state
    */

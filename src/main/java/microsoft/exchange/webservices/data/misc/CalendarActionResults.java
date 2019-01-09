@@ -74,7 +74,7 @@ public final class CalendarActionResults {
 
   /**
    * Gets the meeting that was accepted, tentatively accepted or declined.
-   * <p/>
+   * <p>
    * When a meeting is accepted or tentatively accepted via an Appointment
    * object, EWS recreates the meeting, and Appointment represents that new
    * version. When a meeting is accepted or tentatively accepted via a
@@ -87,6 +87,7 @@ public final class CalendarActionResults {
    * Appointment represents that meeting. When a meeting is declined via
    * either an Appointment or a MeetingRequest object from the Deleted Items
    * folder, Appointment is null.
+   * </p>
    *
    * @return appointment
    */

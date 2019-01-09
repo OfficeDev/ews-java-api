@@ -137,7 +137,7 @@ public class ItemAttachment extends Attachment implements IServiceObjectChangedD
    * For ItemAttachment, AttachmentId and Item should be patched.
    *
    * @param reader The reader.
-   *               <p/>
+   *              
    *               True if element was read.
    */
   public boolean tryReadElementFromXmlToPatch(EwsServiceXmlReader reader) throws Exception {

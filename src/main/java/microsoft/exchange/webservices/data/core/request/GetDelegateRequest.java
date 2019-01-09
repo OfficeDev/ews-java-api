@@ -140,7 +140,7 @@ public class GetDelegateRequest extends
   }
 
   /**
-   * Gets the user ids. <value>The user ids.</value>
+   * Gets the user ids. 
    *
    * @return the user ids
    */

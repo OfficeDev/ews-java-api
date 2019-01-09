@@ -30,7 +30,7 @@ public abstract class RuleOperation extends ComplexProperty {
   protected String xmlElementName;
 
   /**
-   * Initializes a new instance of the <see cref="RuleOperation"/> class.
+   * Initializes a new instance of the {@link RuleOperation} class.
    */
   protected RuleOperation() {
     super();

@@ -132,7 +132,7 @@ public class UserConfiguration {
   private boolean isNew = false;
 
   /**
-   * Initializes a new instance of <see cref="UserConfiguration"/> class.
+   * Initializes a new instance of {@link UserConfiguration} class.
    *
    * @param service The service to which the user configuration is bound.
    * @throws Exception the exception
@@ -194,7 +194,7 @@ public class UserConfiguration {
   }
 
   /**
-   * Initializes a new instance of <see cref="UserConfiguration"/> class.
+   * Initializes a new instance of {@link UserConfiguration} class.
    *
    * @param service             The service to which the user configuration is bound.
    * @param requestedProperties The property requested for this user configuration.

@@ -43,14 +43,14 @@ public final class PhoneNumberEntry extends DictionaryEntryProperty<PhoneNumberK
   private String phoneNumber;
 
   /**
-   * Initializes a new instance of the "PhoneNumberEntry" class.
+   * Initializes a new instance of the {@link PhoneNumberEntry} class.
    */
   protected PhoneNumberEntry() {
     super(PhoneNumberKey.class);
   }
 
   /**
-   * Initializes a new instance of the <see cref="PhoneNumberEntry"/> class.
+   * Initializes a new instance of the {@link PhoneNumberEntry} class.
    *
    * @param key         The key.
    * @param phoneNumber The phone number.

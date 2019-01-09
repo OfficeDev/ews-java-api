@@ -39,8 +39,8 @@ public final class CreateRuleOperation extends RuleOperation {
   private Rule rule;
 
   /**
-   * Initializes a new instance of the
-   * <see cref="CreateRuleOperation"/> class.
+   * Initializes a new instance of the {@link CreateRuleOperation}
+   * class.
    */
   public CreateRuleOperation() {
     super();
@@ -48,7 +48,7 @@ public final class CreateRuleOperation extends RuleOperation {
 
   /**
    * Initializes a new instance of the
-   * <see cref="CreateRuleOperation"/> class.
+   * {@link CreateRuleOperation} class.
    *
    * @param rule The inbox rule to create.
    */

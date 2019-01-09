@@ -311,7 +311,7 @@ public final class ResolveNamesRequest extends
 
   /**
    * Gets or sets the PropertySet for Contact Data
-   * <p/>
+   *
    * The PropertySet
    */
   public void setContactDataPropertySet(PropertySet propertySet) {
