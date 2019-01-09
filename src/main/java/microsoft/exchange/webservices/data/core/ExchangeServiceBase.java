@@ -148,9 +148,13 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   protected CloseableHttpClient httpClient;
 
+  protected boolean externalHttpClient = false;
+
   protected HttpClientContext httpContext;
 
   protected CloseableHttpClient	httpPoolingClient;
+
+  protected boolean externalHttpPoolingClient = false;
   
   private int maximumPoolingConnections = 10;
 
@@ -176,8 +180,27 @@ public abstract class ExchangeServiceBase implements Closeable {
     initializeHttpContext();
   }
 
+  protected ExchangeServiceBase(CloseableHttpClient httpClient, CloseableHttpClient httpPoolingClient) {
+    setUseDefaultCredentials(true);
+    if (httpClient != null) {
+      externalHttpClient = true;
+      this.httpClient = httpClient;
+    }
+    if (httpPoolingClient != null) {
+      externalHttpPoolingClient = true;
+      this.httpPoolingClient = httpPoolingClient;
+    }
+    initializeHttpContext();
+  }
+
   protected ExchangeServiceBase(ExchangeVersion requestedServerVersion) {
     this();
+    this.requestedServerVersion = requestedServerVersion;
+  }
+
+  protected ExchangeServiceBase(ExchangeVersion requestedServerVersion, CloseableHttpClient httpClient,
+      CloseableHttpClient httpPoolingClient) {
+    this(httpClient, httpPoolingClient);
     this.requestedServerVersion = requestedServerVersion;
   }
 
@@ -195,7 +218,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.httpHeaders = service.getHttpHeaders();
   }
 
-  private void initializeHttpClient() {
+  protected void initializeHttpClient() {
     Registry<ConnectionSocketFactory> registry = createConnectionSocketFactoryRegistry();
     HttpClientConnectionManager httpConnectionManager = new BasicHttpClientConnectionManager(registry);
     AuthenticationStrategy authStrategy = new CookieProcessingTargetAuthenticationStrategy();
@@ -206,7 +229,7 @@ public abstract class ExchangeServiceBase implements Closeable {
       .build();
   }
 
-  private void initializeHttpPoolingClient() {
+  protected void initializeHttpPoolingClient() {
     Registry<ConnectionSocketFactory> registry = createConnectionSocketFactoryRegistry();
     PoolingHttpClientConnectionManager httpConnectionManager = new PoolingHttpClientConnectionManager(registry);
     httpConnectionManager.setMaxTotal(maximumPoolingConnections);
@@ -265,8 +288,12 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   @Override
   public void close() {
-    IOUtils.closeQuietly(httpClient);
-    IOUtils.closeQuietly(httpPoolingClient);
+    if (!externalHttpClient) {
+      IOUtils.closeQuietly(httpClient);
+    }
+    if (!externalHttpPoolingClient) {
+      IOUtils.closeQuietly(httpPoolingClient);
+    }
   }
 
   // Event handlers

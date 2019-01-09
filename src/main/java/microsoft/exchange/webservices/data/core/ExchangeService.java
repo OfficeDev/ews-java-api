@@ -198,6 +198,7 @@ import microsoft.exchange.webservices.data.sync.ItemChange;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -3728,6 +3729,24 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    */
   public ExchangeService(ExchangeVersion requestedServerVersion) {
     super(requestedServerVersion);
+  }
+
+  /**
+   * Initializes a new instance of the <see cref="ExchangeService"/> class,
+   * targeting the specified version of EWS and scoped to the system's current
+   * time zone.
+   * 
+   * Additionally specifies an external HttpClient to use, e.g. one wired up
+   * with a thread-safe pooling http connection factory. It is perfectly
+   * acceptable for both arguments to use the same HttpClient.
+   *
+   * @param requestedServerVersion the requested server version
+   * @param httpClient external HttpClient instance to use
+   * @param httpPoolingClient external HttpClient instance to use for pooling
+   */
+  public ExchangeService(ExchangeVersion requestedServerVersion, CloseableHttpClient httpClient,
+      CloseableHttpClient httpPoolingClient) {
+    super(requestedServerVersion, httpClient, httpPoolingClient);
   }
 
   // Utilities
