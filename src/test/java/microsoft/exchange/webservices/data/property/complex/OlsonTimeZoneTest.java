@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data.property.complex;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
@@ -39,7 +40,15 @@ import microsoft.exchange.webservices.data.util.TimeZoneUtils;
 @RunWith(JUnit4.class)
 public class OlsonTimeZoneTest {
 	
-  private final static Set<String> BROKEN_TZ = Set.of("America/Punta_Arenas", "Europe/Astrakhan", "Europe/Kirov", "Europe/Saratov", "Europe/Ulyanovsk");
+  private final static Set<String> BROKEN_TZ = new HashSet<>();
+
+  static {
+    BROKEN_TZ.add("America/Punta_Arenas");
+    BROKEN_TZ.add("Europe/Astrakhan");
+    BROKEN_TZ.add("Europe/Kirov");
+    BROKEN_TZ.add("Europe/Saratov");
+    BROKEN_TZ.add("Europe/Ulyanovsk");
+  }
 
   @Test
   public void testOlsonTimeZoneConversion() {
