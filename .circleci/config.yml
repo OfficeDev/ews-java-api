@@ -28,9 +28,12 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
-      # build
-      - run: mvn package
-
       # deploy
-      - run: mvn deploy -s .circleci/settings.xml -DskipTests=true -Dcheckstyle.skip=true
+      - run: >
+          if [ "${CIRCLE_BRANCH}" = 'master' ] ; then
+            echo "${MAVEN_CENTRAL_GPG_KEY}" | base64 --decode | gpg --import --no-tty --batch --yes
+            mvn deploy -s .circleci/settings.xml -Dgpg.passphrase="${MAVEN_CENTRAL_GPG_PASSPHRASE}"
+          else
+            mvn package
+          fi
 
