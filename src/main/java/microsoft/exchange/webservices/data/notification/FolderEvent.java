@@ -91,8 +91,8 @@ public class FolderEvent extends NotificationEvent {
 
         reader.read();
 
-        setParentFolderId(new FolderId());
-        getParentFolderId().loadFromXml(reader, reader.getLocalName());
+        setOldParentFolderId(new FolderId());
+        getOldParentFolderId().loadFromXml(reader, reader.getLocalName());
         break;
 
       case Modified:
