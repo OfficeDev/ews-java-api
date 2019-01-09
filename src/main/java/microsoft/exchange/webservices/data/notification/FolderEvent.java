@@ -62,6 +62,19 @@ public class FolderEvent extends NotificationEvent {
   protected FolderEvent(EventType eventType, Date timestamp) {
     super(eventType, timestamp);
   }
+  
+  /**
+   * Initializes a new instance.
+   *
+   * @param eventType the event type
+   * @param the       folderId of the folder that this event refers to
+   * @param the       parent folder of the folder this event refers to
+   */
+  public FolderEvent(EventType eventType, FolderId folderId, FolderId parentFolderId) {
+    super(eventType, null);
+    this.folderId = folderId;
+    setParentFolderId(parentFolderId);
+  }
 
   /**
    * Load from XML.
