@@ -187,7 +187,7 @@ public final class GetEventsResults {
    *
    * @return the subscription id
    */
-  protected String getSubscriptionId() {
+  public String getSubscriptionId() {
     return subscriptionId;
   }
 
@@ -196,7 +196,7 @@ public final class GetEventsResults {
    *
    * @return the previous watermark
    */
-  protected String getPreviousWatermark() {
+  public String getPreviousWatermark() {
     return previousWatermark;
   }
 
@@ -205,7 +205,7 @@ public final class GetEventsResults {
    *
    * @return the new watermark
    */
-  protected String getNewWatermark() {
+  public String getNewWatermark() {
     return newWatermark;
   }
 
@@ -215,7 +215,7 @@ public final class GetEventsResults {
    *
    * @return true, if is more events available
    */
-  protected boolean isMoreEventsAvailable() {
+  public boolean isMoreEventsAvailable() {
     return moreEventsAvailable;
   }
 
