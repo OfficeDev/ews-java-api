@@ -175,9 +175,7 @@ public abstract class ExchangeServiceBase implements Closeable {
    * every other constructor.
    */
   protected ExchangeServiceBase() {
-    setUseDefaultCredentials(true);
-    initializeHttpClient();
-    initializeHttpContext();
+    this((CloseableHttpClient) null, null);
   }
 
   protected ExchangeServiceBase(CloseableHttpClient httpClient, CloseableHttpClient httpPoolingClient) {
@@ -185,6 +183,8 @@ public abstract class ExchangeServiceBase implements Closeable {
     if (httpClient != null) {
       externalHttpClient = true;
       this.httpClient = httpClient;
+    } else {
+      initializeHttpClient();
     }
     if (httpPoolingClient != null) {
       externalHttpPoolingClient = true;
@@ -205,7 +205,9 @@ public abstract class ExchangeServiceBase implements Closeable {
   }
 
   protected ExchangeServiceBase(ExchangeServiceBase service, ExchangeVersion requestedServerVersion) {
-    this(requestedServerVersion);
+    this(requestedServerVersion, service.httpClient, service.httpPoolingClient);
+    this.externalHttpClient = service.externalHttpClient;
+    this.externalHttpPoolingClient = service.externalHttpPoolingClient;
     this.useDefaultCredentials = service.getUseDefaultCredentials();
     this.credentials = service.getCredentials();
     this.traceEnabled = service.isTraceEnabled();
