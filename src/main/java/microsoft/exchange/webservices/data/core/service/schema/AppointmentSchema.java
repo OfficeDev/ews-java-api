@@ -800,7 +800,8 @@ public class AppointmentSchema extends ItemSchema {
   public static final PropertyDefinition ICalUid =
       new StringPropertyDefinition(
           XmlElementNames.Uid, FieldUris.Uid, EnumSet
-          .of(PropertyDefinitionFlags.CanFind),
+          .of(PropertyDefinitionFlags.CanSet,
+          PropertyDefinitionFlags.CanFind),
           ExchangeVersion.Exchange2007_SP1);
 
   // Defines the iCalendar RecurrenceId property.
