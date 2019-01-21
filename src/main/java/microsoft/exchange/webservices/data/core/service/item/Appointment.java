@@ -824,6 +824,19 @@ public class Appointment extends Item implements ICalendarActionProvider {
    * Gets a value indicating what was the last response of the user that
    * loaded this meeting.
    *
+   * @param value the my response type
+   * @throws Exception 
+   */
+  public void setMyResponseType(MeetingResponseType value)
+      throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        AppointmentSchema.MyResponseType, value);
+  }
+
+  /**
+   * Gets a value indicating what was the last response of the user that
+   * loaded this meeting.
+   *
    * @return the my response type
    * @throws ServiceLocalException the service local exception
    */
