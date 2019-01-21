@@ -667,6 +667,11 @@ public class XmlElementNames {
   public static final String IsRecurring = "IsRecurring";
 
   /**
+   * The Constant IsRecurring.
+   */
+  public static final String IsOrganizer = "IsOrganizer";
+
+  /**
    * The Constant MeetingRequestWasSent.
    */
   public static final String MeetingRequestWasSent = "MeetingRequestWasSent";

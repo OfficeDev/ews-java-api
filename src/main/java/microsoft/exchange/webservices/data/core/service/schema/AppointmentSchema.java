@@ -136,6 +136,11 @@ public class AppointmentSchema extends ItemSchema {
     String MyResponseType = "calendar:MyResponseType";
 
     /**
+     * Are we the organiser
+     */
+    String IsOrganizer = "calendar:IsOrganizer";
+
+    /**
      * The Organizer.
      */
     String Organizer = "calendar:Organizer";
@@ -415,6 +420,16 @@ public class AppointmentSchema extends ItemSchema {
   public static final PropertyDefinition IsRecurring =
       new BoolPropertyDefinition(
           XmlElementNames.IsRecurring, FieldUris.IsRecurring, EnumSet
+          .of(PropertyDefinitionFlags.CanFind),
+          ExchangeVersion.Exchange2007_SP1);
+
+  // Defines the IsOrganizer property.
+  /**
+   * The Constant IsOrganizer.
+   */
+  public static final PropertyDefinition IsOrganizer =
+      new BoolPropertyDefinition(
+          XmlElementNames.IsOrganizer, FieldUris.IsOrganizer, EnumSet
           .of(PropertyDefinitionFlags.CanFind),
           ExchangeVersion.Exchange2007_SP1);
 
@@ -884,6 +899,7 @@ public class AppointmentSchema extends ItemSchema {
     this.registerProperty(ICalUid);
     this.registerProperty(ICalRecurrenceId);
     this.registerProperty(ICalDateTimeStamp);
+    this.registerProperty(IsOrganizer);
   }
 
   /**

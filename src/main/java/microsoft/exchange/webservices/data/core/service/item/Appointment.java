@@ -775,6 +775,17 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
+   * Gets a value indicating whether the appointment is recurring.
+   *
+   * @return the checks if is recurring
+   * @throws ServiceLocalException the service local exception
+   */
+  public Boolean getIsOrganizer() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        AppointmentSchema.IsOrganizer);
+  }
+
+  /**
    * Gets a value indicating whether the meeting request has already been
    * sent.
    *
