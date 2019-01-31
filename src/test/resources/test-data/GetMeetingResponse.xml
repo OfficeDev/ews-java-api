@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope
+	xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+	<s:Header>
+		<h:ServerVersionInfo MajorVersion="15"
+			MinorVersion="1" MajorBuildNumber="1591" MinorBuildNumber="10"
+			Version="V2017_07_11"
+			xmlns:h="http://schemas.microsoft.com/exchange/services/2006/types"
+			xmlns="http://schemas.microsoft.com/exchange/services/2006/types"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+	</s:Header>
+	<s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+		<m:GetItemResponse
+			xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+			xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+			<m:ResponseMessages>
+				<m:GetItemResponseMessage
+					ResponseClass="Success">
+					<m:ResponseCode>NoError</m:ResponseCode>
+					<m:Items>
+						<t:MeetingResponse>
+							<t:ItemId
+								Id="AAMkAGI1NDk4ZGY3LWNkYjQtNGU1ZC05YjNlLWI5N2I5NzJlZDJiYQBGAAAAAADO3K8HRAPzQ7ckCuRCxxaLBwAPKhbVptluTr8d74Dnvry0AAAAAAEJAAAPKhbVptluTr8d74Dnvry0AAAQRE2OAAA="
+								ChangeKey="DAAAABYAAAAPKhbVptluTr8d74Dnvry0AAAQRE4/" />
+							<t:ParentFolderId
+								Id="AQMkAGI1NDk4ZGY3LWNkYjQtNGU1ZC05YjNlLWI5N2I5NzJlZDJiYQAuAAADztyvB0QD80O3JArkQscWiwEADyoW1abZbk6/He+A5768tAAAAgEJAAAA"
+								ChangeKey="AQAAAA==" />
+							<t:ItemClass>IPM.Schedule.Meeting.Resp.Tent</t:ItemClass>
+							<t:Subject>New Time Proposed: something 2</t:Subject>
+							<t:Sensitivity>Normal</t:Sensitivity>
+							<t:Body BodyType="HTML" IsTruncated="false">&lt;html&gt;&#xD;
+								&lt;head&gt;&#xD;
+								&lt;meta http-equiv="Content-Type" content="text/html;
+								charset=utf-8"&gt;&#xD;
+								&lt;style type="text/css" style="display:none;"&gt;&lt;!-- P
+								{margin-top:0;margin-bottom:0;} --&gt;&lt;/style&gt;&#xD;
+								&lt;/head&gt;&#xD;
+								&lt;body dir="ltr"&gt;&#xD;
+								&lt;div id="divtagdefaultwrapper"
+								style="font-size:12pt;color:#000000;font-family:Calibri,Helvetica,sans-serif;"
+								dir="ltr"&gt;&#xD;
+								&lt;p&gt;&lt;br&gt;&#xD;
+								&lt;/p&gt;&#xD;
+								&lt;/div&gt;&#xD;
+								&lt;/body&gt;&#xD;
+								&lt;/html&gt;&#xD; </t:Body>
+							<t:DateTimeReceived>2019-01-31T10:40:04Z</t:DateTimeReceived>
+							<t:Size>5220</t:Size>
+							<t:Importance>Normal</t:Importance>
+							<t:IsSubmitted>false</t:IsSubmitted>
+							<t:IsDraft>false</t:IsDraft>
+							<t:IsFromMe>false</t:IsFromMe>
+							<t:IsResend>false</t:IsResend>
+							<t:IsUnmodified>false</t:IsUnmodified>
+							<t:DateTimeSent>2019-01-31T10:40:04Z</t:DateTimeSent>
+							<t:DateTimeCreated>2019-01-31T10:40:04Z</t:DateTimeCreated>
+							<t:ResponseObjects>
+								<t:ReplyToItem />
+								<t:ReplyAllToItem />
+								<t:ForwardItem />
+							</t:ResponseObjects>
+							<t:ReminderDueBy>2019-01-31T10:30:00Z</t:ReminderDueBy>
+							<t:ReminderNextTime>2019-01-31T10:15:00Z</t:ReminderNextTime>
+							<t:DisplayCc />
+							<t:DisplayTo>test user 1</t:DisplayTo>
+							<t:HasAttachments>false</t:HasAttachments>
+							<t:Culture>en-GB</t:Culture>
+							<t:EffectiveRights>
+								<t:CreateAssociated>false</t:CreateAssociated>
+								<t:CreateContents>false</t:CreateContents>
+								<t:CreateHierarchy>false</t:CreateHierarchy>
+								<t:Delete>true</t:Delete>
+								<t:Modify>true</t:Modify>
+								<t:Read>true</t:Read>
+								<t:ViewPrivateItems>true</t:ViewPrivateItems>
+							</t:EffectiveRights>
+							<t:LastModifiedName>test user 2</t:LastModifiedName>
+							<t:LastModifiedTime>2019-01-31T10:40:04Z</t:LastModifiedTime>
+							<t:IsAssociated>false</t:IsAssociated>
+							<t:WebClientReadFormQueryString>?ItemID=AAMkAGI1NDk4ZGY3LWNkYjQtNGU1ZC05YjNlLWI5N2I5NzJlZDJiYQBGAAAAAADO3K8HRAPzQ7ckCuRCxxaLBwAPKhbVptluTr8d74Dnvry0AAAAAAEJAAAPKhbVptluTr8d74Dnvry0AAAQRE2OAAA%3D&amp;exvsurl=1&amp;viewmodel=ReadMessageItem</t:WebClientReadFormQueryString>
+							<t:ConversationId
+								Id="AAQkAGI1NDk4ZGY3LWNkYjQtNGU1ZC05YjNlLWI5N2I5NzJlZDJiYQAQAJMdjkAl+05Dm6qijkqnlSI=" />
+							<t:Flag>
+								<t:FlagStatus>NotFlagged</t:FlagStatus>
+							</t:Flag>
+							<t:InstanceKey>AQAAAAAAAQkBAAAAEERNjgAAAAA=</t:InstanceKey>
+							<t:EntityExtractionResult />
+							<t:Sender>
+								<t:Mailbox>
+									<t:Name>test user 2</t:Name>
+									<t:EmailAddress>testuser2@example.com</t:EmailAddress>
+									<t:RoutingType>SMTP</t:RoutingType>
+									<t:MailboxType>Mailbox</t:MailboxType>
+								</t:Mailbox>
+							</t:Sender>
+							<t:ToRecipients>
+								<t:Mailbox>
+									<t:Name>test user 1</t:Name>
+									<t:EmailAddress>testuser1@example.com</t:EmailAddress>
+									<t:RoutingType>SMTP</t:RoutingType>
+									<t:MailboxType>Mailbox</t:MailboxType>
+								</t:Mailbox>
+							</t:ToRecipients>
+							<t:IsReadReceiptRequested>false</t:IsReadReceiptRequested>
+							<t:ConversationIndex>AdS5T4l4kx2OQCX7TkObqqKOSqeVIgAAcoKp</t:ConversationIndex>
+							<t:ConversationTopic>something 2</t:ConversationTopic>
+							<t:From>
+								<t:Mailbox>
+									<t:Name>test user 2</t:Name>
+									<t:EmailAddress>testuser2@example.com</t:EmailAddress>
+									<t:RoutingType>SMTP</t:RoutingType>
+									<t:MailboxType>Mailbox</t:MailboxType>
+								</t:Mailbox>
+							</t:From>
+							<t:InternetMessageId>&lt;26311bb61ca44b14a9a0cc6da3c20594@example.com&gt;</t:InternetMessageId>
+							<t:IsRead>true</t:IsRead>
+							<t:ReceivedBy>
+								<t:Mailbox>
+									<t:Name>test user 2</t:Name>
+									<t:EmailAddress>testuser2@example.com</t:EmailAddress>
+									<t:RoutingType>SMTP</t:RoutingType>
+									<t:MailboxType>Mailbox</t:MailboxType>
+								</t:Mailbox>
+							</t:ReceivedBy>
+							<t:ReceivedRepresenting>
+								<t:Mailbox>
+									<t:Name>test user 2</t:Name>
+									<t:EmailAddress>testuser2@example.com</t:EmailAddress>
+									<t:RoutingType>SMTP</t:RoutingType>
+									<t:MailboxType>Mailbox</t:MailboxType>
+								</t:Mailbox>
+							</t:ReceivedRepresenting>
+							<t:AssociatedCalendarItemId
+								Id="AAMkAGI1NDk4ZGY3LWNkYjQtNGU1ZC05YjNlLWI5N2I5NzJlZDJiYQBGAAAAAADO3K8HRAPzQ7ckCuRCxxaLBwAPKhbVptluTr8d74Dnvry0AAAAAAENAAAPKhbVptluTr8d74Dnvry0AAAQRDYCAAA="
+								ChangeKey="DwAAABYAAAAPKhbVptluTr8d74Dnvry0AAAQRDZR" />
+							<t:IsDelegated>false</t:IsDelegated>
+							<t:IsOutOfDate>false</t:IsOutOfDate>
+							<t:ResponseType>Tentative</t:ResponseType>
+							<t:UID>040000008200E00074C5B7101A82E00800000000275B68894FB9D4010000000000000000100000003C04B5365B02D34ABCD1016A0AABA716</t:UID>
+							<t:DateTimeStamp>2019-01-31T10:40:04Z</t:DateTimeStamp>
+							<t:IsOrganizer>false</t:IsOrganizer>
+							<t:Start>2019-01-31T10:30:00Z</t:Start>
+							<t:End>2019-01-31T11:30:00Z</t:End>
+							<t:Location>the location</t:Location>
+							<t:CalendarItemType>Single</t:CalendarItemType>
+							<t:ProposedStart>2019-01-31T12:00:00Z</t:ProposedStart>
+							<t:ProposedEnd>2019-01-31T14:30:00Z</t:ProposedEnd>
+						</t:MeetingResponse>
+					</m:Items>
+				</m:GetItemResponseMessage>
+			</m:ResponseMessages>
+		</m:GetItemResponse>
+	</s:Body>
+</s:Envelope>

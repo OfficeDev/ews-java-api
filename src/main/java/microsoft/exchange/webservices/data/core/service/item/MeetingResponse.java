@@ -23,15 +23,23 @@
 
 package microsoft.exchange.webservices.data.core.service.item;
 
+import java.util.Date;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AppointmentType;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.service.schema.MeetingResponseSchema;
+import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.property.complex.ItemAttachment;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import microsoft.exchange.webservices.data.property.complex.recurrence.pattern.Recurrence;
 
 /**
  * Represents a response to a meeting request. Properties available on meeting
@@ -98,6 +106,15 @@ public class MeetingResponse extends MeetingMessage {
   }
 
   /**
+   * Internal method to return the schema associated with this type of object.
+   *
+   * @return The schema associated with this type of object.
+   */
+  @Override public ServiceObjectSchema getSchema() {
+    return MeetingResponseSchema.Instance;
+  }
+
+  /**
    * Gets the minimum required server version.
    *
    * @return Earliest Exchange version in which this service object type is
@@ -105,5 +122,86 @@ public class MeetingResponse extends MeetingMessage {
    */
   @Override public ExchangeVersion getMinimumRequiredServerVersion() {
     return ExchangeVersion.Exchange2007_SP1;
+  }
+
+  // Properties
+
+  /**
+   * Gets the start time of the appointment.
+   *
+   * @return the start
+   * @throws ServiceLocalException the service local exception
+   */
+  public Date getStart() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingResponseSchema.Start);
+  }
+
+  /**
+   * Gets or sets the end time of the appointment.
+   *
+   * @return the end
+   * @throws ServiceLocalException the service local exception
+   */
+  public Date getEnd() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingResponseSchema.End);
+  }
+
+  /**
+   * Gets  the location of this appointment.
+   *
+   * @return the location
+   * @throws ServiceLocalException the service local exception
+   */
+  public String getLocation() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingResponseSchema.Location);
+  }
+
+  /**
+   * Gets the recurrence pattern for this appointment. Available
+   * recurrence pattern classes include Recurrence.DailyPattern,
+   * Recurrence.MonthlyPattern and Recurrence.YearlyPattern.
+   *
+   * @return the recurrence
+   * @throws ServiceLocalException the service local exception
+   */
+  public Recurrence getRecurrence() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingResponseSchema.Recurrence);
+  }
+
+  /**
+   * Gets a value indicating the type of this appointment.
+   *
+   * @return the appointment type
+   * @throws ServiceLocalException the service local exception
+   */
+  public AppointmentType getAppointmentType() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingResponseSchema.AppointmentType);
+  }
+
+  /**
+   * Gets the proposed start time.
+   *
+   * @return the start
+   * @throws ServiceLocalException the service local exception
+   */
+  public Date getProposedStart() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingResponseSchema.ProposedStart);
+  }
+
+  /**
+   * Gets the proposed end time.
+   *
+   * @return the start
+   * @throws ServiceLocalException the service local exception
+   */
+  public Date getProposedEnd() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingResponseSchema.ProposedEnd);
   }
 }

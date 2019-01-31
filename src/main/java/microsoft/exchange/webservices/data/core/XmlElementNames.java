@@ -627,6 +627,16 @@ public class XmlElementNames {
   public static final String End = "End";
 
   /**
+   * The Constant ProposedStart.
+   */
+  public static final String ProposedStart = "ProposedStart";
+
+  /**
+   * The Constant End.
+   */
+  public static final String ProposedEnd = "ProposedEnd";
+
+  /**
    * The Constant OriginalStart.
    */
   public static final String OriginalStart = "OriginalStart";
