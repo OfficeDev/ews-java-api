@@ -9,6 +9,8 @@ import java.io.InputStream;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeService;
@@ -17,6 +19,7 @@ import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AppointmentType;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 
+@RunWith(JUnit4.class)
 public class MeetingResponseTest {
 
 	private static MeetingResponse getInput(String folder, String name) throws Exception {
