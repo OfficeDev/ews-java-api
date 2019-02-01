@@ -28,6 +28,7 @@ import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.service.schema.AppointmentSchema;
 import microsoft.exchange.webservices.data.core.service.schema.MeetingMessageSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.enumeration.attribute.EditorBrowsableState;
@@ -164,6 +165,17 @@ public class MeetingMessage extends EmailMessage {
   public String getICalUid() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
         MeetingMessageSchema.ICalUid);
+  }
+
+  /**
+   * Sets the ICalendar Uid.
+   *
+   * @param value the i cal uid
+   * @throws Exception
+   */
+  public void setICalUid(String value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        AppointmentSchema.ICalUid, value);
   }
 
   /**
