@@ -152,23 +152,23 @@ public class XmlNodeType implements XMLStreamConstants {
    * <code>x.equals(z)</code> should return <code>true</code>.
    * <li>It is <i>consistent</i>: for any non-null reference values
    * <code>x</code> and <code>y</code>, multiple invocations of
-   * <tt>x.equals(y)</tt> consistently return <code>true</code> or
+   * <code>x.equals(y)</code> consistently return <code>true</code> or
    * consistently return <code>false</code>, provided no information used in
    * <code>equals</code> comparisons on the objects is modified.
    * <li>For any non-null reference value <code>x</code>,
    * <code>x.equals(null)</code> should return <code>false</code>.
    * </ul>
    *
-   * The <tt>equals</tt> method for class <code>Object</code> implements the
+   * The <code>equals</code> method for class <code>Object</code> implements the
    * most discriminating possible equivalence relation on objects; that is,
    * for any non-null reference values <code>x</code> and <code>y</code>, this
    * method returns <code>true</code> if and only if <code>x</code> and
    * <code>y</code> refer to the same object (<code>x == y</code> has the
    * value <code>true</code>).
    *
-   * Note that it is generally necessary to override the <tt>hashCode</tt>
+   * Note that it is generally necessary to override the <code>hashCode</code>
    * method whenever this method is overridden, so as to maintain the general
-   * contract for the <tt>hashCode</tt> method, which states that equal
+   * contract for the <code>hashCode</code> method, which states that equal
    * objects must have equal hash codes.
    *
    * @param obj the reference object with which to compare.
@@ -198,27 +198,27 @@ public class XmlNodeType implements XMLStreamConstants {
    * The general contract of <code>hashCode</code> is:
    * <ul>
    * <li>Whenever it is invoked on the same object more than once during an
-   * execution of a Java application, the <tt>hashCode</tt> method must
+   * execution of a Java application, the <code>hashCode</code> method must
    * consistently return the same integer, provided no information used in
-   * <tt>equals</tt> comparisons on the object is modified. This integer need
+   * <code>equals</code> comparisons on the object is modified. This integer need
    * not remain consistent from one execution of an application to another
    * execution of the same application.
-   * <li>If two objects are equal according to the <tt>equals(Object)</tt>
+   * <li>If two objects are equal according to the <code>equals(Object)</code>
    * method, then calling the <code>hashCode</code> method on each of the two
    * objects must produce the same integer result.
    * <li>It is <em>not</em> required that if two objects are unequal according
    * to the {@link Object#equals(Object)} method, then
-   * calling the <tt>hashCode</tt> method on each of the two objects must
+   * calling the <code>hashCode</code> method on each of the two objects must
    * produce distinct integer results. However, the programmer should be aware
    * that producing distinct integer results for unequal objects may improve
    * the performance of hashtables.
    * </ul>
    *
    * As much as is reasonably practical, the hashCode method defined by class
-   * <tt>Object</tt> does return distinct integers for distinct objects. (This
+   * <code>Object</code> does return distinct integers for distinct objects. (This
    * is typically implemented by converting the internal address of the object
    * into an integer, but this implementation technique is not required by the
-   * Java<font size="-2"><sup>TM</sup></font> programming language.)
+   * Java programming language.)
    *
    * @return a hash code value for this object.
    * @see Object#equals(Object)

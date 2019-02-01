@@ -291,23 +291,23 @@ public class StringList extends ComplexProperty implements Iterable<String> {
    * <code>x.equals(z)</code> should return <code>true</code>.
    * <li>It is <i>consistent</i>: for any non-null reference values
    * <code>x</code> and <code>y</code>, multiple invocations of
-   * <tt>x.equals(y)</tt> consistently return <code>true</code> or
+   * <code>x.equals(y)</code> consistently return <code>true</code> or
    * consistently return <code>false</code>, provided no information used in
    * <code>equals</code> comparisons on the objects is modified.
    * <li>For any non-null reference value <code>x</code>,
    * <code>x.equals(null)</code> should return <code>false</code>.
    * </ul>
    *
-   * The <tt>equals</tt> method for class <code>Object</code> implements the
+   * The <code>equals</code> method for class <code>Object</code> implements the
    * most discriminating possible equivalence relation on objects; that is,
    * for any non-null reference values <code>x</code> and <code>y</code>, this
    * method returns <code>true</code> if and only if <code>x</code> and
    * <code>y</code> refer to the same object (<code>x == y</code> has the
    * value <code>true</code>).
    *
-   * Note that it is generally necessary to override the <tt>hashCode</tt>
+   * Note that it is generally necessary to override the <code>hashCode</code>
    * method whenever this method is overridden, so as to maintain the general
-   * contract for the <tt>hashCode</tt> method, which states that equal
+   * contract for the <code>hashCode</code> method, which states that equal
    * objects must have equal hash codes.
    *
    * @param obj the reference object with which to compare.

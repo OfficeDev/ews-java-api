@@ -76,7 +76,7 @@ public class ArgumentException extends IllegalArgumentException {
    * @param message the detail message (which is saved for later retrieval by the {@link
    *                Throwable#getMessage()} method).
    * @param cause   the cause (which is saved for later retrieval by the {@link Throwable#getCause()} method).
-   *                (A <tt>null</tt> value is permitted, and indicates that the cause is nonexistent or
+   *                (A <code>null</code> value is permitted, and indicates that the cause is nonexistent or
    *                unknown.)
    * @since 1.5
    */
@@ -85,13 +85,13 @@ public class ArgumentException extends IllegalArgumentException {
   }
 
   /**
-   * Constructs a new exception with the specified cause and a detail message of <tt>(cause==null ? null :
-   * cause.toString())</tt> (which typically contains the class and detail message of <tt>cause</tt>). This
+   * Constructs a new exception with the specified cause and a detail message of <code>(cause==null ? null :
+   * cause.toString())</code> (which typically contains the class and detail message of <code>cause</code>). This
    * constructor is useful for exceptions that are little more than wrappers for other throwables (for
    * example, {@link PrivilegedActionException}).
    *
    * @param cause the cause (which is saved for later retrieval by the {@link Throwable#getCause()} method).
-   *              (A <tt>null</tt> value is permitted, and indicates that the cause is nonexistent or
+   *              (A <code>null</code> value is permitted, and indicates that the cause is nonexistent or
    *              unknown.)
    * @since 1.5
    */
@@ -100,13 +100,13 @@ public class ArgumentException extends IllegalArgumentException {
   }
 
   /**
-   * Constructs a new exception with the specified cause and a detail message of <tt>(cause==null ? null :
-   * cause.toString())</tt> (which typically contains the class and detail message of <tt>cause</tt>). This
+   * Constructs a new exception with the specified cause and a detail message of <code>(cause==null ? null :
+   * cause.toString())</code> (which typically contains the class and detail message of <code>cause</code>). This
    * constructor is useful for exceptions that are little more than wrappers for other throwables (for
    * example, {@link PrivilegedActionException}).
    *
    * @param cause     the cause (which is saved for later retrieval by the {@link Throwable#getCause()}
-   *                  method). (A <tt>null</tt> value is permitted, and indicates that the cause is
+   *                  method). (A <code>null</code> value is permitted, and indicates that the cause is
    *                  nonexistent or unknown.)
    * @param paramName the Name of the Param that causes the exception
    */
@@ -121,7 +121,7 @@ public class ArgumentException extends IllegalArgumentException {
    *
    * @param message   The error message that explains the reason for the exception.
    * @param cause     the cause (which is saved for later retrieval by the {@link Throwable#getCause()}
-   *                  method). (A <tt>null</tt> value is permitted, and indicates that the cause is
+   *                  method). (A <code>null</code> value is permitted, and indicates that the cause is
    *                  nonexistent or unknown.)
    * @param paramName the Name of the Param that causes the exception
    */
