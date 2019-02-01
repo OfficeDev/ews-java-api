@@ -1,5 +1,5 @@
 # Getting Started with the EWS Java API
-
+ edit
 [![Gitter](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/OfficeDev/ews-java-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![Build Status](https://travis-ci.org/OfficeDev/ews-java-api.svg)](https://travis-ci.org/OfficeDev/ews-java-api) [![codecov.io](https://codecov.io/github/OfficeDev/ews-java-api/coverage.svg?branch=master)](https://codecov.io/github/OfficeDev/ews-java-api?branch=master)
