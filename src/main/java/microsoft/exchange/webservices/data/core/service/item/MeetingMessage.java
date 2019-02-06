@@ -175,7 +175,7 @@ public class MeetingMessage extends EmailMessage {
    */
   public void setICalUid(String value) throws Exception {
     this.getPropertyBag().setObjectFromPropertyDefinition(
-        AppointmentSchema.ICalUid, value);
+        MeetingMessageSchema.ICalUid, value);
   }
 
   /**
