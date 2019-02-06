@@ -23,15 +23,19 @@
 
 package microsoft.exchange.webservices.data.core.service.response;
 
+import java.util.Date;
+
 import microsoft.exchange.webservices.data.attribute.EditorBrowsable;
 import microsoft.exchange.webservices.data.core.service.item.EmailMessage;
 import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.core.service.schema.CalendarResponseObjectSchema;
 import microsoft.exchange.webservices.data.core.service.schema.EmailMessageSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ItemSchema;
+import microsoft.exchange.webservices.data.core.service.schema.MeetingResponseSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.enumeration.attribute.EditorBrowsableState;
 import microsoft.exchange.webservices.data.core.enumeration.property.Sensitivity;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 import microsoft.exchange.webservices.data.property.complex.AttachmentCollection;
 import microsoft.exchange.webservices.data.property.complex.EmailAddress;
 import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;
@@ -215,4 +219,50 @@ public abstract class CalendarResponseMessage<TMessage extends EmailMessage>
     this.getPropertyBag().setObjectFromPropertyDefinition(
         EmailMessageSchema.Sender, value);
   }
+
+  /**
+   * Gets the proposed start time.
+   *
+   * @return the start
+   * @throws ServiceLocalException the service local exception
+   */
+  public Date getProposedStart() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingResponseSchema.ProposedStart);
+  }
+
+  /**
+   * Sets the proposed start time.
+   *
+   * @param value the new start time
+   * @throws Exception the exception
+   */
+  public void setProposedStart(Date value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingResponseSchema.ProposedStart, value);
+  }
+
+  /**
+   * Gets the proposed end time.
+   *
+   * @return the start
+   * @throws ServiceLocalException the service local exception
+   */
+  public Date getProposedEnd() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        MeetingResponseSchema.ProposedEnd);
+  }
+
+
+  /**
+   * Sets the proposed end time.
+   *
+   * @param value the new end time
+   * @throws Exception the exception
+   */
+  public void setProposedEnd(Date value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingResponseSchema.ProposedEnd, value);
+  }
+
 }

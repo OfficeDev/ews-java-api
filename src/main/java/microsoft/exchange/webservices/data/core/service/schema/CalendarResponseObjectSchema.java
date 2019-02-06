@@ -56,5 +56,8 @@ public class CalendarResponseObjectSchema extends ServiceObjectSchema {
     this.registerProperty(EmailMessageSchema.IsReadReceiptRequested);
     this.registerProperty(EmailMessageSchema.IsDeliveryReceiptRequested);
     this.registerProperty(ResponseObjectSchema.ReferenceItemId);
+
+    this.registerProperty(MeetingResponseSchema.ProposedStart);
+    this.registerProperty(MeetingResponseSchema.ProposedEnd);
   }
 }
