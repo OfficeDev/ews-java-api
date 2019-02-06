@@ -352,7 +352,8 @@ public class AppointmentSchema extends ItemSchema {
           PropertyDefinitionFlags.CanSet,
           PropertyDefinitionFlags.CanUpdate,
           PropertyDefinitionFlags.CanFind),
-          ExchangeVersion.Exchange2007_SP1);
+          ExchangeVersion.Exchange2007_SP1,
+          true);
 
   // Defines the LegacyFreeBusyStatus property.
   /**
