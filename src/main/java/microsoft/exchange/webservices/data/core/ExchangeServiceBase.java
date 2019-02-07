@@ -190,7 +190,6 @@ public abstract class ExchangeServiceBase implements Closeable {
       externalHttpPoolingClient = true;
       this.httpPoolingClient = httpPoolingClient;
     }
-    initializeHttpContext();
   }
 
   protected ExchangeServiceBase(ExchangeVersion requestedServerVersion) {
@@ -341,6 +340,10 @@ public abstract class ExchangeServiceBase implements Closeable {
       throw new ServiceLocalException(strErr);
     }
 
+    if (httpContext == null) {
+      initializeHttpContext();
+    }
+
     HttpClientWebRequest request = new HttpClientWebRequest(httpClient, httpContext);
     prepareHttpWebRequestForUrl(url, acceptGzipEncoding, allowAutoRedirect, request);
 
@@ -373,6 +376,10 @@ public abstract class ExchangeServiceBase implements Closeable {
 
     if (httpPoolingClient == null) {
       initializeHttpPoolingClient();
+    }
+
+    if (httpContext == null) {
+      initializeHttpContext();
     }
 
     HttpClientWebRequest request = new HttpClientWebRequest(httpPoolingClient, httpContext);
@@ -664,7 +671,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.useDefaultCredentials = false;
 
     // Reset the httpContext, to remove any existing authentication cookies from subsequent request
-    initializeHttpContext();
+    httpContext = null;
   }
 
   /**
@@ -693,7 +700,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     }
 
     // Reset the httpContext, to remove any existing authentication cookies from subsequent request
-    initializeHttpContext();
+    httpContext = null;
   }
   
   /**
