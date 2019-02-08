@@ -28,7 +28,6 @@ import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.core.service.schema.AppointmentSchema;
 import microsoft.exchange.webservices.data.core.service.schema.MeetingMessageSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.core.enumeration.attribute.EditorBrowsableState;
@@ -154,6 +153,17 @@ public class MeetingMessage extends EmailMessage {
       throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
         MeetingMessageSchema.ResponseType);
+  }
+
+  /**
+   * Sets the response type.
+   *
+   * @param value the response type
+   * @throws Exception
+   */
+  public void setResponseType(MeetingResponseType value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingMessageSchema.ResponseType, value);
   }
 
   /**

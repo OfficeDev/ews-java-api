@@ -124,7 +124,8 @@ public class MeetingMessageSchema extends EmailMessageSchema {
       new GenericPropertyDefinition<MeetingResponseType>(
           MeetingResponseType.class,
           XmlElementNames.ResponseType, FieldUris.ResponseType, EnumSet
-          .of(PropertyDefinitionFlags.CanFind),
+          .of(PropertyDefinitionFlags.CanFind,
+          PropertyDefinitionFlags.CanSet),
           ExchangeVersion.Exchange2007_SP1);
 
   /**

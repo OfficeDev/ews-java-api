@@ -195,6 +195,17 @@ public class MeetingResponse extends MeetingMessage {
   }
 
   /**
+   * Sets the proposed start.
+   *
+   * @param value the proposed start
+   * @throws Exception
+   */
+  public void setProposedStart(Date value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingResponseSchema.ProposedStart, value);
+  }
+
+  /**
    * Gets the proposed end time.
    *
    * @return the start
@@ -204,4 +215,16 @@ public class MeetingResponse extends MeetingMessage {
     return getPropertyBag().getObjectFromPropertyDefinition(
         MeetingResponseSchema.ProposedEnd);
   }
+
+  /**
+   * Sets the proposed end.
+   *
+   * @param value the proposed start
+   * @throws Exception
+   */
+  public void setProposedEnd(Date value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingResponseSchema.ProposedEnd, value);
+  }
+
 }
