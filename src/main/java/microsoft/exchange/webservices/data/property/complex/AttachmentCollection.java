@@ -154,6 +154,19 @@ public final class AttachmentCollection extends ComplexPropertyCollection<Attach
   }
 
   /**
+   * Adds a file attachment to the collection.
+   *
+   * @param name    the name
+   * @param content accepts byte byte arrays representing the content of the
+   *                attachment.
+   * @return FileAttachment
+   */
+  public Attachment addAttachment(Attachment attachment) {
+      this.internalAdd(attachment);
+      return attachment;
+  }
+
+  /**
    * Adds an item attachment to the collection.
    *
    * @param <TItem> the generic type
