@@ -1,0 +1,1 @@
+In the IntelliJ, set the module SDK to `Android API 28 Platform` instead of `1.8` or others
