@@ -31,7 +31,7 @@
     <groupId>com.microsoft.ews-java-api</groupId>
     <artifactId>ews-java-api</artifactId>
     
-    <version>2.1-SNAPSHOT</version>
+    <version>android-1.0</version>
 
     <name>Exchange Web Services Java API</name>
     <description>Exchange Web Services (EWS) Java API</description>
@@ -403,10 +403,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>2.5.2</version>
+                <version>3.0.0-M1</version>
                 <executions>
                     <execution>
-                        <phase>initialize</phase>
+                        <phase>pre-clean</phase>
                         <goals>
                             <goal>install-file</goal>
                         </goals>
