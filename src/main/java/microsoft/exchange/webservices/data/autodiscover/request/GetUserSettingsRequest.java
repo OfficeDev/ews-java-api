@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data.autodiscover.request;
 
+import cz.msebera.android.httpclient.extras.Base64;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
 import microsoft.exchange.webservices.data.autodiscover.response.AutodiscoverResponse;
@@ -217,8 +218,8 @@ public class GetUserSettingsRequest extends AutodiscoverRequest {
       writer
           .writeElementValue(XmlNamespace.Autodiscover,
               XmlElementNames.BinarySecret,
-              new String(org.apache.commons.codec.binary.Base64.
-                  encodeBase64(ExchangeServiceBase.getSessionKey())));
+              new String(Base64.
+                  encode(ExchangeServiceBase.getSessionKey(), 0)));
     }
   }
 

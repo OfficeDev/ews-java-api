@@ -215,9 +215,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
+            <groupId>cz.msebera.android</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
+            <version>4.4.1.1</version>
         </dependency>
         
         <dependency>

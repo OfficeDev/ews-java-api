@@ -23,17 +23,17 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import org.apache.http.Header;
-import org.apache.http.HttpException;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
-import org.apache.http.auth.MalformedChallengeException;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.client.protocol.RequestAddCookies;
-import org.apache.http.client.protocol.ResponseProcessCookies;
-import org.apache.http.impl.client.TargetAuthenticationStrategy;
-import org.apache.http.protocol.HttpContext;
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.HttpException;
+import cz.msebera.android.httpclient.HttpHost;
+import cz.msebera.android.httpclient.HttpRequest;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.auth.MalformedChallengeException;
+import cz.msebera.android.httpclient.client.protocol.HttpClientContext;
+import cz.msebera.android.httpclient.client.protocol.RequestAddCookies;
+import cz.msebera.android.httpclient.client.protocol.ResponseProcessCookies;
+import cz.msebera.android.httpclient.impl.client.TargetAuthenticationStrategy;
+import cz.msebera.android.httpclient.protocol.HttpContext;
 
 import java.io.IOException;
 import java.util.Map;

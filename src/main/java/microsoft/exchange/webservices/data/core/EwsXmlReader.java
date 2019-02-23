@@ -23,11 +23,11 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import cz.msebera.android.httpclient.extras.Base64;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -566,7 +566,7 @@ public class EwsXmlReader {
 
     ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
 
-    buffer = Base64.decodeBase64(this.xmlReader.getElementText().toString());
+    buffer = Base64.decode(this.xmlReader.getElementText(),0);
     byteArrayStream.write(buffer);
 
     return byteArrayStream.toByteArray();
@@ -584,7 +584,7 @@ public class EwsXmlReader {
     this.ensureCurrentNodeIsStartElement();
 
     byte[] buffer = null;
-    buffer = Base64.decodeBase64(this.xmlReader.getElementText().toString());
+    buffer = Base64.decode(this.xmlReader.getElementText(), 0);
     outputStream.write(buffer);
     outputStream.flush();
   }
