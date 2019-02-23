@@ -5,6 +5,7 @@ This version is based on EWS - release 2.0 in github
 
 ### Building JAR
 To build the jar you need to run the `mvn clean` atleast once. This will install the classes repacked library to your local repo. Then you can run `mvn clean install` anytime.
+Then copy the jar to android app.
 
 
 Sources:
