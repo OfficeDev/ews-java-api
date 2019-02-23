@@ -1,4 +1,4 @@
-package com.sathesh;
+package com.sathesh.integration.test;
 
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName;
@@ -46,6 +46,7 @@ public class TestConnection {
         FindItemsResults<Item> findResults = null;
         findResults = service.findItems(WellKnownFolderName.Inbox, view);
 
+        System.out.println("CONNECTION SUCCESSFUL");
         //convert the list of Item to List of VO
         for(Item item : findResults){
             System.out.println("MAIL::" + ++counter);
