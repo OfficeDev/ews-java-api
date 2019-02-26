@@ -768,8 +768,9 @@ public class AppointmentSchema extends ItemSchema {
           FieldUris.AllowNewTimeProposal, EnumSet.of(
           PropertyDefinitionFlags.CanSet,
           PropertyDefinitionFlags.CanUpdate,
-          PropertyDefinitionFlags.CanFind),
-          ExchangeVersion.Exchange2007_SP1);
+          PropertyDefinitionFlags.CanFind,
+          PropertyDefinitionFlags.CanDelete),
+          ExchangeVersion.Exchange2007_SP1, true);
 
   // Defines the IsOnlineMeeting property.
   /**
