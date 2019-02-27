@@ -71,81 +71,11 @@ import microsoft.exchange.webservices.data.core.exception.service.local.ServiceV
 import microsoft.exchange.webservices.data.core.exception.service.remote.AccountIsLockedException;
 import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRemoteException;
 import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceResponseException;
-import microsoft.exchange.webservices.data.core.request.AddDelegateRequest;
-import microsoft.exchange.webservices.data.core.request.ConvertIdRequest;
-import microsoft.exchange.webservices.data.core.request.CopyFolderRequest;
-import microsoft.exchange.webservices.data.core.request.CopyItemRequest;
-import microsoft.exchange.webservices.data.core.request.CreateAttachmentRequest;
-import microsoft.exchange.webservices.data.core.request.CreateFolderRequest;
-import microsoft.exchange.webservices.data.core.request.CreateItemRequest;
-import microsoft.exchange.webservices.data.core.request.CreateResponseObjectRequest;
-import microsoft.exchange.webservices.data.core.request.CreateUserConfigurationRequest;
-import microsoft.exchange.webservices.data.core.request.DeleteAttachmentRequest;
-import microsoft.exchange.webservices.data.core.request.DeleteFolderRequest;
-import microsoft.exchange.webservices.data.core.request.DeleteItemRequest;
-import microsoft.exchange.webservices.data.core.request.DeleteUserConfigurationRequest;
-import microsoft.exchange.webservices.data.core.request.EmptyFolderRequest;
-import microsoft.exchange.webservices.data.core.request.ExecuteDiagnosticMethodRequest;
-import microsoft.exchange.webservices.data.core.request.ExpandGroupRequest;
-import microsoft.exchange.webservices.data.core.request.FindConversationRequest;
-import microsoft.exchange.webservices.data.core.request.FindFolderRequest;
-import microsoft.exchange.webservices.data.core.request.FindItemRequest;
-import microsoft.exchange.webservices.data.core.request.GetAttachmentRequest;
-import microsoft.exchange.webservices.data.core.request.GetDelegateRequest;
-import microsoft.exchange.webservices.data.core.request.GetEventsRequest;
-import microsoft.exchange.webservices.data.core.request.GetFolderRequest;
-import microsoft.exchange.webservices.data.core.request.GetFolderRequestForLoad;
-import microsoft.exchange.webservices.data.core.request.GetInboxRulesRequest;
-import microsoft.exchange.webservices.data.core.request.GetItemRequest;
-import microsoft.exchange.webservices.data.core.request.GetItemRequestForLoad;
-import microsoft.exchange.webservices.data.core.request.GetPasswordExpirationDateRequest;
-import microsoft.exchange.webservices.data.core.request.GetRoomListsRequest;
-import microsoft.exchange.webservices.data.core.request.GetRoomsRequest;
-import microsoft.exchange.webservices.data.core.request.GetServerTimeZonesRequest;
-import microsoft.exchange.webservices.data.core.request.GetUserAvailabilityRequest;
-import microsoft.exchange.webservices.data.core.request.GetUserConfigurationRequest;
-import microsoft.exchange.webservices.data.core.request.GetUserOofSettingsRequest;
-import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
-import microsoft.exchange.webservices.data.core.request.MoveFolderRequest;
-import microsoft.exchange.webservices.data.core.request.MoveItemRequest;
-import microsoft.exchange.webservices.data.core.request.RemoveDelegateRequest;
-import microsoft.exchange.webservices.data.core.request.ResolveNamesRequest;
-import microsoft.exchange.webservices.data.core.request.SendItemRequest;
-import microsoft.exchange.webservices.data.core.request.SetUserOofSettingsRequest;
-import microsoft.exchange.webservices.data.core.request.SubscribeToPullNotificationsRequest;
-import microsoft.exchange.webservices.data.core.request.SubscribeToPushNotificationsRequest;
-import microsoft.exchange.webservices.data.core.request.SubscribeToStreamingNotificationsRequest;
-import microsoft.exchange.webservices.data.core.request.SyncFolderHierarchyRequest;
-import microsoft.exchange.webservices.data.core.request.SyncFolderItemsRequest;
-import microsoft.exchange.webservices.data.core.request.UnsubscribeRequest;
-import microsoft.exchange.webservices.data.core.request.UpdateDelegateRequest;
-import microsoft.exchange.webservices.data.core.request.UpdateFolderRequest;
-import microsoft.exchange.webservices.data.core.request.UpdateInboxRulesRequest;
-import microsoft.exchange.webservices.data.core.request.UpdateItemRequest;
-import microsoft.exchange.webservices.data.core.request.UpdateUserConfigurationRequest;
-import microsoft.exchange.webservices.data.core.response.ConvertIdResponse;
-import microsoft.exchange.webservices.data.core.response.CreateAttachmentResponse;
-import microsoft.exchange.webservices.data.core.response.CreateResponseObjectResponse;
-import microsoft.exchange.webservices.data.core.response.DelegateManagementResponse;
-import microsoft.exchange.webservices.data.core.response.DelegateUserResponse;
-import microsoft.exchange.webservices.data.core.response.DeleteAttachmentResponse;
-import microsoft.exchange.webservices.data.core.response.FindFolderResponse;
-import microsoft.exchange.webservices.data.core.response.FindItemResponse;
-import microsoft.exchange.webservices.data.core.response.GetAttachmentResponse;
-import microsoft.exchange.webservices.data.core.response.GetDelegateResponse;
-import microsoft.exchange.webservices.data.core.response.GetFolderResponse;
-import microsoft.exchange.webservices.data.core.response.GetItemResponse;
-import microsoft.exchange.webservices.data.core.response.GetServerTimeZonesResponse;
-import microsoft.exchange.webservices.data.core.response.MoveCopyFolderResponse;
-import microsoft.exchange.webservices.data.core.response.MoveCopyItemResponse;
-import microsoft.exchange.webservices.data.core.response.ServiceResponse;
-import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
-import microsoft.exchange.webservices.data.core.response.UpdateItemResponse;
+import microsoft.exchange.webservices.data.core.request.*;
+import microsoft.exchange.webservices.data.core.response.*;
 import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.service.folder.Folder;
-import microsoft.exchange.webservices.data.core.service.item.Appointment;
-import microsoft.exchange.webservices.data.core.service.item.Conversation;
-import microsoft.exchange.webservices.data.core.service.item.Item;
+import microsoft.exchange.webservices.data.core.service.item.*;
 import microsoft.exchange.webservices.data.messaging.UnifiedMessaging;
 import microsoft.exchange.webservices.data.misc.AsyncCallback;
 import microsoft.exchange.webservices.data.misc.AsyncRequestResult;
@@ -3069,6 +2999,46 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
         ServiceErrorHandling.ReturnErrors);
   }
 
+  private ServiceResponseCollection<ExportItemsResponse> internalExportItems(
+          Iterable<ItemId> itemIds, ServiceErrorHandling errorHandling) throws Exception {
+    ExportItemsRequest request = new ExportItemsRequest(this, errorHandling);
+    request.getItemIds().addRange(itemIds);
+    return request.execute();
+  }
+
+  public ExportItemsResponse exportItem(ItemId itemId) throws Exception {
+    EwsUtilities.validateParam(itemId, "itemId");
+    ServiceResponseCollection<ExportItemsResponse> responses = internalExportItems(Arrays.asList(itemId),
+            ServiceErrorHandling.ThrowOnError);
+    return responses.getResponseAtIndex(0);
+  }
+
+  public ServiceResponseCollection<ExportItemsResponse> exportItems(
+          Iterable<ItemId> itemIds) throws Exception {
+    EwsUtilities.validateParamCollection(itemIds.iterator(), "itemIds");
+    return this.internalExportItems(itemIds,
+            ServiceErrorHandling.ReturnErrors);
+  }
+
+  private ServiceResponseCollection<UploadItemsResponse> internalUploadItems(
+          List<UploadItem> items, ServiceErrorHandling errorHandling) throws Exception {
+    UploadItemsRequest request = new UploadItemsRequest(this, errorHandling);
+    request.setItems(items);
+    return request.execute();
+  }
+
+  public UploadItemsResponse uploadItem(UploadItem item) throws Exception {
+    EwsUtilities.validateParam(item, "item");
+    ServiceResponseCollection<UploadItemsResponse> responses = internalUploadItems(Arrays.asList(item),
+            ServiceErrorHandling.ThrowOnError);
+    return responses.getResponseAtIndex(0);
+  }
+
+	public ServiceResponseCollection<UploadItemsResponse> uploadItems(
+          List<UploadItem> items) throws Exception {
+		return this.internalUploadItems(items,
+				ServiceErrorHandling.ReturnErrors);
+	}
   // Id conversion operations
 
   /**
