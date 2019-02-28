@@ -892,6 +892,8 @@ public class XmlElementNames {
    */
   public static final String DailyRegeneration = "DailyRegeneration";
 
+  public static final String Data = "Data";
+
   /**
    * The Constant WeeklyRegeneration.
    */
@@ -3995,6 +3997,22 @@ public class XmlElementNames {
    */
   public static final String DeleteItemResponseMessage =
       "DeleteItemResponseMessage";
+
+  // ExportItems
+  public static final String ExportItems = "ExportItems";
+
+  public static final String ExportItemsResponse = "ExportItemsResponse";
+
+  public static final String ExportItemsResponseMessage =
+      "ExportItemsResponseMessage";
+
+  // ExportItems
+  public static final String UploadItems = "UploadItems";
+
+  public static final String UploadItemsResponse = "UploadItemsResponse";
+
+  public static final String UploadItemsResponseMessage =
+      "UploadItemsResponseMessage";
 
   // UpdateItem
   /**
