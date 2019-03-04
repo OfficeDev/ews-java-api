@@ -3010,7 +3010,9 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
     EwsUtilities.validateParam(itemId, "itemId");
     ServiceResponseCollection<ExportItemsResponse> responses = internalExportItems(Arrays.asList(itemId),
             ServiceErrorHandling.ThrowOnError);
-    return responses.getResponseAtIndex(0);
+    ExportItemsResponse response = responses.getResponseAtIndex(0);
+    response.throwIfNecessary();
+    return response;
   }
 
   public ServiceResponseCollection<ExportItemsResponse> exportItems(
@@ -3031,14 +3033,16 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
     EwsUtilities.validateParam(item, "item");
     ServiceResponseCollection<UploadItemsResponse> responses = internalUploadItems(Arrays.asList(item),
             ServiceErrorHandling.ThrowOnError);
-    return responses.getResponseAtIndex(0);
+    UploadItemsResponse response = responses.getResponseAtIndex(0);
+    response.throwIfNecessary();
+    return response;
   }
 
-	public ServiceResponseCollection<UploadItemsResponse> uploadItems(
-          List<UploadItem> items) throws Exception {
-		return this.internalUploadItems(items,
-				ServiceErrorHandling.ReturnErrors);
-	}
+  public ServiceResponseCollection<UploadItemsResponse> uploadItems(
+        List<UploadItem> items) throws Exception {
+    return this.internalUploadItems(items,
+            ServiceErrorHandling.ReturnErrors);
+  }
   // Id conversion operations
 
   /**
