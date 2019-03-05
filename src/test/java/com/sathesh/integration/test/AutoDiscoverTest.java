@@ -2,6 +2,7 @@ package com.sathesh.integration.test;
 
 import microsoft.exchange.webservices.data.autodiscover.IAutodiscoverRedirectionUrl;
 import microsoft.exchange.webservices.data.core.ExchangeService;
+import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
 import microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName;
 import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.search.FindItemsResults;
@@ -9,6 +10,7 @@ import microsoft.exchange.webservices.data.search.ItemView;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.EnumSet;
 import java.util.Properties;
 
 /**
@@ -31,6 +33,9 @@ public class AutoDiscoverTest {
 
     private static ExchangeService initConnection(String username, String pwd, String email) throws Exception {
         ExchangeService service = new ExchangeService();
+        service.setTraceEnabled(true);
+        EnumSet<TraceFlags> traceFlags = EnumSet.of(TraceFlags.AutodiscoverRequest, TraceFlags.EwsRequest, TraceFlags.EwsResponse, TraceFlags.AutodiscoverResponse);
+        service.setTraceFlags(traceFlags);
 //        ExchangeCredentials credentials = new WebCredentials(username, pwd);
 //        service.setCredentials(credentials);
         service.autodiscoverUrl(email, new RedirectionUrlCallback());
