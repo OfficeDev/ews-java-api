@@ -24,13 +24,8 @@
 package microsoft.exchange.webservices.data.core.response;
 
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
-import microsoft.exchange.webservices.data.core.enumeration.service.ServiceResult;
-import microsoft.exchange.webservices.data.core.service.ServiceObject;
-import microsoft.exchange.webservices.data.core.service.item.Item;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 
 public final class ExportItemsResponse extends ServiceResponse {
@@ -48,6 +43,7 @@ public final class ExportItemsResponse extends ServiceResponse {
     itemId = new ItemId();
     itemId.setNamespace(XmlNamespace.Messages);
     itemId.loadFromXml(reader, XmlElementNames.ItemId);
+    itemId.setNamespace(XmlNamespace.Types);
 
     reader.readStartElement(XmlNamespace.Messages, XmlElementNames.Data);
     data = reader.readBase64ElementValue();

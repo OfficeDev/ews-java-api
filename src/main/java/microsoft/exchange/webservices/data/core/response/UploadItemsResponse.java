@@ -1,8 +1,9 @@
 package microsoft.exchange.webservices.data.core.response;
 
-import microsoft.exchange.webservices.data.core.*;
-import microsoft.exchange.webservices.data.core.enumeration.misc.*;
-import microsoft.exchange.webservices.data.property.complex.*;
+import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
+import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
+import microsoft.exchange.webservices.data.property.complex.ItemId;
 
 public class UploadItemsResponse extends ServiceResponse {
 
@@ -17,6 +18,7 @@ public class UploadItemsResponse extends ServiceResponse {
     itemId = new ItemId();
     itemId.setNamespace(XmlNamespace.Messages);
     itemId.loadFromXml(reader, XmlElementNames.ItemId);
+    itemId.setNamespace(XmlNamespace.Types);
   }
 
   public ItemId getItemId() {
