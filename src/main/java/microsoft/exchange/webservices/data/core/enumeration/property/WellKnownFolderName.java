@@ -42,6 +42,12 @@ public enum WellKnownFolderName {
    */
   Contacts,
 
+  // The ExternalContacts folder.
+  /**
+   * The External Contacts.
+   */
+  ExternalContacts,
+
   // The Deleted Items folder
   /**
    * The Deleted item.
