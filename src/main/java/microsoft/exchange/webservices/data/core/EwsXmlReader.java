@@ -561,16 +561,7 @@ public class EwsXmlReader {
       throws ServiceXmlDeserializationException, XMLStreamException,
       IOException {
     this.ensureCurrentNodeIsStartElement();
-
-    byte[] buffer = null;
-
-    ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
-
-    buffer = Base64.decodeBase64(this.xmlReader.getElementText().toString());
-    byteArrayStream.write(buffer);
-
-    return byteArrayStream.toByteArray();
-
+    return Base64.decodeBase64(this.xmlReader.getElementText());
   }
 
   /**
@@ -583,8 +574,7 @@ public class EwsXmlReader {
       throws Exception {
     this.ensureCurrentNodeIsStartElement();
 
-    byte[] buffer = null;
-    buffer = Base64.decodeBase64(this.xmlReader.getElementText().toString());
+    byte[] buffer = Base64.decodeBase64(this.xmlReader.getElementText());
     outputStream.write(buffer);
     outputStream.flush();
   }
