@@ -23,42 +23,22 @@
 
 package microsoft.exchange.webservices.data.core.request;
 
-import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
-import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
-import microsoft.exchange.webservices.data.core.EwsUtilities;
-import microsoft.exchange.webservices.data.core.ExchangeServerInfo;
-import microsoft.exchange.webservices.data.core.ExchangeService;
-import microsoft.exchange.webservices.data.core.XmlAttributeNames;
-import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.core.response.ServiceResponse;
-import microsoft.exchange.webservices.data.core.enumeration.misc.DateTimePrecision;
-import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
-import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
-import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
-import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
-import microsoft.exchange.webservices.data.core.exception.http.HttpErrorException;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
-import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceRequestException;
-import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceResponseException;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceVersionException;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
-import microsoft.exchange.webservices.data.core.exception.xml.XmlException;
-import microsoft.exchange.webservices.data.misc.SoapFaultDetails;
-import microsoft.exchange.webservices.data.security.XmlNodeType;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import microsoft.exchange.webservices.data.core.*;
+import microsoft.exchange.webservices.data.core.enumeration.misc.*;
+import microsoft.exchange.webservices.data.core.exception.http.*;
+import microsoft.exchange.webservices.data.core.exception.service.local.*;
+import microsoft.exchange.webservices.data.core.exception.service.remote.*;
+import microsoft.exchange.webservices.data.core.exception.xml.*;
+import microsoft.exchange.webservices.data.core.response.*;
+import microsoft.exchange.webservices.data.misc.*;
+import microsoft.exchange.webservices.data.security.*;
+import org.apache.commons.io.*;
+import org.apache.commons.logging.*;
 
-import javax.xml.stream.XMLStreamException;
-import javax.xml.ws.http.HTTPException;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.InflaterInputStream;
+import javax.xml.stream.*;
+import javax.xml.ws.http.*;
+import java.io.*;
+import java.util.zip.*;
 
 /**
  * Represents an abstract service request.
@@ -719,18 +699,23 @@ public abstract class ServiceRequestBase<T> {
    */
   protected HttpWebRequest getEwsHttpWebResponse(HttpWebRequest request) throws Exception {
     try {
+      service.traceServiceRequestStart(this, request);
       request.executeRequest();
 
       if (request.getResponseCode() >= 400) {
-        throw new HttpErrorException(
-            "The remote server returned an error: (" + request.getResponseCode() + ")" +
-            request.getResponseText(), request.getResponseCode());
+        HttpErrorException e = new HttpErrorException(
+          "The remote server returned an error: (" + request.getResponseCode() + ")" +
+                request.getResponseText(), request.getResponseCode());
+        service.traceServiceRequestError(this, request, e);
+		    throw e;
       }
     } catch (IOException e) {
       // Wrap exception.
+      service.traceServiceRequestError(this, request, e);
       throw new ServiceRequestException(String.format("The request failed. %s", e.getMessage()), e);
     }
 
+    service.traceServiceRequestSuccess(this, request);
     return request;
   }
 
