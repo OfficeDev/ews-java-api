@@ -23,55 +23,31 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import java.io.ByteArrayOutputStream;
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.security.GeneralSecurityException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.TimeZone;
-
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
-
-import microsoft.exchange.webservices.data.EWSConstants;
-import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
-import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
-import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
-import microsoft.exchange.webservices.data.core.exception.service.remote.AccountIsLockedException;
-import microsoft.exchange.webservices.data.core.request.HttpClientWebRequest;
-import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
-import microsoft.exchange.webservices.data.credential.ExchangeCredentials;
-import microsoft.exchange.webservices.data.misc.EwsTraceListener;
-import microsoft.exchange.webservices.data.misc.ITraceListener;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.http.client.AuthenticationStrategy;
+import microsoft.exchange.webservices.data.*;
+import microsoft.exchange.webservices.data.core.enumeration.misc.*;
+import microsoft.exchange.webservices.data.core.exception.http.*;
+import microsoft.exchange.webservices.data.core.exception.service.local.*;
+import microsoft.exchange.webservices.data.core.exception.service.remote.*;
+import microsoft.exchange.webservices.data.core.request.*;
+import microsoft.exchange.webservices.data.credential.*;
+import microsoft.exchange.webservices.data.misc.*;
+import org.apache.commons.io.*;
+import org.apache.commons.logging.*;
 import org.apache.http.client.CookieStore;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.config.Registry;
-import org.apache.http.config.RegistryBuilder;
-import org.apache.http.conn.HttpClientConnectionManager;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.client.*;
+import org.apache.http.client.protocol.*;
+import org.apache.http.config.*;
+import org.apache.http.conn.*;
+import org.apache.http.conn.socket.*;
+import org.apache.http.impl.client.*;
+import org.apache.http.impl.conn.*;
+
+import javax.xml.stream.*;
+import java.io.*;
+import java.net.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
 
 /**
  * Represents an abstract binding to an Exchange Service.
@@ -167,6 +143,8 @@ public abstract class ExchangeServiceBase implements Closeable {
    * Default UserAgent.
    */
   private static String defaultUserAgent = "ExchangeServicesClient/" + EwsUtilities.getBuildVersion();
+
+  private ServiceRequestTraceListener serviceRequestTraceListener;
 
   /**
    * Initializes a new instance.
@@ -650,6 +628,10 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.traceEnabled = (traceListener != null);
   }
 
+  public void setServiceRequestTracer(ServiceRequestTraceListener serviceRequestTraceListener) {
+    this.serviceRequestTraceListener = serviceRequestTraceListener;
+  }
+
   /**
    * Gets the credential used to authenticate with the Exchange Web Services.
    *
@@ -928,5 +910,26 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   public int getMaximumPoolingConnections() {
     return maximumPoolingConnections;
+  }
+
+  public <T> void traceServiceRequestStart(ServiceRequestBase<T> serviceRequest, HttpWebRequest request) {
+    if (serviceRequestTraceListener == null) {
+      return;
+    }
+    serviceRequestTraceListener.requestStart(serviceRequest, request);
+  }
+
+  public <T> void traceServiceRequestError(ServiceRequestBase<T> serviceRequest, HttpWebRequest request, Exception e) {
+    if (serviceRequestTraceListener == null) {
+      return;
+    }
+    serviceRequestTraceListener.requestError(serviceRequest, request, e);
+  }
+
+  public <T> void traceServiceRequestSuccess(ServiceRequestBase<T> serviceRequest, HttpWebRequest request) {
+    if (serviceRequestTraceListener == null) {
+      return;
+    }
+    serviceRequestTraceListener.requestFinish(serviceRequest, request);
   }
 }
