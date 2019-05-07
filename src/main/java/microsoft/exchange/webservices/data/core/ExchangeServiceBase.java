@@ -134,6 +134,7 @@ public abstract class ExchangeServiceBase implements Closeable {
   
   private int maximumPoolingConnections = 10;
 
+  private boolean useGlobalCookieStore = false;
 
 //  protected HttpClientWebRequest request = null;
 
@@ -260,9 +261,11 @@ public abstract class ExchangeServiceBase implements Closeable {
    * cookie store, instead of the httpClient's global store, so cookies get reset on reinitialization
    */
   private void initializeHttpContext() {
-    CookieStore cookieStore = new BasicCookieStore();
     httpContext = HttpClientContext.create();
-    httpContext.setCookieStore(cookieStore);
+    if (!useGlobalCookieStore) {
+      CookieStore cookieStore = new BasicCookieStore();
+      httpContext.setCookieStore(cookieStore);
+    }
   }
 
   @Override
@@ -817,6 +820,14 @@ public abstract class ExchangeServiceBase implements Closeable {
    */
   public void setWebProxy(WebProxy value) {
     this.webProxy = value;
+  }
+
+  public boolean isUseGlobalCookieStore() {
+    return useGlobalCookieStore;
+  }
+
+  public void setUseGlobalCookieStore(boolean useGlobalCookieStore) {
+    this.useGlobalCookieStore = useGlobalCookieStore;
   }
 
   /**
