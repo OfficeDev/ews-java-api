@@ -878,4 +878,8 @@ public class PropertyBag implements IComplexPropertyChanged, IComplexPropertyCha
   public void complexPropertyChanged(ComplexProperty complexProperty) {
     this.propertyChanged(complexProperty);
   }
+
+  public void setLoading(boolean loading) {
+    this.loading = loading;
+  }
 }

@@ -93,6 +93,10 @@ public class Item extends ServiceObject {
     super(service);
   }
 
+  public Item(ExchangeService service, ItemId itemId) throws Exception {
+    super(service, itemId);
+  }
+
   /**
    * Initializes a new instance of the item class.
    *
@@ -173,6 +177,7 @@ public class Item extends ServiceObject {
    *
    * @return A PropertyDefinition instance.
    */
+  @Override
   public PropertyDefinition getIdPropertyDefinition() {
     return ItemSchema.Id;
   }
@@ -514,6 +519,7 @@ public class Item extends ServiceObject {
    * @return true if a time zone SOAP header should be emitted;
    * otherwise,false
    */
+  @Override
   public boolean getIsTimeZoneHeaderRequired(boolean isUpdateOperation)
       throws Exception {
     // Starting E14SP2, attachment will be sent along with CreateItem
@@ -588,6 +594,7 @@ public class Item extends ServiceObject {
    * @return the id
    * @throws ServiceLocalException the service local exception
    */
+  @Override
   public ItemId getId() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
         getIdPropertyDefinition());
