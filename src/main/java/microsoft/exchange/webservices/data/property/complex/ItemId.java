@@ -58,6 +58,10 @@ public class ItemId extends ServiceId {
     super(uniqueId);
   }
 
+  public ItemId(String uniqueId, String changeKey) throws Exception {
+    super(uniqueId, changeKey);
+  }
+
   /**
    * Gets the name of the XML element.
    *

@@ -232,6 +232,13 @@ public abstract class ServiceObject {
     this.propertyBag = new PropertyBag(this);
   }
 
+  protected ServiceObject(ExchangeService service, ServiceId serviceId) throws Exception {
+    this(service);
+    propertyBag.setLoading(true);
+    propertyBag.setObjectFromPropertyDefinition(getIdPropertyDefinition(), serviceId);
+    propertyBag.setLoading(false);
+  }
+
   /**
    * Gets the schema associated with this type of object.
    *

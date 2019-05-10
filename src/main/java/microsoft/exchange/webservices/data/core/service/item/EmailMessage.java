@@ -68,6 +68,10 @@ public class EmailMessage extends Item {
     super(service);
   }
 
+  public EmailMessage(ExchangeService service, ItemId itemId) throws Exception {
+    super(service, itemId);
+  }
+
   /**
    * Initializes a new instance of the "EmailMessage" class.
    *
@@ -398,6 +402,7 @@ public class EmailMessage extends Item {
    * @return the checks if is associated
    * @throws ServiceLocalException the service local exception
    */
+  @Override
   public boolean getIsAssociated() throws ServiceLocalException {
     return super.getIsAssociated();
   }
