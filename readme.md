@@ -2,7 +2,7 @@
 
 [![Gitter](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/OfficeDev/ews-java-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[![CircleCI](https://circleci.com/gh/surevine/ews-java-api.svg?style=svg)](https://circleci.com/gh/surevine/ews-java-api) ![Maven Central](https://img.shields.io/maven-central/v/com.surevine/ews-java-api.svg) [![codecov.io](https://codecov.io/github/surevine/ews-java-api/coverage.svg?branch=master)](https://codecov.io/github/surevine/ews-java-api?branch=master)
+![CircleCI branch](https://img.shields.io/circleci/project/github/surevine/ews-java-api/master.svg) ![Maven Central](https://img.shields.io/maven-central/v/com.surevine/ews-java-api.svg) [![codecov.io](https://codecov.io/github/surevine/ews-java-api/coverage.svg?branch=master)](https://codecov.io/github/surevine/ews-java-api?branch=master)
 
 The Exchange Web Services (EWS) Java API provides a managed interface for developing Java applications that use EWS.
 By using the EWS Java API, you can access almost all the information stored in an Office 365, Exchange Online, or Exchange Server mailbox. However, this API is in sustaining mode, the recommended access pattern for Office 365 and Exchange online data is [Microsoft Graph](https://graph.microsoft.com)
