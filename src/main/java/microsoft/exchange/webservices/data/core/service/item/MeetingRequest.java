@@ -27,17 +27,17 @@ import microsoft.exchange.webservices.data.attribute.ServiceObjectDefinition;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.property.LegacyFreeBusyStatus;
+import microsoft.exchange.webservices.data.core.enumeration.property.MeetingResponseType;
+import microsoft.exchange.webservices.data.core.enumeration.service.MeetingRequestType;
+import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AppointmentType;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 import microsoft.exchange.webservices.data.core.service.response.AcceptMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.core.service.response.DeclineMeetingInvitationMessage;
 import microsoft.exchange.webservices.data.core.service.schema.AppointmentSchema;
 import microsoft.exchange.webservices.data.core.service.schema.MeetingRequestSchema;
 import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
-import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AppointmentType;
-import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
-import microsoft.exchange.webservices.data.core.enumeration.property.LegacyFreeBusyStatus;
-import microsoft.exchange.webservices.data.core.enumeration.service.MeetingRequestType;
-import microsoft.exchange.webservices.data.core.enumeration.property.MeetingResponseType;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 import microsoft.exchange.webservices.data.misc.CalendarActionResults;
 import microsoft.exchange.webservices.data.misc.TimeSpan;
 import microsoft.exchange.webservices.data.property.complex.AttendeeCollection;
@@ -67,7 +67,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Initializes a new instance of the class.
-   *
    * @param parentAttachment The parent attachment
    * @throws Exception throws Exception
    */
@@ -77,7 +76,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Initializes a new instance of the class.
-   *
    * @param service EWS service to which this object belongs.
    * @throws Exception throws Exception
    */
@@ -88,9 +86,8 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Binds to an existing meeting response and loads the specified set of
    * property. Calling this method results in a call to EWS.
-   *
-   * @param service     The service to use to bind to the meeting request.
-   * @param id          The Id of the meeting request to bind to.
+   * @param service The service to use to bind to the meeting request.
+   * @param id The Id of the meeting request to bind to.
    * @param propertySet The set of property to load.
    * @return A MeetingResponse instance representing the meeting request
    * corresponding to the specified Id.
@@ -100,7 +97,8 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
     try {
       return service.bindToItem(MeetingRequest.class, id, propertySet);
     } catch (Exception e) {
-      LOG.error(e);
+      LOG.warn(String.format("The item %s is not a meeting request", id.getUniqueId()));
+      LOG.debug(e);
       return null;
     }
   }
@@ -108,9 +106,8 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Binds to an existing meeting response and loads the specified set of
    * property. Calling this method results in a call to EWS.
-   *
    * @param service The service to use to bind to the meeting request.
-   * @param id      The Id of the meeting request to bind to.
+   * @param id The Id of the meeting request to bind to.
    * @return A MeetingResponse instance representing the meeting request
    * corresponding to the specified Id.
    */
@@ -121,27 +118,26 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Internal method to return the schema associated with this type of object.
-   *
    * @return The schema associated with this type of object.
    */
-  @Override public ServiceObjectSchema getSchema() {
+  @Override
+  public ServiceObjectSchema getSchema() {
     return MeetingRequestSchema.Instance;
   }
 
   /**
    * Gets the minimum required server version.
-   *
    * @return Earliest Exchange version in which this service object type is
    * supported.
    */
-  @Override public ExchangeVersion getMinimumRequiredServerVersion() {
+  @Override
+  public ExchangeVersion getMinimumRequiredServerVersion() {
     return ExchangeVersion.Exchange2007_SP1;
   }
 
   /**
    * Creates a local meeting acceptance message that can be customized and
    * sent.
-   *
    * @param tentative Specifies whether the meeting will be tentatively accepted.
    * @return An AcceptMeetingInvitationMessage representing the meeting
    * acceptance message.
@@ -159,7 +155,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Creates a local meeting declination message that can be customized and
    * sent.
-   *
    * @return A DeclineMeetingInvitation representing the meeting declination
    * message.
    */
@@ -174,7 +169,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Accepts the meeting. Calling this method results in a call to EWS.
-   *
    * @param sendResponse Indicates whether to send a response to the organizer.
    * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
@@ -187,7 +181,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Tentatively accepts the meeting. Calling this method results in a call to
    * EWS.
-   *
    * @param sendResponse Indicates whether to send a response to the organizer.
    * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
@@ -200,8 +193,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Accepts the meeting.
-   *
-   * @param tentative    True if tentative accept.
+   * @param tentative True if tentative accept.
    * @param sendResponse Indicates whether to send a response to the organizer.
    * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
@@ -223,7 +215,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Declines the meeting invitation. Calling this method results in a call to
    * EWS.
-   *
    * @param sendResponse Indicates whether to send a response to the organizer.
    * @return A CalendarActionResults object containing the various item that
    * were created or modified as a results of this operation.
@@ -242,7 +233,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the type of this meeting request.
-   *
    * @return the meeting request type
    * @throws ServiceLocalException the service local exception
    */
@@ -255,7 +245,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Gets the a value representing the intended free/busy status of the
    * meeting.
-   *
    * @return the intended free busy status
    * @throws ServiceLocalException the service local exception
    */
@@ -267,7 +256,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the start time of the appointment.
-   *
    * @return the start
    * @throws ServiceLocalException the service local exception
    */
@@ -278,7 +266,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the end time of the appointment.
-   *
    * @return the end
    * @throws ServiceLocalException the service local exception
    */
@@ -289,7 +276,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the original start time of the appointment.
-   *
    * @return the original start
    * @throws ServiceLocalException the service local exception
    */
@@ -300,7 +286,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets a value indicating whether this appointment is an all day event.
-   *
    * @return the checks if is all day event
    * @throws ServiceLocalException the service local exception
    */
@@ -312,7 +297,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Gets a value indicating the free/busy status of the owner of this
    * appointment.
-   *
    * @return the legacy free busy status
    * @throws ServiceLocalException the service local exception
    */
@@ -324,7 +308,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets  the location of this appointment.
-   *
    * @return the location
    * @throws ServiceLocalException the service local exception
    */
@@ -338,7 +321,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    * When is localized using the Exchange Server culture or using the culture
    * specified in the PreferredCulture property of the ExchangeService object
    * this appointment is bound to.
-   *
    * @return the when
    * @throws ServiceLocalException the service local exception
    */
@@ -349,7 +331,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets a value indicating whether the appointment is a meeting.
-   *
    * @return the checks if is meeting
    * @throws ServiceLocalException the service local exception
    */
@@ -360,7 +341,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets a value indicating whether the appointment has been cancelled.
-   *
    * @return the checks if is cancelled
    * @throws ServiceLocalException the service local exception
    */
@@ -371,7 +351,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets a value indicating whether the appointment is recurring.
-   *
    * @return the checks if is recurring
    * @throws ServiceLocalException the service local exception
    */
@@ -383,7 +362,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Gets a value indicating whether the meeting request has already been
    * sent.
-   *
    * @return the meeting request was sent
    * @throws ServiceLocalException the service local exception
    */
@@ -394,7 +372,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets a value indicating the type of this appointment.
-   *
    * @return the appointment type
    * @throws ServiceLocalException the service local exception
    */
@@ -406,7 +383,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Gets a value indicating what was the last response of the user that
    * loaded this meeting.
-   *
    * @return the my response type
    * @throws ServiceLocalException the service local exception
    */
@@ -418,7 +394,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the organizer of this meeting.
-   *
    * @return the organizer
    * @throws ServiceLocalException the service local exception
    */
@@ -429,7 +404,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets a list of required attendees for this meeting.
-   *
    * @return the required attendees
    * @throws ServiceLocalException the service local exception
    */
@@ -441,7 +415,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets a list of optional attendeed for this meeting.
-   *
    * @return the optional attendees
    * @throws ServiceLocalException the service local exception
    */
@@ -453,7 +426,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets a list of resources for this meeting.
-   *
    * @return the resources
    * @throws ServiceLocalException the service local exception
    */
@@ -465,7 +437,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Gets the number of calendar entries that conflict with
    * this appointment in the authenticated user's calendar.
-   *
    * @return the conflicting meeting count
    * @throws NumberFormatException the number format exception
    * @throws ServiceLocalException the service local exception
@@ -480,7 +451,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Gets the number of calendar entries that are adjacent to
    * this appointment in the authenticated user's calendar.
-   *
    * @return the adjacent meeting count
    * @throws NumberFormatException the number format exception
    * @throws ServiceLocalException the service local exception
@@ -495,7 +465,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Gets a list of meetings that conflict with
    * this appointment in the authenticated user's calendar.
-   *
    * @return the conflicting meetings
    * @throws ServiceLocalException the service local exception
    */
@@ -508,7 +477,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Gets a list of meetings that are adjacent with this
    * appointment in the authenticated user's calendar.
-   *
    * @return the adjacent meetings
    * @throws ServiceLocalException the service local exception
    */
@@ -520,7 +488,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the duration of this appointment.
-   *
    * @return the duration
    * @throws ServiceLocalException the service local exception
    */
@@ -531,7 +498,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the name of the time zone this appointment is defined in.
-   *
    * @return the time zone
    * @throws ServiceLocalException the service local exception
    */
@@ -542,7 +508,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the time when the attendee replied to the meeting request.
-   *
    * @return the appointment reply time
    * @throws ServiceLocalException the service local exception
    */
@@ -553,7 +518,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the sequence number of this appointment.
-   *
    * @return the appointment sequence number
    * @throws NumberFormatException the number format exception
    * @throws ServiceLocalException the service local exception
@@ -569,7 +533,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the state of this appointment.
-   *
    * @return the appointment state
    * @throws NumberFormatException the number format exception
    * @throws ServiceLocalException the service local exception
@@ -583,7 +546,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the recurrence pattern for this meeting request.
-   *
    * @return the recurrence
    * @throws ServiceLocalException the service local exception
    */
@@ -594,7 +556,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets an OccurrenceInfo identifying the first occurrence of this meeting.
-   *
    * @return the first occurrence
    * @throws ServiceLocalException the service local exception
    */
@@ -605,7 +566,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets an OccurrenceInfo identifying the last occurrence of this meeting.
-   *
    * @return the last occurrence
    * @throws ServiceLocalException the service local exception
    */
@@ -616,7 +576,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets a list of modified occurrences for this meeting.
-   *
    * @return the modified occurrences
    * @throws ServiceLocalException the service local exception
    */
@@ -628,7 +587,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets a list of deleted occurrences for this meeting.
-   *
    * @return the deleted occurrences
    * @throws ServiceLocalException the service local exception
    */
@@ -640,7 +598,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets  time zone of the start property of this meeting request.
-   *
    * @return the start time zone
    * @throws ServiceLocalException the service local exception
    */
@@ -651,7 +608,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets  time zone of the end property of this meeting request.
-   *
    * @return the end time zone
    * @throws ServiceLocalException the service local exception
    */
@@ -662,7 +618,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the type of conferencing that will be used during the meeting.
-   *
    * @return the conference type
    * @throws NumberFormatException the number format exception
    * @throws ServiceLocalException the service local exception
@@ -677,7 +632,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
   /**
    * Gets a value indicating whether new time
    * proposals are allowed for attendees of this meeting.
-   *
    * @return the allow new time proposal
    * @throws ServiceLocalException the service local exception
    */
@@ -688,7 +642,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets a value indicating whether this is an online meeting.
-   *
    * @return the checks if is online meeting
    * @throws ServiceLocalException the service local exception
    */
@@ -701,7 +654,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    * Gets the URL of the meeting workspace. A meeting
    * workspace is a shared Web site for
    * planning meetings and tracking results.
-   *
    * @return the meeting workspace url
    * @throws ServiceLocalException the service local exception
    */
@@ -712,7 +664,6 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
 
   /**
    * Gets the URL of the Microsoft NetShow online meeting.
-   *
    * @return the net show url
    * @throws ServiceLocalException the service local exception
    */
