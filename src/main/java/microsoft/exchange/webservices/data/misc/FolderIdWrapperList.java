@@ -156,4 +156,8 @@ public class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
     return ids.iterator();
   }
 
+  @Override
+  public String toString() {
+    return ids.toString();
+  }
 }
