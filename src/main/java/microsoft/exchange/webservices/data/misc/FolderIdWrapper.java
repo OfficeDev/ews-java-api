@@ -70,4 +70,16 @@ public class FolderIdWrapper extends AbstractFolderIdWrapper {
       throws ServiceVersionException {
     this.folderId.validate(version);
   }
+
+  public FolderId getFolderId() {
+    return folderId;
+  }
+
+  @Override
+  public String toString() {
+    if (folderId.getFolderName() != null ){
+      return folderId.getFolderName().toString();
+    }
+    return folderId.getUniqueId();
+  }
 }
