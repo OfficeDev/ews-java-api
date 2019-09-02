@@ -270,13 +270,13 @@ public class ContactSchema extends ItemSchema {
      * The PhoneticFirstName.
      */
 
-    String PhoneticFirstName = "contacts:PhonetiFirstName";
+    String PhoneticFirstName = "contacts:PhoneticFirstName";
 
     /**
      * The PhoneticFirstName.
      */
 
-    String PhoneticLastName = "contacts:PhonetiLastName";
+    String PhoneticLastName = "contacts:PhoneticLastName";
 
     /**
      * The Aias.
