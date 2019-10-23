@@ -4784,5 +4784,17 @@ public class XmlElementNames {
 
   // by
   // UM
+  
+  public static final String HighlightTerms = "HighlightTerms";
+
+  public static final String HighlightTerm = "Term";
+
+  public static final String HighlightTermScope = "Scope";
+
+  public static final String HighlightTermValue = "Value";
+
+  public static final String TotalConversationsInView = "TotalConversationsInView";
+
+  public static final String IndexedOffset = "IndexedOffset";
 
 }

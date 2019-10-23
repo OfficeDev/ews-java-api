@@ -27,6 +27,7 @@ import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
 import microsoft.exchange.webservices.data.core.service.item.Conversation;
+import microsoft.exchange.webservices.data.property.complex.HighlightTerm;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 
@@ -39,6 +40,9 @@ import java.util.List;
  */
 public final class FindConversationResponse extends ServiceResponse {
   List<Conversation> conversations = new ArrayList<Conversation>();
+  List<HighlightTerm> highlightTerms = new ArrayList<HighlightTerm>();
+  int totalCount;
+  int indexedOffset;
 
   /**
    * Initializes a new instance of the FindConversationResponse class.
@@ -53,6 +57,33 @@ public final class FindConversationResponse extends ServiceResponse {
   public Collection<Conversation> getConversations() {
 
     return this.conversations;
+
+  }
+
+  /**
+   * Gets the results of the operation.
+   */
+  public Collection<HighlightTerm> getHighlightTerms() {
+
+    return this.highlightTerms;
+
+  }
+
+  /**
+   * Gets the results of the operation.
+   */
+  public int getIndexedOffset() {
+
+    return this.indexedOffset;
+
+  }
+
+  /**
+   * Gets the results of the operation.
+   */
+  public int getCounts() {
+
+    return this.totalCount;
 
   }
 
@@ -94,6 +125,35 @@ public final class FindConversationResponse extends ServiceResponse {
       }
       while (!reader.isEndElement(XmlNamespace.Messages,
           XmlElementNames.Conversations));
+    }
+    reader.read();
+
+    if (reader.isStartElement(XmlNamespace.Messages, XmlElementNames.HighlightTerms) &&
+          !reader.isEmptyElement()) {
+      do {
+        reader.read();
+
+        if (reader.getNodeType().getNodeType() == XmlNodeType.START_ELEMENT) {
+          HighlightTerm term = new HighlightTerm();
+          term.loadFromXml(
+            reader,
+            XmlNamespace.Types,
+            XmlElementNames.HighlightTerm);
+          this.highlightTerms.add(term);
+        }
+      } while (!reader.isEndElement(XmlNamespace.Messages, XmlElementNames.HighlightTerms));
+    }
+
+    if (reader.isStartElement(XmlNamespace.Messages, XmlElementNames.TotalConversationsInView)
+          && !reader.isEmptyElement()) {
+      this.totalCount = Integer.parseInt(reader.readElementValue());
+      reader.read();
+    }
+
+    if (reader.isStartElement(XmlNamespace.Messages, XmlElementNames.IndexedOffset)
+          && !reader.isEmptyElement()) {
+      this.indexedOffset = Integer.parseInt(reader.readElementValue());
+      reader.read();
     }
   }
 }
