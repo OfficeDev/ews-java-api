@@ -2712,7 +2712,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    */
   private Collection<Conversation> findConversation(
       ConversationIndexedItemView view, SearchFilter.IsEqualTo filter,
-      FolderId folderId) throws Exception {
+      FolderId folderId, String query) throws Exception {
     EwsUtilities.validateParam(view, "view");
     EwsUtilities.validateParamAllowNull(filter, "filter");
     EwsUtilities.validateParam(folderId, "folderId");
@@ -2723,7 +2723,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
     request.setIndexedItemView(view);
     request.setConversationViewFilter(filter);
     request.setFolderId(new FolderIdWrapper(folderId));
-
+    request.setSearchQuery(query);
     return request.execute().getConversations();
   }
 
@@ -2735,9 +2735,9 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    * @throws Exception
    */
   public Collection<Conversation> findConversation(
-      ConversationIndexedItemView view, FolderId folderId)
+      ConversationIndexedItemView view, FolderId folderId, String query)
       throws Exception {
-    return this.findConversation(view, null, folderId);
+    return this.findConversation(view, null, folderId, query);
   }
 
   /**
@@ -3737,7 +3737,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    *
    * @return the http web request
    * @throws ServiceLocalException       the service local exception
-   * @throws java.net.URISyntaxException the uRI syntax exception
+   * @throws URISyntaxException the uRI syntax exception
    */
   public HttpWebRequest prepareHttpWebRequest()
       throws ServiceLocalException, URISyntaxException {
@@ -3755,7 +3755,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    * 
    * @return A http web request
    * @throws ServiceLocalException The service local exception
-   * @throws java.net.URISyntaxException the uRI syntax exception
+   * @throws URISyntaxException the uRI syntax exception
    */
   public HttpWebRequest prepareHttpPoolingWebRequest()
 	      throws ServiceLocalException, URISyntaxException {
