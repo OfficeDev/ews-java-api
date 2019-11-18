@@ -31,6 +31,7 @@ import microsoft.exchange.webservices.data.core.enumeration.service.DeleteMode;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException;
 import microsoft.exchange.webservices.data.property.complex.ConversationId;
+import microsoft.exchange.webservices.data.property.complex.Flag;
 import microsoft.exchange.webservices.data.property.complex.StringList;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -58,6 +59,7 @@ public class ConversationAction {
   private FolderIdWrapper contextFolderId;
   private DeleteMode deleteType;
   private Boolean isRead;
+  private Flag flag;
   private Date conversationLastSyncTime;
 
   /**
@@ -155,6 +157,22 @@ public class ConversationAction {
    */
   public void setIsRead(Boolean value) {
     this.isRead = value;
+  }
+  
+  /**
+   * Flag
+   *
+   * @return flag
+   */
+  protected Flag getFlag() {
+    return this.flag;
+  }
+
+  /**
+   * Flag
+   */
+  public void setFlag(Flag flag) {
+    this.flag = flag;
   }
 
   /**
@@ -270,6 +288,8 @@ public class ConversationAction {
         actionValue = XmlElementNames.Move;
       } else if (this.getAction() == ConversationActionType.SetReadState) {
         actionValue = XmlElementNames.SetReadState;
+      } else if (this.getAction() == ConversationActionType.Flag) {
+        actionValue = XmlElementNames.Flag;
       } else {
         throw new ArgumentException("ConversationAction");
       }
@@ -375,6 +395,16 @@ public class ConversationAction {
               XmlNamespace.Types,
               XmlElementNames.IsRead,
               this.getIsRead());
+        } else if (this.getAction() == ConversationActionType.Flag) {
+          EwsUtilities.ewsAssert(this.flag != null,
+              "ApplyconversationActionRequest",
+              "Flag should be specified when flagging conversation items.");
+
+          writer.writeStartElement(
+              XmlNamespace.Types,
+              XmlElementNames.Flag);
+          this.flag.writeElementsToXml(writer);
+          writer.writeEndElement();
         }
       }
     } catch (Exception e) {
