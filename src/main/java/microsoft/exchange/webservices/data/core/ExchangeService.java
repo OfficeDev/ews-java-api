@@ -38,6 +38,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
+import microsoft.exchange.webservices.data.attribute.Flags;
 import microsoft.exchange.webservices.data.autodiscover.AutodiscoverService;
 import microsoft.exchange.webservices.data.autodiscover.IAutodiscoverRedirectionUrl;
 import microsoft.exchange.webservices.data.autodiscover.enumeration.UserSettingName;
@@ -56,6 +57,7 @@ import microsoft.exchange.webservices.data.core.enumeration.property.BodyType;
 import microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName;
 import microsoft.exchange.webservices.data.core.enumeration.search.ResolveNameSearchLocation;
 import microsoft.exchange.webservices.data.core.enumeration.service.ConflictResolutionMode;
+import microsoft.exchange.webservices.data.core.enumeration.service.ConversationFlagStatus;
 import microsoft.exchange.webservices.data.core.enumeration.service.DeleteMode;
 import microsoft.exchange.webservices.data.core.enumeration.service.MeetingRequestsDeliveryScope;
 import microsoft.exchange.webservices.data.core.enumeration.service.MessageDisposition;
@@ -125,6 +127,7 @@ import microsoft.exchange.webservices.data.core.request.UpdateItemRequest;
 import microsoft.exchange.webservices.data.core.request.UpdateUserConfigurationRequest;
 import microsoft.exchange.webservices.data.core.response.ConvertIdResponse;
 import microsoft.exchange.webservices.data.core.response.CreateAttachmentResponse;
+import microsoft.exchange.webservices.data.core.response.CreateItemResponse;
 import microsoft.exchange.webservices.data.core.response.CreateResponseObjectResponse;
 import microsoft.exchange.webservices.data.core.response.DelegateManagementResponse;
 import microsoft.exchange.webservices.data.core.response.DelegateUserResponse;
@@ -172,6 +175,7 @@ import microsoft.exchange.webservices.data.property.complex.ConversationId;
 import microsoft.exchange.webservices.data.property.complex.DelegateUser;
 import microsoft.exchange.webservices.data.property.complex.EmailAddress;
 import microsoft.exchange.webservices.data.property.complex.EmailAddressCollection;
+import microsoft.exchange.webservices.data.property.complex.Flag;
 import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.Mailbox;
@@ -2811,6 +2815,63 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
       ConversationActionType actionType,
       Iterable<HashMap<ConversationId, Date>> idTimePairs,
       FolderId contextFolderId, FolderId destinationFolderId,
+      DeleteMode deleteType, Flag flagStatus,
+      ServiceErrorHandling errorHandlingMode) throws Exception {
+    EwsUtilities.ewsAssert(
+        actionType == ConversationActionType.Move || actionType == ConversationActionType.Delete
+        || actionType == ConversationActionType.SetReadState || actionType == ConversationActionType.Copy
+            || actionType == ConversationActionType.Flag,
+        "ApplyConversationOneTimeAction", "Invalid actionType");
+
+    EwsUtilities.validateParamCollection(idTimePairs.iterator(),
+        "idTimePairs");
+    EwsUtilities.validateMethodVersion(this,
+        ExchangeVersion.Exchange2010_SP1, "ApplyConversationAction");
+
+    ApplyConversationActionRequest request = new ApplyConversationActionRequest(
+        this, errorHandlingMode);
+
+    for (HashMap<ConversationId, Date> idTimePair : idTimePairs) {
+      ConversationAction action = new ConversationAction();
+
+      action.setAction(actionType);
+      action.setConversationId(idTimePair.keySet().iterator().next());
+      action
+          .setContextFolderId(contextFolderId != null ? new FolderIdWrapper(
+              contextFolderId)
+              : null);
+      action
+          .setDestinationFolderId(destinationFolderId != null ? new FolderIdWrapper(
+              destinationFolderId)
+              : null);
+      action.setConversationLastSyncTime(idTimePair.values().iterator()
+          .next());
+      action.setFlags(flagStatus);
+      action.setDeleteType(deleteType);
+
+      request.getConversationActions().add(action);
+    }
+
+    return request.execute();
+  }
+  
+  /**
+   * Applies one time conversation action on item in specified folder inside
+   * the conversation.
+   *
+   * @param actionType          The action
+   * @param idTimePairs         The id time pairs.
+   * @param contextFolderId     The context folder id.
+   * @param destinationFolderId The destination folder id.
+   * @param deleteType          Type of the delete.
+   * @param isRead              The is read.
+   * @param errorHandlingMode   The error handling mode.
+   * @throws Exception
+   */
+  private ServiceResponseCollection<ServiceResponse> applyConversationOneTimeAction(
+      ConversationActionType actionType,
+      Iterable<HashMap<ConversationId, Date>> idTimePairs,
+      FolderId contextFolderId, FolderId destinationFolderId,
       DeleteMode deleteType, Boolean isRead,
       ServiceErrorHandling errorHandlingMode) throws Exception {
     EwsUtilities.ewsAssert(
@@ -2998,7 +3059,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
     EwsUtilities.validateParam(destinationFolderId, "destinationFolderId");
     return this.applyConversationOneTimeAction(ConversationActionType.Move,
         idLastSyncTimePairs, contextFolderId, destinationFolderId,
-        null, null, ServiceErrorHandling.ReturnErrors);
+        null, false, ServiceErrorHandling.ReturnErrors);
   }
 
   /**
@@ -3019,7 +3080,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
     EwsUtilities.validateParam(destinationFolderId, "destinationFolderId");
     return this.applyConversationOneTimeAction(ConversationActionType.Copy,
         idLastSyncTimePairs, contextFolderId, destinationFolderId,
-        null, null, ServiceErrorHandling.ReturnErrors);
+        null, false, ServiceErrorHandling.ReturnErrors);
   }
 
   /**
@@ -3040,7 +3101,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
       FolderId contextFolderId, DeleteMode deleteMode) throws Exception {
     return this.applyConversationOneTimeAction(
         ConversationActionType.Delete, idLastSyncTimePairs,
-        contextFolderId, null, deleteMode, null,
+        contextFolderId, null, deleteMode, false,
         ServiceErrorHandling.ReturnErrors);
   }
 
@@ -3991,6 +4052,28 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
       String redirectionUrl) throws AutodiscoverLocalException {
     return defaultAutodiscoverRedirectionUrlValidationCallback(redirectionUrl);
 
+  }
+  
+  
+  /**
+   * Sets flag status for items in conversation. Calling this method would result in call to EWS.
+   *
+   * @param idLastSyncTimePairs The pairs of Id of conversation whose
+   * items should have their read state set and the date and time conversation
+   * was last synced (Items received after that date will not have their read
+   * state set).
+   * @param contextFolderId current folder id
+   * @param flagStatus flagged/unflagged
+   * @return ServiceResponseCollection 
+   * @throws Exception 
+   */
+  public ServiceResponseCollection<ServiceResponse> setFlagStatusForItemsInConversations(
+      Iterable<HashMap<ConversationId, Date>> idLastSyncTimePairs, FolderId contextFolderId, Flag flagStatus)
+      throws Exception {
+    EwsUtilities.validateMethodVersion(this, ExchangeVersion.Exchange2013, "SetFlagStatusForItemsInConversations");
+
+    return this.applyConversationOneTimeAction(ConversationActionType.Flag, idLastSyncTimePairs, contextFolderId, null,
+        null, flagStatus, ServiceErrorHandling.ReturnErrors);
   }
 
 }
