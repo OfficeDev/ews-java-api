@@ -63,5 +63,11 @@ public enum ConversationActionType {
    * provided read state
    */
   SetReadState,
+  
+  /**
+   * Marks current item in context folder in the conversation with
+   * provided flag state
+   */
+  Flag
 
 }

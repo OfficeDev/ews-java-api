@@ -2723,7 +2723,12 @@ public class XmlElementNames {
    * The Constant GlobalCategories.
    */
   public static final String GlobalCategories = "GlobalCategories";
-
+  
+  /**
+   * The Constant FlagStatus.
+   */
+  public static final String Flag = "Flag";
+  
   /**
    * The Constant FlagStatus.
    */
