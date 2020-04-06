@@ -103,9 +103,6 @@ public class Xml11VersionModifier implements Modifier {
             // this is not normal at all -> throw exception
             throw new XmlPrologRidiculouslyLongException(characterBuffer.toString());
           }
-
-          // insert prolog
-          characterBuffer.insert(0, "<?xml version='" + xmlVersion + "'?>");
         }
 
         state = Xml11VersionModifierState.NO_LONGER_MODIFYING;
