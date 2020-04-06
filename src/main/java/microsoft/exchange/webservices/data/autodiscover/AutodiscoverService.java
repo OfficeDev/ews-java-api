@@ -27,8 +27,11 @@ import microsoft.exchange.webservices.data.autodiscover.configuration.Configurat
 import microsoft.exchange.webservices.data.autodiscover.configuration.outlook.OutlookConfigurationSettings;
 import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverEndpoints;
 import microsoft.exchange.webservices.data.autodiscover.enumeration.AutodiscoverErrorCode;
+import microsoft.exchange.webservices.data.autodiscover.enumeration.DomainSettingName;
+import microsoft.exchange.webservices.data.autodiscover.enumeration.UserSettingName;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverLocalException;
 import microsoft.exchange.webservices.data.autodiscover.exception.AutodiscoverRemoteException;
+import microsoft.exchange.webservices.data.autodiscover.exception.MaximumRedirectionHopsExceededException;
 import microsoft.exchange.webservices.data.autodiscover.request.AutodiscoverRequest;
 import microsoft.exchange.webservices.data.autodiscover.request.GetDomainSettingsRequest;
 import microsoft.exchange.webservices.data.autodiscover.request.GetUserSettingsRequest;
@@ -39,20 +42,17 @@ import microsoft.exchange.webservices.data.autodiscover.response.GetUserSettings
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.EwsXmlReader;
 import microsoft.exchange.webservices.data.core.ExchangeServiceBase;
-import microsoft.exchange.webservices.data.core.request.HttpClientWebRequest;
-import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
-import microsoft.exchange.webservices.data.credential.WSSecurityBasedCredentials;
-import microsoft.exchange.webservices.data.autodiscover.enumeration.DomainSettingName;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
-import microsoft.exchange.webservices.data.autodiscover.enumeration.UserSettingName;
-import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException;
 import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
+import microsoft.exchange.webservices.data.core.exception.misc.ArgumentException;
 import microsoft.exchange.webservices.data.core.exception.misc.FormatException;
-import microsoft.exchange.webservices.data.autodiscover.exception.MaximumRedirectionHopsExceededException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceValidationException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceVersionException;
+import microsoft.exchange.webservices.data.core.request.HttpClientWebRequest;
+import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
+import microsoft.exchange.webservices.data.credential.WSSecurityBasedCredentials;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 
@@ -401,6 +401,7 @@ public class AutodiscoverService extends ExchangeServiceBase
 
       request.setRequestMethod("GET");
       request.setAllowAutoRedirect(false);
+      request.setTimeout(getTimeout());
 
       // Do NOT allow authentication as this single request will be made over plain HTTP.
       request.setAllowAuthentication(false);
@@ -1523,6 +1524,7 @@ public class AutodiscoverService extends ExchangeServiceBase
         request.setAllowAutoRedirect(false);
         request.setPreAuthenticate(false);
         request.setUseDefaultCredentials(this.getUseDefaultCredentials());
+        request.setTimeout(getTimeout());
 
         prepareCredentials(request);
 
