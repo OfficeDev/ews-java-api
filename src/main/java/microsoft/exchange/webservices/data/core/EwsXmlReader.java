@@ -23,11 +23,15 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import com.github.rwitzel.streamflyer.core.Modifier;
+import com.github.rwitzel.streamflyer.core.ModifyingReader;
+import com.github.rwitzel.streamflyer.xml.XmlVersionModifier;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.input.XmlStreamReader;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -49,6 +53,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -57,6 +62,12 @@ import java.io.UnsupportedEncodingException;
 public class EwsXmlReader {
 
   private static final Log LOG = LogFactory.getLog(EwsXmlReader.class);
+
+  /**
+   * The number of unmodifiable characters (look-behind) and modifiable characters in the buffer that shall be
+   * passed to {@link Modifier#modify(StringBuilder, int, boolean)} the next time this method is called.
+   */
+  private static final int NUMBER_OF_CHARS = 8192;
 
   /**
    * The Read write buffer size.
@@ -85,7 +96,17 @@ public class EwsXmlReader {
    * @throws Exception on error
    */
   public EwsXmlReader(InputStream stream) throws Exception {
-    this.xmlReader = initializeXmlReader(stream);
+    this.xmlReader = initializeXmlReader(stream, true);
+  }
+
+  /**
+   * Initializes a new instance of the EwsXmlReader class.
+   *
+   * @param stream the stream
+   * @throws Exception on error
+   */
+  public EwsXmlReader(InputStream stream, boolean forceXml11) throws Exception {
+    this.xmlReader = initializeXmlReader(stream, forceXml11);
   }
 
   /**
@@ -95,11 +116,20 @@ public class EwsXmlReader {
    * @return An XML reader to use.
    * @throws Exception on error
    */
-  protected XMLEventReader initializeXmlReader(InputStream stream) throws Exception {
+  protected XMLEventReader initializeXmlReader(InputStream stream, boolean forceXml11) throws Exception {
     XMLInputFactory inputFactory = XMLInputFactory.newInstance();
     inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
 
-    return inputFactory.createXMLEventReader(stream);
+    // force all documents to be 1.1 compliant to allow unicode control
+    // characters to pass through instead of throwing parse errors
+    if (forceXml11) {
+      Reader reader = new XmlStreamReader(stream);
+      ModifyingReader modifyingReader = new ModifyingReader(reader, new XmlVersionModifier("1.1", NUMBER_OF_CHARS));
+
+      return inputFactory.createXMLEventReader(modifyingReader);
+    } else {
+      return inputFactory.createXMLEventReader(stream);
+    }
   }
 
 
