@@ -10,6 +10,11 @@ import java.util.regex.Pattern;
 
 public class Xml11VersionModifier implements Modifier {
 
+  private final static Pattern
+      XML_PROLOG_PATTERN =
+      Pattern.compile("<\\?xml[^>]*version\\s*=\\s*['\"]((1.0)|(1.1))['\"].*");
+
+  private final static Pattern BASE_XML_PROLOG_PATTERN = Pattern.compile("<\\?xml.*");
   //
   // constants
   //
@@ -86,16 +91,14 @@ public class Xml11VersionModifier implements Modifier {
         // (Should we do aware of BOMs here? No. I consider it the
         // responsibility of the caller to provide characters without BOM.)
 
-        Matcher
-            matcher =
-            Pattern.compile("<\\?xml[^>]*version\\s*=\\s*['\"]((1.0)|(1.1))['\"].*").matcher(characterBuffer);
+        Matcher matcher = XML_PROLOG_PATTERN.matcher(characterBuffer);
         if (matcher.matches()) {
 
           // replace version in prolog
           characterBuffer.replace(matcher.start(1), matcher.end(1), xmlVersion);
         } else {
           // is there a prolog that is too long?
-          Matcher matcher2 = Pattern.compile("<\\?xml.*").matcher(characterBuffer);
+          Matcher matcher2 = BASE_XML_PROLOG_PATTERN.matcher(characterBuffer);
           if (matcher2.matches()) {
             // this is not normal at all -> throw exception
             throw new XmlPrologRidiculouslyLongException(characterBuffer.toString());
