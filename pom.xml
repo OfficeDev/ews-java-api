@@ -96,6 +96,7 @@
         <maven-surefire-report-plugin.version>2.18.1</maven-surefire-report-plugin.version>
         <jacoco-maven-plugin.version>0.7.5.201505241946</jacoco-maven-plugin.version>
         <!--  Dependencies [COMPILE]:  -->
+        <streamflyer-core.version>1.2.0</streamflyer-core.version>
         <httpclient.version>4.4.1</httpclient.version>
         <httpcore.version>4.4.1</httpcore.version>
         <commons-logging.version>1.2</commons-logging.version>
@@ -209,6 +210,12 @@
     </distributionManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.rwitzel.streamflyer</groupId>
+            <artifactId>streamflyer-core</artifactId>
+            <version>${streamflyer-core.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>

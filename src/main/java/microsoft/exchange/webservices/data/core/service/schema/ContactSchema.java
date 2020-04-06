@@ -306,7 +306,7 @@ public class ContactSchema extends ItemSchema {
      * The MSExchangeCertificate.
      */
 
-    String MSExchangeCertificate = "contacts:MSExchageCertificate";
+    String MSExchangeCertificate = "contacts:MSExchangeCertificate";
 
     /**
      * The DirectoryId.

@@ -3620,6 +3620,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
 
     AutodiscoverService autodiscoverService = new AutodiscoverService(this, requestedServerVersion);
     autodiscoverService.setWebProxy(getWebProxy());
+    autodiscoverService.setTimeout(getTimeout());
 
     autodiscoverService
         .setRedirectionUrlValidationCallback(validateRedirectionUrlCallback);
