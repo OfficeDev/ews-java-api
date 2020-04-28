@@ -795,28 +795,6 @@ public class EwsXmlReader {
   }
 
   /**
-   * Skips the element.
-   *
-   * @param xmlNamespace the xml namespace
-   * @param localName    the local name
-   * @throws Exception the exception
-   */
-  public void skipElement(XmlNamespace xmlNamespace, String localName)
-      throws Exception {
-    if (!this.isEndElement(xmlNamespace, localName)) {
-      if (!this.isStartElement(xmlNamespace, localName)) {
-        this.readStartElement(xmlNamespace, localName);
-      }
-
-      if (!this.isEmptyElement()) {
-        do {
-          this.read();
-        } while (!this.isEndElement(xmlNamespace, localName));
-      }
-    }
-  }
-
-  /**
    * Skips the current element.
    *
    * @throws Exception the exception
@@ -1053,11 +1031,18 @@ public class EwsXmlReader {
    * Gets a value indicating whether current element is empty.
    *
    * @return boolean
-   * @throws XMLStreamException the XML stream exception
    */
-  public boolean isEmptyElement() throws XMLStreamException {
-    boolean isPresentStartElement = this.presentEvent.isStartElement();
-    boolean isNextEndElement = this.xmlReader.peek().isEndElement();
+  public boolean isEmptyElement() {
+    boolean isPresentStartElement = false;
+    boolean isNextEndElement = false;
+    try {
+      isPresentStartElement = this.presentEvent.isStartElement();
+    } catch (Exception e) {
+    }
+    try {
+      isNextEndElement = this.xmlReader.peek().isEndElement();
+    } catch (Exception e) {
+    }
     return isPresentStartElement && isNextEndElement;
   }
 
