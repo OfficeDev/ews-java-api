@@ -24,11 +24,11 @@
 package microsoft.exchange.webservices.data.core;
 
 import com.github.rwitzel.streamflyer.core.ModifyingReader;
+import com.github.rwitzel.streamflyer.xml.InvalidXmlCharacterModifier;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
-import microsoft.exchange.webservices.data.util.Xml11VersionModifier;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.input.XmlStreamReader;
 import org.apache.commons.lang3.StringUtils;
@@ -89,17 +89,7 @@ public class EwsXmlReader {
    * @throws Exception on error
    */
   public EwsXmlReader(InputStream stream) throws Exception {
-    this.xmlReader = initializeXmlReader(stream, true);
-  }
-
-  /**
-   * Initializes a new instance of the EwsXmlReader class.
-   *
-   * @param stream the stream
-   * @throws Exception on error
-   */
-  public EwsXmlReader(InputStream stream, boolean forceXml11) throws Exception {
-    this.xmlReader = initializeXmlReader(stream, forceXml11);
+    this.xmlReader = initializeXmlReader(stream);
   }
 
   /**
@@ -109,20 +99,17 @@ public class EwsXmlReader {
    * @return An XML reader to use.
    * @throws Exception on error
    */
-  protected XMLEventReader initializeXmlReader(InputStream stream, boolean forceXml11) throws Exception {
+  protected XMLEventReader initializeXmlReader(InputStream stream) throws Exception {
     XMLInputFactory inputFactory = XMLInputFactory.newInstance();
     inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
 
-    // force all documents to be 1.1 compliant to allow unicode control
-    // characters to pass through instead of throwing parse errors
-    if (forceXml11) {
-      Reader reader = new XmlStreamReader(stream);
-      ModifyingReader modifyingReader = new ModifyingReader(reader, new Xml11VersionModifier());
+    Reader reader = new XmlStreamReader(stream);
+    ModifyingReader
+        modifyingReader =
+        new ModifyingReader(reader,
+                            new InvalidXmlCharacterModifier("", InvalidXmlCharacterModifier.XML_10_VERSION));
 
-      return inputFactory.createXMLEventReader(modifyingReader);
-    } else {
-      return inputFactory.createXMLEventReader(stream);
-    }
+    return inputFactory.createXMLEventReader(modifyingReader);
   }
 
 
