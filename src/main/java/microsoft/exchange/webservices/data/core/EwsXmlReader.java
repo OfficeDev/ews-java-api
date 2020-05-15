@@ -27,6 +27,7 @@ import com.github.rwitzel.streamflyer.core.ModifyingReader;
 import com.github.rwitzel.streamflyer.xml.InvalidXmlCharacterModifier;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.core.modifier.InvalidBothSchemaXmlCharacterModifier;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import org.apache.commons.codec.binary.Base64;
@@ -107,7 +108,7 @@ public class EwsXmlReader {
     ModifyingReader
         modifyingReader =
         new ModifyingReader(reader,
-                            new InvalidXmlCharacterModifier("", InvalidXmlCharacterModifier.XML_10_VERSION));
+                            new InvalidBothSchemaXmlCharacterModifier("", InvalidXmlCharacterModifier.XML_10_VERSION));
 
     return inputFactory.createXMLEventReader(modifyingReader);
   }
