@@ -164,6 +164,7 @@ public class Task extends Item {
    * might be made if attachments have been added or removed.
    *
    * @param conflictResolutionMode the conflict resolution mode
+   * @param suppressReadReceipt suppress read receipt status
    * @return A Task object representing the completed occurrence if the task
    * is recurring and the update marks it as completed; or a Task
    * object representing the current occurrence if the task is
@@ -172,10 +173,10 @@ public class Task extends Item {
    * @throws ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
-  public Task updateTask(ConflictResolutionMode conflictResolutionMode)
+  public Task updateTask(ConflictResolutionMode conflictResolutionMode, boolean suppressReadReceipt)
       throws ServiceResponseException, Exception {
     return (Task) this.internalUpdate(null /* parentFolder */,
-        conflictResolutionMode, MessageDisposition.SaveOnly, null);
+        conflictResolutionMode, MessageDisposition.SaveOnly, null, suppressReadReceipt);
   }
 
   // Properties

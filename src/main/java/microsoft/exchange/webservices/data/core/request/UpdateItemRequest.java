@@ -77,6 +77,11 @@ public final class UpdateItemRequest extends
       sendInvitationsOrCancellationsMode;
 
   /**
+   * To suppress read receipt in email.
+   */
+  private boolean suppressReadReceipts;
+
+  /**
    * Instantiates a new update item request.
    *
    * @param service           the service
@@ -192,6 +197,10 @@ public final class UpdateItemRequest extends
 
     writer.writeAttributeValue(XmlAttributeNames.ConflictResolution,
         this.conflictResolutionMode);
+
+    if (this.suppressReadReceipts) {
+        writer.writeAttributeValue(XmlAttributeNames.SuppressReadReceipts, this.suppressReadReceipts);
+    }
 
     if (this.sendInvitationsOrCancellationsMode != null) {
       writer.writeAttributeValue(
@@ -321,4 +330,21 @@ public final class UpdateItemRequest extends
     this.savedItemsDestinationFolder = value;
   }
 
+  /**
+   * Gets the value of the suppress read receipt.
+   * @return the value of suppress read receipt.
+   */
+  public boolean isSuppressReadReceipts() {
+    return suppressReadReceipts;
+  }
+
+  /**
+   * Sets the suppress read receipt.
+   * @param suppressReadReceipt
+   */
+  public void setSuppressReadReceipts(boolean suppressReadReceipts) {
+    this.suppressReadReceipts = suppressReadReceipts;
+  }
+
+  
 }
