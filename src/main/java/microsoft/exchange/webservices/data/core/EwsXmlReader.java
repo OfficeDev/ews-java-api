@@ -23,15 +23,14 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import com.github.rwitzel.streamflyer.core.ModifyingReader;
-import com.github.rwitzel.streamflyer.xml.InvalidXmlCharacterModifier;
+import com.sun.org.apache.xerces.internal.impl.Constants;
+import com.sun.org.apache.xerces.internal.impl.XMLErrorReporter;
+import com.sun.xml.internal.stream.XMLInputFactoryImpl;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.core.modifier.InvalidBothSchemaXmlCharacterModifier;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.input.XmlStreamReader;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -53,7 +52,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -64,9 +62,10 @@ public class EwsXmlReader {
   private static final Log LOG = LogFactory.getLog(EwsXmlReader.class);
 
   /**
-   * The Read write buffer size.
+   * Default setting for ignore xml errors
    */
-  private static final int ReadWriteBufferSize = 4096;
+
+  private static final boolean IgnoreErrorsDefault = true;
 
   /**
    * The xml reader.
@@ -90,29 +89,43 @@ public class EwsXmlReader {
    * @throws Exception on error
    */
   public EwsXmlReader(InputStream stream) throws Exception {
-    this.xmlReader = initializeXmlReader(stream);
+    this.xmlReader = initializeXmlReader(stream, IgnoreErrorsDefault);
   }
 
   /**
-   * Initializes the XML reader.
+   * Initializes a new instance of the EwsXmlReader class.
    *
    * @param stream the stream
-   * @return An XML reader to use.
    * @throws Exception on error
    */
-  protected XMLEventReader initializeXmlReader(InputStream stream) throws Exception {
-    XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-    inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
-
-    Reader reader = new XmlStreamReader(stream);
-    ModifyingReader
-        modifyingReader =
-        new ModifyingReader(reader,
-                            new InvalidBothSchemaXmlCharacterModifier("", InvalidXmlCharacterModifier.XML_10_VERSION));
-
-    return inputFactory.createXMLEventReader(modifyingReader);
+  public EwsXmlReader(InputStream stream, boolean ignoreErrors) throws Exception {
+    this.xmlReader = initializeXmlReader(stream, ignoreErrors);
   }
 
+  protected XMLEventReader initializeXmlReader(InputStream stream, boolean ignoreErrors) throws Exception {
+    XMLInputFactory inputFactory = new XMLInputFactoryImpl();
+    inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
+
+    XMLEventReader reader = inputFactory.createXMLEventReader(stream);
+
+    if (ignoreErrors) {
+      //continue after fatal error to prevent "invalid character reference"
+      XMLErrorReporter
+          errorReporter =
+          (XMLErrorReporter) reader
+              .getProperty(Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY);
+
+      if (errorReporter != null) {
+        errorReporter
+            .setFeature(Constants.XERCES_FEATURE_PREFIX + Constants.CONTINUE_AFTER_FATAL_ERROR_FEATURE, true);
+      } else {
+        LOG.warn(
+            "Failed to configure ignore errors for the XML Reader. Expected the Xerces parser implementation.");
+      }
+    }
+
+    return reader;
+  }
 
   /**
    * Formats the name of the element.
