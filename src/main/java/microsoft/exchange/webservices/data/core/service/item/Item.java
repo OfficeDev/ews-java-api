@@ -260,6 +260,7 @@ public class Item extends ServiceObject {
    * @param conflictResolutionMode             the conflict resolution mode
    * @param messageDisposition                 the message disposition
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
+   * @param suppressReadReceipt                the suppress read receipt status
    * @return Updated item.
    * @throws ServiceResponseException the service response exception
    * @throws Exception                the exception
@@ -268,7 +269,8 @@ public class Item extends ServiceObject {
       FolderId parentFolderId,
       ConflictResolutionMode conflictResolutionMode,
       MessageDisposition messageDisposition,
-      SendInvitationsOrCancellationsMode sendInvitationsOrCancellationsMode)
+      SendInvitationsOrCancellationsMode sendInvitationsOrCancellationsMode,
+      boolean suppressReadReceipt)
       throws ServiceResponseException, Exception {
     this.throwIfThisIsNew();
     this.throwIfThisIsAttachment();
@@ -285,7 +287,8 @@ public class Item extends ServiceObject {
               messageDisposition,
               sendInvitationsOrCancellationsMode != null ? sendInvitationsOrCancellationsMode
                   : this
-                  .getDefaultSendInvitationsOrCancellationsMode());
+                  .getDefaultSendInvitationsOrCancellationsMode(),
+              suppressReadReceipt);
     }
     if (this.hasUnprocessedAttachmentChanges()) {
       // Validation of the item and its attachments occurs in
@@ -392,13 +395,14 @@ public class Item extends ServiceObject {
    * be made if attachments have been added or removed.
    *
    * @param conflictResolutionMode the conflict resolution mode
+   * @param suppressReadReceipt    the suppress read receipt status
    * @throws ServiceResponseException the service response exception
    * @throws Exception                the exception
    */
-  public void update(ConflictResolutionMode conflictResolutionMode)
+  public void update(ConflictResolutionMode conflictResolutionMode, boolean suppressReadReceipt)
       throws ServiceResponseException, Exception {
     this.internalUpdate(null /* parentFolder */, conflictResolutionMode,
-        MessageDisposition.SaveOnly, null);
+        MessageDisposition.SaveOnly, null, suppressReadReceipt);
   }
 
   /**

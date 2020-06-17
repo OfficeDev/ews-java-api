@@ -672,6 +672,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    * @param messageDisposition                 the message disposition
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
    * @param errorHandling                      the error handling
+   * @param suppressReadReceipts               the suppress read receipt status
    * @return A ServiceResponseCollection providing update results for each of
    * the specified item.
    * @throws Exception the exception
@@ -682,7 +683,8 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
       ConflictResolutionMode conflictResolution,
       MessageDisposition messageDisposition,
       SendInvitationsOrCancellationsMode sendInvitationsOrCancellationsMode,
-      ServiceErrorHandling errorHandling) throws Exception {
+      ServiceErrorHandling errorHandling,
+      boolean suppressReadReceipts) throws Exception {
     UpdateItemRequest request = new UpdateItemRequest(this, errorHandling);
 
     request.getItems().addAll((Collection<? extends Item>) items);
@@ -691,7 +693,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
     request.setConflictResolutionMode(conflictResolution);
     request
         .setSendInvitationsOrCancellationsMode(sendInvitationsOrCancellationsMode);
-
+    request.setSuppressReadReceipts(suppressReadReceipts);
     return request.execute();
   }
 
@@ -704,6 +706,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    * @param conflictResolution                 the conflict resolution
    * @param messageDisposition                 the message disposition
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
+   * @param suppressReadReceipt                the suppress read receipt status
    * @return A ServiceResponseCollection providing update results for each of
    * the specified item.
    * @throws Exception the exception
@@ -713,7 +716,8 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
       FolderId savedItemsDestinationFolderId,
       ConflictResolutionMode conflictResolution,
       MessageDisposition messageDisposition,
-      SendInvitationsOrCancellationsMode sendInvitationsOrCancellationsMode)
+      SendInvitationsOrCancellationsMode sendInvitationsOrCancellationsMode,
+      boolean suppressReadReceipt)
       throws Exception {
 
     // All item have to exist on the server (!new) and modified (dirty)
@@ -741,7 +745,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
 
     return this.internalUpdateItems(items, savedItemsDestinationFolderId, conflictResolution,
                                     messageDisposition, sendInvitationsOrCancellationsMode,
-                                    ServiceErrorHandling.ReturnErrors);
+                                    ServiceErrorHandling.ReturnErrors, suppressReadReceipt);
   }
 
   /**
@@ -752,13 +756,15 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    * @param conflictResolution                 the conflict resolution
    * @param messageDisposition                 the message disposition
    * @param sendInvitationsOrCancellationsMode the send invitations or cancellations mode
+   * @param suppressReadReceipt                the suppress read receipt status
    * @return A ServiceResponseCollection providing deletion results for each
    * of the specified item Ids.
    * @throws Exception the exception
    */
   public Item updateItem(Item item, FolderId savedItemsDestinationFolderId,
       ConflictResolutionMode conflictResolution, MessageDisposition messageDisposition,
-      SendInvitationsOrCancellationsMode sendInvitationsOrCancellationsMode)
+      SendInvitationsOrCancellationsMode sendInvitationsOrCancellationsMode,
+      boolean suppressReadReceipt)
       throws Exception {
     List<Item> itemIdArray = new ArrayList<Item>();
     itemIdArray.add(item);
@@ -767,7 +773,8 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
         .internalUpdateItems(itemIdArray,
             savedItemsDestinationFolderId, conflictResolution,
             messageDisposition, sendInvitationsOrCancellationsMode,
-            ServiceErrorHandling.ThrowOnError);
+            ServiceErrorHandling.ThrowOnError,
+            suppressReadReceipt);
 
     return responses.getResponseAtIndex(0).getReturnedItem();
   }

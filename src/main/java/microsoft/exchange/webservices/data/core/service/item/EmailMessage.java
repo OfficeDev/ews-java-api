@@ -163,7 +163,7 @@ public class EmailMessage extends Item {
       if (this.getPropertyBag().getIsUpdateCallNecessary()) {
         this.internalUpdate(parentFolderId,
             ConflictResolutionMode.AutoResolve, messageDisposition,
-            null);
+            null, false);
       } else {
         this.getService().sendItem(this, parentFolderId);
       }

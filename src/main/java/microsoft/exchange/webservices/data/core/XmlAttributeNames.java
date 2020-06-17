@@ -110,6 +110,11 @@ public class XmlAttributeNames {
   public static final String MessageDisposition = "MessageDisposition";
 
   /**
+   * The Constant SuppressReadReceipts.
+   */
+  public static final String SuppressReadReceipts = "SuppressReadReceipts";
+
+  /**
    * The Constant SaveItemToFolder.
    */
   public static final String SaveItemToFolder = "SaveItemToFolder";
