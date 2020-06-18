@@ -100,7 +100,11 @@ public final class GetAttachmentRequest extends
     if (responseBytes == null) {
       throw new IllegalArgumentException("responseBytes cannot be null.");
     }
-    EwsServiceXmlReader xmlReader = new EwsServiceXmlReader(new ByteArrayInputStream(responseBytes), getService());
+    EwsServiceXmlReader xmlReader = new EwsServiceXmlReader(
+        new ByteArrayInputStream(responseBytes),
+        getService(),
+        false
+    );
     ServiceResponseCollection<GetAttachmentResponse> responseCollection = readResponse(xmlReader);
     if (responseCollection != null && responseCollection.getCount() > 0) {
       responseCollection.getResponseAtIndex(0).throwIfNecessary();
