@@ -23,10 +23,10 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.core.response.IGetObjectInstanceDelegate;
-import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
+import microsoft.exchange.webservices.data.core.response.IGetObjectInstanceDelegate;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
 import microsoft.exchange.webservices.data.util.DateTimeUtils;
 
 import java.io.InputStream;
@@ -54,9 +54,14 @@ public class EwsServiceXmlReader extends EwsXmlReader {
    * @param service the service
    * @throws Exception on error
    */
-  public EwsServiceXmlReader(InputStream stream, ExchangeService service)
-      throws Exception {
+  public EwsServiceXmlReader(InputStream stream, ExchangeService service) throws Exception {
     super(stream);
+    this.service = service;
+  }
+
+  public EwsServiceXmlReader(InputStream stream, ExchangeService service, boolean ignoreError)
+      throws Exception {
+    super(stream, ignoreError);
     this.service = service;
   }
 
