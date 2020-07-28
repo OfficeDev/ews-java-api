@@ -133,7 +133,7 @@ public abstract class SubscriptionBase {
    *
    * @param id the new id
    */
-  protected void setId(String id) {
+  public void setId(String id) {
     this.id = id;
   }
 
@@ -142,7 +142,7 @@ public abstract class SubscriptionBase {
    *
    * @param watermark the new water mark
    */
-  protected void setWaterMark(String watermark) {
+  public void setWaterMark(String watermark) {
     this.watermark = watermark;
   }
 

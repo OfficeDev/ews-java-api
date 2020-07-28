@@ -28,4 +28,4 @@
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
-secret.properties
+secret*.properties

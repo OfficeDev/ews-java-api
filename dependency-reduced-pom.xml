@@ -84,34 +84,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${maven-javadoc-plugin.version}</version>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <linksource>true</linksource>
-          <additionalparam>${javadoc.doclint.param}</additionalparam>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>${maven-source-plugin.version}</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
         <version>${animal-sniffer-maven-plugin.version}</version>
@@ -131,25 +103,6 @@
             <version>${animal-sniffer-maven-plugin.signature.version}</version>
           </signature>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>${jacoco-maven-plugin.version}</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>report</id>
-            <phase>test</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-install-plugin</artifactId>
@@ -298,44 +251,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <reporting>
-    <plugins>
-      <plugin>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>${maven-project-info-reports-plugin.version}</version>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>versions-maven-plugin</artifactId>
-        <version>${versions-maven-plugin.version}</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>dependency-updates-report</report>
-              <report>plugin-updates-report</report>
-              <report>property-updates-report</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-      <plugin>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${maven-javadoc-plugin.version}</version>
-        <configuration>
-          <linksource>true</linksource>
-          <additionalparam>${javadoc.doclint.param}</additionalparam>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <version>${maven-jxr-plugin.version}</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>${maven-surefire-report-plugin.version}</version>
-      </plugin>
-    </plugins>
-  </reporting>
   <distributionManagement>
     <repository>
       <id>ossrh</id>
@@ -347,33 +262,33 @@
     </snapshotRepository>
   </distributionManagement>
   <properties>
-    <mockito-core.version>1.10.19</mockito-core.version>
-    <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-    <hamcrest-all.version>1.3</hamcrest-all.version>
-    <classesrepacked.version>2.0</classesrepacked.version>
-    <animal-sniffer-maven-plugin.version>1.14</animal-sniffer-maven-plugin.version>
-    <commons-io.version>2.4</commons-io.version>
-    <animal-sniffer-maven-plugin.signature.version>1.1</animal-sniffer-maven-plugin.signature.version>
-    <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
+    <maven-checkstyle-plugin.version>2.16</maven-checkstyle-plugin.version>
     <maven-source-plugin.version>2.4</maven-source-plugin.version>
     <maven-project-info-reports-plugin.version>2.8</maven-project-info-reports-plugin.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jacoco-maven-plugin.version>0.7.5.201505241946</jacoco-maven-plugin.version>
-    <junit.version>4.12</junit.version>
-    <httpclient.version>4.4.1</httpclient.version>
     <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-    <maven-site-plugin.version>3.4</maven-site-plugin.version>
-    <logback.version>1.1.3</logback.version>
+    <httpclient.version>4.4.1</httpclient.version>
+    <animal-sniffer-maven-plugin.version>1.14</animal-sniffer-maven-plugin.version>
+    <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
     <slf4j.version>1.7.12</slf4j.version>
-    <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
-    <commons-lang3.version>3.4</commons-lang3.version>
-    <nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
-    <joda-time.version>2.8</joda-time.version>
     <commons-logging.version>1.2</commons-logging.version>
-    <httpcore.version>4.4.1</httpcore.version>
-    <javaLanguage.version>1.6</javaLanguage.version>
-    <maven-checkstyle-plugin.version>2.16</maven-checkstyle-plugin.version>
-    <versions-maven-plugin.version>2.2</versions-maven-plugin.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <commons-lang3.version>3.4</commons-lang3.version>
     <maven-surefire-report-plugin.version>2.18.1</maven-surefire-report-plugin.version>
+    <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
+    <junit.version>4.12</junit.version>
+    <jacoco-maven-plugin.version>0.8.3</jacoco-maven-plugin.version>
+    <commons-io.version>2.4</commons-io.version>
+    <logback.version>1.1.3</logback.version>
+    <animal-sniffer-maven-plugin.signature.version>1.1</animal-sniffer-maven-plugin.signature.version>
+    <nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
+    <versions-maven-plugin.version>2.2</versions-maven-plugin.version>
+    <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+    <hamcrest-all.version>1.3</hamcrest-all.version>
+    <httpcore.version>4.4.1</httpcore.version>
+    <javaLanguage.version>1.8</javaLanguage.version>
+    <joda-time.version>2.8</joda-time.version>
+    <mockito-core.version>1.10.19</mockito-core.version>
+    <maven-site-plugin.version>3.4</maven-site-plugin.version>
+    <classesrepacked.version>2.0</classesrepacked.version>
   </properties>
 </project>
