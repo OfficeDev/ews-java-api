@@ -32,6 +32,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.sun.org.apache.xerces.internal.impl.Constants;
+import com.sun.org.apache.xerces.internal.impl.XMLErrorReporter;
+import com.sun.xml.internal.stream.XMLInputFactoryImpl;
+
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -96,10 +100,16 @@ public class EwsXmlReader {
    * @throws Exception on error
    */
   protected XMLEventReader initializeXmlReader(InputStream stream) throws Exception {
-    XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+    XMLInputFactory inputFactory = new XMLInputFactoryImpl();
     inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
 
-    return inputFactory.createXMLEventReader(stream);
+    XMLEventReader reader = inputFactory.createXMLEventReader(stream);
+
+    XMLErrorReporter errorReporter = (XMLErrorReporter) reader
+        .getProperty(Constants.XERCES_PROPERTY_PREFIX + Constants.ERROR_REPORTER_PROPERTY);
+
+    errorReporter.setFeature(Constants.XERCES_FEATURE_PREFIX + Constants.CONTINUE_AFTER_FATAL_ERROR_FEATURE, true);
+    return reader;
   }
 
 
