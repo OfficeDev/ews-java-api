@@ -75,14 +75,7 @@ public class AttachmentsTest {
                     //Recreating the object to test whether the attachment object can be stored and retrieved
                    FileAttachment fileAttachment = new FileAttachment(new Item(service));
                     fileAttachment.setId(attachment.getId());
-
-                    service.getAttachment(fileAttachment, null, null);
-
-
                     fileAttachment.load("/Users/ssiva17/Desktop/test/"+attachment.getName());
-
-
-
                 }
             }
         }
