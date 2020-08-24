@@ -29,26 +29,26 @@ import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.core.ExchangeService;
 import microsoft.exchange.webservices.data.core.PropertySet;
 import microsoft.exchange.webservices.data.core.XmlElementNames;
-import microsoft.exchange.webservices.data.core.service.ServiceObject;
-import microsoft.exchange.webservices.data.core.service.schema.ItemSchema;
-import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
-import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AffectedTaskOccurrence;
+import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
+import microsoft.exchange.webservices.data.core.enumeration.property.Importance;
+import microsoft.exchange.webservices.data.core.enumeration.property.Sensitivity;
+import microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName;
 import microsoft.exchange.webservices.data.core.enumeration.service.ConflictResolutionMode;
 import microsoft.exchange.webservices.data.core.enumeration.service.DeleteMode;
 import microsoft.exchange.webservices.data.core.enumeration.service.EffectiveRights;
-import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
-import microsoft.exchange.webservices.data.core.enumeration.property.Importance;
 import microsoft.exchange.webservices.data.core.enumeration.service.MessageDisposition;
 import microsoft.exchange.webservices.data.core.enumeration.service.ResponseActions;
 import microsoft.exchange.webservices.data.core.enumeration.service.SendCancellationsMode;
 import microsoft.exchange.webservices.data.core.enumeration.service.SendInvitationsMode;
 import microsoft.exchange.webservices.data.core.enumeration.service.SendInvitationsOrCancellationsMode;
-import microsoft.exchange.webservices.data.core.enumeration.property.Sensitivity;
+import microsoft.exchange.webservices.data.core.enumeration.service.calendar.AffectedTaskOccurrence;
 import microsoft.exchange.webservices.data.core.enumeration.service.error.ServiceErrorHandling;
-import microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName;
 import microsoft.exchange.webservices.data.core.exception.misc.InvalidOperationException;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
 import microsoft.exchange.webservices.data.core.exception.service.remote.ServiceResponseException;
+import microsoft.exchange.webservices.data.core.service.ServiceObject;
+import microsoft.exchange.webservices.data.core.service.schema.ItemSchema;
+import microsoft.exchange.webservices.data.core.service.schema.ServiceObjectSchema;
 import microsoft.exchange.webservices.data.property.complex.Attachment;
 import microsoft.exchange.webservices.data.property.complex.AttachmentCollection;
 import microsoft.exchange.webservices.data.property.complex.ConversationId;
@@ -397,8 +397,11 @@ public class Item extends ServiceObject {
    */
   public void update(ConflictResolutionMode conflictResolutionMode)
       throws ServiceResponseException, Exception {
-    this.internalUpdate(null /* parentFolder */, conflictResolutionMode,
-        MessageDisposition.SaveOnly, null);
+    update(null, conflictResolutionMode);
+  }
+
+  public void update(FolderId parentFolder, ConflictResolutionMode conflictResolutionMode) throws Exception {
+    this.internalUpdate(parentFolder, conflictResolutionMode, MessageDisposition.SaveOnly, null);
   }
 
   /**
