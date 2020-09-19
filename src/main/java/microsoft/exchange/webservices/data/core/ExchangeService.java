@@ -2527,7 +2527,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
 	 * Begins an asynchronous request to synchronize the entire folder hierarchy
 	 * of the mailbox this Service is connected to. Calling this method results
 	 * in a call to EWS
-	 * 
+	 *
 	 * @param callback
 	 *            The AsyncCallback delegate
 	 * @param state
@@ -2538,7 +2538,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
 	 *            The optional sync state representing the point in time when to
 	 *            start the synchronization.
 	 * @return An IAsyncResult that references the asynchronous request
-	 * @throws Exception 
+	 * @throws Exception
 	public IAsyncResult beginSyncFolderHierarchy(FolderId syncFolderId, PropertySet propertySet, String syncState) throws Exception {
 		return this.beginSyncFolderHierarchy(null,null, null,
 				propertySet, syncState);
@@ -2723,7 +2723,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
    * @param folderId The Id of the folder in which to search for conversations.
    * @throws Exception
    */
-  private Collection<Conversation> findConversation(
+  public Collection<Conversation> findConversation(
       ConversationIndexedItemView view, SearchFilter.IsEqualTo filter,
       FolderId folderId) throws Exception {
     EwsUtilities.validateParam(view, "view");
@@ -3765,7 +3765,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
 
   /**
    * Prepares a http web request from a pooling connection manager, used for subscriptions.
-   * 
+   *
    * @return A http web request
    * @throws ServiceLocalException The service local exception
    * @throws java.net.URISyntaxException the uRI syntax exception
@@ -3946,19 +3946,19 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
   public void setExchange2007CompatibilityMode(boolean value) {
     this.exchange2007CompatibilityMode = value;
   }
-  
+
   /**
    * Retrieves the definitions of the specified server-side time zones.
    *
    * @param timeZoneIds the time zone ids
    * @return A Collection containing the definitions of the specified time
    * zones.
- * @throws Exception 
+ * @throws Exception
    */
   public Collection<TimeZoneDefinition> getServerTimeZones(
       Iterable<String> timeZoneIds) throws Exception {
     Map<String, TimeZoneDefinition> timeZoneMap = new HashMap<String, TimeZoneDefinition>();
-    
+
     GetServerTimeZonesRequest request = new GetServerTimeZonesRequest(this);
 	ServiceResponseCollection<GetServerTimeZonesResponse> responses = request.execute();
 	for (GetServerTimeZonesResponse response : responses) {
@@ -3966,7 +3966,7 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
 			timeZoneMap.put(tzd.getId(), tzd);
 		}
 	}
-   
+
     Collection<TimeZoneDefinition> timeZoneList = new ArrayList<TimeZoneDefinition>();
 
     for (String timeZoneId : timeZoneIds) {
@@ -3975,13 +3975,13 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
 
     return timeZoneList;
   }
-  
+
   /**
    * Retrieves the definitions of all server-side time zones.
    *
    * @return A Collection containing the definitions of the specified time
    * zones.
- * @throws Exception 
+ * @throws Exception
    */
   public Collection<TimeZoneDefinition> getServerTimeZones() throws Exception {
 	  GetServerTimeZonesRequest request = new GetServerTimeZonesRequest(this);
@@ -3990,13 +3990,13 @@ public class ExchangeService extends ExchangeServiceBase implements IAutodiscove
 	  for (GetServerTimeZonesResponse response : responses) {
 		  timeZoneList.addAll(response.getTimeZones());
 	  }
-   
+
     return timeZoneList;
   }
 
   /*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @seemicrosoft.exchange.webservices.AutodiscoverRedirectionUrlInterface#
 	 * autodiscoverRedirectionUrlValidationCallback(java.lang.String)
 	 */
