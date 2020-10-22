@@ -36,11 +36,16 @@ import microsoft.exchange.webservices.data.core.request.GetAttachmentRequest;
 import microsoft.exchange.webservices.data.core.response.GetAttachmentResponse;
 import microsoft.exchange.webservices.data.core.response.ServiceResponseCollection;
 import microsoft.exchange.webservices.data.core.service.item.Item;
+import microsoft.exchange.webservices.data.util.FileUtils;
 import org.apache.commons.codec.binary.Base64OutputStream;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -68,11 +73,6 @@ public final class FileAttachment extends Attachment {
    * The content stream.
    */
   private InputStream contentStream;
-
-  /**
-   * The content.
-   */
-  private byte[] content;
 
   /**
    * The load to stream.
@@ -113,8 +113,7 @@ public final class FileAttachment extends Attachment {
    */
   @Override
   protected void validate(int attachmentIndex) throws ServiceValidationException {
-    if ((this.fileName == null || this.fileName.isEmpty())
-        && this.content == null && this.contentStream == null) {
+    if ((this.fileName == null || this.fileName.isEmpty()) && this.contentStream == null) {
       throw new ServiceValidationException(String.format(
           "The content of the file attachment at index %d must be set.",
           attachmentIndex));
@@ -152,10 +151,10 @@ public final class FileAttachment extends Attachment {
             if (outputStream != null) {
               reader.readBase64ElementValue(outputStream);
             } else {
-              this.content = reader.readBase64ElementValue();
+              this.contentStream = new ByteArrayInputStream(reader.readBase64ElementValue());
             }
           } else {
-            this.content = reader.readBase64ElementValue();
+            this.contentStream =  new ByteArrayInputStream(reader.readBase64ElementValue());
           }
         }
 
@@ -206,18 +205,15 @@ public final class FileAttachment extends Attachment {
         fis = new FileInputStream(fileStream);
         writer.writeBase64ElementValue(fis);
       } finally {
-        if (fis != null) {
-          fis.close();
-        }
+        IOUtils.closeQuietly(fis);
       }
-
     } else if (this.contentStream != null) {
       writer.writeBase64ElementValue(this.contentStream);
-    } else if (this.content != null) {
-      writer.writeBase64ElementValue(this.content);
     } else {
-      EwsUtilities
-          .ewsAssert(false, "FileAttachment.WriteElementsToXml", "The attachment's content is not set.");
+      EwsUtilities.ewsAssert(
+          false,
+          "FileAttachment.WriteElementsToXml",
+          "The attachment's content is not set.");
     }
 
     writer.writeEndElement();
@@ -260,7 +256,6 @@ public final class FileAttachment extends Attachment {
     }
 
     this.fileName = fileName;
-    this.content = null;
     this.contentStream = null;
   }
 
@@ -494,7 +489,6 @@ public final class FileAttachment extends Attachment {
     this.throwIfThisIsNotNew();
 
     this.fileName = fileName;
-    this.content = null;
     this.contentStream = null;
   }
 
@@ -517,7 +511,6 @@ public final class FileAttachment extends Attachment {
     this.throwIfThisIsNotNew();
 
     this.contentStream = contentStream;
-    this.content = null;
     this.fileName = null;
   }
 
@@ -528,7 +521,7 @@ public final class FileAttachment extends Attachment {
    * @return the content
    */
   public byte[] getContent() {
-    return this.content;
+    return FileUtils.getBytes(contentStream);
   }
 
   /**
@@ -539,9 +532,8 @@ public final class FileAttachment extends Attachment {
   protected void setContent(byte[] content) {
     this.throwIfThisIsNotNew();
 
-    this.content = content;
     this.fileName = null;
-    this.contentStream = null;
+    this.contentStream = new ByteArrayInputStream(content);
   }
 
   /**
