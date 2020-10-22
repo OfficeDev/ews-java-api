@@ -34,7 +34,7 @@ public final class FileUtils {
 
   public static byte[] getBytes(final InputStream input) {
     if (input != null) {
-      final ByteArrayOutputStream output = new ByteArrayOutputStream(4096);
+      final ByteArrayOutputStream output = new ByteArrayOutputStream(DEFAULT_BUFFER_SIZE);
       try {
         FileUtils.copyLarge(input, output);
       } catch (Exception e) {
