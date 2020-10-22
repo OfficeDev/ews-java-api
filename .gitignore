@@ -13,6 +13,7 @@
 
 # IntelliJ
 # User-specific stuff:
+.idea
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/findbugs-idea.xml
@@ -21,6 +22,7 @@
 .idea/shelf
 *.iws
 *.ipr
+*.iml
 # Sensitive or high-churn files:
 .idea/dataSources.ids
 .idea/dataSources.xml
