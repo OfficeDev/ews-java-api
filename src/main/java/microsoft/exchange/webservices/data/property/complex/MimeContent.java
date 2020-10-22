@@ -137,7 +137,7 @@ public final class MimeContent extends ComplexProperty {
   }
 
   /**
-   * Gets L the character set of the content.
+   * Gets the character set of the content.
    *
    * @return the character set
    */
@@ -155,7 +155,7 @@ public final class MimeContent extends ComplexProperty {
   }
 
   /**
-   * Gets  the character set of the content.
+   * Gets the character set of the content.
    *
    * @return the content
    */
