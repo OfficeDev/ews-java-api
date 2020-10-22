@@ -36,11 +36,15 @@ import microsoft.exchange.webservices.data.core.exception.service.local.ServiceX
 import microsoft.exchange.webservices.data.util.FileUtils;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Represents the MIME content of an item.
  */
 public final class MimeContent extends ComplexProperty {
+
+  private static final Log LOG = LogFactory.getLog(MimeContent.class);
 
   /**
    * The character set.
@@ -133,7 +137,7 @@ public final class MimeContent extends ComplexProperty {
   }
 
   /**
-   * Gets  the character set of the content.
+   * Gets L the character set of the content.
    *
    * @return the character set
    */
@@ -161,7 +165,7 @@ public final class MimeContent extends ComplexProperty {
       try {
         FileUtils.copyLarge(contentReader, output);
       } catch (Exception e) {
-        e.printStackTrace();
+        LOG.warn("An error occurred during copying file", e);
       } finally {
         IOUtils.closeQuietly(output);
       }
