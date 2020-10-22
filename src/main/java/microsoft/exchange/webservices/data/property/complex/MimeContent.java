@@ -23,11 +23,6 @@
 
 package microsoft.exchange.webservices.data.property.complex;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.xml.stream.XMLStreamException;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.XmlAttributeNames;
@@ -36,15 +31,17 @@ import microsoft.exchange.webservices.data.core.exception.service.local.ServiceX
 import microsoft.exchange.webservices.data.util.FileUtils;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
+import javax.xml.stream.XMLStreamException;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Represents the MIME content of an item.
  */
 public final class MimeContent extends ComplexProperty {
-
-  private static final Log LOG = LogFactory.getLog(MimeContent.class);
 
   /**
    * The character set.
@@ -160,20 +157,7 @@ public final class MimeContent extends ComplexProperty {
    * @return the content
    */
   public byte[] getContent() {
-    if (contentReader != null) {
-      final ByteArrayOutputStream output = new ByteArrayOutputStream(4096);
-      try {
-        FileUtils.copyLarge(contentReader, output);
-      } catch (Exception e) {
-        LOG.warn("An error occurred during copying file", e);
-      } finally {
-        IOUtils.closeQuietly(output);
-      }
-
-      return output.toByteArray();
-    }
-
-    return null;
+    return FileUtils.getBytes(contentReader);
   }
 
   /**
