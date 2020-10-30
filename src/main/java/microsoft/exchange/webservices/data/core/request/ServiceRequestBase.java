@@ -56,6 +56,12 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
 
@@ -220,11 +226,11 @@ public abstract class ServiceRequestBase<T> {
 		 * (!this.getService().getExchange2007CompatibilityMode())) {
 		 * writer.writeStartElement(XmlNamespace.Types,
 		 * XmlElementNames.TimeZoneContext);
-		 * 
+		 *
 		 * this.getService().TimeZoneDefinition().WriteToXml(writer);
-		 * 
+		 *
 		 * writer.WriteEndElement(); // TimeZoneContext
-		 * 
+		 *
 		 * writer.IsTimeZoneHeaderEmitted = true; }
 		 */
 
@@ -632,16 +638,28 @@ public abstract class ServiceRequestBase<T> {
   protected HttpWebRequest validateAndEmitRequest() throws Exception {
     this.validate();
 
-    HttpWebRequest request = this.buildEwsHttpWebRequest();
+    final HttpWebRequest request = this.buildEwsHttpWebRequest();
 
     try {
+      ExecutorService executorService = Executors.newCachedThreadPool();
+      Callable<Object> task = new Callable<Object>() {
+        @Override public Object call() throws Exception{
+          return getEwsHttpWebResponse(request);
+        }
+      };
+      Future<Object> future = executorService.submit(task);
       try {
-        return this.getEwsHttpWebResponse(request);
-      } catch (HttpErrorException e) {
+        return (HttpWebRequest) future.get(120, TimeUnit.SECONDS);
+
+      } catch (TimeoutException e) {
+        throw new TimeoutException();
+      } catch (Exception e) {
         processWebException(e, request);
 
         // Wrap exception if the above code block didn't throw
         throw new ServiceRequestException(String.format("The request failed. %s", e.getMessage()), e);
+      } finally {
+        future.cancel(true);
       }
     } catch (Exception e) {
       try {
@@ -671,7 +689,7 @@ public abstract class ServiceRequestBase<T> {
    * <p>
    * Used for subscriptions.
    * </p>
-   * 
+   *
    * @return A HttpWebRequest instance
    * @throws Exception on error
    */
