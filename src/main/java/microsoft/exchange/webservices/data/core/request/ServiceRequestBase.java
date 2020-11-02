@@ -72,6 +72,7 @@ public abstract class ServiceRequestBase<T> {
 
   private static final Log LOG = LogFactory.getLog(ServiceRequestBase.class);
 
+
   /**
    * The service.
    */
@@ -641,12 +642,14 @@ public abstract class ServiceRequestBase<T> {
     final HttpWebRequest request = this.buildEwsHttpWebRequest();
 
     try {
-      ExecutorService executorService = Executors.newCachedThreadPool();
       Callable<Object> task = new Callable<Object>() {
         @Override public Object call() throws Exception{
           return getEwsHttpWebResponse(request);
         }
       };
+
+      ExecutorService executorService = SingletonEwsExecutor.getInstance().getExecutorService();;
+
       Future<Object> future = executorService.submit(task);
       try {
         return (HttpWebRequest) future.get(120, TimeUnit.SECONDS);
