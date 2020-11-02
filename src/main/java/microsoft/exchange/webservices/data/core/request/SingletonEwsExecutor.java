@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class SingletonEwsExecutor {
-    private static SingletonEwsExecutor singletonEwsExecutor = null;
+    private static final SingletonEwsExecutor singletonEwsExecutor = new SingletonEwsExecutor();
 
     private final ExecutorService executorService;
 
@@ -21,9 +21,6 @@ public class SingletonEwsExecutor {
     }
 
     public static SingletonEwsExecutor getInstance() {
-      if (singletonEwsExecutor == null) {
-        singletonEwsExecutor = new SingletonEwsExecutor();
-      }
       return singletonEwsExecutor;
     }
 
