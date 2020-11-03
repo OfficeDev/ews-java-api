@@ -648,7 +648,7 @@ public abstract class ServiceRequestBase<T> {
         }
       };
 
-      ExecutorService executorService = SingletonEwsExecutor.getInstance().getExecutorService();;
+      ExecutorService executorService = SingletonEwsExecutor.getInstance().getExecutorService();
 
       Future<Object> future = executorService.submit(task);
       try {
