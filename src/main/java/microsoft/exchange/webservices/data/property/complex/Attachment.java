@@ -430,4 +430,7 @@ public abstract class Attachment extends ComplexProperty {
     this.internalLoad(null, null);
   }
 
+  public void setId(String id) {
+    this.id = id;
+  }
 }

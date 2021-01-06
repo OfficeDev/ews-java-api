@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import org.apache.http.conn.ssl.DefaultHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.ssl.SSLContexts;
+import cz.msebera.android.httpclient.conn.ssl.DefaultHostnameVerifier;
+import cz.msebera.android.httpclient.conn.ssl.SSLConnectionSocketFactory;
+import cz.msebera.android.httpclient.ssl.SSLContexts;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;

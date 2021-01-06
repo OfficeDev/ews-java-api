@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.core.request;
 
-import org.apache.http.Header;
-import org.apache.http.entity.BasicHttpEntity;
-import org.apache.http.message.BasicHeader;
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.entity.BasicHttpEntity;
+import cz.msebera.android.httpclient.message.BasicHeader;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

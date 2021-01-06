@@ -23,11 +23,11 @@
 
 package microsoft.exchange.webservices.data.core;
 
+import cz.msebera.android.httpclient.extras.Base64;
 import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlSerializationException;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.property.complex.ISearchStringProvider;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.CDATASection;
@@ -497,8 +497,8 @@ public class EwsServiceXmlWriter implements IDisposable {
   public void writeBase64ElementValue(byte[] buffer)
       throws XMLStreamException {
 
-    String strValue = Base64.encodeBase64String(buffer);
-    this.xmlWriter.writeCharacters(strValue);//Base64.encode(buffer));
+    byte[] strValue = Base64.encode(buffer, 0);
+    this.xmlWriter.writeCharacters(new String(strValue));//Base64.encode(buffer));
   }
 
   /**
@@ -523,8 +523,8 @@ public class EwsServiceXmlWriter implements IDisposable {
       bos.close();
     }
     byte[] bytes = bos.toByteArray();
-    String strValue = Base64.encodeBase64String(bytes);
-    this.xmlWriter.writeCharacters(strValue);
+    byte[] strValue = Base64.encode(bytes, 0);
+      this.xmlWriter.writeCharacters(new String(strValue));
 
   }
 

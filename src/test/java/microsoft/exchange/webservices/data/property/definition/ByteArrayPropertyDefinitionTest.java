@@ -26,9 +26,9 @@ package microsoft.exchange.webservices.data.property.definition;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import cz.msebera.android.httpclient.extras.Base64;
 import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
 import microsoft.exchange.webservices.data.core.enumeration.property.PropertyDefinitionFlags;
-import org.apache.commons.codec.binary.Base64;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +42,7 @@ public class ByteArrayPropertyDefinitionTest {
   private ByteArrayPropertyDefinition testObject;
 
   private static final String TEST_STRING = "Lorem ipsum dolor sit amet";
-  private static final String BASE64_ENCODEDSTRING = Base64.encodeBase64String(TEST_STRING.getBytes());
+  private static final String BASE64_ENCODEDSTRING = new String(Base64.encode(TEST_STRING.getBytes(), 0));
 
   /**
    * setup

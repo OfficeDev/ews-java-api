@@ -1,7 +1,6 @@
 *.class
 
 # Package Files
-*.jar
 *.war
 *.ear
 /target
@@ -29,3 +28,4 @@
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+secret*.properties

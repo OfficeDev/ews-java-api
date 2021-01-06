@@ -23,6 +23,7 @@
 
 package microsoft.exchange.webservices.data.misc;
 
+import cz.msebera.android.httpclient.extras.Base64;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlReader;
 import microsoft.exchange.webservices.data.core.EwsServiceXmlWriter;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
@@ -41,7 +42,6 @@ import microsoft.exchange.webservices.data.property.complex.FolderId;
 import microsoft.exchange.webservices.data.property.complex.ItemId;
 import microsoft.exchange.webservices.data.property.complex.UserConfigurationDictionary;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -159,7 +159,7 @@ public class UserConfiguration {
     writer.writeStartElement(XmlNamespace.Types, xmlElementName);
 
     if (byteArray != null && byteArray.length > 0) {
-      writer.writeValue(Base64.encodeBase64String(byteArray), xmlElementName);
+      writer.writeValue(new String(Base64.encode(byteArray,0)), xmlElementName);
     }
 
     writer.writeEndElement();
@@ -605,10 +605,10 @@ public class UserConfiguration {
               XmlElementNames.Dictionary);
         } else if (reader.getLocalName()
             .equals(XmlElementNames.XmlData)) {
-          this.xmlData = Base64.decodeBase64(reader.readElementValue());
+          this.xmlData = Base64.decode(reader.readElementValue(), 0);
         } else if (reader.getLocalName().equals(
             XmlElementNames.BinaryData)) {
-          this.binaryData = Base64.decodeBase64(reader.readElementValue());
+          this.binaryData = Base64.decode(reader.readElementValue(), 0);
         } else {
           EwsUtilities.ewsAssert(false, "UserConfiguration.loadFromXml",
                                  "Xml element not supported: " + reader.getLocalName());

@@ -23,8 +23,8 @@
 
 package microsoft.exchange.webservices.data.misc;
 
+import cz.msebera.android.httpclient.extras.Base64;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import org.apache.commons.codec.binary.Base64;
 
 import java.util.Date;
 import java.util.UUID;
@@ -75,7 +75,7 @@ public final class IFunctions {
     public static final Base64Decoder INSTANCE = new Base64Decoder();
 
     public Object func(final String s) {
-      return Base64.decodeBase64(s);
+      return Base64.decode(s, 0);
     }
   }
 
@@ -83,7 +83,7 @@ public final class IFunctions {
     public static final Base64Encoder INSTANCE = new Base64Encoder();
 
     public String func(final Object o) {
-      return Base64.encodeBase64String((byte[]) o);
+      return new String(Base64.encode((byte[]) o, 0));
     }
   }
 

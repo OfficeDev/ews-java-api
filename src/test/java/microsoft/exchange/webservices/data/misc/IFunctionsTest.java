@@ -23,9 +23,9 @@
 
 package microsoft.exchange.webservices.data.misc;
 
+import cz.msebera.android.httpclient.extras.Base64;
 import microsoft.exchange.webservices.data.core.EwsUtilities;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.binary.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -76,14 +76,24 @@ public class IFunctionsTest {
   public void testBase64Decoder() {
     final String value = "123";
     final IFunctions.Base64Decoder f = IFunctions.Base64Decoder.INSTANCE;
-    Assert.assertArrayEquals(Base64.decodeBase64(value), (byte[]) f.func(value));
+    Assert.assertArrayEquals(Base64.decode(value, 0), (byte[]) f.func(value));
   }
 
   @Test
   public void testBase64Encoder() {
-    final byte[] value = StringUtils.getBytesUtf8("123");
+    final byte[] value = "123".getBytes();
     final IFunctions.Base64Encoder f = IFunctions.Base64Encoder.INSTANCE;
-    Assert.assertEquals(Base64.encodeBase64String(value), f.func(value));
+    Assert.assertEquals(new String(Base64.encode(value, 0)), f.func(value));
+  }
+
+  @Test
+  public void testBase64EncoderDecoder() {
+    String testValue = " fsfsdfsdAAS#ssf@43(_ _#$@#?><DDF";
+    final byte[] value = testValue.getBytes();
+    final IFunctions.Base64Encoder f = IFunctions.Base64Encoder.INSTANCE;
+    String encodedVal = f.func(value);
+    String decodedVal = new String(Base64.decode(encodedVal, 0));
+    Assert.assertEquals(decodedVal, testValue);
   }
 
   @Test
