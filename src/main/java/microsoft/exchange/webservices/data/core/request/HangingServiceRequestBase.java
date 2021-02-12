@@ -49,6 +49,7 @@ import java.io.ObjectStreamException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownServiceException;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -313,7 +314,14 @@ public abstract class HangingServiceRequestBase<T> extends ServiceRequestBase<T>
           keepAliveTime, TimeUnit.SECONDS, queue);
       threadPool.execute(new Runnable() {
         public void run() {
-          parseResponses();
+            try {
+            	parseResponses();
+          } catch (ConcurrentModificationException e) {
+        	  /*
+        	   * FA If this happens, there is nothing that we can do at this point!
+        	   */
+        	  LOG.debug("If this happens, there is nothing that we can do at this point!", e);
+          }
         }
       });
       threadPool.shutdown();
