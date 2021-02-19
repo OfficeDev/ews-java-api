@@ -25,6 +25,7 @@ package microsoft.exchange.webservices.data.core;
 
 import com.github.rwitzel.streamflyer.core.ModifyingReader;
 import com.github.rwitzel.streamflyer.xml.InvalidXmlCharacterModifier;
+import com.github.rwitzel.streamflyer.xml.XmlVersionModifier;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.input.XmlStreamReader;
@@ -106,10 +107,16 @@ public class EwsXmlReader {
     inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
 
     Reader reader = new XmlStreamReader(stream);
-    ModifyingReader
-        modifyingReader =
-        new ModifyingReader(reader,
-                            new InvalidXmlCharacterModifier("", InvalidXmlCharacterModifier.XML_10_VERSION));
+
+    // this doesn't work for some reason:
+//    ModifyingReader
+//        modifyingReader =
+//        new ModifyingReader(reader,
+//                            new InvalidXmlCharacterModifier("", InvalidXmlCharacterModifier.XML_10_VERSION));
+
+    final ModifyingReader modifyingReader =
+        new ModifyingReader(reader, new XmlVersionModifier("1.1", 8192));
+
 
     return inputFactory.createXMLEventReader(modifyingReader);
   }
