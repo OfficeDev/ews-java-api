@@ -28,9 +28,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.microsoft.ews-java-api</groupId>
+    <groupId>io.aurinko.ews-java-api</groupId>
     <artifactId>ews-java-api</artifactId>
-    
+
     <version>2.1-SNAPSHOT</version>
 
     <name>Exchange Web Services Java API</name>
@@ -67,7 +67,7 @@
             </roles>
             <timezone>America/New_York</timezone>
             <properties>
-                 <picUrl>http://www.example.com/jdoe/pic</picUrl>
+                <picUrl>http://www.example.com/jdoe/pic</picUrl>
             </properties>
         </developer>
     </developers>
@@ -130,18 +130,18 @@
             <build>
                 <plugins>
                     <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>${maven-checkstyle-plugin.version}</version>
-                    <configuration>
-                    <failsOnError>true</failsOnError>
-                        <configLocation>google_checks.xml</configLocation>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>checkstyle</goal>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <version>${maven-checkstyle-plugin.version}</version>
+                        <configuration>
+                            <failsOnError>true</failsOnError>
+                            <configLocation>google_checks.xml</configLocation>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>checkstyle</goal>
                                 </goals>
                             </execution>
                         </executions>
@@ -202,14 +202,16 @@
     </scm>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh-snapshot</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+            <id>${repos.release.id}</id>
+            <name>${repos.release.name}</name>
+            <url>${repos.release.url}</url>
         </repository>
+        <snapshotRepository>
+            <id>${repos.snapshot.id}</id>
+            <name>${repos.snapshot.name}</name>
+            <url>${repos.snapshot.url}</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <dependencies>
@@ -218,7 +220,7 @@
             <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>

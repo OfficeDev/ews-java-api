@@ -31,11 +31,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.TimeZone;
 
 @RunWith(JUnit4.class)
 public class OlsonTimeZoneTest {
+
+  private static final Set<String> notSupportedTimezones =
+      new HashSet<String>(Arrays.asList(
+          "America/Nuuk", "America/Punta_Arenas", "Europe/Astrakhan", "Europe/Kirov", "Europe/Saratov",
+          "Europe/Ulyanovsk"
+      ));
 
   @Test
   public void testOlsonTimeZoneConversion() {
@@ -47,7 +56,7 @@ public class OlsonTimeZoneTest {
       final boolean europe = timeZoneId.startsWith("Europe");
       final boolean africa = timeZoneId.startsWith("Africa");
 
-      if (america || europe || africa) {
+      if (!notSupportedTimezones.contains(timeZoneId) && (america || europe || africa)) {
         // There are a few timezones that are out of date or don't have direct microsoft mappings
         // according to the Unicode source we use so we will only test Americas, Europe and Africa.
         final TimeZone timeZone = TimeZone.getTimeZone(timeZoneId);
