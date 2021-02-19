@@ -23,14 +23,23 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
-import microsoft.exchange.webservices.data.misc.OutParam;
-import microsoft.exchange.webservices.data.security.XmlNodeType;
+import com.github.rwitzel.streamflyer.core.ModifyingReader;
+import com.github.rwitzel.streamflyer.xml.InvalidXmlCharacterModifier;
+
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.input.XmlStreamReader;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -43,13 +52,10 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
+import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
+import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
+import microsoft.exchange.webservices.data.misc.OutParam;
+import microsoft.exchange.webservices.data.security.XmlNodeType;
 
 /**
  * Defines the EwsXmlReader class.
@@ -99,9 +105,14 @@ public class EwsXmlReader {
     XMLInputFactory inputFactory = XMLInputFactory.newInstance();
     inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
 
-    return inputFactory.createXMLEventReader(stream);
-  }
+    Reader reader = new XmlStreamReader(stream);
+    ModifyingReader
+        modifyingReader =
+        new ModifyingReader(reader,
+                            new InvalidXmlCharacterModifier("", InvalidXmlCharacterModifier.XML_10_VERSION));
 
+    return inputFactory.createXMLEventReader(modifyingReader);
+  }
 
   /**
    * Formats the name of the element.
@@ -1032,12 +1043,19 @@ public class EwsXmlReader {
    * @return boolean
    * @throws XMLStreamException the XML stream exception
    */
-  public boolean isEmptyElement() throws XMLStreamException {
-    boolean isPresentStartElement = this.presentEvent.isStartElement();
-    boolean isNextEndElement = this.xmlReader.peek().isEndElement();
+  public boolean isEmptyElement() {
+    boolean isPresentStartElement = false;
+    boolean isNextEndElement = false;
+    try {
+      isPresentStartElement = this.presentEvent.isStartElement();
+    } catch (Exception e) {
+    }
+    try {
+      isNextEndElement = this.xmlReader.peek().isEndElement();
+    } catch (Exception e) {
+    }
     return isPresentStartElement && isNextEndElement;
   }
-
   /**
    * Gets the local name of the current element.
    *
