@@ -57,6 +57,7 @@ import microsoft.exchange.webservices.data.core.enumeration.misc.XmlNamespace;
 import microsoft.exchange.webservices.data.core.exception.service.local.ServiceXmlDeserializationException;
 import microsoft.exchange.webservices.data.misc.OutParam;
 import microsoft.exchange.webservices.data.security.XmlNodeType;
+import microsoft.exchange.webservices.data.xml.XmlValidVersionModifier;
 
 /**
  * Defines the EwsXmlReader class.
@@ -115,7 +116,7 @@ public class EwsXmlReader {
 //                            new InvalidXmlCharacterModifier("", InvalidXmlCharacterModifier.XML_10_VERSION));
 
     final ModifyingReader modifyingReader =
-        new ModifyingReader(reader, new XmlVersionModifier("1.1", 8192));
+        new ModifyingReader(reader, new XmlValidVersionModifier("1.1", 8192));
 
 
     return inputFactory.createXMLEventReader(modifyingReader);
