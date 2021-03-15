@@ -1,0 +1,94 @@
+pipeline {
+    agent {
+        label 'build'
+    }
+
+    triggers {
+        pollSCM 'H/5 * * * *'
+    }
+
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '30', artifactNumToKeepStr: '30', daysToKeepStr: '60', numToKeepStr: '60')
+        skipDefaultCheckout true
+    }
+
+    parameters {
+        string defaultValue: 'master', description: '', name: 'gitbranch', trim: false
+    }
+
+    environment {
+       GROUP_ID = "com.microsoft.ews-java-api"
+       ARTIFACT_ID = "ews-java-api"
+       REGION = 'us-east-1'
+       DOMAIN = "spanning"
+       REPOSITORY_NAME = "stab"
+       REPOSITORY_FORMAT = "maven"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                cleanWs()
+                git branch: '${gitbranch}',
+                    credentialsId: 'ae1d359e-c03d-4706-8871-471731e7e26c',
+                    url: 'git@github.com:SpanningCloudApps/ews-java-api.git'
+                script {
+                    GIT_HASH = sh(returnStdout: true, script: 'echo \$(git rev-parse --short HEAD)').trim()
+                    REVISION = sh(returnStdout: true, script: "echo $GIT_HASH.$BUILD_NUMBER").trim()
+                    TIMESTAMP = sh(returnStdout: true, script: 'date -u +%Y%m%d-%H%M').trim()
+                    BUILDSERVER = sh(returnStdout: true, script: 'hostname -s').trim()
+                    BUILD_VERSION = sh(returnStdout: true, script: "echo $TIMESTAMP.$REVISION").trim()
+                }
+            }
+        }
+
+        stage('Build and Push') {
+            steps {
+               withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'in-a-p-jen-codeartifact', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                  script {
+
+                    CODEARTIFACT_AUTH_TOKEN = sh(
+                            returnStdout: true,
+                            script: 'aws codeartifact get-authorization-token \
+                                         --region $REGION \
+                                         --domain $DOMAIN \
+                                         --query authorizationToken \
+                                         --output text \
+                                         --duration-seconds 900'
+                    ).trim()
+
+                    CODE_ARTIFACT_URL = sh(
+                            returnStdout: true,
+                            script: 'aws codeartifact get-repository-endpoint \
+                                         --region $REGION \
+                                         --domain $DOMAIN \
+                                         --repository $REPOSITORY_NAME \
+                                         --format $REPOSITORY_FORMAT \
+                                         --output text'
+                    ).trim()
+                  }
+                }
+
+
+                withDockerContainer(image: 'maven:3.6.3-openjdk-8', args: "-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker -u root \
+                                   -e CODEARTIFACT_AUTH_TOKEN=$CODEARTIFACT_AUTH_TOKEN -e BUILD_VERSION=$BUILD_VERSION -e GROUP_ID=$GROUP_ID -e ARTIFACT_ID=$ARTIFACT_ID -e CODE_ARTIFACT_URL=$CODE_ARTIFACT_URL") {
+                    sh "env"
+                    sh """
+                    cat <<EOF > settings.xml
+                    <settings>
+                        <servers>
+                            <server>
+                            <id>codeartifact</id>
+                            <username>aws</username>
+                            <password>$CODEARTIFACT_AUTH_TOKEN</password>
+                            </server>
+                        </servers>
+                    </settings>
+EOF"""
+                    sh "mvn clean package -DskipTests=true -DskipStaticAnalyse=true"
+                    sh "mvn clean deploy -s settings.xml -DskipTests=true -DskipStaticAnalyse=true"
+                }
+            }
+        }
+    }
+}
