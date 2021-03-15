@@ -28,8 +28,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.microsoft.ews-java-api</groupId>
-    <artifactId>ews-java-api</artifactId>
+    <groupId>${env.GROUP_ID}</groupId>
+    <artifactId>${env.ARTIFACT_ID}</artifactId>
 
     <version>${env.BUILD_VERSION}</version>
 
@@ -206,7 +206,7 @@
         <repository>
             <id>codeartifact</id>
             <name>codeartifact</name>
-            <url>https://spanning-877583873091.d.codeartifact.us-east-1.amazonaws.com/maven/stab/</url>
+            <url>${env.CODE_ARTIFACT_URL}</url>
         </repository>
     </distributionManagement>
 
