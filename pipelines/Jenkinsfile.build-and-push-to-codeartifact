@@ -72,7 +72,6 @@ pipeline {
 
                 withDockerContainer(image: 'maven:3.6.3-openjdk-8', args: "-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker -u root \
                                    -e CODEARTIFACT_AUTH_TOKEN=$CODEARTIFACT_AUTH_TOKEN -e BUILD_VERSION=$BUILD_VERSION -e GROUP_ID=$GROUP_ID -e ARTIFACT_ID=$ARTIFACT_ID -e CODE_ARTIFACT_URL=$CODE_ARTIFACT_URL") {
-                    sh "env"
                     sh """
                     cat <<EOF > settings.xml
                     <settings>
