@@ -12,7 +12,7 @@ pipeline {
     ARTIFACT_ID = "ews-java-api"
     REGION = 'us-east-1'
     DOMAIN = "spanning"
-    REPOSITORY_NAME = "stab"
+    REPOSITORY_NAME = "shared"
     REPOSITORY_FORMAT = "maven"
     BUILD_IMAGE = 'maven:3.6.3-openjdk-8'
     TIMESTAMP = (new Date()).format('yyyyMMdd-HHmm')
