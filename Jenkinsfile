@@ -8,8 +8,6 @@ pipeline {
   }
 
   environment {
-    GROUP_ID = "com.microsoft.ews-java-api"
-    ARTIFACT_ID = "ews-java-api"
     REGION = 'us-east-1'
     DOMAIN = "spanning"
     REPOSITORY_NAME = "shared"
@@ -61,6 +59,8 @@ pipeline {
         withDockerContainer(image: BUILD_IMAGE) {
           withMaven(mavenOpts: '-XX:+UseParallelGC') {
             withEnv(["PATH=${MVN_CMD_DIR}:${PATH}"]) {
+              sh(label: 'maven set version',
+                 script: "mvn versions:set -DnewVersion=${BUILD_VERSION} -DprocessAllModules -DgenerateBackupPoms=false")
               sh(label: 'maven build',
                  script: "mvn clean package -DskipTests=true -DskipStaticAnalyse=true")
               sh(label: "maven publish",

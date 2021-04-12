@@ -28,10 +28,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>${env.GROUP_ID}</groupId>
-    <artifactId>${env.ARTIFACT_ID}</artifactId>
+    <groupId>com.microsoft.ews-java-api</groupId>
+    <artifactId>ews-java-api</artifactId>
 
-    <version>${env.BUILD_VERSION}</version>
+    <version>1.0.0</version>
 
     <name>Exchange Web Services Java API</name>
     <description>Exchange Web Services (EWS) Java API</description>
