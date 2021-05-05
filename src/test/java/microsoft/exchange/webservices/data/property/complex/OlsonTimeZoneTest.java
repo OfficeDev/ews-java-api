@@ -54,10 +54,9 @@ public class OlsonTimeZoneTest {
         final OlsonTimeZoneDefinition olsonTimeZone = new OlsonTimeZoneDefinition(timeZone);
         final String olsonTimeZoneId = olsonTimeZone.getId();
 
-        Assert.assertFalse("olsonTimeZoneId for " + timeZoneId + " is blank", StringUtils.isBlank(olsonTimeZoneId));
-        Assert.assertEquals(olsonTimeZoneToMsMap.get(timeZoneId), olsonTimeZoneId);
+        Assert.assertFalse("Missing OlsonTimeZoneId for: " + timeZoneId, StringUtils.isBlank(olsonTimeZoneId));
+        Assert.assertEquals("Missing TimeZone-Mapping for: "+ timeZoneId, olsonTimeZoneToMsMap.get(timeZoneId), olsonTimeZoneId);
       }
     }
   }
-
 }
