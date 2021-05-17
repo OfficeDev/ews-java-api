@@ -6,7 +6,9 @@ import com.github.rwitzel.streamflyer.util.ModificationFactory;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -16,13 +18,15 @@ public class CharacterModifier implements Modifier {
   private final ModificationFactory factory;
 
   private final Map<Integer, Integer> mappings;
+  private final Set<Integer> ignoreCharacters;
 
 
-  public CharacterModifier(Map<Integer, Integer> mappings) {
-    this(mappings, 8192);
+  public CharacterModifier(Map<Integer, Integer> mappings, Set<Integer> ignoreCharacters) {
+    this(mappings, ignoreCharacters, 8192);
   }
 
-  public CharacterModifier(Map<Integer, Integer> mappings, int newNumberOrChars) {
+  public CharacterModifier(Map<Integer, Integer> mappings, Set<Integer> ignoreCharacters,
+                           int newNumberOrChars) {
 
     for (Integer cp : mappings.keySet()) {
       if (!Character.isBmpCodePoint(cp)) {
@@ -30,7 +34,14 @@ public class CharacterModifier implements Modifier {
       }
     }
 
+    for (Integer cp : ignoreCharacters) {
+      if (!Character.isBmpCodePoint(cp)) {
+        throw new IllegalArgumentException("Only mappings for BMP code points are supported");
+      }
+    }
+
     this.mappings = mappings;
+    this.ignoreCharacters = ignoreCharacters;
     this.factory = new ModificationFactory(0, newNumberOrChars);
   }
 
@@ -43,6 +54,9 @@ public class CharacterModifier implements Modifier {
 
       if (mappings.containsKey(c)) {
         characterBuffer.replace(i, i + 1, new String(Character.toChars(mappings.get(c))));
+      } else if (ignoreCharacters.contains(c)) {
+        characterBuffer.deleteCharAt(i);
+        i--;
       }
 
     }
@@ -82,5 +96,17 @@ public class CharacterModifier implements Modifier {
     cp1252ToUnicode.put(159, 376);
 
     CP1252_TO_UNICODE = Collections.unmodifiableMap(cp1252ToUnicode);
+  }
+
+  public static final Set<Integer> CP1252_IGNORE;
+  static {
+    final Set<Integer> cp1252Ignore = new HashSet<>();
+    cp1252Ignore.add(129);
+    cp1252Ignore.add(141);
+    cp1252Ignore.add(143);
+    cp1252Ignore.add(144);
+    cp1252Ignore.add(157);
+
+    CP1252_IGNORE = Collections.unmodifiableSet(cp1252Ignore);
   }
 }

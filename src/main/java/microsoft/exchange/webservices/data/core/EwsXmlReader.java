@@ -108,7 +108,9 @@ public class EwsXmlReader {
 
     Reader reader = new XmlStreamReader(stream);
 
-    reader = new ModifyingReader(reader, new CharacterModifier(CharacterModifier.CP1252_TO_UNICODE, 10));
+    reader = new ModifyingReader(reader, new CharacterModifier(
+        CharacterModifier.CP1252_TO_UNICODE, CharacterModifier.CP1252_IGNORE, 10
+    ));
 
     reader = new ModifyingReader(reader, new XmlValidVersionModifier("1.1", 8192));
 
