@@ -99,8 +99,10 @@ public class CharacterModifier implements Modifier {
   }
 
   public static final Set<Integer> CP1252_IGNORE;
+
   static {
     final Set<Integer> cp1252Ignore = new HashSet<>();
+    cp1252Ignore.add(0);
     cp1252Ignore.add(129);
     cp1252Ignore.add(141);
     cp1252Ignore.add(143);
