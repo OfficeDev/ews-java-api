@@ -1,6 +1,7 @@
 package microsoft.exchange.webservices.data.xml;
 
 import com.github.rwitzel.streamflyer.core.ModifyingReader;
+import com.github.rwitzel.streamflyer.regex.RegexModifier;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +24,17 @@ import static org.junit.Assert.*;
 public class CharacterModifierTest {
 
   private static final String SIMPLE_STRING = "Hi there !";
+
+  public static void main(String[] args) throws IOException {
+    BufferedReader reader =
+        new BufferedReader(
+            new ModifyingReader(
+                new StringReader("<xml>111&#x0;333&#x0;&#x0;222</xml>"),
+                new RegexModifier("&#x0;", 0, "")
+            ));
+
+    System.out.println(reader.readLine());
+  }
 
   @Test
   public void testModify() {

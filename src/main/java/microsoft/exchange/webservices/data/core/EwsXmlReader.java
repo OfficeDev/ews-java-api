@@ -24,6 +24,7 @@
 package microsoft.exchange.webservices.data.core;
 
 import com.github.rwitzel.streamflyer.core.ModifyingReader;
+import com.github.rwitzel.streamflyer.regex.RegexModifier;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.input.XmlStreamReader;
@@ -111,6 +112,8 @@ public class EwsXmlReader {
     reader = new ModifyingReader(reader, new CharacterModifier(
         CharacterModifier.CP1252_TO_UNICODE, CharacterModifier.CP1252_IGNORE, 10
     ));
+
+    reader = new ModifyingReader(reader, new RegexModifier("&#x0;", 0, ""));
 
     reader = new ModifyingReader(reader, new XmlValidVersionModifier("1.1", 8192));
 
@@ -940,7 +943,7 @@ public class EwsXmlReader {
       isEndElement = qEName.getLocalPart().equals(qSName.getLocalPart())
                      && (qEName.getPrefix().equals(qSName.getPrefix()) || qEName
           .getNamespaceURI().equals(qSName.
-              getNamespaceURI()));
+                                        getNamespaceURI()));
 
     }
     return isEndElement;

@@ -31,7 +31,7 @@
     <groupId>io.aurinko.ews-java-api</groupId>
     <artifactId>ews-java-api</artifactId>
 
-    <version>2.4-SNAPSHOT</version>
+    <version>2.5-SNAPSHOT</version>
 
     <name>Exchange Web Services Java API</name>
     <description>Exchange Web Services (EWS) Java API</description>
