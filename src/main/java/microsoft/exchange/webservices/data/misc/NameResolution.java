@@ -68,8 +68,11 @@ public final class NameResolution {
    * @param reader the reader
    * @throws Exception the exception
    */
-  protected void loadFromXml(EwsServiceXmlReader reader) throws Exception {
-    reader.readStartElement(XmlNamespace.Types, XmlElementNames.Resolution);
+  boolean tryLoadFromXml(EwsServiceXmlReader reader) throws Exception {
+    reader.read();
+    if (!reader.isStartElement(XmlNamespace.Types, XmlElementNames.Resolution)) {
+      return false;
+    }
     reader.readStartElement(XmlNamespace.Types, XmlElementNames.Mailbox);
     this.mailbox.loadFromXml(reader, XmlElementNames.Mailbox);
 
@@ -77,15 +80,15 @@ public final class NameResolution {
     if (reader.isStartElement(XmlNamespace.Types, XmlElementNames.Contact)) {
       this.contact = new Contact(this.owner.getSession());
       this.contact.loadFromXml(reader, true /* clearPropertyBag */,
-          PropertySet.FirstClassProperties,
-          false /* summaryPropertiesOnly */);
+                               PropertySet.FirstClassProperties,
+                               false /* summaryPropertiesOnly */);
 
       reader.readEndElement(XmlNamespace.Types,
-          XmlElementNames.Resolution);
+                            XmlElementNames.Resolution);
     } else {
-      reader.ensureCurrentNodeIsEndElement(XmlNamespace.Types,
-          XmlElementNames.Resolution);
+      reader.ensureCurrentNodeIsEndElement(XmlNamespace.Types, XmlElementNames.Resolution);
     }
+    return true;
   }
 
   /**

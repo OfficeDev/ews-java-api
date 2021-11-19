@@ -45,8 +45,7 @@ import java.util.Map;
 /**
  * Represents a ResolveNames request.
  */
-public final class ResolveNamesRequest extends
-    MultiResponseServiceRequest<ResolveNamesResponse> {
+public class ResolveNamesRequest extends MultiResponseServiceRequest<ResolveNamesResponse> {
 
   /**
    * The Search scope map.

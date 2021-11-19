@@ -80,14 +80,25 @@ public final class NameResolutionCollection implements
     this.includesAllResolutions = reader.readAttributeValue(Boolean.class,
         XmlAttributeNames.IncludesLastItemInRange);
 
+    // we've seen a bug, when EWS server returns "TotalItemsInView" = 2, but the internal collection
+    // contains only one element.
+    boolean success = true;
+
     for (int i = 0; i < totalItemsInView; i++) {
       NameResolution nameResolution = new NameResolution(this);
-      nameResolution.loadFromXml(reader);
+      success = nameResolution.tryLoadFromXml(reader);
+
+      if (!success) {
+        break;
+      }
       this.items.add(nameResolution);
     }
 
-    reader.readEndElement(XmlNamespace.Messages,
-        XmlElementNames.ResolutionSet);
+    if (success) {
+      reader.readEndElement(XmlNamespace.Messages, XmlElementNames.ResolutionSet);
+    } else {
+      reader.ensureCurrentNodeIsEndElement(XmlNamespace.Messages, XmlElementNames.ResolutionSet);
+    }
   }
 
   /**
