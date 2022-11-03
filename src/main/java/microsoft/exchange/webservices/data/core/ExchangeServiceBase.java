@@ -145,6 +145,10 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   private WebProxy webProxy;
 
+  private String clientRequestId;
+
+  private boolean returnClientRequestId;
+
   private volatile CloseableHttpClient httpClient;
 
   private final Object httpClientLock = new Object();
@@ -365,7 +369,14 @@ public abstract class ExchangeServiceBase implements Closeable {
     request.setUserAgent(userAgent);
     request.setAllowAutoRedirect(allowAutoRedirect);
     request.setAcceptGzipEncoding(acceptGzipEncoding);
-    request.setHeaders(getHttpHeaders());
+    Map<String, String> headers = getHttpHeaders();
+    if(!clientRequestId.isEmpty() && clientRequestId != null){
+      headers.put("client-request-id", clientRequestId);
+      if(returnClientRequestId){
+        headers.put("return-client-request-id", "true");
+      }
+    }
+    request.setHeaders(headers);
     request.setProxy(getWebProxy());
     prepareCredentials(request);
 
@@ -754,6 +765,38 @@ public abstract class ExchangeServiceBase implements Closeable {
    */
   public void setUserAgent(String userAgent) {
     this.userAgent = userAgent + " (" + ExchangeServiceBase.defaultUserAgent + ")";
+  }
+
+  /**
+   * Gets the client request id.
+   *
+   * @return The client request id.
+   */
+  public String getClientRequestId(){ return this.clientRequestId; }
+
+  /**
+   * Sets the client request id.
+   *
+   * @param clientRequestId The client request id
+   */
+  public void setClientRequestId(String clientRequestId){
+    this.clientRequestId = clientRequestId;
+  }
+
+  /**
+   * Gets a value indicating whether we need to log the client request id or not.
+   *
+   * @return True if logging client request id is enabled
+   */
+  public boolean getReturnClientRequestId(){ return this.returnClientRequestId; }
+
+  /**
+   * Sets a value indicating whether we need to log the client request id or not.
+   *
+   * @param returnClientRequestId true to enable logging
+   */
+  public void setReturnClientRequestId(boolean returnClientRequestId){
+    this.returnClientRequestId = returnClientRequestId;
   }
 
   /**

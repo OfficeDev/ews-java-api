@@ -12,18 +12,19 @@
 .project
 
 # IntelliJ
+.idea/*
 # User-specific stuff:
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/findbugs-idea.xml
-.idea/codeStyleSettings.xml
-.idea/dictionaries
-.idea/shelf
+#.idea/workspace.xml
+#.idea/tasks.xml
+#.idea/findbugs-idea.xml
+#.idea/codeStyleSettings.xml
+#.idea/dictionaries
+#.idea/shelf
 *.iws
 *.ipr
-# Sensitive or high-churn files:
-.idea/dataSources.ids
-.idea/dataSources.xml
-.idea/sqlDataSources.xml
-.idea/dynamic.xml
-.idea/uiDesigner.xml
+## Sensitive or high-churn files:
+#.idea/dataSources.ids
+#.idea/dataSources.xml
+#.idea/sqlDataSources.xml
+#.idea/dynamic.xml
+#.idea/uiDesigner.xml
