@@ -98,9 +98,9 @@ public class EwsServiceXmlWriter implements IDisposable {
    */
   public EwsServiceXmlWriter(ExchangeServiceBase service, OutputStream stream) throws XMLStreamException {
     this.service = service;
-    XMLOutputFactory xmlof = XMLOutputFactory.newInstance();
+    XMLOutputFactory xmlof = XMLOutputFactory.newDefaultFactory();
+    xmlof.setProperty("escapeCharacters", false);
     xmlWriter = xmlof.createXMLStreamWriter(stream, "utf-8");
-
   }
 
   /**
