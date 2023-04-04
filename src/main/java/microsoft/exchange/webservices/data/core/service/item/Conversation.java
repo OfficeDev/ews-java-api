@@ -416,7 +416,7 @@ public class Conversation extends ServiceObject {
    *                        belong to in order for their read state to
    *                        be set. If contextFolderId is null, the read states of
    *                        item across the entire mailbox are set.
-   * @param isRead          if set to <c>true</c>, conversation item are marked as read;
+   * @param isRead          if set to <em>true</em>, conversation item are marked as read;
    *                        otherwise they are marked as unread.
    * @throws Exception
    * @throws IndexOutOfBoundsException

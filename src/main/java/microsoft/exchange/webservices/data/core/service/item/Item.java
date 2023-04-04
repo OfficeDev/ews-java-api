@@ -83,14 +83,18 @@ public class Item extends ServiceObject {
   private ItemAttachment parentAttachment;
 
   /**
-   * Initializes an unsaved local instance of <see cref="Item"/>. To bind to
-   * an existing item, use Item.Bind() instead.
+   * Initializes an unsaved local instance of {@link Item}. To bind to
+   * an existing item, use {@link Item#bind(ExchangeService, ItemId)} instead.
    *
    * @param service the service
    * @throws Exception the exception
    */
   public Item(ExchangeService service) throws Exception {
     super(service);
+  }
+
+  public Item(ExchangeService service, ItemId itemId) throws Exception {
+    super(service, itemId);
   }
 
   /**
@@ -173,6 +177,7 @@ public class Item extends ServiceObject {
    *
    * @return A PropertyDefinition instance.
    */
+  @Override
   public PropertyDefinition getIdPropertyDefinition() {
     return ItemSchema.Id;
   }
@@ -514,6 +519,7 @@ public class Item extends ServiceObject {
    * @return true if a time zone SOAP header should be emitted;
    * otherwise,false
    */
+  @Override
   public boolean getIsTimeZoneHeaderRequired(boolean isUpdateOperation)
       throws Exception {
     // Starting E14SP2, attachment will be sent along with CreateItem
@@ -588,6 +594,7 @@ public class Item extends ServiceObject {
    * @return the id
    * @throws ServiceLocalException the service local exception
    */
+  @Override
   public ItemId getId() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
         getIdPropertyDefinition());

@@ -59,6 +59,19 @@ public final class ItemEvent extends NotificationEvent {
   }
 
   /**
+   * Initializes a new instance.
+   *
+   * @param eventType the event type
+   * @param itemId of the item that this event refers to
+   * @param parentFolderId of the item this event refers to
+   */
+  public ItemEvent(EventType eventType, ItemId itemId, FolderId parentFolderId) {
+    super(eventType, null);
+    this.itemId = itemId;
+    setParentFolderId(parentFolderId);
+  }
+
+  /**
    * Load from XML.
    *
    * @param reader the reader

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+    <s:Header>
+        <h:ServerVersionInfo MajorVersion="14"
+                             MinorVersion="1"
+                             MajorBuildNumber="164"
+                             MinorBuildNumber="0"
+                             Version="Exchange2010_SP1"
+                             xmlns:h="http://schemas.microsoft.com/exchange/services/2006/types"
+                             xmlns="http://schemas.microsoft.com/exchange/services/2006/types"
+                             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                             xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+    </s:Header>
+    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <m:UploadItemsResponse xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+                               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+            <m:ResponseMessages>
+                <m:UploadItemsResponseMessage ResponseClass="Success">
+                    <m:ResponseCode>NoError</m:ResponseCode>
+                    <m:ItemId Id="AAMkADhhUFZ/AAA=" ChangeKey="CQAAABYAAABsMBS3hrihS7voMf0GPIQeAAAAULQm"/>
+                </m:UploadItemsResponseMessage>
+                <m:UploadItemsResponseMessage ResponseClass="Success">
+                    <m:ResponseCode>NoError</m:ResponseCode>
+                    <m:ItemId Id="AAMkADhhOGZ7AAA=" ChangeKey="CQAAABYAAABsMBS3hrihS7voMf0GPIQeAAAAULQn"/>
+                </m:UploadItemsResponseMessage>
+            </m:ResponseMessages>
+        </m:UploadItemsResponse>
+    </s:Body>
+</s:Envelope>

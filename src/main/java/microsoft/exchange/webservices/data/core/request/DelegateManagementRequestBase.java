@@ -113,7 +113,7 @@ abstract class DelegateManagementRequestBase<TResponse extends DelegateManagemen
   }
 
   /**
-   * Gets  the mailbox. <value>The mailbox.</value>
+   * Gets  the mailbox. 
    *
    * @return the mailbox
    */

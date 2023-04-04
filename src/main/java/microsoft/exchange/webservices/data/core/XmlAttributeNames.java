@@ -156,6 +156,8 @@ public class XmlAttributeNames {
    */
   public static final String ConflictResolution = "ConflictResolution";
 
+  public static final String CreateAction = "CreateAction";
+
   /**
    * The Constant SendMeetingInvitationsOrCancellations.
    */

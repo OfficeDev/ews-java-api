@@ -39,9 +39,7 @@ import java.net.URISyntaxException;
 public abstract class ExchangeCredentials {
 
   /**
-   * Performs an implicit conversion from <see
-   * cref="System.Net.NetworkCredential"/> to <see
-   * cref="Microsoft.Exchange.WebServices.Data.ExchangeCredentials"/>. This
+   * Performs an implicit conversion to {@link ExchangeCredentials}. This
    * allows a NetworkCredential object to be implictly converted to an
    * ExchangeCredential which is useful when setting credential on an
    * ExchangeService.

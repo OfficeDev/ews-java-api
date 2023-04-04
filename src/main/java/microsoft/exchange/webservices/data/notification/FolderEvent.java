@@ -62,6 +62,19 @@ public class FolderEvent extends NotificationEvent {
   protected FolderEvent(EventType eventType, Date timestamp) {
     super(eventType, timestamp);
   }
+  
+  /**
+   * Initializes a new instance.
+   *
+   * @param eventType the event type
+   * @param folderId of the folder that this event refers to
+   * @param parentFolderId of the folder this event refers to
+   */
+  public FolderEvent(EventType eventType, FolderId folderId, FolderId parentFolderId) {
+    super(eventType, null);
+    this.folderId = folderId;
+    setParentFolderId(parentFolderId);
+  }
 
   /**
    * Load from XML.
@@ -91,8 +104,8 @@ public class FolderEvent extends NotificationEvent {
 
         reader.read();
 
-        setParentFolderId(new FolderId());
-        getParentFolderId().loadFromXml(reader, reader.getLocalName());
+        setOldParentFolderId(new FolderId());
+        getOldParentFolderId().loadFromXml(reader, reader.getLocalName());
         break;
 
       case Modified:

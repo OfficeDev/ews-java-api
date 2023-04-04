@@ -46,7 +46,7 @@ public final class ConversationIndexedItemView extends PagedView {
   /**
    * Gets the type of service object this view applies to.
    *
-   * @return A ServiceObjectType value.
+   * @return A {@link ServiceObjectType} value.
    */
   @Override
   protected ServiceObjectType getServiceObjectType() {
@@ -120,7 +120,7 @@ public final class ConversationIndexedItemView extends PagedView {
   }
 
   /**
-   * Initializes a new instance of the <see cref="ItemView"/> class.
+   * Initializes a new instance of the {@link ItemView} class.
    *
    * @param pageSize The maximum number of elements the search operation should return.
    */
@@ -129,7 +129,7 @@ public final class ConversationIndexedItemView extends PagedView {
   }
 
   /**
-   * Initializes a new instance of the ItemView class.
+   * Initializes a new instance of the {@link ItemView} class.
    *
    * @param pageSize The maximum number of elements the search operation should return.
    * @param offset   The offset of the view from the base point.
@@ -140,7 +140,7 @@ public final class ConversationIndexedItemView extends PagedView {
   }
 
   /**
-   * Initializes a new instance of the ItemView class.
+   * Initializes a new instance of the {@link ItemView} class.
    *
    * @param pageSize        The maximum number of elements the search operation should return.
    * @param offset          The offset of the view from the base point.

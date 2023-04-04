@@ -31,7 +31,7 @@ import microsoft.exchange.webservices.data.core.exception.service.local.ServiceL
 /**
  * Represents an item Id provided by a ItemBase object.
  */
-class ItemWrapper extends AbstractItemIdWrapper {
+public class ItemWrapper extends AbstractItemIdWrapper {
 
   /**
    * The ItemBase object providing the Id.

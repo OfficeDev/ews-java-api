@@ -30,7 +30,7 @@ import microsoft.exchange.webservices.data.property.complex.ItemId;
 /**
  * Represents an item Id provided by a ItemId object.
  */
-class ItemIdWrapper extends AbstractItemIdWrapper {
+public class ItemIdWrapper extends AbstractItemIdWrapper {
 
   /**
    * The ItemId object providing the Id.
@@ -58,4 +58,12 @@ class ItemIdWrapper extends AbstractItemIdWrapper {
     this.itemId.writeToXml(writer);
   }
 
+  public ItemId getItemId() {
+    return itemId;
+  }
+
+  @Override
+  public String toString() {
+    return itemId.toString();
+  }
 }

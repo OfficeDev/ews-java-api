@@ -123,8 +123,7 @@ public class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
   }
 
   /**
-   * Gets the <see
-   * cref="Microsoft.Exchange.WebServices.Data.AbstractFolderIdWrapper"/> at
+   * Gets the {@link AbstractFolderIdWrapper} at
    * the specified index.
    *
    * @param i the i
@@ -157,4 +156,8 @@ public class FolderIdWrapperList implements Iterable<AbstractFolderIdWrapper> {
     return ids.iterator();
   }
 
+  @Override
+  public String toString() {
+    return ids.toString();
+  }
 }

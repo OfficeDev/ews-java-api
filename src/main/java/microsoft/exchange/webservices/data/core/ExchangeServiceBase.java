@@ -23,55 +23,31 @@
 
 package microsoft.exchange.webservices.data.core;
 
-import java.io.ByteArrayOutputStream;
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.security.GeneralSecurityException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.TimeZone;
-
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
-
-import microsoft.exchange.webservices.data.EWSConstants;
-import microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion;
-import microsoft.exchange.webservices.data.core.enumeration.misc.TraceFlags;
-import microsoft.exchange.webservices.data.core.exception.http.EWSHttpException;
-import microsoft.exchange.webservices.data.core.exception.service.local.ServiceLocalException;
-import microsoft.exchange.webservices.data.core.exception.service.remote.AccountIsLockedException;
-import microsoft.exchange.webservices.data.core.request.HttpClientWebRequest;
-import microsoft.exchange.webservices.data.core.request.HttpWebRequest;
-import microsoft.exchange.webservices.data.credential.ExchangeCredentials;
-import microsoft.exchange.webservices.data.misc.EwsTraceListener;
-import microsoft.exchange.webservices.data.misc.ITraceListener;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.http.client.AuthenticationStrategy;
+import microsoft.exchange.webservices.data.*;
+import microsoft.exchange.webservices.data.core.enumeration.misc.*;
+import microsoft.exchange.webservices.data.core.exception.http.*;
+import microsoft.exchange.webservices.data.core.exception.service.local.*;
+import microsoft.exchange.webservices.data.core.exception.service.remote.*;
+import microsoft.exchange.webservices.data.core.request.*;
+import microsoft.exchange.webservices.data.credential.*;
+import microsoft.exchange.webservices.data.misc.*;
+import org.apache.commons.io.*;
+import org.apache.commons.logging.*;
 import org.apache.http.client.CookieStore;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.config.Registry;
-import org.apache.http.config.RegistryBuilder;
-import org.apache.http.conn.HttpClientConnectionManager;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.client.*;
+import org.apache.http.client.protocol.*;
+import org.apache.http.config.*;
+import org.apache.http.conn.*;
+import org.apache.http.conn.socket.*;
+import org.apache.http.impl.client.*;
+import org.apache.http.impl.conn.*;
+
+import javax.xml.stream.*;
+import java.io.*;
+import java.net.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
 
 /**
  * Represents an abstract binding to an Exchange Service.
@@ -148,12 +124,17 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   protected CloseableHttpClient httpClient;
 
+  protected boolean externalHttpClient = false;
+
   protected HttpClientContext httpContext;
 
   protected CloseableHttpClient	httpPoolingClient;
+
+  protected boolean externalHttpPoolingClient = false;
   
   private int maximumPoolingConnections = 10;
 
+  private boolean useGlobalCookieStore = false;
 
 //  protected HttpClientWebRequest request = null;
 
@@ -164,6 +145,8 @@ public abstract class ExchangeServiceBase implements Closeable {
    */
   private static String defaultUserAgent = "ExchangeServicesClient/" + EwsUtilities.getBuildVersion();
 
+  private ServiceRequestTraceListener serviceRequestTraceListener;
+
   /**
    * Initializes a new instance.
    *
@@ -171,9 +154,21 @@ public abstract class ExchangeServiceBase implements Closeable {
    * every other constructor.
    */
   protected ExchangeServiceBase() {
+    this((CloseableHttpClient) null, null);
+  }
+
+  protected ExchangeServiceBase(CloseableHttpClient httpClient, CloseableHttpClient httpPoolingClient) {
     setUseDefaultCredentials(true);
-    initializeHttpClient();
-    initializeHttpContext();
+    if (httpClient != null) {
+      externalHttpClient = true;
+      this.httpClient = httpClient;
+    } else {
+      initializeHttpClient();
+    }
+    if (httpPoolingClient != null) {
+      externalHttpPoolingClient = true;
+      this.httpPoolingClient = httpPoolingClient;
+    }
   }
 
   protected ExchangeServiceBase(ExchangeVersion requestedServerVersion) {
@@ -181,8 +176,16 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.requestedServerVersion = requestedServerVersion;
   }
 
+  protected ExchangeServiceBase(ExchangeVersion requestedServerVersion, CloseableHttpClient httpClient,
+      CloseableHttpClient httpPoolingClient) {
+    this(httpClient, httpPoolingClient);
+    this.requestedServerVersion = requestedServerVersion;
+  }
+
   protected ExchangeServiceBase(ExchangeServiceBase service, ExchangeVersion requestedServerVersion) {
-    this(requestedServerVersion);
+    this(requestedServerVersion, service.httpClient, service.httpPoolingClient);
+    this.externalHttpClient = service.externalHttpClient;
+    this.externalHttpPoolingClient = service.externalHttpPoolingClient;
     this.useDefaultCredentials = service.getUseDefaultCredentials();
     this.credentials = service.getCredentials();
     this.traceEnabled = service.isTraceEnabled();
@@ -195,7 +198,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.httpHeaders = service.getHttpHeaders();
   }
 
-  private void initializeHttpClient() {
+  protected void initializeHttpClient() {
     Registry<ConnectionSocketFactory> registry = createConnectionSocketFactoryRegistry();
     HttpClientConnectionManager httpConnectionManager = new BasicHttpClientConnectionManager(registry);
     AuthenticationStrategy authStrategy = new CookieProcessingTargetAuthenticationStrategy();
@@ -206,7 +209,7 @@ public abstract class ExchangeServiceBase implements Closeable {
       .build();
   }
 
-  private void initializeHttpPoolingClient() {
+  protected void initializeHttpPoolingClient() {
     Registry<ConnectionSocketFactory> registry = createConnectionSocketFactoryRegistry();
     PoolingHttpClientConnectionManager httpConnectionManager = new PoolingHttpClientConnectionManager(registry);
     httpConnectionManager.setMaxTotal(maximumPoolingConnections);
@@ -258,15 +261,21 @@ public abstract class ExchangeServiceBase implements Closeable {
    * cookie store, instead of the httpClient's global store, so cookies get reset on reinitialization
    */
   private void initializeHttpContext() {
-    CookieStore cookieStore = new BasicCookieStore();
     httpContext = HttpClientContext.create();
-    httpContext.setCookieStore(cookieStore);
+    if (!useGlobalCookieStore) {
+      CookieStore cookieStore = new BasicCookieStore();
+      httpContext.setCookieStore(cookieStore);
+    }
   }
 
   @Override
   public void close() {
-    IOUtils.closeQuietly(httpClient);
-    IOUtils.closeQuietly(httpPoolingClient);
+    if (!externalHttpClient) {
+      IOUtils.closeQuietly(httpClient);
+    }
+    if (!externalHttpPoolingClient) {
+      IOUtils.closeQuietly(httpPoolingClient);
+    }
   }
 
   // Event handlers
@@ -312,6 +321,10 @@ public abstract class ExchangeServiceBase implements Closeable {
       throw new ServiceLocalException(strErr);
     }
 
+    if (httpContext == null) {
+      initializeHttpContext();
+    }
+
     HttpClientWebRequest request = new HttpClientWebRequest(httpClient, httpContext);
     prepareHttpWebRequestForUrl(url, acceptGzipEncoding, allowAutoRedirect, request);
 
@@ -344,6 +357,10 @@ public abstract class ExchangeServiceBase implements Closeable {
 
     if (httpPoolingClient == null) {
       initializeHttpPoolingClient();
+    }
+
+    if (httpContext == null) {
+      initializeHttpContext();
     }
 
     HttpClientWebRequest request = new HttpClientWebRequest(httpPoolingClient, httpContext);
@@ -614,6 +631,10 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.traceEnabled = (traceListener != null);
   }
 
+  public void setServiceRequestTracer(ServiceRequestTraceListener serviceRequestTraceListener) {
+    this.serviceRequestTraceListener = serviceRequestTraceListener;
+  }
+
   /**
    * Gets the credential used to authenticate with the Exchange Web Services.
    *
@@ -635,7 +656,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.useDefaultCredentials = false;
 
     // Reset the httpContext, to remove any existing authentication cookies from subsequent request
-    initializeHttpContext();
+    httpContext = null;
   }
 
   /**
@@ -664,7 +685,7 @@ public abstract class ExchangeServiceBase implements Closeable {
     }
 
     // Reset the httpContext, to remove any existing authentication cookies from subsequent request
-    initializeHttpContext();
+    httpContext = null;
   }
   
   /**
@@ -801,6 +822,14 @@ public abstract class ExchangeServiceBase implements Closeable {
     this.webProxy = value;
   }
 
+  public boolean isUseGlobalCookieStore() {
+    return useGlobalCookieStore;
+  }
+
+  public void setUseGlobalCookieStore(boolean useGlobalCookieStore) {
+    this.useGlobalCookieStore = useGlobalCookieStore;
+  }
+
   /**
    * Gets a collection of HTTP headers that will be sent with each request to
    * EWS.
@@ -892,5 +921,26 @@ public abstract class ExchangeServiceBase implements Closeable {
 
   public int getMaximumPoolingConnections() {
     return maximumPoolingConnections;
+  }
+
+  public <T> void traceServiceRequestStart(ServiceRequestBase<T> serviceRequest, HttpWebRequest request) {
+    if (serviceRequestTraceListener == null) {
+      return;
+    }
+    serviceRequestTraceListener.requestStart(serviceRequest, request);
+  }
+
+  public <T> void traceServiceRequestError(ServiceRequestBase<T> serviceRequest, HttpWebRequest request, Exception e) {
+    if (serviceRequestTraceListener == null) {
+      return;
+    }
+    serviceRequestTraceListener.requestError(serviceRequest, request, e);
+  }
+
+  public <T> void traceServiceRequestSuccess(ServiceRequestBase<T> serviceRequest, HttpWebRequest request) {
+    if (serviceRequestTraceListener == null) {
+      return;
+    }
+    serviceRequestTraceListener.requestFinish(serviceRequest, request);
   }
 }

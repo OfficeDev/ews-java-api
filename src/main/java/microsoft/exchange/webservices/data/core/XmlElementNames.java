@@ -627,6 +627,16 @@ public class XmlElementNames {
   public static final String End = "End";
 
   /**
+   * The Constant ProposedStart.
+   */
+  public static final String ProposedStart = "ProposedStart";
+
+  /**
+   * The Constant End.
+   */
+  public static final String ProposedEnd = "ProposedEnd";
+
+  /**
    * The Constant OriginalStart.
    */
   public static final String OriginalStart = "OriginalStart";
@@ -665,6 +675,11 @@ public class XmlElementNames {
    * The Constant IsRecurring.
    */
   public static final String IsRecurring = "IsRecurring";
+
+  /**
+   * The Constant IsRecurring.
+   */
+  public static final String IsOrganizer = "IsOrganizer";
 
   /**
    * The Constant MeetingRequestWasSent.
@@ -876,6 +891,8 @@ public class XmlElementNames {
    * The Constant DailyRegeneration.
    */
   public static final String DailyRegeneration = "DailyRegeneration";
+
+  public static final String Data = "Data";
 
   /**
    * The Constant WeeklyRegeneration.
@@ -3980,6 +3997,22 @@ public class XmlElementNames {
    */
   public static final String DeleteItemResponseMessage =
       "DeleteItemResponseMessage";
+
+  // ExportItems
+  public static final String ExportItems = "ExportItems";
+
+  public static final String ExportItemsResponse = "ExportItemsResponse";
+
+  public static final String ExportItemsResponseMessage =
+      "ExportItemsResponseMessage";
+
+  // ExportItems
+  public static final String UploadItems = "UploadItems";
+
+  public static final String UploadItemsResponse = "UploadItemsResponse";
+
+  public static final String UploadItemsResponseMessage =
+      "UploadItemsResponseMessage";
 
   // UpdateItem
   /**

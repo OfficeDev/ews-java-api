@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+    <s:Header>
+        <h:ServerVersionInfo MajorVersion="15" MinorVersion="1" MajorBuildNumber="1591" MinorBuildNumber="10"
+                             Version="V2017_07_11" xmlns:h="http://schemas.microsoft.com/exchange/services/2006/types"
+                             xmlns="http://schemas.microsoft.com/exchange/services/2006/types"
+        />
+    </s:Header>
+    <s:Body>
+        <m:ExportItemsResponse xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+            <m:ResponseMessages>
+                <m:ExportItemsResponseMessage ResponseClass="Error">
+                    <m:MessageText>No mailbox with such guid.</m:MessageText>
+                    <m:ResponseCode>ErrorNonExistentMailbox</m:ResponseCode>
+                    <m:DescriptiveLinkKey>0</m:DescriptiveLinkKey>
+                    <m:MessageXml>
+                        <t:Value xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" Name="MailboxGuid">f3f6f699-2254-40ce-9994-388d9d98419e</t:Value>
+                    </m:MessageXml>
+                </m:ExportItemsResponseMessage>
+            </m:ResponseMessages>
+        </m:ExportItemsResponse>
+    </s:Body>
+</s:Envelope>

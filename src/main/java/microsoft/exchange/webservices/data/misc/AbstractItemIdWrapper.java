@@ -29,7 +29,7 @@ import microsoft.exchange.webservices.data.core.service.item.Item;
 /**
  * Represents the abstraction of an item Id.
  */
-abstract class AbstractItemIdWrapper {
+public abstract class AbstractItemIdWrapper {
 
   /**
    * Initializes a new instance of the class.

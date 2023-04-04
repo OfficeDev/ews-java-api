@@ -62,6 +62,10 @@ import org.apache.commons.logging.LogFactory;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Represents a generic folder.
@@ -70,6 +74,9 @@ import java.util.EnumSet;
 public class Folder extends ServiceObject {
 
   private static final Log LOG = LogFactory.getLog(Folder.class);
+  
+  private static final Map<String, WellKnownFolderName> WELL_KNOWN_FOLDER_MAP = Stream.of(WellKnownFolderName.values())
+			.collect(Collectors.toMap(k -> k.toString().toLowerCase(), Function.identity()));
 
   /**
    * Initializes an unsaved local instance of {@link Folder}.
@@ -668,6 +675,16 @@ public class Folder extends ServiceObject {
         FolderSchema.DisplayName);
   }
 
+  /**
+   * Gets the well known folder name.
+   *
+   * @return the WellKnownFolderName
+   * @throws ServiceLocalException the service local exception
+   */
+  public WellKnownFolderName getWellKnownFolderName() throws ServiceLocalException {
+	  return WELL_KNOWN_FOLDER_MAP.get(getPropertyBag().getObjectFromPropertyDefinition(FolderSchema.WellKnownFolderName));
+  }
+  
   /**
    * Sets the display name of the folder.
    *

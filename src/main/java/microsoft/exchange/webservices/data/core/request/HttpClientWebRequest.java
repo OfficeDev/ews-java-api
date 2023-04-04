@@ -128,31 +128,33 @@ public class HttpClientWebRequest extends HttpWebRequest {
             .setTargetPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.BASIC))
             .setProxyPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.BASIC));
 
-    CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+    if (httpContext.getCredentialsProvider() == null) {
+      CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+      // Add proxy credential if necessary.
+      WebProxy proxy = getProxy();
+      if (proxy != null) {
+        HttpHost proxyHost = new HttpHost(proxy.getHost(), proxy.getPort());
+        requestConfigBuilder.setProxy(proxyHost);
 
-    // Add proxy credential if necessary.
-    WebProxy proxy = getProxy();
-    if (proxy != null) {
-      HttpHost proxyHost = new HttpHost(proxy.getHost(), proxy.getPort());
-      requestConfigBuilder.setProxy(proxyHost);
+        if (proxy.hasCredentials()) {
+          NTCredentials
+              proxyCredentials =
+              new NTCredentials(proxy.getCredentials().getUsername(), proxy.getCredentials().getPassword(), "",
+                                proxy.getCredentials().getDomain());
 
-      if (proxy.hasCredentials()) {
-        NTCredentials
-            proxyCredentials =
-            new NTCredentials(proxy.getCredentials().getUsername(), proxy.getCredentials().getPassword(), "",
-                              proxy.getCredentials().getDomain());
-
-        credentialsProvider.setCredentials(new AuthScope(proxyHost), proxyCredentials);
+          credentialsProvider.setCredentials(new AuthScope(proxyHost), proxyCredentials);
+        }
       }
+
+      // Add web service credential if necessary.
+      if (isAllowAuthentication() && getUsername() != null) {
+        NTCredentials webServiceCredentials = new NTCredentials(getUsername(), getPassword(), "", getDomain());
+        credentialsProvider.setCredentials(new AuthScope(AuthScope.ANY), webServiceCredentials);
+      }
+
+      httpContext.setCredentialsProvider(credentialsProvider);
     }
 
-    // Add web service credential if necessary.
-    if (isAllowAuthentication() && getUsername() != null) {
-      NTCredentials webServiceCredentials = new NTCredentials(getUsername(), getPassword(), "", getDomain());
-      credentialsProvider.setCredentials(new AuthScope(AuthScope.ANY), webServiceCredentials);
-    }
-
-    httpContext.setCredentialsProvider(credentialsProvider);
 
     httpPost.setConfig(requestConfigBuilder.build());
   }

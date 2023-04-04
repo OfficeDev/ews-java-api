@@ -775,6 +775,17 @@ public class Appointment extends Item implements ICalendarActionProvider {
   }
 
   /**
+   * Gets a value indicating whether the appointment is recurring.
+   *
+   * @return the checks if is recurring
+   * @throws ServiceLocalException the service local exception
+   */
+  public Boolean getIsOrganizer() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        AppointmentSchema.IsOrganizer);
+  }
+
+  /**
    * Gets a value indicating whether the meeting request has already been
    * sent.
    *
@@ -818,6 +829,19 @@ public class Appointment extends Item implements ICalendarActionProvider {
   public AppointmentType getAppointmentType() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
         AppointmentSchema.AppointmentType);
+  }
+
+  /**
+   * Gets a value indicating what was the last response of the user that
+   * loaded this meeting.
+   *
+   * @param value the my response type
+   * @throws Exception 
+   */
+  public void setMyResponseType(MeetingResponseType value)
+      throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        AppointmentSchema.MyResponseType, value);
   }
 
   /**

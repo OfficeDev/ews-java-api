@@ -100,6 +100,11 @@ public class FolderSchema extends ServiceObjectSchema {
      * The Constant PermissionSet.
      */
     public final static String PermissionSet = "folder:PermissionSet";
+    
+   /**
+    * The Constant DistinguishedFolderId.
+    */
+    public final static String DistinguishedFolderId = "folder:DistinguishedFolderId";
   }
 
 
@@ -119,6 +124,10 @@ public class FolderSchema extends ServiceObjectSchema {
           }
 
       );
+  
+  public static final PropertyDefinition WellKnownFolderName = new StringPropertyDefinition(
+			XmlElementNames.DistinguishedFolderId, FieldUris.DistinguishedFolderId,
+			EnumSet.of(PropertyDefinitionFlags.CanSet, PropertyDefinitionFlags.CanFind), ExchangeVersion.Exchange2013);
 
   /**
    * Defines the FolderClass property.
@@ -247,5 +256,6 @@ public class FolderSchema extends ServiceObjectSchema {
     this.registerProperty(EffectiveRights);
     this.registerProperty(Permissions);
     this.registerProperty(UnreadCount);
+    this.registerProperty(WellKnownFolderName);
   }
 }

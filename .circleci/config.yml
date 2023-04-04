@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:11-jdk
+      
+    working_directory: ~/repo
+
+    environment:
+      # Customize the JVM maximum heap limit
+      MAVEN_OPTS: -Xmx3200m
+    
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "pom.xml" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: mvn dependency:go-offline
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+        
+      # deploy
+      - run: >
+          if [ "${CIRCLE_BRANCH}" = 'master' ] ; then
+            echo "${MAVEN_CENTRAL_GPG_KEY}" | base64 --decode | gpg --import --no-tty --batch --yes
+            mvn deploy -s .circleci/settings.xml -Dgpg.passphrase="${MAVEN_CENTRAL_GPG_PASSPHRASE}"
+          else
+            mvn package
+          fi
+

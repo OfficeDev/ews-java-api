@@ -156,6 +156,17 @@ public class MeetingMessage extends EmailMessage {
   }
 
   /**
+   * Sets the response type.
+   *
+   * @param value the response type
+   * @throws Exception
+   */
+  public void setResponseType(MeetingResponseType value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingMessageSchema.ResponseType, value);
+  }
+
+  /**
    * Gets the ICalendar Uid.
    *
    * @return the ical uid
@@ -164,6 +175,17 @@ public class MeetingMessage extends EmailMessage {
   public String getICalUid() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
         MeetingMessageSchema.ICalUid);
+  }
+
+  /**
+   * Sets the ICalendar Uid.
+   *
+   * @param value the i cal uid
+   * @throws Exception
+   */
+  public void setICalUid(String value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingMessageSchema.ICalUid, value);
   }
 
   /**

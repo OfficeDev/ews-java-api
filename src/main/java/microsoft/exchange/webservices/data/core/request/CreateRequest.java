@@ -145,7 +145,7 @@ abstract class CreateRequest<TServiceObject extends ServiceObject,
   /**
    * Sets the service objects.
    *
-   * @param value Iterator<TServiceObject>
+   * @param value
    */
   protected void setObjects(Collection<TServiceObject> value) {
     this.objects = value;

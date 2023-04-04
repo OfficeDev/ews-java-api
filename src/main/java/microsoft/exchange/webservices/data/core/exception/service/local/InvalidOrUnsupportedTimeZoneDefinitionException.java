@@ -62,7 +62,7 @@ public class InvalidOrUnsupportedTimeZoneDefinitionException extends ServiceLoca
    * @param message the detail message (which is saved for later retrieval by the {@link
    *                Throwable#getMessage()} method).
    * @param innerException   the cause (which is saved for later retrieval by the {@link Throwable#getCause()}
-   *                method).  (A <tt>null</tt> value is permitted, and indicates that the cause is nonexistent
+   *                method).  (A <code>null</code> value is permitted, and indicates that the cause is nonexistent
    *                or unknown.)
    */
   public InvalidOrUnsupportedTimeZoneDefinitionException(String message, Exception innerException) {

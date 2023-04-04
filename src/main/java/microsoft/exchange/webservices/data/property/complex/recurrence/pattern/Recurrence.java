@@ -638,8 +638,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element.
      *
      * @return the xml element name
      */
@@ -650,8 +649,8 @@ public abstract class Recurrence extends ComplexProperty {
 
     /**
      * Gets a value indicating whether this instance is regeneration
-     * pattern. <value> <c>true</c> if this instance is regeneration
-     * pattern; otherwise, <c>false</c>. </value>
+     * pattern. <em>true</em> if this instance is regeneration
+     * pattern; otherwise, <em>false</em>.
      *
      * @return true, if is regeneration pattern
      */
@@ -860,8 +859,7 @@ public abstract class Recurrence extends ComplexProperty {
     private Month month;
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element.
      *
      * @return the xml element name
      */
@@ -1111,8 +1109,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element.
      *
      * @return the xml element name
      */
@@ -1262,8 +1259,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element.
      *
      * @return the xml element name
      */
@@ -1274,8 +1270,8 @@ public abstract class Recurrence extends ComplexProperty {
 
     /**
      * Gets a value indicating whether this instance is regeneration
-     * pattern. <value> <c>true</c> if this instance is regeneration
-     * pattern; otherwise, <c>false</c>. </value>
+     * pattern. <em>true</em> if this instance is regeneration
+     * pattern; otherwise, <em>false</em>.
      *
      * @return true, if is regeneration pattern
      */
@@ -1324,8 +1320,7 @@ public abstract class Recurrence extends ComplexProperty {
     }
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element.
      *
      * @return the xml element name
      */
@@ -1468,8 +1463,7 @@ public abstract class Recurrence extends ComplexProperty {
       IntervalPattern {
 
     /**
-     * Gets the name of the XML element. <value>The name of the XML
-     * element.</value>
+     * Gets the name of the XML element.
      *
      * @return the xml element name
      */

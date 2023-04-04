@@ -75,14 +75,14 @@ public final class TimeChange extends ComplexProperty {
   private TimeChangeRecurrence recurrence;
 
   /**
-   * Initializes a new instance of the "TimeChange" class.
+   * Initializes a new instance of the {@link TimeChange} class.
    */
   public TimeChange() {
     super();
   }
 
   /**
-   * Initializes a new instance of the <see cref="TimeChange"/> class.
+   * Initializes a new instance of the {@link TimeChange} class.
    *
    * @param offset The offset since the beginning of the year when the change
    *               occurs.

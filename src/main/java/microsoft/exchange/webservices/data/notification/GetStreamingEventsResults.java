@@ -60,8 +60,8 @@ public final class GetStreamingEventsResults {
       new ArrayList<NotificationGroup>();
 
   /**
-   * Initializes a new instance of the <see cref=
-   * "GetStreamingEventsResults"/> class.
+   * Initializes a new instance of the {@link GetStreamingEventsResults}
+   * class.
    */
   public GetStreamingEventsResults() {
   }
@@ -155,7 +155,7 @@ public final class GetStreamingEventsResults {
   /**
    * Gets the notification collection.
    *
-   * @value The notification collection.
+   * @return The notification collection.
    */
   protected Collection<NotificationGroup> getNotifications() {
     return this.events;

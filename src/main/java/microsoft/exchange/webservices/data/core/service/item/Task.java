@@ -582,8 +582,7 @@ public class Task extends Item {
 
   /**
    * Gets the default setting for how to treat affected task occurrences on
-   * Delete. <value>AffectedTaskOccurrence.AllOccurrences: All affected Task
-   * occurrences will be deleted.</value>
+   * Delete.
    *
    * @return the default affected task occurrences
    */

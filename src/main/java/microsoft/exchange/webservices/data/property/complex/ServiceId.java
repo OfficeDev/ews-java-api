@@ -64,6 +64,12 @@ public abstract class ServiceId extends ComplexProperty {
     this.uniqueId = uniqueId;
   }
 
+  public ServiceId(String uniqueId, String changeKey) throws Exception {
+    this(uniqueId);
+    EwsUtilities.validateParam(changeKey, "changeKey");
+    this.changeKey = changeKey;
+  }
+
   /**
    * Read attribute from XML.
    *

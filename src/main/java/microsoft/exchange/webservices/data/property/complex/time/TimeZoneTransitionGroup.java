@@ -282,8 +282,8 @@ public class TimeZoneTransitionGroup extends ComplexProperty {
 
     /**
      * Gets a value indicating whether the custom time zone should have a
-     * daylight period. <value> <c>true</c> if the custom time zone should
-     * have a daylight period; otherwise, <c>false</c>. </value>
+     * daylight period. <em>true</em> if the custom time zone should
+     * have a daylight period; otherwise, <em>false</em>.
      *
      * @return the checks for daylight period
      */
@@ -295,8 +295,8 @@ public class TimeZoneTransitionGroup extends ComplexProperty {
 
   /**
    * Gets a value indicating whether this group contains a transition to the
-   * Daylight period. <value><c>true</c> if this group contains a transition
-   * to daylight; otherwise, <c>false</c>.</value>
+   * Daylight period. <em>true</em> if this group contains a transition
+   * to daylight; otherwise, <em>false</em>.
    *
    * @return the supports daylight
    */

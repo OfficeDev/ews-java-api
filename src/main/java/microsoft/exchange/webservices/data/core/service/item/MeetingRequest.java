@@ -273,7 +273,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    */
   public Date getStart() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
-        AppointmentSchema.Start);
+        MeetingRequestSchema.Start);
   }
 
   /**
@@ -284,9 +284,32 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    */
   public Date getEnd() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
-        AppointmentSchema.End);
+        MeetingRequestSchema.End);
   }
 
+  /**
+   * Sets the start.
+   *
+   * @param value the new start
+   * @throws Exception the exception
+   */
+  public void setStart(Date value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingRequestSchema.Start, value);
+  }
+
+  /**
+   * Sets the end.
+   *
+   * @param value the new end
+   * @throws Exception the exception
+   */
+  public void setEnd(Date value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingRequestSchema.End, value);
+  }
+
+  
   /**
    * Gets the original start time of the appointment.
    *
@@ -306,7 +329,18 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    */
   public boolean getIsAllDayEvent() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
-        AppointmentSchema.IsAllDayEvent) != null;
+        MeetingRequestSchema.IsAllDayEvent) != null;
+  }
+
+  /**
+   * Sets the checks if is all day event.
+   *
+   * @param value the new checks if is all day event
+   * @throws Exception the exception
+   */
+  public void setIsAllDayEvent(Boolean value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingRequestSchema.IsAllDayEvent, value);
   }
 
   /**
@@ -330,7 +364,18 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    */
   public String getLocation() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
-        AppointmentSchema.Location);
+        MeetingRequestSchema.Location);
+  }
+
+  /**
+   * Sets the location.
+   *
+   * @param value the new location
+   * @throws Exception the exception
+   */
+  public void setLocation(String value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingRequestSchema.Location, value);
   }
 
   /**
@@ -646,7 +691,7 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    */
   public TimeZoneDefinition getStartTimeZone() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
-        AppointmentSchema.StartTimeZone);
+        MeetingRequestSchema.StartTimeZone);
   }
 
   /**
@@ -657,7 +702,30 @@ public class MeetingRequest extends MeetingMessage implements ICalendarActionPro
    */
   public TimeZoneDefinition getEndTimeZone() throws ServiceLocalException {
     return getPropertyBag().getObjectFromPropertyDefinition(
-        AppointmentSchema.EndTimeZone);
+        MeetingRequestSchema.EndTimeZone);
+  }
+  /**
+   * Sets the start time zone.
+   *
+   * @param value the new start time zone
+   * @throws Exception the exception
+   */
+  public void setStartTimeZone(TimeZoneDefinition value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingRequestSchema.StartTimeZone, value);
+
+  }
+
+  /**
+   * Sets the start time zone.
+   *
+   * @param value the new end time zone
+   * @throws Exception the exception
+   */
+  public void setEndTimeZone(TimeZoneDefinition value) throws Exception {
+    this.getPropertyBag().setObjectFromPropertyDefinition(
+        MeetingRequestSchema.EndTimeZone, value);
+
   }
 
   /**

@@ -56,7 +56,7 @@ public final class DelegateUser extends ComplexProperty {
   private boolean viewPrivateItems;
 
   /**
-   * Initializes a new instance of the <see cref="DelegateUser"/> class.
+   * Initializes a new instance of the {@link DelegateUser} class.
    */
   public DelegateUser() {
     super();
@@ -65,7 +65,7 @@ public final class DelegateUser extends ComplexProperty {
   }
 
   /**
-   * Initializes a new instance of the <see cref="DelegateUser"/> class.
+   * Initializes a new instance of the {@link DelegateUser} class.
    *
    * @param primarySmtpAddress the primary smtp address
    */
@@ -75,7 +75,7 @@ public final class DelegateUser extends ComplexProperty {
   }
 
   /**
-   * Initializes a new instance of the <see cref="DelegateUser"/> class.
+   * Initializes a new instance of the {@link DelegateUser} class.
    *
    * @param standardUser the standard user
    */

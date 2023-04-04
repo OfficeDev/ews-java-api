@@ -34,7 +34,7 @@ import microsoft.exchange.webservices.data.core.enumeration.attribute.EditorBrow
 public final class OccurrenceInfoCollection extends ComplexPropertyCollection<OccurrenceInfo> {
 
   /**
-   * Initializes a new instance of the <see cref="OccurrenceInfoCollection"/>
+   * Initializes a new instance of the {@link OccurrenceInfoCollection}
    * class.
    */
   public OccurrenceInfoCollection() {

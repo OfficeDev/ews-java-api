@@ -76,7 +76,7 @@ public final class FileAttachment extends Attachment {
    *
    * @param owner the owner
    */
-  protected FileAttachment(Item owner) {
+  public FileAttachment(Item owner) {
     super(owner);
   }
 

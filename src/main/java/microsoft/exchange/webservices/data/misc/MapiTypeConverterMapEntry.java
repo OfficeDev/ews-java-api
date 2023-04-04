@@ -104,7 +104,7 @@ public class MapiTypeConverterMapEntry {
    *
    * @param type The type. y default, converting a type to string is done by
    *             calling value.ToString. Instances can override this behavior.
-   *             <p/>
+   *             
    *             By default, converting a string to the appropriate value type
    *             is done by calling Convert.ChangeType Instances may override
    *             this behavior.
@@ -120,7 +120,7 @@ public class MapiTypeConverterMapEntry {
 
   /**
    * Change value to a value of compatible type.
-   * <p/>
+   *
    * The type of a simple value should match exactly or be convertible to the
    * appropriate type. An array value has to be a single dimension (rank),
    * contain at least one value and contain elements that exactly match the
@@ -166,7 +166,7 @@ public class MapiTypeConverterMapEntry {
 
   /**
    * Converts a string to value consistent with type.
-   * <p/>
+   *
    * For array types, this method is called for each array element.
    *
    * @param stringValue String to convert to a value.

@@ -136,6 +136,11 @@ public class AppointmentSchema extends ItemSchema {
     String MyResponseType = "calendar:MyResponseType";
 
     /**
+     * Are we the organiser
+     */
+    String IsOrganizer = "calendar:IsOrganizer";
+
+    /**
      * The Organizer.
      */
     String Organizer = "calendar:Organizer";
@@ -347,7 +352,8 @@ public class AppointmentSchema extends ItemSchema {
           PropertyDefinitionFlags.CanSet,
           PropertyDefinitionFlags.CanUpdate,
           PropertyDefinitionFlags.CanFind),
-          ExchangeVersion.Exchange2007_SP1);
+          ExchangeVersion.Exchange2007_SP1,
+          true);
 
   // Defines the LegacyFreeBusyStatus property.
   /**
@@ -415,6 +421,16 @@ public class AppointmentSchema extends ItemSchema {
   public static final PropertyDefinition IsRecurring =
       new BoolPropertyDefinition(
           XmlElementNames.IsRecurring, FieldUris.IsRecurring, EnumSet
+          .of(PropertyDefinitionFlags.CanFind),
+          ExchangeVersion.Exchange2007_SP1);
+
+  // Defines the IsOrganizer property.
+  /**
+   * The Constant IsOrganizer.
+   */
+  public static final PropertyDefinition IsOrganizer =
+      new BoolPropertyDefinition(
+          XmlElementNames.IsOrganizer, FieldUris.IsOrganizer, EnumSet
           .of(PropertyDefinitionFlags.CanFind),
           ExchangeVersion.Exchange2007_SP1);
 
@@ -752,8 +768,9 @@ public class AppointmentSchema extends ItemSchema {
           FieldUris.AllowNewTimeProposal, EnumSet.of(
           PropertyDefinitionFlags.CanSet,
           PropertyDefinitionFlags.CanUpdate,
-          PropertyDefinitionFlags.CanFind),
-          ExchangeVersion.Exchange2007_SP1);
+          PropertyDefinitionFlags.CanFind,
+          PropertyDefinitionFlags.CanDelete),
+          ExchangeVersion.Exchange2007_SP1, true);
 
   // Defines the IsOnlineMeeting property.
   /**
@@ -800,7 +817,8 @@ public class AppointmentSchema extends ItemSchema {
   public static final PropertyDefinition ICalUid =
       new StringPropertyDefinition(
           XmlElementNames.Uid, FieldUris.Uid, EnumSet
-          .of(PropertyDefinitionFlags.CanFind),
+          .of(PropertyDefinitionFlags.CanSet,
+          PropertyDefinitionFlags.CanFind),
           ExchangeVersion.Exchange2007_SP1);
 
   // Defines the iCalendar RecurrenceId property.
@@ -883,6 +901,7 @@ public class AppointmentSchema extends ItemSchema {
     this.registerProperty(ICalUid);
     this.registerProperty(ICalRecurrenceId);
     this.registerProperty(ICalDateTimeStamp);
+    this.registerProperty(IsOrganizer);
   }
 
   /**
