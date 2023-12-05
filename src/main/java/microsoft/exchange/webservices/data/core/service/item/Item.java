@@ -1136,6 +1136,17 @@ public class Item extends ServiceObject {
   }
 
   /**
+   * Gets the Preview of the this item.
+   *
+   * @return the preview string
+   * @throws ServiceLocalException the service local exception
+   */
+  public String getPreview() throws ServiceLocalException {
+    return getPropertyBag().getObjectFromPropertyDefinition(
+        ItemSchema.Preview);
+  }
+
+  /**
    * Gets the body part that is unique to the conversation this item is part
    * of.
    *

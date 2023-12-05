@@ -50,4 +50,28 @@ public enum ExchangeVersion {
    * Exchange2010_SP2.
    */
   Exchange2010_SP2,
+
+  /**
+   * Includes all features introduced in Exchange 2007 and Exchange 2010.
+   * <br>
+   * The following features were introduced in Exchange 2013: <br>
+   * Archiving <br>
+   * eDiscovery <br>
+   * Personas <br>
+   * Retention policies <br>
+   * Unified Contact Store <br>
+   * User photos
+   */
+  Exchange2013,
+
+  /**
+   * Includes all the features in Exchange 2013.
+   * <br>
+   * The following features were introduced in Exchange 2013 SP1: <br>
+   * Mailbox hold policy <br>
+   * Propose new time <br>
+   * Read receipt updates for updating and deleting items <br>
+   * IRM information update for conversations <br>
+   */
+  Exchange2013_SP1
 }

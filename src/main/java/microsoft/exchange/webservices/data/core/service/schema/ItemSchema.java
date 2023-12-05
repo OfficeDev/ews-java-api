@@ -246,6 +246,11 @@ public class ItemSchema extends ServiceObjectSchema {
     String ConversationId = "item:ConversationId";
 
     /**
+     * Initially used for EmailMessage.Preview
+     */
+    String Preview = "item:Preview";
+
+    /**
      * The Unique body.
      */
     String UniqueBody = "item:UniqueBody";
@@ -649,6 +654,12 @@ public class ItemSchema extends ServiceObjectSchema {
             }
           });
 
+  public static final PropertyDefinition Preview = new StringPropertyDefinition(
+          XmlElementNames.Preview,
+          FieldUris.Preview,
+          EnumSet.of(PropertyDefinitionFlags.CanFind),
+          ExchangeVersion.Exchange2013);
+
   /**
    * Defines the UniqueBody property.
    */
@@ -739,6 +750,7 @@ public class ItemSchema extends ServiceObjectSchema {
     this.registerProperty(WebClientReadFormQueryString);
     this.registerProperty(WebClientEditFormQueryString);
     this.registerProperty(ConversationId);
+    this.registerProperty(Preview);
     this.registerProperty(UniqueBody);
     this.registerProperty(StoreEntryId);
 

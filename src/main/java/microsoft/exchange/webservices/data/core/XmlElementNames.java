@@ -1799,6 +1799,11 @@ public class XmlElementNames {
   public static final String ConversationId = "ConversationId";
 
   /**
+   * The Constant Preview.
+   */
+  public static final String Preview = "Preview";
+
+  /**
    * The Constant UniqueBody.
    */
   public static final String UniqueBody = "UniqueBody";
