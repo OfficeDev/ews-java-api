@@ -51,7 +51,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import javax.xml.stream.XMLStreamException;
-import javax.xml.ws.http.HTTPException;
+import jakarta.xml.ws.http.HTTPException;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

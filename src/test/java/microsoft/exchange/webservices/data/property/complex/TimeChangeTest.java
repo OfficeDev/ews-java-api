@@ -23,7 +23,7 @@ package microsoft.exchange.webservices.data.property.complex;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
 
 import microsoft.exchange.webservices.data.core.EwsUtilities;
 import microsoft.exchange.webservices.data.misc.Time;
